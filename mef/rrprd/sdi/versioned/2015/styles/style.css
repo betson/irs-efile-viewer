@@ -1,3 +1,5 @@
+---
+---
 body {   /* Global Styles */
 	width: auto; height: auto;
 	color: black; background-color: white;
@@ -100,7 +102,7 @@ box-sizing:border-box;
 	font-size: 9pt; font-weight: bold;
 	text-align: center;
 	cursor: pointer;
-	background-image:url(/mef/rrprd/common/images/printer.gif);
+	background-image:url({{ site.github.url }}/mef/rrprd/common/images/printer.gif);
 	background-position:center;
 	background-repeat:no-repeat;
 }
@@ -556,7 +558,7 @@ body{}
 	height:19px; 
 	border:0; 
 	vertical-align:center;
-	background-image:url(/mef/rrprd/common/images/calendar.gif);
+	background-image:url({{ site.github.url }}/mef/rrprd/common/images/calendar.gif);
 	background-position:center;
 	background-repeat:no-repeat;
 	cursor:pointer;

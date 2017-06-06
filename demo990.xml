@@ -1,5 +1,7 @@
+---
+---
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type='text/xsl' href='/mef/Stylesheets/2014/IRS990.xsl'?>
+<?xml-stylesheet type='text/xsl' href='{{ site.github.url }}/mef/Stylesheets/2014/IRS990.xsl'?>
 <AppData>
   <ApplicationProperties>
     <FormHeaderGeneric> efile Visual Render </FormHeaderGeneric>

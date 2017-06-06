@@ -1,3 +1,5 @@
+---
+---
 body {   /* Global Styles */
 	width: auto; height: auto;
 	color: black; background-color: white;
@@ -83,7 +85,7 @@ body {   /* Global Styles */
 	font-size: 9pt; font-weight: bold;
 	text-align: center;
 	cursor: hand;
-	background-image:url(/mef/rrprd/common/images/printer.gif);
+	background-image:url({{ site.github.url }}/mef/rrprd/common/images/printer.gif);
 	background-position:center;
 	background-repeat:no-repeat;
 }

@@ -1,3 +1,5 @@
+---
+---
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
@@ -63,10 +65,10 @@ Description: This file contains parameters that define XPaths or string values t
     </xsl:choose>
   </xsl:param>
   <!-- Parameters that define the absolute path of files. Paths for images, javascript, and CSS stylesheet definition files are defined. -->
-  <xsl:param name="ScriptPath"><xsl:value-of select="concat('/mef/rrprd/sdi/versioned/',$TaxYear,'/scripts')"></xsl:value-of></xsl:param>
-  <xsl:param name="ImagePath"><xsl:value-of select="concat('/mef/rrprd/sdi/versioned/',$TaxYear,'/images')"></xsl:value-of></xsl:param>
-  <xsl:param name="NonVersionedImagePath">/mef/rrprd/common/images</xsl:param>  
-  <xsl:param name="CSSPath"><xsl:value-of select="concat('/mef/rrprd/sdi/versioned/',$TaxYear,'/styles')"></xsl:value-of></xsl:param>
+  <xsl:param name="ScriptPath"><xsl:value-of select="concat('{{ site.github.url }}/mef/rrprd/sdi/versioned/',$TaxYear,'/scripts')"></xsl:value-of></xsl:param>
+  <xsl:param name="ImagePath"><xsl:value-of select="concat('{{ site.github.url }}/mef/rrprd/sdi/versioned/',$TaxYear,'/images')"></xsl:value-of></xsl:param>
+  <xsl:param name="NonVersionedImagePath">{{ site.github.url }}/mef/rrprd/common/images</xsl:param>  
+  <xsl:param name="CSSPath"><xsl:value-of select="concat('{{ site.github.url }}/mef/rrprd/sdi/versioned/',$TaxYear,'/styles')"></xsl:value-of></xsl:param>
   <!-- The Separated parameter is used in the separated repeating data feature. -->
   <xsl:param name="Separated">separated</xsl:param>
   <!-- The following parameters define data that can be used to categorize the IRS forms being displayed. -->

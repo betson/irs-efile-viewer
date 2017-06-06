@@ -1,3 +1,5 @@
+---
+---
 /*-----------------------------------------------------------------------------------------------------
 Header CSS file 
 -----------------------------------------------------------------------------------------------------
@@ -179,14 +181,14 @@ edited 7/22/2004 by Chris Sinderson. Added styFormNumber
 }
 
 .styEnglishBtn {
-	background: url("/mef/rrprd/common/images/refreshENGButton.gif");
+	background: url("{{ site.github.url }}/mef/rrprd/common/images/refreshENGButton.gif");
 	width: 50px;
 	height: 13px;
 	border: 0;
 }
 
 .stySpanishBtn {
-	background: url("/mef/rrprd/common/images/refreshSPButton.gif");
+	background: url("{{ site.github.url }}/mef/rrprd/common/images/refreshSPButton.gif");
 	width: 50px;
 	height: 13px;
 	border: 0;
