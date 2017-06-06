@@ -13,8 +13,10 @@
 <xsl:param name="Form4255Data" select="$RtnDoc/IRS4255"/>
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form4255Data)"/></xsl:call-template></title>
     <!-- No Browser Caching -->
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -50,29 +52,30 @@
         <xsl:call-template name="DocumentHeader"/>  
       <!-- END WARNING LINE -->
       <!-- Begin Form Number and Name -->
-      <div class="styBB" style="width:187mm;">
-        <div class="styFNBox" style="width:31mm;height:19mm;">
-            Form<span class="styFormNumber"> 4255</span>
+      <div class="styBB" style="width:187mm;height:18mm;">
+        <div class="styFNBox" style="width:31mm;height:auto;">
+            Form<span class="styFormNumber"> 4255</span><br></br>
             (Rev. October 2010)
             <br/>
             <span class="styAgency" style="padding-top:.5mm;">Department of the Treasury<br/>Internal Revenue Service</span>
         </div>    
-        <div class="styFTBox" style="width:125mm;height:12mm;">
-          <div class="styMainTitle" style="height:8mm;padding-top:2mm;">
+        <div class="styFTBox" style="width:125mm;height:auto;display:inline-block;">
+          <div class="styMainTitle" style="height:auto;padding-top:2mm;">
             Recapture of Investment Credit
           </div>
-           <div class="styFST" style="height:5mm;font-size:7pt;padding-top:6mm;">
+          <br></br>
+           <div class="styFST" style="height:auto;font-size:7pt;padding-top:6mm;">
             <img src="{$ImagePath}/4255_Bullet.gif" width="4" height="7" alt="bullet image"/>
             Attach to your income tax return.
           </div>
         </div>
-        <div class="styTYBox" style="width:30mm;height:19mm;">
-          <div style="height:2mm;"/>
-          <div class="styOMB" style="height:1mm;">
+        <div class="styTYBox" style="width:30mm;height:auto;">
+          <div style="height:auto;"/>
+          <div class="styOMB" style="height:6mm;">
             OMB No. 1545-0166
           </div>
                   
-          <div class="stySequence" style="height:6mm;border-bottom-width:0px;padding-left:4mm;padding-top:3mm;border-left-width:0px">Attachment 			<br/>
+          <div class="stySequence" style="height:auto;border-bottom-width:0px;padding-left:4mm;padding-top:3mm;border-left-width:0px">Attachment 			<br/>
             Sequence No. <span class="styBoldText">65</span>
           </div>
         </div>
@@ -80,7 +83,7 @@
       <!-- End Form Number and Name section -->
       <!-- Begin Names and Identifying number section -->
       <div class="styBB" style="width:187mm;float:none;clear:none;">
-        <div class="styNameBox" style="width:156mm;height:8mm;font-size:7pt;">
+        <div class="styNameBox" style="width:156.5mm;height:auto;font-size:7pt;">
           Name(s) as shown on return<br/>
  		  <xsl:choose>
 		    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -134,9 +137,9 @@
       </div>  
       <!-- Start Properties table -->      
       <!--<div style="width:187mm;">-->
-        <div class="styTableContainer" id="TPctn" style="height:34.9mm;bottom-border:0px;">
+        <div class="styTableContainer" id="TPctn" style="height:37.1mm;bottom-border:0px;">
           <xsl:call-template name="SetInitialState"/>
-          <table class="styTable" cellspacing="0" name="TYTable" id="TYTable" style="border-color:black;">
+          <table class="styTable" cellspacing="0" name="TYTable" id="TYTable" style="border-color:black;display:block;">
             <thead class="styTableThead">
               <tr style="height:6mm;border-color:black;">
                 <th class="styTableCellHeader" style="width:25mm;font-size:7pt;" scope="col"><span class="styBoldText">Properties</span></th>
@@ -220,7 +223,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
       <xsl:for-each select="$Form4255Data/RecaptureOfInvstCrProperties">
         <xsl:variable name="pos" select="position()"/>
         <xsl:if test="position() mod 4 = 1">
-          <div class="styTableContainerNBB" style="height:58mm;">
+          <div class="styTableContainerNBB" style="height:60.2mm;display:block;">
             <table class="styTable" cellspacing="0" style="border-color:black;">
               <tr>
                 <th class="styTableCellHeader" style="width:65mm;border:none;font-size:7pt;text-align:left;padding-left:6mm;height:5mm;border-color:black;" scope="col">
@@ -296,7 +299,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
                   </xsl:if>          
               </tr>
               <tr>
-                <td style="border:none;" scope="row">
+                <td style="border:none;width:80mm;" scope="row">
                   <div>
                     <div class="styGenericDiv" style="width:5mm;font-weight:bold;font-size:7pt;padding-left:.5mm;">1</div>
                     <div class="styGenericDiv" style="width:68mm;font-size:7pt;">
@@ -564,7 +567,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
                   <span class="styTableCellPad"/>
                 </td>              
               </tr>
-              <tr style="height:2mm;">
+              <tr style="height:8mm;">
                 <td style="text-align:center;" colspan="6" scope="col">
                   <div style="border-top-width:1px;">
                     <div style="height:1mm;font-size:8pt;font-weight:bold;">
@@ -667,13 +670,13 @@ credit property was placed in service for definitions.) If rehabilitation proper
     </xsl:if>
   </xsl:if>
     <xsl:if test="not($Form4255Data/RecaptureOfInvstCrProperties) or ((count($Form4255Data/RecaptureOfInvstCrProperties) &gt; 4) and ($Print = $Separated))">
-          <div class="styIRS4255TableContainerNBB" style="height:57mm;">
+          <div class="styIRS4255TableContainerNBB" style="height:59mm;">
             <table class="styTable" cellspacing="0">
               <tr>
                 <th class="styTableCellHeader" style="width:65mm;border:none;font-size:7pt;text-align:left;padding-left:6mm;" scope="col">
                   Computation Steps
                 </th>
-                <th class="styIRS4255TableCellSmallRB" style="width:8mm;color:lightgrey;background-color:lightgrey;height:5mm;">                      <span class="styTableCellPad"/>
+                <th class="styIRS4255TableCellSmallRB" style="width:8mm;color:black;background-color:lightgrey;height:5mm;border-bottom-width:0px">                      <span class="styTableCellPad"/>
                 </th>
                 <th class="styTableCellHeader" style="width:100mm;font-size:7pt;border-top-width: 1px;" colspan="4" scope="col">
                   Properties
@@ -692,7 +695,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
                 <td class="styTableCellSmall" style="text-align:center;font-weight:bold;">D<span class="styTableCellPad"/></td>
               </tr>
               <tr>
-                <td style="border:none;" scope="row">
+                <td style="border:none;width:80mm;" scope="row">
                   <div>
                     <div class="styGenericDiv" style="width:5mm;font-weight:bold;font-size:7pt;padding-left:.5mm;">1</div>
                     <div class="styGenericDiv" style="width:68mm;font-size:7pt;">
@@ -838,7 +841,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>
                 <td class="styTableCellSmall" style="font-size:7pt;"><span class="styTableCellPad"/></td>              
               </tr>
-              <tr style="height:2mm;">
+              <tr style="height:8mm;">
                 <td style="text-align:center;" colspan="6" scope="col">
                   <div style="border-top-width:1px;">
                     <div style="height:1mm;font-size:8pt;font-weight:bold;">
@@ -896,7 +899,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
       <!-- Begin the amount boxes -->    
       <div class="styBB" style="width:187mm;">
         <div style="width:187mm;">
-          <div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:3.5mm">
+          <div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:4mm">
             9
           </div>
           <div class="styLNDesc" style="width:141mm;height:3.5mm;">
@@ -927,7 +930,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
               <!--span style="width:16px;"></span>.-->
             </span>
           </div>
-          <div class="styLNRightNumBox" style="height:3.5mm;">
+          <div class="styLNRightNumBox" style="height:4mm;">
           9
           </div>
           <div class="styLNAmountBox">        
@@ -1092,10 +1095,10 @@ credit property was placed in service for definitions.) If rehabilitation proper
               <span style="width:16px;"/>.
             </span>
           </div>
-          <div class="styLNRightNumBox" style="height:4mm;padding-top:2.5mm;">
+          <div class="styLNRightNumBox" style="height:6mm;padding-top:2.5mm;">
             14
           </div>
-          <div class="styLNAmountBox" style="height:4mm;padding-top:2.5mm;">
+          <div class="styLNAmountBox" style="height:6mm;padding-top:2.5mm;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="$Form4255Data/TxForRcptrQlfyThrputicDiscvAmt"/>                      </xsl:call-template>
           </div>
@@ -1132,8 +1135,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
               <span style="width:16px;"/>.
               <span style="width:16px;"/>.
               <span style="width:16px;"/>.
-              <span style="width:16px;"/>.
-          </span>
+               </span>
           </div>
           <div class="styLNRightNumBox" style="height:8.5mm;padding-top:4.5mm;">
             15                    
@@ -1166,7 +1168,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
   
       
   <!-- Add page end -->
-  <p class="pageend"/>
+  <div class="pageEnd"/>
   
 <!-- Begininning of write-in data -->
     <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -1188,7 +1190,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
         <xsl:with-param name="DescWidth" select="100"/>
       </xsl:call-template>
     </table>
-    <!-- Begin SRD for Properties table -->
+    <!-- Begin SRD for  table -->
     <xsl:if test="($Print = $Separated) and (count($Form4255Data/RecaptureOfInvstCrProperties) &gt; 4)">
       <span class="styRepeatingDataTitle">Form 4255 - Type of Property </span>
              <table class="styDepTbl" cellspacing="0" name="TYTable" id="TYTable" style="font-size:7pt;">
@@ -1267,7 +1269,7 @@ credit property was placed in service for definitions.) If rehabilitation proper
                     </td>
               </tr>
               <tr class="styDepTblRow1">
-                <td scope="row" class="styDepTblcell">
+                <td scope="row" class="styDepTblcell" style="width:80mm;">
                   <div>
                     <div class="styGenericdiv" style="width:5mm;font-weight:bold;text-align:left;">1</div>
                     <div class="styGenericdiv" style="width:68mm;border-left-width:0px;">
@@ -1540,7 +1542,7 @@ investment credit property
                   <span class="styTableCellPad"/>
                 </td>              
               </tr>
-              <tr style="height:2mm;" class="styDepTblRow1">
+              <tr style="height:8mm;" class="styDepTblRow1">
                 <td style="text-align:center;" colspan="6" scope="col">
                   <div style="border-top-width:1px;">
                     <div style="height:1mm;font-size:8pt;font-weight:bold;">

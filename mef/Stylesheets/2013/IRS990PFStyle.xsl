@@ -123,8 +123,9 @@
 		border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
 	}
 	.styIRS990PFCkBox{
-		height: 4mm;
-		width: 4mm;
+		height: 3mm;
+		width: 3mm;
+		margin: 2px 2px 0px 0px;
 	}
 	.styIRS990PFCkBoxText {
 		width: 48mm;
@@ -142,7 +143,7 @@
 	}
 	.styIRS990PFSignatureText{ /* Text containing instructions for signatures */
 		text-align:left;
-		float:left; clear: none;
+		float:none; clear: none;
 	}
 	.styIRS990PFSignatureBox{ /* Box for signature fields */
 		padding-top:.5mm;
@@ -150,19 +151,19 @@
 		text-align:left;
 		border-style: solid; border-color: black;
 		border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-		float:left; clear: none;
+		float:none; clear: none;
 	}
 	.styIRS990PFRetDiscussBox {   /* IRS Return Discussion Permission Box */
 		text-align:left;
 		border-style: solid; border-color: black;
 		border-top-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-right-width: 3px;
-		float: left; clear: none;
+		float: none; clear: none;
 	}
 	.styIRS990PFLeftBox{ /* Box on left holding instructions */
 		text-align:left;
 		border-style: solid; border-color: black;
 		border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
-		float:left;clear:none;
+		float:none;clear:none;
 	}
 	.styIRS990PFLNDesc{ /* Box on left holding instructions */
 		width: 71mm;
@@ -170,7 +171,7 @@
 		text-align:left;
 		border-style: solid; border-color: black;
 		border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
-		float:left;clear:none;
+		float:none;clear:none;
 	}
 	.styIRS990PFShadingCell {   /* Small Shading Cell has the same width as styLNAmountBoxSmall */
 			width:25mm;
@@ -178,7 +179,7 @@
 			background-color:lightgrey;
 			border-style: solid; border-color: black;
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-			float: left; clear: none;
+			float: none; clear: none;
 		}
 	.styIRS990PFUnderlinedText{
 		width: 25mm;
@@ -193,7 +194,7 @@
 			text-align:right;
 			border-style: solid; border-color: black;
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
-			float:left; clear: none;
+			float:none; clear: none;
 			font-size:6pt;
 		}
 		.styIRS990PFFormLinkBox {   /* Small Shading Cell has the same width as styLNAmountBoxSmall */
@@ -203,7 +204,7 @@
 			text-align:right;
 			border-style: solid; border-color: black;
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-			float:left; clear: none;
+			float:none; clear: none;
 		}
 	
 </xsl:template>

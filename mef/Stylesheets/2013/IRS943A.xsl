@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form943AData" select="$RtnDoc/IRS943A"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form943AData)">
@@ -39,7 +41,7 @@
 			<body class="styBodyClass">
 				<form name="Form943A">
 					<xsl:call-template name="DocumentHeader"/>
-					<div class="styBB" style="width:187mm;height:20mm;">
+					<div class="styBB" style="width:187mm;height:21mm;">
 						<div class="styFNBox" style="width:29mm;height:21mm;">
         Form <span class="styFormNumber">943-A</span>
 							<xsl:call-template name="SetFormLinkInline">
@@ -54,14 +56,15 @@
           Internal Revenue Service
         </div>
 						</div>
-						<div class="styFTBox" style="width:128mm;height:20mm; ">
+						<div class="styFTBox" style="width:128mm;height:22mm; ">
 							<div class="styMainTitle" style="height:4mm;">Agricultural Employer's Record of<br/>Federal Tax Liability</div>
-							<div class="styFBT" style="height:3mm;margin-top:2mm;font:size:6pt;width:128mm;">
-								<img src="{$ImagePath}/943A_Bullet_Sm.gif" alt="Bullet Image"/> Information about Form 943-A and its instructions is at <i>www.irs.gov/form943a</i>.<br/>
+							<div class="styFBT" style="width:128mm;height:3mm;padding-top:7mm;font:size:6pt;">
+								<img src="{$ImagePath}/943A_Bullet_Sm.gif" alt="Bullet Image"/> Information about Form 943-A and its instructions is at 
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form943a" title="Link to IRS.gov"><i>www.irs.gov/form943a</i>.</a><br/>
 								<img src="{$ImagePath}/943A_Bullet_Sm.gif" alt="Bullet Image"/> File with Form 943 or Form 943-X.        
         </div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:20mm;">
+						<div class="styTYBox" style="width:30mm;height:21mm;">
 							<div class="styOMB" style="height:8mm;padding-top:2mm;">
         OMB No. 1545-0035</div>
 							<div class="styTaxYear" style="padding-top:0.5mm;height:10mm;">
@@ -72,8 +75,8 @@
 						</div>
 					</div>
 					<!-- End Form Number and Name section -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:130mm;height:8mm;font-size:7pt;">
+					<div class="styBB" style="width:187mm;height:auto">
+						<div class="styNameBox" style="width:130mm;height:auto;font-size:7pt;">
         Name (as shown on Form 943)<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -82,9 +85,9 @@
 								<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						<div class="styEINBox" style="width:55mm;height:8mm;font-size:7pt;padding-left:2mm;">
-        Employer identification number (EIN)<br/>
-							<span class="styEINFld" style="width:55mm; text-align:center;font-weight:normal;">
+						<div class="styEINBox" style="width:55mm;height:8mm;font-size:7pt;padding-left:1mm;">
+        Employer identification number (EIN)<br/><br/>
+							<span class="styEINFld" style="width:55mm; text-align:left;font-weight:normal;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 								</xsl:call-template>
@@ -321,6 +324,7 @@
 		<xsl:param name="NumDays"/>
 		<xsl:param name="Month"/>
 		<xsl:param name="Letter"/>
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<body class="styBodyClass" >
 				<div style="float:left;width:117px;border:solid black;border-width:0px 1px 0px 0px;">

@@ -10,8 +10,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="FormData" select="$RtnDoc/IRS2350"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -44,26 +46,27 @@
 					<!-- END WARNING LINE -->
 					<!-- Begin Form Number and Name -->
 					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
-						<div class="styFNBox" style="width:28mm;height:21.7mm;">
+						<div class="styFNBox" style="width:26mm;height:21.7mm;">
             Form<span class="styFormNumber"> 2350</span><br/>
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData"/>
 						</xsl:call-template>
-							<div class="styAgency" style="padding-top:1mm;">Department of the Treasury<br/>Internal Revenue Service</div>
+							<div class="styAgency" style="padding-top:4mm;">Department of the Treasury<br/>Internal Revenue Service</div>
 						</div>
-						<div class="styFTBox" style="width:128mm;height:20mm;">
-							<div class="styMainTitle" style="height:8mm;padding-top:2mm;">Application for Extension of Time<br/>
+						<div class="styFTBox" style="width:130mm;height:20mm;">
+							<div class="styMainTitle" style="height:auto;padding-top:2mm;">Application for Extension of Time<br/>
 To File U.S. Income Tax Return</div>
 							<div class="styFST" style="height:5mm;font-size:6.5pt;">
 							For U.S. Citizens and Resident Aliens Abroad Who Expect To Qualify for Special Tax Treatment<br/>
 								<img src="{$ImagePath}/2441_Bullet.gif" width="9" height="9" alt="bullet image"/>See instructions on page 3.
 								<br/>
 							<img src="{$ImagePath}/2441_Bullet.gif" width="9" height="9" alt="bullet image"/>Information about 
-							Form 2350 and its instructions is at <i>www.irs.gov/form2350.</i>
+							Form 2350 and its instructions is at 
+							<a href="http://www.irs.gov/form2350" title="Link to IRS.gov"><i>www.irs.gov/form2350.</i></a>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:21.7mm;">
-							<div class="styOMB" style="height:1mm;">OMB No. 1545-0074</div>
+						<div class="styTYBox" style="width:31mm;height:21.7mm;">
+							<div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
 							<div class="styTY">20<span class="styTYColor">14</span></div>
 						</div>
 					</div>
@@ -76,10 +79,11 @@ To File U.S. Income Tax Return</div>
 						<div style="width:171mm;float:left;border-left:1px solid black;border-bottom:1px solid black;padding-left:2mm;">
 							<div class="styNameBox" style="width:62mm;height:12mm;font-size:7pt;">
 								<div>Your first name and initial</div>
-								<span>
+								<br/>
+								<span>								
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimaryNm"/>
-									</xsl:call-template>
+									</xsl:call-template>									
 								</span>
 							</div>
 							<div class="styNameBox" style="width:59mm;height:12mm;font-size:7pt;padding-left:2mm;">
@@ -122,7 +126,7 @@ To File U.S. Income Tax Return</div>
 						<div style="width:171mm;float:left;border-left:1px solid black;">
 							<div class="styNameBox" style="width:123mm;height:12mm;font-size:7pt;
 							border-bottom:1px solid black;padding-left:2mm;">
-								<div>Home address (number and street). If you have a P.O. Box, see instructions.</div>
+								<div>Home address (number and street). If you have a P.O. Box, see instructions.</div><br/>
 								<span>
 									<xsl:choose>
 										<xsl:when test="$RtnHdrData/Filer/ForeignAddress">
@@ -165,10 +169,10 @@ To File U.S. Income Tax Return</div>
 								<xsl:otherwise>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/CityNm"/>
-									</xsl:call-template>
+									</xsl:call-template>,
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/StateAbbreviationCd"/>
-									</xsl:call-template>
+									</xsl:call-template>,
 									<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/ZIPCd"/>
 											</xsl:call-template>
@@ -241,7 +245,7 @@ To File U.S. Income Tax Return</div>
 								<span style="float:left;">
 									Were you previously granted an extension of time to file for this tax year?<span style="letter-spacing:3mm;">...............</span>
 								</span>
-								<span style="float:right;padding-right:4mm;">
+								<span style="float:right;padding-right:2mm;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/FilingExtensionPrevGrantedInd"/>
 									</xsl:call-template>
@@ -281,7 +285,7 @@ To File U.S. Income Tax Return</div>
 								<span style="float:left;">
 									Will you need additional time to allocate moving expenses?<span style="letter-spacing:3mm;">....................</span>
 								</span>
-								<span style="float:right;padding-right:4mm;">
+								<span style="float:right;padding-right:2mm;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/AdnlTimeToAllocateMoveExpnsInd"/>
 									</xsl:call-template>
@@ -331,10 +335,10 @@ To File U.S. Income Tax Return</div>
 						</div>
 						<br/>
 						<div style="width:187mm;margin-top:1mm;">
-							<div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-							<div style="float:left;width:4mm;font-weight:bold;">b</div>
-							<div style="float:right;width:177mm;">
-								Date qualifying period begins  <span style="width:25mm;text-align:center;border-bottom:1px dashed black;">
+							<div style="width:5mm;font-weight:bold;text-align:right;"/>
+							<div style="width:4mm;font-weight:bold;">b</div>
+							<div style="width:167mm;">
+								Date qualifying period begins  <span style="width:20mm;text-align:center;border-bottom:1px dashed black;">
 								<xsl:call-template name="PopulateMonth">
 									<xsl:with-param name="TargetNode" select="$FormData/QualifyingResidentPeriodBegDt"/>
 								</xsl:call-template>-<xsl:call-template name="PopulateDay">
@@ -356,11 +360,11 @@ To File U.S. Income Tax Return</div>
 						</div>
 						<br/>
 						<div style="width:187mm;margin-top:1mm;">
-							<div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-							<div style="float:left;width:4mm;font-weight:bold;">c</div>
-							<div style="float:right;width:177mm;">							
+							<div style="width:5mm;font-weight:bold;text-align:right;"/>
+							<div style="width:4mm;font-weight:bold;">c</div>
+							<div style="width:137mm;">							
 								Your foreign home address 
-								<span style="text-align;center;border-bottom:1px dashed black;width:137mm;">						
+								<span style="text-align;center;border-bottom:1px dashed black;width:50mm;">						
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignAddress/AddressLine1Txt"/>
 								</xsl:call-template>								
@@ -373,28 +377,26 @@ To File U.S. Income Tax Return</div>
 								<span style="width:1mm"/>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignAddress/CityNm"/>
-								</xsl:call-template>
-									<span style="width:7px;"/>
-                                   <xsl:call-template name="PopulateText">
+								</xsl:call-template>									
+                                <xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignAddress/ProvinceOrStateNm"/>
-								</xsl:call-template>								
-							
-								<span style="width:7px;"/>
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$FormData/ForeignAddress/CountryCd"/>
-								</xsl:call-template>
+								</xsl:call-template>							
 								<span style="width:7px;"/>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/ForeignAddress/ForeignPostalCd"/>
+								</xsl:call-template>
+								<span style="width:7px;"/>
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$FormData/ForeignAddress/CountryCd"/>
 								</xsl:call-template>
 								</span>
 							</div>
 						</div>
 						<br/>
 						<div style="width:187mm;margin-top:1mm;">
-							<div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-							<div style="float:left;width:4mm;font-weight:bold;">d</div>
-							<div style="float:right;width:177mm;">
+							<div style="width:5mm;font-weight:bold;text-align:right;"/>
+							<div style=";width:4mm;font-weight:bold;">d</div>
+							<div style="width:162mm;">
 								Date you expect to return to the United States
 								 <span style="width:25mm;text-align:center;border-bottom:1px dashed black;">
 								<xsl:call-template name="PopulateMonth">
@@ -415,24 +417,22 @@ To File U.S. Income Tax Return</div>
 							</div>
 						</div>
 						<div style="width:187mm;margin-top:1mm;">
-							<div style="float:left;width:5mm;font-weight:bold;text-align:right;">5</div>
-							<div style="float:left;width:4mm;font-weight:bold;"/>
-							<div class="styLNDesc" style="width:127mm;float:left">
+							<div class="styLNLeftNumBoxSD" style="padding-left:3.5mm;">5</div>
+							
+							<div class="styLNDesc" style="width:140mm;padding-left:2mm;">
 								Enter the amount of income tax paid with this form
-								<span style="letter-spacing:3mm;font-weight:bold;">............... </span>
-							<!--<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>-->
-							    <img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
-							</div>
-							<div class="styLNRightNumBoxNBB" style="border-left:1px solid black;">
-								5
-							</div>
-							<div class="styLNAmountBox" style="height:4.2mm;width:42mm;border-bottom:none;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/ExtsnRequestIncomeTaxPaidAmt"/>
-								</xsl:call-template>
+								<span style="letter-spacing:3mm;font-weight:bold;">.................. </span>
+							
+								<img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
+							</div>	
+							<div class="styLNRightNumBoxNBB" style="">5</div>
+							<div class="styLNAmountBox" style="width:30mm;border-bottom:none;border-right:0px solid black;">
+							<xsl:call-template name="PopulateAmount">
+							<xsl:with-param name="TargetNode" select="$FormData/ExtsnRequestIncomeTaxPaidAmt"/>
+							</xsl:call-template>
 							</div>
 						</div>
-						<div style="width:187mm;border-top:1px solid black;padding:1mm 0mm;text-align:center;">
+						<div style="width:187mm;border-top:1px solid black;padding-top:1mm;text-align:center;">
 							<div class="styPartDesc">Signature and Verification</div>
 						</div>
 						<div style="width:187mm;font-size:7pt;height:16mm;">
@@ -521,7 +521,7 @@ To File U.S. Income Tax Return</div>
 						</div>
 				<!-- notice to applicant section -->
 				<div class="styBB" style="width:187mm;">
-					<div style="position:relative;top:0;left:0;height:36mm;width:14mm;float:left;font-weight:bold;font-size:7pt;padding:1mm 0mm;">
+					<div style="position:relative;top:0;left:0;height:36mm;width:15mm;float:left;font-weight:bold;font-size:7pt;padding:0mm;">
 						<div style="position:absolute;top:1mm;text-align:center"><br/>Notice to<br/>Applicant</div>
 						<div style="position:absolute;bottom:1mm;text-align:center">To Be<br/>Completed<br/>by the IRS<br/><br/></div>
 					</div>
@@ -558,44 +558,44 @@ To File U.S. Income Tax Return</div>
 						<span style="width:2mm;"/>
 						Other  _ __  _ __  _ __  _ __  _ __  _ __ __ __  _ __  _ __  _ __  _ __  _ __ __ __  _ __  _ __  _ __  _ __  _ __ _
 					</div>
-					<div style="width:172mm;border-left:1px solid black;padding-left:2mm;padding-top:1mm;">
+					<div style="width:172mm;border-left:0px solid black;padding-left:2mm;padding-top:1mm;">
 						_________________________________________________________________<span style="width:3mm;"/>_________________________________
 					</div>
-					<div style="width:172mm;border-left:1px solid black;padding-left:2mm;">
+					<div style="width:172mm;border-left:0px solid black;padding-left:2mm;">
 						<span style="width:52mm;"/>Director<span style="width:62mm;"/>Date
 					</div>
 				</div>
 				<!-- return label section -->
 				<div class="styBB" style="width:187mm;">
-					<div class="styGenericDiv" style="height:36mm;width:8mm;font-weight:bold;padding:2mm 2px;">
-						<img alt="return label" src="{$ImagePath}/2350_ReturnLabel.gif" width="30" height="105"/>
+					<div class="styGenericDiv" style="height:36mm;width:8mm;font-weight:bold;">
+						<img alt="return label" src="{$ImagePath}/2350_ReturnLabel.gif" />
 					</div>
-					<div class="styGenericDiv" style="width:178mm;border-left:1px solid black;">
-						<div class="styNameBox" style="width:118mm;height:12mm;font-size:7pt;border-bottom:1px solid black;padding-left:2mm;">
-							<div style="font-family:Arial;"><b>Taxpayer's Name</b> (and agent's name, if applicable). If a joint return, also give spouse's name.</div>
+					<div class="styGenericDiv" style="width:179mm;border-left:1px solid black;">
+						<div class="styNameBox" style="width:117mm;height:13mm;font-size:7pt;border-bottom:1px solid black;padding-left:2mm;">
+							<div style="font-family:Arial;"><b>Taxpayer's Name</b> (and agent's name, if applicable). If a joint return, also give spouse's name.</div><br/>
 							<span>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimaryNm"/>
 								</xsl:call-template>
 							</span>
-							<span style="width:17px"/>
+							<br/>
 							<span>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SpouseNm"/>
 								</xsl:call-template>
 							</span>
-							<span style="width:17px"/>
+							<br/>
 							<span>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/AgentPersonNm"/>
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styNameBox" style="width:59.5mm;height:12mm;border-right:1px solid black;background-color:lightgrey;"/>
+						<div class="styNameBox" style="width:61.7mm;height:13mm;border-right:1px solid black;background-color:lightgrey;"/>
 					</div>
-					<div class="styGenericDiv" style="width:178mm;border-left:1px solid black;">
-						<div class="styNameBox" style="width:118mm;height:12mm;font-size:7pt;border-bottom:1px solid black;padding-left:2mm;">
-							<div>Address (number and street, include suite, room, or apt. no., or P.O. box number)</div>
+					<div class="styGenericDiv" style="width:179mm;border-left:1px solid black;">
+						<div class="styNameBox" style="width:117mm;height:12mm;font-size:7pt;border-bottom:1px solid black;padding-left:2mm;">
+							<div>Address (number and street, include suite, room, or apt. no., or P.O. box number)</div><br/>
 							<xsl:choose>
 								<xsl:when test="$RtnHdrData/Filer/USAddress">
 									<xsl:call-template name="PopulateText">
@@ -624,49 +624,47 @@ To File U.S. Income Tax Return</div>
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
-						<div class="styNameBox" style="width:59.5mm;height:12mm;border-right:1px solid black;border-bottom:1px solid black;background-color:lightgrey;"/>
+						<div class="styNameBox" style="width:61.7mm;height:12mm;border-right:1px solid black;border-bottom:1px solid black;background-color:lightgrey;"/>
 					</div>
-					<div class="styGenericDiv" style="width:178mm;border-left:1px solid black;">
-						<div class="styNameBox" style="width:118mm;height:12mm;font-size:7pt;padding-left:2mm;">
+					<div class="styGenericDiv" style="width:179mm;border-left:1px solid black;">
+						<div class="styNameBox" style="width:117mm;height:12mm;font-size:7pt;padding-left:2mm;">
 							<div>City or town, province or state, and country (including postal or ZIP code)</div>
-							<xsl:call-template name="PopulateCityStateInfo">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress"/>
-								<xsl:with-param name="ForeignAddressTargetNode" select="$RtnHdrData/Filer/ForeignAddress"/>
-							</xsl:call-template>
+							<br/>
 							<xsl:if test="$RtnHdrData/Filer/ForeignAddress">
-								<span style="width:7px;"/>
+								
 								<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/CityNm"/>
-											</xsl:call-template>
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/ProvinceOrStateNm"/>
-											</xsl:call-template>
+								   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/CityNm"/>
+								</xsl:call-template><br/>
+								
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/ProvinceOrStateNm"/>
+								</xsl:call-template>,
+								
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/ForeignPostalCd"/>
+								</xsl:call-template>
+								<span style="width:7px;"/>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/CountryCd"/>
 								</xsl:call-template>
-								<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/ForeignPostalCd"/>
-											</xsl:call-template>
 							</xsl:if>
 							<xsl:if test="$RtnHdrData/Filer/USAddress">
-							<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/CityNm"/>
-											</xsl:call-template>
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/CityNm"/>
+								</xsl:call-template>,
 											
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/StateAbbreviationCd"/>
-								</xsl:call-template>
+								</xsl:call-template>,
+								
 								<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/ZIPCd"/>
-											</xsl:call-template>
-							
-							
-							
-								</xsl:if>
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/ZIPCd"/>
+								</xsl:call-template>
+							</xsl:if>
 							
 						</div>
-						<div class="styNameBox"  style="width:59.5mm;border-right:none;font-size:6pt;text-align:center;"/>
-						<div style="vertical-align:text-top;text-align:center">Agents:<br/>
+						<div class="styNameBox"  style="width:61.7mm;border-right:none;font-size:6pt;text-align:center;"/>
+						<div style="vertical-align:text-top;text-align:center;">Agents:<br/>
 							Always include taxpayer's name on Return Label.
 						</div>
 					</div>

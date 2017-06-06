@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8082Data" select="$RtnDoc/IRS8082"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8082Data)"/>
@@ -107,7 +109,7 @@
 							
 							
 						</div>
-						<div style="width:49mm;height:4mm;padding-left:2mm;font-weight:normal;font-size:7pt;" class="styEINBox">
+						<div style="width:49mm;height:auto;padding-left:2mm;font-weight:normal;font-size:7pt;" class="styEINBox">
     Identifying number<br/>
 							<br/>
 							<span style="font-weight:normal;text-align:center;">
@@ -144,7 +146,7 @@
 					<div style="width:187mm;" class="styBB">
 						<div style="width:187mm;height:6mm;">
 							<div class="styLNLeftNumBox" style="padding-top:1.5mm;padding-bottom:1.5mm;">1</div>
-							<div style="float:left;padding-top:1.5mm;padding-bottom:1.5mm;">
+							<div style="float:left;padding-top:0mm;padding-bottom:1.5mm;">
       Check boxes that apply:  
       <span style="width:5mm;"/>
 								<span class="styBoldText">(a)</span>
@@ -177,7 +179,7 @@
 							</div>
 						</div>
 					</div>
-					<div style="width:187mm;height:7mm;padding-bottom:1mm;" class="styBB">
+					<div style="width:187mm;height:auto;padding-bottom:1mm;" class="styBB">
 						<div style="width:187mm">
 							<div class="styLNLeftNumBox">2</div>
 							<div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
@@ -261,8 +263,8 @@
 							</div>
 						</div>
 					</div>
-					<div style="width:187mm;height:10mm;" class="styBB">
-						<div style="width:87mm;height:10mm;" class="styIRS8082AddRightLine">
+					<div style="width:187mm;height:16mm;" class="styBB">
+						<div style="width:95mm;height:16mm;" class="styIRS8082AddRightLine">
 							<div class="styLNLeftNumBox">3</div>
 							<div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;width:">
       Employer identification number of pass-through entity <br/>
@@ -280,7 +282,7 @@
 								</xsl:if>
 							</div>
 						</div>
-						<div style="width:100mm;height:10mm;" class="styGenericDiv">
+						<div style="width:92mm;height:10mm;" class="styGenericDiv">
 							<div class="styLNLeftNumBox" style="width:6mm;">5</div>
 							<div style="padding-top:0.5mm;padding-bottom:.5mm;">
 								<span style="font-size:6pt;">Internal Revenue Service Center where pass-through entity filed its return</span>
@@ -300,11 +302,16 @@
     </div>
   </div>  -->
 					</div>
-					<div class="styBB" style="width:187mm;float:none;">
-						<div class="styIRS8082AddRightLine" style="width:87mm;height:26mm;">
+					<div class="styBB" style="width:187mm;float:none;height:auto;">
+						<!--<div class="styIRS8082AddRightLine" style="width:87mm;height:26mm;">-->
+						<div class="styIRS8082AddRightLine" style="width:95mm;height:26mm;">
 							<div class="styLNLeftNumBox">4</div>
-							<div class="styGenericDiv">
-      Name, address, and ZIP code of pass-through entity <br/>
+							<!--<div class="styGenericDiv">
+      Name, address, and ZIP code of pass-through entity <br/>-->
+      <div style="padding-top:0.5mm;padding-bottom:.5mm;">
+      Name, address, and ZIP code of pass-through entity<br/>
+      </div>
+      <div class="styGenericDiv">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form8082Data/PassThroughEntityName/BusinessNameLine1"/>
 								</xsl:call-template>
@@ -334,12 +341,12 @@
 								</xsl:if>
 							</div>
 						</div>
-						<div class="styGenericDiv" style="width:100mm;height:26mm;border-right-width:0px;">
-							<div style="width:100mm;height:12mm;" class="styBB">
+						<div class="styGenericDiv" style="width:92mm;height:26mm;border-right-width:0px;">
+							<div style="width:92mm;height:12mm;" class="styBB">
 								<div class="styLNLeftNumBox" style="width:6mm;">6</div>
-								<div style="padding-top:0.5mm;padding-bottom:.5mm;width:94mm;" class="styLnDesc">
-        Tax year of pass-through entity
-        <span style="width:8px;"/>
+								<div style="padding-top:0.5mm;padding-bottom:.5mm;" class="styLnDesc">
+        Tax year of pass-through entity<br/><br/>
+        <span style="width:12px;"/>
 									<span style="width:18mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8082Data/TaxYearOfPassThruEntityFromDt"/>
@@ -354,10 +361,10 @@
 									</span>
 								</div>
 							</div>
-							<div style="width:100mm;height:12mm;border-bottom-width:0px;" class="styBB">
+							<div style="width:92mm;height:12mm;border-bottom-width:0px;" class="styBB">
 								<div class="styLNLeftNumBox" style="width:6mm;">7</div>
-								<div style="padding-top:0.5mm;padding-bottom:.5mm;width:94mm;" class="styLnDesc">
-        Your tax year<span style="width:12px;"/>
+								<div style="padding-top:0.5mm;padding-bottom:.5mm;" class="styLnDesc">
+        Your tax year<br/><br/><span style="width:12px;"/>
 									<span style="width:18mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8082Data/YourTaxYearFromDt"/>
@@ -437,16 +444,34 @@
 														</xsl:if>
 														<div style="width:5mm;text-align:right;padding-right:2mm;" class="styGenericDiv">
 															<xsl:if test="position() = 1">
-																<span style="font-weight:bold;">8</span>
+																<span style="font-weight:bold;">1</span>
 															</xsl:if>
 															<xsl:if test="position() = 2">
-																<span style="font-weight:bold;">9</span>
+																<span style="font-weight:bold;">2</span>
 															</xsl:if>
 															<xsl:if test="position() = 3">
-																<span style="font-weight:bold;">10</span>
+																<span style="font-weight:bold;">3</span>
 															</xsl:if>
 															<xsl:if test="position() = 4">
-																<span style="font-weight:bold;">11</span>
+																<span style="font-weight:bold;">4</span>
+															</xsl:if>
+															<xsl:if test="position() = 5">
+																<span style="font-weight:bold;">5</span>
+															</xsl:if>
+															<xsl:if test="position() = 6">
+																<span style="font-weight:bold;">6</span>
+															</xsl:if>
+															<xsl:if test="position() = 7">
+																<span style="font-weight:bold;">7</span>
+															</xsl:if>
+															<xsl:if test="position() = 8">
+																<span style="font-weight:bold;">8</span>
+															</xsl:if>
+															<xsl:if test="position() = 9">
+																<span style="font-weight:bold;">9</span>
+															</xsl:if>
+															<xsl:if test="position() = 10">
+																<span style="font-weight:bold;">10</span>
 															</xsl:if>
 														</div>
 														<div class="styGenericDiv" style="vertical-align:bottom">
@@ -576,7 +601,7 @@
 						<xsl:with-param name="containerID" select=" 'TPctn' "/>
 					</xsl:call-template>
 					<!-- Begin Part III -->
-					<div style="width:187mm;" class="styBB">
+					<div style="width:187mm;height:8mm" class="styBB">
 						<div class="styPartName" style="width:15mm;">Part III</div>
 						<div class="styPartDesc" style="padding-left:3mm;">
     Explanations—Enter the Part II item number before each explanation. If more space is needed, continue your explanations on the back.
@@ -605,12 +630,12 @@
 							</xsl:if>
 						</tbody>
 					</table>
-					<div style="width:187mm;clear:both;">
+					<div style="width:187mm;clear:both;border-top:1px solid black;">
 						<div style="width:100mm;font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see separate instructions.</div>
 						<div style="width:45mm;text-align:center;" class="styGenericDiv">Cat. No. 49975G</div>
 						<div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8082</span> (Rev. 12-2011)</div>
 					</div>
-					<p class="pageend"/>
+					<div class="pageEnd"/>
 					<!-- Begininning of write-in data -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">

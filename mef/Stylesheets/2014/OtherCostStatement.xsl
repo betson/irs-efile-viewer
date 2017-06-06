@@ -9,10 +9,10 @@
 	<xsl:param name="OCSData" select="$RtnDoc/OtherCostStatement"/>
 	<!-- Template to display Other Cost Statement-->
 	<xsl:template name="ShowOCS">
-		<table id="OCSTbl" class="styDepTbl" style="font-size:7pt;width:187mm;table-layout:fixed;">
+		<table id="OCSTbl" class="styDepTbl" style="table-layout:fixed;">
 			<thead class="styTableThead">
 				<tr class="styDepTblHdr">
-					<th class="styDepTblCell" scope="col" style="width:140mm;">Other Cost Type</th>
+					<th class="styDepTblCell" scope="col" style="width:147mm;">Other Cost Type</th>
 					<th class="styDepTblCell" scope="col" style="width:40mm;">Other Cost Amount</th>
 				</tr>
 			</thead>
@@ -21,14 +21,12 @@
 				<xsl:for-each select="$OCSData/OtherCostStmt">
 					<tr>
 						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-						<td class="styDepTblCell" style="text-align:center;width:140mm;padding:0px 0px 0px 0px;">
-							<div style="padding:0px 3px 0px 3px;border-width:0px 0px 0px 0px;width:140mm;height:auto;word-wrap:break-word;">
+						<td class="styDepTblCell" style="text-align:left;width:147mm;height:auto;padding:0px 0px 0px 0px;">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="OtherCostType"/>
+									<xsl:with-param name="TargetNode" select="OtherCostTypeDesc"/>
 								</xsl:call-template>
-							</div>
 						</td>
-						<td class="styDepTblCell" style="text-align:center;width:40mm;">
+						<td class="styDepTblCell" style="text-align:right;width:40mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="OtherCostAmt"/>
 							</xsl:call-template>
@@ -37,7 +35,7 @@
 				</xsl:for-each>
 				<tr class="styDepTblHdr">
 					<th class="styDepTblCell" scope="col" style="width:140mm;border-width:3px 0px 0px 0px;border-style:solid;border-color:black;">Total Other Cost Amount</th>
-					<td style="text-align:center;width:40mm;border-width:3px 0px 0px 3px;border-style:solid;border-color:black;">
+					<td style="text-align:right;width:40mm;border-width:3px 0px 0px 3px;border-style:solid;border-color:black;">
 						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 						<b>
 							<xsl:call-template name="PopulateAmount">
@@ -56,8 +54,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -79,10 +79,10 @@
 				</style>
 				<xsl:call-template name="GlobalStylesDep"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<xsl:call-template name="DocumentHeaderDependency"/>
 				<div class="styDepTitleLine">
-					<span class="styDepTitle" style="width:92mm">
+					<span class="styDepTitle" style="padding-right:2mm;">
 						<xsl:value-of select="$depDocTitle"/>
 					</span>
 				</div>

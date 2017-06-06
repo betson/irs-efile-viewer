@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS1040ScheduleB"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)">
@@ -46,14 +48,14 @@
           </xsl:call-template>
 					<!--Beginning of header-->
 					<div class="styTBB" style="width:187mm;height:20.5mm;">
-						<div class="styFNBox" style="width:29mm;height:20.5mm;">
+						<div class="styFNBox" style="width:30mm;height:20.5mm;">
 							<div style="padding-top:1mm;line:line-height:180%;">
-								<span class="styFormNumber" style="font-size:9pt;padding-top:1mm;">SCHEDULE B</span>
+								<span class="styFormNumber" style="font-size:9pt;">SCHEDULE B</span>
 								<br/>
-								<span class="styFormNumber" style="font-size:7pt;padding-top:2mm;">
+								<span class="styFormNumber" style="font-size:6pt;">
 									<b>(Form 1040A or 1040)</b>
 								</span>
-								<div class="styAgency" style="padding-top:3.5mm;">Department of the Treasury<br/>
+								<div class="styAgency" style="padding-top:6mm;">Department of the Treasury<br/>
          Internal Revenue Service (99)
         </div>
 							</div>
@@ -69,11 +71,13 @@
         </div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:20.5mm;">
-							<div class="styOMB" style="height:1mm;">
-								<span style="font-size:6pt;padding-left:5mm;">
-									<!--Version A, Cycle 3-->
-									<span style="height:2mm;">OMB No. 1545-0074 </span>
-								</span>
+							<div class="styOMB">
+								<!--								<span style="font-size:6pt;padding-left:5mm;">-->
+								<!--Version A, Cycle 3-->
+
+									OMB No. 1545-0074 
+									
+<!--								</span>-->
 							</div>
 							<div class="styTaxYear" style="">
           20<span class="styTYColor">13</span>
@@ -86,7 +90,7 @@
 					<!--end of one Header-->
 					<!--Begin of Name-->
 					<!--Name-->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;height:9mm;">
 						<div class="styNameBox" style="width:138mm;font-weight:normal;font-size:7pt;">
             Name(s) shown on return <br/>
 							<br/>
@@ -105,12 +109,12 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styBB" style="width:1mm;height:4mm;float:right;border-bottom-width: 0px;padding-top:6mm;padding-right:1mm;">
+						<div style="width:4mm;height:4mm;float:right;border-bottom-width: 0px;">
 							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup1"/>
 								<xsl:with-param name="containerHeight" select="14"/>
-								<xsl:with-param name="headerHeight" select="1"/>
+								<xsl:with-param name="headerHeight" select="2"/>
 								<xsl:with-param name="containerID" select=" 'part1ContainerId'  "/>
 							</xsl:call-template>
 							<!-- end button display logic -->
@@ -118,11 +122,11 @@
 					</div>
 					<!--end of Name-->
 					<!--Begin of Part I-->
-					<div class="styBB" style="width:187mm;float:none;clear:both;">
+					<div class="styBB" style="width:187mm;">
 						<!-- Part I Left margin -->
-						<div style="width:187mm;float:none;clear:both;">
-							<div style="width:25mm;float:left;clear:none;border-bottom-width: 0px;">
-								<div class="styFMT" style="padding-top:2mm;font-size:12pt;height:7mm;font-family:Arial;">Part l<br/>
+						<div style="width:187mm;">
+							<div style="width:25mm;border-bottom-width: 0px;">
+								<div class="styFMT" style="padding-top:2mm;font-size:12pt;font-family:Arial;">Part l<br/>
 									<br/>
                 Interest
                 </div>
@@ -151,96 +155,102 @@
                 </div>
 							</div>
 							<!-- end left margin -->
-							<div style="width:161.5;float:right;">
+							<div style="width:161.5mm;float:right;display:block;">
 								<!-- Generated Table (Start) -->
-								<div id="part1ContainerId" class="stySchBLn1TblContainer">
+								<div id="part1ContainerId" class="stySchBLn1TblContainer" style="width:161.5mm; height:auto;border-top-width: 0px; border-bottom-width: 0px;">
 									<!-- print logic -->
 									<!-- end -->
 									<xsl:call-template name="SetInitialState"/>
 									<table class="styTable" cellspacing="0" style="font-size:7pt;" summary="Table displaying Interest and Ordinary Dividends " name="INORDtable" id="INORDtable">
 										<thead class="styTableThead">
-											<!--Line 1-->
-											<th class="styTableCell" scope="col" rowspan="2" style="border-right-width:0px;border-bottom-width:0px;width:4mm;padding-bottom:0mm;vertical-align:top">
-												<span class="styBoldText" style="font-size:7pt;text-align:left;">1</span>
-											</th>
-											<th class="styTableCell" scope="col" rowspan="2" style="width:122mm;border-bottom-width:0px;text-align:left;">
-												<span class="styNormalText">
+											<tr>
+												<!--Line 1-->
+												<th class="styTableCell" scope="col" rowspan="2" style="border-right-width:0px;border-bottom-width:0px;width:4mm;padding-bottom:0mm;vertical-align:top">
+													<span class="styBoldText" style="font-size:7pt;text-align:left;">1</span>
+												</th>
+												<th class="styTableCell" scope="col" rowspan="2" style="width:110.4mm;border-bottom-width:0px;text-align:left;">
+													<span class="styNormalText">
                         List name of payer. If any interest is from a seller-financed mortgage and the
                           buyer used the property as a personal residence, see instructions on back and list this
                           interest first. Also, show that buyer&apos;s social security number and address
+                          <img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image" align="right"/>
+													</span>
+													<!--Line 1 Interest Subtotal-->
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Interest Subtotal Literal</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/InterestSubtotalAmt/@interestSubtotalLiteralCd"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Interest Subtotal Amount</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/InterestSubtotalAmt"/>
+													</xsl:call-template>
+													<!--Line 1 Nominee Interest-->
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Nominee Interest Literal</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/NomineeInterestAmt/@nomineeInterestLiteralCd"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 Nominee Interest Amount</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/NomineeInterestAmt"/>
+													</xsl:call-template>
+													<!--Line 1  Accrued Interest-->
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Accrued Interest Literal</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/AccruedInterestAmt/@accruedInterestLiteralCd"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Accrued Interest Amount</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/AccruedInterestAmt"/>
+													</xsl:call-template>
+													<!--Line 1 AccruedMarketDiscountAmt-->
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Accrued Market Discount Literal</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/AccruedMarketDiscountAmt/@accruedMarketDiscountLiteralCd"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Accrued Market Discount Amount</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/AccruedMarketDiscountAmt"/>
+													</xsl:call-template>
+													<!--Line 1 OriginalIssueDiscountAdjAmt-->
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Original Issue Discount Adj Literal</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/OriginalIssueDiscountAdjAmt/@originalIssueDiscountAdjLitCd"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Original Issue Discount Adj Amount</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/OriginalIssueDiscountAdjAmt"/>
+													</xsl:call-template>
+													<!--Line 1 Amortizable Bond Prem Adj Amt-->
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Amortizable Bond Prem Adj Amt Literal</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/AmortizableBondPremAdjAmt/@amortizableBondPremiumAdjLitCd"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Amortizable Bond Prem Adj Amt </xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/AmortizableBondPremAdjAmt"/>
+													</xsl:call-template>
+													<xsl:call-template name="LinkToLeftoverDataTableInline">
+														<xsl:with-param name="Desc">Part I, Line 1 - Total Seller Financed Mortgage Amount</xsl:with-param>
+														<xsl:with-param name="TargetNode" select="$FormData/TotalSellerFinancedMortgIntAmt"/>
+													</xsl:call-template>
+												</th>
+												<th class="styTableCell" scope="col" rowspan="2" style="width:6.8mm;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+													<span class="styTableCellPad">
                         </span>
-												<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
-												<!--Line 1 Interest Subtotal-->
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Interest Subtotal Literal</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/InterestSubtotalAmt/@interestSubtotalLiteralCd"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Interest Subtotal Amount</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/InterestSubtotalAmt"/>
-												</xsl:call-template>
-												<!--Line 1 Nominee Interest-->
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Nominee Interest Literal</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/NomineeInterestAmt/@nomineeInterestLiteralCd"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 Nominee Interest Amount</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/NomineeInterestAmt"/>
-												</xsl:call-template>
-												<!--Line 1  Accrued Interest-->
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Accrued Interest Literal</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/AccruedInterestAmt/@accruedInterestLiteralCd"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Accrued Interest Amount</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/AccruedInterestAmt"/>
-												</xsl:call-template>
-												<!--Line 1 AccruedMarketDiscountAmt-->
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Accrued Market Discount Literal</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/AccruedMarketDiscountAmt/@accruedMarketDiscountLiteralCd"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Accrued Market Discount Amount</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/AccruedMarketDiscountAmt"/>
-												</xsl:call-template>
-												<!--Line 1 OriginalIssueDiscountAdjAmt-->
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Original Issue Discount Adj Literal</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/OriginalIssueDiscountAdjAmt/@originalIssueDiscountAdjLitCd"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Original Issue Discount Adj Amount</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/OriginalIssueDiscountAdjAmt"/>
-												</xsl:call-template>
-												<!--Line 1 Amortizable Bond Prem Adj Amt-->
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Amortizable Bond Prem Adj Amt Literal</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/AmortizableBondPremAdjAmt/@amortizableBondPremiumAdjLitCd"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Amortizable Bond Prem Adj Amt </xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/AmortizableBondPremAdjAmt"/>
-												</xsl:call-template>
-												<xsl:call-template name="LinkToLeftoverDataTableInline">
-													<xsl:with-param name="Desc">Part I, Line 1 - Total Seller Financed Mortgage Amount</xsl:with-param>
-													<xsl:with-param name="TargetNode" select="$FormData/TotalSellerFinancedMortgIntAmt"/>
-												</xsl:call-template>
-											</th>
-											<th class="styTableCell" scope="col" rowspan="2" style="width:6.8mm;border-bottom-width:0px;">
-												<span class="styTableCellPad">
-                        </span>
-											</th>
-											<th class="styTableCell" scope="col" rowspan="2" style="height:4mm;width:31.3mm;border-right-width:0px;text-align:center;">
-												<div class="styBB" style="font-size:7pt;width:30mm;border-bottom-width:1px;">
+												</th>
+												<th class="styTableCell" scope="col" rowspan="1" style="height:4mm;width:31mm;border-right:0px solid black;border-left:0px solid black;border-bottom:1px solid black;vertical-align:bottom;text-align:center;">
+													<div class="styBB" style="font-size:7pt;width:100%;border-left:0px solid black;border-right:0px solid black;border-bottom:0px solid black;">
                        Amount
                         </div>
-												<div class="styBoldText" style="font-size:7pt;width:30mm;border-bottom-width:1px;">
+												</th>
+											</tr>
+											<tr>
+												<th class="styTableCell" scope="col" rowspan="1" style="height:4mm;width:31mm;border-right:0px solid black;border-left:0px solid black;text-align:center;border-bottom:0px solid black;">
+													<div class="styBoldText" style="font-size:7pt;width:31mm;border-bottom-width:1px;">
                     
                         </div>
-											</th>
+												</th>
+											</tr>
 										</thead>
 										<tfoot/>
 										<tbody>
@@ -248,10 +258,10 @@
 												<xsl:for-each select="($FormData/Form1040SchBPartIGroup1) ">
 													<tr>
 														<!-- Column 1 -->
-														<td class="styTableCell" style="font-size:7pt;width:6mm;height:4mm;border-right-width:0px;border-bottom-width:1px;">
+														<td class="styTableCell" style="font-size:7pt;width:4mm;height:2mm;border-right-width:0px;border-bottom-width:0px;">
                           </td>
 														<!-- Column 2 -->
-														<td class="styTableCell" style="width:114mm;height:4mm;text-align:left;border-top-width:1px;">
+														<td class="styTableCell" style="width:118.4mm;height:2mm;text-align:left;border-top-width:0px;border-bottom:1px dashed black;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SellerFinancedNm"/>
 																<xsl:with-param name="BackupName">IRS1040ScheduleBForm1040SchBPartIGroup1SellerFinancedNm</xsl:with-param>
@@ -328,10 +338,10 @@
 															</xsl:call-template>
 														</td>
 														<!-- Column 3 -->
-														<td class="styTableCell" style="width:6.8mm;height:4mm;border-bottom-width:0px;">
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-bottom-width:0px;border-left:0px solid black;border-right-width:1px;border-right:1px solid black;">
 															<xsl:choose>
 																<xsl:when test="position() = 9">
-																	<span style="padding-right:2mm;font-size:8pt;font-style:bold;">1</span>
+																	<span style="padding-right:2mm;font-size:7pt;font-weight:bold;">1</span>
 																</xsl:when>
 																<xsl:otherwise>
 																	<span class="styTableCellPad"/>
@@ -339,7 +349,7 @@
 															</xsl:choose>
 														</td>
 														<!-- Column 4 -->
-														<td class="styTableCell" style="width:31.3mm;height:4mm;border-right-width:0px;vertical-align:bottom;">
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;vertical-align:bottom;border-bottom:1px solid black;">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="SellerFinancedMortgageIntAmt"/>
 																<xsl:with-param name="BackupName">IRS1040ScheduleBForm1040SchBPartIGroup1SellerFinancedMortgageInterestAmt</xsl:with-param>
@@ -351,21 +361,21 @@
 											<!-- Table Filler Rows -->
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 1 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;none;text-align:left;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;none;text-align:left;border-bottom:1px dashed black;">
 														<xsl:call-template name="PopulateAdditionalDataTableMessage">
 															<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup1"/>
 														</xsl:call-template>
 														<span class="styTableCellPad">
                            </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -373,19 +383,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 2 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -393,19 +403,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 3 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -413,19 +423,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 4 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -433,19 +443,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 5 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-right:1px solid black;border-left:0px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -453,18 +463,18 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 6 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styBoldText" style="font-size:8pt;padding-right:2mm;">1</span>
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+														<span class="styBoldText" style="font-size:7pt;padding-right:2mm;">1</span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -472,19 +482,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 7 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -492,19 +502,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 8 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -512,19 +522,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 9 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -532,19 +542,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 10 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -552,19 +562,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 11 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;text-align:center;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;text-align:center;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                          </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                              </span>
 													</td>
@@ -572,19 +582,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 12 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -592,19 +602,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 13 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -612,19 +622,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartIGroup1) &lt; 14 or ((count($FormData/Form1040SchBPartIGroup1) &gt; 14) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:1px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -638,7 +648,7 @@
 								<xsl:call-template name="SetInitialDynamicTableHeight">
 									<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup1"/>
 									<xsl:with-param name="containerHeight" select="14"/>
-									<xsl:with-param name="headerHeight" select="1"/>
+									<xsl:with-param name="headerHeight" select="2"/>
 									<xsl:with-param name="containerID" select=" 'part1ContainerId' "/>
 								</xsl:call-template>
 								<!--End of Table and instructions Part 1 Group 1-->
@@ -647,387 +657,401 @@
 								<!--<div style="width:187mm;border-bottom-width: 0px;height:3mm;">-->
 								<!--<span style="width:182mm">  
  </span>-->
-							<xsl:if test="$FormData/Form1040SchBPartIGroup2">
-								<!-- button display logic -->
-								<xsl:call-template name="SetDynamicTableToggleButton">
-									<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup2"/>
-									<xsl:with-param name="containerHeight" select="14"/>
-									<xsl:with-param name="headerHeight" select="1"/>
-									<xsl:with-param name="containerID" select=" 'part2ContainerId'  "/>
-								</xsl:call-template>
-								<!-- end button display logic -->
-								<!--</div>-->
-								<!--begin payer Group2-->
-								<!--begin payer Group2-->
-								<!--<div style="width:187mm;border-bottom-width: 0px;">-->
-								<!--Begin Table Group 2 instructions space-->
+								<xsl:if test="$FormData/Form1040SchBPartIGroup2">
+						<!--			--><!-- button display logic --><!--
+									<div style="width:4mm;height:4mm;float:right;border-bottom-width: 0px;">
+										<xsl:call-template name="SetDynamicTableToggleButton">
+											<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup2"/>
+											<xsl:with-param name="containerHeight" select="14"/>
+											<xsl:with-param name="headerHeight" select="1"/>
+											<xsl:with-param name="containerID" select=" 'part2ContainerId'  "/>
+										</xsl:call-template>
+										--><!-- end button display logic --><!--
+									</div>-->
+									<!--begin payer Group2-->
+									<!--begin payer Group2-->
+									<!--<div style="width:187mm;border-bottom-width: 0px;">-->
+									<!--Begin Table Group 2 instructions space-->
+									<!--
 								<div style="width:161.5mm;float:left;clear:none;border-bottom-width: 0px;">
 									<span class="styTableCellPad">        </span>
 								</div>
-								<br/>
-								<!--End of toggle-->
-								<div class="stySchBLn2TblContainer" id="part2ContainerId" style="padding-left:1.8mm; width:161mm">
-									<!-- print logic -->
-									<xsl:call-template name="SetInitialState"/>
-									<table class="styTable" cellspacing="0" style="font-size:7pt;" summary="Table displaying Interest and Ordinary Dividends " id="PAYORTable" name="PAYORtable">
-										<thead class="styTableThead">
-											<th class="styTableCell" style="border-right-width:0px;border-bottom-width:0px;width:4mm;padding-bottom:2mm;vertical-align:top;">
-												<span class="styBoldText" style="font-size:7pt;">
+								<br/>-->
+									<!--End of toggle-->
+									<!-- end left margin -->
+									<div class="stySchBLn2TblContainer" id="part2ContainerId" style="width:161.5mm; height:auto;border-top-width: 0px; border-bottom-width: 0px;">
+										<!-- print logic -->
+										<xsl:call-template name="SetInitialState"/>
+										<table class="styTable" cellspacing="0" style="font-size:7pt;" summary="Table displaying Interest and Ordinary Dividends " id="PAYORTable" name="PAYORtable">
+											<thead class="styTableThead">
+												<th class="styTableCell" style="border-right-width:0px;border-bottom-width:0px;width:4mm;height:8mm;padding-bottom:2mm;vertical-align:top;">
+													<span class="styBoldText" style="font-size:7pt;">
                         </span>
-											</th>
-											<th class="styTableCellHeader" scope="col" rowspan="1" style="width:118.4mm;border-top-width:1px;text-align:left">
+												</th>
+												<th class="styTableCellHeader" scope="col" rowspan="1" style="width:118.4mm;height:8mm;text-align:left;border-top-width: 0px;border-bottom:1px solid black;vertical-align:bottom;">
+											
                   Payer
 				 
                   </th>
-											<th class="styTableCellHeader" scope="col" rowspan="1" style="width:6.8mm;border-right-width:1px;border-top-width:1px;border-bottom-width:0px;">
-												<span class="styTableCellPad">
+												<th class="styTableCellHeader" scope="col" rowspan="1" style="width:6.8mm;height:8mm;border-right-width:0px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+													<span class="styTableCellPad">
                    </span>
-											</th>
-											<th class="styTableCellHeader" scope="col" rowspan="1" style="text-align:center;width:31mm;border-top-width:1px;border-left-width:0px;border-right-width:0px;">
-												<div style="width:26mm;padding-left:4mm;">Amount</div>
-											</th>
-										</thead>
-										<tfoot/>
-										<tbody>
-											<xsl:if test="($Print != $Separated) or (count($FormData/Form1040SchBPartIGroup2) &lt;= 14) ">
-												<xsl:for-each select="$FormData/Form1040SchBPartIGroup2">
+												</th>
+												<th class="styTableCellHeader" scope="col" rowspan="1" style="text-align:center;width:31mm;height:8mm;border-left-width:0px;border-right-width:0px;border-bottom:1px solid black;vertical-align:bottom;">
+															<!-- button display logic -->
+									<div style="width:4mm;height:4mm;float:right;border-bottom-width: 0px;">
+										<xsl:call-template name="SetDynamicTableToggleButton">
+											<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup2"/>
+											<xsl:with-param name="containerHeight" select="14"/>
+											<xsl:with-param name="headerHeight" select="1"/>
+											<xsl:with-param name="containerID" select=" 'part2ContainerId'  "/>
+										</xsl:call-template>
+										<!-- end button display logic -->
+									</div>
+													<div style="width:26mm;padding-left:4mm;">Amount</div>
+												</th>
+											</thead>
+											<tfoot/>
+											<tbody>
+												<xsl:if test="($Print != $Separated) or (count($FormData/Form1040SchBPartIGroup2) &lt;= 14) ">
+													<xsl:for-each select="$FormData/Form1040SchBPartIGroup2">
+														<tr>
+															<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+																<span class="styTableCellPad"> 
+                          </span>
+															</td>
+															<td class="styTableCell" style="width:118.4mm;text-align:left;border-bottom:1px dashed black;">
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="InterestPayerName/BusinessNameLine1"/>
+																	<xsl:with-param name="BackupName">IRS1040ScheduleBInterestIncomeGrpInterestPayerNameL1</xsl:with-param>
+																</xsl:call-template>
+																<br/>
+																<xsl:call-template name="PopulateText">
+																	<xsl:with-param name="TargetNode" select="InterestPayerName/BusinessNameLine2"/>
+																	<xsl:with-param name="BackupName">IRS1040ScheduleBInterestIncomeGrpInterestPayerNameL2</xsl:with-param>
+																</xsl:call-template>
+															</td>
+															<td class="styTableCell" style="width:6.8mm;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+																<!-- Insert PopulateTemplate call here -->
+																<span class="styTableCellPad">
+                      </span>
+															</td>
+															<td class="styTableCell" style="width:31mm;border-right-width:0px;vertical-align:bottom;border-bottom:1px solid black;">
+																<xsl:call-template name="PopulateAmount">
+																	<xsl:with-param name="TargetNode" select="InterestAmt"/>
+																	<xsl:with-param name="BackupName">IRS1040ScheduleBInterestIncomeGrpInterestAmt</xsl:with-param>
+																</xsl:call-template>
+															</td>
+														</tr>
+													</xsl:for-each>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 1 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
 													<tr>
 														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
 															<span class="styTableCellPad"> 
                           </span>
 														</td>
-														<td class="styTableCell" style="width:118.4mm;text-align:left">
-															<xsl:call-template name="PopulateText">
-																<xsl:with-param name="TargetNode" select="InterestPayerName/BusinessNameLine1"/>
-																<xsl:with-param name="BackupName">IRS1040ScheduleBInterestIncomeGrpInterestPayerNameL1</xsl:with-param>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;text-align:left;border-bottom:1px dashed black;">
+															<xsl:call-template name="PopulateAdditionalDataTableMessage">
+																<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup2"/>
 															</xsl:call-template>
-															<br/>
-															<xsl:call-template name="PopulateText">
-																<xsl:with-param name="TargetNode" select="InterestPayerName/BusinessNameLine2"/>
-																<xsl:with-param name="BackupName">IRS1040ScheduleBInterestIncomeGrpInterestPayerNameL2</xsl:with-param>
-															</xsl:call-template>
-														</td>
-														<td class="styTableCell" style="width:6.8mm;border-bottom-width:0px;">
-															<!-- Insert PopulateTemplate call here -->
 															<span class="styTableCellPad">
-                      </span>
+                               </span>
 														</td>
-														<td class="styTableCell" style="width:31mm;border-right-width:0px;vertical-align:bottom;">
-															<xsl:call-template name="PopulateAmount">
-																<xsl:with-param name="TargetNode" select="InterestAmt"/>
-																<xsl:with-param name="BackupName">IRS1040ScheduleBInterestIncomeGrpInterestAmt</xsl:with-param>
-															</xsl:call-template>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:1px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
+                          </span>
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
+                          </span>
 														</td>
 													</tr>
-												</xsl:for-each>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 1 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 2 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;text-align:left;">
-														<xsl:call-template name="PopulateAdditionalDataTableMessage">
-															<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup2"/>
-														</xsl:call-template>
-														<span class="styTableCellPad">
-                               </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:1px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 2 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 3 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:1px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 3 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 4 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:1px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 4 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 5 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:1px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 5 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 6 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:1px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 6 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 7 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 7 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 8 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:1px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 8 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 9 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 9 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 10 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 10 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 11 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 11 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 12 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 12 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 13 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 13 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
+														</td>
+													</tr>
+												</xsl:if>
+												<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 14 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
+													<tr>
+														<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:118.4mm;float:left;clear:none;border-right-width:1px;height:4mm;border-bottom:1px dashed black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:1px;border-left:0px solid black;border-right:1px solid black;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-												</tr>
-											</xsl:if>
-											<xsl:if test="count($FormData/Form1040SchBPartIGroup2) &lt; 14 or ((count($FormData/Form1040SchBPartIGroup2) &gt; 14) and ($Print = $Separated))">
-												<tr>
-													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
+														</td>
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;border-bottom:1px solid black;">
+															<span class="styTableCellPad"> 
                           </span>
-													</td>
-													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;">
-														<span class="styTableCellPad"> 
-                          </span>
-													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styTableCellPad"> 
-                          </span>
-													</td>
-													<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;">
-														<span class="styTableCellPad"> 
-                          </span>
-													</td>
-												</tr>
-											</xsl:if>
-										</tbody>
-									</table>
-								</div>
-								<!-- End Separated Repeating data table -->
-								<!-- Set Initial Height of Above Table -->
-								<xsl:call-template name="SetInitialDynamicTableHeight">
-									<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup2"/>
-									<xsl:with-param name="containerHeight" select="14"/>
-									<xsl:with-param name="headerHeight" select="1"/>
-									<xsl:with-param name="containerID" select=" 'part2ContainerId' "/>
-								</xsl:call-template>
-								<!-- Generated Table (End) -->
-							</xsl:if>
-								<!-- Line 2 -->
-								<div class="styBB" style="width:161.5mm;border-bottom-width: 0px; padding-left:2mm;float:none;clear:both;">
-									<div class="styLNLeftNumBox" style="width:4mm;">2</div>
-									<div class="styLNDesc" style="width:115.8mm;padding-left:1mm;">
-										<span style="float:left;clear:none;">Add the amounts on line 1</span>
-										<span class="styDotLn" style="padding-left:4mm;">..................</span>
+														</td>
+													</tr>
+												</xsl:if>
+											</tbody>
+										</table>
 									</div>
-									<div class="styLNRightNumBox" style="border-top-width:0px;width:7.4mm;border-bottom-width: 1px;">
+									<!-- End Separated Repeating data table -->
+									<!-- Set Initial Height of Above Table -->
+									<xsl:call-template name="SetInitialDynamicTableHeight">
+										<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartIGroup2"/>
+										<xsl:with-param name="containerHeight" select="14"/>
+										<xsl:with-param name="headerHeight" select="1"/>
+										<xsl:with-param name="containerID" select=" 'part2ContainerId' "/>
+									</xsl:call-template>
+									<!-- Generated Table (End) -->
+								</xsl:if>
+								<!-- Line 2 -->
+								<div style="width:161.5mm;border-bottom-width: 0px;clear:both;">
+									<div class="styLNLeftNumBox" style="width:4mm;border-left:0px solid black;border-right:0px solid black;">2</div>
+									<div class="styLNDesc" style="width:118.4mm;padding-left:1px;border-right:1px solid black;">
+										<span style="float:left;clear:none;padding-left:1mm">Add the amounts on line 1</span>
+										<span class="styDotLn" style="padding-left:4mm;float: right;">..................</span>
+									</div>
+									<div class="styLNRightNumBox" style="width:6.8mm;height:4mm;border-right-width:1px;border-left:0px solid black;border-top:0px solid black;border-right:1px solid black;border-bottom:1px solid black;">
                   2
                   </div>
-									<div class="styLNAmountBox" style="width:31mm;padding-right:0mm;border-top-width:1px;border-bottom-width: 1px;border-top-width:0px;">
+									<div class="styLNAmountBox" style="width:31mm;padding-right:0mm;border-top-width:1px;border-bottom-width: 1px;border-top-width:0px;border-left:0px solid black;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxableInterestSubtotalAmt"/>
 											<xsl:with-param name="BackupName">IRS1040ScheduleETaxableInterestSubtotalAmt</xsl:with-param>
@@ -1036,40 +1060,21 @@
 								</div>
 								<!-- end line 2 -->
 								<!-- Line 3 -->
-								<div class="styBB" style="width:161.5mm;border-bottom-width: 0px;padding-bottom:0mm;padding-left:2mm;float:none;clear:both;">
-									<div class="styLNLeftNumBox" style="padding-left:1mm;width:4mm;">3</div>
-									<div class="styLNDesc" style="width:115.8mm;padding-left:1mm;float:left;clear:none">
+								<div class="styBB" style="width:161.5mm;border-bottom-width: 0px;padding-bottom:0mm;float:right;clear:both;">
+									<div class="styLNLeftNumBox" style="width:4mm;">3</div>
+									<div class="styLNDesc" style="width:118.4mm;height:9mm;padding-left:1mm;float:left;clear:none;border-right:1px solid black;">
                         Excludable interest on series EE and l U.S. savings bonds issued after 1989.<br/>
-                  Attach Form 8815
-					<span style="width:2px;"/>
+										<span style="clear: none; float: left;">Attach Form 8815</span>
+										<span class="styDotLn" style="padding-left:4mm; float: right;">......................</span>
+										<span style="width:2px;"/>
 										<xsl:call-template name="SetFormLinkInline">
 											<xsl:with-param name="TargetNode" select="$FormData/ExcludableSavingsBondIntAmt"/>
 										</xsl:call-template>
-										<span class="styBoldText">
-											<span style="width:10px"/>.
-                                     <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                     <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                               </span>
 									</div>
-									<div class="styLNRightNumBox" style="height:9mm;width:7.4mm;padding-top:4.8mm;">
+									<div class="styLNRightNumBox" style="height:9mm;width:6.8mm;padding-top:4.8mm;border-right:1px solid black;border-left:0px solid black;">
                   3
                   </div>
-									<div class="styLNAmountBox" style="height:9mm;width:31mm;padding-top:4.8mm;">
+									<div class="styLNAmountBox" style="height:9mm;width:31.4mm;padding-top:4.8mm;border-left:0px solid black;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/ExcludableSavingsBondIntAmt"/>
 											<xsl:with-param name="BackupName">IRS1040ScheduleBExcludableSavingsBondIntAmt</xsl:with-param>
@@ -1078,37 +1083,18 @@
 								</div>
 								<!-- end line 3 -->
 								<!-- Line 4 -->
-								<div style="width:161.5mm;padding-top:0mm;border-bottom-width:0px;float:left;clear:none;padding-left:2mm;float:none;clear:both;">
-									<div class="styLNLeftNumBoxBB" style="padding-left:1mm;width:4mm;height:8mm;border-bottom-width:1px;text-align:left;">4</div>
-									<div class="styLNLeftNumBoxBB" style="font-weight:normal;width:115.8mm;padding-left:1mm;border-bottom-width:1px;height:8mm;">
-                    Subtract line 3 from line 2. Enter the result here and on Form 1040A, or Form<br/> 1040, line 8a
-                   <span class="styBoldText">
-											<span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                     <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                     <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                               </span>
-										<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
+								<div style="width:161.5mm;padding-top:0mm;border-bottom-width:0px;float:right;clear:both;">
+									<div class="styLNLeftNumBoxBB" style="width:4mm;height:8mm;border-bottom-width:1px;text-align:left;">4</div>
+									<div class="styLNLeftNumBoxBB" style="font-weight:normal;width:118.4mm;padding-left:1mm;border-bottom-width:1px;height:8mm;clear: none; float: left;border-right:1px solid black;">
+                    Subtract line 3 from line 2. Enter the result here and on Form 1040A, or Form<br/>
+										<span style="clear: none; float: left;">1040, line 8a</span>
+										<span class="styDotLn" style="padding-left:4mm;">......................</span>
+										<img alt="Right pointing arrowhead image" src="{$ImagePath}/1040_Bullet.gif"/>
 									</div>
-									<div class="styLNRightNumBox" style="border-bottom-width:1px;width:7.4mm;height:8mm;padding-top:4mm;">
+									<div class="styLNRightNumBox" style="border-bottom-width:1px;width:6.8mm;height:8mm;padding-top:4mm;border-right:1px solid black;border-left:0px solid black;">
                   4
                   </div>
-									<div class="styLNAmountBox" style="border-bottom-width:1px;width:31mm;height:8mm;padding-top:4mm;">
+									<div class="styLNAmountBox" style="border-bottom-width:1px;width:31.4mm;height:8mm;padding-top:4mm;border-left:0px solid black;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/CalculatedTotalTaxableIntAmt"/>
 											<xsl:with-param name="BackupName">IRS1040ScheduleBCalculatedTotalTaxableIntAmt</xsl:with-param>
@@ -1117,27 +1103,26 @@
 								</div>
 								<!-- end line 4 -->
 								<!-- Line 4 note -->
-								<div style="width:161.5mm;float:none;clear:none;padding-bottom:0mm;border-bottom-width:1px;padding-left:2mm;">
+								<div style="width:161.5mm;float:right;clear:both;padding-bottom:0mm;border-bottom-width:1px;">
 									<!--<div class="styLNLeftNumBoxBB" style="padding-left:3mm;width:1mm;border-bottom-width:0px;border-top-width:0px;"></div>-->
-									<div class="styLNDesc" style="height:5mm;padding-top:1mm;
-                border-style: solid; border-color: black;
-                border-top-width: 0px; border-bottom-width: 1px; 
-                border-left-width: 0px; border-right-width: 0px;
-                width:119.8mm;">
-										<span class="styBoldText">Note.</span>  If line 4 is over $1,500, you must complete Part lll.
+									<div class="styLNLeftNumBoxBB" style="width:8.8mm;height:5mm;border-bottom-width:1px;text-align:left;">Note.</div>
+									<div class="styLNLeftNumBoxBB" style="font-weight:normal;width:113.6mm;padding-left:1mm;border-bottom-width:1px;height:5mm;border-right:1px solid black;">
+										If line 4 is over $1,500, you must complete Part lll.
                 </div>
-									<div class="styLNRightNumBox" style="border-bottom-width:1px;width:7.4mm;height:5mm;">          
+									<div class="styLNRightNumBox" style="border-bottom-width:1px;width:6.8mm;height:5mm;border-right:1px solid black;border-left:0px solid black;">          
                   </div>
-									<div class="styLNAmountBox" style="border-bottom-width:1px;width:31mm;height:5mm;padding-bottom:0mm;font-size:8pt;text-align:center;font-weight:bold;">
-										<div class="styGenericDiv" style="width:30mm;padding-top:.6mm;">
+									<div class="styLNAmountBox" style="border-bottom-width:1px;width:31.4mm;height:5mm;padding-bottom:0mm;font-size:8pt;text-align:center;font-weight:bold;border-left:0px solid black;">
+										<div class="styGenericDiv" style="width:35mm;">
 											<!-- button display logic -->
-											<span style="padding-left:2mm;">Amount</span>
-											<xsl:call-template name="SetDynamicTableToggleButton">
-												<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartII"/>
-												<xsl:with-param name="containerHeight" select="18"/>
-												<xsl:with-param name="headerHeight" select="1"/>
-												<xsl:with-param name="containerID" select=" '1040SchBPartII' "/>
-											</xsl:call-template>
+											<span style="padding-left:4mm;">Amount</span>
+											<div style="width: 4mm; height: 4mm; border-bottom-width: 0px; float: right;">
+												<xsl:call-template name="SetDynamicTableToggleButton">
+													<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartII"/>
+													<xsl:with-param name="containerHeight" select="18"/>
+													<xsl:with-param name="headerHeight" select="1"/>
+													<xsl:with-param name="containerID" select=" '1040SchBPartII' "/>
+												</xsl:call-template>
+											</div>
 											<!-- end button display logic -->
 										</div>
 									</div>
@@ -1147,16 +1132,16 @@
 						</div>
 						<!--End of Part I-->
 						<!--start of Part II-->
-						<div class="styBB" style="width:187mm;">
+						<div style="width:187mm;display:block;">
 							<div style="width:187mm;">
 								<!-- Part II Left margin -->
-								<div style="width:27.5mm;float:left;clear:none;border-bottom-width:0px;">
+								<div style="width:25mm;float:left;clear:none;border-bottom-width:0px;">
 									<div class="styFMT" style="padding-top:2mm;font-size:12pt;font-family:Arial">Part ll<br/>
 										<br/>
                 Ordinary
                 Dividends
                 </div>
-									<div style="padding-top:1mm;width:27.5mm;">(See instructions<br/>
+									<div style="padding-top:1mm;width:25mm;">(See instructions<br/>
                 on back and the<br/>
                   instructions for<br/>
                   Form 1040A, or<br/>
@@ -1164,7 +1149,7 @@
                   line 9a.)<br/>
 										<br/>
 									</div>
-									<div style="padding-top:1mm;width:27.5mm;">
+									<div style="padding-top:1mm;width:25mm;">
 										<b>Note.</b> If you<br/>
                   received a Form<br/>
                   1099-DIV, or<br/>
@@ -1182,18 +1167,25 @@
 								<!-- end left margin -->
 								<!-- Line 5 Table -->
 								<!-- Generated Table (Start) -->
-								<div class="stySchBLn5TblContainer" id="1040SchBPartII">
+								
+							<!-- end left margin -->
+							<div style="width:161.5mm;float:right;display:block;">
+								<!-- Generated Table (Start) -->
+								
+								
+								
+								<div class="stySchBLn5TblContainer" id="1040SchBPartII" style="width:161.5mm; height:auto;border-top-width: 0px; border-bottom-width: 0px;">
 									<!-- print logic -->
 									<xsl:call-template name="SetInitialState"/>
 									<!-- end -->
-									<table class="styTable" cellspacing="0" width="100%" style="font-size:7pt;padding-top:0mm;" summary="Table displaying Ordinary Dividends" name="ODtable" id="ODtable">
+									<table class="styTable" cellspacing="0"  style="font-size:7pt;padding-top:0mm;" summary="Table displaying Ordinary Dividends" name="INORDtable" id="INORDtable">
 										<thead class="styTableThead">
 											<tr>
-												<th class="styTableCellHeader" scope="col" rowspan="1" style="text-align:left;width:3mm;border-right-width:0px;border-bottom-width:0px;padding-top:0mm;">
-													<span class="styBoldText" style="font-size:7pt;padding-left:1mm;">5</span>
+												<th class="styTableCell" scope="col" rowspan="2" style="border-right-width:0px;border-bottom-width:0px;width:4mm;padding-bottom:0mm;vertical-align:top;text-align:left;">
+													<span class="styBoldText" style="font-size:7pt;text-align:left;">5</span>
 												</th>
-												<th class="styTableCellHeader" scope="col" rowspan="1" style="width:120mm;border-right-width:1px;text-align:left;">
-													<span class="styNormalText" style="padding-right:1mm;font-size:7pt;">
+												<th class="styTableCell" scope="col" rowspan="2" style="width:110.4mm;border-bottom-width:0px;text-align:left;">
+													<span class="styNormalText" style="padding-right:1mm;font-size:7pt;text-align:left;">
                         List name of payer
                         </span>
 													<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
@@ -1214,14 +1206,14 @@
 														<xsl:with-param name="TargetNode" select="$FormData/NomineeDividendAmt"/>
 													</xsl:call-template>
 												</th>
-												<th class="styTableCellHeader" scope="col" rowspan="1" style="width:7mm;border-right-width:1px;border-bottom-width:0px;">
+												<th class="styTableCell" scope="col" rowspan="1" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 													<!-- uncomment and change table header literals here or use 'cellpad' -->
 													<span class="styTableCellPad">
                         </span>
 												</th>
-												<th class="styTableCellHeader" scope="col" rowspan="1" style="width:118px;border-bottom-width:1px;border-right-width:0px;border-top-width:1px;">
-													<div class="styBoldText" style="font-size:7pt;width:30mm;border-top-width:1px;">
-														<div style="width:26mm;padding-left:4mm;"/>
+												<th class="styTableCell" scope="col" rowspan="1" style="width:31mm;border-bottom-width:1px;border-right-width:0px;border-top-width:0px;">
+													<div class="styBoldText" style="font-size:7pt;width:29mm;border-top-width:1px;">
+														<div style="width:29mm;padding-left:4mm;"/>
 													</div>
 												</th>
 											</tr>
@@ -1237,7 +1229,7 @@
                                </span>
 														</td>
 														<!-- Column 2 -->
-														<td class="styTableCellText" style="width:120mm;height:4mm;font-size:7pt;border-right-width:1px;text-align:left;">
+														<td class="styTableCellText" style="width:118.4mm;height:4mm;font-size:7pt;border-right-width:1px;text-align:left;border-bottom:1px dashed black;">
 															<xsl:if test="DividendPayerNameBusiness != ''">
 																<xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode" select="DividendPayerNameBusiness/BusinessNameLine1"/>
@@ -1253,10 +1245,10 @@
 															</xsl:if>
 														</td>
 														<!-- Column 3 -->
-														<td class="styTableCell" style="width:7mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
+														<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 															<xsl:choose>
 																<xsl:when test="position() = 8">
-																	<span style="padding-right:7px;font-size:8pt;font-style:bold;">5</span>
+																	<span style="padding-right:7px;font-size:7pt;font-style:bold;">5</span>
 																</xsl:when>
 																<xsl:otherwise>
 																	<span class="styTableCellPad"/>
@@ -1264,7 +1256,7 @@
 															</xsl:choose>
 														</td>
 														<!-- Column 4 -->
-														<td class="styTableCell" style="width:118px;height:4mm;border-right-width:0px;vertical-align:bottom;">
+														<td class="styTableCell" style="width:31mm;height:4mm;border-right-width:0px;vertical-align:bottom;border-bottom:1px solid black;">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="DividendAmt"/>
 																<xsl:with-param name="BackupName">IRS1040ScheduleBForm1040SchBPartIIDividendAmt</xsl:with-param>
@@ -1276,21 +1268,21 @@
 											<!-- Table Filler Rows -->
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 1 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;border-right-width:1px;text-align:left;border-bottom-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;text-align:left;border-bottom-width:1px;border-bottom:1px dashed black;">
 														<xsl:call-template name="PopulateAdditionalDataTableMessage">
 															<xsl:with-param name="TargetNode" select="$FormData/Form1040SchBPartII"/>
 														</xsl:call-template>
 														<span class="styTableCellPad">    </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1298,19 +1290,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 2 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;border-right-width:1px;text-align:left;border-bottom-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;border-right-width:1px;text-align:left;border-bottom-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1318,19 +1310,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 3 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1338,19 +1330,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 4 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1358,19 +1350,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 5 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1378,19 +1370,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 6 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1398,19 +1390,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 7 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1418,19 +1410,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 8 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
-														<span class="styBoldText" style="font-size:8pt;padding-right:1mm"> 5
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
+														<span class="styBoldText" style="font-size:7pt;padding-right:2mm"> 5
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1438,19 +1430,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 9 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad">
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1458,19 +1450,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 10 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1478,19 +1470,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 11 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;text-align:center;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;text-align:center;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
 						  </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1498,19 +1490,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 12 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1518,19 +1510,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 13 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1538,19 +1530,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 14 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1558,19 +1550,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 15 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-left:0px solid black;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1578,19 +1570,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 16 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1598,19 +1590,19 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 17 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:0px;border-right:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;clear:none;border-right-width:0px;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1618,19 +1610,37 @@
 											</xsl:if>
 											<xsl:if test="count($FormData/Form1040SchBPartII) &lt; 18 or ((count($FormData/Form1040SchBPartII) &gt; 18) and ($Print = $Separated))">
 												<tr>
-													<td class="styTableCell" style="width:6mm;height:4mm;float:left;clear:none;border-right-width:0px;border-bottom-width:0px;">
+													<td class="styTableCell" style="width:4mm;height:4mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:114mm;height:4mm;float:left;clear:none;border-right-width:1px;">
+													<td class="styTableCell" style="width:118.4mm;height:4mm;clear:none;border-right-width:1px;border-bottom:1px dashed black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:6.8mm;height:4mm;float:left;clear:none;border-right-width:1px;border-bottom-width:1px;">
+													<td class="styTableCell" style="width:6.8mm;height:4mm;clear:none;border-right-width:1px;border-bottom-width:1px;;border-right:1px solid black;border-bottom:1px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
-													<td class="styTableCell" style="width:31.3mm;height:4mm;float:left;clear:none;border-right-width:0px;">
+													<td class="styTableCell" style="width:31mm;height:4mm;;clear:none;border-right-width:0px;border-bottom:1px solid black;">
+														<span class="styTableCellPad"> 
+                          </span>
+													</td>
+												</tr>
+												<tr>
+													<td class="styTableCell" style="width:4mm;height:7mm;clear:none;border-right-width:0px;border-bottom-width:0px;">
+														<span class="styTableCellPad"> 
+                          </span>
+													</td>
+													<td class="styTableCell" style="width:118.4mm;height:7mm;clear:none;border-right-width:1px;border-bottom:0px solid black;">
+														<span class="styTableCellPad"> 
+                          </span>
+													</td>
+													<td class="styTableCell" style="width:6.8mm;height:7mm;clear:none;border-bottom-width:1px;border-right:1px solid black;border-bottom:0px solid black;">
+														<span class="styTableCellPad"> 
+                          </span>
+													</td>
+													<td class="styTableCell" style="width:31mm;height:7mm;clear:none;border-right-width:0px;border-bottom:0px solid black;">
 														<span class="styTableCellPad"> 
                           </span>
 													</td>
@@ -1650,38 +1660,21 @@
 								<!-- Generated Table (End) -->
 								<!-- end Line 5 Table -->
 								<!-- Line 6 -->
-								<div style="border-bottom-width: 0px;width:187mm;">
+								</div>
+								<div style="width: 161.5mm; padding-top: 0mm; clear: both; border-bottom-width: 0px; float: right;">
 									<div style="width:27.5mm;float:left;clear:none;border-bottom-width:0px;"/>
-									<div class="styLNLeftNumBoxBB" style="padding-left:0mm;width:4mm;height:5mm;border-bottom-width:0px;padding-bottom:3.3mm;border-top-width:0px;">6</div>
-									<div class="styLNLeftNumBoxBB" style="width:115.8mm;padding-left:1mm;height:5mm;font-weight:normal;border-bottom-width:0px;border-top-width:0px;padding-top:0mm;">
-									  Add the amounts on line 5. Enter the total here and on Form 1040A, or Form<br/>1040, line 9a .
-									<span class="styBoldText">
-											<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										 <span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										 <span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-										<span style="width:10px"/>.
-								   </span>
-										<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image" align="bottom"/>
+									<div class="styLNLeftNumBoxBB" style="padding-left:0mm;width:4mm;height:7.9mm;border-bottom-width:1px;padding-bottom:3.3mm;border-top-width:0px;">6</div>
+									<!--									<div class="styLNLeftNumBoxBB" style="width:116.2mm;padding-left:1mm;height:7.9mm;font-weight:normal;border-bottom-width:0px;border-top-width:0px;padding-top:0mm;">-->
+									<div class="styLNLeftNumBoxBB" style="font-weight:normal;width:118.4mm;padding-left:2px;border-bottom-width:1px;border-right-width:1px;height:7.9mm;border-top-width:0px;float:left;">
+									  Add the amounts on line 5. Enter the total here and on Form 1040A, or Form<br/>
+										<span style="clear: none; float:left;">1040, line 9a .</span>
+										<span class="styDotLn" style="padding-left:4mm;">......................</span>
+										<img alt="Right pointing arrowhead image" src="{$ImagePath}/1040_Bullet.gif"/>
 									</div>
-									<div class="styLNRightNumBox" style="padding-top:3.2mm;border-bottom-width:0px;width:7.75mm;height:5mm;border-top-width:0px;">
+									<div class="styLNRightNumBox" style="padding-top:3.2mm;width:6.8mm;height:7.9mm;border-top-width:1px;border-left-width:0px;border-bottom-width:1px;border-right:1px solid black;">
 									  6
 									</div>
-									<div class="styLNAmountBox" style="border-bottom-width:0px;width:31mm;height:5mm;padding-top:3.2mm;">
+									<div class="styLNAmountBox" style="width:31mm;height:7.9mm;padding-top:3.2mm;border-left:0px solid black;border-top:1px solid black;border-bottom-width:1px solid black;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/TotalOrdinaryDividendsAmt"/>
 											<xsl:with-param name="BackupName">IRS1040ScheduleBTotalOrdinaryDividendsAmt</xsl:with-param>
@@ -1689,24 +1682,14 @@
 									</div>
 									<!-- end line 6 -->
 									<!-- Line 6 note -->
-									<div class="styBB" style="width:187mm;float:left;clear:none;padding-bottom:0mm;border-bottom-width:1px;border-top-width:0px;">
-										<div class="styLNLeftNumBoxBB" style="padding-left:0mm;width:25mm;border-bottom-width:0px;"> </div>
-										<div class="styLNLeftNumBoxBB" style="padding-left:0mm;width:3mm;border-bottom-width:0px;">
-                 </div>
-										<div class="styLNDesc" style="
-                border-style: solid; border-color: black;
-                border-top-width: 1px; border-bottom-width: 0px; 
-                border-left-width: 0px; border-right-width: 0px;
-                width:115mm;">
-											<span style="padding-right:2mm;float:left;clear:none;border-top-width:1px;">
-												<span class="styBoldText">Note.</span> If line 6 is over $1,500, you must complete Part III.
-                  </span>
+									<div class="styBB" style="width: 161.5mm; padding-top: 0mm; clear: both; border-bottom-width:0px; float:right;">
+										<div style="float:left">
+											<div class="styLNLeftNumBoxBB" style="width:8.8mm;height:5.6mm;border-bottom-width:1px;text-align:left;">Note.</div>
+											<div class="styLNLeftNumBoxBB" style="font-weight:normal;width:113.37mm;padding-left:0px;border-bottom-width:1px;height:5.6mm;border-right-width:0px;">
+												 If line 6 is over $1,500, you must complete Part III.</div>
 										</div>
-										<div class="styLNRightNumBox" style="border-left-width:0px;border-bottom-width:0px;width:7.75mm;border-top-width:1px;">
-                </div>
-										<div class="styLNAmountBox" style="border-bottom-width:0px;width:36mm;border-left-width:0px;border-top-width:1px;">
-                     
-                </div>
+										<div class="styLNRightNumBox" style="height:5mm;width:7.9mm;padding-top:4.8mm;border-right:0px solid black;border-bottom-width:1px;border-left:0px solid black"/>
+										<div class="styLNAmountBox" style="height:5mm;width:31.4mm;padding-top:4.8mm;border-left:0px solid black;border-bottom-width:1px"/>
 									</div>
 								</div>
 								<!-- end Line 6 note -->
@@ -1716,7 +1699,7 @@
 						<!--Start of Part III-->
 						<div style="width:187mm;">
 							<!-- left margin Part III -->
-							<div style="height:48mm;width:28mm;float:left;clear:none;">
+							<div style="height:40mm;width:28mm;float:left;clear:none;">
 								<div class="styFMT" style="padding-top:2mm;font-size:12pt;font-family:Arial">
                 Part lll<br/>
                 Foreign<br/>
@@ -1733,10 +1716,10 @@
      </div>
 							<!-- part III Yes No title -->
 							<!-- Yes No Boxes -->
-							<div class="styBB" style="text-align:center;width:8.5mm;height:8mm;padding-top:4mm;border-bottom-width:1px;border-left-width:1px;float:left;clear:none;">
+							<div class="styBB" style="text-align:center;width:8.5mm;height:8mm;padding-top:4mm;border-bottom-width:1px;border-left-width:0px;float:left;clear:none;">
 								<span class="styBoldText" style="font-size:8pt;">Yes</span>
 							</div>
-							<div class="styBB" style="text-align:center;float:left;clear:none;height:8mm;width:8.5mm;padding-top:4mm;border-bottom-width:1px;border-left-width:1px;">
+							<div class="styBB" style="text-align:center;float:left;clear:none;height:8mm;width:8.5mm;padding-top:4mm;border-bottom-width:1px;border-left-width:0px;">
 								<span class="styBoldText" style="font-size:8pt;">No</span>
 							</div>
 							<!-- end Yes No Boxes -->
@@ -1883,60 +1866,51 @@
 								<!-- end grey areas -->
 							</div>
 							<!-- end Line 7b -->
-							<!-- Line 8 text -->
-							<div class="styBB" style="padding-top:0mm;width:158mm;float:left;clear:none;border-bottom-width: 0px;padding-bottom:0mm;">
-								<div class="styLNLeftNumBox" style="padding-left:1.5mm;width:6mm;">8</div>
-								<div class="styLNDesc" style="width:135mm;">
-									<span style="float:left;clear:none;">
+							<!-- Line 7a text -->
+							<div class="styGenericDiv" style="padding-top:0mm;width:158mm;border-bottom-width:0px;height:8mm">
+								<div class="styLNLeftNumBox" style="padding-left:0mm;width:6mm;height:8mm;">8</div>
+								<div class="styLNDesc" style="width:135mm;height:8mm;">
+																		<span style="float:left;clear:none;">
 										During 2013, did you receive a distribution from, or were you the grantor of, or transferor to, a
 										foreign trust? If "Yes," you may have to file Form 3520. See instructions on back 
 										<xsl:call-template name="LinkToLeftoverDataTableInline">
 											<xsl:with-param name="Desc">Part III, Line 8 - Trust Form Literal Code</xsl:with-param>
 											<xsl:with-param name="TargetNode" select="$FormData/TrustFormLiteralCd"/>
 										</xsl:call-template>
-										<span class="styBoldText">
-											<span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                     <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                                    <span style="width:10px"/>.
-                               </span>
+										<span class="styDotLn" style="padding-left:4mm;float: right;">......</span>
 									</span>
 								</div>
-								<!-- end Line 8 text -->
 								<!-- grey areas -->
-								<div class="styBB" style="height:4mm;width:17mm;float:left;clear:none;border-bottom-width:1px;">
-									<div class="styBB" style="height:4mm;width:8.5mm;background-color:lightgrey;float:left;clear:none;border-left-width: 1px; border-bottom-width:0px;">
+								<div class="styBB" style="height:4mm;width:17mm;float:left;clear:none;border-bottom-width:0px;">
+									<div class="styBB" style="height:4mm;width:8.5mm;background-color:lightgrey;float: left; clear: none;border-left-width: 1px;border-bottom-width:0px; ">
 									</div>
-									<div class="styBB" style="height:4mm;width:8.5mm;background-color:lightgrey;float:left; clear:none;border-left-width: 1px; border-bottom-width:0px;">
+									<div class="styBB" style="height:4mm;width:8.5mm;background-color:lightgrey;float: left; clear: none;border-left-width: 1px; border-bottom-width:0px;">
 									</div>
 								</div>
-								<!-- end grey areas -->
-								<!-- Line 8 YES/NO -->
-								<div class="styBB" style="width:17mm;float:left;clear:none;border-bottom-width:0">
+								<!--end of grey area-->
+								<!-- Line 7a YES/NO -->
+								<div class="styBB" style="width:17mm;float:left;clear:none;border-bottom-width:0px;">
 									<div class="styBB" style="float:left;clear:none;height:4mm;width:8.5mm;border-left-width:1px;border-bottom-width:0px;">
 										<span style="padding-left:2mm;">
 											<xsl:call-template name="PopulateYesBoxText">
-												<xsl:with-param name="TargetNode" select="$FormData/ForeignTrustQuestionInd"/>
-												<xsl:with-param name="BackupName">IRS1040ScheduleBForeignTrustQuestionInd</xsl:with-param>
+												<xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
+												<xsl:with-param name="BackupName">IRS1040ScheduleBForeignAccountsQuestionInd</xsl:with-param>
 											</xsl:call-template>
 										</span>
 									</div>
 									<div class="styBB" style="float:left;clear:none;height:4mm;width:8.5mm;border-left-width:1px;border-bottom-width:0px;">
 										<span style="padding-left:2mm;">
 											<xsl:call-template name="PopulateNoBoxText">
-												<xsl:with-param name="TargetNode" select="$FormData/ForeignTrustQuestionInd"/>
-												<xsl:with-param name="BackupName">IRS1040ScheduleBForeignTrustQuestionInd</xsl:with-param>
+												<xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd"/>
+												<xsl:with-param name="BackupName">IRS1040ScheduleBForeignAccountsQuestionInd</xsl:with-param>
 											</xsl:call-template>
 										</span>
 									</div>
 								</div>
-								<!-- End Line 8 YES/NO -->
-							</div>
-							<!-- end Line 8 -->
+								<!-- end grey areas -->
+							</div>							
+							
+
 						</div>
 						<!--end of Part III-->
 					</div>
@@ -2080,7 +2054,7 @@
 									<xsl:with-param name="BackupName">$FormData/NomineeDividendAmt/@nomineeDividendLiteralCd</xsl:with-param>
 								</xsl:call-template>
 							</td>
-							<td class="styBB" style="width:100mm;" scope="row">
+							<td class="styLeftOverTableRowAmount" style="width:100mm;" scope="row">
 								<xsl:call-template name="PopulateLeftoverRowAmount">
 									<xsl:with-param name="Desc">Part II, Line 5 -  Nominee Dividend Amount</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$FormData/NomineeDividendAmt"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by James Ganzy on 10/18/2013 -->
+<!-- Last Modified by James Ganzy on 4/08/2015 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -14,8 +14,10 @@
 <xsl:param name="FormData" select="$RtnDoc/IRS8909" />
 
 <xsl:template match="/">
-<html>
-<head>  
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
+<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"></xsl:with-param></xsl:call-template></title>
   <!-- No Browser Caching -->
   <meta http-equiv="Pragma" content="no-cache"/>
@@ -44,9 +46,9 @@
     <xsl:call-template name="DocumentHeader"></xsl:call-template>  
     
   <!--Title of Form -->    
-  <div class="styBB" style="width:187mm;">
-    <div  class="styFNBox" style="width:31mm;font-size: 7pt;">
-		<div class="" style="height:13.2mm;" >
+  <div class="styBB" style="height:19mm;width:187mm;">
+    <div  class="styFNBox" style="height:19mm;width:26mm;font-size: 7pt;">
+		<div class="" style="height:12mm;" >
       Form <span class="styFormNumber">8909</span>      
        <span>
         <xsl:call-template name="SetFormLinkInline">
@@ -56,20 +58,20 @@
       </div> 
        <span class="styAgency">Department of the Treasury</span><br /><span class="styAgency">Internal Revenue Service</span>
     </div>
-    <div class="styFTBox" style="width:125mm;padding-top:4mm;">
-        <div class="styMainTitle" style="height:8.5mm;">Energy Efficient Appliance Credit</div>
-		<div class="styFST" style="font-size:7pt;margin-left:3mm;font-weight:bold">
+   <div class="styFTBox" style="height: 19mm;width:130mm;padding-top:4mm;">
+        <div class="styMainTitle" style="height:8.5mm;width:130mm;">Energy Efficient Appliance Credit</div>
+		<div class="styFST" style="width:130mm;text-align:center;font-size:7pt;">
 			<img src="{$ImagePath}/8909_Bullet.gif" alt="MediumBullet"/>  
 				Attach to your tax return. 
         </div>
-        <div class="styFST" style="font-size:7pt;margin-left:3mm;font-weight:bold;">
+        <div class="styFST" style="text-align:left;font-size:7pt;">
 			<img src="{$ImagePath}/8923_Bullet.gif" alt="MediumBullet"/>
 				Information about Form 8909 and its separate instructions is at <a href="http://www.irs.gov/form8909" title="Link to IRS.gov"><i>www.irs.gov/form8909</i></a>
 		</div> 
     </div>
-    <div class="styTYBox" style="width:30mm;border-left-width: 1px;">
-      <div class="styOMB" style="height:2mm;">OMB No. 1545-0123</div>
-      <div class="styTaxYear" style="">20<span class="styTYColor">14</span></div>
+  <div class="styTYBox" style="width:30mm;height:19mm; border-left-width: 1px;">
+      <div class="styOMB">OMB No. 1545-0123</div>
+      <div class="styTaxYear" style="height:8mm">20<span class="styTYColor">14</span></div>
       <div class="stySequence">Attachment<br/>Sequence No. <b>159</b></div>
     </div>
   </div>
@@ -105,39 +107,31 @@
 <!-- James border-style:solid;border-color:black;border-width: 1px 1px 1px 1px;-->
     <!-- line 1 Number Eligible Dishwashers-->
     <div style="width:187mm;">
-  <table cellspacing="0" cellpadding="0" style="float:right">
+  <table cellspacing="0" cellpadding="0" style="height:auto;width:auto;float:right;clear:none;">
       	<tr>      
-            <td style="background-color:gray;width:18px;border-left:1px solid black;height:6mm;border-top:0px solid black;border-bottom:1px solid black;border-right:0px;"><span style="width:1px;"/></td>
+            <td style="background-color:gray;width:6mm;border-left:1px solid black;height:6mm;border-top:0px solid black;border-bottom:1px solid black;border-right:0px;"><span style="width:1px;"/></td>
             <td class="styIRS8909TableCellHeaderSmall" align="center" style="height:6mm;width:26mm;border-left-width:1px;border-right-width:1px;font-weight:bold;font-size:7pt;border-top:0px solid black">(a)<br/>Type A</td>
             <td class="styIRS8909TableCellHeaderSmall" align="center" style="height:6mm;width:26mm;border-right-width:1px;font-weight:bold;font-size:7pt;border-top:0px solid black">(b)<br/>Type B</td>
             <td style="height:6mm;background-color:gray;width:32mm;border-right:solid black 1px;border-top:0px solid black;border-right:0px;"><span style="width:1mm"/></td>                   	                   	                    	 
         </tr>
- 
-     	<!--<tr>      
-                <td style="background-color:gray;width:18px;border-left:1px solid black;height:6mm;border-top:0px solid black;border-bottom:1px solid black;border-right:0px;"><span style="width:1px;"/></td>
-                <td class="styIRS8909TableCellHeaderSmall" align="center" style="width:26mm;border-left-width:1px;border-right-width:1px;font-weight:bold;font-size:7pt;border-top:0px solid black">(a)<br/>Type A</td>
-                <td class="styIRS8909TableCellHeaderSmall" align="center" style="width:26mm;border-right-width:1px;font-weight:bold;font-size:7pt;border-top:0px solid black">(b)<br/>Type B</td>
-                <td class="styIRS8909TableCellHeaderSmall" align="center" style="width:26mm;border-right-width:1px;font-weight:bold;font-size:7pt;border-top:0px solid black">(c)<br/>Type C</td>
-                <td style="background-color:gray;width:32mm;border-right:solid black 1px;border-top:0px solid black;border-right:0px;"><span style="width:1mm"/></td>                   	                   	                    	 
-        </tr>-->
-            <!--Begin Line 1 Number Eligible Dishwashers-->
+             <!--Begin Line 1 Number Eligible Dishwashers-->
                    	<tr>
-						 <td valign="bottom" style="height:6.5mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">1</td>
+						 <td valign="bottom" style="height:6mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">1</td>
 					 <!-- Type A Clothes Washers Produced -->  	 
-						 <td align="right" style="height:6.5mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
+						 <td align="right" style="height:6mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
 							  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/EligibleDishwashersTypeAQty"/>
 						 </xsl:call-template> 
 							<span style="width:1px;"/>
 						 </td>
 					<!-- Type B Clothes Washers Produced -->   	 
-						 <td align="right" style="height:6.5mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
+						 <td align="right" style="height:6mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
 							  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/EligibleDishwashersTypeBQty"/>
 						 </xsl:call-template>                         
 							<span style="width:1px;"/>
 						  </td>
-						 <td style="height:6.5mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td>                 	 
+						 <td style="height:6mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td>                 	 
                    	</tr>
             <!--End Line 1 Number Eligible Dishwashers-->
 
@@ -174,9 +168,9 @@
 						 </td>
 					<!-- Type B Clothes Washers Produced -->   	 
 						 <td align="right" style="height:4mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
-							  <xsl:call-template name="PopulateAmount">
-							<xsl:with-param name="TargetNode" select="$FormData/EligibleDishwashersTypeBNetQty"/>
-						 </xsl:call-template>                         
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/EligibleDishwashersTypeBNetQty"/>
+							</xsl:call-template>                         
 							<span style="width:1px;"/>
 						  </td>
 						 <td style="height:4mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td>                 	 
@@ -185,10 +179,10 @@
 			
 				<!--Begin Line 4 Subtract Line 2(a) From Line 1(a)-->
 					<tr>
-						 <td valign="bottom" style="height:5mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">4</td>
-						 <td align="right" style="height:5mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$50</td>
-						 <td align="right" style="height:5mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$75</td>
-						 <td style="height:5mm;background-color:gray;border-right:solid black 1px;border-right:0px;"/>                 	 
+						 <td valign="bottom" style="height:4mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">4</td>
+						 <td align="right" style="height:4mm;padding-right:1mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$50</td>
+						 <td align="right" style="height:4mm;padding-right:1mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$75</td>
+						 <td style="height:4mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td>                 	 
                    	</tr>  
             <!--End Line 4 Subtract Line 2(a) From Line 1(a)-->
         
@@ -214,11 +208,11 @@
 				<!--End Line 5 Multiply Line 3(a) by Line 4(a) -->
      </table>   
 
-		<span style="float:left;clear:none;">	
+		<span style="width:96mm;float:left;clear:none;">	
      <!-- end line 1 Number Eligible Dishwashers-->
-				<div style="width:93mm;">
-				    <div class="styLNLeftNumBox" style="width:5mm;font-size:7pt;text-align:center;float:left;padding-left:2mm;padding-top:6mm;">1</div>
-				    <div class="styLNDesc" style="height:12mm;width:86mm;padding-left:2mm;float:left;font-size:7pt;padding-top:6mm;">
+				<div style="width:96mm;">
+				    <div class="styLNLeftNumBox" style="width:6mm;font-size:7pt;text-align:center;float:left;padding-left:2mm;padding-top:6mm;">1</div>
+				    <div class="styLNDesc" style="height:12mm;width:90mm;padding-left:2mm;float:left;font-size:7pt;padding-top:6mm;">
 						  Enter the number of eligible dishwashers produced in calendar year 2013
 					<!--Dotted Line-->
 							<span class="styDotLn" style="float:none;padding-left:.5mm;clear:none;">.................</span>
@@ -227,9 +221,9 @@
 				   <!-- end line 1 Number Eligible Dishwashers-->
 
 				<!-- line 2 Average Number Dishwashers Produced In Prior 2 Calendar Years-->
-				<div style="width:93mm;">
-				    <div class="styLNLeftNumBox" style="width:5mm;text-align:center;float:left;padding-left:2mm;">2</div>
-					<div class="styLNDesc" style="height:8mm;width:86mm;padding-left:2mm;float:left;">
+				<div style="width:96mm;">
+				    <div class="styLNLeftNumBox" style="width:6mm;text-align:center;float:left;padding-left:2mm;">2</div>
+					<div class="styLNDesc" style="height:6.5mm;width:90mm;padding-left:2mm;float:left;">
 							Enter the average number of eligible dishwashers produced in the 2 prior
 							calendar years
 					<!--Dotted Line-->
@@ -239,9 +233,9 @@
 				<!-- end line 2 Average Number Dishwashers Produced In Prior 2 Calendar Years-->
 				
 				 <!-- line 3 Subtract Line 2(a) From Line 1(a)-->
-				<div  style="width:93mm;">
-				    <div class="styLNLeftNumBox" style="width:5mm;text-align:center;float:left;padding-left:2mm;">3</div>
-					<div class="styLNDesc" style="width:86mm;padding-left:2mm;">
+				<div  style="width:96mm;">
+				    <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;text-align:center;float:left;padding-left:2mm;">3</div>
+					<div class="styLNDesc" style="width:90mm;padding-top:1mm;padding-left:2mm;">
 						<span style="float:left;clear:none;">   	
 								Subtract line 2 from line 1
 						</span>	
@@ -252,9 +246,9 @@
 				<!-- end line 3 Subtract Line 2(a) From Line 1(a)-->   
 				
 				<!-- line 4 -->
-				<div style="width:93mm;padding-top:.5mm;">
-				    <div class="styLNLeftNumBox" style="width:5mm;text-align:center;float:left;padding-left:2mm;">4</div>
-				    <div class="styLNDesc" style="width:86mm;padding-left:2mm;float:left;">
+				<div style="width:96mm;">
+				    <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;text-align:center;float:left;padding-left:2mm;">4</div>
+				    <div class="styLNDesc" style="width:90mm;padding-top:1mm;padding-left:2mm;float:left;">
 						<span style="float:left;clear:none;">   
 							Applicable amount
 						</span>	
@@ -265,9 +259,9 @@
 				<!-- end line 4 --> 
     
 				  <!-- line 5 Multiply Line 3(a) by Line 4(a)-->
-				<div style="width:93mm;padding-top:1mm;">
-				    <div class="styLNLeftNumBox" style="width:5mm;text-align:center;float:left;padding-left:2mm;">5</div>
-				    <div class="styLNDesc" style="width: 86mm;padding-left:2mm;float:left;">
+				<div style="width:96mm;">
+				    <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;text-align:center;float:left;padding-left:2mm;">5</div>
+				    <div class="styLNDesc" style="width: 90mm;padding-left:2mm;float:left;padding-top:1mm;">
 						<span style="float:left;clear:none;">   
 							Multiply line 3 by line 4
 						</span>	
@@ -279,9 +273,9 @@
 			     </span>	    
    </div>
 				<!-- line 6 Multiply Line 3(a) by Line 4(a)-->
-				<div class="styBB" style="width:187mm;">
+				<div  class="styBB" style="width:187mm;">
 				    <div class="styLNLeftNumBox" style="width:5mm;text-align:center;float:left;padding-left:2mm;">6</div>
-				    <div class="styLNDesc" style="width: 149.8mm;padding-left:2mm;float:left;">
+				    <div class="styLNDesc" style="width:149.8mm;padding-left:2mm;float:left;">
 						<span style="float:left;clear:none;">   
 							Add the amounts of line 5 in columns (a) and  (b)
 						</span>	
@@ -308,7 +302,7 @@
 <div style="width:187mm;">
  <table cellspacing="0" cellpadding="0" style="float:right">
      	<tr>      
-                   	 <td style="height:6mm;background-color:gray;width:18px;border-style:solid;border-color:black;border-width:0px 1px 1px 1px;"><span style="width:1px;"/></td>
+                   	 <td style="height:6mm;background-color:gray;width:6mm;border-style:solid;border-color:black;border-width:0px 1px 1px 1px;"><span style="width:1px;"/></td>
                    	 <td style="height:6mm;width:26mm;font-weight:bold;font-size:7pt;border-right:1px solid black;"></td>
                    	 <td style="height:6mm;background-color:gray;width:32mm;"><span style="width:1mm"/></td>                   	                   	                    	 
                    	 </tr>
@@ -357,9 +351,9 @@
                    	 
                    	  <!-- row 10 -->
                    	 <tr>
-                  	 <td valign="bottom" style="height:5mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">10</td>
-                   	 <td align="right" style="height:5mm;border-left:0px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$225</td>
-                   	 <td style="height:5mm;background-color:gray;border-right:solid black 1px;border-right:0px;"/>                 	 
+						 <td valign="bottom" style="height:4mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">10</td>
+						 <td align="right" style="height:4mm;padding-right:1mm;border-left:0px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$225</td>
+						 <td style="height:4mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td> 
                    	 </tr> 
                    	 
                     <!-- Row 11 Multiply Line 8 By Line 9-->
@@ -378,11 +372,11 @@
                    	<!-- End Row 11 Multiply Line 8 By Line 9--> 
                    	   </table>
 
-<span style="float:left;clear:none;"> 
+<span style="width:123mm;float:left;clear:none;"> 
 
  <!--James-border-style:solid;border-color:black;border-width:1px 1px 1px 1px;-->
     <!-- line 7 -->
-    <div style="width:123mm;padding-top: 7.5mm;">
+    <div style="width:123mm;padding-top: 5.5mm;">
       <div class="styLNLeftNumBox" style="width:6mm;font-size:7pt;text-align:center;float:left;padding-left:2mm;">7</div>
       <div class="styLNDesc" style="width:115mm;padding-left:2mm;float:left;font-size:7pt;">
 			  Enter the number of eligible clothes washers produced in calendar year 2013
@@ -405,9 +399,9 @@
     <!-- end line 8 -->
     
     <!-- line 9 -->
-    <div style="width:123mm;padding-top:.5mm;">
-      <div class="styLNLeftNumBox" style="width:6mm;font-size:7pt;text-align:center;float:left;padding-left:2mm;">9</div>
-      <div class="styLNDesc" style="width:115mm;padding-left:2mm;float:left;font-size:7pt;">
+    <div style="width:123mm;">
+      <div class="styLNLeftNumBox" style="width:6mm;font-size:7pt;text-align:center;padding-top:1mm;float:left;padding-left:2mm;">9</div>
+      <div class="styLNDesc" style="width:115mm;padding-top:1mm;padding-left:2mm;float:left;font-size:7pt;">
 			<span style="float:left;clear:none;">     
 			   Subtract line 8 from line 7
 			</span>  
@@ -419,8 +413,8 @@
     
     <!-- line 10-->
     <div style="width:123mm;">
-      <div class="styLNLeftNumBox" style="height:5mm;width:6mm;float:left;padding-left:1.5mm;">10</div>
-      <div class="styLNDesc" style="height:5mm;width:115mm;padding-left:2mm;float:left;font-size:7pt;">
+      <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;float:left;padding-left:1.5mm;">10</div>
+      <div class="styLNDesc" style="width:115mm;padding-top:1mm;padding-left:2mm;float:left;font-size:7pt;">
 			<span style="float:left;clear:none;">   
 			   Applicable amount
 			</span>   
@@ -431,9 +425,9 @@
     <!-- end line 10 -->
     
     <!-- line 11 -->
-    <div style="width:123mm;padding-top:.5mm;">
+    <div style="width:123mm;">
       <div class="styLNLeftNumBox" style="width:6mm;float:left;padding-left:1.5mm;">11</div>
-      <div class="styLNDesc" style="width:115mm;padding-left:2mm;float:left;font-size:7pt;">
+      <div class="styLNDesc" style="width:115mm;padding-top:1mm;padding-left:2mm;float:left;font-size:7pt;">
 			<span style="float:left;clear:none;">  
 				Multiply line 9 by line 10
 			</span>
@@ -478,7 +472,7 @@
 <div style="width:187mm;">
   <table cellspacing="0" cellpadding="0" style="font-size:7pt;float:right;">
      	<tr>      
-                   	 <td style="background-color:gray;width:18px;border-left:1px solid black;height:6mm;border-top:0px solid black;border-bottom:1px solid black;border-right:0px;"><span style="width:1px;"/></td>
+                   	 <td style="background-color:gray;width:6mm;border-left:1px solid black;height:6mm;border-top:0px solid black;border-bottom:1px solid black;border-right:0px;"><span style="width:1px;"/></td>
                    	 <td class="styIRS8909TableCellHeaderSmall" align="center" style="height:6mm;width:26mm;border-left-width:1px;border-right-width:1px;font-weight:bold;font-size:7pt;border-top:0px solid black">(a)<br/>Type A</td>
                    	 <td class="styIRS8909TableCellHeaderSmall" align="center" style="height:6mm;width:26mm;border-right-width:1px;font-weight:bold;font-size:7pt;border-top:0px solid black">(b)<br/>Type B</td>
                      <td style="height:6mm;background-color:gray;width:32mm;border-right:solid black 1px;border-top:0px solid black;border-right:0px;"><span style="width:1mm"/></td>  	              	                   	                    	 
@@ -486,127 +480,125 @@
                    	 
                    	 <!-- Row 13 Refrigerators Produced-->
                    	 <tr>
-                  	 <td valign="bottom" style="height:6.5mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">13</td>
+                  	 <td valign="bottom" style="height:6mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">13</td>
                 <!-- Type A Refrigerators Produced -->
-                   	 <td align="right" style="height:6.5mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
+                   	 <td align="right" style="height:6mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
                           <xsl:call-template name="PopulateAmount">
          				<xsl:with-param name="TargetNode" select="$FormData/TypeARefrigeratorsProducedQty"/>
      			     </xsl:call-template> 
                         <span style="width:1px;"/>
                    	 </td>
                 <!-- Type B Refrigerators Produced  -->
-                   	 <td align="right" style="height:6.5mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
+                   	 <td align="right" style="height:6mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
                           <xsl:call-template name="PopulateAmount">
          				<xsl:with-param name="TargetNode" select="$FormData/TypeBRefrigeratorsProducedQty"/>
      			     </xsl:call-template>                         
                         <span style="width:1px;"/>
                       </td>
-                   	 <td style="height:6.5mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td>                 	 
+                   	 <td style="height:6mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td>                 	 
                    	 </tr> 
                    	 <!-- End Row 13 Refrigerators Produced-->
                    	 
                    	 <!-- Row 14 Average Number Eligible Refrigerator -->
                    	 <tr>
-                  	 <td valign="bottom" style="height:6.5mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">14</td>
+                  	 <td valign="bottom" style="height:6mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">14</td>
                 <!-- Average Number Eligible Refrigerator Type A  -->   	 
-                   	 <td align="right" style="height:6.5mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
+                   	 <td align="right" style="height:6mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
 						 <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/AvgNumEligRefrigeratorsTypAQty"/>
 						 </xsl:call-template> 
                         <span style="width:1px;"/>
                    	 </td>
                 <!-- Average Number Eligible Refrigerator Type B  -->   	 
-                   	 <td align="right" style="height:6.5mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
+                   	 <td align="right" style="height:6mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
                      	  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/AvgNumEligRefrigeratorsTypBQty"/>
 						 </xsl:call-template>                       
                         <span style="width:1px;"/>
                       </td>
-                   	 <td style="height:6.5mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td>                 	 
+                   	 <td style="height:6mm;background-color:gray;border-right:solid black 1px;border-right:0px;"><span style="width:1mm"/></td>                 	 
                    	 </tr>
                    	  <!-- End Row 14 Average Number Eligible Refrigerator -->
 
                    	  <!-- Row 15 Subtract Line 13 From Line 12 -->
                    	 <tr>
-                  	 <td valign="bottom" style="height:4.5mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;padding-top:1.3mm;">15</td>
+                  	 <td valign="bottom" style="height:4mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;padding-top:1.3mm;">15</td>
                 <!-- Subtract Line 13(a) From Line 12(a) Type A  -->   	 
-                   	 <td align="right" style="height:4.5mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;padding-top:1.3mm;" valign="bottom">
+                   	 <td align="right" style="height:4mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;padding-top:1.3mm;" valign="bottom">
                    	  <xsl:call-template name="PopulateAmount">
          				<xsl:with-param name="TargetNode" select="$FormData/EligibleRefrigeratorTypeAQty"/>
 					 </xsl:call-template> 
                         <span style="width:1px;"/>
                    	 </td>
                 <!-- Subtract Line 13(b) From Line 12(b) Type B  -->   	 
-                   	 <td align="right" style="height:4.5mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;padding-top:1.3mm;" valign="bottom">
+                   	 <td align="right" style="height:4mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;padding-top:1mm;" valign="bottom">
                     	 <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/EligibleRefrigeratorTypeBQty"/>
 						 </xsl:call-template>                        
                         <span style="width:1px;"/>
                       </td>
-                   	 <td style="height:4.5mm;background-color:gray;border-right:solid black 1px;border-right:0px;padding-top:1.3mm;"><span style="width:1mm"/></td>                 	 
+                   	 <td style="height:4mm;background-color:gray;border-right:solid black 1px;border-right:0px;padding-top:1mm;"><span style="width:1mm"/></td>                 	 
                    	 </tr> 
                    	 <!-- End Row 15 Subtract Line 13 From Line 12 -->
                    	 
                    	  <!-- row 16 -->
                    	 <tr>
-                  	 <td valign="bottom" style="height:5mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">16</td>
-                     <td align="right" style="height:5mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$150</td>
-                   	 <td align="right" style="height:5mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$200</td>
-                   	 <td style="height:5mm;background-color:gray;border-right:solid black 0px;border-right:0px;"><span style="width:1mm"/></td>                 	 
+                  	 <td valign="bottom" style="height:4mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">16</td>
+                     <td align="right" style="height:4mm;padding-right:1mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$150</td>
+                   	 <td align="right" style="height:4mm;padding-right:1mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">$200</td>
+                   	 <td style="height:4mm;background-color:gray;border-right:solid black 0px;border-right:0px;"><span style="width:1mm"/></td>                 	 
                    	 </tr> 
                    	 <!-- end row 16 -->
                    	 
                      <!-- Row 17 Multiply Line 14 By Line 15-->
                    	 <tr>
-                  	 <td valign="bottom" style="height:4.5mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;padding-top: 1.3mm;">17</td>
+                  	 <td valign="bottom" style="height:4mm;font-size:6.5pt;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">17</td>
                 <!-- Multiply Line 14(a) By Line 15(a) Type A  -->   	 
-                   	 <td align="right" style="height:4.5mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;padding-top: 1.3mm;" valign="bottom">
+                   	 <td align="right" style="height:4mm;border-left:1px solid black;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
                    	  <xsl:call-template name="PopulateAmount">
          				<xsl:with-param name="TargetNode" select="$FormData/RefrigeratorTypeATentCrAmt"/>
 					 </xsl:call-template> 
                         <span style="width:1px;"/>
                    	 </td>
                 <!-- Multiply Line 14(b) By Line 15(b) Type B  -->   	 
-                   	 <td align="right" style="height:4.5mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;padding-top: 1.3mm;" valign="bottom">
+                   	 <td align="right" style="height:4mm;border-right:1px solid black;font-size:6pt;border-bottom:1px solid black;" valign="bottom">
                     	 <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/RefrigeratorTypeBTentCrAmt"/>
 						 </xsl:call-template>                        
                         <span style="width:1px;"/>
                       </td>
-                   	 <td style="height:4.5mm;background-color:gray;border-bottom:solid black 1px;padding-top: .5mm;"><span style="width:1.3mm"/></td>
+                   	 <td style="height:4mm;background-color:gray;border-bottom:solid black 1px;padding-top: .5mm;"><span style="width:1px;"/></td>
                    	 </tr>
                    	 <!-- End Row 17 Multiply Line 14 By Line 15--> 
                    	   </table>
 
-<span style="float:left;clear:none;">
+<span style="width:96mm;float:left;clear:none;">	
     <!-- line 13 -->
-      <div style="width:93mm;">
+      <div style="width:96mm;">
       <div class="styLNLeftNumBox" style="width:6mm;float:left;padding-left:1.5mm;padding-top:5.5mm;">13</div>
-      <div class="styLNDesc" style="height:12mm;width:86mm;padding-left:2mm;float:left;font-size:7pt;padding-top:5.5mm;">
-			  Enter the number of eligible refrigerators produced in<br/>
-			  calendar year 2013
+      <div class="styLNDesc" style="height:12mm;width:90mm;padding-left:2mm;float:left;font-size:7pt;padding-top:5.5mm;">
+			  Enter the number of eligible refrigerators produced in calendar year 2013
         <!--Dotted Line-->
-                <span class="styDotLn" style="float:none;padding-left:1mm;clear:none;">..............</span>
+                <span class="styDotLn" style="float:none;padding-left:1mm;clear:none;">....................</span>
       </div>
     </div>  
     <!-- end line 13 -->
     
    <!-- line 14 -->
-    <div style="width:93mm;">
+    <div style="width:96mm;">
       <div class="styLNLeftNumBox" style="width:6mm;float:left;padding-left:1.5mm;">14</div>
-      <div class="styLNDesc" style="height:8mm;width:86mm;padding-left:2mm;float:left;font-size:7pt;">
-			Enter the average number of eligible refrigerators produced in<br/>
-			the 2 prior calendar years
+      <div class="styLNDesc" style="height:6mm;width:90mm;padding-left:2mm;float:left;font-size:7pt;">
+			Enter the average number of eligible refrigerators produced in the 2 prior calendar years
         <!--Dotted Line-->
-                <span class="styDotLn" style="float:none;padding-left:2mm;clear:none;">............</span>
+                <span class="styDotLn" style="float:none;padding-left:2mm;clear:none;">...............</span>
       </div>
     </div>    
     <!-- end line 14 -->
     
     <!-- line 15 -->
-    <div style="width:93mm;">
-      <div class="styLNLeftNumBox" style="width:6mm;float:left;padding-left:1.5mm;">15</div>
-      <div class="styLNDesc" style="width:86mm;padding-left:2mm;float:left;font-size:7pt;">
+    <div style="width:96mm;">
+      <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;float:left;padding-left:1.5mm;">15</div>
+      <div class="styLNDesc" style="width:90mm;padding-top:1mm;padding-left:2mm;float:left;font-size:7pt;">
 			<span style="float:left;clear:none;">     
 			   Subtract line 14 from line 13
 			</span>  
@@ -617,9 +609,9 @@
     <!-- end line 15 -->
     
     <!-- line 16 -->
-     <div style="width:93mm;padding-top:.5mm;">
-      <div class="styLNLeftNumBox" style="width:6mm;float:left;padding-left:1.5mm;">16</div>
-      <div class="styLNDesc" style="width:86mm;padding-left:2mm;float:left;font-size:7pt;">
+     <div style="width:96mm;">
+      <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;float:left;padding-left:1.5mm;">16</div>
+      <div class="styLNDesc" style="width:90mm;padding-top:1mm;padding-left:2mm;float:left;font-size:7pt;">
 			<span style="float:left;clear:none;">   
 			   Applicable amount
 			</span>   
@@ -630,9 +622,9 @@
     <!-- end line 16 -->
     
     <!-- line 17 -->
-    <div style="width:93mm;padding-top:1mm;">
-      <div class="styLNLeftNumBox" style="width:6mm;float:left;padding-left:1.5mm;">17</div>
-      <div class="styLNDesc" style="width:86mm;padding-left:2mm;float:left;font-size:7pt;">
+    <div style="width:96mm;">
+      <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;float:left;padding-left:1.5mm;">17</div>
+      <div class="styLNDesc" style="width:90mm;padding-top:1mm;padding-left:2mm;float:left;font-size:7pt;">
 			<span style="float:left;clear:none;">  
 				Multiply line 15 by line 16
 			</span>
@@ -1031,8 +1023,8 @@
 					<span class="styDotLn" style="float:right;padding-right:2mm;clear:none;">.................</span>   
 					  
 					</div>
-					<div class="styLNRightNumBox" style="height:4.5mm;width:6mm;padding-top1mm;padding-bottom:0mm;">24</div>
-						<div class="styLNAmountBox" style="height:4.5mm;width:26mm;font-size:6pt;padding-top:1.3mm;padding-bottom:0mm;">
+					<div class="styLNRightNumBox" style="height:4mm;width:6mm;padding-bottom:0mm;">24</div>
+						<div class="styLNAmountBox" style="height:4mm;width:26mm;font-size:6pt;padding-bottom:0mm;">
 							 <xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/ApplianceTentativeCreditAmt"/>
 							 </xsl:call-template> 
@@ -1042,16 +1034,16 @@
 
 			   <!--  Line 25 Energy Efficient Appliance Credits Amount-->    
 			    <div style="width: 187mm;">  
-					<div class="styLNLeftNumBox" style="width:6mm;float:left;padding-left:1.5mm;">25</div>
-					<div class="styLNDesc" style="width:148.8mm;float:left;padding-left:2mm;">
+					<div class="styLNLeftNumBox" style="height:7mm;width:6mm;padding-top:1mm;float:left;padding-left:1.5mm;">25</div>
+					<div class="styLNDesc" style="height:7mm;width:148.8mm;padding-top:1mm;float:left;padding-left:2mm;">
 							 Energy efficient appliance credit from partnerships, S corporations, cooperatives, estates, and trusts
 							 <span style="float:left;clear:none;">(see instructions)</span>
 							  <!--Dotted Line-->
 						<span class="styDotLn" style="float:right;padding-right:2mm;clear:none;">..............................</span>    
 					</div>    
 			
-					<div class="styLNRightNumBox" style="height:6.3mm;width:6mm;padding-top:4mm;padding-bottom:0mm;">25</div>
-						<div class="styLNAmountBox" style="height:6.3mm;width:26mm;font-size:6pt;padding-top:4.5mm;padding-bottom:0mm;">
+					<div class="styLNRightNumBox" style="height:7mm;width:6mm;padding-top:3.5mm;padding-bottom:0mm;">25</div>
+						<div class="styLNAmountBox" style="height:7mm;width:26mm;font-size:6pt;padding-top:3.5mm;padding-bottom:0mm;">
 							 <xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/EnergyEffcntApplianceCrdtAmt"/>
 							 </xsl:call-template> 
@@ -1061,15 +1053,14 @@
 
 				  <!--  Line 26 Add Lines 24 and 25-->    
 				<div style="width: 187mm;">  
-							<div class="styLNLeftNumBox" style="height:7mm;width:6mm;float:left;padding-left:1.5mm;">26</div>
-							<div class="styLNDesc" style="height:7mm;width:148.8mm;float:left;padding-left:2mm;">
-									Add lines 24 and 25. Cooperatives, estates, and trusts, go to line 27. Partnerships and S corporations, stop here and report this amount on Schedule K. All others, stop here and report this amount on 
-									Form 3800, Part III, line 1q
+							<div class="styLNLeftNumBox" style="height:7mm;width:6mm;padding-top:1mm;float:left;padding-left:1.5mm;">26</div>
+							<div class="styLNDesc" style="height:7mm;width:148.8mm;padding-top:1mm;float:left;padding-left:2mm;">
+									Add lines 24 and 25. Cooperatives, estates, and trusts, go to line 27. Partnerships and S corporations, stop here and report this amount on Schedule K. All others, stop here and report this amount on Form 3800, Part III, line 1q
 						 <!--Dotted Line --> 
-								<span class="styDotLn" style="float:none;padding-left:2mm;clear:none;">.................................</span>
+								<span class="styDotLn" style="float:none;padding-left:2mm;clear:none;">.</span>
 									 </div>    
-								<div class="styLNRightNumBox" style="height:10.5mm;width:6mm;padding-top:6.5mm;padding-bottom:0mm;">26</div>
-							<div class="styLNAmountBox" style="height:10.5mm;padding-top:6.5mm;width:26mm;font-size:6pt;padding-bottom:0mm;">
+								<div class="styLNRightNumBox" style="height:7mm;width:6mm;padding-top:3.5mm;padding-bottom:0mm;">26</div>
+							<div class="styLNAmountBox" style="height:7mm;padding-top:3.5mm;width:26mm;font-size:6pt;padding-bottom:0mm;">
 								 <xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalApplianceCreditAmt"/>
 								 </xsl:call-template> 
@@ -1084,8 +1075,8 @@
 					 Amount allocated to beneficiaries of the estate or trust, or to patrons of the cooperative (see instructions)
 				
 					 </div>    
-							<div class="styLNRightNumBox" style="width:6mm;padding-top:1mm;padding-bottom:0mm;">27</div>
-							<div class="styLNAmountBox" style="width:26mm;font-size:6pt;padding-top:1.5mm;padding-bottom:0mm;">
+							<div class="styLNRightNumBox" style="width:6mm;padding-bottom:0mm;">27</div>
+							<div class="styLNAmountBox" style="width:26mm;font-size:6pt;padding-bottom:0mm;">
 								 <xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/AllocatedToBeneficiariesAmt"/>
 								 </xsl:call-template> 
@@ -1097,12 +1088,11 @@
 				    <div style="width: 187mm;">  
 						<div class="styLNLeftNumBox" style="width:6mm;float:left;padding-left:1.5mm;">28</div>
 						<div class="styLNDesc" style="width: 148.8mm;float:left;padding-left:2mm;">
-								Cooperatives, estates, and trusts, subtract line 27 from line 26. Report this amount on Form 3800, Part III, 
-								line 1q
-								<span class="styDotLn" style="float:none;padding-left:2mm;clear:none;">..................................</span> 
+								Cooperatives, estates, and trusts, subtract line 27 from line 26. Report this amount on Form 3800, Part III, line 1q
+								<!--<span class="styDotLn" style="float:none;padding-left:2mm;clear:none;">..................................</span>--> 
 						</div>    
-						<div class="styLNRightNumBox" style="width:6mm;padding-top:4.5mm;padding-bottom:0mm;">28</div>
-						<div class="styLNAmountBox" style="width:26mm;font-size:6pt;padding-top:5mm;padding-bottom:0mm;">
+						<div class="styLNRightNumBox" style="width:6mm;padding-bottom:0mm;">28</div>
+						<div class="styLNAmountBox" style="width:26mm;font-size:6pt;padding-bottom:0mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/EstatesTrustsCooperativesAmt"/>
 							</xsl:call-template> 
@@ -1115,7 +1105,7 @@
           <span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions. </span> 
           <span style="width:76px;"></span>                      
           Cat. No. 37719E
-          <span style="width:120px;"></span>  
+          <span style="width:115px;"></span>  
           Form <span class="styBoldText">8909</span> (2014)
         </div> 
         <div class="pageEnd"/>

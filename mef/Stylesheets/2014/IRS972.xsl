@@ -9,8 +9,10 @@
 <xsl:strip-space elements="*"/>
 <xsl:param name="FormData" select="$RtnDoc/IRS972"/>
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>
       <xsl:call-template name="FormTitle">
         <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -39,7 +41,7 @@
   <form name="Form972">
     <xsl:call-template name="DocumentHeader"/>        
   <!--Title of Form -->    
-  <div class="styTBB" style="width:187mm;height: 26mm">
+  <div class="styTBB" style="width:187mm;min-height: 26mm">
     <div class="styFNBox" style="height: 26.5mm; width:33mm;font-size: 7pt; padding-top:2mm">
       Form <span class="styFormNumber">972</span>
       <br/>
@@ -68,7 +70,7 @@
   </div>
   <!--  End title of Form  -->    
   <div class="styBB" style="width:187mm">
-     <div class="styNameBox" style="font-size:7pt; width:132mm; height:8mm">Name of shareholder
+     <div class="styNameBox" style="font-size:7pt; width:120mm; height:9mm">Name of shareholder <br />
        <div style="padding-left:5mm; line-height:110%;font-family:verdana;font-size:7pt;">
          <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$FormData/ShareholderName/BusinessNameLine1Txt"/> 
@@ -81,7 +83,7 @@
           </xsl:if>
         </div>
       </div>     
-     <div class="styEINBox" style="font-size:7pt; padding-left:2mm;"> Identifying number <span style="font-weight:normal">(see instructions)</span>
+     <div class="styEINBox" style="font-size:7pt; padding-left:2mm;"> Identifying number <span style="font-weight:normal">(see instructions)</span> <br />
        <div style="text-align:left; width:100%; padding-top:1mm; font-weight:normal;">
          <xsl:choose> 
           <xsl:when test="$FormData/EIN">
@@ -103,7 +105,8 @@
       </div>
       </div>
     </div>
-   <div class="styBB" style="font-size:7pt; width:187mm; height:8mm"> Number, street, and room or suite no. (If a P.O. box, see instructions.)
+    <div class="styBB" style="width:187mm">
+   <div class="styNameBox" style="font-size:7pt; width:132mm; height:9mm; border:none"> Number, street, and room or suite no. (If a P.O. box, see instructions.) <br />
      <div style="padding-left:5mm; line-height:110%">
        <xsl:choose>
          <xsl:when test="$FormData/ShareholderUSAddress">
@@ -119,9 +122,11 @@
           </xsl:when>
          </xsl:choose>
       </div>
-    </div>   
-   <div class="styTBB" style="font-size:7pt; width:187mm; height:8mm"> City or town, state or province, country, and ZIP or foreign postal code
-     <div style="padding-left:5mm; padding-top:2mm">
+    </div>
+    </div>
+    <div class="styBB" style="width:187mm">
+   <div class="styNameBox" style="font-size:7pt; width:132mm; height:8mm;border:none;"> City or town, state or province, country, and ZIP or foreign postal code <br />
+     <div style="padding-left:5mm; padding-top:1mm">
        <xsl:choose>
          <xsl:when test="$FormData/ShareholderUSAddress">
            <xsl:call-template name="PopulateText">
@@ -138,9 +143,10 @@
         </xsl:choose>
       </div>
     </div>
+    </div>
   <div style="width:187mm;" class="styBB">
     <div style="width:187mm" class="styBB">        
-      <div class="styLNLeftNumBox" style="padding-top:1.2mm;">1</div>      
+      <div class="styLNLeftNumBox" style="padding-top:0.5mm;height:8mm;">1</div>      
       <div style="float:left">The shareholder named above agrees to include $ 
         <span class="styUnderlineAmount" style="float:none;text-align:right;">
           <xsl:call-template name="PopulateAmount">
@@ -162,7 +168,7 @@
       </div>    
       <div style="float:left; padding-left:28mm">(Month, day, year) <span style="width:70"/>(Month, day, year) </div>    
       <div style="float:left;padding-top:1mm;padding-bottom:.5mm;padding-left:8mm;valign:top;">
-        <span style="float:left;valign:top">shareholder on the stock of the </span>
+        <span style="float:left;valign:top;padding-right:2px;">shareholder on the stock of the </span>
         <span class="styUnderlineAmount" style="float:right;padding-top:0mm;width:136mm;text-align:left;font-family:verdana;font-size:7pt;">
           <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$FormData/CorporationName/BusinessNameLine1Txt"/> 
@@ -190,26 +196,26 @@
            	</xsl:if>
          </span>             
       </div>    
-      <div style="padding-left:9mm;">(Number, street, and room or suite no.) (City or town, state or province, country, and ZIP or foreign postal code) (If a P.O. box, see instructions.)</div>
+      <div style="padding-left:8mm;font-size:6pt;">(Number, street, and room or suite no.) (City or town, state or province, country, and ZIP or foreign postal code) (If a P.O. box, see instructions.)</div>
     </div>    
   <!--  Note -->
-    <div class="styTBB" style="width: 187mm">
-      <div class="styGenericDiv" style="font-size: 8pt">
-      <span class="styBoldText">Note. </span><span class="styItalicText">If the amount to be included in gross income (on line 1, above) is different than the total shown on line 4, Schedule A, attach a statement to Form 972 explaining the reason and authority for the discrepancy.  
-      </span>
+    <div class="styTBB" style="width: 187mm;height:10mm;padding-top:.5mm;">
+			  <div class="styLNLeftNumBox">Note. </div>
+				<div class="styLNDesc" style="width:176mm;padding-left:2mm;">
+						 <i>If the amount to be included in gross income (on line 1, above) is different than the total shown on line 4, Schedule A, attach a statement to Form 972 explaining the reason and authority for the discrepancy. </i> 
+			  </div>
     </div>
-  </div>
   <!--  End Note  -->
   <!--Schedule A Header-->
   <div class="styBB" style="width:187mm;border-bottom-width:1px;border-top-width:0px;           border-right-width:0px;border-left-width:0px;float:left;">
-        <span class="styPartName" style="height:1mm;width:23mm;">Schedule A</span>
-        <span style="width:164mm;" class="styPartDesc">
+        <span class="styPartName" style="height:8mm;width:23mm;">Schedule A</span>
+        <span style="width:164mm;height:8mm;" class="styPartDesc">
           Statement of Shares in Each Class of Stock Owned by the Shareholder on the Last Day of the Corporation’s Tax Year
         </span>
       </div>
   <!--End ScheduleA Header-->    
   <div style="width:187mm;float:none;clear:none;" class="styBB">        
-    <div class="styLNLeftNumBox" style="padding-top:1.3mm;">2</div>
+    <div class="styLNLeftNumBox" style="padding-top:0.5mm;">2</div>
     <div style="float:left">Enter the last day of the corporation’s tax year <img src="{$ImagePath}/972_Bullet_Md.gif" alt="Right Arrow Bullet"/> 
       <span class="styUnderlineAmount" style="float:none;width:114mm;text-align:center;">  <span style="width:2px"/>
         <xsl:call-template name="PopulateMonthDayYear">
@@ -228,7 +234,7 @@
        <xsl:call-template name="SetDynamicTableToggleButton">
         <xsl:with-param name="TargetNode" select="$FormData/ConsentDistribution"/>
         <xsl:with-param name="containerHeight" select="11"/>
-        <xsl:with-param name="headerHeight" select="1"/>
+        <xsl:with-param name="headerHeight" select="2"/>
         <xsl:with-param name="containerID" select=" 'CDctn' "/>
       </xsl:call-template>
        <!-- end button display logic -->
@@ -236,7 +242,7 @@
   </div>
 </div>
 <!--Line 3 table-->
-  <div class="styIRS972TableContainer " id="CDctn">
+  <div class="styIRS972TableContainer " style="padding-top:0mm;height:auto;"  id="CDctn">
     <!-- print logic -->
       <xsl:call-template name="SetInitialState"/>
     <!-- end -->  
@@ -280,7 +286,7 @@
         <xsl:for-each select="$FormData/ConsentDistribution">
           <tr>
             <td class="styTableCell" style="text-align: left; width:35mm;height:8mm;vertical-align:top;">
-            <span class="styBoldText" style="width:3mm"> <xsl:if test="position()=1">3</xsl:if></span>
+            <span class="styBoldText" style="width:3mm;"> <xsl:if test="position()=1">3</xsl:if></span>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="StockClassDesc"/>
               </xsl:call-template>
@@ -298,7 +304,7 @@
               </xsl:call-template>
               <span class="styTableCellPad"/>
             </td>            
-            <td class="styTableCell" style="border-right-width: 0px; text-align: right;width:35mm;height:8mm;"><span class="styBoldText"><div style="float:left">$</div></span>
+            <td class="styTableCell" style="border-right-width: 0px; text-align: right;width:35mm;height:8mm;"><span class="styBoldText"><div style="float:left;">$</div></span>
             <div style="text-align:right; ">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="ConsentDistributionAmt"/>
@@ -313,7 +319,7 @@
         </xsl:call-template>
       </xsl:if>      
       <tr>
-        <td class="styTableCell" colspan="3" style="text-align:left;border-bottom-width:0px;border-top-width:1px;width:152mm;height:8mm;"><span class="styBoldText">4</span><span style="padding-left:4mm">Total consent distribution</span>
+        <td class="styTableCell" colspan="3" style="text-align:left;border-bottom-width:0px;border-top-width:1px;width:152mm;height:8mm;padding-top:2mm;padding-bottom:2mm;"><span class="styBoldText">4</span><span style="padding-left:4mm">Total consent distribution</span>
           <span class="styBoldText">
             <span class="styNBSP"/>.
             <span class="styNBSP"/>.
@@ -332,12 +338,11 @@
             <span class="styNBSP"/>.
             <span class="styNBSP"/>.
             <span class="styNBSP"/>.
-            <span class="styNBSP"/>.
           </span>
-          <img src="{$ImagePath}/972_Bullet_Md.gif" alt="Right Arrow Bullet"/> 
+          <img src="{$ImagePath}/972_Bullet_Md.gif"  style="padding-left:3mm;" alt="Right Arrow Bullet"/> 
         </td>        
-        <td class="styTableCell" style="border-right-width:0px;width:35mm;text-align:none;border-bottom-width:0px;border-top-width:1px;height:8mm;"><span class="styBoldText"><div style="float:left">$</div></span>
-          <div style="text-align:right; padding-right:1mm;">
+        <td class="styDepTblCell" style="border-left-width:0px;border-right-width:0px;width:35mm;text-align:right;border-bottom-width:0px;border-top-width:1px;height:8mm;padding-top:2mm;"><span class="styBoldText"><div style="float:left">$</div></span>
+          <div style="text-align:right;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="$FormData/TotalConsentDistributionAmt"/>
             </xsl:call-template>
@@ -351,27 +356,27 @@
   <xsl:call-template name="SetInitialDynamicTableHeight">
     <xsl:with-param name="TargetNode" select="$FormData/ConsentDistribution"/>
     <xsl:with-param name="containerHeight" select="11"/>
-      <xsl:with-param name="headerHeight" select="1"/>
+      <xsl:with-param name="headerHeight" select="2"/>
     <xsl:with-param name="containerID" select=" 'CDctn' "/>
   </xsl:call-template>
   <!-- End Set Initial Height of Above Table -->
   </div>
   <div style="width:187mm;font-weight:bold;float:none;clear:none" class="styBB">  
-  <div style="text-align:center;font-size:9pt"><span class="styBoldText">Signature</span></div>  
-  <div style="float:none;clear:none;font-weight:normal">Under penalties of perjury, I declare that I have examined this consent, including accompanying schedules and statements, and to the best </div>
+  <div style="text-align:center;font-size:12pt:padding-top:200mm;padding-left:90mm;padding-top:2mm;"><span class="styBoldText">Signature</span></div>  
+  <div style="float:none;clear:none;font-weight:normal;padding-top:2mm;">Under penalties of perjury, I declare that I have examined this consent, including accompanying schedules and statements, and to the best </div>
   <span style="font-weight:normal">of my knowledge and belief, it is true, correct, and complete.</span>
   <br/>
-  <div><span class="styBoldText">Consenting shareholder </span> <img src="{$ImagePath}/972_Bullet_Sm.gif" alt="Right Arrow Bullet"/> <span class="styUnderlineAmount" style="float:none;font-weigt:bold;width:151mm"/></div>
+  <div><span class="styBoldText" style="padding-top:1mm;padding-right:1mm;">Consenting shareholder </span> <img src="{$ImagePath}/972_Bullet_Sm.gif" alt="Right Arrow Bullet"/> <span class="styUnderlineAmount" style="float:none;font-weigt:bold;width:151mm"/></div>
 <br/>
 <div>
-  <span class="styBoldText">Title </span> <img src="{$ImagePath}/972_Bullet_Sm.gif" alt="Right Arrow Bullet"/>  <span style="padding-left:140mm"><span class="styBoldText">Date </span> <img src="{$ImagePath}/972_Bullet_Sm.gif" alt="Right Arrow Bullet"/></span></div>
+  <span class="styBoldText" style="padding-right:1mm;">Title </span> <img src="{$ImagePath}/972_Bullet_Sm.gif" alt="Right Arrow Bullet"/>  <span style="padding-left:140mm;padding-bottom:1mm;padding-top:1mm;"><span class="styBoldText">Date </span> <img src="{$ImagePath}/972_Bullet_Sm.gif" style="padding-left:1mm;" alt="Right Arrow Bullet"/></span></div>
 </div>
 <div style="width:187mm;clear:both;border-top:1px solid black;">
   <div style="width:100mm;font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see back of form.</div>
   <div style="width:45mm;text-align:center;" class="styGenericDiv">Cat. No. 17058E</div>
   <div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">972</span> (Rev. 11-2014)</div>
 </div>
-  <br class="pageEnd"/>        
+  <div class="pageEnd"/>        
   <!-- Begininning of write-in data -->
     <div class="styLeftOverTitleLine" id="LeftoverData">
       <div class="styLeftOverTitle">
@@ -469,15 +474,16 @@
             <span class="styNBSP"/>.
             <span class="styNBSP"/>.
           </span>
-          <img src="{$ImagePath}/972_Bullet_Md.gif" alt="Right Arrow Bullet"/> 
+          <img src="{$ImagePath}/972_Bullet_Md.gif" style="padding-left:3mm;" alt="Right Arrow Bullet"/> 
         </td>        
-        <td class="styDepTblCell" style="border-right-width:0px;width:35mm;text-align:none;border-bottom-width:0px;border-top-width:1px;height:8mm;padding-top:2mm;"><span class="styBoldText"><div style="float:left">$</div></span>
-          <div style="text-align:right; padding-right:1mm;">
+        <td class="styTableCell" style="border-right-width:0px;width:35mm;text-align:left;border-bottom-width:0px;border-top-width:1px;height:8mm;padding-bottom:1mm;">
+            <span class="styBoldText"><div style="float:left">$</div></span><span class="styTableCellPad"/>
+            <div style="text-align:right; padding-right:1mm;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="$FormData/TotalConsentDistributionAmt"/>
             </xsl:call-template>
           </div>
-        </td>
+          </td>
       </tr>
     </tbody>
   </table>

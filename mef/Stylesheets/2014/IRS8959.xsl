@@ -13,8 +13,10 @@
 	<xsl:strip-space elements="*"/>  
 	<xsl:param name="FormData" select="$RtnDoc/IRS8959"/>  
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -119,7 +121,7 @@
 							Medicare wages and tips from Form W-2, box 5. If you have<br/>
 							more than one Form W-2, enter the total of the amounts <br/>
 							<span style="float:left;">from box 5</span>
-							<span class="styIRS8959Dots">...............</span>
+							<span class="styIRS8959Dots">.............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:10.8mm;"><br/><br/>1</div>
 						<div class="styLNAmountBox" style="height:10.8mm;width:35mm;"><br/><br/>
@@ -135,7 +137,7 @@
 						<div class="styLNLeftNumBoxSD">2</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							<span style="float:left;">Unreported tips from Form 4137, line 6</span>
-							<span class="styIRS8959Dots">........</span>
+							<span class="styIRS8959Dots">......</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">2</div>
 						<div class="styLNAmountBox" style="height:4.4mm;width:35mm;">
@@ -184,9 +186,9 @@
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
 							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
-							<span class="styIRS8959Dots">..........</span><br/>					
+							<span class="styIRS8959Dots">.........</span><br/>					
 							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
-							<span class="styIRS8959Dots">.........</span><br/>
+							<span class="styIRS8959Dots">........</span><br/>
 							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
 							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
 						</div>
@@ -219,7 +221,7 @@
 						<div class="styLNDesc" style="width:135.86mm;">
 							Additional Medicare tax on Medicare wages. Multiply line 6 by 0.9% (.009). Enter here and<br/>
 							<span style="float:left;">go to Part II</span>
-							<span class="styIRS8959Dots">.......................</span>
+							<span class="styIRS8959Dots">......................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:7.8mm;"><br/>7</div>
 						<div class="styLNAmountBoxNBB" style="height:7.8mm;width:35mm;"><br/>
@@ -257,9 +259,9 @@
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
 							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
-							<span class="styIRS8959Dots">..........</span><br/>					
+							<span class="styIRS8959Dots">.........</span><br/>					
 							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
-							<span class="styIRS8959Dots">.........</span><br/>
+							<span class="styIRS8959Dots">........</span><br/>
 							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
 							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
 						</div>
@@ -277,7 +279,7 @@
 						<div class="styLNLeftNumBox">10</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							<span style="float:left;">Enter the amount from line 4</span>
-							<span class="styIRS8959Dots">...........</span>
+							<span class="styIRS8959Dots">..........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">10</div>
 						<div class="styLNAmountBox" style="height:4.4mm;width:35mm;">
@@ -310,7 +312,7 @@
 						<div class="styLNLeftNumBox">12</div>
 						<div class="styLNDesc" style="width:135.86mm;">
 							<span style="float:left;">Subtract line 11 from line 8. If zero or less, enter -0-</span>
-							<span class="styIRS8959Dots">.............</span>
+							<span class="styIRS8959Dots">............</span>
 						</div>
 						<div class="styLNRightNumBox">12</div>
 						<div class="styLNAmountBox" style="width:35mm;">
@@ -325,7 +327,7 @@
 						<div class="styLNDesc" style="width:135.86mm;">
 							Additional Medicare Tax on self-employment income. Multiply line 12 by 0.9% (.009). Enter<br/>
 							<span style="float:left;">here and go to Part III</span>
-							<span class="styIRS8959Dots">.....................</span>
+							<span class="styIRS8959Dots">....................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:7.8mm;"><br/>13</div>
 						<div class="styLNAmountBoxNBB" style="height:7.8mm;width:35mm;"><br/>
@@ -362,9 +364,9 @@
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
 							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
-							<span class="styIRS8959Dots">..........</span><br/>					
+							<span class="styIRS8959Dots">.........</span><br/>					
 							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
-							<span class="styIRS8959Dots">.........</span><br/>
+							<span class="styIRS8959Dots">........</span><br/>
 							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
 							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
 						</div>
@@ -417,7 +419,7 @@
 						<div class="styLNDesc" style="width:135.86mm;">
 							Add lines 7, 13, and 17. Also include this amount on Form 1040, line 62, (Form 1040NR, 1040-PR, <br/>
 							<span style="float:left;">and 1040-SS filers, see instructions) and go to Part V</span>
-							<span class="styIRS8959Dots">.............</span>
+							<span class="styIRS8959Dots">............</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:7.8mm;"><br/>18</div>
 						<div class="styLNAmountBoxNBB" style="height:7.8mm;width:35mm;"><br/>
@@ -438,7 +440,7 @@
 							Medicare tax withheld from Form W-2, box 6. If you have<br/>
 							more than one Form W-2, enter the total of the amounts <br/>
 							<span style="float:left;">from box 6</span>
-							<span class="styIRS8959Dots">...............</span>
+							<span class="styIRS8959Dots">..............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:10.8mm;"><br/><br/>19</div>
 						<div class="styLNAmountBox" style="height:10.8mm;width:35mm;"><br/><br/>
@@ -454,7 +456,7 @@
 						<div class="styLNLeftNumBox">20</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							<span style="float:left;">Enter the amount from line 1</span>
-							<span class="styIRS8959Dots">..........</span>
+							<span class="styIRS8959Dots">.........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">20</div>
 						<div class="styLNAmountBox" style="height:4.4mm;width:35mm;">
@@ -471,7 +473,7 @@
 						<div class="styLNDesc" style="width:92.8mm;">
 							Multiply line 20 by 1.45% (.0145). This is your regular<br/>
 							<span style="float:left;">Medicare tax withholding on Medicare wages</span>
-							<span class="styIRS8959Dots">.......</span>
+							<span class="styIRS8959Dots">......</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.8mm;"><br/>21</div>
 						<div class="styLNAmountBox" style="height:7.8mm;width:35mm;"><br/>
@@ -503,7 +505,7 @@
 						<div class="styLNDesc" style="width:135.86mm;">
 							Additional Medicare Tax withholding on railroad retirement (RRTA) compensation from 
 							Form W-2, <br/><span style="float:left;">box 14 (see instructions) </span>
-							<span class="styIRS8959Dots">...................</span>
+							<span class="styIRS8959Dots">..................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.8mm;padding-top:3mm">23</div>
 						<div class="styLNAmountBox" style="height:7.8mm;width:35mm;padding-top:3mm">
@@ -519,7 +521,7 @@
 							<b>Total Additional Medicare Tax withholding.</b> Add lines 22 and 23. Also include this amount with<br/>
 							  federal income tax withholding on Form 1040, line 64 (Form 1040NR, 1040-PR, and 1040-SS filers,<br/>
 							<span style="float:left;"> see instructions)</span>
-							<span class="styIRS8959Dots">......................</span>
+							<span class="styIRS8959Dots">.....................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:10.8mm;"><br/><br/>24</div>
 						<div class="styLNAmountBoxNBB" style="height:10.8mm;width:35mm;"><br/><br/>

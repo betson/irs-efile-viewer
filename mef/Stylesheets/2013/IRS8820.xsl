@@ -2,6 +2,9 @@
 <!DOCTYPE xsl:stylesheet [
   <!ENTITY nbsp "&#160;">
 ]>
+
+<!-- Last modified on 05/28/2015 by Harold Nadel for WR # 123023 changes for IE11-->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -13,8 +16,10 @@
   <xsl:param name="FormData" select="$RtnDoc/IRS8820"/>
   <xsl:param name="FormData2" select="$RtnDoc/IRS8820/OrphanDrugInfoGrp"/>  
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -42,25 +47,27 @@
         <form name="Form8820">
           <xsl:call-template name="DocumentHeader"/>
           <!--Title of Form -->
-          <div class="styBB" style="width:187mm;height: 22mm">
-            <div class="styFNBox" style="padding-top: 1mm;width:31mm;font-size: 7pt;height: 22mm">
+          <div class="styBB" style="width:187mm;">
+            <div class="styFNBox" style="width:31mm;height: 22mm">
             Form <span class="styFormNumber">8820</span>
               <br/>
-              <div class="styAgency" style="padding-top: 1mm">(Rev. December 2012)</div>
-              <div class="styAgency" style="padding-top: 1mm">Department of the Treasury<br/>Internal Revenue Service</div>
+               <div style="padding-top:2.85mm;">
+              <span class="styAgency">(Rev. December 2012)</span> <br/>
+                <span class="styAgency">Department of the Treasury</span>
+                <br/>
+                <span class="styAgency">Internal Revenue Service</span>
+              </div>
             </div>
-            <div class="styFTBox" style="padding-top: 1mm; width:125mm">
-              <div class="styMainTitle">Orphan Drug Credit</div>
-              <div class="styFST" style="padding-top: 8mm; height:5mm;font-size:6pt;margin-left:3mm;font-weight:bold">
-                
-                <img src="{$ImagePath}/8820_Bullet.gif" alt="MediumBullet"/>  
-                Information about Form 8820 and its instructions is available at <a href="http://www.irs.gov/form8820" title="Link to IRS.gov"><i>www.irs.gov/form8820</i></a>.
-              </div>
-              <div class="styFST" style="padding-top:.1mm; height:5mm;font-size:7pt;margin-left:3mm;font-weight:bold">
-                
-                <img src="{$ImagePath}/8820_Bullet.gif" alt="MediumBullet"/>  
-                Attach to your tax return.
-              </div>
+            <div class="styFTBox" style="width:125mm">
+              <div class="styMainTitle" style="height:8mm;padding-top: 1mm">Orphan Drug Information</div>    <br/><br/>
+              
+               <div class="styFST" style="height:5mm;font-size:7pt;padding-top:.5mm;">
+                <img src="{$ImagePath}/8820_Bullet.gif" width="4" height="7" alt="Bullet Image"/>
+          Information about Form 8820 and its instructions is at <a href="http://www.irs.gov/form8845" title="Link to IRS.gov"><i>www.irs.gov/form8820</i></a>.
+        </div><br/>
+        <img src="{$ImagePath}/8820_Bullet.gif" width="4" height="7" alt="Bullet Image"/>
+	       <b>Attach to your tax return.</b>
+              <br/>
             </div>
             <div class="styTYBox" style="width:30mm;height:22mm; border-left-width: 1px">
               <div class="styOMB" style="height:8mm;padding-top:2mm">OMB No. 1545-1505</div>
@@ -71,7 +78,7 @@
           <!--  End title of Form  -->
           <!--  Name and Employer identification number  -->
           <div class="styBB" style="width:187mm">
-            <div class="styNameBox" style="width:146.3mm;font-weight:normal;font-size:7pt;">
+            <div class="styNameBox" style="width:156mm;font-weight:normal;font-size:7pt;height:auto;">
               Name(s) shown on return
               <br/>
               <div style="font-family:verdana;font-size:6pt;">
@@ -85,7 +92,7 @@
               </div>
             </div>
             <!-- Close The Name line -->
-            <div class="styEINBox" style="padding-left:2mm;font-size:7pt;">
+            <div class="styEINBox" style="width:30mm;height:4mm;padding-left:2mm;font-size:7pt;">
               <span class="BoldText">Identifying number</span>
               <div class="styNormalText" style="text-align:left; padding-top:2mm;">
                 <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -98,7 +105,7 @@
           
 
 <!-- BEGIN Part I Title -->
-      <div class="styIRS8820BB" style="height:4mm; border-top:1 solid black;border-bottom:1 solid black; width:187mm">
+      <div class="styIRS8820BB" style="height:auto; border-top:1 solid black;border-bottom:.3mm solid black; width:187mm">
         <div class="styTitleName" style="width:12mm; font-size:10pt">Part I</div>
         <div class="styTitleDesc" style="font-size:10pt">Current Year Credit</div>        
       </div>
@@ -115,6 +122,7 @@
                 <span class="styNBSP"/><b>.</b> 
                 <span class="styNBSP"/><b>.</b> 
                 <span class="styNBSP"/><b>.</b> 
+                <span class="styNBSP"/><b>.</b>
                 <span class="styNBSP"/><b>.</b>                 
               </div>
             </div>
@@ -131,8 +139,8 @@
           <!--  L2a -->
           <div style="width: 187mm">
             <div style="float:left;clear:none;">
-              <div class="styLNLeftNumBoxSD">2a</div>
-              <div class="styIRS8820MedLNDesc" style="width:139mm">
+               <div class="styLNLeftNumBoxSD" style="height:auto;padding-top: 1.5mm">2a</div>
+              <div class="styIRS8820MedLNDesc" style="width:139mm;height:auto;padding-top: 1.5mm">
                 <span style="float:left;">Current year credit. Multiply line 1 by 50% (.50) (see instructions)
               <!-- Form to Form Link (Push Pin)-->
                   <xsl:call-template name="SetFormLinkInline">
@@ -151,8 +159,8 @@
               </div>
             </div>
             <div style="float:right;clear:none;">
-              <div class="styLNRightNumBox">2a</div>
-              <div class="styLNAmountBox">
+              <div class="styLNRightNumBox" style="height:auto; padding-top: 1.5mm;">2a</div>
+              <div class="styLNAmountBox" style="height:auto; padding-top: 1.5mm;"> 
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/CurrentYearCreditAmt"/>
                 </xsl:call-template>
@@ -163,8 +171,8 @@
           <!--  L2b -->
           <div style="width: 187mm">
             <div style="float:left;clear:none;">
-              <div class="styLNLeftNumBoxSD" style="height: 8mm; padding-top: 3mm;">&nbsp;&nbsp;b</div>
-              <div class="styIRS8820MedLNDesc" style="width:139mm;height: 6mm; padding-top: 3mm;">
+              <div class="styLNLeftNumBoxSD" style="height: auto; padding-top: .5mm;">&nbsp;&nbsp;b</div>
+              <div class="styIRS8820MedLNDesc" style="width:139mm;height:auto; padding-top: .5mm;">
               Enter the portion of the credit from Form 8932, line 2, that is attributable to wages 
               that were also used to figure the credit on line 2a above
                 <span class="styNBSP"/><b>.</b>
@@ -188,8 +196,8 @@
               </div>
             </div>
             <div style="float:right;clear:none;">
-              <div class="styLNRightNumBox" style="height:6mm; padding-top: 6.5mm;">2b</div>
-              <div class="styLNAmountBox" style="height:6mm; padding-top: 6.5mm;">
+              <div class="styLNRightNumBox" style="height:auto; padding-top: 3.5mm;">2b</div>
+              <div class="styLNAmountBox" style="height:auto; padding-top: 3.5mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/EmployerDifferentialWageCrAmt"/>
                 </xsl:call-template>
@@ -248,6 +256,7 @@
                 <span class="styNBSP"/><b>.</b> 
                 <span class="styNBSP"/><b>.</b> 
                 <span class="styNBSP"/><b>.</b>
+                <span class="styNBSP"/><b>.</b>
               </div>
             </div>
             <div style="float:right;clear;none;">
@@ -263,8 +272,8 @@
           <!--  L4 -->
           <div style="width: 187mm">
             <div style="float:left;clear:none;">
-              <div class="styLNLeftNumBoxSD" style="height: 10mm; padding-top: 2.5mm">4</div>
-             <div class="styIRS8820MedLNDesc" style="width:139mm;height: 6mm; padding-top: 2.5mm;">Add lines 2c and 3. Estates and trusts go
+              <div class="styLNLeftNumBoxSD" style="height:auto; padding-top: .5mm">4</div>
+             <div class="styIRS8820MedLNDesc" style="width:139mm;height:auto; padding-top: .5mm;">Add lines 2c and 3. Estates and trusts go
               to line 5. Partnerships and S corporations, report this amount on Schedule K. All others, report this amount on 
               Form 3800, line 1h 
                <span style="width:2mm;"/>
@@ -283,12 +292,14 @@
                  <span class="styNBSP"/><b>.</b>
                  <span class="styNBSP"/><b>.</b>
                  <span class="styNBSP"/><b>.</b>                 
+                 <span class="styNBSP"/><b>.</b>
+                 <span class="styNBSP"/><b>.</b>
                  <span class="styNBSP"/><b>.</b>                 
                </div>
             </div>
             <div style="float:right;clear;none;">
-              <div class="styLNRightNumBox" style="height:6mm; padding-top: 6.5mm; border-bottom-width:1px">4</div>
-              <div class="styLNAmountBox" style="height:6mm; padding-top: 6.5mm; border-bottom-width:1px">
+              <div class="styLNRightNumBox" style="height:auto; padding-top: 3.5mm; border-bottom-width:1px">4</div>
+              <div class="styLNAmountBox" style="height:auto; padding-top: 3.5mm; border-bottom-width:1px">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/SumCurrYrCrandOrphnDrugCrAmt"/>
                 </xsl:call-template>
@@ -309,6 +320,7 @@
                 <span class="styNBSP"/><b>.</b> 
                 <span class="styNBSP"/><b>.</b> 
                 <span class="styNBSP"/><b>.</b> 
+                <span class="styNBSP"/><b>.</b>
               </div>
             </div>
             <div style="float:right;clear;none;">
@@ -330,7 +342,8 @@
                 <span class="styNBSP"/><b>.</b> 
                 <span class="styNBSP"/><b>.</b> 
                 <span class="styNBSP"/><b>.</b> 
-                <span class="styNBSP"/><b>.</b>  
+                <span class="styNBSP"/><b>.</b> 
+                <span class="styNBSP"/><b>.</b> 
             </div>
             </div>
             <div style="float:right;clear;none;">
@@ -364,7 +377,7 @@
           
   <!-- BEGIN Part II Title -->  
     <!--  <div class="styIRS8621BB" style="height:4mm; border-top:2 solid black">-->
-      <div class="styIRS8820BB" style="height:4mm; border-top:1 solid black; border-bottom:1 solid black; width:187mm">
+      <div class="styIRS8820BB" style="height:auto; border-top:.5mm solid black; border-bottom:.5mm solid black; width:187mm">
         <div class="styTitleName" style="width:18mm; font-size:10pt">Part II</div>
         <div class="styTitleDesc" style="font-size:9pt">Orphan Drug Information  <span class="styNormalText" style="font-style: italic;">    (see instructions)</span></div>        
       </div>
@@ -376,17 +389,17 @@
              <table class="styTable" style="border-color:black;" cellspacing="0">
                <thead>
                  <tr>
-                   <th class="styIRS8820TheadCell" scope="col" style="width:30mm;text-align:center;font-size:7.5pt;border-left-width: 0px;">
-                     <span class="styNormalText" style="vertical-align:top;text-align:center;"><br>&nbsp;</br> <b>(a)</b> <br>&nbsp;</br></span>
+                   <th class="styNormalText" scope="col" style="width:30mm;text-align:center;font-size:7.5pt;border-style: solid; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;">
+                    <br>&nbsp;</br> <b>(a)</b> <br>&nbsp;</br>
                    </th>
-                   <th class="styIRS8820TheadCell" style="width:60mm;font-size:7.5pt;" scope="col">
-                     <span class="styNormalText" style="vertical-align:top;text-align:center;"><br>&nbsp;</br> <b>(b)</b> <br> Name of orphan drug</br></span> 
+                   <th class="styNormalText" style="width:60mm;font-size:7.5pt;border-style: solid; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;" scope="col">
+                     <br>&nbsp;</br> <b>(b)</b> <br> Name of orphan drug</br> 
                    </th>
-                   <th class="styIRS8820TheadCell" style="vertical-align:top;width:60mm;font-size:7.5pt;padding-top:1mm;" scope="col">
-                     <span class="styNormalText" style="vertical-align:top;text-align:center;"><br>&nbsp;</br> <b>(c)</b> <br> Designation application number</br></span> 
+                   <th class="styNormalText" style="width:60mm;font-size:7.5pt;border-style: solid; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;" scope="col">
+                     <br>&nbsp;</br> <b>(c)</b> <br>  Designation application number</br> 
                    </th>
-                   <th class="styIRS8820TheadCell" style="vertical-align:top;padding-top:1mm;width:37mm;font-size:7.5pt;" scope="col">
-                     <span class="styNormalText" style="vertical-align:top;text-align:center;"><b>(d)</b> <br> Date drug designated</br> <br>(mm/dd/yyyy)</br></span> 
+                   <th class="styNormalText" style="width:37mm;font-size:7.5pt;border-style: solid; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;" scope="col">
+                     <br>&nbsp;</br> <b>(d)</b> <br>  Date drug designated</br> <br>(mm/dd/yyyy)</br> 
                    </th>
                  </tr>
                </thead>

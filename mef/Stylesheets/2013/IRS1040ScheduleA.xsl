@@ -11,8 +11,10 @@
   <!-- Defines the stage of the data, e.g. original or latest -->
   <xsl:param name="FormData" select="$RtnDoc/IRS1040ScheduleA"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -44,7 +46,7 @@
           <!-- END WARNING LINE -->
           <div class="styTBB" style="width:187mm;height:21mm">
             <div class="styFNBox" style="width:30mm;height:21mm;">
-              <div style="height:5.5mm;">
+              <div style="height:8.5mm;">
                 <!-- Ampersand code (&#38;)-->
                 <span class="styBoldText" style="font-size:9pt">SCHEDULE A</span>
                 <br/>
@@ -74,28 +76,29 @@
                   <a href="http://www.irs.gov/schedulea" title="Link to IRS.gov"><i>www.irs.gov/schedulea</i></a>    
                    </span>                            
                  <span style="width:2mm"/>
+                 <br></br>
                   <img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
                   <span class="styBoldText">Attach to Form 1040.</span>            
                 </span>
               </div>
             </div>
-            <div class="styTYBox" style="width:32mm;height:18mm;">
+            <div class="styTYBox" style="width:32mm;height:21mm;">
               <!--<span style="width:25px"/>Version A, Cycle 3--><br/>
-                          <div class="styOMB" style="height:2mm;padding-top:0mm;padding-left:1mm">
+                          <div class="styOMB" style="height:4mm;padding-top:0mm;padding-left:1mm">
                             OMB No. 1545-0074
                           </div>
-              <div class="styTY" style="height:6mm;font-size:20pt;padding-top:0mm;padding-bottom:0mm;
+              <div class="styTY" style="height:7mm;font-size:20pt;padding-top:0mm;padding-bottom:0mm;
                 line-height:100%;padding-left:1mm">
                             20<span class="stytycolor">13</span>
               </div>
-              <div class="styOMB" style="padding-top:0mm;height:2mm;text-align:left;padding-left:3mm;
+              <div class="styOMB" style="padding-top:0mm;height:8mm;text-align:left;padding-left:3mm;
                 border-bottom-width:0px;padding-bottom:.5mm;line-height:110%;">Attachment <br/>
                 Sequence No. <span class="styBoldText">07</span>
               </div>
             </div>
           </div>
           <div style="width:187mm;" class="styBB">
-            <div style="width:152mm;height:4.4mm;font-weight:normal;font-size:7pt;" class="styNameBox">
+            <div style="width:152mm;height:8.4mm;font-weight:normal;font-size:7pt;" class="styNameBox">
    Name(s) shown on Form 1040<br/>
               <div style="padding-top:1.5mm">
                 <!--<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -124,7 +127,7 @@
             </div>
           </div>
           <!-- Medical and Dental Expenses, Lines 1, 2, 3,4 -->
-          <div class="styBB" style="width:187mm;height:20mm">
+          <div class="styBB" style="width:187mm;height:28mm">
             <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:20mm;font-size:8.8pt;
               border-left-width:0px;border-right-width:0px;padding-top:1mm">
               <span class="styBoldText">Medical<br/>and<br/>Dental<br/>Expenses<br/>
@@ -132,7 +135,7 @@
             </div>
             <!-- Code for Verbage only for Lines 1, 2, 3 and 4.  Note Line 2 amount box included hear
                   because of location on form-->
-            <div class="styIRS1040ScheduleAleftBox" style="width: 96mm; height:15.7mm;font-size:7.5pt;
+            <div class="styIRS1040ScheduleAleftBox" style="width: 96mm; height:24mm;font-size:7.5pt;
               border-right-width:0px;border-left-width:0px">
               <div class="styIRS1040ScheduleAleftBox" style="width: 95.4mm; height:3.9mm;font-size:7.1pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:7.5mm;
@@ -157,41 +160,41 @@
                 <span style="font-family:arial;font-size:8.5pt">Enter amount from Form 1040, line 38</span>
                 <span style="width:.5mm"/>
               </div>
-              <div class="styIRS1040ScheduleAlnRightNumBox" style="width:5mm;height:4.2mm;
+              <div class="styIRS1040ScheduleAlnRightNumBox" style="width:5mm;height:3.9mm;
                 border-left-width:0px;border-bottom-width:1px">2</div>
-              <div class="styIRS1040ScheduleAlnAmountBox" style="width:30mm;height:4.2mm;
+              <div class="styIRS1040ScheduleAlnAmountBox" style="width:30mm;height:3.9mm;
                 padding-right:.5mm;font-size:6pt">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/TaxReturnAGIAmt"/>
                 </xsl:call-template>
               </div>
               <!-- Line 3 Verbiage only-->
-              <div class="styIRS1040ScheduleAleftBox" style="width:95.4mm; height:3.9mm;font-size:7.1pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width:95.4mm; height:12mm;font-size:7.1pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:2mm;
                 padding-top:.5mm">
                 <span class="styBoldText" style="font-size:8pt;">3</span>
                 <span style="width:2.1mm"/>
                  Multiply line 2 by 10% (.10). But if either you or your spouse was
-                <span style="padding-left:5.6mm;"/>
+                <span style="padding-left:4.6mm;"/>
                  born before January 2, 1949, multiply line 2 by 7.5%  (.075) 
-               <span style="padding-left:5.6mm;"/>
+               <span style="padding-left:0mm;"/>
                  instead
-                 <span style="width:1.8mm"/>
+                 <span style="width:5.8mm"/>
                <span style=" letter-spacing:3.2mm; font-weight:bold; ">...................</span>
               </div>
             </div>
             <!-- Lines 1, 3 and 4 amount boxes.  Note Line 4 Verbiage included here because of location on form-->
             <div class="styIRS1040ScheduleAlnRightNumBox" style="background-color:lightgrey;
-              border-left-width:1px;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="border-bottom-width:0px"/>
+              border-left-width:1px;border-bottom-width:0px;height:4mm;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="border-bottom-width:0px;height:4mm;"/>
             <div class="styIRS1040ScheduleAlnRightNumBox" style="background-color:lightgrey;
-        border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="border-bottom-width:0px"/>
+        border-bottom-width:0px;height:4mm;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="border-bottom-width:0px;height:4mm;"/>
             <br/>
             <!--Line 1 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.2mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.5mm;border-left-width:1px;
               border-bottom-width:1px">1</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.2mm;padding-right:.5mm;font-size:6pt">
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.5mm;padding-right:.5mm;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/MedicalAndDentalExpensesAmt"/>
               </xsl:call-template>
@@ -213,16 +216,16 @@
               border-bottom-width:0px;"/>
              <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.5mm;border-bottom-width:0px"/>   
             <br/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.4mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:6.5mm;border-left-width:1px;
               border-bottom-width:1px">3</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.4mm;padding-right:.5mm;font-size:6pt">
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:6.5mm;padding-right:.5mm;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/CalculatedMedicalAllowanceAmt"/>
               </xsl:call-template>
             </div>    
-              <div class="styIRS1040ScheduleAlnRightNumBox" style="height:6mm;background-color:lightgrey;
+              <div class="styIRS1040ScheduleAlnRightNumBox" style="height:6.5mm;background-color:lightgrey;
               border-left-width:1px;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:6mm;border-bottom-width:0px"/>    
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:6.5mm;border-bottom-width:0px"/>    
             <br/>  
             <!--Line 4 Verbiage and amount box-->
             <div class="styIRS1040ScheduleAleftBox" style="width:151.5mm; height:3.9mm;font-size:8pt;
@@ -251,7 +254,7 @@
               </span>
             </div>
             <!-- Lines 5, 6, 7 and 8 Verbiage only-->
-            <div class="styIRS1040ScheduleAleftBox" style="width: 96mm; height:23.5mm;font-size:8pt;
+            <div class="styIRS1040ScheduleAleftBox" style="width: 96mm; height:27.5mm;font-size:8pt;
               border-right-width:0px;border-left-width:0px">
               <!--Line 5 Verbiage and check boxes-->
               <div class="styIRS1040ScheduleAleftBox" style="width:94.4mm; height:3.9mm;font-size:8pt;
@@ -261,7 +264,7 @@
                 <span style="width:2.1mm"/>
                    State and local <span class="styBoldText">(check only one box):</span>
               </div>
-              <div class="styIRS1040ScheduleAleftBox" style="width: 47.9mm; height:7.8mm;font-size:8pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width: 47.9mm; height:9.0mm;font-size:8pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:2mm;
                 padding-top:.5mm">
                 <span style="width:5.5mm;"/>
@@ -350,11 +353,11 @@
             </div>
             <!--Lines 5, 6, 7, 8 and 9 amount boxes-->
             <!--Line 5 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4mm;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4mm;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.1mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.1mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.1mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.1mm;border-bottom-width:0px"/>
             <br/>
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4mm;border-left-width:1px;
               border-bottom-width:0px;border-bottom-width:1px;">5</div>
@@ -421,12 +424,12 @@
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:4mm;border-bottom-width:0px"/>
             <br/>
             <!--Line 8 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.1mm;background-color:lightgrey;
               border-left-width:1px;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4mm;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.1mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.1mm;background-color:lightgrey;
               border-bottom-width:0px;border-left-width:1px"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.1mm;border-bottom-width:0px"/>
             <br/>
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4mm;border-left-width:1px;
               border-bottom-width:1px">8
@@ -460,7 +463,7 @@
           </div>
           
           <!-- Interest You Paid, Lines 10, 11, 12, 13, 14, 15 -->
-          <div class="styBB" style="width:187mm;height:43mm">
+          <div class="styBB" style="width:187mm;height:44mm">
             <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:43.1mm;font-size:8.8pt;
               border-left-width:0px;border-right-width:0px;padding-top:1mm">
               <span class="styBoldText">Interest<br/>You Paid<br/>
@@ -520,7 +523,7 @@
                 <span style="width:85mm;border-bottom:dotted 1px;text-align:right;"/>
               </div>
               <!--Line 12 Verbiage only-->
-              <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:8pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:7.9mm;font-size:8pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                 padding-top:.8mm">
                 <span class="styBoldText">12</span>
@@ -558,45 +561,46 @@
                 <xsl:with-param name="TargetNode" select="$FormData/RptHomeMortgIntAndPointsAmt"/>
               </xsl:call-template>
             </div>
+            
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+              border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
             <!--Line 11 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
-              border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-left-width:1px;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-left-width:1px;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px;"/>
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
               border-left-width:1px;border-bottom-width:0px"/>
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
               border-bottom-width:0px;border-left-width:1px"/>
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;border-left-width:1px;
               border-bottom-width:0px;background-color:lightgrey"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;border-left-width:1px;
               border-bottom-width:1px;">11</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:1px;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:1px;
               padding-right:.5mm;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/Form1098HomeMortgIntNotRptAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px;"/>
             <!--Line 12 amount boxes-->
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
               border-bottom-width:0px;"/>
@@ -628,9 +632,9 @@
               border-bottom-width:0px;"/>
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.2mm;border-bottom-width:0px;"/>
             <!--Line 14 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.8mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.6mm;border-left-width:1px;
               border-bottom-width:1px;">14</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.8mm;border-bottom-width:1px;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.6mm;border-bottom-width:1px;
               padding-right:.5mm;font-size:6pt;padding-top:.8mm">
               <xsl:call-template name="SetFormLinkInline">
 				  <xsl:with-param name="TargetNode" select="$FormData/InvestmentInterestAmt"/>
@@ -640,9 +644,9 @@
                 <xsl:with-param name="TargetNode" select="$FormData/InvestmentInterestAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.8mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.6mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.8mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.6mm;border-bottom-width:0px;"/>
             <!--Line 15 Verbiage and amount boxes-->
             <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm;height:3.9mm;font-size:8pt;
               border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
@@ -662,8 +666,8 @@
             </div>
           </div>
           <!-- Gifts to Charity, Lines 16,17, 18, 19 -->
-          <div class="styBB" style="width:187mm;height:19mm">
-            <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:19mm;font-size:8.8pt;
+          <div class="styBB" style="width:187mm;height:24.5mm">
+            <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:23mm;font-size:8.8pt;
               border-left-width:0px;border-right-width:0px;padding-top:1mm">
               <span class="styBoldText">Gifts to<br/>Charity<br/>
               </span>
@@ -671,10 +675,10 @@
                 benefit for it,<br/><span style="font-size:6pt;">see instructions.</span></div>
             </div>
             <!--Lines 16, 17, 18 and 19 Verbiage only)-->
-            <div class="styIRS1040ScheduleAleftBox" style="width: 96mm; height:16.5mm;font-size:8pt;
+            <div class="styIRS1040ScheduleAleftBox" style="width: 96mm; height:20.5mm;font-size:8pt;
               border-left-width:0px;border-right-width:0px">
               <!--Line 16 Verbiage only-->
-              <div class="styIRS1040ScheduleAleftBox" style="width: 95.4mm; height:3.9mm;font-size:8pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width: 95.4mm; height:7.9mm;font-size:8pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                 padding-top:.5mm">
                 <span class="styBoldText">16</span>
@@ -686,14 +690,14 @@
                 <span style=" letter-spacing:3.2mm; font-weight:bold; ">............</span>
               </div>
               <!--Line 17 Verbiage only-->
-              <div class="styIRS1040ScheduleAleftBox" style="width: 95.4mm; height:3.9mm;font-size:8pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width: 95.4mm; height:7.9mm;font-size:8pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                 padding-top:.8mm;">
                 <span class="styBoldText">17</span>
                 <span style="width:2.2mm;"/>
                     Other than by cash or check. If any gift of $250 or more,<br/>
                 <span style="width:7.5mm"/><span style="font-size:7.5pt;">see instructions. You </span>
-                <span style="font-weight:bold;font-size:7.5pt"> must </span>
+                <span style="font-weight:bold;font-size:7.5pt;display:inline;"> must </span>
                 <span style="font-size:7pt;">attach Form 8283 if over $500</span>
                 <span style="width:.5mm"/>
                 <xsl:call-template name="SetFormLinkInline">
@@ -730,35 +734,35 @@
               border-bottom-width:0px;"/>
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
             <!--Line 17 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;border-left-width:1px;
               border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px"/>
             <br/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.1mm;border-left-width:1px;
               border-bottom-width:1px">17</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;padding-right:.5mm;font-size:6pt">
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.1mm;padding-right:.5mm;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/OtherThanByCashOrCheckAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.1mm;background-color:lightgrey;
               border-bottom-width:0px;border-left-width:1px"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.1mm;border-bottom-width:0px"/>
             <br/>
             <!--Line 18 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.9mm;border-left-width:1px;
               border-bottom-width:1px">18</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;padding-right:.5mm;font-size:6pt">
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.9mm;padding-right:.5mm;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/CarryoverFromPriorYearAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.9mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.9mm;border-bottom-width:0px"/>
             <!--Line 19 Verbiage and amount boxes-->
             <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm;height:3.9mm;font-size:8pt;
               border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
@@ -778,19 +782,19 @@
             </div>
           </div>
           <!-- Casualty and Theft Losses, Line 20 -->
-          <div class="styBB" style="width:187mm;height:3mm">
-            <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:3mm;font-size:7.5pt;
+          <div class="styBB" style="width:187mm;height:7mm">
+            <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:7mm;font-size:7.5pt;
               border-left-width:0px;border-right-width:0px;padding-top:0mm">
               <span class="styBoldText">Casualty and<br/>Theft Losses
               </span>
             </div>
-            <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:3mm;font-size:7.1pt;
+            <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:7mm;font-size:7.1pt;
               border-left-width:0px;border-right-width:0px">
               <!--Line 20 Verbiage only-->
-              <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:1.9mm;font-size:7.1pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:3mm;font-size:7.1pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                 padding-top:0mm"/>
-              <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:1.9mm;font-size:8pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:4mm;font-size:8pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                 padding-top:0mm">
                 <span class="styBoldText">20</span>
@@ -804,12 +808,12 @@
               </div>
             </div>
             <!--Line 20 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:1.9mm;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:1.9mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3mm;border-bottom-width:0px"/>
             
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:1.9mm;border-bottom-width:0px;">
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4mm;border-bottom-width:0px;">
               20</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:1.9mm;border-bottom-width:0px;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4mm;border-bottom-width:0px;
               font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/CasualtyOrTheftLossesAmt"/>
@@ -817,7 +821,7 @@
             </div>
           </div>
           <!-- Job Expenses and Certain Misc Deductions, Lines 21, 22, 23, 24, 25, 26, 27 -->
-          <div class="styBB" style="width:187mm;height:38.5mm;">
+          <div class="styBB" style="width:187mm;height:43.5mm;">
             <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:43.2mm;font-size:9pt;
               border-left-width:0px;border-right-width:0px;padding-top:.5mm;">
               <span class="styBoldText">
@@ -843,7 +847,7 @@
                    alt="JobExpLongdash Image"/>job travel, union</div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:8.5pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
-                padding-top:.3mm">
+                ">
                 <span style="width:7.5mm"/>
                       dues, job education, etc. Attach Form 2106 or 2106-EZ</div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:8pt;
@@ -901,7 +905,7 @@
                 <span class="styBoldText">24</span>
                 <span style="width:2mm"/>
                      Add lines 21 through 23<span style="width:2.7mm"/>
-                <span style="letter-spacing:3.2mm;font-weight:bold; ">............</span>
+                <span style="letter-spacing:3.2mm;font-weight:bold; ">...........</span>
               </div>
               <!--Line 25 Verbiage and amount boxes-->
               <div class="styIRS1040ScheduleAleftBox" style="width:60mm;height:3.9mm;border-left-width:0px;
@@ -911,7 +915,7 @@
                 <span style="font-family:arial;font-size:8.5pt">Enter amount from Form 1040, line 38</span>
                 <span style="width:1mm"/>
               </div>
-              <div class="styIRS1040ScheduleAlnRightNumBox" style="border-left-width:1px;border-bottom-width:1px">
+              <div class="styIRS1040ScheduleAlnRightNumBox" style="border-left-width:1px;border-bottom-width:1px;height:3.9mm;">
                  25</div>
               <div class="styIRS1040ScheduleAlnAmountBox" style="width:30mm;height:3.9mm;padding-right:.5mm;
                 font-size:6pt">
@@ -925,7 +929,7 @@
                 <span class="styBoldText">26</span>
                 <span style="width:2mm"/>
                       Multiply line 25 by 2% (.02)<span style="width:1.5mm"/>
-                <span style=" letter-spacing:3.2mm; font-weight:bold; ">...........</span>
+                <span style=" letter-spacing:3.2mm; font-weight:bold; ">..........</span>
               </div>
             </div>
             <!--Lines 21, 22, 23, 24, 26 and 27 amount boxes-->
@@ -954,17 +958,17 @@
               border-bottom-width:0px;"/>
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
             <!--Line 22 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;border-left-width:1px;
               border-bottom-width:1px">22</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;padding-right:.5mm;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;padding-right:.5mm;
               border-bottom-width:1px;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/TaxPreparationFeesAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-bottom-width:0px;border-left-width:1px"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px"/>
             <!--Line 23 amount boxes-->
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
               border-bottom-width:0px;background-color:lightgrey"/>
@@ -990,35 +994,35 @@
               border-bottom-width:0px;"/>
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
             <!--Line 24 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;border-left-width:1px;
               border-bottom-width:1px;">24</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;padding-right:.5mm;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;padding-right:.5mm;
               border-bottom-width:1px;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/TotJobExpnssAndCrtnMiscDedAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px;"/>
             <!--Line 26 aqmount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.3mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.4mm;background-color:lightgrey;
               border-left-width:1px;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.3mm;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.3mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.4mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.4mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.3mm;border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;border-left-width:1px;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.4mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;border-left-width:1px;
               border-bottom-width:1px;">26</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;padding-right:.5mm;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;padding-right:.5mm;
               border-bottom-width:1px;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/CalcJobExpnssMiscDedAllwncAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:4.0mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.9mm;border-bottom-width:0px;"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:4.0mm;border-bottom-width:0px;"/>
             <!--Line 27 amount boxes-->
             <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm;height:3.9mm;font-size:8pt;
               border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
@@ -1045,7 +1049,7 @@
             <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:10mm;font-size:7.1pt;
               border-left-width:0px;border-right-width:0px">
               <!--Line 28 Verbiage-->
-              <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:1.9mm;font-size:7.1pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:4.7mm;font-size:7.1pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                 padding-top:.3mm">
                 <span class="styBoldText" style="font-size:8pt">28</span>
@@ -1059,9 +1063,9 @@
                   <xsl:with-param name="TargetNode" select="$FormData/OtherMiscellaneousDedAmt"/>
                 </xsl:call-template>
                 <span style="width:1.5mm"/>
-                <span style="width:33mm;border-bottom:dotted 1px;text-align:right;"/>
+                <span style="width:44mm;border-bottom:dotted 1px;text-align:right;"/>
               </div>
-              <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:1.9mm;font-size:7.1pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:4.7mm;font-size:7.1pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                 padding-top:.3mm">
                 <span style="width:8mm"/>
@@ -1069,17 +1073,17 @@
               </div>
             </div>
             <!--Line 28 amount boxes-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:2.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.2mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:2.9mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.2mm;border-bottom-width:0px"/>
             <br/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:2.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.0mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:2.9mm;border-bottom-width:0px"/>
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.0mm;border-bottom-width:0px"/>
             <br/>
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:2.9mm;border-bottom-width:0px;">
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:3.8mm;border-bottom-width:1px;">
               28</div>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:2.9mm;padding-right:.5mm;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:3.8mm;padding-right:.5mm;
               border-bottom-width:0px;font-size:6pt">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$FormData/OtherMiscellaneousDedAmt"/>
@@ -1087,16 +1091,16 @@
             </div>
           </div>
           <!-- Total Itemized Deductions, Lines 29 and 30 -->
-          <div class="styBB" style="width:187mm;height:8.5mm">
-            <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:8.5mm;font-size:8pt;
+          <div class="styBB" style="width:187mm;height:32mm">
+            <div class="styIRS1040ScheduleAleftBox" style="width: 20mm; height:32mm;font-size:8pt;
               border-left-width:0px;border-right-width:0px;padding-top:1mm">
               <span class="styBoldText">Total<br/>Itemized<br/>Deductions</span>
             </div>                 	
             <!--Lines 29 and 30 Verbiage-->
-            <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm; height:0mm;font-size:7pt;
+            <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm; height:32mm;font-size:7pt;
               border-left-width:0px;border-right-width:0px">
               <!--Line 29 Verbiage-->             
-              <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm; height:0mm;font-size:7pt;
+              <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm; height:8mm;font-size:7pt;
                 border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                 padding-top:.5mm">
                 <span class="styBoldText" style="font-size:8pt">29</span>
@@ -1105,7 +1109,7 @@
                 <span style="width:7mm"/>$275,000 if head of household; $250,000 if single; 
                  or $150,000 if married filing separately?             
               </div>                
-             <div class="styLNDesc" style="height:1mm;width:125mm;">
+             <div class="styLNDesc" style="height:16mm;width:121mm;">
 			 <div class="styLNLeftNumBox" style="font-size:3pt;height:0mm;padding-bottom:0mm;padding-left: 2.25mm;"/>
 			 <input type="checkbox"  class="styCkbox"  name="Checkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
@@ -1142,15 +1146,15 @@
 							Your deduction may be limited. See the Itemized Deductions Worksheet <br/> 
 							<span style="width:10.5mm;"></span>in the instructions to figure the amount to enter.	      
                </div>
-               	<div class="styLNDesc" style="width:4px;" >
+               	<div class="styLNDesc" style="width:5px;" >
 					<img src="{$ImagePath}/1040SchA_Bracket_Sm2.gif" height="45mm" alt="Curly Bracket Image"/>
 			   </div>
-				 <div class="styIRS1040ScheduleArightBox" style="width:2mm;height:3mm;font-size:7pt;
+				 <div class="styIRS1040ScheduleArightBox" style="width:6mm;height:3mm;font-size:7pt;
                     border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-top:4.2mm;">   
                 <span style="letter-spacing:2mm; font-weight:bold; ">..</span>
                 </div>				
            		<!--Line 30 Verbiage-->                
-                <div class="styIRS1040ScheduleAleftBox" style="width:130mm;height:0mm;font-size:7pt;
+                <div class="styIRS1040ScheduleAleftBox" style="width:130mm;height:8mm;font-size:7pt;
                     border-left-width:0px;border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;
                     padding-top:0mm">                
                <span class="styBoldText" style="font-size:8pt;">30</span>
@@ -1158,7 +1162,7 @@
                      If you elect to itemize deductions even though they are less than your standard <br/>
                 <span style="width:7mm"/>deduction, check here
                      <span style="width:1.5mm"/>
-                <span style=" letter-spacing:3.2mm; font-weight:bold; ">...................</span>
+                <span style=" letter-spacing:3.2mm; font-weight:bold; ">..................</span>
                 <span style="width:3mm"/>
                 <img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
                 <!--<img src="{$ImagePath}/1040SchA_Bullet_Sm2.gif" alt="SmallerBullet Image"/>-->
@@ -1190,9 +1194,9 @@
              
                       					   
             <!--Line 30 shaded area-->
-            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:11.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnRightNumBox" style="height:15.9mm;background-color:lightgrey;
               border-bottom-width:0px;"/>
-            <div class="styIRS1040ScheduleAlnAmountBox" style="height:11.9mm;background-color:lightgrey;
+            <div class="styIRS1040ScheduleAlnAmountBox" style="height:15.9mm;background-color:lightgrey;
               border-bottom-width:0px"/>                 
           </div>
           <div style="width:187mm;clear:both;">

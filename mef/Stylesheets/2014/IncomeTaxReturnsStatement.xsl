@@ -7,6 +7,7 @@
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="DependencyData" select="$RtnDoc/IncomeTaxReturnsStatement"/>
+			<!-- - Forms display as - Income Tax Returns Statement - -->
 	<xsl:param name="depDocTitle">
 		<xsl:call-template name="PopulateDisplayName">
 			<xsl:with-param name="TargetNode" select="$DependencyData"/>
@@ -16,11 +17,11 @@
 		<table id="IncomeTaxReturnsStatementTemp" class="styDepTblLandscape" style="font-size: 7pt">
 			<thead class="styTableThead">
 				<tr class="styDepTblHdr">
-					<th class="styDepTblCell" scope="col" style="text-align:center;width:80mm;">Filing Requirements Satisfied Statement</th>
+					<th class="styDepTblCell" scope="col" style="text-align:center;width:60mm;">Filing Requirements Satisfied Statement</th>
 					<th class="styDepTblCell" scope="col" style="text-align:center;width:50mm;">Return Name</th>
 					<th class="styDepTblCell" scope="col" style="text-align:center;width:60mm;">Return Address</th>
-					<th class="styDepTblCell" scope="col" style="text-align:center;width:32mm;">Return Identifying Number</th>
-					<th class="styDepTblCell" scope="col" style="text-align:center;width:32mm;">IRS Service Center Where Field</th>
+					<th class="styDepTblCell" scope="col" style="text-align:center;width:30mm;">Return Identifying Number</th>
+					<th class="styDepTblCell" scope="col" style="text-align:center;width:36mm;">IRS Service Center Where Field</th>
 				</tr>
 			</thead>
 			<tfoot/>
@@ -30,7 +31,7 @@
 					<tr>
 						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 						<!-- Filing Rqr Satisfied Statement  -->
-						<td class="stydepTblCell" style="width:80mm; text-align:left">
+						<td class="stydepTblCell" style="width:60mm; text-align:left">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="FilingRequirementSatisfiedTxt"/>
 							</xsl:call-template>
@@ -38,12 +39,12 @@
 						<!--Return Name -->
 						<td class="styDepTblCell" style="width:50mm; text-align:left;">
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1"/>
+								<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
 							</xsl:call-template>
-							<xsl:if test="BusinessName/BusinessNameLine2 != ''">
+							<xsl:if test="BusinessName/BusinessNameLine2Txt != ''">
 								<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2"/>
+									<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2Txt"/>
 								</xsl:call-template>
 							</xsl:if>
 						</td>
@@ -63,7 +64,7 @@
 							</xsl:choose>
 						</td>
 						<!-- EIN -->
-						<td class="stydepTblCell" style="width: 32mm; text-align:center;">
+						<td class="styDepTblCell" style="width: 30mm; text-align:center;">
 							<span style="text-align:center;">
 								<!--xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="EIN" />
@@ -85,7 +86,7 @@
 							</span>
 						</td>
 						<!-- IRS Service Center Where Filed -->
-						<td class="stydepTblCell" style="width:32mm; text-align:left">
+						<td class="styDepTblCell" style="width:36mm; text-align:left;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="ServiceCenterWhereRetFiledCd"/>
 							</xsl:call-template>
@@ -97,8 +98,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>

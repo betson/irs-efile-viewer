@@ -54,8 +54,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title>
            <!--Unused Capital Loss Carryover Schedule-->
           <xsl:value-of select="$depDocTitle"/>

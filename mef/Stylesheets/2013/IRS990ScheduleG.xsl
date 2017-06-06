@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 07/30/2010 - Modified per BSP101319OTH - Jeremy Nichols -->
-<!-- 12/14/2010 - Modified per Defect #53516 - Jeremy Nichols -->
-<!-- 07/18/2011 - Modified for TY 2011 per UWR #40502 - Jeremy Nichols -->
-<!-- 06/18/2012 - Modified for TY 2012 per UWR #58215 - Jeremy Nichols -->
-<!-- 07/24/2013 - Modified per UWR #81688 - Jeremy Nichols -->
-<!-- 10/10/2013 - Modified per Defect #38426 - Jeremy Nichols -->
-<!-- 10/15/2013 - Modified per Defect #38488 - Jeremy Nichols -->
-<!DOCTYPE xsl:stylesheet [
-    <!ENTITY nbsp "&#160;">
-  ]><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
+<!-- 03/13/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 06/29/2015 - Changes made for defect 42855 - Jeremy Nichols -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -24,8 +18,10 @@
   <xsl:variable name="RowsToShow" select="10"/>
 
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form990ScheduleGData)"/>
@@ -80,8 +76,8 @@
           
           <!-- BEGIN FORM HEADER -->
           <div class="styTBB" style="width:187mm;">
-            <div class="styFNBox" style="width:33mm;padding-top:1mm;">
-              <div style="height:12mm;">
+            <div class="styFNBox" style="height:23mm;width:33mm;padding-top:1mm;">
+              <div style="height:13.5mm;">
                 <span class="styFormNumber" style="font-size:9pt;">SCHEDULE G<span style="width:5mm;"/>
                   <span style="text-align:left;padding-left:0mm;padding-top:1mm;"/> (Form 990 or 990-EZ)
                 </span>
@@ -94,7 +90,7 @@
                 <span class="styAgency">Internal Revenue Service</span>
               </div>
             </div>
-            <div class="styFTBox" style="width:122mm;">
+            <div class="styFTBox" style="height:23mm;width:122mm;">
               <div class="styMainTitle" style="height:11mm;padding-top:1mm;padding-bottom:0mm;">
                 Supplemental Information Regarding<br/>
                 Fundraising or Gaming Activities
@@ -116,12 +112,12 @@
 				</span>
               </div>
             </div>
-            <div class="styTYBox" style="width:31.5mm;height:22mm;">
-              <div class="styOMB">OMB No. 1545-0047</div>
+            <div class="styTYBox" style="width:31.5mm;height:23mm;">
+              <div class="styOMB" style="width:31.5mm;">OMB No. 1545-0047</div>
               <div class="styTaxYear" style="height:11mm;padding-top:1mm;padding-bottom:0.8mm;">
                 20<span class="styTYColor">13</span>
               </div>
-              <div class="styPartName" style="width:31.5mm;padding-top:0mm;padding-bottom:0.5mm;text-align:left;padding-left:3mm;">
+              <div class="styPartName" style="height:8mm;width:31.5mm;padding-top:0mm;padding-bottom:0.5mm;text-align:left;padding-left:3mm;">
                 Open to Public <span style="text-align:left;padding-left:0mm;"/> Inspection
               </div>
             </div>
@@ -169,7 +165,6 @@
             </div>
           </div> 
             
-          <div class="styNBB" style="width:187mm;">
             <table style="width:187mm;font-size:7pt;">
               <tbody>
                 <tr>
@@ -308,106 +303,83 @@
                 </tr>
               </tbody>
             </table>
-          </div>
           
           <!--  LINE 2a  -->
           <div class="IRS990ScheduleG_LineContainer" style="padding-top:1mm;">
-            <div class="IRS990ScheduleG_LineIndex" style="width:7.5mm;padding-right:10px;text-align:left;padding-left:1mm;padding-top:1mm;">2a</div>
-            <div class="IRS990ScheduleG_LineDesc" style="width:180mm;border-right-width:0px;padding-top:1mm;">
+            <div class="IRS990ScheduleG_LineIndex" style="width:7.5mm;padding-right:10px;text-align:left;padding-left:1mm;padding-top:1mm;display:inline;">2a</div>
+            <div class="IRS990ScheduleG_LineDesc" style="width:180mm;border-right-width:0px;padding-top:1mm;display:inline;">
               Did the organization have a written or oral agreement with any individual (including officers, directors, trustees
             </div>
-          </div>
-          
-          <div class="IRS990ScheduleG_LineContainer">
-            <div class="IRS990ScheduleG_LineIndex" style="width:7.5mm;"/>
-            <div class="IRS990ScheduleG_LineDesc" style="width:150mm;border-right-width:0px;">
+            <div class="IRS990ScheduleG_LineIndex" style="width:7.5mm;display:inline;"/>
+            <div class="IRS990ScheduleG_LineDesc" style="width:140mm;border-right-width:0px;display:inline;">
               or key employees listed in Form 990, Part VII) or entity in connection with professional fundraising services?
             </div>
-            <div class="IRS990ScheduleG_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
-            <span>
+            <span style="display:inline;">
               <xsl:call-template name="PopulateSpan">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/AgrmtProfFundraisingActyInd"/>
               </xsl:call-template>
-              <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+              <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
                 <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/AgrmtProfFundraisingActyInd"/>
                 </xsl:call-template>
               </input>
             </span>
-            <span style="width:3mm;"/>
             <label>
               <xsl:call-template name="PopulateLabelYes">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/AgrmtProfFundraisingActyInd"/>
               </xsl:call-template>
               <span style="font-weight:bold;">Yes</span>
             </label>  
-          </div>
-          <div class="IRS990ScheduleG_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
-            <span>
+            <span style="display:inline;">
               <xsl:call-template name="PopulateSpan">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/AgrmtProfFundraisingActyInd"/>
               </xsl:call-template>
-              <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+              <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
                 <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/AgrmtProfFundraisingActyInd"/>
                 </xsl:call-template>
               </input>
             </span>
-            <span style="width:3mm;"/>
             <label>
               <xsl:call-template name="PopulateLabelNo">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/AgrmtProfFundraisingActyInd"/>
               </xsl:call-template>
               <span style="font-weight:bold;">No</span>
             </label>  
-          </div>
         </div>
 
         <!--  LINE  2b  --> 
-        <div class="styNBB" style="width:187mm">
+        <div class="styNBB" style="width:187mm;float:left;clear:none;">
           <div class="styLNLeftNumBox" style="font-weight:bold;padding-left:2.5mm;width:7.5mm;padding-top:1mm;padding-bottom:0mm;">b</div>
-          <div style="float:left; width:178mm; font-size:7pt;padding-top:1mm;">
+          <div style="width:178mm; font-size:7pt;padding-top:1mm;display:inline;">
             If "Yes," list the ten highest paid individuals or entities (fundraisers) pursuant to agreements under which the fundraiser is <br/>
             to be compensated at least $5,000 by the organization. 
-          </div>
+          </div><br/><br/>
        
           <!--########################################################################################################-->         
           <!--  PART I  -  Fundraising Activities Table  -  Line 2b  -->
-          <div class="styBB" style="width:187mm;float:none;clear:both;">   
-          
-            <!-- Table expand/collapse toggle button-->
-            <div style="float:right;clear:all;width:7mm;text-align:right;">
-              <xsl:call-template name="SetDynamicTableToggleButton">
-                <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraiserActivityInfoGrp"/>
-                <xsl:with-param name="containerHeight" select="10"/>
-                <xsl:with-param name="headerHeight" select="2"/>        
-                <xsl:with-param name="containerID" select=" 'P1ctn' "/>
-              </xsl:call-template>
-            </div>
-          </div> 
-          <!--Table expand/collapse toggle button end--> 
   
           <div class="IRS990ScheduleG_TableContainer" style="border-top-width: 0px" id="P1ctn"> 
             <xsl:call-template name="SetInitialState"/> 
               <table class="styTable" cellspacing="0" cellpadding="0" style="font-size:7pt;overflow-y:auto;">
                 <thead class="styTableThead">
                   <tr>
-                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm; width:42mm;font-weight:normal;font-size:7pt;text-align:center;" scope="col" colspan="2"> 
+                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm; width:42mm;font-weight:normal;font-size:7pt;text-align:center;border-top-width:1px;" scope="col" colspan="2"> 
                       <b>(i)</b> Name and address of individual <br/> or entity (fundraiser)
                     </th>
-                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm;width:27mm;text-align:center;font-size:7pt;font-weight:normal;" scope="col">
+                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm;width:27mm;text-align:center;font-size:7pt;font-weight:normal;border-top-width:1px;" scope="col">
                       <span style="font-weight:bold;">(ii)</span> Activity
                     </th>
-                    <th class="IRS990ScheduleG_TableCell" style="padding-right:0mm;padding-left:1mm; vertical-align:top;padding-top:1mm; width:22mm;text-align:center;font-size:6.5pt;font-weight:normal;" scope="col" colspan="2">
+                    <th class="IRS990ScheduleG_TableCell" style="padding-right:0mm;padding-left:1mm; vertical-align:top;padding-top:1mm; width:22mm;text-align:center;font-size:6.5pt;font-weight:normal;border-top-width:1px;" scope="col" colspan="2">
                       <span style="font-weight:bold;text-align:left;">(iii)</span> Did fundraiser have custody or control of contributions?
                     </th>
-                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm;width:32mm;text-align:center;font-size:7pt;font-weight:normal;" scope="col">
+                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm;width:32mm;text-align:center;font-size:7pt;font-weight:normal;border-top-width:1px;" scope="col">
                       <span style="font-weight:bold;">(iv)</span> Gross receipts <br/>  from activity
                     </th>
-                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm;width:32mm;text-align:center;font-size:7pt;font-weight:normal;" scope="col">
+                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm;width:32mm;text-align:center;font-size:7pt;font-weight:normal;border-top-width:1px;" scope="col">
                       <span style="font-weight:bold;">(v)</span> Amount paid to <br/>(or retained by)<br/> fundraiser listed in <br/>col. <b>(i)</b>
                     </th>
-                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm;width:32mm;border-right-width:0px;text-align:center;font-size:7pt; font-weight:normal;" scope="col">
+                    <th class="IRS990ScheduleG_TableCell" style="vertical-align:top;padding-top:1mm;width:32mm;border-right-width:0px;text-align:center;font-size:7pt; font-weight:normal;border-top-width:1px;" scope="col">
                       <span style="font-weight:bold;">(vi)</span> Amount paid to <br/>  (or retained by) <br/> organization
                     </th>
                   </tr>
@@ -460,9 +432,28 @@
                   </xsl:call-template>
                 </xsl:if>
                   <tr>
-                    <td style="width:91mm;border:black 0 solid;border-bottom-width:0;font-family:verdana;font-size:7pt;border-right-width:1;height:7mm;" colspan="5">
+                    <td style="width:91mm;border:black 0 solid;border-bottom-width:0;font-family:verdana;font-size:7pt;border-right-width:1px;height:7mm;" colspan="5">
                       <span class="styBoldText">Total </span>          
-                      <span class="IRS990ScheduleG_Dotspacing">.................</span>
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.   
+                      <span style="width:2mm;"/>.
                       <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
                     </td>
                     <td style="width:32mm;border:black 0 solid;border-bottom-width:0;font-family:verdana;font-size:7pt;width:34mm;text-align:right;padding-right:.5mm;border-right-width:1px;">
@@ -495,11 +486,11 @@
             <!--  LINE 3  -->
             <!-- BEGIN Part I -  All States Registered or Licensed-->
             <div style="width:187mm;">
-              <div class="styLNLeftNumBox" style="font-weight:bold;width:5mm;padding-top:1mm;">3</div>
-              <div class="styLNDesc" style="width:180mm;padding-left:0mm;padding-top:1mm;clear:both;float:right;padding-bottom:3mm;"> 
+              <div class="styLNLeftNumBox" style="font-weight:bold;width:5mm;padding-top:1mm;display:inline">3</div>
+              <div class="styLNDesc" style="height:10mm;width:180mm;padding-left:0mm;padding-top:1mm;padding-bottom:3mm;display:inline;"> 
                 List all states in which the organization is registered or licensed to solicit contributions or has been notified it is exempt from registration or licensing.
               </div>
-              <div class="styFixedUnderline" style="float:left;clear:none;width:187mm;border-bottom-style:dashed;">
+              <div class="styFixedUnderline" style="float:left;clear:none;width:187mm;border-bottom-style:dashed;display:inline;">
                 <xsl:for-each select="$Form990ScheduleGData/LicensedStatesCd">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="."/>
@@ -507,7 +498,7 @@
                   <xsl:if test="not(position() = last())">,  </xsl:if>
                 </xsl:for-each>
               </div>
-              <div class="styFixedUnderline" style="float:left;clear:none;width:187mm;border-bottom-style:dashed;">
+              <div class="styFixedUnderline" style="float:left;clear:none;width:187mm;border-bottom-style:dashed;display:inline;">
                 <xsl:for-each select="$Form990ScheduleGData/AllStatesCd">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="."/>
@@ -541,965 +532,1098 @@
             <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##############################################################################################################-->
             <!--  BEGIN  PART II   EVENTS  -->
             <!-- BEGIN Part II Title -->
-      
-            <table class="styTable" style="font-size: 7pt;width:187mm;" cellspacing="0">
-              <thead>
-                <div class="styBB" style="width:187mm;">
-                  <div class="styPartName">Part II</div>
-                  <div class="styPartDesc" style="width:170mm;padding-bottom:.5mm;"><b>Fundraising Events. </b> <span class="styNormalText">  Complete if the organization answered "Yes" to Form 990, Part IV, line 18, or reported more than $15,000 of fundraising event contributions and gross income on Form 990-EZ, lines 1 and 6b. List events with gross receipts greater than $5,000.  </span></div>
+				<div class="styBB" style="height:11mm;width:187mm;">
+                  <div class="styPartName" style="height:4mm;display:inline;">Part II</div>
+                  <div class="styPartDesc" style="width:170mm;padding-bottom:.5mm;display:inline;"><b>Fundraising Events. </b> <span class="styNormalText" style="display:inline;">  Complete if the organization answered "Yes" to Form 990, Part IV, line 18, or reported more than $15,000 of fundraising event contributions and gross income on Form 990-EZ, lines 1 and 6b. List events with gross receipts greater than $5,000.  </span></div>
                 </div>
-                <!-- END Part II Title -->
-      
-                <!-- Begin Part II Table-->
-                <tr>
-                  <th style="width: 6mm; border-color: black; border-style: solid; border-right-width: 1px; border-left-width: 0px; border-bottom-width: 0px; border-top-width: 0px" scope="col">
-                    <span style="width:1px;"/>
-                  </th>
-                  <th colspan="2">
-                    <span style="width: 1px;"/>
-                  </th>
-                  <th class="styLNAmountBox" scope="col" style="width:32mm;height:10mm;vertical-align:top;padding-top:.5mm;text-align:center;">
-                    <b>(a)</b>
-                    <span class="styNormalText"> Event #1</span>
-                    <br/>
-                    <br/>
-                    <span class="styIRS990ScheduleGUnderlinedBox" style="text-align:left;">
-                      <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NameOfEvent1Amt"/>
-                      </xsl:call-template>
-                    </span>
-                    <br/>
-                    <span class="styNormalText"> (event type)</span>
-                  </th>
-                  <th class="styLNAmountBox" scope="col" style=" width:32mm;vertical-align:top;padding-top:.5mm;text-align:center;">
-                    <b>(b)</b>
-                    <span class="styNormalText"> Event #2</span>
-                    <br/>
-                    <br/>
-                    <span class="styIRS990ScheduleGUnderlinedBox" style="text-align:left;">
-                      <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NameOfEvent2Amt"/>
-                      </xsl:call-template>
-                    </span>
-                    <br/>
-                    <span class="styNormalText"> (event type)</span>
-                  </th>
-                  <th class="styLNAmountBox" scope="col" style="width:32mm;vertical-align:top;padding-top:0.5mm;text-align:center">
-                    <b>(c)</b>
-                    <span class="styNormalText"> Other events</span>
-                    <br/>
-                    <br/>
-                    <span class="styIRS990ScheduleGUnderlinedBox">
-                      <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherEventsTotalCnt"/>
-                      </xsl:call-template>
-                    </span>
-                    <br/>
-                    <span class="styNormalText"> (total number)</span>
-                  </th>
-                  <th class="styLNAmountBox" scope="col" style="width:32mm; border-right-width: 0px;vertical-align:top;text-align:center;padding-top:0.5mm;">
-                    <b>(d)</b>
-                    <span class="styNormalText"> Total events<br/>(add col. <b>(a) </b>through col. <b>(c)</b>)</span>
-                  </th>
-                </tr>
-              </thead>
-              <tfoot/>
-              <tbody valign="top">
-              
-                <!--   BEGIN PART II  LINE 1   -->
-                <tr>
-                  <td class="styIRS990ScheduleGVTImageBox" style="width:6mm;padding-top:0mm;border-bottom-width:1px;" rowspan="3">
-                    <img src="{$ImagePath}/990SchG_Revenue.gif" alt="VerticalRevenue"/>
-                  </td>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1.25mm;padding-top:2mm;">1</span>
-                  </td>
-                  <td class="styLNDesc" style="width: 50mm;padding-top:3mm;border-bottom-width:1px;">
-                    Gross receipts 
-                    <span style="width:1mm;"/>
-					<b>
-					  <span class="styNBSP"/>.
-					  <span class="styNBSP"/>.
-					  <span class="styNBSP"/>.
-					</b>
-                  </td>
-                  <td class="styLNAmountBox" style="width: 32mm;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossReceiptsEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width: 32mm;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossReceiptsEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossReceiptsOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px; text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossReceiptsTotalAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
+                <!-- END Part II Title -->    
+            <table class="styTable" style="font-size: 7pt;height:auto;width:187mm;display:inline;" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="styIRS990ScheduleGVTImageBox" style="height:49.4mm;width:6mm;padding-top:0mm;border-bottom-width:1px;">
+						<br/>
+						<br/>
+						<br/>
+						<br/>
+						<img src="{$ImagePath}/990SchG_Revenue.gif" alt="VerticalRevenue" style=""/>
+					</td>
+					<td>
+						<table class="styTable" style="font-size: 7pt;height:auto;width:181mm;display:inline;" cellspacing="0" cellpadding="0">
+							<tr>
+							  <th colspan="2" style="height:30mm;width:53mm;float:left;clear:none;display:inline;">
+								<span style="width: 53mm;display:inline;"/>
+							  </th>
+							  <th class="styLNAmountBox" scope="col" style="width:32mm;height:30mm;vertical-align:top;padding-top:.5mm;text-align:center;display:inline;">
+								<b>(a)</b>
+								<span class="styNormalText"> Event #1</span>
+								<br/>
+								<br/>
+								<span class="styIRS990ScheduleGUnderlinedBox" style="height:auto;">
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NameOfEvent1Amt"/>
+								  </xsl:call-template>
+								</span>
+								<br/>
+								<span class="styNormalText" style="display:inline;"> (event type)</span>
+							  </th>
+							  <th class="styLNAmountBox" scope="col" style="height:30mm;width:32mm;vertical-align:top;padding-top:.5mm;text-align:center;display:inline;">
+								<b>(b)</b>
+								<span class="styNormalText" style="display:inline;"> Event #2</span>
+								<br/>
+								<br/>
+								<span class="styIRS990ScheduleGUnderlinedBox" style="height:auto;">
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NameOfEvent2Amt"/>
+								  </xsl:call-template>
+								</span>
+								<br/>
+								<span class="styNormalText" style="display:inline;"> (event type)</span>
+							  </th>
+							  <th class="styLNAmountBox" scope="col" style="height:30mm;width:32mm;vertical-align:top;padding-top:0.5mm;text-align:center;display:inline;">
+								<b>(c)</b>
+								<span class="styNormalText"> Other events</span>
+								<br/>
+								<br/>
+								<span class="styIRS990ScheduleGUnderlinedBox" style="height:auto;">
+								  <xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherEventsTotalCnt"/>
+								  </xsl:call-template>
+								</span>
+								<br/>
+								<span class="styNormalText"> (total number)</span>
+							  </th>
+							  <th class="styLNAmountBox" scope="col" style="height:30mm;width:31mm; border-right-width: 0px;vertical-align:top;text-align:center;padding-top:0.75mm;display:inline;">
+								<b>(d)</b>
+								<span class="styNormalText"> Total events<br/>(add col. <b>(a) </b>through col. <b>(c)</b>)</span>
+							  </th>
+							</tr>
+							<!--   BEGIN PART II  LINE 1   -->
+							<tr>
+							  <td style="height:6.5mm;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1.25mm;padding-top:0mm;">1</span>
+							  </td>
+							  <td class="styLNDesc" style="height:6.5mm;width: 48mm;padding-top:0mm;border-bottom-width:1px;display:inline;">
+								<br/>
+								Gross receipts 
+								<span style="width:2mm;display:inline;"/>
+								<b>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width: 32mm;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossReceiptsEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width: 32mm;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossReceiptsEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:32mm;text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossReceiptsOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossReceiptsTotalAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  II    Line 2  -->
+							<tr>
+							  <td style="height:6.5mm;width:5mm;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:0mm;">2</span>
+							  </td>
+							  <td class="styLNDesc" style="height:6.5mm;width: 48mm;padding-top:0mm;display:inline;">
+								<br/>
+								Less: Contributions 
+								<b>.
+								  <span style="width:4mm;"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:32mm;text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CharitableContriEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:32mm;text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CharitableContriEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:32mm;text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CharitableContriOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CharitableContributionsTotAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!--  START LINE 3  -->
+							<tr>
+							  <td style="height:8mm;width:5mm;display:inline;">
+								<span class="styLNLeftLtrBox" style="height:6.5mm;width: 5mm;text-align:left;padding-left:1mm;padding-top:0mm;border-bottom:1px solid black;">3</span>
+							  </td>
+							  <td class="styLNDesc" style="height:6.5mm;width: 48mm;padding-top:0mm;border-bottom:1px solid black;display:inline;">
+								Gross income (line 1 minus <br/>
+								line 2)
+								<b>
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:32mm;text-align:right;padding-top:0mm;vertical-align:bottom;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossRevenueEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:32mm;text-align:right;padding-top:0mm;vertical-align:bottom;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossRevenueEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:32mm;text-align:right;padding-top:0mm;vertical-align:bottom;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossRevenueOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:31mm; border-right-width:0px;text-align:right;padding-top:0mm;vertical-align:bottom;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossRevenueTotalEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+						</table>
+					</td>
+				</tr>
                 
-                <!-- PART  II    Line 2  -->
-                <tr>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1mm;">2</span>
-                  </td>
-                  <td class="styLNDesc" style="width: 50mm;padding-top:1.5mm;">
-                    Less: Contributions
-                    <b>
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CharitableContriEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CharitableContriEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CharitableContriOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px; text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CharitableContributionsTotAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-                <!--   END LINE 2   -->
-                
-                <!--  START LINE 3  -->
-                <tr>
-                  <td style="border-color:black; border-style:solid; border-bottom-width: 1px; border-top-width: 0px; border-left-width: 0px; border-right-width: 0px">
-                    <span class="styLNLeftNumBoxSD" style="padding-left:1mm;">3</span>
-                  </td>
-                  <td class="styLNDesc" style="border-color: black; border-style:solid; border-left-width: 0px; border-right-width: 0px; height:5mm;border-top-width: 0px; width: 50mm; border-bottom-width: 1px">
-                    Gross income (line 1 <br/>minus line 2)
-                    <span style="width:2.5mm;"/>
-                    <b>
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;height:5mm;padding-top:2mm;vertical-align:bottom;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossRevenueEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;vertical-align:bottom;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossRevenueEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;vertical-align:bottom;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossRevenueOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;padding-top:2mm;vertical-align:bottom;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/GrossRevenueTotalEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-                
-                <!--   PART II  Lines 4 - 9 -->
-                <tr>
-                  <td class="styIRS990ScheduleGVTImageBox" rowspan="8" style="width: 6mm; padding-top:10mm;border-bottom-width:0px;">
-                    <img src="{$ImagePath}/990SchG_DirectExpenses.gif" alt="VerticalDirectExpenses"/>
-                  </td>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:2mm;text-align:left;padding-left:1.25mm;">4</span>
-                  </td>
-                  <td class="styLNDesc" style="width: 50mm;padding-top:2mm;">
-                    Cash prizes
-                    <span style="width:4mm;"/>
-                    <b>
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CashPrizesEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CashPrizesEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CashPrizesOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CashPrizesTotalEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-                
-                <!-- PART II   Line 5 -->
-                <tr>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:2mm;text-align:left;padding-left:1.25mm;">5</span>
-                  </td>
-                  <td class="styLNDesc" style="width: 50mm;padding-top:2mm;">
-                    Noncash prizes
-                    <span style="width:4.5mm;"/>
-                    <b>
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NonCashPrizesEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NonCashPrizesEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NonCashPrizesOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px; text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NonCashPrizesTotalEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-                
-                <!-- PART II   Line 6 -->
-                <tr>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:2mm;text-align:left;padding-left:1.25mm;">6</span>
-                  </td>
-                  <td class="styLNDesc" style="width: 50mm;padding-top:2mm;">
-                    Rent/facility costs
-                    <span style="width:0.5mm;"/>
-                    <b>
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/RentFacilityCostsEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/RentFacilityCostsEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/RentFcltyCostsOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/RentFcltyCostsTotalEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-                
-                <!-- PART II  Line 7  -->
-                <tr>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-top:2mm;padding-left:1.25mm;">7</span>
-                  </td>
-                  <td class="styLNDesc" style="width: 50mm;padding-top:2mm;">
-                    Food and beverages
-                    <span style="width:4mm;"/>
-                    <b>
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/FoodAndBeverageEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/FoodAndBeverageEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/FoodAndBeverageOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/FoodAndBeverageTotalEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-                
-                  <!-- PART II  Line 8  -->
-                <tr>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-top:2mm;padding-left:1.25mm;">8</span>
-                  </td>
-                  <td class="styLNDesc" style="width: 50mm;padding-top:2mm;">Entertainment
-                    <b>
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/EntertainmentEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/EntertainmentEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/EntertainmentOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/EntertainmentTotalEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-  
-                <!-- PART II  Line 9  -->
-                <tr>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-top:2mm;padding-left:1.25mm;">9</span>
-                  </td>
-                  <td class="styLNDesc" style="width: 50mm;padding-top:2mm;">
-                    Other direct expenses
-                    <span style="width:0.5mm;"/>
-                    <b>
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherDirectExpensesEvent1Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherDirectExpensesEvent2Amt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm;text-align:right;padding-top:2mm;">
-                    <span class="styTableCellPad"/>
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OthDirectExpnssOtherEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OthDirectExpnssTotalEventsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-  
-                <!--  PART II  Line 10 -->
-                <tr>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:3mm;text-align:left;padding-left:.25mm;">10</span>
-                  </td>
-                  <td style="height:7mm;padding-top:3mm;" colspan="4">
-                    <span class="styNormalText" style="font-size:7pt;">Direct expense summary. Add lines 4 through 9 in column (d) </span>
-                    <span style="width:1.5mm;"/>
-                    <span class="IRS990ScheduleG_Dotspacing">........... </span>
-                    <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;padding-top:2mm;">
-					<xsl:choose>
-						<xsl:when test="$Form990ScheduleGData/FundraisingEventInformationGrp/DirectExpenseSummaryEventsAmt &lt; 0">
-							<xsl:call-template name="PopulateNegativeNumber">
-							  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/DirectExpenseSummaryEventsAmt"/>
-							</xsl:call-template>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="PopulateAmount">
-							  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/DirectExpenseSummaryEventsAmt"/>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
-                  </td>
-                </tr>
-                
-                <!--  PART II  Line 11  -->
-                <tr>
-                  <td>
-                    <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:.5mm;text-align:left;padding-left:.25mm;">11</span>
-                  </td>
-                  <td style="height:4mm;padding-top:.5mm;" colspan="4">
-                    <span class="styNormalText" style="font-size:7pt;">Net income summary. Subtract line 10 from line 3, column (d)</span>
-                    <span style="width:2.5mm;"/>
-                    <span class="IRS990ScheduleG_Dotspacing">........... </span>
-                    <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
-                  </td>
-                  <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;border-bottom-width:0px;padding-top:2mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NetIncomeSummaryAmt"/>
-                    </xsl:call-template>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+				<!--   PART II  Lines 4 - 11 -->
+				<tr>
+					<td class="styIRS990ScheduleGVTImageBox" style="height:46mm;width:6mm;padding-top:0mm;border-bottom-width:0px;">
+						<br/>
+						<br/>
+						<br/>
+						<img src="{$ImagePath}/990SchG_DirectExpenses.gif" alt="VerticalDirectExpenses"/>
+					</td>
+					<td>
+						<table class="styTable" style="font-size: 7pt;height:auto;width:181mm;display:inline;" cellspacing="0" cellpadding="0">
+							<!-- PART  II    Line 4  -->
+							<tr>
+							  <td style="height:auto;width:5mm;float:left;clear:none;display:inline;">
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:2mm;">4</span>
+							  </td>
+							  <td class="styLNDesc" style="height:auto;width: 48mm;padding-top:2mm;float:left;clear:none;display:inline;">
+								Cash prizes
+								<b>
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CashPrizesEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CashPrizesEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CashPrizesOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:31mm; border-right-width:0px; text-align:right;padding-top:2mm;display:inline;">
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/CashPrizesTotalEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  II    Line 5  -->
+							<tr>
+							  <td style="height:auto;width:5mm;display:inline;">
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1mm;">5</span>
+							  </td>
+							  <td class="styLNDesc" style="height:auto;width: 48mm;padding-top:1.5mm;display:inline;">
+								Noncash prizes
+								<b>
+								  <span style="width:6mm;"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NonCashPrizesEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NonCashPrizesEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NonCashPrizesOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:31mm; border-right-width:0px; text-align:right;padding-top:2mm;display:inline;">
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NonCashPrizesTotalEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  II    Line 6  -->
+							<tr>
+							  <td style="height:auto;width:5mm;display:inline;">
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1mm;">6</span>
+							  </td>
+							  <td class="styLNDesc" style="height:auto;width: 48mm;padding-top:1.5mm;display:inline;">
+								Rent/facility costs
+								<b>
+								  <span style="width:2.5mm;"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/RentFacilityCostsEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/RentFacilityCostsEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/RentFcltyCostsOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:31mm; border-right-width:0px; text-align:right;padding-top:2mm;display:inline;">
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/RentFcltyCostsTotalEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  II    Line 7  -->
+							<tr>
+							  <td style="height:auto;width:5mm;display:inline;">
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1mm;">7</span>
+							  </td>
+							  <td class="styLNDesc" style="height:auto;width: 48mm;padding-top:1.5mm;display:inline;">
+								Food and beverages
+								<b>
+								  <span style="width:5.5mm;"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/FoodAndBeverageEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/FoodAndBeverageEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/FoodAndBeverageOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:31mm; border-right-width:0px; text-align:right;padding-top:2mm;display:inline;">
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/FoodAndBeverageTotalEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  II    Line 8  -->
+							<tr>
+							  <td style="height:auto;width:5mm;display:inline;">
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1mm;">8</span>
+							  </td>
+							  <td class="styLNDesc" style="height:auto;width: 48mm;padding-top:1.5mm;display:inline;">
+								Entertainment
+								<b>
+								  <span style="width:6mm;"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/EntertainmentEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/EntertainmentEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/EntertainmentOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:31mm; border-right-width:0px; text-align:right;padding-top:2mm;display:inline;">
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/EntertainmentTotalEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  II    Line 9  -->
+							<tr>
+							  <td style="height:auto;width:5mm;display:inline;">
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1mm;">9</span>
+							  </td>
+							  <td class="styLNDesc" style="height:auto;width: 48mm;padding-top:1.5mm;display:inline;">
+								Other direct expenses
+								<span style="width:2mm;"/>
+								<b>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherDirectExpensesEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherDirectExpensesEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:32mm;text-align:right;padding-top:2mm;display:inline;">
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OthDirectExpnssOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:31mm; border-right-width:0px; text-align:right;padding-top:2mm;display:inline;">
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OthDirectExpnssTotalEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  II    Line 10  -->
+							<tr>
+							  <td style="height:auto;width:5mm;display:inline;">
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1.5mm;">10</span>
+							  </td>
+							  <td class="styLNDesc" style="height:auto;width: 144mm;padding-top:1.5mm;display:inline;" colspan="4">
+								<span class="styNormalText" style="font-size:7pt;">Direct expense summary. Add lines 4 through 9 in column (d) </span>
+								<b>
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+								</b>
+								<span style="width:4mm"/>
+								<img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:31mm; border-right-width:0px; text-align:right;padding-top:2mm;display:inline;">
+								<xsl:choose>
+									<xsl:when test="$Form990ScheduleGData/FundraisingEventInformationGrp/DirectExpenseSummaryEventsAmt &lt; 0">
+										<xsl:call-template name="PopulateNegativeNumber">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/DirectExpenseSummaryEventsAmt"/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="PopulateAmount">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/DirectExpenseSummaryEventsAmt"/>
+										</xsl:call-template>
+									</xsl:otherwise>
+								</xsl:choose>
+							  </td>
+							</tr>
+							<!-- PART  II    Line 11  -->
+							<tr>
+							  <td style="height:auto;width:5mm;display:inline;">
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1.5mm;">11</span>
+							  </td>
+							  <td class="styLNDesc" style="height:auto;width: 144mm;padding-top:1.5mm;display:inline;" colspan="4">
+								<span class="styNormalText" style="font-size:7pt;">Net income summary. Subtract line 10 from line 3, column (d)</span>
+								<b>
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+								</b>
+								<span style="width:3.5mm"/>
+								<img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
+							  </td>
+							  <td class="styLNAmountBox" style="height:auto;width:31mm; border-right-width:0px; border-bottom-width:0px;text-align:right;padding-top:2mm;display:inline;">
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/NetIncomeSummaryAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
   
             <!--  PART III   GAMING   -->
             <!-- BEGIN Part III Title -->
-            <table class="styTable" style="font-size: 7pt;width:187mm;" cellspacing="0">
-                <div class="styBB" style="width:187mm;border-top-width:2px;">
-                  <div class="styPartName" style="padding-bottom:.5mm;">Part III</div>
-                  <div class="styPartDesc" style="width:170mm;padding-bottom:.5mm;"><b>Gaming. </b> 
-                    <span class="styNormalText">
-                      Complete if the organization answered "Yes" to Form 990, Part IV, line 19, or reported more than $15,000 on Form 990-EZ, line 6a. 
-                    </span>
-                  </div>
-                </div>
-                <tr>
-                  <td class="styIRS990ScheduleGVTImageBox" style="width:6mm;padding-top:1mm;border-bottom-width:1px;" rowspan="2" scope="col">
-                    <img src="{$ImagePath}/990SchG_Revenue.gif" alt="VerticalRevenue"/>
-                  </td>
-                  <td colspan="2">
-                    <span style="width: 1px;"/>
-                  </td>               
-                  <td class="styLNAmountBox" scope="col" style="width:32mm; border-right-width: 0px;vertical-align:top;text-align:center;padding-top:1mm;">
-                    <b>(a)</b><span class="styNormalText"> Bingo</span>
-                  </td>
-                  <td class="styLNAmountBox" scope="col" style="width:32mm; border-right-width: 0px;vertical-align:top;text-align:center;padding-top:1mm;font-size:6.5pt;">
-                    <b>(b)</b><span class="styNormalText"> Pull tabs/Instant</span><br/><span class="styNormalText">bingo/progressive bingo</span>
-                  </td>
-                  <td class="styLNAmountBox" scope="col" style="width:32mm; border-right-width: 0px;vertical-align:top;text-align:center;padding-top:1mm;">
-                    <b>(c)</b><span class="styNormalText"> Other gaming</span>
-                  </td>
-                  <td class="styLNAmountBox" scope="col" style="font-size:6.5pt;width:32mm; border-right-width: 0px;vertical-align:top;text-align:center;padding-top:1mm;">
-                    <b>(d)</b><span class="styNormalText"> Total gaming (add col.<b>(a)</b> through col.<b>(c)</b>)</span>
-                  </td>
-                </tr>
-              
-                <!--   BEGIN PART III  LINE 1   -->
-                <tr>
-                  <td style="border-color:black; border-style:solid; border-bottom-width: 1px; border-top-width: 0px; border-left-width: 0px; border-right-width: 0px">
-                    <span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1.25mm;padding-top:0mm;">1</span>
-                  </td>
-                  <td class="styLNDesc" style="border-color: black; border-style:solid; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; width: 50mm; border-bottom-width: 1px">
-                    Gross revenue 
-                    <b>
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                      <span class="styNBSP"/>.
-                    </b>
-                  </td>
-                  <td class="styLNAmountBox" style="width: 32mm;">
-                    <xsl:call-template name="PopulateAmount">                  
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/GrossRevenueBingoAmt"/>
-                    </xsl:call-template>
-                  </td>
-                  <td class="styLNAmountBox" style="width: 32mm;">
-                    <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/GrossRevenuePullTabsAmt"/>
-                    </xsl:call-template>
-                  </td>
-                 <td class="styLNAmountBox" style="width:32mm;text-align:right;"> 
-                  <span class="styTableCellPad"/>
-                  <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/GrossRevenueOtherGamingAmt"/>
-                  </xsl:call-template>
-                </td>      
-                <td class="styLNAmountBox" style="width:32mm; border-right-width:0px; text-align:right;">
-                  <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/GrossRevenueTotalGamingAmt"/>
-                  </xsl:call-template>
-                </td>
-              </tr>
-  
-              <!--  PART III   Line 2  -->
-              <tr>
-                <td class="styIRS990ScheduleGVTImageBox" style="width:6mm;padding-top:2mm;border-bottom-width:1px;" rowspan="4">
-                  <img src="{$ImagePath}/990SchG_DirectExpenses.gif" alt="VerticalDirectExpenses"/>
-                </td>
-                <td>
-                  <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:2mm;text-align:left;padding-left:1.25mm;">2</span>  
-                </td>
-                <td class="styLNDesc" style="width: 50mm;padding-top:2mm;border-bottom-width:1px;">
-                  Cash prizes
-                  <b>
-                    <span class="styNBSP"/>.
-                    <span class="styNBSP"/>.
-                    <span class="styNBSP"/>.
-                    <span class="styNBSP"/>.
-                  </b>
-                </td>
-                <td class="styLNAmountBox" style="width: 32mm;">
-                  <xsl:call-template name="PopulateAmount">                  
-                    <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/CashPrizesBingoAmt"/>
-                    </xsl:call-template>
-                </td>
-                <td class="styLNAmountBox" style="width: 32mm;">
-                  <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/CashPrizesPullTabsAmt"/>
-                  </xsl:call-template>
-                </td>
-               <td class="styLNAmountBox" style="width:32mm;text-align:right;"> 
-                <span class="styTableCellPad"/>
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/CashPrizesOtherGamingAmt"/>
-                </xsl:call-template>
-              </td>      
-              <td class="styLNAmountBox" style="width:32mm; border-right-width:0px; text-align:right;">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/CashPrizesTotalGamingAmt"/>
-                </xsl:call-template>
-              </td>
-            </tr>
-  
-            <!--  PART III   Line 3  -->
-            <tr>
-            <td>
-              <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:2mm;text-align:left;padding-left:1.25mm;">3</span>        
-            </td>
-            <td class="styLNDesc" style="width: 50mm;padding-top:2mm;border-bottom-width:1px;">
-              Non-cash prizes
-              <b>
-                <span class="styNBSP"/>.
-                <span class="styNBSP"/>.
-                <span class="styNBSP"/>.
-                </b>
-            </td>
-            <td class="styLNAmountBox" style="width: 32mm;">
-              <xsl:call-template name="PopulateAmount">                  
-                <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NonCashPrizesBingoAmt"/>
-              </xsl:call-template>
-            </td>
-            <td class="styLNAmountBox" style="width: 32mm;">
-              <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NonCashPrizesPullTabsAmt"/>
-              </xsl:call-template>
-            </td>
-            <td class="styLNAmountBox" style="width:32mm;text-align:right;"> 
-              <span class="styTableCellPad"/>
-              <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NonCashPrizesOtherGamingAmt"/>
-              </xsl:call-template>
-            </td>      
-            <td class="styLNAmountBox" style="width:32mm; border-right-width:0px; text-align:right;">
-              <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NonCashPrizesTotalGamingAmt"/>
-              </xsl:call-template>
-            </td>
-          </tr>
-  
-          <!--  PART III   Line 4  -->
-          <tr>
-            <td>
-              <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:2mm;text-align:left;padding-left:1.25mm;">4</span>        
-            </td>
-            <td class="styLNDesc" style="width: 50mm;padding-top:2mm;border-bottom-width:1px;">
-              Rent/facility costs
-              <b>
-                <span class="styNBSP"/>.
-                <span class="styNBSP"/>.
-                <span class="styNBSP"/>.
-              </b>
-            </td>
-            <td class="styLNAmountBox" style="width: 32mm;">
-              <xsl:call-template name="PopulateAmount">                  
-                <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/RentFacilityCostsBingoAmt"/>
-              </xsl:call-template>
-            </td>
-            <td class="styLNAmountBox" style="width: 32mm;">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/RentFacilityCostsPullTabsAmt"/>
-                </xsl:call-template>
-              </td>
-              <td class="styLNAmountBox" style="width:32mm;text-align:right;"> 
-                <span class="styTableCellPad"/>
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/RentFcltyCostsOtherGamingAmt"/>
-                </xsl:call-template>
-              </td>      
-              <td class="styLNAmountBox" style="width:32mm; border-right-width:0px; text-align:right;">
-                <xsl:call-template name="PopulateAmount">
-                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/RentFcltyCostsTotalGamingAmt"/>
-                </xsl:call-template>
-              </td>
-            </tr>
-  
-            <!--  PART III   Line 5  -->
-            <tr>
-              <td style="border-color:black; border-style:solid; border-bottom-width: 1px; border-top-width: 0px; border-left-width: 0px; border-right-width: 0px">
-                <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:2mm;text-align:left;padding-left:1.25mm;">5</span>  
-              </td>
-              <td class="styLNDesc" style="border-color: black; border-style:solid; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; width: 50mm; border-bottom-width: 1px;padding-top:2mm;">
-                Other direct expenses
-                <b>
-                  <span class="styNBSP"/>.
-                  <span class="styNBSP"/>.
-                </b>
-              </td>
-              <td class="styLNAmountBox" style="width: 32mm;">
-                <xsl:call-template name="PopulateAmount">                  
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/OtherDirectExpensesBingoAmt"/>
-                </xsl:call-template>
-              </td>
-              <td class="styLNAmountBox" style="width: 32mm;">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/OtherDirectExpensesPullTabsAmt"/>
-                </xsl:call-template>
-              </td>
-              <td class="styLNAmountBox" style="width:32mm;text-align:right;"> 
-                <span class="styTableCellPad"/>
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/OthDirectExpnssOtherGamingAmt"/>
-                </xsl:call-template>
-              </td>      
-              <td class="styLNAmountBox" style="width:32mm; border-right-width:0px; text-align:right;">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/OthDirectExpnssTotalGamingAmt"/>
-                </xsl:call-template>
-              </td>
-            </tr>
+			<div class="styBB" style="height:7.5mm;width:187mm;border-top-width:1px;">
+			  <div class="styPartName" style="height:4mm;padding-bottom:.5mm;">Part III</div>
+			  <div class="styPartDesc" style="width:170mm;padding-bottom:.5mm;"><b>Gaming. </b> 
+				<span class="styNormalText" style="display:inline;">
+				  Complete if the organization answered "Yes" to Form 990, Part IV, line 19, or reported more than $15,000 on Form 990-EZ, line 6a. 
+				</span>
+			  </div>
+			</div>
         
-            <!--  PART III   Line 6   Yes/No boxes for Line 6 -->
-            <tr>
-              <td style="width: 6mm; border-color: black; border-style: solid; border-right-width: 1px; border-left-width: 0px; border-bottom-width: 0px; border-top-width: 0px">
-                <span style="width:1px;"/>
-              </td>
-              <td>
-                <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:2mm;text-align:left;padding-left:1.25mm;">6</span>  
-              </td>
-              <td class="styLNDesc" style="width: 50mm;padding-top:2mm;border-bottom-width:1px;">
-                Volunteer labor
-                <b>
-                  <span class="styNBSP"/>.
-                  <span class="styNBSP"/>.
-                  <span class="styNBSP"/>.
-                </b>
-              </td>
-  
-              <!-- Line 6  col a  -->
-              <td class="styLNAmountBox" style="width: 32mm;height:8mm;">
-                <table style="width:32mm;font-size:7pt;">
-                  <tbody>
-                    <tr>
-                      <td style="width:5mm;text-align:center;">
-                        <xsl:call-template name="PopulateSpan">
-                          <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
-                        </xsl:call-template>
-                        <span style="">
-                          <input type="checkbox" class="styCkbox" name="Checkbox">
-                            <xsl:call-template name="PopulateYesCheckbox">
-                              <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
-                              <xsl:with-param name="BackupName">VolunteerLaborBingo</xsl:with-param>
-                            </xsl:call-template>
-                          </input>
-                        </span>
-                      </td> 
-                      <td style="width:27mm"> 
-                        <label>
-                          <xsl:call-template name="PopulateLabelYes">
-                            <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
-                            <xsl:with-param name="BackupName">VolunteerLaborBingo</xsl:with-param>
-                          </xsl:call-template>
-                          <b>Yes</b>
-                        </label>
-                        <xsl:choose>									
-							<xsl:when test="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoPct !=''">
-								<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
-								  <xsl:call-template name="PopulatePercent">
-									<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoPct"/>
-								  </xsl:call-template>
-								</span>
-							</xsl:when>
-							<xsl:otherwise>
-								<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
-									%
-								</span>
-							</xsl:otherwise>
-                        </xsl:choose>
-                      </td> 
-                    </tr>
-                    <tr>
-                      <td style="width:5mm;text-align:center;">
-                        <xsl:call-template name="PopulateSpan">
-                          <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
-                        </xsl:call-template>    
-                        <span style="">
-                          <input type="checkbox" class="styCkbox" name="Checkbox">
-                            <xsl:call-template name="PopulateNoCheckbox">
-                              <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
-                              <xsl:with-param name="BackupName">VolunteerLaborBingo</xsl:with-param>
-                            </xsl:call-template>
-                          </input>
-                        </span>
-                      </td> 
-                      <td style="width:27mm"> 
-                        <label>
-                          <xsl:call-template name="PopulateLabelNo">
-                            <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
-                            <xsl:with-param name="BackupName">VolunteerLaborBingo</xsl:with-param>
-                          </xsl:call-template>
-                          <b>No</b>
-                        </label>
-                      </td> 
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-        
-              <!-- Line 6  col b  -->      
-              <td class="styLNAmountBox" style="width: 32mm;height:8mm;">
-                <table style="width:32mm;font-size:7pt;">
-                  <tbody>
-                    <tr>
-                      <td style="width:5mm;text-align:center;">
-                        <xsl:call-template name="PopulateSpan">
-                          <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
-                        </xsl:call-template>
-                        <span style="">
-                          <input type="checkbox" class="styCkbox" name="Checkbox">
-                            <xsl:call-template name="PopulateYesCheckbox">
-                              <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
-                              <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
-                            </xsl:call-template>
-                          </input>
-                        </span> 
-                      </td> 
-                      <td style="width:27mm">          
-                        <label>
-                          <xsl:call-template name="PopulateLabelYes">
-                            <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
-                            <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
-                          </xsl:call-template>
-                          <b>Yes</b>
-                        </label>
-                        <xsl:choose>									
-							<xsl:when test="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsPct !=''">
-								<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
-								  <xsl:call-template name="PopulatePercent">
-									<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsPct"/>
-								  </xsl:call-template>
-								</span>
-							</xsl:when>
-							<xsl:otherwise>
-								<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
-									%
-								</span>
-							</xsl:otherwise>
-                        </xsl:choose>
-                      </td> 
-                    </tr>
-                    <tr>
-                      <td style="width:5mm;text-align:center;">
-                        <xsl:call-template name="PopulateSpan">
-                          <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
-                        </xsl:call-template>
-                        <span style="">
-                          <input type="checkbox" class="styCkbox" name="Checkbox">
-                            <xsl:call-template name="PopulateNoCheckbox">
-                              <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
-                              <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
-                            </xsl:call-template>
-                          </input>
-                        </span>
-                      </td> 
-                      <td style="width:27mm">     
-                        <label>
-                          <xsl:call-template name="PopulateLabelNo">
-                            <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
-                            <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
-                          </xsl:call-template>
-                          <b>No</b>
-                        </label>
-                      </td> 
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-        
-              <!--   Line 6 col c  -->     
-              <td class="styLNAmountBox" style="width: 32.5mm;height:8mm;">
-                <table style="width:32mm;font-size:7pt;">
-                  <tbody>
-                    <tr>
-                      <td style="width:5mm;text-align:center;">
-                        <xsl:call-template name="PopulateSpan">
-                          <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
-                        </xsl:call-template>
-                        <span style="">
-                          <input type="checkbox" class="styCkbox" name="Checkbox">
-                            <xsl:call-template name="PopulateYesCheckbox">
-                              <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
-                              <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
-                            </xsl:call-template>
-                          </input>
-                        </span>  
-                      </td> 
-                      <td style="width:27mm">         
-                        <label>
-                          <xsl:call-template name="PopulateLabelYes">
-                            <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
-                            <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
-                          </xsl:call-template>
-                          <b>Yes</b>
-                        </label>
-                        <xsl:choose>									
-							<xsl:when test="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingPct !=''">
-								<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
-								  <xsl:call-template name="PopulatePercent">
-									<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingPct"/>
-								  </xsl:call-template>
-								</span>
-							</xsl:when>
-							<xsl:otherwise>
-								<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
-									%
-								</span>
-							</xsl:otherwise>
-                        </xsl:choose>
-                      </td> 
-                    </tr>
-                    <tr>
-                      <td style="width:5mm;text-align:center;">
-                        <xsl:call-template name="PopulateSpan">
-                          <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
-                        </xsl:call-template>
-                        <span style="">
-                          <input type="checkbox" class="styCkbox" name="Checkbox">
-                            <xsl:call-template name="PopulateNoCheckbox">
-                              <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
-                              <xsl:with-param name="BackupName">VolunteerLaborOtherGaming</xsl:with-param>
-                            </xsl:call-template>
-                          </input>
-                        </span>
-                      </td> 
-                      <td style="width:27mm">  
-                        <label>
-                          <xsl:call-template name="PopulateLabelNo">
-                            <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
-                            <xsl:with-param name="BackupName">VolunteerLaborOtherGaming</xsl:with-param>
-                          </xsl:call-template>
-                          <b>No</b>
-                        </label>
-                      </td> 
-                    </tr>
-                  </tbody>
-                </table>
-              </td>
-              <td class="styShadingCell" style="width:32mm;height:6mm; border-left-width:1px;border-right-width:1px;border-bottom-width:1px;border-color:black; ">
-                <!-- <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformation/OtherDirectExpensesTotalGaming" />
-                </xsl:call-template>-->
-              </td>
-            </tr>
-  
-            <!--  PART III   Line 7  -->
-            <tr>
-              <td style="width: 6mm; border-color: black; border-style: solid; border-right-width: 1px; border-left-width: 0px; border-bottom-width: 0px; border-top-width: 0px">
-                <span style="width:1px;"/>
-              </td>         
-              <td>
-                <span class="styLNLeftLtrBox" style="width: 5mm;padding-top:3mm;text-align:left;padding-left:1.25mm;">7</span>
-              </td>
-              <td style="height:7mm;padding-top:3mm;" colspan="4">
-                <span class="styNormalText" style="font-size:7pt;">Direct expense summary. Add lines 2 through 5 in column (d) </span> 
-                <span style="width:3mm;"/>         
-                <span class="IRS990ScheduleG_Dotspacing">........... </span>
-                <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
-              </td>
-              <td class="styLNAmountBox" style="width:32mm; border-top-width:1px;border-right-width:0px;text-align:right;">
-				<xsl:choose>
-					<xsl:when test="$Form990ScheduleGData/GamingInformationGrp/DirectExpenseSummaryGamingAmt &lt; 0">
-						<xsl:call-template name="PopulateNegativeNumber">
-						  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/DirectExpenseSummaryGamingAmt"/>
-						</xsl:call-template>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:call-template name="PopulateAmount">
-						  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/DirectExpenseSummaryGamingAmt"/>
-						</xsl:call-template>
-					</xsl:otherwise>
-				</xsl:choose>
-              </td>
-            </tr>
-      
-            <!--  PART III   Line 8  -->
-            <tr>
-              <td style="width: 6mm; border-color: black; border-style: solid; border-right-width: 1px; border-left-width: 0px; border-bottom-width: 1px; border-top-width: 0px">
-                <span style="width:1px;"/>
-              </td>    
-              <td class="styLNLeftLtrBoxBB" style="width: 5mm;padding-top:3mm;text-align:left;padding-left:1.25mm;font-weight:bold;">8
-              </td>
-              <td class="styBB" style="padding-top:3mm;" colspan="4">
-                <span class="styNormalText" style="font-size:7pt;">Net gaming income summary. Subtract line 7 from line 1, column (d)</span>          
-                <span class="IRS990ScheduleG_Dotspacing"> ......... </span>
-                <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
-              </td>
-              <td class="styLNAmountBox" style="width:32mm; border-right-width:0px;text-align:right;">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NetGamingIncomeSummaryAmt"/>
-                </xsl:call-template>
-              </td>
-            </tr>
-        </table>
+			<!-- PART III TABLE -->
+			<table class="styTable" style="font-size: 7pt;height:auto;width:187mm;display:inline;" cellspacing="0" cellpadding="0">
+				<tr>
+					<td class="styIRS990ScheduleGVTImageBox" style="height:18.5mm;width:6mm;padding-top:1.5mm;border-bottom-width:1px;">
+						<img src="{$ImagePath}/990SchG_Revenue.gif" alt="VerticalRevenue" style=""/>
+					</td>
+					<td>
+						<table class="styTable" style="font-size: 7pt;height:auto;width:181mm;display:inline;" cellspacing="0" cellpadding="0">
+							<tr>
+							  <th colspan="2" style="height:12mm;width:53mm;float:left;clear:none;display:inline;">
+								<span style="width: 53mm;display:inline;"/>
+							  </th>               
+							  <th class="styLNAmountBox" scope="col" style="height:12mm;width:32mm; border-right-width: 0px;vertical-align:top;text-align:center;vertical-align:center;padding-top:4mm;display:inline;">
+								<b>(a)</b><span class="styNormalText" style="display:inline;"> Bingo</span>
+							  </th>
+							  <th class="styLNAmountBox" scope="col" style="height:12mm;width:32mm; border-right-width: 0px;vertical-align:top;text-align:center;vertical-align:center;padding-top:3mm;font-size:6.5pt;display:inline;">
+								<b>(b)</b><span class="styNormalText" style="display:inline;"> Pull tabs/Instant</span><br/>
+								<span class="styNormalText">bingo/progressive bingo</span>
+							  </th>
+							  <th class="styLNAmountBox" scope="col" style="height:12mm;width:32mm; border-right-width: 0px;vertical-align:top;text-align:center;vertical-align:center;padding-top:4mm;display:inline;">
+								<b>(c)</b><span class="styNormalText" style="display:inline;"> Other gaming</span>
+							  </th>
+							  <th class="styLNAmountBox" scope="col" style="height:12mm;font-size:6.5pt;width:31mm; border-right-width: 0px;vertical-align:top;text-align:center;vertical-align:center;padding-top:3mm;display:inline;">
+								<b>(d)</b><span class="styNormalText" style="display:inline;"> Total gaming (add col.<b>(a)</b> through col.<b>(c)</b>)</span>
+							  </th>
+							</tr>
+							<!--   BEGIN PART III  LINE 1   -->
+							<tr>
+							  <td style="height:6.5mm;border-bottom:1px solid black;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1.25mm;padding-top:0mm;">1</span>
+							  </td>
+							  <td class="styLNDesc" style="height:6.5mm;width: 48mm;padding-top:0mm;border-bottom:1px solid black;display:inline;">
+								<br/>
+								Gross revenue 
+								<span style="width:1mm;"/>
+								<b>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width: 32mm;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/GrossRevenueBingoAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width: 32mm;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/GrossRevenuePullTabsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:32mm;text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/GrossRevenueOtherGamingAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:6.5mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/GrossRevenueTotalGamingAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+                
+				<!--   PART III  Lines 2 - 5 -->
+				<tr>
+					<td class="styIRS990ScheduleGVTImageBox" style="height:28mm;width:6mm;padding-top:0mm;border-bottom-width:1px;">
+						<img src="{$ImagePath}/990SchG_DirectExpenses.gif" alt="VerticalDirectExpenses"/>
+					</td>
+					<td>
+						<table class="styTable" style="font-size: 7pt;height:auto;width:181mm;display:inline;" cellspacing="0" cellpadding="0">
+							<!-- PART  III    Line 2  -->
+							<tr>
+							  <td style="height:7mm;width:5mm;padding-top:0.5mm;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;">2</span>
+							  </td>
+							  <td class="styLNDesc" style="height:7mm;width: 48mm;padding-top:0.5mm;float:left;clear:none;display:inline;">
+								<br/>
+								Cash prizes
+								<b>
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/CashPrizesBingoAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/CashPrizesPullTabsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/CashPrizesOtherGamingAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/CashPrizesTotalGamingAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  III    Line 3  -->
+							<tr>
+							  <td style="height:7mm;width:5mm;padding-top:0.5mm;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;;">3</span>
+							  </td>
+							  <td class="styLNDesc" style="height:7mm;width: 48mm;padding-top:0.5mm;float:left;clear:none;display:inline;">
+								<br/>
+								Noncash prizes
+								<b>
+								  <span style="width:6mm;"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NonCashPrizesBingoAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NonCashPrizesPullTabsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NonCashPrizesOtherGamingAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NonCashPrizesTotalGamingAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  III    Line 4  -->
+							<tr>
+							  <td style="height:7mm;width:5mm;padding-top:0.5mm;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;">4</span>
+							  </td>
+							  <td class="styLNDesc" style="height:7mm;width: 48mm;padding-top:0.5mm;float:left;clear:none;display:inline;">
+								<br/>
+								Rent/facility costs
+								<b>
+								  <span style="width:2.5mm;"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/RentFacilityCostsBingoAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/RentFacilityCostsPullTabsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/RentFcltyCostsOtherGamingAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/RentFcltyCostsTotalGamingAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+							<!-- PART  III    Line 5  -->
+							<tr>
+							  <td style="height:7mm;width:5mm;padding-top:0.5mm;border-bottom:1px solid black;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;">5</span>
+							  </td>
+							  <td class="styLNDesc" style="height:7mm;width: 48mm;padding-top:0.5mm;border-bottom:1px solid black;float:left;clear:none;display:inline;">
+								<br/>
+								Other direct expenses
+								<span style="width:2mm;"/>
+								<b>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherDirectExpensesEvent1Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OtherDirectExpensesEvent2Amt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:32mm;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<span class="styTableCellPad"/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OthDirectExpnssOtherEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/FundraisingEventInformationGrp/OthDirectExpnssTotalEventsAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				
+				<!--   PART III  Lines 6 - 8 -->
+				<tr>
+					<td class="styIRS990ScheduleGVTImageBox" style="height:26mm;width:6mm;padding-top:0mm;border-bottom-width:1px;">
+						<span style="width:6mm;"/>
+					</td>
+					<td>
+						<table class="styTable" style="font-size: 7pt;height:auto;width:181mm;display:inline;" cellspacing="0" cellpadding="0">
+							<!-- PART  III    Line 6  -->
+							<tr>
+							  <td style="height:12mm;width:5mm;float:left;clear:none;display:inline;">
+								<br/>
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;padding-top:1mm;">6</span>
+							  </td>
+							  <td class="styLNDesc" style="height:12mm;width: 48mm;padding-top:1mm;float:left;clear:none;display:inline;">
+								<br/>
+								<br/>
+								Volunteer labor
+								<span style="width:4mm;"/>
+								<b>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								  <span class="styNBSP"/>.
+								</b>
+							  </td>
+							  <td class="styLNAmountBox" style="height:12mm;width:32mm;text-align:right;padding-top:0mm;display:inline;">
+								<!-- Line 6  col a  -->
+								<table style="width:32mm;font-size:7pt;">
+								  <tbody>
+									<tr>
+									  <td style="width:5mm;text-align:center;">
+										<xsl:call-template name="PopulateSpan">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
+										</xsl:call-template>
+										<span style="float:left;clear:none;display:inline;">
+										  <input type="checkbox" class="styCkbox" name="Checkbox">
+											<xsl:call-template name="PopulateYesCheckbox">
+											  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
+											  <xsl:with-param name="BackupName">VolunteerLaborBingo</xsl:with-param>
+											</xsl:call-template>
+										  </input>
+										</span>
+									  </td> 
+									  <td style="width:25mm;text-align:left;padding-left:1mm;"> 
+										<label>
+										  <xsl:call-template name="PopulateLabelYes">
+											<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
+											<xsl:with-param name="BackupName">VolunteerLaborBingo</xsl:with-param>
+										  </xsl:call-template>
+										  <b>Yes</b>
+										</label>
+										<xsl:choose>									
+											<xsl:when test="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoPct !=''">
+												<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
+												  <xsl:call-template name="PopulatePercent">
+													<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoPct"/>
+												  </xsl:call-template>
+												</span>
+											</xsl:when>
+											<xsl:otherwise>
+												<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:15mm;border-style: dashed;">  
+													%
+												</span>
+											</xsl:otherwise>
+										</xsl:choose>
+									  </td> 
+									</tr>
+									<tr>
+									  <td style="width:5mm;text-align:center;">
+										<xsl:call-template name="PopulateSpan">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
+										</xsl:call-template>    
+										<span style="float:left;clear:none;display:inline;">
+										  <input type="checkbox" class="styCkbox" name="Checkbox">
+											<xsl:call-template name="PopulateNoCheckbox">
+											  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
+											  <xsl:with-param name="BackupName">VolunteerLaborBingo</xsl:with-param>
+											</xsl:call-template>
+										  </input>
+										</span>
+									  </td> 
+									  <td style="width:25mm;text-align:left;padding-left:1mm;"> 
+										<label>
+										  <xsl:call-template name="PopulateLabelNo">
+											<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborBingoInd"/>
+											<xsl:with-param name="BackupName">VolunteerLaborBingo</xsl:with-param>
+										  </xsl:call-template>
+										  <b>No</b>
+										</label>
+									  </td> 
+									</tr>
+								  </tbody>
+								</table>
+							  </td>
+							  <td class="styLNAmountBox" style="height:12mm;width:32mm;text-align:right;padding-top:0mm;display:inline;">
+								<!-- Line 6  col b  -->
+								<table style="width:32mm;font-size:7pt;">
+								  <tbody>
+									<tr>
+									  <td style="width:5mm;text-align:center;">
+										<xsl:call-template name="PopulateSpan">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
+										</xsl:call-template>
+										<span style="float:left;clear:none;display:inline;">
+										  <input type="checkbox" class="styCkbox" name="Checkbox">
+											<xsl:call-template name="PopulateYesCheckbox">
+											  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
+											  <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
+											</xsl:call-template>
+										  </input>
+										</span> 
+									  </td> 
+									  <td style="width:25mm;text-align:left;padding-left:1mm;">          
+										<label>
+										  <xsl:call-template name="PopulateLabelYes">
+											<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
+											<xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
+										  </xsl:call-template>
+										  <b>Yes</b>
+										</label>
+										<xsl:choose>									
+											<xsl:when test="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsPct !=''">
+												<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:15mm;border-style: dashed;">  
+												  <xsl:call-template name="PopulatePercent">
+													<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsPct"/>
+												  </xsl:call-template>
+												</span>
+											</xsl:when>
+											<xsl:otherwise>
+												<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
+													%
+												</span>
+											</xsl:otherwise>
+										</xsl:choose>
+									  </td> 
+									</tr>
+									<tr>
+									  <td style="width:5mm;text-align:center;">
+										<xsl:call-template name="PopulateSpan">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
+										</xsl:call-template>
+										<span style="float:left;clear:none;display:inline;">
+										  <input type="checkbox" class="styCkbox" name="Checkbox">
+											<xsl:call-template name="PopulateNoCheckbox">
+											  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
+											  <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
+											</xsl:call-template>
+										  </input>
+										</span>
+									  </td> 
+									  <td style="width:25mm;text-align:left;padding-left:1mm;">     
+										<label>
+										  <xsl:call-template name="PopulateLabelNo">
+											<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborPullTabsInd"/>
+											<xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
+										  </xsl:call-template>
+										  <b>No</b>
+										</label>
+									  </td> 
+									</tr>
+								  </tbody>
+								</table>
+							  </td>
+							  <td class="styLNAmountBox" style="height:12mm;width:32mm;text-align:right;padding-top:0mm;display:inline;">
+								<!-- Line 6  col c  -->
+								<table style="width:32mm;font-size:7pt;">
+								  <tbody>
+									<tr>
+									  <td style="width:5mm;text-align:center;">
+										<xsl:call-template name="PopulateSpan">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
+										</xsl:call-template>
+										<span style="float:left;clear:none;display:inline;">
+										  <input type="checkbox" class="styCkbox" name="Checkbox">
+											<xsl:call-template name="PopulateYesCheckbox">
+											  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
+											  <xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
+											</xsl:call-template>
+										  </input>
+										</span>  
+									  </td> 
+									  <td style="width:25mm;text-align:left;padding-left:1mm;">         
+										<label>
+										  <xsl:call-template name="PopulateLabelYes">
+											<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
+											<xsl:with-param name="BackupName">VolunteerLaborPullTabs</xsl:with-param>
+										  </xsl:call-template>
+										  <b>Yes</b>
+										</label>
+										<xsl:choose>									
+											<xsl:when test="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingPct !=''">
+												<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:15mm;border-style: dashed;">  
+												  <xsl:call-template name="PopulatePercent">
+													<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingPct"/>
+												  </xsl:call-template>
+												</span>
+											</xsl:when>
+											<xsl:otherwise>
+												<span class="styIRS990ScheduleGUnderlinedText" style="padding-right:1mm;text-align: right;width:17mm;border-style: dashed;">  
+													%
+												</span>
+											</xsl:otherwise>
+										</xsl:choose>
+									  </td> 
+									</tr>
+									<tr>
+									  <td style="width:5mm;text-align:center;">
+										<xsl:call-template name="PopulateSpan">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
+										</xsl:call-template>
+										<span style="float:left;clear:none;display:inline;">
+										  <input type="checkbox" class="styCkbox" name="Checkbox">
+											<xsl:call-template name="PopulateNoCheckbox">
+											  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
+											  <xsl:with-param name="BackupName">VolunteerLaborOtherGaming</xsl:with-param>
+											</xsl:call-template>
+										  </input>
+										</span>
+									  </td> 
+									  <td style="width:27mm;text-align:left;padding-left:1mm;">  
+										<label>
+										  <xsl:call-template name="PopulateLabelNo">
+											<xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/VolunteerLaborOtherGamingInd"/>
+											<xsl:with-param name="BackupName">VolunteerLaborOtherGaming</xsl:with-param>
+										  </xsl:call-template>
+										  <b>No</b>
+										</label>
+									  </td> 
+									</tr>
+								  </tbody>
+								</table>
+							  </td>
+							  <td class="styShadingCell" style="height:12mm;width:31mm; border-right-width:0px; border-bottom-width:1px;text-align:right;padding-top:0mm;display:inline;">
+								<br/>
+								<span style="width:30mm;"/>
+							  </td>
+							</tr>
+							<!-- PART  III    Line 7  -->
+							<tr>
+							  <td style="height:7mm;width:5mm;padding-top:0.5mm;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;">7</span>
+							  </td>
+							  <td class="styLNDesc" style="height:7mm;width: 144mm;padding-top:0.5mm;float:left;clear:none;display:inline;" colspan="4">
+								<br/>
+								<span class="styNormalText" style="font-size:7pt;">Direct expense summary. Add lines 2 through 5 in column (d) </span>
+								<b>
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+								</b>
+								<span style="width:4mm"/>
+								<img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:31mm; border-right-width:0px; text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<xsl:choose>
+									<xsl:when test="$Form990ScheduleGData/GamingInformationGrp/DirectExpenseSummaryGamingAmt &lt; 0">
+										<xsl:call-template name="PopulateNegativeNumber">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/DirectExpenseSummaryGamingAmt"/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="PopulateAmount">
+										  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/DirectExpenseSummaryGamingAmt"/>
+										</xsl:call-template>
+									</xsl:otherwise>
+								</xsl:choose>
+							  </td>
+							</tr>
+							<!-- PART  III    Line 8  -->
+							<tr>
+							  <td style="height:7mm;width:5mm;padding-top:0.5mm;border-bottom:1px solid black;float:left;clear:none;display:inline;">
+								<br/>
+								<span class="styLNLeftLtrBox" style="width: 5mm;text-align:left;padding-left:1mm;">8</span>
+							  </td>
+							  <td class="styLNDesc" style="height:7mm;width: 144mm;padding-top:0.5mm;border-bottom:1px solid black;float:left;clear:none;display:inline;" colspan="4">
+								<br/>
+								<span class="styNormalText" style="font-size:7pt;">Net gaming income summary. Subtract line 7 from line 1, column (d)</span>
+								<span style="width:0.5mm"/>
+								<b>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+									<span style="width:4mm"/>.
+								</b>
+								<span style="width:3.5mm"/>
+								<img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
+							  </td>
+							  <td class="styLNAmountBox" style="height:7mm;width:31mm; border-right-width:0px; border-bottom:1px solid black;text-align:right;padding-top:0.5mm;display:inline;">
+								<br/>
+								<xsl:call-template name="PopulateAmount">
+								  <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingInformationGrp/NetGamingIncomeSummaryAmt"/>
+								</xsl:call-template>
+							  </td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>    
 
      <!-- LINE 9  -->
     <div style="width:187mm;">
       <span style="height:2mm; width:84mm;"/>
-      <div class="styLNLeftNumBox" style="width:8mm;padding-bottom:.5mm;padding-left:1mm;font-size:7pt;">9</div>
-      <div class="styLNDesc" style="width:179mm;padding-top:.5mm;padding-bottom:0mm;font-size:7pt;">
-        <span class="styNormalText">
+      <div class="styLNLeftNumBox" style="width:8mm;padding-bottom:.5mm;padding-left:1mm;font-size:7pt;float:left;clear:none;"><br/>9</div>
+      <div class="styLNDesc" style="width:179mm;padding-top:.5mm;padding-bottom:0mm;font-size:7pt;float:left;clear:none;">
+        <span class="styNormalText;display:inline;">
           Enter the state(s) in which the organization operates gaming activities: </span>
-          <span class="styIRS990ScheduleGUnderlinedText" style="font-size: 7pt; width:84mm;text-align: left">
+          <span class="styIRS990ScheduleGUnderlinedText" style="font-size: 7pt; width:84mm;text-align: left;">
             <xsl:if test="($Print = $Separated) and (count($Form990ScheduleGData/StatesWhereGamingConductedCd) &gt;8)">
               <xsl:call-template name="PopulateAdditionalDataTableMessage">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/StatesWhereGamingConductedCd"/>
@@ -1522,20 +1646,26 @@
     
     <!-- Line 9a  -->
         <div class="styLNLeftNumBox" style="height:5mm;padding-top:1mm;padding-left:3mm;">a</div>
-        <div class="styLNDesc" style="width:155mm;height:5mm;vertical-align:bottom;padding-top:1mm;padding-bottom:0mm;font-size:7pt;">
+        <div class="styLNDesc" style="width:150mm;height:5mm;vertical-align:bottom;padding-top:1mm;padding-bottom:0mm;font-size:7pt;display:inline;">
           <span class="styNormalText">
             Is the organization licensed to operate gaming activities in each of these states?
-            <span style="letter-spacing:3mm; font-weight:bold; font-size:7pt; margin-left:2mm;">............</span>
+            <span style="width:3mm;"/>.
+            <span style="width:4mm;"/>.
+            <span style="width:4mm;"/>.
+            <span style="width:4mm;"/>.
+            <span style="width:4mm;"/>.
+            <span style="width:4mm;"/>.
+            <span style="width:4mm;"/>.
+            <span style="width:4mm;"/>.
           </span>
         </div>
              
-        <div style="height:5mm;font-size:7pt;vertical-align:center;">
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+        <div style="height:5mm;font-size:7pt;vertical-align:center;display:inline;">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/LicensedInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelYes">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/LicensedInd"/>
@@ -1543,12 +1673,11 @@
             <span><b>Yes</b></span>
           </label>
           <span style="width:2mm;"/>
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/LicensedInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelNo">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/LicensedInd"/>
@@ -1566,9 +1695,9 @@
         <span class="styIRS990ScheduleGUnderlinedText" style="width:155mm;"/>
       </div>
 
-      <div class="IRS990ScheduleG_LineContainer" style="height:4mm">
+      <div class="IRS990ScheduleG_LineContainer" style="height:auto">
       <div class="IRS990ScheduleG_LineIndex"/>
-      <div class="IRS990ScheduleG_LineDesc" style="width:178mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
+      <div class="IRS990ScheduleG_LineDesc" style="height:auto;width:178mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/ExplanationIfNoTxt"/>
         </xsl:call-template>
@@ -1586,19 +1715,20 @@
 <!-- LINE  10a  -->
 
       <div class="styLNLeftNumBox" style="height:3mm;padding-top:1mm;padding-left:0mm;">10a</div>
-      <div class="styLNDesc" style="width:155mm;height:3mm;padding-top:1mm;padding-bottom:0mm;font-size:7pt;">
+      <div class="styLNDesc" style="width:150mm;height:3mm;padding-top:1mm;padding-bottom:0mm;font-size:7pt;">
         <span class="styNormalText">
           Were any of the organization's gaming licenses revoked, suspended or terminated during the tax year?
-            <span style="letter-spacing:3mm; font-weight:bold; font-size:7pt; margin-left:2mm;">.....</span>
+            <span style="width:4mm;"/>.
+            <span style="width:4mm;"/>.
+            <span style="width:4mm;"/>.
         </span>
       </div>
       <div style="height:5mm;padding-top:1mm;font-size:7pt;vertical-align:center;">
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/LicenseSuspendedEtcInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelYes">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/LicenseSuspendedEtcInd"/>
@@ -1606,12 +1736,11 @@
             <span><b>Yes</b></span>
           </label>
           <span style="width:2mm;"/>
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/LicenseSuspendedEtcInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelNo">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/LicenseSuspendedEtcInd"/>
@@ -1628,9 +1757,9 @@
         <span class="styIRS990ScheduleGUnderlinedText" style="width:154mm;"/>
      </div>
 
-      <div class="IRS990ScheduleG_LineContainer" style="height:4mm">
+      <div class="IRS990ScheduleG_LineContainer" style="height:auto">
       <div class="IRS990ScheduleG_LineIndex"/>
-      <div class="IRS990ScheduleG_LineDesc" style="width:178mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
+      <div class="IRS990ScheduleG_LineDesc" style="height:auto;width:178mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
        <xsl:call-template name="PopulateText">
         <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/ExplanationIfYesTxt"/>
       </xsl:call-template>
@@ -1661,17 +1790,27 @@
 
   <!-- Line 11  -->
       <div class="styLNLeftNumBox" style="height:3mm;padding-left:0mm;padding-top:1mm;">11</div>
-      <div class="styLNDesc" style="width:155mm;height:3mm;padding-top:1mm;padding-bottom:0mm;">
+      <div class="styLNDesc" style="width:150mm;height:3mm;padding-top:1mm;padding-bottom:0mm;">
         <span class="styNormalText">
-          Does the organization operate gaming activities with nonmembers? <span style="letter-spacing:3mm; font-weight:bold; margin-left:2mm;">.................</span>
+          Does the organization operate gaming activities with nonmembers? 
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
         </span></div>
         <div style="height:5mm;padding-top:1mm;font-size:7pt;vertical-align:center;">
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingWithNonmembersInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelYes">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingWithNonmembersInd"/>
@@ -1679,12 +1818,11 @@
             <span><b>Yes</b></span>
           </label>
           <span style="width:2mm;"/>
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingWithNonmembersInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelNo">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingWithNonmembersInd"/>
@@ -1705,17 +1843,32 @@
     </div>
 
       <div class="styLNLeftNumBox" style="height:3mm;padding-left:1mm;padding-top:1mm;"/>
-      <div class="styLNDesc" style="width:155mm;height:4mm;padding-top:1mm;font-size:7pt;">
+      <div class="styLNDesc" style="width:150mm;height:4mm;padding-top:1mm;font-size:7pt;">
         <span class="styNormalText">
-          formed to administer charitable gaming? <span style="width:2mm;"/><span style="letter-spacing:3mm; font-weight:bold; font-size:7pt; margin-left:2mm;">..........................</span>
+          formed to administer charitable gaming? <span style="width:3mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
         </span></div>
         <div style="height:5mm;padding-top:1mm;font-size:7pt;vertical-align:center;">
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/MemberOfOtherEntityInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelYes">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/MemberOfOtherEntityInd"/>
@@ -1723,12 +1876,11 @@
             <span><b>Yes</b></span>
           </label>
           <span style="width:2mm;"/>
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/MemberOfOtherEntityInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelNo">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/MemberOfOtherEntityInd"/>
@@ -1756,7 +1908,24 @@
       <div class="styLNDesc" style="width:139mm;height:4.5mm;">
        The organization's facility
         <!--Dotted Line-->
-        <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">......................</span>
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
       </div>
       <div class="styLNRightNumBox" style="height:4.5mm;">13a</div>
       <div class="styLNAmountBox" style="height:4.5mm;padding-right:0.5mm;">
@@ -1777,8 +1946,27 @@
       <div class="styLNLeftNumBox" style="height:3mm;padding-left:3mm;">b</div>
       <div class="styLNDesc" style="width:139mm;height:4.5mm;">
           An outside facility
-        <!--Dotted Line-->
-        <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">........................</span>
+        <!--Dotted Line-->        
+          <span style="width:2mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
       </div>
       <div class="styLNRightNumBox" style="height:4.5mm;">13b</div>
       <div class="styLNAmountBox" style="height:4.5mm;padding-right:0.5mm;">
@@ -1808,10 +1996,10 @@
 
    <div style="width:187mm">
      <div class="IRS990ScheduleG_LineContainer" style="height:8mm;"> 
-       <div class="styLNDesc" style="width:24mm;height:8mm;padding-left:8mm;padding-right:2.5mm;">
+       <div class="styLNDesc" style="width:24mm;height:auto;padding-left:8mm;padding-right:2.5mm;">
         Name  <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
        </div>
-          <div class="styFixedUnderline" style="width:163mm;padding-left:2mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
+          <div class="styFixedUnderline" style="height:auto;width:163mm;padding-left:2mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
          <xsl:choose>
                   <xsl:when test="$Form990ScheduleGData/IndividualWithBooksNm != ''">
                     <xsl:call-template name="PopulateText">
@@ -1847,11 +2035,11 @@
 </div>
 </xsl:if> -->
 </div>
-    <div style="width:187mm">
-     <div class="IRS990ScheduleG_LineContainer" style="height:8mm;"> 
-       <div class="styLNDesc" style="width:25mm;height:8mm;padding-left:8mm;padding-right:2.5mm;">
+    <div style="height:auto;width:187mm">
+     <div class="IRS990ScheduleG_LineContainer" style="height:auto;"> 
+       <div class="styLNDesc" style="width:25mm;height:auto;padding-left:8mm;padding-right:2.5mm;">
         Address  <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>  </div>
-          <div class="styFixedUnderline" style="width:162mm;padding-left:2mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
+          <div class="styFixedUnderline" style="height:auto;width:162mm;padding-left:2mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
     
     <xsl:if test="$Form990ScheduleGData/PersonsWithBooksUSAddress != ''">
                   <xsl:call-template name="PopulateUSAddressTemplate">
@@ -1877,14 +2065,6 @@
 </xsl:if>-->
 </div>
 
-  <div style="width:187mm">
-      <div class="styLNLeftNumBox" style="height:4mm;"/>
-       <div class="styLNDesc" style="width:155mm;height:4mm;">
-        </div>
-   </div>
-
-
-
 <!--  LINE  15a  -->
 
      <div style="width:187mm;">
@@ -1896,17 +2076,41 @@
     </div>
 
       <div class="styLNLeftNumBox" style="height:3mm;padding-left:1mm;padding-top:1mm;"/>
-      <div class="styLNDesc" style="width:155mm;height:4mm;padding-top:1mm;font-size:7pt;">
+      <div class="styLNDesc" style="width:150mm;height:4mm;padding-top:1mm;font-size:7pt;">
         <span class="styNormalText">
-         revenue? <span style="letter-spacing:3mm; font-weight:bold; font-size:7pt; margin-left:2mm;">......................................</span>
+         revenue?
+        <!--Dotted Line-->        
+          <span style="width:2mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
+          <span style="width:4mm;"/>.
         </span></div>
         <div style="height:5mm;padding-top:1mm;font-size:7pt;vertical-align:center;">
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/CntrctWith3rdPrtyForGameRevInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelYes">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/CntrctWith3rdPrtyForGameRevInd"/>
@@ -1914,12 +2118,11 @@
             <span><b>Yes</b></span>
           </label>
           <span style="width:2mm;"/>
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/CntrctWith3rdPrtyForGameRevInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelNo">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/CntrctWith3rdPrtyForGameRevInd"/>
@@ -2035,8 +2238,8 @@
 
 <!-- LINE  16  -->
       <div style="width:187mm">
-        <div class="styLNLeftNumBox" style="height:3mm;padding-left:0mm;padding-top:2mm;">16</div>
-         <div class="styLNDesc" style="width:155mm;height:4mm;padding-top:2mm;padding-bottom:0mm;">
+        <div class="styLNLeftNumBox" style="height:5mm;padding-left:0mm;padding-top:3mm;">16</div>
+         <div class="styLNDesc" style="width:155mm;height:5mm;padding-top:3mm;padding-bottom:0mm;">
         Gaming manager information:
      </div>
    </div>
@@ -2045,11 +2248,11 @@
         </div>
         
     <div style="width:187mm">
-     <div class="IRS990ScheduleG_LineContainer" style="height:8mm;"> 
-       <div class="styLNDesc" style="width:24mm;height:7mm;padding-left:8mm;padding-right:2mm;padding-top:1mm;">
+     <div class="IRS990ScheduleG_LineContainer" style="height:auto;"> 
+       <div class="styLNDesc" style="width:24mm;height:auto;padding-left:8mm;padding-right:2mm;padding-top:1mm;">
         Name  <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
 </div>
-          <div class="styFixedUnderline" style="width:163mm;padding-left:1mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
+          <div class="styFixedUnderline" style="height:auto;width:163mm;padding-left:1mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
         <xsl:choose>
                   <xsl:when test="$Form990ScheduleGData/GamingManagerPersonNm!= ''">
                     <xsl:call-template name="PopulateText">
@@ -2099,17 +2302,17 @@
      </div>
     </div>
     
-    <div class="styLNLeftNumBox" style="height:4mm;"/>
-      <div class="styLNDesc" style="width:155mm;height:4mm;">
+    <div class="styLNLeftNumBox" style="height:auto;"/>
+      <div class="styLNDesc" style="width:155mm;height:auto;">
         </div>
 
-  <div style="width:187mm">
-     <div class="IRS990ScheduleG_LineContainer" style="height:8mm;"> 
-       <div class="styLNDesc" style="width:56mm;height:8mm;padding-left:8mm;padding-right:2mm;">
+  <div style="height:auto;width:187mm">
+     <div class="IRS990ScheduleG_LineContainer" style="height:auto;"> 
+       <div class="styLNDesc" style="width:54mm;height:auto;padding-left:8mm;padding-right:2mm;">
           Description of services provided  
           <img src="{$ImagePath}/990SchG_Bullet_Line.gif" alt="right arrow"/>
        </div>
-       <div class="styFixedUnderline" style="width:131mm;padding-left:0mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
+       <div class="styFixedUnderline" style="height:auto;width:131mm;padding-left:0mm;border-bottom-style:dashed;border-bottom-width:1px;border-right-width:0px;">
            <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingManagerServicesProvTxt"/>
            </xsl:call-template>
@@ -2123,7 +2326,7 @@
      <div class="styLNLeftNumBox" style="height:4mm;"/>
       <div class="styLNDesc" style="width:155mm;height:5mm;"> 
        <span style="width:50mm;">
-        <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+        <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
          <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingManagerIsDirectorOfcrInd"/>
           <xsl:with-param name="BackupName">GamingManagerIsDirectorOfficer</xsl:with-param>
@@ -2140,7 +2343,7 @@
       </span>     
       
       <span style="width:45mm;">
-      <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+      <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
          <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingManagerIsEmployeeInd"/>
           <xsl:with-param name="BackupName">GamingManagerIsEmployee</xsl:with-param>
@@ -2157,7 +2360,7 @@
       </span>
 
       <span style="width:45mm;">
-      <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+      <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
          <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/GamingManagerIsIndCntrctInd"/>
           <xsl:with-param name="BackupName">GamingManagerIsIndContractor</xsl:with-param>
@@ -2174,7 +2377,8 @@
       </span></div>
 </div>
 
- 
+<span style="height:4mm;width:187mm;"/>
+
      <!-- LINE  17  -->
       <div style="width:187mm;">
         <div class="styLNLeftNumBox" style="height:4mm;padding-left:0mm;font-weight:bold;">17</div>
@@ -2192,17 +2396,35 @@
     </div>
 
       <div class="styLNLeftNumBox" style="height:3mm;padding-left:1mm;padding-top:1mm;"/>
-      <div class="styLNDesc" style="width:155mm;height:4mm;padding-top:1mm;font-size:7pt;">
+      <div class="styLNDesc" style="width:150mm;height:4mm;padding-top:1mm;font-size:7pt;">
         <span class="styNormalText">
-         retain the state gaming license? <span style="letter-spacing:3mm; font-weight:bold; font-size:7pt; margin-left:2mm;">............................</span>
+         retain the state gaming license? 
+         <span style="width:2mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
+         <span style="width:4mm;"/>.
         </span></div>
         <div style="height:5mm;padding-top:1mm;font-size:7pt;vertical-align:center;">
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/CharitableDistributionRqrInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelYes">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/CharitableDistributionRqrInd"/>
@@ -2210,12 +2432,11 @@
             <span>Yes</span>
           </label>
           <span style="width:2mm;"/>
-            <input type="checkbox" class="IRS990ScheduleG_Checkbox">
+            <input type="checkbox" class="IRS990ScheduleG_Checkbox" style="height:3mm;width:3mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/CharitableDistributionRqrInd"/>
               </xsl:call-template>
             </input>
-          <span style="width:0.5mm;"/>
           <label>
             <xsl:call-template name="PopulateLabelNo">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleGData/CharitableDistributionRqrInd"/>
@@ -2244,11 +2465,11 @@
            </xsl:call-template>  
           </div>
   </div>
-</div> 
+</div>
 
   <!-- BEGIN Part IV Title -->
-  <div class="styBB" style="width:187mm;border-bottom-width:0px;">
-    <div class="styPartName">Part IV</div>
+  <div class="styBB" style="height:11mm;width:187mm;border-bottom-width:0px;">
+    <div class="styPartName" style="height:4mm;">Part IV</div>
     <div class="styPartDesc" style="width:170mm;padding-bottom:.5mm;">
       <span class="styNormalText">  
         <b>Supplemental Information.</b> Provide the explanations required by Part I, line 2b,

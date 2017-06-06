@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Last modified on -->
+<!-- Last modified on 6/24/2015 by Harold Nadel for WR # 123023 changes for IE11 -->
+<!-- Last modified on 4/06/2015 by Harold Nadel for WR # 123023 changes for IE11-->
+
 <!DOCTYPE xsl:stylesheet [
 	<!ENTITY nbsp "&#160;">
 ]><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
@@ -20,8 +25,10 @@
 		</xsl:call-template>
 	</xsl:param>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -67,19 +74,19 @@
 					<!-- Form Title Box -->
 					<div class="IRS990ScheduleO_FormTitleBlock">
 						<!-- Form Title -->
-						<div style="padding-top: 4mm; ">
+						<div style="padding-top: 1mm; ">
 							<span class="styMainTitle">Supplemental Information to Form 990 or 990-EZ</span>
 						</div>
 						<!-- Form Subtitle -->
 						<br/>
-						<span style="font-weight:bold;text-align:center;padding-top:6mm;">
+						<span style="font-weight:bold;text-align:center;padding-top:0mm;">
 						Complete to provide information for responses to specific questions on <br/>
 						Form 990 or 990-EZ or to provide any additional information. <br/>
 							<img src="{$ImagePath}/990_Bullet_Md.gif" alt="MediumBullet"/>
      						 Attach to Form 990 or 990-EZ.<br/>
 						</span>
 						
-						<span style="font-weight:bold;text-align:center;padding-top:6mm;">
+						<span style="font-weight:bold;text-align:center;padding-top:0mm;">
 							<img src="{$ImagePath}/990_Bullet_Md.gif" alt="MediumBullet"/>
 							Information about Schedule O (Form 990 or 990-EZ) and its instructions is at<br/>
 						     www.irs.gov/form990.<br/>
@@ -88,7 +95,7 @@
 					</div>
 					<div class="IRS990ScheduleO_FormYearBlock">
 						<div class="IRS990ScheduleO_OMB">OMB No. 1545-0047</div>
-						<div class="styTY" style="height:2mm;text-align:center;">
+						<div class="styTY" style="height:auto;text-align:center;">
       20<span class="styTYColor">14</span>
 						</div>
 						<div style="height:7.2mm; background-color: black; color: white; font-size: 7.5pt;font-weight: bold;text-align:center;">Open to Public<br/>Inspection</div>
@@ -107,7 +114,7 @@
 				</div>
 				<!-- Begin Name and Identifying Number Section-->
 				<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-					<div class="styFNBox" style="width:134mm;height:8mm;">
+					<div class="styFNBox" style="width:134mm;height:auto;">
      Name of the organization<br/>
 						<div style="font-family:verdana;font-size:6pt;height:6.25mm">
 							<xsl:call-template name="PopulateReturnHeaderFiler">

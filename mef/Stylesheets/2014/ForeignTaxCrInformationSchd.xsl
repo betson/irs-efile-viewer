@@ -17,13 +17,7 @@
   
     <!-- Itemized Other Income Schedule Data -->
     <table id="DependencyDataTbl" class="styDepTbl">
-    <!--  <thead class="styTableThead">
-      <tr class="styDepTblHdr">         
-         <th class="styDepTblCell" scope="col">Statement</th>         
-         
-                                                                                 
-      </tr>
-      </thead>-->
+
         <tfoot/>
         
        <tbody>
@@ -122,33 +116,33 @@
         </div>
         <br/>
         <div class="styTopSectionLine" style="width:187mm;">
-          <div class="styTopSectionLineLbl" style="float:left;clear:none;">Passive Amount:</div>
+          <div class="styTopSectionLineLbl" style="float:left;clear:none;">Passive 2 Amount:</div>
           <div style="float:left;clear:none;width:118mm;padding-left:30mm;">
             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="./PassiveAmt"/>
+              <xsl:with-param name="TargetNode" select="./Passive2Amt"/>
             </xsl:call-template>
           </div>
         </div>
         <br/>
         <div class="styTopSectionLine" style="width:187mm;">
-          <div class="styTopSectionLineLbl" style="float:left;clear:none;">Listed Categories Amount:
+          <div class="styTopSectionLineLbl" style="float:left;clear:none;">Listed Categories 2 Amount:
             <xsl:call-template name="SetFormLinkInline">
-               <xsl:with-param name="TargetNode" select="./ListedCategoriesAmt"/>
+               <xsl:with-param name="TargetNode" select="./ListedCategories2Amt"/>
             </xsl:call-template>
           </div>
           <div style="float:left;clear:none;width:118mm;padding-left:30mm;">
             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="./ListedCategoriesAmt"/>
+              <xsl:with-param name="TargetNode" select="./ListedCategories2Amt"/>
             </xsl:call-template>
           </div>
         </div>
         <br/>
         <div class="styTopSectionLine" style="width:187mm;">
-          <div class="styTopSectionLineLbl" style="float:left;clear:none;">General Limitation Amount:
+          <div class="styTopSectionLineLbl" style="float:left;clear:none;">General Limitation 2 Amount:
           </div>
           <div style="float:left;clear:none;width:118mm;padding-left:30mm;">
             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="./GeneralLimitationAmt"/>
+              <xsl:with-param name="TargetNode" select="./GeneralLimitation2Amt"/>
             </xsl:call-template>
           </div>
         </div>
@@ -156,6 +150,7 @@
         <div class="styTopSectionLine" style="width:187mm;">
           <div class="styTopSectionLineLbl" style="float:left;clear:none;">Total Foreign Taxes Paid Amount:
           </div>
+          <br/>
           <div style="float:left;clear:none;width:118mm;padding-left:30mm;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./TotalForeignTaxesPaidAmt"/>
@@ -176,12 +171,11 @@
             </xsl:call-template>
           </div>
         </div>
-        
         <br/>
-        
-                <div class="styTopSectionLine" style="width:187mm;">
+        <div class="styTopSectionLine" style="width:187mm;">
           <div class="styTopSectionLineLbl" style="float:left;clear:none;">Total Foreign Taxes Paid/Accrued Amount:
           </div>
+         <br/> 
           <div style="float:left;clear:none;width:118mm;padding-left:30mm;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./TotalForeignTaxPaidAccruedAmt"/>
@@ -216,8 +210,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->

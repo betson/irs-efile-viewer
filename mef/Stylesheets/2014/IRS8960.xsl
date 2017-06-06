@@ -13,8 +13,10 @@
 	<xsl:strip-space elements="*"/>  
 	<xsl:param name="FormData" select="$RtnDoc/IRS8960"/>  
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -39,7 +41,7 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<form id="IRS8960">
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- header -->
@@ -63,7 +65,7 @@
 								Attach to your tax return.
 								<br/>
 								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
-								Information about Form 8960 and its separate instructions is at <i>www.irs.gov/form8960</i>.
+								Information about Form 8960 and its separate instructions is at <a href="http://www.irs.gov/form8933" title="Link to IRS.gov"><i>www.irs.gov/form8933.</i></a>.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:21.2mm;">
@@ -97,8 +99,8 @@
 					<!-- Header row -->
 					<!-- Part I -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartName" style="height:8mm;padding-top:2mm;">Part I</div>
-						<div class="styPartDesc" style="height:8mm;">
+						<div class="styPartName" style="height:6mm;padding-top:1mm;">Part I</div>
+						<div class="styPartDesc" style="height:14mm;">
 							<div style="padding-top:2mm;float:left;">Investment Income</div>
 							<span style="font-weight:normal;font-family:Arial;height:8mm;">
 								<span style="width:8px;"/>
@@ -200,8 +202,8 @@
 							<span style="float:left;">(see instructions)</span>
 							<span class="styIRS8960Dots">.............</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;padding-top:3.5mm;">4a</div>
-						<div class="styLNAmountBox" style="height:4.5mm;padding-right:2px;padding-top:3.5mm;">
+						<div class="styLNRightNumBox" style="height:7.5mm;padding-top:3.5mm;">4a</div>
+						<div class="styLNAmountBox" style="height:7.5mm;padding-right:2px;padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/NetRentalIncomeOrLossAmt"/>
 							</xsl:call-template>
@@ -217,8 +219,8 @@
 							<span style="float:left;">section 1411 trade or business (see instructions)</span>
 							<span class="styIRS8960Dots">......</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:7.8mm;"><br/>4b</div>
-						<div class="styLNAmountBox" style="height:7.8mm;padding-right:2px;"><br/>
+						<div class="styLNRightNumBox" style="height:7.9mm;"><br/>4b</div>
+						<div class="styLNAmountBox" style="height:7.9mm;padding-right:2px;"><br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/AdjNetIncmOrLossNonSect1411Amt"/>
 							</xsl:call-template>
@@ -454,12 +456,12 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">12</div>
 						<div class="styLNDesc">
-							Net investment income. Subtract Part II, line 11 from Part I, line 8. Individuals complete lines 13&#8211;17. <br/>
+							Net investment income. Subtract Part II, line 11 from Part I, line 8. Individuals complete lines 13&#8211;17. 
 							<span style="float:left;">Estates and trusts complete lines 18a&#8211;21. If zero or less, enter -0-</span>
 							<span class="styIRS8960Dots">.........</span>
 						</div>
-						<div class="styLNRightNumBox"><br/>12</div>
-						<div class="styLNAmountBox"><br/>
+						<div class="styLNRightNumBox" style="height:8mm; padding-top:4mm">12</div>
+						<div class="styLNAmountBox" style="height:8mm;padding-top:4mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/NetInvestmentIncomeAmt"/>
 							</xsl:call-template>
@@ -467,10 +469,10 @@
 					</div>
 					<!-- Individuals -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox"/>
+						<div class="styLNLeftNumBox"></div>
 						<div class="styLNDesc"><b>Individuals:</b></div>
 						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
-						<div class="styLNAmountBoxNBB"/>
+						<div class="styLNAmountBoxNBB"></div>
 					</div>
 					<!-- Line 13 -->
 					<div style="width:187mm;">
@@ -538,12 +540,12 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">17</div>
 						<div class="styLNDesc">
-							Net investment income tax for individuals. Multiply line 16 by 3.8% (.038).
-							<span style="float:left;"><b>Enter here and include on your tax return</b> (see instructions) </span>
+							Net investment income tax for individuals. Multiply  line 16 by 3.8% (.038).
+							<span style="float:left;"><b>Enter here and include on  your tax return</b> (see instructions) </span>
 							<span class="styIRS8960Dots">..........</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;padding-top:4mm;">17</div>
-						<div class="styLNAmountBox" style="height:5mm;padding-top:4mm;">
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:4mm;">17</div>
+						<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/IndivNetInvstIncomeTaxAmt"/>
 							</xsl:call-template>
@@ -593,19 +595,18 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftLtrBoxDD8960">c</div>
 						<div class="styLNDesc" style="width:98.05mm;">
-							<span style="float:left">Undistributed net investment income. Subtract line 18b from 18a 
-							 </span>	<span style="float:left;width:58.05mm;">(see instructions). If zero or less, enter -0-</span>
+							Undistributed net investment income. Subtract line 18b from 18a <br/>
+							<span style="float:left;">(see instructions). If zero or less, enter -0-</span>
 							<span class="styIRS8960Dots">........</span>
-							
 						</div>
-						<div class="styLNRightNumBox" style="height:5.4mm;padding-top:4.5mm">18c</div>
-						<div class="styLNAmountBox" style="height:5.4mm;padding-top:4.5mm;padding-right:2px;">
+						<div class="styLNRightNumBox" style="height:7.8mm;"><br/>18c</div>
+						<div class="styLNAmountBox" style="height:7.8mm;padding-right:2px;"><br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/UndistributedNetIncomeAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="height:5.4mm;padding-top:5mm;background-color:lightgrey;"/>
-						<div class="styLNAmountBoxNBB" style="height:5.4mm;padding-top:5mm"/>
+						<div class="styLNRightNumBoxNBB" style="height:7.8mm;background-color:lightgrey;"/>
+						<div class="styLNAmountBoxNBB" style="height:7.8mm;"/>
 					</div>
 					<!-- Line 19a -->
 					<div style="width:187mm;">
@@ -615,7 +616,7 @@
 							<span class="styIRS8960Dots">........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">19a</div>
-						<div class="styLNAmountBox" style="height:4.4mm;padding-right:2px;">
+						<div class="styLNAmountBox" style="height:4.4mm;padding-right:3px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/AdjustedGrossIncomeAmt"/>
 							</xsl:call-template>
@@ -628,7 +629,7 @@
 						<div class="styLNLeftLtrBoxDD8960">b</div>
 						<div class="styLNDesc" style="width:98.05mm;">
 							<span style="float:left;">Highest tax bracket for estates and trusts for the year (see instructions)</span>
-							<!--<span class="styIRS8960Dots">..</span>-->
+							<span class="styIRS8960Dots"></span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">19b</div>
 						<div class="styLNAmountBox" style="height:4.4mm;padding-right:2px;">
@@ -676,8 +677,8 @@
 						Net investment income tax for estates and trusts. Multiply line 20 by 3.8% (.038).<span style="float:left;"><b> Enter here and include on your tax return </b>(see instructions)</span>
 							<span class="styIRS8960Dots">..........</span>
 						</div>
-						<div class="styLNRightNumBoxNBB"><br/>21</div>
-						<div class="styLNAmountBoxNBB"><br/>
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:4mm;">21</div>
+						<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/EstTrustNetInvstIncomeTaxAmt"/>
 							</xsl:call-template>

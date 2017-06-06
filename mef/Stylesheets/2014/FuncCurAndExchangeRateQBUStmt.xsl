@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/11/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -63,8 +64,10 @@
   <!-- Main template -->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
            <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -90,9 +93,9 @@
       <body class="styBodyClass">
 
         <xsl:call-template name="DocumentHeaderDependencyLandscape"/>  
-        <div class="styDepTitleLineLandscape">
-          <span class="styDepTitle">
-            <span style="width:254mm;"><xsl:value-of select="$depDocTitle"/></span>
+        <div class="styDepTitleLineLandscape" style="width:256mm;">
+          <span class="styDepTitle" style="width:256mm;">
+            <span style="width:256mm;"><xsl:value-of select="$depDocTitle"/></span>
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftoverLandscape"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>

@@ -15,8 +15,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS1040ScheduleCEZ"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -34,15 +36,18 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<xsl:if test="not($Print) or $Print=''">
+				   <xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS1040ScheduleCEZStyle"/>
 						<xsl:call-template name="AddOnStyle"/>
-					</xsl:if>
+			        </xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
 			<body class="styBodyClass">
 				<form name="Form2210">
+				<div style="width:187mm;">
+
+				
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;">
 						<div class="styFNBox" style="width:35mm;height:20mm;padding:bottom:0mm;">
@@ -58,7 +63,8 @@
 							<div class="styMainTitle" style="height:5mm;">Net Profit From Business<br/>
 								<span style="font-size:8pt;">(Sole Proprietorship)</span>
 							</div>
-							<div class="styFBT" stype="font-size:7pt;height:5mm;padding-top:1mm;">
+							<br/><br/>
+							<div class="styFBT" stype="font-size:7pt;height:5mm;padding-top:3mm;">
 								<img src="{$ImagePath}/1040CEZ_Bullet.gif" alt="MediumBullet"/>  Partnerships, joint ventures, etc., generally must file Form 1065 or 1065-B.<br/>
 								<img src="{$ImagePath}/1040CEZ_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040, 1040NR, or 1041.
 								<img src="{$ImagePath}/1040CEZ_Bullet.gif" alt="MediumBullet"/> See instructions on page 2.</div>
@@ -74,8 +80,8 @@
 					</div>
 					<!-- Name(s) shown on return -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:140mm; height:8mm">
-                    Name of proprietor<br/>
+						<div class="styFNBox" style="width:140mm; height:8mm;">
+                           Name of proprietor<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/NameOfProprietor"/>
 							</xsl:call-template>
@@ -84,14 +90,14 @@
 						</div>
 						<b>Social security number (SSN)</b>
 						<br/>
-						<span style="width:100%;text-align:center;">
+						<span style="text-align:center;">
 							<xsl:call-template name="PopulateSSN">
 								<xsl:with-param name="TargetNode" select="$FormData/SSN"/>
 							</xsl:call-template>
 						</span>
 					</div>
 					<div class="styBB" style="width:187mm;padding:1mm 0mm;">
-						<div class="styPartName" style="font-family:sans-serif;">Part I</div>
+						<div class="styPartName" style="font-family:sans-serif;height:auto;">Part I</div>
 						<div class="styPartDesc">General Information</div>
 					</div>
 					<div style="width:187mm;border-bottom:1px solid black;padding:2mm 0px;">
@@ -129,6 +135,7 @@
 							<div class="styGenericDiv" style="font-weight:bold;width:7mm;text-align:right;margin-right:2mm;">A</div>
 							<div class="styGenericDiv" style="width:119mm;">
 								Principal business or profession, including product or service<br/>
+								
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/PrincipalBusinessActivity"/>
 								</xsl:call-template>
@@ -178,10 +185,10 @@
 						</div>
 					</div>
 					<!-- E -->
-					<div style="width:187mm;height:8mm;font-size:7pt;">
+					<div style="width:187mm;height:auto;font-size:7pt;">
 						<div style="height:8mm;font-weight:bold;width:7mm;text-align:right;margin-right:2mm;float:left;">E</div>
-						<div class="styGenericDiv" style="width:177mm;border-bottom:1px solid black;height:8mm;">
-							<div>Business address (including suite or room no.). Address not required if same as on page 1 of your tax return.</div>
+						<div class="styGenericDiv" style="width:177mm;border-bottom:1px solid black;height:auto;">
+							<div>Business address (including suite or room no.). Address not required if same as on page 1 of your tax return.</div><br/>
 							<span>
 								<xsl:choose>
 									<xsl:when test="$FormData/BusinessUSAddress">
@@ -211,7 +218,7 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;height:8mm;font-size:7pt;">
-						<div style="padding-left:9mm;">City, town or post office, state, and ZIP code</div>
+						<div style="padding-left:9mm;">City, town or post office, state, and ZIP code</div><br/>
 						<div style="padding-left:9mm;">
 							<xsl:call-template name="PopulateCityStateInfo">
 								<xsl:with-param name="TargetNode" select="$FormData/BusinessUSAddress"/>
@@ -225,15 +232,15 @@
 							</xsl:if>
 						</div>
 					</div>
-					<div class="styBB" style="width:187mm;">
-						<div class="styGenericDiv" style="width:187mm;">
+					<div class="styBB" style="width:187mm;height:auto;">
+						<div class="styGenericDiv" style="width:187mm;height:auto;">
 							<div class="styLNLeftNumBoxSD" style="width:7mm;text-align:right;margin-right:2mm;">F</div>
-							<div class="styLNDesc" style="width:145mm;border-bottom:1px solid black;">
+							<div class="styLNDesc" style="width:145mm;border-bottom:1px solid black;height:8.9mm;">
 								Did you make any payments in 2013 that would require you to file Form(s) 1099 (see the Schedule C <br/>
 								<span style="float:left;clear:none;">instructions)</span>
 								<span style="letter-spacing:3mm;float:right;clear:none;">................................</span>
 							</div>
-							<div class="styLNAmountBox" style="font-weight:bold;text-align:center;border-left:none;"><br/>
+							<div class="styLNAmountBox" style="font-weight:bold;text-align:center;border-left:none;height:auto;padding-top:0.8mm;"><br/>
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/PaymentRqrFilingForm1099Ind"/>
@@ -265,13 +272,13 @@
 								</label>
 							</div>
 						</div>
-						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBoxSD" style="width:7mm;text-align:right;margin-right:2mm;">G</div>
+						<div class="styGenericDiv" style="width:187mm;height:auto;">
+							<div class="styLNLeftNumBoxSD" style="width:7mm;text-align:right;margin-right:2mm;height:auto;">G</div>
 							<div class="styLNDesc" style="width:145mm;">
 								<span style="float:left;clear:none;">If "Yes," did you or will you file required Forms 1099?</span>
-								<span style="letter-spacing:3mm;float:right;clear:none;">.................</span>
+								<span  class="styDotLn" style="float:right;padding-right:1mm;">...................</span>
 							</div>
-							<div class="styLNAmountBox" style="font-weight:bold;text-align:center;border:none;">
+							<div class="styLNAmountBox" style="font-weight:bold;text-align:center;border:none;height:auto;">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/RequiredForm1099FiledInd"/>
@@ -313,13 +320,15 @@
 						<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:10.5mm;padding-bottom:0px;">1</div>
 						<div class="styLNDesc" style="width:142mm;height:10.5mm;padding-bottom:0px;">
 						<span style="float:left;width:135mm;padding-bottom:0px;">
-							<b>Gross receipts. Caution. </b>If this income was reported to you on Form W-2 and the "Statutory employee" box on that form was checked, see <i>Statutory Employees</i> in the instructions for Schedule C, line 1, and check here 
-							<span style="margin-left:1mm;letter-spacing:3mm;padding-bottom:0px;">..............................</span>
-							<span style="width:1mm;padding-bottom:0px;"></span>
-							<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="padding-bottom:0px;"/>
+								<b>Gross receipts. Caution. </b>If this income was reported to you on Form W-2 and the "Statutory employee" box on that form was checked, see <i>Statutory Employees</i> in the instructions for Schedule C, line 1, and 
+								<span style="float:left;">							
+									<span style="float:left;">check here </span>
+									<span class="styDotLn" style="float:right;padding-right:1mm;">.............................</span>
+								</span>
+								<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="padding-bottom:0px;float:right"/>
 							</span>
-							<span style="float:right;padding-top:3.8mm;padding-bottom:0px;">
-							<div class="styBB" style="width:4mm;height:6mm;padding-bottom:0px;border-width:2px 1px 2px 2px solid black;">
+							<span style="float:right;padding-top:4.5mm;padding-bottom:0px;padding-right:1mm;">
+							<div class="styBB" style="width:4mm;height:6mm;padding-bottom:0px;border-width:2px 1px 2px 2px solid black;border-bottom:0px;">
 								<input type="checkbox" class="styCkboxBB">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/StatutoryEmployeeFromW2Ind"/>
@@ -335,8 +344,8 @@
 							</div>
 							</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:10.6mm;width:7.8mm;position:relative;padding-bottom:0px;">
-							<span style="position:absolute;bottom:0;">1</span>
+						<div class="styLNRightNumBox" style="height:10.6mm;width:7.8mm;position:relative;padding-bottom:0px;padding-top:7mm;">
+							1
 						</div>
 						<div class="styLNAmountBox" style="height:10.6mm;width:32mm;position:relative;text-align:left;padding-bottom:0px;">
 							<div style="position:absolute;width:32mm;bottom:0;text-align:right;">
@@ -349,10 +358,12 @@
 					<div style="width:187mm;height:4.5mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:1mm;width:5mm;">2</div>
 						<div class="styLNDesc" style="height:4.5mm;width:142mm;">
-							<span style="font-weight:bold;">Total expenses</span> (see page 2). If more than $5,000, you <span style="font-weight:bold;">must</span> use Schedule C<span style="letter-spacing:3mm;">..........</span>
+							<span  style="float:left;">							
+							<span style="font-weight:bold;">Total expenses</span> (see page 2). If more than $5,000, you <span style="font-weight:bold;">must</span>                    use Schedule C </span>               
+							<span  class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 						</div>
-						<div class="styLNRightNumBox" style="width:7.8mm;height:4.5mm;position:relative;">
-							<span style="position:absolute;bottom:0;">2</span>
+						<div class="styLNRightNumBox" style="width:7.8mm;height:4.5mm;position:relative;padding-top:1.2mm;">
+							2
 						</div>
 						<div class="styLNAmountBox" style="height:4.5mm;width:32mm;position:relative;text-align:left;">
 							<div style="position:absolute;width:32mm;bottom:0;text-align:right;">
@@ -372,15 +383,18 @@
 							<span style="font-weight:bold">Form 1040NR, line 13.</span> and 
 							<span style="font-weight:bold">Schedule SE, line 2</span> (see instructions).
 							(Statutory employees, <span style="font-weight:bold">do not</span> 
-							report this amount on Schedule SE, line 2.) Estates and trusts, enter on 
-							<span style="font-weight:bold">Form 1041, line 3 </span>
-							<span style="letter-spacing:3mm;">...................</span>
+							report this amount on Schedule SE, line 2.) Estates and trusts, 
+							<span style="float:left;">
+								enter on 
+								<span style="font-weight:bold">Form 1041, line 3 </span>
+							</span>
+							<span  class="styDotLn" style="float:right;padding-right:1mm;">........................</span>
 						</div>
-						<div class="styLNRightNumBox" style="width:7.8mm;height:14mm;border-bottom:none;position:relative;">
-							<span style="position:absolute;bottom:0;">3</span>
+						<div class="styLNRightNumBox" style="width:7.8mm;height:14mm;border-bottom:none;position:relative;padding-top:10.5mm;">
+							3
 						</div>
-						<div class="styLNAmountBox" style="height:14mm;width:32mm;position:relative;text-align:left;border-bottom:none;">
-							<div style="position:absolute;width:32mm;bottom:0;text-align:right;">
+						<div class="styLNAmountBox" style="height:14mm;width:32mm;position:relative;text-align:left;border-bottom:none;padding-top:10.5mm;">
+							<div style="position:absolute;width:32mm;text-align:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/NetProfitAmt"/>
 								</xsl:call-template>
@@ -403,7 +417,7 @@
 						</xsl:call-template>
 					</xsl:if>
 					<!--Page Footer-->
-					<div class="pageEnd" style="width:187mm; font-size:7pt;border-top:1 solid black; padding-top:0.5mm">
+					<div style="width:187mm; font-size:6pt;border-top:1px solid black;padding-top:0mm;">
 						<div style="float:left; font-size:7pt">
 							<b>For Paperwork Reduction Act Notice, see your tax return instructions.</b>
 						</div>
@@ -413,6 +427,8 @@
 						<b style="font-size:7pt">Schedule C-EZ (Form 1040) 2013</b>
 						</div>
 					</div>
+					</div>
+					<p  class="pageEnd" style="page-break-after:always;display:block;"/>
 					<!--END Page Footer-->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
@@ -702,6 +718,9 @@
 					<div style="width:187mm;height:4.5mm;">
 						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:4.5mm">6</div>
 						<div class="styLNDesc" style="height:4.5mm;width:179mm;">
+						<span style="float:left;">
+						     Was your vehicle available for personal use during off-duty hours?<span style="letter-spacing:3mm;">...................</span>
+						</span>
 						<span style="float:right">
 							<input type="checkbox">
 							<xsl:call-template name="PopulateYesCheckbox">
@@ -727,13 +746,17 @@
 								<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>AvailableForOffDutyHoursInd</xsl:with-param>
 							</xsl:call-template>
 							No</label>
-						</span>Was your vehicle available for personal use during off-duty hours?<span style="letter-spacing:3mm;">...................</span>
+						</span>
 						</div>
 					</div>
 					<div style="width:187mm;height:4.5mm;"/>
 					<div style="width:187mm;height:4.5mm;">
 						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:4.5mm">7</div>
-						<div class="styLNDesc" style="height:4.5mm;width:179mm;"><span style="float:right">
+						<div class="styLNDesc" style="height:4.5mm;width:179mm;">
+						<span style="float:left;">
+						    Do you (or your spouse) have another vehicle available for personal use?<span style="letter-spacing:3mm;">................</span>
+						</span>
+						<span style="float:right">
 							<input type="checkbox">
 							<xsl:call-template name="PopulateYesCheckbox">
 								<xsl:with-param name="TargetNode" select="$TargetNode/AnotherVehicleInd"/>
@@ -758,7 +781,7 @@
 								<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>AnotherVehicleInd</xsl:with-param>
 							</xsl:call-template>
 							No</label>
-						</span>Do you (or your spouse) have another vehicle available for personal use?<span style="letter-spacing:3mm;">................</span>
+						</span>
 						</div>
 					</div>
 					<div  class="styGenericDiv" style="width:187mm;height:4.5mm;"/>
@@ -767,6 +790,9 @@
 					<div class="styGenericDiv" style="width:187mm;height:4.5mm;">
 						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:4.5mm">8a</div>
 						<div class="styLNDesc" style="height:4.5mm;width:179mm;">
+						<span style="float:left;">
+                             Do you have evidence to support your deduction?<span style="letter-spacing:3mm;">........................</span>
+						</span>
 						<span style="float:right">
 							<input type="checkbox">
 							<xsl:call-template name="PopulateYesCheckbox">
@@ -792,40 +818,44 @@
 								<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceToSupportDeductionInd</xsl:with-param>
 							</xsl:call-template>
 							No</label>
-						</span>Do you have evidence to support your deduction?<span style="letter-spacing:3mm;">.........................</span>
+						</span>
 						</div>
-					</div>
-					
+					</div>					
 					<div class="styGenericDiv" style="width:187mm;height:4.5mm;"/>
-					<div class="styGenericDiv" style="width:187mm;height:4.5mm;">
-						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:4.5mm;text-align:right;padding-right:2mm;">b</div>
-						<div class="styLNDesc" style="height:4.5mm;width:179mm;">
-						<span style="float:right">
-							<input type="checkbox">
-							<xsl:call-template name="PopulateYesCheckbox">
-								<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
-								<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceWrittenInd</xsl:with-param>
-							</xsl:call-template>
-							</input>
-							<label>
-							<xsl:call-template name="PopulateLabelYes">
-								<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
-								<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceWrittenInd</xsl:with-param>
-							</xsl:call-template>
-							Yes</label>
-							<input type="checkbox">
-							<xsl:call-template name="PopulateNoCheckbox">
-								<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
-								<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceWrittenInd</xsl:with-param>
-							</xsl:call-template>
-							</input>
-							<label>
-							<xsl:call-template name="PopulateLabelNo">
-								<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
-								<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceWrittenInd</xsl:with-param>
-							</xsl:call-template>
-							No</label>
-						</span>If "Yes," is the evidence written?<span style="letter-spacing:3mm;">..............................</span>
+					<div class="styGenericDiv" style="width:187mm;height:auto;">
+						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:auto;text-align:right;padding-right:2mm;">b</div>
+						<div class="styLNDesc" style="height:auto;width:179mm;">
+						<span style="float:left;">
+							<span style="float:left;">If "Yes," is the evidence written?</span>
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.............................</span>	
+						</span>
+							<span style="float:right;">
+								<input type="checkbox">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
+									<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceWrittenInd</xsl:with-param>
+								</xsl:call-template>
+								</input>
+								<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
+									<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceWrittenInd</xsl:with-param>
+								</xsl:call-template>
+								Yes</label>
+								<input type="checkbox">
+								<xsl:call-template name="PopulateNoCheckbox">
+									<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
+									<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceWrittenInd</xsl:with-param>
+								</xsl:call-template>
+								</input>
+								<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
+									<xsl:with-param name="BackupName">IRS1040ScheduleCEZVehicle<xsl:value-of select="position()"/>EvidenceWrittenInd</xsl:with-param>
+								</xsl:call-template>
+								No</label>
+							</span>
+
 						</div>
 					</div>
 	</xsl:template>

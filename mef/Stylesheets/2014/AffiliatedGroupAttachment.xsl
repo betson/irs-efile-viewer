@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Updated per UWR123023 IE11 Upgrade Fixes-->
+<!-- Updated per IBM Defect 44139 by Robert L Jones-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -12,8 +14,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -40,7 +44,7 @@
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>    
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:85mm">
+          <span class="styDepTitle">
             <xsl:value-of select="$depDocTitle"/>
           </span>
         </div>
@@ -48,13 +52,13 @@
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>        
         
         <div class="styTopSectionLine">
-          <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
-          <div class="styExplanationLine">
+         <div class="styTopSectionLineLbl" style="float:left;">Explanation:</div>
+         
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/MeduimExplanationTxt"/>
             </xsl:call-template>            
           </div>
-        </div>
+      
         <br/>      
       </body>
     </html>

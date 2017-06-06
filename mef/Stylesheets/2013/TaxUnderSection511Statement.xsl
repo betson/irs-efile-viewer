@@ -15,8 +15,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title>
            <!--Total Carryover of Foreign Taxes Schedule-->
           <xsl:value-of select="$depDocTitle"/>
@@ -58,7 +60,8 @@
         
                <div class="styTopSectionLine">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Statement:</span></div>
-          <div style="float:left;clear:none; width: 118mm">          
+          <br/>
+          <div style="float:left;clear:none; width: 187mm">          
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependancyData/ExplanationTxt"/>
             </xsl:call-template>            

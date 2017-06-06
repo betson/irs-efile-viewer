@@ -61,7 +61,7 @@
       section selected is consolidated. This corresponds to the display id for the top level subsidiary doucment. -->  
   <xsl:variable name="subsidiaryEIN" select="/AppData/Parameters/SubsidiaryEIN" />
   
-  <xsl:variable name="titleStringWidth"    select="'width:71mm;'" />
+  <xsl:variable name="titleStringWidth"    select="'width:245px;'" />
   <xsl:variable name="checkAllBtnWidth"    select="'width:46mm;'" />
   <xsl:variable name="uncheckAllBtnWidth"    select="'width:28mm;'" />
 
@@ -114,13 +114,13 @@
 <xsl:otherwise ><xsl:value-of select="$falseString" /></xsl:otherwise>
     </xsl:choose>
   </xsl:variable>  
-  
+    
     <xsl:variable name="avsDataPresent" >
     <xsl:choose >
       <xsl:when test="(/AppData/SubmissionReferenceAndSummary/AVSDataPTCInfo = $trueString) or (/AppData/SubmissionReferenceAndSummary/AVSDataPTCInfo = 1)"><xsl:value-of select="$trueString" /></xsl:when>
 <xsl:otherwise ><xsl:value-of select="$falseString" /></xsl:otherwise>
     </xsl:choose>
-  </xsl:variable>   
+  </xsl:variable>      
   
   <xsl:variable name="indexPresent" >
     <xsl:choose >
@@ -156,16 +156,19 @@
         zoom: <xsl:value-of select="$ZoomLevel" />;
       }
       .styFormTypeTitleLine {   /* Form Type Document Title Line */
-        width: 145mm;
+        margin-top:6px;
+        width: 145mm; 
+        float:left;
         border-style: solid; border-color: gold;
         border-top-width: 0px; border-bottom-width: 2px; border-left-width: 0px; border-right-width: 0px;
+        margin-bottom:7px;
       }
       .styFormTypeTitle {   /* Form Type Document Title */
         font-size:8pt;
+		float:left;
         font-family: verdana, arial, sans-serif;
         font-weight: bold;
-        float:left;
-        height:6mm;
+        height:17px;
         background-color: gold;
         text-align: left;
         padding-left: 8px; padding-right: 0px; padding-top:6px; padding-bottom:0px;
@@ -183,18 +186,17 @@
       .styFormTableContainer { /* Style for Div containing the Form Table */
         width:145mm;
         overflow-y:auto;
-        margin-top:1mm;margin-bottom:3mm;
-
       }
       .styFormTable { /* Style for a table of rows containing the form checkbox and description */
         width:145mm;
         border-style: solid; border-color: black;
         border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
-        margin-bottom:1mm;
+        border-spacing:0px;
+        border-collapse:collapse;
       }
       .styFormCheckboxContainer { /* Style for form checkbox container  */
         padding-left: 5mm;
-        margin-top: 6px; margin-bottom:5px;
+        margin-top: 0px; margin-bottom:0px;
         text-align: right:
         float:left;clear:none;
       }
@@ -202,9 +204,8 @@
         width:140mm;
         font-size: 8pt;
         text-align:left;
-        margin-top: 5px; margin-bottom:5px;
-        float:left;clear:none;
-      }
+        margin-top: 0px; margin-bottom:0px;
+      }      
       .styCkbox {   /* Checkbox style */
         height: 3mm; width: 3mm;
       }
@@ -218,7 +219,7 @@
         font-weight: bold; font-style: normal;
       }
       .stySectionSeperator {   /* Style for section seperator */
-        width:145mm;
+        width:548px;
         border-style: solid; border-color: black;
         border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
         float: left; clear: left;
@@ -254,7 +255,7 @@
 
       var categoryType;
       
-      //Begin Additional Information Form List Creation --  
+      //Begin Additional Information Form List Creation --        
       temp =   "<xsl:if test="($ackPresent = $trueString)">Acknowledgement<xsl:if test="($codeEditPresent = $trueString) or  ($procStatusPresent = $trueString) or ($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($avsDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
         </xsl:if>
         <xsl:if test="($codeEditPresent = $trueString)">CodeAndEdit<xsl:if test="($procStatusPresent = $trueString) or
@@ -647,6 +648,7 @@ function printDocsHelper()
   <xsl:template name="insertHeadElement" >
   
     <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>    
       <title>Print Document List </title>
       <meta http-equiv="Pragma" content="no-cache" />
       <meta http-equiv="Cache-Control" content="no-cache" />
@@ -670,6 +672,7 @@ function printDocsHelper()
   </xsl:template>
 
   <xsl:template match="/">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>  
     <html>
       <xsl:call-template name="insertHeadElement" />
       <xsl:call-template name="insertBodyElement" />  
@@ -679,14 +682,14 @@ function printDocsHelper()
 
   <xsl:template name="displayTaxpayerSelectCkbox" >
     <form name="PrintParamForm" id="PrintParamForm" action="">
-    <table style="margin-bottom:0px;">
+    <table style="margin-top:2px;margin-bottom:0px;">
       <tr>
-      <td class="styFormDescription"><nobr><span style="font-weight:bold;">Print overflow data:</span>
+      <td class="styFormDescription" style="width:330px;white-space:nowrap;"><span style="font-weight:bold;">Print overflow data:</span>
         <input title="Print overflow data separately and after the form is printed" type="radio" name="overflowPrintStyle" id="overflowStyle1" value="" checked="true" onclick="setOverflowPrintStyleParameter('separated');" style="vertical-align:middle;" /><label for="overflowStyle1" title="Print overflow data separately and after the form is printed">separated</label>
-        <input title="Print overflow data where they are defined on the form" type="radio" name="overflowPrintStyle" id="overflowStyle2" value=""  onclick="setOverflowPrintStyleParameter('inline');" style="vertical-align:middle;" /><label for="overflowStyle2" title="Print overflow data where they are defined on the form">inline</label></nobr></td>
+        <input title="Print overflow data where they are defined on the form" type="radio" name="overflowPrintStyle" id="overflowStyle2" value=""  onclick="setOverflowPrintStyleParameter('inline');" style="vertical-align:middle;" /><label for="overflowStyle2" title="Print overflow data where they are defined on the form">inline</label></td>
       <xsl:if test="$ReturnStatus = 'A'" >
         <td class="styFormCheckboxContainer"><input name="printCheckBox" id="printCheckBox" type="checkbox" title="Print original data only with page watermark" class="styCkbox" value="" onclick="setTaxpayerPrintParameter();" ></input></td>
-        <td class="styFormDescription" style="font-weight:bold;"><label for="printCheckBox" title="Print original data only with page watermark"><nobr>Print for taxpayer</nobr></label></td>
+        <td class="styFormDescription" style="font-weight:bold;width:150px;height:17px;white-space:nowrap;"><label for="printCheckBox" title="Print original data only with page watermark">Print for taxpayer</label></td>
       </xsl:if>
       </tr>
     </table>
@@ -697,7 +700,7 @@ function printDocsHelper()
 
     <body onload="init()">
     
-    <span style="font-size:7pt;"><span style="font-weight:bold;">Note:</span> Before clicking the Print button, please make sure the margins in your browser's Page Setup dialog are set as follows:  Left=0.35", Right=0.35", Top=0.25", Bottom=0.25".</span>
+    <span style="font-size:7pt;"><span style="font-weight:bold;">Note:</span> Before clicking the Print button, please make sure the margins in your browser's Page Setup dialog are set<br/> as follows:  Left=0.35", Right=0.35", Top=0.25", Bottom=0.25".</span>
 	  <br/><br/>    
     <span class="styFormDescription">
 			The more documents you select for printing in one request, the more server and browser resources are needed to process the documents. If you encounter an error while printing multiple selected documents, try printing again with fewer documents. For very large documents, it is preferable that you print only one document at a time.
@@ -756,8 +759,7 @@ function printDocsHelper()
     <xsl:call-template name="displayAdditionalInfo" />
     
     <div style="text-align:center;">
-        <input class="styGenericBtn" type="button" value="Print" onclick="printDocs();" title="Print"></input>
-        <span style="width:5px;"></span>
+        <input class="styGenericBtn" style="margin-right:5px;" type="button" value="Print" onclick="printDocs();" title="Print"></input>
         <input class="styGenericBtn" type="button" value="Cancel" onclick="cancel();" title="button"></input>
     </div>
 
@@ -883,9 +885,9 @@ function printDocsHelper()
 
   
   <xsl:template name="listDocName">
-  <xsl:param name="document" />
-  <xsl:param name="category" />
-    
+    <xsl:param name="document" />
+    <xsl:param name="category" />
+
     <!-- Variable that holds the value to be displayed -->
     <xsl:variable name="displayedName">
       <xsl:call-template name="rtnDisplayName">
@@ -979,31 +981,25 @@ function printDocsHelper()
   
   
   <xsl:template name="displayTitle">
-  <xsl:param name="titleString" />
-  <xsl:param name="printMode" />
-  
-
-      <div class="styFormTypeTitleLine">
-        <div class="styFormTypeTitle" style="{$titleStringWidth}">
-          <xsl:value-of select="$titleString" />      
-        </div>
-        <div class="styCheckAllButtonContainer" style="{$checkAllBtnWidth}">
-          <input class="styCheckAllBtn" type="button" value="Check All" onclick="verifyCheckAll('{$printMode}');" title="Check All"/>
-        </div>
-        <div class="styCheckAllButtonContainer" style="{$uncheckAllBtnWidth}">
-          <input class="styCheckAllBtn" type="button" value="Uncheck All" onclick="uncheckAll( '{$printMode}' );" title="Uncheck All"/>
-        </div>
+    <xsl:param name="titleString" />
+    <xsl:param name="printMode" />
+    <div class="styFormTypeTitleLine">
+      <div class="styFormTypeTitle" style="{$titleStringWidth}">
+        <xsl:value-of select="$titleString" />
       </div>
-      
+      <div class="styCheckAllButtonContainer" style="{$checkAllBtnWidth}">
+        <input class="styCheckAllBtn" type="button" value="Check All" onclick="verifyCheckAll('{$printMode}');" title="Check All"/>
+      </div>
+      <div class="styCheckAllButtonContainer" style="{$uncheckAllBtnWidth}">
+        <input class="styCheckAllBtn" type="button" value="Uncheck All" onclick="uncheckAll( '{$printMode}' );" title="Uncheck All"/>
+      </div>
+    </div>
   </xsl:template>
   
   
   <xsl:template name="insertDocList" >
-  <xsl:param name="documentNodeSet" />
-  <xsl:param name="category" />
-  
-    
-    
+    <xsl:param name="documentNodeSet" />
+    <xsl:param name="category" />
     <div class="styFormTableContainer">
         <!-- table height logic -->
           <xsl:call-template name="SetTableHeight">
@@ -1045,7 +1041,7 @@ function printDocsHelper()
   <xsl:template name="SetTableHeight">
   <xsl:param name="rowCount"/>
     <xsl:if test="$rowCount > 6">
-      <xsl:attribute name="style">overflow-y:auto;height:28mm;</xsl:attribute>
+      <xsl:attribute name="style">overflow-y:auto;overflow-x:hidden;height:115px;</xsl:attribute>
     </xsl:if>
   </xsl:template>
   
@@ -1099,7 +1095,7 @@ function printDocsHelper()
               <td class="styFormCheckboxContainer"><input name="otherDocument" type="checkbox" class="styCkbox" id="AVSDataPTCInfo" value="AVSDataPTCInfo"></input></td>
               <td class="styFormDescription"><label for="AVSDataPTCInfo">AVS Data - Get PTC Info Response</label></td>
             </tr>
-          </xsl:if>                              
+          </xsl:if>          
           
           
             <xsl:if test="$indexPresent = $trueString" >

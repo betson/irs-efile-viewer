@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--UWR123023 IE11 Upgrade Fixes 5/22/15 by Robert L Jones-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -19,8 +20,10 @@
   <!-- Main template -->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>
@@ -48,7 +51,7 @@
         
         <div class="styDepTitleLine">
           <span class="styDepTitle">
-            <span style="width:118mm;"><xsl:value-of select="$depDocTitle"/></span>        
+            <xsl:value-of select="$depDocTitle"/>      
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftover">
@@ -68,7 +71,7 @@
           <div class="styDepGenericDiv" style="clear:both;">
             <span class="styTopSectionLineLbl">Candidate’s Address:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;">
+          <div class="styDepGenericDiv" style="clear:right;width:105mm;">
             <xsl:choose>
               <xsl:when test="$DependencyData/CandidateUSAddress">
                 <xsl:call-template name="PopulateUSAddressTemplate">
@@ -96,10 +99,10 @@
         </div>
         
         <div class="styTopSectionLine" style="width:187mm;clear:both;">
-          <div class="styDepGenericDiv" style="clear:both;">
+          <div class="styDepGenericDiv" style="clear:left;">
             <span class="styTopSectionLineLbl">Party Affiliation:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;">
+          <div class="styDepGenericDiv" style="clear:right;width:105mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/PartyAffiliationTxt"/>
             </xsl:call-template>
@@ -110,7 +113,7 @@
           <div class="styDepGenericDiv" style="clear:both;">
             <span class="styTopSectionLineLbl">Office Sought:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;">
+          <div class="styDepGenericDiv" style="clear:right;width:105mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/OfficeSoughtDesc"/>
             </xsl:call-template>
@@ -121,7 +124,7 @@
           <div class="styDepGenericDiv" style="clear:both;">
             <span class="styTopSectionLineLbl">District:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;">
+          <div class="styDepGenericDiv" style="clear:right;width:105mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/DistrictNameTxt"/>
             </xsl:call-template>
@@ -143,7 +146,7 @@
           <div class="styDepGenericDiv" style="clear:both;">
             <span class="styTopSectionLineLbl">Name of Principal Campaign Committee:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;">
+          <div class="styDepGenericDiv" style="clear:right;width:105mm;">
             <br/><xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/PrinCampaignCommitteeNameTxt"/>
             </xsl:call-template>
@@ -154,7 +157,7 @@
           <div class="styDepGenericDiv" style="clear:both;">
             <span class="styTopSectionLineLbl">Committee’s Address:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;">
+          <div class="styDepGenericDiv" style="clear:right;width:105mm;">
             <xsl:choose>
               <xsl:when test="$DependencyData/CommitteeUSAddress">
                 <xsl:call-template name="PopulateUSAddressTemplate">

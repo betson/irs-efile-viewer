@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--UWR123023 IE11 Upgrade Fixes 5/22/15 by Robert L Jones-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -15,8 +16,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title>
            <!--Recognize Income Under Temporary Regulations Statement-->
           <xsl:value-of select="$depDocTitle"/>
@@ -47,7 +50,7 @@
         <xsl:call-template name="DocumentHeaderDependency"/>
         
         <div class="styDepTitleLine">
-          <div class="styDepTitle" style="width:80mm">            
+          <div class="styDepTitle">            
             <xsl:value-of select="$depDocTitle"/>
           </div>
         </div>

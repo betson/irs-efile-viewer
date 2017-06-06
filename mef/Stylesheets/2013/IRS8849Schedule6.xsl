@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<!-- 09/04/2012 - Made changes per UWR #58906 - Jeremy Nichols --><!-- 10/11/2012 - Modified per UWR #73255 - Jeremy Nichols --><!-- 10/11/2012 - Modified per KISAMS #IM00804153 - Jeremy Nichols --><!-- 12/18/2012 - Modified per defect #34714 - Jeremy Nichols --><!-- 12/18/2012 - Modified per defect #34716 - Jeremy Nichols --><!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
+<!-- 05/15/2014 - Modified per UWR #107611 - Jeremy Nichols -->
+<!-- 06/26/2015 - Changes made for defect 42843 - Jeremy Nichols -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -9,8 +12,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS8849Schedule6"/>
   <xsl:template match="/">
+  <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
     <html>
       <head>
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>	
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -53,7 +58,7 @@
                	 	</xsl:call-template>
 			</span>
 			<br/>
-			<span class="styAgency" style="font-size: 7.pt; font-weight:bold">(Rev. January 2013)</span><br/>
+			<span class="styAgency" style="font-size: 7.pt; font-weight:bold">(Rev. August 2013)</span><br/>
 			
 			<div class="styAgency" style="font-size: 7pt; font-weight:bold;padding-top:1mm;">
 				Department of the Treasury<br/>
@@ -62,7 +67,7 @@
  		</div>
  		
 		<div class="styFTBox" style="width:125mm; height: 21mm">
-			<div class="styMainTitle" style="height:9mm; font-weight: bold; padding-top:2mm">Other Claims</div>
+			<div class="styMainTitle" style="height:9mm; font-weight: bold; padding-top:2mm">Other Claims</div><br/>
 			<div class="styFST" style="height:5mm;font-size:7pt;font-weight:bold;">
 				<img src="{$ImagePath}/8849Sch6_Bullet.gif" alt="MediumBullet"/> Attach to Form 8849.
 			</div>
@@ -104,9 +109,9 @@
 			</xsl:otherwise>
 		</xsl:choose>
 		</td>
-		<td valign="top" class="styNameBox" style="padding-left:2mm;font-size:7pt;font-weight:normal; height:10mm;">
-		<span class="BoldText" style="width:33mm;">EIN or SSN</span>
-             <div style="text-align:left; padding-top:2mm;font-weight:normal;">
+		<td valign="top" class="styNameBox" style="padding-left:2mm;font-size:7pt;font-weight:normal; width:35mm;height:10mm;">
+		<span class="BoldText"  style="width:33mm;">EIN or SSN</span><br/><br/>
+             <div valign="top" style="text-align:left;font-weight:normal;">
 		<xsl:choose>
 			<xsl:when test="normalize-space($FormData/EmployerIdentificationNumber) != ''">
 			<xsl:call-template name="PopulateEIN">
@@ -133,12 +138,12 @@
 		</xsl:choose>
 		</div>
 		</td>
-		<td valign="top" class="styEINBox" style="padding-left:2mm;font-size:7pt;font-weight:normal;">
-		<span class="BoldText">Total refund (total of lines 1-5)</span>
+		<td valign="top" class="styEINBox" style="padding-left:2mm;font-size:7pt;font-weight:normal;width:45mm;height:10mm;">
+		<span class="BoldText">Total refund (total of lines 1-5)</span><br/>
 		<div style="text-align:right; padding-top:2mm;font-weight:normal;">
 		<span style="float:left;">$</span>
 			<xsl:call-template name="PopulateAmount">
-				<xsl:with-param name="TargetNode" select="$FormData/TotalRefundAmt"/>
+				<xsl:with-param name="TargetNode" select="$FormData/TotalRefund"/>
 			</xsl:call-template>
 		</div>
 		</td>
@@ -148,11 +153,11 @@
 		
 		<!-- Begin Dates format -->
 
-		<div style="width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width:  1px; border-bottom-width: 0px">
-			<br/>
+		<div style="width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 	1px; border-bottom-width: 0px">
+			<br />
 			<span class="BoldText" style="font-size:8pt;">
 				Enter the earliest and latest <b>dates of the events </b> included in this claim.  Enter in MMDDYYYY format.					</span>
-			<br/><br/>
+			<br /><br />
 		</div>
 
 		<div style="width:187mm;">
@@ -165,10 +170,10 @@
 					<div style="float:left; font-size:8pt; padding-left:5mm;">
 						Earliest date <img src="{$ImagePath}/8849Sch6_Bullet.gif" alt="MediumBullet"/><span style="width:1mm;"/>
 					</div>
-				<div style="float:left;width:35mm;border-bottom:1 solid black;">
+				<div style="float:left;width:35mm;border-bottom:1px solid black;">
 				<div style="float:left;width:30mm;border-bottom:0 solid black;">		
 					<xsl:call-template name="PopulateMonthDayYear">
-						<xsl:with-param name="TargetNode" select="$FormData/EarliestClaimDt"/>
+						<xsl:with-param name="TargetNode" select="$FormData/EarliestDate"/>
 					</xsl:call-template>		
 				</div>
 				</div>  
@@ -180,10 +185,10 @@
 					<div style="float:left; font-size:8pt; padding-left:7mm;">
 						Latest date <img src="{$ImagePath}/8849Sch6_Bullet.gif" alt="MediumBullet"/><span style="width:1mm;"/>
 					</div>
-				<div style="float:left;width:35mm;border-bottom:1 solid black;">
+				<div style="float:left;width:35mm;border-bottom:1px solid black;">
 				<div style="float:left;width:30mm;border-bottom:0 solid black;">		
 					<xsl:call-template name="PopulateMonthDayYear">
-						<xsl:with-param name="TargetNode" select="$FormData/LatestClaimDt"/>
+						<xsl:with-param name="TargetNode" select="$FormData/LatestDate"/>
 					</xsl:call-template>		
 				</div>
 				</div>  
@@ -196,12 +201,12 @@
 
 		<!-- End Dates format -->
 		<div style="width:187mm; padding-top: 5mm; border-bottom:1px solid black">
-			<span style="width:1px"/>
+			<span style="width:1px"></span>
 			<span style="float:right">				
 				<div class="styGenericDiv" style="width:1mm;padding-left:2mm;">
 					<!-- button display logic -->
 					<xsl:call-template name="SetDynamicTableToggleButton">
-					<xsl:with-param name="TargetNode" select="$FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp"/>
+					<xsl:with-param name="TargetNode" select="$FormData/OtherClaims/Item"/>
 					<xsl:with-param name="containerHeight" select="5"/>
 					<xsl:with-param name="containerID" select=" 'OGLctn' "/>
 					</xsl:call-template>
@@ -211,7 +216,7 @@
 
 		</div>
 		
-		<div class="styTableContainer" style="height:57.5mm;width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px" id="OGLctn">
+		<div class="styTableContainer" style="height:49.5mm;width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px" id="OGLctn">
         <!-- print logic -->
           <xsl:call-template name="SetInitialState"/>
         <!-- end -->      
@@ -220,7 +225,7 @@
 		<thead class="styTableHead">
 		<tr>
 			<th style="width:5mm;height:8mm;text_align:center;font-weight:normal; border-top:1px solid black;" scope="col">
-				<span style="width:1px"/>
+				<span style="width:1px"></span>
 			</th>
 			<th style="border-right:black solid 1; width:122mm;height:8mm;text_align:center;font-weight:normal; border-top:1px solid black;" scope="col">
 				<span style="font-weight:bold; font-size:8pt">Tax</span>
@@ -233,28 +238,28 @@
 			</th>
 		</tr>
 		</thead>
-		<tfoot/>
+		<tfoot></tfoot>
 		
 		<!-- Begin Table 1, Other Claims item -->
 		<tbody style="font-size:7pt; padding:5px">
-            	<xsl:if test="((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 6) or ($Print != $Separated))">
+            	<xsl:if test="((count($FormData/OtherClaims/Item) &lt; 6) or ($Print != $Separated))">
 		
-          	<xsl:for-each select="$FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp">
+          	<xsl:for-each select="$FormData/OtherClaims/Item">
 		<tr>
 			<td style="text-align: center; vertical-align: top; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
-				<xsl:number value="position()"/>
+				<xsl:number value="position()" />
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
 				<xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="OtherTaxClaimGrp/TaxTypeDesc"/>
+					<xsl:with-param name="TargetNode" select="Tax/TypeOfTax"/>
 				</xsl:call-template> 
-				<xsl:if test="normalize-space(OtherTaxClaimGrp/VIN)!=''">
+				<xsl:if test="normalize-space(Tax/VIN)!=''">
 					<br/>
 					<xsl:call-template name="PopulateText">
-						<xsl:with-param name="TargetNode" select="OtherTaxClaimGrp/VIN"/>
+						<xsl:with-param name="TargetNode" select="Tax/VIN"/>
 					</xsl:call-template>
 				</xsl:if>        
-				<span style="width:1px;"/>
+				<span style="width:1px;"></span>
 				<xsl:call-template name="SetFormLinkInline">
 					<xsl:with-param name="TargetNode" select="."/>
 				</xsl:call-template>		          			 	
@@ -262,111 +267,111 @@
           		<td style="text-align: right; vertical-align: top; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
 				<span style="float:left;"><xsl:if test="position()=1">$</xsl:if></span>
           			<xsl:call-template name="PopulateAmount">
-          				<xsl:with-param name="TargetNode" select="Amt"/>
+          				<xsl:with-param name="TargetNode" select="Amount"/>
 				</xsl:call-template>
           		</td>
           		<td style="text-align: center; vertical-align: top; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">	
 				<xsl:call-template name="PopulateText">
-          				<xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+          				<xsl:with-param name="TargetNode" select="CRN"/>
           			</xsl:call-template>
           		</td>
 		</tr>
 		</xsl:for-each>
 		</xsl:if>
 		
-            <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 1 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
+            <xsl:if test="count($FormData/OtherClaims/Item) &lt; 1 or ((count($FormData/OtherClaims/Item) &gt; 5) and ($Print = $Separated))">
 		<tr>
 			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
 			<span style="width:1px">1</span>
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
 				<xsl:call-template name="PopulateAdditionalDataTableMessage">
-					<xsl:with-param name="TargetNode" select="$FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp"/>
+					<xsl:with-param name="TargetNode" select="$FormData/OtherClaims/Item"/>
 				</xsl:call-template>
-			<span style="width:1px"/>       	
+			<span style="width:1px"></span>       	
           		</td>
           		<td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;padding-top:5mm">
           			<span style="float:left;">$</span>
-			<span style="width:1px"/>
+			<span style="width:1px"></span>
           		</td>
           		<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">	
-			<span style="width:1px"/>
+			<span style="width:1px"></span>
           		</td>
 		</tr>
 		</xsl:if>
 
-            <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 2 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
+            <xsl:if test="count($FormData/OtherClaims/Item) &lt; 2 or ((count($FormData/OtherClaims/Item) &gt; 5) and ($Print = $Separated))">
 
 		<tr>
 			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
 			<span style="width:1px">2</span>
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
-			<span style="width:1px"/>       	
+			<span style="width:1px"></span>       	
           		</td>
           		<td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;padding-top:5mm">
-          			<span style="float:left;"/>
-			<span style="width:1px"/>
+          			<span style="float:left;"></span>
+			<span style="width:1px"></span>
           		</td>
           		<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">	
-			<span style="width:1px"/>
+			<span style="width:1px"></span>
           		</td>
 		</tr>
 		</xsl:if>
 
-            <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 3 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
+            <xsl:if test="count($FormData/OtherClaims/Item) &lt; 3 or ((count($FormData/OtherClaims/Item) &gt; 5) and ($Print = $Separated))">
 
 		<tr>
 			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
 			<span style="width:1px">3</span>
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
-			<span style="width:1px"/>       	
+			<span style="width:1px"></span>       	
           		</td>
           		<td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;padding-top:5mm">
-          			<span style="float:left;"/>
-			<span style="width:1px"/>
+          			<span style="float:left;"></span>
+			<span style="width:1px"></span>
           		</td>
           		<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">	
-			<span style="width:1px"/>
+			<span style="width:1px"></span>
           		</td>
 		</tr>
 		</xsl:if>
 
-            <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 4 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
+            <xsl:if test="count($FormData/OtherClaims/Item) &lt; 4 or ((count($FormData/OtherClaims/Item) &gt; 5) and ($Print = $Separated))">
 
 		<tr>
 			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
 			<span style="width:1px">4</span>
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
-			<span style="width:1px"/>       	
+			<span style="width:1px"></span>       	
           		</td>
           		<td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;padding-top:5mm">
-          			<span style="float:left;"/>
-			<span style="width:1px"/>
+          			<span style="float:left;"></span>
+			<span style="width:1px"></span>
           		</td>
           		<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">	
-			<span style="width:1px"/>
+			<span style="width:1px"></span>
           		</td>
 		</tr>
 		</xsl:if>
 
-            <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 5 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
+            <xsl:if test="count($FormData/OtherClaims/Item) &lt; 5 or ((count($FormData/OtherClaims/Item) &gt; 5) and ($Print = $Separated))">
 
 		<tr>
 			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
 			<span style="width:1px">5</span>
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
-			<span style="width:1px"/>       	
+			<span style="width:1px"></span>       	
           		</td>
           		<td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;padding-top:5mm">
-          			<span style="float:left;"/>
-			<span style="width:1px"/>
+          			<span style="float:left;"></span>
+			<span style="width:1px"></span>
           		</td>
           		<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">	
-			<span style="width:1px"/>
+			<span style="width:1px"></span>
           		</td>
 		</tr>
 		</xsl:if>
@@ -377,7 +382,7 @@
 		</table>
 		<!-- Set Initial Height of Above Table -->
 		<xsl:call-template name="SetInitialDynamicTableHeight">
-		<xsl:with-param name="TargetNode" select="$FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp"/>
+		<xsl:with-param name="TargetNode" select="$FormData/OtherClaims/Item"/>
 		<xsl:with-param name="containerHeight" select="5"/>
 		<xsl:with-param name="containerID" select=" 'OGLctn' "/>
 		</xsl:call-template>
@@ -386,10 +391,10 @@
 		</div>
 		<!-- Begin Explanation Text -->
 		<div style="width:187mm; font-size:7pt; padding:2px">
-		Use the space below for an explanation of each tax claimed. <br/><br/>
+		Use the space below for an explanation of each tax claimed. <br /><br />
 		<span style="padding-left:5mm">For claims under section 6416(b)(2) relating to certain uses and resales of certain articles subject to manufacturers or retailers taxes, claimant certifies that it sold the article at a tax-excluded price, repaid the amount of tax to the ultimate vendor, or has obtained the written consent of the ultimate vendor to make the claim; and has the required supporting evidence.</span>
 		</div>
-		<br/>     
+		<br /><br />
 		    	
 		<!--
        	<xsl:for-each select="$FormData/Explanation">
@@ -402,19 +407,19 @@
 		</xsl:for-each>
 		-->
 		<!-- End Explanation Text -->
-		<br/>    
+		<br />    
 		<!-- Begin Footer -->
 		<div style="width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 2px; border-bottom-width: 0px">
 			<div style="float: left; clear: none;">
       				<span class="styBoldText" style="font-size:6pt">For Privacy Act and Paperwork Reduction Act Notice, see Form 8849 instructions.</span>
-       			<span style="padding-left:4mm;width:27mm; font-size:6pt">Cat. No. 27454M </span>
-          			<span class="styBoldText"><span style="width:2px"/> Schedule 6 (Form 8849) </span>(Rev. 1-2013)
-     			</div>        
+       			<span style="padding-left:8mm;width:34mm; font-size:6pt">Cat. No. 27454M </span>
+          			<span class="styBoldText"><span style="width:2px"></span> Schedule 6 (Form 8849) </span>(Rev. 8-2013)
+     			</div>    
+			<div class="pageEnd" style="display:inline-block;"></div>
 		</div>     
-		<div class="pageEnd"/>
+		<div class="pageEnd"></div>
 	
 		<!-- End Footer -->  
-<br/>
 		<div class="styLeftOverTitleLine" id="LeftoverData">
 		<div class="styLeftOverTitle">Additional Data</div>
 		<div class="styLeftOverButtonContainer">
@@ -425,20 +430,20 @@
     <!-- Additional Data Table -->
 		<table class="styLeftOverTbl">
 		<xsl:call-template name="PopulateCommonLeftover">
-		<xsl:with-param name="TargetNode" select="$FormData"/>
+		<xsl:with-param name="TargetNode" select="$FormData" />
 		<xsl:with-param name="DescWidth" select="100"/>
 		</xsl:call-template>
 		</table>
 
-            <xsl:if test="((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
-		<br/>
+            <xsl:if test="((count($FormData/OtherClaims/Item) &gt; 5) and ($Print = $Separated))">
+		<br />
 		        <span class="styRepeatingDataTitle">Form 8849 Schedule 6 table</span>		
-		<br/>
+		<br />
 		<table class="styDepTbl" cellspacing="0" cellpadding="0" style="font-size:7pt;">
 		<thead class="styTableHead">
 		<tr class="styDepTblHdr">
 			<th style="width:5mm;height:8mm;text_align:center;font-weight:normal; border-right-color:red; border-right-width:0px" scope="col">
-				<span style="width:1px"/>
+				<span style="width:1px"></span>
 			</th>
 			<th class="styDepTblCell" style="border-right:black solid 1; width:122mm;height:8mm;text_align:center;border-left-width:0px; font-weight:normal;" scope="col">
 				<span style="font-weight:bold; font-size:8pt">Tax</span>
@@ -451,11 +456,11 @@
 			</th>
 		</tr>
 		</thead>
-		<tfoot/>
+		<tfoot></tfoot>
 		
 		<!-- Begin Table 1, Other Claims item -->
 		<tbody style="font-size:7pt; padding:5px">
-          	<xsl:for-each select="$FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp">
+          	<xsl:for-each select="$FormData/OtherClaims/Item">
 		<tr>
             <xsl:attribute name="class">
             <xsl:choose>
@@ -465,28 +470,28 @@
             </xsl:attribute>
 		
 			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
-				<xsl:number value="position()"/>
+				<xsl:number value="position()" />
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
 				<xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="OtherTaxClaimGrp/TaxTypeDesc"/>
+					<xsl:with-param name="TargetNode" select="Tax/TypeOfTax"/>
 				</xsl:call-template> 
-				<xsl:if test="normalize-space(OtherTaxClaimGrp/VIN)!=''">
+				<xsl:if test="normalize-space(Tax/VIN)!=''">
 					<br/>
 					<xsl:call-template name="PopulateText">
-						<xsl:with-param name="TargetNode" select="OtherTaxClaimGrp/VIN"/>
+						<xsl:with-param name="TargetNode" select="Tax/VIN"/>
 					</xsl:call-template>
 				</xsl:if> 	          			
           		</td>
           		<td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;padding-top:5mm">
 				<span style="float:left;"><xsl:if test="position()=1">$</xsl:if></span>
           			<xsl:call-template name="PopulateAmount">
-          				<xsl:with-param name="TargetNode" select="Amt"/>
+          				<xsl:with-param name="TargetNode" select="Amount"/>
 				</xsl:call-template>
           		</td>
           		<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">	
 				<xsl:call-template name="PopulateText">
-          				<xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+          				<xsl:with-param name="TargetNode" select="CRN"/>
           			</xsl:call-template>
           		</td>
 		</tr>

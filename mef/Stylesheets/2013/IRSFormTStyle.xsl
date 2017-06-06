@@ -4,15 +4,29 @@
 <!-- CSS Styles for form FormT -->
 
 <xsl:template name="IRSFormTStyle">
-  .styFormTTablesCells {    
-      width: 32mm;      
-      text-align: right;
-      border-right:1 solid black;
-      border-bottom:1 solid black;  
-      padding-right:0.5mm;
-      padding-left:0.5mm;
-      font-size: 7.5pt;
-    }  
+  @media screen { 
+	  .styFormTTablesCells {    
+			  width: 32mm;      
+			  text-align: right;
+			  border-right:1px solid black;
+			  border-bottom:1px solid black; 
+			  padding-right:0.5mm;
+			  padding-left:0.5mm;
+			  font-size: 7.5pt;
+		}
+    }
+    
+    @media print { 
+		.styFormTTablesCells {    
+		  width: 32mm;      
+		  text-align: right;
+		  outline:black solid 0.5px;
+		  padding-right:0.5mm;
+		  padding-left:0.5mm;
+		  font-size: 7.5pt;
+		}
+    }
+    
   .styFormTLnDesc {
       float:left;clear:none;
       padding-top:.5mm;
@@ -38,8 +52,8 @@
     }
   .styFormTTablesHeaders {     
       text-align: center;
-      border-right:1 solid black;
-      border-bottom:1 solid black;  
+      border-right:1px solid black;
+      border-bottom:1px solid black;  
       padding-right:0.5mm;
       padding-left:0.5mm;
       font-weight:bold;

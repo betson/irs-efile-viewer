@@ -20,7 +20,7 @@ edited 06/1/2004 by Tanuja Amarneni. Changed clear:none attribute to clear:both 
 Created new styles for the table container without the bottom border.styTableContainerNBB and .styTableContainerLandscapeNBB.
 -----------------------------------------------------------------------------------------------------*/
 		.styPartName{ /* Used to display Part Name - Black background with white text used to display names such as "Part I" */
-			height:3mm;width:14mm;
+			height:4mm;width:14mm;
 			color:white;
 			background-color:black;
 			font-size: 8pt;
@@ -29,7 +29,7 @@ Created new styles for the table container without the bottom border.styTableCon
 			float:left; clear: none;
 		}
 		.styPartDesc{ /* Section Part Description  - Displayed to the right of the styPartName*/
-			height:3mm;width:172mm;
+			height:4mm;width:172mm;
 			font-size: 8pt; 
 			font-weight: bold;
 			padding-left:3mm;
@@ -250,28 +250,28 @@ Created new styles for the table container without the bottom border.styTableCon
 		.styTableContainer {   /* Scrollable Table Container */
 			border-style: solid; border-color: black;
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-			width: 187mm; height:4.5mm;
+			width: 187mm; height:auto;
 			float:none;clear:both;
 			overflow-y: auto;
 		}
 		.styTableContainerNBB {   /* Scrollable Table Container with no bottom border*/
 			border-style: solid; border-color: black;
 			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
-			width: 187mm; height:4.5mm;
+			width: 187mm; height:auto;
 			float:none;clear:both;
 			overflow-y: auto;
 		}
 		.styTableContainerLandscape {   /* Scrollable Table Container for forms in Landscape format*/
 			border-style: solid; border-color: black;
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-			width: 256mm; height:4.5mm;
+			width: 256mm; height:auto;
 			float:none;clear:both;
 			overflow-y: auto;
 		}
 		.styTableContainerLandscapeNBB {   /* Scrollable Table Container for forms in Landscape format with no bottom border*/
 			border-style: solid; border-color: black;
 			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
-			width: 256mm; height:4.5mm;
+			width: 256mm; height:auto;
 			float:none;clear:both;
 			overflow-y: auto;
 		}		
@@ -370,7 +370,7 @@ Created new styles for the table container without the bottom border.styTableCon
 		}
 
 		.styDotLn { 
-			letter-spacing:3.3mm;
+			letter-spacing:3.1mm;
 			font-weight:bold; 	
 			float:left;
 			padding-right:1mm		

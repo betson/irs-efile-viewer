@@ -7,6 +7,7 @@
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
   <xsl:param name="Form3115Deps38Data" select="$RtnDoc/PrvtLtrRlngAcctMthdChgTechStmt"/>
+  <!-- - 3115 Form displays as - Private Letter Ruling, Change in Accounting Method or Period, Technical Advice Request Statement  -->
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName">
       <xsl:with-param name="TargetNode" select="$Form3115Deps38Data"/>
@@ -14,8 +15,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+	<html>
       <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -38,38 +41,30 @@
         </style>
         <xsl:call-template name="GlobalStylesDep"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm;">
         <xsl:call-template name="DocumentHeaderDependency"/>
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:97mm">
+          <span class="styDepTitle" style="padding-right:2mm;">
             <xsl:value-of select="$depDocTitle"/>
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftover">
           <xsl:with-param name="TargetNode" select="$Form3115Deps38Data"/>
         </xsl:call-template>
-        <table class="styDepTbl" style="margin-top:4mm; font-size:7pt; font-family:Verdana">
+        <table class="styDepTbl" style="margin-top:4mm; font-family:Verdana">
           <thead class="styTableThead">
             <tr class="styDepTblHdr">
               <th class="styDepTblCell" scope="col">
-
                  Business / Person Name
-
               </th>
               <th class="styDepTblCell" scope="col">
-
                  TIN
-
               </th>
               <th class="styDepTblCell" scope="col">
-
                  Type of Request
-
               </th>
-              <th class="styDepTblCell" scope="col">       
-
+              <th class="styDepTblCell" scope="col">
                 Specific Issue
-
               </th>
             </tr>
           </thead>
@@ -77,56 +72,54 @@
           <tbody>
             <xsl:for-each select="$Form3115Deps38Data/RequestInfo">
               <tr>
-                <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+                <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+					<xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose>
+                </xsl:attribute>
                 <td class="styDepTblCell" align="left" width="220mm">
-                              		<xsl:choose> 
-            		<xsl:when test="BusinessName">            
-                		<xsl:call-template name="PopulateText">
-                  			<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1"/>
-               		 </xsl:call-template>
-                		<xsl:if test="normalize-space(BusinessName/BusinessNameLine2)!=''">
-	                  		<br/>  
-	                  		<xsl:call-template name="PopulateText">
-	                    		<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2"/>
-	                 		 </xsl:call-template>    
-                		</xsl:if>
-                	</xsl:when> 
-          		<xsl:otherwise>       
-	                <xsl:call-template name="PopulateText">
-	                  <xsl:with-param name="TargetNode" select="PersonNm"/>
-	                </xsl:call-template>    
-	             </xsl:otherwise>
-        		</xsl:choose>          
+                	<xsl:choose> 
+						<xsl:when test="BusinessName">            
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1"/>
+							</xsl:call-template>
+							<xsl:if test="normalize-space(BusinessName/BusinessNameLine2)!=''">
+								<br/>  
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2"/>
+								</xsl:call-template>    
+							</xsl:if>
+						</xsl:when> 
+						<xsl:otherwise>       
+							<xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="PersonNm"/>
+							</xsl:call-template>    
+						</xsl:otherwise>
+					</xsl:choose>          
                 </td>
-                
                 <!--New Test For MissingSSNEINREASON -->
-
                 <td class="styDepTblCell" align="center">
                   <div>
-                  <nobr>
-                    <xsl:choose> 
-            		<xsl:when test="EIN">   
-	                    <xsl:call-template name="PopulateEIN">
-	                      <xsl:with-param name="TargetNode" select="EIN"/>
-	                    </xsl:call-template>    
-                    </xsl:when> 
-          	     <xsl:when test="SSN">                 
-	                  <xsl:call-template name="PopulateSSN">
-	                    <xsl:with-param name="TargetNode" select="SSN"/>
-	                  </xsl:call-template>
-                  		<br/>
-                    </xsl:when> 
-          		<xsl:otherwise>   
-	                  <xsl:call-template name="PopulateText">
-	                    <xsl:with-param name="TargetNode" select="MissingSSNEINReasonCd"/>
-	                  </xsl:call-template>  
-                  	</xsl:otherwise>
-        		</xsl:choose>   
-        		</nobr>                 
-        		</div>
+					  <nobr>
+						<xsl:choose> 
+							<xsl:when test="EIN">   
+								<xsl:call-template name="PopulateEIN">
+								  <xsl:with-param name="TargetNode" select="EIN"/>
+								</xsl:call-template>    
+							</xsl:when> 
+						    <xsl:when test="SSN">                 
+							  <xsl:call-template name="PopulateSSN">
+								<xsl:with-param name="TargetNode" select="SSN"/>
+							  </xsl:call-template>
+								<br/>
+							</xsl:when> 
+						<xsl:otherwise>   
+						  <xsl:call-template name="PopulateText">
+							<xsl:with-param name="TargetNode" select="MissingSSNEINReasonCd"/>
+						  </xsl:call-template>  
+						</xsl:otherwise>
+						</xsl:choose>   
+					</nobr>                 
+				  </div>
                 </td>
-                
-                
                 <td class="styDepTblCell" align="center">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="RequestTypeCd"/>

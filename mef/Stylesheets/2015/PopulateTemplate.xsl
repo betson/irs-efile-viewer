@@ -28,7 +28,7 @@ Log:
 <xsl:template name="PopulateText">
   <xsl:param name="TargetNode"/>    
 
-  <span>      
+  <span style="display:inline;">      
     <xsl:attribute name="id">    
       <xsl:call-template name="PopulateID">
         <xsl:with-param name="TargetNode" select="$TargetNode"/>
@@ -836,7 +836,7 @@ Log:            2007-05-21 - Adjusted height and width of letter boxes and lette
     <xsl:param name="TargetNode"/>
     <xsl:param name="BoxNum"/>
     
-    <div style="width:5mm;height:7mm;padding-top:1.3mm;text-align:center;border:1 solid black;border-right-width:0;clear:none;float:left">
+    <div style="width:5mm;height:7mm;padding-top:1.3mm;text-align:center;border:1px solid black;border-right-width:0;clear:none;float:left">
       <span>
         <xsl:attribute name="id">    
           <xsl:call-template name="PopulateID">
@@ -872,7 +872,7 @@ Log:            2007-05-21 - Initial creation
     <xsl:param name="BoxHeight" />
     <xsl:param name="BoxTopPadding" />
 
-    <div style="width:{$BoxWidth};height:{$BoxHeight};padding-top:{$BoxTopPadding};text-align:center;border:1 solid black;clear:none;float:left" >
+    <div style="width:{$BoxWidth};height:{$BoxHeight};padding-top:{$BoxTopPadding};text-align:center;border:1px solid black;clear:none;float:left" >
       <span>    
         <xsl:attribute name="id">    
           <xsl:call-template name="PopulateID">
@@ -1034,7 +1034,7 @@ Log:
     <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2Txt" /></xsl:call-template>
   </xsl:if>
-  <!-- Only create line space for the City, State, and PostalCode if they exist-->
+  <!-- Only create line space for the City, State, and ForeignPostalCd if they exist-->
   <xsl:if test="$TargetNode/CityNm != '' or $TargetNode/StateAbbreviationCd != '' or $TargetNode/ZIPCd != ''">
     <br/>
     <span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
@@ -1072,7 +1072,7 @@ Log:
   <xsl:if test="$addressLine2 != ''">
     <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2Txt" /></xsl:call-template>
   </xsl:if>
-  <!-- Only create line space for the City, State, PostalCode if they exist-->
+  <!-- Only create line space for the City, State, ForeignPostalCd if they exist-->
   <xsl:if test="$TargetNode/CityNm != '' or $TargetNode/ProvinceOrStateNm != '' or $TargetNode/ForeignPostalCd != ''">
     <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/CityNm" /></xsl:call-template>
@@ -1139,6 +1139,7 @@ Log:
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="$ForeignAddressTargetNode/CityNm" />
         </xsl:call-template><xsl:if test="($ForeignAddressTargetNode/CityNm != '') and ($ForeignAddressTargetNode/ProvinceOrStateNm != '')">, </xsl:if>
+        <xsl:if test="($ForeignAddressTargetNode/CityNm != '') and not($ForeignAddressTargetNode/ProvinceOrStateNm)"><span style="width:7px;"/></xsl:if>
       </xsl:if>
       <xsl:if test="$ForeignAddressTargetNode/ProvinceOrStateNm">        
         <xsl:call-template name="PopulateText">
@@ -1342,9 +1343,9 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
         </xsl:call-template>      
       </xsl:if>  
     </xsl:if>
-    <xsl:if test="$SubRtnHdrData/SubsidiaryCorp">
+    <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp">
       <xsl:choose>
-        <xsl:when test="$TargetNode='BusinessNameLine1Txt' and not($SubRtnHdrData/SubsidiaryCorpGrp/Name/BusinessNameLine1Txt)">
+        <xsl:when test="$TargetNode='BusinessNameLine1Txt' and not($SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1Txt)">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/Name" />
           </xsl:call-template>
@@ -1467,7 +1468,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
                 <!-- If the EIN (TIN) has changed and the form wants to show a delta image (set using the EINChanged parameter, show the delta image.-->
                 <xsl:if test="$TaxpayerPrint = 'false' or $TaxpayerPrint = '0'">
                   <xsl:if test="($EINChanged='true' or $EINChanged='1') and ((/AppData/Parameters/TINChanged='true') or (/AppData/Parameters/TINChanged='1'))">
-                     <span style="width:2px;" /><img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="EIN has changed"/>
+                     <span style="width:2px;" /><img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="EIN has changed" title="EIN has changed"/>
                   </xsl:if>
                 </xsl:if>
             </xsl:when>
@@ -1477,14 +1478,16 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
           </xsl:call-template>
         </xsl:when>
             <xsl:when test="$TargetNode = 'SSN' or $TargetNode = 'PrimarySSN' ">
-				<xsl:call-template name="PopulateSSN">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//*[name(.)=$TargetNode]"/>
-				</xsl:call-template>
-				<!-- If the EIN (TIN) has changed and the form wants to show a delta image (set using the EINChanged parameter, show the delta image.-->
-				<xsl:if test="$TaxpayerPrint = 'false' or $TaxpayerPrint = '0'">
-					<xsl:if test="($EINChanged = 'true') and ((/AppData/Parameters/TINChanged='true') or (/AppData/Parameters/TINChanged='1'))">
-						<span style="width:2px;"/>
-						<img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="Primary SSN has changed"/>
+				<xsl:if test="$RtnHdrData/Filer//PrimarySSN or $RtnHdrData/Filer//SSN">
+					<xsl:call-template name="PopulateSSN">
+						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//*[name(.)=$TargetNode]"/>
+					</xsl:call-template>
+					<!-- If the EIN (TIN) has changed and the form wants to show a delta image (set using the EINChanged parameter, show the delta image.-->
+					<xsl:if test="$TaxpayerPrint = 'false' or $TaxpayerPrint = '0'">
+						<xsl:if test="($EINChanged = 'true') and ((/AppData/Parameters/TINChanged='true') or (/AppData/Parameters/TINChanged='1'))">
+							<span style="width:2px;"/>
+						<img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="Primary SSN has changed" title="Primary SSN has changed"/>
+						</xsl:if>
 					</xsl:if>
 				</xsl:if>
 			</xsl:when>
@@ -1496,7 +1499,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 				<xsl:if test="$RtnHdrData/Filer/SpouseSSN and ($TaxpayerPrint = 'false' or $TaxpayerPrint = '0')">
 					<xsl:if test="($EINChanged = 'true') and ((/AppData/Parameters/SecondaryTINChanged='true') or (/AppData/Parameters/SecondaryTINChanged='1'))">
 						<span style="width:2px;"/>
-						<img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="Spouse SSN has changed"/>
+						<img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="Spouse SSN has changed" title="Spouse SSN has changed"/>
 					</xsl:if>
 				</xsl:if>
 			</xsl:when>
@@ -1548,7 +1551,7 @@ Log:
 -->
 <xsl:template name="PopulateReturnHeaderFilerTIN">
 	<xsl:param name="EINChanged" select="false()"/>
-	<xsl:variable name="Blank"><span id="/.."></span></xsl:variable>
+	<xsl:variable name="Blank"></xsl:variable>
 	<xsl:variable name="SSNExists">
 		<xsl:call-template name="PopulateReturnHeaderFiler">
 			<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
@@ -1769,7 +1772,7 @@ Log:
 -->
 <xsl:template name="PopulateReturnHeaderOfficer">
   <xsl:param name="TargetNode" select="."/>  
-  <xsl:param name="BackupName" />    
+  <xsl:param name="BackupName" />     
   <xsl:if test="$Location='RET'"> <!-- Indicating the element needs to be pulled from consolidated return header-->
     <xsl:choose>
       <xsl:when test="$TargetNode = 'TaxpayerPIN' ">
@@ -2046,7 +2049,7 @@ Log:
   <xsl:param name="TargetNode" select="."/> 
   <xsl:param name="BackupName" />    
   <xsl:if test="$Location = 'RET' ">
-    <xsl:choose>
+      <xsl:choose>
       <xsl:when test="$TargetNode ='SSN'">
         <xsl:if test="$RtnHdrData/PreparerPersonGrp/SSN">
           <xsl:call-template name="PopulateSSN">
@@ -2115,7 +2118,7 @@ Log:
           <xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp//*[name(.)=$TargetNode]" />
         </xsl:call-template>
       </xsl:otherwise>      
-    </xsl:choose>    
+    </xsl:choose>
   </xsl:if>
 </xsl:template>
   
@@ -2250,7 +2253,7 @@ Log:
       var myRegulation = "<xsl:value-of select='$Regulation' />";
       <xsl:variable name="myDocName" select="/AppData/SubmissionHeaderAndDocument/SubmissionDocument/child::*[1]/@documentName" />
       <xsl:variable name="myPrintName" select="name(/AppData/SubmissionHeaderAndDocument/SubmissionDocument/child::*[1])" />
-      <xsl:variable name="isLandscapeDoc" select="document('PrintMode.xml')/PrintMode/Landscape/Document[@documentName = $myDocName]" />
+      <xsl:variable name="isLandscapeDoc" select="document('PrintMode.xml')/PrintMode/Landscape/Document[@documentName = $myPrintName]" />
       var myDocName = '<xsl:value-of select="$myDocName" />';
       var myPrintName = '<xsl:value-of select="$myPrintName" />';
       var myNotInDBIndicator = '<xsl:value-of select="/AppData/Parameters/NotInDBIndicator" />'; 
@@ -2270,7 +2273,7 @@ Log:
           ((submissionType == '943PR') &amp;&amp; (myPrintName == 'IRS943_943PR'))) {
               var language = '<xsl:value-of select="/AppData/Parameters/Language" />';
               myPrintName = myPrintName + language;
-      }
+      } 
 
       function locateError(thisID) {
         var elementFound = false;          
@@ -2336,13 +2339,13 @@ Log:
 <xsl:template name="GlobalStylesForm">  
   <!-- If the Print parameter is empty -->
 
-  <xsl:if test="not(string($Print))">
+  <!--<xsl:if test="not(string($Print))">-->
 
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
     <link rel="stylesheet" type="text/css" name="BodyStyleSheet" href="{$CSSPath}/body.css"/>
     <link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>
 
-  </xsl:if>
+  <!--</xsl:if>-->
 
 </xsl:template>
 
@@ -2361,9 +2364,9 @@ Log:
 -->
 <xsl:template name="GlobalStylesDep">  
   <!-- If the Print parameter is empty -->
-  <xsl:if test="not(string($Print))">
+  <!--<xsl:if test="not(string($Print))">-->
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
-  </xsl:if>  
+  <!--</xsl:if>  -->
 </xsl:template>
 
 
@@ -2380,7 +2383,7 @@ Log:
 -->
   <xsl:template name="SetInitialState">
     <xsl:if test="($Print='inline' or $Print='separated')">
-      <xsl:attribute name="style">overflow:visible</xsl:attribute>
+      <xsl:attribute name="style">overflow:visible;height:auto;display:block;</xsl:attribute>
     </xsl:if>
   </xsl:template>
   
@@ -2407,10 +2410,10 @@ Log:
     <xsl:param name="Jfunc">toggle('<xsl:value-of select="$containerID"/>', '<xsl:value-of select="$imageID"/>', '<xsl:value-of select="$buttonID"/>');</xsl:param>
     <xsl:param name="overflowed" select="count($TargetNode)&gt;$containerHeight"/>
     <xsl:if test="$overflowed and (not($Print) or $Print='')">
-      <button style="width:15px;height:14px;cursor:hand;" TabIndex="1" title="Click here to expand table">
+      <button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;" TabIndex="1" title="Click here to expand table">
         <xsl:attribute name="id"><xsl:value-of select="$buttonID"/></xsl:attribute>
-        <xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/></xsl:attribute>
-        <img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" border="0" align="top">
+        <xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/> return false;</xsl:attribute>
+        <img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" title="Click here to expand table" border="0" align="top">
           <xsl:attribute name="id"><xsl:value-of select="$imageID"/></xsl:attribute>
         </img>
       </button>
@@ -2444,10 +2447,10 @@ Log:
     <xsl:param name="Jfunc">dynamicHeightToggle('<xsl:value-of select="$containerID"/>', '<xsl:value-of select="$imageID"/>', '<xsl:value-of select="$buttonID"/>', '<xsl:value-of select="$headerRowCount"/>', '<xsl:value-of select="$displayRowCount"/>');</xsl:param>
     <xsl:param name="overflowed" select="count($TargetNode)&gt;$containerHeight"/>
     <xsl:if test="$overflowed and (not($Print) or $Print='')">
-      <button style="width:15px;height:14px;cursor:hand;" TabIndex="1" title="Click here to expand table">
+      <button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;" TabIndex="1" title="Click here to expand table">
         <xsl:attribute name="id"><xsl:value-of select="$buttonID"/></xsl:attribute>
-        <xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/></xsl:attribute>
-        <img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" border="0" align="top">
+        <xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/> return false;</xsl:attribute>
+        <img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" title="Click here to expand table" border="0" align="top">
           <xsl:attribute name="id"><xsl:value-of select="$imageID"/></xsl:attribute>
         </img>
       </button>
@@ -2481,10 +2484,10 @@ Log:
     <xsl:param name="Jfunc">dynamicHeightToggle('<xsl:value-of select="$containerID"/>', '<xsl:value-of select="$imageID"/>', '<xsl:value-of select="$buttonID"/>', '<xsl:value-of select="$headerRowCount"/>', '<xsl:value-of select="$displayRowCount"/>');</xsl:param>
     <xsl:param name="overflowed" select="$DataRowCount&gt;$containerHeight"/>
     <xsl:if test="$overflowed and (not($Print) or $Print='')">
-      <button style="width:15px;height:14px;cursor:hand;" TabIndex="1" title="Click here to expand table">
+      <button style="width:15px;height:14px;padding:0px 0px 0px;cursor:pointer;" TabIndex="1" title="Click here to expand table">
         <xsl:attribute name="id"><xsl:value-of select="$buttonID"/></xsl:attribute>
-        <xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/></xsl:attribute>
-        <img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" border="0" align="top">
+        <xsl:attribute name="onclick"><xsl:value-of select="$Jfunc"/> return false;</xsl:attribute>
+        <img src="{$NonVersionedImagePath}/expand.gif" width="7" height="8" alt="Click here to expand table" title="Click here to expand table" border="0" align="top">
           <xsl:attribute name="id"><xsl:value-of select="$imageID"/></xsl:attribute>
         </img>
       </button>
@@ -2551,7 +2554,7 @@ Log:
   
 <!--
 ***************************************************************************************************************************************************************
-Name:           SetFormLinkInline
+Name:           SetFormLinkInlineRRD (RRD version)
 Description:    Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
 Req Param:  
 Opt Param:   
@@ -2560,7 +2563,7 @@ Calls:          none
 Log:
 ***************************************************************************************************************************************************************
 -->
-  <xsl:template name="SetFormLinkInline">
+  <xsl:template name="SetFormLinkInlineRRD">
     <xsl:param name="TargetNode"/>
     <xsl:param name="TabOrder">1</xsl:param>
     <xsl:param name="IDstring">
@@ -2581,9 +2584,11 @@ Log:
     <xsl:if test="($TargetNode/@referenceDocumentId) and not($TargetNode/@referenceDocumentId='')">
       <img src="{$NonVersionedImagePath}/attach.gif" style="cursor:auto;">
         <xsl:attribute name="alt">Click to see attachment</xsl:attribute>
+        <xsl:attribute name="title">Click to see attachment</xsl:attribute>
         <xsl:if test="contains(normalize-space($TargetNode/@referenceDocumentId), ' ')">
         <!-- assume more then one attachments exist when the string contains space-->
           <xsl:attribute name="alt">Click to see list of attachments</xsl:attribute>
+          <xsl:attribute name="title">Click to see list of attachments</xsl:attribute>
         </xsl:if>
         <xsl:attribute name="TabIndex">
           <xsl:value-of select="$TabOrder"/>
@@ -2592,7 +2597,7 @@ Log:
       <xsl:value-of select="$IDstring"/>    
         </xsl:attribute>
   <xsl:if test="not($Print) or $Print=''">  
-    <xsl:attribute name="style">cursor:hand;</xsl:attribute>
+    <xsl:attribute name="style">cursor:pointer;</xsl:attribute>
      <xsl:attribute name="onclick">rtnTree.attachPushPin = '<xsl:value-of select="$IDstring"/>'; showAttachedDocs("<xsl:value-of select="$IDstring"/>", "<xsl:value-of select="$ColorSchema"/>", "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>");</xsl:attribute>
     <xsl:attribute name="onkeypress">rtnTree.attachPushPin = '<xsl:value-of select="$IDstring"/>'; showAttachedDocs("<xsl:value-of select="$IDstring"/>", "<xsl:value-of select="$ColorSchema"/>", "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>");</xsl:attribute>
   </xsl:if> 
@@ -2601,6 +2606,39 @@ Log:
     <!--/xsl:if-->
   </xsl:template>  
   
+  <!--
+***************************************************************************************************************************************************************
+Name: SetFormLinkInline
+Description: Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
+Req Param:
+Opt Param:
+Called By: Stylesheets
+Calls: SendRef() java script function (requires addition of this script to script file)
+Log: - Mike Farrell - This is a Modification of the original by Charles Moore
+***************************************************************************************************************************************************************
+-->
+<xsl:template name="SetFormLinkInline">
+<xsl:param name="TargetNode"/>
+<!-- do nothing if for printing -->
+<!--xsl:if test="not($Print) or $Print=''"-->
+<xsl:if test="($TargetNode/@referenceDocumentId) and not($TargetNode/@referenceDocumentId='')">
+<img src="{$NonVersionedImagePath}/attach.gif" style="cursor:auto;">
+<xsl:attribute name="alt">Click to see attachment</xsl:attribute>
+<xsl:if test="contains(normalize-space($TargetNode/@referenceDocumentId), ' ')">
+<!-- assume more then one attachments exist when the string contains space -->
+<xsl:attribute name="alt">Click to see list of attachments</xsl:attribute>
+</xsl:if>
+<xsl:if test="not($Print) or $Print=''">
+<xsl:attribute name="style">cursor:hand;</xsl:attribute>
+<xsl:attribute name="onclick">SendRef('<xsl:value-of select="$TargetNode/@referenceDocumentId"/>')</xsl:attribute>
+</xsl:if>
+</img>
+</xsl:if>
+<!--/xsl:if-->
+</xsl:template>
+
+
+
   
 <!--
 ***************************************************************************************************************************************************************
@@ -2623,14 +2661,14 @@ Log:
       <xsl:if test="($TargetNode or $TargetNode!='')">                  
           <xsl:choose>
             <xsl:when test="count($TargetNode) &gt; 1">
-              <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:hand;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+              <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" title="See additional data table" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
             </xsl:when>
             <xsl:otherwise>
               <xsl:if test="($TargetNode = 1) or ($TargetNode='true')">
-                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: yes" TabIndex="{$TabOrder}" style="cursor:hand;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: yes" title="{$Desc}: yes" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
               </xsl:if>
               <xsl:if test="($TargetNode = 0) or ($TargetNode='false')">
-                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: no" TabIndex="{$TabOrder}" style="cursor:hand;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: no" title="{$Desc}: no" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
              </xsl:if>
             </xsl:otherwise>
           </xsl:choose>        
@@ -2638,6 +2676,38 @@ Log:
     <!--/xsl:if-->
   </xsl:template>
 
+<!--
+***************************************************************************************************************************************************************
+Name:           LinkToLeftoverCheckboxDataTableInline
+Description:    Template to handle left-over data with checkbox values with image that is displayed inline using absolute position
+Req Param:  
+Opt Param:   
+Called By:     
+Calls:            
+Log:
+***************************************************************************************************************************************************************
+-->
+  <xsl:template name="LinkToLeftoverCheckboxDataTableInline">
+    <xsl:param name="Desc"></xsl:param>
+    <xsl:param name="TargetNode"></xsl:param>    
+    <xsl:param name="TabOrder">1</xsl:param>
+
+    <!-- do nothing if for printing -->
+    <!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Chris Jung 11/24/04-->
+      <xsl:if test="($TargetNode or $TargetNode!='')">                  
+          <xsl:choose>
+            <xsl:when test="count($TargetNode) &gt; 1">
+              <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:if test="($TargetNode='X')">
+                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: Yes" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+              </xsl:if>
+           </xsl:otherwise>
+          </xsl:choose>        
+      </xsl:if>
+    <!--/xsl:if-->
+  </xsl:template>
 
 <!--
 ***************************************************************************************************************************************************************
@@ -2659,11 +2729,17 @@ Log:
     <!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Ravi Venigalla 08/19/04-->
     <xsl:if test="($TargetNode or $TargetNode!='')">
         <xsl:choose>
-          <xsl:when test="count($TargetNode) &gt; 1">
-          <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:hand;" onclick="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+          <xsl:when test="(count($TargetNode) &gt; 1) or ($TargetNode/ChangeHistory) or ($TargetNode/parent::*/ChangeHistory/@*[name() = name($TargetNode)])">
+          <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" title="See additional data table" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
           </xsl:when>
           <xsl:otherwise>
-          <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: {$TargetNode}" TabIndex="{$TabOrder}" style="cursor:hand;" onclick="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+          <xsl:variable name="TextVal">
+			  <xsl:choose>
+			  	<xsl:when test="name($TargetNode/self::*) = name($TargetNode)"><xsl:value-of select="$TargetNode/text()"/></xsl:when>
+			  	<xsl:otherwise><xsl:value-of select="$TargetNode"/></xsl:otherwise>
+			  </xsl:choose>
+          </xsl:variable>
+          <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: {$TextVal}" title="{$Desc}: {$TextVal}" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
           </xsl:otherwise>
         </xsl:choose>
     </xsl:if>
@@ -2930,25 +3006,25 @@ Log:            2005-12-01 - Added formating for eliminating line spaces with pu
      
      <xsl:if test="(($TargetNode/@softwareId) or ($TargetNode/@softwareId != ''))">
       <div class="styTopSectionLine">
-        <span class="styTopSectionLineLbl"> Software ID:</span>      
-        <span style="font-size:10pt;">
+        <div class="styTopSectionLineLbl" style="float:left;"> Software ID:</div>      
+        <div style="width:440px;font-size:10pt;float:left;">
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareId"/></xsl:call-template>          
-        </span>  
+        </div>  
       </div>      
     </xsl:if>
     <xsl:if test="(($TargetNode/@softwareVersionNum) or ($TargetNode/@softwareVersionNum != ''))">
       <div class="styTopSectionLine">
-        <span class="styTopSectionLineLbl"> Software Version:</span>      
-        <span style="font-size:10pt;">
+        <div class="styTopSectionLineLbl" style="float:left;"> Software Version:</div>      
+        <div style="width:440px;font-size:10pt;float:left;">
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersionNum"/></xsl:call-template>        
-        </span>    
+        </div>    
       </div>            
     </xsl:if>
     <!-- Ku Lee 2003-10-07 changed the source for Regulation for Defect 2437-->
     <xsl:if test="$Regulation != ''">
       <div class="styTopSectionLine" style="width:187mm;">
-        <div style="float:left;clear:none;"><span class="styTopSectionLineLbl"> Regulation:</span></div>
-        <div style="float:left;clear:none;font-size:10pt;">
+        <div class="styTopSectionLineLbl" style="float:left;clear:none;"> Regulation:</div>
+        <div style="width:440px;float:left;clear:none;font-size:10pt;">
           <xsl:value-of select="$Regulation" />
         </div>
       </div>      
@@ -2974,7 +3050,7 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
   </xsl:if>
     <div class="styTopSectionLine">
       <div class="styTopSectionLineLbl" style="float:left;clear:none;"> Name:</div>      
-      <div style="font-size:10pt;float:left;clear:none;">        
+      <div style="width:440px;font-size:10pt;float:left;clear:none;">        
         <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template>                  
       </div>    
     </div>
@@ -2983,8 +3059,8 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
       <xsl:when test="$Location='PAR'"> <!-- Indicating that data should be pulled from parent return header -->
           <xsl:if test="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt and $ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt != '' ">
             <div class="styTopSectionLine">
-              <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
-              <div style="font-size:10pt;float:left;clear:none;">          
+              <div class="styTopSectionLineLbl" style="float:left;clear:none;">&#160;</div>      
+              <div style="width:440px;font-size:10pt;float:left;clear:none;">          
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt" />
                 </xsl:call-template>
@@ -2995,8 +3071,8 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
       <xsl:when test="$Location='SUB'"> <!-- Indicating that data should be pulled from subsidiary return header-->
           <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt and $SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt != '' ">
             <div class="styTopSectionLine">
-              <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
-              <div style="font-size:10pt;float:left;clear:none;">          
+              <div class="styTopSectionLineLbl" style="float:left;clear:none;">&#160;</div>      
+              <div style="width:440px;font-size:10pt;float:left;clear:none;">          
                 <xsl:call-template name="PopulateText">
                    <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt" />
                 </xsl:call-template>
@@ -3007,8 +3083,8 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
       <xsl:when test="$Type = '1041'">
           <xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt and $RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt != '' ">
             <div class="styTopSectionLine">
-              <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
-              <div style="font-size:10pt;float:left;clear:none;">          
+              <div class="styTopSectionLineLbl" style="float:left;clear:none;">&#160;</div>      
+              <div style="width:440px;font-size:10pt;float:left;clear:none;">          
                 <xsl:call-template name="PopulateText">
                    <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt" />
                 </xsl:call-template>
@@ -3019,8 +3095,8 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
       <xsl:otherwise> <!-- Indicating that data should be pulled from filer return header -->
           <xsl:if test="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt and $RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt != '' ">
             <div class="styTopSectionLine">
-              <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
-              <div style="font-size:10pt;float:left;clear:none;">          
+              <div class="styTopSectionLineLbl" style="float:left;clear:none;">&#160;</div>      
+              <div style="width:440px;font-size:10pt;float:left;clear:none;">          
                 <xsl:call-template name="PopulateText">
                    <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt" />
                 </xsl:call-template>
@@ -3040,26 +3116,26 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
     <xsl:choose>
       <xsl:when test="$PrimarySSNExists != ''"> <!-- Indicating that the Primary SSN should be displayed -->
         <div class="styTopSectionLine">
-          <span class="styTopSectionLineLbl">SSN: </span>      
-          <span style="font-size:10pt;">          
+          <div class="styTopSectionLineLbl" style="float:left;">SSN: </div>      
+          <div style="width:440px;font-size:10pt;float:left;">          
             <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param></xsl:call-template>        
-          </span>    
+          </div>    
         </div>
  <xsl:if test="$SpouseSSNExists != ''"> <!-- Indicating that the Spouse SSN should be displayed -->
          <div class="styTopSectionLine">
-          <span class="styTopSectionLineLbl">Spouse SSN: </span>      
-          <span style="font-size:10pt;">          
+          <div class="styTopSectionLineLbl" style="float:left;">Spouse SSN: </div>      
+          <div style="width:440px;font-size:10pt;float:left;">          
             <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">SpouseSSN</xsl:with-param></xsl:call-template>        
-          </span>    
+          </div>    
         </div>
      </xsl:if>   
       </xsl:when>
       <xsl:otherwise> <!-- Indicating that the EIN should be displayed -->
         <div class="styTopSectionLine">
-          <span class="styTopSectionLineLbl">EIN: </span>      
-          <span style="font-size:10pt;">          
+          <div class="styTopSectionLineLbl" style="float:left;">EIN: </div>      
+          <div style="width:440px;font-size:10pt;float:left;">          
             <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">EIN</xsl:with-param></xsl:call-template>        
-          </span>    
+          </div>    
         </div>
       </xsl:otherwise>
     </xsl:choose>
@@ -3083,24 +3159,24 @@ Log:            2005-10-14 - Initial creation
     
     <xsl:if test="(($TargetNode/@softwareId) or ($TargetNode/@softwareId != ''))">
       <div class="styTopSectionLineLandscape">
-        <span class="styTopSectionLineLbl"> Software ID:</span>      
-        <span style="font-size:10pt;">
+        <div class="styTopSectionLineLbl" style="float:left;"> Software ID:</div>      
+        <div style="width:700px;font-size:10pt;float:left;">
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareId"/></xsl:call-template>          
-        </span>  
+        </div>  
       </div>      
     </xsl:if>
     <xsl:if test="(($TargetNode/@softwareVersionNum) or ($TargetNode/@softwareVersionNum != ''))">
       <div class="styTopSectionLineLandscape">
-        <span class="styTopSectionLineLbl"> Software Version:</span>      
-        <span style="font-size:10pt;">
+        <div class="styTopSectionLineLbl" style="float:left;"> Software Version:</div>      
+        <div style="width:700px;font-size:10pt;float:left;">
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersionNum"/></xsl:call-template>        
-        </span>    
+        </div>    
       </div>            
     </xsl:if>
     <xsl:if test="$Regulation != ''">
       <div class="styTopSectionLineLandscape">
-        <div style="float:left;clear:none;"><span class="styTopSectionLineLbl"> Regulation:</span></div>
-        <div style="float:left;clear:none;font-size:10pt;">
+        <div class="styTopSectionLineLbl" style="float:left;clear:none;"> Regulation:</div>
+        <div style="width:700px;float:left;clear:none;font-size:10pt;">
           <xsl:value-of select="$Regulation" />
         </div>
       </div>      
@@ -3125,7 +3201,7 @@ Log:            2005-10-14 - Initial creation
   
     <div class="styTopSectionLineLandscape">
       <div class="styTopSectionLineLbl" style="float:left;clear:none;"> Name:</div>      
-      <div style="font-size:10pt;float:left;clear:none;">        
+      <div style="width:700px;font-size:10pt;float:left;clear:none;">        
         <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template>                  
       </div>    
     </div>
@@ -3134,8 +3210,8 @@ Log:            2005-10-14 - Initial creation
           <xsl:when test="$Location='PAR'"> <!-- Indicating that data should be pull from parent return header -->
               <xsl:if test="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt and $ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt != '' ">
                 <div class="styTopSectionLineLandscape">
-                  <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
-                  <div style="font-size:10pt;float:left;clear:none;">          
+                  <div class="styTopSectionLineLbl" style="float:left;clear:none;">&#160;</div>      
+                  <div style="width:700px;font-size:10pt;float:left;clear:none;">          
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt" />
                     </xsl:call-template>
@@ -3146,8 +3222,8 @@ Log:            2005-10-14 - Initial creation
           <xsl:when test="$Location='SUB'"> <!-- Indicating that data should be pull from subsidiary return header-->
               <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt and $SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt != '' ">
                 <div class="styTopSectionLineLandscape">
-                  <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
-                  <div style="font-size:10pt;float:left;clear:none;">          
+                  <div class="styTopSectionLineLbl" style="float:left;clear:none;">&#160;</div>      
+                  <div style="width:700px;font-size:10pt;float:left;clear:none;">          
                     <xsl:call-template name="PopulateText">
                        <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt" />
                     </xsl:call-template>
@@ -3157,9 +3233,9 @@ Log:            2005-10-14 - Initial creation
           </xsl:when>
           <xsl:when test="$Type = '1041'">
             <xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt and $RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt != '' ">
-              <div class="styTopSectionLine">
-                <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
-                <div style="font-size:10pt;float:left;clear:none;">          
+              <div class="styTopSectionLineLandscape">
+                <div class="styTopSectionLineLbl" style="float:left;clear:none;">&#160;</div>      
+                <div style="width:700px;font-size:10pt;float:left;clear:none;">          
                   <xsl:call-template name="PopulateText">
                    <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt" />
                   </xsl:call-template>
@@ -3170,8 +3246,8 @@ Log:            2005-10-14 - Initial creation
           <xsl:otherwise> <!-- Indicating that data should be pull from filer return header -->
               <xsl:if test="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt and $RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt != '' ">
                 <div class="styTopSectionLineLandscape">
-                  <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
-                  <div style="font-size:10pt;float:left;clear:none;">          
+                  <div class="styTopSectionLineLbl" style="float:left;clear:none;">&#160;</div>      
+                  <div style="width:700px;font-size:10pt;float:left;clear:none;">          
                     <xsl:call-template name="PopulateText">
                        <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt" />
                     </xsl:call-template>
@@ -3191,26 +3267,26 @@ Log:            2005-10-14 - Initial creation
     <xsl:choose>
       <xsl:when test="$PrimarySSNExists != ''"> <!-- Indicating that the Primary SSN should be displayed -->
         <div class="styTopSectionLineLandscape">
-          <span class="styTopSectionLineLbl">SSN: </span>      
-          <span style="font-size:10pt;">          
+          <div class="styTopSectionLineLbl" style="float:left;">SSN: </div>      
+          <div style="width:700px;font-size:10pt;float:left;">          
             <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param></xsl:call-template>        
-          </span>    
+          </div>    
         </div>
  <xsl:if test="$SpouseSSNExists != ''"> <!-- Indicating that the Spouse SSN should be displayed -->
          <div class="styTopSectionLineLandscape">
-          <span class="styTopSectionLineLbl">Spouse SSN: </span>      
-          <span style="font-size:10pt;">          
+          <div class="styTopSectionLineLbl" style="float:left;">Spouse SSN: </div>      
+          <div style="width:700px;font-size:10pt;float:left;">          
             <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">SpouseSSN</xsl:with-param></xsl:call-template>        
-          </span>    
+          </div>    
         </div>
      </xsl:if>    
       </xsl:when>
       <xsl:otherwise> <!-- Indicating that the EIN should be displayed -->
         <div class="styTopSectionLineLandscape">
-          <span class="styTopSectionLineLbl">EIN: </span>      
-          <span style="font-size:10pt;">          
+          <div class="styTopSectionLineLbl" style="float:left;">EIN: </div>      
+          <div style="width:700px;font-size:10pt;float:left;">          
             <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">EIN</xsl:with-param></xsl:call-template>        
-          </span>    
+          </div>    
         </div>
       </xsl:otherwise>
     </xsl:choose>
@@ -3612,12 +3688,12 @@ Log:
       </xsl:when>  
       <xsl:when test="$numberFormat and number($targetNode)">                   
         <xsl:choose>
-          <xsl:when test="string-length($targetNode) &gt; $numberFormat">
+          <xsl:when test="(string-length($targetNode) &gt; $numberFormat) or ( (number($targetNode) &lt; 1) and (number($targetNode) &gt; -1) )">
             <xsl:value-of select="$targetNode"/>    
           </xsl:when>
           <xsl:otherwise>  
             <xsl:choose>
-             <xsl:when test="contains($targetNode,'.')">
+              <xsl:when test="contains($targetNode,'.')">
                     <xsl:value-of select="concat(format-number(number(substring-before($targetNode,'.')), '#,###'),'.',substring-after($targetNode,'.'))"/> 
              </xsl:when>
               <xsl:otherwise>
@@ -3737,7 +3813,7 @@ Log:            2004-09-21 - Changed "$Print != 'taxpayer'" to "$TaxpayerPrint =
               <xsl:if test="($TaxpayerPrint = 'false' or $TaxpayerPrint = '0')"> <!-- If parameter TaxpayerPrint is false or '0', then set these attributes-->     
                 <xsl:if test="($chxBoxType != 'Enumerated') or ($chxBoxType = 'Enumerated' and ($displayedCheckboxValue = $argVal or $displayedCheckboxValue = $latestNode))">
                   <xsl:attribute name="style">
-                    border:1 solid <xsl:value-of select="$UserPref/View/ChangedFieldBgColor"/>                          
+                    outline:2px solid <xsl:value-of select="$UserPref/View/ChangedFieldBgColor"/>                          
                   </xsl:attribute>                
                   <xsl:attribute name="title">  
                     <xsl:choose>
@@ -3764,9 +3840,12 @@ Log:            2004-09-21 - Changed "$Print != 'taxpayer'" to "$TaxpayerPrint =
               <xsl:if test="$TaxpayerPrint = 'false' or $TaxpayerPrint = '0'"> <!-- If parameter TaxpayerPrint is false or '0', then set these attributes-->
                 <xsl:attribute name="style">                      
                   background-color: <xsl:value-of select="$UserPref/View/ChangedFieldBgColor"/>
-                  <xsl:if test="((not(string($thisValue)) or normalize-space($thisValue)='&nbsp;') and $Stage='original') or ((not(string($latestValue)) or normalize-space($latestValue)='&nbsp;') and $Stage='latest')">              
+                  <xsl:choose>
+                  <xsl:when test="((not(string($thisValue)) or normalize-space($thisValue)='&nbsp;') and $Stage='original') or ((not(string($latestValue)) or normalize-space($latestValue)='&nbsp;') and $Stage='latest')">              
                     ; width:35%
-                  </xsl:if>                        
+                  </xsl:when>
+                  <xsl:otherwise>; display:inline;</xsl:otherwise>
+                  </xsl:choose>
                 </xsl:attribute>  
                 <xsl:attribute name="title">  
                   <xsl:choose>

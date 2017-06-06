@@ -12,9 +12,10 @@
 	<xsl:include href="IRS1120ScheduleUTPStyle.xsl"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS1120ScheduleUTP"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
-				
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<!-- Set Document Title -->
 				<title>
 					<xsl:call-template name="FormTitle">
@@ -43,14 +44,13 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<form name="Form1120ScheduleUTP">
 					<!-- BEGIN WARNING LINE -->
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- END WARNING LINE -->
 					<!-- BEGIN FORM HEADER -->
 					<!--Title of Form -->
-					
 					<div class="styBB" style="width:187mm;height: 19mm;border-bottom-width:2px;">
 						<div class="styFNBox" style="width:31mm;font-size:8pt;height:19mm;border-right-width:2px;">
 							<div class="styFormNumber" style="font-size:10pt;font-weight:bold;">SCHEDULE UTP<br/>(Form 1120)</div>
@@ -64,13 +64,15 @@
 									<img src="{$ImagePath}/1120SchUTP_Bullet.gif" alt="Pointer"/>
 				  File with Form 1120, 1120-F, 1120-L, or 1120-PC.<br/>
 									<img src="{$ImagePath}/1120SchUTP_Bullet.gif" alt="Pointer"/>
-				  Information about Schedule UTP (Form 1120) and its separate instructions is at 
-				  <i>www.irs.gov/scheduleutp</i>
+				  Information about Schedule UTP (Form 1120) and its separate instructions is at
+																<a style="text-decoration:none;color:black;" href="http://www.irs.gov/scheduleutp" title="Link to IRS.gov">
+										<i>www.irs.gov/scheduleutp</i>
+									</a>.
 								</div>
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:19mm;border-left-width: 2px">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0123</div>
+							<div class="styOMB">OMB No. 1545-0123</div>
 							<div class="styTY" style="height:10mm;padding-top:1mm;">20<span class="styTYColor">13</span>
 							</div>
 						</div>
@@ -84,11 +86,11 @@
               Name of entity as shown on page 1 of tax return
               <br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 							</xsl:call-template>
 							<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<!-- EIN -->
@@ -102,15 +104,15 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styBB" style="width:187mm;border-top-width:1px;border-bottom-width:0;">
+						<div class="styBB" style="text-align:center;width:187mm;border-top-width:1px;border-bottom-width:1px;">
 							<br/>
-							<div style="text-align:center;font-size:8pt;padding-bottom:0.5mm;">
+							<div style="font-size:8pt;padding-bottom:0.5mm;">
                 This Part I, Schedule UTP (Form 1120) is page
-                <span style="width:10mm; border-bottom:1 solid black; text-align:center;">
+                <span style="width:10mm; border-bottom:1px solid black; text-align:center;">
 									<!-- insert element here -->
 								</span>
                 of 
-                <span style="width:10mm; border-bottom:1 solid black; text-align:center">
+                <span style="width:10mm; border-bottom:1px solid black; text-align:center">
 									<!-- insert element here -->
 								</span>
                 Part I pages.
@@ -119,25 +121,18 @@
 					</div>
 					<!-- END TAXPAYER INFO -->
 					<!-- BEGIN PART I HEADER -->
-					<div class="styIRS1120ScheduleUTP_styPartHdr" style="width:707px;height:16px;">
-						<span style="float:left;clear:left;font-size:8pt;">
-							<span style="width:76px;height:16px;">
-								<span class="styIRS1120ScheduleUTP_styPartHdrSpanner"/>
-								<span class="styIRS1120ScheduleUTP_styPartHdrTitle">Part I</span>
-								<span class="styIRS1120ScheduleUTP_styPartHdrSpanner"/>
-							</span>
-							<span style="height:16px;">Uncertain Tax Positions for the Current Tax Year. </span>
-							<span style="height:16px;font-weight:normal;">See instructions for how to complete columns (a)</span>
-							<span style="height:16px;padding-left:76px;font-weight:normal;">through (g). Enter, in Part III, a description for each uncertain tax position (UTP).</span>
-							<span style="height:16px;padding-top:2mm;padding-left:76px;font-weight:normal;">
-					Check this box if the corporation was unable to obtain information from related parties sufficient to
-				</span>
-							<span style="height:16px;padding-left:76px;font-weight:normal;vertical-align: middle;">
-					determine whether a tax position is a UTP (see instructions) 
-				<img src="{$ImagePath}/1120SchUTP_Bullet.gif" alt="Pointer"/>
-							</span>
-							<span style="height:16px;font-weight:normal;vertical-align:middle;padding-left:2mm;">
-								<input alt="PartICheckBox" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox" name="PartICheckBox">
+					<div class="styBB" style="width:187mm;height:19mm;">
+						<div class="styPartName" style="height:3.5mm;">Part I</div>
+						<div class="styPartDesc" style="width:170mm;font-weight:normal;">
+							<b>Uncertain Tax Positions for the Current Tax Year.  </b> 
+								 See instructions for how to complete columns (a) through (g).  Enter, in Part III, a description for each uncertain tax position (UTP).
+								 <br/>
+							<br/>
+			 					Check this box if the corporation was unable to obtain information from related parties sufficient to
+			 					determine whether a tax position is a UTP (see instructions) 
+			 					<img src="{$ImagePath}/1120SchUTP_Bullet.gif" alt="Pointer"/>
+							<span style="height:16px;font-weight:normal;vertical-align:top;padding-left:1mm;">
+								<input alt="PartICheckBox" type="checkbox" class="styCkbox" name="PartICheckBox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/UnableObtainRltdPrtyInfoCYInd"/>
 										<xsl:with-param name="BackupName">UnableObtainRelatedPartyInfoI</xsl:with-param>
@@ -150,17 +145,19 @@
 									</xsl:call-template>
 								</label>
 							</span>
-						</span>
-						<div style="float:right;padding-top:16mm;padding-right:.25mm;">
-							<!-- button display logic -->
-							<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$FormData/CurrentTYUTPInformationGrp"/>
-								<xsl:with-param name="containerHeight" select="21"/>
-								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerID" select="'ScheduleUTPPartITable'"/>
-							</xsl:call-template>
-							<!-- end button display logic -->
 						</div>
+						<xsl:if test="(count($FormData/CurrentTYUTPInformationGrp) &gt; 21) and ($Print != $Separated)">
+							<div class="styPartDesc" style="padding-left:0;padding-top:11mm;float:right;width:5.5mm;font-weight:normal;">
+								<!-- button display logic -->
+								<xsl:call-template name="SetDynamicTableToggleButton">
+									<xsl:with-param name="TargetNode" select="$FormData/CurrentTYUTPInformationGrp"/>
+									<xsl:with-param name="containerHeight" select="21"/>
+									<xsl:with-param name="headerHeight" select="2"/>
+									<xsl:with-param name="containerID" select="'ScheduleUTPPartITable'"/>
+								</xsl:call-template>
+								<!-- end button display logic -->
+							</div>
+						</xsl:if>
 					</div>
 					<!-- END PART I HEADER -->
 					<div class="styIRS1120ScheduleUTP_styTableContainer" id="ScheduleUTPPartITable">
@@ -173,7 +170,8 @@
 								<th class="styIRS1120ScheduleUTP_styLeftCell" style="width:20mm;text-align:center;font-weight:normal;" scope="col" rowspan="2">
 									<span style="font-weight:bold;">(a)<br/>UTP No.</span>
 								</th>
-								<th class="styIRS1120ScheduleUTP_styMiddleCell" colspan="3" style="width:75mm;text-align:center;font-weight:normal;" scope="col">
+								<th class="styIRS1120ScheduleUTP_styMiddleCell" colspan="3" style="border-top-width:1px;
+								border-bottom-width:2px;width:75mm;text-align:center;font-weight:normal;" scope="col">
 									<span style="font-weight:bold;">(b)<br/>Primary IRC Sections</span>
 									<br/>(e.g., "61", "108",  "263A", etc.)
         </th>
@@ -196,7 +194,7 @@
 								</th>
 							</tr>
 							<tr>
-								<th class="styIRS1120ScheduleUTP_styMiddleCell" colspan="3" style="width:75mm;text-align:center;font-weight:normal;" scope="col">
+								<th class="styIRS1120ScheduleUTP_styMiddleCell" colspan="3" style="border-bottom-width:2px;width:75mm;text-align:center;font-weight:normal;" scope="col">
 									<span style="font-weight:bold;">Primary IRC Subsections</span>
 									<br/>(e.g. (f)(2)(A)(ii))
         </th>
@@ -211,7 +209,7 @@
 											<xsl:attribute name="style">background-color:lightgrey;</xsl:attribute>
 										</xsl:if>
 										<!-- Begin UTP Number Column 1-->
-										<td class="styIRS1120ScheduleUTP_styLeftCell" scope="row" style="text-align:left;font-size:6pt;width:14mm;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styLeftCell" scope="row" style="text-align:left;font-size:6pt;width:14mm;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="(position() = last()) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:left;font-size:6pt;width:14mm;</xsl:attribute>
@@ -226,49 +224,158 @@
 										<!-- Begin Primary IRC Sections Columns(3) -->
 										<xsl:variable name="UTPpositionPartI" select="position()"/>
 										<xsl:if test="count(IRCSections) = 0">
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+
 											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+
 											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+
 											</td>
 										</xsl:if>
 										<xsl:if test="count(IRCSections) = 1">
 											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+														<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+													</xsl:if>
+													<span style="width:25mm;border-bottom:1px solid black;">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														</xsl:call-template>
+													</span>
+
+(<span style="width: 1px"/>
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
 													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
+
 												</td>
 											</xsl:for-each>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+
 											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+
 											</td>
 										</xsl:if>
 										<xsl:if test="count(IRCSections) = 2">
 											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+														<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+													</xsl:if>
+													<span style="width:25mm;border-bottom:1px solid black;">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														</xsl:call-template>
+													</span>
+
+(<span style="width: 1px"/>
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
 													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
+
 												</td>
 											</xsl:for-each>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+
 											</td>
 										</xsl:if>
 										<xsl:if test="count(IRCSections) = 3">
 											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
+														<xsl:attribute name="style">padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+													</xsl:if>
+													<span style="width:25mm;border-bottom:1px solid black;">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														</xsl:call-template>
+													</span>
+(<span style="width: 1px"/>
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
 													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+													</xsl:call-template>
+													<span style="width: 1px"/>)
 												</td>
 											</xsl:for-each>
 										</xsl:if>
@@ -276,14 +383,14 @@
 										<!-- Begin Timing Codes Columns(2) -->
 										<xsl:choose>
 											<xsl:when test="BothTimingCodesInd">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell">
 													<!-- If this is the last row, do not display a bottom line -->
 													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 													</xsl:if>
 													<span style="width:4px;"/>
 													<!-- why target node not display PermanentTimingCode-->
-													<input alt="Perm" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+													<input alt="Perm" type="checkbox" class="styCkbox">
 														<xsl:call-template name="PopulateYesCheckbox">
 															<xsl:with-param name="TargetNode" select="BothTimingCodesInd"/>
 															<xsl:with-param name="BackupName">Partl-Permanent<xsl:value-of select="$UTPpositionPartI"/>
@@ -298,14 +405,14 @@
 														</xsl:call-template>
 													</label>
 												</td>
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell">
 													<!-- If this is the last row, do not display a bottom line -->
 													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 													</xsl:if>
 													<span style="width:4px;"/>
 													<!-- why target node not display TemporaryTimingCode-->
-													<input alt="Temp" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+													<input alt="Temp" type="checkbox" class="styCkbox">
 														<xsl:call-template name="PopulateCheckbox">
 															<xsl:with-param name="TargetNode" select="BothTimingCodesInd"/>
 															<xsl:with-param name="BackupName">Partl-Temporary<xsl:value-of select="$UTPpositionPartI"/>
@@ -322,13 +429,13 @@
 												</td>
 											</xsl:when>
 											<xsl:otherwise>
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell">
 													<!-- If this is the last row, do not display a bottom line -->
 													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 													</xsl:if>
 													<span style="width:4px;"/>
-													<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+													<input alt="alt" type="checkbox" class="styCkbox">
 														<xsl:call-template name="PopulateCheckbox">
 															<xsl:with-param name="TargetNode" select="PermanentTimingCodeInd"/>
 															<xsl:with-param name="BackupName">Partl-PermanentTimingCode<xsl:value-of select="$UTPpositionPartI"/>
@@ -343,13 +450,13 @@
 														</xsl:call-template>
 													</label>
 												</td>
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell">
 													<!-- If this is the last row, do not display a bottom line -->
 													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 													</xsl:if>
 													<span style="width:4px;"/>
-													<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+													<input alt="alt" type="checkbox" class="styCkbox">
 														<xsl:call-template name="PopulateCheckbox">
 															<xsl:with-param name="TargetNode" select="TemporaryTimingCodeInd"/>
 															<xsl:with-param name="BackupName">Partl-TemporaryTimingCode<xsl:value-of select="$UTPpositionPartI"/>
@@ -368,7 +475,7 @@
 										</xsl:choose>
 										<!-- End Timing Codes Columns(2) -->
 										<!-- Begin Pass Through Entity EIN Column -->
-										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
@@ -388,13 +495,13 @@
 										</td>
 										<!-- End Pass Through Entity EIN Column -->
 										<!-- Begin Major Tax Position Column -->
-										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 											</xsl:if>
 											<span style="width:4px;"/>
-											<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+											<input alt="alt" type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="MajorTaxPositionInd"/>
 													<xsl:with-param name="BackupName">Partl-MajorTaxPosition</xsl:with-param>
@@ -409,7 +516,7 @@
 										</td>
 										<!-- End Major Tax Position Column -->
 										<!-- Begin Ranking of Tax Position Column -->
-										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
 											<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
 											</xsl:if>
@@ -428,178 +535,14 @@
 										</td>
 										<!-- End Ranking of Tax Position Column -->
 										<!-- Begin title TBD -->
-										<td class="styIRS1120ScheduleUTP_styRightCell" style="text-align:center;background-color:darkgrey;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styRightCell" style="text-align:center;background-color:darkgrey;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">background-color:darkgrey;border-bottom-width:0px;text-align:center;</xsl:attribute>
 											</xsl:if>
 											<span style="width:4px;"/>
-											<!--											<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="TitleTBD"/>
-													<xsl:with-param name="BackupName">TitleTBD</xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="TitleTBD" />
-													<xsl:with-param name="BackupName">TitleTBD</xsl:with-param>
-												</xsl:call-template>
-											</label>	-->
 										</td>
 										<!-- End title TBD -->
-										<!--<td class="styIRS1120ScheduleUTP_styTableLastCol" id="Table1LastCol"> </td>-->
-									</tr>
-									<tr>
-										<xsl:if test="position() mod 2 = 1">
-											<xsl:attribute name="style">background-color:lightgrey;</xsl:attribute>
-										</xsl:if>
-										<xsl:variable name="UTPpositionPartI" select="position()"/>
-										<xsl:if test="count(IRCSections) =0">
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-													</xsl:call-template>
-												</span>)
-												</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-										</xsl:if>
-										<xsl:if test="count(IRCSections) = 1">
-											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-													</xsl:if>
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-														</xsl:call-template>
-													</span>)
-												</td>
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-													</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-													</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-											</xsl:for-each>
-										</xsl:if>
-										<xsl:if test="count(IRCSections) = 2">
-											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-													<!-- If this is the last row, do not display a bottom line -->
-													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-													</xsl:if>
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-														</xsl:call-template>
-													</span>)
-												</td>
-											</xsl:for-each>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-												<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-										</xsl:if>
-										<xsl:if test="count(IRCSections) = 3">
-											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-													<xsl:if test="($UTPpositionPartI = count($FormData/CurrentTYUTPInformationGrp)) and (count($FormData/CurrentTYUTPInformationGrp) &gt;20)">
-														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
-													</xsl:if>
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-														</xsl:call-template>
-													</span>)
-						</td>
-											</xsl:for-each>
-										</xsl:if>
 									</tr>
 								</xsl:for-each>
 							</xsl:if>
@@ -618,12 +561,14 @@
 							</xsl:if>
 						</table>
 					</div>
-					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="$FormData/CurrentTYUTPInformationGrp"/>
-						<xsl:with-param name="containerHeight" select="21"/>
-						<xsl:with-param name="headerHeight" select="1"/>
-						<xsl:with-param name="containerID" select="'ScheduleUTPPartITable'"/>
-					</xsl:call-template>
+					<xsl:if test="(count($FormData/CurrentTYUTPInformationGrp) &gt; 21) and ($Print != $Separated)">
+						<xsl:call-template name="SetInitialDynamicTableHeight">
+							<xsl:with-param name="TargetNode" select="$FormData/CurrentTYUTPInformationGrp"/>
+							<xsl:with-param name="containerHeight" select="21"/>
+							<xsl:with-param name="headerHeight" select="2"/>
+							<xsl:with-param name="containerID" select="'ScheduleUTPPartITable'"/>
+						</xsl:call-template>
+					</xsl:if>
 					<!-- END PART I TABLE -->
 					<!-- BEGIN PAGE I FOOTER -->
 					<div class="styIRS1120ScheduleUTP_styFormFooter" style="width:187mm;border-top-width: 1px;">
@@ -635,10 +580,10 @@
 					</div>
 					<!-- END PAGE I FOOTER -->
 					<!--  ********************************************************************************************************* -->
-					<br class="pageend"/>
+					<p style="page-break-before: always"/>
 					<!--  ********************************************************************************************************* -->
 					<!-- Page 2 Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="border-bottom-width:2px;width:187mm;padding-top:.5mm;">
 						<div style="float:left;">Schedule UTP (Form 1120) 2013 </div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
 						</div>
@@ -649,11 +594,11 @@
                 Name of entity as shown on page 1 of tax return
                 <br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 							</xsl:call-template>
 							<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<!-- EIN -->
@@ -667,15 +612,15 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styBB" style="width:187mm;border-top-width:1px;border-bottom-width:0;">
+						<div class="styBB" style="text-align:center;width:187mm;border-top-width:1px;border-bottom-width:1px;">
 							<br/>
-							<div style="text-align:center;font-size:8pt;padding-bottom:0.5mm;">
+							<div style="font-size:8pt;padding-bottom:0.5mm;">
                   This Part II, Schedule UTP (Form 1120) is page
-                  <span style="width:10mm; border-bottom:1 solid black; text-align:center;">
+                  <span style="width:10mm; border-bottom:1px solid black; text-align:center;">
 									<!-- insert element here -->
 								</span>
                   of 
-                  <span style="width:10mm; border-bottom:1 solid black; text-align:center">
+                  <span style="width:10mm; border-bottom:1px solid black; text-align:center">
 									<!-- insert element here -->
 								</span>
                   Part II pages.
@@ -685,27 +630,20 @@
 					<!--  End Name and Employer indentification number  -->
 					<!-- END Page 2 Header -->
 					<!-- BEGIN PART II HEADER -->
-					<div class="styIRS1120ScheduleUTP_styPartHdr" style="width:707px;height:16px;">
-						<span style="float:left;clear:left;font-size:8pt;">
-							<span style="width:76px;height:16px;">
-								<span class="styIRS1120ScheduleUTP_styPartHdrSpanner"/>
-								<span class="styIRS1120ScheduleUTP_styPartHdrTitle">Part II</span>
-								<span class="styIRS1120ScheduleUTP_styPartHdrSpanner"/>
-							</span>
-							<span style="height:16px;">Uncertain Tax Positions For Prior Tax Years.</span>
-							<span style="height:16px;font-weight:normal;">See instructions for how to complete columns (a)</span>
-							<span style="height:16px; padding-left:76px;font-weight:normal;">
-				  through (h). Enter, in Part III, a description for each uncertain tax position (UTP).
-                </span>
-							<span style="padding-top:2mm;height:16px; padding-left:76px;font-weight:normal;">
-				  Check this box if the corporation was unable to obtain information from related parties sufficient to 
-                </span>
-							<span style="height:16px; padding-left:76px;font-weight:normal;vertical-align:middle;">
-				  determine whether a tax position is a UTP (see instructions)
-				  <img src="{$ImagePath}/1120SchUTP_Bullet.gif" alt="Pointer"/>
-							</span>
+					<div class="styBB" style="width:187mm;height:23mm;">
+						<div class="styPartName" style="height:3.5mm;">Part II</div>
+						<div class="styPartDesc" style="width:170mm;font-weight:normal;">
+							<b>Uncertain Tax Positions for Prior Tax Years. </b>
+							<br/> 
+								 See instructions for how to complete columns (a) through (h). Enter, in Part III, a description for
+								  each uncertain tax position (UTP).
+								 <br/>
+							<br/>
+			 					Check this box if the corporation was unable to obtain information from related parties sufficient to determine
+			 					 whether a tax position is a UTP (see instructions) 
+			 					<img src="{$ImagePath}/1120SchUTP_Bullet.gif" alt="Pointer"/>
 							<span style="height:16px;padding-left:2mm;font-weight:normal;vertical-align:middle;">
-								<input alt="PartIICheckBox" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox" name="PartIICheckBox">
+								<input alt="PartIICheckBox" type="checkbox" class="styCkbox" name="PartIICheckBox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/UnableObtainRltdPrtyInfoPYInd"/>
 										<xsl:with-param name="BackupName">UnableObtainRelatedPartyInfoII</xsl:with-param>
@@ -718,17 +656,19 @@
 									</xsl:call-template>
 								</label>
 							</span>
-						</span>
-						<div style="float:right;padding-top:16mm;padding-right:.25mm;">
-							<!-- button display logic -->
-							<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$FormData/PriorTYUTPInformationGrp"/>
-								<xsl:with-param name="containerHeight" select="21"/>
-								<xsl:with-param name="headerHeight" select="1"/>
-								<xsl:with-param name="containerID" select="'ScheduleUTPPartIITable'"/>
-							</xsl:call-template>
-							<!-- end button display logic -->
 						</div>
+						<xsl:if test="(count($FormData/PriorTYUTPInformationGrp) &gt; 21) and ($Print != $Separated)">
+							<div class="styPartDesc" style="padding-left:0;padding-top:15mm;float:right;width:5.5mm;font-weight:normal;">
+								<!-- button display logic -->
+								<xsl:call-template name="SetDynamicTableToggleButton">
+									<xsl:with-param name="TargetNode" select="$FormData/PriorTYUTPInformationGrp"/>
+									<xsl:with-param name="containerHeight" select="21"/>
+									<xsl:with-param name="headerHeight" select="2"/>
+									<xsl:with-param name="containerID" select="'ScheduleUTPPartIITable'"/>
+								</xsl:call-template>
+								<!-- end button display logic -->
+							</div>
+						</xsl:if>
 					</div>
 					<!-- END PART II HEADER -->
 					<!-- BEGIN PART II TABLE -->
@@ -736,13 +676,13 @@
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
-						<table class="styIRS1120ScheduleUTP_styTable" cellspacing="0">
+						<table class="styIRS1120ScheduleUTP_styTable" cellspacing="0" style="border-bottom:1px solid black;">
 							<!-- BEGIN PART II TABLE HEADER -->
 							<tr>
 								<th class="styIRS1120ScheduleUTP_styLeftCell" style="width:20mm;text-align:center;font-weight:normal;" scope="col" rowspan="2">
 									<span style="font-weight:bold;">(a)<br/>UTP No.</span>
 								</th>
-								<th class="styIRS1120ScheduleUTP_styMiddleCell" colspan="3" style="width:75mm;text-align:center;font-weight:normal;" scope="col">
+								<th class="styIRS1120ScheduleUTP_styMiddleCell" colspan="3" style="border-top-width:1px;width:75mm;text-align:center;font-weight:normal;" scope="col">
 									<span style="font-weight:bold;">(b)<br/>Primary IRC Sections</span>
 									<br/>(e.g., "61", "108",  "263A", etc.)
                   </th>
@@ -768,7 +708,7 @@
 								</th>
 							</tr>
 							<tr>
-								<th class="styIRS1120ScheduleUTP_styMiddleCell" colspan="3" style="width:75mm;text-align:center;font-weight:normal;" scope="col">
+								<th class="styIRS1120ScheduleUTP_styMiddleCell" colspan="3" style="border-top-width:1px;width:75mm;text-align:center;font-weight:normal;" scope="col">
 									<span style="font-weight:bold;">Primary IRC Subsections</span>
 									<br/>(e.g. (f)(2)(A)(ii))
         </th>
@@ -783,7 +723,7 @@
 											<xsl:attribute name="style">background-color:lightgrey;</xsl:attribute>
 										</xsl:if>
 										<!-- Begin UTP Number Column-->
-										<td class="styIRS1120ScheduleUTP_styLeftCell" style="text-align:left;width:20mm;font-size:6pt;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styLeftCell" style="text-align:left;width:20mm;font-size:6pt;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:left;width:20mm;font-size:6pt;</xsl:attribute>
@@ -798,49 +738,126 @@
 										<!-- Begin Primary IRC Sections Columns(3) -->
 										<xsl:variable name="UTPpositionPartII" select="position()"/>
 										<xsl:if test="count(IRCSections) = 0">
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
 											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
 											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
 											</td>
 										</xsl:if>
 										<xsl:if test="count(IRCSections) = 1">
 											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
-													</xsl:call-template>
-												</td>
+												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+													<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+														<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+													</xsl:if>
+													<span style="width:25mm;border-bottom:1px solid black;">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														</xsl:call-template>
+													</span>
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+													</xsl:call-template>)
+													</td>
 											</xsl:for-each>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
 											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+
 											</td>
 										</xsl:if>
 										<xsl:if test="count(IRCSections) = 2">
 											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
-													</xsl:call-template>
-												</td>
+												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+													<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+														<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+													</xsl:if>
+													<span style="width:25mm;border-bottom:1px solid black;">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														</xsl:call-template>
+													</span>
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+													</xsl:call-template>)
+													</td>
 											</xsl:for-each>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<span>&#160;</span>
+											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+													<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+												</xsl:if>
+												<span style="width:25mm;border-bottom:1px solid black;">&#160;</span>
+(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+
 											</td>
 										</xsl:if>
 										<xsl:if test="count(IRCSections) = 3">
 											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
-													</xsl:call-template>
+												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="padding-left:0;padding-right:0;text-align:center;font-size:6pt;width:25mm;">
+													<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
+														<xsl:attribute name="style">padding-left:0;padding-right:0;border-bottom-width:0px;text-align:center;font-size:6pt;width:25mm;</xsl:attribute>
+													</xsl:if>
+													<span style="width:25mm;border-bottom:1px solid black;">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="PrimaryIRCSectionsNum"/>
+														</xsl:call-template>
+													</span>
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+													</xsl:call-template>)
+													(<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+													</xsl:call-template>)
 												</td>
 											</xsl:for-each>
 										</xsl:if>
@@ -848,13 +865,13 @@
 										<!-- Begin Timing Codes Columns(2) -->
 										<xsl:choose>
 											<xsl:when test="BothTimingCodesInd">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell">
 													<!-- If this is the last row, do not display a bottom line -->
 													<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 													</xsl:if>
 													<span style="width:4px;"/>
-													<input alt="Perm" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+													<input alt="Perm" type="checkbox" class="styCkbox">
 														<xsl:call-template name="PopulateYesCheckbox">
 															<xsl:with-param name="TargetNode" select="BothTimingCodesInd"/>
 															<xsl:with-param name="BackupName">Partll-Permanent<xsl:value-of select="$UTPpositionPartII"/>
@@ -869,13 +886,13 @@
 														</xsl:call-template>
 													</label>
 												</td>
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell">
 													<!-- If this is the last row, do not display a bottom line -->
 													<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 													</xsl:if>
 													<span style="width:4px;"/>
-													<input alt="Temp" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+													<input alt="Temp" type="checkbox" class="styCkbox">
 														<xsl:call-template name="PopulateCheckbox">
 															<xsl:with-param name="TargetNode" select="BothTimingCodesInd"/>
 															<xsl:with-param name="BackupName">Partll-Temporary<xsl:value-of select="$UTPpositionPartII"/>
@@ -892,13 +909,13 @@
 												</td>
 											</xsl:when>
 											<xsl:otherwise>
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell">
 													<!-- If this is the last row, do not display a bottom line -->
 													<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 													</xsl:if>
 													<span style="width:4px;"/>
-													<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+													<input alt="alt" type="checkbox" class="styCkbox">
 														<xsl:call-template name="PopulateCheckbox">
 															<xsl:with-param name="TargetNode" select="PermanentTimingCodeInd"/>
 															<xsl:with-param name="BackupName">Partll-PermanentTimingCode<xsl:value-of select="$UTPpositionPartII"/>
@@ -913,13 +930,13 @@
 														</xsl:call-template>
 													</label>
 												</td>
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
+												<td class="styIRS1120ScheduleUTP_styMiddleCell">
 													<!-- If this is the last row, do not display a bottom line -->
 													<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 													</xsl:if>
 													<span style="width:4px;"/>
-													<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+													<input alt="alt" type="checkbox" class="styCkbox">
 														<xsl:call-template name="PopulateCheckbox">
 															<xsl:with-param name="TargetNode" select="TemporaryTimingCodeInd"/>
 															<xsl:with-param name="BackupName">Partll-TemporaryTimingCode<xsl:value-of select="$UTPpositionPartII"/>
@@ -938,7 +955,7 @@
 										</xsl:choose>
 										<!-- End Timing Codes Columns(2) -->
 										<!-- Begin Pass Through Entity EIN Column -->
-										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
@@ -958,13 +975,13 @@
 										</td>
 										<!-- End Pass Through Entity EIN Column -->
 										<!-- Begin Administrative Practice Column -->
-										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
 											</xsl:if>
 											<span style="width:4px;"/>
-											<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+											<input alt="alt" type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="MajorTaxPositionInd"/>
 													<xsl:with-param name="BackupName">Partll-MajorTaxPosition<xsl:value-of select="$UTPpositionPartII"/>
@@ -981,7 +998,7 @@
 										</td>
 										<!-- End Administrative Practice Column -->
 										<!-- Begin Maximum Tax Adjustment Column -->
-										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="width:15mm;font-size:6pt;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="width:15mm;font-size:6pt;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;width:15mm;font-size:6pt;</xsl:attribute>
@@ -1001,13 +1018,13 @@
 										</td>
 										<!-- End Maximum Tax Adjustment Column -->
 										<!-- Begin Title TBD Column -->
-										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;background-color:darkgrey;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;background-color:darkgrey;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">background-color:darkgrey;border-bottom-width:0px;text-align:center;</xsl:attribute>
 											</xsl:if>
 											<span style="width:4px;"/>
-											<!--											<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+											<!--											<input alt="alt" type="checkbox" class="styCkbox">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="TitleTBD"/>
 													<xsl:with-param name="BackupName">Partll-TitleTBD</xsl:with-param>
@@ -1022,7 +1039,7 @@
 										</td>
 										<!-- End Title TBD Column -->
 										<!-- Begin Tax Year Of Position Column-->
-										<td class="styIRS1120ScheduleUTP_styRightCell" style="text-align:center;width:16mm;" rowspan="2">
+										<td class="styIRS1120ScheduleUTP_styRightCell" style="text-align:center;width:16mm;">
 											<!-- If this is the last row, do not display a bottom line -->
 											<xsl:if test="(position() = last()) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:center;</xsl:attribute>
@@ -1035,157 +1052,6 @@
 										</td>
 										<!-- End Tax Year Of Position Column-->
 										<td class="styIRS1120ScheduleUTP_styTableLastCol" id="Table2LastCol"> </td>
-									</tr>
-									<tr>
-										<xsl:if test="position() mod 2 = 1">
-											<xsl:attribute name="style">background-color:lightgrey;</xsl:attribute>
-										</xsl:if>
-										<xsl:variable name="UTPpositionPartII" select="position()"/>
-										<xsl:if test="count(IRCSections) = 0">
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-													</xsl:call-template>
-												</span>)
-												</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-										</xsl:if>
-										<xsl:if test="count(IRCSections) = 1">
-											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-													<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-													</xsl:if>
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-														</xsl:call-template>
-													</span>)
-												</td>
-											</xsl:for-each>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-										</xsl:if>
-										<xsl:if test="count(IRCSections) = 2">
-											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-													<!-- If this is the last row, do not display a bottom line -->
-													<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-													</xsl:if>
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-														</xsl:call-template>
-													</span>)
-												</td>
-											</xsl:for-each>
-											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-												<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-													<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-												</xsl:if>
-(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
-											</td>
-										</xsl:if>
-										<xsl:if test="count(IRCSections) = 3">
-											<xsl:for-each select="IRCSections">
-												<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-													<xsl:if test="($UTPpositionPartII = count($FormData/PriorTYUTPInformationGrp)) and (count($FormData/PriorTYUTPInformationGrp) &gt;20)">
-														<xsl:attribute name="style">border-bottom-width:0px;text-align:center;width:25mm;font-size:6pt;</xsl:attribute>
-													</xsl:if>
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-														</xsl:call-template>
-													</span>)
-(<span style="width: 8px">
-														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-														</xsl:call-template>
-													</span>)
-												</td>
-											</xsl:for-each>
-										</xsl:if>
 									</tr>
 								</xsl:for-each>
 							</xsl:if>
@@ -1205,40 +1071,42 @@
 						</table>
 					</div>
 					<!--Toggle button at the bottom -->
-					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="$FormData/PriorTYUTPInformationGrp"/>
-						<xsl:with-param name="containerHeight" select="21"/>
-						<xsl:with-param name="headerHeight" select="1"/>
-						<xsl:with-param name="containerID" select="'ScheduleUTPPartIITable'"/>
-					</xsl:call-template>
+					<xsl:if test="(count($FormData/PriorTYUTPInformationGrp) &gt; 21) and ($Print != $Separated)">
+						<xsl:call-template name="SetInitialDynamicTableHeight">
+							<xsl:with-param name="TargetNode" select="$FormData/PriorTYUTPInformationGrp"/>
+							<xsl:with-param name="containerHeight" select="21"/>
+							<xsl:with-param name="headerHeight" select="2"/>
+							<xsl:with-param name="containerID" select="'ScheduleUTPPartIITable'"/>
+						</xsl:call-template>
+					</xsl:if>
 					<!-- END PART II TABLE -->
 					<!-- BEGIN PAGE II FOOTER -->
-					<div class="styIRS1120ScheduleUTP_styFormFooter" style="width:707px;border-top-width: 1px;">
-						<span style="width:98mm;font-weight:bold;font-size:7pt;" class="styGenericDiv"/>
-						<span style="width:38mm;font-weight:normal;font-size:6pt;text-align:center;" class="styGenericDiv"/>
+					<div class="styIRS1120ScheduleUTP_styFormFooter" style="width:187mm;border-top-width: 0px;">
+						<span style="width:98mm;font-weight:bold;font-size:6pt;" class="styGenericDiv"> &nbsp; </span>
+						<span style="width:38mm;font-weight:normal;font-size:6pt;text-align:center;" class="styGenericDiv"> &nbsp; </span>
 						<span style="width:50mm;text-align:right;font-weight:bold;font-size:6pt;" class="styGenericDiv">Schedule UTP (Form 1120) 2013</span>
 					</div>
 					<!-- END PAGE II FOOTER -->
 					<!--  ********************************************************************************************************* -->
-					<br class="pageend"/>
+					<p style="page-break-before: always"/>
 					<!--  ********************************************************************************************************* -->
 					<!-- Page 3 Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;border-bottom-width:2px;padding-top:.5mm;">
 						<div style="float:left;">Schedule UTP (Form 1120) 2013 </div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span>
 						</div>
 					</div>
 					<!--  Name -->
-					<div class="styBB" style="width:187mm">
+					<div class="styBB" style="border-bottom-width:1px;width:187mm">
 						<div class="styNameBox" style="width:141mm;font-size:7pt;">
                 Name of entity as shown on page 1 of tax return
                 <br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 							</xsl:call-template>
 							<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<!-- EIN -->
@@ -1252,15 +1120,15 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styBB" style="width:187mm;border-top-width:1px;border-bottom-width:0;">
+						<div class="styBB" style="text-align:center;width:187mm;border-top-width:2px;border-bottom-width:1px;">
 							<br/>
-							<div style="text-align:center;font-size:8pt;padding-bottom:0.5mm;">
+							<div style="font-size:8pt;padding-bottom:0.5mm;">
 								This Part III, Schedule UTP (Form 1120) is page
-                <span style="width:10mm; border-bottom:1 solid black; text-align:center;">
+                <span style="width:10mm; border-bottom:1px solid black; text-align:center;">
 									<!-- insert element here -->
 								</span>
                   of 
-                  <span style="width:10mm; border-bottom:1 solid black; text-align:center">
+                  <span style="width:10mm; border-bottom:1px solid black; text-align:center">
 									<!-- insert element here -->
 								</span>
                   Part III pages.
@@ -1273,33 +1141,30 @@
 					<!-- END Page 3 Header -->
 					<!-- BEGIN PART III HEADER -->
 					<xsl:variable name="TableIIIRowCount" select="count($FormData/CurrentTYUTPInformationGrp) + count($FormData/PriorTYUTPInformationGrp)"/>
-					<div class="styIRS1120ScheduleUTP_styPartHdr" style="width:707px;height:16px;">
-						<span style="float:left;clear:left;">
-							<span style="width:76px;">
-								<span class="styIRS1120ScheduleUTP_styPartHdrSpanner"/>
-								<span class="styIRS1120ScheduleUTP_styPartHdrTitle">Part III</span>
-								<span class="styIRS1120ScheduleUTP_styPartHdrSpanner"/>
-							</span>
-							<span style="height:13px;">Concise Descriptions of UTPs. </span>
-							<span style="height:13px;font-weight:normal;">Indicate the corresponding UTP number from Part I, column (a) (e.g. C1)</span>
-							<span style="height:13px; padding-left:76px;font-weight:normal;"> or Part II, column (a) (e.g. P2).  Use as many Part III pages as necessary (see instructions).</span>
-						</span>
-						<div style="float:right;padding-top:5mm;padding-right:.25mm;">
-							<!-- Determine whether or not to display the vertical scroll bar.-->
+					<div class="styBB" style="width:187mm;height:7.5mm;">
+						<div class="styPartName" style="height:3.5mm;">Part III</div>
+						<div class="styPartDesc" style="width:170mm;font-weight:normal;">
+							<b>Concise Descriptions of UTPs. </b> Indicate the corresponding UTP number from Part I, column (a) (e.g. C1)
+							 or Part II column (a) (e.g. P2). Use as many Part III pages as necessary (see instructions).
+						</div>
+						<div class="styPartDesc" style="padding-left:0;padding-top:0mm;float:right;width:5.5mm;font-weight:normal;">
+							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleRowCount">
 								<xsl:with-param name="DataRowCount" select="$TableIIIRowCount"/>
+								<xsl:with-param name="headerHeight" select="1"/>
 								<xsl:with-param name="containerHeight" select="49"/>
 								<xsl:with-param name="containerID" select=" 'ScheduleUTPPartIIITable' "/>
 							</xsl:call-template>
+							<!-- end button display logic -->
 						</div>
 					</div>
 					<!-- END PART III HEADER -->
 					<!-- BEGIN PART III TABLE -->
-					<div class="styIRS1120ScheduleUTP_styTableContainer" id="ScheduleUTPPartIIITable">
+					<div class="styBB" id="ScheduleUTPPartIIITable">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
-						<table class="styIRS1120ScheduleUTP_styTable" cellspacing="0">
+						<table class="styIRS1120ScheduleUTP_styTable" cellspacing="0" style="border-bottom:1px solid black;">
 							<!-- BEGIN PART III TABLE HEADER -->
 							<tr>
 								<th class="styIRS1120ScheduleUTP_styLeftCell" style="width:25mm;text-align:center;font-weight:normal;" scope="col">
@@ -1314,10 +1179,9 @@
 							<xsl:if test="($Print != $Separated) or (count($FormData/CurrentTYUTPInformationGrp) + count($FormData/PriorTYUTPInformationGrp) &lt;= 49) ">
 								<xsl:for-each select="$FormData/CurrentTYUTPInformationGrp">
 									<tr>
-										<!-- Begin UTP Number Column-->
 										<td class="styIRS1120ScheduleUTP_styLeftCell" scope="row" style="text-align:left;vertical-align:top;width:25mm;">
 											<!-- If this is the last row, do not display a bottom line -->
-											<xsl:if test="(position() = last()) and (count($FormData/CurrentTYUTPInformationGrp) + count($FormData/PriorTYUTPInformationGrp) &gt;48) and (count($FormData/PriorTYUTPInformationGrp) = 0)">
+											<xsl:if test="(position() = last()) and (count($FormData/CurrentTYUTPInformationGrp) + count($FormData/PriorTYUTPInformationGrp) &gt;48)">
 												<xsl:attribute name="style">border-bottom-width:0px;text-align:left;vertical-align:top;width:25mm;</xsl:attribute>
 											</xsl:if>
 											<b>
@@ -1326,23 +1190,20 @@
 												</xsl:call-template>
 											</b>
 										</td>
-										<!-- End UTP Number Column -->
-										<!-- Begin Concise Description Of UTPs Column -->
 										<td class="styIRS1120ScheduleUTP_styRightCell" style="text-align:left;">
 											<!-- If this is the last row, do not display a bottom line -->
-											<xsl:if test="(position() = last()) and (count($FormData/CurrentTYUTPInformationGrp) + count($FormData/PriorTYUTPInformationGrp) &gt;48) and (count($FormData/PriorTYUTPInformationGrp) = 0)">
-												<xsl:attribute name="style">padding-left:2mm;font-size:7pt;border-bottom-width:0px;vertical-align:top;</xsl:attribute>
+											<xsl:if test="(position() = last()) and (count($FormData/CurrentTYUTPInformationGrp) + count($FormData/PriorTYUTPInformationGrp) &gt;48)">
+												<xsl:attribute name="style">border-bottom-width:0px;vertical-align:top;</xsl:attribute>
 											</xsl:if>
-											<span style="padding-left:2mm;font-size:7pt;vertical-align:top;">
+											<span style="float:left;padding-left:2mm;font-size:7pt;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="ConciseUTPDesc"/>
 												</xsl:call-template>
 											</span>
 										</td>
-										<!-- End Concise Description Of UTPs Column -->
-										<td class="styIRS1120ScheduleUTP_styTableLastCol" id="Table3LastCol"> </td>
+										<td class="styIRS1120ScheduleUTP_styTableLastCol" id="Table3LastCol"/>
 									</tr>
-								</xsl:for-each>
+																	</xsl:for-each>
 							</xsl:if>
 							<xsl:if test="($Print != $Separated) or (count($FormData/CurrentTYUTPInformationGrp) + count($FormData/PriorTYUTPInformationGrp) &lt;= 49) ">
 								<xsl:for-each select="$FormData/PriorTYUTPInformationGrp">
@@ -1387,20 +1248,21 @@
 					</div>
 					<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
 						<xsl:with-param name="DataRowCount" select="$TableIIIRowCount"/>
+						<xsl:with-param name="headerHeight" select="1"/>
 						<xsl:with-param name="containerHeight" select="49"/>
 						<xsl:with-param name="containerID" select=" 'ScheduleUTPPartIIITable' "/>
 					</xsl:call-template>
 					<!-- END PART III TABLE -->
 					<!-- BEGIN PART III FOOTER -->
-					<div class="styIRS1120ScheduleUTP_styFormFooter" style="width:707px;border-top-width: 1px;">
-						<span style="width:98mm;font-weight:bold;font-size:7pt;" class="styGenericDiv"/>
-						<span style="width:38mm;font-weight:normal;font-size:6pt;text-align:center;" class="styGenericDiv"/>
+					<div class="styIRS1120ScheduleUTP_styFormFooter" style="width:187mm;border-top-width: 0px;">
+						<span style="width:98mm;font-weight:bold;font-size:6pt;" class="styGenericDiv"> &nbsp; </span>
+						<span style="width:38mm;font-weight:normal;font-size:6pt;text-align:center;" class="styGenericDiv"> &nbsp; </span>
 						<span style="width:50mm;text-align:right;font-weight:bold;font-size:6pt;" class="styGenericDiv">Schedule UTP (Form 1120) 2013</span>
 					</div>
 					<!-- END PART III FOOTER -->
 				</form>
 				<!--  ********************************************************************************************************* -->
-				<br class="pageend"/>
+				<p style="page-break-before: always"/>
 				<!--  ********************************************************************************************************* -->
 				<!-- leftover data table -->
 				<div class="styLeftOverTitleLine" id="LeftoverData">
@@ -1459,6 +1321,17 @@
 											</xsl:call-template>
 										</b>
 									</td>
+									<xsl:if test="count(IRCSections) = 0">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+											<span>&#160;</span>
+										</td>
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+											<span>&#160;</span>
+										</td>
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+											<span>&#160;</span>
+										</td>
+									</xsl:if>
 									<xsl:if test="count(IRCSections) = 1">
 										<xsl:for-each select="IRCSections">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:20mm;">
@@ -1500,7 +1373,7 @@
 										<xsl:when test="BothTimingCodesInd">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
 												<!--<span style="width:4px;"/>-->
-												<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+												<input alt="alt" type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="BothTimingCodesInd"/>
 														<xsl:with-param name="BackupName">BothTimingCodes<xsl:value-of select="$SeparatedUTPpositionPartI"/>
@@ -1517,7 +1390,7 @@
 											</td>
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
 												<!--<span style="width:4px;"/>-->
-												<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+												<input alt="alt" type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="BothTimingCodesInd"/>
 														<xsl:with-param name="BackupName">BothTimingCodes<xsl:value-of select="$SeparatedUTPpositionPartI"/>
@@ -1535,7 +1408,7 @@
 										</xsl:when>
 										<xsl:otherwise>
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
-												<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+												<input alt="alt" type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="PermanentTimingCodeInd"/>
 														<xsl:with-param name="BackupName">PermanentTimingCode<xsl:value-of select="$SeparatedUTPpositionPartI"/>
@@ -1551,7 +1424,7 @@
 												</label>
 											</td>
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
-												<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+												<input alt="alt" type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="TemporaryTimingCodeInd"/>
 														<xsl:with-param name="BackupName">TemporaryTimingCode<xsl:value-of select="$SeparatedUTPpositionPartI"/>
@@ -1583,7 +1456,7 @@
 										</xsl:choose>
 									</td>
 									<td class="styDepTblCell" rowspan="2">
-										<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+										<input alt="alt" type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MajorTaxPositionInd"/>
 												<xsl:with-param name="BackupName">MajorTaxPosition</xsl:with-param>
@@ -1611,7 +1484,7 @@
 										</xsl:choose>
 									</td>
 									<td class="styDepTblCell" style="background-color:darkgrey;" rowspan="2">
-										<!--										<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+										<!--										<input alt="alt" type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="TitleTBD"/>
 											</xsl:call-template>
@@ -1627,29 +1500,40 @@
 								<tr>
 									<!--Define background colors to the rows -->
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+									<xsl:if test="count(IRCSections) = 0">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+					(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+										</td>
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+					(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+										</td>
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
+					(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+										</td>
+									</xsl:if>
 									<xsl:if test="count(IRCSections) = 1">
 										<xsl:for-each select="IRCSections">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-													</xsl:call-template>
-												</span>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
 											</td>
 										</xsl:for-each>
 										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
@@ -1662,26 +1546,26 @@
 									<xsl:if test="count(IRCSections) = 2">
 										<xsl:for-each select="IRCSections">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-													</xsl:call-template>
-												</span>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
 											</td>
 										</xsl:for-each>
 										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
@@ -1691,26 +1575,26 @@
 									<xsl:if test="count(IRCSections) = 3">
 										<xsl:for-each select="IRCSections">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;font-size:6pt;width:25mm;">
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-													</xsl:call-template>
-												</span>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
+(<span style="width: 1px"/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+												</xsl:call-template>
+												<span style="width: 1px"/>)
 											</td>
 										</xsl:for-each>
 									</xsl:if>
@@ -1763,6 +1647,17 @@
 											</xsl:call-template>
 										</b>
 									</td>
+									<xsl:if test="count(IRCSections) = 0">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
+											<span>&#160;</span>
+										</td>
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
+											<span>&#160;</span>
+										</td>
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
+											<span>&#160;</span>
+										</td>
+									</xsl:if>
 									<xsl:if test="count(IRCSections) = 1">
 										<xsl:for-each select="IRCSections">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
@@ -1803,7 +1698,7 @@
 										<xsl:when test="BothTimingCodesInd">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
 												<span style="width:4px;"/>
-												<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+												<input alt="alt" type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="BothTimingCodesInd"/>
 														<xsl:with-param name="BackupName">Partll-BothTimingCodes<xsl:value-of select="$SeparatedUTPpositionPartIl"/>
@@ -1820,7 +1715,7 @@
 											</td>
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
 												<span style="width:4px;"/>
-												<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+												<input alt="alt" type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="BothTimingCodesInd"/>
 														<xsl:with-param name="BackupName">Partll-BothTimingCodes<xsl:value-of select="$SeparatedUTPpositionPartIl"/>
@@ -1839,7 +1734,7 @@
 										<xsl:otherwise>
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
 												<span style="width:4px;"/>
-												<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+												<input alt="alt" type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="PermanentTimingCodeInd"/>
 														<xsl:with-param name="BackupName">Partll-PermanentTimingCode<xsl:value-of select="$SeparatedUTPpositionPartIl"/>
@@ -1856,7 +1751,7 @@
 											</td>
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" rowspan="2">
 												<span style="width:4px;"/>
-												<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+												<input alt="alt" type="checkbox" class="styCkbox">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="TemporaryTimingCodeInd"/>
 														<xsl:with-param name="BackupName">Partll-TemporaryTimingCode<xsl:value-of select="$SeparatedUTPpositionPartIl"/>
@@ -1888,7 +1783,7 @@
 										</xsl:choose>
 									</td>
 									<td class="styDepTblCell" rowspan="2">
-										<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+										<input alt="alt" type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="MajorTaxPositionInd"/>
 												<xsl:with-param name="BackupName">MajorTaxPosition</xsl:with-param>
@@ -1916,7 +1811,7 @@
 										</xsl:choose>
 									</td>
 									<td class="styDepTblCell" style="background-color:darkgrey;" rowspan="2">
-										<!--										<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+										<!--										<input alt="alt" type="checkbox" class="styCkbox">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="TileTBD"/>
 												<xsl:with-param name="BackupName">TileTBD</xsl:with-param>
@@ -1938,29 +1833,32 @@
 								<tr>
 									<!--Define background colors to the rows -->
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+									<xsl:if test="count(IRCSections) = 0">
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
+					(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+										</td>
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
+					(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+										</td>
+										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
+					(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)(<span style="width: 8px"/>)
+										</td>
+									</xsl:if>
 									<xsl:if test="count(IRCSections) = 1">
 										<xsl:for-each select="IRCSections">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-													</xsl:call-template>
-												</span>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+												</xsl:call-template>)
 											</td>
 										</xsl:for-each>
 										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
@@ -1973,26 +1871,18 @@
 									<xsl:if test="count(IRCSections) = 2">
 										<xsl:for-each select="IRCSections">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-													</xsl:call-template>
-												</span>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+												</xsl:call-template>)
 											</td>
 										</xsl:for-each>
 										<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
@@ -2002,26 +1892,18 @@
 									<xsl:if test="count(IRCSections) = 3">
 										<xsl:for-each select="IRCSections">
 											<td class="styIRS1120ScheduleUTP_styMiddleCell" style="text-align:center;width:25mm;font-size:6pt;">
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
-													</xsl:call-template>
-												</span>)
-(<span style="width: 8px">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
-													</xsl:call-template>
-												</span>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubSectionNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCParagraphNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCSubParagraphNum"/>
+												</xsl:call-template>)
+												(<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="PrimaryIRCClauseNum"/>
+												</xsl:call-template>)
 											</td>
 										</xsl:for-each>
 									</xsl:if>
@@ -2137,7 +2019,7 @@
 						<xsl:attribute name="style">background-color:lightgrey;border-bottom-width: 0px;</xsl:attribute>
 					</xsl:if>
 					<span style="width: 4px"/>
-					<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+					<input alt="alt" type="checkbox" class="styCkbox">
 						<xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="PermanentTimingCodeInd"/>
 							<xsl:with-param name="BackupName">Blank-PermanentTimingCode<xsl:value-of select="$numRows"/>
@@ -2157,7 +2039,7 @@
 						<xsl:attribute name="style">background-color:lightgrey;border-bottom-width: 0px;</xsl:attribute>
 					</xsl:if>
 					<span style="width: 4px"/>
-					<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+					<input alt="alt" type="checkbox" class="styCkbox">
 						<xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="TemporaryTimingCodeInd"/>
 							<xsl:with-param name="BackupName">Blank-TemporaryTimingCode<xsl:value-of select="$numRows"/>
@@ -2183,7 +2065,7 @@
 						<xsl:attribute name="style">background-color:lightgrey;border-bottom-width: 0px;</xsl:attribute>
 					</xsl:if>
 					<span style="width: 4px"/>
-					<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+					<input alt="alt" type="checkbox" class="styCkbox">
 						<xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="MajorTaxPositionInd"/>
 							<xsl:with-param name="BackupName">Blank-MajorTaxPosition<xsl:value-of select="$numRows"/>
@@ -2209,7 +2091,7 @@
 						<xsl:attribute name="style">background-color:darkgrey;border-bottom-width: 0px;</xsl:attribute>
 					</xsl:if>
 					<span style="width: 4px"/>
-					<!--					<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+					<!--					<input alt="alt" type="checkbox" class="styCkbox">
 						<xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="TitleTBD"/>
 							<xsl:with-param name="BackupName">Blank-TitleTBD<xsl:value-of select="$numRows"/></xsl:with-param>
@@ -2298,7 +2180,7 @@
 						<xsl:attribute name="style">background-color:lightgrey;border-bottom-width: 0px;</xsl:attribute>
 					</xsl:if>
 					<span style="width: 4px"/>
-					<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+					<input alt="alt" type="checkbox" class="styCkbox">
 						<xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="PermanentTimingCodeInd"/>
 							<xsl:with-param name="BackupName">Blank2-PermanentTimingCode<xsl:value-of select="$numRows"/>
@@ -2318,7 +2200,7 @@
 						<xsl:attribute name="style">background-color:lightgrey;border-bottom-width: 0px;</xsl:attribute>
 					</xsl:if>
 					<span style="width: 4px"/>
-					<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+					<input alt="alt" type="checkbox" class="styCkbox">
 						<xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="TemporaryTimingCodeInd"/>
 							<xsl:with-param name="BackupName">Blank2-TemporaryTimingCode<xsl:value-of select="$numRows"/>
@@ -2344,7 +2226,7 @@
 						<xsl:attribute name="style">background-color:lightgrey;border-bottom-width: 0px;</xsl:attribute>
 					</xsl:if>
 					<span style="width: 4px"/>
-					<input alt="alt" type="checkbox" class="styIRS1120ScheduleUTP_styCkbox">
+					<input alt="alt" type="checkbox" class="styCkbox">
 						<xsl:call-template name="PopulateCheckbox">
 							<xsl:with-param name="TargetNode" select="MajorTaxPositionInd"/>
 							<xsl:with-param name="BackupName">Blank2-MajorTaxPosition<xsl:value-of select="$numRows"/>

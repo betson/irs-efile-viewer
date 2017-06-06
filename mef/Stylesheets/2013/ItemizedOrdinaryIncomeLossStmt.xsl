@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/15/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 09/09/2015 - Changes made for defect 44274 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
@@ -48,19 +50,19 @@
 											<xsl:with-param name="TargetNode" select="USAddress/AddressLine2"/>
 										</xsl:call-template>
 									</xsl:if>
-									<xsl:if test="USAddress/City != ''">
+									<xsl:if test="USAddress/CityNm != ''">
 										<br/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="USAddress/City"/>
 										</xsl:call-template>,
                   </xsl:if>
-									<xsl:if test="USAddress/State != ''">
+									<xsl:if test="USAddress/StateAbbreviationCd != ''">
 										<br/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="USAddress/State"/>
 										</xsl:call-template>
 									</xsl:if>
-									<xsl:if test="USAddress/ZIPCode != ''">, 
+									<xsl:if test="USAddress/ZIPCd != ''">, 
                     <xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="USAddress/ZIPCode"/>
 										</xsl:call-template>
@@ -76,24 +78,24 @@
 											<xsl:with-param name="TargetNode" select="ForeignAddress/AddressLine2"/>
 										</xsl:call-template>
 									</xsl:if>
-									<xsl:if test="ForeignAddress/City != ''">
+									<xsl:if test="ForeignAddress/CityNm != ''">
 										<br/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="ForeignAddress/City"/>
 										</xsl:call-template>
 									</xsl:if>
-									<xsl:if test="ForeignAddress/ProvinceOrState != ''">
+									<xsl:if test="ForeignAddress/ProvinceOrStateNm != ''">
 										<br/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="ForeignAddress/ProvinceOrState"/>
 										</xsl:call-template>
 									</xsl:if>
-									<xsl:if test="ForeignAddress/Country != ''">, 
+									<xsl:if test="ForeignAddress/CountryCd != ''">, 
                     <xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="ForeignAddress/Country"/>
 										</xsl:call-template>
 									</xsl:if>
-									<xsl:if test="ForeignAddress/PostalCode != ''"> 
+									<xsl:if test="ForeignAddress/ForeignPostalCd != ''"> 
                     - <xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="ForeignAddress/PostalCode"/>
 										</xsl:call-template>
@@ -129,8 +131,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -155,9 +159,9 @@
 			</head>
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
-				<div class="styDepTitleLine">
-					<span class="styDepTitle">
-						<span style="width:118mm;">
+				<div class="styDepTitleLine" style="width:187mm;">
+					<span class="styDepTitle" style="width:187mm;">
+						<span style="width:187mm;">
 							<xsl:value-of select="$depDocTitle"/>
 						</span>
 					</span>

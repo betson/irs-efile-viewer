@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 03/11/2011 - Added 2 more boxes for extra digits in VIN numbers per ITAMS #8112315 - Jeremy Nichols --><!-- 04/20/11 - Made changes to tax period as per UWR WSP101182OTH - Jeremy Nichols --><!-- 04/25/11 - Made changes to tax period as per UWR WSP101182OTH Additional requirements - Jeremy Nichols --><!-- 05/23/11 - Made changes per defect #28989 - Jeremy Nichols --><!-- 05/24/11 - Made changes per defect #28990 - Jeremy Nichols --><!-- 09/28/11 - Made changes per UWR #47823 - Jeremy Nichols --><!-- 05/16/12 - Made changes per defect #32710 - Jeremy Nichols --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!-- 05/20/2014 - Modified per UWR #107611 - Jeremy Nichols -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -77,7 +78,7 @@
                     <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
                   </xsl:call-template>
                 </td>
-                <td style="width:51mm;border:0 solid black;border-right-width:1;border-bottom-width:1;vertical-align:top;padding-bottom:0.25mm;padding-left:1mm">
+                <td style="width:51mm;border:0 solid black;border-right-width:0px;border-bottom-width:1;vertical-align:top;padding-bottom:0.25mm;padding-left:1mm">
                   Employer identification number
                   <br/>
                   <div style="padding-top:1.25mm">
@@ -156,7 +157,7 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="border:0 solid black;border-right-width:1;border-bottom-width:1;padding-left:2mm">Address (number, street, and room or suite no.)
+                <td colspan="2" style="border:0 solid black;border-right-width:0px;border-bottom-width:1;padding-left:2mm">Address (number, street, and room or suite no.)
         <br/>
                   <xsl:call-template name="PopulateReturnHeaderFiler">
                     <xsl:with-param name="TargetNode">AddressLine1</xsl:with-param>
@@ -168,7 +169,7 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" style="border:0 solid black;border-right-width:1;padding-left:2mm">City or town, state or province, country, and ZIP or foreign postal code
+                <td colspan="2" style="height:8mm;border:0 solid black;border-right-width:0px;padding-left:2mm;vertical-align:top;">City or town, state or province, country, and ZIP or foreign postal code
     <br/>
                   <xsl:call-template name="PopulateReturnHeaderFiler">
                     <xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
@@ -182,30 +183,20 @@
               </tr>
             </tbody>
           </table>
-          <div class="styBB" style="width:187mm;border-top:1 solid black;border-right-width:0px">
-              <div style="width:3mm;float:right">
-                <!-- button display logic -->
-                <xsl:call-template name="SetDynamicTableToggleButton">
-                  <xsl:with-param name="TargetNode" select="$Form2290Schedule1/VehicleReportTaxItem"/>
-                  <xsl:with-param name="containerHeight" select="24"/>
-                  <xsl:with-param name="containerID" select=" 'VRTctn' "/>
-                </xsl:call-template>
-                <!-- end button display logic -->
-              </div>
-          </div>
+          
           <!--BEGIN PART I BEGIN PART I BEGIN PART I BEGIN PART I BEGIN PART I BEGIN PART I-->
-          <div class="styTableContainer" id="VRTctn">
+          <div class="styTableContainer" id="VRTctn" style="border-bottom-width:0px;">
             <xsl:call-template name="SetInitialState"/>
             <!--Begin Part 1 Header-->
-            <table cellspacing="0" cellpadding="0" style="font-size:7pt">
+            <table cellspacing="0" cellpadding="0" style="font-size:7pt;border-bottom-width:0px;">
               <tr>
-                <th scope="col" class="styBB" colspan="2">
-                  <div class="styPartName">Part I</div>
-                  <div class="styPartDesc" style="width:149mm;text-align:left">
+                <th scope="col" class="styBB" colspan="2" style="height:10mm;width:152mm;border-top:1px solid black;">
+                  <div class="styPartName" style="width:12mm;height:10mm;padding-top:3mm;display:inline;">Part I</div>
+                  <div class="styPartDesc" style="width:140mm;text-align:left;padding-top:3mm;display:inline;">
 					Vehicles You Are Reporting <span style="font-weight:normal">(enter VIN and category)</span>
                   </div>
                 </th>
-                <th scope="col" style="font-weight:normal;font-size:7pt;width:20mm;height:3mm;text-align:center;border: solid black 1;border-top-width:0px">
+                <th scope="col" style="font-weight:normal;font-size:7pt;width:35mm;height:10mm;text-align:center;border-top:1px solid black;border-bottom:1px solid black;border-left:1px solid black;border-right:1px solid black;">
 				  Category A through W<br/>
 				  (category W for suspended vehicles)
 				</th>
@@ -218,7 +209,7 @@
                       <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                         <xsl:number/>
                       </td>
-                          <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                          <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                             <xsl:call-template name="PopulateIndividualSizableLetterBox">
                               <xsl:with-param name="TargetNode" select="VIN"/>
                               <xsl:with-param name="BoxNum" select="1"/>
@@ -371,9 +362,9 @@
                               <xsl:with-param name="BoxTopPadding" select="'0.5mm'"/>
                             </xsl:call-template>
                           </td>
-                      <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                      <td class="sty2290Sch1TableCellLast" style="width:35mm">
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="VehicleCategoryCd"/>
+                          <xsl:with-param name="TargetNode" select="VehicleCategoryCode"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -385,7 +376,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>1</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <xsl:choose>
                         <xsl:when test="((count($Form2290Schedule1/VehicleReportTaxItem) &gt;5) and ($Print = $Separated))">
                         <xsl:attribute name="style">text-align:left;padding-left:2mm;</xsl:attribute>
@@ -435,7 +426,7 @@
                         </xsl:otherwise>
                       </xsl:choose>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -445,7 +436,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>2</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -485,7 +476,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -495,7 +486,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>3</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -535,7 +526,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -545,7 +536,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>4</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -585,7 +576,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -595,7 +586,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>5</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -635,7 +626,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -645,7 +636,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>6</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -685,7 +676,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -695,7 +686,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>7</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -735,7 +726,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -745,7 +736,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>8</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -785,7 +776,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -795,7 +786,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>9</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -835,7 +826,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -845,7 +836,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>10</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -885,7 +876,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -895,7 +886,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>11</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -935,7 +926,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -945,7 +936,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>12</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -985,7 +976,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -995,7 +986,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>13</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1035,7 +1026,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1045,7 +1036,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>14</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1085,7 +1076,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1095,7 +1086,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>15</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1135,7 +1126,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1145,7 +1136,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>16</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1185,7 +1176,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1195,7 +1186,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>17</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1235,7 +1226,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1245,7 +1236,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>18</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1285,7 +1276,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1295,7 +1286,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>19</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1335,7 +1326,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1345,7 +1336,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>20</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1385,7 +1376,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1395,7 +1386,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>21</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1435,7 +1426,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1445,7 +1436,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>22</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1485,7 +1476,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1495,7 +1486,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>23</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1535,7 +1526,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1545,7 +1536,7 @@
                     <td class="sty2290Sch1TableCellCtr" style="width:6mm">
                       <b>24</b>
                     </td>
-                    <td class="sty2290Sch1TableCellBB" style="width:161mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
+                    <td class="sty2290Sch1TableCellBB" style="width:146mm;padding-left:2mm;padding-top:0.25mm;padding-bottom:0.25mm">
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                       <div class="sty2290Sch1BlankLetterBox"/>
@@ -1585,7 +1576,7 @@
                       <div class="sty2290Sch1BlankLetterBox"/>
                       <span class="sty2290Sch1LetterBoxSpace"/>
                     </td>
-                    <td class="sty2290Sch1TableCellLast" style="width:20mm">
+                    <td class="sty2290Sch1TableCellLast" style="width:35mm">
                       <span style="width:1px"/>
                     </td>
                   </tr>
@@ -1607,9 +1598,9 @@
           
           
           <!--BEGIN PART II BEGIN PART II BEGIN PART II BEGIN PART II BEGIN PART II-->
-          <div class="styBB" style="width:187mm;height:3.75mm;border-top-width:1px">
-            <div class="styPartName" style="height:3.75mm">Part II</div>
-            <div class="styPartDesc" style="float:left;width:167mm;">Summary of Reported Vehicles</div>
+          <div class="styBB" style="width:187mm;height:4mm;border-top-width:0px">
+            <div class="styPartName" style="height:4mm">Part II</div>
+            <div class="styPartDesc" style="float:left;width:167mm;border-top-width:0px;">Summary of Reported Vehicles</div>
           </div>
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="width:6mm;padding-left:2mm">a</div>
@@ -1644,9 +1635,9 @@
           </span>
             </div>
             <div class="styLNRightNumBox" style="width:6mm">a</div>
-            <div class="styLNAmountBox" style="width:30mm">
+            <div class="styLNAmountBox" style="width:32mm">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form2290Schedule1/VehicleCnt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290Schedule1/NumberOfVehicles"/>
               </xsl:call-template>
             </div>
           </div>
@@ -1668,9 +1659,9 @@
           </span>
             </div>
             <div class="styLNRightNumBox" style="width:6mm;">b</div>
-            <div class="styLNAmountBox" style="width:30mm;">
+            <div class="styLNAmountBox" style="width:32mm;">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form2290Schedule1/TotalSuspendedVehicleCnt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290Schedule1/TotalNumberSuspendedVehicles"/>
               </xsl:call-template>
             </div>
           </div>
@@ -1698,15 +1689,15 @@
               </span>
             </div>
             <div class="styLNRightNumBox" style="width:6mm;border-bottom-width:0">c</div>
-            <div class="styLNAmountBox" style="width:30mm;border-bottom-width:0">
+            <div class="styLNAmountBox" style="width:32mm;border-bottom-width:0">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form2290Schedule1/TaxableVehicleCnt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290Schedule1/NumberOfTaxableVehicles"/>
               </xsl:call-template>
             </div>
           </div>
           <!--  END PART 3    END PART 3   END PART 3     END PART 3   -->
           <!--  PAGE END     PAGE END     PAGE END -->
-          <div style="width:187mm;border-top:2 black solid">
+          <div style="width:187mm;border-top:1px black solid">
             <span style="float:left">
               <span class="styBoldText" style="font-size:6pt">For Privacy Act and Paperwork Reduction Act Notice, see the separate instructions.</span>
             </span>
@@ -1717,7 +1708,7 @@
           <!-- BEGIN  CONSENT TO DISCLOSURE OF TAX INFORMATION  -->
           <div class="pageEnd"/>
           <br/>
-          <xsl:if test="$RtnHdrData/ConsentToVINDataDisclosure/ConsentToDiscloseYesInd = 'X'">
+          <xsl:if test="$RtnHdrData/ConsentToVINDataDisclosure/ConsentToDiscloseYes = 'X'">
           <div class="styTBB" style="width:187mm">
             <div style="float:left;width:177mm;padding-bottom:0.5mm">Schedule 1 (Form 2290) (Rev. 7-2013)</div>
             <div style="float:left;width:10mm;text-align:right;padding-bottom:0.5mm">
@@ -1768,7 +1759,7 @@ authority to execute this consent to disclosure of tax information.
                   </th>
                   <th scope="col" class="styBB" style="width:67mm;vertical-align:bottom;font-weight:normal;text-align:left">
                     <xsl:call-template name="PopulateMonthDayYear">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ConsentToVINDataDisclosure/DisclosureFormSignatureInfo/SignatureDt"/>
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ConsentToVINDataDisclosure/DisclosureFormSignatureInfo/DateSigned"/>
                     </xsl:call-template>
                   </th>
                 </tr>
@@ -1785,11 +1776,11 @@ authority to execute this consent to disclosure of tax information.
                 <tr style="height:10mm">
                   <td>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ConsentToVINDataDisclosure/DisclosureFormSignatureInfo/BusinessName/BusinessNameLine1"/>
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ConsentToVINDataDisclosure/DisclosureFormSignatureInfo/Name/BusinessNameLine1"/>
                     </xsl:call-template>
                     <br/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ConsentToVINDataDisclosure/DisclosureFormSignatureInfo/BusinessName/BusinessNameLine2"/>
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ConsentToVINDataDisclosure/DisclosureFormSignatureInfo/Name/BusinessNameLine2"/>
                     </xsl:call-template>
                   </td>
                   <td style="vertical-align:bottom;padding-bottom:2mm;padding-right:1mm">
@@ -1863,7 +1854,7 @@ authority to execute this consent to disclosure of tax information.
                     </td>
                     <td class="styDepTblCell" style="width:20mm;text-align:center">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="VehicleCategoryCd"/>
+                        <xsl:with-param name="TargetNode" select="VehicleCategoryCode"/>
                       </xsl:call-template>
                     </td>
                   </tr>
@@ -1873,7 +1864,7 @@ authority to execute this consent to disclosure of tax information.
           </xsl:if>
           <xsl:if test="count($Form2290Schedule1/VehicleSuspendedTaxItem) &gt; 2 and ($Print = $Separated)">
             <br/>
-            <span class="styRepeatingDataTitle">Form 2290 Schedule 1, Part II - Vehicles for Which Tax Is Suspended�5,000 Miles or Less (7,500 Miles or Less for Agricultural Vehicles):</span>
+            <span class="styRepeatingDataTitle">Form 2290 Schedule 1, Part II - Vehicles for Which Tax Is Suspended&#8212;5,000 Miles or Less (7,500 Miles or Less for Agricultural Vehicles):</span>
             <table class="styDepTbl" style="font-size:7pt">
               <thead class="styTableThead" style="font-size:7pt">
                 <tr class="styDepTblHdr">
@@ -1899,7 +1890,7 @@ authority to execute this consent to disclosure of tax information.
                     </td>
                     <td class="styDepTblCell" style="width:20mm;text-align:center">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="VehicleCategoryCd"/>
+                        <xsl:with-param name="TargetNode" select="VehicleCategoryCode"/>
                       </xsl:call-template>
                     </td>
                   </tr>

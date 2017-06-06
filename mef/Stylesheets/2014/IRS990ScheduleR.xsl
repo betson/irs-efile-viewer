@@ -21,6 +21,11 @@
 	<!-- Updated 7/31/2014 per IBM Defect 41119 by Robert L Jones -->
 	<!-- Updated 8/1/2014 per IBM Defect 41121 by Robert L Jones -->
 	<!-- Updated 8/1/2014 per IBM Defect 40596 by Robert L Jones -->
+	<!-- Updated 4/23/2015 per UWR 123023 IE11 changes by Robert L Jones -->
+	<!-- Updated 6/9/2015 per IBM Defect 43305 by Robert L Jones various IE11 Fixes like Headers not on same page as rest of table-->
+	<!-- Updated 7/1/2015 per IBM Defect 43434 by Robert L Jones various IE11 Fixes like Headers not on same page as rest of table-->
+	<!-- Updated 7/15/2015 per Kisams IM02150548 Part IV had an instance of element IdRelatedOrgTxblPartnershipGrp which shld be in Part III by Robert L Jones -->
+    <!-- Updated 1/27/2016 per Kisams 02443962 Blank page alignment Part I, Part III, PartIV and Part VI  by Robert L Jones -->
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -32,8 +37,10 @@
 	<xsl:template match="/">
 		<xsl:param name="ccount">0</xsl:param>
 		<!-- count value -->
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form990ScheduleRData)"/>
@@ -61,8 +68,8 @@
 			<body class="styBodyClass">
 				<form name="IRS990ScheduleR">
 					<xsl:call-template name="DocumentHeaderLandscape"/>
-					<div class="styTBB" style="width:256mm;">
-						<div class="styFNBox" style="width:40mm;height:4mm;">
+					<div class="styTBB" style="width:256mm;height:auto;">
+						<div class="styFNBox" style="width:40mm;height:auto;">
 							<div style="padding-top:1mm;">
 								<span class="styMainTitle">SCHEDULE R <br/>(Form 990)</span>
 								<br/>
@@ -77,9 +84,9 @@
 								<span class="styAgency">Internal Revenue Service</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:180mm;">
+						<div class="styFTBox" style="width:180mm;height:auto;">
 							<div class="styMainTitle" style="padding-top:2mm">Related Organizations and Unrelated Partnerships</div>
-								<div class="styFBT" style="height:5mm;">
+								<div class="styFBT" style="height:auto;">
 								<span style="padding-right:1mm">
 									<img src="{$ImagePath}/990SchR_Bullet_Md.gif" alt="MediumBullet"/>
 								</span>Complete if the organization answered "Yes" on Form 990, Part IV, line 33, 34, 35b, 36, or 37.<br/>
@@ -100,16 +107,16 @@
 								<br/>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:35mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0047</div>
+						<div class="styTYBox" style="width:35mm;height:auto;">
+							<div class="styOMB" style="height:auto;">OMB No. 1545-0047</div>
 							<div class="styTY">20<span class="styTYColor">14</span>
 							</div>
-							<div class="styPartName" style="height:8mm; width:34.5mm;padding-top:0.3mm">Open to Public Inspection</div>
+							<div class="styPartName" style="height:auto; width:34.5mm;padding-top:0.3mm">Open to Public Inspection</div>
 						</div>
 					</div>
 					<!-- Begin Name and Identifying Number Section-->
 					<div class="styBB" style="width:256mm;clear:both;font-family:verdana;font-size:7pt;">
-						<div class="styFNBox" style="width:184mm;height:8mm;">
+						<div class="styFNBox" style="width:184mm;height:auto;">
 							<span class="styNormalText">Name of the organization</span>
 							<br/>
 							<div style="font-family:verdana;font-size:6pt;height:6.25mm">
@@ -122,7 +129,7 @@
 								</xsl:call-template>
 							</div>
 						</div>
-						<div class="styGenericDiv" style="width:52mm;height:4mm;padding-left:2mm;">
+						<div class="styGenericDiv" style="width:52mm;height:auto;padding-left:2mm;">
 							<span class="styBoldText">Employer identification number</span>
 							<br/>
 							<br/>
@@ -133,26 +140,26 @@
 					</div>
 					<!-- End Name and Identifying Number Section-->
 					<!-- BEGIN Part I Title -->
-					<div class="styBB" style="width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1 solid black">
+					<div class="styBB" style="height:auto;width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1px solid black">
 						<div class="styPartName" style="width:15mm;">Part I</div>
-						<div class="styPartDesc" style="width:236mm;">
+						<div class="styPartDesc" style="height:auto;width:236mm;">
         Identification of Disregarded Entities
         <span style="font-weight:normal">  Complete if the organization answered "Yes" on Form 990, Part IV, line 33.</span>
         <!-- <span class="styItalicText">(See the instructions.)</span> -->
 						</div>
-						<div class="styGenericDiv" style="float:right">
-							<!-- button display logic -->
+					<!--	<div class="styGenericDiv" style="float:right">
+							button display logic
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdDisregardedEntitiesGrp"/>
 								<xsl:with-param name="containerHeight" select="6"/>
 								<xsl:with-param name="containerID" select=" 'IRT1ctn' "/>
 							</xsl:call-template>
-							<!-- end button display logic -->
-						</div>
+							end button display logic
+						</div> -->
 					</div>
 					<!-- END Part I Title -->
 					<!-- BEGIN Part I Table -->
-					<div class="styTableContainerLandscape" id="IRT1ctn" style="width:256mm;height:64mm;">
+					<div class="styTableContainerLandscape" id="IRT1ctn" style="width:256mm;height:auto;display:table;">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -160,7 +167,7 @@
 							<thead class="styTableThead">
 								<tr>
 								<!-- a -->
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:340mm;padding-right:10mm;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:340mm;padding-right:10mm;vertical-align:top;text-align:center;">
               (a)      
                <!-- Solid line  -->
 										<br/>
@@ -171,7 +178,7 @@
 										</span>
 									</th>
 									<!-- b -->
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:85mm;padding-right:2mm;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:85mm;padding-right:2mm;vertical-align:top;text-align:center;">
               (b)<br/>
 										<span class="styNormalText">Primary activity<br/>
 											<br/>
@@ -179,14 +186,14 @@
 										</span>
 									</th>
 									<!--c -->
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:75mm;padding-right:2mm;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:75mm;padding-right:2mm;vertical-align:top;text-align:center;">
               (c)<br/>
 										<span class="styNormalText" style="text-align:center">Legal domicile (state <br/>or foreign country)<br/>
 											<br/>
 										</span>
 									</th>
 									<!-- d -->
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:55.25mm;padding-right:2mm;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:55.25mm;padding-right:2mm;vertical-align:top;text-align:center;">
               (d)<br/>
 										<span class="styNormalText">Total income<br/>
 											<br/>
@@ -194,7 +201,7 @@
 										</span>
 									</th>
 									<!-- e -->
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:68mm;padding-right:2mm;padding-bottom:3mm;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:68mm;padding-right:2mm;padding-bottom:3mm;vertical-align:top;text-align:center;">
 										(e)<br/>
 										<span class="styNormalText">End-of-year assets<br/>
 											<br/>
@@ -202,7 +209,7 @@
 										</span>
 									</th>
 									<!-- f -->
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:110.5mm;border-right-width:0px;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:110.5mm;border-right-width:0px;vertical-align:top;text-align:center;">
               (f)<br/>
 										<span class="styNormalText">Direct controlling<br/>entity<br/>
 											<br/>
@@ -231,8 +238,7 @@
 								<xsl:for-each select="$Form990ScheduleRData/IdDisregardedEntitiesGrp">
 									<xsl:if test="($Print != $Separated) or (count($Form990ScheduleRData/IdDisregardedEntitiesGrp) &lt;=6)">
 										<tr>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:126mm;padding-left:1mm;"><span style="font-weight:bold;"> (<xsl:number value="position()" format="1"/>)    </span>
-												<!--span style="width:4px"></span-->
+									<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:126mm;padding-left:1mm;"><b>(<xsl:number value="position()" format="1"/>) </b>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="DisregardedEntityName/BusinessNameLine1Txt"/>
 												</xsl:call-template>
@@ -285,7 +291,7 @@
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:75mm;padding-left:1mm;text-align:left;vertical-align:top">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:75mm;padding-left:1mm;text-align:left;vertical-align:top">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 												</xsl:call-template>
@@ -293,7 +299,7 @@
 											</td>
 											<xsl:choose>
 												<xsl:when test="LegalDomicileStateCd">
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 														</xsl:call-template>
@@ -301,7 +307,7 @@
 													</td>
 												</xsl:when>
 												<xsl:otherwise>
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 														</xsl:call-template>
@@ -309,13 +315,13 @@
 													</td>
 												</xsl:otherwise>
 											</xsl:choose>
-											<td class="styTableCell" style="border-style: solid; border-color: black;width:25.5mm;text-align:right;vertical-align:top">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25.5mm;text-align:right;vertical-align:top">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="TotalIncomeAmt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;width:28.05mm;text-align:right;vertical-align:top">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:28.05mm;text-align:right;vertical-align:top">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="EndOfYearAssetsAmt"/>
 												</xsl:call-template>
@@ -323,7 +329,7 @@
 											</td>
 											<xsl:choose>
 												<xsl:when test="DirectControllingEntityName/BusinessNameLine1Txt">
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:130mm;text-align-left;border-right-width:0px;vertical-align:top">
+													<td class="styTableCellText" style="border-style: solid; border-color: black;width:150mm;text-align-left;border-right-width:0px;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="DirectControllingEntityName/BusinessNameLine1Txt"/>
 														</xsl:call-template>
@@ -334,7 +340,7 @@
 													</td>
 												</xsl:when>
 												<xsl:otherwise>
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:130mm;text-align:left;border-right-width:0px;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:130mm;text-align:left;border-right-width:0px;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="DirectControllingNACd"/>
 														</xsl:call-template>
@@ -342,10 +348,10 @@
 													</td>
 												</xsl:otherwise>
 											</xsl:choose>
-											<td class="styTableCell" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
 												<span style="width:4px"/>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
 												<span style="width:4px"/>
 											</td>
 										</tr>
@@ -353,33 +359,33 @@
 								</xsl:for-each>
 								<xsl:if test="count($Form990ScheduleRData/IdDisregardedEntitiesGrp) &lt; 1 or ((count($Form990ScheduleRData/IdDisregardedEntitiesGrp) &gt; 6) and ($Print = $Separated)) ">
 									<tr>
-										<td class="styTableCellText" style="border-style: solid; border-color: black;width:60mm;">
+								<!--	<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:187mm;">-->
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdDisregardedEntitiesGrp"/>
 											</xsl:call-template>
 											<span style="width:4px"/>
-										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:56mm;">
+										<!--</td>-->
+									<!--	<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:56mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:33mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:33mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:55mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:55mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;border-right-width:0px;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;border-right-width:0px;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:55mm;border-right-width:0px;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:55mm;border-right-width:0px;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;border-right-width:0px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;border-right-width:0px">
 											<span style="width:4px"/>
-										</td>
+										</td>-->
 									</tr>
 								</xsl:if>
 								<xsl:if test="count($Form990ScheduleRData/IdDisregardedEntitiesGrp) &lt; 2 or ((count($Form990ScheduleRData/IdDisregardedEntitiesGrp) &gt; 6) and ($Print = $Separated))">
@@ -401,42 +407,42 @@
 						</table>
 					</div>
 					<!-- Set Initial Height of Above Table -->
-					<xsl:call-template name="SetInitialDynamicTableHeight">
+				<!--	<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdDisregardedEntitiesGrp"/>
 						<xsl:with-param name="containerHeight" select="6"/>
 						<xsl:with-param name="containerID" select=" 'IRT1ctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					<!-- End Set Initial Height of Above Table -->
 					<!-- END Part I Table -->
 					
 					<!-- BEGIN Part II Title -->
-					<div class="styBB" style="width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1 solid black">
-						<div class="styPartName" style="width:15mm;">Part II</div>
-						<div class="styPartDesc" style="width:236mm;">
+					<div class="styBB" style="height:auto;width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1px solid black">
+						<div class="styPartName" style="width:15mm;height:auto;">Part II</div>
+						<div class="styPartDesc" style="width:236mm;height:auto;">
         Identification of Related Tax-Exempt Organizations         
         <span style="font-weight:normal">  Complete if the organization answered "Yes" on Form 990, Part IV, line 34 because it had one or more related tax-exempt organizations during the tax year.</span>
 						</div>
-						<div class="styGenericDiv" style="float:right">
-							<!-- button display logic -->
+						<!--<div class="styGenericDiv" style="float:right">
+							button display logic 
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedTaxExemptOrgGrp"/>
 								<xsl:with-param name="containerHeight" select="7"/>
 								<xsl:with-param name="containerID" select=" 'IRT2ctn' "/>
 							</xsl:call-template>
-							<!-- end button display logic -->
-						</div>
+							end button display logic 
+						</div>-->
 					</div>
 					<!-- END Part II Title -->
 					<!-- BEGIN Part II Table -->
-					<div class="styTableContainerLandscape" id="IRT2ctn" style="width:256mm;height:70mm;">
+					<div class="styTableContainerLandscape" id="IRT2ctn" style="width:256mm;height:auto;display:table;">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
 						<table class="styTable" cellspacing="0">
 							<thead class="styTableThead">
 								<tr>
-								
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:324mm;padding-right:10mm;vertical-align:top;text-align:center;" rowspan="2">
+				
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:324mm;padding-right:10mm;vertical-align:top;text-align:center;" rowspan="2">
               (a)      
                <!-- Solid line  -->
 										<br/>
@@ -446,48 +452,48 @@
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:85mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:85mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
               (b)<br/>
 										<span class="styNormalText">Primary activity<br/>
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:75mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:75mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
               (c)<br/>
 										<span class="styNormalText" style="text-align:center">Legal domicile (state <br/>or foreign country)<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:75mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:75mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
               (d)<br/>
 										<span class="styNormalText">Exempt Code section<br/>
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:80mm;padding-right:2mm;padding-bottom:3mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:80mm;padding-right:2mm;padding-bottom:3mm;vertical-align:top;text-align:center;" rowspan="2">
 										(e)<br/>
 										<span class="styNormalText">Public charity status<br/>(if section 501(c)(3))<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:85mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:85mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (f)<br/>
 										<span class="styNormalText">Direct controlling<br/>entity<br/>
 											<br/>
 										</span>
 									</th>
-								<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:34mm;border-right-width:0px;border-left-width:0px;vertical-align:top;text-align:center;" colspan="2">
+								<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:34mm;border-right-width:0px;border-left-width:0px;vertical-align:top;text-align:center;" colspan="2">
 										(g)<br/>
 									<span class="styNormalText" style="text-align:center">Section 512(b)(13) controlled entity?
 											<br/>
 											</span>
 											</th>
 										<tr>
-										<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">Yes</th>
+										<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">Yes</th>
 										
-										<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:0px;vertical-align:top;text-align:center;border-top-width:0px">No</th>
+										<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:0px;vertical-align:top;text-align:center;border-top-width:0px">No</th>
 									</tr>
 										</tr>
 										</thead>
@@ -496,8 +502,20 @@
 								<xsl:for-each select="$Form990ScheduleRData/IdRelatedTaxExemptOrgGrp">
 									<xsl:if test="($Print != $Separated) or (count($Form990ScheduleRData/IdRelatedTaxExemptOrgGrp) &lt;= 7) ">
 										<tr>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:86mm;padding-left:1mm;"><span style="font-weight:bold;"> (<xsl:number value="position()" format="1"/>)    </span>
-												<!--span style="width:4px"></span-->
+										<!-- <td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:126mm;padding-left:1mm;"><b>(<xsl:number value="position()" format="1"/>) </b>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="DisregardedEntityName/BusinessNameLine1Txt"/>
+												</xsl:call-template>
+												<xsl:if test="DisregardedEntityName/BusinessNameLine2Txt">
+													<span style="width:4px"/>
+													<br/>
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="DisregardedEntityName/BusinessNameLine2Txt"/>
+													</xsl:call-template>
+												</xsl:if>   -->
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:126mm;padding-left:1mm;">
+											<b>(<xsl:number value="position()" format="1"/>)</b>
+											  	<!--span style="width:4px"></span-->
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="DisregardedEntityName/BusinessNameLine1Txt"/>
 												</xsl:call-template>
@@ -546,7 +564,7 @@
 												<!-- <xsl:if test="normalize-space(EIN) = ''"></xsl:if>-->
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:85mm;padding-right:2mm;vertical-align:top">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:85mm;padding-right:2mm;vertical-align:top">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 												</xsl:call-template>
@@ -554,7 +572,7 @@
 											</td>
 											<xsl:choose>
 												<xsl:when test="LegalDomicileStateCd">
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 														</xsl:call-template>
@@ -562,7 +580,7 @@
 													</td>
 												</xsl:when>
 												<xsl:otherwise>
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 														</xsl:call-template>
@@ -570,13 +588,13 @@
 													</td>
 												</xsl:otherwise>
 											</xsl:choose>
-											<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;text-align:left;vertical-align:top;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;text-align:left;vertical-align:top;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ExemptCodeSectionTxt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;text-align:left;vertical-align:top">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;text-align:left;vertical-align:top">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="PublicCharityStatusTxt"/>
 												</xsl:call-template>
@@ -584,7 +602,7 @@
 											</td>
 											<xsl:choose>
 												<xsl:when test="DirectControllingEntityName/BusinessNameLine1Txt">
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:80mm;text-align-left;border-right-width:0px;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:80mm;text-align-left;border-right-width:0px;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="DirectControllingEntityName/BusinessNameLine1Txt"/>
 														</xsl:call-template>
@@ -603,7 +621,7 @@
                            -->
 												</xsl:when>
 												<xsl:otherwise>
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:80mm;text-align:left;border-right-width:0px;">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:80mm;text-align:left;border-right-width:0px;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="DirectControllingNACd"/>
 														</xsl:call-template>
@@ -611,14 +629,14 @@
 													</td>
 													</xsl:otherwise>
 											</xsl:choose>
-												<td class="styTableCellText" style="border-style: solid; border-color: black;width:7mm;border-right-width:0px;border-left-width:1px;vertical-align:top;text-align:center;">
+												<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:0px;border-left-width:1px;vertical-align:top;text-align:center;">
 												<div>
 													<xsl:call-template name="PopulateYesBoxText">
 														<xsl:with-param name="TargetNode" select="ControlledOrganizationInd"/>
 													</xsl:call-template>
 												</div>
 											</td>
-									<td class="styTableCellText" style="border-style: solid; border-color: black;width:7mm;border-right-width:0px;border-top-width:0px; border-left-width:1px;vertical-align:top;text-align:center;">
+									<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:0px;border-top-width:0px; border-left-width:1px;vertical-align:top;text-align:center;">
 												<div>
 													<xsl:call-template name="PopulateNoBoxText">
 														<xsl:with-param name="TargetNode" select="ControlledOrganizationInd"/>
@@ -631,33 +649,33 @@
 								</xsl:for-each>
 								<xsl:if test="count($Form990ScheduleRData/IdRelatedTaxExemptOrgGrp) &lt; 1 or ((count($Form990ScheduleRData/IdRelatedTaxExemptOrgGrp) &gt; 7) and ($Print = $Separated)) ">
 									<tr>
-										<td class="styTableCellText" style="border-style: solid; border-color: black;width:60mm;">
+									<!--	<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:60mm;">-->
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedTaxExemptOrgGrp"/>
 											</xsl:call-template>
 											<span style="width:4px"/>
-										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:56mm;">
+										<!--</td>-->
+									<!--	<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:56mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:33mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:33mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:55mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:55mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;border-right-width:0px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
 											<span style="width:4px"/>
-										</td>
+										</td>-->
 									</tr>
 								</xsl:if>
 								<xsl:if test="count($Form990ScheduleRData/IdRelatedTaxExemptOrgGrp) &lt; 2 or ((count($Form990ScheduleRData/IdRelatedTaxExemptOrgGrp) &gt; 7) and ($Print = $Separated))">
@@ -683,11 +701,11 @@
 					</div>
 					<!-- Solid line  -->
 					<!-- <div class="styBB" style="width:256mm;border-right-width:0px "> </div> -->
-					<xsl:call-template name="SetInitialDynamicTableHeight">
+				<!--	<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedTaxExemptOrgGrp"/>
 						<xsl:with-param name="containerHeight" select="7"/>
 						<xsl:with-param name="containerID" select=" 'IRT2ctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					<div style="width:256mm;float:none;clear:both;padding-top:.2mm;border-top:1px;" class="pageEnd">
 						<div class="styGenericDiv" style="width:137mm;font-weight:bold;">For Paperwork Reduction Act Notice, see the Instructions for Form 990.</div>
 						<div class="styGenericDiv" style="width:50mm;">Cat. No. 50135Y</div>
@@ -704,26 +722,26 @@
 						</div>
 					</div>
 					<!-- BEGIN Part III Title -->
-					<div class="styBB" style="width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1 solid black">
+					<div class="styBB" style="height:auto;width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1px solid black">
 						<div class="styPartName" style="width:15mm;">Part III</div>
-						<div class="styPartDesc" style="width:236mm;">
+						<div class="styPartDesc" style="width:236mm;height:auto;">
         Identification of Related Organizations Taxable as a Partnership  
          <span style="font-weight:normal">  Complete if the organization answered "Yes" on Form 990, Part IV, line 34 because it had one or more related organizations treated as a partnership during the tax year.</span>
 						</div>
-						<div class="styGenericDiv" style="float:right">
-							<!-- button display logic -->
+					<!--	<div class="styGenericDiv" style="float:right">
+							 button display logic
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp"/>
 								<xsl:with-param name="containerHeight" select="7"/>
 								<xsl:with-param name="containerID" select=" 'IRT3ctn' "/>
 							</xsl:call-template>
-							<!-- end button display logic -->
-						</div>
+							 end button display logic 
+						</div>-->
 					</div>
 					<!-- END Part III Title -->
 					
 					<!-- BEGIN Part III Table -->
-					<div class="styTableContainerLandscape" id="IRT3ctn" style="height:70mm;">
+					<div class="styTableContainerLandscape" id="IRT3ctn" style="height:auto;display:table;">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -731,7 +749,7 @@
 							<thead class="styTableThead">
 								<tr>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:345mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:345mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (a)<br/>
 										<span class="styNormalText">Name, address, and EIN of<br/>related organization<br/>
 											<br/>
@@ -739,7 +757,7 @@
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:40mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:40mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (b)<br/>
 										<span class="styNormalText">Primary activity<br/>
 											<br/>
@@ -748,14 +766,14 @@
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:10mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (c)<br/>
 										<span class="styNormalText">Legal <br/>domicile<br/> (state or foreign<br/>country)<br/>
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (d)<br/>
 										<span class="styNormalText">Direct controlling<br/>entity<br/>
 											<br/>
@@ -763,14 +781,14 @@
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:20mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:20mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (e)<br/>
 										<span class="styNormalText">Predominant income(related, unrelated, excluded from tax under sections 512-514) 
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
                 (f)<br/>
 										<span class="styNormalText">Share of total income<br/>
 											<br/>
@@ -779,7 +797,7 @@
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (g)<br/>
 										<span class="styNormalText">Share of end-of-year<br/> assets<br/>
 											<br/>
@@ -787,7 +805,7 @@
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:14mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:14mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
                 (h)<br/>
 										<span class="styNormalText">Disproprtionate allocations?<br/>
 											<br/>
@@ -796,12 +814,12 @@
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (i)<br/>
 										<span class="styNormalText">Code V-UBI <br/>amount in box 20 of <br/>Schedule K-1<br/>(Form 1065)<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:14mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:14mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
               (j) <br/>
 										<span class="styNormalText">General or <br/>managing<br/> partner?<br/>
 											<br/>
@@ -809,7 +827,7 @@
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:22mm;border-right-width:0px;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:22mm;border-right-width:0px;vertical-align:top;text-align:center;">
                 (k)<br/>
 										<span class="styNormalText">Percentage<br/>ownership<br/>
 											<br/>
@@ -817,10 +835,10 @@
 										</span>
 									</th>
 									<tr>
-								<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;">Yes</th>
-								<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;">No</th>
-								<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;">Yes</th>
-								<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;">No</th>
+								<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;">Yes</th>
+								<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;">No</th>
+								<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;">Yes</th>
+								<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;">No</th>
 									</tr>
 								</tr>
 							</thead>
@@ -829,7 +847,7 @@
 								<xsl:if test="($Print != $Separated) or (count($Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp) &lt;= 7) ">
 									<xsl:for-each select="$Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp">
 										<tr>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;padding-left:1mm;width:45mm"><span style="font-weight:bold;"> (<xsl:number value="position()" format="1"/>)    </span>
+									<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;padding-left:1mm;width:45mm"><b> (<xsl:number value="position()" format="1"/>) </b>  
 												<!--span style="width:4px"></span-->
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="RelatedOrganizationName/BusinessNameLine1Txt"/>
@@ -893,14 +911,14 @@
 													<xsl:with-param name="TargetNode" select="EIN"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:40mm;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:40mm;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 												</xsl:call-template>
 											</td>
 											<xsl:choose>
 												<xsl:when test="LegalDomicileStateCd">
-													<td class="styTableCellText" style="border-style: solid; border-color: black;text-align:center;width:10mm;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;text-align:center;width:10mm;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 														</xsl:call-template>
@@ -908,7 +926,7 @@
 													</td>
 												</xsl:when>
 												<xsl:otherwise>
-													<td class="styTableCellText" style="border-style: solid; border-color: black;text-align:center;width:10mm;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;text-align:center;width:10mm;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 														</xsl:call-template>
@@ -918,7 +936,7 @@
 											</xsl:choose>
 											<xsl:choose>
 												<xsl:when test="DirectControllingEntityName/BusinessNameLine1Txt">
-													<td class="styTableCellText" style="border-style: solid; border-color: black;text-align-left;border-right-width:1px;width:25mm;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;text-align-left;border-right-width:1px;width:25mm;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="DirectControllingEntityName/BusinessNameLine1Txt"/>
 														</xsl:call-template>
@@ -929,7 +947,7 @@
 													</td>
 												</xsl:when>
 												<xsl:otherwise>
-													<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:25mm;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:25mm;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="DirectControllingNACd"/>
 														</xsl:call-template>
@@ -937,52 +955,52 @@
 													</td>
 												</xsl:otherwise>
 											</xsl:choose>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:20mm;vertical-align:top">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:20mm;vertical-align:top">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PredominantIncomeTypeTxt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;font-size:6pt;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;font-size:6pt;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ShareOfTotalIncomeAmt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;font-size:6pt;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;font-size:6pt;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ShareOfEOYAssetsAmt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:7mm;vertical-align:top;text-align:center;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:7mm;vertical-align:top;text-align:center;">
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="DisproportionateAllocationsInd"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:7mm;vertical-align:top;text-align:center;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:7mm;vertical-align:top;text-align:center;">
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="DisproportionateAllocationsInd"/>
 													<!--<span style="padding-top:2mm;"/>-->
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;font-size:6pt;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;font-size:6pt;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="UBICodeVAmt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:7mm;vertical-align:top;text-align:center">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:7mm;vertical-align:top;text-align:center">
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="GeneralOrManagingPartnerInd"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;border-top-width:0px;width:7mm;vertical-align:top;text-align:center">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;border-top-width:0px;width:7mm;vertical-align:top;text-align:center">
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="GeneralOrManagingPartnerInd"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:26mm;border-right-width:0px;padding-left:5mm;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:0px;padding-left:5mm;vertical-align:top;">
 												<xsl:call-template name="PopulatePercent">
 													<xsl:with-param name="TargetNode" select="OwnershipPct"/>
 												</xsl:call-template>
@@ -993,13 +1011,13 @@
 								</xsl:if>
 								<xsl:if test="count($Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp) &lt; 1 or ((count($Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp) &gt; 7) and ($Print = $Separated)) ">
 									<tr>
-										<td class="styTableCellText">
+										<!--<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:60mm;">-->
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp"/>
 											</xsl:call-template>
 											<span style="width:4px"/>
-										</td>
-										<td class="styTableCell">
+										<!--</td>-->
+									<!--	<td class="styTableCell">
 											<span style="width:4px"/>
 										</td>
 										<td class="styTableCell" style="border-style: solid; border-color: black;width:10mm">
@@ -1031,7 +1049,7 @@
 										</td>
 										<td class="styTableCell" style="border-style: solid; border-color: black;border-right-width:0px;width:8mm">
 											<span style="width:4px"/>
-										</td>
+										</td>-->
 									</tr>
 								</xsl:if>
 								<xsl:if test="count($Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp) &lt; 2 or ((count($Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp) &gt; 7) and ($Print = $Separated))">
@@ -1056,11 +1074,11 @@
 						</table>
 					</div>
 					<!-- Set Initial Height of Above Table -->
-					<xsl:call-template name="SetInitialDynamicTableHeight">
+				<!--	<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp"/>
 						<xsl:with-param name="containerHeight" select="7"/>
 						<xsl:with-param name="containerID" select=" 'IRT3ctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					<!-- End Set Initial Height of Above Table -->
 					<!-- END Part III Table -->
 					
@@ -1068,25 +1086,25 @@
 					
 					<!-- BEGIN Part IV Title -->
 					
-				<div class="styBB" style="width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1 solid black">
+				<div class="styBB" style="height:auto;width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1px solid black">
 						<div class="styPartName" style="width:15mm;">Part IV</div>
-						<div class="styPartDesc" style="width:236mm;">
+						<div class="styPartDesc" style="width:236mm;height:auto;">
     Identification of Related Organizations Taxable as a Corporation or Trust
          <span style="font-weight:normal">  Complete if the organization answered "Yes" on Form 990, Part IV, line 34 because it had one or more related organizations treated as a corporation or trust during the tax year.</span>
 						</div>
-						<div class="styGenericDiv" style="float:right">
-							<!-- button display logic -->
+						<!--<div class="styGenericDiv" style="float:right">
+						 button display logic 
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp"/>
 								<xsl:with-param name="containerHeight" select="7"/>
 								<xsl:with-param name="containerID" select=" 'IRT4ctn' "/>
 							</xsl:call-template>
-							<!-- end button display logic -->
-						</div>
+							end button display logic 
+						</div>-->
 					</div>
 					<!-- END Part IV Title -->
 					<!-- BEGIN Part IV Table -->
-					<div class="styTableContainerLandscape" id="IRT4ctn" style="height:80mm;">
+					<div class="styTableContainerLandscape" id="IRT4ctn" style="height:auto;display:table;">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -1096,58 +1114,58 @@
 							<tr>
 								
 							
-				<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:78mm;padding-right:10mm;vertical-align:top;text-align:center;" rowspan="2">
+				<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:78mm;padding-right:10mm;vertical-align:top;text-align:center;" rowspan="2">
               (a)<br/>
 										<span class="styNormalText">Name, address, and EIN of<br/>related organization<br/>
 											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:40mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:40mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (b)<br/>
 										<span class="styNormalText">Primary activity<br/>
 											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="text-align:center; border-style: solid; border-color: black;width:30mm;border-right-width:1px;vertical-align:top;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;text-align:center; border-style: solid; border-color: black;width:30mm;border-right-width:1px;vertical-align:top;" rowspan="2">
               (c)<br/>
 										<span class="styNormalText">Legal <br/>domicile<br/> (state or foreign<br/>country)<br/>
 											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (d)<br/>
 										<span class="styNormalText">Direct controlling<br/>entity<br/>
 											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:20mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:20mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (e)<br/>
 										<span class="styNormalText">Type of entity <br/>(C corp,  S corp, <br/> or trust)
 											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
                 (f)<br/>
 										<span class="styNormalText">Share of total income<br/>
 											
 										</span>
 									</th>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (g)<br/>
 										<span class="styNormalText">Share of end-of-year<br/> assets<br/>
 											
 										</span>
 									</th>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:21mm;border-right-width:1px;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:21mm;border-right-width:1px;vertical-align:top;text-align:center;">
                 (h)<br/>
 										<span class="styNormalText">Percentage<br/>ownership<br/>
 											
 										</span>
 									</th>
 									<!-- i -->
-						<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:15mm;border-right-width:0px;border-left-width:0px;vertical-align:top;text-align:center;" colspan="2">
+						<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:15mm;border-right-width:0px;border-left-width:0px;vertical-align:top;text-align:center;" colspan="2">
 										(i)<br/>
 									<span class="styNormalText">Section 512(b)(13) controlled entity?
 											<br/>
@@ -1156,9 +1174,9 @@
 					<tr>
 						
 								<!-- This extra th with no entry pushes the yes box over into the controlled entity column -->		
-					<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;text-align:center;border-left-width:1px;"/>
-							<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:10mm;border-right-width:1px;text-align:center;border-left-width:1px;">Yes</th>
-							<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;text-align:center;">No</th>
+					<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;text-align:center;border-left-width:1px;"/>
+							<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:1px;text-align:center;border-left-width:1px;">Yes</th>
+							<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;text-align:center;">No</th>
 					</tr>
 							</tr>				
 										</thead>
@@ -1166,9 +1184,9 @@
 							<tbody>
 								
 									<xsl:for-each select="$Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp">
-									<xsl:if test="($Print != $Separated) or (count($Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp) &lt;= 7) ">
+									<xsl:if test="($Print != $Separated) or (count($Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp) &lt;= 7) ">
 										<tr>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;padding-left:1mm;"><span style="font-weight:bold;"> (<xsl:number value="position()" format="1"/>)    </span>
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;padding-left:1mm;"><span style="font-weight:bold;"> (<xsl:number value="position()" format="1"/>)    </span>
 												<!--span style="width:4px"></span-->
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="RelatedOrganizationName/BusinessNameLine1Txt"/>
@@ -1232,14 +1250,14 @@
 													<xsl:with-param name="TargetNode" select="EIN"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:40mm;vertical-align:top;text-align:left;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:40mm;vertical-align:top;text-align:left;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 												</xsl:call-template>
 											</td>
 											<xsl:choose>
 												<xsl:when test="LegalDomicileStateCd">
-													<td class="styTableCellText" style="border-style: solid; border-color: black;text-align:center;vertical-align:top;width:30mm">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;text-align:center;vertical-align:top;width:30mm">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 														</xsl:call-template>
@@ -1247,7 +1265,7 @@
 													</td>
 												</xsl:when>
 												<xsl:otherwise>
-												<td class="styTableCellText" style="border-style: solid; border-color: black;text-align:center; width:30mm; vertical-align:top;text-align:center">
+												<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;text-align:center; width:30mm; vertical-align:top;text-align:center">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 														</xsl:call-template>
@@ -1268,7 +1286,7 @@
 													</td>
 												</xsl:when>
 												<xsl:otherwise>
-													<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:25mm;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:25mm;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="DirectControllingNACd"/>
 														</xsl:call-template>
@@ -1276,38 +1294,38 @@
 													</td>
 												</xsl:otherwise>
 											</xsl:choose>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:20mm;border-right-width:1px;vertical-align:top">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:20mm;border-right-width:1px;vertical-align:top">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="EntityTypeTxt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ShareOfTotalIncomeAmt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:26mm;vertical-align:top;text-align:right;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ShareOfEOYAssetsAmt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-										<td class="styTableCellText" style="border-style: solid; border-color: black;width:21mm;border-right-width:1px;padding-left:5mm;vertical-align:top">
+										<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:21mm;border-right-width:1px;padding-left:5mm;vertical-align:top">
 												<xsl:call-template name="PopulatePercent">
 													<xsl:with-param name="TargetNode" select="OwnershipPct"/>
 												</xsl:call-template>
 											<span class="styTableCellPad"/>
 											</td>
 										
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:10mm;border-right-width:1px;border-left-width:0px;text-align:center;vertical-align:top">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:1px;border-left-width:0px;text-align:center;vertical-align:top">
 														<xsl:call-template name="PopulateYesBoxText">
 														<xsl:with-param name="TargetNode" select="ControlledOrganizationInd"/>
 													</xsl:call-template>
 													<span class="styTableCellPad"/>
 												</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;border-top-width:0px; border-left-width:0px;text-align:center;vertical-align:top">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;border-top-width:0px; border-left-width:0px;text-align:center;vertical-align:top">
 													<xsl:call-template name="PopulateNoBoxText">
 														<xsl:with-param name="TargetNode" select="ControlledOrganizationInd"/>
 													</xsl:call-template>
@@ -1320,42 +1338,42 @@
 								
 								<xsl:if test="count($Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp) &lt; 1 or ((count($Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp) &gt; 7) and ($Print = $Separated)) ">
 									<tr>
-										<td class="styTableCellText" style="border-style: solid; border-color: black;width:60mm;">
+										<!--<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:60mm;">-->
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp"/>
 											</xsl:call-template>
 											<span style="width:4px"/>
-										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:40mm;">
+										<!--</td>-->
+										<!--<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:40mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:30mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:30mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:30mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:20mm;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:20mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:21mm">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:21mm">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:21mm">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:21mm">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:21mm">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:21mm">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;">
 											<span style="width:4px"/>
-										</td>
+										</td>-->
 									
 										</tr>
 								</xsl:if>
@@ -1381,13 +1399,13 @@
 						</table>
 					</div>
 					<!-- Set Initial Height of Above Table -->
-					<xsl:call-template name="SetInitialDynamicTableHeight">
+					<!--<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp"/>
 						<xsl:with-param name="containerHeight" select="7"/>
 						<xsl:with-param name="containerID" select=" 'IRT4ctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					<!-- End Set Initial Height of Above Table -->
-					<div style="width:256mm;float:none;clear:both;padding-top:.2mm;" class="pageend">
+					<div style="width:256mm;float:none;clear:both;padding-top:.2mm;" class="pageEnd">
 						<div class="styGenericDiv" style="width:137mm;"/>
 						<div class="styGenericDiv" style="width:50mm;"/>
 						<div class="styGenericDiv" style="float:right;padding-right:4mm">
@@ -1406,7 +1424,7 @@
 					</div>
 					
 					<!-- BEGIN Part V Title -->
-					<div class="styBB" style="width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1 solid black">
+					<div class="styBB" style="height:auto;width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1px solid black;display:table;">
 						<div class="styPartName" style="width:15mm;">Part V</div>
 						<div class="styPartDesc" style="width:236mm;">
         Transactions With Related Organizations
@@ -1445,31 +1463,9 @@
 
           Receipt of  <span style="font-weight:bold;"> (i)</span>  interest, <span style="font-weight:bold;"> (ii) </span>annuities, <span style="font-weight:bold;">(iii) </span> royalties, or<span style="font-weight:bold;"> (iv) </span> rent from a controlled entity
           
-          <!--Dotted Line-->
-							<span style="width:2px;"/>
-							<span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
-             <span style="width:3.3mm"/>.
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.....................  </span>
             
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;padding-right:1mm;border-top-width:1px;padding-top:0px;padding-bottom:0px;">1a</div>
@@ -1493,37 +1489,8 @@
           Gift, grant, or capital contribution to related organization(s)
           <span style="width:2px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
           
     </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:0px;padding-right:1mm;border-right-width:0px;padding-bottom:0px;padding-top:0px;">1b</div>
@@ -1548,36 +1515,7 @@
             Gift, grant, or capital contribution from related organization(s)
           <span style="width:3px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+						<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
          
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:0px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm;">1c</div>
@@ -1602,37 +1540,7 @@
             Loans or loan guarantees to or for related organization(s)
           <span style="width:13px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+						<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
             
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:0px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm;">1d</div>
@@ -1657,39 +1565,7 @@
             Loans or loan guarantees by related organization(s)
           <span style="width:7px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3.mm"/>.
-             <span style="width:3.mm"/>.             
+						<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>             
            
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:0px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm">1e</div>
@@ -1720,39 +1596,7 @@
             Dividends from related organization(s)
           <span style="width:7px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3.mm"/>.
-             <span style="width:3.mm"/>.             
+						<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>       
            
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:0px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm">1f</div>
@@ -1778,43 +1622,7 @@
             Sale of assets to related organization(s)
           <span style="width:1px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3.mm"/>.
-             <span style="width:3.mm"/>.             
-             <span style="width:3.mm"/>.
-             <span style="width:3.mm"/>.
-             <span style="width:3.mm"/>.
-             
+							<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
          
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:1px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm;">1g</div>
@@ -1839,40 +1647,7 @@
              Purchase of assets from related organization(s)
           <span style="width:1px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3.mm"/>.
-             <span style="width:3.mm"/>.             
-             <span style="width:3.mm"/>.
+							<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
              
            
         </div>
@@ -1898,42 +1673,7 @@
            Exchange of assets with related organization(s)
           <span style="width:1px;"/>
 							<!--Dotted Line-->
-							<span style="width:1mm"/>.
-             <span style="width:1mm"/>.
-             <span style="width:1mm"/>.
-             <span style="width:1mm"/>.
-             <span style="width:1mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+							<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
              
              
              
@@ -1962,34 +1702,7 @@
            Lease of facilities, equipment, or other assets to related organization(s)
            <span style="width:4px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+							<span style="letter-spacing:4mm; font-weight:bold; ">.......................  </span>
          
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:0px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm;">1j</div>
@@ -2020,33 +1733,7 @@
            Lease of facilities, equipment, or other assets from related organization(s)
            <span style="width:2px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+						<span style="letter-spacing:4mm; font-weight:bold; ">...................... </span>
              
           
         </div>
@@ -2072,26 +1759,7 @@
            Performance of services or membership or fundraising solicitations for related organization(s)
            <span style="width:4px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+						<span style="letter-spacing:4mm; font-weight:bold; ">..................... </span>
              
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:0px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm;">1l</div>
@@ -2116,26 +1784,7 @@
            Performance of services or membership or fundraising solicitations by related organization(s)
            <span style="width:4px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+							<span style="letter-spacing:4mm; font-weight:bold; ">.................</span>
              
          
         </div>
@@ -2162,27 +1811,7 @@
 
          <span style="width:2px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
+							<span style="letter-spacing:4mm; font-weight:bold; ">...................  </span>
              
           
         </div>
@@ -2208,38 +1837,7 @@
            Sharing of paid employees with related organization(s)
             <span style="width:2px;"/>
 							<!--Dotted Line-->
-							<span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.            
-              <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:3mm"/>.
-             <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
+							<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
              
            
         </div>
@@ -2271,44 +1869,7 @@
            Reimbursement paid to related organization(s) for expenses
             <span style="width:2px;"/>
 							<!--Dotted Line-->
-							<span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-            <span style="width:8px"/>.
-             <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			
+						<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
            
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:1px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm;">1p</div>
@@ -2333,43 +1894,7 @@
            Reimbursement paid by related organization(s) for expenses
             <span style="width:2px;"/>
 							<!--Dotted Line-->
-							<span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-            <span style="width:8px"/>.
-             <span style="width:8px"/>.
-             <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
+							<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
 			
             
         </div>
@@ -2401,44 +1926,7 @@
            Other transfer of cash or property to related organization(s)
             <span style="width:2px;"/>
 							<!--Dotted Line-->
-							<span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-            <span style="width:8px"/>.
-             <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-            <span style="width:8px"/>.
-             <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
+							<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
          
         </div>
 						<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:1px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm;">1r</div>
@@ -2463,41 +1951,7 @@
            Other transfer of cash or property from related organization(s)
             <span style="width:2px;"/>
 							<!--Dotted Line-->
-							<span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.
-            <span style="width:8px"/>.  
-            <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-            <span style="width:8px"/>.
-             <span style="width:8px"/>.
-           <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-            <span style="width:8px"/>.
-             <span style="width:8px"/>.
-           <span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
-			<span style="width:8px"/>.  
+							<span style="letter-spacing:4mm; font-weight:bold; ">............................  </span>
              </div>
 	<div class="styLNRightNumBox" style="width:5mm;height:4.5mm;border-top-width:0px;border-right-width:0px;float:left;padding-bottom:0px;padding-top:0px;padding-right:1mm;">1s</div>
 						<div class="styIRS990ScheduleRLNYesNoBox" style="width:8mm;height:4.5mm;text-align:center;font-weight:bold;border-top-width:0px;">
@@ -2520,18 +1974,18 @@
            If the answer to any of the above is "Yes," see the instructions for information on who must complete this line, including covered relationships and transaction thresholds.
           <!--Dotted Line-->
 						</div>
-						<div class="styGenericDiv" style="float:right">
-							<!-- button display logic -->
+					<!--	<div class="styGenericDiv" style="float:right">
+							button display logic 
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/TransactionsRelatedOrgGrp"/>
 								<xsl:with-param name="containerHeight" select="6"/>
 								<xsl:with-param name="containerID" select=" 'IRT5ctn' "/>
 							</xsl:call-template>
-							<!-- end button display logic -->
-						</div>
+							 end button display logic 
+						</div>-->
 					</div>
 					<!-- BEGIN Question 2 PART V-->
-					<div class="styTableContainerLandscape" id="IRT5ctn" style="width:256mm;border-top-width:1px">
+					<div class="styTableContainerLandscape" id="IRT5ctn" style="width:256mm;border-top-width:1px;display:table;">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -2598,7 +2052,7 @@
 								</xsl:if>
 								<xsl:if test="count($Form990ScheduleRData/TransactionsRelatedOrgGrp) &lt; 2 or ((count($Form990ScheduleRData/TransactionsRelatedOrgGrp) &gt; 6) and ($Print = $Separated)) ">
 									<tr>
-										<td class="styTableCellText" style="border-style: solid; border-color: black;width:147mm;border-right-width:1px;">
+										<td class="styTableCellText" style="border-style: solid; border-color: black;width:60mm;border-right-width:1px;">
 											<span style="font-weight:bold;"> <!--(<xsl:number value="position()" format="1"/>)-->    </span>
 												<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/TransactionsRelatedOrgGrp"/>
@@ -2607,7 +2061,7 @@
 										<td class="styTableCell" style="border-style: solid; border-color: black;width:30mm;border-bottom-width:1px;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:30mm;border-bottom-width:`1px;border-right-width:0px">
+										<td class="styTableCell" style="border-style: solid; border-color: black;width:30mm;border-bottom-width:`1px;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
 										<td class="styTableCell" style="border-style: solid; border-color: black;width:79mm;border-bottom-width:`1px;border-right-width:0px">
@@ -2633,11 +2087,11 @@
 							</tbody>
 						</table>
 					</div>
-					<xsl:call-template name="SetInitialDynamicTableHeight">
+				<!--	<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/TransactionsRelatedOrgGrp"/>
 						<xsl:with-param name="containerHeight" select="6"/>
 						<xsl:with-param name="containerID" select=" 'IRT5ctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					<div style="width:256mm;float:none;clear:both;padding-top:.2mm;" class="pageEnd">
 						<div class="styGenericDiv" style="width:137mm;"/>
 						<div class="styGenericDiv" style="width:50mm;"/>
@@ -2661,9 +2115,9 @@
 					</div>
 				
 					<!-- BEGIN Part VI Title -->
-					<div class="styBB" style="width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1 solid black">
+					<div class="styBB" style="width:256mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1px solid black;display:table;">
 						<div class="styPartName" style="width:15mm;">Part VI</div>
-						<div class="styPartDesc" style="width:241mm;">Unrelated Organizations Taxable as a Partnership 
+						<div class="styPartDesc" style="height:auto;width:241mm;">Unrelated Organizations Taxable as a Partnership 
 		<span style="font-weight:normal">  Complete if the organization answered "Yes" on Form 990, Part IV, line 37.</span>
 </div>						
 												<span class="styNormalText"> Provide the following information for each entity taxed as a partnership through which the organization conducted more than five percent of its activities (measured by total assets 
@@ -2682,26 +2136,26 @@ or gross revenue) that was not a related organization. See instructions regardin
 					
 					<!-- END Part VI Title -->
 					<!-- BEGIN Part VI Table -->
-					<div class="styTableContainerLandscape" id="IRT6ctn">
+					<div class="styTableContainerLandscape" id="IRT6ctn" style="display:table;">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
 						<table class="styTable" cellspacing="0">
 							<thead class="styTableThead">
 								<tr>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;vertical-align:top;width:324mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;vertical-align:top;width:324mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (a)<br/>
 										<span class="styNormalText" style="text-align:center">Name, address, and EIN of entity</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;vertical-align:top;width:46mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;vertical-align:top;width:46mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (b)<br/>
 										<span class="styNormalText" style="text-align:center">Primary activity</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;vertical-align:top;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;vertical-align:top;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (c)<br/>
 										<span class="styNormalText" style="text-align:center">Legal domicile<br/> (state or foreign<br/>country)</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (d)<br/>
 										<span class="styNormalText">Predominant income (related, unrelated, excluded from tax under sections 512-514) 
 											<br/>
@@ -2709,12 +2163,12 @@ or gross revenue) that was not a related organization. See instructions regardin
 										</span>
 									</th>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;vertical-align:top;width:20mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;vertical-align:top;width:20mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
                 (e)<br/>
 										<span class="styNormalText">Are all partners<br/> section <br/>501(c)(3) <br/>organizations?</span>
 									</th>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
                 (f)<br/>
 										<span class="styNormalText">Share of total income<br/>
 											<br/>
@@ -2723,27 +2177,27 @@ or gross revenue) that was not a related organization. See instructions regardin
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:40mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:40mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (g)<br/>
 										<span class="styNormalText">Share of <br/>end-of-year<br/> assets</span>
 									</th>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;vertical-align:top;width:35mm;border-right-width:1px;text-align:center" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;vertical-align:top;width:35mm;border-right-width:1px;text-align:center" colspan="2">
                 (h)<br/>
 										<span class="styNormalText">Disproprtionate allocations?</span>
 									</th>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;vertical-align:top;text-align:center;width:35mm;border-right-width:1px;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;vertical-align:top;text-align:center;width:35mm;border-right-width:1px;" rowspan="2">
               (i)<br/>
 										<span class="styNormalText">Code V-UBI <br/>amount in box 20 <br/>of Schedule K-1<br/>(Form 1065)</span>
 									</th>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;vertical-align:top;text-align:center;width:14mm;border-right-width:1px;" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;vertical-align:top;text-align:center;width:14mm;border-right-width:1px;" colspan="2">
               (j) <br/>
 										<span class="styNormalText">General or <br/>managing<br/> partner?</span>
 									</th>
 									
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:22mm;border-right-width:0px;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:22mm;border-right-width:0px;vertical-align:top;text-align:center;">
                 (k)<br/>
 										<span class="styNormalText">Percentage<br/>ownership<br/>
 											<br/>
@@ -2751,12 +2205,12 @@ or gross revenue) that was not a related organization. See instructions regardin
 										</span>
 									</th>
 									<tr>
-	<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">Yes</th>
-	<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">No</th>
-	<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">Yes</th>
-	<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">No</th>
-	<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">Yes</th>
-	<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">No</th>
+	<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">Yes</th>
+	<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">No</th>
+	<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">Yes</th>
+	<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">No</th>
+	<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">Yes</th>
+	<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;text-align:center;border-top-width:0px">No</th>
 									</tr>
 								</tr>
 							</thead>
@@ -2765,7 +2219,7 @@ or gross revenue) that was not a related organization. See instructions regardin
 								<xsl:if test="($Print != $Separated) or (count($Form990ScheduleRData/UnrelatedOrgTxblPartnershipGrp) &lt;=16) ">
 									<xsl:for-each select="$Form990ScheduleRData/UnrelatedOrgTxblPartnershipGrp">
 										<tr>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:324mm;padding-left:1mm;vertical-align:top">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:324mm;padding-left:1mm;vertical-align:top">
 											<span style="font-weight:bold;"> (<xsl:number value="position()" format="1"/>)    </span>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
@@ -2813,41 +2267,41 @@ or gross revenue) that was not a related organization. See instructions regardin
 													<xsl:with-param name="TargetNode" select="EIN"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:46mm;border-right-width:1px;vertical-align:top">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:46mm;border-right-width:1px;vertical-align:top">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 												</xsl:call-template>
 											</td>
 											<xsl:choose>
 												<xsl:when test="LegalDomicileStateCd">
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 														</xsl:call-template>
 													</td>
 												</xsl:when>
 												<xsl:otherwise>
-													<td class="styTableCellText" style="border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
+													<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:25mm;text-align:center;vertical-align:top">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 														</xsl:call-template>
 													</td>
 												</xsl:otherwise>
 											</xsl:choose>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;border-right-width:1px;width:25mm;vertical-align:top;text-align:left;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:25mm;vertical-align:top;text-align:left;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PredominateIncomeDesc"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center;">
 												<div>
 													<xsl:call-template name="PopulateYesBoxText">
 														<xsl:with-param name="TargetNode" select="AllPartnersC3SInd"/>
 													</xsl:call-template>
 												</div>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center;">
 												<div>
 													<xsl:call-template name="PopulateNoBoxText">
 														<xsl:with-param name="TargetNode" select="AllPartnersC3SInd"/>
@@ -2855,25 +2309,25 @@ or gross revenue) that was not a related organization. See instructions regardin
 													</xsl:call-template>
 												</div>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;border-right-width:1px;width:35mm;vertical-align:top;text-align:right;font-size:6pt;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;border-right-width:1px;width:35mm;vertical-align:top;text-align:right;font-size:6pt;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ShareOfTotalIncomeAmt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border-style: solid; border-color: black;width:35mm;border-right-width:1px;vertical-align:top;text-align:right;font-size:6pt;">
+											<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:35mm;border-right-width:1px;vertical-align:top;text-align:right;font-size:6pt;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ShareOfEOYAssetsAmt"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center;">
 												<div>
 													<xsl:call-template name="PopulateYesBoxText">
 														<xsl:with-param name="TargetNode" select="DisproportionateAllocationsInd"/>
 													</xsl:call-template>
 												</div>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center;">
 												<div>
 													<xsl:call-template name="PopulateNoBoxText">
 														<xsl:with-param name="TargetNode" select="DisproportionateAllocationsInd"/>
@@ -2881,19 +2335,19 @@ or gross revenue) that was not a related organization. See instructions regardin
 													</xsl:call-template>
 												</div>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:35mm;border-right-width:1px;vertical-align:top;text-align:right;font-size:6pt;">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:35mm;border-right-width:1px;vertical-align:top;text-align:right;font-size:6pt;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="UBICodeVAmt"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center">
 												<div>
 													<xsl:call-template name="PopulateYesBoxText">
 														<xsl:with-param name="TargetNode" select="GeneralOrManagingPartnerInd"/>
 													</xsl:call-template>
 												</div>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px;border-top-width:0px;vertical-align:top;text-align:center">
 												<div>
 													<xsl:call-template name="PopulateNoBoxText">
 														<xsl:with-param name="TargetNode" select="GeneralOrManagingPartnerInd"/>
@@ -2901,7 +2355,7 @@ or gross revenue) that was not a related organization. See instructions regardin
 													</xsl:call-template>
 												</div>
 											</td>
-											<td class="styTableCellText" style="border-style: solid; border-color: black;width:26mm;border-right-width:0px;vertical-align:top;text-align:center">
+											<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:0px;vertical-align:top;text-align:center">
 												<xsl:call-template name="PopulatePercent">
 													<xsl:with-param name="TargetNode" select="OwnershipPct"/>
 												</xsl:call-template>
@@ -2912,45 +2366,45 @@ or gross revenue) that was not a related organization. See instructions regardin
 								</xsl:if>
 								<xsl:if test="count($Form990ScheduleRData/UnrelatedOrgTxblPartnershipGrp) &lt; 1 or ((count($Form990ScheduleRData/UnrelatedOrgTxblPartnershipGrp) &gt; 16) and ($Print = $Separated)) ">
 									<tr>
-										<td class="styTableCellText" style="border-style: solid; border-color: black;width:147mm;">
+										<!--<td class="styTableCellText" style="height:auto;border-style: solid; border-color: black;width:60mm;">-->
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/UnrelatedOrgTxblPartnershipGrp"/>
 											</xsl:call-template>
 											<span style="width:4px"/>
-										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:40mm;">
+										<!--</td>-->
+										<!--<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:40mm;">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:25mm;border-right-width:1px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:25mm;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:40mm;border-right-width:1px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:40mm;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:35mm;border-right-width:1px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:35mm;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:7mm;border-right-width:1px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:1px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;width:7mm;border-right-width:0px">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;width:7mm;border-right-width:0px">
 											<span style="width:4px"/>
 										</td>
-										<td class="styTableCell" style="border-style: solid; border-color: black;border-right-width:0px;width:8mm">
+										<td class="styTableCell" style="height:auto;border-style: solid; border-color: black;border-right-width:0px;width:8mm">
 											<span style="width:4px"/>
-										</td>
+										</td>-->
 										
 									</tr>
 								</xsl:if>
@@ -3003,12 +2457,12 @@ or gross revenue) that was not a related organization. See instructions regardin
 						</table>
 					</div>
 				
-					<xsl:call-template name="SetInitialDynamicTableHeight">
+				<!--	<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/UnrelatedOrgTxblPartnershipGrp"/>
 						<xsl:with-param name="headerHeight" select="2"/>
 						<xsl:with-param name="containerHeight" select="16"/>
 						<xsl:with-param name="containerID" select=" 'IRT6ctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					<!-- End Part VI Table -->
 					<div style="width:256mm;float:none;clear:both;padding-top:.2mm;" class="pageEnd">
 						<div class="styGenericDiv" style="width:137mm;"/>
@@ -3026,12 +2480,12 @@ or gross revenue) that was not a related organization. See instructions regardin
 						</div>
 					</div>
 					<!-- Part VII Supplemental Information -->
-					<div class="styGenericDiv" style="width: 256mm;">
+					<div class="styGenericDiv" style="height:auto;width: 256mm;">
 						<div class="styPartName" style="width:18mm;">Part VII</div>
-						<div class="styPartDesc" style="width:238mm;font-weight:bold; ">
+						<div class="styPartDesc" style="height:auto;width:238mm;font-weight:bold; ">
 Supplemental Information
 </div>
-						<div class="IRS990ScheduleRLineDesc" style="width:256mm;height:4mm; border-top-width:0px;padding-top:1mm;border-bottom-width:1px;border-right-width:0px;padding-left:21mm">
+						<div class="IRS990ScheduleRLineDesc" style="height:auto;width:256mm;height:4.5mm; border-top-width:0px;padding-top:1mm;border-bottom-width:0px;border-right-width:0px;padding-left:21mm">
 Provide additional information for responses to questions on Schedule R (see instructions).
 <!--<span style="float:right;clear:none">
 								<xsl:call-template name="SetDynamicTableToggleButton">
@@ -3042,7 +2496,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 							</span>-->
 						</div>
 					</div>
-					<div class="styTableContainerLandscape " style="width: 256mm;  border-bottom-width: 1px" id="SUPctn">
+					<div class="styTableContainerLandscape " style="height:auto;width: 256mm;  border-bottom-width: 1px;display:table;" id="SUPctn">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" style="font-size: 7pt; border-color:black;" cellspacing="0">
 							<thead>
@@ -3078,11 +2532,11 @@ Provide additional information for responses to questions on Schedule R (see ins
 							</tbody>
 						</table>
 					</div>
-					<xsl:call-template name="SetInitialDynamicTableHeight">
+					<!--<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/SupplementalInformationDetail"/>
 						<xsl:with-param name="containerHeight" select="20"/>
 						<xsl:with-param name="containerID" select=" 'SUPctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					
 					
 					<!-- Page Footer -->
@@ -3093,6 +2547,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 					</div>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
+					 <p style="page-break-before: always"/> 
 					<div class="styLeftOverTitleLineLandscape" id="LeftoverData">
 						<div class="styLeftOverTitle">
         Additional Data        
@@ -3112,10 +2567,10 @@ Provide additional information for responses to questions on Schedule R (see ins
 					<xsl:if test="($Print = $Separated) and (count($Form990ScheduleRData/IdDisregardedEntitiesGrp) &gt;=6)">
 						<span class="styRepeatingDataTitle">Form 990, Schedule R, Part I - Identification of Disregarded Entities</span>
 						<!-- BEGIN Part I Table -->
-						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styTableCellHeader" scope="col" style="width:340mm;padding-right:10mm;">
+									<th class="styTableCellHeader" scope="col" style="width:340mm;padding-right:10mm;height:auto;">
               (a)      
            
               <br/>
@@ -3125,38 +2580,38 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:85mm;padding-right:2mm;">
+									<th class="styTableCellHeader" scope="col" style="width:85mm;padding-right:2mm;height:auto;">
               (b)<br/>
 										<span class="styNormalText">Primary Activity<br/>
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:75mm;padding-right:2mm;">
+									<th class="styTableCellHeader" scope="col" style="width:75mm;padding-right:2mm;height:auto;">
               (c)<br/>
 										<span class="styNormalText" style="text-align:center">Legal Domicile (State <br/>or Foreign Country)<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:55.25mm;padding-right:2mm;">
+									<th class="styTableCellHeader" scope="col" style="width:55.25mm;padding-right:2mm;height:auto;">
               (d)<br/>
 										<span class="styNormalText">Total income<br/><br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:68mm;padding-right:2mm;padding-bottom:3mm;">
+									<th class="styTableCellHeader" scope="col" style="width:68mm;padding-right:2mm;padding-bottom:3mm;height:auto;">
 										<br/>(e)<br/>
 										<span class="styNormalText">End-of-year assets<br/><br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:110.5mm;border-right-width:0px;">
+									<th class="styTableCellHeader" scope="col" style="width:110.5mm;border-right-width:0px;height:auto;">
               (f)<br/>
 										<span class="styNormalText">Direct Controlling<br/>Entity<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:10mm;border-right-width:0px;">
+									<th class="styTableCellHeader" scope="col" style="width:10mm;border-right-width:0px;height:auto;">
 										<br/>
 										<span class="styNormalText">
 											<br/>
@@ -3164,7 +2619,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:10mm;border-right-width:0px;">
+									<th class="styTableCellHeader" scope="col" style="width:10mm;border-right-width:0px;height:auto;">
 										<br/>
 										<span class="styNormalText">
 											<br/>
@@ -3178,7 +2633,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 							<xsl:for-each select="$Form990ScheduleRData/IdDisregardedEntitiesGrp">
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1Cell </xsl:when><xsl:otherwise>styDepTblRow2Cell </xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styTableCellText" style="width:126mm;padding-left:1mm;">(<xsl:number value="position()" format="1"/>)
+									<td class="styTableCellText" style="height:auto;width:126mm;padding-left:1mm;">(<xsl:number value="position()" format="1"/>)
 										<!--span style="width:4px"></span-->
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="DisregardedEntityName/BusinessNameLine1Txt"/>
@@ -3232,7 +2687,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 										</xsl:call-template>
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellText" style="width:75mm;padding-left:1mm;vertical-align:top;">
+									<td class="styTableCellText" style="height:auto;width:75mm;padding-left:1mm;vertical-align:top;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 										</xsl:call-template>
@@ -3240,7 +2695,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 									</td>
 									<xsl:choose>
 										<xsl:when test="LegalDomicileStateCd">
-											<td class="styTableCellText" style="width:25mm;text-align:center;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;width:25mm;text-align:center;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 												</xsl:call-template>
@@ -3248,7 +2703,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											</td>
 										</xsl:when>
 										<xsl:otherwise>
-											<td class="styTableCellText" style="width:25mm;text-align:center;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;width:25mm;text-align:center;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 												</xsl:call-template>
@@ -3256,13 +2711,13 @@ Provide additional information for responses to questions on Schedule R (see ins
 											</td>
 										</xsl:otherwise>
 									</xsl:choose>
-									<td class="styTableCell" style="width:30mm;text-align:right;vertical-align:top;">
+									<td class="styTableCell" style="height:auto;width:30mm;text-align:right;vertical-align:top;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="TotalIncomeAmt"/>
 										</xsl:call-template>
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell" style="width:33mm;text-align:right;vertical-align:top;">
+									<td class="styTableCell" style="height:auto;width:33mm;text-align:right;vertical-align:top;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="EndOfYearAssetsAmt"/>
 										</xsl:call-template>
@@ -3270,7 +2725,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 									</td>
 									<xsl:choose>
 										<xsl:when test="DirectControllingEntityName/BusinessNameLine1Txt">
-											<td class="styTableCellText" style="width:100mm;text-align-left;border-right-width:0px;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;width:100mm;text-align-left;border-right-width:0px;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="DirectControllingEntityName/BusinessNameLine1Txt"/>
 												</xsl:call-template>
@@ -3281,7 +2736,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											</td>
 										</xsl:when>
 										<xsl:otherwise>
-											<td class="styTableCellText" style="width:100mm;text-align:left;border-right-width:0px;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;width:100mm;text-align:left;border-right-width:0px;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="DirectControllingNACd"/>
 												</xsl:call-template>
@@ -3289,10 +2744,10 @@ Provide additional information for responses to questions on Schedule R (see ins
 											</td>
 										</xsl:otherwise>
 									</xsl:choose>
-									<td class="styTableCell" style="width:10mm;border-right-width:0px;vertical-align:top;">
+									<td class="styTableCell" style="height:auto;width:10mm;border-right-width:0px;vertical-align:top;">
 										<span style="width:4px"/>
 									</td>
-									<td class="styTableCell" style="width:10mm;border-right-width:0px;vertical-align:top;">
+									<td class="styTableCell" style="height:auto;width:10mm;border-right-width:0px;vertical-align:top;">
 										<span style="width:4px"/>
 									</td>
 								</tr>
@@ -3305,10 +2760,10 @@ Provide additional information for responses to questions on Schedule R (see ins
 					<xsl:if test="($Print = $Separated) and (count($Form990ScheduleRData/IdRelatedTaxExemptOrgGrp) &gt;= 6) ">
 						<span class="styRepeatingDataTitle">Form 990, Schedule R, Part II - Identification of Related Tax-Exempt Organizations </span>
 						<!-- BEGIN Part II Table -->
-						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styTableCellHeader" scope="col" style="width:324mm;padding-right:10mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:324mm;padding-right:10mm;vertical-align:top;text-align:center;" rowspan="2">
               (a)      
                <!-- Solid line  -->
 										<br/>
@@ -3318,48 +2773,48 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:85mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:85mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
               (b)<br/>
 										<span class="styNormalText">Primary activity<br/>
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:75mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:75mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
               (c)<br/>
 										<span class="styNormalText" style="text-align:center">Legal domicile (state <br/>or foreign country)<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:75mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:75mm;padding-right:2mm;vertical-align:top;text-align:center;" rowspan="2">
               (d)<br/>
 										<span class="styNormalText">Exempt Code section<br/>
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:80mm;padding-right:2mm;padding-bottom:3mm;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:80mm;padding-right:2mm;padding-bottom:3mm;vertical-align:top;text-align:center;" rowspan="2">
 										(e)<br/>
 										<span class="styNormalText">Public charity status<br/>(if section 501(c)(3))<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:85mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:85mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (f)<br/>
 										<span class="styNormalText">Direct controlling<br/>entity<br/>
 											<br/>
 										</span>
 									</th>
-								<th class="styTableCellHeader" scope="col" style="width:34mm;border-right-width:0px;border-left-width:0px;vertical-align:top;text-align:center;" colspan="2">
+								<th class="styTableCellHeader" scope="col" style="height:auto;width:34mm;border-right-width:0px;border-left-width:0px;vertical-align:top;text-align:center;" colspan="2">
 										(g)<br/>
 									<span class="styNormalText" style="text-align:center">Section 512(b)(13) controlled entity?
 											<br/>
 											</span>
 											</th>
 										<tr>
-										<th class="styTableCellHeader" scope="col" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">Yes</th>
+										<th class="styTableCellHeader" scope="col" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">Yes</th>
 										
-										<th class="styTableCellHeader" scope="col" style="width:7mm;border-right-width:0px;vertical-align:top;text-align:center;border-top-width:0px">No</th>
+										<th class="styTableCellHeader" scope="col" style="height:auto;width:7mm;border-right-width:0px;vertical-align:top;text-align:center;border-top-width:0px">No</th>
 								</tr>
 								</tr>
 							</thead>
@@ -3367,10 +2822,8 @@ Provide additional information for responses to questions on Schedule R (see ins
 							<xsl:for-each select="$Form990ScheduleRData/IdRelatedTaxExemptOrgGrp">
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1Cell </xsl:when><xsl:otherwise>styDepTblRow2Cell </xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styTableCellText" style="width:86mm;padding-left:1mm;text-align:left;vertical-align:top;">(<xsl:number value="position()" format="1"/>)
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="DisregardedEntityName/BusinessNameLine1Txt"/>
-										</xsl:call-template>
+									<td class="styTableCellText" style="height:auto;width:86mm;padding-left:1mm;text-align:left;vertical-align:top;">(<xsl:number value="position()" format="1"/>)
+									
 										<br/>
 										<xsl:if test="DisregardedEntityName/BusinessNameLine2Txt">
 											<xsl:call-template name="PopulateText">
@@ -3415,7 +2868,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 										<!-- <xsl:if test="normalize-space(EIN) = ''"></xsl:if>-->
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellText" style="width:85mm;padding-right:2mm;vertical-align:top;">
+									<td class="styTableCellText" style="height:auto;width:85mm;padding-right:2mm;vertical-align:top;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 										</xsl:call-template>
@@ -3423,7 +2876,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 									</td>
 									<xsl:choose>
 										<xsl:when test="LegalDomicileStateCd">
-											<td class="styTableCellText" style="width:25mm;text-align:center;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;width:25mm;text-align:center;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 												</xsl:call-template>
@@ -3431,7 +2884,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											</td>
 										</xsl:when>
 										<xsl:otherwise>
-											<td class="styTableCellText" style="width:25mm;text-align:center;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;width:25mm;text-align:center;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 												</xsl:call-template>
@@ -3439,13 +2892,13 @@ Provide additional information for responses to questions on Schedule R (see ins
 											</td>
 										</xsl:otherwise>
 									</xsl:choose>
-									<td class="styTableCell" style="width:25mm;padding-right:8mm;text-align:left;vertical-align:top;">
+									<td class="styTableCell" style="height:auto;width:25mm;padding-right:8mm;text-align:left;vertical-align:top;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="ExemptCodeSectionTxt"/>
 										</xsl:call-template>
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell" style="width:25mm;text-align:left;vertical-align:top;">
+									<td class="styTableCell" style="height:auto;width:25mm;text-align:left;vertical-align:top;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="PublicCharityStatusTxt"/>
 										</xsl:call-template>
@@ -3453,7 +2906,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 									</td>
 									<xsl:choose>
 										<xsl:when test="DirectControllingEntityName/BusinessNameLine1Txt">
-											<td class="styTableCellText" style="width:80mm;text-align-left;border-right-width:0px;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;width:80mm;text-align-left;border-right-width:0px;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="DirectControllingEntityName/BusinessNameLine1Txt"/>
 												</xsl:call-template>
@@ -3465,7 +2918,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											
 										</xsl:when>
 										<xsl:otherwise>
-											<td class="styTableCellText" style="width:80mm;text-align:left;border-right-width:0px;vertical-align:top;">
+											<td class="styTableCellText" style="height:auto;width:80mm;text-align:left;border-right-width:0px;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="DirectControllingNACd"/>
 												</xsl:call-template>
@@ -3474,14 +2927,14 @@ Provide additional information for responses to questions on Schedule R (see ins
 										
 										</xsl:otherwise>
 									</xsl:choose>
-									<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+									<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="ControlledOrganizationInd"/>
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:0px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:0px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="ControlledOrganizationInd"/>
@@ -3499,10 +2952,10 @@ Provide additional information for responses to questions on Schedule R (see ins
 					<xsl:if test="($Print = $Separated) and (count($Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp) &gt;= 7) ">
 						<span class="styRepeatingDataTitle">Form 990, Schedule R, Part III - Identification of Related Organizations Taxable as a Partnership  </span>
 						<!-- BEGIN Part III Table -->
-						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styTableCellHeader" scope="col" style="width:40.5mm;border-right-width:1px" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:40.5mm;border-right-width:1px" rowspan="2">
               (a)<br/>
 										<span class="styNormalText">Name, address, and EIN of<br/>related organization<br/>
 											<br/>
@@ -3510,7 +2963,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:40mm;border-right-width:1px" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:40mm;border-right-width:1px" rowspan="2">
               (b)<br/>
 										<span class="styNormalText">Primary activity<br/>
 											<br/>
@@ -3519,14 +2972,14 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:10.5mm;border-right-width:1px" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:10.5mm;border-right-width:1px" rowspan="2">
               (c)<br/>
 										<span class="styNormalText">Legal <br/>Domicile<br/> (State or <br/>Foreign<br/>Country)<br/>
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:25.5mm;border-right-width:1px" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:25.5mm;border-right-width:1px" rowspan="2">
               (d)<br/>
 										<span class="styNormalText">Direct Controlling<br/>Entity<br/>
 											<br/>
@@ -3534,13 +2987,13 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:25.5mm;border-right-width:1px" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:25.5mm;border-right-width:1px" rowspan="2">
               (e)<br/>
 										<span class="styNormalText">Predominant<br/>income(related, unrelated, excluded from tax under sections <br/>512-514) <br/>
 										
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:26mm;border-right-width:1px" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:26mm;border-right-width:1px" rowspan="2">
                 (f)<br/>
 										<span class="styNormalText">Share of total income<br/><br/>
 											<br/>
@@ -3548,7 +3001,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:26mm;border-right-width:1px;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:26mm;border-right-width:1px;" rowspan="2">
               (g)<br/>
 										<span class="styNormalText">Share of end-of-year assets<br/><br/>
 											<br/>
@@ -3556,7 +3009,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:14mm;border-right-width:1px" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:14mm;border-right-width:1px" colspan="2">
                 (h)<br/>
 										<span class="styNormalText">Disproprtionate allocations?<br/>
 											<br/>
@@ -3572,7 +3025,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:14mm;border-right-width:1px;" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:14mm;border-right-width:1px;" colspan="2">
               (j) <br/>
 										<span class="styNormalText">General or <br/>Managing<br/> Partner?<br/>
 											<br/>
@@ -3580,7 +3033,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:22mm;border-right-width:0px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:22mm;border-right-width:0px">
                 (k)<br/>
 										<span class="styNormalText">Percentage<br/>ownership<br/>
 											<br/>
@@ -3588,10 +3041,10 @@ Provide additional information for responses to questions on Schedule R (see ins
 										</span>
 									</th>
 									<tr>
-										<th class="styTableCellHeader" scope="col" style="width:7mm;border-right-width:1px;text-align:center;">Yes</th>
-										<th class="styTableCellHeader" scope="col" style="width:7mm;border-right-width:1px;text-align:center;">No</th>
-										<th class="styTableCellHeader" scope="col" style="width:7mm;border-right-width:1px;text-align:center;">Yes</th>
-										<th class="styTableCellHeader" scope="col" style="width:7mm;border-right-width:0px;text-align:center;">No</th>
+										<th class="styTableCellHeader" scope="col" style="height:auto;width:7mm;border-right-width:1px;text-align:center;">Yes</th>
+										<th class="styTableCellHeader" scope="col" style="height:auto;width:7mm;border-right-width:1px;text-align:center;">No</th>
+										<th class="styTableCellHeader" scope="col" style="height:auto;width:7mm;border-right-width:1px;text-align:center;">Yes</th>
+										<th class="styTableCellHeader" scope="col" style="height:auto;width:7mm;border-right-width:1px;text-align:center;">No</th>
 									</tr>
 								</tr>
 							</thead>
@@ -3599,8 +3052,11 @@ Provide additional information for responses to questions on Schedule R (see ins
 							<tbody>
 							<xsl:for-each select="$Form990ScheduleRData/IdRelatedOrgTxblPartnershipGrp">
 									<tr>
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1Cell </xsl:when><xsl:otherwise>styDepTblRow2Cell </xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styTableCellText" style="width:60mm;padding-left:1mm;">(<xsl:number value="position()" format="1"/>)
+										<xsl:attribute name="class">
+										<xsl:choose>
+										<xsl:when test="position() mod 2 = 1">styDepTblRow1Cell </xsl:when>
+										<xsl:otherwise>styDepTblRow2Cell </xsl:otherwise></xsl:choose></xsl:attribute>
+										<td class="styTableCellText" style="height:auto;width:60mm;padding-left:1mm;">(<xsl:number value="position()" format="1"/>)
 											<!--span style="width:4px"></span-->
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="RelatedOrganizationName/BusinessNameLine1Txt"/>
@@ -3648,14 +3104,14 @@ Provide additional information for responses to questions on Schedule R (see ins
 												<xsl:with-param name="TargetNode" select="EIN"/>
 											</xsl:call-template>
 										</td>
-										<td class="styTableCellText" style="width:40mm;border-right-width:1px;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;width:40mm;border-right-width:1px;vertical-align:top;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 											</xsl:call-template>
 										</td>
 										<xsl:choose>
 											<xsl:when test="LegalDomicileStateCd">
-												<td class="styTableCellText" style="width:10.5mm;text-align:center;vertical-align:top;">
+												<td class="styTableCellText" style="height:auto;width:10.5mm;text-align:center;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 													</xsl:call-template>
@@ -3663,7 +3119,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</td>
 											</xsl:when>
 											<xsl:otherwise>
-												<td class="styTableCellText" style="width:10.5mm;text-align:center;vertical-align:top;">
+												<td class="styTableCellText" style="height:auto;width:10.5mm;text-align:center;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 													</xsl:call-template>
@@ -3673,7 +3129,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 										</xsl:choose>
 										<xsl:choose>
 											<xsl:when test="DirectControllingEntityName/BusinessNameLine1Txt">
-												<td class="styTableCellText" style="width:20mm;text-align-left;border-right-width:1px;vertical-align:top;">
+												<td class="styTableCellText" style="height:auto;width:20mm;text-align-left;border-right-width:1px;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="DirectControllingEntityName/BusinessNameLine1Txt"/>
 													</xsl:call-template>
@@ -3684,7 +3140,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</td>
 											</xsl:when>
 											<xsl:otherwise>
-												<td class="styTableCellText" style="width:20mm;border-right-width:1px;vertical-align:top;">
+												<td class="styTableCellText" style="height:auto;width:20mm;border-right-width:1px;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="DirectControllingNACd"/>
 													</xsl:call-template>
@@ -3692,32 +3148,32 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</td>
 											</xsl:otherwise>
 										</xsl:choose>
-										<td class="styTableCellText" style="width:22mm;border-right-width:1px;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;width:22mm;border-right-width:1px;vertical-align:top;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="PredominantIncomeTypeTxt"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:26mm;padding-left:7mm;border-right-width:1px;vertical-align:top;font-size:6pt;">
+										<td class="styTableCell" style="height:auto;width:26mm;padding-left:7mm;border-right-width:1px;vertical-align:top;font-size:6pt;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="ShareOfTotalIncomeAmt"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:26mm;padding-left:7mm;border-right-width:1px;vertical-align:top;font-size:6pt;">
+										<td class="styTableCell" style="height:auto;width:26mm;padding-left:7mm;border-right-width:1px;vertical-align:top;font-size:6pt;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="ShareOfEOYAssetsAmt"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="DisproportionateAllocationsInd"/>
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="DisproportionateAllocationsInd"/>
@@ -3725,20 +3181,20 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:26mm;padding-left:10mm;border-right-width:1px;vertical-align:top;font-size:6pt;">
+										<td class="styTableCellText" style="height:auto;width:26mm;padding-left:10mm;border-right-width:1px;vertical-align:top;font-size:6pt;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="UBICodeVAmt"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="GeneralOrManagingPartnerInd"/>
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="GeneralOrManagingPartnerInd"/>
@@ -3746,7 +3202,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:26mm;border-right-width:0px;padding-left:5mm;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;width:26mm;border-right-width:0px;padding-left:5mm;vertical-align:top;">
 												<xsl:call-template name="PopulatePercent">
 													<xsl:with-param name="TargetNode" select="OwnershipPct"/>
 												</xsl:call-template>
@@ -3764,84 +3220,86 @@ Provide additional information for responses to questions on Schedule R (see ins
 					<xsl:if test="($Print = $Separated) and (count($Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp) &gt;=7)">
 						<span class="styRepeatingDataTitle">Form 990, Schedule R, Part IV - Identification of Related Organizations Taxable as a Corporation or Trust   </span>
 						<!-- BEGIN Part IV Table -->
-						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
 									<!--<div class="styBB" style="width:64mm;border-right-width:1px;"> </div> -->
 									<!-- Solid line across -->
-									<th class="styTableCellHeader" scope="col" style="width:78mm;border-right-width:1px;">
+								
+								
+							
+				<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:78mm;padding-right:10mm;vertical-align:top;text-align:center;" rowspan="2">
               (a)<br/>
-										<span class="styNormalText">Name, address, and EIN of related organization<br/>
-											<br/>
-											<br/>
-											<br/>
+										<span class="styNormalText">Name, address, and EIN of<br/>related organization<br/>
+											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width35.2mm;border-right-width:1px;padding-top:1mm;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:40mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (b)<br/>
 										<span class="styNormalText">Primary activity<br/>
-											<br/>
-											<br/>
-											<br/>
+											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:32mm;border-right-width:1px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;text-align:center; border-style: solid; border-color: black;width:30mm;border-right-width:1px;vertical-align:top;" rowspan="2">
               (c)<br/>
-										<span class="styNormalText" style="text-align:center">Legal Domicile<br/>(State or <br/>Foreign<br/>Country)<br/>
+										<span class="styNormalText">Legal <br/>domicile<br/> (state or foreign<br/>country)<br/>
+											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:32mm;border-right-width:1px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (d)<br/>
-										<span class="styNormalText">Direct Controlling<br/>Entity<br/>
-											<br/>
-											<br/>
+										<span class="styNormalText">Direct controlling<br/>entity<br/>
+											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:32mm;border-right-width:1px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:20mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (e)<br/>
-										<span class="styNormalText">Type of entity<br/>(C corp, S corp,<br/>or trust)<br/>
-											<br/>
+										<span class="styNormalText">Type of entity <br/>(C corp,  S corp, <br/> or trust)
+											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:22.4mm;border-right-width:1px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
                 (f)<br/>
-										<span class="styNormalText">Share of total income<br/><br/>
-											<br/>
-											<br/>
+										<span class="styNormalText">Share of total income<br/>
+											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:22.4mm;border-right-width:1px;">
+									
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (g)<br/>
-										<span class="styNormalText">Share of <br/> end-of-year<br/>assets<br/><br/>
+										<span class="styNormalText">Share of end-of-year<br/> assets<br/>
+											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:22mm;border-right-width:1px">
+									
+									<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:21mm;border-right-width:1px;vertical-align:top;text-align:center;">
                 (h)<br/>
 										<span class="styNormalText">Percentage<br/>ownership<br/>
-											<br/>
-											<br/>
+											
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:34mm;border-right-width:1px;border-left-width:0px;text-align:center;" colspan="2">
+									<!-- i -->
+						<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:15mm;border-right-width:0px;border-left-width:0px;vertical-align:top;text-align:center;" colspan="2">
 										(i)<br/>
 									<span class="styNormalText">Section 512(b)(13) controlled entity?
 											<br/>
 											</span>
 											</th>
-											
-											<tr>
-										<th class="styTableCellHeader" scope="col" style="width:7mm;border-right-width:1px;text-align:center;">Yes</th>
-										
-										<th class="styTableCellHeader" scope="col" style="width:7mm;border-right-width:0px;text-align:center;">No</th>
-									</tr>
-								</tr>
+					<tr>
+						
+								<!-- This extra th with no entry pushes the yes box over into the controlled entity column -->		
+					<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;text-align:center;border-left-width:1px;"/>
+							<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:1px;text-align:center;border-left-width:1px;">Yes</th>
+							<th class="styTableCellHeader" scope="col" style="height:auto;border-style: solid; border-color: black;width:10mm;border-right-width:0px;text-align:center;">No</th>
+					</tr>
+							</tr>				
 							</thead>
 							<tfoot/>
 							<tbody>
 								<xsl:for-each select="$Form990ScheduleRData/IdRelatedOrgTxblCorpTrGrp">
 									<tr>
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1Cell </xsl:when><xsl:otherwise>styDepTblRow2Cell </xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styTableCellText" style="width:78mm;padding-left:1mm;">(<xsl:number value="position()" format="1"/>)
+										<td class="styTableCellText" style="height:auto;width:78mm;padding-left:1mm;">(<xsl:number value="position()" format="1"/>)
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="RelatedOrganizationName/BusinessNameLine1Txt"/>
 											</xsl:call-template>
@@ -3888,7 +3346,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 												<xsl:with-param name="TargetNode" select="EIN"/>
 											</xsl:call-template>
 										</td>
-										<td class="styTableCellText" style="width:22mm;border-right-width:1px;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;width:22mm;border-right-width:1px;vertical-align:top;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 											</xsl:call-template>
@@ -3896,7 +3354,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 										</td>
 										<xsl:choose>
 											<xsl:when test="LegalDomicileStateCd">
-												<td class="styTableCellText" style="width:32mm;text-align:center;vertical-align:top;">
+												<td class="styTableCellText" style="height:auto;width:32mm;text-align:center;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 													</xsl:call-template>
@@ -3904,7 +3362,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</td>
 											</xsl:when>
 											<xsl:otherwise>
-												<td class="styTableCellText" style="width:32mm;text-align:center;vertical-align:top;">
+												<td class="styTableCellText" style="height:auto;width:32mm;text-align:center;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 													</xsl:call-template>
@@ -3914,7 +3372,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 										</xsl:choose>
 										<xsl:choose>
 											<xsl:when test="DirectControllingEntityName/BusinessNameLine1Txt">
-												<td class="styTableCellText" style="width:32mm;text-align-left;border-right-width:1px;vertical-align:top;">
+												<td class="styTableCellText" style="height:auto;width:32mm;text-align-left;border-right-width:1px;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="DirectControllingEntityName/BusinessNameLine1Txt"/>
 													</xsl:call-template>
@@ -3925,7 +3383,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</td>
 											</xsl:when>
 											<xsl:otherwise>
-												<td class="styTableCellText" style="width:32mm;border-right-width:1px;vertical-align:top;">
+												<td class="styTableCellText" style="height:auto;width:32mm;border-right-width:1px;vertical-align:top;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="DirectControllingNACd"/>
 													</xsl:call-template>
@@ -3933,38 +3391,38 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</td>
 											</xsl:otherwise>
 										</xsl:choose>
-										<td class="styTableCellText" style="width:32mm;border-right-width:1px;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;width:32mm;border-right-width:1px;vertical-align:top;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="EntityTypeTxt"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:32mm;padding-left:5mm;border-right-width:1px;vertical-align:top;">
+										<td class="styTableCell" style="height:auto;width:32mm;padding-left:5mm;border-right-width:1px;vertical-align:top;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="ShareOfTotalIncomeAmt"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:32mm;padding-left:5mm;border-right-width:1px;vertical-align:top;">
+										<td class="styTableCell" style="height:auto;width:32mm;padding-left:5mm;border-right-width:1px;vertical-align:top;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="ShareOfEOYAssetsAmt"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCellText" style="width:26mm;border-right-width:0px;padding-left:5mm;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;width:26mm;border-right-width:1px;padding-left:5mm;vertical-align:top;">
 											<xsl:call-template name="PopulatePercent">
 												<xsl:with-param name="TargetNode" select="OwnershipPct"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="ControlledOrganizationInd"/>
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:0px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:0px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="ControlledOrganizationInd"/>
@@ -3982,10 +3440,10 @@ Provide additional information for responses to questions on Schedule R (see ins
 					<!-- BEGIN Question 2 PART V-->
 					<xsl:if test="($Print = $Separated) and (count($Form990ScheduleRData/TransactionsRelatedOrgGrp) &gt;= 6) ">
 						<span class="styRepeatingDataTitle">Form 990, Schedule R, Part V - Transactions With Related Organizations   </span>
-						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styTableCellHeader" scope="col" style="width:196mm;padding-right:10mm;border-top-width:1px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:196mm;padding-right:10mm;border-top-width:1px">
               (a)      
               
               <br/>
@@ -3995,19 +3453,19 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:30mm;padding-right:2mm;border-top-width:1px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:30mm;padding-right:2mm;border-top-width:1px">
               (b)<br/>
 										<span class="styNormalText">Transaction<br/>type(a-s)<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:30mm;padding-right:2mm;border-right-width:1px;border-top-width:1px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:30mm;padding-right:2mm;border-right-width:1px;border-top-width:1px">
               (c)<br/>
 										<span class="styNormalText">Amount Involved <br/><br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:49mm;padding-right:2mm;border-right-width:0px;border-top-width:1px">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:49mm;padding-right:2mm;border-right-width:0px;border-top-width:1px">
               (d)<br/>
 										<span class="styNormalText">Method of determining amount involved</span>
 									</th>
@@ -4018,7 +3476,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 								<xsl:for-each select="$Form990ScheduleRData/TransactionsRelatedOrgGrp">
 									<tr>
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1Cell </xsl:when><xsl:otherwise>styDepTblRow2Cell </xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styTableCellText" style="width:196mm;padding-right:4mm;">
+										<td class="styTableCellText" style="height:auto;width:196mm;padding-right:4mm;">
 											<span style="font-weight:bold;padding-left:2mm;padding-right:4mm"> (<xsl:number value="position()" format="1"/>)    </span>
 								<span style="font-weight:regular;text-align:left;padding-left:1mm;vertical-align:top;"/>
 											<xsl:call-template name="PopulateText">
@@ -4033,17 +3491,17 @@ Provide additional information for responses to questions on Schedule R (see ins
 											</xsl:if>
 											<br/>
 										</td>
-										<td class="styTableCellText" style="width:30mm;padding-left:1mm;text-align:center;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;width:30mm;padding-left:1mm;text-align:center;vertical-align:top;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="TransactionTypeTxt"/>
 											</xsl:call-template>
 										</td>
-										<td class="styTableCell" style="width:30mm;padding-left:1mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCell" style="height:auto;width:30mm;padding-left:1mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="InvolvedAmt"/>
 											</xsl:call-template>
 										</td>
-										<td class="styTableCell" style="width:79mm;padding-left:1mm;border-right-width:0px;text-align:left;vertical-align:top;">
+										<td class="styTableCell" style="height:auto;width:79mm;padding-left:1mm;border-right-width:0px;text-align:left;vertical-align:top;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="MethodOfAmountDeterminationTxt"/>
 											</xsl:call-template>
@@ -4059,10 +3517,10 @@ Provide additional information for responses to questions on Schedule R (see ins
 					<xsl:if test="($Print = $Separated) and (count($Form990ScheduleRData/UnrelatedOrgTxblPartnershipGrp) &gt;= 16) ">
 						<span class="styRepeatingDataTitle">Form 990, Schedule R, Part VI - Unrelated Organizations Taxable as a Partnership   </span>
 						<!-- BEGIN Part VI Table -->
-						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+						<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table;">
 							<thead class="styTableThead">
 								<tr class="styDepTblHdr">
-									<th class="styTableCellHeader" scope="col" style="width:40.5mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:40.5mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (a)<br/>
 										<span class="styNormalText" style="text-align:center">Name, address, and EIN of entity<br/>
 											<br/>
@@ -4071,7 +3529,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:25.5mm;border-right-width:1px;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:25.5mm;border-right-width:1px;text-align:center;" rowspan="2">
               (b)<br/>
 										<span class="styNormalText" style="text-align:center">Primary Activity<br/>
 											<br/>
@@ -4080,7 +3538,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:60.5mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:60.5mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (c)<br/>
 										<span class="styNormalText" style="text-align:center">Legal domicile<br/> (state or foreign<br/>country)<br/>
 											<br/>
@@ -4089,20 +3547,20 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:25mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (d)<br/>
 										<span class="styNormalText">Predominant income(related, unrelated, excluded from tax under sections 512-514) 
 											<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:14mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:14mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
                 (e)<br/>
 										<span class="styNormalText" style="text-align:center">Are all<br/>partners<br/>501(c)(3)<br/>organizations?<br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:26mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
                 (f)<br/>
 										<span class="styNormalText" style="text-align:center">Share of total income<br/>
 											<br/>
@@ -4111,13 +3569,13 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:45mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:45mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (g)<br/>
 										<span class="styNormalText">Share of <br/>End-of-year<br/> assets<br/><br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:14mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:14mm;border-right-width:1px;vertical-align:top;text-align:center;" colspan="2">
                 (h)<br/>
 										<span class="styNormalText">Disproprtionate allocations?<br/>
 											<br/>
@@ -4126,13 +3584,13 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:45mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:45mm;border-right-width:1px;vertical-align:top;text-align:center;" rowspan="2">
               (i)<br/>
 										<span class="styNormalText">Code V-UBI <br/>amount in Box<br/> 20 of K-1<br/><br/>
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:14mm;border-right-width:0px;vertical-align:top;text-align:center;" colspan="2">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:14mm;border-right-width:0px;vertical-align:top;text-align:center;" colspan="2">
               (j) <br/>
 										<span class="styNormalText">General or <br/>Managing<br/> Partner?<br/>
 											<br/>
@@ -4140,7 +3598,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 											<br/>
 										</span>
 									</th>
-									<th class="styTableCellHeader" scope="col" style="width:22mm;border-right-width:0px;vertical-align:top;text-align:center;">
+									<th class="styTableCellHeader" scope="col" style="height:auto;width:22mm;border-right-width:0px;vertical-align:top;text-align:center;">
                 (k)<br/>
 										<span class="styNormalText">Percentage<br/>ownership<br/>
 											<br/>
@@ -4162,7 +3620,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 								<xsl:for-each select="$Form990ScheduleRData/UnrelatedOrgTxblPartnershipGrp">
 									<tr>
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1Cell </xsl:when><xsl:otherwise>styDepTblRow2Cell </xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styTableCellText" style="width:60mm;padding-left:1mm;">(<xsl:number value="position()" format="1"/>)
+										<td class="styTableCellText" style="height:auto;width:60mm;padding-left:1mm;">(<xsl:number value="position()" format="1"/>)
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
 											</xsl:call-template>
@@ -4209,14 +3667,14 @@ Provide additional information for responses to questions on Schedule R (see ins
 												<xsl:with-param name="TargetNode" select="EIN"/>
 											</xsl:call-template>
 										</td>
-										<td class="styTableCellText" style="width:40mm;border-right-width:1px;vertical-align:top;text-align:left;">
+										<td class="styTableCellText" style="height:auto;width:40mm;border-right-width:1px;vertical-align:top;text-align:left;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="PrimaryActivitiesTxt"/>
 											</xsl:call-template>
 										</td>
 										<xsl:choose>
 											<xsl:when test="LegalDomicileStateCd">
-												<td class="styTableCellText" style="width:47.5mm;text-align:center;vertical-align:top;border-right-width:1px;">
+												<td class="styTableCellText" style="height:auto;width:47.5mm;text-align:center;vertical-align:top;border-right-width:1px;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="LegalDomicileStateCd"/>
 													</xsl:call-template>
@@ -4224,7 +3682,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</td>
 											</xsl:when>
 											<xsl:otherwise>
-												<td class="styTableCellText" style="width:47.5mm;text-align:center;vertical-align:top;border-right-width:1px;">
+												<td class="styTableCellText" style="height:auto;width:47.5mm;text-align:center;vertical-align:top;border-right-width:1px;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="LegalDomicileForeignCountryCd"/>
 													</xsl:call-template>
@@ -4232,20 +3690,20 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</td>
 											</xsl:otherwise>
 										</xsl:choose>
-										<td class="styTableCellText" style="border-right-width:1px;width:25mm;text-align:left;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;border-right-width:1px;width:25mm;text-align:left;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PredominateIncomeDesc"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="AllPartnersC3SInd"/>
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="AllPartnersC3SInd"/>
@@ -4253,25 +3711,25 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCell" style="border-right-width:1px;width:31mm;text-align:right;vertical-align:top;font-size:8;">
+										<td class="styTableCell" style="height:auto;border-right-width:1px;width:31mm;text-align:right;vertical-align:top;font-size:8;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="ShareOfTotalIncomeAmt"/>
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-										<td class="styTableCell" style="width:26mm;border-right-width:1px;text-align:right;vertical-align:top;font-size:8;">
+										<td class="styTableCell" style="height:auto;width:26mm;border-right-width:1px;text-align:right;vertical-align:top;font-size:8;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="ShareOfEOYAssetsAmt"/>
 											</xsl:call-template>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="DisproportionateAllocationsInd"/>
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="DisproportionateAllocationsInd"/>
@@ -4279,20 +3737,20 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:26mm;border-right-width:1px;vertical-align:top;text-align:right;font-size:8;">
+										<td class="styTableCellText" style="height:auto;width:26mm;border-right-width:1px;vertical-align:top;text-align:right;font-size:8;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="UBICodeVAmt"/>
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:1px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateYesBoxText">
 													<xsl:with-param name="TargetNode" select="GeneralOrManagingPartnerInd"/>
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:7mm;border-right-width:0px;vertical-align:top;text-align:center;">
+										<td class="styTableCellText" style="height:auto;width:7mm;border-right-width:0px;vertical-align:top;text-align:center;">
 											<div>
 												<xsl:call-template name="PopulateNoBoxText">
 													<xsl:with-param name="TargetNode" select="GeneralOrManagingPartnerInd"/>
@@ -4300,7 +3758,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 												</xsl:call-template>
 											</div>
 										</td>
-										<td class="styTableCellText" style="width:26mm;border-right-width:0px;padding-left:5mm;vertical-align:top;">
+										<td class="styTableCellText" style="height:auto;width:26mm;border-right-width:0px;padding-left:5mm;vertical-align:top;">
 												<xsl:call-template name="PopulatePercent">
 													<xsl:with-param name="TargetNode" select="OwnershipPct"/>
 												</xsl:call-template>
@@ -4347,27 +3805,23 @@ Provide additional information for responses to questions on Schedule R (see ins
 	</xsl:template>
 	<xsl:template name="IRS990PartITableFillerRow">
 		<tr>
-			<td class="styTableCellText" style="width:102mm;height:6px">
+			<td class="styTableCellText" style="width:256mm;height:6mm">
 				<br/>
 				<br/>
 				<span style="width:4px;"/>
 			</td>
-			<td class="styTableCell" style="width:33mm;">
-				<span style="width:4px"/>
-			</td>
-			<td class="styTableCell" style="width:55mm;">
-				<span style="width:4px"/>
-			</td>
+			
+		
 			<td class="styTableCell" style="width:25mm;">
 				<span style="width:4px"/>
 			</td>
 			<td class="styTableCell" style="width:25mm;">
 				<span style="width:0px"/>
 			</td>
-			<td class="styTableCell" style="width:25mm;border-right-width:0px;">
+			<td class="styTableCell" style="width:25mm;border-right-width:1px;">
 				<span style="width:0px"/>
 			</td>
-			<td class="styTableCell" style="width:25mm;border-right-width:0px;">
+			<td class="styTableCell" style="width:25mm;border-right-width:1px;">
 				<span style="width:4px"/>
 			</td>
 			<td class="styTableCell" style="width:25mm;border-right-width:0px;">
@@ -4473,7 +3927,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 				<span style="width:0px"/>
 			</td>
 			<td class="styTableCell" style="width:25mm;">
-				<span style="width:4px;border-right-width:2px;"/>
+				<span style="width:4px;border-right-width:1px;"/>
 			</td>
 			<td class="styTableCell" style="width:30mm;border-right-width:1px;">
 				<span style="width:4px"/>
@@ -4481,7 +3935,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 			<td class="styTableCell" style="width:7mm;">
 				<span style="width:4px;"/>
 			</td>
-			<td class="styTableCell" style="width:7mm;">
+			<td class="styTableCell" style="width:7mm;border-right-width:0px;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
@@ -4512,7 +3966,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 			<td class="styTableCell" style="width:30mm;">
 				<span style="width:4px;"/>
 			</td>
-			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
+			<td class="styTableCell" style="width:30mm;border-right-width:1px;">
 				<span style="width:4px;"/>
 			</td>
 			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
@@ -4529,7 +3983,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 			<td class="styTableCell" style="width:30mm;">
 				<span style="width:4px;"/>
 			</td>
-			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
+			<td class="styTableCell" style="width:30mm;border-right-width:1px;">
 				<span style="width:4px;"/>
 			</td>
 			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
@@ -4546,7 +4000,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 			<td class="styTableCell" style="width:30mm;">
 				<span style="width:4px;"/>
 			</td>
-			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
+			<td class="styTableCell" style="width:30mm;border-right-width:1px;">
 				<span style="width:4px;"/>
 			</td>
 			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
@@ -4563,7 +4017,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 			<td class="styTableCell" style="width:30mm;">
 				<span style="width:4px;"/>
 			</td>
-			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
+			<td class="styTableCell" style="width:30mm;border-right-width:1px;">
 				<span style="width:4px;"/>
 			</td>
 			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
@@ -4580,7 +4034,7 @@ Provide additional information for responses to questions on Schedule R (see ins
 			<td class="styTableCell" style="width:30mm;">
 				<span style="width:4px;"/>
 			</td>
-			<td class="styTableCell" style="width:30mm;border-right-width:0px;">
+			<td class="styTableCell" style="width:30mm;border-right-width:1px;">
 				<span style="width:4px;"/>
 			</td>
 			<td class="styTableCell" style="width:30mm;border-right-width:0px;">

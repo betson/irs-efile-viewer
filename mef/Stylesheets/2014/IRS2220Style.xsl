@@ -91,14 +91,14 @@
     font-size:6pt;
     padding-top: 4px; padding-bottom: 4px; 
     padding-left: 4px; padding-right: 4px;
-    vertical-align: top;border:1 solid black;
+    vertical-align: top;border:1px solid black;
     text-align:right;
     vertical-align:bottom; 
     }
   .styDepTblCellRNBSRD { /* Table cell for right number box in Dependency table */
     padding-top: 4px; padding-bottom: 4px; 
     padding-left: 4px; padding-right: 4px;
-    vertical-align: top;border:1 solid black;
+    vertical-align: top;border:1px solid black;
     text-align:center;
     font-weight:bold;
    vertical-align:bottom; 

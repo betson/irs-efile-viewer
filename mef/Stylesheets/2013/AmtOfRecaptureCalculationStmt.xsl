@@ -14,8 +14,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -52,7 +54,7 @@
         
         <div class="styTopSectionLine">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
-          <div style="float:left;clear:none;">
+          <div style="float:left" class="styExplanationLine">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$ARCSData/ShortExplanationTxt"/>
             </xsl:call-template>            

@@ -31,22 +31,22 @@
 						<!--Set row alternate background color -->
 						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 						<!--Column 1 - Description Of Each Class Of Stock -->
-						<td class="styDepTblCell" style="width:59mm;text-align:left;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:59mm;text-align:left;vertical-align:middle;font-size:7pt;">
 							<!--Allow row to expand by column -->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="StockClassDesc"/>
 							</xsl:call-template>
-							<span class="styTablecellpad"/>
+							<span class="styDepTblCellpad"/>
 						</td>
 						<!--Column 2 - Days During The Tax Year In Which The Stock Was Closely Held -->
-						<td class="styDepTblCell" style="width:22mm;text-align:right;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:22mm;text-align:center;vertical-align:middle;font-size:7pt;">
 							<!--Allow row to expand by column -->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="DaysStockCloselyHeldCnt"/>
 							</xsl:call-template>
-							<span class="styTablecellpad"/>
+							<span class="styDepTblCellpad"/>
 						</td>
 						<!--Column 3 - Total Percentage Of The Vote And Value Of The Class of Stock That Is Owned by 5% Shareholders -->
 						<td class="styDepTblCell" style="width:32mm;text-align:right;vertical-align:middle;font-size:7pt">
@@ -55,16 +55,16 @@
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="TotalPctAndValueStockOwnedRt"/>
 							</xsl:call-template>
-							<span class="styTablecellpad"/>
+							<span class="styDepTblCellpad"/>
 						</td>
 						<!--Column 4 -  Total Number Of Qualified Shareholders -->
-						<td class="styDepTblCell" style="width:32mm;text-align:left;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:32mm;text-align:right;vertical-align:middle;font-size:7pt">
 							<!--Allow row to expand by column -->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="TotalQualifiedShareholdersCnt"/>
 							</xsl:call-template>
-							<span class="styTablecellpad"/>
+							<span class="styDepTblCellpad"/>
 						</td>
 						<!--TEST 1-->
 						<xsl:if test="count(TotalPctValueSharesOwnedGrp)=0 or count(TotalPctValueSharesOwnedGrp)=1">
@@ -74,14 +74,14 @@
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="TotalPctValueSharesOwnedGrp/CountryOfOperationCd"/>
 								</xsl:call-template>
-								<span class="styTablecellpad"/>
+								<span class="styDepTblCellpad"/>
 							</td>
 							<!--Column 6 - Percentage -->
-							<td class="styDepTblCell" style="width:36mm;text-align:right;font-size:7pt">
+							<td class="styDepTblCell" style="width:36mm;text-align:center;font-size:7pt">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="TotalPctValueSharesOwnedGrp/Pct"/>
 								</xsl:call-template>
-								<span class="styTablecellpad"/>
+								<span class="styDepTblCellpad"/>
 							</td>
 							<!-- End repeated within row for Column 5 and 6 -->
 						</xsl:if>
@@ -93,10 +93,10 @@
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="TotalPctValueSharesOwnedGrp/CountryOfOperationCd"/>
 								</xsl:call-template>
-								<span class="styTablecellpad"/>
+								<span class="styDepTblCellpad"/>
 							</td>
 							<!--Column 6 - Percentage -->
-							<td class="styDepTblCell" style="width:36mm;text-align:right;font-size:7pt">
+							<td class="styDepTblCell" style="width:36mm;text-align:center;font-size:7pt">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="TotalPctValueSharesOwnedGrp/Pct"/>
 								</xsl:call-template>
@@ -105,13 +105,13 @@
 							<!-- End repeated within row for Column 5 and 6 -->
 						</xsl:if>
 						<!--Column 7 - Days shareholders owned, directly or indirectly, shares of stock -->
-						<td class="styDepTblCell" style="width:22mm;text-align:right;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:22mm;text-align:center;vertical-align:middle;font-size:7pt">
 							<!--Allow row to expand by column-->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="DaysShareholdersOwnedStockCnt"/>
 							</xsl:call-template>
-							<span class="styTablecellpad"/>
+							<span class="styDepTblCellpad"/>
 						</td>
 					</tr>
 					<xsl:for-each select="TotalPctValueSharesOwnedGrp">
@@ -125,10 +125,10 @@
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="CountryOfOperationCd"/>
 									</xsl:call-template>
-									<span class="styTablecellpad"/>
+									<span class="styDepTblCellpad"/>
 								</td>
 								<!--Column 6 - Percentage -->
-								<td class="styDepTblCell" style="width:36mm;text-align:right;font-size:7pt">
+								<td class="styDepTblCell" style="width:36mm;text-align:center;font-size:7pt">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="Pct"/>
 									</xsl:call-template>
@@ -144,8 +144,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>

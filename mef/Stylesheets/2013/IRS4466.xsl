@@ -15,8 +15,10 @@
 
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form4466Data)"/></xsl:call-template></title>
     <!-- No Browser Caching -->
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -35,8 +37,8 @@
     <style type="text/css">
       <xsl:if test="not($Print) or $Print=''">
         <xsl:call-template name="IRS4466Style"/>        
-    <xsl:call-template name="AddOnStyle"/>    
-  </xsl:if>
+		<xsl:call-template name="AddOnStyle"/>    
+	  </xsl:if>
 </style>        
   <xsl:call-template name="GlobalStylesForm"/>
 </head>
@@ -50,13 +52,14 @@
     <div class="styBB" style="width:187mm;">
         <div class="styFNBox" style="width:33mm;height:22mm;">
           <div style="height:13mm;">
-            Form<span class="styFormNumber"> 4466</span><br/>
+            Form<span class="styFormNumber"> 4466</span>
+            <span>(Rev. December 2012)</span>
             <xsl:call-template name="SetFormLinkInline">
               <xsl:with-param name="TargetNode" select="$Form4466Data"/>
             </xsl:call-template>
           </div>
-          <div style="height:7mm;font-size:7pt;font-family:arial;">
-            <span>(Rev. December 2012)</span><br/>
+          <div style="height:4mm;font-size:7pt;font-family:arial;">
+            <br/>
             <span>Department of the Treasury</span><br/>
             <span>Internal Revenue Service</span>
           </div>        
@@ -94,14 +97,15 @@
       </div>
     </div>
     <div class="styBB" style="width:187mm;float:none;clear:right;">
-      <div class="styNameBox" style="width:135mm;height:8mm;font-size:7pt;">
+      <div class="styNameBox" style="width:135mm;height:9mm;font-size:7pt;">
         Name<br/>
-        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template><br/>
-        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param></xsl:call-template>
+        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template>
+        <br/>
+        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param></xsl:call-template>
       </div>
       <div class="styEINBox" style="width:52mm;height:4mm;padding-left:2mm;font-size:7pt;">
-        Employer identification number<br/><br/>
-        <span style="text-align:left;width:36mm;font-weight:normal;">            
+        Employer identification number
+        <span style="text-align:center;width:51mm;font-weight:normal;padding-top:3mm;">            
           <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">EIN</xsl:with-param></xsl:call-template>          
         </span>
       </div>
@@ -109,63 +113,40 @@
     <div class="styBB">
       <div style="width:135mm;float:left;clear:left;">
         <div class="styBB" style="width:135mm;">
-          <div class="styNameBox" style="width:135mm;height:8mm;font-size:7pt;">
-          Number,
-          <span style="width:4px;"/>
-          street,
-          <span style="width:4px;"/>
-          and
-          <span style="width:4px;"/>
-          room
-          <span style="width:4px;"/>
-          or
-          <span style="width:4px;"/>
-          suite
-          <span style="width:4px;"/>
-          no. (If a P.O. box, see instructions.)<br/>
+          <div class="styNameBox" style="width:135mm;height:9mm;font-size:7pt;">
+          Number, street, and room or suite no. (If a P.O. box, see instructions.)<br/>
             <span>
-              <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">AddressLine1</xsl:with-param></xsl:call-template><br/>
-              <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">AddressLine2</xsl:with-param></xsl:call-template>
+              <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param></xsl:call-template><br/>
+              <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param></xsl:call-template>
             </span>            
           </div>
         </div>
 <!-- VRB modified; 12/23/2003; for compinace with November 2003 pdf form -->
         <div class="styNameBox" style="height:8mm;width:135mm;font-size:7pt;">
-          City or town,
-          <span style="width:4px;"/>
-          state,
-          <span style="width:4px;"/>
-          and
-          <span style="width:4px;"/>
-          ZIP code <br/>
+          City or town, state, and ZIP code <br/>
           <span>
             <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param></xsl:call-template>
                 <br/>
-            <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">Country</xsl:with-param></xsl:call-template>
+            <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">CountryCd</xsl:with-param></xsl:call-template>
           </span>    
         </div>
       </div>
-      <div style="width:52mm;height:16.5mm;float:left;clear:none;">
+      <div style="width:52mm;height:16.5mm;text-align:left;clear:none;">
       <span style="font-size:7pt;margin-left:3mm;">
         Telephone number (optional)
-      </span>
-      <span style="width:43mm;float:left;clear:none;"/>        
-      <span style="float:left;clear:none;margin-left:3mm;">
+      </span>      
+      <span style="text-align:center;clear:none;padding-top:10mm;width:51mm;margin-left:3mm;">
         <xsl:call-template name="PopulatePhoneNumber">
           <xsl:with-param name="TargetNode" select="$Form4466Data/PhoneNum"/>
         </xsl:call-template>
       </span>
     </div>
     </div>
-
-    <div style="width:187mm"/>
-
     <div class="styBB" style="width:187mm;">
       <span style="font-size:7pt;">
         Check type of return to be filed (see instructions):
       </span>
-    <div style="width:187mm;"/>
-    <div style="width:187mm;float:left;clear:all;">    
+    <div style="width:187mm;text-align:left;clear:all;">    
      
       <input type="checkbox" class="styCkbox">              
         <xsl:call-template name="PopulateCheckbox">
@@ -181,19 +162,6 @@
          Form 1120
       </label>  
       <span style="width:2mm;"/> 
-
- <!-- input type="checkbox" class="styCkbox">              
-        <xsl:call-template name="PopulateCheckbox">
-          <xsl:with-param name="TargetNode" select="$Form4466Data/TypeOfReturn/Form1120A" />
-        </xsl:call-template>
-      </input>
-      <label>
-        <xsl:call-template name="PopulateLabel">
-          <xsl:with-param name="TargetNode" select="$Form4466Data/TypeOfReturn/Form1120A" />
-        </xsl:call-template> 
-         Form 1120-A
-      </label>  
-      <span style="width:2mm;"/ -->
 
  <input type="checkbox" class="styCkbox">              
         <xsl:call-template name="PopulateCheckbox">
@@ -285,7 +253,7 @@
           1
         </div>
         <div class="styLNDesc" style="width:136mm;height:4mm;">
-          <span style="float:left;">Estimated income tax paid during the tax year</span>
+          <span style="text-align:left;">Estimated income tax paid during the tax year</span>
           <!--Dotted Line-->
           <span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
         </div>
@@ -337,8 +305,8 @@
      <div style="width:187mm;">
         <div class="styLNLeftNumBox" style="height:7.5mm">4</div>
         <div class="styLNDesc" style="width:85mm;height:7.5mm;">
-        <span style="float:left;">Enter total tax from the appropriate line of your tax return </span>
-        <span style="float:left;">(see instructions)  </span>        
+        <span style="text-align:left;">Enter total tax from the appropriate line of your tax return </span>
+        <span style="text-align:left;">(see instructions)  </span>        
           <!-- dotted line -->
          <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
         </div>
@@ -367,8 +335,8 @@
       <div style="width:187mm;">
       <div class="styLNLeftNumBox" style="height:7.5mm;">5a</div>
       <div class="styLNDesc" style="width:45mm;height:7.5mm;">
-        <span style="float:left;white-space:nowrap;">Personal holding company tax, </span>
-        <span style="float:left;white-space:nowrap;">if any, included on line 4</span>
+        <span style="text-align:left;">Personal holding company tax, </span>
+        <span style="text-align:left;">if any, included on line 4</span>
         <!-- dotted line -->
         <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
       </div>
@@ -408,7 +376,7 @@
           6
         </div>
         <div class="styLNDesc" style="width:85mm;height:7.5mm;padding-top: 3.5mm;">
-          <span style="float:left;">Total. Add lines 5a and 5b</span>
+          <span style="text-align:left;">Total. Add lines 5a and 5b</span>
           <!--Dotted Line-->
           <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
         </div>
@@ -424,43 +392,48 @@
          <div class="styLNAmountBox" style="width:34mm;height:7.5mm;border-left-width:1px;border-bottom-width:0px;"/>  
     </div>
     <div style="width:187mm;">
-        <div class="styLNLeftNumBox" style="height:4mm;padding-top: 3.5mm;">
+        <div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">
           7
         </div>
-        <div class="styLNDesc" style="width:136mm;height:4mm;padding-top: 3.5mm;">
-          <span style="float:left;">Expected income tax liability for the tax year. Subtract line 6 from line 4  </span>        
+        <div class="styLNDesc" style="width:136mm;height:4mm;padding-top: 1mm;">
+          <span style="text-align:left;">Expected income tax liability for the tax year. Subtract line 6 from line 4  </span>        
           <!--Dotted Line-->
           <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
         </div>
-        <div class="styLNRightNumBox" style="height:4mm;padding-top: 3.5mm;">
+        <div class="styLNRightNumBox" style="height:4.1mm;padding-top: 1mm;">
         7
         </div>
-        <div class="styLNAmountBox" style="width:34mm;padding-top: 3.5mm;">
+        <div class="styLNAmountBox" style="width:34mm;padding-bottom:3.5mm;">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form4466Data/ExpectedIncomeTaxLiabilityAmt"/>
           </xsl:call-template>
         </div>
     </div>
   
-    <div style="width:144mm;float:left;"/>
+    <div style="height:2mm;width:144mm;float:left;"/>
       <div class="styLNRightNumBoxNBB" style="width:8.25mm;background-color:lightgrey;border-right-width:1px;"/>
-    <div style="width:34mm;float:left;"/>    
+<!--    <div style="height:2mm;width:34mm;float:left;"/>    -->
   
     <div style="width:187mm;">
         <div class="styLNLeftNumBox" style="height:4mm;">
           8
         </div>
-        <div class="styLNDesc" style="width:136.1mm;">
-          <span style="float:left;white-space:nowrap;">
-          <span style="font-weight:bold;">Overpayment of estimated tax.</span> Subtract line 7 from line 3. If this amount is at least 10% of
-          line 7 <span style="font-weight:bold;">and</span> </span>
-          <span style="float:left;white-space:nowrap;padding-right:10mm;">at least $500, the corporation is eligible for a quick refund. Otherwise, do not file  this form (see</span>
-          <span style="float:left;white-space:nowrap;">instructions)</span>
-            <span class="styDotLn" style="float:right;padding-right:1mm;">...........................</span>
+        <div class="styLNDesc" style="width:136mm;">
+          <span style="float:left;">
+			  <span style="font-weight:bold;">Overpayment of estimated tax.</span> 
+			  Subtract line 7 from line 3. If this amount is at least 10% of
+			  line 7 <span style="font-weight:bold;">and</span> 
+          </span>
+          <span style="text-align:left;padding-right:10mm;">at least $500, the corporation is eligible for a quick refund. Otherwise, do not file this form
+			   (see
+		  </span>
+          <span style="text-align:left;">instructions)</span>
+          <span class="styDotLn" style="float:right;padding-right:1mm;">.............................</span>
         </div>
-      <div class="styLNRightNumBoxNBB" style="height:6.25mm;background-color:lightgrey;foat:left;clear:none"/>
+      <div class="styLNRightNumBoxNBB" style="height:6.25mm;background-color:lightgrey;clear:none"/>
       <div class="styLNAmountBox" style="width:34mm;height:6.25mm;border-left-width:1px;border-bottom-width:0px;"/>
-        <div class="styLNRightNumBoxNBB" style="foat:left;clear:none">
+      <div style="height:2mm;width:144mm;float:left;"/>
+        <div class="styLNRightNumBoxNBB">
           8        
         </div>
         <div class="styLNAmountBoxNBB" style="width:34mm;">
@@ -476,7 +449,7 @@
       Record of Estimated Tax Deposits
     </div>
     <div class="styGenericDiv" style="float:none;clear:none;width:7mm;text-align:right;">
-       <xsl:call-template name="SetTableToggleButton">
+       <xsl:call-template name="SetDynamicTableToggleButton">
           <xsl:with-param name="TargetNode" select="$Form4466Data/RecordOfEstimatedTxDepositsGrp"/>
           <xsl:with-param name="containerHeight" select="4"/>
           <xsl:with-param name="containerID" select=" 'RETDctn' "/>
@@ -523,13 +496,13 @@
                 </td>
                 <td class="styTableCell" style="font-size: 7pt; text-align:center;width:46mm;">
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$Form4466Data/RecordOfEstimatedTxDepositsGrp[$posofdeposit                     + 1]/DepositDt"/>
+                    <xsl:with-param name="TargetNode" select="$Form4466Data/RecordOfEstimatedTxDepositsGrp[$posofdeposit + 1]/DepositDt"/>
                   </xsl:call-template>
                   <span class="styTableCellPad"/>
                 </td>
                 <td class="styTableCell" style="font-size: 7pt; text-align:right;width:46mm;">
                   <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form4466Data/RecordOfEstimatedTxDepositsGrp[$posofdeposit                     +1]/DepositAmt"/>
+                    <xsl:with-param name="TargetNode" select="$Form4466Data/RecordOfEstimatedTxDepositsGrp[$posofdeposit +1]/DepositAmt"/>
                   </xsl:call-template>
                   <span class="styTableCellPad"/>
                 </td>
@@ -537,7 +510,8 @@
             </tr>                        
           </xsl:for-each>
           </xsl:if>
-          <xsl:if test="(count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &lt;= 2) or (($Print=$Separated) and (count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &gt;4))">
+          <xsl:if test="(count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &lt;= 2) or (($Print=$Separated) and 
+          (count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &gt;4))">
             <tr>
               <td class="styTableCell"><span class="styTableCellPad"/>
               <xsl:if test="($Print=$Separated) and (count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &gt;4)">
@@ -550,7 +524,8 @@
               <td class="styTableCell"><span class="styTableCellPad"/></td>
             </tr>
           </xsl:if>
-          <xsl:if test="(count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &lt; 1) or (($Print=$Separated) and (count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &gt;4))">
+          <xsl:if test="(count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &lt; 1) or (($Print=$Separated) and 
+          (count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &gt;4))">
             <tr>
               <td class="styTableCell"><span class="styTableCellPad"/></td>
               <td class="styTableCell"><span class="styTableCellPad"/></td>
@@ -566,36 +541,39 @@
 <!-- Implementing the signature section in table -->
 <table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:7pt;clear:both;">
 	<tr>
-		<td rowspan="3" style="width:13mm;font-size: 11pt;font-weight:bold;border-right:1 solid black;border-bottom:1 solid black;">Sign Here</td>
-		<td colspan="5" style="padding-left:1mm;padding-bottom:1mm;">Under penalties of perjury, I declare that I have examined this application, including any accompanying schedules and statements, and to the best of
-my knowledge and belief, it is true, correct, and complete. </td>
+		<td rowspan="3" style="width:13mm;font-size:11pt;font-weight:bold;border-right:.5mm solid black;border-bottom:.5mm solid black;">Sign Here</td>
+		<td colspan="5" style="padding-left:1mm;padding-bottom:1mm;">Under penalties of perjury, I declare that I have examined this application, including any
+		 accompanying schedules and statements, and to the best of
+		 my knowledge and belief, it is true, correct, and complete. </td>
 	</tr>
 	<tr>
-		<td rowspan="2" style="border-bottom:1 solid black;padding-left:1mm;"><img src="{$ImagePath}/4466_Bullet_Lg.gif" alt="Big Right Arrow"/>
+		<td rowspan="2" style="border-bottom:.5mm solid black;padding-left:1mm">
+		<img src="{$ImagePath}/4466_Bullet_Lg.gif" alt="Large Right Arrow"/>
     </td>
-		<td style="width:60mm;border-bottom:1 solid black;vertical-align:bottom;border-right:1 solid black;">
+		<td style="width:95mm;border-bottom:.3mm solid black;vertical-align:bottom;border-right:.3mm solid black">
         <xsl:call-template name="PopulateReturnHeaderOfficer">
           <xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param> 
         </xsl:call-template>
         <span style="width:1px;"/>
      </td>
-		<td style="width:20mm;border-bottom:1 solid black;vertical-align:bottom;padding-left:1mm;">
+		<td style="width:20mm;border-bottom:.3mm solid black;vertical-align:bottom;padding-left:1mm;">
       <xsl:call-template name="PopulateReturnHeaderOfficer">
         <xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
       </xsl:call-template>
      </td>
-		<td rowspan="2" style="border-bottom:1 solid black;padding-left:1mm;"><img src="{$ImagePath}/4466_Bullet_Lg.gif" alt="Big Right Arrow"/>
+		<td rowspan="2" style="border-bottom:.5mm solid black;padding-left:1mm;">
+		<img src="{$ImagePath}/4466_Bullet_Lg.gif" alt="Big Right Arrow"/>
     </td>
-		<td style="width:50mm;border-bottom:1 solid black;vertical-align:bottom;">
+		<td style="width:50mm;border-bottom:.3mm solid black;vertical-align:bottom;">
       <xsl:call-template name="PopulateReturnHeaderOfficer">
         <xsl:with-param name="TargetNode">Title</xsl:with-param>
       </xsl:call-template>
 		</td>
 	</tr>
 	<tr>
-		<td style="border-bottom:1 solid black;vertical-align:top;">Signature</td>
-		<td style="border-bottom:1 solid black;vertical-align:top;padding-left:1mm;">Date</td>
-	   <td style="border-bottom:1 solid black;vertical-align:top;">Title</td>
+		<td style="border-bottom:.5mm solid black;vertical-align:top;">Signature</td>
+		<td style="border-bottom:.5mm solid black;vertical-align:top;padding-left:1mm;">Date</td>
+	   <td style="border-bottom:.5mm solid black;vertical-align:top;">Title</td>
 	</tr>
 </table>
    <!-- End Signature Section -->
@@ -608,7 +586,7 @@ my knowledge and belief, it is true, correct, and complete. </td>
       </div>
       <!-- End footer -->
   <!-- add page break -->
-  <p class="pageend"/>
+  <p class="pageEnd"/>
       
   <!-- Begininning of write-in data -->
     <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -628,10 +606,12 @@ my knowledge and belief, it is true, correct, and complete. </td>
     </table>
   
   <xsl:if test="($Print = $Separated) and (count($Form4466Data/RecordOfEstimatedTxDepositsGrp) &gt;4)">
-<br/>
-<span class="styRepeatingDataTitle">Form 4466 - Record of Estimated Tax Deposits  </span>			
+<br/>			
 <table class="styDepTbl" style="font-size: 7pt; width: 92mm">
 	<thead class="styTableThead">
+		<tr class="styDepTblhdr">
+			<th class="styDepTblCell" style="width:92mm;font-weight:bold" colspan="2" scope="col">Record of Estimated Tax Deposits</th>
+		</tr>
 		<tr class="styDepTblHdr">
             <th class="styDepTblCell" style="width:46mm;font-weight:normal;" scope="col">Date of deposit</th>
             <th class="styDepTblCell" style="width:46mm;font-weight:normal;" scope="col">Amount </th>

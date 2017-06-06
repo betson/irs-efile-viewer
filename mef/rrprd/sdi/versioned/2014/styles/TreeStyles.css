@@ -6,7 +6,7 @@
 	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
 	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
 	vertical-align: middle;
-	cursor: hand;
+	cursor: pointer;
 }
 .styDataLabelClk {   /* Clicked Data Label */
 	background-color: gold;
@@ -16,7 +16,7 @@
 	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
 	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
 	vertical-align: middle;
-	cursor: hand;
+	cursor: pointer;
 }
 .stySuppLabelClk {   /* Clicked Data Label */
 	background-color: #ccffcc;
@@ -26,7 +26,7 @@
 	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
 	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
 	vertical-align: middle;
-	cursor: hand;
+	cursor: pointer;
 }
 .styPanel {   /* Panel Styles */
 	color: black; background-color: silver;
@@ -51,7 +51,7 @@
 	font-size: 8pt; font-weight: bold;
 	text-align: center;
 	vertical-align: middle;
-	cursor: hand;
+	cursor: pointer;
 	border-style: solid;
 	border-top-color: white; border-bottom-color: black; border-left-color: white; border-right-color: black;
 	border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;

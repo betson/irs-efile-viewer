@@ -14,6 +14,7 @@
 	<xsl:template name="Form8863Page2">
 	<xsl:param name="NodeData" select="/.."/>
 		<!-- Page Header -->
+				 <div style="width:187mm">	
 					<div style="width:187mm;padding-top:.5mm;border-bottom:1px solid black;">
 						Form 8863 (2014)<span style="width:148mm;"/>						
 						Page <span style="font-weight:bold;font-size:8pt;">2</span>						
@@ -28,15 +29,15 @@
 							<br/>
 						</div>
 						<b>Your social security number</b>
-						<br/>
-						<div style="width:100%;">
+						<br/><br/>
+						<div style="width:25mm;">
 						<xsl:call-template name="PopulateSSN">
 							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
 						</xsl:call-template>
 						</div>
 					</div>
 					<!-- Part III -->
-					<!-- Part III - Header -->
+					<!-- Part III - Header -->			
 					<div style="width:187mm; border-bottom:1px solid black;">
 						<div class="styGenericDiv" style="width:18mm;padding-top:2mm;padding-bottom:2mm">
 							<img alt="Caution" src="{$ImagePath}/8863_Caution.gif" width="50" height="50"/>
@@ -48,8 +49,8 @@
 		                </div>
 					</div>
 					<div style="width:187mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="width:15mm;font-size:13;">Part III</span>
-						<span style="width:172mm;font-weight:normal;font-size:8pt;" class="styPartDesc">
+						<span class="styPartName" style="width:15mm;font-size:13;height:auto;">Part III</span>
+						<span style="width:172mm;font-weight:normal;font-size:8pt;height:auto;" class="styPartDesc">
 							<span style="font-size:12.5;">
 								<b>Student and Educational Institution Information </b>
 							</span>
@@ -103,71 +104,77 @@
 								<!-- Lines a and b -->
 								<tr style="height:auto" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:93.5mm;border-color:black;text-align:left;word-wrap:break-word;">
-										<div class="styLNLeftNumBox" style="padding-left:5mm;height:13mm">a.</div>
-										Name of first educational institution <br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="InstitutionName/BusinessNameLine1Txt"/>
-										</xsl:call-template><br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="InstitutionName/BusinessNameLine2Txt"/>
-										</xsl:call-template>
-									</td>
-									<td class="styTableCell" style="font-size:7pt;width:93.5mm;border-color:black;text-align:left;border-right-width:0px;word-wrap:break-word;">
-										<div class="styLNLeftNumBox" style="padding-left:5mm;height:13mm">b.</div>
-										Name of second educational institution (if any)<br/>
-										<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionName">
+										<div class="styLNLeftNumBox" style="padding-left:5mm;height:13mm;padding-top:0mm;">a.</div>
+										<div style="width:83mm;">								
+											Name of first educational institution <br/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionName/BusinessNameLine1Txt"/>
+												<xsl:with-param name="TargetNode" select="InstitutionName/BusinessNameLine1Txt"/>
 											</xsl:call-template><br/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionName/BusinessNameLine2Txt"/>
+												<xsl:with-param name="TargetNode" select="InstitutionName/BusinessNameLine2Txt"/>
 											</xsl:call-template>
-										</xsl:if>
+										</div>
+									</td>
+									<td class="styTableCell" style="font-size:7pt;width:93.5mm;border-color:black;text-align:left;border-right-width:0px;word-wrap:break-word;">
+										<div class="styLNLeftNumBox" style="padding-left:5mm;padding-top:0mm;height:13mm">b.</div>
+							            <div style="width:83mm;">											
+											Name of second educational institution (if any)<br/>
+											<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionName">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionName/BusinessNameLine1Txt"/>
+												</xsl:call-template><br/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionName/BusinessNameLine2Txt"/>
+												</xsl:call-template>
+											</xsl:if>
+										</div>
 									</td>
 								</tr>
 								<!-- Lines a(1) and b(1) -->
 								<tr style="height:13mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(1)</div>
-										<div style="float:left;">
-											Address. Number and street (or P.O. box). City, town or
-											post office, state, and ZIP code. If a foreign address, see
-											instructions.<br/>
-											<xsl:if test="USAddress">
-												<xsl:call-template name="PopulateUSAddressTemplate">
-													<xsl:with-param name="TargetNode" select="USAddress"/>
-												</xsl:call-template>
-											</xsl:if>
-											<xsl:if test="ForeignAddress">
-												<xsl:call-template name="PopulateForeignAddressTemplate">
-													<xsl:with-param name="TargetNode" select="ForeignAddress"/>
-												</xsl:call-template>
-											</xsl:if>
-										</div>
-									</td>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm;">(1)</div>
+												Address. Number and street (or P.O. box). City, town or
+												post office, state, and ZIP code. If a foreign address, see
+												instructions.<br/>
+												<span style="padding-left:7.5mm;">
+													<xsl:if test="USAddress">
+														<xsl:call-template name="PopulateUSAddressTemplate">
+															<xsl:with-param name="TargetNode" select="USAddress"/>
+														</xsl:call-template>
+													</xsl:if>
+													<xsl:if test="ForeignAddress">
+														<xsl:call-template name="PopulateForeignAddressTemplate">
+															<xsl:with-param name="TargetNode" select="ForeignAddress"/>
+														</xsl:call-template>
+													</xsl:if>
+												</span>
+										</td>
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(1)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(1)</div>
 										Address. Number and street (or P.O. box). City, town or
 										post office, state, and ZIP code. If a foreign address, see
 										instructions.<br/>
-										<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionName">
-											<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/USAddress">
-												<xsl:call-template name="PopulateUSAddressTemplate">
-													<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/USAddress"/>
-												</xsl:call-template>
-											</xsl:if>										
-											<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/ForeignAddress">
-												<xsl:call-template name="PopulateForeignAddressTemplate">
-													<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/ForeignAddress"/>
-												</xsl:call-template>
+										<span style="padding-left:7.5mm;">										
+											<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionName">
+												<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/USAddress">
+													<xsl:call-template name="PopulateUSAddressTemplate">
+														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/USAddress"/>
+													</xsl:call-template>
+												</xsl:if>										
+												<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/ForeignAddress">
+													<xsl:call-template name="PopulateForeignAddressTemplate">
+														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/ForeignAddress"/>
+													</xsl:call-template>
+												</xsl:if>
 											</xsl:if>
-										</xsl:if>
+										</span>
 									</td>
 								</tr>
 								<!-- Lines a(2) and b(2) -->
 								<tr style="height:8mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:92mm;border-color:black;text-align:left;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(2)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(2)</div>
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm;">
 											Did the student receive Form 1098-T
 											from this institution for 2014?
@@ -176,7 +183,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 											</xsl:call-template>
-											<div class="styGenericDiv" style="width:13%; height:8mm;padding-top:3mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm; height:8mm;padding-top:3mm; padding-left:0mm;">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
@@ -191,7 +198,7 @@
 													Yes
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:12%;padding-top:3mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm;padding-top:3mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
@@ -203,13 +210,13 @@
 														<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position()"/></xsl:with-param>
 													</xsl:call-template>
-													No
+													<span style="width:1mm;" />No
 												</label>
 											</div>
 										</span>
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:94mm;border-color:black;text-align:left;border-right-width:0px;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(2)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(2)</div>
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm">
 											Did the student receive Form 1098-T
 											from this institution for 2014?
@@ -218,7 +225,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
 											</xsl:call-template>
-											<div class="styGenericDiv" style="width:13%; height:8mm;padding-top:3mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm; height:8mm;padding-top:3mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
@@ -233,7 +240,7 @@
 													Yes
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:13%;padding-top:3mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm;padding-top:3mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
@@ -245,7 +252,7 @@
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position() + 1"/></xsl:with-param>
 													</xsl:call-template>
-													No
+													<span style="width:1mm;" />No
 												</label>
 											</div>
 										</span>
@@ -254,7 +261,7 @@
 								<!-- Lines a(3) and b(3) -->
 								<tr style="height:10mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:92mm;border-color:black;text-align:left;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(3)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(3)</div>
 										<div class="styGenericDiv" style="width:63%;padding-left:0.5mm;">
 											Did the student receive Form 1098-T from this institution for 2013 with Box
 											2 filed in and Box 7 checked?
@@ -263,7 +270,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 											</xsl:call-template>
-											<div class="styGenericDiv" style="width:13%; height:10mm;padding-top:5.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm; height:10mm;padding-top:5.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
@@ -278,7 +285,7 @@
 													Yes
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:12%;padding-top:5.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm;padding-top:5.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
@@ -290,13 +297,14 @@
 														<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position()"/></xsl:with-param>
 													</xsl:call-template>
-													No
+													<span style="width:1mm;" />No							
+													
 												</label>
 											</div>
 										</span>
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:94mm;border-color:black;text-align:left;border-right-width:0px">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(3)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(3)</div>
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm;">
 											Did the student receive Form 1098-T from this institution for 2013 with Box
 											2 filed in and Box 7 checked?
@@ -305,7 +313,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
 											</xsl:call-template>
-											<div class="styGenericDiv" style="width:13%; height:9mm;padding-top:5.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm; height:9mm;padding-top:5.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
@@ -320,7 +328,7 @@
 													Yes
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:13%;padding-top:5.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm;padding-top:5.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
@@ -332,7 +340,7 @@
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position() + 1"/></xsl:with-param>
 													</xsl:call-template>
-													No
+													<span style="width:1mm;" />No
 												</label>
 											</div>
 										</span>
@@ -349,26 +357,30 @@
 								<!-- Lines a(4) and b(4) -->
 								<tr style="height:13mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(4)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(4)</div>
 										If you checked &#8220;Yes&#8221; in either <b>(2) or (3)</b>, enter the institution's federal identification number (from Form
-										1098-T).<br/>																
-										<xsl:call-template name="PopulateEIN">
-											<xsl:with-param name="TargetNode" select="EIN"/>
-										</xsl:call-template>
-										<xsl:if test="not(EIN)">
-											_ _ - _ _ _ _ _ _ _
-										</xsl:if>
+										1098-T).<br/>	
+										<span style="padding-left:7.5mm;">																								
+											<xsl:call-template name="PopulateEIN">
+												<xsl:with-param name="TargetNode" select="EIN"/>
+											</xsl:call-template>
+											<xsl:if test="not(EIN)">
+												_ _ - _ _ _ _ _ _ _
+											</xsl:if>
+										</span>	
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(4)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(4)</div>
 										If you checked &#8220;Yes&#8221; in either <b>(2) or (3)</b>, enter the institution's federal identification number (from Form
 										1098-T).<br/>
-										<xsl:call-template name="PopulateEIN">
-											<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/EIN"/>
-										</xsl:call-template>
-										<xsl:if test="not($NodeData/EducationalInstitutionGroup[$pos+1]/EIN)">
-											_ _ - _ _ _ _ _ _ _
-										</xsl:if>
+										<span style="padding-left:7.5mm;">										
+											<xsl:call-template name="PopulateEIN">
+												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/EIN"/>
+											</xsl:call-template>
+											<xsl:if test="not($NodeData/EducationalInstitutionGroup[$pos+1]/EIN)">
+												_ _ - _ _ _ _ _ _ _
+											</xsl:if>
+										</span>
 									</td>
 								</tr>
 								</tbody>
@@ -389,7 +401,7 @@
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
 										</xsl:call-template>
-										<div class="styGenericDiv" style="width:5%;height:100%;padding-top:3.5mm; padding-left:2mm">
+										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:2mm; padding-left:1mm;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
@@ -408,7 +420,7 @@
 											&#150; <b>Stop!</b>
 											<br/> Go to line 31 for this student.
 										</div>
-										<div class="styGenericDiv" style="width:5%;padding-top:3.5mm; padding-left:2mm;height:100%;">
+										<div class="styGenericDiv" style="width:5mm;padding-top:2mm; padding-left:1mm;height:100%;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
@@ -416,7 +428,7 @@
 												</xsl:call-template>
 											</input>
 										</div>
-										<div class="styGenericDiv" style="padding-top:1.5mm;width:44%;padding-left:1mm;height:100%;">
+										<div class="styGenericDiv" style="padding-top:3mm;width:44%;padding-left:1mm;height:100%;">
 											<label>
 												<xsl:call-template name="PopulateLabelNo">
 													<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
@@ -432,17 +444,19 @@
 								<tr style="height:13mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
 										<div class="styLNLeftNumBox" style="height:100%">24</div>
+									    <div style="width:80mm;">
 											Was the student enrolled at least half-time for at least one
 											academic period that began in 2014 at an eligible
 											educational institution in a program leading towards a
 											postsecondary degree, certificate, or other recognized
 											postsecondary educational credential? (see instructions)
+										</div>
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
 										</xsl:call-template>
-										<div class="styGenericDiv" style="width:5%;height:100%;padding-top:3.5mm; padding-left:2mm">
+										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:3mm; padding-left:1mm">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
@@ -450,7 +464,7 @@
 												</xsl:call-template>
 											</input>
 										</div>
-										<div class="styGenericDiv" style="width:45%;padding-top:0.75mm;padding-left:1mm;height:100%;">
+										<div class="styGenericDiv" style="width:45%;padding-top:4mm;padding-left:1mm;height:100%;">
 											<label>
 												<xsl:call-template name="PopulateLabelYes">
 													<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
@@ -460,7 +474,7 @@
 											</label>
 											&#150; Go to line 25.
 										</div>
-										<div class="styGenericDiv" style="width:5%;padding-top:3.5mm; padding-left:2mm;height:100%;">
+										<div class="styGenericDiv" style="width:5mm;padding-top:3mm; padding-left:1mm;height:100%;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
@@ -491,7 +505,7 @@
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
 										</xsl:call-template>
-										<div class="styGenericDiv" style="width:5%;height:100%;padding-top:3.5mm; padding-left:2mm">
+										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:2mm; padding-left:1mm">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
@@ -509,7 +523,7 @@
 											</label>
 											&#150; <b>Stop!</b><br/> Go to line 31 for this student.
 										</div>
-										<div class="styGenericDiv" style="width:5%;padding-top:3.5mm; padding-left:2mm;height:100%;">
+										<div class="styGenericDiv" style="width:5mm;padding-top:2mm; padding-left:1mm;height:100%;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
@@ -517,7 +531,7 @@
 												</xsl:call-template>
 											</input>
 										</div>
-										<div class="styGenericDiv" style="padding-top:1.5mm;width:44%;padding-left:1mm;height:100%;">
+										<div class="styGenericDiv" style="padding-top:3mm;width:44%;padding-left:1mm;height:100%;">
 											<label>
 												<xsl:call-template name="PopulateLabelNo">
 													<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
@@ -541,7 +555,7 @@
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
 										</xsl:call-template>
-										<div class="styGenericDiv" style="width:5%;height:100%;padding-top:3.5mm; padding-left:2mm">
+										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:3.5mm; padding-left:1mm">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
@@ -549,7 +563,7 @@
 												</xsl:call-template>
 											</input>
 										</div>
-										<div class="styGenericDiv" style="width:45%;padding-top:0.75mm;padding-left:1mm;height:100%;">
+										<div class="styGenericDiv" style="width:45%;padding-top:2mm;padding-left:1mm;height:100%;">
 											<label>
 												<xsl:call-template name="PopulateLabelYes">
 													<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
@@ -560,7 +574,7 @@
 											&#150; <b>Stop!</b>
 											<br/> Go to line 31 for this student.
 										</div>
-										<div class="styGenericDiv" style="width:5%;padding-top:3.5mm; padding-left:2mm;height:100%;">
+										<div class="styGenericDiv" style="width:5mm;padding-top:3.5mm; padding-left:1mm;height:100%;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
@@ -593,7 +607,7 @@
 							same year.</i> If you complete lines 27 through 30 for this student, do not complete line 31.
 						</div>
 					</div>
-						<span style="width:172mm;font-weight:normal;font-size:8pt;" class="styPartDesc">
+						<span style="width:172mm;font-weight:normal;font-size:8pt;height:auto;" class="styPartDesc">
 							<span style="font-size:12.5;">
 								<b>American Opportunity Credit</b>
 							</span>
@@ -608,8 +622,8 @@
                     <!--Dotted Line-->                        				
 						<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>							
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">27</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1.2mm;">27</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1.2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AmerOppQualifiedExpensesAmt"/>
 							</xsl:call-template>
@@ -624,8 +638,8 @@
                            <!--Dotted Line-->
                             <span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>	
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">28</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1.2mm;">28</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1.2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AmerOppQlfyExpnssLessAllwblAmt"/>
 							</xsl:call-template>
@@ -640,8 +654,8 @@
                             <!--Dotted Line-->
                             <span class="styDotLn" style="float:right;padding-right:1mm;">........................</span>	     
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">29</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1.2mm;">29</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1.2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AmerOppAllwblExpnssTimesPctAmt"/>
 							</xsl:call-template>
@@ -658,15 +672,15 @@ enter
                            <!--Dotted Line-->
                            <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>	
 						</div>
-						<div class="styLNRightNumBox" style="height:7mm;width:7.1mm;padding-top:2mm;border-bottom-width:0px;">30</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:7mm;padding-top:2mm;border-bottom-width:0px;">
+						<div class="styLNRightNumBox" style="height:7mm;width:7.1mm;padding-top:4mm;border-bottom-width:0px;">30</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:7mm;padding-top:4mm;border-bottom-width:0px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AmerOppCreditNetCalcExpnssAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<div style="width:187mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;border-right-width:0px;border-left-width:0px;float:left;">
-						<span style="width:172mm;font-weight:normal;font-size:8pt;" class="styPartDesc">
+						<span style="width:172mm;font-weight:normal;font-size:8pt;height:auto;" class="styPartDesc">
 							<span style="font-size:12.5;">
 								<b>Lifetime Learning Credit</b>
 							</span>
@@ -696,10 +710,13 @@ enter
 							Form <span class="styBoldText" style="font-size:8pt;">8863</span> (2014) 
 						</div>
 					</div>
+					</div>
 	</xsl:template>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8863Data)"/>
@@ -721,12 +738,15 @@ enter
 					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS8863Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-					</xsl:if>
+				    </xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
 			<body class="styBodyClass">
-				<form name="Form8863">					
+				<form name="Form8863">	
+				  <div style="width:187mm">
+
+									
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;height:23.5mm;">
 						<div class="styFNBox" style="width:31mm;height:100%;">
@@ -739,10 +759,10 @@ enter
 							<span class="styAgency">Internal Revenue Service (99)</span>
 						</div>
 						<div class="styFTBox" style="width:125mm;height:100%;">
-							<div class="styMainTitle" style="height:7mm;padding-top:1mm;">Education Credits<br/>
+							<div class="styMainTitle" style="height:auto;padding-top:1mm;">Education Credits
 								<span style="font-weight:normal">(American Opportunity and Lifetime Learning Credits)</span>
 							</div>
-							<div class="styFBT" stype="font-size:7pt;height:6mm;padding-top:0mm;">
+							<div class="styFBT" stype="font-size:7pt;height:auto;padding-top:0mm;">
 							    <img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040 or Form 1040A.<br/>
 								<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/>  Information about Form 8863 and its separate instructions is at <i>www.irs.gov/form8863</i>.<br/>								
 							</div>
@@ -766,10 +786,10 @@ enter
 						</div>
 						<b>Your social security number</b>
 						<br/><br/>
-						<div style="width:100%;">
-						<xsl:call-template name="PopulateSSN">
-							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
-						</xsl:call-template>
+						<div style="width:25mm;">
+							<xsl:call-template name="PopulateSSN">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
+							</xsl:call-template>
 						</div>
 					</div>
 					<!-- Part l -->
@@ -783,9 +803,9 @@ enter
 							credit before you complete Parts I and II.
 		                </div>
 					</div>
-					<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;      border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="width:15mm;font-size:13;">Part I</span>
-						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;      border-right-width:0px;border-left-width:0px;float:left;">
+						<span class="styPartName" style="width:15mm;font-size:13;height:auto;">Part I</span>
+						<span style="width:170mm;font-weight:normal;height:auto;" class="styPartDesc">
 							<span style="width:3mm;font-size:10pt;vertical-align:bottom;"/>
 							<b>Refundable American Opportunity Credit</b>
 						</span>
@@ -802,7 +822,7 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="font-size:7pt;height:5mm;width:7.1mm; text-align:center; ">1</div>
+						<div class="styLNRightNumBox" style="font-size:7pt;height:5mm;width:7.1mm; text-align:center; padding-top:1.2mm;">1</div>
 						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;">
 							<xsl:if test="$Form8863Data/RefundableAmerOppCreditGroup">
 								<xsl:call-template name="PopulateAmount">
@@ -824,8 +844,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:3mm; width:7.1mm; text-align:center; ">2</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:3mm; ">
+						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:4.2mm; width:7.1mm; text-align:center; ">2</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4.2mm; ">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIData/EnterSpecifiedAmountForFSAmt"/>
 							</xsl:call-template>
@@ -869,8 +889,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:3mm; width:7.1mm; text-align:center; ">4</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:3mm; font-size:7pt;">
+						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:4.2mm; width:7.1mm; text-align:center; ">4</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4.2mm; font-size:7pt;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIData/SubtractAGIFromAmt"/>
 							</xsl:call-template>
@@ -891,8 +911,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:3mm; width:7.1mm; text-align:center; ">5</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:3mm; ">
+						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:4.2mm; width:7.1mm; text-align:center; ">5</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4.2mm; ">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIData/SpecifiedAmtPerFSAmt"/>
 							</xsl:call-template>
@@ -935,16 +955,26 @@ enter
 						       <span class="styDotLn">.....</span>
 							</div>
 							</span>
-							<span style="float:right;">
-							<div class="styLNRightNumBox" style="width:7.1mm;height:6mm;padding-left:0px;">6</div>
-							<div class="styLNAmountBox" style="width: 29.8mm;height:6mm">
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$PartIData/CalcTentativeEducationRt"/>
-								</xsl:call-template>
-							</div>
-							<div class="styLNRightNumBox" style="width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:6mm;"/>
-							<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:6mm;"/>
-							</span>
+	<!--						<span style="float:right;">
+								<div class="styLNRightNumBox" style="width:7.1mm;height:6mm;padding-left:0px;">6</div>
+								<div class="styLNAmountBox" style="width: 29.8mm;height:6mm">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$PartIData/CalcTentativeEducationRt"/>
+									</xsl:call-template>
+								</div>
+								<div class="styLNRightNumBox" style="width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:6mm;"/>
+								<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:6mm;"/>
+							</span>-->
+							<span style="float:right;width:36.9mm;">
+								<div class="styLNRightNumBox" style=" width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:5mm"/>
+								<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:5mm;"/>
+								<div class="styLNRightNumBox" style="font-size:7pt;height:6mm;padding-top:2.2mm; width:7.1mm; text-align:center; ">6</div>
+								<div class="styLNAmountBox" style="width:29.8mm;height:6mm;padding-top:2.2mm;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$PartIData/CalcTentativeEducationRt"/>
+									</xsl:call-template>
+								</div>
+						</span>
 						</div>
 					</div>
 					<!-- END LINE 6 -->
@@ -977,15 +1007,15 @@ enter
 							</input>
 						</div>
 						</span>
-						<span style="float:right;">
-						<div class="styLNRightNumBox" style=" width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:5mm"/>
-						<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:5mm;"/>
-						<div class="styLNRightNumBox" style="font-size:7pt;height:6mm;padding-top:1mm; width:7.1mm; text-align:center; ">7</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:6mm;padding-top:1mm;">
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$PartIData/CalcTentativeEducationCrAmt"/>
-							</xsl:call-template>
-						</div>
+						<span style="width:36.9mm;float:right;">				
+							<div class="styLNRightNumBox" style=" width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:5mm;"/>
+							<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:5mm;"/>
+							<div class="styLNRightNumBox" style="font-size:7pt;height:6mm;padding-top:2mm; width:7.1mm; text-align:center; ">7</div>
+							<div class="styLNAmountBox" style="width:29.8mm;height:6mm;padding-top:2mm;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$PartIData/CalcTentativeEducationCrAmt"/>
+								</xsl:call-template>
+							</div>
 						</span>
 					</div>
 					<!--Line 8-->
@@ -1000,8 +1030,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="height:7mm;width:7.1mm;padding-top:2mm;border-bottom-width:0px;">8</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:7mm;padding-top:2mm;border-bottom-width:0px;">
+						<div class="styLNRightNumBox" style="height:7mm;width:7.1mm;padding-top:3mm;border-bottom-width:0px;">8</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:7mm;padding-top:3mm;border-bottom-width:0px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIData/RefundableAmerOppCreditAmt"/>
 							</xsl:call-template>
@@ -1010,9 +1040,9 @@ enter
 					</div>
 					<!-- Part lI -->
 					<!-- Part lI - Header -->
-					<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;           border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="width:15mm;font-size:13;">Part II</span>
-						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:1px;           border-right-width:0px;border-left-width:0px;float:left;">
+						<span class="styPartName" style="width:15mm;font-size:13;height:auto;">Part II</span>
+						<span style="width:170mm;font-weight:normal;height:auto;" class="styPartDesc">
 							<span style="width:3mm;font-size:10pt;vertical-align:bottom;"/>
 							<b>Nonrefundable Education Credits</b>
 						</span>
@@ -1028,12 +1058,12 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">9</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$PartIIData/TentativeEducCrLessRfdblCrAmt"/>
-							</xsl:call-template>
-						</div>
+							<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1.2mm;">9</div>
+							<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1.2mm;">
+								<xsl:call-template name="PopulateAmount">
+									<xsl:with-param name="TargetNode" select="$PartIIData/TentativeEducCrLessRfdblCrAmt"/>
+								</xsl:call-template>
+							</div>
 						</span>
 					</div>
 					<!--Line 10-->
@@ -1048,8 +1078,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="height:8mm; width:7.1mm;padding-top:3mm;">10</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:3mm;">
+						<div class="styLNRightNumBox" style="height:8mm; width:7.1mm;padding-top:4mm;">10</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIIData/TotalQualifiedExpensesAmt"/>
 							</xsl:call-template>
@@ -1067,8 +1097,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">11</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1mm;">11</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIIData/SmllrOfTotExpnssOrSpcfdAmt"/>
 							</xsl:call-template>
@@ -1086,8 +1116,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">12</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1mm;">12</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIIData/TentLifetimeLearningCreditAmt"/>
 							</xsl:call-template>
@@ -1106,8 +1136,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:3mm; width:7.1mm; text-align:center; ">13</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:3mm; ">
+						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:4mm; width:7.1mm; text-align:center; ">13</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4mm; ">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIIData/EnterSpecifiedAmountForFSAmt"/>
 							</xsl:call-template>
@@ -1151,8 +1181,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:3mm; width:7.1mm; text-align:center; ">15</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:3mm; ">
+						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:4mm; width:7.1mm; text-align:center; ">15</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4mm; ">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIIData/SubtractAGIFromAmt"/>
 							</xsl:call-template>
@@ -1173,8 +1203,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:3mm; width:7.1mm; text-align:center; ">16</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:3mm; ">
+						<div class="styLNRightNumBox" style="font-size:7pt;height:8mm;padding-top:4mm; width:7.1mm; text-align:center; ">16</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4mm; ">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIIData/SpecifiedAmtPerFSAmt"/>
 							</xsl:call-template>
@@ -1208,12 +1238,12 @@ enter
                                 <span class="styDotLn" style="float:right;padding-right:1mm;">.............................</span>
 							</div>
 							</span>
-							<span style="float:right;">
+							<span style="float:right;width:36.9mm;">
 							<div class="styLNRightNumBox" style="width:7.1mm;height:6mm;background-color:lightgrey;border-bottom-width:0px;"/>
 							<div class="styLNAmountBox" style="width:29.8mm;height:6mm;border-bottom-width:0px;">
                             </div>
-							<div class="styLNRightNumBox" style=" width:7.1mm;border-bottom-width:1px;height:5mm">17</div>
-							<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:1px;height:5mm">
+							<div class="styLNRightNumBox" style=" width:7.1mm;border-bottom-width:1px;height:5mm;padding-top:1.2mm;">17</div>
+							<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:1px;height:5mm;padding-top:1.2mm;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$PartIIData/CalcTentativeEducationRt"/>
 								</xsl:call-template>
@@ -1233,8 +1263,8 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1mm;">18</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1.2mm;">18</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1.2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIIData/CalcTentativeEducationCrAmt"/>
 							</xsl:call-template>
@@ -1253,17 +1283,18 @@ enter
 						</div>
 						</span>
 						<span style="float:right;">
-						<div class="styLNRightNumBox" style="height:8mm;width:7.1mm;padding-top:3mm;border-bottom-width:0px">19</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:3mm;border-bottom-width:0px">
+						<div class="styLNRightNumBox" style="height:8mm;width:7.1mm;padding-top:4.2mm;border-bottom-width:0px">19</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4.2mm;border-bottom-width:0px">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$PartIIData/NonrefundableEducationCrAmt"/>
 							</xsl:call-template>
 						</div>
 						</span>
 					</div>
+					</div>	
 					<!-- Page 1 End -->
-<!-- Page Break and Footer-->
-	<div class="pageEnd" style="width:187mm;padding-top:0mm;border-top-width:1px;">
+                    <!-- Page Break and Footer-->
+	                <div class="pageEnd" style="width:187mm;padding-top:0mm;border-top-width:1px;page-break-after:always;display:block;">
 						<div style="float:left;">
 							<span class="styBoldText">For Paperwork Reduction Act Notice, see your tax return instructions.</span>
 							<span style="width:4mm;"/>							
@@ -1274,11 +1305,11 @@ enter
 							<span style="width:40px;"/>  
                             Form <span class="styBoldText" style="font-size:8pt;">8863</span> (2014)
                         </div>
-  </div>  
-    <!--Begin Page 2 -->    
+                    </div>  
+                    <!--Begin Page 2 -->    
 					<xsl:for-each select="$PartIIIData">
 						<xsl:if test="position() &gt; 1">
-							<div class="pageEnd"/>
+							<div class="pageEnd" style="page-break-after:always;display:block;"/>
 						</xsl:if>
 						<xsl:call-template name="Form8863Page2">
 							<xsl:with-param name="NodeData" select="."/>
@@ -1289,7 +1320,7 @@ enter
 						<xsl:call-template name="Form8863Page2"/>
 					</xsl:if> 					
 					<!-- BEGIN Left Over Table -->
-					<div class="pageEnd"/>
+					<div class="pageEnd" style="page-break-after:always;display:block;"/>
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">Additional Data</div>

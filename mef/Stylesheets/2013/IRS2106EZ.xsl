@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS2106EZ"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<META http-equiv="Content-Type" content="text/html"/>
 				<title>
 					<xsl:call-template name="FormTitle">
@@ -59,9 +61,9 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:36mm;height:23mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0074</div>
-							<div class="styTY" style="height:7mm;font-size:22pt;">2013</div>
-							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;">
+							<div class="styOMB">OMB No. 1545-0074</div>
+							<div class="styTY" style="height:9mm;font-size:22pt;">2013</div>
+							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:0mm;border-left-width:0px;">
 								Attachment<br/>
 								Sequence No. <span class="styBoldText">129A</span>
 							</div>
@@ -118,7 +120,7 @@ you placed the vehicle in service, <span style="font-weight:bold">or (b)</span> 
 						<div class="styLNLeftNumBox" style="height:6mm;padding-left:1mm;width:5mm;">1</div>
 						<div class="styLNDesc" style="height:6mm;width:132mm;padding-right:2mm;">Complete Part II. Multiply line 8a by 56.5¢ (.565). Enter the result here
 <span style="letter-spacing:3mm;">.........</span></div>
-						<div class="styLNRightNumBox" style="width:8mm;height:6mm;position:relative;"><span style="position:absolute;bottom:0;">1</span></div>
+						<div class="styLNRightNumBox" style="width:8mm;height:6mm;position:relative;padding-left:3mm;"><span style="position:absolute;bottom:0;">1</span></div>
 						<div class="styLNAmountBox" style="height:6mm;width:41mm;position:relative;text-align:left;">
 							<div style="position:absolute;width:41mm;bottom:0;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -134,7 +136,7 @@ you placed the vehicle in service, <span style="font-weight:bold">or (b)</span> 
 					<div style="width:187mm;height:8mm;">
 						<div class="styLNLeftNumBox" style="height:8mm;padding-left:1mm;width:5mm;">2</div>
 						<div class="styLNDesc" style="height:8mm;width:132mm;padding-right:2mm;">Parking fees, tolls, and transportation, including train, bus, etc., that <span style="font-weight:bold">did not</span> involve overnight travel or commuting to and from work<span style="letter-spacing:3mm;">......................</span></div>
-						<div class="styLNRightNumBox" style="width:8mm;height:8mm;position:relative;"><span style="position:absolute;bottom:0;">2</span></div>
+						<div class="styLNRightNumBox" style="width:8mm;height:8mm;position:relative;padding-left:3mm;"><span style="position:absolute;bottom:0;">2</span></div>
 						<div class="styLNAmountBox" style="height:8mm;width:41mm;position:relative;text-align:left;">
 							<div style="position:absolute;width:41mm;bottom:0;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -149,8 +151,8 @@ you placed the vehicle in service, <span style="font-weight:bold">or (b)</span> 
 					</div>
 					<div style="width:187mm;height:8mm;">
 						<div class="styLNLeftNumBox" style="height:8mm;padding-left:1mm;width:5mm;">3</div>
-						<div class="styLNDesc" style="height:8mm;width:132mm;padding-right:2mm;">Travel expense while away from home overnight, including lodging, airplane, car rental, etc. <span style="font-weight:bold">Do not</span> include meals and entertainment<span style="letter-spacing:3mm;">.......................</span></div>
-						<div class="styLNRightNumBox" style="width:8mm;height:8mm;position:relative;"><span style="position:absolute;bottom:0;">3</span></div>
+						<div class="styLNDesc" style="height:8mm;width:132mm;padding-right:2mm;">Travel expense while away from home overnight, including lodging, airplane, car rental, etc. <span style="font-weight:bold">Do not</span> include meals and entertainment<span style="letter-spacing:3mm;">.....................</span></div>
+						<div class="styLNRightNumBox" style="width:8mm;height:8mm;position:relative;padding-left:3mm;"><span style="position:absolute;bottom:0;">3</span></div>
 						<div class="styLNAmountBox" style="height:8mm;width:41mm;position:relative;text-align:left;">
 							<div style="position:absolute;width:41mm;bottom:0;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -167,7 +169,7 @@ you placed the vehicle in service, <span style="font-weight:bold">or (b)</span> 
 						<div class="styLNLeftNumBox" style="height:8mm;padding-left:1mm;width:5mm;">4</div>
 						<div class="styLNDesc" style="height:8mm;width:132mm;padding-right:2mm;">Business expenses not included on lines 1 through 3. <span style="font-weight:bold;">Do not</span> include meals and
 entertainment<span style="letter-spacing:3mm;">............................</span></div>
-						<div class="styLNRightNumBox" style="width:8mm;height:8mm;position:relative;"><span style="position:absolute;bottom:0;">4</span></div>
+						<div class="styLNRightNumBox" style="width:8mm;height:8mm;position:relative;padding-left:3mm;"><span style="position:absolute;bottom:0;">4</span></div>
 						<div class="styLNAmountBox" style="height:8mm;width:41mm;position:relative;text-align:left;">
 							<div style="position:absolute;width:41mm;bottom:0;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -183,7 +185,7 @@ entertainment<span style="letter-spacing:3mm;">............................</spa
 					<div style="width:187mm;height:12mm;">
 						<div class="styLNLeftNumBox" style="height:12mm;padding-left:1mm;width:5mm;">5</div>
 						<div class="styLNDesc" style="height:12mm;width:132mm;padding-right:2mm;">Meals and entertainment expenses: $
-							<span style="padding-left:1mm;padding-right:1mm;width:6mm;border-bottom:1px solid black;text-align:right"> 
+							<span style="padding-left:1mm;padding-right:1mm;width:25mm;border-bottom:1px solid black;text-align:right"> 
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/MealsAndEntrmtExpnssAmt"/>
 								</xsl:call-template>
@@ -192,7 +194,7 @@ entertainment<span style="letter-spacing:3mm;">............................</spa
 						Department of Transportation (DOT) hours of service limits: Multiply meal expenses incurred
 						while away from home on business by 80% (.80) instead of 50%. For details, see instructions.)
 						</div>
-						<div class="styLNRightNumBox" style="width:8mm;height:12mm;position:relative;"><span style="position:absolute;bottom:0;">5</span></div>
+						<div class="styLNRightNumBox" style="width:8mm;height:12mm;position:relative;padding-left:3mm;"><span style="position:absolute;bottom:0;">5</span></div>
 						<div class="styLNAmountBox" style="height:12mm;width:41mm;position:relative;text-align:left;">
 							<div style="position:absolute;width:41mm;bottom:0;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -211,7 +213,7 @@ entertainment<span style="letter-spacing:3mm;">............................</spa
 on <span style="font-weight:bold">Schedule A (Form 1040NR), line 7)</span>. (Armed Forces reservists, fee-basis state or local
 government officials, qualified performing artists, and individuals with disabilities: See the
 instructions for special rules on where to enter this amount.)<span style="letter-spacing:3mm;">....................</span></div>
-						<div class="styLNRightNumBox" style="width:8mm;height:15mm;border-bottom:none;position:relative;"><span style="position:absolute;bottom:0;">6</span></div>
+						<div class="styLNRightNumBox" style="width:8mm;height:15mm;border-bottom:none;position:relative;padding-left:3mm;"><span style="position:absolute;bottom:0;">6</span></div>
 						<div class="styLNAmountBox" style="height:15mm;width:41mm;position:relative;text-align:left;border-bottom:none;">
 							<div style="position:absolute;width:41mm;bottom:0;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
@@ -318,7 +320,7 @@ instructions for special rules on where to enter this amount.)<span style="lette
 							<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:4.5mm;margin-top:1mm;">9</div>
 							<div class="styLNDesc" style="width:157.5mm;height:4.5mm;margin-top:1mm;">
 							Was your vehicle available for personal use during off-duty hours?
-							<span style="letter-spacing:3mm;">...................</span>
+							<span style="letter-spacing:3mm;">..................</span>
 							</div>
 							<div class="styLNDesc" style="width:22.5mm;height:4.5mm">
 								<xsl:call-template name="PopulateSpan">
@@ -357,7 +359,7 @@ instructions for special rules on where to enter this amount.)<span style="lette
 						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:4.5mm;margin-top:1mm;">10</div>
 							<div class="styLNDesc" style="width:157.5mm;height:4.5mm;margin-top:1mm">
 								Do you (or your spouse) have another vehicle available for personal use?
-								<span style="letter-spacing:3mm;">.................</span>
+								<span style="letter-spacing:3mm;">...............</span>
 							</div>
 							<div class="styLNDesc" style="width:22.5mm;height:4.5mm">
 								<xsl:call-template name="PopulateSpan">
@@ -395,7 +397,7 @@ instructions for special rules on where to enter this amount.)<span style="lette
 					<div style="width:187mm;height:4.5mm;">
 							<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:4.5mm;margin-top:1mm;">11a</div>
 							<div class="styLNDesc" style="width:157.5mm;height:4.5mm;margin-top:1mm;">Do you have evidence to support your deduction?
-							<span style="letter-spacing:3mm;">.........................</span>
+							<span style="letter-spacing:3mm;">.......................</span>
 							</div>
 							<div class="styLNDesc" style="width:22.5mm;height:4.5mm">
 								<xsl:call-template name="PopulateSpan">
@@ -430,12 +432,12 @@ instructions for special rules on where to enter this amount.)<span style="lette
 							</div>
 					</div>
 					<div style="width:187mm;height:4.5mm;"/>
-					<div style="width:187mm;height:4.5mm;">
-							<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:4.5mm;text-align:right;padding-right:1.5mm;margin-top:1mm;">b</div>
-							<div class="styLNDesc" style="width:157.5mm;height:4.5mm;margin-top:1mm;">If “Yes,” is the evidence written?
-							<span style="letter-spacing:3mm;">..............................</span>
+					<div style="width:187mm;height:6mm;">
+							<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;height:6mm;text-align:right;padding-right:1.5mm;margin-top:1mm;">b</div>
+							<div class="styLNDesc" style="width:157.5mm;height:6mm;margin-top:1mm;">If “Yes,” is the evidence written?
+							<span style="letter-spacing:3mm;">.............................</span>
 							</div>
-							<div class="styLNDesc" style="width:22.5mm;height:4.5mm;">
+							<div class="styLNDesc" style="width:22.5mm;height:6mm;">
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
 								</xsl:call-template>
@@ -450,7 +452,7 @@ instructions for special rules on where to enter this amount.)<span style="lette
 										<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
 										<xsl:with-param name="BackupName">IRS2106EZVehicle[<xsl:number value="position()"/>]EvidenceWrittenInd</xsl:with-param>
 									</xsl:call-template>
-									<span style="padding-right:2mm;height:4.5mm;padding-bottom:1.2mm;">Yes</span>
+									<span style="padding-right:2mm;height:6mm;padding-bottom:1.2mm;">Yes</span>
 								</label>
 								<input type="checkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
@@ -463,7 +465,7 @@ instructions for special rules on where to enter this amount.)<span style="lette
 										<xsl:with-param name="TargetNode" select="$TargetNode/EvidenceWrittenInd"/>
 										<xsl:with-param name="BackupName">IRS2106EZVehicle[<xsl:number value="position()"/>]EvidenceWrittenInd</xsl:with-param>
 									</xsl:call-template>
-									<span style="height:4.5mm;padding-bottom:1.2mm;">No</span>
+									<span style="height:6mm;padding-bottom:1.2mm;">No</span>
 								</label>
 							</div>
 					</div>

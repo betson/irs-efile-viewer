@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]><!-- 05/18/12 - Made changes per defect #32733 - Jeremy Nichols --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
+<!-- 04/02/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate_ETEC.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -9,8 +11,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS8849Schedule8"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -68,11 +72,11 @@
 	  <!--  End title of Form  -->
           
 	<!-- Begin Name / Employer identification number / Total Refund  -->
-	<div class="styIRS8849TTB" style="width:187mm">
-	<table cellspacing="0">
+	<div class="styIRS8849TTB" style="width:187mm;border-top-width:1px;">
+	<table cellspacing="0" cellpadding="0" style="height:auto;width:187mm;">
 		<tbody>
 			<tr>
-				<th scope="col" class="styNameBox" style="font-weight:normal;font-size:7pt;text-align:left;width:107mm">
+				<th scope="col" class="styNameBox" style="font-weight:normal;font-size:7pt;text-align:left;width:107mm;height:9mm;">
 				Name as shown on Form 8849<br/>
 					<xsl:choose>
 						<xsl:when test="normalize-space($FormData/NameOfEmployer) != ''">
@@ -97,7 +101,7 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</th>
-				<th scope="col" class="styNameBox" style="font-weight:normal;font-size:7pt;text-align:left;width:33mm;padding-left:2mm">
+				<th scope="col" class="styNameBox" style="font-weight:normal;font-size:7pt;text-align:left;padding-left:2mm;width:33mm;height:9mm;">
 					EIN<br/><br/>
 					<xsl:choose>
 						<xsl:when test="normalize-space($FormData/EmployerIdentificationNumber) != ''">
@@ -124,14 +128,12 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</th>
-				<th scope="col" style="padding-left:2mm;font-size:7pt;font-weight:normal;text-align:left;">
-					Total refund (see instructions)
-					<div style="text-align:right"><br/>
-					<span style="float:left;padding-bottom:2px;font-size:8pt">$</span>
+				<th scope="col" style="height:9mm;width:47mm;padding-left:2mm;font-size:7pt;font-weight:normal;text-align:right;">
+					<span style="float:left;">Total refund (see instructions)</span><br/><br/>
+					<span style="float:left;">$</span>
 					<xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$FormData/TotalRefundAmt"/>
 					</xsl:call-template>
-					</div>
 				</th>
 			</tr>
 		</tbody>
@@ -144,15 +146,15 @@
 		<table class="styTable" cellspacing="0">
 			<tbody style="font-size: 8pt">
 				<tr>
-					<th scope="col" style="width:7mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;"><span style="width:1px"/></th>
-					<th scope="col" style="width:28mm;vertical-align: top; text-align:left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px"><b>Period of claim: </b></th>
-					<th scope="col" style="width: 55mm; text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;font-weight:normal"><i>Enter month, day, and year<br/>in MMDDYYYY format.</i></th>
-					<th scope="col" style="width: 48mm; vertical-align: bottom; text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px"><b>From  </b> <img src="{$ImagePath}/8849Sch8_Bullet.gif" alt="MediumBullet"/>
+					<th scope="col" style="width:7mm;border-style: solid; padding-top:1mm; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;"><span style="width:1px"/></th>
+					<th scope="col" style="width:28mm;vertical-align: top; text-align:left; padding-top:1mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px"><b>Period of claim: </b></th>
+					<th scope="col" style="width: 55mm; text-align: left; border-style: solid; padding-top:1mm; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;font-weight:normal"><i>Enter month, day, and year<br/>in MMDDYYYY format.</i></th>
+					<th scope="col" style="width: 48mm; vertical-align: bottom; text-align: left; padding-top:1mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px"><b>From  </b> <img src="{$ImagePath}/8849Sch8_Bullet.gif" alt="MediumBullet"/>
 						<span style="font-weight:normal;padding-left:1mm"><xsl:call-template name="PopulateMonthDayYear">
 							<xsl:with-param name="TargetNode" select="$FormData/ClaimPeriodBeginDt"/>
 						</xsl:call-template></span>
 					</th>
-					<th scope="col" style="width: 49mm;vertical-align: bottom; text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px"><b>To  </b> <img src="{$ImagePath}/8849Sch8_Bullet.gif" alt="MediumBullet"/>
+					<th scope="col" style="width: 49mm;vertical-align: bottom; padding-top:1mm; text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px"><b>To  </b> <img src="{$ImagePath}/8849Sch8_Bullet.gif" alt="MediumBullet"/>
 						<span style="font-weight:normal;padding-left:1mm"><xsl:call-template name="PopulateMonthDayYear">
 							<xsl:with-param name="TargetNode" select="$FormData/ClaimPeriodEndDt"/>
 						</xsl:call-template></span>
@@ -202,19 +204,18 @@
 		
 		<!--Begin Table 1 -->
 		<div style="width:187mm; border-top: 1 solid black">
-		<table cellspacing="0">
+		<table cellspacing="0" cellpadding="0" style="height:auto;width:187mm;">
 			<tbody>
 				<tr style="font-size:8pt;height:8mm">
-					<th scope="col" class="styTableCellHeader" style="width:7mm;border-width=0">
+					<th scope="col" class="styTableCellHeader" style="width:7mm;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;">
 						<span class="styTableCellPad" style="text-align: left">1</span>
 					</th>
-					<th scope="col" colspan="2" class="styTableCellHeader" style="width:83mm; text-align:left;border-width=0">
+					<th scope="col" colspan="2" class="styTableCellHeader" style="width:83mm; text-align:left;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;">
 						<b>Sales of Undyed Diesel Fuel</b>
 					</th>
-					<!--<th class="styTableCellHeader" style="width:23mm;border-width=0"><span style="width: 1px"></span></th>-->
-					<th scope="col" class="styTableCellHeader" style="width:40mm;border-width=0"><span style="width: 1px"/></th>
-					<th scope="col" class="styTableCellHeader" style="width:55mm;border-width=0"><span style="width: 1px"/></th>
-					<th scope="col" class="styTableCellHeader" style="width:15mm;border-width=0"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:40mm;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:55mm;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:15mm;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
 				</tr>
 				<tr style="font-size:7pt">
 					<td style="border-color: black;text-align: center;border-style: solid; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px"><span style="width: 1px"/></td>
@@ -258,16 +259,16 @@
 		<table cellspacing="0">
 			<tbody>
 				<tr style="font-size:8pt;height:8mm">
-					<th scope="col" class="styTableCellHeader" style="width:7mm;border-width=0">
+					<th scope="col" class="styTableCellHeader" style="width:7mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;">
 						<span class="styTableCellPad" style="text-align: left">2</span>
 					</th>
-					<th scope="col" colspan="4" class="styTableCellHeader" style="width:172mm; text-align:left;border-width=0">
+					<th scope="col" colspan="4" class="styTableCellHeader" style="width:172mm; text-align:left;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;">
 						<b>Sales of Undyed Kerosene (Other Than Kerosene For Use in Aviation)</b>
 					</th>
 					<!--<th class="styTableCellHeader" style="width:23mm;border-width=0"><span style="width: 1px"></span></th>
 					<th class="styTableCellHeader" style="width:40mm;border-width=0"><span style="width: 1px"></span></th>
 					<th class="styTableCellHeader" style="width:55mm;border-width=0"><span style="width: 1px"></span></th>-->
-					<th scope="col" class="styTableCellHeader" style="width:15mm;border-width=0"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:15mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
 				</tr>
 				<tr style="font-size:7pt">
 					<td style="border-color: black;text-align: center;border-style: solid; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px"><span style="width: 1px"/></td>
@@ -312,16 +313,16 @@
 		<table cellspacing="0">
 			<tbody>
 				<tr style="font-size:8pt;height:8mm">
-					<th scope="col" class="styTableCellHeader" style="width:7mm;border-width=0">
+					<th scope="col" class="styTableCellHeader" style="width:7mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;">
 						<span class="styTableCellPad" style="text-align: left">3</span>
 					</th>
-					<th scope="col" colspan="2" class="styTableCellHeader" style="width:83mm; text-align:left;border-width=0">
+					<th scope="col" colspan="2" class="styTableCellHeader" style="width:83mm; text-align:left;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;">
 						<b>Sales of Kerosene for Use in Aviation</b>
 					</th>
 					<!--<th class="styTableCellHeader" style="width:23mm;border-width=0"><span style="width: 1px"></span></th>-->
-					<th scope="col" class="styTableCellHeader" style="width:40mm;border-width=0"><span style="width: 1px"/></th>
-					<th scope="col" class="styTableCellHeader" style="width:55mm;border-width=0"><span style="width: 1px"/></th>
-					<th scope="col" class="styTableCellHeader" style="width:15mm;border-width=0"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:40mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:55mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:15mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
 				</tr>
 				<tr style="font-size:7pt;vertical-align:top;padding-top:4px">
 					<td style="border-color: black;text-align: center;border-style: solid; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px"><span style="width: 1px"/></td>
@@ -392,16 +393,16 @@
 		<table cellspacing="0">
 			<tbody>
 				<tr style="font-size:8pt;height:8mm">
-					<th scope="col" class="styTableCellHeader" style="width:7mm;border-width=0">
+					<th scope="col" class="styTableCellHeader" style="width:7mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;">
 						<span class="styTableCellPad" style="text-align: left">4</span>
 					</th>
-					<th scope="col" colspan="2" class="styTableCellHeader" style="width:83mm; text-align:left;border-width=0">
+					<th scope="col" colspan="2" class="styTableCellHeader" style="width:83mm; text-align:left;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;">
 						<b>Sales of Gasoline</b>
 					</th>
-					<!--<th class="styTableCellHeader" style="width:23mm;border-width=0"><span style="width: 1px"></span></th>-->
-					<th scope="col" class="styTableCellHeader" style="width:40mm;border-width=0"><span style="width: 1px"/></th>
-					<th scope="col" class="styTableCellHeader" style="width:55mm;border-width=0"><span style="width: 1px"/></th>
-					<th scope="col" class="styTableCellHeader" style="width:15mm;border-width=0"><span style="width: 1px"/></th>
+					<!--<th class="styTableCellHeader" style="width:23mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"></span></th>-->
+					<th scope="col" class="styTableCellHeader" style="width:40mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:55mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:15mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
 				</tr>
 				<tr style="font-size:7pt;vertical-align:top;padding-top:4px">
 					<td style="border-color: black;text-align: center;border-style: solid; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px"><span style="width: 1px"/></td>
@@ -468,16 +469,16 @@
 		<table cellspacing="0">
 			<tbody>
 				<tr style="font-size:8pt;height:8mm">
-					<th scope="col" class="styTableCellHeader" style="width:7mm;border-width=0">
+					<th scope="col" class="styTableCellHeader" style="width:7mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;">
 						<span class="styTableCellPad" style="text-align: left">5</span>
 					</th>
-					<th scope="col" colspan="2" class="styTableCellHeader" style="width:83mm; text-align:left;border-width=0">
+					<th scope="col" colspan="2" class="styTableCellHeader" style="width:83mm; text-align:left;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;">
 						<b>Sales of Aviation Gasoline</b>
 					</th>
-					<!--<th class="styTableCellHeader" style="width:23mm;border-width=0"><span style="width: 1px"></span></th>-->
-					<th scope="col" class="styTableCellHeader" style="width:40mm;border-width=0"><span style="width: 1px"/></th>
-					<th scope="col" class="styTableCellHeader" style="width:55mm;border-width=0"><span style="width: 1px"/></th>
-					<th scope="col" class="styTableCellHeader" style="width:15mm;border-width=0"><span style="width: 1px"/></th>
+					<!--<th class="styTableCellHeader" style="width:23mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"></span></th>-->
+					<th scope="col" class="styTableCellHeader" style="width:40mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:55mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
+					<th scope="col" class="styTableCellHeader" style="width:15mm;border-top-width:0px;border-right-width:0px;border-bottom-width:0px;"><span style="width: 1px"/></th>
 				</tr>
 				<tr style="font-size:7pt;vertical-align:top;padding-top:4px">
 					<td style="border-color: black;text-align: center;border-style: solid; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px"><span style="width: 1px"/></td>
@@ -542,12 +543,10 @@
 		
 		
 		<!-- Begin Footer -->
-		<div style="width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 2px; border-bottom-width: 0px">
-			<div style="clear:both;padding-top:4px">
+		<div style="width:187mm; padding-top:0.5mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 0px">
 				<div style="width:114mm;font-weight:bold;" class="styGenericDiv">For Privacy Act and Paperwork Reduction Act Notice, see Form 8849 instructions.</div>
 				<div style="width:23mm;padding-left:2mm;font-size:6pt;padding-top:2px;" class="styGenericDiv">Cat. No. 47991M</div>
-				<div style="float:right;width:48mm;" class="styGenericDiv"><span class="styBoldText">Schedule 8 (Form 8849)</span> (10-2006)</div>
-			</div>     
+				<div style="float:right;width:50mm;" class="styGenericDiv"><span style="width:1.5mm;"/><span class="styBoldText">Schedule 8 (Form 8849)</span> (10-2006)</div>
 		</div>     
 		<div class="pageEnd"/><br/>
 	

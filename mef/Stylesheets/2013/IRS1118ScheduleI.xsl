@@ -70,8 +70,10 @@
 </xsl:template>
   <!-- /////////////////////////////////////////// -->
   <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -144,7 +146,7 @@
   </div>
   <!-- Name and Address -->
   <div class="styBB" style="width:256mm;">
-    <div class="styNameBox" style="width:206mm;height:8mm;font-size:7pt;">
+    <div class="styNameBox" style="width:206mm;height:9mm;font-size:7pt;">
       Name of corporation<br/>
             <span>
               <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -171,8 +173,8 @@
     Use a separate Schedule I (Form 1118) for each applicable category of income
     listed below. Check only one box on each schedule.
     <br/>
-    <br/>    
-<div style="height:12mm;width:47mm;float:left;">
+    
+<div style="height:10mm;width:47mm;float:left;">
 <input type="checkbox" class="styCkbox">
 	<xsl:call-template name="PopulateCheckbox">
 		<xsl:with-param name="TargetNode" select="$FormData/ForeignIncPassiveCategoryInd"/>
@@ -187,7 +189,7 @@
 	<span style="1mm;">Passive Category Income</span>
 </label>
 <br/>
-<br/>
+
 <input type="checkbox" class="styCkbox">
 	<xsl:call-template name="PopulateCheckbox">
 		<xsl:with-param name="TargetNode" select="$FormData/ForeignIncGeneralCategoryInd"/>
@@ -198,10 +200,11 @@
 	<xsl:call-template name="PopulateLabel">
 		<xsl:with-param name="TargetNode" select="$FormData/ForeignIncGeneralCategoryInd"/>
 		<xsl:with-param name="BackupName">FormDataGeneralCategoryIncome</xsl:with-param>
-	</xsl:call-template>General Category Income
+	</xsl:call-template>
+		<span style="1mm;">General Category Income</span>
  </label>
 </div>
-<div style="height:12mm;width:108mm;float:left;">
+<div style="height:5mm;width:108mm;float:left;">
 	<input type="checkbox" class="styCkbox">
 		<xsl:call-template name="PopulateCheckbox">
 			<xsl:with-param name="TargetNode" select="$FormData/ForeignIncSection901jInd"/>
@@ -220,7 +223,7 @@
 			<xsl:with-param name="TargetNode" select="$FormData/ForeignIncSection901jInd/@nameOfSanctionedCountry"/>
 		</xsl:call-template>
 	</span>
-	<br/>
+	
 	<br/>
 	<input type="checkbox" class="styCkbox">
 		<xsl:call-template name="PopulateCheckbox">
@@ -232,8 +235,9 @@
 		<xsl:call-template name="PopulateLabel">
 			<xsl:with-param name="TargetNode" select="$FormData/ForeignIncResourcedTreatyInd"/>
 			<xsl:with-param name="BackupName">FormDataIncomeResourcedByTreaty</xsl:with-param>
-		</xsl:call-template>Income Re-sourced by Treaty:
-	</label> Name of Country <img src="{$ImagePath}/1118SchI_Bullet_Line.gif" alt="bulletpoint"/>
+		</xsl:call-template>
+		<span style="1mm;">Income Re-sourced by Treaty: Name of Country</span>
+	</label>  <img src="{$ImagePath}/1118SchI_Bullet_Line.gif" alt="bulletpoint"/>
 		<span style="border-color:black; border-style:solid; border-right-width: 0px; border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px; width: 31mm">
 			<xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="$FormData/ForeignIncResourcedTreatyInd/@nameOfCountry"/>
@@ -243,7 +247,7 @@
   </div>
   <!-- comment line -->
   <div class="LineContainerLong">
-          <span style="font-size:8pt;font-style:italic;padding-left:4mm;">
+          <span style="font-size:8pt;font-style:italic;">
     Report all amounts in U.S. dollars.
           </span>
   </div>
@@ -273,27 +277,28 @@
      <table cellspacing="0" style="font-size:7pt;">
       <thead style="display:table-header-group;">
       <tr>
-        <th class="IRS1118ScheduleI_GenericCell" style="width:6mm;height:10mm;background-color:lightgrey;text-align:center;" rowspan="2" scope="col"><span style="width:1px;" /></th>
-        <th class="IRS1118ScheduleI_GenericCell" style="width:45mm;height:10mm;text-align:center;" rowspan="2" scope="col">
+        <th class="IRS1118ScheduleI_GenericCell" style="width:6mm;height:14mm;background-color:lightgrey;text-align:center;" rowspan="2" scope="col">
+        
+        </th>
+        <th class="IRS1118ScheduleI_GenericCell" style="height:14mm;text-align:center;" rowspan="2" scope="col">
           <span class="styBoldText">1. </span>Name of foreign country (Use a separate line for each country.)*
         </th>
-        <th class="IRS1118ScheduleI_GenericCell" style="height:4mm;width:205mm;font-size:7pt;font-weight:bold;border-right-width:0px;text-align:center;" colspan="6" scope="col">
+        <th class="IRS1118ScheduleI_GenericCell" style="height:4mm;width:210mm;font-size:7pt;font-weight:bold;border-right-width:0px;text-align:center;" colspan="6" scope="col">
           Gross Foreign Oil and Gas Income From Sources Outside the United States and its Possessions
           <span style="font-weight:normal;">(see instructions)</span>  
         </th>
-      </tr>
-      <tr>
-                <th class="IRS1118ScheduleI_GenericCell" style="text-align:center;" scope="col">
+      </tr><tr>
+                <th class="IRS1118ScheduleI_GenericCell" style="height:10mm;text-align:center;" scope="col">
                   <span class="styBoldText">2.</span> Gross foreign oil and gas extraction income</th>
-                <th class="IRS1118ScheduleI_GenericCell" style="text-align:center;" scope="col">
+                <th class="IRS1118ScheduleI_GenericCell" style="height:10mm;text-align:center;" scope="col">
                   <span class="styBoldText">3. </span>Gross foreign oil related income </th>
-                <th class="IRS1118ScheduleI_GenericCell" style="text-align:center;" scope="col">
+                <th class="IRS1118ScheduleI_GenericCell" style="height:10mm;text-align:center;" scope="col">
                   <span class="styBoldText">4. </span> Certain dividends from foreign corporations</th>
-                <th class="IRS1118ScheduleI_GenericCell" style="text-align:center;" scope="col">
+                <th class="IRS1118ScheduleI_GenericCell" style="height:10mm;text-align:center;" scope="col">
                   <span class="styBoldText">5. </span>Constructive distributions under section 951(a)</th>
-                <th class="IRS1118ScheduleI_GenericCell" style="text-align:center;" scope="col">
+                <th class="IRS1118ScheduleI_GenericCell" style="height:10mm;text-align:center;" scope="col">
                   <span class="styBoldText">6.</span> Other</th>
-                <th class="IRS1118ScheduleI_GenericCell" scope="col" style="width:45mm;border-right-width:0px;text-align:center;">
+                <th class="IRS1118ScheduleI_GenericCell" scope="col" style="width:45mm;height:10mm;border-right-width:0px;text-align:center;">
                   <span class="styBoldText">7. </span>Total (add columns 2 <br/>through 6)</th>
               </tr>
             </thead>
@@ -387,7 +392,7 @@
       </xsl:if>
       <xsl:if test="not($Print = $Separated) or (count($FormData/ForeignOilAndGasIncomeTaxes) &lt; 7)  and ($Print = $Separated) ">
       <tr>
-        <td class="IRS1118ScheduleI_GenericCell" style="width:51mm;height:4mm;font-weight:bold;text-align:center;" colspan="2" scope="row">
+        <td class="IRS1118ScheduleI_GenericCell" style="width:42mm;height:4mm;font-weight:bold;text-align:left;padding-left:0px" colspan="2" scope="row">
            Totals <span style="font-weight:normal;">(add lines A through F)</span>
         </td>
         <td class="IRS1118ScheduleI_GenericCell" style="height:4mm;">
@@ -471,20 +476,22 @@
      <table cellspacing="0" style="font-size:7pt;">
      <thead style="display:table-header-group;">
       <tr>
-        <th class="IRS1118ScheduleI_GenericCell" style="width:6mm;height:8mm;background-color:lightgrey;text-align:center;" rowspan="2" scope="col"><span style="width:1px;" /></th>
-        <th class="IRS1118ScheduleI_GenericCell" style="width:109mm;height:3mm;font-weight:bold;text-align:center;" colspan="3" scope="col">
-          Deductions
-        </th>
-                <th scope="col" class="IRS1118ScheduleI_GenericCell" style="text-align:center;" rowspan="2">
-                  <span class="styBoldText">11. </span>Taxable income (column 7 minus column 10)</th>
-        <th class="IRS1118ScheduleI_GenericCell" style="width:109mm;height:3mm;font-weight:bold;border-right-width:0px;text-align:center;" colspan="3" scope="col">
-          Foreign Oil and Gas Taxes <span style="font-weight:normal;text-align:center;">(attach schedule)</span>
+        <th class="IRS1118ScheduleI_GenericCell" style="width:6mm;height:8mm;background-color:lightgrey;text-align:center;" rowspan="2" scope="col">
+        <span style="width:1px;" /></th>
+        <th class="IRS1118ScheduleI_GenericCell" style="width:106mm;height:4mm;font-weight:bold;text-align:center;" colspan="3" scope="col">Deductions</th>
+        
+        <th class="IRS1118ScheduleI_GenericCell" style="text-align:center;height:8mm" rowspan="2">
+        <span class="styBoldText">11. </span>Taxable income (column 7 minus column 10)</th>
+        <th class="IRS1118ScheduleI_GenericCell" style="width:106mm;height:4mm;font-weight:bold;border-right-width:0px;text-align:center;" colspan="3" scope="col">
+        Foreign Oil and Gas Taxes <span style="font-weight:normal;text-align:center;">(attach schedule)</span>
         </th>
       </tr>
       <tr>
-                <th class="IRS1118ScheduleI_GenericCell" style="height:5mm;width:45mm;text-align:center;" scope="col">
+                <!--<th class="IRS1118ScheduleI_GenericCell" style="height:5mm;width:6mm;text-align:center;" colspan="3" scope="col">
+                  </th>-->
+                <th class="IRS1118ScheduleI_GenericCell" style="height:10mm;width:45mm;text-align:center;"   scope="col">
                   <span class="styBoldText">8. </span>Definitely allocable<br/>deductions</th>
-                <th class="IRS1118ScheduleI_GenericCell" style="height:5mm;text-align:center;" scope="col">
+                <th class="IRS1118ScheduleI_GenericCell" style="height:10mm;text-align:center;" scope="col">
                   <span class="styBoldText">9.</span> Apportioned deductions not definitely allocable</th>
                 <th class="IRS1118ScheduleI_GenericCell" style="height:5mm;text-align:center;" scope="col">
                   <span class="styBoldText">10.</span> Total (add columns 8 and 9)</th>
@@ -672,7 +679,7 @@
         <div class="pageEnd"/>
       <!--END FOOTER-->  
       <!--BEGIN HEADER-->
-      <div class="styBB" style="width:256mm">
+      <div class="styBB" style="width:187mm;float: none; clear: none">
         <div style="float: left; clear: none">Schedule I (Form 1118) (Rev. 12-2012)</div>        
         <div style="float:right;padding-right:4mm">
           Page <span class="styBoldText" style="font-size: 8pt">2</span>
@@ -884,7 +891,7 @@
 	<thead class="styTableThead">
 		<tr class="styDepTblHdr">
         <th class="styDepTblCell" style="width:6mm;height:12mm;" rowspan="2" scope="col"><span style="width:1px;" /></th>
-        <th class="styDepTblCell" style="width:45mm;height:12mm;text-align:center;padding-top: 4mm" rowspan="2" scope="col">
+        <th class="styDepTblCell" style="width:39mm;height:12mm;text-align:center;padding-top: 4mm" rowspan="2" scope="col">
           1. Name of foreign country (Use a separate line for each country.)*
         </th>
         <th class="styDepTblCell" style="height:4mm;width:205mm;font-size:7pt;font-weight:bold;border-right-width:0px;text-align:center;" colspan="6" scope="col">
@@ -1007,17 +1014,20 @@
 <table class="styDepTbl" style="width: 256mm;font-size: 7pt">
 	<thead class="styTableThead">
 		<tr class="styDepTblHdr">
-        <th class="styDepTblCell" style="width:6mm;height:8mm" rowspan="2" scope="col"><span style="width:1px;" /></th>
+        <th class="styDepTblCell" style="width:6mm;height:5mm" rowspan="2" scope="col"><span style="width:1px;" /></th>
         <th class="styDepTblCell" style="width:96mm;height:3mm;font-weight:bold" colspan="3" scope="col">
           Deductions
         </th>
-        <th scope="col" class="styDepTblCell" style="text-align:center;width: 32mm" rowspan="2">11. Taxable income (column 7 minus column 10)</th>
+        
         <th class="styDepTblCell" style="width:122mm;height:3mm;font-weight:bold" colspan="3" scope="col">
           Oil and Gas Extraction Taxes <span style="font-weight:normal">(attach schedule)</span>
         </th>
       </tr>
+<!--<th scope="col" class="styDepTblCell" style="text-align:center;width:32mm;height:17mm" rowspan="2">11. Taxable income (column 7 minus column 10)</th>-->
+      <!--  <th class="styDepTblCell" style="width:39mm;height:12mm;text-align:center;padding-top: 4mm" rowspan="2" scope="col">-->
       <tr class="styDepTblHdr">
-        <th class="styDepTblCell" style="height:5mm;width:32mm;text-align:center;" scope="col">8. Definitely allocable<br/>deductions</th>
+        <th class="styDepTblCell" style="width:6mm;height:12mm;" rowspan="2" scope="col"><span style="width:1px;" /></th>
+        <th class="styDepTblCell" style="height:5mm;width:32mm;text-align:center;padding-top: 4mm" scope="col">8. Definitely allocable<br/>deductions</th>
         <th class="styDepTblCell" style="height:5mm;text-align:center;width: 32mm" scope="col">9. Apportioned deductions not definitely allocable</th>
         <th class="styDepTblCell" style="height:5mm;text-align:center;width: 32mm" scope="col">10. Total (add columns 8 and 9)</th>
         <th class="styDepTblCell" style="height:5mm;text-align:center;width: 45mm" scope="col">12. Paid or accured</th>

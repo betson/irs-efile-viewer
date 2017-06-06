@@ -222,14 +222,14 @@
 		<xsl:variable name="containerPos">ShortTermCapitalGainAndLossGrpDiv<xsl:number value="position()"/>
 		</xsl:variable>
 		<!-- BEGIN: Part I (Header)-->
-		<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;clear:all;">
+		<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;clear:all;height:18mm;">
 			<div class="styPartName" style="width:13mm;">Part I</div>
 			<div class="styPartDesc" style="width:173.7mm;font-size:8pt;padding-left:2px;">
 			Short-Term. <span style="font-weight:normal">Transactions involving capital assets you held 1 year or less are short term. For long-term transactions, see page 2. <br/>
 					<b>Note.</b> You may aggregate all short-term transactions reported on Form(s) 1099-B  showing basis was reported to the IRS and for which NO adjustments or codes are required. Enter the total directly on Schedule D, line 1a; you are not required to report these transactions on Form 8949 (see instructions).</span>
 			</div>
 		</div>
-		<div class="styIRS8949LineItem" style="padding-bottom:2mm;">
+		<div class="styIRS8949LineItem" style="padding-bottom:2mm;height:10mm;">
 			<b>You <i>must</i> check Box A, B, <i>or</i> C below. Check only one box.</b> If more than one box applies for your short-term transactions, complete a separate Form 8949, page 1, for each applicable box. If you have more short-term transactions than will fit on this page for one or more of the boxes, complete as many forms with the same box checked as you need.
 	</div>
 		<!-- END: Part I (Header)-->
@@ -238,7 +238,7 @@
 		<!-- Begin (Line) 1 -->
 		<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 		<!-- Begin Checkboxes (a),(b),(c) -->
-		<div class="styBB" style="width:187mm;">
+		<div class="styBB" style="width:187mm;padding-bottom:.5mm;">
 			<div class="styIRS8949LNDesc" style="width:187mm;">
 				<div style="width:3mm;float:left;">
 					<input type="Checkbox" class="styCkbox">
@@ -317,9 +317,9 @@
 			</div>
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 		</div>
-		<div class="styIRS8949LineItem" style="clear:both;">
+		<div class="styIRS8949LineItem" style="clear:both;height:auto;">
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-			<div class="styTableContainerNBB">
+			<div class="styTableContainerNBB" >
 				<xsl:attribute name="id"><xsl:value-of select="$containerPos"/></xsl:attribute>
 				<!-- ++++++++++++++++++++++++ Start: Table  ++++++++++++++++++++++ -->
 				<!-- ++++++++++++++++++++++++ Start: Table Headers ++++++++++++++++++++++ -->
@@ -331,9 +331,9 @@
 					<!-- ++++++++++++++++++++++++ End: Table Headers +++++++++++++++++++++++ -->
 					<!-- ++++++++++++++++++++++++ Start: Table Footers ++++++++++++++++++++++ -->
 					<tfoot>
-						<tr style="border-top:1px solid;border-color:black;">
+						<tr style="border-top:1px solid;border-color:black;height:18.5mm;">
 							<td colspan="3" style="border-bottom:1px solid black;border-right:1px solid black;">
-								<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;">
+								<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;height:auto;padding-top:3mm;">
 									<span class="styBoldText">2 Totals</span>. Add the amounts in columns (d), (e), (g), and (h) (subtract negative amounts). Enter each total here and include on your Schedule D, <b>line 1b</b> (if <b>Box A</b> above is checked), <b>line 2</b> (if <b>Box B</b> above is checked), or <b>line 3</b> (if <b>Box C</b> above is checked).
 									<!--Dotted Line-->
 									<span style="font-weight:bold;letter-spacing:3mm;text-align:right;padding-left:3mm;padding-right:2px;">...........</span>
@@ -378,6 +378,53 @@
 								</xsl:call-template>
 							</xsl:if>
 						</xsl:if>  					
+					<!-- Creates empty table rows  -->
+						<xsl:if test="(($Print = $Separated) and (count($NodeData/CapitalGainAndLossAssetGrp) &gt; $p1Lines))">
+							<tr style="border-color:black;" valign="bottom">
+								<!--++++++++++++++++++++A++++++++++++++++++-->
+								<td class="styIRS8949TableCell" style="width:47mm;">
+									<xsl:call-template name="PopulateAdditionalDataTableMessage">
+										<xsl:with-param name="TargetNode" select="$NodeData/CapitalGainAndLossAssetGrp"/>
+									</xsl:call-template>
+									<span style="width:0px"/>
+								</td>
+								<!--++++++++++++++++++++D++++++++++++++++++-->
+								<td class="styIRS8949TableCell">
+									<span style="width:4px"/>
+								</td>
+								<!--++++++++++++++++++++E++++++++++++++++++-->
+								<td class="styIRS8949TableCell">
+									<span style="width:4px"/>
+								</td>
+								<!--+++++++++++++++++++++F+++++++++++++++++-->
+								<td class="styIRS8949TableCell">
+									<span style="width:4px"/>
+								</td>
+								<!--++++++++++++++++++++++G++++++++++++++++-->
+								<td class="styIRS8949TableCell" style="width:31mm;text-align:right;">
+									<br/>
+									<xsl:call-template name="PopulateNegativeNumber">
+										<xsl:with-param name="TargetNode" select="/.."/>
+									</xsl:call-template>
+								</td>
+								<!--+++++++++++++++++++++++H+++++++++++++++-->
+								<td class="styIRS8949TableCell">
+									<span style="width:4px"/>
+								</td>
+								<!--+++++++++++++++++++++++I+++++++++++++++-->
+								<td class="styIRS8949TableCell">
+									<span style="width:4px"/>
+								</td>
+								<!--+++++++++++++++++++++++J+++++++++++++++-->
+								<td class="styIRS8949TableCell">
+									<span style="width:4px"/>
+								</td>
+							</tr>
+							<xsl:call-template name="blank-rows">
+								<xsl:with-param name="count" select="$p1Lines - 1"/>
+							</xsl:call-template>
+						</xsl:if>
+						<!-- +++++++++++++++++++++++++++ End  Populating +++++++++++++++++++++++ -->
 					</tbody>
 				</table>
 			</div>
@@ -406,14 +453,14 @@
 		<xsl:variable name="containerPos">LongTermCapitalGainAndLossGrpDiv<xsl:number value="position()"/>
 		</xsl:variable>
 		<!-- BEGIN: Part II (Header)-->
-		<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;clear:all;">
+		<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;clear:all;height:18mm;">
 			<div class="styPartName" style="width:13mm;">Part II</div>
 			<div class="styPartDesc" style="width:173.7mm;font-size:8pt;padding-left:2px;">
 			Long-Term. <span style="font-weight:normal">Transactions involving capital assets you held more than 1 year are long term. For short-term transactions, see page 1. <br/>
 					<b>Note.</b> You may aggregate all long-term transactions reported on Form(s) 1099-B  showing basis was reported to the IRS and for which NO adjustments or codes are required. Enter the total directly on Schedule D, line 8a; you are not required to report these transactions on Form 8949 (see instructions).</span>
 			</div>
 		</div>
-		<div class="styIRS8949LineItem" style="padding-bottom:2mm;">
+		<div class="styIRS8949LineItem" style="padding-bottom:2mm;height:10mm;">
 			<b>You <i>must</i> check Box D, E, <i>or</i> F below. Check only one box.</b> If more than one box applies for your long-term transactions, complete a separate Form 8949, page 2, for each applicable box. If you have more long-term transactions than will fit on this page for one or more of the boxes, complete as many forms with the same box checked as you need.
 	</div>
 		<!-- END: Part I (Header)-->
@@ -421,8 +468,8 @@
 		<!-- ################################################################################# -->
 		<!-- Begin (Line) 1 -->
 		<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-		<!-- Begin Checkboxes (a),(b),(c) -->
-		<div class="styBB" style="width:187mm;">
+		<!-- Begin Checkboxes (d),(e),(f) -->
+		<div class="styBB" style="width:187mm;padding-bottom:.5mm;">
 			<div class="styIRS8949LNDesc" style="width:187mm;">
 				<div style="width:3mm;float:left;">
 					<input type="Checkbox" class="styCkbox">
@@ -501,7 +548,7 @@
 			</div>
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 		</div>
-		<div class="styIRS8949LineItem" style="clear:both;">
+		<div class="styIRS8949LineItem" style="clear:both;height:auto;">
 			<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 			<div class="styTableContainerNBB">
 				<xsl:attribute name="id"><xsl:value-of select="$containerPos"/></xsl:attribute>
@@ -517,9 +564,9 @@
 					<!-- ++++++++++++++++++++++++ End: Table Headers +++++++++++++++++++++++ -->
 					<!-- ++++++++++++++++++++++++ Start: Table Footers ++++++++++++++++++++++ -->
 					<tfoot>
-						<tr style="border-top:1px solid;border-color:black;">
+						<tr style="border-top:1px solid;border-color:black;height:18.5mm;">
 							<td colspan="3" style="border-bottom:1px solid black;border-right:1px solid black;">
-								<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;">
+								<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;height:auto;padding-top:3mm;">
 									<span class="styBoldText">2 Totals</span>. Add the amounts in columns (d), (e), (g), and (h) (subtract negative amounts). Enter each total here and include on your Schedule D, <b>line 8b</b> (if <b>Box D</b> above is checked), <b>line 9</b> (if <b>Box E</b> above is checked), or <b>line 10</b> (if <b>Box F</b> above is checked)
 								<!--Dotted Line-->
 									<span style="font-weight:bold;letter-spacing:3mm;text-align:right;padding-left:3mm;padding-right:2px;">..........</span>
@@ -764,8 +811,10 @@
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8949Data)"/>
@@ -831,7 +880,7 @@
 						<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<!-- END:	Header Title-->
 						<div class="styTYBox" style="width:30mm;height:22.2mm;border-left-width:2px;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0123</div>
+							<div class="styOMB" style="height:auto;font-size:7pt;">OMB No. 1545-0123</div>
 							<div class="styTY">20<span class="styTYColor">14</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -842,26 +891,41 @@
 					</div>
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:104mm;height:8mm;font-weight:normal;font-size:7pt;">
+						<div class="styNameBox" style="width:104mm;height:9mm;font-weight:normal;font-size:7pt;">
 							Name(s) shown on return <br/>
-							<!-- <xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
-							</xsl:call-template>  -->
-							<!--<xsl:if test="$RtnHdrData/Filer/NameLine1Txt">
-								<br/>  -->
-								<xsl:call-template name="PopulateText">
-						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt" />
-					</xsl:call-template>
-							<!-- </xsl:if>  -->
+							<xsl:choose>
+								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt" />
+									</xsl:call-template>
+								</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+										</xsl:call-template>
+										<br/>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+										</xsl:call-template>
+									</xsl:otherwise>
+							</xsl:choose>
 						</div>
 						<div style="height:8mm;width:83mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
 							Social security number or taxpayer identification number
 							<br/>
-							<span style="font-weight:normal;text-align:center;width:100%;padding-top:2mm;">
-								
+							<span style="font-weight:normal;text-align:center;width:100%;padding-top:3mm;">
+								<xsl:choose>
+									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode"  select="$RtnHdrData/Filer/PrimarySSN" />
-										</xsl:call-template>																
+										</xsl:call-template>
+									</xsl:when>
+										<xsl:otherwise>
+											<xsl:call-template name="PopulateReturnHeaderFiler">
+												<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+											</xsl:call-template>
+										</xsl:otherwise>
+								</xsl:choose>
 							</span>
 						</div>
 					</div>

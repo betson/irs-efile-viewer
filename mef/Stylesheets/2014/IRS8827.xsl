@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form8827Data" select="$RtnDoc/IRS8827"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8827Data)"/>
@@ -37,7 +39,7 @@
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm">
       <form name="Form8827">
           <xsl:call-template name="DocumentHeader"/>
           <!-- Begin Form Number and Name -->
@@ -58,7 +60,6 @@
               <div class="styMainTitle" style="height:8mm;padding-top:1mm;">
                 Credit for Prior Year Minimum Tax-Corporations
               </div>
-            
               <div class="styFST" style="height:5mm;font-size:7pt;padding-top:2mm">
                 <img src="{$ImagePath}/8827_Bullet_Title.gif" width="4" height="7" alt="Bullet Image"/>
                   Attach to the corporation's tax return.
@@ -72,7 +73,7 @@
             </div>
             </div>
             <div class="styTYBox" style="width:32mm;height:20mm;">
-              <div class="styOMB" style="height:2mm;">
+              <div class="styOMB" style="height:4mm;width:32mm;">
                 OMB No. 1545-0123
               </div>
               <div class="styTY" style="height:11mm;padding-top:2mm;">
@@ -177,7 +178,7 @@
                 <span style="float:left;">
                 Add lines 1, 2, and 3 </span>
                 <!--Dotted Line-->
-                <div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
+                <div class="styDotLn" style="float:right;padding-right:1mm;">..........................</div>
               </div>
               <div class="styLNRightNumBox">4</div>
               <div class="styLNAmountBox">
@@ -200,7 +201,7 @@
               </div>
             </div>
             <!--L6-->
-            <div style="width:187mm">
+            <div style="width:187mm;height:10mm">
               <div class="styLNLeftNumBox">6</div>
               <div class="styLNDesc" style="width:138.75mm;">
                 Is the corporation a "small corporation" exempt from the AMT for 2014 (see instructions)?
@@ -215,24 +216,24 @@
                 <!--Dotted Line-->
                 <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
               </div>
-              <div class="styLNRightNumBox" style="padding-top:6.5mm;">6</div>
-              <div class="styLNAmountBox" style="padding-top:6.5mm;">
+              <div class="styLNRightNumBox" style="height:10mm;padding-top:6mm">6</div>
+              <div class="styLNAmountBox" style="height:10mm;padding-top:6mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8827Data/SmallCorporationExemptAmt"/>
                 </xsl:call-template>
               </div>
             </div>
             <!--L7a-->
-            <div style="width:187mm">
-              <div class="styLNLeftNumBox" style="height:3mm;">7a</div>
-              <div class="styLNDesc" style="width:138.75mm;height:3mm;">
+            <div style="width:187mm;height:5mm;">
+              <div class="styLNLeftNumBox" style="height:5mm;">7a</div>
+              <div class="styLNDesc" style="width:138.75mm;height:5mm;">
                 <span style="float:left;">
                 Subtract line 6 from line 5.  If zero or less, enter -0- </span>
                 <!--Dotted Line-->
-                <div class="styDotLn" style="float:right;padding-right:1mm;">..................</div>
+                <div class="styDotLn" style="float:right;padding-right:1mm;">................</div>
               </div>
-              <div class="styLNRightNumBox" style="height:3.5mm;">7a</div>
-              <div class="styLNAmountBox" style="height:3.5mm;">
+              <div class="styLNRightNumBox" style="height:5mm;padding-top:1.5mm">7a</div>
+              <div class="styLNAmountBox" style="height:5mm;padding-top:1.5mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8827Data/NetSmallCorporationExemptAmt"/>
                 </xsl:call-template>
@@ -261,10 +262,10 @@
                 <span style="float:left;">
                 Add lines 7a and 7b </span>
                 <!--Dotted Line-->
-                <div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
+                <div class="styDotLn" style="float:right;padding-right:1mm;">..........................</div>
               </div>
-              <div class="styLNRightNumBox" style="height:3.5mm;">7c</div>
-              <div class="styLNAmountBox" style="height:3.5mm;">
+              <div class="styLNRightNumBox" style="height:5mm;padding-top:1.5mm">7c</div>
+              <div class="styLNAmountBox" style="height:5mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8827Data/TotalNetBonusDepreciationAmt"/>
                 </xsl:call-template>
@@ -323,39 +324,8 @@
                   <span style="width:1px;"/>                  
                 </span>
                 <!--Dotted Line-->
-                <div class="styDotLn" style="float:right;padding-right:1mm;">......................</div>
-              <!-- <div class="styLNDesc" style="width:138.75mm;height:14mm;">
-                <b>Current year minimum tax credit.</b> Enter the smaller of line 4 or line 7a here and on Form 1120, Schedule J, Part I, line 5d (or the applicable line of your return). If the corporation had a post-1986 ownership change or has pre-acquisition excess credits, see instructions. If you made an entry on line 7b, go to line 8c. Otherwise, skip line 8c
-                 --><!-- Adding pen image --><!--
-                  <span style="width:1px;"/>
-                  --><!-- Form to Form Link --><!--
-                <xsl:call-template name="SetFormLinkInline">
-                <xsl:with-param name="TargetNode" select="$Form8827Data/CYMinimumTaxCredit"/>
-                  </xsl:call-template>
-                  <span style="width:1px;"/>
-                  <xsl:call-template name="LinkToLeftoverDataTableInline">
-                    <xsl:with-param name="Desc">Line 8b - Statement SEC</xsl:with-param>
-                    <xsl:with-param name="TargetNode" select="$Form8827Data/CYMinimumTaxCredit/@statementSEC"/>
-            </xsl:call-template> 
-       <b>
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>.
-              <span class="styNBSP"/>. 
-            </b>
-                  <span style="width:1px;"/>                  
-                --><!--Dotted Line-->
+                <div class="styDotLn" style="float:right;padding-right:1mm;">.....................</div>
+             <!--Dotted Line-->
               </div>
              <div class="styLNRightNumBox" style="height:14mm;padding-top:10mm;">8b</div>
               <div class="styLNAmountBox" style="height:14mm;padding-top:10mm;">
@@ -386,10 +356,10 @@
               <div class="styLNDesc" style="width:138.75mm;">
                 <span class="styBoldText">Minimum tax credit carryforward to 2015. </span> Subtract line 8a from line 4.  Keep a record of this amount to <span style="float:left;">carry forward and use in future years </span>
                 <!--Dotted Line-->
-                <div class="styDotLn" style="float:right;padding-right:1mm;">......................</div>
+                <div class="styDotLn" style="float:right;padding-right:1mm;">.....................</div>
               </div>
               <div class="styLNRightNumBoxNBB" style="height:8mm;padding-top:4mm;">9</div>
-              <div class="styLNAmountBoxNBB" style="height:8mm;">
+              <div class="styLNAmountBoxNBB" style="height:8mm;padding-top:1mm">
                 <br/>
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8827Data/MinimumTaxCreditCarryfowardAmt"/>
@@ -406,7 +376,7 @@
           </div>
           <br/>
           <!--Page break -->
-          <br class="pageEnd"/>
+          	<p style="page-break-before:always"/>
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

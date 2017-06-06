@@ -10,8 +10,10 @@
   <xsl:param name="Form982Data" select="$RtnDoc/IRS982"/>
   <xsl:template match="/">
   <!--<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text> -->
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form982Data)"/>
@@ -74,7 +76,7 @@
               </div>
             </div>
             <div class="styTYBox" style="width:30mm;height:22mm;">
-              <div class="styOMB" style="height:2mm;">
+              <div class="styOMB" style="height:10mm;">
                 <br/>OMB No. 1545-0046<br/>
                 <br/>
               </div>
@@ -86,7 +88,7 @@
           <!-- End Form Number and Name section -->
           <!-- Begin Name and Identifying Number Section-->
           <div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-            <div class="styFNBox" style="width:144mm;height:8mm;">
+            <div class="styFNBox" style="width:144mm;height:10mm;">
               Name shown on return<br/>
               <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
 			  <xsl:choose>
@@ -150,7 +152,11 @@
             <div style="width:187mm;">
               <div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm;">a</div>
               <div class="styLNDesc" style="width:170mm;height:4.5mm;">
-                <span style="float:left;">Discharge of indebtedness in a title 11 case </span>
+                <span style="float:left;"><label>
+                  <xsl:call-template name="PopulateLabel">
+                    <xsl:with-param name="TargetNode" select="$Form982Data/DschrgOfIndbtInATitle11CaseInd"/>
+                    <xsl:with-param name="BackupName">IRS982DschrgOfIndbtInATitle11Case</xsl:with-param>
+                  </xsl:call-template>Discharge of indebtedness in a title 11 case </label></span>
                 <!--Dotted Line-->
 			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">...........................</span>
               </div>
@@ -162,19 +168,17 @@
                     <xsl:with-param name="BackupName">IRS982DschrgOfIndbtInATitle11Case</xsl:with-param>
                   </xsl:call-template>
                 </input>
-                <label>
-                  <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$Form982Data/DschrgOfIndbtInATitle11CaseInd"/>
-                    <xsl:with-param name="BackupName">IRS982DschrgOfIndbtInATitle11Case</xsl:with-param>
-                  </xsl:call-template>
-                </label>
               </div>
             </div>
             <!-- L1b -->
             <div style="width:187mm;">
               <div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm;">b</div>
               <div class="styLNDesc" style="width:170mm;height:4.5mm;">
-                <span style="float:left;">Discharge of indebtedness to the extent insolvent (not in a title 11 case) </span>
+                <span style="float:left;"><label>
+                  <xsl:call-template name="PopulateLabel">
+                    <xsl:with-param name="TargetNode" select="$Form982Data/DschrgIndbtExtentInsolventInd"/>
+                    <xsl:with-param name="BackupName">IRS982DschrgOfIndbtToExtentInsolvent</xsl:with-param>
+                  </xsl:call-template>Discharge of indebtedness to the extent insolvent (not in a title 11 case) </label></span>
                 <!--Dotted Line-->
 			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">..................</span>
               </div>
@@ -186,19 +190,17 @@
                     <xsl:with-param name="BackupName">IRS982DschrgOfIndbtToExtentInsolvent</xsl:with-param>
                   </xsl:call-template>
                 </input>
-                <label>
-                  <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$Form982Data/DschrgIndbtExtentInsolventInd"/>
-                    <xsl:with-param name="BackupName">IRS982DschrgOfIndbtToExtentInsolvent</xsl:with-param>
-                  </xsl:call-template>
-                </label>
               </div>
             </div>
             <!-- L1c -->
             <div style="width:187mm;">
               <div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm;">c</div>
               <div class="styLNDesc" style="width:170mm;height:4.5mm;">
-                <span style="float:left;">Discharge of qualified farm indebtedness </span>
+                <span style="float:left;"><label>
+                  <xsl:call-template name="PopulateLabel">
+                    <xsl:with-param name="TargetNode" select="$Form982Data/DischargeOfQlfyFarmIndbtInd"/>
+                    <xsl:with-param name="BackupName">IRS982DschrgOfQualifiedFarmIndbt</xsl:with-param>
+                  </xsl:call-template>Discharge of qualified farm indebtedness </label></span>
                 <!--Dotted Line-->
 			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">...........................</span>
               </div>
@@ -210,19 +212,17 @@
                     <xsl:with-param name="BackupName">IRS982DschrgOfQualifiedFarmIndbt</xsl:with-param>
                   </xsl:call-template>
                 </input>
-                <label>
-                  <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$Form982Data/DischargeOfQlfyFarmIndbtInd"/>
-                    <xsl:with-param name="BackupName">IRS982DschrgOfQualifiedFarmIndbt</xsl:with-param>
-                  </xsl:call-template>
-                </label>
               </div>
             </div>
             <!-- L1d -->
             <div style="width:187mm;">
               <div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm;">d</div>
               <div class="styLNDesc" style="width:170mm;height:4.5mm;">
-                <span style="float:left;">Discharge of qualified real property business indebtedness </span>
+                <span style="float:left;"><label>
+                  <xsl:call-template name="PopulateLabel">
+                    <xsl:with-param name="TargetNode" select="$Form982Data/DschrgQlfyRealPropBusIndbtInd"/>
+                    <xsl:with-param name="BackupName">IRS982DschrgOfQlfyRealPropBusIndbt</xsl:with-param>
+                  </xsl:call-template>Discharge of qualified real property business indebtedness </label></span>
                 <!--Dotted Line-->
 			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">.......................</span>
               </div>
@@ -234,19 +234,17 @@
                     <xsl:with-param name="BackupName">IRS982DschrgOfQlfyRealPropBusIndbt</xsl:with-param>
                   </xsl:call-template>
                 </input>
-                <label>
-                  <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$Form982Data/DschrgQlfyRealPropBusIndbtInd"/>
-                    <xsl:with-param name="BackupName">IRS982DschrgOfQlfyRealPropBusIndbt</xsl:with-param>
-                  </xsl:call-template>
-                </label>
               </div>
             </div>
             <!-- L1e -->
             <div style="width:187mm;">
               <div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm;">e</div>
               <div class="styLNDesc" style="width:170mm;height:4.5mm;">
-                <span style="float:left;">Discharge of qualified principal residence indebtedness </span>
+                <span style="float:left;"><label>
+                  <xsl:call-template name="PopulateLabel">
+                    <xsl:with-param name="TargetNode" select="$Form982Data/DischargeOfQualifiedPrinResInd"/>
+                    <xsl:with-param name="BackupName">IRS982DschrgOfQlfyPrincipalResidence</xsl:with-param>
+                  </xsl:call-template>Discharge of qualified principal residence indebtedness </label></span>
                 <!--Dotted Line-->
 			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">........................</span>
               </div>
@@ -258,12 +256,6 @@
                     <xsl:with-param name="BackupName">IRS982DschrgOfQlfyPrincipalResidence</xsl:with-param>
                   </xsl:call-template>
                 </input>
-                <label>
-                  <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$Form982Data/DischargeOfQualifiedPrinResInd"/>
-                    <xsl:with-param name="BackupName">IRS982DschrgOfQlfyPrincipalResidence</xsl:with-param>
-                  </xsl:call-template>
-                </label>
               </div>
             </div>
             <!-- L2 -->
@@ -344,8 +336,8 @@ customers in the ordinary course of a trade or business, as if it were depreciab
           <!-- End Part I Body -->
           <!-- Begin Part II Title -->
           <div class="styBB" style="width:187mm;">
-            <div class="styPartName">Part II</div>
-            <div class="styPartDesc" style="width:170mm;">Reduction of Tax Attributes.<span class="styNormalText"> You must attach a description of any transactions resulting in the reduction in basis under section
+            <div class="styPartName" style="margin-top: 2mm; margin-bottom: 2mm;">Part II</div>
+            <div class="styPartDesc" style="width:170mm;height:18mm;padding-top:2mm;padding-bottom:2mm;">Reduction of Tax Attributes.<span class="styNormalText"> You must attach a description of any transactions resulting in the reduction in basis under section
           1017. See Regulations section 1.1017-1 for basis reduction ordering rules, and, if applicable, required partnership
           consent statements. (For additional information, see the instructions for Part II.)</span>
             </div>
@@ -484,10 +476,10 @@ customers in the ordinary course of a trade or business, as if it were depreciab
               <div class="styLNLeftNumBox">10a</div>
               <div class="styLNDesc" style="width:139mm;height:4mm;"> 
                 Applied to reduce the basis of nondepreciable and depreciable property if not reduced on line 5. 
-                <span class="styItalicText">DO NOT 
-                <span style="float:left;">use in the case of discharge of qualified farm indebtedness, </span></span>
+                <span class="styItalicText">
+                <span style="float:left;">DO NOT  use in the case of discharge of qualified farm indebtedness </span></span>
                 <!--Dotted Line-->
-			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">..............</span>
+			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">............</span>
               </div>
               <!-- Float the number box to the right so all number boxes wil align for both the screen and the print versions -->
               <div style="float:right">
@@ -502,11 +494,9 @@ customers in the ordinary course of a trade or business, as if it were depreciab
             <!-- L10b -->
             <div style="width:187mm;">
               <div class="styLNLeftLtrBox" style="height:7.5mm; padding-top=3.5mm;padding-left:4mm;">b</div>
-              <div class="styLNDesc" style="width:139mm;height:7.5mm; padding-top:3.5mm;">
-                <span style="float:left;">Applied to reduce the basis of your principal residence. 
-                <span class="styItalicText">Enter amount here ONLY if line 1e is checked </span></span>
-                <!--Dotted Line-->
-			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">..</span>
+              <div class="styLNDesc" style="width:139mm;height:7.5mm; padding-top=3.5mm;">
+                <span style="float:left;">Applied  to reduce the basis of your principal residence. 
+                <i>Enter amount here ONLY if line 1e is checked </i></span>
               </div>
               <!-- Float the number box to the right so all number boxes wil align for both the screen and the print versions -->
               <div style="float:right">
@@ -552,7 +542,7 @@ customers in the ordinary course of a trade or business, as if it were depreciab
               <div class="styLNDesc" style="width:139mm;height:7.5mm; padding-top:3.5mm;">
 			    <span style="float:left;">Land used or held for use in a trade or business of farming </span>
                 <!--Dotted Line-->
-			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">................</span>
+			    <span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">...............</span>
               </div>
               <!-- Float the number box to the right so all number boxes wil align for both the screen and the print versions -->
               <div style="float:right">
@@ -686,7 +676,7 @@ customers in the ordinary course of a trade or business, as if it were depreciab
       </div>
           <!-- End Footer -->
           <br/>
-          <br class="pageEnd"/>
+          <div class="pageEnd"/>
           <!-- Begin Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

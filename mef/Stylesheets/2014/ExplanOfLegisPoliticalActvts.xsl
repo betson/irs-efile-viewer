@@ -13,8 +13,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title>
            <!--Foreign Blocked Income Statement-->
           <xsl:value-of select="$depDocTitle"/>
@@ -56,9 +58,22 @@
           <div class="styTopSectionLineLbl" style="float:left">
             Explanation: 
           </div>
+		<xsl:choose>			
+		<xsl:when test="string-length($Form5471Deps3Data/MediumExplanationTxt)&lt; 40">
           <div class="styExplanationLine" style="float:left">  
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form5471Deps3Data/MediumExplanationTxt"/></xsl:call-template>              
-          </div>                  
+            <xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$Form5471Deps3Data/MediumExplanationTxt"/>
+			</xsl:call-template>        
+          </div>   
+        </xsl:when>
+		<xsl:otherwise>
+			<div style="float:left;clear:none;width:187mm">
+				<xsl:call-template name="PopulateText">
+				  <xsl:with-param name="TargetNode" select="$Form5471Deps3Data/MediumExplanationTxt"/>
+				</xsl:call-template>		    
+			</div>
+		</xsl:otherwise>
+	</xsl:choose>               
         </div>  
       </body>
     </html>

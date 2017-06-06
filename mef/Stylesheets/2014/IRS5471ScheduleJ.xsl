@@ -10,8 +10,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="IRS5471ScheduleJData" select="$RtnDoc/IRS5471ScheduleJ"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($IRS5471ScheduleJData)"/>
@@ -35,16 +37,16 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:256mm">
 				<form name="IRS5471ScheduleJ">
 					<!--   BEGIN WARNING LINE  -->
 					<xsl:call-template name="DocumentHeaderLandscape"/>
 					<!--   END WARNING LINE   -->
 					<!--   BEGIN FORM HEADER   -->
-					<div class="styBB" style="width:256mm;height: 25mm;border-bottom-width:2px;">
-						<div class="styFNBox" style="width:40mm;font-size:8pt;height:25mm;border-right-width:2px;">
-							<div class="styFormNumber" style="font-size:10pt;font-weight:bold;">SCHEDULE J</div>
-							<span class="sty5471ScheduleJFNum2">(Form 5471)</span>
+					<div class="styBB" style="width:256mm;height: 23mm;border-bottom-width:2px;">
+						<div class="styFNBox" style="width:40mm;font-size:8pt;height:23mm;border-right-width:2px;">
+							<span class="styFormNumber" style="font-size:10pt;font-weight:bold;">SCHEDULE J</span>
+							<span class="styFormNumber" style="font-size:10pt;font-weight:bold;">(Form 5471)</span>
 							<xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="Desc">Return Software ID</xsl:with-param>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/softwareId"/>
@@ -56,42 +58,47 @@
 								<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 							</xsl:call-template>
 							<div class="sty5471ScheduleJRev">(Rev. December 2012)</div>
+							<div class="styAgency" style="width:36mm;height:3mm;">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData"/>
 							</xsl:call-template>
-							<div class="styAgency" style="padding-top:1.7mm;">Department of the Treasury</div>
-							<div class="styAgency" style="padding-bottom:.1mm;">Internal Revenue Service</div>
-						</div>
-						<div class="styFTBox" style="height: 25mm;width:175mm;padding-top:1mm;border-left-width:1px;border-right-width:1px;">
-							<div class="styMainTitle" style="font-weight:bold;">Accumulated Earnings and Profits (E&amp;P)<br/> of Controlled Foreign Corporation</div>
-							<div style="height:3.5mm;font-size:7pt;padding-top:5mm;border:0px;" class="styFST">
-								<img src="{$ImagePath}/5471SchJ_Bullet.gif" alt="Bullet Image"/>Information about Schedule J (Form 5471) and its instructions is at
-								<a href="http://www.irs.gov/form5471" title="Link to IRS.gov">
-									<i>www.irs.gov/form5471.</i>
-								</a>
 							</div>
-							<div class="styFST" style="font-size:6pt;margin-left:3mm;font-weight:bold;">
+							<div class="styAgency" style="padding-top:0mm;">Department of the Treasury</div>
+							<div class="styAgency">Internal Revenue Service</div>
+							<br/>
+						</div>
+						<div class="styFTBox" style="height: 23mm;width:175mm;padding-top:1mm;border-left-width:1px;border-right-width:1px;">
+							<div class="styMainTitle" style="font-weight:bold;">Accumulated Earnings and Profits (E&amp;P)<br/> of Controlled Foreign Corporation</div>
+							<div style="padding-top:5mm;border:0px;width:175mm;" class="styFST">
+								<img src="{$ImagePath}/5471SchJ_Bullet.gif" alt="Bullet Image"/>Information about Schedule J (Form 5471) and its instructions is at
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form5471" title="Link to IRS.gov">
+									<i>www.irs.gov/form5471</i>
+								</a>.
+							</div>
+							<div class="styFST" style="font-weight:bold;">
 								<div style="margin-left: 1.5mm;;">
 									<img src="{$ImagePath}/5471SchJ_Bullet.gif" alt="bullet"/>
 									 Attach to Form 5471.
 								</div>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:40mm;height:25mm;border-left-width: 2px">
+						<div class="styTYBox" style="width:40mm;height:23mm;border-left-width: 2px">
 							<div class="styOMB" style="padding-top:10mm;height:2mm;border-bottom:0;text-align:middle;">OMB No. 1545-0704</div>
 						</div>
 					</div>
 					<!--   END FORM HEADER   -->
 					<!--   BEGIN TAXPAYER INFO   -->
 					<div class="styBB" style="width:256mm;">
-						<div class="sty5471ScheduleJBusinessName" style="width:184mm;height:30px;border-right-width: 0px;">Name of person filing Form 5471
+						<div class="sty5471ScheduleJBusinessName" style="width:184mm;height:9mm;border-right-width: 0px;">Name of person filing Form 5471
 					  <br/>
-							<span style="font-family: verdana, arial, sans-serif;font-size: 7pt;">
+							<span>
 								<xsl:choose>
 									<xsl:when test="$IRS5471ScheduleJData/PersonNm != '' ">
+									<span style="padding-top:3mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/PersonNm"/>
 										</xsl:call-template>
+									</span>
 									</xsl:when>
 									<xsl:when test="$IRS5471ScheduleJData/BusinessName/BusinessNameLine1Txt != '' ">
 										<xsl:call-template name="PopulateText">
@@ -108,10 +115,10 @@
 									</xsl:when>
 									<xsl:otherwise>
 										<xsl:choose>
-											<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-												<br/>
+												<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
+												  <br/>
 												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">Name</xsl:with-param>
+													<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 												</xsl:call-template>
 											</xsl:when>
 											<xsl:otherwise>
@@ -128,10 +135,10 @@
 								</xsl:choose>
 							</span>
 						</div>
-						<div class="sty5471ScheduleJIN" style="width:72mm;height:30px;border-left-width: 1px;">
+						<div class="sty5471ScheduleJIN" style="width:72mm;height:9mm;border-left-width: 1px;">
 							<span style="font-weight:bold;float:left; clear: none; margin-left: 1mm">Identifying number</span>
 							<br/>
-							<span class="sty5471ScheduleJINBox" style="font-weight:normal; height:4mm; margin-left: 1mm; padding-top:2mm;">
+							<span class="sty5471ScheduleJINBox" style="font-weight:normal; height:4mm; margin-left: 1mm; padding-top:3mm;">
 								<xsl:choose>
 									<xsl:when test="$IRS5471ScheduleJData/SSN != '' ">
 										<xsl:call-template name="PopulateSSN">
@@ -150,16 +157,16 @@
 									</xsl:when>
 									<xsl:otherwise>
 										<xsl:choose>
-											<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-												</xsl:call-template>
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:call-template name="PopulateReturnHeaderFiler">
-													<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-												</xsl:call-template>
-											</xsl:otherwise>
+										  <xsl:when test="$RtnHdrData/Filer/EIN">
+											<xsl:call-template name="PopulateReturnHeaderFiler">
+											  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+											</xsl:call-template>
+										  </xsl:when>
+										  <xsl:otherwise>
+											<xsl:call-template name="PopulateReturnHeaderFiler">
+											  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+											</xsl:call-template>
+										  </xsl:otherwise>
 										</xsl:choose>
 									</xsl:otherwise>
 								</xsl:choose>
@@ -170,9 +177,9 @@
 					<!--   BEGIN NAME OF FOREIGN CORPORATION   -->
 					<!-- May 24, 2012 place holder for new line -->
 					<div class="styBB" style="width:256mm;">
-						<div class="sty5471ScheduleJBusinessName" style="width:120mm;height:12mm; ">Name of foreign corporation
+						<div class="sty5471ScheduleJBusinessName" style="width:120mm;height:9mm;">Name of foreign corporation
 							<br/>
-							<span style="font-family: verdana, arial, sans-serif;">
+							<span>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/ForeignCorporationName/BusinessNameLine1Txt"/>
 								</xsl:call-template>
@@ -182,10 +189,10 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="sty5471ScheduleJBusinessName" style="width:64mm;height:12mm;width-right:0;">
+						<div class="sty5471ScheduleJBusinessName" style="width:64mm;height:9mm;border-right:0;">
 							<span style="float:left; clear: none; margin-left: 1mm">EIN (if any)</span>
 							<br/>
-							<span class="sty5471ScheduleJINBox" style="font-weight:normal; margin-left: 1mm; padding-top: 4mm;">
+							<span class="sty5471ScheduleJINBox" style="font-weight:normal; margin-left: 1mm; padding-top: 3mm;">
 								<xsl:choose>
 									<xsl:when test="$IRS5471ScheduleJData/ForeignCorporationEIN != '' ">
 										<xsl:call-template name="PopulateEIN">
@@ -202,10 +209,10 @@
 								</xsl:choose>
 							</span>
 						</div>
-						<div class="sty5471ScheduleJIN" style="width:72mm;height:12mm;boarder-left:0;">
+						<div class="sty5471ScheduleJIN" style="width:72mm;height:9mm;border-left-width:1px;">
 							<span style="float:left; clear: none; margin-left: 1mm">Reference ID number (see instructions)</span>
 							<br/>
-							<span class="sty5471ScheduleJINBox" style="font-weight:normal; loat:left; margin-left: 1mm; padding-top:4mm;">
+							<span class="sty5471ScheduleJINBox" style="font-weight:normal; loat:left; margin-left: 1mm; padding-top:2mm;">
 								<xsl:choose>
 									<xsl:when test="((count($IRS5471ScheduleJData/ForeignEntityIdentificationGrp) &gt; 1)) ">
 									See Additional Data Table
@@ -222,353 +229,353 @@
 						</div>
 					</div>
 					<!--   BEGIN HEADER   -->
-					<div style="width: 256mm;">
-						<span class="sty5471ScheduleJCellGeneric" style="width:62mm;text-align: center; height: 22.5mm;  padding-top: 1.5mm">
-							<br/>
-							<b>Important:</b> Enter amounts in<br/>functional currency.
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:32mm;text-align: center; height: 22.5mm;  padding-top: 2mm;">
-							<b>(a)</b> Post-1986<br/>Undistributed Earnings<br/>(post-86 section<br/>	959(c)(3) balance)
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:35mm;text-align: center; height: 22.5mm;  padding-top: 2mm;">
-							<b>(b)</b> Pre-1987 E&amp;P<br/>Not Previously Taxed<br/>(pre-87 section<br/>959(c)(3) balance)
-						</span>
-						<span style="width:95mm;">
-							<span class="sty5471ScheduleJCellGeneric" style="width:95mm;text-align: center; height: 10.5mm; ">
-								<b>(c)</b>Previously Taxed E&amp;P (see instructions)<br/>(sections 959(c)(1) and (2) balances)
-							</span>
-							<span class="sty5471ScheduleJCellGeneric" style="width:31mm;text-align: center;height: 12mm;">
-								<br/>
+					<div class="styTableContainer" id="5471SchJctn" style="width:256mm;">
+						<table class="styTable" cellspacing="0" style="width:256mm;">
+							<thead class="styTableThead" style="font-weight:normal;">
+								<tr>
+									<th class="sty5471ScheduleJCellGeneric" style="font-weight:normal;width:64mm;text-align:center;height:20mm;padding-top:1.5mm;" scope="col" rowspan="2">
+							<b>Important: </b> Enter amounts in<br/>functional currency.
+						</th>
+						<th class="sty5471ScheduleJCellGeneric" style="font-weight:normal;text-align: center; height: 20mm;  padding-top: 2mm;" rowspan="2"  scope="col">
+							<b>(a) </b> Post-1986<br/>Undistributed Earnings<br/>(post-86 section<br/>	959(c)(3) balance)
+						</th>
+						<th class="sty5471ScheduleJCellGeneric" style="font-weight:normal;text-align: center; height: 20mm;  padding-top: 2mm;" rowspan="2"  scope="col">
+							<b>(b) </b> Pre-1987 E&amp;P<br/>Not Previously Taxed<br/>(pre-87 section<br/>959(c)(3) balance)
+						</th>
+							<th class="sty5471ScheduleJCellGeneric" style="font-weight:normal;width:96mm;text-align: center; height:10mm;" colspan="3"  scope="col">
+								<b>(c) </b> Previously Taxed E&amp;P (see instructions)<br/>(sections 959(c)(1) and (2) balances)
+							</th>
+						<th class="sty5471ScheduleJCellGeneric" style="font-weight:normal;text-align: center; border-right: 0;height: 20mm; padding-top: 2mm;" rowspan="2"  scope="col">
+							<b>(d) </b> Total Section<br/>964(a) E&amp;P<br/>(combine columns<br/>(a), (b), and (c))
+						</th>
+					</tr>
+								<tr>
+							<th class="sty5471ScheduleJCellGeneric" style="font-weight:normal;text-align: center;height: 10mm;"  scope="col">
 								<i>(i)</i> Earnings Invested<br/>in U.S. Property
-							</span>
-							<span class="sty5471ScheduleJCellGeneric" style="width:31mm;text-align: center; height: 12mm;">
+							</th>
+							<th class="sty5471ScheduleJCellGeneric" style="font-weight:normal;text-align: center; height: 10mm;"  scope="col">
 								<i>(ii)</i> Earnings Invested<br/>in Excess Passive<br/>Assets
-							</span>
-							<span class="sty5471ScheduleJCellGeneric" style="width:33mm;text-align: center; height: 12mm;">
-								<br/>
+							</th>
+							<th class="sty5471ScheduleJCellGeneric" style="font-weight:normal;text-align: center; height: 10mm;"  scope="col">
 								<i>(iii)</i> Subpart F Income
-							</span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:32mm;text-align: center; border-right: 0;height: 22.5mm; padding-top: 2mm; ">
-							<b>(d)</b> Total Section<br/>964(a) E&amp;P<br/>(combine columns<br/>(a), (b), and (c))
-						</span>
-					</div>
+							</th>
+					</tr>
+					</thead>
 					<!--   END HEADER   -->
+					<tfoot/>
+					<tbody>
 					<!--   BEGIN LINE 1   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;height:8.5mm;">
-							<span class="sty5471ScheduleJLN" style="padding-top: 1.5mm">1</span>
-							<span class="sty5471ScheduleJLine" style="margin-left: 4.5mm; padding-top: 1.5mm">Balance at beginning of year</span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:32mm; height:8.5mm;padding-top: 5mm;">
+					<tr class="sty5471ScheduleJDescLine" style="height:8mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBox" style="width:4mm;height:8mm;padding-top:4mm;">1</div>
+							<div class="styLNDesc" style="width:59mm;padding-top:4mm;text-align:left;padding-left:4mm;">Balance at beginning of year</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalBOYPost1986UndistrEarnAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:35mm; height:8.5mm;padding-top: 5mm;">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalBOYPre1987EPNotPrevTxdAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:31mm;height:8.5mm; padding-top: 5mm">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalBOYEarnInvstUSPropAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:31mm;height:8.5mm; padding-top: 5mm">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalBOYEarnInvstExPassiveAstAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:33 mm;height:8.5mm; padding-top: 5mm">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalBOYSubpartFIncomeAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="width:32mm;height:8.5mm;  padding-top: 5mm; border-right:0;">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm;border-right:0;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalBOYTotalSection964aEPAmt"/>
 							</xsl:call-template>
-						</span>
-					</div>
+						</td>
+					</tr>
 					<!--   END LINE 1   -->
 					<!--   BEGIN LINE 2a   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;">
-							<span class="sty5471ScheduleJLN" style="padding-top: 1.5mm">2a</span>
-							<span class="sty5471ScheduleJLine" style="padding-top: 1.5mm">Current year E&amp;P</span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm; width:32mm; ">
+					<tr class="sty5471ScheduleJDescLine" style="height:8mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBoxSD" style="width:4mm;height:8mm;padding-top:4mm;">2a</div>
+							<div class="styLNDesc" style="width:59mm;padding-top:4mm;text-align:left;padding-left:4mm;">Current year E&amp;P</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/CYEPPost1986UndistrEarnAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey; width:35mm; "/>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey; width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey; width:31mm; "/>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey; width:33mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey; width:32mm;  border-right:0;"/>
-					</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey; "/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;border-right:0;"/>
+					</tr>
 					<!--   END LINE 2a   -->
 					<!--   BEGIN LINE 2b   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;">
-							<span class="sty5471ScheduleJLN" style="margin-left: 2.5mm; padding-top: 1.5mm">b</span>
-							<span class="sty5471ScheduleJLine" style="padding-top: 1.5mm">Current year deficit in E&amp;P</span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="padding-top: 4mm; width:32mm; ">
+					<tr class="sty5471ScheduleJDescLine" style="height:8mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBoxSD" style="width:4mm;height:8mm;padding-top:4mm;padding-left:4.5mm"> b</div>
+							<div class="styLNDesc" style="width:58.5mm;padding-top:4mm;text-align:left;padding-left:4mm;">Current year deficit in E&amp;P</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/CYDfctEPPost1986UndistrEarnAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey; width:35mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;  width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;   width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;  width:33mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;  width:32mm; border-right:0;"/>
-					</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey; "/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;border-right:0;"/>
+					</tr>
 					<!--   END LINE 2b   -->
 					<!--   BEGIN LINE 3   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;height:13.5mm;">
-							<span class="sty5471ScheduleJLN" style="padding-top: 1mm">3</span>
-							<span class="sty5471ScheduleJLine" style="margin-left: 4.5mm; padding-top: 1mm">Total current and accumulated<br/>
-								<span style="width: .5mm"/>E&amp;P not previously taxed (line 1<br/>
-								<span style="width: .5mm"/>plus line 2a <b>or</b> line 1 minus line 2b)
-							</span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm;padding-top: 10mm; width:32mm; ">
+					<tr class="sty5471ScheduleJDescLine" style="height:11mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBox" style="width:4mm;height:11mm;">3</div>
+							<div class="styLNDesc" style="width:59mm;text-align:left;padding-left:4mm;height:11mm;">
+							Total current and accumulated E&amp;P not previously taxed (line 1 plus line 2a <b> or </b> line 1 minus line 2b)
+							</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/Total1986UndistrEarnAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm;padding-top: 10mm; width:35mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/TotalPre1987EPNotPrevTxdAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey;width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm;background-color: lightgrey;width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm;background-color: lightgrey;width:33mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm;background-color: lightgrey;width:32mm; border-right:0;"/>
-					</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;height:11mm;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;height:11mm;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;height:11mm;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;border-right:0;height:11mm;"/>
+					</tr>
 					<!--   END LINE 3   -->
 					<!--   BEGIN LINE 4   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;height:13.5mm;">
-							<span class="sty5471ScheduleJLN" style="padding-top: 1.5mm">4</span>
-							<span class="sty5471ScheduleJLine" style="height: 13mm; margin-left: 4.5mm; padding-top: 1.5mm">Amounts included under section<br/>
-								<span style="width: .5mm"/>951(a) or reclassified under<br/>
-								<span style="width: .5mm"/>section 959(c) in current year
-						    </span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top: 10mm; width:32mm; ">
+					<tr class="sty5471ScheduleJDescLine" style="height:11mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBox" style="width:4mm;height:11mm;">4</div>
+							<div class="styLNDesc" style="width:59mm;text-align:left;padding-left:4mm;">
+							Amounts included under section <span style="width:4mm;"/> 951(a) or reclassified under section 959(c) in current year
+							</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/IncldCYPost1986UndistrEarnAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top: 10mm; width:35mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/IncldCYPre1987EPNotPrevTxdAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top:10mm; width:31mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/IncldCYEarnInvstUSPropAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top: 10mm; width:31mm;">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/IncldCYEarnInvstExPssvAstAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top:10mm; width:33mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/IncldCYSubpartFIncomeAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm;padding-top:9mm; background-color: lightgrey; width:32mm; border-right:0;"/>
-					</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;background-color: lightgrey;border-right:0;"/>
+					</tr>
 					<!--   END LINE 4   -->
 					<!--   BEGIN LINE 5a   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;height:13.5mm;">
-							<span class="sty5471ScheduleJLN" style="padding-top: 1.5mm">5a</span>
-							<span class="sty5471ScheduleJLine" style="height: 13mm; padding-top: 1.5mm">Actual distributions or<br/>
-								<span style="width: .5mm"/>reclassifications of<br/>
-								<span style="width: .5mm"/>previously taxed E&amp;P
-						   </span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:32mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:35mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; padding-top: 10mm; width:31mm; ">
+					<tr class="sty5471ScheduleJDescLine" style="height:8mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBoxSD" style="width:4mm;height:8mm;">5a</div>
+							<div class="styLNDesc" style="width:58.5mm;text-align:left;padding-left:4mm;">
+							Actual distributions or reclassifications of previously taxed E&amp;P
+							</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/ActlDistrEarnInvstUSPropAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm; padding-top: 10mm; width:31mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/ActlDistrEarnInvstExPssvAstAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm; padding-top: 10mm; width:33mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/ActlDistrSubpartFIncomeAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:32mm; border-right:0;"/>
-					</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;border-right:0;"/>
+					</tr>
 					<!--   END LINE 5a   -->
 					<!--   BEGIN LINE 5b   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;height:10.5mm;">
-							<span class="sty5471ScheduleJLN" style="margin-left: 2.5mm; padding-top: 2mm ">b</span>
-							<span class="sty5471ScheduleJLine" style="height: 10mm; padding-top: 2mm">Actual distributions of<br/>
-								<span style="width: .5mm"/>nonpreviously taxed E&amp;P
-						    </span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 10.5mm; padding-top: 7mm; width:32mm;">
+					<tr class="sty5471ScheduleJDescLine" style="height:8mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBoxSD" style="width:4mm;height:8mm;padding-left:4.5mm"> b</div>
+							<div class="styLNDesc" style="width:58.5mm;text-align:left;padding-left:4mm;">
+							Actual distributions of nonpreviously taxed E&amp;P
+							</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/ActlDstrPost1986UndistrEarnAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 10.5mm; padding-top: 7mm; width:35mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="padding-top: 4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/ActlDstrPre1987EPNotPrevTxdAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 10.5mm; background-color: lightgrey; padding-top: 7mm; width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 10.5mm; background-color: lightgrey; padding-top: 7mm; width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 10.5mm; background-color: lightgrey; padding-top: 7mm; width:33mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 10.5mm; background-color: lightgrey; padding-top: 7mm; width:32mm; border-right:0;"/>
-					</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="background-color: lightgrey;border-right:0;"/>
+					</tr>
 					<!--   END LINE 5b   -->
 					<!--   BEGIN LINE 6a   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;">
-							<span class="sty5471ScheduleJLN" style="padding-top: 1mm">6a</span>
-							<span class="sty5471ScheduleJLine" style="height: 13mm;padding-top: 1mm">Balance of previously taxed<br/>
-								<span style="width: .5mm"/>E&amp;P at end of year (line 1 plus<br/>
-								<span style="width: .5mm"/>line 4, minus line 5a)
-						    </span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:32mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:35mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; padding-top: 10mm; width:31mm; ">
+					<tr class="sty5471ScheduleJDescLine" style="height:11mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBoxSD" style="width:4mm;height:11mm;">6a</div>
+							<div class="styLNDesc" style="width:58.5mm;height:11mm;text-align:left;padding-left:4mm;">
+							Balance of previously taxed E&amp;P at end of year (line 1 plus line 4, minus line 5a)
+							</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalTxdEarnInvstUSPropAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm; padding-top: 10mm; width:31mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalTxdEarnInvstExPassiveAstAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm; padding-top: 10mm; width:33mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalTxdSubpartFIncomeAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:32mm; border-right:0;"/>
-					</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;background-color: lightgrey;border-right:0;"/>
+					</tr>
 					<!--   END LINE 6a   -->
 					<!--   BEGIN LINE 6b   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;height:13.5mm;">
-							<span class="sty5471ScheduleJLN" style="margin-left: 2.5mm; padding-top:1mm">b</span>
-							<span class="sty5471ScheduleJLine" style="height: 13mm; padding-top: 1mm">Balance of E&amp;P not previously<br/>
-								<span style="width: .5mm"/>taxed at end of year (line 3<br/>
-								<span style="width: .5mm"/>minus line 4, minus line 5b)
-						    </span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm; padding-top: 10mm; width:32mm;">
+					<tr class="sty5471ScheduleJDescLine" style="height:11mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBoxSD" style="width:4mm;height:11mm;padding-left:4.5mm"> b</div>
+							<div class="styLNDesc" style="width:58.5mm;text-align:left;padding-left:4mm;">
+							Balance of E&amp;P not previously taxed at end of year (line 3 minus line 4, minus line 5b)
+							</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalNoTxPost1986UndistrEarnAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm; padding-top: 10mm; width:35mm; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalNoTxPre1987EPNotPrevTxdAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:31mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:33mm;"/>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13.5mm; background-color: lightgrey; padding-top: 9mm; width:32mm; border-right:0;"/>
-					</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;background-color: lightgrey;"/>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;background-color: lightgrey;border-right:0;"/>
+					</tr>
 					<!--   END LINE 6b   -->
 					<!--   BEGIN LINE 7   -->
-					<div class="sty5471ScheduleJDescLine">
-						<span class="sty5471ScheduleJLNCol" style="width:62mm;height:13.5mm;border-bottom-width:2px;">
-							<span class="sty5471ScheduleJLN" style="padding-top: 1mm;b">7</span>
-							<span class="sty5471ScheduleJLine" style="height: 13mm; margin-left: 4.5mm;padding-top: 1mm;">Balance at end of year. (Enter<br/>
-								<span style="width: .5mm"/>amount from line 6a or line 6b,<br/>
-								<span style="width: .5mm"/>whichever is applicable.)
-						    </span>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height:13mm; padding-top: 10mm; width:32mm;border-bottom-width:2px;">
+					<tr class="sty5471ScheduleJDescLine" style="height:11mm;">
+						<td class="sty5471ScheduleJCellGeneric" style="width:64mm;font-size:8pt;">
+							<div class="styLNLeftNumBox" style="width:4mm;height:11mm;">7</div>
+							<div class="styLNDesc" style="width:58.5mm;text-align:left;padding-left:4mm;">
+							Balance at end of year. (Enter amount from line 6a or line 6b, whichever is applicable.)
+							</div>
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalEOYPost1986UndistrEarnAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top: 10mm; width:35mm;border-bottom-width:2px; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalEOYPre1987EPNotPrevTxdAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top: 10mm; width:31mm;border-bottom-width:2px; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalEOYEarnInvstUSPropAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top: 10mm; width:31mm;border-bottom-width:2px; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalEOYEarnInvstExPassiveAstAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top:10mm; width:33mm;border-bottom-width:2px; ">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalEOYSubpartFIncomeAmt"/>
 							</xsl:call-template>
-						</span>
-						<span class="sty5471ScheduleJCellGeneric" style="height: 13mm;padding-top: 10mm; width:32mm; border-right:0;border-bottom-width:2px;">
+						</td>
+						<td class="sty5471ScheduleJCellGeneric" style="height:11mm;padding-top: 8.5mm;border-right:0;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="MaxSize" select="17"/>
 								<xsl:with-param name="TargetNode" select="$IRS5471ScheduleJData/BalEOYTotalSection964aEPAmt"/>
 							</xsl:call-template>
-						</span>
-					</div>
+						</td>
+					</tr>
 					<!--   END LINE 7   -->
+					</tbody>
+					</table>
+					</div>
 					<!--   BEGIN FORM FOOTER  -->
 					<div class="sty5471ScheduleJFormFooter">
 						<div style="width:130mm;font-weight:bold; float: left; clear: none;">For Paperwork Reduction Act Notice, see the Instructions for Form 5471.</div>
@@ -599,7 +606,7 @@
 							<span class="styRepeatingDataTitle">
 								<br/>
 							</span>
-							<table class="styDepTbl" style="font-size:7pt">
+							<table class="styDepTbl" style="font-size:7pt"  scope="col">
 								<thead class="styTableHead">
 									<tr class="styDepTblHdr">
 										<th class="styDepTblCell" style="text-align:left">

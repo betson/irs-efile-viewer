@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 07/22/2010 - Modified by Jeremy Nichols per BSP101319OTH -->
-<!-- 09/17/2010 - Modified by Jeremy Nichols per defect #27210 -->
-<!-- 07/18/2011 - Modified for TY 2011 per UWR #40502 - Jeremy Nichols -->
-<!-- 10/05/2011 - Modified per defect #30285 - Jeremy Nichols -->
-<!-- 06/18/2012 - Modified for TY 2012 per UWR #58215 - Jeremy Nichols -->
-<!-- 07/24/2013 - Modified for TY 2013 per UWR #81688 - Jeremy Nichols -->
-<!-- 10/11/2013 - Modified per defect #38477 - Jeremy Nichols -->
+<!-- 03/09/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">
 ]><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 <!--xmlns:fo="http://www.w3.org/1999/XSL/Format">-->
@@ -23,8 +17,10 @@
   <xsl:param name="Form990ScheduleEData" select="$RtnDoc/IRS990ScheduleE"/>
 
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"/></xsl:call-template></title>
 
   <!-- No Browser Caching -->
@@ -48,13 +44,13 @@
   <xsl:call-template name="GlobalStylesForm"/>
 </head>
 
-<body class="styBodyClass">
+<body class="styBodyClass" style="font-family:Arial;font-size:8pt;">
  <form name="Form990ScheduleE"/>
   <xsl:call-template name="DocumentHeader"/>
 <!-- BEGIN FORM HEADER -->
-<div class="IRS990ScheduleE_LineContainer" style="height:20mm;">
+<div class="IRS990ScheduleE_LineContainer" style="height:24mm;">
   <!-- Form Name -->
-  <div class="IRS990ScheduleE_FormNumBlock" style="width:27mm;padding-top:.5mm;padding-bottom:0.25mm;">
+  <div class="IRS990ScheduleE_FormNumBlock" style="width:28mm;height:24mm;padding-top:.5mm;padding-bottom:0.25mm;">
      <span style="font-size:10pt;font-weight:bold;padding-bottom:0mm;height:4mm;">SCHEDULE E</span>
     
      <span style="font-size:9pt;font-weight:bold;height:3mm;font-family:'Arial Narrow';padding-top:0px;padding-bottom:0px;">(Form 990 or 990-EZ)</span>
@@ -62,42 +58,42 @@
        <xsl:call-template name="SetFormLinkInline">
         <xsl:with-param name="TargetNode" select="$FormData"/>      
        </xsl:call-template>
-    <div style="height:7.8mm;font-weight:bold;"/>
+    <div style="height:9mm;font-weight:bold;"/><br/>
 
 
-     <span class="styAgency" style="font-size:6pt;">Department of the Treasury</span><br/>
+     <span class="styAgency" style="font-size:7pt;padding-left:0;">Department of the Treasury</span><br/>
     
-     <span class="styAgency" style="font-size:6pt;padding-bottom:5px;">Internal Revenue Service</span>
+     <span class="styAgency" style="font-size:7pt;padding-bottom:5px;">Internal Revenue Service</span>
   </div>
 
   <!-- Form Title Box -->
-  <div class="IRS990ScheduleE_FormTitleBlock" style="width:128mm;padding-top:.5mm;padding-bottom:2.5mm;">
+  <div class="IRS990ScheduleE_FormTitleBlock" style="width:128mm;height:24mm;padding-top:.5mm;padding-bottom:2.5mm;">
     <!-- Form Title -->
    
-    <span class="styMainTitle" style="font-weight:bold;font-size:17pt;">Schools</span>
+    <span class="styMainTitle" style="font-weight:bold;font-size:17pt;">Schools</span><br/>
      <div style="padding-top:1mm;font-weight:bold;"/>
 
  
-    <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/>Complete if the organization answered "Yes" to Form 990,</span><br/>
-    <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;">Part IV, line 13, or Form 990-EZ, Part VI, line 48.</span><br/>
-    <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Attach to Form 990 or Form 990-EZ.</span><br/>
-    <span style="font-size:6pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Information about Schedule E (Form 990 or 990-EZ) and its instructions is at <i>www.irs.gov/form990</i>.</span><br/>
+    <span style="font-size:7pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/>Complete if the organization answered "Yes" to Form 990,</span><br/>
+    <span style="font-size:7pt;font-weight:bold;padding-bottom:1mm;">Part IV, line 13, or Form 990-EZ, Part VI, line 48.</span><br/>
+    <span style="font-size:7pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Attach to Form 990 or Form 990-EZ.</span><br/>
+    <span style="font-size:7pt;font-weight:bold;padding-bottom:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Information about Schedule E (Form 990 or 990-EZ) and its instructions is at <i>www.irs.gov/form990</i>.</span><br/>
   </div>
   <!-- Tax Year Box -->
-  <div class="IRS990ScheduleE_FormYearBlock">
+  <div class="IRS990ScheduleE_FormYearBlock" style="height:24mm;">
     <!-- OMB No. -->
     <div class="IRS990ScheduleE_OMB" style="padding-top:.5mm;">OMB No. 1545-0047</div>
     <!-- Tax Year -->
-    <div class="IRS990ScheduleE_TaxYear" style="padding-bottom:1.25mm;padding-top:1.25mm;">
+    <div class="IRS990ScheduleE_TaxYear" style="padding-bottom:0.75mm;padding-top:0.75mm;">
        <span>20<span class="styTYColor">13</span></span>
    </div>
-    <div class="styPartName" style="font-size:6pt;height:6mm;padding-left:6mm;width:30mm;padding-top:.25mm;text-align:left;border-bottom-width:1px;">Open to Public Inspection
+    <div class="styPartName" style="font-size:7pt;height:7.75mm;padding-left:6mm;width:30mm;padding-top:1mm;padding-bottom:1mm;text-align:left;border-bottom-width:1px;">Open to Public Inspection
        </div> 
   </div>
 </div>
 <!-- Begin Name and Identifying Number Section-->      
 <div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-  <div class="styFNBox" style="width:134mm;height:8mm;">
+  <div class="styFNBox" style="width:134mm;height:9mm;">
      Name of the organization<br/>
     <div style="font-family:verdana;font-size:6pt;height:6.25mm">
      <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -110,7 +106,7 @@
    </div> 
   </div>
   
-  <div class="styGenericDiv" style="width:52mm;height:4mm;padding-left:1.5mm;">
+  <div class="styGenericDiv" style="width:52mm;height:9mm;padding-left:1.5mm;">
     <span class="styBoldText">Employer identification number</span>
     <br/><br/>
     <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -121,16 +117,19 @@
 <!-- End Name and Identifying Number Section-->     
 
  <!-- line 1 -->
-<div class="IRS990ScheduleE_LineContainer">
-  <div class="styPartName">Part I</div>
-  <div class="IRS990ScheduleE_LineDesc" style="width:150mm;border-right-width:0px;border-top-width:0px;"/>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-top-width:0px;"/>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-top-width:0px;">YES</div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;border-top-width:0px;">NO</div>
+<div class="IRS990ScheduleE_LineContainer" style="height:4.5mm;">
+  <div class="styPartName" style="height:4.5mm;">Part I</div>
+  <div class="IRS990ScheduleE_LineDesc" style="height:4.5mm;width:173mm;border-right-width:0px;border-bottom-width:1px;border-top-width:0px;"/>
+</div>
+<div class="IRS990ScheduleE_LineContainer" style="height:4.5mm;">
+  <div class="IRS990ScheduleE_LineDesc" style="height:4.5mm;width:164mm;border-right-width:0px;border-top-width:0px;"/>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:4.5mm;border-top-width:0px;"/>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:4.5mm;border-top-width:0px;padding-top:0.5mm;">YES</div>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:4.5mm;border-right-width:0px;border-top-width:0px;padding-top:0.5mm;">NO</div>
 </div>
 <div class="IRS990ScheduleE_LineContainer">
   <div class="IRS990ScheduleE_LineIndex" style="padding-top:1.5mm;">1</div>
-  <div class="IRS990ScheduleE_LineDesc" style="padding-top:1.5mm;padding-bottom:0mm;">
+  <div class="IRS990ScheduleE_LineDesc" style="padding-top:1.5mm;padding-bottom:0mm;font-size:8pt;">
   Does the organization have a racially nondiscriminatory policy toward students by statement in its charter, bylaws,
 </div>
   <div class="IRS990ScheduleE_LineIndexMidFiller" style="padding-top:1.5mm;"/>
@@ -142,7 +141,25 @@
   <div class="IRS990ScheduleE_SubLineIndex"/>
   <div class="IRS990ScheduleE_LineDesc" style="padding-top:.5mm;">
  other governing instrument, or in a resolution of its governing body?
-    <span class="IRS990ScheduleE_Dotspacing">......................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">1</div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
@@ -184,7 +201,38 @@
   <div class="IRS990ScheduleE_SubLineIndex"/>
   <div class="IRS990ScheduleE_LineDesc">
     programs, and scholarships?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:1mm;">......................................</span>
+    <span style="width:3mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">2</div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
@@ -238,7 +286,30 @@
   <div class="IRS990ScheduleE_SubLineIndex"/>
   <div class="IRS990ScheduleE_LineDesc">
      please explain.  If you need more space use Part II.
-   <span class="IRS990ScheduleE_Dotspacing" style="padding-left:1mm;">.............................</span>
+    <span style="width:3mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
 
 
@@ -320,7 +391,15 @@
   <div class="styLNLeftLtrBoxDD" style="padding-top:.75mm;">a</div>
   <div class="IRS990ScheduleE_LineDesc" style="padding-top:1mm;padding-bottom:0mm;">
     Records indicating the racial composition of the student body, faculty, and administrative staff?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:1.75mm;padding-top:1mm;">..........</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
   
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:1mm;">4a</div>
@@ -355,7 +434,46 @@
   <div class="IRS990ScheduleE_SubLineIndex" style="padding-top:.5mm;"/>
   <div class="IRS990ScheduleE_LineDesc" style="padding-top:.5mm;">
     basis?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:1.5mm;padding-top:.5mm;">...............................................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">4b</div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
@@ -388,7 +506,29 @@
   <div class="IRS990ScheduleE_SubLineIndex" style="height:4mm;padding-top:.5mm;"/>
   <div class="IRS990ScheduleE_LineDesc" style="height:4mm;padding-top:.5mm;">
     with student admissions, programs, and scholarships?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:1mm;padding-top:.5mm;">...........................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">4c</div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
@@ -412,7 +552,18 @@
   <div class="styLNLeftLtrBoxDD" style="padding-top:1mm;">d</div>
   <div class="IRS990ScheduleE_LineDesc" style="padding-top:1.25mm;padding-bottom:.25mm;">
     Copies of all material used by the organization or on its behalf to solicit contributions?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:.5mm;padding-top:1mm;">..............</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:1.25mm;">4d</div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:1.25mm;">
@@ -479,7 +630,38 @@
   <div class="styLNLeftLtrBoxDD" style="padding-bottom:.5mm;padding-top:.5mm;">a</div>
   <div class="IRS990ScheduleE_LineDesc" style="padding-top:.5mm;">
     Students' rights or privileges?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:.75mm;">.....................................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">5a</div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
@@ -499,29 +681,55 @@
 </div>
 
  <!-- line 5b -->
-<div class="IRS990ScheduleE_LineContainer" style="height:1mm;">
-  <div class="IRS990ScheduleE_LineIndex" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineDesc" style="height:1mm;">
-  </div>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;border-right-width:0px;"/>
-</div>
 <div class="IRS990ScheduleE_LineContainer">
-  <div class="styLNLeftLtrBoxDD" style="padding-bottom:.5mm;padding-top:0mm;">b</div>
-  <div class="IRS990ScheduleE_LineDesc">
+  <div class="styLNLeftLtrBoxDD" style="height:6.5mm;padding-bottom:.5mm;padding-top:3mm;">b</div>
+  <div class="IRS990ScheduleE_LineDesc" style="height:6.5mm;padding-top:3mm;">
     Admissions policies?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:.5mm;">.........................................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">5b</div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">5b</div>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceAdmissPlcyInd"/>
       </xsl:call-template>
       </span>
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;border-right-width:0px;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateNoBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceAdmissPlcyInd"/>
@@ -532,28 +740,45 @@
 
  <!-- line 5c -->
 <div class="IRS990ScheduleE_LineContainer">
-  <div class="IRS990ScheduleE_LineIndex"/>
-  <div class="IRS990ScheduleE_LineDesc">
-  </div>
-  <div class="IRS990ScheduleE_LineIndexMidFiller"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="border-right-width:0px;"/>
-</div>
-<div class="IRS990ScheduleE_LineContainer">
-  <div class="styLNLeftLtrBoxDD" style="padding-top:0mm;padding-bottom:.5mm;">c</div>
-  <div class="IRS990ScheduleE_LineDesc">
+  <div class="styLNLeftLtrBoxDD" style="height:6.5mm;padding-top:3mm;padding-bottom:.5mm;">c</div>
+  <div class="IRS990ScheduleE_LineDesc" style="height:6.5mm;padding-top:3mm;">
     Employment of faculty or administrative staff?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:.75mm;">..............................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">5c</div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">5c</div>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceEmplmFcultyInd"/>
       </xsl:call-template>
       </span>
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateNoBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceEmplmFcultyInd"/>
@@ -562,29 +787,47 @@
   </div>
 </div>
  <!-- line 5d -->
-<div class="IRS990ScheduleE_LineContainer" style="height:1mm;">
-  <div class="IRS990ScheduleE_LineIndex" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineDesc" style="height:1mm;">
-  </div>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;border-right-width:0px;"/>
-</div>
 <div class="IRS990ScheduleE_LineContainer">
-  <div class="styLNLeftLtrBoxDD" style="padding-top:0mm;padding-bottom:0mm;height:1mm;">d</div>
-  <div class="IRS990ScheduleE_LineDesc">
+  <div class="styLNLeftLtrBoxDD" style="height:6.5mm;padding-top:3mm;padding-bottom:0mm;">d</div>
+  <div class="IRS990ScheduleE_LineDesc" style="height:6.5mm;padding-top:3mm;">
     Scholarships or other financial assistance?
-    <span class="IRS990ScheduleE_Dotspacing">................................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">5d</div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">5d</div>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceSchsInd"/>
       </xsl:call-template>
       </span>
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateNoBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceSchsInd"/>
@@ -594,29 +837,55 @@
 </div>
 
  <!-- line 5e -->
-<div class="IRS990ScheduleE_LineContainer" style="height:1mm;">
-  <div class="IRS990ScheduleE_LineIndex" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineDesc" style="height:1mm;">
-  </div>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;border-right-width:0px;"/>
-</div>
 <div class="IRS990ScheduleE_LineContainer">
-  <div class="styLNLeftLtrBoxDD" style="padding-top:0mm;padding-bottom:0mm;">e</div>
-  <div class="IRS990ScheduleE_LineDesc">
+  <div class="styLNLeftLtrBoxDD" style="height:6.5mm;padding-top:3mm;padding-bottom:0mm;">e</div>
+  <div class="IRS990ScheduleE_LineDesc" style="height:6.5mm;padding-top:3mm;">
     Educational policies?
-    <span class="IRS990ScheduleE_Dotspacing">.........................................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">5e</div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">5e</div>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceEducPlcyInd"/>
       </xsl:call-template>
       </span>
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateNoBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceEducPlcyInd"/>
@@ -626,29 +895,56 @@
 </div>
 
  <!-- line 5f -->
-<div class="IRS990ScheduleE_LineContainer" style="height:1mm;">
-  <div class="IRS990ScheduleE_LineIndex" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineDesc" style="height:1mm;">
-  </div>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;border-right-width:0px;"/>
-</div>
 <div class="IRS990ScheduleE_LineContainer">
-  <div class="styLNLeftLtrBoxDD" style="padding-bottom:.5mm;padding-top:0mm;">f</div>
-  <div class="IRS990ScheduleE_LineDesc">
+  <div class="styLNLeftLtrBoxDD" style="padding-bottom:.5mm;height:6.5mm;padding-top:3mm;">f</div>
+  <div class="IRS990ScheduleE_LineDesc" style="height:6.5mm;padding-top:3mm;">
     Use of facilities?
-    <span class="IRS990ScheduleE_Dotspacing">...........................................</span>
+    <span style="width:3mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">5f</div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">5f</div>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceUseOfFcltsInd"/>
       </xsl:call-template>
       </span>
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateNoBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceUseOfFcltsInd"/>
@@ -658,29 +954,56 @@
 </div>
 
  <!-- line 5g -->
-<div class="IRS990ScheduleE_LineContainer" style=" height:1mm;">
-  <div class="IRS990ScheduleE_LineIndex" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineDesc" style="height:1mm;">
-  </div>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMidFiller" style="border-right-width:0px;height:1mm;"/>
-</div>
 <div class="IRS990ScheduleE_LineContainer">
-  <div class="styLNLeftLtrBoxDD" style="padding-top:0mm;padding-bottom:.5mm;">g</div>
-  <div class="IRS990ScheduleE_LineDesc">
+  <div class="styLNLeftLtrBoxDD" style="height:6.5mm;padding-top:3mm;padding-bottom:.5mm;">g</div>
+  <div class="IRS990ScheduleE_LineDesc" style="height:6.5mm;padding-top:3mm;">
     Athletic programs?
-    <span class="IRS990ScheduleE_Dotspacing">..........................................</span>
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">5g</div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">5g</div>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceAthltProgInd"/>
       </xsl:call-template>
       </span>
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateNoBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceAthltProgInd"/>
@@ -689,33 +1012,52 @@
   </div>
 </div>
 
-<div class="IRS990ScheduleE_LineContainer" style="height:1mm;">
-  <div class="IRS990ScheduleE_LineIndex" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineDesc" style="height:1mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMid" style="height:1mm;border-bottom:0mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMid" style="height:1mm;border-bottom:0mm;"/>
-  <div class="IRS990ScheduleE_LineIndexMid" style="height:1mm;border-right-width:0px;border-bottom:0mm;"/>
-</div> 
-
-
-
-
  <!-- line 5h -->
 <div class="IRS990ScheduleE_LineContainer">
-  <div class="styLNLeftLtrBoxDD" style="padding-top:.5mm;padding-bottom:.5mm;">h</div>
-  <div class="IRS990ScheduleE_LineDesc" style="padding-top:.5mm;">
+  <div class="styLNLeftLtrBoxDD" style="height:6.5mm;padding-top:3mm;padding-bottom:.5mm;">h</div>
+  <div class="IRS990ScheduleE_LineDesc" style="height:6.5mm;padding-top:3mm;">
     Other extracurricular activities?
-    <span class="IRS990ScheduleE_Dotspacing">.....................................</span>
+    <span style="width:3mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">5h</div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">5h</div>
+  <div class="IRS990ScheduleE_LineIndexMid" style="height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceOtherActyInd"/>
       </xsl:call-template>
        </span>
   </div>
-  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;padding-top:.5mm;">
+  <div class="IRS990ScheduleE_LineIndexMid" style="border-right-width:0px;height:6.5mm;padding-top:3mm;">
    <span style="font-weight: normal">
        <xsl:call-template name="PopulateNoBoxText">
         <xsl:with-param name="TargetNode" select="$FormData/DiscriminateRaceOtherActyInd"/>
@@ -771,7 +1113,16 @@
        <xsl:call-template name="SetFormLinkInline">
         <xsl:with-param name="TargetNode" select="$FormData/GovernmentFinancialAid"/>
       </xsl:call-template>
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:.75mm;">...........</span>
+    <span style="width:3mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">6a</div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
@@ -791,19 +1142,26 @@
 </div>
 
  <!-- line 6b -->
-<!--<div class="IRS990ScheduleE_LineContainer" style="height:1mm;">
-  <div class="IRS990ScheduleE_LineIndex" style="height:1mm;"></div>
-  <div class="IRS990ScheduleE_LineDesc" style="height:1mm;">
-  </div>
-  <div class="IRS990ScheduleE_LineIndexMidFillerGray" style="height:1mm;"></div>
-  <div class="IRS990ScheduleE_LineIndexMidFillerGray" style="height:1mm;"></div>
-  <div class="IRS990ScheduleE_LineIndexMidFillerGray" style="border-right-width:0px;height:1mm;"></div>
-</div> -->
 <div class="IRS990ScheduleE_LineContainer">
   <div class="styLNLeftLtrBox" style="padding-left:5mm;padding-bottom:0mm;">b</div>
   <div class="IRS990ScheduleE_LineDesc" style="padding-top:0mm;">
     Has the organization's right to such aid ever been revoked or suspended?
-    <span class="IRS990ScheduleE_Dotspacing" style="padding-left:.75mm;">...................</span>
+    <span style="width:3mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
   </div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">6b</div>
   <div class="IRS990ScheduleE_LineIndexMid" style="padding-top:.5mm;">
@@ -858,6 +1216,14 @@
   <div class="IRS990ScheduleE_SubLineIndex"/>
   <div class="IRS990ScheduleE_LineDesc" style="padding-top:0mm;padding-bottom:0mm;">
     of Rev. Proc. 75-50, 1975-2 C.B. 587, covering racial nondiscrimination? If "No," explain on Part II.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
+    <span style="width:2mm;"/>.
     
    <!--  <xsl:call-template name="SetFormLinkInline">
         <xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleE/GeneralExplanationAttachment"/>
@@ -911,9 +1277,10 @@
   
 <!-- Part II-->
 <div class="styBB" style="width:187mm;float:none;border-top-width:1px">
-  <div class="styPartName" style="float:left;width:14mm;">Part II</div>
-   <span style="font-size:8pt;font-weight:bold;">Supplemental Information. </span>
-   <span>Provide the explanations required by Part I, lines 3, 4d, 5h, 6b, and 7, as applicable.  Also complete this part to provide any other additional information (see instructions).</span>
+  <div class="styPartName" style="height:4mm;float:left;width:14mm;">Part II</div>
+   <span style="font-size:8pt;font-weight:bold;padding-left:2mm;">Supplemental Information. </span>
+   <span style="display:inline;">Provide the explanations required by Part I, lines 3, 4d, 5h, 6b, and 7, as applicable.  Also complete <br/>
+   <span style="width:2mm;"/>this part to provide any other additional information (see instructions).</span>
 </div>
     
 <!-- Part II Supplemental Information table -->

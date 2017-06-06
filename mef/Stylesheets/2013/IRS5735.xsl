@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS5735"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
-			<head>  
+			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -38,7 +40,7 @@
 				<form name="Form5735">    
 					<xsl:call-template name="DocumentHeader"/>    
 					<!--Title of Form -->    
-					<div class="styBB" style="width:187mm;height:15mm;">
+					<div class="styBB" style="width:187mm;height:19mm;">
 						<div class="styFNBox" style="width:31mm;font-size: 7pt; height: 19mm">
 							Form 
 							<span class="styFormNumber" style="font-size: 16pt">5735 </span>
@@ -69,89 +71,66 @@
 						</div>
 					</div>
 					<!--  End title of Form  -->
-					<!--  For calendar year line  -->
-					<div class="styBB" style="width: 187mm">
-						<div class="styBoldText">For calendar year
-							<span style="width: 8mm">
-								<xsl:if test="normalize-space($FormData/CalendarYr) != ''">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/CalendarYr"/>
-									</xsl:call-template>
-								</xsl:if>   
-							</span>, or other tax year beginning
-							<span style="width: 17mm">
-								<xsl:if test="normalize-space($FormData/TaxPeriodBeginDate) != ''">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxPeriodBeginDate"/>
-									</xsl:call-template>
-								</xsl:if>
-							</span>and ending 
-							<span style="width: 17mm">
-								<xsl:if test="normalize-space($FormData/TaxPeriodEndDate) != ''">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxPeriodEndDate"/>
-									</xsl:call-template>
-								</xsl:if>
-							</span>
-						</div>
-					</div>
+				<!--  For calendar year line  -->
+			<div class="styBB" style="width: 187mm">
+			  <div class="styBoldText" >For calendar year
+				<span style="width: 28mm;">
+				  <xsl:if test="normalize-space($FormData/CalendarYr) != ''">
+					<xsl:call-template name="PopulateText">
+					  <xsl:with-param name="TargetNode" select="$FormData/CalendarYr"/>
+					</xsl:call-template>
+				  </xsl:if>   
+				</span>, or other tax year beginning
+				<span style="width: 57mm">
+				 <xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
+				</span>, and ending 
+				<span style="width: 17mm">
+				<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
+				</span>
+				<span>.</span>
+			  </div>
+			</div>
 					<!--  End For calendar year line  -->
 					<!--  Name and Employer identification number (input vs return header) -->
-					<div class="styBB" style="width:187mm">
-						<div class="styNameBox" style="width:141mm;font-size:7pt;">
-							Name<br/>
-						  <xsl:choose>
-								<xsl:when test="normalize-space($FormData/Name) != ''">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/Name/BusinessNameLine1"/>
-									</xsl:call-template>
-									<xsl:if test="normalize-space($FormData/Name/BusinessNameLine2)!=''">
-										<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/Name/BusinessNameLine2"/>
-										</xsl:call-template>
-									</xsl:if>            
-								</xsl:when>  
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
-									</xsl:call-template>
+					<div class="styBB" style="width:187mm;float:left;clear:left;border-top:1 solid black;">
+						<!-- Name -->
+						<div class="styNameBox" style="width:132mm;height:10mm;font-size:7pt;">
+									Name
 									<br/>
+							<span>
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+								</xsl:call-template>
+								<div>
 									<xsl:call-template name="PopulateReturnHeaderFiler">
 										<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
 									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+								</div>
+							</span>
 						</div>
-						<div class="styEINBox" style=" padding-left:2mm;font-size:7pt;">
-							<span class="BoldText">Employer identification number</span>
-							<div style="text-align:left; padding-top:3mm;font-weight:normal;">    
-								<xsl:choose>
-									<xsl:when test="normalize-space($FormData/EmployerIdentificationNumber) != ''">
-										<xsl:call-template name="PopulateEIN">
-											<xsl:with-param name="TargetNode" select="$FormData/EmployerIdentificationNumber"/>
-										</xsl:call-template>
-									</xsl:when>  
-									<xsl:otherwise>  
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
-							</div>    
+						<!-- EIN -->
+						<div class="styEINBox" style="width:50mm;height:4mm;font-size:7pt;padding-left:2mm;">
+									Employer identification number
+									<br/>
+								<br/>
+							<div style="text-align:left;font-weight:normal;">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+								</xsl:call-template>
+							</div>
 						</div>
-					</div>  
+					</div>
 				  <!--  End Name and Employer indentification number  -->
 				  <!--  Caution line -->
 				  <div class="styBB" style="width:187mm;">
-						<span class="styBoldText">Caution:</span>
-						<span class="styNormalText" style="font-style:italic;">
+						<span class="styBoldText" style="padding-top:1mm;">Caution:</span>
+						<span class="styNormalText" style="font-style:italic;padding-bottom:1mm;padding-top:.5mm;">
 							The corporation must meet the qualified production activities income requirement to qualify for the American Samoa economic development credit.
 						</span>
 					</div>
 					<!--  Caution line -->
 					<!--  Line 1  -->  
-					<div style="width: 187mm">
+					<div style="width: 187mm;">
 						<div class="styLNLeftNumBox" style="padding-left:3mm;">1</div>
 						<div class="styLNDesc" style="width:139mm;">
 							<span style="float:left;">Enter 60% of qualified compensation</span>

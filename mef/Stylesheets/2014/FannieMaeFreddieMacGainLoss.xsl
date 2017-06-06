@@ -15,8 +15,10 @@
 	</xsl:param>
     <!-- Main template -->
     <xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 		  <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 			<title>
 			  <xsl:value-of select="$depDocTitle"/>
 			</title>
@@ -43,7 +45,7 @@
 			<xsl:call-template name="DocumentHeaderDependency"/>  
 			<div class="styDepTitleLine">
 			    <span class="styDepTitle">
-					<span class="styDepTitle" style="width:100mm;">
+					<span class="styDepTitle" style="width:120mm;">
 						<span style="padding-right:1.5mm;">TY</span>
 						<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
 						<span style="padding-left:1.5mm;">Fannie Mae Freddie Mac Gain Loss</span>
@@ -75,19 +77,19 @@
 							  </xsl:call-template>
 							</td>
 							<!-- Gain or Loss on the Sale or Exchange of the Qualified Preferred Stock - Column 2 -->
-							<td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm;">
+							<td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm;">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="GainOrLossAmt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Date That the Stock was Acquired by the Partnership - Column 3 -->
-							<td class="stydepTblCell" style="width:20mm; text-align:center;padding-top:3mm;">
+							<td class="styDepTblCell" style="width:20mm; text-align:center;padding-top:3mm;">
 							  <xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="AcquisitionDt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Date Stock was Sold or Exchanged by the Partnership - Column 4 -->
-							<td class="stydepTblCell" style="width:20mm; text-align:center;padding-top:3mm">
+							<td class="styDepTblCell" style="width:20mm; text-align:center;padding-top:3mm">
 							  <xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="SoldOrExchangeDt"/>
 							  </xsl:call-template>

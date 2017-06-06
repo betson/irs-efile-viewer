@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--UWR123023 IE11 Upgrade Fixes 5/22/15 by Robert L Jones-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   
   <xsl:include href="CommonPathRef.xsl"/>
@@ -45,56 +46,56 @@
           </xsl:attribute>
 
           <!--Description Of Intangible Property Transferred --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt;">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt;">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="IntangiblePropertyTransferDesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtDescOfIntngblPropTrnsfr</xsl:with-param>
              </xsl:call-template>          
           </td>
           <!--Enter a general description of the transfer, and any wider transaction of which it forms a part, including a chronology of the transfers involved and an identification of the other parties to the transaction to the extent known --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt;">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt;">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="TransferReg16038B1Td1iiBDesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtDescOfTrnsfrReg16038B1Td1iiB</xsl:with-param>
              </xsl:call-template>          
           </td>
           <!--Provide a description of the consideration received by the U.S. person making the transfer, including its estimated fair market value and, in the case of stock or securities, the class or type, amount, and characteristics of the interest received --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="CnsdrReg16038B1Td1iiiDesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtDescOfCnsdrReg16038B1Td1iii</xsl:with-param>
              </xsl:call-template>          
           </td>
           <!--Provide a description of the intangible property transferred, including its adjusted basis.  Generally, each intangible asset must be separately identified.  Operating intangibles and foreign goodwill or going concern value, as defined in Regulations section 1.367(a)-1T (d) (5) (ii) and (iii), should be so identified and classified --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="IntngblPropReg16038B1Td1ivDesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtDescIntngblPropReg16038B1Td1iv</xsl:with-param>
              </xsl:call-template>          
           </td>
            <!--Provide and explain the calculation of the annual deemed payment for the use of the intangible property required to be recognized by the transferor under the rules of Section 367(d) --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="CalcAnnlPymtReg16038B1Td1vDesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtCalcAnnlPymtReg16038B1Td1v</xsl:with-param>
              </xsl:call-template>          
           </td>
            <!--List any intangible with respect to which an election is being made under Regulations Section 1.367(d)-1T(g)(2) to treat the transfer as a sale.  Include the fair market value of the intangible on the date of the transfer and a calculation of the gain required to be recognized in the year of the transfer by reason of the election --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="TrnsfrSaleReg16038B1Td1viDesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtTrnsfrSaleReg16038B1Td1vi</xsl:with-param>
              </xsl:call-template>          
           </td>
            <!--List any intangible property subject to Section 367(d) the transfer of which also gives rise to the recognition of gain under Section 904(f)(3) or Reg Section 1.367(a)-6T.  Provide a calculation of the gain required to be recognized with respect to such property, in accordance with the provisions of Reg Section 1.367(d)-1T(g)(4) --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="IntngblPropReg16038B1Td1viiTxt"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtIntngblPropReg16038B1Td1vii</xsl:with-param>
              </xsl:call-template>          
           </td>
            <!-- Describe any intangible property sold or licensed by the transferor to the transferee foreign corporation, and set forth the general terms of each sale or license --> 
-         <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt"> 
+         <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt"> 
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="IntngblPrpReg16038B1Td1viiiTxt"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtIntngblPropReg16038B1Td1viii</xsl:with-param>
@@ -136,35 +137,35 @@
           </xsl:choose>
           </xsl:attribute>
            <!--Date of the initial transfer --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:leftt;font-size:7pt">
              <xsl:call-template name="PopulateMonthDayYear">
                 <xsl:with-param name="TargetNode" select="TransferReg16038B1Td2iiADt"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtDateTrnsfrReg16038B1Td2iiA</xsl:with-param>
              </xsl:call-template>          
           </td>
            <!--Enter a general description of the transfer and any wider transaction of which it formed a part --> 
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="TransferReg16038B1Td2iiCDesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtDescTrnsfrReg16038B1Td2iiC</xsl:with-param>
              </xsl:call-template>          
           </td>
           <!-- Enter a general description of the subsequent transfer and any wider transaction of which it forms a part -->
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="TransferReg16038B1Td2iiiADesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtDescTrnsfrReg16038B1Td2iiiA</xsl:with-param>
              </xsl:call-template>          
           </td>
           <!-- Provide a calculation of any gain required to be recognized by the U.S. person under the rules of Reg Section 1.367(d)-1T (d) through (f) -->
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="CalcGainReg16038B1Td2iiiBDesc"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtCalcGainReg16038B1Td2iiiB</xsl:with-param>
              </xsl:call-template>          
           </td>
           <!-- Under the rules of Reg Section 1.367(d)-1T (e) or (f) did anyone receive contingent annual payments for the use of the intangible property? -->
-          <td class="styDepTblCell" style="width:32mm;text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:32mm;text-align:left;font-size:7pt">
              <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="RcvAnnlPymtRg16038B1Td2iiiCInd"/>
                 <xsl:with-param name="BackupName">IntngblPropTrnsfrFromTrStmtRcvdAnnlPymtReg16038B1Td2iiiC</xsl:with-param>
@@ -226,8 +227,10 @@
 
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -256,9 +259,9 @@
     
         <div class="styDepTitleLineLandscape">
           <span class="styDepTitle">
-            <span style="width:150mm;">
+           
               <xsl:value-of select="$depDocTitle"/>
-            </span>
+           
           </span>
         </div>
         

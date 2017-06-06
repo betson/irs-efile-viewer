@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form8839Data" select="$RtnDoc/IRS8839"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8839Data)"/>
@@ -28,10 +30,10 @@
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
         <xsl:call-template name="InitJS"/>
         <style type="text/css">
-  <!--        <xsl:if test="not($Print) or $Print=''">-->
+  <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="IRS8839Style"/>
             <xsl:call-template name="AddOnStyle"/>
-<!--          </xsl:if>-->
+        </xsl:if>
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
@@ -48,7 +50,7 @@
               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form8839Data"/>
               </xsl:call-template>
-              <br/>
+              <br/><br/><br/>
               <span class="styAgency">Department of the Treasury</span>
               <br/>
               <span class="styAgency">Internal Revenue Service (99)</span>
@@ -61,8 +63,8 @@
               <div class="styFST" style="height:5mm;font-size:7pt;margin-left:2mm;text-align:center;">
                 <span style="text-align:center;font-weight:bold;">
                   <div style="width:100%;height:5mm;padding-left:0px;">
-                    <div style="width:110mm;height:5mm;">
-                      <br/>
+                    <div style="width:110mm;height:5mm;padding-top:1mm;">
+                      <br/>  
                       <img src="{$ImagePath}/8839_Bullet_Sm.gif" alt="SmallBullet"/> 
                       Attach to Form 1040 or 1040NR.
                       <br/>
@@ -74,7 +76,7 @@
               </div>
             </div>
             <div class="styTYBox" style="width:30mm;border-left-width:2px;">
-              <div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+              <div class="styOMB" style="height:4mm;font-size:7pt;">OMB No. 1545-0074</div>
               <div class="styTY">20<span class="styTYColor">14</span>
               </div>
               <div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -87,15 +89,15 @@
           <!-- Begin Names and Identifying number section -->
           <div class="styBB" style="width:187mm;">
             <div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
-              Name(s) shown on return<br/>
+              Name(s) shown on return<br/><span style="padding-top:2mm;">
               <xsl:call-template name="PopulateReturnHeaderFiler">
                 <xsl:with-param name="TargetNode">Name</xsl:with-param>
-              </xsl:call-template>
+              </xsl:call-template></span>
             </div>
             <div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
               Your social security number
               <br/>
-              <span style="font-weight:normal;text-align:center;width:100%">
+              <span style="font-weight:normal;text-align:center;width:100%;padding-top:2mm;">
                 <xsl:call-template name="PopulateSSN">
                   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
                   <xsl:with-param name="BackupName">RtnHdrDataFilerPrimarySSN</xsl:with-param>
@@ -110,10 +112,10 @@
           <!-- Header -->
           <div style="width:187mm;" class="styBB">
             <!-- Content -->
-            <div class="styPartName" style="width:15mm;height:4mm;">Part I</div>
-            <div class="styPartDesc" style="padding-left:3mm;"><span style="float:left;">
-              Information About Your Eligible Child or Children-<span class="styNormalText">You <b>must</b> complete this part. See instructions for<br />
-              details, including what to do if you need more space.</span></span>
+            <div class="styPartName" style="width:15mm;">Part I</div>
+            <div class="styPartDesc" style="padding-left:3mm;height:8mm;float:left;">
+           <span class="styNormalText" > <b>Information About Your Eligible Child or Children</b><b><img src="{$ImagePath}/1040SchA_JobExp_Longdash.gif" alt="Long Dash"/></b> You <b>must</b> complete this part. See instructions for<br />
+              details, including what to do if you need more space.</span>
               <span class="styGenericDiv" style="width:3.2mm;float:right;padding-top:3.2mm;">
                   <!-- button display logic -->
                   <xsl:call-template name="SetDynamicTableToggleButton">
@@ -127,8 +129,8 @@
             </div>
           </div>
           <!-- Body -->
-          <div class="styBB" style="width:187mm;">
-            <div class="styIRS8839LineItem">
+          <div class="styBB" style="width:187mm;height:60mm;">
+            <div class="styIRS8839LineItem" >
               <!--<div class="styIRS8839LNDesc" style="width:179mm;float:right;">
                 <div class="styGenericDiv" style="width:3.2mm;float:right;">
                    ! button display logic !
@@ -189,7 +191,7 @@
               <!-- End Set Initial Height of Above Table -->
             </div>
             <div class="styIRS8839LineItem">
-              <span style="width:100%;height:100%;">
+              <span style="width:180mm;height:2mm;padding-top:50mm;">
                 <b>Caution.</b> If the child was a foreign child, see <b>Special rules</b> in the instructions for line 1, column (e) before you complete Part II or
                 Part III. If you received <b>employer-provided adoption benefits</b>, complete Part III on the back next.
               </span>
@@ -230,7 +232,7 @@
 
 
             <!-- (7) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:4mm;">
               <div class="styIRS8839LNLeftNumBox">7</div>
               <div class="styIRS8839LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -256,7 +258,7 @@
                     <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
                   </xsl:call-template>
                 </div>
-                <div class="styIRS8839LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                <div class="styIRS8839LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;border-color:black;border-bottom-width:1px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionCreditModifiedAGIAmt"/>
                     <xsl:with-param name="Number">7</xsl:with-param>
@@ -265,7 +267,7 @@
               </div>
             </div>
             <!-- (8) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:13mm;">
               <div class="styIRS8839LNLeftNumBox">8</div>
               <div class="styIRS8839LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -293,7 +295,7 @@
                       </xsl:call-template>
                     </xsl:if>
                     <span class="styBoldText">No.</span>
-                    <span style="width:5px;"/>Skip lines 8 and 9, and enter -0- on line 10.<br/>
+                    <span style="width:5px;"/>Skip lines 8 and 9, and    <span style="width:3px;"/>enter -0- on line 10.<br/>
                   </label>
                   <!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
                   <span>
@@ -326,7 +328,6 @@
                         <span style="width:11px"/>.
                         <span style="width:11px"/>.
                         <span style="width:11px"/>.
-                        <span style="width:11px"/>.
                       </span>
                   </label>
                 </div>
@@ -346,7 +347,7 @@
                     <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
                   </xsl:call-template>
                 </div>
-                <div class="styIRS8839LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                <div class="styIRS8839LNDesc" style="height:7mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="Height">100%</xsl:with-param>
                     <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
@@ -362,11 +363,11 @@
               </div>
             </div>
             <!-- (9) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:6.5mm;">
               <div class="styIRS8839LNLeftNumBox">9</div>
               <div class="styIRS8839LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
-                  Divide line 8 by $40,000. Enter the result as a decimal (rounded to at least three places). Do not enter<br/>more than 1.000
+                  Divide line 8 by $40,000. Enter the result as a decimal (rounded to at least three places).<br/> Do not enter more than 1.000
                   <!--Dotted Line-->
                   <span class="styBoldText">
                     <span style="width:7px"/>.
@@ -390,11 +391,8 @@
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
+                    
+                   
                   </span>
                 </div>
               </div>
@@ -469,18 +467,18 @@
                       <span style="width:11px"/>.
                     </span>
                   </div>
-                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">10</div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;border-bottom-width:2px;">10</div>
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos]/CalculatedAdoptionCreditAmt"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos + 1]/CalculatedAdoptionCreditAmt"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos + 2]/CalculatedAdoptionCreditAmt"/>
                     </xsl:call-template>
@@ -497,18 +495,18 @@
                       <span style="width:11px"/>.
                     </span>
                   </div>
-                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">11</div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;border-bottom-width:2px;">11</div>
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos]/NetCalculatedAdoptionCreditAmt"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos + 1]/NetCalculatedAdoptionCreditAmt"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos + 2]/NetCalculatedAdoptionCreditAmt"/>
                     </xsl:call-template>
@@ -519,7 +517,7 @@
               </xsl:if>
             </xsl:for-each>            
             <!-- (12) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:4mm;">
               <div class="styIRS8839LNLeftNumBox">12</div>
               <div class="styIRS8839LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -562,7 +560,7 @@
               </div>
             </div>
             <!-- (13) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:7mm;">
               <div class="styIRS8839LNLeftNumBox">13</div>
               <div class="styIRS8839LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -602,7 +600,7 @@
                     <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
                   </xsl:call-template>
                 </div>
-                <div class="styIRS8839LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                <div class="styIRS8839LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;border-color:black;border-bottom-width:1px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionCreditCfwdAmt"/>
                     <xsl:with-param name="Number">13</xsl:with-param>                   
@@ -611,7 +609,7 @@
               </div>
             </div>
             <!-- (14) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:4mm;">
               <div class="styIRS8839LNLeftNumBox">14</div>
               <div class="styIRS8839LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -657,7 +655,7 @@
               </div>
             </div>
             <!-- (15) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:4mm;">
               <div class="styIRS8839LNLeftNumBox">15</div>
               <div class="styIRS8839LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -672,12 +670,14 @@
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
+                     <span style="width:7px"/>.
+                       <span style="width:7px"/>.
                   </span>
                 </div>
               </div>
-              <div class="styIRS8839LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
+              <div class="styIRS8839LNDesc" style="height:14mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                 
-                <div class="styIRS8839LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                <div class="styIRS8839LNDesc" style="height:14mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="TargetNode" select="$Form8839Data/CreditLimitWorksheetAmt"/>
                     <xsl:with-param name="Number">15</xsl:with-param>                   
@@ -687,7 +687,7 @@
             </div>
 
             <!-- (16) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:10mm;">
               <div class="styIRS8839LNLeftNumBox">16</div>
               <div class="styIRS8839LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -712,19 +712,19 @@
                 </div>
               </div>
               <div class="styIRS8839LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
-                <div class="styIRS8839LNDesc" style="height:2mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                <div class="styIRS8839LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="Height">100%</xsl:with-param>
                     <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
                     <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
                   </xsl:call-template>
                 </div>
-                <div class="styIRS8839LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                <div class="styIRS8839LNDesc" style="height:3mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionCreditAmt"/>
                     <xsl:with-param name="Number">16</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;padding-top:4.4mm;</xsl:with-param>
-                    <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;padding-top:4.4mm;padding-bottom:.5mm;</xsl:with-param>
+                    <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+                    <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;padding-bottom:.5mm;</xsl:with-param>
                   </xsl:call-template>
                 </div>
               </div>
@@ -737,19 +737,15 @@
               <span class="styBoldText">
                 For Paperwork Reduction Act Notice, see your tax return instructions.
               </span>
-            </div>
-            <div style="float:right;clear:all;">
-              <span style="width:50px;"/>  
-                Form 
-              <span class="styBoldText" style="font-size:8pt;">8839</span> (2014)
-            </div>
-            <div style="float:right;text-align:center;width:26mm;font-size:7pt;">
-              Cat. No. 22843L
+                <span style="width:50px;"/>  
+                <span style="font-size:7pt;">			   Cat. No. 22843L					</span>
+                 <span style="width:28.1mm;"/>   Form <span class="styBoldText" style="font-size:8pt;">8839</span> (2014)
             </div>
           </div>
           <!-- END Page Break and Footer-->
+          <p style="page-break-before: always"/>
           <!-- BEGIN Page Header -->
-          <div class="styTBB" style="width:187mm;padding-top:.5mm;clear:all;">
+          <div class="styTBB" style="width:187mm;padding-top:5mm;clear:all;">
             <div style="float:left;clear:all;">
               Form 8839 (2014)
             </div>
@@ -791,14 +787,14 @@
                 <xsl:with-param name="Child3" select="following-sibling::*[2]"/>
               </xsl:call-template>
             </xsl:for-each>
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:4mm;">
               <xsl:call-template name="CreateBox">
                 <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
                 <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;background-color:lightgrey;</xsl:with-param>
               </xsl:call-template>
             </div>
             <!-- (21) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:4mm;">
               <div class="styIRS8839LNLeftNumBox">21</div>
               <div class="styIRS8839LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -832,10 +828,12 @@
                   </span>
                 </div>
               </div>
+               
               <xsl:call-template name="CreateBox">
                 <xsl:with-param name="TargetNode" select="$Form8839Data/EmployerAdoptionBenefitsAmt"/>
                 <xsl:with-param name="Number">21</xsl:with-param>
               </xsl:call-template>
+              
             </div>
             <xsl:for-each select="$AdoptedChildData[position() mod 3 = 1]">
               <xsl:variable name="Counter">
@@ -868,7 +866,7 @@
             </div>-->
 
             <!-- (23) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:5mm;">
               <div class="styIRS8839LNLeftNumBox">23</div>
               <div class="styIRS8839LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -883,27 +881,6 @@
                 </div>
               </div>
               <div class="styIRS8839LNDesc" style="height:100%;width:auto;float:right;padding:0px 0px 0px 0px;">
-                <div class="styIRS8839LNDesc" style="height:3.5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
-                  <xsl:call-template name="CreateBox">
-                    <xsl:with-param name="Height">100%</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                    <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                  </xsl:call-template>
-                </div>
-                <div class="styIRS8839LNDesc" style="height:3.5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
-                  <xsl:call-template name="CreateBox">
-                    <xsl:with-param name="Height">100%</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                    <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                  </xsl:call-template>
-                </div>
-                <div class="styIRS8839LNDesc" style="height:3.5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
-                  <xsl:call-template name="CreateBox">
-                    <xsl:with-param name="Height">100%</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                    <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  </xsl:call-template>
-                </div>
                 <div class="styIRS8839LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="Height">100%</xsl:with-param>
@@ -918,7 +895,8 @@
                     <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
                   </xsl:call-template>
                 </div>
-                <div class="styIRS8839LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
+              
+                <div class="styIRS8839LNDesc" style="height:3mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionBenefitsModifiedAGIAmt"/>
                     <xsl:with-param name="Number">23</xsl:with-param>
@@ -927,9 +905,9 @@
               </div>
             </div>
             <!-- (24) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
-              <div class="styIRS8839LNLeftNumBox">24</div>
-              <div class="styIRS8839LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
+            <div class="styIRS8839LineItem" style="height:18mm;">
+              <div class="styIRS8839LNLeftNumBox" style="padding-top:3mm;">24</div>
+              <div class="styIRS8839LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;padding-top:3mm;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
                   Is line 23 more than $197,880?<br/>
                   <!-- ++++++++++++++ No Checkbox +++++++++++++ -->
@@ -956,8 +934,8 @@
                       </xsl:call-template>
                     </xsl:if>
                     <span class="styBoldText">No.</span>
-                    <span style="width:4px;"/>Skip lines 24 and 25, and<br/>
-                    <span style="width:6mm;"/>enter -0- on line 26.<br/>
+                    <span style="width:4px;"/>Skip lines 24 and 25, and
+                   enter -0- <br/> <span style="width:9mm;"/>on line 26.<br/>
                   </label>
                   <!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
                   <span style="width:1mm;"/>
@@ -983,77 +961,52 @@
                       </xsl:call-template>
                     </xsl:if>
                     <span class="styBoldText">Yes.</span>
-                    <span style="width:4px;"/>Subtract $197,880 from line<br/>
-                    <span style="width:6mm;"/>23
-                <!--Dotted Line-->
-                    <span class="styBoldText">
-                      <span style="width:13px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                </span>
+                    <span style="width:4px;"/>Subtract $197,880 from line
+                    23
+             
                   </label>
                 </div>
               </div>
               <div class="styIRS8839LNDesc" style="height:100%;width:auto;float:right;padding:0px 0px 0px 0px;">
-                <div class="styIRS8839LNDesc" style="height:13mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                <div class="styIRS8839LNDesc" style="height:20mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="Height">100%</xsl:with-param>
                     <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
                     <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
                   </xsl:call-template>
                 </div>
-                <div class="styIRS8839LNDesc" style="height:13mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                <div class="styIRS8839LNDesc" style="height:20mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="Height">100%</xsl:with-param>
                     <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
                     <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
                   </xsl:call-template>
                 </div>
-                <div class="styIRS8839LNDesc" style="height:13mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
-                  <xsl:call-template name="CreateBox">
-                    <xsl:with-param name="Height">100%</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                    <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  </xsl:call-template>
-                </div>
-                <div class="styIRS8839LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
-                  <xsl:call-template name="CreateBox">
-                    <xsl:with-param name="Height">100%</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                    <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                  </xsl:call-template>
-                </div>
-                <div class="styIRS8839LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
-                  <xsl:call-template name="CreateBox">
-                    <xsl:with-param name="Height">100%</xsl:with-param>
-                    <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                    <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                  </xsl:call-template>
-                </div>
-                <div class="styIRS8839LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
+                
+               <div style="float:right;">
+						<div class="styLNRightNumBox" style="padding-top:15mm;height:20mm;">
+						24</div>
+						<div class="styLNAmountBox" style="width:29mm;height:20mm;padding-top:15mm;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionBnftModifAGILessLmtAmt"/>
+							</xsl:call-template>
+						</div>	</div>
+                
+             <!--   <div class="styIRS8839LNDesc" style="height:40mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
                   <xsl:call-template name="CreateBox">
                     <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionBnftModifAGILessLmtAmt"/>
                     <xsl:with-param name="Number">24</xsl:with-param>
                   </xsl:call-template>
-                </div>
+                </div> -->
               </div>
             </div>
             
             
             
             <!-- (25) ////////////////////////////////////////////////////-->
-            <div style="width:187mm;">
-              <div class="styLNLeftNumBox" style="height:7mm;">25</div>
-              <div class="styGenericDiv" style="width:105mm;">
+            <div style="width:187mm;height:9mm;">
+              <div class="styLNLeftNumBox" style="height:7mm;padding-top:3mm;">25</div>
+              <div class="styGenericDiv" style="width:105mm;padding-top:3mm;">
                 Divide line 24 by $40,000. Enter the result as a decimal (rounded to
                 at least three places). Do not enter more than 1.000
                   <!--Dotted Line-->
@@ -1067,16 +1020,18 @@
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
+                     <span style="width:11px"/>.
+                      <span style="width:11px"/>.
                   </span>
               </div>
-              <div class="styLNRightNumBoxNBB" style="height:7mm;padding-top:3mm;">25</div>
-              <div class="styLNAmountBoxNBB" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
-                <xsl:call-template name="PopulateText">
+              <div class="styLNRightNumBoxNBB" style="height:9mm;padding-top:6mm;">25</div>
+              <div class="styLNAmountBoxNBB" style="width:29mm;height:9mm;padding-top:6mm;font-size:6pt;padding-right:.5mm;">
+                <span style="width:8mm;padding-right:4mm;"><b>x      </b></span><xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptionBenefitAdjModifAGIPct"/>
                 </xsl:call-template>
               </div>
-              <div class="styLNRightNumBoxNBB" style="height:7mm;background-color:lightgrey"></div>
-              <div class="styLNAmountBoxNBB" style="width:29mm;height:7mm;font-size:6pt;padding-right:.5mm;"></div>
+              <div class="styLNRightNumBoxNBB" style="height:9mm;background-color:lightgrey"></div>
+              <div class="styLNAmountBoxNBB" style="width:29mm;height:9mm;font-size:6pt;padding-right:.5mm;"></div>
            </div>
 
 
@@ -1134,18 +1089,18 @@
             <span style="width:11px"/>.
           </span>
                   </div>
-                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">26</div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;border-bottom-width:2px;">26</div>
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos]/AdoptionBnftAGIPctExpnsAmt"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos + 1]/AdoptionBnftAGIPctExpnsAmt"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos + 2]/AdoptionBnftAGIPctExpnsAmt"/>
                     </xsl:call-template>
@@ -1167,18 +1122,18 @@
             <span style="width:11px"/>.           
           </span>
                   </div>
-                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">27</div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;border-bottom-width:2px;">27</div>
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos]/ExcludedBenefitsAmt"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos + 1]/ExcludedBenefitsAmt"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;">
+                  <div class="styLNAmountBox" style="width:29mm;height:7mm;padding-top:3.5mm;font-size:6pt;padding-right:.5mm;border-bottom-width:2px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8839Data/AdoptedChild[$pos + 2]/ExcludedBenefitsAmt"/>
                     </xsl:call-template>
@@ -1199,7 +1154,15 @@
                 </div>
                 <div class="styIRS8839LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
                   <!--Dotted Line-->
+                  
                   <span class="styBoldText">
+              
+                    <span style="width:11px"/>.
+                   <span style="width:11px"/>.
+                    <span style="width:11px"/>.
+                    <span style="width:11px"/>.
+                    <span style="width:11px"/>.
+                    <span style="width:11px"/>.
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
@@ -1219,20 +1182,28 @@
                   </span>
                 </div>
               </div>
-              <xsl:call-template name="CreateBox">
+              
+              
+            
+              
+              
+              
+                <div style="float:right;">
+						<div class="styLNRightNumBox"  style="height:3.5mm;border-bottom-width:2px;">
+						28</div>
+						<div class="styLNAmountBox" style="width:29mm;height:3.5mm;padding-bottom:.5mm;font-size:6pt;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$Form8839Data/TotalExcludedBenefitsAmt"/>
+							</xsl:call-template>
+						</div>	</div>
+              <!--<xsl:call-template name="CreateBox">
                 <xsl:with-param name="TargetNode" select="$Form8839Data/TotalExcludedBenefitsAmt"/>
                 <xsl:with-param name="Number">28</xsl:with-param>
-              </xsl:call-template>
+              </xsl:call-template>  -->
             </div>
-            <div class="styIRS8839LineItem">
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;background-color:lightgrey;</xsl:with-param>
-              </xsl:call-template>
-            </div>
+            
             <!-- (29) ////////////////////////////////////////////////////-->
-            <div class="styIRS8839LineItem">
+            <div class="styIRS8839LineItem" style="height:30mm;">
               <div class="styIRS8839LNLeftNumBox">29</div>
               <div class="styIRS8839LNDesc" style="width:142.5mm;height:100%;padding:0px 0px 0px 0px;">
                 <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -1312,7 +1283,7 @@
                   </div>
                 </div>
               </div>
-              <div class="styIRS8839LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
+              <div class="styIRS8839LNDesc" style="height:100%;width:37mm;float:right;padding:2px 0px 0px 0px;">
                 <xsl:call-template name="CreateBox">
                   <xsl:with-param name="Height">10mm</xsl:with-param>
                   <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
@@ -1326,7 +1297,7 @@
             </div>
           </div>
           <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-          <div class="styTBB" style="width:187mm;">
+          <div class="styTBB" style="width:187mm;height:30mm;">
             <div class="styIRS8839LineItem">
               <div class="styIRS8839LNDesc" style="width:12%;height:100%;padding:5.5mm 0px 0px 3.5mm;vertical-align:middle;">
                 <img src="{$ImagePath}/8839_Tip.gif" alt="Tip"/>
@@ -1354,7 +1325,7 @@
           <div class="pageEnd" style="width:187mm;padding-top:1mm;clear:all;">
             <div style="float:right;">
               <span style="width:20px;"/>
-              Form<span class="styBoldText" style="font-size:7pt;"> 8839 </span>(2014)
+              Form  <span class="styBoldText" style="font-size:7pt;">  8839 </span> (2014)
             </div>
           </div>
           <!-- END Page Break and Footer-->
@@ -1483,13 +1454,13 @@
     <xsl:param name="Number">1</xsl:param>
     <xsl:param name="InsertAdditionalDataMessage"/>
     <tr style="font-size: 7pt;">
-      <td class="styIRS8839TableCell" style="width:4%;font-size: 7pt; text-align:center;">
+      <td class="styIRS8839TableCell" style="width:15mm;font-size: 7pt; text-align:center;border-bottom-width:5px;">
         <span class="styBoldText">Child<br/>
           <xsl:value-of select="$Number"/>
         </span>
       </td>
       <!--First Name-->
-      <td class="styIRS8839TableCell" style="width:20%;font-size: 7pt; text-align:center;">
+      <td class="styIRS8839TableCell" style="width:40%;font-size: 7pt; text-align:center;">
         <span style="width:4px"/>
         <xsl:if test="$InsertAdditionalDataMessage">
           <xsl:if test="((count($Form8839Data/AdoptedChild) &gt;3) and ($Print = $Separated))">
@@ -1500,11 +1471,11 @@
         </xsl:if>
       </td>
       <!--Last Name-->
-      <td class="styIRS8839TableCell" style="width:20%;font-size: 7pt; text-align:center;">
+      <td class="styIRS8839TableCell" style="width:40%;font-size: 7pt; text-align:center;">
         <span style="width:4px"/>
       </td>
       <!--Birth Year-->
-      <td class="styIRS8839TableCell" style="width:11%;font-size: 7pt; text-align:center;">
+      <td class="styIRS8839TableCell" style="width:14mm;font-size: 7pt; text-align:center;">
         <span style="width:4px"/>
       </td>
       <!--(c) Disabled Child Over 18-->
@@ -1520,11 +1491,11 @@
         <input class="styCkbox" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>ForeignBlank</xsl:attribute></label>
       </td>
       <!--(f) Child's SSN-->
-      <td class="styIRS8839TableCell" style="width:13%;font-size: 7pt; text-align:center;">
+      <td class="styIRS8839TableCell" style="width:14%;font-size: 7pt; text-align:center;">
         <span style="width:4px"/>
       </td>
       <!--(g) adoption became final in 2014 or earlier Indicator-->
-      <td class="styIRS8839TableCell" style="width:8%;font-size: 7pt; text-align:center;border-right-width:0px;">
+      <td class="styIRS8839TableCell" style="width:44%;font-size: 7pt; text-align:center;border-right-width:0px;">
         <input class="styCkbox" type="checkbox" style="width:4mm;"><xsl:attribute name="id">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></input><label><xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Number"/>FinalBlank</xsl:attribute></label>
       </td>
     </tr>
@@ -1537,42 +1508,42 @@
       </xsl:if>
       <th class="styTableCellHeader" scope="col" rowspan="3">
         <xsl:attribute name="style">
-          border-color:black;width:4%;font-weight:normal;
+          border-color:black;width:5%;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
         </xsl:attribute>
         <span style="font-weight:bold;">1</span>
       </th>
-      <th class="styTableCellHeader" scope="col" rowspan="2" colspan="2">
+      <th class="styTableCellHeader" scope="col" rowspan="2" colspan="2" >
         <xsl:attribute name="style">
-          border-bottom-width:0px;border-color:black;width:40%;font-weight:normal;
+          border-bottom-width:0px;border-color:black;width:48mm;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
         </xsl:attribute>
         <span style="font-weight:bold;">(a)</span>
         <br/>Child's name</th>
-      <th class="styTableCellHeader" scope="col" rowspan="3">
+      <th class="styTableCellHeader" scope="col" rowspan="3" style="width:12mm;">
         <xsl:attribute name="style">
-          border-color:black;width:11%;font-weight:normal;
+          border-color:black;width:8mm;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
         </xsl:attribute>
         <span style="font-weight:bold;">(b)</span>
         <br/>Child's year<br/>of birth</th>
-      <th class="styTableCellHeader" scope="col" colspan="3" rowspan="1">
+      <th class="styTableCellHeader" scope="col" colspan="3" rowspan="1"  >
         <xsl:attribute name="style">
-          border-color:black;width:24%;font-weight:normal;
+          border-color:black;width:36mm;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
         </xsl:attribute>
             Check if child was-</th>
-      <th class="styTableCellHeader" scope="col" rowspan="3">
+      <th class="styTableCellHeader" scope="col" rowspan="3" style="width:28mm;">
         <xsl:attribute name="style">
-          border-color:black;width:13%;font-weight:normal;
+          border-color:black;width:30%;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
@@ -1581,7 +1552,7 @@
         <br/>Child's<br/>identifying number</th>
       <th class="styTableCellHeader" scope="col" rowspan="3">
         <xsl:attribute name="style">
-          border-color:black;width:8%;font-weight:normal;border-right:0;
+          border-color:black;width:67mm;font-weight:normal;border-right:0;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
@@ -1595,7 +1566,7 @@
       </xsl:if>
       <th class="styTableCellHeader" scope="col" rowspan="2">
         <xsl:attribute name="style">
-          border-color:black;width:8%;font-weight:normal;
+          border-color:black;width:8mm;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
@@ -1604,7 +1575,7 @@
         <br/>born <b>before<br/>1997</b> and<br/>disabled</th>
       <th class="styTableCellHeader" scope="col" rowspan="2">
         <xsl:attribute name="style">
-          border-color:black;width:8%;font-weight:normal;
+          border-color:black;width:8mm;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
@@ -1613,7 +1584,7 @@
         <br/>a child<br/>with special<br/>needs</th>
       <th class="styTableCellHeader" scope="col" rowspan="2">
         <xsl:attribute name="style">
-          border-color:black;width:8%;font-weight:normal;
+          border-color:black;width:8mm;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
@@ -1627,7 +1598,7 @@
       </xsl:if>
       <th class="styTableCellHeader" scope="col" rowspan="1">
         <xsl:attribute name="style">
-          border-color:black;border-width:0px 0px 1px 0px;width:20%;font-weight:normal;
+          border-color:black;border-width:0px 0px 1px 0px;width:27%;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
@@ -1636,7 +1607,7 @@
       </th>
       <th class="styTableCellHeader" scope="col" rowspan="1">
         <xsl:attribute name="style">
-          border-color:black;border-width:0px 1px 1px 0px;width:20%;font-weight:normal;
+          border-color:black;border-width:0px 1px 1px 0px;width:27%;font-weight:normal;
           <xsl:if test="$AddColoredHeaders">
             color:white;font-size:7pt;
           </xsl:if>
@@ -1647,7 +1618,8 @@
   </xsl:template>
   <xsl:template name="CreateTableRows">
     <xsl:param name="AddColorCodeRow"/>
-        <tr style="font-size: 7pt;">
+        <tr style="font-size: 7pt;"  >
+        
           <xsl:variable name="ChildNumber">
             <xsl:number format="1"/>
           </xsl:variable>
@@ -1656,20 +1628,19 @@
           </xsl:if>
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:4%;font-size: 7pt; text-align:center;
+              width:5%;font-size: 7pt; text-align:center;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
+   black;border-width:0px 1px 2px 0px;
               </xsl:if></xsl:attribute>
-            <span class="styBoldText">Child<br/>
+            <span class="styBoldText" >Child<br/>
               <xsl:value-of select="$ChildNumber"/>
-            </span>
-          </td>
+            </span>          </td>
           <!--First Name-->
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:20%;font-size: 7pt; text-align:center;
+              width:27%;font-size: 7pt; text-align:center;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
+              black;border-width:0px 1px 2px 0px;
               </xsl:if>              
               </xsl:attribute><span style="width:1px;"/>
             <xsl:if test="$Form8839Data/AdoptedChild/PersonFirstNm">
@@ -1682,9 +1653,8 @@
           <!--Last Name-->
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:20%;font-size: 7pt; text-align:center;
+              width:27%;font-size: 7pt; text-align:center;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
               </xsl:if></xsl:attribute><span style="width:1px;"/>
             <xsl:if test="$Form8839Data/AdoptedChild/PersonLastNm">
               <xsl:call-template name="PopulateText">
@@ -1707,9 +1677,9 @@
           <!--Birth Year-->
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:11%;font-size: 7pt; text-align:center;
+              width:8mm;font-size: 7pt; text-align:center;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
+      black;border-width:0px 1px 2px 0px;
               </xsl:if></xsl:attribute><span style="width:1px;"/>
             <xsl:if test="$Form8839Data/AdoptedChild/ChildBirthYr">
               <xsl:call-template name="PopulateMonthDayYear">
@@ -1721,9 +1691,9 @@
           <!--(c) Disabled Child Over 18-->
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:8%;font-size: 7pt; text-align:center;
+              width:8%;font-size: 7pt; text-align:center;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
+         black;border-width:0px 1px 2px 0px;
               </xsl:if></xsl:attribute>
             <label>
               <xsl:call-template name="PopulateLabel">
@@ -1741,9 +1711,9 @@
           <!--(d) Child With Special Needs-->
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:8%;font-size: 7pt; text-align:center;
+              width:8%;font-size: 7pt; text-align:center;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
+              black;border-width:0px 1px 2px 0px;
               </xsl:if></xsl:attribute>
             <label>
               <xsl:call-template name="PopulateLabel">
@@ -1761,9 +1731,9 @@
           <!--(e) Foreign Child Indicator-->
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:8%;font-size: 7pt; text-align:center;
+              width:8%;font-size: 7pt; text-align:center;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
+              black;border-width:0px 1px 2px 0px;
               </xsl:if></xsl:attribute>
             <label>
               <xsl:call-template name="PopulateLabel">
@@ -1781,9 +1751,9 @@
           <!--(f) Child's SSN-->
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:13%;font-size: 7pt; text-align:center;
+              width:30%;font-size: 7pt; text-align:center;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
+     black;border-width:0px 1px 2px 0px;
               </xsl:if></xsl:attribute><span style="width:1px;"/>
             <xsl:if test="$Form8839Data/AdoptedChild/ChildSSN">
               <xsl:call-template name="PopulateSSN">
@@ -1795,9 +1765,9 @@
           <!--(g) adoption became final in 2014 or earlier Indicator-->
           <td class="styIRS8839TableCell">
             <xsl:attribute name="style">
-              width:8%;font-size: 7pt; text-align:center;border-right-width:0px;
+              width:67mm;font-size: 7pt; text-align:center;border-right-width:0px;black;border-width:0px 1px 2px 0px;
               <xsl:if test="(position() &gt; 3) and (position() = last())">
-                border-bottom-width:0px;
+       black;border-width:0px 1px 2px 0px;
               </xsl:if></xsl:attribute>
             <label>
               <xsl:call-template name="PopulateLabel">
@@ -2015,7 +1985,7 @@
     <xsl:param name="Child3"/>
     <xsl:param name="Child3Number"/>
     <!-- Headers -->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:5mm;">
       <xsl:call-template name="CreateBoxRow">
         <xsl:with-param name="Child1StaticText">Child <xsl:value-of select="$Child1Number"/>
         </xsl:with-param>
@@ -2030,7 +2000,7 @@
       </xsl:call-template>
     </div>
     <!-- (2) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem"  style="height:8mm;">
       <div class="styIRS8839LNLeftNumBox">2</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;border-color:blue;">
         <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -2084,7 +2054,7 @@
       </div>
     </div>
     <!-- (3) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem"  style="height:19mm;">
       <div class="styIRS8839LNLeftNumBox">3</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;">
         <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -2119,7 +2089,7 @@
                   <xsl:attribute name="for">IRS8839Child<xsl:value-of select="$Child1Number"/>AdoptionCreditSameChildPYIndNo</xsl:attribute>
                   <xsl:attribute name="onclick">return false;</xsl:attribute>
                 </xsl:otherwise> 
-                </xsl:choose>       -->           
+                </xsl:choose>                 
                 <span class="styBoldText">No.</span> Enter -0-.<br/>
               </label>
               <!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
@@ -2158,11 +2128,11 @@
                 </xsl:otherwise>
                 </xsl:choose>
                 <span class="styBoldText">Yes.</span> See instructions for<br/>
-                <span style="width:6mm;"/>the amount to enter.
+                <span style="width:10.5mm;"/>the amount to enter.
               </label>
             </div>
-            <div class="styIRS8839LNDesc" style="padding:0px 0px 0px 3px;float:left;width:auto;height:auto;">
-              <img src="{$ImagePath}/8839_Bracket_Sm.gif" alt="SmallBracket"/>
+            <div class="styIRS8839LNDesc" style="padding:0px 0px 0px 3px;float:left;width:auto;height:auto;float:right;">
+              <img src="{$ImagePath}/8834_Bracket_Md.gif" alt="SmallBracket"/>
             </div>
           </div>
         </div>
@@ -2173,7 +2143,7 @@
           <xsl:with-param name="Child2Style">border-bottom-width:0px;</xsl:with-param>
           <xsl:with-param name="Child1Style">border-bottom-width:0px;</xsl:with-param>
           <xsl:with-param name="NumberStyle">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Height">7mm</xsl:with-param>
+          <xsl:with-param name="Height">9mm</xsl:with-param>
         </xsl:call-template>
         <xsl:choose>
           <xsl:when test="count($Form8839Data/AdoptedChild) > 1">
@@ -2200,15 +2170,15 @@
           </xsl:otherwise>
         </xsl:choose>
         <xsl:call-template name="CreateBoxRow">
-          <xsl:with-param name="Child3Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Child2Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Child1Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="NumberStyle">border-bottom-width:0px;</xsl:with-param>
+          <xsl:with-param name="Child3Style">border-top-width:1px;</xsl:with-param>
+          <xsl:with-param name="Child2Style">border-top-width:1px;</xsl:with-param>
+          <xsl:with-param name="Child1Style">border-top-width:1px;</xsl:with-param>
+          <xsl:with-param name="NumberStyle">border-top-width:1px;</xsl:with-param>
         </xsl:call-template>
       </div>
     </div>
     <!-- (4) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:4mm;">
       <div class="styIRS8839LNLeftNumBox">4</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;">
         <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -2230,7 +2200,7 @@
       </div>
     </div>
     <!-- (5) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:23mm;">
       <div class="styIRS8839LNLeftNumBox">5</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;">
         <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -2268,16 +2238,16 @@
           <xsl:with-param name="Number">5</xsl:with-param>
         </xsl:call-template>
         <xsl:call-template name="CreateBoxRow">
-          <xsl:with-param name="Child3Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Child2Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Child1Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="NumberStyle">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Height">15mm</xsl:with-param>
+          <xsl:with-param name="Child3Style">border-bottom-width:2px;</xsl:with-param>
+          <xsl:with-param name="Child2Style">border-bottom-width:2px;</xsl:with-param>
+          <xsl:with-param name="Child1Style">border-bottom-width:2px;</xsl:with-param>
+          <xsl:with-param name="NumberStyle">border-bottom-width:2px;</xsl:with-param>
+          <xsl:with-param name="Height">19mm</xsl:with-param>
         </xsl:call-template>
       </div>
     </div>
     <!-- (6) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:5mm;">
       <div class="styIRS8839LNLeftNumBox">6</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;">
         <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -2304,7 +2274,7 @@
     <xsl:param name="Child3"/>
     <xsl:param name="Child3Number"/>
     <!-- Headers -->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:5mm;">
       <xsl:call-template name="CreateBoxRow">
         <xsl:with-param name="Child1StaticText">Child <xsl:value-of select="$Child1Number"/>
         </xsl:with-param>
@@ -2319,7 +2289,7 @@
       </xsl:call-template>
     </div>
     <!-- (17) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:3mm;">
       <div class="styIRS8839LNLeftNumBox"/>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;border-color:blue;"/>
       <div class="styIRS8839LNDesc" style="height:100%;width:133mm;float:right;padding:0px 0px 0px 0px;">
@@ -2331,7 +2301,7 @@
         </xsl:call-template>
       </div>
     </div>
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:5mm;" >
       <div class="styIRS8839LNLeftNumBox">17</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;border-color:blue;">
         <div class="styIRS8839LNDesc" style="width:auto;height:100%;">
@@ -2358,7 +2328,7 @@
       </div>
     </div>
     <!-- (18) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:23mm;">
       <div class="styIRS8839LNLeftNumBox">18</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;">
         <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -2435,11 +2405,11 @@
                 </xsl:otherwise>
                 </xsl:choose>
                 <span class="styBoldText">Yes.</span> See instructions for<br/>
-                <span style="width:6mm;"/>the amount to enter.
+                <span style="width:10.5mm;"/>the amount to enter.
               </label>
             </div>
-            <div class="styIRS8839LNDesc" style="padding:0px 0px 0px 3px;float:left;width:auto;height:auto;">
-              <img src="{$ImagePath}/8839_Bracket_Sm.gif" alt="SmallBracket"/>
+            <div class="styIRS8839LNDesc" style="padding:0px 0px 0px 3px;float:left;width:auto;height:9mm;float:right;">
+              <img src="{$ImagePath}/8834_Bracket_Md.gif" alt="SmallBracket"/>
             </div>
           </div>
         </div>
@@ -2477,15 +2447,15 @@
           </xsl:otherwise>
         </xsl:choose>
         <xsl:call-template name="CreateBoxRow">
-          <xsl:with-param name="Child3Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Child2Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Child1Style">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="NumberStyle">border-bottom-width:0px;</xsl:with-param>
+          <xsl:with-param name="Child3Style">border-top-width:1px;</xsl:with-param>
+          <xsl:with-param name="Child2Style">border-top-width:1px;</xsl:with-param>
+          <xsl:with-param name="Child1Style">border-top-width:1px;</xsl:with-param>
+          <xsl:with-param name="NumberStyle">border-top-width:1px;</xsl:with-param>
         </xsl:call-template>
       </div>
     </div>
     <!-- (19) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:4mm;">
       <div class="styIRS8839LNLeftNumBox">19</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;">
         <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -2502,7 +2472,7 @@
       </div>
     </div>
     <!-- (20) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:18mm;">
       <div class="styIRS8839LNLeftNumBox">20</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;">
         <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -2520,16 +2490,21 @@
           </span>
         </div>
       </div>
-      <div class="styIRS8839LNDesc" style="height:100%;width:133mm;float:right;padding:0px 0px 0px 0px;">
+      <div class="styIRS8839LNDesc" style="height:100%;width:133mm;float:right;padding:0px 0px 0px 0px;border-color:black;">
         <xsl:call-template name="CreateBoxRow">
           <xsl:with-param name="Child3Style">border-bottom-width:0px;</xsl:with-param>
           <xsl:with-param name="Child2Style">border-bottom-width:0px;</xsl:with-param>
           <xsl:with-param name="Child1Style">border-bottom-width:0px;</xsl:with-param>
           <xsl:with-param name="NumberStyle">border-bottom-width:0px;</xsl:with-param>
-          <xsl:with-param name="Height">13mm</xsl:with-param>
+          <xsl:with-param name="Height">13.8mm</xsl:with-param>
         </xsl:call-template>
-        <xsl:call-template name="CreateBoxRow">
+      
+      
+        <xsl:call-template name="CreateBoxRow" >
+      
           <xsl:with-param name="Child1TargetNode" select="$Child1/EmployerAdoptionBnftPerChldAmt"/>
+           <xsl:with-param name="Child1Style">border-bottom-width:2px;</xsl:with-param>
+             <xsl:with-param name="NumberStyle">border-bottom-width:2px;</xsl:with-param>
           <xsl:with-param name="Child1Ref1Desc">Employer Adoption Benefit Excl Prior Year Amount - Child <xsl:value-of select="$Child1Number"/>
           </xsl:with-param>
           <xsl:with-param name="Child1Ref2Desc">Employer Adoption Benefit Excl Prior Year Code - Child <xsl:value-of select="$Child1Number"/>
@@ -2537,6 +2512,8 @@
           <xsl:with-param name="Child1Ref1Node" select="$Child1/EmployerAdoptionBnftPerChldAmt/@employerAdoptionBnftExclPYAmt"/>
           <xsl:with-param name="Child1Ref2Node" select="$Child1/EmployerAdoptionBnftPerChldAmt/@employerAdoptionBnftExclPYCd"/>
           <xsl:with-param name="Child2TargetNode" select="$Child2/EmployerAdoptionBnftPerChldAmt"/>
+           <xsl:with-param name="Child2Style">border-bottom-width:2px;</xsl:with-param>
+            
           <xsl:with-param name="Child2Ref1Desc">Employer Adoption Benefit Excl Prior Year Amount - Child <xsl:value-of select="$Child2Number"/>
           </xsl:with-param>
           <xsl:with-param name="Child2Ref2Desc">Employer Adoption Benefit Excl Prior Year Code - Child <xsl:value-of select="$Child2Number"/>
@@ -2544,13 +2521,16 @@
           <xsl:with-param name="Child2Ref1Node" select="$Child2/EmployerAdoptionBnftPerChldAmt/@employerAdoptionBnftExclPYAmt"/>
           <xsl:with-param name="Child2Ref2Node" select="$Child2/EmployerAdoptionBnftPerChldAmt/@employerAdoptionBnftExclPYCd"/>
           <xsl:with-param name="Child3TargetNode" select="$Child3/EmployerAdoptionBnftPerChldAmt"/>
+           <xsl:with-param name="Child3Style">border-bottom-width:2px;</xsl:with-param>
           <xsl:with-param name="Child3Ref1Desc">Employer Adoption Benefit Excl Prior Year Amount - Child <xsl:value-of select="$Child3Number"/>
           </xsl:with-param>
           <xsl:with-param name="Child3Ref2Desc">Employer Adoption Benefit Excl Prior Year Code - Child <xsl:value-of select="$Child3Number"/>
           </xsl:with-param>
           <xsl:with-param name="Child3Ref1Node" select="$Child3/EmployerAdoptionBnftPerChldAmt/@employerAdoptionBnftExclPYAmt"/>
           <xsl:with-param name="Child3Ref2Node" select="$Child3/EmployerAdoptionBnftPerChldAmt/@employerAdoptionBnftExclPYCd"/>
+          
           <xsl:with-param name="Number">20</xsl:with-param>
+          
         </xsl:call-template>
       </div>
     </div>
@@ -2563,7 +2543,7 @@
     <xsl:param name="Child3"/>
     <xsl:param name="Child3Number"/>
     <!-- Headers -->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:5mm;">
       <xsl:call-template name="CreateBoxRow">
         <xsl:with-param name="Child1StaticText">Child <xsl:value-of select="$Child1Number"/>
         </xsl:with-param>
@@ -2593,7 +2573,7 @@
       </xsl:call-template>
     </div>
     <!-- (22) ////////////////////////////////////////////////////-->
-    <div class="styIRS8839LineItem">
+    <div class="styIRS8839LineItem" style="height:18mm;">
       <div class="styIRS8839LNLeftNumBox">22</div>
       <div class="styIRS8839LNDesc" style="width:47mm;height:100%;padding:0px 0px 0px 0px;">
         <div class="styIRS8839LNDesc" style="width:auto;height:auto;">
@@ -2614,8 +2594,12 @@
         </xsl:call-template>
         <xsl:call-template name="CreateBoxRow">
           <xsl:with-param name="Child1TargetNode" select="$Child1/AllwdTaxCrOrEmplrAdptnBnftAmt"/>
+           <xsl:with-param name="Child1Style">border-bottom-width:2px;</xsl:with-param>
+             <xsl:with-param name="NumberStyle">border-bottom-width:2px;</xsl:with-param>
           <xsl:with-param name="Child2TargetNode" select="$Child2/AllwdTaxCrOrEmplrAdptnBnftAmt"/>
+            <xsl:with-param name="Child2Style">border-bottom-width:2px;</xsl:with-param>
           <xsl:with-param name="Child3TargetNode" select="$Child3/AllwdTaxCrOrEmplrAdptnBnftAmt"/>
+           <xsl:with-param name="Child3Style">border-bottom-width:2px;</xsl:with-param>
           <xsl:with-param name="Number">22</xsl:with-param>
         </xsl:call-template>
       </div>

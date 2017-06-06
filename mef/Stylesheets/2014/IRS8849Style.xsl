@@ -4,8 +4,7 @@
 <!-- CSS Styles for Form 8849 -->
 
 <xsl:template name="IRS8849Style">
- <!-- codes start here --> 
- 
+  
 
 </xsl:template>
 

@@ -7,15 +7,13 @@
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
   <xsl:param name="DependencyData" select="$RtnDoc/OtherIncludibleEntitiesSch"/>
-  <!-- Share Common Dependency - Other Includible Entities Schedule  -->
+  <!-- Share Common Dependency form displays as- Other Includible Entities Schedule  -->
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName">
       <xsl:with-param name="TargetNode" select="$DependencyData"/>
     </xsl:call-template>
   </xsl:param>
-  <!-- Template to display Other Includible Entities Schedule  -->
   <xsl:template name="OtherIncludibleEntitiesSch">
-    <!-- Other Includible Entities Schedule Data -->
     <table id="OtherIncludibleEntitiesSchTbl2" class="styDepTblLandscape" style="font-size: 8pt">
       <thead class="styTableThead">
         <tr class="styDepTblHdr">
@@ -31,7 +29,8 @@
       <tbody>
         <xsl:for-each select="$DependencyData/OtherIncludibleEntitiesInfo">
           <tr>
-            <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+            <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise>
+            </xsl:choose></xsl:attribute>
             <!-- Name - Column 1 -->
             <td class="styDepTblCell" style="width: 106mm; text-align:left;">
               <xsl:call-template name="PopulateText">
@@ -45,7 +44,7 @@
               </xsl:if>
             </td>
             <!-- EIN - Column 2 -->
-            <td class="stydepTblCell" style="width: 30mm; text-align:center;padding-top:3mm">
+            <td class="styDepTblCell" style="width: 30mm; text-align:center;padding-top:3mm">
               <span style="width:21mm;text-align:center;">
                 <xsl:choose>
                   <xsl:when test="EIN">
@@ -62,25 +61,25 @@
               </span>
             </td>
             <!-- Net Income (Loss) Amount - Column 3 -->
-            <td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+            <td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="NetIncomeLossAmt"/>
               </xsl:call-template>
             </td>
             <!-- Total Assets - Column 4 -->
-            <td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+            <td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="TotalAssetsAmt"/>
               </xsl:call-template>
             </td>
             <!-- Total Liabilities - Column 5 -->
-            <td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+            <td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="TotalLiabilityAmt"/>
               </xsl:call-template>
             </td>
             <!-- Net Amounts - Column 6 -->
-            <td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+            <td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="NetAmt"/>
               </xsl:call-template>
@@ -92,8 +91,10 @@
   </xsl:template>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+	<html>
       <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -115,7 +116,7 @@
         </style>
         <xsl:call-template name="GlobalStylesDep"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="187mm;">
         <xsl:call-template name="DocumentHeaderDependencyLandscape"/>
         <div class="styDepTitleLineLandscape">
           <span class="styDepTitle" style="width:99mm">

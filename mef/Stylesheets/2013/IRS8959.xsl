@@ -14,8 +14,10 @@
 	<xsl:strip-space elements="*" />  
 	<xsl:param name="FormData" select="$RtnDoc/IRS8959" />  
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -61,14 +63,14 @@
 						<div class="styFTBox" style="width:126.8mm;">
 							<span class="styMainTitle" style="font-size:12pt;">Additional Medicare Tax</span><br/>
 							<div class="styFBT">
-								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
+								<img alt="Bullet" src="{$ImagePath}/8959_Bullet.gif" height="9" width="9"/>
 								If any line does not apply to you, leave it blank. See separate instructions.
 								<br />
-								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
+								<img alt="Bullet" src="{$ImagePath}/8959_Bullet.gif" height="9" width="9"/>
 								Attach to Form 1040, 1040NR, 1040-PR, or 1040-SS.
 								<br/>
-								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
-								For information about Form 8959 and its instructions, go to www.irs.gov/form8959.
+								<img alt="Bullet" src="{$ImagePath}/8959_Bullet.gif" height="9" width="9"/>
+								Information about Form 8959 and its instructions ia at <i>www.irs.gov/form8959.</i>.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;">
@@ -114,7 +116,7 @@
 							Medicare wages and tips from Form W-2, box 5. If you have<br/>
 							more than one Form W-2, enter the total of the amounts <br />
 							<span style="float:left;">from box 5</span>
-							<span class="styIRS8959Dots">...............</span>
+							<span class="styIRS8959Dots">.............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:10.8mm;"><br/><br />1</div>
 						<div class="styLNAmountBox" style="height:10.8mm;width:35mm;"><br/><br />
@@ -130,7 +132,7 @@
 						<div class="styLNLeftNumBoxSD">2</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							<span style="float:left;">Unreported tips from Form 4137, line 6</span>
-							<span class="styIRS8959Dots">........</span>
+							<span class="styIRS8959Dots">......</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">2</div>
 						<div class="styLNAmountBox" style="height:4.4mm;width:35mm;">
@@ -162,7 +164,7 @@
 						<div class="styLNLeftNumBoxSD">4</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							<span style="float:left;">Add lines 1 through 3. Enter the result here</span>
-							<span class="styIRS8959Dots">.......</span>
+							<span class="styIRS8959Dots">......</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">4</div>
 						<div class="styLNAmountBox" style="height:4.4mm;width:35mm;">
@@ -178,9 +180,12 @@
 						<div class="styLNLeftNumBoxSD">5</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
-							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span><span class="styIRS8959Dots">..........</span><br />					
-							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span><span class="styIRS8959Dots">.........</span><br />
-							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span><span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
+							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
+							<span class="styIRS8959Dots">.........</span><br/>					
+							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
+							<span class="styIRS8959Dots">........</span><br/>
+							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
+							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>	
 						</div>
 						<div class="styLNRightNumBox" style="height:14mm;width:8mm;"><br/><br /><br />5</div>
 						<div class="styLNAmountBox" style="height:14mm;width:35mm;"><br/><br /><br />
@@ -195,8 +200,8 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">6</div>
 						<div class="styLNDesc" style="width:135.86mm;">
-							<span style="float:left;">Subtract line 5 from line 4. If the result is zero or less, enter -0-</span>
-							<span class="styIRS8959Dots">..........</span>
+							<span style="float:left;">Subtract line 5 from line 4. If zero or less, enter -0-</span>
+							<span class="styIRS8959Dots">.............</span>
 						</div>
 						<div class="styLNRightNumBox">6</div>
 						<div class="styLNAmountBox" style="width:35mm;">
@@ -211,7 +216,7 @@
 						<div class="styLNDesc" style="width:135.86mm;">
 							Additional Medicare tax on Medicare wages. Multiply line 6 by 0.9% (.009). Enter here and<br />
 							<span style="float:left;">go to Part II</span>
-							<span class="styIRS8959Dots">.......................</span>
+							<span class="styIRS8959Dots">......................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:7.8mm;"><br />7</div>
 						<div class="styLNAmountBoxNBB" style="height:7.8mm;width:35mm;"><br />
@@ -232,7 +237,7 @@
 							Self-employment income from Schedule SE (Form 1040),<br/>
 							Section A, line 4, or Section B, line 6. If you had a loss, enter <br />
 							<span style="float:left;">-0-</span>
-							<span class="styIRS8959Dots">.................</span>
+							<span class="styIRS8959Dots">...............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:10.8mm;"><br/><br />8</div>
 						<div class="styLNAmountBox" style="height:10.8mm;width:35mm;"><br/><br />
@@ -248,9 +253,12 @@
 						<div class="styLNLeftNumBoxSD">9</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
-							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span><span class="styIRS8959Dots">..........</span><br />					
-							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span><span class="styIRS8959Dots">.........</span><br />
-							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span><span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
+							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
+							<span class="styIRS8959Dots">.........</span><br/>					
+							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
+							<span class="styIRS8959Dots">........</span><br/>
+							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
+							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>	
 						</div>
 						<div class="styLNRightNumBox" style="height:14mm;"><br/><br /><br />9</div>
 						<div class="styLNAmountBox" style="height:14mm;width:35mm;"><br/><br /><br />
@@ -266,7 +274,7 @@
 						<div class="styLNLeftNumBox">10</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							<span style="float:left;">Enter the amount from Part I, line 4</span>
-							<span class="styIRS8959Dots">.........</span>
+							<span class="styIRS8959Dots">.......</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">10</div>
 						<div class="styLNAmountBox" style="height:4.4mm;width:35mm;">
@@ -283,7 +291,7 @@
 						<div class="styLNDesc" style="width:92.8mm;">
 							Subtract line 10 from line 9. If the result is zero or less, enter<br />
 							<span style="float:left;">-0-</span>
-							<span class="styIRS8959Dots">.................</span>
+							<span class="styIRS8959Dots">................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.8mm;"><br />11</div>
 						<div class="styLNAmountBox" style="height:7.8mm;width:35mm;"><br />
@@ -299,7 +307,7 @@
 						<div class="styLNLeftNumBox">12</div>
 						<div class="styLNDesc" style="width:135.86mm;">
 							<span style="float:left;">Subtract line 11 from line 8. If the result is zero or less, enter -0-</span>
-							<span class="styIRS8959Dots">..........</span>
+							<span class="styIRS8959Dots">.........</span>
 						</div>
 						<div class="styLNRightNumBox">12</div>
 						<div class="styLNAmountBox" style="width:35mm;">
@@ -312,9 +320,9 @@
 					<div style="width:187mm;border-bottom:1px solid black;">
 						<div class="styLNLeftNumBox">13</div>
 						<div class="styLNDesc" style="width:135.86mm;">
-							Additional Medicare tax on self-employment income. Multiply line 12 by 0.9% (.009). Enter<br />
+						Additional Medicare Tax on self-employment income. Multiply line 12 by 0.9% (.009). Enter<br/>
 							<span style="float:left;">here and go to Part III</span>
-							<span class="styIRS8959Dots">.....................</span>
+							<span class="styIRS8959Dots">....................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:7.8mm;"><br />13</div>
 						<div class="styLNAmountBoxNBB" style="height:7.8mm;width:35mm;"><br />
@@ -334,7 +342,7 @@
 						<div class="styLNDesc" style="width:92.8mm;">							
 							Railroad retirement compensation from Form W-2, box 14<br />
 							<span style="float:left;">(see instructions)</span>
-							<span class="styIRS8959Dots">..............</span>
+							<span class="styIRS8959Dots">...........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.8mm;"><br/>14</div>
 						<div class="styLNAmountBox" style="height:7.8mm;width:35mm;"><br/>
@@ -350,9 +358,12 @@
 						<div class="styLNLeftNumBox">15</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							Enter the following amount for your filing status:<br/>
-							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span><span class="styIRS8959Dots">..........</span><br />					
-							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span><span class="styIRS8959Dots">.........</span><br />
-							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span><span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>					
+							<span style="float:left;">Married filing jointly</span><span style="float:right;padding-right:3mm;">$250,000</span>
+							<span class="styIRS8959Dots">.........</span><br/>					
+							<span style="float:left;">Married filing separately</span><span style="float:right;padding-right:3mm;">$125,000</span>
+							<span class="styIRS8959Dots">........</span><br/>
+							<span style="float:left;">Single, Head of household, or Qualifying widow(er) </span>
+							<span style="float:right;padding-right:3mm;">$200,000</span><span class="styIRS8959Dots">..</span>	
 						</div>
 						<div class="styLNRightNumBox" style="height:14mm;"><br/><br /><br />15</div>
 						<div class="styLNAmountBox" style="height:14mm;width:35mm;"><br/><br /><br />
@@ -385,8 +396,8 @@
 							<span style="float:left;">16 by 0.9% (.009). Enter here and go to Part IV</span>
 							<span class="styIRS8959Dots">..............</span>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="height:7.8mm;"><br />17</div>
-						<div class="styLNAmountBoxNBB" style="height:7.8mm;width:35mm;"><br />
+						<div class="styLNRightNumBoxNBB" style="height:7.8mm;padding-top:1mm"><br/>17</div>
+						<div class="styLNAmountBoxNBB" style="height:7.8mm;width:35mm;padding-top:1mm"><br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/AdditionalTaxGrp/AddnlRailroadRetirementTaxGrp/AddlRailroadRetirementTaxAmt"/>
 							</xsl:call-template>
@@ -424,7 +435,7 @@
 							Medicare tax withheld from Form W-2, box 6. If you have<br/>
 							more than one Form W-2, enter the total of the amounts <br />
 							<span style="float:left;">from box 6</span>
-							<span class="styIRS8959Dots">...............</span>
+							<span class="styIRS8959Dots">..............</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:10.8mm;"><br/><br />19</div>
 						<div class="styLNAmountBox" style="height:10.8mm;width:35mm;"><br/><br />
@@ -440,7 +451,7 @@
 						<div class="styLNLeftNumBox">20</div>
 						<div class="styLNDesc" style="width:92.8mm;">
 							<span style="float:left;">Enter the amount from Part I, line 1</span>
-							<span class="styIRS8959Dots">.........</span>
+							<span class="styIRS8959Dots">........</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.4mm;">20</div>
 						<div class="styLNAmountBox" style="height:4.4mm;width:35mm;">
@@ -457,7 +468,7 @@
 						<div class="styLNDesc" style="width:92.8mm;">
 							Multiply line 20 by 1.45% (.0145). This is your regular<br />
 							<span style="float:left;">Medicare tax withholding on Medicare wages</span>
-							<span class="styIRS8959Dots">.......</span>
+							<span class="styIRS8959Dots">......</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.8mm;"><br />21</div>
 						<div class="styLNAmountBox" style="height:7.8mm;width:35mm;"><br />
@@ -474,7 +485,7 @@
 						<div class="styLNDesc" style="width:135.86mm;">
 							Subtract line 21 from line 19. This is your Additional Medicare Tax withholding on Medicare<br />							
 							<span style="float:left;">wages</span>
-							<span class="styIRS8959Dots">.........................</span>
+							<span class="styIRS8959Dots">........................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.8mm;"><br />22</div>
 						<div class="styLNAmountBox" style="height:7.8mm;width:35mm;"><br />

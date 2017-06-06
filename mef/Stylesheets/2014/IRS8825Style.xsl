@@ -7,7 +7,7 @@
     .styForm8825TableCellSmallRB{ /* Table cell with  no top Bottom  borders */
       width: 25mm;
       color: black;
-      text-align: right;
+      text-align: center;
       border-style: solid;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;
     }
@@ -24,7 +24,7 @@
       color: black;
       text-align: right;
       border-style: solid;
-      border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+      border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
     }
     .styForm8825TableCellHeaderNoBorder {   /* Table Cell Header without left and right borders*/
       width: 12mm;

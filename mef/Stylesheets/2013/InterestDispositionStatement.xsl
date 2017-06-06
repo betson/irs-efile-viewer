@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-
 	<xsl:output method="html" indent="yes" />
 	<xsl:strip-space elements="*" /> 
-
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddOnTable.xsl"/>
-
 	<xsl:param name="DependencyData" select="$RtnDoc/InterestDispositionStatement" />
-
 	<xsl:template name="ShowDependencyData">
 		<!-- Add stylesheet dependency code here -->
 		<xsl:for-each select="$DependencyData/InterestDispositionDetail">
 			<br/><hr style="width:187mm;"/><br/>
 			<div class="styTopSectionLine"><span class="styTopSectionLineLbl" style="text-align:left;">Detail <xsl:value-of select="position()"/></span></div>
 			<div class="styTopSectionLine">
-				<span class="styTopSectionLineLbl" style="float:left;"> Interest Disposition Description:</span>
-				<span class="styExplanationLine" style="font-size:10pt;">
+				<span class="styTopSectionLineLbl" style="float:left; width:70mm;"> Interest Disposition Description:</span>
+				<div style="width:187mm;padding-top:2mm;float:left;clear:none;font-size:10pt;">
 					<xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="InterestDispositionDesc"/>
 					</xsl:call-template>
-				</span>
+				</div>
 			</div>
 			<div class="styTopSectionLine">
 				<span class="styTopSectionLineLbl" style="float:left;"> Entity Name:</span>
@@ -48,7 +44,7 @@
 			</div>
 			<div class="styTopSectionLine">
 				<span class="styTopSectionLineLbl" style="float:left;"> Full Market Value Of Stock On Date Of Sale Or Disposition Amount:</span>
-				<span class="styExplanationLine" style="font-size:10pt;"><br/><br/>
+				<span class="styExplanationLine" style="font-size:10pt;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="FMVStkOnDtSaleOrDisposAmt"/>
 					</xsl:call-template>
@@ -64,7 +60,7 @@
 			</div>
 			<div class="styTopSectionLine">
 				<span class="styTopSectionLineLbl" style="float:left;"> Allocable Gain Or Loss Property Amount:</span>
-				<span class="styExplanationLine" style="font-size:10pt;"><br/>
+				<span class="styExplanationLine" style="font-size:10pt;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AllocableGainLossPropertyAmt"/>
 					</xsl:call-template>
@@ -72,15 +68,15 @@
 			</div>
 			<div class="styTopSectionLine">
 				<span class="styTopSectionLineLbl" style="float:left;"> Property Trade Or Business Not Section 1.1411 Text:</span>
-				<span class="styExplanationLine" style="font-size:10pt;"><br/>
+				<div style="width:187mm;padding-top:2mm;float:left;clear:none;font-size:10pt;"><br/>
 					<xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="PropTradeOrBusNotSect11411Txt"/>
 					</xsl:call-template>
-				</span>
+				</div>
 			</div>
 			<div class="styTopSectionLine">
 				<span class="styTopSectionLineLbl" style="float:left;"> Investment Properties Net Disposition Gain Amount:</span>
-				<span class="styExplanationLine" style="font-size:10pt;"><br/>
+				<span class="styExplanationLine" style="font-size:10pt;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="InvestmentPropNetDispGainAmt"/>
 					</xsl:call-template>
@@ -88,7 +84,7 @@
 			</div>
 			<div class="styTopSectionLine">
 				<span class="styTopSectionLineLbl" style="float:left;"> Adjustment From Dispoition Of Stocks Amount:</span>
-				<span class="styExplanationLine" style="font-size:10pt;"><br/>
+				<span class="styExplanationLine" style="font-size:10pt;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="AdjFromDisposOfStockAmt"/>
 					</xsl:call-template>
@@ -103,10 +99,11 @@
 
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title><xsl:value-of select="$depDocTitle" /></title>
-
 				<!-- No Browser Caching -->
 				<meta http-equiv="Pragma" content="no-cache" />
 				<meta http-equiv="Cache-Control" content="no-cache" />

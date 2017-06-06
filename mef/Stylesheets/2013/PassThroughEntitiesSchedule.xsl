@@ -9,7 +9,7 @@
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
   <xsl:param name="DependencyData" select="$RtnDoc/PassThroughEntitiesSchedule"/>
-  <!-- Pass-Through Entities Schedule -->
+  <!-- Common form displays as - Pass-Through Entities Schedule -->
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName">
       <xsl:with-param name="TargetNode" select="$DependencyData"/>
@@ -44,7 +44,7 @@
               </xsl:if>
             </td>
             <!-- EIN -->
-            <td class="stydepTblCell" style="width:34mm;text-align:center;">
+            <td class="styDepTblCell" style="width:34mm;text-align:center;padding-top:6mm;">
               <xsl:choose>
                 <xsl:when test="EIN">
                   <xsl:call-template name="PopulateEIN">
@@ -59,13 +59,13 @@
               </xsl:choose>
             </td>
             <!-- EOYProfitSharingPercentage-->
-            <td class="stydepTblCell" style="width:54mm;text-align:right;">
+            <td class="styDepTblCell" style="width:54mm;padding-top:6mm;">
               <xsl:call-template name="PopulatePercent">
                 <xsl:with-param name="TargetNode" select="EOYProfitSharingPct"/>
               </xsl:call-template>
             </td>
             <!-- EOYLossSharingPercentage-->
-            <td class="stydepTblCell" style="width:54mm;text-align:right;">
+            <td class="styDepTblCell" style="width:54mm;padding-top:6mm;">
               <xsl:call-template name="PopulatePercent">
                 <xsl:with-param name="TargetNode" select="EOYLossSharingPct"/>
               </xsl:call-template>
@@ -124,8 +124,10 @@
   </xsl:template>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -148,15 +150,13 @@
         </style>
         <xsl:call-template name="GlobalStylesDep"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm;">
         <xsl:call-template name="DocumentHeaderDependencyLandscape"/>
-        <div class="styDepTitleLineLandscape">
-          <span class="styDepTitle">
-            <span style="width:90mm;">
-              <xsl:value-of select="$depDocTitle"/>
-            </span>
-          </span>
-        </div>
+        <div class="styDepTitleLine">
+        <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+      </div>
         <xsl:call-template name="PopulateDepCommonLeftoverLandscape">
           <xsl:with-param name="TargetNode" select="$DependencyData"/>
         </xsl:call-template>

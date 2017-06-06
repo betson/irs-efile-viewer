@@ -11,8 +11,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form8586Data" select="$RtnDoc/IRS8586"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8586Data)"/>
@@ -47,7 +49,7 @@
           <div class="styTBB" style="width:187mm;">
             <div class="styFNBox" style="width:30mm;height:20.7mm;">
               <div style="height:9mm;">Form<span class="styFormNumber">  8586</span>
-                <br/>
+                
               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form8586Data"/>
               </xsl:call-template>
@@ -65,6 +67,7 @@
               <div class="styMainTitle" style="height:12mm;padding-top:1.5mm;">
                 Low-Income Housing Credit
               </div>
+              <br/>
               <div class="styFMT" style="height:4mm;font-size:7pt;padding-top:4mm;">
                 <!--<img src="{$ImagePath}/8586_Bullet_Title.gif" alt="Arrow Bullet"/> See instructions on back.<br/>-->
                 <img src="{$ImagePath}/8586_Bullet_Title.gif" alt="Arrow Bullet"/> Attach to your tax return.
@@ -82,7 +85,7 @@
           </div>
           <!-- End Form title -->
           <!--Start Name and EIN Line-->
-          <div class="styBB" style="width:187mm">
+          <div class="styBB" style="width:187mm; height:auto">
             <div class="styNameBox" style="font-size:7pt; width:151mm; height:8mm">
               Name(s) shown on return<br/>
   		  <xsl:choose>
@@ -105,8 +108,8 @@
             </div>
             <div style="height:4mm;padding-left:2mm;font-size:7pt;font-family:verdana;" class="styEINBox">
           Identifying number<br/>
-              <br/>
-              <span style="font-weight:normal;">
+              
+              <span style="font-weight:normal;padding-top:1mm">
 		<xsl:choose>
 		  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 		<xsl:call-template name="PopulateReturnHeaderFiler">

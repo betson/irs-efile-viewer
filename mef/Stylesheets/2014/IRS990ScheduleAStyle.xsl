@@ -6,14 +6,14 @@
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-  width:30mm;height:24mm;
+  width:30mm;height:23.5mm;
   float:left;
 }
 .IRS990ScheduleA_FormTitleBlock {   /* Form title block in header */
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-  width:128mm;height:24mm;
+  width:128mm;height:Auto;
   text-align:center;
   float:left;
 }
@@ -21,7 +21,7 @@
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-  width:30mm;height:24mm;
+  width:30mm;height:23.5mm;
   float:left;
 }
 .IRS990ScheduleA_OMB {   /* Block containing the OMB number */
@@ -44,12 +44,52 @@
   /* Note the height is 11mm instead of 12mm.  Seems like borders take space even at zero width */
 }
 .IRS990ScheduleA_LineIndex { /* line index */
-  padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 15px;
+  padding-top: 2px; padding-bottom: 0px; padding-left: 0px; padding-right: 15px;
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   float:left;
-  height:4mm;
+  height:Auto;
   width:8mm;text-align:right;font-weight:bold;
+  }
+.IRS990ScheduleA_LineIndexh { /* line index */
+  padding-top: 2px; padding-bottom: 0px; padding-left: 0px; padding-right: 15px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;
+  width:8mm;text-align:right;font-weight:bold;
+  }
+.IRS990ScheduleA_LineIndex2a { /* line index */
+  padding-top: 2px; padding-bottom: 0px; padding-left: 0px; padding-right: 15px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;
+  width:8mm;text-align:right;vertical-align:center;font-weight:bold;
+   }
+.IRS990ScheduleA_LineIndex2b { /* line index */
+  padding-top: 2px; padding-bottom: 0px; padding-left: 0px; padding-right: 15px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;
+  width:8mm;text-align:right;vertical-align:center;font-weight:bold;
+   }
+.IRS990ScheduleA_LineIndex2c { /* line index */
+  padding-top: 2px; padding-bottom: 0px; padding-left: 0px; padding-right: 15px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;
+  width:8mm;text-align:right;vertical-align:center;font-weight:bold;
+   }
+.IRS990ScheduleA_LineIndex2d { /* line index */
+  padding-top: 2px; padding-bottom: 0px; padding-left: 0px; padding-right: 15px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;
+  width:8mm;text-align:right;vertical-align:center;font-weight:bold;
 }
 .IRS990ScheduleA_SubLineIndex { /* subline index */
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
@@ -150,11 +190,46 @@
   height:4mm;width:156mm;
 }
 .IRS990ScheduleA_LineDescIV { /* description space */
-  padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+  padding-top: 3px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   float:left;
-  height:4mm;width:172mm;
+  height:Auto;width:172mm;
+  }
+.IRS990ScheduleA_LineDescV { /* description space */
+  padding-top: 3px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;width:172mm;
+  }
+.IRS990ScheduleA_LineDescVI { /* description space */
+  padding-top: 3px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;width:172mm;
+  }
+.IRS990ScheduleA_LineDescVII { /* description space */
+  padding-top: 3px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;width:172mm;
+  }
+.IRS990ScheduleA_LineDescVIII { /* description space */
+  padding-top: 3px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;width:172mm;
+  }
+.IRS990ScheduleA_LineDescIX { /* description space */
+  padding-top: 3px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+  float:left;
+  height:Auto;width:172mm;
 }
 .IRS990ScheduleA_LineDescIVB { /* description space */
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
@@ -224,27 +299,5 @@
   width:25mm;
 }
 
-    .styIRS990AYesNoBox{ /* Box for storing Yes/No Values */
-      width:10mm;
-      padding-top:.5mm;
-      padding-bottom:.5mm;
-      text-align:center;
-      border-style: solid; border-color: black;
-      border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
-      float:left; clear: none;
- }
- .styIRS990AUnderlinedText{
-		width: 25mm;
-		border-style: solid; border-color: black;
-		border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-		float: none; clear: none;
-	}
-	.styIRS990AUnderlinedBox{
-		width: 38mm;
-		font-size: 7pt;
-		text-align: left;
-		border-style: solid;
-		border-top-width: 0px; border-bottom-width: 1px; border-right-width: 0px; border-left-width: 0px;
-	}
 </xsl:template>
 </xsl:stylesheet>

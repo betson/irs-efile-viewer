@@ -5,7 +5,7 @@
 /* BEGIN PAGE SPECIFIC STYLES */
     .styIRS5713BTableContainer {
       clear:both;
-      width:188mm;height:29mm;
+      width:188mm;height:auto;
       font-size:6pt;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;

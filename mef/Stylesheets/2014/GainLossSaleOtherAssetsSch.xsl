@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
+<!-- 09/09/2015 - Changes made for defect 44129 - Jeremy Nichols -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes" encoding="iso-8859-1"/>
   <xsl:strip-space elements="*"/>
   
@@ -58,11 +60,11 @@
           </td>    
           <td class="styDepTblCell" align="left" valign="top">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PurchaserNameGrp/PersonNm"/></xsl:call-template> 
-            <xsl:if test="normalize-space(PurchaserNameGrp/BusinessName/BusinessNameLine1) != ''">
-              <br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PurchaserNameGrp/BusinessName/BusinessNameLine1"/></xsl:call-template> 
+            <xsl:if test="normalize-space(PurchaserNameGrp/BusinessName/BusinessNameLine1Txt) != ''">
+              <br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PurchaserNameGrp/BusinessName/BusinessNameLine1Txt"/></xsl:call-template> 
             </xsl:if>
-            <xsl:if test="normalize-space(PurchaserNameGrp/BusinessName/BusinessNameLine2) != ''">
-              <br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PurchaserNameGrp/BusinessName/BusinessNameLine2"/></xsl:call-template> 
+            <xsl:if test="normalize-space(PurchaserNameGrp/BusinessName/BusinessNameLine2Txt) != ''">
+              <br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PurchaserNameGrp/BusinessName/BusinessNameLine2Txt"/></xsl:call-template> 
             </xsl:if>
           </td>
           <td class="styDepTblCell" align="right" valign="top" nowrap="nowrap">
@@ -72,7 +74,7 @@
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="BasisAmt"/></xsl:call-template>             
           </td> 
           
-          <td class="styDepTblCell" align="right" valign="top" nowrap="nowrap">          
+          <td class="styDepTblCell" align="left" valign="top">          
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="BasisMethodTxt"/></xsl:call-template>             
           </td>              
 
@@ -98,8 +100,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title>
            <!--Gain/Loss from Sale of Other Assets Schedule-->
           <xsl:value-of select="$depDocTitle"/>
@@ -127,8 +131,8 @@
       <body class="styBodyClass">  
         <xsl:call-template name="DocumentHeaderDependencyLandscape"/>
         
-        <div class="styDepTitleLineLandscape">
-          <div class="styDepTitle" style="width:130mm">
+        <div class="styDepTitleLineLandscape" style="width:256mm">
+          <div class="styDepTitle" style="width:256mm">
             <!--TY 2003 Gain/Loss from Sale of Other Assets Schedule-->
             <xsl:value-of select="$depDocTitle"/>            
           </div>

@@ -20,8 +20,10 @@
 		</xsl:call-template>
 	</xsl:param>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -51,7 +53,7 @@
 				<!-- BEGIN FORM HEADER -->
 				<div class="IRS990ScheduleO_LineContainer">
 					<!-- Form Name -->
-					<div class="IRS990ScheduleO_FormNumBlock" style="padding-top:5px;">
+					<div class="IRS990ScheduleO_FormNumBlock" style="padding-top:5px;height:26mm;">
 						<span style="font-size:11pt;font-weight:bold;font-familiy:'Arial Narrow';">SCHEDULE O</span>
 						<br/>
 						<span style="font-size:10pt;font-weight:bold;font-family:'Arial Narrow';">(Form 990 or 990-EZ)</span>
@@ -65,34 +67,34 @@
 						<span style=" font-family:Arial Narrow; ">Internal Revenue Service</span>
 					</div>
 					<!-- Form Title Box -->
-					<div class="IRS990ScheduleO_FormTitleBlock">
+					<div class="IRS990ScheduleO_FormTitleBlock" style="height:26mm;">
 						<!-- Form Title -->
-						<div style="padding-top: 4mm">
+						<div style="padding-top: 1mm">
 							<span class="styMainTitle">Supplemental Information to Form 990 or 990-EZ</span>
 						</div>
 						<!-- Form Subtitle -->
 						<br/>
-						<span style="font-weight:bold;text-align:center;padding-top:6mm;">
+						<span style="font-weight:bold;text-align:center;padding-top:1.5mm;">
 						Complete to provide information for responses to specific questions on <br/>
 						Form 990 or to provide any additional information. <br/>
 							<img src="{$ImagePath}/990_Bullet_Md.gif" alt="MediumBullet"/>
      						 Attach to Form 990 or 990-EZ.<br/>
 						</span>
 						
-						<span style="font-weight:bold;text-align:center;padding-top:6mm;">
+						<span style="font-weight:bold;text-align:center;padding-top:1.5mm;">
 							<img src="{$ImagePath}/990_Bullet_Md.gif" alt="MediumBullet"/>
 							Information about Schedule O (Form 990 or 990-EZ) and its instructions is at<br/>
 						     www.irs.gov/form990.<br/>
 						</span>
 						
 					</div>
-					<div class="IRS990ScheduleO_FormYearBlock">
+					<div class="IRS990ScheduleO_FormYearBlock" style="height:26mm;">
 						<div class="IRS990ScheduleO_OMB">OMB No. 1545-0047</div>
-						<div class="styTY" style="height:2mm;text-align:center;">
-      20<span class="styTYColor">13</span>
+						<div class="styTY" style="width:29.0mm;text-align:center;">20<span class="styTYColor">13</span>
 						</div>
-						<div style="height:7.2mm; background-color: black; color: white; font-size: 7.5pt;font-weight: bold;text-align:center;">Open to Public<br/>Inspection</div>
+						<div style="height:7.2mm;width:29.0mm;background-color: black; color: white; font-size: 7.5pt;font-weight: bold;text-align:center;">Open to Public<br/>Inspection</div>
 					</div>
+					<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;"></div>
 					<!-- Tax Year Box -->
 					<!--  <div class="IRS990ScheduleO_FormYearBlock">  -->
 					<!-- OMB No. -->
@@ -104,10 +106,10 @@
   </div>  -->
 				</div>
 				<!-- Begin Name and Identifying Number Section-->
-				<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-					<div class="styFNBox" style="width:134mm;height:8mm;">
+				<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;height:12mm;">
+					<div class="styFNBox" style="width:134mm;height:12mm;">
      Name of the organization<br/>
-						<div style="font-family:verdana;font-size:6pt;height:6.25mm">
+						<div style="font-family:verdana;font-size:6pt;height:6mm">
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
 							</xsl:call-template>
@@ -117,7 +119,7 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<div class="styGenericDiv" style="width:52mm;height:4mm;padding-left:1mm;">
+					<div class="styGenericDiv" style="width:52mm;height:6mm;padding-left:1mm;">
 						<span class="styBoldText">Employer identification number</span>
 						<br/>
 						<br/>
@@ -125,6 +127,8 @@
 							<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 						</xsl:call-template>
 					</div>
+				</div>
+				<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;height:2mm;">
 				</div>
 				<!-- End Name and Identifying Number Section-->
 				<table id="GEPATbl" class="styDepTbl" style="margin-top:4mm; font-size:8pt; font-family:Arial;float:none;clear:both;">

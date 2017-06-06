@@ -13,8 +13,10 @@
 <xsl:strip-space elements="*"/>
 <xsl:param name="FormData" select="$RtnDoc/IRS8910"/>
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>
 <xsl:call-template name="FormTitle">
 <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -36,10 +38,10 @@
      Notes: Part I, line 1 thru 5, Part II, 6 and 7, and Part 3, line 11
               is an unbound repeatable columns.
      ************************************************************************** -->
-<!--<xsl:if test="not($Print) or $Print=''">-->
+<xsl:if test="not($Print) or $Print=''">
 <xsl:call-template name="IRS8910Style"/>
 <xsl:call-template name="AddOnStyle"/>
-<!--</xsl:if>--> 
+</xsl:if> 
 </style>
 </head>
 <body class="styBodyClass">
@@ -47,9 +49,9 @@
 <xsl:call-template name="DocumentHeader"/>
 <!--Title of Form -->
 <div class="styBB" style="width:187mm;height: 20mm">
-<div class="styFNBox" style="width:31mm;font-size: 7pt;height:22mm;">
+<div class="styFNBox" style="width:31mm;font-size: 7pt;height:20mm;">
       Form <span class="styFormNumber">8910</span>
-<br/><br/><br/>
+<br/><br/>
 <span class="styAgency">Department of the Treasury</span>
 <xsl:call-template name="SetFormLinkInline">
  <xsl:with-param name="TargetNode" select="$FormData"/>
@@ -58,9 +60,9 @@
 <span class="styAgency">Internal Revenue Service</span>
 </div>
 <div class="styFTBox" style="height: 22mm;width:125mm;padding-top:3mm;">
-<div class="styMainTitle" style="height: 8mm">Alternative Motor Vehicle Credit</div>
+<div class="styMainTitle" style="height: 6mm">Alternative Motor Vehicle Credit</div>
 
-<div class="styFST" style="font-size:7pt;margin-left:1mm;font-weight:bold;padding-top:2mm">
+<div class="styFST" style="font-size:7pt;margin-left:1mm;font-weight:bold;">
         <div style="margin-left: .5mm;">
  <img src="{$ImagePath}/8910_Triangle_Title.gif" alt="Pointer"/>
        Attach to your tax return.<br/>
@@ -83,9 +85,9 @@
             <!-- End Second title -->
 </div>
 </div>
-<div class="styTYBox" style="width:30mm;height:22mm; border-left-width: 1px">
-<div class="styOMB" style="height:2mm;">OMB No. 1545-1998</div>
-<div class="styTY" style="height:10mm">20<span class="styTYColor">13</span>
+<div class="styTYBox" style="width:30mm;height:20mm; border-left-width: 1px">
+<div class="styOMB" style="height:auto;">OMB No. 1545-1998</div>
+<div class="styTY" style="height:9mm">20<span class="styTYColor">13</span>
 </div>
 <div class="stySequence">Attachment<br/>Sequence No. <b>152</b>
 </div>
@@ -94,7 +96,7 @@
 <!--  End title of Form   -->
 <!--  Name and Employer identification number  -->
 <div class="styBB" style="width:187mm">
-<div class="styNameBox" style="width:141mm;font-size:7pt;">Name(s) shown on return<br/>
+<div class="styNameBox" style="width:141mm;font-size:7pt;height:auto;">Name(s) shown on return<br/>
 <div style="font-family:verdana;font-size:6pt;height:6mm">
 <xsl:choose>
 	<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -117,6 +119,7 @@
 <!--   ****************************************************************************** -->     
 <div class="styEINBox" style=" padding-left:2mm; font-size:7pt;">
 <span class="BoldText">Identifying number</span>
+<br/>
 <div style="text-align:left;font-weight:normal; ">
 <br/>
 <xsl:choose>
@@ -184,24 +187,24 @@ Claim the credit for certain plug-in electric vehicles on Form 8936.
 <tbody>
 <!--  Line 1   -->
 <tr>
-<td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;padding-bottom:4mm;border-color:black;border-top-width:1px;border-right-width:0px;border-bottom-width:0px">
+<td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;padding-bottom:0mm;border-color:black;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;padding-top:5mm;">
 <b>1</b>
 </td>
-<td class="styTableCell" style="width: 75mm;padding-left:2mm; text-align:left; 
+<td class="styTableCell" style="width: 84mm;padding-left:2mm; text-align:left; 
 border-color: black; border-left-width: 0px; border-right-width: 0px;
-border-top-width:1px; border-bottom-width:0px;;padding-bottom:4mm;">
+border-top-width:1px; border-bottom-width:0px;;padding-bottom:0mm;padding-top:5mm;">
 <span style="float: left; clear: none;">Year, make, and model of vehicle</span>
   <span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
 </td>
-<td class="styLNRightNumBoxNBB" style="border-left-width:1px;padding-top:0px;padding-bottom:0px;
+<td class="styLNRightNumBoxNBB" style="border-left-width:1px;height:10mm;padding-top:5.75mm;padding-bottom:0px;
 border-bottom-width:0px;border-top-width:1px;border-right-width:0px;
-background-color:lightgrey;padding-left:0px;padding:right:0px">
-<span class="styLNRightNumBox" style="width:8.75mm;padding-bottom:0mm;f
+background-color:lightgrey;padding-left:0px;padding:right:0px;">
+<span class="styLNRightNumBox" style="width:8mm;padding-bottom:0mm;f
  loat:right;border-top-width:0px;border-left-width:0px;background-color:white;
 padding-left:0px;padding-right:1px">1
 </span>
 </td>
-<td class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; text-align: left;
+<td class="styTableCell" style="width:45mm;border-color: black; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; text-align: left;
  padding-left:0mm;padding-right:1mm">
 <span class="styTableCellPad"/>
 <span class="styDotLn" style="padding-right:.5mm;"></span>
@@ -218,7 +221,7 @@ padding-left:0px;padding-right:1px">1
 <xsl:with-param name="TargetNode" select="VehicleDescriptionGrp/VehicleModel"/>
 </xsl:call-template>
 </td>
-<td class="styTableCell" style="border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:1px; text-align: left">
+<td class="styTableCell" style="width:45mm;border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:1px; text-align: left">
 <span class="styTableCellPad"/>
 <span class="styDotLn" style="padding-right:.5mm;"></span>
 <xsl:call-template name="PopulateYear">
@@ -237,12 +240,12 @@ padding-left:0px;padding-right:1px">1
 </tr>
 <!-- Line 2  -->
 <tr>
-<td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold; border-right-width: 0px;border-bottom-width:0px;" valign="top">2</td>
-<td class="styTableCell" style="width: 75mm;padding-left:2mm;text-align: left;    border-color: black; border-left-width: 0px; border-right-width: 0px;   border-top-width: 0px; border-bottom-width:0px;">
+<td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold; border-right-width: 0px;border-bottom-width:0px;padding-top:2mm;" valign="top">2</td>
+<td class="styTableCell" style="width: 84mm;padding-left:2mm;text-align: left;    border-color: black; border-left-width: 0px; border-right-width: 0px;   border-top-width: 0px; border-bottom-width:0px;">
  <span style="float: left; clear: none;">Vehicle identification number (see instructions)</span>
   <span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
 </td>
-<td class="styLNRightNumBox" style="border-bottom-width:1px;">2</td>
+<td class="styLNRightNumBox" style="border-bottom-width:1px; height:7mm;padding-top:3mm">2</td>
 <td class="styTableCell" style="border-color: black; border-left-width:1px; border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;padding-left:14mm" valign="bottom">
 <span class="styTableCellPad"/>
 <xsl:call-template name="PopulateText">
@@ -260,9 +263,9 @@ padding-left:0px;padding-right:1px">1
 <tr style="font-size: 7pt">
 <td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;border-right-width: 0px; border-bottom-width:0px;padding-bottom:1.75mm;">3
 </td>
-<td class="styTableCell" style="width: 75mm; padding-left:2mm;text-align: left; border-color: black;border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px;">Enter date vehicle was placed in service (MM/DD/YYYY)
+<td class="styTableCell" style="width: 84mm; padding-left:2mm;text-align: left; border-color: black;border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px;">Enter date vehicle was placed in service (MM/DD/YYYY)
  </td>
-<td class="styLNRightNumBox">3</td>
+<td class="styLNRightNumBox" style="height: 4.75mm;">3</td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;padding-left:2mm;">
 <span class="styTableCellPad"/>
 <xsl:call-template name="PopulateMonthDayYear">
@@ -280,7 +283,7 @@ padding-left:0px;padding-right:1px">1
 <tr>
 <td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;
 border-color:black;border-right-width:0px;border-bottom-width:1px;" valign="top">4</td>
-<td class="styTableCell" style="width: 75mm;padding-left:2mm;text-align: left; 
+<td class="styTableCell" style="width: 84mm;padding-left:2mm;text-align: left; 
  border-color: black; border-left-width: 0px; border-right-width: 0px; 
 border-top-width: 0px; border-bottom-width:1px">
 <b>Tentative credit</b> (see instructions for amount to enter)
@@ -332,15 +335,15 @@ border-top-width: 0px; border-bottom-width:1px">
 <tbody>
 <!--  Line 1   -->
 <tr>
-<td class="styTableCell" style="width:6mm;text-align:right;font-weight:bold;padding-top:6mm;border-color:black;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;padding-right:1mm;">
+<td class="styTableCell" style="width:6mm;text-align:right;font-weight:bold;padding-top:6mm;border-color:black;border-top-width:1px;border-right-width:0px;border-bottom-width:0px;padding-right:0mm;">
 <b>1</b>
 </td>
-<td class="styTableCell" style="width: 75mm;padding-left:2mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width:1px; border-bottom-width:0px;padding-top:6mm;">
+<td class="styTableCell" style="width: 82mm;padding-left:2mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width:1px; border-bottom-width:0px;padding-top:6mm;">
 <span style="float: left; clear: none;">Year, make, and model of vehicle</span>
   <span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
 </td>
-<td class="styLNRightNumBoxNBB" style="border-left-width:1px;padding-top:0px;padding-bottom:0px;border-bottom-width:0px;border-top-width:1px;border-right-width:0px;background-color:lightgrey;padding-left:0px; padding:right:0px">
-<span class="styLNRightNumBox" style="width:8.75mm;padding-bottom:0mm;float:right;border-top-width:0px; border-left-width:0px;background-color:white;padding-left:0px;padding-right:0px">1
+<td class="styLNRightNumBoxNBB" style="border-left-width:1px;padding-top:5mm;padding-bottom:0px;border-bottom-width:0px;border-top-width:1px;border-right-width:0px;background-color:lightgrey;padding-left:0px; padding-right:0px">
+<span class="styLNRightNumBox" style="width:8mm;height:4.2mm;padding-bottom:0mm;float:right;border-top-width:0px; border-left-width:1px;background-color:white;padding-left:0px;padding-right:0px">1
 </span>
 </td>
 <xsl:choose>
@@ -367,7 +370,7 @@ border-top-width: 0px; border-bottom-width:1px">
 <tr>
 <td class="styTableCell" style="width:5.25mm;font-weight:bold;padding-left:.5mm;
  border-right-width: 0px;border-bottom-width:0px;">2</td>
-<td class="styTableCell" style="width: 75mm;padding-left:2mm;text-align: left; 
+<td class="styTableCell" style="width: 82mm;padding-left:2mm;text-align: left; 
  border-color: black; border-left-width: 0px; border-right-width: 0px;border-top-width: 0px; border-bottom-width:0px;">
   <span style="float: left; clear: none;">Vehicle identification number (see instructions)</span>
   <span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
@@ -383,9 +386,9 @@ border-top-width: 0px; border-bottom-width:1px">
 </tr>
 <!-- Line 3  -->
 <tr style="font-size: 7pt">
-<td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;padding-right:1mm;border-right-width: 0px;border-bottom-width:0px;padding-left:.5mm;">3
+<td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;padding-right:0mm;border-right-width: 0px;border-bottom-width:0px;padding-left:.5mm;">3
 </td>
-<td class="styTableCell" style="width: 75mm;padding-left:2mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px">
+<td class="styTableCell" style="width: 82mm;padding-left:2mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px">
    Enter date vehicle was placed in service (MM/DD/YY)
 </td>
 <td class="styLNRightNumBox">3</td>
@@ -402,7 +405,7 @@ border-top-width: 0px; border-bottom-width:1px">
 <tr>
 <td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;
 border-color:black;border-right-width:0px;border-bottom-width:1px;" valign="top">4</td>
-<td class="styTableCell" style="width: 75mm;padding-left:2mm;text-align: left; 
+<td class="styTableCell" style="width: 82mm;padding-left:2mm;text-align: left; 
  border-color: black; border-left-width: 0px; border-right-width: 0px; 
 border-top-width: 0px; border-bottom-width:1px">
 <b>Tentative credit.</b> (see instructions for amount to enter)
@@ -426,8 +429,8 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign=
 <div style="width: 187mm;border-top-width:0px;"><br/>
 <span style="padding-left:7mm"/>
 <b>Next:</b> If you did NOT use your vehicle for business or 
- investment purposes and did not have a credit from a partnership or S corporation, 
-<span style="padding-left:7mm;border-top-width:1px;"/>skip Part II and go to Part III. ALL others, go to Part II.<br/><br/>
+ investment purposes and did not have a credit from a partnership or<br/>
+<span style="padding-left:7mm;border-top-width:1px;"/> S corporation, skip Part II and go to Part III. ALL others, go to Part II.<br/><br/>
 </div>
 <div class="styBB" style="width: 187mm;border-top-width:1px">
 <div class="styPartName">Part II</div>
@@ -444,7 +447,7 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign=
 <!--print logic-->
 <xsl:call-template name="SetInitialState"/>
 <!--end-->
-<table class="styTable" cellspacing="0" cellpadding="0" border="0" style="font-size: 7pt;font-family:erdana">
+<table class="styTable" cellspacing="0" cellpadding="0" border="0" style="font-size: 7pt;font-family:verdana">
 <thead class="styTableThead"/>
 <tfoot/>
 <tbody>
@@ -452,7 +455,7 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign=
 <tr>
 <td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;  border-right-width:0px;border-bottom-width:0px;">5
 </td>
-<td class="styTableCell" style="width:75mm; padding-left:2mm;text-align:left;border-color:black;border-left-width:0px;border-right-width: 0px;border-top-width:0px;border-bottom-width:0px;padding-top:.5mm;">
+<td class="styTableCell" style="width:82mm; padding-left:2mm;text-align:left;border-color:black;border-left-width:0px;border-right-width: 0px;border-top-width:0px;border-bottom-width:0px;padding-top:.5mm;font-size:7pt;">
  Business/investment use percentage (see instructions)
 </td>
 <td class="styLNRightNumBox">5</td>
@@ -462,7 +465,7 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign=
 <xsl:with-param name="TargetNode" select="BusinessInvestmentUsePct"/>
 </xsl:call-template>%
 </td>
-<td class="styTableCell" style="border-color: black; border-left-width:1px;width:48mm; border-right-width:0px; border-top-width: 0px; border-bottom-width:1px;" valign="bottom">
+<td class="styTableCell" style="border-color: black; border-left-width:1px;width:45mm; border-right-width:0px; border-top-width: 0px; border-bottom-width:1px;" valign="bottom">
 <span class="styTableCellPad"/>
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="$FormData/BusinessInvestmentUseGrp[$pos + 1]/BusinessInvestmentUsePct"/>
@@ -472,18 +475,18 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign=
 <!-- Line 6 -->
 <tr>
 <td class="styTableCell" style=";width:5.5mm;text-align:right;  font-weight:bold;border-right-width: 0px;border-bottom-width:0px;" valign="center">6</td>
-<td class="styTableCell" style="width:75mm; padding-left:2mm;text-align: left;   border-color: black; border-left-width: 0px; border-right-width: 0px;   border-top-width: 0px; border-bottom-width:0px;">Multiply line 4 by line 5<b>
+<td class="styTableCell" style="width:82mm; padding-left:2mm;text-align: left;   border-color: black; border-left-width: 0px; border-right-width: 0px;   border-top-width: 0px; border-bottom-width:0px;font-size:7pt;">Multiply line 4 by line 5<b>
  <span style="letter-spacing:4mm;font-weight:bold">........</span>
 </b>
 </td>
 <td class="styLNRightNumBox" style="border-bottom-width:1px;">6</td>
-<td class="styTableCell" style="border-color: black; border-left-width:1px;width:48mm; border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign="bottom">
+<td class="styTableCell" style="border-color: black; border-left-width:1px;width:48mm; border-right-width:0px; border-top-width: 0px; border-bottom-width:1px;" valign="bottom">
 <span class="styTableCellPad"/>
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="BusinessInvestmentUseAmt"/>
 </xsl:call-template>
 </td>
-<td class="styTableCell" style="border-color: black; border-left-width: 0px;width:47mm; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;" valign="bottom">
+<td class="styTableCell" style="border-color: black; border-left-width: 1px;width:45mm; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;" valign="bottom">
 <span class="styTableCellPad"/>
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/BusinessInvestmentUseGrp[$pos + 1]/BusinessInvestmentUseAmt"/>
@@ -511,14 +514,14 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign=
 <tr>
 <td class="styTableCell" style="padding-left:.25mm;width:5.5mm;text-align:right;  font-weight:bold;border-right-width: 0px;border-bottom-width:0px;">5
 </td>
-<td class="styTableCell" style="width:78mm;text-align:left; border-color:black; border-left-width:0px;border-right-width: 0px;border-top-width:0px; border-bottom-width:0px;font-size:6pt;padding-top:.5mm;">
+<td class="styTableCell" style="width:82mm;text-align:left;padding-left:2mm; border-color:black; border-left-width:0px;border-right-width: 0px;border-top-width:0px; border-bottom-width:0px;font-size:7pt;padding-top:.5mm;">
 Business/investment use percentage (See instructions)
 </td>
-<td class="styLNRightNumBox">5</td>
+<td class="styLNRightNumBox" style="border-bottom-width:1px;border-left:width:0px; border-right-width:1px;">5</td>
 <xsl:choose>
 <!-- Display "Additional Data" message if Print is set to separated and there are more than 2 elements -->
 <xsl:when test="(($Print = $Separated) and (count($FormData/BusinessInvestmentUseGrp) &gt; 2))">
-<td class="styTableCell" style="padding-left:1mm;width:45mm;border-color: black; border-left-width: 1px; border-right-width:1px; border-top-width:0px;border-bottom-width:1px; text-align:center;">
+<td class="styTableCell" style="padding-left:1mm;width:45mm;border-color: black; border-left-width: 0px; border-right-width:0px; border-top-width:0px;border-bottom-width:1px; text-align:center;">
 <xsl:call-template name="PopulateAdditionalDataTableMessage">
 <xsl:with-param name="ShortMessage">true</xsl:with-param>
 <xsl:with-param name="TargetNode" select="$FormData/BusinessInvestmentUseGrp/BusinessInvestmentUsePct"/>
@@ -527,24 +530,24 @@ Business/investment use percentage (See instructions)
 </td>
 </xsl:when>
 <xsl:otherwise>
-<td class="styTableCell" style="width:47mm;border-color: black; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px;  border-bottom-width:1px; text-align: center">
+<td class="styTableCell" style="width:47mm;border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;  border-bottom-width:1px; text-align: right">
 <span class="styTableCellPad"/>%
 </td>
 </xsl:otherwise>
 </xsl:choose>
-<td class="styTableCell" style="width:45mm;border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px">
+<td class="styTableCell" style="width:45mm;border-color: black; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px">
 <span class="styTableCellPad"/>%
 </td>
 </tr>
 <!-- Line 6  -->
 <tr>
 <td class="styBoldText" style="padding-left: 4mm;width:6mm;padding-top:.5mm;">6</td>
-<td class="styTableCell" style="width:71mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px">Multiply line 4 by line 5<b>
+<td class="styTableCell" style="width:82mm; text-align: left;padding-left:2mm; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px">Multiply line 4 by line 5<b>
 <span style="letter-spacing:4mm;font-weight:bold">........</span>
  </b>
 </td>
 <td class="styLNRightNumBox" style="border-bottom-width:1px;border-left:width:0px; border-right-width:1px;">6</td>
-<td style="border-style:solid black;border-color:black;border-bottom: 1 solid black;  border-left-width:1px;border-right-width:1 solid black; border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign="bottom">
+<td style="border-style:solid black;border-color:black;border-bottom: 1px solid black;  border-left-width:1px;border-right-width:1 solid black; border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;" valign="bottom">
 <span class="styTableCellPad" style="border-color:black;  border-left-width:1px;border-right-width:1px; border-top-width:0px; border-bottom-width:1px "/>
 </td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;">
@@ -561,10 +564,10 @@ Business/investment use percentage (See instructions)
 <div style="float:left;padding-top:.5mm;">Add columns (a) and (b) on line 6
  </div>
 <div style="float:right;">
-<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">...................
+<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">................
 </span>
 <div class="styLNRightNumBox" style="border-bottom-width: 1px">7</div>
-<div class="styLNAmountBox" style="border-bottom-width: 1px">
+<div class="styLNAmountBox" style="border-bottom-width: 1px;width:44.7mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/TotalBusinessInvestmentUseAmt"/>
 </xsl:call-template>
@@ -577,10 +580,10 @@ Business/investment use percentage (See instructions)
 <div style="float:left;padding-top:.5mm;">Alternative motor vehicle credit from partnerships and S corporations
 </div>
 <div style="float:right;">
-<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">.........
+<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">......
 </span>
 <div class="styLNRightNumBox" style="border-bottom-width: 1px">8</div>
-<div class="styLNAmountBox" style="border-bottom-width: 1px">
+<div class="styLNAmountBox" style="border-bottom-width: 1px;width:44.7mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/AlternativeMotorVehicleCrAmt"/>
 </xsl:call-template>
@@ -592,25 +595,25 @@ Business/investment use percentage (See instructions)
 <div class="styLNLeftNumBox" style="padding-left: 4mm;">9</div>
 <div style="float:left;padding-top:.5mm;">
 <b>Business/investment use part of credit. </b>Add lines 7 and 8. 
-Partnerships and S corporations, report
+Partnerships and S corporations, 
 </div>
 <div style="float:right;">
 <span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left"/>
 <div class="styLNRightNumBox" style="border-bottom-width: 0px;background-color:lightgrey;"/>
-<div class="styLNAmountBox" style="border-bottom-width: 0px"/>
+<div class="styLNAmountBox" style="border-bottom-width: 0px;width:44.7mm;"/>
 </div>
 </div>
 <!-- end  Line 9a -->
 <!--  Line 9b -->
 <div style="width: 187mm">
 <div class="styLNLeftNumBox" style="padding-left: 2mm"/>
-<div style="float:left;padding-top:.5mm;">this amount on Schedule K. All others, report this amount on Form 3800, line 1r
+<div style="float:left;padding-top:.5mm;">report this amount on Schedule K. All others, report this amount on Form 3800, line 1r
 </div>
 <div style="float:right;">
-<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">......
+<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">...
 </span>
 <div class="styLNRightNumBox" style="border-bottom-width: 0px">9</div>
-<div class="styLNAmountBox" style="border-bottom-width: 0px">
+<div class="styLNAmountBox" style="border-bottom-width: 0px;width:44.7mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/BusinessInvstUsePartOfCrAmt"/>
 </xsl:call-template>
@@ -640,13 +643,13 @@ Partnerships and S corporations, report
 <tbody>
 <tr style="font-size: 7pt">
 <td class="styTableCell" style="width:5.25mm;text-align:right;font-weight:bold;  border-right-width: 0px;border-bottom-width:0px;padding-bottom:4mm;">10</td>
-<td class="styTableCell" style="width: 75mm; padding-left:2mm;  text-align: left; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px">
+<td class="styTableCell" style="width: 82mm; padding-left:2mm;  text-align: left; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px">
 If you skipped Part II, enter the amount from line 4.
 If you completed Part II, subtract line 6 from line 4
 <span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold;">.</span>
 </td>
 <td class="styLNRightNumBoxNBB" style="border-left-width:1px;padding-top:0px;padding-bottom:0px;  border-bottom-width:0px;border-top-width:0px;border-right-width:0px; background-color:lightgrey;padding-left:0px;padding:right:0px">
-<span class="styLNRightNumBox" style="width:8.75mm;padding-bottom:0mm;float:right;border-top-width:0px; border-left-width:0px;background-color:white;padding-left:0px;padding-right:0px;">10
+<span class="styLNRightNumBox" style="width:8mm;height:7mm;padding-bottom:0mm;padding-top:3mm;float:right;border-top-width:0px; border-left-width:1px;background-color:white;padding-left:0px;padding-right:0px;">10
  </span>
 </td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px;width:47mm; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; text-align: right;padding-top:3mm">
@@ -655,7 +658,7 @@ If you completed Part II, subtract line 6 from line 4
 <xsl:with-param name="TargetNode" select="$FormData/TentativeCreditForPrsnlUseAmt[$pos]"/>
 </xsl:call-template>
 </td>
-<td class="styTableCell" style="border-color: black; border-left-width: 0px;width:48mm; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; text-align: right;;padding-top:3mm">
+<td class="styTableCell" style="border-color: black; border-left-width: 0px;width:44.7mm; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; text-align: right;;padding-top:3mm">
 <span class="styTableCellPad"/>
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/TentativeCreditForPrsnlUseAmt[$pos + 1]"/>
@@ -683,16 +686,16 @@ If you completed Part II, subtract line 6 from line 4
 <tr style="font-size: 7pt">
 <td class="styBoldText" style="font-size: 7pt; padding-left: 2mm;width:4mm;  padding-bottom:2mm;">10
 </td>
-<td class="styTableCell" style="width: 80mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px;">if you skipped Part II, enter the amount from line 4. if you completed Part II, subtract line 6 from line 4
+<td class="styTableCell" style="width: 82mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;border-bottom-width:0px;padding-left:2mm;">if you skipped Part II, enter the amount from line 4. if you completed Part II, subtract line 6 from line 4
 </td>
-<td class="styLNRightNumBoxNBB" style="border-left-width:1px;padding-top:0px;padding-bottom:0px;  border-bottom-width:0px;border-top-width:0px;border-right-width:0px;  background-color:lightgrey;padding-left:0px;padding:right:0px">
-<span class="styLNRightNumBox" style="width:8.75mm;padding-bottom:0mm;float:right;border-top-width:0px; border-left-width:0px;background-color:white;padding-left:0px;padding-right:0px">10
+<td class="styLNRightNumBoxNBB" style="border-left-width:1px;height:7mm;padding-top:3mm;padding-bottom:0px;  border-bottom-width:0px;border-top-width:0px;border-right-width:0px;  background-color:lightgrey;padding-left:0px;padding-right:0px">
+<span class="styLNRightNumBox" style="width:8mm;padding-bottom:0mm;float:right;border-top-width:0px; border-left-width:1px;background-color:white;padding-left:0px;padding-right:0px">10
 </span>
 </td>
 <xsl:choose>
 <!-- Display "Additional Data" message if Print is set to separated and there are more than 2 elements -->
 <xsl:when test="(($Print = $Separated) and (count($FormData/TentativeCreditForPrsnlUseAmt) &gt; 2))">
-<td class="styTableCell" style="width:45mm;border-color: black; border-left-width:1px; border-right-width:1px;  border-top-width:0px; border-bottom-width:1px; text-align:center;">
+<td class="styTableCell" style="width:47mm;border-color: black; border-left-width:1px; border-right-width:1px;  border-top-width:0px; border-bottom-width:1px; text-align:center;">
 <xsl:call-template name="PopulateAdditionalDataTableMessage">
 <xsl:with-param name="ShortMessage">true</xsl:with-param>
 <xsl:with-param name="TargetNode" select="$FormData/TentativeCreditForPrsnlUseAmt"/>
@@ -704,6 +707,10 @@ If you completed Part II, subtract line 6 from line 4
 </xsl:when>
 <xsl:otherwise>
 <!-- separated but no data -->
+<td class="styTableCell" style="width:47mm;border-color: black; border-left-width:1px; border-right-width:1px;  border-top-width:0px; border-bottom-width:1px; text-align:center;">
+</td>
+<td class="styTableCell" style="border-color: black; border-left-width: 0px;width:45mm;  border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; text-align: right;">
+</td>
 </xsl:otherwise>
 </xsl:choose>
 </tr>
@@ -718,10 +725,10 @@ If you completed Part II, subtract line 6 from line 4
 <div style="float:left;padding-top:.5mm;">Add columns (a) and (b) on line 10
 </div>
 <div style="float:right;">
-<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">...................
+<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">..............
 </span>
 <div class="styLNRightNumBox" style="border-bottom-width: 1px;">11</div>
-<div class="styLNAmountBox" style="border-bottom-width: 1px">
+<div class="styLNAmountBox" style="border-bottom-width: 1px;width:45mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/TotalTentativeCrForPrsnlUseAmt"/>
 </xsl:call-template>
@@ -735,10 +742,10 @@ If you completed Part II, subtract line 6 from line 4
 <div style="float:left;padding-top:.5mm;">Enter the amount from Form 1040, line 46, or Form 1040NR, line 44
 </div>
 <div style="float:right;">
-<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">..........
+<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">.....
 </span>
 <div class="styLNRightNumBox" style="border-bottom-width: 1px;">12</div>
-<div class="styLNAmountBox" style="border-bottom-width: 1px">
+<div class="styLNAmountBox" style="border-bottom-width: 1px;width:45mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/TotalTaxBeforeCrAndOthTaxesAmt"/>
 </xsl:call-template>
@@ -752,10 +759,10 @@ If you completed Part II, subtract line 6 from line 4
 <div style="float:left;padding-top:.5mm;">Personal credits from Form 1040 or 1040NR (see instructions)
 </div>
 <div style="float:right;">
-<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">...........
+<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">......
 </span>
 <div class="styLNRightNumBox" style="border-bottom-width: 1px;">13</div>
-<div class="styLNAmountBox" style="border-bottom-width: 1px;height:3.5mm">
+<div class="styLNAmountBox" style="border-bottom-width: 1px;height:4mm;width:45mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/AltMotorVehCreditFromFormsAmt"/>
 </xsl:call-template>
@@ -767,13 +774,13 @@ If you completed Part II, subtract line 6 from line 4
 <div style="width: 187mm">
 <div class="styLNLeftNumBox" style="padding-left: 2mm;">14</div>
 <div style="float:left;padding-top:.5mm;">Subtract line 13 from line 12.  If zero or less,
-enter -0- and stop here. You cannot claim the personal use
+enter -0- and stop here. You 
 </div>
 <div style="float:right;">
 <!--<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">...........
 </span>-->
 <div class="styLNRightNumBox" style="border-bottom-width: 0px;background-color:lightgrey"/>
-<div class="styLNAmountBox" style="border-bottom-width: 0px">
+<div class="styLNAmountBox" style="border-bottom-width: 0px;width:45mm;">
 
 </div>
 </div>
@@ -782,13 +789,13 @@ enter -0- and stop here. You cannot claim the personal use
 <!-- Start Line 14B -->
 <div style="width: 187mm">
 <div class="styLNLeftNumBox" style="padding-left: 2mm;"/>
-<div style="float:left;padding-top:.5mm;">part of the credit
+<div style="float:left;padding-top:.5mm;">cannot claim the personal use part of the credit
 </div>
 <div style="float:right;">
-<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">........................
+<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">.........
 </span>
 <div class="styLNRightNumBox" style="border-bottom-width: 1px;">14</div>
-<div class="styLNAmountBox" style="border-bottom-width: 1px;height:3.5mm">
+<div class="styLNAmountBox" style="border-bottom-width: 1px;height:4mm;width:45mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/AltMotorVehAdjustedCreditAmt"/>
 </xsl:call-template>
@@ -799,13 +806,13 @@ enter -0- and stop here. You cannot claim the personal use
  <!-- Start Line 15A -->
 <div style="width: 187mm">
 <div class="styLNLeftNumBox" style="padding-left: 2mm;">15</div>
-<div style="float:left;padding-top:.5mm;"><b> Personal use part of credit.</b> Enter the <b>smaller</b> of line 11 or line 14 here and on Form 1040, line 53  
+<div style="float:left;padding-top:.5mm;"><b> Personal use part of credit.</b> Enter the <b>smaller</b> of line 11 or line 14 here and on Form 
 </div>
 <div style="float:right;">
 <!--<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">...........
 </span>-->
 <div class="styLNRightNumBox" style="border-bottom-width: 0px;background-color:lightgrey;"/>
-<div class="styLNAmountBox" style="border-bottom-width: 0px">
+<div class="styLNAmountBox" style="border-bottom-width: 0px;width:45mm;">
 <!--<xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/TotTentCreditForPersonalUse"/>
 </xsl:call-template>-->
@@ -816,13 +823,13 @@ enter -0- and stop here. You cannot claim the personal use
 <!-- Start Line 15B -->
 <div style="width: 187mm">
 <div class="styLNLeftNumBox" style="padding-left: 2mm;"/>
-<div style="float:left;padding-top:.5mm;"> (or Form 1040NR, line 50).  Check box <b>c</b> on that line and enter "8910" in the space next to that box. 
+<div style="float:left;padding-top:.5mm;">1040, line 53   (or Form 1040NR, line 50).  Check box <b>c</b> on that line and enter "8910" in 
 </div>
 <div style="float:right;">
 <!--<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">...........
 </span>-->
 <div class="styLNRightNumBox" style="border-bottom-width: 0px;background-color:lightgrey;"/>
-<div class="styLNAmountBox" style="border-bottom-width: 0px">
+<div class="styLNAmountBox" style="border-bottom-width: 0px;width:45mm;">
 <!--<xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/TotTentCreditForPersonalUse"/>
 </xsl:call-template>-->
@@ -833,13 +840,13 @@ enter -0- and stop here. You cannot claim the personal use
 <!-- Start Line 15C -->
 <div class="styBB" style="width: 187mm">
 <div class="styLNLeftNumBox" style="padding-left: 2mm;"/>
-<div style="float:left;padding-top:.5mm;">If line 14 is smaller than line 11, see instructions
+<div style="float:left;padding-top:.5mm;">the space next to that box. If line 14 is smaller than line 11, see instructions
 </div>
 <div style="float:right;">
-<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">...............
+<span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold; float:left">.....
 </span>
 <div class="styLNRightNumBox" style="border-bottom-width: 0px;">15</div>
-<div class="styLNAmountBox" style="border-bottom-width: 0px;height:3.5mm">
+<div class="styLNAmountBox" style="border-bottom-width: 0px;height:4mm;width:45mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/PersonalUsePartOfCreditAmt"/>
 </xsl:call-template>
@@ -872,7 +879,7 @@ border-left-width:0px;border-top-width:0px;background-color:lightgrey;"/>22
 <span style="width:80px;"/>Form <span class="styBoldText">8910</span> (2013)
 </div>
 <br/>
-<br class="pageEnd"/>
+<div class="pageEnd"/>
 <!-- BEGIN Left Over Table -->
 <!-- Additonal Data Title Bar and Button -->
 <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -926,14 +933,14 @@ columns, use additional Forms 8910 and include the totals <br/>
 <!--  Line 1   -->
 <!-- column 1 -->
 <tr class="styDepTblRow1" style="height: 5mm">
-<td class="styTableCell" style="width: 83mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 1px; border-top-width: 1px;    border-bottom-width:1px">
+<td class="styTableCell" style="width: 99mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 1px;    border-bottom-width:1px">
 <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">1</span>
 <span style="width: 1mm"/>
 <span>Year, make, and model of vehicle</span>
 <span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold;">.......
 </span>
 </td>
-<td class="styLNRightNumBox" style="border-top-width: 1px;">1</td>
+<td class="styLNRightNumBox" style="border-top-width: 0px;height: 10mm;">1</td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px;                        border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; text-align: center">
 <span class="styTableCellPad"/>
 <xsl:call-template name="PopulateYear">
@@ -966,13 +973,13 @@ columns, use additional Forms 8910 and include the totals <br/>
 </tr>
 <!-- Line 2  -->
 <tr class="styDepTblRow2" style="height: 5mm">
-<td class="styTableCell" style="width: 83mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;  border-bottom-width:0px">
+<td class="styTableCell" style="width: 99mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;  border-bottom-width:0px">
 <span class="styBoldText" style="font-size:7pt; padding-left: 2mm;">2</span>
 <span style="width: 1mm"/>Vehicle identification number (see instructions)
  <span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold;">..
 </span>
 </td>
-<td class="styLNRightNumBox" style="border-bottom-width:1px;">2</td>
+<td class="styLNRightNumBox" style="border-bottom-width:1px;height: 7mm;">2</td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:1px;">
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="VIN"/>
@@ -986,11 +993,11 @@ columns, use additional Forms 8910 and include the totals <br/>
 </tr>
 <!-- Line 3  -->
 <tr class="styDepTblRow1" style="height: 5mm; font-size: 7pt">
-<td class="styTableCell" style="width: 83mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;   border-bottom-width:0px">
+<td class="styTableCell" style="width: 99mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;   border-bottom-width:0px">
 <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">3</span>
 <span style="width: 1mm"/>Enter date vehicle was placed in service (MM/DD/YYYY)
 </td>
-<td class="styLNRightNumBox">3</td>
+<td class="styLNRightNumBox"  style="height: 6mm;">3</td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px; 
 border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;text-align:center">
 <xsl:call-template name="PopulateMonthDayYear">
@@ -1190,12 +1197,12 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;padding-l
 </tr> -->
 <!-- Line 4  -->
 <tr class="styDepTblRow2" style="height: 5mm">
-<td class="styTableCell" style="width: 83mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;  border-bottom-width:0px;">
+<td class="styTableCell" style="width: 99mm; text-align: left; border-color: black;  border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;  border-bottom-width:0px;">
 <span class="styBoldText" style="font-size:7pt; padding-left: 2mm;">4</span>
 <span style="width: 1mm;"/>
 <b>Tentative credit.</b> (see instructions for amount to enter)
 </td>
-<td class="styLNRightNumBox" style="border-bottom-width:1mm;padding-right:2mm">4</td>
+<td class="styLNRightNumBox" style="border-bottom-width:1px;padding-right:2mm;height: 7mm;float:none;">4</td>
 <td class="styTableCell" style="border-color: black; border-left-width:1px;
  border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;padding-left:14mm" valign="bottom">
 <span class="styTableCellPad"/>
@@ -1231,11 +1238,11 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;padding-l
 <tbody>
 <!-- line 15 -->
 <tr class="styDepTblRow1">
-<td class="styTableCell" style="width: 83mm; text-align: left; border-color: black;   border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;   border-bottom-width:0px;">
+<td class="styTableCell" style="width: 114mm; text-align: left; border-color: black;   border-left-width: 0px; border-right-width: 0px; border-top-width: 0px;   border-bottom-width:0px;">
 <span class="styBoldText" style="font-size:7pt; padding-left: 2mm;">5</span>
 <span style="width: 1mm;font-size:5pt"/>Business/investment use percentage (see instructions)
  </td>
-<td class="styLNRightNumBox">5</td>
+<td class="styLNRightNumBox" style="float:none;">5</td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 1px;border-top-width:0px; border-bottom-width:1px">
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="BusinessInvestmentUsePct"/>
@@ -1251,13 +1258,13 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;padding-l
 </tr>
 <!-- line 6 -->
 <tr class="styDepTblRow2">
-<td class="styTableCell" style="width: 83mm; text-align: left; border-color: black; border-left-width: 0px;border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px;">
+<td class="styTableCell" style="width: 114mm; text-align: left; border-color: black; border-left-width: 0px;border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px;">
 <span class="styBoldText" style="font-size:7pt; padding-left: 2mm;">6</span>
 <span style="width: 1mm"/>Multiple line 4 by line 5
 <span style="letter-spacing:4mm;padding-top:.5mm; font-weight:bold;">.......
 </span>
 </td>
-<td class="styLNRightNumBox">6</td>
+<td class="styLNRightNumBox" style="float:none;">6</td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 1px;border-top-width: 0px; border-bottom-width:1px">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="BusinessInvestmentUseAmt "/>
@@ -1292,12 +1299,12 @@ border-right-width:1px; border-top-width: 0px; border-bottom-width:1px;padding-l
 <table class="styDepTbl" cellspacing="0" style="font-size: 7pt">
 <tbody>
 <tr class="styDepTblRow1">
-<td class="styTableCell" style="width: 83mm; text-align: left; border-color: black; border-left-width: 0px;border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px;">
+<td class="styTableCell" style="width: 114mm; text-align: left; border-color: black; border-left-width: 0px;border-right-width: 0px; border-top-width: 0px; border-bottom-width:0px;">
 <span class="styBoldText" style="font-size:7pt; padding-left: 2mm;">10</span>
 <span style="width: 1mm"/><span style="width: 1mm;"/>if you skipped Part II, enter the amount from line 4.<br/>
 <span style="width:7mm"/>if you completed Part II, subtract line 6 from line 4
  </td>
-<td class="styLNRightNumBox">10</td>
+<td class="styLNRightNumBox" style="height: 7mm;float:none;">10</td>
 <td class="styTableCell" style="border-color: black; border-left-width: 1px; border-right-width: 1px;border-top-width: 0px; border-bottom-width:1px">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$FormData/TentativeCreditForPrsnlUseAmt[$pos]"/>

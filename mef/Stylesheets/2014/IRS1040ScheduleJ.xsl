@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 06/20/2014 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!-- Last Modified by Eugenia McDonald on 07/01/2015 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1040SJData" select="$RtnDoc/IRS1040ScheduleJ"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1040SJData)"/>
@@ -40,7 +42,7 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styTBB" style="width:187mm;height:22mm;">
 						<div class="styFNBox" style="width:31mm;height:100%;">
-							<div class="styFN" style="font-size:14;">SCHEDULE J <br/><span style="font-size:12;">(Form 1040)</span></div>
+							<div class="styFN" style="font-size:10pt;">SCHEDULE J <br/><span style="font-size:8pt;">(Form 1040)</span></div>
 							<!--General Dependency Push Pin-->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1040SJData"/>
@@ -237,8 +239,9 @@
 							<div class="styLNDesc" style="width:93.8mm;">
 								If you used Schedule J to figure your tax for:<br/>
 								&#8226; 2013, enter the amount from your 2013 Schedule J, line 11.<br/>
-								&#8226; <span style="">2012 but not 2013, enter the amount from your 2012 Schedule J, <br/>
-								<span style="width:2.5mm;"/>line 15.</span><br/>
+								&#8226; 2012 but not 2013, enter the amount from your 2012 Schedule J, <br/>
+								<span style="width:2.5mm;"/>line 15.
+								<br/>
 								&#8226; 2011 but not 2012 or 2013, enter the amount from your 2011 <br/> 
 								<span style="width:2mm;"/>Schedule J, line 3.
 								<br/>Otherwise, enter the taxable income from your <b>2011</b> Form 1040,<br/>
@@ -540,7 +543,7 @@
 							<div class="styLNLeftNumBox">17</div>
 							<div class="styLNDesc">
 								<span style="float:left;">Add lines 4, 8, 12, and 16</span>
-								<span class="styIRS1040SJDots">.....................</span>
+								<span class="styIRS1040SJDots">....................</span>
 							</div>
 							<div class="styLNRightNumBoxNBB">17</div>
 							<div class="styLNAmountBoxNBB">
@@ -562,6 +565,7 @@
 							<span style="font-weight:bold;">Schedule J (Form 1040) 2014</span>
 						</div>
 					</div>
+					<p style="page-break-before: always"/>
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 2 -->
 					<!-- Page Header -->
@@ -708,11 +712,11 @@
 						<!-- Lines 19-21 Note -->
 						<div class="styGenericDiv" style="width:187mm;height:8mm;">
 							<div class="styLNLeftNumBox"/>
-							<div class="styLNDesc" style="">
+							<div class="styLNDesc">
 								*<b>Only</b> include tax reported on this line that is imposed by section 1 of the Internal Revenue Code 
 								(see instructions). <b>Do not</b> include alternative minimum tax from Form 1040A.
 							</div>
-							<div class="styLNRightNumBoxNBB" style="height:100%;background-color:lightgrey;"/>
+							<div class="styLNRightNumBoxNBB" style="height:100%;width:8.3mm;border-right-width:1px;background-color:lightgrey;"/>
 							<div class="styLNAmountboxNBB" style="height:100%;"/>
 						</div>
 						<!-- Spacer Line -->

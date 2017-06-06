@@ -13,6 +13,8 @@
     border-style: solid;
     border-color: black;
     border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+    float:left;
+    clear:none;
   }
   
   .styIRS1120PCScheduleM3Cell { /*Cell for amounts */
@@ -26,6 +28,8 @@
     border-style: solid;
     border-color: black;
     border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+    float:left;
+        height:5mm;
   }
 
   .styIRS1120PCScheduleM3ShadedCell { /*Cell for amounts with grey background */
@@ -34,16 +38,20 @@
     border-style: solid;
     border-color: black;
     border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+    float:left;
+    height:5mm;
   }
 
   .styIRS1120PCScheduleM3NumberCell { /*Cell for amounts with grey background */
-    width:6mm;
+    width:8mm;
     padding-top:.5mm;
     padding-bottom:.5mm;
     font-weight:bold;
     float:left; clear:none;
     padding-left:1mm;
     vertical-align:top;
+     float:left;
+     height:4mm;
   }
 
 </xsl:template>

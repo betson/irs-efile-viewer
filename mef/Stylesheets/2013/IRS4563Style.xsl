@@ -24,7 +24,7 @@
     }
 	.styIRS4563LineItem {  /* Line Item */
 		width: 187mm;
-		height: 3mm;
+		height: 6mm;
 		padding: 0px 0px 0px 0px;
 		border-style: solid;
 		border: 0px 0px 0px 0px;

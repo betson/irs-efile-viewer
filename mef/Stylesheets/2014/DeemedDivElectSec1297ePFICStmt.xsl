@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 09-11-2012 - Created as per UWR 58627 - Jeremy Nichols -->
-<!-- 07/15/2013 - Modified per UWR 81810 - Jeremy Nichols -->
-<!-- 08/21/2013 - Modified per defect 37449 - Jeremy Nichols -->
-<!-- 10-08-2013 - Modified per KISAMS IM0322355 - Jeremy Nichols -->
+<!-- 06/05/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 09/01/2015 - Changes made for defect 43974 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -20,8 +18,10 @@
   <!-- Main template -->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
            <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -47,30 +47,30 @@
       <body class="styBodyClass">
 
         <xsl:call-template name="DocumentHeaderDependency"/>  
-        <div class="styDepTitleLine">
+        <div class="styDepTitleLine" style="width:187mm;">
 
-          <span class="styDepTitle">
+          <span class="styDepTitle" style="width:187mm;">
             <span style="width:187mm;"><xsl:value-of select="$depDocTitle"/></span>        
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>
         <div class="styTopSectionLine" style="width:187mm;">        
           <div class=" styTopSectionLineLbl" style="float:left;clear:none;">Name:</div>
-          <div style="float:left;clear:none;">       
+          <div style="width:118mm;float:left;clear:none;">       
 				<xsl:if test="$DependencyData/PersonNm !=''">
 					<xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="$DependencyData/PersonNm"/>
 					</xsl:call-template><br/>
 				</xsl:if>
-				<xsl:if test="$DependencyData/BusinessName/BusinessNameLine1 !=''">
+				<xsl:if test="$DependencyData/BusinessName/BusinessNameLine1Txt !=''">
 					<xsl:call-template name="PopulateText">
-						<xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine1"/>
+						<xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine1Txt"/>
 					</xsl:call-template>
 				</xsl:if>
-				<xsl:if test="$DependencyData/BusinessName/BusinessNameLine2 !=''">
+				<xsl:if test="$DependencyData/BusinessName/BusinessNameLine2Txt !=''">
 				    <br/>
 				    <xsl:call-template name="PopulateText">
-						<xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine2"/>
+						<xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine2Txt"/>
 					</xsl:call-template>
 				</xsl:if>
 		   </div>
@@ -79,7 +79,7 @@
         
         <div class="styTopSectionLine" style="width:187mm;">
           <div class="styTopSectionLineLbl" style="float:left;clear:both;">Address:</div>
-          <div style="float:left;clear:right;">
+          <div style="width:118mm;float:left;clear:right;">
             <xsl:if test="$DependencyData/USAddress">
                 <xsl:call-template name="PopulateUSAddressTemplate">
                 <xsl:with-param name="TargetNode" select="$DependencyData/USAddress"/>
@@ -101,7 +101,7 @@
  <!-- added Line label for ssn case -->  
               <div class="styTopSectionLine" style="width:187mm;"> 
                 <div class="styTopSectionLineLbl" style="float:left;clear:both;">Social Security Number: </div>
-               <div style="float:left;clear:right;"> 
+               <div style="width:118mm;float:left;clear:right;"> 
                  <xsl:call-template name="PopulateSSN">
               	  <xsl:with-param name="TargetNode" select="$DependencyData/SSN"/>
                 </xsl:call-template>
@@ -115,7 +115,7 @@
                 <div class="styTopSectionLine" style="width:187mm;"> 
                 <div class="styTopSectionLineLbl" style="float:left;clear:both;"> Missing EIN reason:
       		 </div>
-      		 <div style="float:left;clear:right;"> 
+      		 <div style="width:118mm;float:left;clear:right;"> 
                  <xsl:call-template name="PopulateText">
               	  <xsl:with-param name="TargetNode" select="$DependencyData/MissingEINReasonCd"/>
                 </xsl:call-template>
@@ -128,7 +128,7 @@
           	 
               	 <div class="styTopSectionLine" style="width:187mm;"> 
               	 <div class="styTopSectionLineLbl" style="float:left;clear:both;"> Employer Identification Number: </div>
-                 <div style="float:left;clear:right;"> 
+                 <div style="width:118mm;float:left;clear:right;"> 
               	<xsl:call-template name="PopulateEIN"><xsl:with-param name="TargetNode" select="$DependencyData/EIN"/>
               	</xsl:call-template>  
               	 </div>
@@ -138,7 +138,7 @@
         
            <div class="styTopSectionLine" style="width:187mm;">        
 			  <div class="styTopSectionLineLbl" style="float:left;clear:both;">The CFC qualification date as defined in Regulations section 1.1297-3(d), for the Section 1297(e) PFIC:</div>
-			  <div style="float:left;clear:right;">
+			  <div style="width:118mm;float:left;clear:right;padding-top:12.75mm;">
 				  <xsl:call-template name="PopulateText">
 					  <xsl:with-param name="TargetNode" select="$DependencyData/CFCQualificationDt"/>
 				  </xsl:call-template>
@@ -146,7 +146,7 @@
 			</div>  
            <div class="styTopSectionLine" style="width:187mm;">        
 			  <div class="styTopSectionLineLbl" style="float:left;clear:both;">Beginning dates of the taxable year of the shareholding in which the CFC qualifitication dat falls (ie. The election year):</div>
-			  <div style="float:left;clear:right;">
+			  <div style="width:118mm;float:left;clear:right;padding-top:12.75mm;">
 				  <xsl:for-each select="$DependencyData/CFCQlfyFallsInTxblYearBeginDt">
 					  <xsl:call-template name="PopulateText">
 						  <xsl:with-param name="TargetNode" select="."/>
@@ -156,7 +156,7 @@
 			</div>   
            <div class="styTopSectionLine" style="width:187mm;">        
 			  <div class="styTopSectionLineLbl" style="float:left;clear:both;">Ending dates of the taxable year of the sharholding in which the CFC qualification date falls (i.e., the election year):</div>
-			  <div style="float:left;clear:right;">
+			  <div style="width:118mm;float:left;clear:right;padding-top:12.75mm;">
 				  <xsl:for-each select="$DependencyData/CFCQlfyFallsInTxblYearEndDt">
 					  <xsl:call-template name="PopulateText">
 						  <xsl:with-param name="TargetNode" select="."/>
@@ -166,7 +166,7 @@
 			</div>    
            <div class="styTopSectionLine" style="width:187mm;">        
 			  <div class="styTopSectionLineLbl" style="float:left;clear:both;">Tax year in which the amount was previously included in income:</div>
-			  <div style="float:left;clear:right;">
+			  <div style="width:118mm;float:left;clear:right;padding-top:8.5mm;">
 				  <xsl:call-template name="PopulateYear">
 					  <xsl:with-param name="TargetNode" select="$DependencyData/AmountIncludedInIncomeTaxYr"/>
 				  </xsl:call-template>
@@ -174,7 +174,7 @@
 			</div>   
            <div class="styTopSectionLine" style="width:187mm;">        
 			  <div class="styTopSectionLineLbl" style="float:left;clear:both;">The law under which the amount was previously included in income:</div>
-			  <div style="float:left;clear:right;">
+			  <div style="width:118mm;float:left;clear:right;padding-top:8.5mm;">
 				  <xsl:for-each select="$DependencyData/LawUnderWhichAmountWasIncldTxt">
 					  <xsl:call-template name="PopulateText">
 						  <xsl:with-param name="TargetNode" select="."/>
@@ -184,7 +184,7 @@
 			</div>    
            <div class="styTopSectionLine" style="width:187mm;">        
 			  <div class="styTopSectionLineLbl" style="float:left;clear:both;">Description of transaction in which the shareholder acquired the stock of the PFIC from the other US person:</div>
-			  <div style="float:left;clear:right;">
+			  <div style="width:118mm;float:left;clear:right;padding-top:12.75mm;">
 				  <xsl:for-each select="$DependencyData/TransactionDesc">
 					  <xsl:call-template name="PopulateText">
 						  <xsl:with-param name="TargetNode" select="."/>
@@ -194,7 +194,7 @@
 			</div>        
            <div class="styTopSectionLine" style="width:187mm;">        
 			  <div class="styTopSectionLineLbl" style="float:left;clear:both;">The law under which the shareholder’s holding period includes the holding period of the other US person:</div>
-			  <div style="float:left;clear:right;">
+			  <div style="width:118mm;float:left;clear:right;padding-top:12.75mm;">
 				  <xsl:for-each select="$DependencyData/ShareholdersHoldingPrdLawTxt">
 					  <xsl:call-template name="PopulateText">
 						  <xsl:with-param name="TargetNode" select="."/>

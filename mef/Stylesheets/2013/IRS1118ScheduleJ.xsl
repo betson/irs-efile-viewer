@@ -10,8 +10,10 @@
   <xsl:include href="IRS1118ScheduleJStyle.xsl"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS1118ScheduleJ"/>
 <xsl:template match="/">
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 <html>
 <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -30,8 +32,6 @@
   <!-- javascript include -->
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
         <xsl:call-template name="InitJS"/>
-  <!-- Commented out the following line because of the defect 2296 --> 
-  <!--xsl:call-template name="AddOnStyle"></xsl:call-template-->
   <style type="text/css">
           <!--HINTS: Part I line 2c, Part I line 9c and Part II line c repeated by row.... Part I - IV column (iii) display in repeated table four times -->
   <xsl:if test="not($Print) or $Print=''">
@@ -41,15 +41,15 @@
   </style>
 <xsl:call-template name="GlobalStylesForm"/>
 </head>
-<body class="styBodyClass">
+<body class="styBodyClass" style="width:187mm">
         <xsl:call-template name="DocumentHeader"/>
 <!-- BEGIN FORM HEADER -->
     <div class="styBB" style="width:187mm;">
-<div class="styFNBox" style="width:26mm;height:33.25mm;border-right-width:.5mm;">
-      <span class="styFormNumber" style="font-size: 10pt;">Schedule J 
-	      </span>
+	<div class="styFNBox" style="width:26mm;height:32mm;border-right-width:.5mm;">
+      <span class="styFormNumber" style="font-size:10pt;">Schedule J 
+	  </span>
             <br/>
-      <div class="styFormNumber" style="font-size: 9pt;">(Form 1118)</div>
+			<div class="styFormNumber" style="font-size: 9pt;">(Form 1118)</div>
             <br/>
             <!--Push Pin image of form Tile left box -->
             <xsl:call-template name="SetFormLinkInline">
@@ -66,13 +66,14 @@
             <span class="styAgency" style="text-align:center;">Department of the Treasury</span>
             <br/>
             <span class="styAgency" style="text-align:center">Internal Revenue Service</span>
- </div>
+	</div>
   <!-- Form Title Box -->
-  <div class="styFTBox" style="width:129.5mm;height:33.25mm;">
-    		<span class="styMainTitle" style="height:8mm;">Adjustments to Separate Limitation Income (Loss) Categories for Determining Numerators of Limitation Fractions, Year-End Recharacterization Balances, and Overall Foreign and Domestic Loss Account Balances
+    <div class="styFTBox" style="width:129.5mm;height:32mm;">
+    		<span class="styMainTitle" style="height:8mm;">Adjustments to Separate Limitation Income (Loss) Categories for Determining Numerators of 
+    		Limitation Fractions, Year-End Recharacterization Balances, and Overall Foreign and Domestic Loss Account Balances
              </span>
                 <br/>
-    For calendar year 
+			For calendar year 
            <span style="width:10mm;border-bottom: 1 solid black">
               <xsl:call-template name="PopulateReturnHeaderTaxYear"/>
           </span>
@@ -84,21 +85,21 @@
               <xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
            </span>
             <br/>
-            <br/>
-              <span class="styBoldText" style="font-size:6pt;">
-             <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>Attach to Form 1118.  For Paperwork Reduction Act Notice, see the Instructions for Form 1118.
-          </span>
-         </div>
+            <span class="styBoldText" style="font-size:6pt;">
+             <img src="{$ImagePath}\1118SchJ_Bullet.gif" alt="Right arrow" border="0"/>Attach to Form 1118.  For Paperwork Reduction Act Notice, see the 
+             Instructions for Form 1118.
+            </span>
+    </div>
     <!-- OMB No. -->
- <div class="styTYBox" style="width:29.5mm;height:33.25mm;border-left-width:.5mm;padding-top:15mm;padding-bottom:1mm;border-bottom-width:0px;text-align:center;float:left;">   
- OMB No. 1545-0122
-</div>
-</div>
+		<div class="styTYBox" 
+		 style="width:29.5mm;height:32mm;border-left-width:.5mm;padding-top:15mm;padding-bottom:1mm;border-bottom-width:0px;text-align:center;
+		 float:left;"> OMB No. 1545-0122
+		</div>
+	</div>
 <!-- Name and Address -->
 <div class="styBB" style="width:187mm;">
  <div class="styNameBox" style="width:143mm;height:9mm;font-weight:normal;font-size:7pt;">
- <!--
- <div class="styINBox" style="width:186mm;height:8mm;border-right-width:0px;border-bottom-width:0px;"> -->
+ <!-- <div class="styINBox" style="width:186mm;height:8mm;border-right-width:0px;border-bottom-width:0px;"> -->
      Name of corporation<br/>
             <xsl:call-template name="PopulateReturnHeaderFiler">
               <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -124,21 +125,23 @@
 <!-- Part I-->
 <div class="styBB" style="width:187mm;border-top-width:0px; ">
   <div class="styTitleName" style="height:4.7mm;border-bottom-width:1px;">Part I</div>
-  <div class="styTitleDesc" style="height:4.7mm;font-size:8pt;padding-left:4px;border-right-width:0px;border-top-width:1px;border-bottom-width:1px;">
-       <span class="styBoldText">
-         Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions 
-       </span>
-            <span class="styNormalText">
-       (see instructions.)</span>
-  </div>
+	<div class="styTitleDesc" style="height:auto;font-size:8pt;padding-left:4px;border-right-width:0px;border-top-width:1px;border-bottom-width:1px;">
+        <b>Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions</b> 
+            <span class="styNormalText">(see instructions)</span>
+	</div>
 </div>
 <!-- If the Separate Print Solution is ON and there exists any data for the repeating element more than once, -->
         <!-- display an EMPTY table.  Check if the record count of Part I Line 2c or Count of Part I Line 9c or Count of Part II Line c is greater than 1 -->
-<xsl:if test="($Print = $Separated) and                 ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &gt; 1) or                  (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &gt; 1) or                  (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &gt; 1) or                  (count($FormData/AdjSepLmtOtherIncome) &gt; 1) )">
+<xsl:if test="($Print = $Separated) and                 
+			( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &gt; 1) or
+				(count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &gt; 1) or
+				(count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &gt; 1) or
+				(count($FormData/AdjSepLmtOtherIncome) &gt; 1) )">
           <!-- Part I empty table for separated foramt-->
-          <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm;border-top-width:0px;border-bottom-width:0px;page-break-after;always;" id="adjSepLimInc">
+          <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm;border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" 
+          id="adjSepLimInc">
             <table cellspacing="0" style="font-size:7pt;">
-              <thead style="display:table-header-group;font-weight:normal;text-align:center;">
+              <thead style="display:table-row-group;font-weight:normal;text-align:center;">
                 <tr>
                   <th class="IRS1118ScheduleJ_GenericCell" style=" width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col"/>
                   <th class="IRS1118ScheduleJ_GenericCell" style="height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
@@ -148,31 +151,31 @@
                   <th class="IRS1118ScheduleJ_GenericCell" style="height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
                     <span class="styBoldText">(ii)</span>
                     <br/>Passive category income
-	      </th>
+				  </th>
                   <th class="IRS1118ScheduleJ_GenericCell" style="height:10mm;border-right-width:1px;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
                     <span class="styBoldText">(iii)</span>
-                    <br/>Other income* <xsl:number value="position()" format="1"/>
-	      </th>
-	      	      <th class="IRS1118ScheduleJ_GenericCell" style="height:10mm;border-right-width:0px;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
-	       <span class="styBoldText">(iv)</span>
-	        <br/>U.S. income
-	      </th>
-	    </tr>
+                    <br/>Other income* <!--<xsl:number value="position()" format="1"/>-->
+				  </th>
+					<th class="IRS1118ScheduleJ_GenericCell" style="height:10mm;border-right-width:0px;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
+					   <span class="styBoldText">(iv)</span>
+					   <br/>U.S. income
+					</th>
+				</tr>
 	     </thead>
               <tfoot/>
 	     <tbody>
                 <!-- Part I, line 1 for empty table for separated format-->
-	    <tr>
+     	        <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Income or (loss) before adjustments</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="width:32mm;font-size:10px;" valign="bottom">
                     <!--See Additionla Data tabel message -->
-			<xsl:call-template name="PopulateAdditionalDataTableMessage">
-			  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
+					<xsl:call-template name="PopulateAdditionalDataTableMessage">
+					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
                       <xsl:with-param name="ShortMessage" select=" 'true' "/>
-			</xsl:call-template>
+					</xsl:call-template>
                     <span class="styTableCellPad"/>
-		</td>
+					</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="width:32mm;font-size:10px;" valign="bottom">
                     <span class="styTableCellPad"/>(<span style="width:16px;">)</span>
                   </td>
@@ -188,7 +191,8 @@
                 <!-- Part I, Line 2 for empty table for separated format-->
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
-                  <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">Allocation of separate limitation losses:</td>
+                  <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">
+                  Allocation of separate limitation losses:</td>
                 </tr>
                 <!-- Part I,  line 2a for empty table for separated format-->
                 <tr>
@@ -251,7 +255,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span> Combine lines 1 through 2c.</td>
+                    <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
@@ -263,8 +267,8 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
-      </td>
-            <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-top-width:1px;font-size:10px;">
+				  </td>
+				  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-top-width:1px;font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
@@ -311,7 +315,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
-                    <span style="font-size:10px;font-weight:bold;">Subtotal?</span>
+                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>
                     <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
@@ -353,7 +357,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">8</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span>Combine lines 6 and 7.</td>
+                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 6 and 7.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
@@ -374,7 +378,8 @@
                 <!--Part I, Line 9 empty table for separated format -->
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">9</td>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="5" style="width:99mm;font-size:10px;border-right-width:0px;" scope="row">Recharacterization of separate limitation income:</td>
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="5" style="width:99mm;font-size:10px;border-right-width:0px;" scope="row">
+                  Recharacterization of separate limitation income:</td>
                 </tr>
                 <!--Part I, Line 9a empty table for separated format -->
                 <tr>
@@ -407,7 +412,7 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-width:2px;">
                     <span class="styTableCellPad"/>(<span style="width:16px;">)</span>
                   </td>
-      <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;">
+				  <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:1px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
@@ -460,8 +465,9 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;" valign="top">11</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;border-bottom-width:0px;">
-                    <span style="font-weight:bold;">Numerator of Limitation Fraction?</span>Combine lines 8 through 10. Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. 
-                      of corresponding Schedule B.</td>
+                    <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10. 
+                    Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. 
+                    of corresponding Schedule B.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;border-bottom-width:0px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
@@ -481,7 +487,8 @@
                 </tr>
                 <!-- Part II title -->
                 <tr>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px; font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
+                   font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part II</div>
                     <span style="width:3mm;padding-top:1mm;"/> 
                       Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
@@ -493,6 +500,11 @@
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">a</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">General category income </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="background-color:lightgrey;">
+                    <!--See Additionla Data tabel message -->
+					<xsl:call-template name="PopulateAdditionalDataTableMessage">
+					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
+                      <xsl:with-param name="ShortMessage" select=" 'true' "/>
+					</xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
@@ -502,12 +514,12 @@
                   <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1px;font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
-      </td>
-            <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-bottom-width:0px; background-color:lightgrey;">
+				  </td>
+				  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-bottom-width:0px; background-color:lightgrey;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
-    </tr>  
+                </tr>  
                 <!--Part II, Line b empty table for separated format -->
                 <tr>
                   <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">b</td>
@@ -551,16 +563,16 @@
                 </tr>
                 <!-- Part III title -->
                 <tr>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px; border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
-                    <div class="styTitleName" style="height:4.7mm;">Part III</div>
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+                  style="width:187mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                    <div class="styTitleName" style="height:4.7mm;">Part III
+                    </div>
                     <span style="width:3mm;"/> 
                         Overall Foreign Loss Account Balances (section 904(f)(1))  
-                    <span style="font-style:italic;font-weight:normal;">
-                      <br/>
                       <span style="padding-left:3mm;">
-                        Complete for <span style="font-weight:bold;">each </span>
-                        separate limitation income category.</span>
-                    </span>
+						<span style="font-style:italic;font-weight:normal;">Complete for <b>each </b>
+                          separate limitation income category.</span>
+                      </span>
                   </td>
                 </tr>
                 <!-- Part III, line 1 empty line in separated format -->
@@ -568,6 +580,11 @@
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">1</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Beginning balance</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px">
+                    <!--See Additionla Data tabel message -->
+					<xsl:call-template name="PopulateAdditionalDataTableMessage">
+					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
+                      <xsl:with-param name="ShortMessage" select=" 'true' "/>
+					</xsl:call-template>
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
@@ -645,7 +662,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:0px;" scope="row">
-                    <span style="font-weight:bold;">Ending balance?</span>Combine lines 1 through 4.</td>
+                    <span style="font-weight:bold;">Ending balance-</span>Combine lines 1 through 4.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
@@ -663,9 +680,10 @@
                     <span style="width:16px;"/>
                   </td>
                 </tr>
-                <!-- PartIV title -->
+                <!-- Part IV title -->
                 <tr>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px; border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
+                   border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part IV</div>
                     <span style="width:3mm;"/> 
                       Overall Domestic Loss Account Balances (section 904(g)(1))
@@ -677,6 +695,11 @@
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px" scope="row">Beginning balance</td>
                   <!--Column (i) -->
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px">
+                    <!--See Additionla Data tabel message -->
+					<xsl:call-template name="PopulateAdditionalDataTableMessage">
+					  <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt"/>
+                      <xsl:with-param name="ShortMessage" select=" 'true' "/>
+					</xsl:call-template>
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
@@ -747,7 +770,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span>Combine lines 1 through 3.
+                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 3.
                   </td>
                   <!-- column (i) -->
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
@@ -799,7 +822,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Ending balance?</span>Subtract line 5 from line 4.
+                    <span style="font-weight:bold;">Ending balance-</span>Subtract line 5 from line 4.
                     </td>
                   <!--column (i) -->
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
@@ -824,18 +847,35 @@
                 </tr>
               </tbody>
             </table>
+				<div style="width:187mm">
+				    <div style="float: left; clear: none;">
+						<span class="styBoldText">* Important: </span>
+						<span class="styItalicText">See <span class="styBoldText">Computer-Generated Schedule J </span>
+						</span> in instructions.
+				    </div>
+					  <span style="width:13mm;"/>
+						  Cat. No. 10309U <span style="width:29px;"/>
+					  <span class="styBoldText">Schedule J (Form 1118) (Rev. 01-2009)</span>
+				</div>
+					<div class="pageEnd"/>
           </div>
         </xsl:if>
         <!-- If the Separate Print Option is OFF OR if the Separate Print Option is ON and there is 0 or 1 data -->
         <!-- for each repeating element, print the table with data inline.                                      -->
-        <xsl:if test=" ($Print != $Separated) or                 ( ($Print = $Separated) and                   ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &lt; 2) and                    (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &lt; 2) and                    (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &lt; 2) and                    (count($FormData/AdjSepLmtOtherIncome) &lt; 2) ) )">
+        <xsl:if test=" ($Print != $Separated) or
+            ( ($Print = $Separated) and
+            ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &lt; 2) and
+             (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &lt; 2) and
+             (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &lt; 2) and
+             (count($FormData/AdjSepLmtOtherIncome) &lt; 2) ) )">
           <!-- Part I  table 1 This is the primary table I think for inline format-->
-          <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm; border-top-width:0px;border-bottom-width:0px;page-break-after;always;" id="adjSpLmInc">
+          <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm; border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" id="adjSpLmInc">
             <!--Part I table for inline format -->
             <table cellspacing="0" style="font-size:7pt;">
-              <thead style="display:table-header-group;font-weight:normal;text-align:center;">
+              <thead style="display:table-row-group;font-weight:normal;text-align:center;">
                 <tr>
-                  <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col"><span style="width:1px;" /></th>
+                  <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col">
+                  <span style="width:1px;" /></th>
                   <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
                     <span class="styBoldText">(i)</span>
                     <br/>General category income
@@ -849,7 +889,7 @@
                     <xsl:call-template name="SetFormLinkInline">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]"/>
                     </xsl:call-template>
-                    <br/>Other income* <xsl:number value="position()" format="1"/>
+                    <br/>Other income* <!--<xsl:number value="position()" format="1"/>-->
                   </th>
                   <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;border-right-width:0px;" scope="col">
                     <span class="styBoldText">(iv)</span>
@@ -891,7 +931,8 @@
                 <!--Part I, line 2 for inline format -->
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
-                  <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">Allocation of separate limitation losses:</td>
+                  <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">
+                  Allocation of separate limitation losses:</td>
                 </tr>
                 <!--Part I, line 2a for inline format  -->
                 <tr>
@@ -990,7 +1031,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span> Combine lines 1 through 2c.</td>
+                    <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/IncomeOrLossAndAllocationForCY"/>
@@ -1066,7 +1107,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
-                    <span style="font-size:10px;font-weight:bold;">Subtotal?</span>
+                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>
                     <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -1129,7 +1170,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">8</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span>Combine lines 6 and 7.</td>
+                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 6 and 7.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AdjIncmLossAndLmtIncmAmt"/>
@@ -1154,7 +1195,8 @@
                 <!--Part I, line 9 for inline format  -->
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">9</td>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="5" style="width:99mm;font-size:10px;border-right-width:0px;" scope="row">Recharacterization of separate limitation income:</td>
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="5" style="width:99mm;font-size:10px;border-right-width:0px;" scope="row">Recharacterization of separate
+                   limitation income:</td>
                 </tr>
                 <!--Part I, line 9a for inline format  -->
                 <tr>
@@ -1254,7 +1296,8 @@
                     <!--Pen and ink image -->
                     <span style="padding-right:2mm">
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
-                      <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 General Limitation Income Column (i) - Allocation of domestic losses Indicator</xsl:with-param>
+                      <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 General Limitation Income Column (i) - Allocation of domestic losses Indicator
+                      </xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                     </xsl:call-template>
                    </span>
@@ -1303,7 +1346,8 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;" valign="top">11</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;border-bottom-width:0px;">
-                    <span style="font-weight:bold;">Numerator of Limitation Fraction?</span>Combine lines 8 through 10. Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. </td>
+                    <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10. Enter each result here and on Schedule B, Part II, line 7,
+                     of corresponding Form 1118. </td>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;border-bottom-width:0px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/NumeratorOfLimitationFraction"/>
@@ -1323,7 +1367,8 @@
                 </tr>
                 <!-- Part II Title for inline format -->
                 <tr>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px; font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
+                   font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part II</div>
                     <span style="width:3mm;padding-top:1mm;"/> 
                       Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
@@ -1428,12 +1473,12 @@
                 <!-- end repeating rows -->
                 <!--Part III Title in inline format -->
                 <tr>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px; border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
-                    <div class="styTitleName" style="height:4.7mm;">Part III</div>
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
+                   border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                    <div class="styTitleName" style="height:4mm;">Part III</div>
                     <span style="width:3mm;"/> 
                         Overall Foreign Loss Account Balances (section 904(f)(1))  
                     <span style="font-style:italic;font-weight:normal;">
-                      <br/>
                       <span style="padding-left:3mm;">
                         Complete for <span style="font-weight:bold;">each </span>
                         separate limitation income category.</span>
@@ -1528,7 +1573,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:0px;" scope="row">
-                    <span style="font-weight:bold;">Ending balance?</span>Combine lines 1 through 4.</td>
+                    <span style="font-weight:bold;">Ending balance-</span>Combine lines 1 through 4.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
@@ -1551,7 +1596,8 @@
                 </tr>
                 <!-- Part IV title for inline format -->
                 <tr>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px; border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
+                   border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part IV</div>
                     <span style="width:3mm;"/> 
                       Overall Domestic Loss Account Balances (section 904(g)(1))
@@ -1624,7 +1670,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span>Combine lines 1 through 3.</td>
+                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 3.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
@@ -1667,7 +1713,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Ending balance?</span>Subtract line 5
+                    <span style="font-weight:bold;">Ending balance-</span>Subtract line 5
                       from line 4.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
@@ -1691,6 +1737,17 @@
                 </tr>
               </tbody>
             </table>
+				<div style="width:187mm">
+					<div style="float: left; clear: none;">
+						<span class="styBoldText">* Important: </span>
+						<span class="styItalicText">See <span class="styBoldText">Computer-Generated Schedule J </span>
+						</span> in instructions.
+					</div>
+						  <span style="width:13mm;"/>
+							  Cat. No. 10309U <span style="width:29px;"/>
+						  <span class="styBoldText">Schedule J (Form 1118) (Rev. 01-2009)</span>
+				</div>
+        <div class="pageEnd"/>
           </div>
         </xsl:if>
   <!-- If the Separate Print Option is OFF, repeat table for the repeating column iii. -->
@@ -1706,22 +1763,21 @@
               <br/>
               <span class="styRepeatingDataTitle" style="width:187mm;">Form 1118 Schedule J, Parts I - IV Column (iii) Other Income (Continue)</span>
               <!-- Part I Title for repeating Column (iii) for inline format -->
-<div class="styBB" style="width:187mm;border-top-width:1px;">
-  <div class="styTitleName" style="height:4.7mm;border-bottom-width:1px;">Part I</div>
-  <div class="styTitleDesc" style="height:4.7mm;font-size:8pt;padding-left:4px;border-right-width:0px;border-top-width:1px;border-bottom-width:1px;">
-       <span class="styBoldText">
-         Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions 
-                 </span>
-                  <span class="styNormalText">
-       (see instructions.)</span>
-  </div>
-</div>
+              <div class="styBB" style="width:187mm;border-top-width:1px;">
+                   <div class="styTitleName" style="height:4.7mm;border-bottom-width:1px;">Part I</div>
+                   <div class="styTitleDesc" style="height:auto;font-size:8pt;padding-left:4px;border-right-width:0px;border-top-width:1px;border-bottom-width:1px;">
+                       <b>Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions</b>
+                  <span class="styNormalText">(see instructions.)</span>
+                  </div>
+              </div>
               <!-- Part I Table for repeating Column (iii) for inline format-->
-              <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm;border-top-width:0px;border-bottom-width:0px;page-break-after;always;" id="adSeLmIn">
+              <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm;border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" 
+              id="adSeLmIn">
                 <table cellspacing="0" style="font-size:7pt;">
-                  <thead style="display:table-header-group;font-weight:normal;text-align:center;">
+                  <thead style="display:table-row-group;font-weight:normal;text-align:center;">
                     <tr>
-                      <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col"><span style="width:1px;" /></th>
+                      <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col">
+                      <span style="width:1px;" /></th>
                       <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
                         <span class="styBoldText">(iii)</span>
                         <br/>Other Income* <xsl:number value="position()" format="2"/>
@@ -1734,7 +1790,8 @@
                         <span class="styBoldText">(iii)</span>
                         <br/>Other Income* <xsl:number value="position() +2" format="2"/>
                       </th>
-                      <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;border-right-width:0px;" scope="col">
+                      <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;
+                      text-align:center;border-right-width:0px;" scope="col">
                         <span class="styBoldText">(iii)</span>
                         <br/>Other Income* <xsl:number value="position() +3" format="2"/>
                       </th>
@@ -1770,7 +1827,8 @@
                     <!-- Part I, Line 2 for repeating Column (iii) for inline format-->
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
-                      <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">Allocation of separate limitation losses:</td>
+                      <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">
+                      Allocation of separate limitation losses:</td>
                     </tr>
                     <!-- Part I, Line 2a for repeating Column (iii) for inline format-->
                     <tr>
@@ -1859,7 +1917,7 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal?</span> Combine lines 1 through 2c.</td>
+                        <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/IncomeOrLossAndAllocationForCY"/>
@@ -1935,7 +1993,7 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal?</span>Combine lines 3 through 5.</td>
+                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 3 through 5.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/AdjustedIncmLossAndAllocnCYAmt"/>
@@ -1986,7 +2044,7 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">8</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal?</span>Combine lines 6 and 7.</td>
+                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 6 and 7.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/AdjIncmLossAndLmtIncmAmt"/>
@@ -2011,7 +2069,8 @@
                     <!-- Part I, Line 9 for repeating Column (iii) repeating row for inline format-->
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">9</td>
-                      <td class="IRS1118ScheduleJ_DescCell" colspan="10" scope="row" style="width:99mm;font-size:10px;border-right-width:0px;">Recharacterization of separate limitation income:</td>
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="10" scope="row" style="width:99mm;font-size:10px;border-right-width:0px;">
+                      Recharacterization of separate limitation income:</td>
                     </tr>
                     <!-- Part I, Line 9a for repeating Column (iii) for inline format-->
                     <tr>
@@ -2104,7 +2163,8 @@
                         <!--Pen and ink image -->
                         <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
+                          </xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
                         </span>
@@ -2116,8 +2176,10 @@
                         <!--Pen and ink image -->
                         <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
+                          </xsl:with-param>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
                         </span>
                         <xsl:call-template name="PopulateAmount">
@@ -2128,8 +2190,10 @@
                         <!--Pen and ink image -->
                         <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
+                          </xsl:with-param>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
                         </span>
                         <xsl:call-template name="PopulateAmount">
@@ -2140,8 +2204,10 @@
                         <!--Pen and ink image -->
                         <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
+                          </xsl:with-param>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
                        </span>
                         <xsl:call-template name="PopulateAmount">
@@ -2153,7 +2219,8 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" valign="top" scope="row">11</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:1px;" scope="row">
-                        <span style="font-weight:bold;">Numerator of Limitation Fraction?</span>Combine lines 8 through 10.  Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. </td>
+                        <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10.  Enter each result here and on Schedule B, Part II, line
+                         7, of corresponding Form 1118. </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/NumeratorOfLimitationFraction"/>
@@ -2177,7 +2244,9 @@
                     </tr>
                     <!-- Part II title for repeating Column (iii) for inline format-->
                     <tr>
-                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:1px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+                      style="width:187mm;padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:1px;font-weight:bold;
+                      font-size:8pt;padding-left:0px;height:8mm;">
                         <div class="styTitleName" style="height:4.7mm;">Part II</div>
                         <span style="width:3mm;"/> 
                             Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
@@ -2195,17 +2264,20 @@
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -2220,17 +2292,20 @@
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -2243,7 +2318,7 @@
                       <tr>
                         <td class="IRS1118ScheduleJ_SubIndexCell" scope="row">c</td>
                         <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Other Income*</td>
-                        <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;;background-color:lightgrey;">
+                        <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;background-color:lightgrey;">
                           <span class="styTableCellPad"/>
                           <span style="width:16px;"/>
                         </td>
@@ -2264,12 +2339,14 @@
                     <!-- end repeating rows -->
                     <!-- Part III title for Repeating Column (iii) for inline format-->
                     <tr>
-                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
-                        <div class="styTitleName" style="height:4.7mm;">Part III</div>
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+                      style="width:187mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                        <div class="styTitleName" style="height:4.7mm;">Part III
+                        </div>
                         <span style="width:3mm;"/> 
-                          Overall Foreign Loss Account Balances (section 904(f)(1)) <br/>
+                          Overall Foreign Loss Account Balances (section 904(f)(1)) 
                         <span style="padding-left:3mm;">
-                          <span style="font-style:italic;font-weight:normal;">Complete for <span style="font-weight:bold;">each </span>
+                          <span style="font-style:italic;font-weight:normal;">Complete for <b>each </b>
                             separate limitation income category.</span>
                         </span>
                       </td>
@@ -2378,7 +2455,7 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Ending balance?</span>Combine lines 1 through 4.</td>
+                        <span style="font-weight:bold;">Ending balance-</span>Combine lines 1 through 4.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
@@ -2402,7 +2479,8 @@
                     </tr>
                     <!--Part IV Title for Repeating Column (iii) for inline format-->
                     <tr>
-                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+                      style="width:187mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
                         <div class="styTitleName" style="height:4.7mm;">Part IV</div>
                         <span style="width:3mm;"/> 
                            Overall Domestic Loss Account Balances (section 904(g)(1)) 
@@ -2487,7 +2565,7 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal?</span>Combine lines 1 through 3.</td>
+                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 3.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
@@ -2538,7 +2616,7 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Ending balance?</span>Subtract line 5 from line 4</td>
+                        <span style="font-weight:bold;">Ending balance-</span>Subtract line 5 from line 4</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/EndingBalanceAmt"/>
@@ -2562,23 +2640,35 @@
                     </tr>
                   </tbody>
                 </table>
+					<div style="width:187mm">
+					  <div style="float: left; clear: none;">
+							<span class="styBoldText">* Important: </span>
+								<span class="styItalicText">See <span class="styBoldText">Computer-Generated Schedule J </span>
+							</span> in instructions.
+						</div>
+							<span style="width:13mm;"/>
+							  Cat. No. 10309U <span style="width:29px;"/>
+							<span class="styBoldText">Schedule J (Form 1118) (Rev. 01-2009)</span>
+					</div>
+						<div class="pageEnd"/>
               </div>
             </xsl:if>
           </xsl:for-each>
         </xsl:if>
         <!-- end display repeating column iii -->
-        <!--BEGIN FOOTER-->
+        <!-- This footer was removed 20151102 and placed at the end of each Part IV (Regular, Inline, and Separated) -->
+        <!--BEGIN FOOTER--><!--
         <div style="width:187mm">
           <div style="float: left; clear: none;">
             <span class="styBoldText">* Important: </span>
             <span class="styItalicText">See <span class="styBoldText">Computer-Generated Schedule J </span>
-            </span>in instructions.
+            </span> in instructions.
           </div>
           <span style="width:13mm;"/>
               Cat. No. 10309U <span style="width:29px;"/>
           <span class="styBoldText">Schedule J (Form 1118) (Rev. 01-2009)</span>
         </div>
-        <div class="pageEnd"/>
+        <div class="pageEnd"/>-->
         <!--END FOOTER-->
 <!-- BEGIN Left Over Table -->  
   <!-- Additonal Data Title Bar and Button -->
@@ -2621,17 +2711,24 @@
         <!--Begin Blue or Separate format table -->
         <!-- If the Separate Print Option is OFF OR if the Separate Print Option is ON and there is 0 or 1 data -->
         <!-- for each repeating element, print the table with data inline.                                      -->
-        <xsl:if test=" ($Print = $Separated) or                 ( ($Print = $Separated) and                   ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &lt; 2) and                    (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &lt; 2) and                    (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &lt; 2) and                    (count($FormData/AdjSepLmtOtherIncome) &lt; 2) ) )">
+        <xsl:if test="
+                         ($Print = $Separated) and
+                         ( (count($FormData/AdjSepLmtGeneralCategoryIncm/AllocationCYSeparateLmtLosses/OtherIncomeAmt) &gt; 1) and
+                           (count($FormData/AdjSepLmtGeneralCategoryIncm/RecharacterizationSepLmtIncm/OtherIncomeAmt) &gt; 1) and
+                           (count($FormData/AdjSepLmtGeneralCategoryIncm/EOYBalancesOfFutureSepLmtIncm/OtherIncomeAmt) &gt; 1) and
+                           (count($FormData/AdjSepLmtOtherIncome) &gt; 1) ) ">
           <!-- Part I  table 1 This is the Blue or Separate format table-->
-          <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm; border-top-width:0px;border-bottom-width:0px;page-break-after;always;" id="adjSpLmInc">
+          <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm; border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" 
+			  id="adjSpLmInc">
             <!--Part I table for Blue or Separate format table -->
             <table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
-              <thead style="font-weight:normal;text-align:center;">              
+              <thead style="display:table-row-group;font-weight:normal;text-align:center;">              
                 <tr class="styDepTblHdr">
                   <!-- The color of the current row is dependent on the number of rows in 2c and 7c.   -->
                   <!-- Therefore, if the sum of the number of data for 2c and 7c is odd, set current to-->
                   <!-- styDepTblRow1. Otherwise, set it to styDepTblRow2.                              -->
-                  <th class="IRS1118ScheduleJ_DescCell" colspan="6" scope="col" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px; font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
+                  <th class="IRS1118ScheduleJ_DescCell" colspan="6" scope="col" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
+                   font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part I</div>
                     <span class="styBoldText">
                        Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions 
@@ -2640,7 +2737,8 @@
                   </th>
                 </tr>
                 <tr class="styDepTblHdr">
-                  <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col"><span style="width:1px;" /></th>
+                  <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col">
+                  <span style="width:1px;" /></th>
                   <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
                     <span class="styBoldText">(i)</span>
                     <br/>General category income
@@ -2654,7 +2752,7 @@
                     <xsl:call-template name="SetFormLinkInline">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[1]"/>
                     </xsl:call-template>
-                    <br/>Other income* <xsl:number value="position()" format="1"/>
+                    <br/>Other income* <!--<xsl:number value="position()" format="1"/>-->
                   </th>
                   <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;border-right-width:0px;" scope="col">
                     <span class="styBoldText">(iv)</span>
@@ -2696,7 +2794,8 @@
                 <!--Part I, line 2 for Blue or Separate format table-->
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
-                  <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">Allocation of separate limitation losses:</td>
+                  <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">
+                  Allocation of separate limitation losses:</td>
                 </tr>
                 <!--Part I, line 2a for Blue or Separate format table  -->
                 <tr class="styDepTblRow1">
@@ -2803,7 +2902,7 @@
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span> Combine lines 1 through 2c.</td>
+                    <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/IncomeOrLossAndAllocationForCY"/>
@@ -2879,7 +2978,7 @@
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
-                    <span style="font-size:10px;font-weight:bold;">Subtotal?</span>
+                    <span style="font-size:10px;font-weight:bold;">Subtotal-</span>
                     <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
@@ -2942,7 +3041,7 @@
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">8</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span>Combine lines 6 and 7.</td>
+                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 6 and 7.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/AdjIncmLossAndLmtIncmAmt"/>
@@ -2967,7 +3066,8 @@
                 <!--Part I, line 9 for Blue or Separate format table  -->
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">9</td>
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="5" style="width:99mm;font-size:10px;border-right-width:0px;" scope="row">Recharacterization of separate limitation income:</td>
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="5" style="width:99mm;font-size:10px;border-right-width:0px;" scope="row">
+                  Recharacterization of separate limitation income:</td>
                 </tr>
                 <!--Part I, line 9a for Blue or Separate format table  -->
                 <tr class="styDepTblRow2">
@@ -3075,7 +3175,8 @@
                     <!--Pen and ink image -->
                     <span style="padding-right:2mm">
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
-                      <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 General Limitation Income Column (i) - Allocation of domestic losses Indicator</xsl:with-param>
+                      <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 General Limitation Income Column (i) - Allocation of domestic losses Indicator
+                      </xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                     </xsl:call-template>
                     </span>
@@ -3124,7 +3225,8 @@
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;" valign="top">11</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;border-bottom-width:0px;">
-                    <span style="font-weight:bold;">Numerator of Limitation Fraction?</span>Combine lines 8 through 10. Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. </td>
+                    <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10. Enter each result here and on Schedule B, Part II, line 7,
+                     of corresponding Form 1118. </td>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;border-bottom-width:0px;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/NumeratorOfLimitationFraction"/>
@@ -3144,7 +3246,8 @@
                 </tr>
                 <!-- Part II Title for Blue or Separate format table -->
                 <tr class="styDepTblHdr">
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px; font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
+                   font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part II</div>
                     <span style="width:3mm;padding-top:1mm;"/> 
                       Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
@@ -3257,7 +3360,8 @@
                 <!-- end repeating rows -->
                 <!--Part III Title in Blue or Separate format table -->
                 <tr class="styDepTblHdr">
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px; border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
+                   border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part III</div>
                     <span style="width:3mm;"/> 
                         Overall Foreign Loss Account Balances (section 904(f)(1))  
@@ -3357,7 +3461,7 @@
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="border-bottom-width:0px;padding-left:2mm;" valign="top">5</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:0px;" scope="row">
-                    <span style="font-weight:bold;">Ending balance?</span>Combine lines 1 through 4.</td>
+                    <span style="font-weight:bold;">Ending balance-</span>Combine lines 1 through 4.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-bottom-width:0px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
@@ -3380,7 +3484,8 @@
                 </tr>
                 <!-- Part IV title for Blue or Separate format table -->
                 <tr class="styDepTblHdr">
-                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px; border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                  <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:2px;
+                   border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
                     <div class="styTitleName" style="height:4.7mm;">Part IV</div>
                     <span style="width:3mm;"/> 
                       Overall Domestic Loss Account Balances (section 904(g)(1))
@@ -3453,7 +3558,7 @@
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal?</span>Combine lines 1 through 3.</td>
+                    <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 3.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtGeneralCategoryIncm/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
@@ -3496,7 +3601,7 @@
                 <tr class="styDepTblRow2">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Ending balance?</span>Subtract line 5
+                    <span style="font-weight:bold;">Ending balance-</span>Subtract line 5
                       from line 4.</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
@@ -3535,11 +3640,12 @@
               <br/>
               <span class="styRepeatingDataTitle" style="width:187mm;">Form 1118 Schedule J, Parts I - IV Column (iii) Other Income (Continue)</span>
               <!-- Part I Table for repeating Column (iii) for Blue or Separate format table-->
-              <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm;border-top-width:0px;border-bottom-width:0px;page-break-after;always;" id="adSeLmIn">
+              <div class="IRS1118ScheduleJ_TableContainer" style="width:187mm;border-top-width:0px;border-bottom-width:0px;page-break-after:always;display:block" id="adSeLmIn">
                 <table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
-                <thead style="font-weight:normal;text-align:center;">
+                <thead style="display:table-row-group;font-weight:normal;text-align:center;">
                     <tr class="styDepTblHdr">
-                      <th class="IRS1118ScheduleJ_DescCell" colspan="6" scope="col" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px; font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
+                      <th class="IRS1118ScheduleJ_DescCell" colspan="6" scope="col" style="padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:2px;
+                       font-weight:bold;font-size:8pt;width:187mm;padding-left:0px;height:8mm;">
                         <div class="styTitleName" style="height:4.7mm;">Part I</div>
                         <span class="styBoldText">
                              Adjustments to Separate Limitation Income or (Losses) in Determining Numerators of Limitation Fractions 
@@ -3548,7 +3654,8 @@
                       </th>
                     </tr>
                     <tr class="styDepTblHdr">
-                      <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col"><span style="width:1px;" /></th>
+                      <th class="IRS1118ScheduleJ_GenericCell" style="width:58mm;height:10mm;font-weight:normal;text-align:center;" colspan="2" scope="col">
+                      <span style="width:1px;" /></th>
                       <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;" scope="col">
                         <span class="styBoldText">(iii)</span>
                         <br/>Other Income* <xsl:number value="position()" format="2"/>
@@ -3561,7 +3668,8 @@
                         <span class="styBoldText">(iii)</span>
                         <br/>Other Income* <xsl:number value="position() +2" format="2"/>
                       </th>
-                      <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;border-right-width:0px;" scope="col">
+                      <th class="IRS1118ScheduleJ_GenericCell" style="width:32mm;height:10mm;font-size:7pt;font-weight:normal;text-align:center;border-right-width:0px;" 
+                      scope="col">
                         <span class="styBoldText">(iii)</span>
                         <br/>Other Income* <xsl:number value="position() +3" format="2"/>
                       </th>
@@ -3597,7 +3705,8 @@
                     <!-- Part I, Line 2 for repeating Column (iii) for Blue or Separate format table-->
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">2</td>
-                      <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">Allocation of separate limitation losses:</td>
+                      <td class="IRS1118ScheduleJ_DescCell" style="width:99mm;font-size:10px;border-right-width:0px;" colspan="5" scope="row">
+                      Allocation of separate limitation losses:</td>
                     </tr>
                     <!-- Part I, Line 2a for repeating Column (iii) for Blue or Separate format table-->
                     <tr class="styDepTblRow1">
@@ -3694,7 +3803,7 @@
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal?</span> Combine lines 1 through 2c.</td>
+                        <span style="font-weight:bold;">Subtotal-</span> Combine lines 1 through 2c.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/IncomeOrLossAndAllocationForCY"/>
@@ -3770,7 +3879,7 @@
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal?</span>Combine lines 3 through 5.</td>
+                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 3 through 5.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/AdjustedIncmLossAndAllocnCYAmt"/>
@@ -3821,7 +3930,7 @@
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">8</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal?</span>Combine lines 6 and 7.</td>
+                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 6 and 7.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/AdjIncmLossAndLmtIncmAmt"/>
@@ -3846,7 +3955,8 @@
                     <!-- Part I, Line 9 for repeating Column (iii) repeating row for Blue or Separate format table-->
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">9</td>
-                      <td class="IRS1118ScheduleJ_DescCell" colspan="10" scope="row" style="width:99mm;font-size:10px;border-right-width:0px;">Recharacterization of separate limitation income:</td>
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="10" scope="row" style="width:99mm;font-size:10px;border-right-width:0px;">
+                      Recharacterization of separate limitation income:</td>
                     </tr>
                     <!-- Part I, Line 9a for repeating Column (iii) for Blue or Separate format table-->
                     <tr class="styDepTblRow2">
@@ -3947,7 +4057,8 @@
                         <!--Pen and ink image -->
                         <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
+                          </xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
                         </span>
@@ -3959,8 +4070,10 @@
                         <!--Pen and ink image -->
                         <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicato
+                          r</xsl:with-param>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
                         </span>
                         <xsl:call-template name="PopulateAmount">
@@ -3971,8 +4084,10 @@
                         <!--Pen and ink image -->
                         <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
+                          </xsl:with-param>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
                         </span>
                         <xsl:call-template name="PopulateAmount">
@@ -3983,8 +4098,10 @@
                         <!--Pen and ink image -->
                        <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
-                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
+                          <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator
+                          </xsl:with-param>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/RcptrOverallDomesticLossesAmt/@allocationDomesticLossesCd"/>
                         </xsl:call-template>
                         </span>
                         <xsl:call-template name="PopulateAmount">
@@ -3996,7 +4113,8 @@
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" valign="top" scope="row">11</td>
                       <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;border-bottom-width:1px;" scope="row">
-                        <span style="font-weight:bold;">Numerator of Limitation Fraction?</span>Combine lines 8 through 10.  Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. </td>
+                        <span style="font-weight:bold;">Numerator of Limitation Fraction-</span>Combine lines 8 through 10.  
+                        Enter each result here and on Schedule B, Part II, line 7, of corresponding Form 1118. </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/NumeratorOfLimitationFraction"/>
@@ -4020,7 +4138,9 @@
                     </tr>
                     <!-- Part II title for repeating Column (iii) for Blue or Separate format table-->
                     <tr class="styDepTblHdr">
-                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-right-width:0px;border-top-width:1px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+                      style="width:187mm;padding-top:0px;padding-bottom:0px;border-right-width:0px;
+								border-top-width:1px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
                         <div class="styTitleName" style="height:4.7mm;">Part II</div>
                         <span style="width:3mm;"/> 
                             Year-End Balances of Future Separate Limitation Income That Must Be Recharacterized<br/>
@@ -4038,17 +4158,20 @@
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/GeneralCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -4063,17 +4186,20 @@
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos + 1]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 2]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
+                          <xsl:with-param name="TargetNode" 
+                          select="$FormData/AdjSepLmtOtherIncome[$pos+ 3]/EOYBalancesOfFutureSepLmtIncm/PassiveCategoryIncomeAmt"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -4115,12 +4241,13 @@
                     <!-- end repeating rows -->
                     <!-- Part III title for Repeating Column (iii) for Blue or Separate format table-->
                     <tr class="styDepTblHdr">
-                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+                      style="width:187mm;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
                         <div class="styTitleName" style="height:4.7mm;">Part III</div>
                         <span style="width:3mm;"/> 
-                          Overall Foreign Loss Account Balances (section 904(f)(1)) <br/>
+                          Overall Foreign Loss Account Balances (section 904(f)(1))
                         <span style="padding-left:3mm;">
-                          <span style="font-style:italic;font-weight:normal;">Complete for <span style="font-weight:bold;">each </span>
+                          <span style="font-style:italic;font-weight:normal;">Complete for <b>each </b>
                             separate limitation income category.</span>
                         </span>
                       </td>
@@ -4229,7 +4356,7 @@
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">5</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Ending balance?</span>Combine lines 1 through 4.</td>
+                        <span style="font-weight:bold;">Ending balance-</span>Combine lines 1 through 4.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallForeignLossAcctBalances/EndingBalanceAmt"/>
@@ -4253,7 +4380,9 @@
                     </tr>
                     <!--Part IV Title for Repeating Column (iii) for Blue or Separate format table-->
                     <tr class="styDepTblHdr">
-                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:1px;border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
+                      <td class="IRS1118ScheduleJ_DescCell" colspan="6" scope="row" 
+                      style="width:187mm;padding-top:0px;padding-bottom:0px;border-top-width:1px;
+                                border-right-width:0px;font-weight:bold;font-size:8pt;padding-left:0px;height:8mm;">
                         <div class="styTitleName" style="height:4.7mm;">Part IV</div>
                         <span style="width:3mm;"/> 
                            Overall Domestic Loss Account Balances (section 904(g)(1)) 
@@ -4338,7 +4467,7 @@
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">4</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal?</span>Combine lines 1 through 3.</td>
+                        <span style="font-weight:bold;">Subtotal-</span>Combine lines 1 through 3.</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/AdjustmentsSubtotalAmt"/>
@@ -4389,7 +4518,7 @@
                     <tr class="styDepTblRow2">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">6</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Ending balance?</span>Subtract line 5 from line 4</td>
+                        <span style="font-weight:bold;">Ending balance-</span>Subtract line 5 from line 4</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/AdjSepLmtOtherIncome[$pos]/OverallDomLossAcctBalances/EndingBalanceAmt"/>

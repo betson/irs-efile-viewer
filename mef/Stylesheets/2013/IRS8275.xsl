@@ -18,8 +18,10 @@ printing problem only to the extent that it does not distort the browser display
 <xsl:strip-space elements="*"/>
 <xsl:param name="Form8275Data" select="$RtnDoc/IRS8275"/>
 <xsl:template match="/">
-  <html>
+  <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
     <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
       <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form8275Data)"/></xsl:call-template></title>
       <!-- No Browser Caching  -->
       <meta http-equiv="Pragma" content="no-cache"/>
@@ -33,61 +35,62 @@ printing problem only to the extent that it does not distort the browser display
       <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
       <xsl:call-template name="InitJS"/>
       <style type="text/css">    
-        <xsl:if test="not($Print) or $Print=''">
+        <!--<xsl:if test="not($Print) or $Print=''">-->
           <xsl:call-template name="IRS8275Style"/>
           <xsl:call-template name="AddOnStyle"/>        
-        </xsl:if>
+        <!--</xsl:if>-->
       </style>
       <xsl:call-template name="GlobalStylesForm"/>
     </head>
-    <body class="styBodyClass">
+    <body class="styBodyClass" style="width:187mm">
       <form name="Form8275">
         <!-- BEGIN WARNING LINE -->
         <xsl:call-template name="DocumentHeader"/>  
         <!-- END WARNING LINE -->
-					<div style="width:187mm;height:18mm;" class="styTBB">
-						<div style="width:30mm;height:20.5mm;" class="styFNBox">
+					<div style="width:187mm;height:23mm;" class="styTBB">
+						<div style="width:30mm;height:23mm;" class="styFNBox">
 							<div style="height:13.5mm;">Form<span class="styFormNumber" style="font-size: 18pt;">  8275</span>
-								<br/>
 								<div style="font-size:normal">(Rev. August 2013) </div>
-								<br/>
 							</div>
-							<div style="height:5mm;padding-top:2mm;">
+								<div style="height:5mm;padding-top:2mm;">
 								<span class="styAgency">Department of the Treasury</span>
 								<br/>
 								<span class="styAgency">Internal Revenue Service</span>
 							</div>
 						</div>
 						<div class="styFTBox" style="width:127mm;height:20.5mm;" >
-							<div class="styMainTitle" style="height:4mm;padding-top:1mm;" >
-                Regulation Disclosure Statement
-              </div>
+							<div class="styMainTitle" style="height:7mm;padding-top:1mm;" >
+								Disclosure Statement
+							</div>
 							<div class="styFST" style="height:7mm;font-size:7pt;font-weight: bold;">
-                Use this form only to disclose items or positions that are contrary to Treasury <br/>
-                regulations. For other disclosures, use Form 8275, Disclosure Statement. <br/>                
-                <span style="text-align:center;margin-left:0mm;font-size:6.5pt;">
+							Do not use this form to disclose items or positions that are contrary to Treasury <br/>
+							regulations. Instead, use Form 8275-R, Regulation Disclosure Statement.<br/>
+								<span style="text-align:center;margin-left:0mm;font-size:6.5pt;height:7mm;padding-top:1mm;">
 									<img src="{$ImagePath}/8275_Bullet.gif" alt="Bullet Image"/> 
 									Information about Form 8275 and its separate instructions is at 
-									<a href="http://www.irs.gov/form8275" title="Link to IRS.gov"><i>www.irs.gov/form8275.</i></a>
+									<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form2220" title="Link to IRS.gov">
+                                                 <i>www.irs.gov/form2220</i></a>.
 								</span>
-							</div>							
+							</div>						
 							<div class="styFST">
+								<span style="padding-top:3mm;">
 								<img src="{$ImagePath}/8275_Bullet.gif" alt="Bullet Image"/>
-                Attach to your tax return.
-              </div>
+									Attach to your tax return.
+								</span>
+							</div>
 						</div>
 						<div style="width:30mm;height:22.5mm;" class="styTYBox">
 							<div style="height:8mm;padding-top:2mm;padding-left:.5mm;" class="styOMB">
-                OMB No. 1545-0889
-              </div>
+									OMB No. 1545-0889
+						    </div>
 							<div class="styOMB" style="height:10mm;border-bottom-width:0px;padding-top:1mm;text-align:left;padding-left:2mm;">
-                Attachment <br/>
-                Sequence No. <span class="styBoldText" style="font-size:9pt;">92</span>
+									Attachment <br/>
+									Sequence No. <span class="styBoldText" style="font-size:9pt;">92</span>
 							</div>
 						</div>
 					</div>
         <div style="width:187mm;" class="styBB">
-          <div style="width:131mm;height:8mm;font-size:7pt;font-weight:normal;" class="styNameBox">
+          <div style="width:131mm;height:9mm;font-size:7pt;font-weight:normal;" class="styNameBox">
             Name(s) shown on return<br/>
 		<xsl:choose>
  		    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -97,14 +100,15 @@ printing problem only to the extent that it does not distort the browser display
 		              </xsl:call-template>
 		            </xsl:when>
                     <xsl:otherwise>
-			<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template><br/>
-			<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param></xsl:call-template>
+			<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template>
+			<br/>
+			<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param></xsl:call-template>
 		    </xsl:otherwise>
                   </xsl:choose>
           </div>
           <div style="width:55mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;" class="styEINBox">
             Identifying number shown on return
-            <span style="font-weight:normal;">
+            <span style="font-weight:normal;width:54mm;text-align:center;">
 		<xsl:choose>
 		  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
  		     <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -120,21 +124,22 @@ printing problem only to the extent that it does not distort the browser display
           </div>
         </div>
         <!-- ****************************************************************************** -->
-             <div style="width:187mm;">
-       If Form 8275 relates to an information return for a foreign entity (for example, Form 5471), enter:
-      <div class="styLNDesc" style="width:35mm;">
-              Name of foreign entity
-              <img src="{$ImagePath}/8275_Bullet.gif" alt="Bullet Image"/>
-      </div>
-      <div class="styUnderlineAmount" style="width:152mm;text-align:left">
-     <xsl:call-template name="PopulateText">
-        <xsl:with-param name="TargetNode" select="$Form8275Data/ForeignEntityName/BusinessNameLine1"/>
-       </xsl:call-template><br/>
-     <xsl:call-template name="PopulateText">
-        <xsl:with-param name="TargetNode" select="$Form8275Data/ForeignEntityName/BusinessNameLine2"/>
-       </xsl:call-template>
-      </div>
-     </div>
+        <div style="width:187mm;">
+		   If Form 8275 relates to an information return for a foreign entity (for example, Form 5471), enter:
+		   <br/>
+			  <div class="styLNDesc" style="width:34mm;">
+				  Name of foreign entity
+				  <img src="{$ImagePath}/8275_Bullet.gif" alt="Bullet Image"/>
+			  </div>
+		  <div class="styUnderlineAmount" style="width:152mm;text-align:left">
+			 <xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$Form8275Data/ForeignEntityName/BusinessNameLine1Txt"/>
+             </xsl:call-template><br/>
+			 <xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$Form8275Data/ForeignEntityName/BusinessNameLine2Txt"/>
+		     </xsl:call-template>
+		  </div>
+		 </div>
      <div style="width:187mm;">
       <div class="styLNDesc" style="width:55mm;">
               Employer identification number, if any
@@ -162,12 +167,12 @@ printing problem only to the extent that it does not distort the browser display
 			</div>
 			<div class="styLNDesc" style="width:129mm;text-align:left">
 				<xsl:choose>
-					<xsl:when test="count($Form8275Data/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber) &gt; 1">
+					<xsl:when test="count($Form8275Data/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum) &gt; 1">
 				See Additional Data Table
 					</xsl:when>
 						<xsl:otherwise>
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form8275Data/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber"/>
+								<xsl:with-param name="TargetNode" select="$Form8275Data/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum"/>
 							</xsl:call-template>
 						</xsl:otherwise>
 				</xsl:choose>
@@ -175,13 +180,13 @@ printing problem only to the extent that it does not distort the browser display
 		</div>
 		<!-- ****************************************************************************** -->
         <!-- Begin Part I -->
-        <div style="width:187mm;height:5mm;" class="styBB">
+        <div style="width:187mm;height:7mm;" class="styBB">
           <div class="styGenericDiv" style="width:187mm;height:6mm;">
             <div class="styPartName" style="width:15mm;margin-top:1.5mm;">Part I</div>
             <div class="styPartDesc" style="padding-left:3mm;margin-top:1.5mm;width:100mm;">
               General Information <span class="styNormalText">(see instructions)</span>
             </div>
-            <div style="float:right;margin-top:2.8mm">
+            <div style="float:right;margin-top:2.8mm;">
                 <xsl:call-template name="SetDynamicTableToggleButton">
                   <xsl:with-param name="TargetNode" select="$Form8275Data/DisclosureGeneralInformation"/>
                 <xsl:with-param name="containerHeight" select="6"/>
@@ -192,7 +197,7 @@ printing problem only to the extent that it does not distort the browser display
           </div>
         </div>
         <!-- Gen information table -->
-        <div class="styTableContainer" id="TPctn" style="height:27mm;">
+        <div class="styTableContainer" id="TPctn" style="height:27mm;display:block;">
           <xsl:call-template name="SetInitialState"/>
           <table class="styTable" cellspacing="0" name="TYTable" id="TYTable">
             <thead class="styTableThead">
@@ -260,7 +265,8 @@ printing problem only to the extent that it does not distort the browser display
                       </td>
                       <td class="styTableCell" style="width:23mm;border-left-width:1px;text-align:left;border-color:black;vertical-align:top;">
                         <xsl:if test="position()=last() and position() &gt;= 6">
-                          <xsl:attribute name="style">width:23mm;border-left-width:1px;text-align:left;border-color:black;vertical-align:top;border-bottom-width:0px;                            </xsl:attribute>
+                          <xsl:attribute name="style">width:23mm;border-left-width:1px;text-align:left;border-color:black;vertical-align:top;border-bottom-width:0px; 
+                          </xsl:attribute>
                         </xsl:if>
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="ScheduleOrFormNum"/>
@@ -278,7 +284,9 @@ printing problem only to the extent that it does not distort the browser display
                       </td>
                       <td class="styTableCell" style="width:24mm;text-align:right;border-color:black;border-right-width:0px;vertical-align:top;">
                         <xsl:if test="position()=last() and position() &gt;= 6">
-                          <xsl:attribute name="style">width:24mm;text-align:right;border-color:black;border-right-width:0px;vertical-align:top;border-bottom-width:0px;                            </xsl:attribute>
+                          <xsl:attribute name="style">width:24mm;text-align:right;border-color:black;
+                          border-right-width:0px;vertical-align:top;border-bottom-width:0px;                            
+                          </xsl:attribute>
                         </xsl:if>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="DisclosedItemAmt"/>
@@ -288,34 +296,41 @@ printing problem only to the extent that it does not distort the browser display
                     </tr>
                   </xsl:for-each>
                   </xsl:if>
-                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 1 or ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
+                  <!--<p style="page-break-after:always"/>-->
+                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 1 or 
+                  ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
                     <xsl:call-template name="populateirs8275partiemptycells">
                       <xsl:with-param name="index">1</xsl:with-param>
                       <xsl:with-param name="IsSeparated">true</xsl:with-param>
                     </xsl:call-template>
                   </xsl:if>
-                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 2 or ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
+                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 2 or 
+                  ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
                     <xsl:call-template name="populateirs8275partiemptycells">
                       <xsl:with-param name="index">2</xsl:with-param>
                     </xsl:call-template>
                   </xsl:if>
-                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 3 or ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
+                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 3 or 
+                  ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
                     <xsl:call-template name="populateirs8275partiemptycells">
                       <xsl:with-param name="index">3</xsl:with-param>
                       </xsl:call-template>
                   </xsl:if>
 
-                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 4 or ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
+                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 4 or 
+                  ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
                     <xsl:call-template name="populateirs8275partiemptycells">
                       <xsl:with-param name="index">4</xsl:with-param>
                       </xsl:call-template>
                   </xsl:if>
-                   <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 5 or ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
+                   <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 5 or
+                    ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
                     <xsl:call-template name="populateirs8275partiemptycells">
                       <xsl:with-param name="index">5</xsl:with-param>
                       </xsl:call-template>
                   </xsl:if>
-                   <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 6 or ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
+                   <xsl:if test="count($Form8275Data/DisclosureGeneralInformation) &lt; 6 or
+                    ((count($Form8275Data/DisclosureGeneralInformation) &gt; 6) and ($Print = $Separated))">
                     <xsl:call-template name="populateirs8275partiemptycells">
                       <xsl:with-param name="index">6</xsl:with-param>
                       </xsl:call-template>
@@ -354,11 +369,11 @@ printing problem only to the extent that it does not distort the browser display
             <xsl:with-param name="containerHeight" select="6"/>
             <xsl:with-param name="headerHeight" select="1"/>
             <xsl:with-param name="containerID" select=" 'TPctn' "/>
-          </xsl:call-template> 
+          </xsl:call-template>
           <!--********************************************************--> 
            <!-- Begin Part II -->
-        <div style="width:187mm;height:6mm;" class="styBB">
-          <div class="styPartName" style="width:15mm;margin-top:1.5mm;">Part II</div>
+        <div style="width:187mm;height:7mm;" class="styBB">
+          <div class="styPartName" style="width:15mm;margin-top:1.5mm;height:4mm">Part II</div>
           <div class="styPartDesc" style="padding-left:3mm;margin-top:1.5mm;width:100mm;">
             Detailed Explanation <span class="styNormalText">(see instructions)</span>
           </div>
@@ -369,12 +384,12 @@ printing problem only to the extent that it does not distort the browser display
             <xsl:with-param name="headerHeight" select="0"/>
               <xsl:with-param name="containerID" select=" 'DEctn' "/>
             </xsl:call-template>  
-        </div>
+          </div>
       </div>
         <!--Begin detailed explanation table -->
         <xsl:choose>
           <xsl:when test="$Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc">
-            <div class="styTableContainer" id="DEctn" style="height:30mm;">
+            <div class="styTableContainer" id="DEctn" style="height:30mm;display:block;">
               <xsl:call-template name="SetInitialState"/>
               <table class="styTable" cellspacing="0" name="TYTable" id="TYTable" style="font-size:7pt;">
                 <thead class="styTableThead">
@@ -384,18 +399,26 @@ printing problem only to the extent that it does not distort the browser display
                   <xsl:if test="($Print != $Separated) or (count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &lt;=6) "> 
                       <xsl:for-each select="$Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc">
                         <tr style="height:12mm;">
-                          <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;">
+                          <td class="styTableCell" style="
+                          width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;">
                             <xsl:if test="position()=last() and position() &gt;= 6">
-                              <xsl:attribute name="style">width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-bottom-width:0px;</xsl:attribute>
+                              <xsl:attribute name="style">
+                             width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                             border-color:black;vertical-align:top;border-bottom-width:0px;
+                             </xsl:attribute>
                             </xsl:if>
                             <xsl:if test="position() &lt;99 ">
                               <xsl:value-of select="position()"/>
                             </xsl:if>
                             <span class="styTableCellPad"/>
                           </td>
-                          <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;">
+                          <td class="styTableCell" 
+                          style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;">
                             <xsl:if test="position()=last() and position() &gt;= 6">
-                              <xsl:attribute name="style">text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-bottom-width:0px;</xsl:attribute>
+                              <xsl:attribute name="style">
+							text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+							border-color:black;vertical-align:top;border-bottom-width:0px;	
+                             </xsl:attribute>
                             </xsl:if>
                             <xsl:call-template name="PopulateText">
                               <xsl:with-param name="TargetNode" select="current()"/>
@@ -406,159 +429,200 @@ printing problem only to the extent that it does not distort the browser display
                       </xsl:for-each>
                   </xsl:if>
           <!-- #######separated mode#######################-->
-                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &lt; 1 or ((count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &gt; 3) and ($Print = $Separated))">
+                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &lt; 1 or 
+                  ((count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &gt; 3) and 
+                  ($Print = $Separated))">
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border- color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         1
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                             <xsl:call-template name="PopulateAdditionalDataTableMessage">
                               <xsl:with-param name="TargetNode" select="$Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc"/>                      
                             </xsl:call-template>
                         <span class="styTableCellPad"/>
                       </td>
+                    </tr><!--
+                    <tr style="height:5mm;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border- color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
                     </tr>
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border- color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical- align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                    </tr>
-                    <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical- align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                    </tr>
+                    </tr>-->
                   </xsl:if>
-                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &lt; 2 or ((count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &gt; 3) and ($Print = $Separated))">
+                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &lt; 2 or 
+                  ((count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &gt; 3) and 
+                  ($Print = $Separated))">
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         2<span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                    </tr><!--
+                    <tr style="height:5mm;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
                     </tr>
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                    </tr>
-                    <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                    </tr>
+                    </tr>-->
                   </xsl:if>
-                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &lt; 3 or ((count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &gt; 3) and ($Print = $Separated))">
+                  <xsl:if test="count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &lt; 3 or 
+                  ((count($Form8275Data/DisclosureGeneralInformation/DetailedExplanationDesc) &gt; 3) and 
+                  ($Print = $Separated))">
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         3<span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                    </tr><!--
+                    <tr style="height:5mm;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
                     </tr>
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                    </tr>
+                    </tr>-->                    
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                    </tr>
-                    
-                    <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                        4<span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                    </tr><!--
+                    <tr style="height:5mm;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
                     </tr>
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                    </tr>
+                    </tr>-->
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                    </tr>
-                    <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         5<span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                    </tr><!--
+                    <tr style="height:5mm;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
                     </tr>
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                    </tr>
+                    </tr>-->
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                    </tr>
-                    <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         6<span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                    </tr><!--
+                    <tr style="height:5mm;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
+                        <span class="styTableCellPad"/>
+                      </td>
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
                     </tr>
                     <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
+                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;
+                      border-color:black;vertical-align:top;border-color:black;">
                         <span class="styTableCellPad"/>
                       </td>
-                    </tr>
-                    <tr style="height:5mm;">
-                      <td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                      <td class="styTableCell" style="text-align:left;width:184mm;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-color:black;">
-                        <span class="styTableCellPad"/>
-                      </td>
-                    </tr>
+                    </tr>-->
                 </xsl:if>
                 </tbody>            
               </table>
@@ -617,37 +681,39 @@ printing problem only to the extent that it does not distort the browser display
       </xsl:call-template>
       <!-- Begin Part III -->
       <div style="width:187mm;" class="styBB">
-        <div class="styPartName" style="width:15mm;">Part III</div>
-        <div class="styPartDesc" style="padding-left:3mm;">
+        <div class="styPartName" style="width:15mm;height:4mm;">Part III</div>
+        <div class="styPartDesc" style="padding-left:3mm;height:8mm;">
           Information About Pass-Through Entity. <span class="styNormalText">To be completed by partners, shareholders, beneficiaries, or
           residual interest holders.</span>
         </div>
       </div>
       <div style="width:187mm;" class="styBB">
-        <div style="width:186mm;height:6mm;font-weight:bold;" class="styGenericDiv">
+        <div style="width:186mm;height:5mm;font-weight:bold;" class="styGenericDiv">
           Complete this part only if you are making adequate disclosure for a pass-through item.
         </div>
-        <div style="width:187mm;height:7mm;" class="styGenericDiv">
-          <span class="styBoldText" style="height:8mm;width:8mm;">Note:</span>
-          <span class="styItalicText" style="height:8mm;width:174mm;">
-            <span style="width:1px;"/>A pass-through entity is a partnership, S corporation, estate, trust, regulated investment company (RIC), real estate investment
-            trust (REIT), or real estate mortgage investment conduit (REMIC).
+        <div style="width:187mm;height:6mm;" class="styGenericDiv">
+          <span style="height:3mm;width:174mm;">
+            <b>Note:</b> <i>A pass-through entity is a partnership, S corporation, estate, trust, regulated investment company (RIC), real estate 
+            investment</i>
           </span>
+          <span style="height:3mm;width:91mm;text-align:right">
+           <i>trust (REIT), or real estate mortgage investment conduit (REMIC).</i>
+           </span>
         </div>
       </div>
       <div class="styBB" style="width:187mm;float:none;">
-        <div class="styIRS8275LeftLine" style="width:93mm;height:27mm;">
-          <div class="styLNLeftNumBox" style="width:4mm;padding-top:0mm;">1</div>
-          <div class="styGenericDiv">
+        <div class="styIRS8275LeftLine" style="width:94mm;height:28mm;">
+          <div class="styLNLeftNumBox" style="padding-top:0mm;width:4mm;text-align:left;">1</div>
             Name, address, and ZIP code of pass-through entity <br/>
-            <xsl:if test="$Form8275Data/PassThroughEntityBusName/BusinessNameLine1">
+          <div class="styGenericDiv">
+            <xsl:if test="$Form8275Data/PassThroughEntityBusName/BusinessNameLine1Txt">
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form8275Data/PassThroughEntityBusName/BusinessNameLine1"/>
+              <xsl:with-param name="TargetNode" select="$Form8275Data/PassThroughEntityBusName/BusinessNameLine1Txt"/>
             </xsl:call-template>
             </xsl:if>
-            <xsl:if test="$Form8275Data/PassThroughEntityBusName/BusinessNameLine2"><br/>
+            <xsl:if test="$Form8275Data/PassThroughEntityBusName/BusinessNameLine2Txt"><br/>
               <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="$Form8275Data/PassThroughEntityBusName/BusinessNameLine2"/>
+                <xsl:with-param name="TargetNode" select="$Form8275Data/PassThroughEntityBusName/BusinessNameLine2Txt"/>
               </xsl:call-template>
             </xsl:if>
             <xsl:if test="$Form8275Data/PassThroughEntityIndivNm">
@@ -716,8 +782,8 @@ printing problem only to the extent that it does not distort the browser display
         
         <xsl:call-template name="SetFormLinkInline">
           <xsl:with-param name="TargetNode" select="$Form8275Data/ServiceCenterWhereRetFiledCd"/>
-      </xsl:call-template>  
-      <span style="width:1mm;"/>
+		</xsl:call-template>  
+		  <span style="width:1mm;"/>
         <xsl:call-template name="LinkToLeftoverDataTableInline">
           <xsl:with-param name="Desc">Line 4 - E-File Indicator</xsl:with-param>
           <xsl:with-param name="TargetNode" select="$Form8275Data/ServiceCenterWhereRetFiledCd/@efileCd"/>
@@ -740,8 +806,8 @@ printing problem only to the extent that it does not distort the browser display
         <div style="width:55mm;text-align:center;" class="styGenericDiv">Cat. No. 61935M</div>
         <div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8275</span> (Rev. 8-2013)</div>
       </div>
-   
-  <p class="pageend" style="border:0 solid green;"/>
+      <p style="page-break-after:always"/>
+  <!--<p class="pageend" style="border:0 solid green;"/>-->
   
       <!-- Begininning of write-in data -->
       <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -878,7 +944,7 @@ printing problem only to the extent that it does not distort the browser display
         <!-- End Separated Repeating Data table -->
       </form>
       <!-- ********************************************** -->
-			<xsl:if test="count($Form8275Data/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber)  &gt; 1">
+			<xsl:if test="count($Form8275Data/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum)  &gt; 1">
 				<!--BEGIN Reference ID number -->
 					<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 						<thead class="styTableThead">
@@ -889,7 +955,7 @@ printing problem only to the extent that it does not distort the browser display
 							</tr>
 						</thead>
 						<tbody>
-							<xsl:for-each select="$Form8275Data/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber">
+							<xsl:for-each select="$Form8275Data/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum">
 								<tr style="border-color:black;height:6mm;">
 									<xsl:attribute name="class">
 										<xsl:choose>
@@ -950,7 +1016,8 @@ printing problem only to the extent that it does not distort the browser display
       <td class="styTableCell" style="width:23mm;text-align:left;border-color:black;border-bottom-width:0px;">
         <span class="styTableCellPad"/>
       </td>
-      <td class="styTableCell" style="width:58mm;border-style:solid;border-right-width:0px;text-align:left;vertical-align:top;border-color:black;border-bottom-width:0px;">
+      <td class="styTableCell" style="width:58mm;border-style:solid;border-right-width:0px;text-align:left;vertical-align:top;
+      border-color:black;border-bottom-width:0px;">
         <span class="styBB" style="border-style:solid;width:57mm;padding-top:3mm;"/>
       </td>
       <td class="styTableCell" style="width:23mm;border-left-width:1px;text-align:left;border-color:black;border-bottom-width:0px;">

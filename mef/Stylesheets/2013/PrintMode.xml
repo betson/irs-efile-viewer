@@ -11,6 +11,7 @@
 		<Document documentName="AltMinTxblIncmAdjSimplifiedSch"/>
 		<Document documentName="AmortizationSchedule"/>
 		<Document documentName="BorrowedFundsElection"/>
+		<Document documentName="Category3FilerStatement"/>
 		<Document documentName="CharitableContriStatement"/>
 		<Document documentName="CodeSectPropDeprecOrAmortzStmt"/>
 		<Document documentName="CompensationSchedule"/>
@@ -67,6 +68,7 @@
 		<Document documentName="OtherNotesLoansRcvblLongSch"/>
 		<Document documentName="OtherTaxAndInterestSchedule"/>
 		<Document documentName="OthExpenseDedItemsWithDiffSch"/>
+		<Document documentName="OthIncomeLossItemsWithDiffSch"/>
 		<Document documentName="Owned10PctIntForeignPrtshpStmt"/>
 		<Document documentName="OtherNonCurrentUSAssets"/>
 		<Document documentName="PartialIntContributionStmt"/>
@@ -80,7 +82,7 @@
 		<Document documentName="PrpsdChgPoolingInventoriesStmt"/>
 		<Document documentName="QlfyReforestationCostsStmt"/>
 		<Document documentName="ScheduleK1SupplementalInfoStmt"/>
-		<Document documentName="Section118ExclusionSchedule"/>		
+		<Document documentName="Section118ExclusionSchedule"/>
 		<Document documentName="SecOrCommoditiesHeldByTrader"/>
 		<Document documentName="ShareholdersStockOwnershipAtt"/>
 		<Document documentName="ShareholdersStockOwnershipStmt"/>

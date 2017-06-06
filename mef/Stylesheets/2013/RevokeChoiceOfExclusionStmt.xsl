@@ -12,8 +12,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle" /></title>
 
          <!-- No Browser Caching -->
@@ -38,10 +40,10 @@
         </style>
       <xsl:call-template name="GlobalStylesDep"/>
 </head>    
-      <body class="styBodyClass" >
+      <body class="styBodyClass" style="width:187mm;">
         <xsl:call-template name="DocumentHeaderDependency"></xsl:call-template>    
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:98mm">          
+          <span class="styDepTitle" style="width:110mm">          
             <xsl:value-of select="$depDocTitle" />
           </span>
         </div>
@@ -50,7 +52,7 @@
         
         <div class="styTopSectionLine">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
-          <div style="float:left;clear:none;">
+          <div style="float:left;clear:none;width:118mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$FormData/Explanation"/>
             </xsl:call-template>            

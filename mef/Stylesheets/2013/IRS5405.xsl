@@ -62,8 +62,10 @@
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form5405Data)"/>
@@ -93,7 +95,7 @@
 					<!--  Begin Header section 1 -->
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
-						<div class="styFNBox" style="width:31mm;height:22mm;border-right-width:2px;padding-top:.5mm;">
+						<div class="styFNBox" style="width:31mm;height:19mm;border-right-width:2px;padding-top:.5mm;">
 							<div style="padding-top:1mm;">
 								Form<span class="styFormNumber">  5405</span>
 							</div>
@@ -109,13 +111,13 @@
 						</div>
 						<div class="styFTBox" style="width:125mm;">
 							<!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-							<div class="styMainTitle" style="height:8mm;">
+							<div class="styMainTitle" style="height:6mm;">
 								Repayment of the First-Time<br/> Homebuyer Credit 
 							</div>
 							<div class="styFST" style="height:5mm;font-size:7pt;margin-left:2mm;text-align:center;">
 								<span style="text-align:center;font-weight:bold;">
 									<div style="width:100%;height:5mm;padding-left:5px;">
-										<div style="width:100%;height:5mm;">
+										<div style="width:100%;height:4mm;">
 											<br/><br/>
 											<img src="{$ImagePath}/5405_Bullet_Sm.gif" alt="SmallBullet"/> 
 											Attach to Form 1040, Form 1040NR, or Form 1040X.
@@ -127,9 +129,9 @@
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;border-left-width:2px;height:22mm;">
+						<div class="styTYBox" style="width:30mm;border-left-width:2px;height:19mm;">
 							<div class="styOMB" style="height:50%;font-size:7pt;padding-top:3mm;">OMB No. 1545-0074</div>
-							<div style="margin-left:3mm;text-align:left;font-size:7pt;height:50%;padding-top:3.5mm;">
+							<div style="margin-left:3mm;text-align:left;font-size:7pt;height:50%;padding-top:1.5mm;">
 								Attachment<br/>Sequence No. 
 								<span class="styBoldText" style="font-size:9pt;">58</span>
 							</div>
@@ -137,14 +139,14 @@
 					</div>
 			
 					<!-- Begin Names and Identifying number section -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
+					<div class="styBB" style="width:187mm;display:inline;height:6mm;">
+						<div class="styNameBox" style="width:137mm;height:6mm;font-weight:normal;font-size:7pt;">
 							Name shown on return<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form5405Data/PersonNm"/>
 							</xsl:call-template>
 						</div>
-						<div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
+						<div style="height:8mm;width:50mm;min-height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
 							Your social security number
 							<br/>
 							<span style="font-weight:normal;text-align:center;width:100%">
@@ -164,9 +166,9 @@
 					<!-- Begin Part I																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;padding:0px 0px 0px 0px;" class="styBB">
+					<div style="width:187mm;padding:0px 0px 0px 0px;height:3.2mm;" class="styBB">
 						<!-- Content -->
-						<div class="styPartName" style="width:15mm;">Part I</div>
+						<div class="styPartName" style="width:15mm;height:3.2mm;">Part I</div>
 						<div class="styPartDesc" style="padding-left:3mm;font-size:8.5pt;">
 							Disposition or Change in Use of Main Home for Which the Credit Was Claimed
 						</div>
@@ -174,7 +176,7 @@
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (1) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox">1</div>
 							<div class="styIRS5405CleanDiv" style="width:151mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -210,7 +212,7 @@
 								</div>
 							</div>
 							<div class="styIRS5405LNDesc" style="width:30mm;height:100%;padding-left:0px;padding-top:1px;float:right;">
-								<span style="width:100%;height:4mm;"/>
+								<span style="width:100%;height:1mm;"/>
 								<span style="border-color:black;border-style:solid;border-width:0px 0px 1px 0px;height:4mm;width:100%;text-align:center;">
 									<xsl:call-template name="PopulateMonthDayYear">
 										<xsl:with-param name="TargetNode" select="$Form5405Data/DispositionChangeMainHome/ChangeOfMainHomeDt"/>
@@ -219,7 +221,7 @@
 							</div>
 						</div>
 						<!-- (2) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:4mm;">
 							<div class="styIRS5405LNLeftNumBox">2</div>
 							<div class="styIRS5405CleanDiv" style="width:177mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -272,7 +274,7 @@
 								</label>
 							</div>
 						</div>
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:12mm;">
 							<div class="styIRS5405LNLeftNumBox"/>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -285,7 +287,7 @@
 							</div>
 						</div>
 						<!-- (3) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:4mm;">
 							<div class="styIRS5405LNLeftNumBox">3</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -296,7 +298,7 @@
 							</div>
 						</div>
 						<!-- (3a) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;">a</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
@@ -320,7 +322,7 @@
 							</div>
 						</div>
 						<!-- (3b) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;">b</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
@@ -344,10 +346,10 @@
 							</div>
 						</div>
 						<!-- (3c) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;">c</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
-								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS5405LNDesc" style="width:8mm;height:100%;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form5405Data/DispositionChangeMainHome/HomeSoldToRelatedPersonInd"/>
@@ -361,13 +363,13 @@
 										</xsl:call-template>
 									</label>
 								</div>
-								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS5405LNDesc" style="width:170mm;height:100%;">
 									I sold the home to a related person OR I gave the home to someone other than my spouse (or ex-spouse as part of my divorce settlement). Go to Part II below.
 								</div>
 							</div>
 						</div>
 						<!-- (3d) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;">d</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
@@ -391,7 +393,7 @@
 							</div>
 						</div>
 						<!-- (3e) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:12mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;">e</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
@@ -408,9 +410,9 @@
 										</xsl:call-template>
 									</label>
 								</div>
-								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS5405LNDesc" style="width:170mm;height:auto;">
 									I transferred the home to my spouse (or ex-spouse as part of my divorce settlement). The full name of my ex-spouse is<span style="width:4px;"/><img src="{$ImagePath}/5405_Bullet_Sm.gif" alt="SmallBullet"/> <br/>
-									<span style="border-color:black;border-width:0px 0px 1px 0px;border-style:solid;height:4mm;width:100%;">
+									<span style="border-color:black;border-width:0px 0px 1px 0px;border-style:solid;height:auto;width:100%;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5405Data/DispositionChangeMainHome/HomeTransferredToSpouseGrp/SpouseOrExNm"/>
 										</xsl:call-template>
@@ -420,7 +422,7 @@
 							</div>
 						</div>
 						<!-- (3f) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;">f</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
@@ -443,7 +445,7 @@
 							</div>
 						</div>
 						<!-- (3g) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;">g</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
@@ -466,7 +468,7 @@
 							</div>
 						</div>
 						<!-- (3h) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox" style="padding-right:0px;">h</div>
 							<div class="styIRS5405CleanDiv" style="width:181mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;">
@@ -504,7 +506,7 @@
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (4) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox">4</div>
 							<div class="styIRS5405CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -536,7 +538,7 @@
 							</div>
 						</div>
 						<!-- (5) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox">5</div>
 							<div class="styIRS5405CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -583,7 +585,7 @@
 							</div>
 						</div>
 						<!-- (6) ////////////////////////////////////////////////////-->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:8mm;">
 							<div class="styIRS5405LNLeftNumBox">6</div>
 							<div class="styIRS5405CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -623,7 +625,7 @@
 							</div>
 						</div>
 						<!-- Line 7 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox">7</div>
 							<div class="styIRS5405CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -657,7 +659,7 @@
 							</div>
 						</div>
 						<!-- Line 8 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox">8</div>
 							<div class="styIRS5405CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -693,7 +695,7 @@
 							</div>
 						</div>
 						<!-- Line 8 Note -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox"/>
 							<div class="styIRS5405CleanDiv" style="width:180mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS5405LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -718,7 +720,7 @@
 					<!-- Body -->
 					<div class="styTBB" style="width:187mm;">
 						<!-- Note -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:15mm;">
 							<div class="styIRS5405LNLeftNumBox"/>
 							<div class="styIRS5405LNDesc" style="width:180mm;">
 								<b>Note:</b> Complete this part only if your home was destroyed or you sold your home to someone who is not related to you (including a
@@ -728,7 +730,7 @@
 							</div>
 						</div>
 						<!-- Line 9 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox">9</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								<span class="styGenericDiv">Selling price of home, insurance proceeds, or gross condemnation award</span>
@@ -751,7 +753,7 @@
 							</div>
 						</div>
 						<!-- Line 10 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:7mm;">
 							<div class="styIRS5405LNLeftNumBox">10</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								Selling expenses (including commissions, advertising and legal fees, and seller-paid loan charges) or <br/>
@@ -777,18 +779,19 @@
 							</div>
 							<div class="styIRS5405CleanDiv" style="width:37mm;">
 								<xsl:call-template name="CreateBox">
-									<xsl:with-param name="Height">4.4mm</xsl:with-param>
+									<xsl:with-param name="Height">2.5mm</xsl:with-param>
 									<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
 									<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
 								</xsl:call-template>
 								<xsl:call-template name="CreateBox">
 									<xsl:with-param name="Number">10</xsl:with-param>
+									<xsl:with-param name="Height">4.5mm</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$Form5405Data/SellingOfHomeExpensesAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
 						<!-- Line 11 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox">11</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								<span class="styGenericDiv">Subtract line 10 from line 9. This is the amount realized on the sale of the home</span>
@@ -809,7 +812,7 @@
 							</div>
 						</div>
 						<!-- Line 12 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox">12</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								<span class="styGenericDiv">Adjusted basis of home sold (from line 13 of Worksheet 1 in Pub. 523)</span>
@@ -833,7 +836,7 @@
 							</div>
 						</div>
 						<!-- Line 13 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:7mm;">
 							<div class="styIRS5405LNLeftNumBox">13</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 							Enter the first-time homebuyer credit claimed on Form 5405 <b>minus</b> the amount of the credit you
@@ -859,18 +862,19 @@
 							</div>
 							<div class="styIRS5405CleanDiv" style="width:37mm;">
 								<xsl:call-template name="CreateBox">
-									<xsl:with-param name="Height">4.4mm</xsl:with-param>
+									<xsl:with-param name="Height">2.5mm</xsl:with-param>
 									<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
 									<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
 								</xsl:call-template>
 								<xsl:call-template name="CreateBox">
 									<xsl:with-param name="Number">13</xsl:with-param>
+									<xsl:with-param name="Height">4.5mm</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$Form5405Data/FirstTimeHmByrNetCrRpdPYRetAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
 						<!-- Line 14 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:5mm;">
 							<div class="styIRS5405LNLeftNumBox">14</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								<span class="styGenericDiv">Subtract line 13 from line 12. This is the adjusted basis for purposes of repaying the credit</span>
@@ -889,7 +893,7 @@
 							</div>
 						</div>
 						<!-- Line 15 -->
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:4mm;">
 							<div class="styIRS5405LNLeftNumBox">15</div>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								<span class="styGenericDiv">Subtract line 14 from line 11</span>
@@ -925,7 +929,7 @@
 								</xsl:call-template>
 							</div>
 						</div>
-						<div class="styIRS5405LineItem">
+						<div class="styIRS5405LineItem" style="height:29mm;">
 							<div class="styIRS5405LNLeftNumBox"/>
 							<div class="styIRS5405LNDesc" style="width:144mm;">
 								&#8226; If line 15 is more than -0-, you have a gain. Check the box on line 3a and complete Part II. <b>However</b>,

@@ -17,8 +17,10 @@
   <!-- Main template end-->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
            <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -44,7 +46,7 @@
         <xsl:call-template name="DocumentHeaderDependency"/>  
         <div class="styDepTitleLine">
           <span class="styDepTitle">
-            <span style="width:78mm;"><xsl:value-of select="$depDocTitle"/></span>
+            <span style="width:120mm;"><xsl:value-of select="$depDocTitle"/></span>
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>
@@ -65,7 +67,7 @@
            		<th class="styDepTblCell" scope="col" style="width: 50mm">Properties Which Adjustment Was Allocated</th>
         		</tr>
       	</thead>
-      	<xsl:for-each select="$DependencyData/Section743bBasisAdjustmentGrp">
+      	<xsl:for-each select="$DependencyData/Section734bBasisAdjustmentGrp">
         		<tr>
           		<xsl:attribute name="class">
           			<xsl:choose>

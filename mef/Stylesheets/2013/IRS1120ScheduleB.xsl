@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1120ScheduleB" select="$RtnDoc/IRS1120ScheduleB"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1120ScheduleB)"/>
@@ -56,10 +58,10 @@
 								<span class="styAgency">Internal Revenue Service</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:18.5mm;">
-							<div class="styMainTitle" style="height:12mm;">Additional Information for<br/>Schedule M-3 Filers<br/>
+						<div class="styFTBox" style="width:125mm;height:10mm;text-align:center;padding-left:2mm">
+							<div class="styMainTitle" style="height:12mm;">Additional Information for Schedule M-3 Filers<br/>
 							</div>
-							<div class="styFST" style="height:2mm;">
+							<div class="styFST" style="height:3mm;">
 								<img src="{$ImagePath}/1120SchB_Bullet_Title.gif" alt="Bullet"/> Attach to Form 1120.<br/>
 								<img src="{$ImagePath}/1120SchB_Bullet_Title.gif" alt="Bullet"/> See instructions on page 2.
           </div>
@@ -70,7 +72,7 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:120mm;height:8mm;font-size:7pt;font-weight:normal;">
+						<div class="styNameBox" style="width:120mm;height:9mm;font-size:7pt;font-weight:normal;">
           Name<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/FilerBusinessName/BusinessNameLine1"/>
@@ -563,6 +565,9 @@
 						</div>
 					</div>
 					<br class="pageEnd"/>
+					<div class="styGenericDiv" style="width: 187mm;text-align: center"/>
+					 <!-- leftover data table -->
+				<p style="page-break-before:always"/>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">

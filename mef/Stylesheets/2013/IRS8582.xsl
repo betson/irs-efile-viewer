@@ -22,10 +22,21 @@
 			<xsl:attribute name="style">
 				width:<xsl:value-of select="$Width"/>;height:<xsl:value-of select="$Height"/>;
 				border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:6.5pt;
-				<xsl:choose><xsl:when test="$TargetNode"><xsl:choose><xsl:when test="$TargetNode/@referenceDocumentId">padding-top:3px;</xsl:when><xsl:otherwise>padding-top:4px;</xsl:otherwise></xsl:choose></xsl:when><xsl:otherwise>padding-top:4px;</xsl:otherwise></xsl:choose><xsl:if test="$AmountBoxStyle"><xsl:value-of select="$AmountBoxStyle"/></xsl:if></xsl:attribute>
-			<xsl:if test="$TargetNode">
-				<xsl:if test="$AddParentheses">(<span style="width:4px;"/>
+				<xsl:choose>
+					<xsl:when test="$TargetNode">
+						<xsl:choose>
+							<xsl:when test="$TargetNode/@referenceDocumentId">padding-top:3px;</xsl:when>
+							<xsl:otherwise>padding-top:4px;</xsl:otherwise>
+						</xsl:choose>
+					</xsl:when>
+					<xsl:otherwise>padding-top:4px;</xsl:otherwise>
+				</xsl:choose>
+				<xsl:if test="$AmountBoxStyle">
+					<xsl:value-of select="$AmountBoxStyle"/>
 				</xsl:if>
+			</xsl:attribute>
+			<xsl:if test="$TargetNode">
+				<xsl:if test="$AddParentheses">(<span style="width:4px;"/></xsl:if>
 				<xsl:choose>
 					<xsl:when test="$PopulateAsText">
 						<xsl:call-template name="PopulateText">
@@ -53,7 +64,10 @@
 				padding:3px 0px 0px 0px;
 				border-right-width:0px;
 				height:<xsl:value-of select="$Height"/>;
-				<xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
+				<xsl:if test="$NumberBoxStyle">
+					<xsl:value-of select="$NumberBoxStyle"/>
+				</xsl:if>
+			</xsl:attribute>
 			<xsl:if test="$Number">
 				<xsl:value-of select="$Number"/>
 			</xsl:if>
@@ -69,11 +83,11 @@
 				<xsl:attribute name="class">styDepTblHdr</xsl:attribute>
 			</xsl:if>
 			<th class="styIRS8582TableCell" scope="col" rowspan="2">
-				<xsl:attribute name="style">width:25%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:120mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				Name of activity
 			</th>
 			<th class="styIRS8582TableCell" scope="col" colspan="2">
-				<xsl:attribute name="style">width:30%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:30%; height:7mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				Current year
 			</th>
 			<th class="styIRS8582TableCell" scope="col">
@@ -90,7 +104,7 @@
 				<xsl:attribute name="class">styDepTblHdr</xsl:attribute>
 			</xsl:if>
 			<th class="styIRS8582TableCell" scope="col">
-				<xsl:attribute name="style">width:15%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:15%; height:8mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				(a) Net income<br/>(line 1a)
 			</th>
 			<th class="styIRS8582TableCell" scope="col">
@@ -187,7 +201,7 @@
 				<xsl:attribute name="class">styDepTblHdr</xsl:attribute>
 			</xsl:if>
 			<th class="styIRS8582TableCell" scope="col">
-				<xsl:attribute name="style">width:25%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:120mm; height: 8.5mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				Name of activity
 			</th>
 			<th class="styIRS8582TableCell" scope="col">
@@ -265,11 +279,11 @@
 				<xsl:attribute name="class">styDepTblHdr</xsl:attribute>
 			</xsl:if>
 			<th class="styIRS8582TableCell" scope="col" rowspan="2">
-				<xsl:attribute name="style">width:25%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:120mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				Name of activity
 			</th>
 			<th class="styIRS8582TableCell" scope="col" colspan="2">
-				<xsl:attribute name="style">width:30%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:30%; height:7mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				Current year
 			</th>
 			<th class="styIRS8582TableCell" scope="col">
@@ -286,7 +300,7 @@
 				<xsl:attribute name="class">styDepTblHdr</xsl:attribute>
 			</xsl:if>
 			<th class="styIRS8582TableCell" scope="col">
-				<xsl:attribute name="style">width:15%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:15%; height:8mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				(a) Net income<br/>(line 3a)
 			</th>
 			<th class="styIRS8582TableCell" scope="col">
@@ -382,7 +396,7 @@
 				<xsl:attribute name="class">styDepTblHdr</xsl:attribute>
 			</xsl:if>
 			<th class="styIRS8582TableCell" scope="col">
-				<xsl:attribute name="style">width:25%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:120mm; height:15mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				Name of activity
 			</th>
 			<th class="styIRS8582TableCell" scope="col">
@@ -482,7 +496,7 @@
 				<xsl:attribute name="class">styDepTblHdr</xsl:attribute>
 			</xsl:if>
 			<th class="styIRS8582TableCell" scope="col">
-				<xsl:attribute name="style">width:25%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:127mm; height:15mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				Name of activity
 			</th>
 			<th class="styIRS8582TableCell" scope="col">
@@ -571,7 +585,7 @@
 				<xsl:attribute name="class">styDepTblHdr</xsl:attribute>
 			</xsl:if>
 			<th class="styIRS8582TableCell" scope="col">
-				<xsl:attribute name="style">width:25%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+				<xsl:attribute name="style">width:120mm; height:15mm;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
 				Name of activity
 			</th>
 			<th class="styIRS8582TableCell" scope="col">
@@ -661,7 +675,6 @@
 					<b>Name of activity:</b>
 				</span>
 			</div>
-			
 			<!-- (a) -->
 			<div class="styIRS8582CleanDiv" style="width:15%;height:4mm;">
 				<span style="width:100%;text-align:center;padding-top:1mm;">
@@ -742,94 +755,57 @@
 					</xsl:call-template>
 				</xsl:for-each>
 			</xsl:otherwise>
-			</xsl:choose>
-			<div class="styGenericDiv" style="width:187mm;">
-			<div class="styIRS8582LineItem">
-				<div class="styIRS8582CleanDiv" style="width:40%;height:100%;"/>
-					<!-- (b) -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-					<!-- (c) Ratio -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-					<!-- (d) Unallowed loss -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-					<!-- (e) Allowed loss -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;border-right-width:0px;"/>
-				</div>
-			</div>
-			<div class="styGenericDiv" style="width:187mm;float:left;clear:both;">
-				<div class="styIRS8582LineItem">
-					<div class="styIRS8582CleanDiv" style="width:40%;height:100%;"/>
-					<!-- (b) -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-					<!-- (c) Ratio -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-					<!-- (d) Unallowed loss -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-					<!-- (e) Allowed loss -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;border-right-width:0px;"/>
-				</div>
-				<div class="styIRS8582LineItem" style="height:5mm;border-bottom:2px solid black;">
-					<div class="styIRS8582CleanDiv" style="width:40%;height:100%;">
-						<div class="styIRS8582LNDesc" style="width:auto;font-size:7pt;padding-left:2px;">
-							<b>Total</b>
+		</xsl:choose>
+		<div class="styGenericDiv" style="width:187mm; float:left; clear:both;">
+			<div class="styIRS8582LineItem" style="height: 6mm; line-height: 150%; border-bottom:2px solid black;">
+				<div class="styIRS8582CleanDiv" style="width:40%;height:100%;">
+					<div class="styIRS8582LNDesc" style="width:73.5mm;font-size:7pt;padding-left:2px;">
+						<b>Total</b>
+						<span style="float:right;">
 							<!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:18px"/>
-							</span>
+							<span class="styDotLn">.................</span>
 							<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="Small Bullet"/>
-						</div>
-					</div>
-					<!-- (b) -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;">
-						<span style="width:100%;text-align:right;padding-top:1mm;">
-							<xsl:if test="$TargetNode">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$TargetNode/TotalNetIncomeLossAmt"/>
-								</xsl:call-template>
-							</xsl:if>
-						</span>
-					</div>
-					<!-- (c) Ratio -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;text-align:center;padding-top:1mm;">
-						<span style="width:100%;">
-							<b>1.00</b>
-						</span>
-					</div>
-					<!-- (d) Unallowed loss -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;">
-						<span style="width:100%;text-align:right;padding-top:1mm;">
-							<xsl:if test="$TargetNode">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$TargetNode/TotalUnallowedAmt"/>
-								</xsl:call-template>
-							</xsl:if>
-						</span>
-					</div>
-					<!-- (e) Allowed loss -->
-					<div class="styIRS8582CleanDiv" style="width:15%;height:100%;border-right-width:0px;">
-						<span style="width:100%;text-align:right;padding-top:1mm;">
-							<xsl:if test="$TargetNode">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$TargetNode/TotalAllowedAmt"/>
-								</xsl:call-template>
-							</xsl:if>
 						</span>
 					</div>
 				</div>
+				<!-- (b) -->
+				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;">
+					<span style="width:100%;text-align:right;padding-top:1mm;">
+						<xsl:if test="$TargetNode">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$TargetNode/TotalNetIncomeLossAmt"/>
+							</xsl:call-template>
+						</xsl:if>
+					</span>
+				</div>
+				<!-- (c) Ratio -->
+				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;text-align:center;padding-top:1mm;">
+					<span style="width:100%;">
+						<b>1.00</b>
+					</span>
+				</div>
+				<!-- (d) Unallowed loss -->
+				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;">
+					<span style="width:100%;text-align:right;padding-top:1mm;">
+						<xsl:if test="$TargetNode">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$TargetNode/TotalUnallowedAmt"/>
+							</xsl:call-template>
+						</xsl:if>
+					</span>
+				</div>
+				<!-- (e) Allowed loss -->
+				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;border-right-width:0px;">
+					<span style="width:100%;text-align:right;padding-top:1mm;">
+						<xsl:if test="$TargetNode">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$TargetNode/TotalAllowedAmt"/>
+							</xsl:call-template>
+						</xsl:if>
+					</span>
+				</div>
 			</div>
+		</div>
 	</xsl:template>
 	<xsl:template name="Wrksht7PrintWrkshtLossActivityGrp">
 		<xsl:param name="TargetNode"/>
@@ -837,46 +813,48 @@
 		<tr>
 			<td>
 			<div class="styIRS8582LineItem" style="height:11mm;">
-				<div class="styIRS8582CleanDiv" style="width:25%;height:11mm;">
+				<div class="styIRS8582CleanDiv" style="width:25%;height:100%;">
 					<span style="width:100%;text-align:left;">
-							<b>Form or schedule and line number<br/>to be reported on (see<br/>instructions):</b>
-							<span style="border-width:0px 0px 1px 0px;border-style:dotted;border-color:black;height:4mm;width:27mm;text-align:left;">
+							<b>
+								Form or schedule and line number<br/>
+								to be reported on (see<br/>
+								instructions):
+							</b>
+							<span style="height:3mm; width:28mm; border-bottom: 1px dashed black; margin-left:0.5mm;">
 								<xsl:if test="$TargetNode">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$TargetNode/ReportingFormOrScheduleNm"/>
 									</xsl:call-template>
 								</xsl:if>
-							</span> 
+							</span>
 					</span> 
 				</div>
 				<!-- (a) -->
-				<div class="styIRS8582CleanDiv" style="border-right-width:1px;border-bottom-width:1px;width:15%;height:11mm;background-color:lightgrey;"/>
+				<div class="styIRS8582CleanDiv" style="border-right-width:1px;border-bottom-width:1px;width:15%;height:100%;background-color:lightgrey;"/>
 				<!-- (b) -->
-				<div class="styIRS8582CleanDiv" style="width:15%;height:11mm;background-color:lightgrey;"/>
+				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;background-color:lightgrey;"/>
 				<!-- (c) Ratio -->
-				<div class="styIRS8582CleanDiv" style="width:15%;height:11mm;background-color:lightgrey;"/>
+				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;background-color:lightgrey;"/>
 				<!-- (d) Unallowed loss -->
-				<div class="styIRS8582CleanDiv" style="width:15%;height:11mm;background-color:lightgrey;"/>
+				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;background-color:lightgrey;"/>
 				<!-- (e) Allowed loss -->
-				<div class="styIRS8582CleanDiv" style="width:15%;height:11mm;background-color:lightgrey;border-right-width:0px;"/>
+				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;background-color:lightgrey;border-right-width:0px;"/>
 			</div>
 			<!-- 1a -->
-			<div class="styIRS8582LineItem">
+			<div class="styIRS8582LineItem" style="height:6.5mm;">
 				<div class="styIRS8582CleanDiv" style="width:25%;height:100%;">
 					<div class="styIRS8582LNLeftNumBox" style="padding-left:0mm;padding-right:2px;text-align:right;padding-top:0px;">1a</div>
-					<!--<div class="styIRS8582LNDesc" style="width:auto;height:8mm;font-size:7pt;padding-left:2px;">-->
 						Net loss plus prior year unallowed<br/>
 						loss from form or schedule
-						<!--Dotted Line-->
-						<span class="styBoldText">.
-							<span style="width:11px"/>
+						<span style="float:right; padding-right:1mm;">
+							<!--Dotted Line-->
+							<span class="styDotLn">..</span>
+							<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 						</span>
-						<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="Small Bullet"/>
-					<!--</div>-->
 				</div>
 				<!-- (a) -->
 				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;border-bottom-width:1px;">
-					<span style="width:100%;text-align:right;padding-top:4mm;">
+					<span style="width:100%;text-align:right;padding-top:3mm;">
 						<xsl:if test="$TargetNode">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$TargetNode/NetLossAmt"/>
@@ -894,26 +872,19 @@
 				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;background-color:lightgrey;border-right-width:0px;"/>
 			</div>
 			<!-- 1b -->
-			<div class="styIRS8582LineItem">
+			<div class="styIRS8582LineItem" style="height:6.5mm;">
 				<div class="styIRS8582CleanDiv" style="width:25%;height:100%;">
 					<div class="styIRS8582LNLeftNumBox" style="padding-left:0mm;padding-right:2px;text-align:right;padding-top:0px;">b</div>
-					<div class="styIRS8582LNDesc" style="width:auto;height:8mm;font-size:7pt;padding-left:2px;">
 						Net income from form or<br/>schedule
-						<!--Dotted Line-->
-						<span class="styBoldText">
-							<span style="width:11px"/>.
-							<span style="width:11px"/>.
-							<span style="width:11px"/>.
-							<span style="width:11px"/>.
-							<span style="width:11px"/>.
-							<span style="width:10px"/>
+						<span style="float:right;  padding-right:1mm;">
+							<!--Dotted Line-->
+							<span class="styDotLn">.......</span>
+							<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 						</span>
-						<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="Small Bullet"/>
-					</div>
 				</div>
 				<!-- (a) -->
 				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;border-bottom-width:1px;">
-					<span style="width:100%;text-align:right;padding-top:4mm;">
+					<span style="width:100%;text-align:right;padding-top:3mm;">
 						<xsl:if test="$TargetNode">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$TargetNode/NetIncomeAmt"/>
@@ -931,25 +902,15 @@
 				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;background-color:lightgrey;border-bottom-width:1px;border-right-width:0px;"/>
 			</div>
 			<!-- 1c -->
-			<div class="styIRS8582LineItem">
-				<div class="styIRS8582CleanDiv" style="width:40%;height:100%;"/>
-				<!-- (b) -->
-				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-				<!-- (c) Ratio -->
-				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-				<!-- (d) Unallowed loss -->
-				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;"/>
-				<!-- (e) Allowed loss -->
-				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;border-right-width:0px;"/>
-			</div>
-			<div class="styIRS8582LineItem" style="height:5mm;border-bottom: 1px solid black">
+			<div class="styIRS8582LineItem" style="height:7mm; line-height:7mm; border-bottom: 1px solid black;">
 				<div class="styIRS8582CleanDiv" style="width:40%;height:100%;">
 					<div class="styIRS8582LNLeftNumBox" style="padding-right:2px;text-align:right;padding-top:0px;">c</div>
-					<div class="styIRS8582LNDesc" style="width:auto;font-size:7pt;padding-left:2px;">
 						Subtract line 1b from line 1a. If zero or less, enter -0-
-						<span style="width:12px;"/>
-						<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="Small Bullet"/>
-					</div>
+						<span style="float:right;  padding-right:1mm;">
+							<!--Dotted Line-->
+							<span class="styDotLn">..</span>
+							<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
+						</span>
 				</div>
 				<!-- (b) -->
 				<div class="styIRS8582CleanDiv" style="width:15%;height:100%;">
@@ -998,8 +959,10 @@
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8582Data)"/>
@@ -1038,23 +1001,25 @@
 								<xsl:with-param name="TargetNode" select="$Form8582Data"/>
 							</xsl:call-template>
 							<br/>
+							<br/>
 							<span class="styAgency">Department of the Treasury</span>
 							<br/>
 							<span class="styAgency">Internal Revenue Service (99)</span>
 						</div>
 						<div class="styFTBox" style="width:125mm;">
-							<!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 							<div class="styMainTitle" style="height:8mm;">
 								Passive Activity Loss Limitations<br/>
 							</div>
-							<div class="styFST" style="height:5mm;font-size:7pt;margin-left:2mm;text-align:center;">
+							<div class="styFST" style="height:auto;font-size:7pt;margin-left:2mm;text-align:center;">
 								<span style="text-align:center;font-weight:bold;">
-									<div style="width:100%;height:5mm;padding-left:0px;">
-										<div style="width:120mm;height:5mm;">
+									<div style="width:100%;padding-left:0px;">
+										<div style="width:120mm;">
 											<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="Small Bullet"/> 
 											See separate instructions.<br/>
+											<span style="height:3mm;" />
 											<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="Small Bullet"/> 
 											Attach to Form 1040 or Form 1041.<br/>
+											<span style="height:3mm;" />
 											<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="Small Bullet"/>
 											Information about Form 8582 and its instructions is available at <i>www.irs.gov/form8582.</i>
 										</div>
@@ -1063,7 +1028,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;border-left-width:2px;height:23mm;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-1008</div>
+							<div class="styOMB" style="height:auto;font-size:7pt;">OMB No. 1545-1008</div>
 							<div class="styTY">20<span class="styTYColor">13</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -1075,7 +1040,7 @@
 					<!--  End Header section 1 -->
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
+						<div class="styNameBox" style="width:137mm;height:9mm;font-weight:normal;font-size:7pt;">
 							Name(s) shown on return<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -1085,7 +1050,7 @@
 								<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						<div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
+						<div style="width:50mm;height:9mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
 							Identifying number<br/>
 							<span style="font-weight:normal;text-align:center;width:100%"> 
 								<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
@@ -1100,7 +1065,7 @@
 					<div style="width:187mm;" class="styBB">
 						<!-- Content -->
 						<div class="styPartName" style="width:15mm;">Part I</div>
-						<div class="styPartDesc" style="padding-left:3mm;padding-bottom:0mm;padding-top:0mm;font-size:8.5pt;">
+						<div class="styPartDesc" style="padding-left:3mm;padding-bottom:0mm;padding-top:0mm;font-size:8.5pt;height:auto;">
 							2013 Passive Activity Loss<br/>
 							Caution:
 							<span class="styNormalText">
@@ -1113,44 +1078,25 @@
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- ///////////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:8mm;">
 							<div class="styIRS8582LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;font-size:8.5pt;">
 								<b>Rental Real Estate Activities With Active Participation</b> (For the definition of active participation, see<br/>
 								<b>Special Allowance for Rental Real Estate Activities</b> in the instructions.)
 							</div>
 							<xsl:call-template name="CreateBox">
-								<xsl:with-param name="Height">100%</xsl:with-param>
 								<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
 								<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+								<xsl:with-param name="Height">100%</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<!-- (1a) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:7mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:2px;padding-top:0px;text-align:right;">1a</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;padding-bottom:0mm;padding-top:0mm;">
+								<div class="styIRS8582LNDesc" style="width:101mm;height:100%;padding-bottom:0mm;padding-top:0mm;">
 									Activities with net income (enter the amount from Worksheet 1,<br/>
 									column (a))
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:10px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">....................</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1173,34 +1119,13 @@
 							</div>
 						</div>
 						<!-- (1b) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:7mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:0px;padding-top:0px;text-align:right;">b</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;padding-top:0mm;padding-bottom:0mm;">
+								<div class="styIRS8582LNDesc" style="width:101mm;height:100%;padding-top:0mm;padding-bottom:0mm;">
 									Activities with net loss (enter the amount from Worksheet 1, column<br/>
 									(b))
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:14px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">.......................</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1224,32 +1149,13 @@
 							</div>
 						</div>
 						<!-- (1c) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:7mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:0px;padding-top:0px;text-align:right;">c</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;padding-top:0mm;padding-bottom:0mm;">
+								<div class="styIRS8582LNDesc" style="width:101mm;height:100%;padding-top:0mm;padding-bottom:0mm;">
 									Prior years unallowed losses (enter the amount from Worksheet 1,<br/>
 									column (c))
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">....................</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1273,37 +1179,12 @@
 							</div>
 						</div>
 						<!-- (1d) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:0px;text-align:right;">d</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:140.5mm;height:100%;">
 									Combine lines 1a, 1b, and 1c
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">.........................</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -1317,22 +1198,23 @@
 					</div>
 					<div class="styBB" style="width:187mm;">
 						<!-- ///////////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:4mm;">
 							<div class="styIRS8582LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;font-size:8.5pt;">
 								<b>Commercial Revitalization Deductions From Rental Real Estate Activities</b>
 							</div>
 							<xsl:call-template name="CreateBox">
-								<xsl:with-param name="Height">100%</xsl:with-param>
 								<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
 								<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+								<xsl:with-param name="Height">100%</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<!-- (2a) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:2px;text-align:right;">2a</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
-									Commercial revitalization deductions from Worksheet 2, column (a).
+								<div class="styIRS8582LNDesc" style="width:101mm;height:100%;">
+									Commercial revitalization deductions from Worksheet 2, column (a)
+									<span class="styDotLn" style="float:right">..</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1353,28 +1235,14 @@
 							</div>
 						</div>
 						<!-- (2b) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:7mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:0px;padding-top:0px;text-align:right;">b</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;padding-top:0mm;padding-bottom:0mm;">
+								<div class="styIRS8582LNDesc" style="width:101mm;padding-top:0mm;padding-bottom:0mm;">
 									Prior year unallowed commercial revitalization deductions from<br/>
 									Worksheet 2, column (b)
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:16px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">................</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1398,40 +1266,12 @@
 							</div>
 						</div>
 						<!-- (2c) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:0px;text-align:right;">c</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:140.5mm;height:100%;">
 									Add lines 2a and 2b
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">............................</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -1445,7 +1285,7 @@
 					</div>
 					<div class="styBB" style="width:187mm;">
 						<!-- ///////////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;font-size:8.5pt;">
 								<b>All Other Passive Activities</b>
 							</div>
@@ -1456,32 +1296,14 @@
 							</xsl:call-template>
 						</div>
 						<!-- (3a) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:7mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:2px;padding-top:0px;text-align:right;">3a</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;padding-top:0mm;padding-bottom:0mm;">
+								<div class="styIRS8582LNDesc" style="width:101mm;height:100%;padding-top:0mm;padding-bottom:0mm;">
 									Activities with net income (enter the amount from Worksheet 3,<br/>
 									column (a))
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:9px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">.....................</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1504,34 +1326,14 @@
 							</div>
 						</div>
 						<!-- (3b) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:7mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:0px;padding-top:0px;text-align:right;">b</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;padding-top:0mm;padding-bottom:0mm;">
+								<div class="styIRS8582LNDesc" style="width:101mm;padding-top:0mm;padding-bottom:0mm;">
 									Activities with net loss (enter the amount from Worksheet 3, column<br/>
 									(b))
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:14px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">.......................</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1555,32 +1357,14 @@
 							</div>
 						</div>
 						<!-- (3c) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:7mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:0px;padding-top:0px;text-align:right;">c</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;padding-top:0mm;padding-bottom:0mm;">
+								<div class="styIRS8582LNDesc" style="width:101mm;padding-top:0mm;padding-bottom:0mm;">
 									Prior years unallowed losses (enter the amount from Worksheet 3,<br/>
 									column (c))
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:15px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right">.....................</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1604,37 +1388,13 @@
 							</div>
 						</div>
 						<!-- (3d) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:0px;text-align:right;">d</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;">
 									Combine lines 3a, 3b, and 3c
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right; padding-right:.5mm;">.........................</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -1647,27 +1407,15 @@
 					</div>
 					<div class="styBB" style="width:187mm;">
 						<!-- (4) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:11mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:10px;padding-top:0px;">4</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%; padding-top:0mm; padding-bottom:0mm;">
-									Combine lines 1d, 2c, and 3d. If this line is zero or more, stop here and include this form with
-your<br/>return; all losses are allowed, including any prior year unallowed losses entered on line 1c,
-2b, or 3c.<br/>Report the losses on the forms and schedules normally used
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%; padding-top:0mm; padding-bottom:0mm;">
+									Combine lines 1d, 2c, and 3d. If this line is zero or more, stop here and include this form with your<br/>
+									return; all losses are allowed, including any prior year unallowed losses entered on line 1c, 2b, or 3c.<br/>
+									Report the losses on the forms and schedules normally used
+									<!--Dotted Line-->
+									<span class="styDotLn" style="float:right">..............</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -1678,7 +1426,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 								<xsl:with-param name="AmountBoxStyle">padding-top:7.2mm;</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:11mm;">
 							<div class="styIRS8582LNLeftNumBox"/>
 							<div class="styIRS8582LNDesc" style="width:181mm;height:100%;padding:0px 0px 0px 0px;">
 								<div class="styIRS8582LNDesc" style="width:100%;height:100%;padding-top:0mm;padding-bottom:0mm;">
@@ -1697,13 +1445,11 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 								</div>
 							</div>
 						</div>
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:8mm;">
 							<b>Caution:</b>
-							<span style="width:3px;"/>
-							<span class="styItalicText">
-								If your filing status is married filing separately and you lived with your spouse at any time during the year, <b>do not</b> complete<br/>
-								Part II or Part III. Instead, go to line 15.
-							</span>
+							<i> If your filing status is married filing separately and you lived 
+							with your spouse at any time during the year, <b>do not</b> complete<br/>
+							Part II or Part III. Instead, go to line 15.</i>
 						</div>
 					</div>
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
@@ -1713,7 +1459,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					<div style="width:187mm;" class="styBB">
 						<!-- Content -->
 						<div class="styPartName" style="width:15mm;">Part II</div>
-						<div class="styPartDesc" style="padding-left:3mm;padding-bottom:0px;padding-top:0px;font-size:8.5pt;">
+						<div class="styPartDesc" style="height:7mm; padding-left:3mm;padding-bottom:0px;padding-top:0px;font-size:8.5pt;">
 							Special Allowance for Rental Real Estate Activities With Active Participation<br/>
 							Note:
 							<span class="styNormalText">
@@ -1726,28 +1472,13 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (5) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:10px">5</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;">
 									Enter the <b>smaller</b> of the loss on line 1d or the loss on line 4
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right; padding-right:.75mm;">..............</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -1755,21 +1486,14 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 								<xsl:with-param name="Number">5</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						
 						<!-- (6) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:10px">6</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:101mm;height:100%;">
 									Enter $150,000. If married filing separately, see instructions
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2px 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right;">....</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1789,16 +1513,16 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</div>
 						</div>
 						<!-- (7) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:10px">7</div>
-							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding-left:3mm;padding-top:1mm;font-size:7pt;">
+							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding-left:3mm;font-size:7.5pt;">
 								Enter modified adjusted gross income, but not less than zero (see instructions)
 							</div>
 							<div class="styIRS8582LNDesc" style="height:5mm;width:81mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Height">100%</xsl:with-param>
 										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;height:5mm</xsl:with-param>
 										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;height:5mm</xsl:with-param>
+										<xsl:with-param name="Height">100%</xsl:with-param>
 									</xsl:call-template>
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">5mm</xsl:with-param>
@@ -1807,14 +1531,13 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 									</xsl:call-template>
 							</div>
 						</div>
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:8mm;">
 							<div class="styIRS8582LNLeftNumBox" style="padding-right:2px;text-align:right;"/>
 							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding:0px 0px 0px 0px;">
 								<div class="styIRS8582LNDesc" style="width:auto;height:100%;padding-top:0mm;padding-bottom:0mm;">
 									<b>Note:</b>
-									<span class="styItalicText">
-										<span style="width:4px;"/>If line 7 is greater than or equal to line 6, skip lines 8 and 9,<br/>
-									enter -0- on line 10. Otherwise, go to line 8.</span>
+									<i> If line 7 is greater than or equal to line 6, skip lines 8 and 9,<br/>
+									enter -0- on line 10. Otherwise, go to line 8.</i>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
@@ -1835,40 +1558,24 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</div>
 						</div>
 						<!-- (8) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:10px">8</div>
 							<div class="styIRS8582LNDesc" style="width:99mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:101mm;height:100%;">
 									Subtract line 7 from line 6
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2px 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right;">................</span>
 								</div>
 							</div>
 							<div class="styIRS8582LNDesc" style="height:100%;width:81mm;float:right;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="height:5mm;width:40mm;float:right;padding:0px 0px 0px 0px;">
+								<div class="styIRS8582LNDesc" style="height:100%;;width:40mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
-										<xsl:with-param name="Height">100%</xsl:with-param>
 										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
 										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="Height">100%</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS8582LNDesc" style="height:auto;width:40mm;float:right;padding:0px 0px 0px 0px;">
+								<div class="styIRS8582LNDesc" style="height:100%;width:40mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="TargetNode" select="$Form8582Data/ModifiedAGIDifferenceAmt"/>
 										<xsl:with-param name="Number">8</xsl:with-param>
@@ -1877,18 +1584,11 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</div>
 						</div>
 						<!-- (9) ////////////////////////////////////////////////////-->
-						
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:10px;">9</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;font-size:11">
+								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
 									Multiply line 8 by 50% (.5). <b>Do not</b> enter more than $25,000. If married filing separately, see instructions
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<!--<span style="width:11px"/>.-->
-									</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -1897,30 +1597,13 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</xsl:call-template>
 						</div>
 						<!-- (10) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:8mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:5px;">10</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;">
 									Enter the <b>smaller</b> of line 5 or line 9
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right;">.......................</span>
 									<br/>
 									If line 2c is a loss, go to Part III. Otherwise, go to line 15.
 								</div>
@@ -1931,10 +1614,6 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</xsl:call-template>
 						</div>
 					</div>
-					<br></br>
-					<br></br>
-					<br></br>
-					<br></br>
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 					<!-- Begin Part III																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
@@ -1942,24 +1621,24 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					<div style="width:187mm;" class="styBB">
 						<!-- Content -->
 						<div class="styPartName" style="width:15mm;">Part III</div>
-						<div class="styPartDesc" style="padding-left:3mm;padding-bottom:0px;padding-top:0px;font-size:8.5pt;">
+						<div class="styPartDesc" style="padding-left:3mm;padding-bottom:0px;padding-top:0px;font-size:8.5pt; height:7mm;">
 							Special Allowance for Commercial Revitalization Deductions From Rental Real Estate Activities<br/>
 							Note:
 							<span class="styNormalText">
-								<span class="styItalicText">
-									Enter all numbers in Part III as positive amounts. See the example for Part II in the instructions.
-								</span>
+								<i> Enter all numbers in Part III as positive amounts. See the example for Part II in the instructions.</i>
 							</span>
 						</div>
 					</div>
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (11) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:5px;">11</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;">
 									Enter $25,000 reduced by the amount, if any, on line 10. If married filing separately, see instructions
+									<!--Dotted Line-->
+									<span class="styDotLn" style="float:right;">.</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -1968,36 +1647,13 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</xsl:call-template>
 						</div>
 						<!-- (12) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:5px;">12</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;">
 									Enter the loss from line 4
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right;">..........................</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -2006,34 +1662,13 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</xsl:call-template>
 						</div>
 						<!-- (13) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:5px;">13</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;">
 									Reduce line 12 by the amount on line 10
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right;">.....................</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -2042,23 +1677,13 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</xsl:call-template>
 						</div>
 						<!-- (14) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:5px;">14</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;">
 									Enter the <b>smallest</b> of line 2c (treated as a positive amount), line 11, or line 13
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right;">........</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -2081,30 +1706,15 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 						</div>
 					</div>
 					<!-- Body -->
-					<div class="styTBB" style="width:187mm;">
+					<div class="styTBB" style="width:187mm; float:none; clear:both; ">
 						<!-- (15) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:5px;">15</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;">
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;">
 									Add the income, if any, on lines 1a and 3a and enter the total
-								</div>
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 2mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn" style="float:right;">..............</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -2113,28 +1723,15 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</xsl:call-template>
 						</div>
 						<!-- (16) ////////////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:7mm;">
 							<div class="styIRS8582LNLeftNumBox" style="text-align:left;padding-left:5px;padding-top:0px;">16</div>
 							<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8582LNDesc" style="width:auto;height:100%;padding-top:0mm;padding-bottom:0mm;">
-									<b>Total losses allowed from all passive activities for 2013.</b> Add lines 10, 14, and 15. See 
-									instructions<br/> to find out how to report the losses on your tax return
+								<div class="styIRS8582LNDesc" style="width:141mm;height:100%;padding-top:0mm;padding-bottom:0mm;">
+									<b>Total losses allowed from all passive activities for 2013.</b>
+									Add lines 10, 14, and 15. See instructions<br/>
+									to find out how to report the losses on your tax return
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:18px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>
-									</span>
+									<span class="styDotLn" style="float:right;">.................</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
@@ -2165,7 +1762,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					</div>
 					<!-- END Page Break and Footer-->
 					<!-- BEGIN Page Header -->
-					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styTBB" style="width:187mm;padding-top:.5mm; float:none; clear:both;">
 						<div style="float:left;">
 							Form 8582 (2013)<span style="width:148mm;"/>
 						</div>
@@ -2178,7 +1775,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					<!-- Begin Worksheet 1																						 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;" class="styBB">
+					<div class="styBB" style="width:187mm; height:5mm;">
 						<div class="styPartDesc" style="padding-left:0px;padding-bottom:3px;font-size:8.5pt;">
 							Caution:
 							<span class="styNormalText">
@@ -2188,7 +1785,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</span>
 						</div>
 					</div>
-					<div style="width:187mm;" class="styBB">
+					<div style="width:187mm; height:5mm;" class="styBB">
 						<div class="styPartDesc" style="padding-left:0px;padding-bottom:3px;font-size:8.5pt;">
 							Worksheet 1<img src="{$ImagePath}/8582_Short_Line.gif" alt="Line image"/>For Form 8582, Lines 1a, 1b, and 1c
 							<span class="styNormalText">
@@ -2196,25 +1793,25 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</span>
 						</div>
 						<xsl:if test="$Print != $Separated">
-						<div class="styGenericDiv" style="width:3.2mm;float:right;">
-							<!-- button display logic -->
-							<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtRentalActGrp/WrkshtRentalActGrp"/>
-								<xsl:with-param name="containerHeight" select="5"/>
-								<xsl:with-param name="containerID" select=" 'WrkshtRentalActGrpDiv' "/>
-								<xsl:with-param name="headerRowCount" select="2"/>
-							</xsl:call-template>
-							<!-- end button display logic -->
-						</div>
+							<div class="styGenericDiv" style="width:4.2mm;float:right;">
+								<!-- button display logic -->
+								<xsl:call-template name="SetDynamicTableToggleButton">
+									<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtRentalActGrp/WrkshtRentalActGrp"/>
+									<xsl:with-param name="containerHeight" select="5"/>
+									<xsl:with-param name="containerID" select=" 'WrkshtRentalActGrpDiv' "/>
+									<xsl:with-param name="headerRowCount" select="2"/>
+								</xsl:call-template>
+								<!-- end button display logic -->
+							</div>
 						</xsl:if>
 					</div>
 					<!-- Body -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm; height:auto;">
 						<!-- (Table) ///////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:auto;">
 							<div class="styTableContainerNBB" id="WrkshtRentalActGrpDiv">
 								<xsl:call-template name="SetInitialState"/>
-								<table class="styTable" cellspacing="0" style="width:100%;">
+								<table class="styTable" cellspacing="0" style="width:187mm;">
 									<thead class="styTableThead">
 										<xsl:call-template name="Wrksht1Headers"/>
 									</thead>
@@ -2256,20 +1853,17 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							<!-- End Set Initial Height of Above Table -->
 							</xsl:if>
 						</div>
-					<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:6mm;">
 							<div class="styIRS8582CleanDiv" style="width:25%;">
-								<b>Total. Enter on Form 8582, lines 1a,<br/> 1b, and 1c</b>
-								<!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:5px"/>
+								<b>
+								Total. Enter on Form 8582, lines 1a,<br/> 
+								1b, and 1c
+								</b>
+								<span style="float:right;">
+									<!--Dotted Line-->
+									<span class="styDotLn">........</span>
+									<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 								</span>
-								<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 							</div>
 							<div class="styIRS8582CleanDiv" style="width:15%;height:100%;">
 								<span style="width:100%;text-align:right;padding-top:2mm;">
@@ -2300,7 +1894,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					<!-- Begin Worksheet 2																						 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;" class="styBB">
+					<div style="width:187mm; height:4mm;" class="styBB">
 						<div class="styPartDesc" style="padding-left:0px;padding-bottom:3px;font-size:8.5pt;">
 							Worksheet 2<img src="{$ImagePath}/8582_Short_Line.gif" alt="Line image"/>For Form 8582, Lines 2a and 2b
 							<span class="styNormalText">
@@ -2308,7 +1902,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</span>
 						</div>
 						<xsl:if test="$Print != $Separated">
-						<div class="styGenericDiv" style="width:3.2mm;float:right;">
+						<div class="styGenericDiv" style="width:4.2mm;float:right;">
 							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtCommercialGrp/WrkshtCommercialGrp"/>
@@ -2321,9 +1915,9 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 						</xsl:if>
 					</div>
 					<!-- Body -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm; height:auto;">
 						<!-- (Table) ///////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:auto;">
 							<div class="styTableContainerNBB" id="WrkshtCommercialGrpDiv">
 								<xsl:call-template name="SetInitialState"/>
 								<table class="styTable" cellspacing="0" style="width:100%;">
@@ -2365,30 +1959,23 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							<!-- End Set Initial Height of Above Table -->
 							</xsl:if>
 						</div>
-						<div class="styIRS8582LineItem">
-							<div class="styIRS8582CleanDiv" style="width:25%;">
+						<div class="styIRS8582LineItem" style="height:7mm;">
+							<div class="styIRS8582CleanDiv" style="width:25%; height:100%;padding-top:.5mm;">
 								<b>Total. Enter on Form 8582, lines 2a and 2b</b>
-								<!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:8px"/>
+								<span style="float:right;">
+									<!--Dotted Line-->
+									<span class="styDotLn">..........</span>
+									<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 								</span>
-								<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 							</div>
-							<div class="styIRS8582CleanDiv" style="width:24.95%;height:100%;">
+							<div class="styIRS8582CleanDiv" style="width:24.95%;height:100%;padding-top:.5mm;">
 								<span style="width:100%;text-align:right;padding-top:2mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtCommercialGrp/RevitalizationDeductionAmt"/>
 									</xsl:call-template>
 								</span>
 							</div>
-							<div class="styIRS8582CleanDiv" style="width:25.05%;height:100%">
+							<div class="styIRS8582CleanDiv" style="width:25.05%;height:100%;padding-top:.5mm;">
 								<span style="width:100%;text-align:right;padding-top:2mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtCommercialGrp/PriorYearRevitalizationAmt"/>
@@ -2410,7 +1997,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</span>
 						</div>
 						<xsl:if test="$Print != $Separated">
-						<div class="styGenericDiv" style="width:3.2mm;float:right;">
+						<div class="styGenericDiv" style="width:4.2mm;float:right;">
 							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtPassiveGrp/WrkshtPassiveGrp"/>
@@ -2423,9 +2010,9 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 						</xsl:if>
 					</div>
 					<!-- Body -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm; height:auto;">
 						<!-- (Table) ///////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:auto;">
 							<div class="styTableContainerNBB" id="WrkshtPassiveGrpDiv">
 								<xsl:call-template name="SetInitialState"/>
 								<table class="styTable" cellspacing="0" style="width:100%;">
@@ -2470,20 +2057,14 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							<!-- End Set Initial Height of Above Table -->
 							</xsl:if>
 						</div>
-						<div class="styIRS8582LineItem">
-							<div class="styIRS8582CleanDiv" style="width:25%;">
+						<div class="styIRS8582LineItem" style="height:6mm;">
+							<div class="styIRS8582CleanDiv" style="width:25%;height:100%;">
 								<b>Total. Enter on Form 8582, lines 3a, 3b, and 3c</b>
-								<!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:11px"/>.
-									<span style="width:8px"/>
+								<span style="float:right;">
+									<!--Dotted Line-->
+									<span class="styDotLn">.........</span>
+									<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 								</span>
-								<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 							</div>
 							<div class="styIRS8582CleanDiv" style="width:15%;height:100%;">
 								<span style="width:100%;text-align:right;padding-top:2mm;">
@@ -2522,7 +2103,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</span>
 						</div>
 						<xsl:if test="$Print != $Separated">
-						<div class="styGenericDiv" style="width:3.2mm;float:right;">
+						<div class="styGenericDiv" style="width:4.2mm;float:right;">
 							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtAllowanceGrp/WrkshtAllowanceGrp"/>
@@ -2535,9 +2116,9 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 						</xsl:if>
 					</div>
 					<!-- Body -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm; height:auto;">
 						<!-- (Table) ///////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:auto;">
 							<div class="styTableContainerNBB" id="WrkshtAllowanceGrpDiv">
 								<xsl:call-template name="SetInitialState"/>
 								<table class="styTable" cellspacing="0" style="width:100%;">
@@ -2582,29 +2163,15 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							<!-- End Set Initial Height of Above Table -->
 							</xsl:if>
 						</div>
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582CleanDiv" style="width:40.035%;height:100%;">
 								<span style="width:100%;text-align:left;padding-top:1mm;">
 									<b>Total</b>
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:8px"/>
+									<span style="float:right;">
+										<!--Dotted Line-->
+										<span class="styDotLn">.................</span>
+										<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 									</span>
-									<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 								</span>
 							</div>
 							<div class="styIRS8582CleanDiv" style="width:15%;height:100%;">
@@ -2647,7 +2214,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</span>
 						</div>
 						<xsl:if test="$Print != $Separated">
-						<div class="styGenericDiv" style="width:3.2mm;float:right;">
+						<div class="styGenericDiv" style="width:4.2mm;float:right;">
 							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtLossGrp/WrkshtLossGrp"/>
@@ -2660,9 +2227,9 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 						</xsl:if>
 					</div>
 					<!-- Body -->
-					<div class="styTBB" style="width:187mm;">
+					<div class="styTBB" style="width:187mm; height:auto; float:none; clear:both; ">
 						<!-- (Table) ///////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:auto;">
 							<div class="styTableContainerNBB" id="WrkshtLossGrpDiv">
 								<xsl:call-template name="SetInitialState"/>
 								<table class="styTable" cellspacing="0" style="width:100%;">
@@ -2707,31 +2274,15 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							<!-- End Set Initial Height of Above Table -->
 							</xsl:if>
 						</div>
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582CleanDiv" style="width:43.86%;height:100%;border-right-width:0px;">
 								<span style="width:100%;text-align:left;padding-top:1mm;">
 									<b>Total</b>
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:2px"/>
+									<span style="float:right;">
+										<!--Dotted Line-->
+										<span class="styDotLn">...................</span>
+										<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 									</span>
-									<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 								</span>
 							</div>
 							<div class="styIRS8582CleanDiv" style="width:19.03%;height:100%;border-right-width:0px;border-left-width:1px;">
@@ -2766,7 +2317,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					</div>
 					<!-- END Page Break and Footer-->
 					<!-- BEGIN Page Header -->
-					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styTBB" style="width:187mm;padding-top:.5mm;float:none; clear:both; ">
 						<div style="float:left;">
 							Form 8582 (2013)<span style="width:148mm;"/>
 						</div>
@@ -2779,9 +2330,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					<!-- Begin Worksheet 6																						 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<br></br>
-					<br></br>
-					<div style="width:187mm;" class="styBB">
+					<div style="width:187mm; padding-top:1mm;" class="styBB">
 						<div class="styPartDesc" style="padding-left:0px;padding-bottom:3px;font-size:8.5pt;">
 							Worksheet 6<img src="{$ImagePath}/8582_Short_Line.gif" alt="Line image"/>Allowed Losses
 							<span class="styNormalText">
@@ -2789,7 +2338,7 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</span>
 						</div>
 						<xsl:if test="$Print != $Separated">
-						<div class="styGenericDiv" style="width:3.2mm;float:right;">
+						<div class="styGenericDiv" style="width:4.2mm;float:right;">
 							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form8582Data/ParentWrkshtListActivityGrp/WrkshtListActivityGrp"/>
@@ -2798,14 +2347,13 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 								<xsl:with-param name="headerRowCount" select="1"/>
 							</xsl:call-template>
 							<!-- end button display logic -->
-							
 						</div>
 						</xsl:if>
 					</div>
 					<!-- Body -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm; height:auto;">
 						<!-- (Table) ///////////////////////////////////////////////-->
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:auto;">
 							<div class="styTableContainerNBB" id="WrkshtListActivityGrpDiv">
 								<xsl:call-template name="SetInitialState"/>
 								<table class="styTable" cellspacing="0" style="width:100%;">
@@ -2850,31 +2398,15 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							<!-- End Set Initial Height of Above Table -->
 							</xsl:if>
 						</div>
-						<div class="styIRS8582LineItem">
+						<div class="styIRS8582LineItem" style="height:5mm;">
 							<div class="styIRS8582CleanDiv" style="width:43.86%;height:100%;border-right-width:0px;">
 								<span style="width:100%;text-align:left;padding-top:1mm;">
 									<b>Total</b>
-									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:2px"/>
+									<span style="float:right;">
+										<!--Dotted Line-->
+										<span class="styDotLn">...................</span>
+										<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 									</span>
-									<img src="{$ImagePath}/8582_Bullet_Sm.gif" alt="SmallBullet"/>
 								</span>
 							</div>
 							<div class="styIRS8582CleanDiv" style="width:19.03%;height:100%;border-right-width:0px;border-left-width:1px;">
@@ -2904,8 +2436,8 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 					<!-- Begin Worksheet 7																						 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;" class="styGenericDiv">
-						<div class="styPartDesc" style="padding-left:0px;padding-bottom:2mm;font-size:8.5pt;">
+					<div class="styGenericDiv" style="width:187mm; height:7mm;">
+						<div class="styPartDesc" style="padding-left:0px; padding-top:1.5mm; font-size:8.5pt;">
 							Worksheet 7<img src="{$ImagePath}/8582_Short_Line.gif" alt="Line image"/>
 							Activities With Losses Reported on Two or More Forms or Schedules
 							<span class="styNormalText">
@@ -2913,20 +2445,18 @@ your<br/>return; all losses are allowed, including any prior year unallowed loss
 							</span>
 						</div>
 					</div>
-					
-						<xsl:choose>
-							<xsl:when test="$Form8582Data/ParentWrkshtLossActivityGrp">
-								<xsl:for-each select="$Form8582Data/ParentWrkshtLossActivityGrp">
-									<xsl:call-template name="Wrksht7">
-										<xsl:with-param name="TargetNode" select="."/>
-									</xsl:call-template>
-								</xsl:for-each>
-							</xsl:when>
-							<xsl:otherwise>
-								<xsl:call-template name="Wrksht7"/>
-							</xsl:otherwise>
-						</xsl:choose>
-				
+					<xsl:choose>
+						<xsl:when test="$Form8582Data/ParentWrkshtLossActivityGrp">
+							<xsl:for-each select="$Form8582Data/ParentWrkshtLossActivityGrp">
+								<xsl:call-template name="Wrksht7">
+									<xsl:with-param name="TargetNode" select="."/>
+								</xsl:call-template>
+							</xsl:for-each>
+						</xsl:when>
+						<xsl:otherwise>
+							<xsl:call-template name="Wrksht7"/>
+						</xsl:otherwise>
+					</xsl:choose>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Page Break and Footer-->
 					<div class="pageEnd" style="width:187mm;padding-top:1mm;">

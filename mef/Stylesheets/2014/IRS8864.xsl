@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Ken Dulabhan (Comteq Federal Inc) -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
 	<xsl:import href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -11,8 +10,10 @@
 	<xsl:param name="FormData" select="$RtnDoc/IRS8864"/>
 	<xsl:template name="RowWriterCore"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -61,7 +62,8 @@
 						<div class="styFTBox" style="width:127mm;height:13mm;">
 							<div class="styMainTitle" style="padding-top:1.5mm;">
 							  Biodiesel and Renewable Diesel Fuels Credit          
-						  </div>
+							</div>
+							<br/>
 							<br/>
 							<div class="styFST" style="height:5mm;font-size:7pt;padding-top:3mm;">
 								<img src="{$ImagePath}/8864_Bullet_Line.gif" width="4" height="7" alt="Bullet Image"/>
@@ -69,14 +71,14 @@
 								 <br/>
 								<img src="{$ImagePath}/8864_Bullet_Line.gif" width="4" height="7" alt="Bullet Image"/>
 								 Information about Form 8864 and its separate instructions is at 
-								<a href="http://www.irs.gov/form8864" title="Link to IRS.gov">
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8864" title="Link to IRS.gov">
 									<i>www.irs.gov/form8864</i>
 								</a>.
 						  </div>
 						</div>
 						<!-- This can be taken out later -->
 						<div class="styTYBox" style="width:30mm;height:21.5mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-1924</div>
+							<div class="styOMB" style="height:4mm;">OMB No. 1545-1924</div>
 							<div class="styTY" style="height:7.5mm;font-size:24pt;">
                                 20<span class="styTYColor">14</span>
 							</div>
@@ -87,77 +89,94 @@
 					<!--  End title of Form  -->
 					<!-- Start Name and EIN Line -->
 					<div class="styBB" style="width:187mm">
-						<div class="styNameBox" style="width:132mm; height:8mm; font-size:7pt;">Name(s) shown on return
+						<div class="styNameBox" style="width:132mm; height:10mm; font-size:7pt;">Name(s) shown on return
 						<br/>
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+						  <xsl:choose>
+						  <!-- Name from 1120/990/1065 Return Header -->
+							<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+							  </xsl:call-template>
+							  <br/>
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
+							  </xsl:call-template>
+							</xsl:when>
+							<!-- Name from 1040 Return Header -->
+							<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
+							  <br/>
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+							  </xsl:call-template>
+							</xsl:when>
+							<!-- Name from 1041 Return Header 
+							<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+							  </xsl:call-template>
+							  <br/>
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
+							  </xsl:call-template>
+							</xsl:when>
+							<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+							  <xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+							  </xsl:call-template>
+							  <br/>
+							</xsl:when> -->
+						  </xsl:choose>
 						</div>
 						<div class="styEINBox" style="width:50mm;height:4mm;font-size:7pt;padding-left:2mm;"> Identifying number 
                           <br/>
 							<br/>
 							<span style="font-weight:normal;">
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
+								  <xsl:when test="$RtnHdrData/Filer/EIN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:when>
+								  <xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>
 					</div>
 					<!-- end Name and Ein Line -->
 					<!-- Start Caution Line -->
-					<div class="styBB" style="width: 187mm; font-size: 7pt;padding-top:1mm;">
-						<div style="width:187mm;height:6mm;padding-bottom:1mm;">
-							<span class="styBoldText" style="vertical-align: top;">Caution.</span>
-							<span class="styNormalText" style="width: 165mm; padding-left: 2mm;">
-							 You cannot claim any amounts on Form 8864 that you claimed (or will claim) on Form 720 (Schedule C), Form 8849, or Form 4136.
-							</span>
-							<span class="styNormalText" style="width: 187mm;">
+					<div class="styBB" style="width:187mm;height:14mm;">
+						<span class="styBoldText" style="vertical-align: top;">Caution.</span>
+						<span class="styNormalText" style="width: 170mm; padding-left: 2mm;">
+							You cannot claim any amounts on Form 8864 that you claimed (or will claim) on Form 720 (Schedule C), Form 8849, or Form 4136.
+						</span>
+						<span class="styNormalText" style="width: 187mm;">
 							Claimant has a certificate from the producer or importer of biodiesel or renewable diesel reported on lines 1 through 6 below and, if
 							applicable, claimant also has a statement from the reseller. Claimant has no reason to believe that the information in the certificate or
 							statement is false. Claimant may need to attach a copy of the certificate and statement. See <i>Certification</i> in the instructions.
-                           </span>
-						</div>
+                        </span>
 					</div>
 					<!-- end Caution Line -->
 					<!--Table header Begin -->
-					<div class="styBB" style="width:188mm;">
-						<div class="styNameBox" align="center" style="width:110.75mm;height:11mm;font-size:7pt;text-align:center;padding-top:4mm;">
+					<div class="styBB" style="width:187mm;">
+						<div class="styNameBox" align="center" style="width:110.9mm;height:11mm;font-size:7pt;text-align:center;padding-top:4mm;">
 						  Type of Fuel
 						</div>
 						<div class="styNameBox" align="center" style="width:32mm;height:11mm;font-size:7pt;text-align: center;padding-top:.5mm;">
 							<span class="styBoldText">(a)</span>
 							<br/>Number of Gallons <br/>Sold or Used
 						</div>
-						<div class="styNameBox" align="center" style="width:12mm;height:11mm;font-size:7pt;text-align: center;padding-top:2mm;">
+						<div class="styNameBox" align="center" style="width:12.1mm;height:11mm;font-size:7pt;text-align: center;padding-top:2mm;">
 							<span class="styBoldText">(b)</span>
 							<br/>Rate      
                          </div>
-						<div class="styNameBox" align="center" style="width:33mm;height:11mm;font-size:7pt;border-right-width:0px;text-align: center;padding-top:2mm;">
+						<div class="styNameBox" align="center" style="width:32mm;height:11mm;font-size:7pt;border-right-width:0px;text-align: center;padding-top:2mm;">
 							<span class="styBoldText">(c)</span>
-							<br/>Column (a) x Column (b)</div>
+							<br/>Column (a) x Column (b)
+						</div>
 					</div>
 					<!--Table header end -->
 					<div style="width:187mm;">
@@ -193,7 +212,7 @@
 						<div class="styLNDesc" style="width:97.7mm;height:4mm;">
 							<span style="float:left">Agri-biodiesel</span>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">...................</span>
+							<span class="styDotLn" style="float:right;font-weight:bold;padding-right:2mm;">.................</span>
 						</div>
 						<div class="styLNAmountBox" style="width:5mm;padding-right:1mm;">2</div>
 						<div class="styLNAmountBox" style="width:32mm;padding-right:1mm;">
@@ -403,10 +422,10 @@
 							<span style="float:left">Add lines 8 and 9. Cooperatives, estates, and trusts, go to line 11. Partnerships and S corporations, stop here and report this amount on Schedule K.  All others, stop here and report this amount on</span>
 							<span style="float:left;white-space:nowrap;"> Form 3800 Part III, line 1l. </span>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:right;padding-right: 2mm;">.........................</span>
+							<span class="styDotLn" style="float:right;padding-right: 2mm;">........................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:12mm;padding-top:8mm;">10</div>
-						<div class="styLNAmountBox" style="height:12mm;padding-top:8mm;">							
+						<div class="styLNRightNumBox" style="height:10mm;padding-top:7mm;">10</div>
+						<div class="styLNAmountBox" style="height:10mm;padding-top:7mm;">							
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotalBiodieselAndRnwblFuelsAmt"/>
 								<xsl:with-param name="BackupName">IRS8864AddLines8and9Amt</xsl:with-param>

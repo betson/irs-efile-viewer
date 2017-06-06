@@ -18,8 +18,10 @@
     
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>
@@ -54,16 +56,17 @@
           <xsl:with-param name="TargetNode" select="$DependencyData"/>
         </xsl:call-template>
         <xsl:if test="$DependencyData/ExplanationTxt !=''">
-          <div class="styTopSectionLine" style="width:187mm;">
-            <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Statement:</span></div>
-            <div style="float:left;clear:none;">
-              <div class="styExplanationLine">
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$DependencyData/ExplanationTxt"/>
-                </xsl:call-template>
-              </div>  
-            </div>
+          
+        <div class="styTopSectionLine">
+          <div class="styTopSectionLineLbl" style="float:left">
+            <b>Statement: </b>
           </div>
+        </div>  
+        <div class="styTopSectionLine">
+          <div  class="styExplanationLine" style="width:187mm;text-align:justify;">
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/ExplanationTxt"/></xsl:call-template>      
+          </div>                  
+        </div>         
         </xsl:if>            
       </body>
     </html>

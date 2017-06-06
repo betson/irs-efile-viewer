@@ -7,6 +7,7 @@
     <xsl:output method="html" indent="yes"/>
     <xsl:strip-space elements="*"/> 
     <xsl:param name="DependencyData" select="$RtnDoc/OtherAdjsToReconcileSchedule"/>
+		 <!--   -  Form 1120F ScheduleM3 displays as - Other Adjs To Reconcile Schedule - -->
     <xsl:param name="depDocTitle">
       <xsl:call-template name="PopulateDisplayName">
         <xsl:with-param name="TargetNode" select="$DependencyData"/>
@@ -47,7 +48,7 @@
                   </xsl:if>
                 </td>
                 <!-- EIN -->
-                <td class="stydepTblCell" style="width:25mm;text-align:center;">
+                <td class="styDepTblCell" style="width:25mm;text-align:center;">
                   <span style="width:21mm;text-align:center;">
                     <xsl:choose>
             		      <xsl:when test="normalize-space(EIN)">                    
@@ -66,19 +67,19 @@
                   </span>
                 </td>
                 <!--NatureOfAdjustment -->         
-                <td class="stydepTblCell" style="width:41mm;text-align:left;">
+                <td class="styDepTblCell" style="width:41mm;text-align:left;">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="NatureOfAdjustmentDesc"/>
                   </xsl:call-template>
                 </td> 
                 <!-- NetIncomePart1BeforeAdj  -->         
-                <td class="stydepTblCell" style="width:32mm;text-align:right;">
+                <td class="styDepTblCell" style="width:32mm;text-align:right;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="NetIncomeBeforeAdjustmentsAmt"/>
                   </xsl:call-template>
                 </td> 
                 <!-- NetIncomeIncludedPartIAmt  -->         
-                <td class="stydepTblCell" style="width:32mm;text-align:right;">
+                <td class="styDepTblCell" style="width:32mm;text-align:right;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="NetIncomeIncludedAmt"/>
                   </xsl:call-template>
@@ -90,8 +91,10 @@
       </xsl:template>
       <!-- Main template -->
       <xsl:template match="/">
-        <html>
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
           <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
             <title>
               <xsl:value-of select="$depDocTitle"/>
             </title>
@@ -114,15 +117,14 @@
             </style>
             <xsl:call-template name="GlobalStylesDep"/>
           </head>
-          <body class="styBodyClass">
+          <body class="styBodyClass" style="width:187mm"
+>
             <xsl:call-template name="DocumentHeaderDependency"/>
-              <div class="styDepTitleLine">
-                <span class="styDepTitle">
-                  <span style="width:98mm;">
-                    <xsl:value-of select="$depDocTitle"/>
-                  </span>
-                </span>
-              </div>
+           <div class="styDepTitleLine">
+        <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+      </div>
               <xsl:call-template name="PopulateDepCommonLeftover">
                 <xsl:with-param name="TargetNode" select="$DependencyData"/>
               </xsl:call-template>               

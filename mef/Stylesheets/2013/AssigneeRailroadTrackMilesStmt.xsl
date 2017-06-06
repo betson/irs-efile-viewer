@@ -7,6 +7,7 @@
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
   <xsl:param name="DependencyData" select="$RtnDoc/AssigneeRailroadTrackMilesStmt"/>
+		 <!--  - Form 8900 displays as - Assignee Railroad Track Miles Statement - -->
   <!-- The name of the dependency Assignee Railroad Track Miles Statement -->
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName">
@@ -14,7 +15,7 @@
     </xsl:call-template>
   </xsl:param>
   <xsl:template name="AssignRRTrkMls">
-    <table id="DeMinimisExceptionElectionTbl" class="styDepTblLandScape">
+    <table id="DeMinimisExceptionElectionTbl" class="styDepTblLandscape">
       <thead class="styTableThead">
         <tr class="styDepTblHdr">
           <th class="styDepTblCell" scope="col" style="padding-top:10mm;">Name</th>
@@ -27,10 +28,7 @@
       <xsl:for-each select="$DependencyData/AssigneeRailroadTrackMilesGrp">
         <tr>
           <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-          <!--          <td class="styDepTblCell" style="text-align:center;" >
-            <xsl:value-of select="position()" />
-              </td> -->
-          <td class="styDepTblCell" style="text-align:left;">
+          <td class="styDepTblCell" style="width: 45mm;text-align:left;">
             <xsl:choose>
               <xsl:when test="AssigneeName/BusinessNameLine1 !=''">
                 <xsl:call-template name="PopulateText">
@@ -50,22 +48,22 @@
               </xsl:otherwise>
             </xsl:choose>
           </td>
-          <td class="styDepTblCell" style="text-align:center;width:34mm">
+          <td class="styDepTblCell" style="width:34mm;text-align:center;padding-top:6mm;">
             <xsl:call-template name="PopulateEIN">
               <xsl:with-param name="TargetNode" select="EIN"/>
             </xsl:call-template>
           </td>
-          <td class="styDepTblCell" style="text-align:right;width:45mm">
+          <td class="styDepTblCell" style="width:45mm;text-align:right;padding-top:6mm;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="TotalRlrdTrackMilesQty"/>
             </xsl:call-template>
           </td>
-          <td class="styDepTblCell" style="text-align:right;width:45mm">
+          <td class="styDepTblCell" style="width:45mm;text-align:right;padding-top:6mm;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="TotalAssignorsEligRlrdTrackQty"/>
             </xsl:call-template>
           </td>
-          <td class="styDepTblCell" style="text-align:right;width:45mm">
+          <td class="styDepTblCell" style="width:45mm;text-align:right;padding-top:6mm;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="TotRlrdTrackAsgnByAssignorQty"/>
             </xsl:call-template>
@@ -76,8 +74,10 @@
   </xsl:template>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -102,13 +102,11 @@
       </head>
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependencyLandscape"/>
-        <div class="styDepTitleLineLandScape">
-          <span class="styDepTitle">
-            <span style="width:107mm;">
-              <xsl:value-of select="$depDocTitle"/>
-            </span>
-          </span>
-        </div>
+        <div class="styDepTitleLine">
+        <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+      </div>
         <xsl:call-template name="PopulateDepCommonLeftoverLandscape">
           <xsl:with-param name="TargetNode" select="$DependencyData"/>
         </xsl:call-template>

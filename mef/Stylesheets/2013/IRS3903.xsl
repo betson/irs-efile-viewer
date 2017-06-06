@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Last Modified by Eugenia McDonald on 04/3/2015 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -10,8 +11,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="FormData" select="$RtnDoc/IRS3903"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -45,28 +48,31 @@
 					<!-- Begin Form Number and Name -->
 					<div class="styBB" style="width:187mm;">
 					<!-- Extra data line -->
-						<div class="styFNBox" style="width:31mm;height:22mm;">
-            Form<span class="styFormNumber"> 3903</span><br/>
-							<xsl:call-template name="SetFormLinkInline">
-								<xsl:with-param name="TargetNode" select="$FormData"/>
-							</xsl:call-template>
-							<xsl:call-template name="LinkToLeftoverDataTableInline">
-								<xsl:with-param name="Desc">Top Left Margin - Military Move Code</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$FormData/MilitaryMoveCd"/>
-							</xsl:call-template>
-							<div class="styAgency" style="padding-top:2mm;">Department of the Treasury<br/>Internal Revenue Service (99)</div>
+						<div class="styFNBox" style="width:31mm;height:20mm;">
+						    Form<span class="styFormNumber"><span style="width=2mm"/> 3903</span><br/>
+						    <div style="height:5mm">
+								<xsl:call-template name="SetFormLinkInline">
+									<xsl:with-param name="TargetNode" select="$FormData"/>
+								</xsl:call-template>
+								<xsl:call-template name="LinkToLeftoverDataTableInline">
+									<xsl:with-param name="Desc">Top Left Margin - Military Move Code</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$FormData/MilitaryMoveCd"/>
+								</xsl:call-template>
+							</div><br/>
+							<div class="styAgency" style="height:5mm;">
+								Department of the Treasury<br/>Internal Revenue Service (99)</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:22mm;">
-							<div class="styMainTitle" style="height:8mm;padding-top:2mm;">Moving Expenses</div>
-							<div class="styFST" style="height:5mm;font-size:7pt;padding-top:4mm;">
+						<div class="styFTBox" style="width:125mm;height:20mm;">
+							<div class="styMainTitle" style="height:8mm;padding-top:2mm;padding-left:1mm">Moving Expenses</div><br/>
+							<div class="styFST" style="height:5mm;font-size:7pt;padding-top:4mm;padding-left:0mm">
 								<img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="bullet image"/>Attach to Form 1040 or Form 1040NR.
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:22mm;">
-							<div class="styOMB" style="height:1mm;">OMB No. 1545-0074</div>
+						<div class="styTYBox" style="width:30mm;height:20mm;">
+							<div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
 							<div class="styTY" style="height:7mm;font-size:22pt;">2013</div>
-							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;">Attachment<br/>
-            Sequence No. <span class="styBoldText">170</span>
+							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;
+								padding-top:2mm">Attachment<br/>Sequence No. <span class="styBoldText">170</span>
 							</div>
 						</div>
 					</div>
@@ -74,7 +80,7 @@
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;float:none;clear:none;">
 						<div class="styNameBox" style="width:136mm;height:8mm;font-size:7pt;">
-							<div>Name(s) shown on return</div>
+							<div>Name(s) shown on return</div><br/>
 							<span>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
@@ -92,8 +98,11 @@
 					</div>
 					<div class="styBB" style="width:187mm;height:12mm;">
 						<div style="height:12mm;width:30mm;float:left;font-weight:bold">Before you begin:</div>
-						<div style="height:6mm;width:156mm;padding-top:1mm;padding-bottom:2mm;"><img src="{$ImagePath}/3903_checkmark.gif" width="11" height="10" alt="checkmark image"/> See the <b>Distance Test</b> and <b>Time Test</b> in the instructions to find out if you can deduct your moving expenses.</div>
-						<div style="height:6mm;width:156mm;"><img src="{$ImagePath}/3903_checkmark.gif" width="11" height="10" alt="checkmark image"/> See <b>Members of the Armed Forces</b> in the instructions, if applicable.</div>
+						<div style="height:6mm;width:156mm;padding-top:1mm;padding-bottom:2mm;">
+							<img src="{$ImagePath}/3903_checkmark.gif" width="11" height="10" alt="checkmark image"/> See the <b>
+							 Distance Test</b> and <b>Time Test</b> in the instructions to find out if you can deduct your moving expenses.</div>
+						<div style="height:6mm;width:156mm;"><img src="{$ImagePath}/3903_checkmark.gif" width="11" height="10"
+						  alt="checkmark image"/> See <b>Members of the Armed Forces</b> in the instructions, if applicable.</div>
 					</div>
 					<!-- Begin the amount boxes -->
 					<div class="styBB" style="width:187mm;">
@@ -106,10 +115,11 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:4.5mm">1 </div>
 							<div class="styLNDesc" style="width:141mm;height:4.5mm;">
-							Transportation and storage of household goods and personal effects (see instructions)<span style="letter-spacing:3mm;">......</span>
+								Transportation and storage of household goods and personal effects (see instructions)
+								<span style="letter-spacing:3mm;">......</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:4.5mm;position:relative">
-								<span style="position:absolute;bottom:0">1</span>
+							<div class="styLNRightNumBox" style="height:4.5mm;">
+								<span style="padding-left:.5mm">1</span>
 							</div>
 							<div class="styLNAmountBox" style="height:4.5mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -118,14 +128,15 @@
 							</div>
 						</div>
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:8mm">2</div>
-							<div class="styLNDesc" style="width:141mm;height:8mm;">
-							Travel (including lodging) from your old home to your new home (see instructions). <span style="font-weight:bold">Do not</span> include the cost of meals<span style="letter-spacing:3mm;">...............................</span>
+							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:6mm">2</div>
+							<div class="styLNDesc" style="width:141mm;height:6mm;">
+							Travel (including lodging) from your old home to your new home (see instructions). <span style="font-weight:bold">
+							Do not</span> include the cost of meals<span style="letter-spacing:3mm;">...............................</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:8mm;position:relative">
-								<span style="position:absolute;bottom:0">2</span>
+							<div class="styLNRightNumBox" style="height:6mm;">
+								<span style="padding-left:.5mm;padding-top:1.5mm">2</span>
 							</div>
-							<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
+							<div class="styLNAmountBox" style="height:6mm;padding-top:1.5mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TravelAndLodgingExpenseAmt"/>
 								</xsl:call-template>
@@ -139,9 +150,10 @@
 						</div>
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:4.5mm">3</div>
-							<div class="styLNDesc" style="width:141mm;height:4.5mm;">Add lines 1 and 2<span style="letter-spacing:3mm;">...............................</span></div>
+							<div class="styLNDesc" style="width:141mm;height:4.5mm;">
+								Add lines 1 and 2<span style="letter-spacing:3mm;">..............................</span></div>
 							<div class="styLNRightNumBox" style="height:4.5mm;position:relative">
-								<span style="position:absolute;bottom:0">3</span>
+								<span style="padding-left:.5mm">3</span>
 							</div>
 							<div class="styLNAmountBox" style="height:4.5mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -156,11 +168,15 @@
 							<div class="styLNAmountBox" style="height:4.5mm;border-bottom:none;"/>
 						</div>
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:12mm;padding-left:1mm;width:5mm;">4</div>
-							<div class="styLNDesc" style="width:141mm;height:12mm;">Enter the total amount your employer paid you for the expenses listed on lines 1 and 2 that is <span style="font-weight:bold">not</span> included in box 1 of your Form W-2 (wages). This amount should be shown in box 12 of your Form W-2 with code <span style="font-weight:bold">P</span><span style="letter-spacing:3mm;">....................................</span>
+							<div class="styLNLeftNumBox" style="height:9mm;padding-left:1mm;width:5mm;">4</div>
+							<div class="styLNDesc" style="width:141mm;height:9mm;">
+								Enter the total amount your employer paid you for the expenses listed on lines 1 and 2 that is 
+								<span style="font-weight:bold">not</span><br/> included in box 1 of your Form W-2 (wages). This amount
+								 should be shown in box 12 of your Form W-2 <br/> with code <span style="font-weight:bold">P</span>
+									<span style="letter-spacing:3mm;">................................</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:8mm;background-color:lightgrey;border-bottom-width:0"/>
-							<div class="styLNAmountBox" style="height:8mm;border-bottom-width:0"/>
+							<div class="styLNRightNumBox" style="height:5mm;background-color:lightgrey;border-bottom-width:0"/>
+							<div class="styLNAmountBox" style="height:5mm;border-bottom-width:0"/>
 							<div class="styLNRightNumBox" style="height:4mm;text-align:center;padding-left:1.66mm;">
 								4
 							</div>
@@ -177,8 +193,9 @@
 							<div class="styLNAmountBox" style="height:4.5mm;border-bottom:none;"/>
 						</div>
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:31mm">5</div>
-							<div class="styLNDesc" style="width:141mm;height:31mm;">Is line 3 <span style="font-weight:bold;">more than</span> line 4?
+							<div class="styLNLeftNumBox" style="padding-left:1mm;width:5mm;height:23mm">5</div>
+							<div class="styLNDesc" style="width:141mm;height:23mm;">
+								Is line 3 <span style="font-weight:bold;">more than</span> line 4?
 							<p style="padding-left:3mm;">
 							<span style="float:left;">
 								<xsl:call-template name="PopulateSpan">
@@ -199,7 +216,9 @@
 								</label>
 							</span> 
 							
-							You <span style="font-weight:bold;">cannot</span> deduct your moving expenses. If line 3 is less than line 4, subtract line 3 from line 4 and include the result on Form 1040, line 7, or Form 1040NR, line 8.</p>
+							You <span style="font-weight:bold;">cannot</span> 
+							deduct your moving expenses. If line 3 is less than line 4, subtract line 3 from line 4 and include 
+							the result on Form 1040, line 7, or Form 1040NR, line 8.</p>
 							<p style="padding-left:3mm;padding-top:2mm;">
 							<span style="float:left;">
 								<xsl:call-template name="PopulateSpan">
@@ -220,13 +239,13 @@
 								</label>
 							</span> 
 							
-							Subtract line 4 from line 3. Enter the result here and on Form 1040, line 26, or Form 1040NR, line 26. This is your <b>moving expense deduction</b><span style="letter-spacing:3mm">................</span></p>
+							Subtract line 4 from line 3. Enter the result here and on Form 1040, line 26, or Form 1040NR, line 26. This is your 
+								<b>moving expense deduction</b><span style="letter-spacing:3mm">................</span></p>
 							</div>
-							<div class="styLNRightNumBox" style="height:27mm;border-bottom:none;background-color:lightgrey;text-align:left;"/>
-							<div class="styLNAmountBox" style="height:27mm;border-bottom:none;"/>
-
-							<div class="styLNRightNumBox" style="height:4mm;padding-left:1.66mm;text-align:center;">								5</div>
-							<div class="styLNAmountBox" style="height:4mm;">
+							<div class="styLNRightNumBox" style="height:19mm;border-bottom:none;background-color:lightgrey;text-align:left;"/>
+							<div class="styLNAmountBox" style="height:19mm;border-bottom:none;"/>
+							<div class="styLNRightNumBox" style="height:4mm;padding-left:1.66mm;text-align:center;border-bottom:none">5</div>
+							<div class="styLNAmountBox" style="height:4mm;border-bottom:none">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/MovingDeductionAmt"/>
 								</xsl:call-template>

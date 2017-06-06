@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- 11/22/2013 - Modified per defect #38365 - Jeremy Nichols -->
+<!-- 05/28/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
@@ -11,8 +11,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8896Data" select="$RtnDoc/IRS8896"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8896Data)"/>
@@ -67,7 +69,7 @@
 				</div>        
 						</div>
 						<div class="styTYBox" style="width:30mm;height:21mm;">
-							<div class="styOMB" style="height:2mm;">
+							<div class="styOMB" style="height:4mm;">
             OMB No. 1545-1914
           </div>
 							<div class="styTaxYear" style="height:9mm;padding-top:0;"/>
@@ -78,7 +80,7 @@
 					<!-- End Form Number and Name section -->
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;family-font:verdana;">
-						<div class="styNameBox" style="width:156mm;height:8mm;font-size:7pt;font-weight:normal;">
+						<div class="styNameBox" style="width:156mm;height:9.5mm;font-size:7pt;font-weight:normal;">
           Name(s) shown on return<br/>
 							<span>
 								<xsl:choose>
@@ -100,7 +102,7 @@
 								</xsl:choose>
 							</span>
 						</div>
-						<div class="styEINBox" style="width:30mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
+						<div class="styEINBox" style="width:30mm;height:9.5mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
           Identifying number<br/>
 							<br/>
 							<span style="width:25mm;text-align:left;font-weight:normal;">

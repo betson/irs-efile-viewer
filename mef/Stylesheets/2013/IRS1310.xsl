@@ -10,8 +10,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="FormData" select="$RtnDoc/IRS1310"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -48,22 +50,22 @@
             Form<span class="styFormNumber"> 1310</span><br/>(Rev. November 2005)
 							<div class="styAgency" style="padding-top:1mm;">Department of the Treasury<br/>Internal Revenue Service</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:20mm;">
-							<div class="styMainTitle" style="height:8mm;padding-top:2mm;">Statement of Person Claiming<br/>
+						<div class="styFTBox" style="width:125mm;height:auto;">
+							<div class="styMainTitle" style="height:auto;padding-top:2mm;">Statement of Person Claiming<br/>
 Refund Due a Deceased Taxpayer</div>
-							<div class="styFST" style="height:5mm;font-size:7pt;padding-top:4mm;">
+							<div class="styFST" style="height:auto;font-size:7pt;padding-top:4mm;">
 								<img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/>See instructions below and on back.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:20mm;">
-							<div class="styOMB" style="height:1mm;">OMB No. 1545-0074</div>
+							<div class="styOMB" style="height:auto;">OMB No. 1545-0074</div>
 							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;padding-top:1mm;">Attachment<br/>
             Sequence No. <span class="styBoldText">87</span>
 							</div>
 						</div>
 					</div>
 					<!-- End Form Number and Name section -->
-					<div class="styBB" style="width:187mm;height:12mm;">
+					<div class="styBB" style="width:187mm;height:auto">
 						<div style="padding:2mm 0mm;font-size:9pt;">Tax year decedent was due a refund:</div>
 						<div style="padding:1mm 0mm;font-size:8pt;">Calendar year 
 						<span style="width:15mm;">
@@ -97,12 +99,12 @@ Refund Due a Deceased Taxpayer</div>
 						</span>, 20
 						</div>
 					</div>
-					<div class="styGenericDiv" style="width:187mm;height:22mm;">
-						<div class="styGenericDiv" style="width:15mm;height:20mm;float:left;font-weight:bold;font-size:9pt;text-align:center;padding:16mm 0mm;">Please<br/>print<br/>or<br/>type</div>
-						<div class="styGenericDiv" style="width:171mm;height:8mm;border-left:1px solid black;border-bottom:1px solid black;padding-left:2mm;">
+					<div class="styGenericDiv" style="width:187mm;height:auto;">
+						<div class="styGenericDiv" style="width:15mm;height:auto;float:left;font-weight:bold;font-size:9pt;text-align:center;padding:16mm 0mm;">Please<br/>print<br/>or<br/>type</div>
+						<div class="styGenericDiv" style="width:171mm;height:auto;border-left:1px solid black;border-bottom:1px solid black;padding-left:2mm;">
 							<div class="styNameBox" style="width:78mm;height:12mm;font-size:7pt;">
 								<div>Name of decedent</div>
-								<span>
+								<span style="display:block;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/DecedentName"/>
 									</xsl:call-template>
@@ -110,7 +112,7 @@ Refund Due a Deceased Taxpayer</div>
 							</div>
 							<div class="styNameBox" style="width:40mm;height:12mm;font-size:7pt;padding-left:2mm;">
 								<div>Date of death</div>
-								<span>
+								<span style="display:block;">
 									<xsl:call-template name="PopulateMonth">
 										<xsl:with-param name="TargetNode" select="$FormData/DeathDt"/>
 									</xsl:call-template> /
@@ -131,10 +133,10 @@ Refund Due a Deceased Taxpayer</div>
 								</span>
 							</div>
 						</div>
-						<div class="styGenericDiv" style="width:171mm;height:8mm;border-left:1px solid black;border-bottom:1px solid black;padding-left:2mm;">
+						<div class="styGenericDiv" style="width:171mm;height:auto;border-left:1px solid black;border-bottom:1px solid black;padding-left:2mm;">
 							<div class="styNameBox" style="width:118mm;height:12mm;font-size:7pt;">
 								<div>Name of person claiming refund</div>
-								<span>
+								<span style="display:block;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantName"/>
 									</xsl:call-template>
@@ -154,10 +156,10 @@ Refund Due a Deceased Taxpayer</div>
 								</span>
 							</div>
 						</div>
-						<div class="styGenericDiv" style="width:171mm;height:8mm;border-left:1px solid black;border-bottom:1px solid black;padding-left:2mm;">
+						<div class="styGenericDiv" style="width:171mm;height:auto;border-left:1px solid black;border-bottom:1px solid black;padding-left:2mm;">
 							<div class="styNameBox" style="width:138mm;height:12mm;font-size:7pt;">
 								<div>Home address (number and street). If you have a P.O. box, see instructions.</div>
-								<span>
+								<span style="display:block;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantUSAddress/AddressLine1"/>
 									</xsl:call-template>
@@ -171,10 +173,10 @@ Refund Due a Deceased Taxpayer</div>
 							</div>
 							<div class="styNameBox" style="width:30mm;height:12mm;font-size:7pt;border-right:none;padding-left:2mm;">Apt. no.</div>
 						</div>
-						<div class="styGenericDiv" style="width:171mm;height:8mm;border-left:1px solid black;padding-left:2mm;">
+						<div class="styGenericDiv" style="width:171mm;height:auto;border-left:1px solid black;padding-left:2mm;">
 							<div class="styNameBox" style="width:168mm;height:12mm;font-size:7pt;border-right:none;">
 								<div>City, town or post office, state, and ZIP code. If you have a foreign address, see instructions.</div>
-								<span>
+								<span style="display:block;">
 									<xsl:call-template name="PopulateCityStateInfo">
 										<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantUSAddress"/>
 									</xsl:call-template>
@@ -217,7 +219,7 @@ Refund Due a Deceased Taxpayer</div>
 						  <xsl:with-param name="TargetNode" select="$FormData/CourtOrPersonalRepInd" />
 						  <xsl:with-param name="BackupName">FormDataCourtOrPersonalRepInd</xsl:with-param>
 						  </xsl:call-template>
-							<span style="line-height:4mm;">Court-appointed or certified personal representative (defined below). Attach a court certificate showing your appointment, unless previously filed (see instructions).</span>
+							<span style="line-height:4mm;width:170mm;">Court-appointed or certified personal representative (defined below). Attach a court certificate showing your appointment, unless previously filed (see instructions).</span>
 						</label>
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/CertificatePreviouslyFiledCd"/>
@@ -319,7 +321,7 @@ Refund Due a Deceased Taxpayer</div>
 							<xsl:with-param name="TargetNode" select="$FormData/PaymentAccordingToStateLawInd" />
 						</xsl:call-template></div>
 					</div>
-					<div style="width:187mm;font-size:8pt;">
+					<div style="width:187mm;font-size:8pt;height:11mm;">
 						<div class="styLNLeftNumBox" style="padding-left:1mm;width:7mm;"/>
 						<div class="styLNDesc" style="width:150mm;">If you answered <span style="font-weight:bold;">"No"</span> to 3, a refund cannot be made until you submit a court certificate showing your appointment as personal representative or other evidence that you are entitled under state law to receive the refund.</div>
 						<div class="styLNRightNumBox" style="width:30mm;border:none;"/>
@@ -333,8 +335,8 @@ Refund Due a Deceased Taxpayer</div>
 						I request a refund of taxes overpaid by or on behalf of the decedent. Under penalties of perjury, I declare that I have examined this claim, and to the best of my knowledge and belief, it is true, correct, and complete.
 					</div>
 					<div style="width:187mm;font-size:8pt;font-weight:bold;">
-						<span style="width:150mm;"><img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/>Signature of person claiming refund</span>
-						<span style="width:37mm;"><img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/>Date 
+						<span style="width:150mm;">Signature of person claiming refund  <img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/></span>
+						<span style="width:37mm;">Date <img src="{$ImagePath}/1310_Bullet.gif" width="9" height="9" alt="bullet image"/>
 						<xsl:call-template name="PopulateMonth">
 							<xsl:with-param name="TargetNode" select="$FormData/RefundClaimantSignatureDt" />
 						</xsl:call-template>-<xsl:call-template name="PopulateDay">
@@ -344,6 +346,7 @@ Refund Due a Deceased Taxpayer</div>
 						</xsl:call-template>
 						</span>
 					</div>
+					<div  class="styBB"  style="width:187mm;font-size:8pt;font-weight:bold;height:1mm;"></div>
 					<!-- capturing the page bottom info -->
 					<div class="pageEnd" style="width:187mm; font-size:7pt; border-top:1 solid black; padding-top:0.5mm">
 						<div style="float:left; font-size:8pt">

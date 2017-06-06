@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
-<!-- 11/25/2013 - Modified as per defect #38116 - Jeremy Nichols -->
-<!-- 11/26/2013 - Modified as per defect #37984 - Jeremy Nichols -->
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
+<!-- 05/28/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 08/03/2015 - Modified per defect 43687 - Jeremy Nichols-->
+<!-- 02/03/2016 - Modified per defect 45355 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -13,8 +14,10 @@
 	<xsl:param name="Form8865ScheduleOData" select="$RtnDoc/IRS8865ScheduleO"/>
 	<xsl:template match="/">
 		<xsl:variable name="TransfersReportable" select="count($Form8865ScheduleOData)&gt;5"/>
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8865ScheduleOData)"/>
@@ -44,7 +47,7 @@
 				<form name="Form8865ScheduleO">
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- Begin Form Number and Name -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;display:block;">
 <!--						<div class="styForm8865ScheduleOFN" style="width:28mm;height:17.25mm;float:left;">  -->
 						<div class="styForm8865ScheduleOFN" style="width:28mm;height:21.5mm;float:left;">				
 							<span class="styForm8865ScheduleOFST" style="margin-left:0mm;">SCHEDULE O </span>
@@ -75,7 +78,7 @@
 						</div>               
 						</div>
 						<div class="styTYBox" style="width:32mm;height:21.5mm;">
-							<div class="styOMB" style="height:2mm;">
+							<div class="styOMB" style="height:4mm;">
           OMB No. 1545-1668
         </div>
 							<div class="styTY" style="height:13mm;padding-top:3mm;">
@@ -85,10 +88,10 @@
 					</div>
 					<!-- End Form Number and Name section -->
 					<!-- Begin Names and Identifying number section -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;border-bottom-width:0px;display:block;">
 					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;">
 						<tr>
-						  <td colspan="2" style="width:116mm;font-size:6pt;vertical-align:top;border-right:1 solid black;border-bottom:1 solid black;">
+						  <td colspan="2" style="width:116mm;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:1px solid black;">
 							<b>Name of transferor</b><br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/TransferorName/BusinessNameLine1"/>
@@ -99,7 +102,7 @@
 							</xsl:call-template>
 							<br/>
 						  </td>
-						  <td style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1 solid black;">
+						  <td style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1px solid black;">
 							<b>Filer's identifying number</b><br/>
 							<br/>
 							<span style="font-weight:normal;">
@@ -128,7 +131,7 @@
 						</td>
 					</tr>
 					<tr>
-					  <td style="width:90mm;font-size:6pt;vertical-align:top;border-right:1 solid black;border-bottom:1 solid black;">
+					  <td style="width:90mm;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:1px solid black;">
 							<b>Name of foreign partnership</b><br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/ForeignPartnershipName/BusinessNameLine1"/>
@@ -139,7 +142,7 @@
 							</xsl:call-template>
 							<br/>
 						</td>
-						<td style="width:26mm;font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:1 solid black;border-bottom:1 solid black;">
+						<td style="width:26mm;font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:1px solid black;border-bottom:1px solid black;">
 							<b>EIN (if any)</b><br/><br/>
  								<xsl:choose>
 									<xsl:when test="$Form8865ScheduleOData/EIN">
@@ -154,15 +157,15 @@
 									</xsl:otherwise>
 								</xsl:choose>          
 						</td>
-						<td style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1 solid black;">
+						<td style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1px solid black;">
 							<b>Reference ID number (see instructions)</b>
-							<xsl:if test="(count($Form8865ScheduleOData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber) &lt;=1)">
+							<xsl:if test="(count($Form8865ScheduleOData/ForeignEntityIdentificationGrp) &lt;=1)">
 								<br/>
 							</xsl:if>
-							<xsl:for-each select="$Form8865ScheduleOData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber">
+							<xsl:for-each select="$Form8865ScheduleOData/ForeignEntityIdentificationGrp">
 								<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber"/>
+									<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNumber"/>
 								</xsl:call-template>
 							</xsl:for-each>
 						</td>  			
@@ -230,7 +233,7 @@
 						</xsl:choose>
 					</xsl:variable>
 					<!--Begin Part I-->
-					<div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;">
+					<div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;border-top-width:0px;display:block;">
 						<div class="styPartName">Part I</div>
 						<div class="styPartDesc" style="width:156mm;">Transfers Reportable Under Section 6038B
       </div>
@@ -244,7 +247,7 @@
 							</xsl:call-template>
 						</span>
 					</div>
-					<div class="styForm8865ScheduleOTableContainer" id="TPctn">
+					<div class="styForm8865ScheduleOTableContainer" id="TPctn" style="display:block;">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" cellspacing="0" cellpadding="0" summary="Table for Transfers Reportable Under Section 6038B">
 							<thead class="styTableThead">
@@ -445,20 +448,21 @@
 						<xsl:with-param name="containerHeight" select="21"/>
 						<xsl:with-param name="containerID" select=" 'TPctn' "/>
 					</xsl:call-template>
-					<div class="styBB" style="float:none;clear:none;width:187mm;height:8mm;">
+					<div class="styBB" style="float:none;clear:none;width:187mm;height:5mm;display:block;">
 						<div class="styTitleDesc" style="font-size: 8pt;padding-left:0px;">Supplemental Information Required To Be Reported
       <span class="styNormalText"> (see instructions):
       </span>
 						</div>
 						<br/>
 					</div>
+					<div style="display:block;">
 					<table class="styIRS926Table" cellspacing="0" cellpadding="0" border="0">
 						<tfoot/>
 						<tbody>
 							<xsl:for-each select="$Form8865ScheduleOData/SupplementalInformationStmtDsc">
 								<xsl:if test="($Print != $Separated) or (count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &lt;=4)">
 									<tr style="height:8mm; width: 180mm; font-size: 7pt">
-										<td style="border-bottom:1 solid black; padding-left:2mm; height:5mm;width:185mm">
+										<td style="border-bottom:1px solid black; padding-left:2mm; height:5mm;width:185mm">
 											<span style="width:4px"/>
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="."/>
@@ -472,7 +476,7 @@
 							<!--Showing empty rows when there is no element added Ravi Venigalla 11/13/03 -->
 							<xsl:if test="count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &lt; 1 or ((count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &gt;4) and ($Print =    $Separated))">
 								<tr style="font-size: 7pt">
-									<td style="border-bottom:1 solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
+									<td style="border-bottom:1px solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
 										<xsl:if test="(count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &gt;4) and ($Print = $Separated)">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
 												<xsl:with-param name="TargetNode" select="$Form8865ScheduleOData/SupplementalInformationStmtDsc"/>
@@ -483,7 +487,7 @@
 							</xsl:if>
 							<xsl:if test="(count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &lt;1)">
 								<tr style="font-size: 7pt">
-									<td style="border-bottom:1 solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
+									<td style="border-bottom:1px solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
 										<span style="width:4px"/>
 									</td>
 								</tr>
@@ -491,30 +495,32 @@
 							<!-- 2 -->
 							<xsl:if test="count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &lt; 2 or ((count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &gt;4) and ($Print = $Separated))">
 								<tr style="font-size: 7pt">
-									<td style="border-bottom:1 solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
+									<td style="border-bottom:1px solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
 										<span style="width:4px"/>
 									</td>
 								</tr>
 							</xsl:if>
 							<xsl:if test="count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &lt; 3 or ((count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &gt;4) and ($Print = $Separated))">
 								<tr style="font-size: 7pt">
-									<td style="border-bottom:1 solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
+									<td style="border-bottom:1px solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
 										<span style="width:4px"/>
 									</td>
 								</tr>
 							</xsl:if>
 							<xsl:if test="count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &lt; 4 or ((count($Form8865ScheduleOData/SupplementalInformationStmtDsc) &gt;4) and ($Print = $Separated))">
 								<tr style="font-size: 7pt">
-									<td style="border-bottom:1 solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
+									<td style="border-bottom:1px solid black; padding-left:2mm; height:5mm; width:185mm; font-size: 7pt">
 										<span style="width:4px"/>
 									</td>
 								</tr>
 							</xsl:if>
 						</tbody>
 					</table>
+					</div>
 					<!--END Part I-->
 					<!--Begin Part II-->
-					<div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;">
+					<div style="display:block;">
+					<div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;display:block;">
 						<div class="styPartName">Part II</div>
 						<div class="styPartDesc" style="width:156mm;">Dispositions Reportable Under Section 6038B
       </div>
@@ -526,7 +532,7 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<div class="styTableContainerNBB" name="Dispositions6038B" id="DTPctn">
+					<div class="styTableContainerNBB" name="Dispositions6038B" id="DTPctn" style="display:block;">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" style="float:none" cellspacing="0" name="Dispositions6038B" id="DTPctn" summary="Table for Dispositions Reportable Under Section 6038B">
 							<thead class="styTableThead">
@@ -762,9 +768,10 @@
 						<xsl:with-param name="containerHeight" select="4"/>
 						<xsl:with-param name="containerID" select=" 'DTPctn' "/>
 					</xsl:call-template>
+					</div>
 					<!--END Part II-->
 					<!-- BEGIN Part III Title -->
-					<div class="styBB" style="clear:both;width:187mm;">
+					<div class="styBB" style="clear:both;height:8mm;width:187mm;display:block;">
 						<div class="styPartName">Part III</div>
 						<div class="styPartDesc" style="width:133mm;">
 							<span class="styNormalText">
@@ -850,7 +857,7 @@
 						<span class="styBoldText">Schedule O (Form 8865) 2013</span>
 					</div>
 					<br/>
-					<br class="pageEnd"/>
+					<div class="pageEnd"/>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">

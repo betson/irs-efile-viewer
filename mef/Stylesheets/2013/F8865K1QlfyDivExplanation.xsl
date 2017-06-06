@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/11/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -35,8 +36,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -61,9 +64,9 @@
 			</head>
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
-				<div class="styDepTitleLine">
-					<span class="styDepTitle">
-						<span style="width:187mm;">
+				<div class="styDepTitleLine" style="width:187mm;">
+					<span class="styDepTitle" style="width:187mm;">
+						<span style="width:182.75mm;">
 							<xsl:value-of select="$depDocTitle"/>
 						</span>
 					</span>

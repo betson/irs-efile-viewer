@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form1120ScheduleN" select="$RtnDoc/IRS1120ScheduleN"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form1120ScheduleN)"/>
@@ -65,15 +67,15 @@
                   <a href="http://www.irs.gov/form1120" title="Link to IRS.gov"><i>www.irs.gov/form1120.</i></a>
               </div>
               </div>
-            <div class="styTYBox" style="width:30mm;height:18.5mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-0123</div>
+            <div class="styTYBox" style="width:31mm;height:18.5mm;">
+              <div class="styOMB" style="height:5mm;">OMB No. 1545-0123</div>
               <div class="styTY" style="height:11mm;">20<span class="styTYColor">13</span>
               </div>
             </div>
           </div>
           <!--Name Line -->
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:120mm;height:8mm;font-size:7pt;font-weight:normal;">
+            <div class="styNameBox" style="width:120mm;height:9mm;font-size:7pt;font-weight:normal;">
 			  Name<br/>
               <xsl:call-template name="PopulateReturnHeaderFiler">
                 <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -84,7 +86,7 @@
               </xsl:call-template>
             </div>
             <!-- EIN Line -->
-            <div class="styEINBox" style="width:65mm;height:8mm;text-align:left;padding-left:2mm;font-size:7pt;font-weight:bold;">
+            <div class="styEINBox" style="width:65mm;height:9mm;text-align:left;padding-left:2mm;font-size:7pt;font-weight:bold;">
 			  Employer identification number (EIN)<br/>
               <br/>
               <span style="font-weight:normal;">
@@ -102,15 +104,15 @@
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;"/>
             <div class="styLNDesc" style="width:158mm;height:4.5mm;"/>
-            <div class="styIRS1120ScheduleNLNYesNoBox" style="height:4.5mm;width:10mm;text-align:center;font-weight:bold;padding-top:.7mm;">Yes</div>
-            <div class="styIRS1120ScheduleNLNYesNoBox" style="height:4.5mm;width:10mm;text-align:center;font-weight:bold;padding-top:.7mm;">No</div>
+            <div class="styIRS1120ScheduleNLNYesNoBox" style="height:4.5mm;width:10.5mm;text-align:center;font-weight:bold;padding-top:.7mm;">Yes</div>
+            <div class="styIRS1120ScheduleNLNYesNoBox" style="height:4.5mm;width:10.5mm;text-align:center;font-weight:bold;padding-top:.7mm;">No</div>
           </div>
           <!-- Line 1a Row 1-->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;">1a</div>
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">During the tax year, did the corporation own (directly or indirectly) any foreign entity that was disregarded as</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- Line 1a Row 2-->
           <div style="width:187mm;">
@@ -139,15 +141,15 @@
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
 			  If "Yes," you are generally required to attach <b>Form 8858</b>, Information Return of U.S. Persons With Respect to Foreign 
 			</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- Line 1a Row 4-->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;"/>
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">Disregarded Entities, for each foreign disregarded entity (see instructions).</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--Line 1b -->
           <div style="width:187mm;">
@@ -155,25 +157,25 @@
             <div class="styLNDesc" style="width:115mm;height:4.5mm;">
 			  Enter the number of Forms 8858 attached to the tax return          
 			  <!--Dotted Line-->
-			  <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">........</span>
+			  <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">......</span>
               <span style="width:10px;"/>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
             <!--UnderLine-->
-            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-left:2mm;padding-right:3.75mm;">
+            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:43mm;padding-left:2mm;padding-right:3.75mm;">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="MaxSize" select="3"/>
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/Form8858AttachedCnt"/>
               </xsl:call-template>
             </div>
-            <div class="styShadingCell" style="height:4.5mm;width:10.1mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- Space row -->
           <div style="height:4.5mm;width:187mm;">
             <div class="styLNDesc" style="width:166mm;height:4.5mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--line 2 row 1-->
           <div style="width:187mm;">
@@ -182,8 +184,8 @@
 			  Enter the number of <span class="styBoldText">Forms 8865</span>,
 			  Return of U.S. Persons With Respect to Certain Foreign Partnerships, attached to the 
 			</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--line 2 row 2-->
           <div style="width:187mm;">
@@ -191,24 +193,24 @@
             <div class="styLNDesc" style="width:115mm;height:4.5mm;">
               corporation's income tax return
 			  <!--Dotted Line-->
-              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">.................</span>
+              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">..............</span>
               <span style="width:10px;"/>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
             <!--UnderLine-->
-            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-left:2mm;padding-right:3.75mm;">
+            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:43mm;padding-left:2mm;padding-right:3.75mm;">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="MaxSize" select="3"/>
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/Form8865AttachedCnt"/>
               </xsl:call-template>
             </div>
-            <div class="styShadingCell" style="height:4.5mm;width:10.1mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <div style="height:4.5mm;width:187mm;">
             <div class="styLNDesc" style="width:166mm;height:4.5mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--line 3 -->
           <div style="width:187mm;">
@@ -217,8 +219,8 @@
             Excluding any partnership for which a Form 8865 is attached to
             the tax return, did the corporation own at least a 10%
           </div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--line 3 row 2-->
           <div style="width:187mm;">
@@ -227,8 +229,8 @@
 			  interest, directly or indirectly, in any other foreign partnership (including an entity
 			  treated as a foreign partnership
 			</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--line 3 row 3-->
           <div style="width:187mm;">
@@ -241,7 +243,7 @@
               </xsl:call-template>
             </span>
               <!--Dotted Line-->
-              <div class="styDotLn" style="float:right;padding-right:1mm;">...................</div>
+              <div class="styDotLn" style="float:right;padding-right:1mm;">.................</div>
             </div>
             <div class="styIRS1120ScheduleNLNYesNoBox" style="height:4.5mm;">
               <xsl:call-template name="PopulateYesBoxText">
@@ -258,13 +260,13 @@
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;"/>
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">If "Yes," see instructions for required statement.</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <div style="height:4.5mm;width:187mm;">
             <div class="styLNDesc" style="width:166mm;height:4.5mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--line 4a-->
           <div style="width:187mm;">
@@ -294,15 +296,15 @@
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
 							If "Yes," attach <span class="styBoldText">Form 5471</span>, Information Return of U.S. Persons With Respect to Certain Foreign Corporations, for
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--line 4a row 3-->
           <div style="width:187mm;">
             <div class="styLNLeftLtrBox" style="height:4.5mm;"/>
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">each CFC.</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--line 4b-->
           <div style="width:187mm;">
@@ -310,23 +312,23 @@
             <div class="styLNDesc" style="width:115mm;height:4.5mm;">
 							Enter the number of Forms 5471 attached to the tax return
 							<!--Dotted Line-->
-              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">........</span>
+              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">......</span>
               <span style="width:10px;"/>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
-            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;">
+            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:43mm;padding-right:3.75mm;padding-left:2mm;">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="MaxSize" select="3"/>
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/Form5471AttachedCnt"/>
               </xsl:call-template>
             </div>
-            <div class="styShadingCell" style="height:4.5mm;width:10.1mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <div style="height:4.5mm;width:187mm;">
             <div class="styLNDesc" style="width:166mm;height:4.5mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- line 5 -->
           <div style="width:187mm;">
@@ -334,8 +336,8 @@
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
               During the tax year, did the corporation receive a distribution from, or was it the grantor of, or transferor to, a foreign
             </div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- line 5 row 2-->
           <div style="width:187mm;">
@@ -343,7 +345,7 @@
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
               <span style="float:left;">trust?</span>
               <!--Dotted Line-->
-              <div class="styDotLn" style="float:right;padding-right:1mm;">...................................</div>
+              <div class="styDotLn" style="float:right;padding-right:1mm;">.................................</div>
               <!--<span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">...................................</span>-->
             </div>
             <div class="styIRS1120ScheduleNLNYesNoBox" style="height:4.5mm;">
@@ -364,8 +366,8 @@
 							If "Yes," the corporation may have to file <span class="styBoldText">Form 3520</span>,
 							Annual Return To Report Transactions With Foreign Trusts and
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- line 5 row 4-->
           <div style="width:187mm;">
@@ -373,13 +375,13 @@
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
 							Receipt of Certain Foreign Gifts.
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <div style="height:4.5mm;width:187mm;">
             <div class="styLNDesc" style="width:166mm;height:4.5mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- line 6a -->
           <div style="width:187mm;">
@@ -387,8 +389,8 @@
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
 							At any time during the 2013 calendar year, did the corporation have an interest in or a signature or other authority
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- line 6a row 2-->
           <div style="width:187mm;">
@@ -414,33 +416,33 @@
 							See the instructions for exceptions and filing requirements for
 							<span class="styBoldText">Form TD F 90-22.1</span>, Report of Foreign Bank and
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;"/>
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
 							Financial Accounts.
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- Line 6b -->
           <div style="width:187mm;height:4.5mm;">
             <div class="styLNLeftLtrBox" style="height:4.5mm; padding-top:1mm;">b</div>
-            <table class="styTable" style="float:left;font-size:7pt;width:178mm;" cellspacing="0">
+            <table class="styTable" style="float:none;font-size:7pt;width:179mm;" cellspacing="0">
               <tr>
-                <td scope="col" style="width: 157.5mm;">
-                  <div class="styLNDesc" style="width:157.5mm;">
+                <td scope="col" style="width: 158mm;">
+                  <div class="styLNDesc" style="width:157.3mm;">
 										<span style="float:left;clear:none;">
 										If "Yes," enter the name of the foreign country                    
-										<span style="font-weight:bold;letter-spacing:3.3mm;">.........</span>
+										<span style="font-weight:bold;letter-spacing:3.3mm;">........</span>
                     <span style="width:5px;"/>
                     <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" style="float:none;clear:none;" alt="Bullet"/>
                     <span style="width:6px;"/>
                     </span>
                     <span style="float:right;clear;none;">
-                    <span style="width:58mm;border-bottom: 1 black solid;padding-left:4mm;">
+                    <span style="width:58mm;border-bottom: 1px black solid;padding-left:4mm;">
                       <xsl:for-each select="$Form1120ScheduleN/ForeignCountryCd">
                         <xsl:if test="($Print != $Separated) or count($Form1120ScheduleN/ForeignCountryCd) &lt;=10">
                           <xsl:call-template name="PopulateText">
@@ -459,10 +461,10 @@
                     </span>
                   </div>
                 </td>
-                <td class="styShadingCell" scope="col" style="width:10mm;">
+                <td class="styShadingCell" scope="col" style="width:10.5mm;height:4.5mm;">
                   <span style="width:0.5px"/>
                 </td>
-                <td class="styShadingCell" scope="col" style="width:10mm;">
+                <td class="styShadingCell" scope="col" style="width:10.5mm;height:4.5mm;">
                   <span style="width:1px"/>
                 </td>
               </tr>
@@ -470,8 +472,8 @@
           </div>
           <div style="height:4.5mm;width:187mm;">
             <div class="styLNDesc" style="width:166mm;height:4.5mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--7a-->
           <div style="width:187mm;">
@@ -484,7 +486,7 @@
                 </xsl:call-template>
               </span>
               <!--Dotted Line-->
-              <div class="styDotLn" style="float:right;padding-right:1mm;">................</div>
+              <div class="styDotLn" style="float:right;padding-right:1mm;">..............</div>
             </div>
             <div class="styIRS1120ScheduleNLNYesNoBox" style="height:4.5mm;">
               <xsl:call-template name="PopulateYesBoxText">
@@ -504,8 +506,8 @@
 							If "Yes," attach a separate <span class="styBoldText">Form 8873</span>, Extraterritorial
 							Income Exclusion, for <span class="styBoldText">each</span> transaction or group of
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!-- Line 7a Row 3 -->
           <div style="width:187mm;">
@@ -513,8 +515,8 @@
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
 							transactions.
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--7b-->
           <div style="width:187mm;">
@@ -522,18 +524,18 @@
             <div class="styLNDesc" style="width:115mm;height:4.5mm;">
               Enter the number of Forms 8873 attached to the tax return
 							<!--Dotted Line-->
-              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">........</span>
+              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">......</span>
               <span style="width:10px;"/>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
-            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;">
+            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:43mm;padding-right:3.75mm;padding-left:2mm;">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="MaxSize" select="3"/>
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/Form8873AttachedCnt"/>
               </xsl:call-template>
             </div>
-            <div class="styShadingCell" style="height:4.5mm;width:10.1mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--Line 7c-->
           <div style="width:187mm;">
@@ -541,8 +543,8 @@
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
 							Enter the total of the amounts from line 52 (extraterritorial income exclusion (net of disallowed deductions)) of <span class="styBoldText">all</span> 
 						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--Line 7c row 2-->
           <div class="styTBB" style="width:187mm;">
@@ -550,17 +552,17 @@
             <div class="styLNDesc" style="width:115mm;height:4.5mm;">
               Forms 8873 attached to the tax return
               <!--Dotted Line-->
-							<span style="padding-left:1mm;font-weight:bold;letter-spacing:3.3mm;">...............</span>
+							<span style="padding-left:1mm;font-weight:bold;letter-spacing:3.3mm;">.............</span>
               <span style="width:10px;"/>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
-            <div class="styGenericDiv" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;">$
+            <div class="styGenericDiv" style="width:43mm;padding-right:3.75mm;padding-left:2mm;">$
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/TotExtraterritorialIncmExclAmt"/>
               </xsl:call-template>
             </div>
-            <div class="styShadingCell" style="height:4.5mm;width:10.1mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
+            <div class="styShadingCell" style="height:4.5mm;width:10.5mm;"/>
           </div>
           <!--Page footer -->
            <div style="width:187mm;">
@@ -574,8 +576,7 @@
           </div>
           <br/>
           <br/>
-          <br/>
-          <br class="pageEnd"/>
+          <div class="pageEnd" style="width:187mm;display:block;"/>
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

@@ -15,7 +15,7 @@
 		</xsl:call-template>
 	</xsl:param>
 	<xsl:template name="DependencyTemplate">
-		<table id="DDSTbl" class="styDepTbl">
+		<table  id="DataTbl" class="styDepTbl">
 			<tr class="styDepTblHdr">
 				<th class="styDepTblCell" scope="col" style="text-align:center;width:186mm;">Group Member</th>
 			</tr>
@@ -23,15 +23,15 @@
 				<tr>
 					<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2
 					</xsl:otherwise></xsl:choose></xsl:attribute>
-					<td class="styDepTblCell" style="text-align:left;width:186mm;">
+					<td class="styDepTblCell" style="text-align:left;width:187mm;">
 						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2
 						 </xsl:otherwise></xsl:choose></xsl:attribute>
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="GroupMemberName/BusinessNameLine1"/>
+							<xsl:with-param name="TargetNode" select="GroupMemberName/BusinessNameLine1Txt"/>
 						</xsl:call-template>
 						<br/>
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="GroupMemberName/BusinessNameLine2"/>
+							<xsl:with-param name="TargetNode" select="GroupMemberName/BusinessNameLine2Txt"/>
 						</xsl:call-template>
 					</td>
 				</tr>
@@ -41,8 +41,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -77,7 +79,8 @@
 				</xsl:call-template>
 				<div class="styTopSectionLine" style="width:187mm;">
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Explanation:</div>
-					<div style="float:left;clear:none;width:118mm;">
+					<div class="styDepTbl" style="border:none;text-align:left">
+					<br/>
 						<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="$DependencyData/MediumExplanationTxt"/>
 						</xsl:call-template>

@@ -5,6 +5,9 @@
 <!--Changed  per IBM Defect 57293 by Robert Jones darkened gridlines-->
 <!--Changed  per IBM Defect 57293 by Robert Jones darkened gridlines submitted again because what IBM tested still not showing darkened lines but does for me-->
 <!--Changed  per IBM Defect 41962 by Robert Jones Part VI Line 10 not showing all data-->
+<!--Changed per UWR 123023 IE11 upgrade changes by Robert Jones-->
+<!--Changed per IBM Defect 43220 additional data to its own page. Page numbers not starting on its own pages. changes by Robert Jones-->
+<!--Changed per IBM Defect 43219 additional data to its own page. Page numbers not starting on its own pages. changes by Robert Jones-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -16,8 +19,10 @@
   <!-- Defines the stage of the data, e.g. original or latest -->
   <xsl:param name="Form8883Data" select="$RtnDoc/IRS8883"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8883Data)"/>
@@ -47,21 +52,21 @@
         <form name="Form8883">
           <xsl:call-template name="DocumentHeader"/>  
           <!-- Begin Form Number and Name -->
-          <div class="styTBB" style="width:187mm;height:18mm;">
+          <div class="styTBB" style="width:187mm;height:auto;">
             <!-- Title Left Box -->
-            <div class="styFNBox" style="width:35mm;height:18mm;">
-              <div style="height:11mm;">
+            <div class="styFNBox" style="width:35mm;height:auto;">
+              <div style="height:auto;">
                 Form<span class="styFormNumber">  8883</span><br/>
                 (December 2008)
               </div>
-              <div style="height:7mm;font-size:7pt;font-family:arial;">
+              <div style="height:auto;font-size:7pt;font-family:arial;">
                 <span class="styAgency">Department of the Treasury</span>
                 <br/>
                 <span class="styAgency">Internal Revenue Service</span>
               </div>        
             </div><!--Close Title left box -->    
             <!--Title Center Box -->
-            <div class="styFTBox" style="width:121mm;height:18mm;">
+            <div class="styFTBox" style="width:121mm;height:auto;">
               <div class="styMainTitle">Asset Allocation Statement</div>
               <div class="styMainTitle" style="font-size:11pt;">Under Section 338 </div>
               <div class="styFBT" style="padding-top:2mm;">
@@ -78,15 +83,15 @@
             </div>      
           </div><!-- End Form Number and Name -->
           <!-- BEGIN Part I Title -->
-          <div class="styBB" style="width:187mm;height:7.0mm;padding-top:1.5mm;">
+          <div class="styBB" style="width:187mm;height:auto;padding-top:1.5mm;">
             <div class="styPartName">Part I </div>
             <div class="styPartDesc">Filer's Identifying Information</div>
           </div>
           <!-- END Part I  Title  -->
           <div class="styBB" style="width:187mm;">
             <!--L1a -->
-            <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;">1a</div>
-            <div class="styNameBox" style="width:112mm;height:8mm;font-size:7pt;">Name as shown on return
+            <div class="styLNLeftNumBox" style="height:auto;padding-top:0mm;">1a</div>
+            <div class="styNameBox" style="width:112mm;height:auto;font-size:7pt;">Name as shown on return
               <br/>
               <div style="font-family:verdana;font-size:6pt;">
                  <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -237,10 +242,10 @@
             <!-- END Part II  Title -->
             <!-- L2a -->  
             <div class="styBB" style="width:187mm;">
-              <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0;">2a</div>
-              <div class="styNameBox" style="width:112mm;height:9.5mm;font-size:7pt;">
+              <div class="styLNLeftNumBox" style="height:auto;padding-top:0;">2a</div>
+              <div class="styNameBox" style="width:112mm;height:auto;font-size:7pt;">
                  Name of other party to the transaction
-                 <br/>
+                
                  <div style="font-family:verdana;font-size:6pt;">                   
                    <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$Form8883Data/OtherPartyName/BusinessNameLine1Txt"/>
@@ -254,10 +259,10 @@
                  </div>         
               </div><!--Close div below L2a-->
               <!-- L2b -->
-              <div style="width:63mm;height:8mm;float:left;">
-                 <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0;">2b</div>
+              <div style="width:63mm;height:auto;float:left;">
+                 <div class="styLNLeftNumBox" style="height:auto;padding-top:0;">2b</div>
                     Other party's identifying number 
-                    <br/><br/>
+                    <br/>
                     <span style="width:40mm;padding-left:9mm;">
                       <xsl:choose>
                          <xsl:when test="$Form8883Data/OtherPartyEIN">          
@@ -281,7 +286,7 @@
             </div><!--Close div above L1a -->
             <!-- Begin Street Address Line -->
             <div class="styBB" style="width:187mm;">        
-              <div class="styNumberBox" style="height:8mm;font-size:7pt;padding-left:8mm;">
+              <div class="styNumberBox" style="height:8.5mm;font-size:7pt;padding-left:8mm;">
                  Address (number, street, and room or suite no.)
                  <br/>
                  <!--US Address -->
@@ -466,7 +471,7 @@
                  </div>
                  <!--L3b-->
                  <div style="width:88mm;">
-                   <div class="styLNLeftNumBox" style="border-left:solid 1 black;height:15mm;">3b</div>
+                   <div class="styLNLeftNumBox" style="border-left:solid 1px black;height:15mm;">3b</div>
                    <div class="styLNDesc" style="width:79mm;height:15mm;">
                       Employer identification number 
                       <br/><br/>
@@ -484,8 +489,8 @@
                       </span>
                    </div>
                    <!--L3c-->
-                   <div class="styLNLeftNumBox" style="border-left:solid 1 black;height:12mm;border-top:solid black 1">3c</div>
-                   <div class="styLNDesc" style="width:79mm;height:12mm;border-top:solid black 1">
+                   <div class="styLNLeftNumBox" style="border-left:solid 1px black;height:12mm;border-top:solid black 1px">3c</div>
+                   <div class="styLNDesc" style="width:79mm;height:12mm;border-top:solid black 1px">
                       State or country of incorporation 
                       <br/><br/>  
                       <span style="padding-left:9mm;">          
@@ -513,8 +518,8 @@
               <!-- END Part IV  Title -->
               <!--L4a-->
               <div class="styBB" style="width:187mm;">
-                 <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0;">4a</div>
-                 <div class="styNameBox" style="width:91.25mm;height:15.25mm;font-size:7pt;">
+                 <div class="styLNLeftNumBox" style="height:auto;padding-top:0;">4a</div>
+                 <div class="styNameBox" style="width:91.25mm;height:auto;font-size:7pt;">
                    Acquisition date 
                    <br/><br/><br/>                        
                    <xsl:call-template name="PopulateText">
@@ -522,14 +527,14 @@
                    </xsl:call-template>          
                  </div>
                  <!--Blank Line -->
-                 <div style="width:87mm;height:13.5mm;float:right;">
+                 <div style="width:87mm;height:auto;float:right;">
                  <!--L4b-->             
-                 <div style="width:87mm;height:4.5mm;">
-                   <div class="styLNLeftNumBox" style="width:7.5mm;height:4.5mm;padding-left:0px;padding-top:0;">4b</div>
-                     What percentage of target corporation stock was<br/> purchased:              
+                 <div style="width:87mm;height:auto;">
+                   <div class="styLNLeftNumBox" style="width:7.5mm;height:auto;padding-left:0px;padding-top:0;">4b</div>
+                     What percentage of target corporation stock was purchased:              
                  </div>
-                 <div style="width:87mm;height:4.5mm;">      
-                   <div class="styLNLeftNumBox" style="height:4.5mm;"/>
+                 <div style="width:87mm;height:auto;">      
+                   <div class="styLNLeftNumBox" style="height:auto;"/>
                    <div class="styLNDesc" style="width:60mm;">
                       <span class="styItalicText">(i)</span> <span style="width:4px;"/> During the 12-month acquisition period?
                    </div>
@@ -542,9 +547,9 @@
                       </xsl:call-template>
                     </div>          
                  </div>
-                 <div style="width:87mm;height:4.5mm;">    
-                   <div class="styLNLeftNumBox" style="height:4.5mm;"/>
-                   <div class="styLNDesc" style="width:60mm;">
+                 <div style="width:87mm;height:auto;">    
+                   <div class="styLNLeftNumBox" style="height:auto;"/>
+                   <div class="styLNDesc" style="width:60mm;height:auto;">
                       <span class="styItalicText">(ii)</span> <span style="width:4px;"/> On the acquisition date?            
                       <span style="letter-spacing:4mm; font-weight:bold;">  
                           ....  
@@ -563,8 +568,8 @@
               </div><!--Close L4a-->  
               <!--L5a-->    
               <div class="styBB" style="width:187mm;">
-                 <div class="styNameBox" style=" width:42.75mm;font-size:7pt;height:3.5mm;">
-                   <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0;">5a</div>
+                 <div class="styNameBox" style=" width:42.75mm;font-size:7pt;height:auto;">
+                   <div class="styLNLeftNumBox" style="height:auto;padding-top:0;">5a</div>
                       Stock price 
                       <br/><br/>
                         $  
@@ -575,7 +580,7 @@
                       </span>        
                  </div>
                  <!--L5b -->
-                 <div class="styNameBox" style=" width:56.25mm;font-size:7pt;height:3.5mm;">
+                 <div class="styNameBox" style=" width:56.35mm;font-size:7pt;height:auto;">
                    <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0;">5b</div>
                    Acquisition costs/Selling costs
                    <br/><br/>
@@ -587,7 +592,7 @@
                    </span>        
                  </div>
                  <!--L5c-->
-                 <div class="styNameBox" style=" width:45.5mm;font-size:7pt;height:3.5mm;">
+                 <div class="styNameBox" style=" width:45mm;font-size:7pt;height:auto;">
                    <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0;">5c</div>
                    Target liabilities 
                    <br/><br/>
@@ -599,7 +604,7 @@
                    </span>        
                  </div>
                  <!--L5d-->
-                 <div class="styNameBox" style=" width:41.5mm;font-size:7pt;height:3.5mm;border-right-width: 0px;">
+                 <div class="styNameBox" style=" width:41.5mm;font-size:7pt;height:auto;border-right-width: 0px;">
                    <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0;">5d</div>
                    AGUB/ADSP 
                    <br/><br/>
@@ -863,7 +868,7 @@
                <div class="pageEnd" style="width:187mm;">  
                  <div style="float:left;">
                    <span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions. </span>   
-                   <span style="width:80px;"/>                        
+                   <span style="width:70px;"/>                        
                      Cat. No. 33707Y 
                  </div>
                  <div style="float:right;">
@@ -871,11 +876,13 @@
                      Form <span class="styBoldText" style="font-size:8pt;">8883</span> (Rev. 12-2008)
                  </div>    
                </div>
+                <p style="page-break-before: always"/> 
                <!--Begin Page 2 -->
                <!-- Header -->
+               
                <div class="styBB" style="width:187mm;">  
                  <div style="float:left;">Form 8883 (Rev. 12-2008) <span style="width:130mm;"/></div>
-                 <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></div>  
+                 <div style="float:right;">Page <div style="font-weight:bold;font-size:8pt;">2</div></div>  
                </div>      
                <!-- BEGIN Part V Title -->
                <div class="styBB" style="width:187mm;height:7.0mm;padding-top:1.5mm;">
@@ -1045,9 +1052,9 @@
                  </table>
                </div>
                <!-- BEGIN Part VI Title -->
-               <div class="styBB" style="width:187mm;height:7.0mm;padding-top:1.5mm;">
+               <div class="styBB" style="width:187mm;height:auto;padding-top:1.5mm;">
                  <div class="styPartName">Part VI </div>
-                 <div class="styPartDesc">Supplemental Statement of Assets Transferred -                   <span class="styNormalText">
+                 <div class="styPartDesc" style="height:auto;">Supplemental Statement of Assets Transferred -                   <span class="styNormalText" style="height:auto;">
                        Complete if amending an original statement or previously filed supplemental statement because of an increase or decrease in AGUB or ADSP.
                     </span>
                  </div>
@@ -1056,8 +1063,8 @@
                <!--L10-->
                <!-- Put this in for IBM defect  because the two elements do not separate from each other (render without a space in between)-->
                <div class="styBB" style="width:187mm;">
-                 <div class="styLNLeftNumBox" style="height:4.5mm;">10</div>
-                 <div class="styLNDesc" style="width:178mm;height:8mm;">
+                 <div class="styLNLeftNumBox" style="height:auto;">10</div>
+                 <div class="styLNDesc" style="width:178mm;height:auto;">
                     Enter the tax year and tax return form number with which the original Form 8023 or Form 8883 and any supplemental statements were filed.  
                     <br/>
                     
@@ -1112,15 +1119,15 @@
                
                <!--L11-->  
                <div class="styBB" style="width:187mm;">        
-                 <table class="styTable" cellspacing="0" style="font-size:7pt;">
+                 <table class="styTable" cellspacing="0" style="font-size:7pt;height:auto;">
                    <thead class="styTableThead">
                       <tr>
-                        <th class="styTableCellHeader" style="border-style: solid; border-color: black;width:31mm;text-align:left;" scope="col">                                        
+                        <th class="styTableCellHeader" style="height:auto;border-style: solid; border-color: black;width:31mm;text-align:left;" scope="col">                                        
                             <span class="styBoldText" style="width:24px;">11</span><span style="font-size:6pt;font-weight:normal;">  Assets </span>
                         </th>
-                        <th class="styTableCellHeader" style="border-style: solid; border-color: black;width:60mm;font-size:6pt;font-weight:normal;" scope="col">Allocation of sales price as previously reported</th>
-                        <th class="styTableCellHeader" style="border-style: solid; border-color: black;width:37mm;font-size:6pt;font-weight:normal;" scope="col">Increase or (decrease)</th>  
-                        <th class="styTableCellHeader" style="border-style: solid; border-color: black;width:58mm;border-right-width: 0px;font-size:6pt;font-weight:normal;" scope="col">Redetermined allocation of AGUB or ADSP</th>      
+                        <th class="styTableCellHeader" style="height:auto;border-style: solid; border-color: black;width:60mm;font-size:6pt;font-weight:normal;" scope="col">Allocation of sales price as previously reported</th>
+                        <th class="styTableCellHeader" style="height:auto;border-style: solid; border-color: black;width:37mm;font-size:6pt;font-weight:normal;" scope="col">Increase or (decrease)</th>  
+                        <th class="styTableCellHeader" style="height:auto;border-style: solid; border-color: black;width:58mm;border-right-width: 0px;font-size:6pt;font-weight:normal;" scope="col">Redetermined allocation of AGUB or ADSP</th>      
                       </tr>
                   </thead>
                   <tfoot/>
@@ -1330,8 +1337,8 @@
               <div style="width: 187mm;"> </div>
               <!--L12-->
               <div class="styBB" style="width:187mm;">
-                <div class="styLNLeftNumBox" style="height:4.5mm;">12</div>
-                <div class="styLNDesc" style="width:178mm;height:8mm;">
+                <div class="styLNLeftNumBox" style="height:auto;">12</div>
+                <div class="styLNDesc" style="width:178mm;height:auto;">
                   Reason(s) for increase or decrease. Attach additional sheets if more space is needed.  
                   <xsl:if test="count($Form8883Data/IncreaseOrDecreaseReasonsDsc) !=0 and ($Form8883Data/IncreaseOrDecreaseReasonsDsc !='')">
                     <br/><br/>          
@@ -1341,9 +1348,9 @@
                 <!--Empty rows-->
                 <!--  <xsl:if test="not($Form8883Data/ReasonsForIncreaseOrDecrease)  or $Form8883Data/ReasonsForIncreaseOrDecrease=''">  -->
                 <div class="styGenericDiv">
-                  <div class="styBB" style="width:187mm;height:5mm; text-decoration:underline;"><br/><br/></div>
-                  <div class="styBB" style="width:187mm;height:5mm; text-decoration:underline;"><br/><br/></div>
-                  <div class="styBB" style="width:187mm;height:5mm; text-decoration:underline;"><br/><br/></div>            
+                  <div class="styBB" style="height:auto;width:187mm;height:5mm; text-decoration:underline;"><br/><br/></div>
+                  <div class="styBB" style="height:auto;width:187mm;height:5mm; text-decoration:underline;"><br/><br/></div>
+                  <div class="styBB" style="height:auto;width:187mm;height:5mm; text-decoration:underline;"><br/><br/></div>            
                   <br/><br/>
                 </div>  
               </div>      
@@ -1353,7 +1360,7 @@
                 <div class="stySmallText" style="width:36mm;text-align:right;float;right;">Form <span class="styBoldText" style="font-size:8pt;">8883</span> (Rev. 12-2008)</div>
               </div>
               <!--Page End-->
-              <br class="pageEnd"/>
+              <div class="pageEnd"/>
               <!-- BEGIN Left Over Table -->  
               <!-- Additonal Data Title Bar and Button -->
               <div class="styLeftOverTitleLine" id="LeftoverData">

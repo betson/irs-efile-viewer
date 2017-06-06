@@ -11,8 +11,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS8916"/>
 	<xsl:template match="/">
-	  <html>
+	  <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 		<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 		  <title>
 			<xsl:call-template name="FormTitle">
 			  <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -41,7 +43,7 @@
 			<xsl:call-template name="DocumentHeader"/>
 			<!-- Begin Form title an dForm number section -->
 			  <div class="styBB" style="width:187mm;clear:both;float:none;">
-				<div class="styFNBox" style="width:31mm;height:18mm;">
+				<div class="styFNBox" style="width:31mm;height:25mm;">
                   Form <span class="styFormNumber">8916</span>
                   <div class="styAgency" style="padding-left:3mm;padding-top:1.5mm;">(Rev. December 2008)</div>
                   <div class="styAgency" style="padding-left:3mm;height:1.5mm;">Department of the Treasury</div>
@@ -57,20 +59,16 @@
                     Attach to Schedule M-3 for Forms 1120, 1120-L, or 1120-PC.
                   </div>
 				</div>
-				<div class="styTYBox" style="width:30mm;height:20.4mm;font-size:7pt;">
+				<div class="styTYBox" style="width:30mm;height:25mm;font-size:7pt;">
 				  <div class="styOMB" style="height:2mm;border-bottom-width:0px;">
                     OMB No. 1545-2062
                   </div>
-	                <!--<div class="styTY" style="height:5mm;font-size:23pt; padding-top:2mm;">hhhhhh
-					  <div class="styTaxYear" style="height:9mm;padding-top:0;">20<span class="styTYColor">07</span>
-					  </div>  					
-					</div>-->
 				  </div>
 			  </div>
 			  <!-- End form title and Form number Section -->
 			  <!-- Begin Name and Identifying Number Section-->
 			  <div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-			    <div class="styFNBox" style="width:144mm;height:8mm;">
+			    <div class="styFNBox" style="width:144mm;min-height:8mm;height:auto;">
                   Name of common parent<br/>
 				  <xsl:call-template name="PopulateText">
 				    <xsl:with-param name="TargetNode" select="$FormData/BusinessName/BusinessNameLine1"/>
@@ -80,7 +78,7 @@
 				    <xsl:with-param name="TargetNode" select="$FormData/BusinessName/BusinessNameLine2"/>
 				  </xsl:call-template>
 			    </div>
-			    <div class="styEINBox" style="padding-left:2mm;">
+			    <div class="styEINBox" style="padding-left:2mm;min-height:8mm;height:auto;">
 			      <span class="BoldText">Employer identification number</span>
 				  <br/>
 				  <br/>
@@ -540,7 +538,7 @@
 			      <div class="styLNLeftNumBox" style="height:8mm;padding-top:4mm;padding-left:3mm;">e</div>
 			      <div class="styLNDesc" style="width:99mm;height:8mm;padding-top:4mm;">
 			        Small life insurance company deduction (Form 1120-L, page 1,   
-			        <span style="float:left;">line 23) </span>
+			        <span style="float:none;">line 23) </span>
 			        <!--Dotted Line-->
 				    <div class="styDotLn" style="float:right;padding-right:1mm;">.....................</div> 
 				  </div>
@@ -559,8 +557,8 @@
 			  <!-- Line 5 -->
 			  <div style="width:187mm">
 				<div style="float:left; width:147mm;height:4mm;"/>					
-				<div class="styIRS8916LNRightNumBox" style="background-color:lightgrey;border-bottom:0;width:8mm;"/>
-				<div class="styIRS8916LNAmountBox" style="border-bottom:0;"/>
+				<div class="styIRS8916LNRightNumBox" style="background-color:lightgrey;border-bottom:0;width:8mm; border-left: 1px solid black;"/>
+				<div class="styIRS8916LNAmountBox" style="border-bottom:0; border-left: 1px solid black;"/>
 			  </div>
 			  <div style="width:187mm">
 			    <div style="float:left;clear:none;">
@@ -642,7 +640,7 @@
 			    </div>
 			  </div>		
 			  <!--  End of Page  -->
-			  <div style="width:187mm; border-top:1 solid Black; font-size:8pt;">
+			  <div style="width:187mm; border-top:1px solid black; font-size:8pt;">
 			    <div style="font-weight:bold; float:left; padding-top:0.5mm;">
                   For Paperwork Reduction Act Notice,  see page 2.  
 			    </div>

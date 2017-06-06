@@ -11,9 +11,11 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS8907"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 		<!-- Updated 10/14/2010 (RLW) -->
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -70,12 +72,12 @@
         							Attach to your tax return. 
 								<br/>
 								<img src="{$ImagePath}/8907_Bullet.gif" alt="MediumBullet"/>  
-        						<span style="font-size:6pt;">Information about Form 8907 and its instructions is available at <i>www.irs.gov/form8907.</i></span>	
-        							
+        						<span style="font-size:6pt;">Information about Form 8910 and its separate instructions is at <a href="http://www.irs.gov/form8907">
+             <i>www.irs.gov/form8907</i></a></span>
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:10mm; border-left-width: 1px;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-2008</div>
+							<div class="styOMB" style="height:auto;">OMB No. 1545-2008</div>
 							<div class="styTaxYear" style="height:8mm">20<span class="styTYColor">13</span>
 							</div>
 							<div class="stySequence" style="padding-top:0mm;">Attachment<br/>Sequence No.<span style="font-weight:bold;font-size:7.95pt;">146</span>
@@ -85,29 +87,67 @@
 					<!--  End title of Form  -->
 					<!--  Name and Employer identification number  -->
 					<div class="styBB" style="width:187mm">
-						<div class="styNameBox" style="width:141mm;font-weight:normal;font-size:7pt;">
-     							 Name(s) shown on return<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
-							</xsl:call-template>
-							<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
-							</xsl:call-template>
+						<div class="styNameBox" style="width:139.5mm;font-weight:normal;font-size:7pt;">
+     						Name(s) shown on return<br/>
+							<xsl:choose>
+								<xsl:when test="$RtnHdrData/Filer/NameLine1Txt">
+									<br/>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+									</xsl:call-template>
+									<br/>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+									</xsl:call-template>
+									<br/>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+									</xsl:call-template>
+								</xsl:otherwise>
+							</xsl:choose>
 						</div>
-						<div class="styEINBox" style="padding-left:2mm;font-size:7pt;">
+						<div class="styEINBox" style="width:47mm;padding-left:2mm;font-size:7pt;">
 							<span class="BoldText">Identifying number</span>
 							<br/>
 							<br/>
 							<span style="font-weight:normal;">
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-								</xsl:call-template>
+								<xsl:choose>
+								<xsl:when test="$RtnHdrData/Filer/PrimarySSN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:when test="$RtnHdrData/Filer/SSN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">SSN</xsl:with-param>
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:when test="$RtnHdrData/Filer/EIN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">MissingEINReasonCd</xsl:with-param>
+									</xsl:call-template>
+								</xsl:otherwise>
+							</xsl:choose>
 							</span>
 						</div>
 					</div>
 					<!--  End Name and Employer indentification number  -->
-					<!-- Line A   -->
+					<!-- Line A -->
 					<div class="styGenericDiv" style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="height:15mm;padding-top:12mm;">1</div>
 						<div class="styLNDesc" style="width:84mm;height:15mm;padding-top:12mm;">
@@ -123,13 +163,13 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styLNRightNumBox" style="width:47mm;border-right-width:0px;height:16.1mm;">
-							<div class="styLNLeftNumBox" style="width:47mm;font-weight:bold;">(a)</div>
-							<div class="styLNDesc" style="font-weight:normal;width:47mm;">Qualified coke and coke gas sold in calendar year 2013</div>
+						<div class="styLNRightNumBox" style="width:47.3mm;border-right-width:0px;height:16.1mm;">
+							<div class="styLNLeftNumBox" style="width:47.3mm;font-weight:bold;">(a)</div>
+							<div class="styLNDesc" style="font-weight:normal;width:47.3mm;">Qualified coke and coke gas sold in calendar year 2013</div>
 						</div>
-						<div class="styLNRightNumBox" style="width:47mm;border-right-width:0px;height:16.1mm;">
-							<div class="styLNLeftNumBox" style="width:47mm;font-weight:bold;">(b)</div>
-							<div class="styLNDesc" style="font-weight:normal;width:47mm;">Reserved (see What's New in the instructions)</div>
+						<div class="styLNRightNumBox" style="width:47.3mm;border-right-width:0px;height:16.1mm;">
+							<div class="styLNLeftNumBox" style="width:47.3mm;font-weight:bold;">(b)</div>
+							<div class="styLNDesc" style="font-weight:normal;width:47.3mm;">Reserved (see What's New in the instructions)</div>
 						</div>
 					</div>
 					<!-- Line 2 -->
@@ -218,7 +258,7 @@
 					    		Reduction due to government monies and subsidized financing. Enter
 					         	the total of government grants, proceeds of tax-exempt government
 					          	obligations, and subsidized energy financing for the project for this and
-          						all <span style="float:left;">prior tax years</span> 
+          						 <br/><span style="float:left">all prior tax years</span> 
           					  <!-- Dotted Line -->
                               <span class="styDotLn" style="float:right;padding-right:1mm;">...................</span>
 							</div>
@@ -269,8 +309,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:2mm;">6c</div>
-							<div class="styLNAmountBox" style="height:2mm;">
+							<div class="styLNRightNumBox" style="height:auto;">6c</div>
+							<div class="styLNAmountBox" style="height:auto;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/GovtRedDividedByTotalAddnRt"/>
 								</xsl:call-template>
@@ -291,8 +331,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:2mm;">6d</div>
-							<div class="styLNAmountBox" style="height:2mm;">
+							<div class="styLNRightNumBox" style="height:auto;">6d</div>
+							<div class="styLNAmountBox" style="height:auto;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalFuelSoldTimesTotAddnRtAmt"/>
 								</xsl:call-template>
@@ -310,8 +350,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:2mm;">7</div>
-							<div class="styLNAmountBox" style="height:2mm;">
+							<div class="styLNRightNumBox" style="height:auto;">7</div>
+							<div class="styLNAmountBox" style="height:auto;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotAddnRtAmtLessTotFuelSoldAmt"/>
 								</xsl:call-template>
@@ -354,8 +394,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:9mm;padding-top:7mm;">8b</div>
-							<div class="styLNAmountBox" style="height:9mm;padding-top:7mm;">
+							<div class="styLNRightNumBox" style="height:11mm;padding-top:7mm;">8b</div>
+							<div class="styLNAmountBox" style="height:11mm;padding-top:7mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalRecaptureAmt"/>
 								</xsl:call-template>
@@ -377,8 +417,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:2mm;">8c</div>
-							<div class="styLNAmountBox" style="height:2mm;">
+							<div class="styLNRightNumBox" style="height:auto;">8c</div>
+							<div class="styLNAmountBox" style="height:auto;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/RedEnergyCrLessTotalRcptrAmt"/>
 								</xsl:call-template>
@@ -396,8 +436,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:2mm;">9</div>
-							<div class="styLNAmountBox" style="height:2mm;">
+							<div class="styLNRightNumBox" style="height:auto;">9</div>
+							<div class="styLNAmountBox" style="height:auto;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/NetTotAddnRtAmtLessFuelSoldAmt"/>
 								</xsl:call-template>
@@ -439,8 +479,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:6mm;padding-top:4mm;">10b</div>
-							<div class="styLNAmountBox" style="height:6mm;padding-top:4mm;">
+							<div class="styLNRightNumBox" style="height:6mm;padding-top:2mm;">10b</div>
+							<div class="styLNAmountBox" style="height:6mm;padding-top:2mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalEnhancedOilRecoveryCrAmt"/>
 								</xsl:call-template>
@@ -462,8 +502,8 @@
            					</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:2mm;">10c</div>
-							<div class="styLNAmountBox" style="height:2mm;">
+							<div class="styLNRightNumBox" style="height:auto;">10c</div>
+							<div class="styLNAmountBox" style="height:auto;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/RedOilRcvryLessTotOilRcvryAmt"/>
 								</xsl:call-template>
@@ -481,8 +521,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:2mm;">11</div>
-							<div class="styLNAmountBox" style="height:2mm;">
+							<div class="styLNRightNumBox" style="height:auto;">11</div>
+							<div class="styLNAmountBox" style="height:auto;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/NetAmt"/>
 								</xsl:call-template>
@@ -539,8 +579,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:2mm;">14</div>
-							<div class="styLNAmountBox" style="height:2mm;;">
+							<div class="styLNRightNumBox" style="height:auto;">14</div>
+							<div class="styLNAmountBox" style="height:auto;;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AllocatedtoBeneficiariesAmt"/>
 								</xsl:call-template>
@@ -549,7 +589,7 @@
 					</div>
 					<!--  Line 14 -->
 					<!--  Line 15 -->
-					<div class="StyTBB" style="width: 187mm;">
+					<div class="styTBB" style="width: 187mm;">
 						<div style="float:left;clear:none;">
 							<div class="styLNLeftNumBox">15</div>
 							<div class="styLNDesc">
@@ -558,8 +598,8 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBoxNBB" style="height:2mm;">15</div>
-							<div class="styLNAmountBoxNBB" style="height:2mm;">
+							<div class="styLNRightNumBoxNBB" style="height:auto;">15</div>
+							<div class="styLNAmountBoxNBB" style="height:auto;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/EstatesAndTrustsCreditAmt"/>
 								</xsl:call-template>
@@ -570,15 +610,15 @@
 					<!--  FOOTER-->
 					<div style="width:187mm;">
 						<span class="styBoldText">For Paperwork Reduction Act Notice, see instructions. </span>
-						<span style="width:122px;"/>                      
+						<span style="width:120px;"/>                      
           Cat. No. 37716X
           <span style="width:125px;"/>  
           Form <span class="styBoldText">8907</span> (2013)
         </div>
-					<br class="pageEnd"/>
+					<div class="pageEnd"/>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
-					<div class="styLeftOverTitleLine" id="LeftoverData">
+						<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">
             Additional Data        
           </div>

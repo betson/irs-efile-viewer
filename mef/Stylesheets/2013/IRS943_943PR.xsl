@@ -77,7 +77,7 @@
 	<xsl:variable name="FormDetailsText">
 		<xsl:choose>
 			  <xsl:when test="$Language='ENGLISH'"> Information about Form 943 and its separate instructions is at &lt;i&gt;www.irs.gov/form943&lt;/i&gt;.</xsl:when>
-			  <xsl:otherwise>Para más información, vea las instrucciones por separado.</xsl:otherwise>
+			  <xsl:otherwise>Para m&amp;#225;s informaci&amp;#243;n, vea las instrucciones por separado.</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
 	<xsl:variable name="PrintTypeText">
@@ -134,7 +134,7 @@
 	</xsl:variable>
 	<xsl:variable name="CityStateZipText">
 		<xsl:choose>
-			  <xsl:when test="$Language='ENGLISH'">City, state, and ZIP code</xsl:when>
+			  <xsl:when test="$Language='ENGLISH'">City or town, state or province, and ZIP or foreign postal code</xsl:when>
 			  <xsl:otherwise>Ciudad o pueblo, provincia o estado, pais y zona postal &lt;i&gt;(ZIP)&lt;/i&gt; o c&amp;#243;digo postal extranjero&lt;/span&gt;</xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
@@ -270,7 +270,7 @@
 							&lt;/span&gt;</xsl:when>
 			  <!--<xsl:otherwise>&lt;span style="width:138mm;height:3.5mm;background-color:lightgray;"&gt;&lt;/span&gt;</xsl:otherwise>-->
 			  <xsl:otherwise>
-				&lt;div style="float:left;width:98%;background-color:lightgrey"&gt;&lt;/div&gt;
+				&lt;div style="float:left;width:98%;height:3.8mm;background-color:lightgrey"&gt;&lt;/div&gt;
 			  </xsl:otherwise>
 		</xsl:choose>
 	</xsl:variable>
@@ -803,8 +803,10 @@
 		</xsl:choose>
 	</xsl:variable>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="{$HtmlLang}">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)">
@@ -847,9 +849,9 @@
           Internal Revenue Service
         </div>
       </div>
-      <div class="styFTBox" style="width:128mm;height:24mm; ">
-        <div class="styMainTitle" style="height:4mm;padding-top:2mm;"><xsl:value-of disable-output-escaping="yes" select="$FormNameText" /></div>    
-		 <div class="styFBT" style="height:3mm;margin-top:2mm;font:size:6pt;width:128mm;">
+      <div class="styFTBox" style="width:127.6mm;height:24mm; ">
+        <div class="styMainTitle" style="height:11mm;padding-top:2mm;"><xsl:value-of disable-output-escaping="yes" select="$FormNameText" /></div>    
+		 <div class="styFBT" style="height:10mm;margin-top:7mm;font:size:6pt;width:128mm;">
 		 <img src="{$ImagePath}/1040PR_Bullet_Sm.gif"  alt="Bullet Image"/><xsl:value-of disable-output-escaping="yes" select="$FormDetailsText" /><br/>                  
         </div>
       </div>
@@ -866,7 +868,7 @@
     <div class="styGenericDiv" style="width:28.8mm;height:{$PrintTypeHeight};padding-top:{$PrintTypePadding}mm;"><b><xsl:value-of disable-output-escaping="yes" select="$PrintTypeText" /></b></div>
     <div class="styGenericDiv" style="width:128mm;border-right:1px solid black;border-left:1px solid black;">
 		<div class="styGenericDiv" style="width:128mm;border-bottom:1px solid black;">
-		<div class="styGenericDiv" style="width:77.8mm;height:10mm;padding-left:2mm;border-right:1px solid black;"><xsl:value-of disable-output-escaping="yes" select="$NameText" /><br/>
+		<div class="styGenericDiv" style="width:77.8mm;height:13mm;padding-left:2mm;border-right:1px solid black;font-size:6pt;"><xsl:value-of disable-output-escaping="yes" select="$NameText" /><br/>
 			<xsl:call-template name="PopulateReturnHeaderFiler">
 			<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
 		</xsl:call-template><br/>
@@ -931,7 +933,12 @@
 		<!-- BEGIN LINE FUTURE RETURNS ENGLISH -->
     <xsl:if test="$Language='ENGLISH'">               
           <div class="styGenericDiv" style="width:127.7mm;height:10mm;padding-left:2mm;padding-top:4mm;border-top:1px solid black;">
-				<span style="">If you do not have to file returns in the future, check here </span>
+				<span style=""><label>
+						<xsl:call-template name="PopulateLabel">
+							<xsl:with-param name="TargetNode" select="$FormData/FutureFilingNotRequiredInd"/>
+							<xsl:with-param name="BackupName">IRS943FutureFilingNotRequiredInd</xsl:with-param>
+						</xsl:call-template>
+					If you do not have to file returns in the future, check here </label></span>
 				<span style="font-weight:bold;padding-right:3mm;padding-left:3mm;">
 					.
 					<span style="width:11px;"/>.
@@ -945,40 +952,47 @@
 				<img src="{$ImagePath}/1040PR_Bullet_Sm.gif"  alt="Bullet Image"/><span style="width:3mm;"/>
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/FutureFilingNotRequiredInd"/>								
+								<xsl:with-param name="TargetNode" select="$FormData/FutureFilingNotRequiredInd"/>
 								<xsl:with-param name="BackupName">IRS943FutureFilingNotRequiredInd</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$FormData/FutureFilingNotRequiredInd"/>
-								<xsl:with-param name="BackupName">IRS943FutureFilingNotRequiredInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>
           </div>
           </xsl:if>
           <!-- END LINE FUTRE RETURNS ENGLISH -->  
     </div>
-    <div class="styGenericDiv" style="width:29.4mm;height:{$PrintTypeHeight};padding-left:3mm;padding-top:3mm;"><span class="styBoldText"><xsl:value-of disable-output-escaping="yes" select="$AddressDifferentText" /></span><span style="width:1mm;"/><img src="{$ImagePath}/1040PR_Bullet_Sm.gif"  alt="Bullet Image"/><span style="width:2mm;"/>
+    <div class="styGenericDiv" style="width:29.4mm;height:{$PrintTypeHeight};padding-left:1mm;padding-top:3mm;">
+				<div class="styBoldText" style="width:19mm;float:left;">
+						<label>
+							<xsl:call-template name="PopulateLabel">
+								<xsl:with-param name="TargetNode" select="$FormData/PriorAddressInd"/>
+								<xsl:with-param name="BackupName">IRS943PriorAddressInd</xsl:with-param>
+							</xsl:call-template>
+						<xsl:value-of disable-output-escaping="yes" select="$AddressDifferentText" /></label>
+				</div>
+				
+				<div style="float:left;width:8mm;">
+				<!--span style="width:.5mm;"/-->
+				<img src="{$ImagePath}/1040PR_Bullet_Sm.gif"  alt="Bullet Image"/>
+				<!--span style="width:.5mm;"/-->
 			<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/PriorAddressInd"/>
 								<xsl:with-param name="BackupName">IRS943PriorAddressInd</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$FormData/PriorAddressInd"/>
-								<xsl:with-param name="BackupName">IRS943PriorAddressInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>
+						</div>
 </div>
     </div>    
     <!-- BEGIN LINE FUTURE RETURNS SPANISH -->
     <xsl:if test="$Language='SPANISH'">               
-          <div class="styBB" style="width:187mm;float:none;clear:both;">            
+          <div class="styBB" style="width:187mm;float:none;clear:both;height:5mm;">            
             <div class="styLNDesc" style="width:186.8mm;">
-				<span style="">Si no espera tener que radicar esta planilla en el futuro, marque esta casilla </span>
+				<span style=""><label>
+							<xsl:call-template name="PopulateLabel">
+								<xsl:with-param name="TargetNode" select="$FormData/FutureFilingNotRequiredInd"/>
+								<xsl:with-param name="BackupName">IRS943FutureFilingNotRequiredInd</xsl:with-param>
+							</xsl:call-template>
+						Si no espera tener que radicar esta planilla en el futuro, marque esta casilla </label></span>
 				<span style="font-weight:bold;padding-right:3mm;padding-left:3mm;">
 					.
 					<span style="width:11px;"/>.
@@ -1004,12 +1018,7 @@
 								<xsl:with-param name="BackupName">IRS943FutureFilingNotRequiredInd</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$FormData/FutureFilingNotRequiredInd"/>
-								<xsl:with-param name="BackupName">IRS943FutureFilingNotRequiredInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>				
+										
             </div>  
           </div>
           </xsl:if>
@@ -1219,13 +1228,13 @@
           </div>
           <!-- END LINE 11 -->
           <!-- BEGIN LINE 12 -->                 
-          <div class="styBB" style="width:187mm;border-bottom-width:0px;float:none;clear:both;">
+          <div class="styBB" style="width:187mm;border-bottom-width:0px;float:none;clear:both;height:8mm;">
             <div class="styLNLeftNumBox">12</div>
             <div class="styLNDesc" style="width:138.8mm;">
 				<xsl:value-of disable-output-escaping="yes" select="$Line12Text" />
             </div>
-            <div class="styLNRightNumBox" style="height:4.4mm;"><xsl:value-of disable-output-escaping="yes" select="$SpanishBreak" />12</div>
-            <div class="styLNAmountBox" style="height:4.4mm;"><xsl:value-of disable-output-escaping="yes" select="$SpanishBreak" />
+            <div class="styLNRightNumBox" style="height:8mm;padding-top:1mm;"><xsl:value-of disable-output-escaping="yes" select="$SpanishBreak" />12</div>
+            <div class="styLNAmountBox" style="height:8mm;padding-top:1mm;"><xsl:value-of disable-output-escaping="yes" select="$SpanishBreak" />
 				<span style="font-size:6pt;">
 				<xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$FormData/TotalTaxDepositAmt"/>
@@ -1310,9 +1319,9 @@
           <!-- END LINE 15 -->
           <!-- BEGIN LINE 16 ENGLISH-->
           <xsl:if test="$Language='ENGLISH'">           
-          <div class="styBB" style="width:187mm;float:none;clear:both;">
+          <div class="styBB" style="width:187mm;float:none;clear:both;height:5mm;">
             <div class="styLNLeftNumBox">16</div>
-            <div class="styLNDesc" style="width:auto;float:left;">
+            <div class="styLNDesc" style="width:auto;float:left;font-size:6pt;">
 				<span style="font-size:6pt;"><b>Overpayment.</b></span> If line 14 is more than line 11, enter the difference <img src="{$ImagePath}/1040PR_Bullet_Sm.gif"  alt="Bullet Image"/>
 				<span>$</span>
             </div>
@@ -1321,7 +1330,7 @@
 					<xsl:with-param name="TargetNode" select="$FormData/OverpaymentGrp/OverpaidAmt"/>
 				</xsl:call-template>
             </div>
-            <div class="styLNDesc" style="width:auto;float:right;">
+            <div class="styLNDesc" style="width:auto;float:right;padding-top:0mm;">
 				<span style="">Check one:</span>				
 						<span>
 							<xsl:call-template name="PopulateSpan">
@@ -1381,7 +1390,7 @@
 					<xsl:with-param name="TargetNode" select="$FormData/OverpaymentGrp/OverpaidAmt"/>
 				</xsl:call-template>
             </div>            
-            <div class="styLNDesc" style="width:186.8mm;padding-left:8mm;">
+            <div class="styLNDesc" style="width:186.8mm;padding-left:8mm;height:5mm;">
 				<span style="">Marque uno: </span>
 				<span style="width:6mm;"/>
 						<span>
@@ -1431,10 +1440,15 @@
 				  <div class="styGenericDiv" style="width:175mm;float:left;"><xsl:value-of disable-output-escaping="yes" select="$AllFilersText" /></div>	  
 			  </div>
 			  <xsl:if test="$Language='ENGLISH'"> 
-			  <div class="styGenericDiv" style="width:95mm;float:left;">
-				  <div class="styIRS943Bullet">•</div>
+			  <div class="styGenericDiv" style="width:96mm;float:left;">
+				  <div class="styIRS943Bullet" style="padding-top:1mm;">•</div>
 				  <div style="float:left;font-size:6pt;">
-					  <xsl:value-of disable-output-escaping="yes" select="$SemiWeeklyText" /><span style="padding-left:2px;padding-right:2px;">
+					  <label>
+							<xsl:call-template name="PopulateLabel">
+								<xsl:with-param name="TargetNode" select="$FormData/SemiweeklyScheduleDepositorInd"/>
+								<xsl:with-param name="BackupName">IRS943SemiweeklyScheduleDepositorInd</xsl:with-param>
+							</xsl:call-template>
+						<xsl:value-of disable-output-escaping="yes" select="$SemiWeeklyText" /></label><span style="padding-left:2px;padding-right:2px;">
 					  <xsl:call-template name="SetFormLinkInline">
 						  <xsl:with-param name="TargetNode" select="$FormData/SemiweeklyScheduleDepositorInd"/>
 						</xsl:call-template>
@@ -1445,31 +1459,24 @@
 								<xsl:with-param name="BackupName">IRS943SemiweeklyScheduleDepositorInd</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$FormData/SemiweeklyScheduleDepositorInd"/>
-								<xsl:with-param name="BackupName">IRS943SemiweeklyScheduleDepositorInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>				  
 				  </div>
 				  			  
 			  </div>
-			  <div class="styGenericDiv" style="width:92mm;float:right;">
-				  <div class="styIRS943Bullet">•</div>
+			  <div class="styGenericDiv" style="width:91mm;float:right;">
+				  <div class="styIRS943Bullet" style="padding-top:1mm;">•</div>
 				  <div style="float:left;font-size:6pt;">
-					  <xsl:value-of disable-output-escaping="yes" select="$MonthlyText" /><span style="padding-left:2px;padding-right:2px;"><img src="{$ImagePath}/1040PR_Bullet_Sm.gif"  alt="Bullet Image"/></span>
+					  <label>
+							<xsl:call-template name="PopulateLabel">
+								<xsl:with-param name="TargetNode" select="$FormData/MonthlyScheduleDepositorInd"/>
+								<xsl:with-param name="BackupName">IRS943MonthlyScheduleDepositorInd</xsl:with-param>
+							</xsl:call-template>
+						<xsl:value-of disable-output-escaping="yes" select="$MonthlyText" /></label><span style="padding-left:2px;padding-right:2px;"><img src="{$ImagePath}/1040PR_Bullet_Sm.gif"  alt="Bullet Image"/></span>
 					  <input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/MonthlyScheduleDepositorInd"/>
 								<xsl:with-param name="BackupName">IRS943MonthlyScheduleDepositorInd</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$FormData/MonthlyScheduleDepositorInd"/>
-								<xsl:with-param name="BackupName">IRS943MonthlyScheduleDepositorInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>				  
 				  </div>
 				  			  
 			  </div>
@@ -1478,7 +1485,12 @@
 			  <div class="styGenericDiv" style="width:95mm;float:left;padding-top:1mm;">
 				  <div class="styIRS943Bullet">•</div>
 				  <div style="float:left;font-size:6pt;">
-					  <xsl:value-of disable-output-escaping="yes" select="$SemiWeeklyText" /><span style="padding-left:2px;padding-right:2px;">
+					  <label>
+							<xsl:call-template name="PopulateLabel">
+								<xsl:with-param name="TargetNode" select="$FormData/SemiweeklyScheduleDepositorInd"/>
+								<xsl:with-param name="BackupName">IRS943SemiweeklyScheduleDepositorInd</xsl:with-param>
+							</xsl:call-template>
+						<xsl:value-of disable-output-escaping="yes" select="$SemiWeeklyText" /></label><span style="padding-left:2px;padding-right:2px;">
 					  <xsl:call-template name="SetFormLinkInline">
 						  <xsl:with-param name="TargetNode" select="$FormData/SemiweeklyScheduleDepositorInd"/>
 						</xsl:call-template>
@@ -1498,19 +1510,18 @@
 								<xsl:with-param name="BackupName">IRS943SemiweeklyScheduleDepositorInd</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$FormData/SemiweeklyScheduleDepositorInd"/>
-								<xsl:with-param name="BackupName">IRS943SemiweeklyScheduleDepositorInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>				  
 				  </div>
 				  			  
 			  </div>
 			  <div class="styGenericDiv" style="width:92mm;float:right;padding-top:1mm;">
 				  <div class="styIRS943Bullet">•</div>
 				  <div style="float:left;font-size:6pt;">
-					  <xsl:value-of disable-output-escaping="yes" select="$MonthlyText" />
+					  <label>
+							<xsl:call-template name="PopulateLabel">
+								<xsl:with-param name="TargetNode" select="$FormData/MonthlyScheduleDepositorInd"/>
+								<xsl:with-param name="BackupName">IRS943MonthlyScheduleDepositorInd</xsl:with-param>
+							</xsl:call-template>
+						<xsl:value-of disable-output-escaping="yes" select="$MonthlyText" /></label>
 					  <span style="font-weight:bold;padding-right:3mm;padding-left:3mm;">
 					.
 					<span style="width:11px;"/>.
@@ -1533,12 +1544,6 @@
 								<xsl:with-param name="BackupName">IRS943MonthlyScheduleDepositorInd</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$FormData/MonthlyScheduleDepositorInd"/>
-								<xsl:with-param name="BackupName">IRS943MonthlyScheduleDepositorInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>				  
 				  </div>
 				  			  
 			  </div>
@@ -1547,8 +1552,8 @@
           </div>
           <!-- END ALL FILERS SECTION -->
           <!-- BEGIN LINE 17 -->
-          <div class="styGenericDiv" style="width:187mm;border:2px solid black;float:none;clear:both;"> 
-			<div class="styBB" style="width:187mm;">
+          <div class="styGenericDiv" style="width:187mm;border:2px solid black;float:none;clear:both;height:34mm;"> 
+			<div class="styBB" style="width:186mm;">
 				<div class="styLNLeftNumBoxSD">17</div>
 				<div class="styLNDesc" style="width:170mm;">
 					<xsl:value-of disable-output-escaping="yes" select="$Line17Text" />
@@ -1557,7 +1562,7 @@
 			<div class="styGenericDiv" style="width:187mm;height:27mm;">
 			<div class="styIRS943MonthlyGrp">
 				<div class="styIRS943MonthNm"></div>
-				<div class="styIRS943MonthAmt" style="font-size:8px;text-align:center;padding-top:.75mm;"><b><xsl:value-of disable-output-escaping="yes" select="$TaxLiabilityMonthText" /></b></div>
+				<div class="styIRS943MonthAmt" style="font-size:8px;text-align:center;padding-top:.75mm;height:7mm;"><b><xsl:value-of disable-output-escaping="yes" select="$TaxLiabilityMonthText" /></b></div>
 				<div class="styIRS943MonthNm">
 					<div class="styIRS943MonthLetter">A</div>
 					<div class="styIRS943Month"><xsl:value-of disable-output-escaping="yes" select="$JanuaryText" /></div>
@@ -1616,7 +1621,7 @@
 			</div>
 			<div class="styIRS943MonthlyBGrp">
 				<div class="styIRS943MonthBNm"></div>
-				<div class="styIRS943MonthBAmt" style="font-size:8px;text-align:center;padding-top:.75mm;"><b><xsl:value-of disable-output-escaping="yes" select="$TaxLiabilityMonthText" /></b></div>
+				<div class="styIRS943MonthBAmt" style="font-size:8px;text-align:center;padding-top:.75mm;height:7mm;"><b><xsl:value-of disable-output-escaping="yes" select="$TaxLiabilityMonthText" /></b></div>
 				<div class="styIRS943MonthBNm">
 					<div class="styIRS943MonthBLetter">F</div>
 					<div class="styIRS943Month"><xsl:value-of disable-output-escaping="yes" select="$JuneText" /></div>
@@ -1675,12 +1680,12 @@
 			</div>
 			<div class="styIRS943MonthlyBGrp" style="width:62.8mm;">
 				<div class="styIRS943MonthBNm" style="width:32.8mm;float:left;"/>
-				<div class="styIRS943MonthCAmt" style="float:right;font-size:8px;text-align:center;padding-top:.75mm;"><b><xsl:value-of disable-output-escaping="yes" select="$TaxLiabilityMonthText" /></b></div>
+				<div class="styIRS943MonthCAmt" style="float:left;font-size:8px;text-align:center;padding-top:.75mm;height:7mm;"><b><xsl:value-of disable-output-escaping="yes" select="$TaxLiabilityMonthText" /></b></div>
 				<div class="styIRS943MonthBNm" style="width:32.8mm;float:left;">
 					<div class="styIRS943MonthLetter">K</div>
 					<div class="styIRS943Month"><xsl:value-of disable-output-escaping="yes" select="$NovemberText" /></div>
 				</div>
-				<div class="styIRS943MonthCAmt" style="float:right;">
+				<div class="styIRS943MonthCAmt" style="padding-right:1mm;">
 					<xsl:for-each select="$FormData/TaxLiabilityMonthlyDetailGrp[MonthCd = 'NOVEMBER']">
 						<xsl:call-template name="PopulateAmount">
 							 <xsl:with-param name="TargetNode" select="TaxLiabilityAmt"/>
@@ -1692,7 +1697,7 @@
 					<div class="styIRS943MonthLetter">L</div>
 					<div class="styIRS943Month"><xsl:value-of disable-output-escaping="yes" select="$DecemberText" /></div>
 				</div>
-				<div class="styIRS943MonthCAmt" style="float:right;">
+				<div class="styIRS943MonthCAmt" style="padding-right:1mm;">
 					<xsl:for-each select="$FormData/TaxLiabilityMonthlyDetailGrp[MonthCd = 'DECEMBER']">
 						<xsl:call-template name="PopulateAmount">
 							 <xsl:with-param name="TargetNode" select="TaxLiabilityAmt"/>
@@ -1704,7 +1709,7 @@
 					<div class="styIRS943MonthLetter" style="height:10.5mm;">M</div>
 					<div class="styIRS943Month"><xsl:value-of disable-output-escaping="yes" select="$MText" /></div>
 				</div>
-				<div class="styIRS943MonthCAmt" style="border-bottom:0px;height:13.5mm;padding-top:9mm;float:right;">
+				<div class="styIRS943MonthCAmt" style="border-bottom:0px;height:13.5mm;padding-top:9mm;padding-right:1mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/TotalTaxLiabilityAmt"/>
 					</xsl:call-template>					
@@ -1715,7 +1720,7 @@
           <!-- END LINE 17 -->
   <!-- 3rd party -->
 		<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;float:none;clear:both;">
-			<div style="width:15mm;height:12.4mm;float:left;clear:none;border-right:1px solid black">
+			<div style="width:15mm;height:15mm;float:left;clear:none;border-right:1px solid black">
 				<span class="styMainTitle" style="font-size:9pt;">
 					<xsl:value-of disable-output-escaping="yes" select="$DesigneeText" />
 					</span>
@@ -1723,7 +1728,7 @@
 			<div style="float:left;clear:none;width:172mm;padding-top:.5mm;">
 				<div style="font-size:6pt;float:left;clear:none;padding-left:2mm;"><xsl:value-of disable-output-escaping="yes" select="$DiscussText" />
 				</div>
-				<div style="float:left;clear:none;padding-left:15mm;font-size:6pt;">
+				<div style="float:left;clear:none;padding-left:10mm;font-size:6pt;">
 					<!-- Checkbox -->
 					<input type="Checkbox" class="styCkbox">
 						<xsl:call-template name="PopulateYesCheckbox">
@@ -1919,23 +1924,23 @@
 									</span>
 						</div>
 						<div style="width:164.5mm;float:left;clear:none;border-left:1px solid black;">
-							<div style="width:164mm;height:100%;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-								<div class="styLNDesc" style="height:100%;width:46.8mm;padding-top:0mm;border-right:1 solid black;">
+							<div style="width:164mm;height:12mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
+								<div class="styLNDesc" style="height:12mm;width:46.8mm;padding-top:0mm;border-right:1px solid black;">
 								<xsl:value-of disable-output-escaping="yes" select="$PreparerNameText" /><br/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerPersonNm"/>
 										<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerPersonNm</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:100%;width:46.5mm;padding-top:0mm;border-right:1 solid black;padding-left:1mm;">
+								<div class="styLNDesc" style="height:12mm;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
 								<xsl:value-of disable-output-escaping="yes" select="$PreparerSignatureText" />
 							</div>
-								<div class="styLNDesc" style="height:100%;width:15mm;border-right:1 solid black;padding-top:0mm;padding-left:1mm;"><xsl:value-of disable-output-escaping="yes" select="$DateText" /> <br/>
+								<div class="styLNDesc" style="height:12mm;width:15mm;border-right:1px solid black;padding-top:0mm;padding-left:1mm;"><xsl:value-of disable-output-escaping="yes" select="$DateText" /> <br/>
 									<xsl:call-template name="PopulateMonthDayYear">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SignatureDt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:auto;width:25mm;border-right:1 solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
+								<div class="styLNDesc" style="height:12mm;width:25mm;border-right:1px solid black;padding-top:0mm;padding-bottom:0mm;padding-left:1mm;margin-top:0mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployediSelfEmployedInd"/>
@@ -1951,7 +1956,7 @@
 										<span style="width:4px;"/><xsl:value-of disable-output-escaping="yes" select="$SelfEmployedText" />
 									</label>
 								</div>
-								<div class="styLNDesc" style="height:6mm;width:30mm;padding-top:0mm;padding-left:1mm;">
+								<div class="styLNDesc" style="height:12mm;width:30mm;padding-top:0mm;padding-left:1mm;">
 								<xsl:if test="$Language='SPANISH'">
 								<i>PTIN</i></xsl:if>
 								<xsl:if test="$Language='ENGLISH'">
@@ -1978,7 +1983,7 @@
 								</div>
 							</div>
 							<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-								<div class="styLNDesc" style="height:6mm;width:108.5mm;border-right:1 solid black;">
+								<div class="styLNDesc" style="height:auto;width:108.5mm;border-right:1px solid black;">
 									<span class="styGenericDiv" style=""><xsl:value-of disable-output-escaping="yes" select="$FirmNameText" /> 
 									<span style="width:2.2mm;"/>
 										<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
@@ -1997,7 +2002,7 @@
 										</xsl:if>
 									</div>		
 								</div>
-								<div class="styLNDesc" style="height:6mm;width:52mm;padding-left:1mm;"><xsl:value-of disable-output-escaping="yes" select="$FirmEINText" />
+								<div class="styLNDesc" style="height:auto;width:52mm;padding-left:1mm;"><xsl:value-of disable-output-escaping="yes" select="$FirmEINText" />
 								<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
 									<span style="width:4px;"/>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN">
@@ -2013,7 +2018,7 @@
 								</div>
 							</div>
 							<div style="width:164mm;float:left;clear:none;">
-								<div class="styLNDesc" style="width:108.5mm;border-right:1 solid black;">
+								<div class="styLNDesc" style="width:108.5mm;border-right:1px solid black;height:auto;">
 									<div class="styGenericDiv" style="padding-right:.5mm;"><xsl:value-of disable-output-escaping="yes" select="$FirmAddressText" /> 
 									<img src="{$ImagePath}/1040_Bullet.gif" alt="Right pointing arrowhead image"/>
 									</div>

@@ -25,7 +25,7 @@
 	.styIRS8839LineItem {  /* Line Item */
 		border-color:#00CBFF;
 		width: 187mm;
-		height: 3mm;
+		height:auto;min-height:3mm;
 		padding: 0px 0px 0px 0px;
 		border-style: solid;
 		border-width: 0px 0px 0px 0px;

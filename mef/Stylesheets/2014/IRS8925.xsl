@@ -12,8 +12,10 @@
     <xsl:strip-space elements="*"/>
     <xsl:param name="Form8925Data" select="$RtnDoc/IRS8925"/>
     <xsl:template match="/">
-        <html>
+        <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
             <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
                 <title>
                     <xsl:call-template name="FormTitle">
                         <xsl:with-param name="RootElement" select="local-name($Form8925Data)"/>
@@ -44,8 +46,8 @@
                     <div class="styBB" style="width:187mm;">
                         <div class="styFNBox" style="height:19mm; width:33mm;">
                             <div>
-         <span class="styFormNumber">8925</span>
-                                <br/>(January 2010)<br/>
+         Form<span class="styFormNumber">8925</span>
+                                <br/>(Rev. January 2010)<br/>
                                 <div style="font-size:6pt; padding-top:1.8mm">
               Department of the Treasury<br/>Internal Revenue Service  (99)
                                 </div>
@@ -54,15 +56,18 @@
                         <div class="styFTBox" style="width:123mm">
                             <div class="styMainTitle" style="padding-top:1mm">Report of Employer-Owned Life Insurance Contracts</div>
                             <div class="styFBT" style="margin-top:7.5mm;">
-                                <img src="{$ImagePath}/8925_Bullet_Title.gif" alt="Arrow Bullet"/> Attach to policyholder's tax return-See instructions.
+                                <img src="{$ImagePath}/8925_Bullet_Title.gif" alt="Arrow Bullet"/> Attach to policyholder's tax return - See instructions.
                             </div>
                         </div>
-                        <div class="styTYBox" style="width:31mm; height:19mm">
-                            <div style="padding-top:2mm;border-bottom:1 solid black">OMB No. 1545-2089</div>
-                            <div style="padding-left:5mm; text-align:left; margin-top:8mm; padding-bottom:0mm; line-height: 100%;">Attachment<br/>Sequence No. <b style="font-size:8pt">160</b>
-                            </div>
-                        </div>
-                    </div>
+                        <div class="styTYBox" style="width:31mm;border-left-width:1px;">
+<div class="styOMB" style="height:7mm;font-size:7pt;padding-top:1mm;">OMB No. 1545-2089</div>
+<div style="margin-left:1mm;text-align:left;font-size:7pt;height:12mm;padding-top:4mm;">
+Attachment<br/>Sequence No. 
+<span class="styBoldText" style="font-size:9pt;">160</span>
+</div>
+</div>
+</div>
+
                     <div class="styBB" style="width:187mm;">
                         <div class="styFNBox" style="width:144mm; height:9mm">
                     Name(s) shown on return<br/>
@@ -118,20 +123,16 @@
         
                      <div class="styBB" style="width:187mm;font-size:8pt">
                         <div style="width:187mm;float:right;clear:none;">
-                            <div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;">1
+                            <div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">1
                             </div>
-                            <div class="styLNDesc" style="width:136mm;height:2mm;padding-top:1mm;">Enter the number of employees the policyholder had at the end of the tax year
-        <!--Dotted Line-->
-                                <span class="styBoldText">
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.  
-                                </span>
-                            </div>
-                            <div class="styLNRightNumBox" style="height:2mm;padding-top:1mm;border-right-width:1px">1                            
+                            <div class="styLNDesc" style="width:136mm;height:auto;padding-top:1mm;">Enter the number of employees the policyholder had at the end of the tax year
+                    <!--Dotted Line-->
+					<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">.....</span>	 
+                             </div>
+                             <div class="styLNRightNumBox" style="height:auto;padding-top:1mm;border-right-width:1px">1                            
                             </div>
                             <div class="styLNAmountBox" 
-                                    style="height:2mm;width:35mm;padding-top:1mm;border-left-width:0px;">
+                                    style="height:auto;width:35mm;padding-top:1mm;border-left-width:0px;">
                                     <xsl:call-template name="PopulateAmount">
                                         <xsl:with-param name="TargetNode" select="$Form8925Data/EndOfYearEmployeesQty"/>
                                     </xsl:call-template>
@@ -142,26 +143,18 @@
 <!-- Start Line 2 -->
                         
                         <div style="width:187mm;float:right;clear:none;">
-                            <div class="styLNLeftNumBox" style="height:8mm;padding-bottom:5mm;">2
+                            <div class="styLNLeftNumBox" style="height:auto;padding-bottom:5mm;">2
                             </div>
-           <div class="styLNDesc" style="width:136mm;height:8mm;">Enter the number of employees included on line 1 who were insured at the end of the tax
+           <div class="styLNDesc" style="width:136mm;height:auto;">Enter the number of employees included on line 1 who were insured at the end of the tax
                             year under the policyholder’s employer-owned life insurance contract(s) issued after August
-                            17, 2006. See <i>Section 1035 exchanges</i> below for an exception
-        <!--Dotted Line-->
-                                <span class="styBoldText">
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>. 
-                               </span>
+                            17, 2006. See <i>Section 1035 exchanges</i> on page 2 for an exception
+                      <!--Dotted Line-->
+								<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">..........</span>	 
                             </div>
-                            <div class="styLNRightNumBox" style="height:6mm;padding-top:7.5mm;border-right-width:1px">2
+                            <div class="styLNRightNumBox" style="height:auto;padding-top:7.5mm;border-right-width:1px">2
                             </div>
                             <div class="styLNAmountBox" 
-                                    style="height:6mm;width:35mm;padding-top:7.5mm;border-left-width:0px;">
+                                    style="height:auto;width:35mm;padding-top:7.5mm;border-left-width:0px;">
                                      <xsl:call-template name="PopulateAmount">
                                          <xsl:with-param name="TargetNode" select="$Form8925Data/EndOfYearEmployeesInsuredQty"/>
                                     </xsl:call-template>
@@ -172,21 +165,17 @@
 <!-- Start Line 3 -->
                         
                          <div style="width:187mm;float:right;clear:none;">
-                            <div class="styLNLeftNumBox" style="height:2mm;padding-bottom:0mm;">3
+                            <div class="styLNLeftNumBox" style="height:auto;padding-bottom:0mm;">3
                             </div>
-                            <div class="styLNDesc" style="width:136mm;height:2mm;">Enter the total amount of employer-owned life insurance in force at the end of the tax year
+                            <div class="styLNDesc" style="width:136mm;height:auto;">Enter the total amount of employer-owned life insurance in force at the end of the tax year
                                  for employees who were insured under the contract(s) specified on line 2
-        <!--Dotted Line-->
-                                <span class="styBoldText">
-                                     <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                               </span>
+                      <!--Dotted Line-->
+								<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">........</span>	 
                             </div>
-                            <div class="styLNRightNumBox" style="height:2mm;padding-top:4mm;border-right-width:1px">3
+                            <div class="styLNRightNumBox" style="height:auto;padding-top:4mm;border-right-width:1px">3
                             </div>
                             <div class="styLNAmountBox" 
-                                    style="height:2mm;width:35mm;padding-top:4mm;border-left-width:0px;">
+                                    style="height:auto;width:35mm;padding-top:4mm;border-left-width:0px;">
                                       <xsl:call-template name="PopulateAmount">
                                          <xsl:with-param name="TargetNode" select="$Form8925Data/TotalEOYInsuranceAmt"/>
                                     </xsl:call-template>
@@ -197,29 +186,13 @@
 <!-- Start Line 4a -->
                         
                         <div style="width:187mm;float:right;clear:none;">
-                            <div class="styLNLeftNumBox" style="height:2mm;padding-bottom:2mm;">4a
+                            <div class="styLNLeftNumBox" style="height:auto;padding-bottom:2mm;">4a
                             </div>
-                            <div class="styLNDesc" style="width:136mm;height:2mm;">Does the policyholder have a valid consent (see instructions) for each<br/> 
+                            <div class="styLNDesc" style="width:136mm;height:auto;">Does the policyholder have a valid consent (see instructions) for each<br/> 
                             employee included on line 2?
-        <!--Dotted Line-->
-                                <span class="styBoldText">
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                     <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                   <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    </span>                                 
-                                     <span>
+                       <!--Dotted Line-->
+									<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">............</span>	 
+                                    <span>
                                       <xsl:call-template name="PopulateSpan">
                                        <xsl:with-param name="TargetNode" select="$Form8925Data/ValidConsentForEachEmployeeInd" />
                                  </xsl:call-template>
@@ -261,10 +234,13 @@
                                     </label>
                             </div>
                             
-                           <div class="styLNRightNumBox" style="height:4mm;padding-top:4.5mm;border-right-width:1px;border-bottom-width:0px;background-color:lightgrey;">
+                           <div class="styLNRightNumBox" style="height:auto;padding-top:9.3mm;border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;width:7.7mm;">
                             </div>
                             <div class="styLNAmountBox" 
-                                    style="height:4mm;width:35mm;padding-top:4.5mm;border-left-width:0px;border-left-width: .5px;border-bottom-width:0px;background-color:lightgrey;">
+                                    style="height:auto;width:35.3mm;padding-top:4.5mm;border-left-width:0px;border-left-width: 1px;border-bottom-width:0px;background-color:lightgrey;">
+                            </div>
+                            <div class="styLNAmountBox" 
+                                    style="height:auto;width:35.3mm;padding-top:4.5mm;border-left-width:0px;border-left-width: 1px;border-bottom-width:0px;background-color:lightgrey;">
                             </div>
                         </div>
 <!-- End Line 4a -->
@@ -272,38 +248,16 @@
 <!-- Start Line 4b -->
                         
                         <div style="width:187mm;float:right;clear:none;">
-                            <div class="styLNLeftLtrBox" style="height:4mm;"><span style="width:1px;"></span>b</div>
-                            <div class="styLNDesc" style="width:136mm;height:4mm;">If "No," enter the number of employees included on line 2 for whom the policyholder does
+                            <div class="styLNLeftLtrBox" style="height:auto;"><span style="width:1px;"></span>b</div>
+                            <div class="styLNDesc" style="width:136mm;height:auto;">If "No," enter the number of employees included on line 2 for whom the policyholder does
 				not have a valid consent     
-        <!--Dotted Line-->
-                                <span class="styBoldText">
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                   <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                    <span style="width:8px"></span>.
-                                </span>
-                            </div>
-                            <div class="styLNRightNumBox" style="width:7.5mm;border-bottom-width:0px;padding-top:4mm;padding-bottom:0mm;height:7mm;background-color:lightgrey">
-                            <span style="width:7.5mm;height:4mm;background-color: white">4b</span></div>
-                            <div class="styLNAmountBox" style="border-bottom-width:0px;height:7mm;padding-top:4mm;padding-bottom:0mm;background-color:lightgrey">
-                             <span style="width:34.9mm;height:4mm;border-bottom-width: 1px; border-left-width: 1px; background-color: white"><xsl:call-template name="PopulateAmount">
+                       <!--Dotted Line-->
+							<span class="styDotLn" style="float:none;clear:none;padding-left:2mm;">.........................</span>	 
+                           </div>
+                            <div class="styLNRightNumBox" style="width:7.5mm;border-bottom-width:0px;padding-top:4.5mm;padding-bottom:0mm;height:auto;background-color:lightgrey">
+                            <span style="width:7.5mm;height:auto;background-color: white">4b</span></div>
+                            <div class="styLNAmountBox" style="border-bottom-width:0px;height:auto;padding-top:4.5mm;padding-bottom:0mm;width:35.5mm;background-color:lightgrey">
+                             <span style="width:35mm;height:auto;border-bottom-width: 1px; border-left-width: 1px; background-color: white"><xsl:call-template name="PopulateAmount">
                                          <xsl:with-param name="TargetNode" select="$Form8925Data/EmployeesWithoutValidCnsntQty"/>
                                     </xsl:call-template></span>
                           </div>
@@ -312,14 +266,15 @@
                         
                     </div>
    <!--  FOOTER-->
-        <div style="width:187mm;padding-top:1mm;border-top:1px solid black;">
+        <div style="width:187mm;border-top:1px solid black;">
           <span class="styBoldText"  style="width:105mm">For Paperwork Reduction Act Notice, see page 2. </span> 
           <span style="width:30mm;font-size:6pt">Cat. No. 37737A</span>                      
           
-          <span style="width:18mm;"></span>  
-          Form <span class="styBoldText" style="width:10mm;font-size:9pt">8925</span> (1-2010)
+          <span style="width:13mm;"></span>  
+          Form <span class="styBoldText" style="width:10mm;font-size:9pt">8925</span> (Rev. 1-2010)
         </div> 
-        <br class="pageEnd"/>
+        
+         <div style="width:187mm;"/>
              
         <!-- Additonal Data Title Bar and Button -->
         <div class="styLeftOverTitleLine" id="LeftoverData">

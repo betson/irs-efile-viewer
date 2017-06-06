@@ -3,7 +3,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes" />
   <xsl:strip-space elements="*" />
-  <xsl:include href="PopulateTemplate.xsl"/>
+  <xsl:include href="PopulateTemplate_ETEC.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
@@ -15,8 +15,10 @@
   <!-- Main template -->
   <xsl:template match="/" >
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle" /></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache" />

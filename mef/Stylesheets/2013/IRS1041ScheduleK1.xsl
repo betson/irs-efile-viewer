@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS1041ScheduleK1"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -50,7 +52,7 @@
 					<tr>
 						<td width="187mm" colspan="2" style="width: 187mm;">
 							<span style="width: 93.5mm;float:right;">
-								<span style="float:left;">
+								<span style="float:none;">
 									<input type="checkbox" class="styCkbox" name="checkbox" id="dummyID1" onclick="return false;">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/FinalK1Ind"/>
@@ -236,13 +238,13 @@
 											</label>
 										</span>
 										<br/>
-										<div style="width:7mm;float:left;"/>
-										<div style="border:black solid 0px; border-bottom-width:1px;height:5mm;width:18mm;padding-top:1mm;text-align:center;">
+										<div style="width:7mm;float:none;"/>
+										<div style="border:black solid 0px; border-bottom-width:1px;height:4mm;width:18mm;padding-top:1mm;text-align:center;">
 											<xsl:call-template name="PopulateMonthDayYear">
 												<xsl:with-param name="TargetNode" select="$FormData/Form1041TFiledDt"/>
 											</xsl:call-template>
 										</div>
-										<br/>
+										<br/><br/>
 										<span style="font-weight: bold; width: 2mm;">E</span>
 										<span style="width: 1mm;"/>
 										<span style="width: 85mm;">
@@ -299,7 +301,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td class="IRS1041ScheduleK1_tdLeft" style="height: 86mm;padding-top:0mm;">
+									<td class="IRS1041ScheduleK1_tdLeft" style="height: 75.5mm;padding-top:0mm;">
 										<!-- PART II Line G -->
 										<span style="font-weight: bold;">G</span>
 										<span style="width: 3mm;"/>Beneficiary’s name, address, city, state, and ZIP code<br/>
@@ -396,8 +398,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">1</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">1</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Interest income
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -420,8 +422,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">2a</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">2a</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Ordinary dividends
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -444,8 +446,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">2b</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">2b</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Qualified dividends
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -468,8 +470,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">3</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">3</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Net short-term capital gain
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -492,8 +494,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">4a</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">4a</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Net long-term capital gain
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -516,8 +518,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">4b</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">4b</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													28% rate gain
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -540,8 +542,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">4c</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">4c</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Unrecaptured section 1250 gain
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -564,8 +566,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">5</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">5</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Other portfolio and<br/>nonbusiness income
 																	<div style="padding-top:3mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -588,8 +590,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">6</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">6</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Ordinary business income
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -612,8 +614,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">7</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">7</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Net rental real estate income
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -636,8 +638,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">8</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">8</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Other rental income
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -657,7 +659,7 @@
 											<tr>
 												<td colspan="3" class="IRS1041ScheduleK1_tdRight" style="border-bottom:0px solid lightgrey;">
 													<div class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;height:4mm;border-right:gray dotted 1px;width:25px;">9</div>
+													float:left;vertical-align:top;height:4mm;border-right:gray dotted 1px;width:24px;">9</div>
 													<div style="float:left;font-size:6pt;vertical-align:top;height:4mm;padding-left:1mm;">
 														<span style="float:left;">Directly apportioned deductions</span>
 														<span style="float:right">
@@ -673,34 +675,34 @@
 														<table cellpadding="0" cellspacing="0" style="auto">
 															<tbody>
 																<!-- Display 3 blank lines if there are no data elements -->
-																<xsl:if test="count($FormData/BenefDirectlyApprtnDedGrp/DirectlyApprtnDeductionsCd) = 0 ">
+																<xsl:if test="count($FormData/BenefDirectlyApprtnDedGrp/DirectlyApprtnDeductionsAmt) = 0 ">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-													  float:left;border-top:0px solid; border-right:gray dotted 1px;font-size:6pt;width:25px;">
+													  float:none;border-top:0px solid; border-right:gray dotted 1px;font-size:6pt;width:24px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-													  float:left;border-top:0px solid; width:41.40mm;font-size:6pt;">
+													  float:none;border-top:0px solid; font-size:6pt;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:gray dotted 1px;">
+													  float:none;border-top:1px dotted gray; border-right:gray dotted 1px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1x dotted gray; width:41.40mm;">
+													  float:none;border-top:1x dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:gray dotted 1px;">
+													  float:none;border-top:1px dotted gray; border-right:gray dotted 1px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; width:41.40mm;">
+													  float:none;border-top:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -711,7 +713,7 @@
 																		<xsl:choose>
 																			<xsl:when test="position() = 1">
 																				<tr>
-																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;float:left;border-top:0px solid; border-right:gray dotted 1px; font-size:6pt;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;float:none;border-top:0px solid; border-right:gray dotted 1px; font-size:6pt;" valign="bottom">
 																						<div style="width:24px;">
 																							<xsl:call-template name="PopulateText">
 																								<xsl:with-param name="TargetNode" select="DirectlyApprtnDeductionsCd"/>
@@ -719,7 +721,7 @@
 																						</div>
 																					</td>
 																					<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-															  border-top:0px solid; width:41.40mm;font-size:6pt;padding-left:1mm;" valign="bottom">
+															  border-top:0px solid;font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="DirectlyApprtnDeductionsAmt"/>
@@ -734,13 +736,13 @@
 																			<xsl:otherwise>
 																				<tr>
 																					<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-															  float:left;border-top:1px dotted gray; border-right:gray dotted 1px; font-size:6pt;" valign="bottom">
+															  float:none;border-top:1px dotted gray; border-right:gray dotted 1px; font-size:6pt;" valign="bottom">
 																						<xsl:call-template name="PopulateText">
 																							<xsl:with-param name="TargetNode" select="DirectlyApprtnDeductionsCd"/>
 																						</xsl:call-template>
 																					</td>
 																					<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													 border-top:gray dotted 1px; width:41.40mm;font-size:6pt;padding-left:1mm;" valign="bottom">
+													 border-top:gray dotted 1px;font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:8mm;padding-top:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="DirectlyApprtnDeductionsAmt"/>
@@ -759,20 +761,20 @@
 																<xsl:if test="count($FormData/BenefDirectlyApprtnDedGrp) = 1 ">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px gray dotted; border-right:gray dotted 1px;">
+													  float:none;border-top:1px gray dotted; border-right:gray dotted 1px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px gray dotted; width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px gray dotted;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:gray dotted 1px;">
+													  float:none;border-top:1px dotted gray; border-right:gray dotted 1px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1x dotted gray; width:41.40mm;">
+													  float:none;border-top:1x dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -780,10 +782,10 @@
 																<!-- Display 1 blank line if there are 2 data elements -->
 																<xsl:if test="count($FormData/BenefDirectlyApprtnDedGrp) = 2 ">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:left;border-top:1px gray dotted; border-right:gray dotted 1px;">
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:none;border-top:1px gray dotted; border-right:gray dotted 1px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px gray dotted; width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px gray dotted;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -793,13 +795,13 @@
 												  (count($FormData/BenefDirectlyApprtnDedGrp) &gt;3))">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-													  float:left;border-top:0px solid black;border-right:1px dotted gray;font-size:6pt;">
+													  float:none;border-top:0px solid black;border-right:1px dotted gray;font-size:6pt;">
 																		  <div style="width:24px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		  </div>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-													  float:left;border-top:0px solid black;width:41.40mm;font-size:6pt;padding-left:1mm;">
+													  float:none;border-top:0px solid black;font-size:6pt;padding-left:1mm;">
 																			<div style="height:4mm;padding-top:1mm;">
 																				<xsl:call-template name="PopulateAdditionalDataTableMessage">
 																					<xsl:with-param name="TargetNode" select="$FormData/BenefDirectlyApprtnDedGrp/DirectlyApprtnDeductionsCd"/>
@@ -808,18 +810,18 @@
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:left;border-top:1px dotted gray;border-right:1px dotted gray;" valign="bottom">
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:none;border-top:1px dotted gray;border-right:1px dotted gray;" valign="bottom">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;" valign="bottom">
 																			<div style="height:8mm;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:left;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:none;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;" valign="bottom">
 																			<div style="height:7.8mm;"/>
 																		</td>
 																	</tr>
@@ -836,8 +838,8 @@
 														<tbody>
 															<tr>
 																<td class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													float:left;vertical-align:top;border-right:gray dotted 1px;">10</td>
-																<td style="float:left;font-size:6pt;vertical-align:top;padding-left:1mm;">
+													float:none;vertical-align:top;border-right:gray dotted 1px;">10</td>
+																<td style="float:none;font-size:6pt;vertical-align:top;padding-left:1mm;">
 													Estate tax deduction
 																	<div style="padding-top:1.5mm;text-align:right;padding-right:1mm;">
 																		<xsl:call-template name="PopulateAmount">
@@ -865,7 +867,7 @@
 										<table width="46.5mm" border="0" cellpadding="0" cellspacing="0">
 											<tr>
 												<td colspan="3" class="IRS1041ScheduleK1_tdRight">
-													<div class="IRS1041ScheduleK1_itemLabel" style="text-align:center;vertical-align:top;float:left;border-right:gray dotted 1px;height:4mm;width:25px;">11</div>
+													<div class="IRS1041ScheduleK1_itemLabel" style="text-align:center;vertical-align:top;float:left;border-right:gray dotted 1px;height:4mm;width:22px;">11</div>
 														<div style="float:left;font-size:6pt;height:4mm;vertical-align:top;">
 														<span style="padding-left:1mm;float:left;">Final year deductions</span>
 														<span style="float:right;">
@@ -885,51 +887,51 @@
 																<xsl:if test="count($FormData/BenefFinalYearDeductionGrp) = 0">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-													  float:left;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;width:25px;">
+													  float:none;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;width:25px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-													  float:left;border-top:0px solid;width:41.40mm;font-size:6pt;">
+													  float:none;border-top:0px solid;width:41.40mm;font-size:6pt;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+													  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray;width:41.40mm;">
+													  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+													  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray;width:41.40mm;">
+													  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+													  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray;width:41.40mm;">
+													  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+													  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray;width:41.40mm;">
+													  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -940,14 +942,14 @@
 																		<xsl:choose>
 																			<xsl:when test="position() = 1">
 																				<tr>
-																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm; float:left;border-top:0px solid;border-right:gray dotted 1px;font-size:6pt;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm; float:none;border-top:0px solid;border-right:gray dotted 1px;font-size:6pt;" valign="bottom">
 																						<div style="width:24px;">
 																							<xsl:call-template name="PopulateText">
 																								<xsl:with-param name="TargetNode" select="FinalYearDeductionsCd"/>
 																							</xsl:call-template>
 																						</div>
 																					</td>
-																					<td class="IRS1041ScheduleK1_amountBox" style="height:4mm; float:left;border-top:0px solid;width:41.40mm; font-size:6pt;padding-left:1mm;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_amountBox" style="height:4mm; float:none;border-top:0px solid;width:41.40mm; font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="FinalYearDeductionsAmt"/>
@@ -961,12 +963,12 @@
 																			</xsl:when>
 																			<xsl:otherwise>
 																				<tr>
-																					<td class="IRS1041ScheduleK1_codeBox" style="height:8.3mm; float:left;border-top:1px dotted gray;border-right:1px dotted gray;font-size:6pt;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_codeBox" style="height:8.3mm; float:none;border-top:1px dotted gray;border-right:1px dotted gray;font-size:6pt;" valign="bottom">
 																						<xsl:call-template name="PopulateText">
 																							<xsl:with-param name="TargetNode" select="FinalYearDeductionsCd"/>
 																						</xsl:call-template>
 																					</td>
-																					<td class="IRS1041ScheduleK1_amountBox" style="height:8.3mm; float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1mm;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_amountBox" style="height:8.3mm; float:none;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:8mm;padding-top:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="FinalYearDeductionsAmt"/>
@@ -984,38 +986,38 @@
 																<!-- If there is only 1 element, add 4 rows -->
 																<xsl:if test="count($FormData/BenefFinalYearDeductionGrp) = 1">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1023,29 +1025,29 @@
 																<!-- If there are only 2 elements, add 3 rows -->
 																<xsl:if test="count($FormData/BenefFinalYearDeductionGrp) = 2">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1053,20 +1055,20 @@
 																<!-- If there are only 3 elements, add 2 rows -->
 																<xsl:if test="count($FormData/BenefFinalYearDeductionGrp) = 3">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1074,11 +1076,11 @@
 																<!-- If there are only 4 elements, add 1 row -->
 																<xsl:if test="count($FormData/BenefFinalYearDeductionGrp) = 4">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 													  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1088,13 +1090,13 @@
 												  (count($FormData/BenefFinalYearDeductionGrp) &gt;5))">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-													  float:left;border-top:0px solid;border-right:1px dotted gray;font-size:6pt;">
+													  float:none;border-top:0px solid;border-right:1px dotted gray;font-size:6pt;">
 																		  <div style="width:24px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		  </div>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-													  float:left;border-top:0px solid black;width:41.40mm;font-size:6pt;padding-left:1mm;">
+													  float:none;border-top:0px solid black;width:41.40mm;font-size:6pt;padding-left:1mm;">
 																			<div style="height:4mm;padding-top:1mm;">
 																				<xsl:call-template name="PopulateAdditionalDataTableMessage">
 																					<xsl:with-param name="TargetNode" select="$FormData/BenefFinalYearDeductionGrp"/>
@@ -1103,35 +1105,35 @@
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:left;border-top:1px dotted gray;border-right:1px dotted gray;">
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:none;border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<div style="height:8mm;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<div style="height:8mm;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														float:left;border-top:1px dotted gray;border-right:1px dotted gray;">
+														float:none;border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<div style="height:8mm;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:left; border-top:1px dotted gray;border-right:1px dotted gray;">
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:none; border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																			<div style="height:7.8mm;"/>
 																		</td>
 																	</tr>
@@ -1145,7 +1147,7 @@
 											<tr>
 												<td colspan="3" class="IRS1041ScheduleK1_tdRight" style="border-bottom:0px solid lightgrey;">
 													<div class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-												    float:left;border-right:gray dotted 1px;height:4mm;width:25px;" valign="top">12</div>
+												    float:left;border-right:gray dotted 1px;height:4mm;width:22px;" valign="top">12</div>
 														<div style="font-size:5pt;vertical-align:top;height:4mm;float:left;">
 															<span style="padding-left:1mm;float:left;">Alternative minimum tax adjustment</span>
 															<span style="float:right;">
@@ -1157,58 +1159,58 @@
 																</xsl:call-template>
 															</span>
 														</div>
-														<div style="float:none;clear:both;overflow-y:auto;" id="SchK12Ctn">
+														<div style="float:none;clear:both;overflow-y:auto;display:block;" id="SchK12Ctn">
 														<table cellpadding="0" cellspacing="0" style="width:auto">
 															<tbody>
 																<!-- Display 5 blank lines if there are no data elements -->
 																<xsl:if test="count($FormData/AMTAdjustmentGrp) = 0 ">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-													  float:left;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;width:25px;">
+													  float:none;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;width:25px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-													  float:left;border-top:0px solid;width:41.40mm;font-size:6pt;">
+													  float:none;border-top:0px solid;width:41.40mm;font-size:6pt;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+													  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray;width:41.40mm;">
+													  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+													  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray;width:41.40mm;">
+													  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+													  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray;width:41.40mm;">
+													  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+													  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-													  float:left;border-top:1px dotted gray;width:41.40mm;">
+													  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1218,14 +1220,14 @@
 																		<xsl:choose>
 																			<xsl:when test="position() = 1">
 																				<tr>
-																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm; float:left;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm; float:none;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
 																						<div style="width:24px;">
 																							<xsl:call-template name="PopulateText">
 																								<xsl:with-param name="TargetNode" select="AMTAdjustmentCd"/>
 																							</xsl:call-template>
 																						</div>
 																					</td>
-																					<td class="IRS1041ScheduleK1_amountBox" style="height:4mm; float:left;border-top:0px solid;width:41.40mm;font-size:6pt;padding-left:1mm;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_amountBox" style="height:4mm; float:none;border-top:0px solid;width:41.40mm;font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="AMTAdjustmentAmt"/>
@@ -1239,12 +1241,12 @@
 																			</xsl:when>
 																			<xsl:otherwise>
 																				<tr>
-																					<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:left;border-top:1px dotted gray; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm; float:none;border-top:1px dotted gray; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
 																						<xsl:call-template name="PopulateText">
 																							<xsl:with-param name="TargetNode" select="AMTAdjustmentCd"/>
 																						</xsl:call-template>
 																					</td>
-																					<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left;border-top:1px dotted gray;width:41.40mm; font-size:6pt;padding-left:1mm;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none;border-top:1px dotted gray;width:41.40mm; font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:8mm;padding-top:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="AMTAdjustmentAmt"/>
@@ -1263,39 +1265,39 @@
 																<xsl:if test="count($FormData/AMTAdjustmentGrp) = 1">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left; border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none; border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1303,29 +1305,29 @@
 																<!-- If there are only 2 elements, add 3 rows -->
 																<xsl:if test="count($FormData/AMTAdjustmentGrp) = 2">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left; border-top:1px dotted gray; width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none; border-top:1px dotted gray; width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left; border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none; border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1333,20 +1335,20 @@
 																<!-- If there are only 3 elements, add 2 rows -->
 																<xsl:if test="count($FormData/AMTAdjustmentGrp) = 3">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:left; border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm; float:none; border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1354,11 +1356,11 @@
 																<!-- If there are only 4 elements, add 1 row -->
 																<xsl:if test="count($FormData/AMTAdjustmentGrp) = 4">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
-																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1367,13 +1369,13 @@
 																<xsl:if test="((count($FormData/AMTAdjustmentGrp) &gt;5)  and  
 													  ($Print = $Separated))">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;float:left; border-top:0px solid; border-right:1px dotted gray;font-size:6pt">
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;float:none; border-top:0px solid; border-right:1px dotted gray;font-size:6pt">
 																			<div style="width:24px;">
 																				<span style="vertical-align:baseline;height:100%;"/>
 																			</div>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-													float:left;border-top:0px solid black;width:41.40mm;font-size:6pt;padding-left:1mm;">
+													float:none;border-top:0px solid black;width:41.40mm;font-size:6pt;padding-left:1mm;">
 																			<div style="height:4mm;padding-top:1mm;">
 																				<xsl:call-template name="PopulateAdditionalDataTableMessage">
 																					<xsl:with-param name="TargetNode" select="$FormData/AMTAdjustmentGrp"/>
@@ -1382,37 +1384,37 @@
 																		</td>
 																		<tr>
 																			<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														      float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														      float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																				<span style="vertical-align:baseline;height:100%;"/>
 																			</td>
-																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																				<div style="height:8mm;"/>
 																			</td>
 																		</tr>
 																		<tr>
 																			<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														      float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														      float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																				<span style="vertical-align:baseline;height:100%;"/>
 																			</td>
-																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																				<div style="height:8mm;"/>
 																			</td>
 																		</tr>
 																		<tr>
 																			<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														      float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														      float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																				<span style="vertical-align:baseline;height:100%;"/>
 																			</td>
-																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																				<div style="height:8mm;"/>
 																			</td>
 																		</tr>
 																		<tr>
 																			<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														      float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														      float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																				<span style="vertical-align:baseline;height:100%;"/>
 																			</td>
-																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:left; border-top:1px dotted gray;width:41.40mm;">
+																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;float:none; border-top:1px dotted gray;width:41.40mm;">
 																				<div style="height:7.8mm;"/>
 																			</td>
 																		</tr>
@@ -1427,7 +1429,7 @@
 												<!-- Line 13 -->
 												<td colspan="3" class="IRS1041ScheduleK1_tdRight">
 													<div class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;border-right:gray dotted 1px;height:4mm;width:25px;vertical-align:top">13</div>
+													    float:left;border-right:gray dotted 1px;height:4mm;width:22px;vertical-align:top">13</div>
 													<div style="font-size:6pt; vertical-align:top;height:4mm;float:left;">
 														<span style="padding-left:1mm;float:left;">Credits and credit recapture</span>
 														<span style="float:right;">
@@ -1440,38 +1442,38 @@
 														</span>
 													</div>
 																
-													<div style="float:none;clear:both;overflow-y:auto;" id="SchK13Ctn">
+													<div style="float:none;clear:both;overflow-y:auto;display:block;" id="SchK13Ctn">
 														<table cellpadding="0" cellspacing="0" style="width:auto;">
 															<tbody>
 																<!-- Display 3 blank lines if there are no data elements -->
 																<xsl:if test="count($FormData/BenefCrAndCreditRecaptureGrp) = 0 ">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-														  float:left;border-top:0px solid; border-right:gray dotted 1px;font-size:6pt;width:25px;">
+														  float:none;border-top:0px solid; border-right:gray dotted 1px;font-size:6pt;width:25px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:6pt;">
+														  float:none;border-top:0px solid;width:41.40mm;font-size:6pt;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														  float:left;border-top:1px gray dotted; border-right:gray dotted 1px;">
+														  float:none;border-top:1px gray dotted; border-right:gray dotted 1px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray; border-right:gray dotted 1px;">
+														  float:none;border-top:1px dotted gray; border-right:gray dotted 1px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1482,7 +1484,7 @@
 																		<xsl:choose>
 																			<xsl:when test="position() = 1">
 																				<tr>
-																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm; float:left;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
+																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm; float:none;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
 																						<div style="width:24px;">
 																							<xsl:call-template name="PopulateText">
 																								<xsl:with-param name="TargetNode" select="CreditsAndRecaptureCd"/>
@@ -1490,7 +1492,7 @@
 																						</div>
 																					</td>
 																					<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-													float:left;border-top:0px solid;width:41.40mm; font-size:6pt;padding-left:1mm;" valign="bottom">
+													float:none;border-top:0px solid;width:41.40mm; font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="CreditsAndRecaptureAmt"/>
@@ -1505,13 +1507,13 @@
 																			<xsl:otherwise>
 																				<tr>
 																					<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-float:left;border-top:1px dotted gray;border-right:1px dotted gray;font-size:6pt;" valign="bottom">
+float:none;border-top:1px dotted gray;border-right:1px dotted gray;font-size:6pt;" valign="bottom">
 																						<xsl:call-template name="PopulateText">
 																							<xsl:with-param name="TargetNode" select="CreditsAndRecaptureCd"/>
 																						</xsl:call-template>
 																					</td>
 																					<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1mm;" valign="bottom">
+float:none;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:8mm;padding-top:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="CreditsAndRecaptureAmt"/>
@@ -1530,11 +1532,11 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																<xsl:if test="count($FormData/BenefCrAndCreditRecaptureGrp) = 2">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1543,21 +1545,21 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																<xsl:if test="count($FormData/BenefCrAndCreditRecaptureGrp) = 1">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1567,13 +1569,13 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 													                    ($Print = $Separated))">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-														  float:left;border-top:0px solid black; border-right:1px dotted gray;font-size:6pt;">
+														  float:none;border-top:0px solid black; border-right:1px dotted gray;font-size:6pt;">
 																		  <div style="width:24px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		  </div>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-										float:left;border-top:0px;width:41.40mm;font-size:6pt;padding-left:1mm;">
+										float:none;border-top:0px;width:41.40mm;font-size:6pt;padding-left:1mm;">
 																			<div style="height:4mm; padding-top:1mm;">
 																				<xsl:call-template name="PopulateAdditionalDataTableMessage">
 																					<xsl:with-param name="TargetNode" select="$FormData/BenefCrAndCreditRecaptureGrp"/>
@@ -1582,21 +1584,21 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																		</td>
 																		<tr>
 																			<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;border-right:1px dotted gray;" valign="bottom">
+															float:none;border-top:1px dotted gray;border-right:1px dotted gray;" valign="bottom">
 																				<span style="vertical-align:baseline;height:100%;"/>
 																			</td>
 																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+															float:none;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
 																				<div style="height:8mm;"/>
 																			</td>
 																		</tr>
 																		<tr>
 																			<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;border-right:1px dotted gray;" valign="bottom">
+															float:none;border-top:1px dotted gray;border-right:1px dotted gray;" valign="bottom">
 																				<span style="vertical-align:baseline;height:100%;"/>
 																			</td>
 																			<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+															float:none;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
 																				<div style="height:7.8mm;"/>
 																			</td>
 																		</tr>
@@ -1612,7 +1614,7 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 												<td colspan="3" class="IRS1041ScheduleK1_tdRight" style="border-bottom:0px solid lightgrey;">
 													<div style="width:46.5mm;">
 													<div class="IRS1041ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;vertical-align:top;border-right:gray dotted 1px;height:4mm;width:25px;">14</div>
+													    float:left;vertical-align:top;border-right:gray dotted 1px;height:4mm;width:22px;">14</div>
 													<div style="font-size:6pt;vertical-align:top;height:4mm;float:left;">
 														<span style="padding-left:1mm;float:left;">Other information</span>
 														<span style="float:right">
@@ -1626,68 +1628,68 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 													</div>
 													</div>
 																
-													<div style="float:none;clear:both;overflow-y:auto;" id="SchK14Ctn">
+													<div style="float:none;clear:both;overflow-y:auto;display:block;" id="SchK14Ctn">
 														<table cellpadding="0" cellspacing="0" style="width:auto;">
 															<tbody>
 																<!-- Display 6 blank lines if there are no data elements -->
 																<xsl:if test="count($FormData/BenefOtherInformationGrp) = 0 ">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;float:none;
 														  border-top:0px solid;border-right:1px dotted gray;font-size:6pt;width:25px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:6pt;">
+														  float:none;border-top:0px solid;width:41.40mm;font-size:6pt;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray;border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1699,7 +1701,7 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																			<xsl:when test="position() = 1">
 																				<tr>
 																					<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-															float:left;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
+															float:none;border-top:0px solid; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
 																						<div style="width:24px;">
 																							<xsl:call-template name="PopulateText">
 																								<xsl:with-param name="TargetNode" select="F1041K1OtherCd"/>
@@ -1722,13 +1724,13 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																			<xsl:otherwise>
 																				<tr>
 																					<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-											float:left;border-top:1px dotted gray; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
+											float:none;border-top:1px dotted gray; border-right:1px dotted gray;font-size:6pt;" valign="bottom">
 																						<xsl:call-template name="PopulateText">
 																							<xsl:with-param name="TargetNode" select="F1041K1OtherCd"/>
 																						</xsl:call-template>
 																					</td>
 																					<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-											float:left;border-top:1px dotted gray;width:41.40mm; font-size:6pt;padding-left:1mm;" valign="bottom">
+											float:none;border-top:1px dotted gray;width:41.40mm; font-size:6pt;padding-left:1mm;" valign="bottom">
 																						<div style="text-align:right;padding-right:1mm;height:8mm;padding-top:4mm;">
 																							<xsl:call-template name="PopulateAmount">
 																								<xsl:with-param name="TargetNode" select="F1041K1OtherAmt"/>
@@ -1747,51 +1749,51 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																<xsl:if test="count($FormData/BenefOtherInformationGrp) = 1">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray; border-right:1px dotted gray;">
+														  float:none;border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1799,42 +1801,42 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																<!-- If there are only 2 elements, add 4 rows-->
 																<xsl:if test="count($FormData/BenefOtherInformationGrp) = 2">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1842,32 +1844,32 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																<!-- If there are only 3 elements, add 3 rows-->
 																<xsl:if test="count($FormData/BenefOtherInformationGrp) = 3">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1875,22 +1877,22 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																<!-- If there are only 4 elements, add 2 rows-->
 																<xsl:if test="count($FormData/BenefOtherInformationGrp) = 4">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1898,12 +1900,12 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																<!-- If there are only 5 elements, add 1 row-->
 																<xsl:if test="count($FormData/BenefOtherInformationGrp) = 5">
 																	<tr>
-																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:left;
+																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;float:none;
 														  border-top:1px dotted gray; border-right:1px dotted gray;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-														  float:left;border-top:1px dotted gray;width:41.40mm;">
+														  float:none;border-top:1px dotted gray;width:41.40mm;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																	</tr>
@@ -1913,13 +1915,13 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 													      (count($FormData/BenefOtherInformationGrp) &gt;6))">
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:4mm;
-														  float:left;border-top:0px solid black; border-right:1px dotted gray;font-size:6pt;">
+														  float:none;border-top:0px solid black; border-right:1px dotted gray;font-size:6pt;">
 																		  <div style="width:24px;">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		  </div>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:4mm;
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:6pt;padding-left:1mm;">
+														  float:none;border-top:0px solid black;width:41.40mm;font-size:6pt;padding-left:1mm;">
 																			<div style="height:4mm;padding-top:1mm;">
 																				<xsl:call-template name="PopulateAdditionalDataTableMessage">
 																					<xsl:with-param name="TargetNode" select="$FormData/BenefOtherInformationGrp"/>
@@ -1929,51 +1931,51 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
+															float:none;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+															float:none;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
 																			<div style="height:8mm;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
+															float:none;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+															float:none;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
 																			<div style="height:8mm;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
+															float:none;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+															float:none;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
 																			<div style="height:8mm;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
+															float:none;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+															float:none;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
 																			<div style="height:8mm;"/>
 																		</td>
 																	</tr>
 																	<tr>
 																		<td class="IRS1041ScheduleK1_codeBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
+															float:none;border-top:1px dotted gray; border-right:1px dotted gray;" valign="bottom">
 																			<span style="vertical-align:baseline;height:100%;"/>
 																		</td>
 																		<td class="IRS1041ScheduleK1_amountBox" style="height:8.1mm;
-															float:left;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
+															float:none;border-top:1px dotted gray;width:41.40mm;" valign="bottom">
 																			<div style="height:7.8mm;"/>
 																		</td>
 																	</tr>
@@ -1989,7 +1991,7 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 								<tr>
 									<td colspan="2" style="font-family: Verdana; font-size: 8pt;text-align: left; padding-left:2mm; 
 										padding-right:7mm; border-top: 2px solid black; border-bottom:1px solid black; height:24mm;">
-										<div style="padding-bottom:2mm;">*See attached statement for additional information.</div>
+										<div style="padding-bottom:2mm;">*See attached statement for additional information.</div><br/>
 										<b>Note. </b>A statement must be attached showing the beneficiary's share of income and 
                                         directly apportioned deductions from each business, rental real estate, and other rental activity.
                                     </td>
@@ -2015,7 +2017,7 @@ float:left;border-top:1px dotted gray;width:41.40mm;font-size:6pt;padding-left:1
 					</tr>
 				</table>
 				<!-- FORM DISPLAY ENDS  HERE -->
-				<div class="pageEnd"/>
+				<div class="pageEnd" style="width:187mm;display:block;"/>
 				<xsl:call-template name="SetInitialDynamicTableHeight">
 					<xsl:with-param name="TargetNode" select="$FormData/BenefDirectlyApprtnDedGrp"/>
 					<xsl:with-param name="headerHeight" select="0"/>

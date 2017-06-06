@@ -7,7 +7,7 @@
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="DependencyData" select="$RtnDoc/OthClStockMeetRegTradTestSch"/>
-	<!--HINTS - Display name is Other Class of Stock Meeting Regularly Traded Test Schedule - 1120F Schedule S -->
+	<!--Form 1120F Schedule S Display name is - Other Class of Stock Meeting Regularly Traded Test Schedule -  -->
 	<xsl:param name="depDocTitle">
 		<xsl:call-template name="PopulateDisplayName">
 			<xsl:with-param name="TargetNode" select="$DependencyData"/>
@@ -16,13 +16,13 @@
 	<xsl:template name="OthClStockMeetRegTradTestSchTemp">
 		<table id="GeneralDependencyTbl" class="styDepTblLandscape" style="font-size: 8pt" cellspacing="0">
 			<tr class="styDepTblHdr">
-				<th class="styDepTblCell" style="width:59mm;text-align:center;vertical-align:middle;" scope="col">Description of Each Class of Stock</th>
-				<th class="styDepTblCell" style="width:22mm;text-align:center;vertical-align:middle;" scope="col">Days During The Tax Year in Which The Stock Was Closely Held</th>
-				<th class="styDepTblCell" style="width:32mm;text-align:center;vertical-align:middle;" scope="col">Total Percentage of The Vote and Value of The Class of Stock That Is Owned By 5% Shareholders</th>
-				<th class="styDepTblCell" style="width:32mm;text-align:center;vertical-align:middle;" scope="col">Total Number of Qualified Shareholders</th>
-				<th class="styDepTblCell" style="width:16mm;text-align:center;vertical-align:middle;" scope="col">Country Code</th>
+				<th class="styDepTblCell" style="width:95mm;text-align:center;vertical-align:middle;" scope="col">Description of Each Class of Stock</th>
+				<th class="styDepTblCell" style="width:12mm;text-align:center;vertical-align:middle;" scope="col">Days During The Tax Year in Which The Stock Was Closely Held</th>
+				<th class="styDepTblCell" style="width:22mm;text-align:center;vertical-align:middle;" scope="col">Total Percentage of The Vote and Value of The Class of Stock That Is Owned By 5% Shareholders</th>
+				<th class="styDepTblCell" style="width:22mm;text-align:center;vertical-align:middle;" scope="col">Total Number of Qualified Shareholders</th>
+				<th class="styDepTblCell" style="width:12mm;text-align:center;vertical-align:middle;" scope="col">Country Code</th>
 				<th class="styDepTblCell" style="width:36mm;text-align:center;vertical-align:middle;" scope="col">Percentage</th>
-				<th class="styDepTblCell" style="width:22mm;text-align:center;vertical-align:middle;" scope="col">Days Shareholders Owned, Directly or Indirectly, Shares of Stock</th>
+				<th class="styDepTblCell" style="width:12mm;text-align:center;vertical-align:middle;" scope="col">Days Shareholders Owned, Directly or Indirectly, Shares of Stock</th>
 			</tr>
 			<tfoot/>
 			<tbody>
@@ -31,7 +31,7 @@
 						<!--Set row alternate background color -->
 						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 						<!--Column 1 - Description Of Each Class Of Stock -->
-						<td class="styDepTblCell" style="width:59mm;text-align:left;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:85mm;text-align:left;vertical-align:middle;font-size:7pt">
 							<!--Allow row to expand by column -->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
@@ -40,7 +40,7 @@
 							<span class="styTablecellpad"/>
 						</td>
 						<!--Column 2 - Days During The Tax Year In Which The Stock Was Closely Held -->
-						<td class="styDepTblCell" style="width:22mm;text-align:right;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:12mm;text-align:right;vertical-align:center;font-size:7pt">
 							<!--Allow row to expand by column -->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
@@ -49,7 +49,7 @@
 							<span class="styTablecellpad"/>
 						</td>
 						<!--Column 3 - Total Percentage Of The Vote And Value Of The Class of Stock That Is Owned by 5% Shareholders -->
-						<td class="styDepTblCell" style="width:32mm;text-align:right;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:32mm;text-align:right;vertical-align:center;font-size:7pt">
 							<!--Allow row to expand by column -->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
@@ -58,7 +58,7 @@
 							<span class="styTablecellpad"/>
 						</td>
 						<!--Column 4 -  Total Number Of Qualified Shareholders -->
-						<td class="styDepTblCell" style="width:32mm;text-align:left;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:22mm;text-align:left;vertical-align:center;font-size:7pt">
 							<!--Allow row to expand by column -->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
@@ -70,7 +70,7 @@
 						<xsl:if test="count(TotalPctValueSharesOwnedGrp)=0 or count(TotalPctValueSharesOwnedGrp)=1">
 							<!--Begin repeated within row for Column 5 and 6 -->
 							<!--Column 5 - Country Code -->
-							<td class="styDepTblCell" style="width:16mm;text-align:center;font-size:7pt">
+							<td class="styDepTblCell" style="width:12mm;text-align:center;font-size:7pt">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="TotalPctValueSharesOwnedGrp/CountryOfOperationCd"/>
 								</xsl:call-template>
@@ -105,7 +105,7 @@
 							<!-- End repeated within row for Column 5 and 6 -->
 						</xsl:if>
 						<!--Column 7 - Days shareholders owned, directly or indirectly, shares of stock -->
-						<td class="styDepTblCell" style="width:22mm;text-align:right;vertical-align:middle;font-size:7pt">
+						<td class="styDepTblCell" style="width:12mm;text-align:right;vertical-align:center;font-size:7pt">
 							<!--Allow row to expand by column-->
 							<xsl:attribute name="rowspan"><xsl:value-of select="count(TotalPctValueSharesOwnedGrp)"/></xsl:attribute>
 							<xsl:call-template name="PopulateText">
@@ -144,8 +144,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -168,21 +170,13 @@
 				</style>
 				<xsl:call-template name="GlobalStylesDep"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm">
 				<xsl:call-template name="DocumentHeaderDependencyLandscape"/>
-				<div class="styDepTitleLineLandscape">
-					<span class="styDepTitle">
-						<span style="width:158mm;">
-							<xsl:value-of select="$depDocTitle"/>
-						</span>
-					</span>
-				</div>
-				<!--Add space after the header line
-        <div class="styTopSectionLine">
-          <xsl:call-template name="SetFormLinkInline">
-            <xsl:with-param name="TargetNode" select="$DependencyData"/>
-          </xsl:call-template>
-        </div>-->
+				<div class="styDepTitleLine">
+          <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+        </div>
 				<xsl:call-template name="PopulateDepCommonLeftoverLandscape">
 					<xsl:with-param name="TargetNode" select="$DependencyData"/>
 					<xsl:with-param name="NoGap" select="'true'"/>

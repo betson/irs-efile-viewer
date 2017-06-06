@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*" />
 	<xsl:param name="Form1041ScheduleIData" select="$RtnDoc/IRS1041ScheduleI" />
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1041ScheduleIData)">
@@ -57,14 +59,14 @@
         </div>
       </div>
       <div class="styFTBox" style="width:128mm;height:16mm; ">
-        <div class="styMainTitle" style="height:4mm;">Alternative Minimum Tax<img src="{$ImagePath}/1041SchI_Longdash.gif"  alt="Longdash Image" style="vertical-align:middle;"/>Estates and Trusts</div>    
+        <div class="styMainTitle" style="height:5mm;">Alternative Minimum Tax<img src="{$ImagePath}/1041SchI_Longdash.gif"  alt="Longdash Image" style="vertical-align:middle;"/>Estates and Trusts</div>    
  <div class="styFBT" style="height:3mm;margin-top:1mm;font:size:6pt;width:128mm;">
  <img src="{$ImagePath}/1041SchI_Bullet_Sm.gif"  alt="Bullet Image"/> Attach to Form 1041<br/>
           <img src="{$ImagePath}/1041SchI_Bullet_Sm.gif"  alt="Bullet Image"/> Information about Schedule I (Form 1041) and its separate instructions is at <i>www.irs.gov/form1041</i>.        
         </div>
       </div>
       <div class="styTYBox" style="width:30mm;height:16mm;">
-        <div class="styOMB" style="height:2mm;padding-top:0.5mm;padding-bottom:0.5mm;"><!--<span style="width:5mm;"></span>
+        <div class="styOMB" style="height:5mm;padding-top:0.5mm;padding-bottom:0.5mm;"><!--<span style="width:5mm;"></span>
         <span style="font-size:6pt;text-align:right;">Version A, Cycle 3</span><br/>-->
         OMB No. 1545-0092</div>
         <div class="styTaxYear" style="padding-top:0.7mm;">
@@ -75,7 +77,7 @@
     </div>
     <!-- End Form Number and Name section -->
     <div class="styBB" style="width:187mm;">
-      <div class="styNameBox" style="width:139mm;height:7mm;font-size:7pt;">
+      <div class="styNameBox" style="width:139mm;height:9mm;font-size:7pt;">
         Name of estate or trust<br/>
       <!--  <span class="stySmallText">-->     
 		<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -97,6 +99,7 @@
     </div>
    
     <!-- BEGIN Part I Title -->
+	<div style="width:187mm;">
     <div class="styBB" style="width:187mm;">
           <div class="styPartName">Part I</div>
            <div class="styPartDesc"> <b>Estate's or Trust's Share of Alternative Minimum Taxable Income </b>             
@@ -827,8 +830,8 @@
     </div>
     
     <div style="width:187mm;font-size:7pt">
-      <div class="styLNLeftNumBox" style="height:3.8mm;padding-top:0mm;padding-bottom:0mm;"/>
-      <div class="styLNDesc" style="width:139.5mm;height:3.8mm;padding-top:0mm;padding-bottom:0mm;"><li>$23,100 or less, stop here and enter -0- on Form 1041, Schedule G, line 1c. The estate or trust is not liable for the alternative minimum tax.</li></div>
+      <div class="styLNLeftNumBox" style="height:6mm;padding-top:0mm;padding-bottom:0mm;"/>
+      <div class="styLNDesc" style="width:139.5mm;height:6mm;padding-top:0mm;padding-bottom:0mm;"><li>$23,100 or less, stop here and enter -0- on Form 1041, Schedule G, line 1c. The estate or trust is not liable for the alternative minimum tax.</li></div>
     </div>
     
     <div style="width:187mm;font-size:7pt">
@@ -1144,18 +1147,26 @@
 
     <!-- Page Break-->
     <!-- Footer-->   
-    <div class="pageEnd" style="width:187mm;">  
+    <div class="pageEnd" style="width:187mm;height:10mm;">  
         <div class="styGenericDiv" style="font-weight:bold">For Paperwork Reduction Act Notice, see the Instructions for Form 1041.</div>   
         <div class="styGenericDiv" style="padding-left:15mm">Cat. No. 51517Q</div>                        
         <div class="styGenericDiv" style="font-weight:bold;float:right" >Schedule I (Form 1041) (2013) </div>
     </div>
-    
+    <div class="pageEnd" style="display:inline-block;"></div>  
+	</div>
+	<div class="pageEnd" style="display:block;"></div>  
+	
+	
+	<div style="width:187mm;">
     <!--Begin Page 2 -->   
     <!-- Header -->    
       <div class="styBB" style="width:187mm;border-bottom-width: 0px;">  
          <!--<div style="float:right;">
       Version A, Cycle 3</div>-->
-      </div>  
+      </div>  	
+	
+	
+	
     <div class="styBB" style="width:187mm;float:left;clear:none;">  
       <div style="float:left;">Schedule I (Form 1041) (2013) <span style="width:130mm;"></span></div>
       <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></div>  
@@ -1450,15 +1461,15 @@
     <div style="width:187mm;font-size:7pt; padding-bottom:0mm;">
       <div class="styLNLeftNumBox">52</div>      
       <div class="styLNDesc" style="width:139.5mm;">          
-        Go to Part IV of Schedule I to figure line 52 if the estate or trust has qualified dividends or has a gain on lines 18a and 19 of column (2) of Schedule D (Form 1041) (as refigured for the AMT, if necessary). Otherwise, if line 51 is<img src="{$ImagePath}/1041SchI_Longdash.gif"  alt="Longdash Image"/><br/>
-        <li>$179,500 or less, multiply line 51 by 26% (.26).</li><br/>
-        <li>Over $179,500, multiply line 51 by 28% (.28) and subtract $3,590 from the result</li>
+        Go to Part IV of Schedule I to figure line 52 if the estate or trust has qualified dividends or has a gain on lines 18a and 19 of column (2) of Schedule D (Form 1041) (as refigured for the AMT, if necessary). <br/>Otherwise, if line 51 is<img src="{$ImagePath}/1041SchI_Longdash.gif"  alt="Longdash Image"/>
+        <li>$179,500 or less, multiply line 51 by 26% (.26).</li>
+        <li>Over $179,500, multiply line 51 by 28% (.28) and subtract $3,590 from the result
         <span class="styBoldText">
         <span style="width:16px"></span>.
         <span style="width:16px"></span>.
         <span style="width:16px"></span>.
         <span style="width:16px"></span>.
-       </span>
+       </span></li>
       </div>
       <div class="styLNRightNumBox" style="height:17mm;width:8mm;0px;padding-top:0mm;">
 		  <span style="width:100%;height:76%;background-color:lightgrey;"/>
@@ -1938,18 +1949,25 @@
     </div>
     <!-- Page Break-->
     <!-- Footer-->   
-    <div class="pageEnd" style="width:187mm;">  
+    <div class="pageEnd" style="width:187mm;height:6mm;">  
         <div class="styGenericDiv" style="font-weight:bold"><!--For Paperwork Reduction Act Notice, see the Instructions for Form 1041.--></div>   
         <div class="styGenericDiv" style="padding-left:15mm"><!--Cat. No. 51517Q--></div>                        
         <div class="styGenericDiv" style="font-weight:bold;float:right" >Schedule I (Form 1041) (2013) </div>
     </div>
-    
+	<div class="pageEnd" style="display:inline-block;"></div>
+    </div>
+	
+	<div class="pageEnd" style="display:block;"></div>
+	
+	
     <!--Begin Page 3 -->   
     <!-- Header -->    
+	<div style="width:187mm;">
       <div class="styBB" style="width:187mm;border-bottom-width: 0px;">  
          <!--<div style="float:right;">
       Version A, Cycle 3</div>-->
       </div>  
+	<div class="pageEnd" style="display:block;"></div>
     <div class="styBB" style="width:187mm;float:left;clear:none;">  
       <div style="float:left;">Schedule I (Form 1041) (2013) <span style="width:130mm;"></span></div>
       <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span></div>  
@@ -2320,10 +2338,11 @@
     <!-- END Part IV Title -->
  
      <!--Footer -->
-    <div class="pageEnd" style="width:187mm;">
-      <div class="styGenericDiv" style="width:187mm;text-align:right;font-weight:bold;">Schedule I (Form 1041) (2013)</div>
-    </div>
-    
+    <div class="styGenericDiv" style="width:187mm;text-align:right;font-weight:bold;">Schedule I (Form 1041) (2013)</div>
+	<div class="pageEnd" style="display:inline-block;"></div>
+	</div>
+	
+	<div class="pageEnd" style="width:187mm;display:block;"></div>          
     <!-- BEGIN Left Over Table -->
 		<!-- Additonal Data Title Bar and Button -->
 		<div class="styLeftOverTitleLine" id="LeftoverData">
@@ -2334,6 +2353,7 @@
 				<input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 			</div>
 		</div>
+		
 		<!-- Additional Data Table -->
 		<table class="styLeftOverTbl">
 			<xsl:call-template name="PopulateCommonLeftover">
@@ -2345,7 +2365,8 @@
 				<xsl:with-param name="TargetNode" select="$Form1041ScheduleIData/AlternativeMinTaxableIncomeAmt/@residualInterestInREMICCd"/>
 				<xsl:with-param name="DescWidth" select="105"/>
 			</xsl:call-template>
-		</table>      
+		</table> 
+
 </form>
   </body>
 </html>

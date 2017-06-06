@@ -11,8 +11,10 @@
 	<xsl:param name="Form8891Data" select="$RtnDoc/IRS8891"/>
 
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8891Data)"/>
@@ -48,16 +50,16 @@
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form8891Data"/>
 								</xsl:call-template>
-								<div class="styAgency" style="padding-top:0mm;height:0mm;padding:bottom:0mm;">
+								<div class="styAgency" style="padding-top:0mm;padding:bottom:0mm;">
                 Department of the Treasury<br/>
                 Internal Revenue Service
               </div>
 							</span>
 						</div>
-	<div class="styFTBox" style="width:125mm;height:17mm;">
-							<div class="styMainTitle" style="height:5mm;padding-bottom:0mm;">U.S. Information Return for Beneficiaries of<br/>
+	<div class="styFTBox" style="width:125mm;height:24.5mm;">
+							<div class="styMainTitle" style="height:10mm;padding-bottom:0mm;">U.S. Information Return for Beneficiaries of<br/>
               Certain Canadian Registered Retirement Plans</div>
-							<div class="styFBT" style="font-size:7.5pt;height:5mm;margin-top:2mm;">
+							<div class="styFBT" style="font-size:7.5pt;height:7mm;margin-top:2mm;">
 								<img src="{$ImagePath}/8891_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040.<!--<span style="width:24mm;height:3mm"/>--><br/>
 								<span style="font-weight:normal;font-family:Arial Narrow">For calendar year 
 								<span style="width:10mm;border-bottom:1px solid black">
@@ -79,16 +81,16 @@
 								</span> .
 								</span>
 							</div>
-							<div class="styFBT" style="font-weight:bold">
+							<div class="styFBT" style="font-weight:bold;height:3.5mm">
 							<img src="{$ImagePath}/8891_Bullet.gif" alt="Bullet"/>
 								Information about Form 8891 and its instructions is at www.irs.gov/form8891.</div>
 						</div>
 						<div class="styTYBox" style="width:31mm; height:24.5mm;border-left:1px solid black;">
-							<div style="padding-top:3mm;border-bottom:1px solid black;font:7pt;height:9.5mm">
+							<div style="padding-top:3mm;border-bottom:1px solid black;font:7pt;height:9.5mm;font-size:8pt">
 								OMB No. 1545-0074
 							</div>
 							<br/>
-							<div class="styGenericDiv" style="font-size:6.5pt;text-align:left;padding-left:2mm;">
+							<div class="styGenericDiv" style="font-size:6.5pt;text-align:left;padding-left:2mm;padding-top:3mm;">
 								Attachment <span style="width:5mm"/>Sequence No. 
 								<span style="width:0.5mm"/>
 								<span>
@@ -117,7 +119,7 @@
 					
 					<!-- Address -->
 					<div class="styGenericDiv" style="width:187mm;border-bottom:1px  solid;font-size:7.0pt;">
-						<div class="styFNBox" style="width:100%; height:8mm;border-right-width:0px ">
+						<div class="styFNBox" style="width:100%; height:12mm;border-right-width:0px ">
 							Address<br/>
 							<xsl:choose>
 								<xsl:when test="$RtnHdrData/Filer/USAddress">
@@ -136,10 +138,10 @@
 					<!-- Part I - Body -->
 					  <div class="styGenericDiv" style="width:187mm">
 						<!-- Line 1 -->
-						<div class="styGenericDiv" style="width:93.5mm;height:17mm;border-bottom: 1px solid black;border-right: 1px solid black">
+						<div class="styGenericDiv" style="width:105mm;height:17mm;border-bottom: 1px solid black;border-right: 1px solid black">
 							<div class="styLNLeftNumBox" style="width:5mm;padding-left:2.5mm;">1</div>
 							<span style="width:5mm"/>
-							<span style="font-size:7 pt">Name of plan custodian</span>
+							<span style="font-size:7 pt">Name of plan custodian</span><br/>
 							<div class="styGenericDiv" style="padding-left:7mm;font-size: 7pt; ">
 								<xsl:if test="$Form8891Data/CanadaRetirePlanCustodianName/BusinessNameLine1">
 									<xsl:call-template name="PopulateText">
@@ -155,10 +157,10 @@
 							</div>
 						</div>
 						<!-- Line 2 -->
-						<div class="styGenericDiv" style="width:93.5mm;height:17mm;border-bottom: 1px solid black;">
+						<div class="styGenericDiv" style="width:82mm;height:17mm;border-bottom: 1px solid black;">
 							<div class="styLNLeftNumBox" style="width:5mm;padding-left:2.5mm;">2</div>
-							<span style="width:5mm"/>Account number of plan
-                <div class="styGenericDiv" style="padding-left:7mm">
+							<span style="width:5mm"></span>Account number of plan<br/>
+							<div class="styGenericDiv" style="padding-left:7mm">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form8891Data/CanadaRetirePlanAccountNum"/>
 								</xsl:call-template>
@@ -166,16 +168,16 @@
 						</div>
 						<div style="border-width:0px 0px 0px 0px;padding:0px 0px 0px 0px;width:187mm;height:auto;border-bottom:1px solid black;">
 						<!-- Line 3 -->
-						<div class="styGenericDiv" style="width:93.5mm;height:17mm;border-right: 1px solid black;">
+						<div class="styGenericDiv" style="width:105mm;height:19mm;border-right: 1px solid black;">
 							<div class="styLNLeftNumBox" style="width:5mm;padding-left:2.5mm;">3</div>
-							<span style="width:5mm"/>Address of plan custodian
-                  <div class="styGenericDiv" style="padding-left:7mm">
+							<span style="width:5mm"></span>Address of plan custodian<br/>
+							<div class="styGenericDiv" style="padding-left:7mm">
 								<xsl:call-template name="MakeAddressLines">
-						</xsl:call-template>
-							</div>
+								</xsl:call-template>
+						</div>
 						</div>
 						<!-- Line 4 -->
-						<div class="styGenericDiv" style="width:93.5mm;height:17mm;">
+						<div class="styGenericDiv" style="width:82mm;height:19mm;">
 							<div class="styLNLeftNumBox" style="width:5mm;padding-left:2.5mm;">4</div>
 							<span style="width:5mm"/> Type of plan (check one box):
 				 <div class="styGenericDiv" style="padding-left:7mm">
@@ -192,7 +194,7 @@
 									</xsl:call-template>
 					  Registered Retirement Savings Plan (RRSP)
 					  </label>
-								<div/>
+								<div/><br/>
 								<input type="checkbox" style="width:3mm;height:3mm;margin-bottom:0.4mm;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8891Data/CanadaRegdRetireIncomeFundInd"/>
@@ -248,17 +250,17 @@
 							</div>
 						</div>
 						<!-- Line 6a -->
-						<div class="styGenericDiv" style="width:187mm;border-top:1px solid black;">
+						<div class="styGenericDiv" style="width:187mm;border-top:1px solid black;height:8mm">
 						<div class="styLNLeftNumBox" style="width:5mm;padding-left:2.5mm;">6a</div>
 						<div class="styGenericDiv" style="padding-left:3mm;width:152mm;">					 
 							Have you previously made an election under Article XVIII(7) of the U.S.-Canada income tax 	treaty to defer U.S.<br/> 
 							income tax on the undistributed earnings of the plan?
 								 <span style="letter-spacing:3mm;font-weight:bold;width:20mm"> .....................</span>
-								 <span style="">
+								 <span style="float:right;">
 									 <img alt="arrow" src="{$ImagePath}/4972_Bullet_Md.gif"/>
 								  </span>
 								  </div>
-						<div style="width:28mm;text-align:left;padding-left:1mm;padding-top:3.5mm;height:4mm;float:right;">
+						<div style="width:28mm;text-align:left;padding-left:1mm;padding-top:2mm;padding-bottom:2mm;height:4mm;float:right;">
 									<span style="width:auto;height:4mm;float:right;">
 									<!-- Checkbox -->
 									<input type="Checkbox" class="styCkbox">
@@ -295,7 +297,7 @@
 						</div>
 
 						<!-- Line (6)b -->
-						<div class="styGenericDiv" style="width:187mm;">
+						<div class="styGenericDiv" style="width:187mm;height:6mm">
 							<div class="styLNLeftNumBox" style="width:5mm;padding-left:3.5mm;">b</div>
 							<div class="styGenericDiv" style="padding-left:3mm;width:155mm">
 								If &#8220;Yes,&#8221; enter the first year the election came into effect
@@ -309,7 +311,7 @@
 						</div>
 						<!-- Line (6)c -->
 						
-						<div class="styGenericDiv" style="width:187mm;">
+						<div class="styGenericDiv" style="width:187mm;height:8mm">
 						<div class="styLNLeftNumBox" style="width:5mm;padding-left:3.5mm;">c</div>
 						<div class="styGenericDiv" style="padding-left:3mm;width:156mm;">
 							<label>
@@ -319,12 +321,12 @@
 							  </xsl:call-template>
 							  If you have not previously made the election described on line 6a above, you can make an irrevocable election for this year and subsequent years by checking this box
 							 <span style="letter-spacing:3mm;font-weight:bold;width:20mm"> ......................</span>
-							 <span style="">
+							 <span style="float:right;padding-right:4mm;">
 								 <img alt="arrow" src="{$ImagePath}/4972_Bullet_Md.gif"/>
 							  </span>
 							</label>
 						</div>
-						<div style="width:26mm;text-align:left;padding-left:1mm;padding-top:3.5mm;height:7mm;float:left;padding-left:18px;">
+						<div style="width:26mm;text-align:left;padding-left:1mm;padding-top:2.5mm;padding-bottom:1mm;height:8mm;float:left;">
 									<!-- Checkbox -->
 									<input type="Checkbox" class="styCkbox">
 									  <xsl:call-template name="PopulateCheckbox">
@@ -394,7 +396,7 @@
 							</div>
 					</div>
 					<!-- Line 10 -->
-					<div class="styGeneric Div" style="width:187mm;height:8mm;">
+					<div class="styGenericDiv" style="width:187mm;height:8mm;">
 								<div class="styLNLeftNumBox" style="width:6mm;padding-top:4mm">10</div>
 								<div class="styGenericDiv" style="width:142mm;padding-left:3mm;padding-top:4mm">
 								<b>Undistributed earnings of the plan during the year:</b>
@@ -465,7 +467,7 @@ Capital gains. Enter here and include on Form 1040, line 13
 						</div>
 						<div class="styLNAmountBoxNBB" style="height:8mm;width:31.25mm;padding-top:4mm;border-bottom:0px solid black;float:right;"/>	
 						<div class="styLNRightNumBoxNBB" style="height:8mm;width:7.755mm;padding-top:4mm;border-bottom:0px solid black;background-color:lightgrey;float:right;"/>
-						<div class="styGenericDiv" style="height:7mm;border-bottom:1 dashed;width:27mm;padding-left:0mm;padding-top:2mm;float:right;" />								
+						<div class="styGenericDiv" style="height:7mm;border-bottom:1px dashed;width:24mm;padding-right:2mm;padding-top:2mm;float:center;" />								
 					</div> 
 					
 					
@@ -499,16 +501,15 @@ Capital gains. Enter here and include on Form 1040, line 13
 						</div>
 					</div>
 					<!-- Page Footer-->
-					<div class="pageEnd" style="width:187mm;border-top: 2px solid black;padding-top:0mm;">
+					<div style="width:187mm;border-top: 2px solid black;padding-top:0mm;">
 						<div class="styGenericDiv">
 							<span class="styBoldText" style="font-size:8pt">For Paperwork Reduction Act Notice, see page 2.</span>
 						</div>
-						<div style="float:right;width:81mm;text-align:right;font-size:7pt">
-              Cat. No. 37699X
-              <span style="width:18mm;"/>
-              Form <span class="styBoldText" style="font-size:9pt;">8891</span> (Rev. 12-2012)
-            </div>
+						<div style="float:right;width:81mm;text-align:right;font-size:7pt">Cat. No. 37699X<span style="width:18mm;"/>Form 
+							<span class="styBoldText" style="font-size:9pt;">8891</span> (Rev. 12-2012)
+						</div>
 					</div>
+					<p class="pageEnd" style="display:border"></p>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">

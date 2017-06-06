@@ -16,8 +16,10 @@
   <!-- Main template -->
   <xsl:template match="/">
     <!-- New -->
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -54,7 +56,7 @@
         </xsl:call-template>
         <div class="styTopSectionLine" style="width:187mm;">
             <div class="styTopSectionLineLbl" style="float:left;clear:none;">Name of Corporate Partner:</div>
-            <div style="float:left;clear:none;">
+            <div style="width:118mm;float:left;clear:none;">
 				<xsl:call-template name="PopulateText">
 				  <xsl:with-param name="TargetNode" select="$DependencyData/PartnerName/BusinessNameLine1"/>
 				 </xsl:call-template><br/>

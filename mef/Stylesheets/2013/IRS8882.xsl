@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 05/28/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 08/05/2015 - Changes made for defect 43720 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -9,8 +11,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS8882"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -83,7 +87,7 @@
 					<!-- End form title and Form number Section -->
 					<!-- Begin Name and Identifying Number Section-->
 					<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-						<div class="styFNBox" style="width:144mm;height:8mm;">
+						<div class="styFNBox" style="width:144mm;height:9.5mm;">
             Name(s) shown on return<br/>
 							<xsl:choose>
 								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -103,7 +107,7 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
-						<div class="styGenericDiv" style="width:42mm;height:4mm;padding-left:1mm;">
+						<div class="styGenericDiv" style="width:42mm;height:9.5mm;padding-left:1mm;">
 							<span class="styBoldText">Identifying number</span>
 							<br/>
 							<br/>
@@ -222,7 +226,7 @@
           Credit for employer-provided childcare facilities and services from partnerships, S corporations,
 		estates, and trusts 
 		 <!--Dotted Line-->
-								<span class="styDotLn" style="float:none;">............................</span>
+								<span class="styDotLn" style="float:none;">................................</span>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/EmplrChldCareFcltsAndSrvcCrAmt"/>
 									<xsl:with-param name="TabOrder" select="2"/>
@@ -280,7 +284,7 @@
              </xsl:call-template>
 								
 								<!--Dotted Line-->
-								<span class="styDotLn" style="float:none;padding-left:2mm;">..........................</span>
+								<span class="styDotLn" style="float:none;padding-left:2mm;">..............................</span>
 							</div>
 						</div>
 						<div style="float:right;">
@@ -309,53 +313,47 @@
 					<!-- line 8 -->
 					<div style="width:187mm">
 						<div style="float:left;">
-							<div class="styLNLeftNumBoxSD" style="height:7.75mm;padding-top: 3.75mm;">8</div>
-							<div class="styLNDesc" style="height:7.75mm;padding-right:1mm;padding-top: 4mm;">
+							<div class="styLNLeftNumBoxSD" style="height:8mm;padding-top: 3.75mm;">8</div>
+							<div class="styLNDesc" style="height:8mm;padding-right:1mm;padding-top: 4mm;">
          Amount allocated to beneficiaries of the estate or trust (see instructions)     
           <!--Dotted Line-->
 								<span class="styDotLn" style="float:none;">..........</span>
 							</div>
 						</div>
 						<div style="float:right;">
-							<div class="styLNRightNumBox" style="height:7mm;padding-top: 0mm;">
-								<div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;"/>
+							<div class="styLNRightNumBox" style="height:8mm;padding-top: 4mm;">
         	8
         </div>
-							<div class="styLNAmountBox" style="height:7mm;padding-top: 4mm;width:31.75mm;">
+							<div class="styLNAmountBox" style="height:8mm;padding-top: 4mm;width:31.75mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AllocatedtoBeneficiariesAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
 					</div>
-					<!-- begin line 9 -->
+					<!-- line 9 -->
 					<div style="width:187mm">
-						<div style="float:left;">
-							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-top: 1mm;;">9</div>
-							<div class="styLNDesc" style="width:139mm;height:4mm;padding-right:1mm;padding-top: 1mm;">
-          Estates and trusts. Subtract line 8 from line 7. Report this amount on Form 3800, line 1k
-	   <!--Dotted Line-->
-								<span class="styDotLn" style="float:none;">...</span>
+							<div class="styLNLeftNumBoxSD" style="height:7.75mm;padding-top: 3.75mm;">9</div>
+							<div class="styLNDesc" style="height:7.75mm;width:139.25mm;padding-right:1mm;padding-top: 4mm;">
+								  Estates and trusts. Subtract line 8 from line 7. Report this amount on Form 3800, line 1k    
+								  <!--Dotted Line-->
+								<span class="styDotLn" style="float:none;">.....</span>
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData/EstatesAndTrustsCreditAmt"/>
 									<xsl:with-param name="TabOrder" select="2"/>
 								</xsl:call-template>
 							</div>
+						<div class="styLNRightNumBox" style="height:7.75mm;padding-top: 4mm;border-bottom-width:0px;">
+							9
 						</div>
-						<div style="float:right;">
-							<div class="styLNRightNumBoxNBB" style="height:4mm;padding-top: 1mm;">
-	
-        9
-        </div>
-							<div class="styLNAmountBoxNBB" style="height:4.5mm;width:31.75mm;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/EstatesAndTrustsCreditAmt"/>
-								</xsl:call-template>
-							</div>
+						<div class="styLNAmountBox" style="height:7.75mm;padding-top: 4mm;width:31.75mm;border-bottom-width:0px;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$FormData/EstatesAndTrustsCreditAmt"/>
+							</xsl:call-template>
 						</div>
 					</div>
 					<!--Page End-->
-					<div style="width:187mm; border-top:1 solid Black; font-size:8pt">
+					<div style="width:187mm; border-top:1px solid Black; font-size:8pt">
 						<div style="font-weight:bold; float:left; padding-top:0.5mm">
           For Paperwork Reduction Act Notice,  see instructions.
         </div>
@@ -364,7 +362,8 @@
           Form <b>8882</b> (Rev. 12-2013)
         </div>
 					</div>
-					<p style="page-break-before:always"/>
+					<div class="pageEnd"/>
+					
 					<div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif">
 						<div class="styLeftOverTitle">
           Additional Data        

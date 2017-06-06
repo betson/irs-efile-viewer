@@ -34,17 +34,17 @@
             <!-- Name - Column 1-->
             <td class="styDepTblCell" style="width:106mm; text-align:left;">
               <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1"/>
+                <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
               </xsl:call-template>
-              <xsl:if test="BusinessName/BusinessNameLine2 != ''">
+              <xsl:if test="BusinessName/BusinessNameLine2Txt != ''">
                 <br/>
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2"/>
+                  <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2Txt"/>
                 </xsl:call-template>
               </xsl:if>
             </td>
             <!-- EIN - Column 2 -->
-            <td class="stydepTblCell" style="width: 30mm; text-align:center;padding-top:3mm">
+            <td class="styDepTblCell" style="width: 30mm; text-align:center;padding-top:7mm">
               <span style="width:21mm;text-align:center;">
                 <xsl:choose>
                   <xsl:when test="EIN">
@@ -61,25 +61,25 @@
               </span>
             </td>
             <!-- Net Income (Loss) Amount - Column 3 -->
-            <td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm;">
+            <td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:7mm;">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="NetIncomeLossAmt"/>
               </xsl:call-template>
             </td>
             <!-- Total Assets - Column 4 -->
-            <td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+            <td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:7mm">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="TotalAssetsAmt"/>
               </xsl:call-template>
             </td>
             <!-- Total Liabilities - Column 5 -->
-            <td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+            <td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:7mm">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="TotalLiabilityAmt"/>
               </xsl:call-template>
             </td>
             <!-- Net Amounts - Column 6 -->
-            <td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+            <td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:7mm">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="NetAmt"/>
               </xsl:call-template>
@@ -91,8 +91,10 @@
   </xsl:template>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>

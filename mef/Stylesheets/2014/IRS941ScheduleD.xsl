@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*" />  
 	<xsl:param name="FormData" select="$RtnDoc/IRS941ScheduleD" />  
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -38,19 +40,19 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm">
 				<form id="IRS941ScheduleD">
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- header -->
 					<div class="styTBB" style="width:187mm;height:16mm;border-bottom-width:0px;padding-bottom:0mm;float:none;clear:both;">
-						<div class="styMainTitle" style="width:160mm;float:left;font-size:14pt;line-height:80%;">
+						<div class="styMainTitle" style="width:160mm;float:left;font-size:14pt;line-height:100%;">
 							<!--General Dependency Push Pin-->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData"/>
 							</xsl:call-template>
 							Schedule D (Form 941):
 							<div class="styFBT" style="font-size:10.5pt;">Report of Discrepancies Caused by Acquisitions, Statutory Mergers, or Consolidations</div>
-							<div class="styAgency" style="font-weight:normal;font-size:6pt;">(Rev. June 2011)<span style="width:4mm;"/>Department of the Treasury—Internal Revenue Service</div>
+							<div class="styAgency" style="font-weight:normal;font-size:6pt;">(Rev. June 2011)<span style="width:4mm;"/>Department of the Treasury — Internal Revenue Service</div>
 						</div>
 						<div class="styTYBox" style="width:26mm;height:100%;float:right;border-left-width:0px;">
 							<div class="styOMB" style="border-bottom-width:0px;padding-top:12mm;text-align:right;font-size:6pt;padding-bottom:0mm;">OMB No. 1545-0029</div>
@@ -58,8 +60,8 @@
 					</div>
 					
 					<div style="width:187mm;padding-bottom:0mm;">
-					<div class="styBB" style="width:118mm;height:8mm;border-bottom-width:0px;float:left;">
-							<div style="width:118mm;padding-top:0mm;">
+						<span style="width:187mm;">
+							<div style="width:124mm;padding-top:0mm;">
 								<span style="float:left;padding-top:2mm;font-size:6pt;"><b>Employer Identification Number (EIN)</b></span>
 								<span class="styLNCtrNumBox" style="width:70mm;border-top-width:1px;padding-top:1mm;float:right;height:6mm;">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -67,104 +69,119 @@
 									</xsl:call-template>
 								</span>
 							</div>
-						
-							<div style="width:118mm;padding-bottom:2mm;padding-top:2mm;">
+							<div style="width:124mm;padding-bottom:2mm;padding-top:2mm;">
 								<span style="float:left;padding-top:4mm;padding-right:5mm;font-size:6pt;"><b>Name</b><i> (not your trade name)</i></span>
-								<span class="styLNCtrNumBox" style="width:80mm;border-top-width:1px;float:right;height:8mm;text-align:left;padding-left:1mm;">
+								<span class="styLNCtrNumBox" style="width:87.5mm;border-top-width:1px;float:left;height:auto;text-align:left;padding-left:1mm;">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 									</xsl:call-template><br/>
 									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 									</xsl:call-template>
 								</span>
 							</div>
-							
-							<div style="width:118mm;padding-bottom:2mm;">
+							<div class="styBB" style="width:54mm;height:17mm;float:right;box-shadow: 5px 5px 5px #888;border-left-width:1px;
+			border-right-width:1px;border-top-width:1px;padding-left:2mm;padding-top:2mm;">
+								<div class="styPartName" style="width:48mm;text-align:left;padding-left:1mm;font-size:7pt;padding-top:0.4mm;padding-bottom:0.4mm;">Tax Year of Discrepancies 
+									<span style="font-weight:normal;">(Fill in)</span>
+								</div>
+								<div class="styBB" style="padding-top:3mm;width:48mm;border-bottom-width:0px;padding-bottom:0mm;padding-left:2mm;">
+									<span class="styLNCtrNumBox" style="float:left;width:20mm;height:4mm;background-color:white;border-top-width:1px;padding-top:0mm;">
+										<xsl:call-template name="PopulateYear">
+											<xsl:with-param name="TargetNode" select="$FormData/DiscrepancyTaxYr"/>
+										</xsl:call-template>
+									</span>
+									<span style="width:20mm;padding-left:1mm;padding-top:0.5mm;">Format: YYYY</span>
+								</div>
+							</div>
+							<div style="width:124mm;padding-bottom:2mm;">
 								<span style="float:left;padding-top:4mm;padding-right:5mm;font-size:6pt;"><b>Trade name</b><i> (if any)</i></span>
-								<span class="styLNCtrNumBox" style="width:89mm;border-top-width:1px;float:right;height:8mm;text-align:left;padding-left:1mm;">
+								<span class="styLNCtrNumBox" style="width:96.3mm;border-top-width:1px;float:left;height:auto;text-align:left;padding-left:1mm;">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/TradeName/BusinessNameLine1"/>
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/TradeName/BusinessNameLine1Txt"/>
 									</xsl:call-template><br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/TradeName/BusinessNameLine2"/>
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/TradeName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</span>
 							</div>
-							
-							<div style="width:118mm;padding-bottom:0mm;">
-								<span style="float:left;padding-top:2mm;font-weight:bold;height:15mm;font-size:6pt;">Address</span>
-								<span style="float:right;">
-								<span class="styLNCtrNumBox" style="width:108mm;border-top-width:1px;padding-top:1mm;height:6mm;text-align:left;padding-left:1mm;">
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">AddressLine1</xsl:with-param>
-									</xsl:call-template>&nbsp;
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">AddressLine2</xsl:with-param>
-									</xsl:call-template>
-								</span>
-								<span style="width:107mm;font-size:6pt;padding-left:1mm;padding-right:3mm;">
-									<span style="float:left;">Number<span style="width:34mm"/>Street</span><span style="float:right;">
-									Suite or room number</span>
-								</span>
-								<xsl:choose>
-									<xsl:when test="$RtnHdrData/Filer/USAddress">
-										<span class="styLNCtrNumBox" style="width:66mm;border-top-width:1px;padding-top:1mm;height:6mm;text-align:left;padding-left:1mm;">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">City</xsl:with-param>
-											</xsl:call-template>
-										</span>
-										<span style="width:2.5mm;float:left;"/>
-										<span class="styLNCtrNumBox" style="width:13mm;border-top-width:1px;padding-top:1mm;height:6mm;">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">State</xsl:with-param>
-											</xsl:call-template>
-										</span>
-										<span style="width:2.5mm;float:left;"/>
-										<span class="styLNCtrNumBox" style="width:23mm;border-top-width:1px;padding-top:1mm;height:6mm;">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">ZIPCode</xsl:with-param>
-											</xsl:call-template>
-										</span>
-										<span style="width:107mm;font-size:6pt;">
-											<span style="width:66mm;padding-left:1mm;">City</span><span style="width:18mm;text-align:center;">State</span><span style="width:23mm;text-align:center;">ZIP code</span>
-										</span>
-									</xsl:when>
-									<xsl:otherwise>
+						</span>
+							<div style="width:124mm;padding-bottom:0mm;">
+								<span style="width:19mm;float:left;padding-top:2mm;font-weight:bold;height:15mm;font-size:6pt;">Address</span>
+									<span class="styLNCtrNumBox" style="width:105mm;height:7mm;float:right;border-top-width:1px;padding-top:1mm;text-align:left;padding-left:1mm;">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
+										</xsl:call-template>&nbsp;
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
+										</xsl:call-template>
+									</span>
+									<span style="width:105mm;font-size:6pt;padding-left:1mm;padding-right:3mm;">
+										<span style="float:left;">Number
+										<span style="width:34mm"/>Street</span>
+										<span style="float:right;">Suite or room number</span>
+									</span>
+									<xsl:choose>
+										<xsl:when test="$RtnHdrData/Filer/USAddress">
+											<span class="styLNCtrNumBox" style="width:64mm;border-top-width:1px;padding-top:1mm;height:6mm;text-align:left;padding-left:1mm;">
+												<xsl:call-template name="PopulateReturnHeaderFiler">
+													<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
+												</xsl:call-template>
+											</span>
+											<span class="styLNCtrNumBox" style="width:2.5mm;float:left;border:none"/>
+											<span class="styLNCtrNumBox" style="width:13mm;border-top-width:1px;padding-top:1mm;height:6mm;">
+												<xsl:call-template name="PopulateReturnHeaderFiler">
+													<xsl:with-param name="TargetNode">StateAbbreviationCd</xsl:with-param>
+												</xsl:call-template>
+											</span>
+											<span class="styLNCtrNumBox" style="width:2.5mm;float:left;border:none"/>
+											<span class="styLNCtrNumBox" style="width:23mm;border-top-width:1px;padding-top:1mm;height:6mm;">
+												<xsl:call-template name="PopulateReturnHeaderFiler">
+													<xsl:with-param name="TargetNode">ZIPCd</xsl:with-param>
+												</xsl:call-template>
+											</span>
+											<span style="width:124mm;font-size:6pt;padding-left:19mm;">
+												<span style="width:66mm;padding-left:1mm;">City</span>
+												<span style="width:12mm;text-align:center;">State</span>
+												<span style="width:24mm;text-align:center;">ZIP code</span>
+											</span>
+										</xsl:when>
+										<xsl:otherwise>
 										<span class="styLNCtrNumBox" style="width:43.5mm;border-top-width:1px;padding-top:1mm;height:6mm;text-align:left;padding-left:1mm;word-wrap:break-word;">
 											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">City</xsl:with-param>
+												<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
 											</xsl:call-template>
 										</span>
-										<span style="width:1.5mm;float:left;"/>
+										<span class="styLNCtrNumBox" style="width:1.5mm;float:left;border:none"/>
 										<span class="styLNCtrNumBox" style="width:21mm;border-top-width:1px;padding-top:1mm;height:6mm;word-wrap:break-word;">
 											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">ProvinceOrState</xsl:with-param>
+												<xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
 											</xsl:call-template>
 										</span>
-										<span style="width:1.5mm;float:left;"/>
+										<span class="styLNCtrNumBox" style="width:1.5mm;float:left;border:none"/>
 										<span class="styLNCtrNumBox" style="width:9mm;border-top-width:1px;padding-top:1mm;height:6mm;word-wrap:break-word;">
 											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">Country</xsl:with-param>
+												<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
 											</xsl:call-template>
 										</span>
-										<span style="width:1.5mm;float:left;"/>
+										<span class="styLNCtrNumBox" style="width:1.5mm;float:left;border:none"/>
 										<span class="styLNCtrNumBox" style="width:30mm;border-top-width:1px;padding-top:1mm;height:6mm;word-wrap:break-word;">
 											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">PostalCode</xsl:with-param>
+												<xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
 											</xsl:call-template>
 										</span>
 										<span style="width:107mm;font-size:6pt;">
-											<span style="width:45mm;padding-left:1mm;">City</span><span style="width:21mm;text-align:center;">Prov./St.</span><span style="width:12mm;text-align:center;">Country</span><span style="width:29mm;text-align:center;">Postal Code</span>
+											<span style="width:45mm;padding-left:1mm;">City</span>
+											<span style="width:21mm;text-align:center;">Prov./St.</span>
+											<span style="width:12mm;text-align:center;">Country</span>
+											<span style="width:29mm;text-align:center;">Postal Code</span>
 										</span>
 									</xsl:otherwise>
 								</xsl:choose>
-								</span>
 							</div>
-							
-							<div style="width:118mm;padding-bottom:0mm;padding-top:0mm;">
+							<div style="width:124mm;height:6mm;padding-bottom:0mm;padding-top:0mm;">
 								<span style="float:left;padding-top:2mm;padding-right:5mm;font-size:6pt;">Phone number</span>
-								<span class="styLNCtrNumBox" style="width:58mm;border-top-width:1px;padding-top:1mm;float:left;">
+								<span class="styLNCtrNumBox" style="width:58mm;height:6mm;border-top-width:1px;padding-top:1mm;float:left;">
 									<xsl:if test="$FormData/PhoneNum">
 										<xsl:call-template name="PopulatePhoneNumber">
 											<xsl:with-param name="TargetNode" select="$FormData/PhoneNum"/>
@@ -177,95 +194,30 @@
 									</xsl:if>
 								</span>
 							</div>
-						</div>
-						
-						<div style="float:right;padding-left:10mm;padding-top:0mm;">
-							<div class="styBB" style="width:56mm;height:17mm;border-left-width:1px;border-right-width:1px;border-top-width:1px;padding-left:2.5mm;padding-top:2mm;">
-								<div class="styPartName" style="width:48mm;text-align:left;padding-left:1mm;padding-top:0.4mm;padding-bottom:0.4mm;font-size:7pt;">Tax Year of Discrepancies <span style="font-weight:normal;">(Fill in)</span></div>
-								<div style="padding-top:3mm;width:48mm;border-bottom-width:0px;padding-bottom:0mm;padding-left:2mm;float:none;clear:both;">
-									
-										<span class="styLNCtrNumBox" style="width:20mm;border-top-width:1px;padding-top:0mm;float:left;height:4mm;background-color:white;">
-										
-											<xsl:call-template name="PopulateYear">
-											  <xsl:with-param name="TargetNode" select="$FormData/DiscrepancyTaxYr"/>
-											</xsl:call-template>
-										
-									</span>
-									<span style="width:20mm;padding-left:1mm;padding-top:0.5mm;">Format: YYYY</span>
-								</div>
-							</div>
-							<div style="width:2mm;height:2mm;float:left;"/><div style="width:2mm;background-color:lightgrey;height:14mm;float:left;"/>
-							<div style="width:2mm;height:2mm;float:left;"/><div style="width:56mm;height:2mm;background-color:lightgrey;float:left;"/>
-
-							<div style="float:none;clear:both;height:4mm;"/>
-						
-							<!--<div class="styBB" style="width:56mm;height:23mm;border-top-width:1px;border-left-width:1px;border-right-width:1px;border-bottom-width:1px;padding-left:2.5mm;padding-top:2mm;">
-								<div class="styPartName" style="width:48mm;text-align:left;padding-left:1mm;padding-top:0.4mm;padding-bottom:0.4mm;font-size:7pt;">Type of Submission <span style="font-weight:normal;">(Check one)</span></div>
-							
-								<div style="width:48mm;float:none;clear:both;">
-									<div style="width:48mm;float:none;clear:both;padding-left:2mm;">
-										<div style="width:48mm;padding-top:3mm;float:none;clear:both;">
-											<input type="checkbox" class="styCkbox">
-												<xsl:call-template name="PopulateCheckbox">
-													<xsl:with-param name="TargetNode" select="$FormData/OriginalSubmissionTypeInd"/>
-													<xsl:with-param name="BackupName">941SDOriginalSubmissionTypeInd</xsl:with-param>
-												</xsl:call-template>
-											</input>
-											<label>
-												<xsl:call-template name="PopulateLabel">
-													<xsl:with-param name="TargetNode" select="$FormData/OriginalSubmissionTypeInd"/>
-													<xsl:with-param name="BackupName">941SDOriginalSubmissionTypeInd</xsl:with-param>
-												</xsl:call-template> Original
-											</label>
-									    </div>
-													
-										<div style="width:48mm;">
-											<div style="float:left;clear:none;padding-top:4mm;padding-bottom:0mm;">
-												<input type="checkbox" class="styCkbox">
-													<xsl:call-template name="PopulateCheckbox">
-														<xsl:with-param name="TargetNode" select="$FormData/CorrectedSubmissionTypeInd"/>
-														<xsl:with-param name="BackupName">941SDCorrectedSubmissionTypeInd</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label>
-													<xsl:call-template name="PopulateLabel">
-														<xsl:with-param name="TargetNode" select="$FormData/CorrectedSubmissionTypeInd"/>
-														<xsl:with-param name="BackupName">941SDCorrectedSubmissionTypeInd</xsl:with-param>
-													</xsl:call-template> Corrected
-												</label>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div style="width:2mm;height:2mm;float:left;"/><div style="width:2mm;background-color:lightgrey;height:20mm;float:left;"/>
-							<div style="width:2mm;height:2mm;float:left;"/><div style="width:56mm;height:2mm;background-color:lightgrey;float:left;"/>-->
-						</div>
 					</div>
-						
-				<div class="styBB" style="width:187mm;float:none;clear:both;font-size:8pt;padding-bottom:2mm;padding-top:0.5mm;border-bottom-width:0px;">					<span style="font-weight:bold;font-size:9pt;line-height:200%;">About this schedule</span><br/>Each year the Internal Revenue Service (IRS) and the Social Security 	
+				<div class="styBB" style="width:187mm;float:none;clear:both;font-size:8pt;padding-bottom:2mm;padding-top:0.5mm;border-bottom-width:0px;">
+					<span style="font-weight:bold;font-size:9pt;line-height:200%;">About this schedule</span><br/>Each year the Internal Revenue Service (IRS) and the Social Security 	
 					Administration (SSA) compare the totals on your Forms 941, <i>Employer’s QUARTERLY Federal Tax Return,</i> 
 					with the totals on Forms W-2, <i>Wage and Tax Statement,</i> to verify that:
 				</div>
-				<div class="styBB" style="width:187mm;float:none;clear:both;font-size:8pt;padding-left:4mm;border-bottom-width:0px;">
+				<div class="styBB" style="width:187mm;float:none;clear:both;font-size:8pt;padding-left:10mm;border-bottom-width:0px;">
 					<li>The wages you reported on Forms 941 match those you reported on Forms W-2 (Copy A) so that your<br/>
-					<span style="padding-left:4.2mm;">employees’ social security earnings records are complete for benefit purposes; and</span></li>
+					employees’ social security earnings records are complete for benefit purposes; and</li>
 					<li>You have paid the appropriate taxes.</li>
 				</div>
-				<div class="styBB" style="width:187mm;float:none;clear:both;font-size:8pt;padding-bottom:1.5mm;padding-top:1mm;">					Generally, the totals on your Forms W-2 (Copy A) should equal the totals you reported on Forms 941. Use this schedule if discrepancies
-exist between the totals you reported on those forms ONLY as a result of an acquisition, statutory merger, or consolidation. <b>In many cases,
-the information on this schedule should help the IRS resolve discrepancies without contacting you.</b> If you are an eligible employer
-who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, explained in the instructions, you should file this schedule.<br/><br/><b>Read the separate instructions before you fill out this schedule.</b>
+				<div class="styBB" style="width:187mm;float:none;clear:both;font-size:8pt;padding-bottom:1.5mm;padding-top:1mm;">
+					Generally, the totals on your Forms W-2 (Copy A) should equal the totals you reported on Forms 941. Use this schedule if discrepancies
+					exist between the totals you reported on those forms ONLY as a result of an acquisition, statutory merger, or consolidation. <b>In many cases,
+					the information on this schedule should help the IRS resolve discrepancies without contacting you.</b> If you are an eligible employer
+					who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, explained in the instructions, you should file this schedule.<br/><br/><b>Read the separate
+					instructions before you fill out this schedule.</b>
 				</div>
 
 				<!--Part 1-->
 				<div class="styPartName" style="width:187mm;text-align:left;height:6mm;padding-top:1mm;padding-left:2mm;float:none;clear:both;">Part 1: Answer these background questions.</div>
-					
 				<div style="width:187mm;padding-left:0mm;padding-top:3mm;padding-bottom:0px;">
 					<div class="styLNLeftNumBox" style="padding-left:2mm;width:4mm;">1.</div>
-					<div class="styLNDesc" style="width:182mm;padding-left:1mm;font-weight:bold;">
-                        Are you filing this schedule —<br/>
-					</div>
+					<div class="styLNDesc" style="width:182mm;padding-left:1mm;font-weight:bold;"> Are you filing this schedule —<br/></div>
 					<div style="width:182mm;padding-left:5mm;padding-top:0mm;">
 						<div style="width:182mm;padding-top:0mm;">
 							<input type="checkbox" class="styCkbox">
@@ -279,9 +231,8 @@ who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, expla
 									<xsl:with-param name="TargetNode" select="$FormData/AfterMergerConsolGrp/AfterMergerConsolInd"/>
 									<xsl:with-param name="BackupName">941SDAfterMergerConsolInd</xsl:with-param>
 								</xsl:call-template>
-								<b><span style="width:1mm;"/>After a statutory merger or consolidation? (See Rev. Rul. 62-60, 1962-1 C.B. 186 and Rev. Proc. 2004-53, 2004-2 C.B. 320.)</b><br/>
+								<b>After a statutory merger or consolidation? (See Rev. Rul. 62-60, 1962-1 C.B. 186 and Rev. Proc. 2004-53, 2004-2 C.B. 320.)</b><br/>
 							</label>
-						   
 							<span style="height:12mm;width:132mm;float:left;text-align:right;padding-top:3mm;">
 								You are either:<br/><br/><br/>
 								<span style="padding-right:60mm;">OR</span>
@@ -315,7 +266,6 @@ who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, expla
 								</label>
 						    </span>
 						</div>
-													
 						<div style="width:182mm;padding-top:2mm;">
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -330,7 +280,6 @@ who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, expla
 								</xsl:call-template>
 								<b><span style="width:1mm;"/>After an acquisition and you are using the alternate procedure under Rev. Proc. 2004-53, 2004-2 C.B. 320?</b><br/>
 							</label>
-						    
 							<span style="height:15mm;width:132mm;float:left;text-align:right;padding-top:3mm;">
 								You are either:
 						    </span>
@@ -348,7 +297,6 @@ who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, expla
 									</xsl:call-template>
 									A predecessor or<br/><br/>
 								</label>
-								
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/AcquisitionAlternateProcGrp/SuccessorEmployerInd"/>
@@ -365,7 +313,7 @@ who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, expla
 						    </span>
 						</div>
 					</div>
-					
+					<div style="width:187mm">
 					<div class="styLNLeftNumBox" style="padding-left:2mm;width:4mm;padding-top:3mm;padding-bottom:0mm;">2.</div>
 					<div class="styLNDesc" style="width:134mm;padding-left:1mm;font-weight:bold;padding-top:3mm;padding-bottom:0mm;">
 							The effective date of the statutory merger/consolidation or acquisition is
@@ -386,20 +334,18 @@ who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, expla
 							</xsl:call-template>
 						</div>
 					</div>
-					
 					<div class="styLNDesc" style="width:187mm;padding-left:139mm;font-weight:bold;padding-right:5mm;padding-top:0mm;padding-bottom:0mm;">
 							<span style="width:43mm;text-align:center;font-size:6pt;">
 								MM<span style="width:10mm;text-align:center">/</span>DD<span style="width:10mm;text-align:center">/</span>YYYY
 							</span>
 					</div>
-					
+					</div>
 					<div class="styLNLeftNumBox" style="padding-left:2mm;width:4mm;clear:both;padding-top:0mm;">3.</div>
 					<div class="styLNDesc" style="width:170mm;padding-left:1mm;font-weight:bold;padding-top:0mm;">
 							The OTHER PARTY in this transaction is . . .
 					</div>
-					
-					<div class="styBB" style="width:187mm;height:8mm;border-bottom-width:0px;float:left;padding-left:5mm;padding-bottom:0px;">
-						<div style="width:175mm;padding-top:2mm;">
+					<div class="styBB" style="width:187mm;height:auto;border-bottom-width:0px;float:left;padding-left:5mm;padding-bottom:0px;">
+						<div style="width:182mm;padding-top:2mm;">
 							<span style="float:left;padding-top:2mm;width:28.5mm;">Other party’s EIN</span>
 							<span class="styLNCtrNumBox" style="width:72mm;border-top-width:1px;padding-top:1mm;float:left;height:6mm;">
 								<xsl:call-template name="PopulateEIN">
@@ -407,116 +353,106 @@ who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, expla
 								</xsl:call-template>
 							</span>
 						</div>
-						
-						<div style="padding-top:2mm;">
-							<span style="float:left;padding-top:4mm;">Other party’s name</span>
-							<span style="float:right;padding-right:2.5mm;">
-								<span class="styLNCtrNumBox" style="width:151mm;border-top-width:1px;float:right;height:8mm;text-align:left;padding-left:1mm;">
+						<div style="width:182mm;">
+							<span style="width:28mm;float:left;padding-top:8mm;">Other party’s name</span><br/>
+								<span class="styLNCtrNumBox" style="width:151mm;border-top-width:1px;float:left;height:8mm;text-align:left;padding-left:1mm;">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/BusinessName/BusinessNameLine1"/>
+										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/BusinessName/BusinessNameLine1Txt"/>
 									</xsl:call-template><br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/BusinessName/BusinessNameLine2"/>
+										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/BusinessName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</span>
-							</span>
 						</div>
-							
-						<div style="padding-top:2mm;">
-							<span style="float:left;padding-top:4.4mm;">Trade name<i> (if any)</i></span>
-							<span style="float:right;padding-right:2.5mm;">
-								<span class="styLNCtrNumBox" style="width:151mm;border-top-width:1px;float:right;height:8mm;text-align:left;padding-left:1mm;">
+						<div style="width:182mm;">
+							<span style="width:28mm;float:left;padding-top:8mm;">Trade name<i> (if any)</i></span><br/>
+								<span class="styLNCtrNumBox" style="width:151mm;height:8mm;border-top-width:1px;float:left;text-align:left;padding-left:1mm;">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/TradeName/BusinessNameLine1"/>
+										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/TradeName/BusinessNameLine1Txt"/>
 									</xsl:call-template><br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/TradeName/BusinessNameLine2"/>
+										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/TradeName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</span>
-							</span>
 						</div>
-							
-						<div style="padding-top:2mm;">
-							<span style="float:left;padding-top:3.4mm;padding-right:5mm;height:15mm;width:25mm;">Address</span>
-							<span style="float:right;padding-right:2.5mm;">
-								<span class="styLNCtrNumBox" style="width:151mm;border-top-width:1px;padding-top:1mm;height:6mm;text-align:left;padding-left:1mm;">
+						<div style="width:182mm;">
+							<span style="width:28mm;height:15mm;float:left;padding-top:3.4mm;padding-right:5mm;">Address</span><br/>
+								<span class="styLNCtrNumBox" style="width:151mm;height:6mm;border-top-width:1px;padding-top:1mm;text-align:left;padding-left:1mm;">
 									<xsl:if test="$FormData/OtherPartyGrp/USAddress">
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/AddressLine1"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/AddressLine1Txt"/>
 										</xsl:call-template>&nbsp;
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/AddressLine2"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/AddressLine2Txt"/>
 										</xsl:call-template>
 									</xsl:if>
 									<xsl:if test="$FormData/OtherPartyGrp/ForeignAddress">
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/AddressLine1"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/AddressLine1Txt"/>
 										</xsl:call-template>&nbsp;
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/AddressLine2"/>
+											<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/AddressLine2Txt"/>
 										</xsl:call-template>
 									</xsl:if>
 								</span>
 								<span style="width:151mm;font-size:6pt;padding-left:0.5mm;">
-									Number<span style="width:18mm"/>Street<span style="width:85mm;"/>Suite or room number
+									Number<span style="width:18mm"/>Street<span style="width:76mm;"/>Suite or room number
 								</span>
 								<xsl:choose>
 									<xsl:when test="$FormData/OtherPartyGrp/USAddress">
 										<span class="styLNCtrNumBox" style="width:151mm;border-top-width:1px;padding-top:1mm;height:6mm;">
-											<span style="width:86.4mm;text-align:left;padding-left:0.4mm;">
+											<span style="width:73mm;text-align:left;">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/City"/>
+													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/CityNm"/>
 												</xsl:call-template>
 											</span>
 											<span style="width:31.6mm;text-align:left;">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/State"/>
+													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/StateAbbreviationCd"/>
 												</xsl:call-template>
 											</span>
 											<span style="width:32mm;text-align:left;">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/ZIPCode"/>
+													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/USAddress/ZIPCd"/>
 												</xsl:call-template>
 											</span>
 										</span>
-										<span style="width:141mm;font-size:6pt;padding-left:0.5mm;">
-											City<span style="width:82mm"/>State<span style="width:26mm;"/>ZIP code
+										<span style="width:151mm;font-size:6pt;padding-left:28mm;">
+											City<span style="width:75mm"/>State<span style="width:26mm;"/>ZIP code
 										</span>
 									</xsl:when>
 									<xsl:otherwise>
 										<span class="styLNCtrNumBox" style="width:151mm;border-top-width:1px;padding-top:1mm;height:6mm;word-wrap:break-word;">
 											<span style="width:73mm;float:left;text-align:left;padding-left:0.4mm;">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/City"/>
+													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/CityNm"/>
 												</xsl:call-template>
 											</span>
 											<span style="width:30mm;text-align:left;">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/ProvinceOrState"/>
+													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/ProvinceOrStateNm"/>
 												</xsl:call-template>
 											</span>
 											<span style="width:13mm;text-align:left;">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/Country"/>
+													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/CountryCd"/>
 												</xsl:call-template>
 											</span>
 											<span style="width:30mm;text-align:left;">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/PostalCode"/>
+													<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/ForeignAddress/ForeignPostalCd"/>
 												</xsl:call-template>
 											</span>
 										</span>
-										<span style="width:141mm;font-size:6pt;padding-left:0.5mm;">
-											City<span style="width:71mm"/>Province/State<span style="width:14mm"/>Country<span style="width:4.6mm;"/>Postal Code
+										<span style="width:151mm;font-size:6pt;padding-left:28mm;">
+											City<span style="width:51mm"/>Province/State<span style="width:14mm"/>Country<span style="width:16mm;"/>Postal Code
 										</span>
 									</xsl:otherwise>
 								</xsl:choose>
-							</span>
 						</div>
-							
-						<div style="width:118mm;padding-top:0mm;padding-bottom:0mm;float:left;">
-							<span style="width:28.5mm; float:left;padding-top:1.4mm;">Phone number</span>
-							<span class="styLNCtrNumBox" style="width:60mm;border-top-width:1px;float:left;height:4mm;">
+						<div style="width:182mm;padding-top:0mm;padding-bottom:0mm;float:left;">
+							<span style="width:28mm; float:left;padding-top:1.4mm;">Phone number</span>
+							<span class="styLNCtrNumBox" style="width:60mm;border-top-width:1px;float:left;height:5mm;">
 								<xsl:if test="$FormData/OtherPartyGrp/PhoneNum">
 									<xsl:call-template name="PopulatePhoneNumber">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/PhoneNum"/>
@@ -528,95 +464,86 @@ who elects to use the alternate procedure set forth in Rev. Proc. 2004-53, expla
 									</xsl:call-template>
 								</xsl:if>
 							</span>
-						</div>
-						<div style="width:63mm;text-align:right;padding-top:1mm;padding-bottom:0px;">
-							<img src="{$ImagePath}/941SchD_Next.gif" alt="Next Page Arrow Image"/>
+							<div style="width:63mm;float:right;text-align:right;padding-top:1mm;padding-bottom:0px;">
+								<img src="{$ImagePath}/941SchD_Next.gif" alt="Next Page Arrow Image"/>
+							</div>
 						</div>
 					</div>
 				</div>
 				<!--End Part 1-->
-						
-				
 		<!-- Page boundary -->
 		<div class="pageEnd" style="width:187mm;border-top-width:1px;">
 			<span style="float:left;clear:none;font-weight:bold;">For Paperwork Reduction Act Notice, see separate instructions.</span>
 			<span style="float:left;clear:none;margin-left:20mm;">Cat. No. 38791Y</span>
 			<span style="float:right;clear:none;"><b>Schedule D (Form 941)</b> (Rev. 6-2011)</span>
 		</div>
-		
+		<p style="page-break-before: always"/>
 		<!--Page 2 Header-->
-		<div style="width:187mm;padding-bottom:6mm;">
-			<div class="styBB" style="width:130mm;height:8mm;border-bottom-width:0px;float:left;">
-				<div style="width:130mm;padding-top:2mm;">
-					<span style="float:left;padding-top:2mm;padding-right:5mm;"><b>Your EIN</b></span>
-					<span class="styLNCtrNumBox" style="float:left;width:72mm;height:6mm;border-top-width:1px;padding-top:1mm;">
-						<xsl:call-template name="PopulateReturnHeaderFiler">
-						  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-						</xsl:call-template>
-					</span>
+		<div class="styBB" style="width:187mm;padding-bottom:6mm;">
+			<div style="width:130mm;height:8mm;border-bottom-width:0px;float:left;">
+				<span style="float:left;padding-top:2mm;padding-right:5mm;"><b>Your EIN</b></span>
+				<span class="styLNCtrNumBox" style="float:left;width:72mm;height:6mm;border-top-width:1px;padding-top:1mm;">
+					<xsl:call-template name="PopulateReturnHeaderFiler">
+					  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+					</xsl:call-template>
+				</span>
+			</div>
+			<div class="styBB" style="width:56mm;height:17mm;float:right;box-shadow: 5px 5px 5px #888;border-left-width:1px;border-right-width:1px;border-top-width:1px;padding-left:2mm;padding-top:2mm;">
+				<div class="styPartName" style="width:48mm;text-align:left;padding-left:1mm;font-size:7pt;padding-top:0.4mm;padding-bottom:0.4mm;">Tax Year of Discrepancies 
+					<span style="font-weight:normal;">(Fill in)</span>
 				</div>
-						
-				<div style="width:130mm;padding-top:2mm;">
-					<span style="float:left;padding-top:4mm;padding-right:5mm;"><b>Name</b><i> (not your trade name)</i></span>
-					<span class="styLNCtrNumBox" style="width:85mm;height:8mm;border-top-width:1px;text-align:left;padding-left:1mm;">
-						<xsl:call-template name="PopulateReturnHeaderFiler">
-							<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
-						</xsl:call-template><br/>
-						<xsl:call-template name="PopulateReturnHeaderFiler">
-							<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+				<div class="styBB" style="padding-top:3mm;width:48mm;border-bottom-width:0px;padding-bottom:0mm;padding-left:2mm;">
+					<span class="styLNCtrNumBox" style="float:left;width:20mm;height:4mm;background-color:white;border-top-width:1px;padding-top:0mm;">
+						<xsl:call-template name="PopulateYear">
+						  <xsl:with-param name="TargetNode" select="$FormData/DiscrepancyTaxYr"/>
 						</xsl:call-template>
 					</span>
-				</div>
-							
-				<div style="width:130mm;padding-top:2mm;">
-					<span style="float:left;padding-top:2mm;padding-right:5mm;">Other party’s EIN</span>
-					<span class="styLNCtrNumBox" style="float:left;width:72mm;height:6mm;border-top-width:1px;padding-top:1mm;">
-						<xsl:call-template name="PopulateEIN">
-						  <xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/EIN"/>
-						</xsl:call-template>
-					</span>
+					<span style="width:20mm;padding-left:1mm;padding-top:0.5mm;">Format: YYYY</span>
 				</div>
 			</div>
-						
-			<div style="float:right;padding-top:2mm;">
-				<div class="styBB" style="width:54mm;height:17mm;border-left-width:1px;border-right-width:1px;border-top-width:1px;padding-left:2mm;padding-top:2mm;">
-					<div class="styPartName" style="width:48mm;text-align:left;padding-left:1mm;font-size:7pt;padding-top:0.4mm;padding-bottom:0.4mm;">Tax Year of Discrepancies <span style="font-weight:normal;">(Fill in)</span></div>
-					<div class="styBB" style="padding-top:3mm;width:48mm;border-bottom-width:0px;padding-bottom:0mm;padding-left:2mm;">
-						<span class="styLNCtrNumBox" style="float:left;width:20mm;height:4mm;background-color:white;border-top-width:1px;padding-top:0mm;">
-							<xsl:call-template name="PopulateYear">
-							  <xsl:with-param name="TargetNode" select="$FormData/DiscrepancyTaxYr"/>
-							</xsl:call-template>
-						</span>
-						<span style="width:20mm;padding-left:1mm;padding-top:0.5mm;">Format: YYYY</span>
-					</div>
-				</div>
-				<div style="width:2mm;height:2mm;float:left;"/><div style="width:2mm;background-color:lightgrey;height:14mm;float:left;"/>
-				<div style="width:2mm;height:2mm;float:left;"/><div style="width:54mm;height:2mm;background-color:lightgrey;float:left;"/>
+			<div style="width:130mm;padding-top:2mm;">
+				<span style="float:left;padding-top:4mm;padding-right:5mm;"><b>Name</b><i> (not your trade name)</i></span>
+				<span class="styLNCtrNumBox" style="width:85mm;height:auto;border-top-width:1px;text-align:left;padding-left:1mm;">
+					<xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+					</xsl:call-template><br/>
+					<xsl:call-template name="PopulateReturnHeaderFiler">
+						<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+					</xsl:call-template>
+				</span>
+			</div>
+				
+			<div style="width:130mm;padding-top:2mm;">
+				<span style="float:left;padding-top:2mm;padding-right:5mm;">Other party’s EIN</span>
+				<span class="styLNCtrNumBox" style="float:left;width:72mm;height:6mm;border-top-width:1px;padding-top:1mm;">
+					<xsl:call-template name="PopulateEIN">
+					  <xsl:with-param name="TargetNode" select="$FormData/OtherPartyGrp/EIN"/>
+					</xsl:call-template>
+				</span>
 			</div>
 		</div>
 		<!--End Page 2 Header-->
-		
 		<!--Part 2-->
-		<div class="styPartName" style="width:187mm;text-align:left;height:6mm;padding-top:1mm;padding-left:2mm;">Part 2: Tell us about the discrepancies with your returns.</div>
-		<div style="width:187mm;">
-			<div style="width:44mm;float:left;"/>
-			<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column A</i></div>
-			<div style="width:4mm;float:left;"></div>
-			<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column B</i></div>
-			<div style="width:4mm;float:left;"></div>
-			<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column C</i></div>
-				
-			<div style="width:44mm;float:left;"/>
-			<div style="width:45mm;float:left;padding-top:2mm;padding-bottom:8mm;"><b>Amount you reported to IRS
-for the tax year</b><br/><br/>Totals from Forms 941 as corrected
-by any Forms 941-X</div>
-			<div style="width:4mm;float:left;font-weight:bold;text-align:center;padding-top:2mm;">-</div>
-			<div style="width:45mm;float:left;padding-top:2mm;"><b>Amount you reported to SSA
-for the tax year</b><br/><br/>Totals from Forms W-2 (Copy A) as
-corrected by any Forms W-2c (Copy A)</div>
-			<div style="width:4mm;float:left;font-weight:bold;text-align:center;padding-top:2mm;">=</div>
-			<div style="width:45mm;float:left;padding-top:2mm;"><b>The difference</b></div>
-				
+		<div style="width:187mm;float:left">
+			<div class="styPartName" style="width:187mm;text-align:left;height:6mm;padding-top:1mm;padding-left:2mm;">Part 2: Tell us about the discrepancies with your returns.</div>
+			<div style="width:187mm;float:left">
+				<span style="width:45mm;"/>
+				<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column A</i></div>
+				<span style="width:4mm;"/>
+				<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column B</i></div>
+				<span style="width:4mm;"/>
+				<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column C</i></div>
+			</div>
+			<div style="width:187mm;float:left">
+				<span style="width:45mm;"/>
+				<div style="width:43mm;padding-top:2mm;padding-bottom:8mm;"><b>Amount you reported to IRS for the tax year</b><br/><br/>Totals from Forms 941 as corrected by any
+				Forms 941-X</div>
+				<div style="width:4mm;font-weight:bold;text-align:center;padding-top:2mm;padding-bottom:20mm;">-</div>
+				<div style="width:43mm;padding-top:2mm;padding-bottom:5mm;"><b>Amount you reported to SSA for the tax year</b><br/><br/>Totals from Forms W-2 (Copy A) as corrected by any
+				Forms W-2c (Copy A)</div>
+				<div style="width:4mm;font-weight:bold;text-align:center;padding-top:2mm;padding-bottom:20mm;">=</div>
+				<div style="width:43mm;padding-top:2mm;padding-bottom:20mm;"><b>The difference</b></div>
+			</div>	
 			<div style="width:187mm;float:none;clear:both;padding-bottom:0.9mm;">
 				<div style="width:44mm;float:left;border:solid black;border-width:1px 0px 0px 0px;padding-top:1mm;">
 					<div class="styLNLeftNumBox" style="padding-left:2mm;width:4mm;">4.</div>
@@ -789,7 +716,7 @@ corrected by any Forms W-2c (Copy A)</div>
 						<div class="styLNDesc" style="width:auto;padding-left:1mm;padding-right:1mm;font-weight:bold;padding-top:1mm;">
 							File one Schedule D (Form 941) for each separate transaction. This is schedule
 						</div>
-						<div class="styLNCtrNumBox" style="width:10mm;border-top-width:1px;padding-right:0.2mm;text-align:right;">
+						<div class="styLNCtrNumBox" style="width:16.5mm;border-top-width:1px;padding-right:0.2mm;text-align:right;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="SchedDF941Num"/>
 							</xsl:call-template>
@@ -797,7 +724,7 @@ corrected by any Forms W-2c (Copy A)</div>
 						<div class="styLNDesc" style="width:5mm;padding-left:1mm;font-weight:bold;padding-top:1mm;">
 							of
 						</div>
-						<div class="styLNCtrNumBox" style="width:10mm;border-top-width:1px;padding-right:0.2mm;text-align:right;">
+						<div class="styLNCtrNumBox" style="width:16.5mm;border-top-width:1px;padding-right:0.2mm;text-align:right;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="SchedDF941Cnt"/>
 							</xsl:call-template>
@@ -806,27 +733,24 @@ corrected by any Forms W-2c (Copy A)</div>
 							<b>.</b> (Example: <i>This is schedule 1 of 3.</i>)
 						</div>
 					</div>
-				
-					<div style="width:44mm;float:left;"/>
-					<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column A</i></div>
-					<div style="width:4mm;float:left;"/>
-					<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column B</i></div>
-					<div style="width:4mm;float:left;"/>
-					<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column C</i></div>
-			
-					<div style="width:44mm;float:left;"/>
-					<div style="width:45mm;float:left;padding-top:2mm;padding-bottom:8mm;"><b>Amount you reported to IRS
-						for the tax year for the employees affected by the transaction reported on this Schedule D (Form 941)</b><br
-						/><br/>Totals from Forms 941 as corrected by any Forms 941-X
-					</div>
-					<div style="width:4mm;float:left;font-weight:bold;padding-top:2mm;text-align:center;">-</div>
-					<div style="width:45mm;float:left;padding-top:2mm;"><b>Amount you reported to SSA for the tax year for the 
-						employees affected by the transaction reported on this Schedule D (Form 941)</b><br/><br/>Totals from 
-						Forms W-2 (Copy A) as corrected by any Forms W-2c (Copy A)
-					</div>
-					<div style="width:4mm;float:left;font-weight:bold;padding-top:2mm;text-align:center;">=</div>
-					<div style="width:45mm;float:left;padding-top:2mm;"><b>The difference</b></div>
-				
+				<div style="width:187mm;float:left">
+					<div style="width:45mm;"/>
+					<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column A</i></div>
+					<div style="width:4mm;"/>
+					<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column B</i></div>
+					<div style="width:4mm;"/>
+					<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column C</i></div>
+				</div>
+				<div style="width:187mm;float:left">
+					<div style="width:45mm;"/>
+					<div style="width:43mm;padding-top:2mm;padding-bottom:8mm;"><b>Amount you reported to IRS for the tax year for the employees affected by the transaction reported on
+					 this Schedule D (Form 941)</b><br/><br/>Totals from Forms 941 as corrected by any Forms 941-X</div>
+					<div style="width:4mm;font-weight:bold;padding-top:2mm;text-align:center;padding-bottom:29mm;">-</div>
+					<div style="width:43mm;padding-top:2mm;padding-bottom:5mm;"><b>Amount you reported to SSA for the tax year for the employees affected by the transaction reported
+					 on this Schedule D (Form 941)</b><br/><br/>Totals from Forms W-2 (Copy A) as corrected by any Forms W-2c (Copy A)</div>
+					<div style="width:4mm;font-weight:bold;padding-top:2mm;text-align:center;padding-bottom:29mm;">=</div>
+					<div style="width:43mm;padding-top:2mm;padding-bottom:29mm;"><b>The difference</b></div>
+				</div>
 					<div style="width:187mm;float:none;clear:both;padding-bottom:0.9mm;">
 						<div style="width:44mm;float:left;padding-top:1mm;">
 							<div class="styLNLeftNumBox" style="padding-left:0mm;width:4mm;">10.</div>
@@ -1009,22 +933,24 @@ corrected by any Forms W-2c (Copy A)</div>
 							<b>.</b> (Example: <i>This is schedule 1 of 3.</i>)
 						</div>
 					</div>
-				
-					<div style="width:44mm;float:left;"/>
-					<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column A</i></div>
-					<div style="width:4mm;float:left;"></div>
-					<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column B</i></div>
-					<div style="width:4mm;float:left;"></div>
-					<div style="width:45mm;text-align:center;float:left;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column C</i></div>
-				
-					<div style="width:44mm;float:left;"/>
-					<div style="width:45mm;float:left;padding-top:2mm;padding-bottom:8mm;"><b>Amount you reported to IRS
-						for the tax year for the employees affected by the transaction reported on this Schedule D (Form 941)</b><br/><br/>Totals from Forms 941 as corrected by any Forms 941-X</div>
-					<div style="width:4mm;float:left;font-weight:bold;padding-top:2mm;text-align:center;">-</div>
-					<div style="width:45mm;float:left;padding-top:2mm;"><b>Amount you reported to SSA for the tax year for the employees affected by the transaction reported on this Schedule D (Form 941)</b><br/><br/>Totals from Forms W-2 (Copy A) as corrected by any Forms W-2c (Copy A)</div>
-					<div style="width:4mm;float:left;font-weight:bold;padding-top:2mm;text-align:center;">=</div>
-					<div style="width:45mm;float:left;padding-top:2mm;"><b>The difference</b></div>
-				
+				<div style="width:187mm;float:left">
+					<div style="width:45mm;"/>
+					<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column A</i></div>
+					<div style="width:4mm;"></div>
+					<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column B</i></div>
+					<div style="width:4mm;"></div>
+					<div style="width:43mm;text-align:center;border:solid black;border-width:0px 0px 1px 0px;padding-top:2mm;"><i>Column C</i></div>
+				</div>
+				<div style="width:187mm;float:left">
+					<div style="width:45mm;"/>
+					<div style="width:43mm;padding-top:2mm;padding-bottom:8mm;"><b>Amount you reported to IRS for the tax year for the employees affected by the transaction reported on
+					 this Schedule D (Form 941)</b><br/><br/>Totals from Forms 941 as corrected by any Forms 941-X</div>
+					<div style="width:4mm;font-weight:bold;padding-top:2mm;text-align:center;padding-bottom:29mm;">-</div>
+					<div style="width:43mm;padding-top:2mm;padding-bottom:5mm;"><b>Amount you reported to SSA for the tax year for the employees affected by the transaction reported
+					 on this Schedule D (Form 941)</b><br/><br/>Totals from Forms W-2 (Copy A) as corrected by any Forms W-2c (Copy A)</div>
+					<div style="width:4mm;font-weight:bold;padding-top:2mm;text-align:center;padding-bottom:29mm;">=</div>
+					<div style="width:43mm;padding-top:2mm;padding-bottom:29mm;"><b>The difference</b></div>
+				</div>
 					<div style="width:187mm;float:none;clear:both;padding-bottom:0.9mm;">
 						<div style="width:44mm;float:left;padding-top:1mm;">
 							<div class="styLNLeftNumBox" style="padding-left:0mm;width:4mm;">10.</div>

@@ -19,7 +19,7 @@
   width:100%
 }
 .IRS1041ScheduleD_styTableCellNote { /* Replaces cells a, b, c for 2011 */
-	width:50.8mm;
+	width:75mm;
 	height:8mm;
 	color:black;
 	padding-top:.5mm;
@@ -28,10 +28,10 @@
 	border-style:solid;
 	border-color:black;
 	border-width: 0px 1px 1px 0px;
-	float:left; clear:none;
+	float:none; clear:none;
 }
 .IRS1041ScheduleD_styTableCellAmt {
-	width:32mm;
+	width:28mm;
 	height:8mm;
 	text-align:right;
 	padding-top:.5mm;
@@ -39,7 +39,7 @@
 	padding-right:2px;
 	border-style:solid; border-color:black;
 	border-width: 0px 1px 1px 0px;
-	float:left; clear:none;
+	float:none; clear:none;
 }
 
 .IRS1041ScheduleD_styTableCellDt {
@@ -51,12 +51,12 @@
 	padding-right:2px;
 	border-style:solid; border-color:black;
 	border-width: 0px 1px 1px 0px;
-	float:left; clear:none;
+	float:none; clear:none;
 }
 
 .IRS1041ScheduleD_styPartIIIHeader { 
 	width:32mm;
-	height:12.7mm;
+	height:11mm;
 	color:black;	
 	text-align:center;
 	padding-top:3mm;

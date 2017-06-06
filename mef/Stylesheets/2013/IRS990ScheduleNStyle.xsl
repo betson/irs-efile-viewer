@@ -137,7 +137,8 @@
     border-style: solid;
     border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     text-align: left;
-    float:left; clear:none;
+    <!--float:left; clear:none;-->
+    float:none; clear:none;
   }
   .sty990ScheduleNColA {
     height: 8mm;
@@ -148,7 +149,8 @@
     border-left-width:1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:0mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    <!--float:left; clear: none;-->
+    float:none; clear:none;
   }
   .sty990ScheduleNCol {
     height: 8mm;
@@ -159,7 +161,8 @@
     border-left-width:1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:6mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    <!--float:left; clear: none;-->
+    float:none; clear:none;
   }
   .sty990ScheduleNColiii {
     height: 8mm;
@@ -181,7 +184,8 @@
     border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:6mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    <!--float:left; clear: none;-->
+    float:none; clear:none;
   }
   .sty990ScheduleNColC {
     height: 8mm;
@@ -192,7 +196,8 @@
     border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:6mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    <!--float:left; clear: none;-->
+    float:none; clear:none;
   }
   .sty990ScheduleNDescLine {   /* Desc Line */
     font-size: 7pt;

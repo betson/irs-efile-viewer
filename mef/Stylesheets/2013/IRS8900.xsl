@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS8900"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -43,7 +45,7 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- Begin Form title and Form number section -->
 					<div class="styBB" style="width:187mm;clear:both;float:none;">
-						<div class="styFNBox" style="width:31mm;height:11mm;">
+						<div class="styFNBox" style="width:31mm;height:22.2mm;">
             Form <span class="styFormNumber">8900</span>
 							<br/>
 							<xsl:call-template name="SetFormLinkInline">
@@ -55,13 +57,13 @@
 								<xsl:with-param name="TargetNode" select="$FormData"/>
 							</xsl:call-template>
 							<br/>
-							<div style="padding-top:3.5mm;">
+							<div style="padding-top:3.5mm;border-right-width:1px;">
 								<!--<div class="styAgency">(Rev. December 2006) </div>-->
 								<div class="styAgency"> Department of the Treasury</div>
 								<div class="styAgency">Internal Revenue Service</div>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:11mm;">
+						<div class="styFTBox" style="width:125mm;">
 							<div class="styMainTitle" style="padding-top:2mm;">
 							  Qualified Railroad Track Maintenance Credit</div>
 							<div class="styFST" style="padding-top:7mm;font-weight:bold;">
@@ -75,12 +77,12 @@
 								</a>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:31mm;height:11mm;">
+						<div class="styTYBox" style="width:31mm;">
 							<div class="styOMB" style="height:5.5mm;padding-top;1mm;">OMB No. 1545-1983</div>
 							<div class="styTY" style="font-size:21.5pt;">
                 20<span class="styTYcolor">13</span>
 							</div>
-							<div class="styOMB" style="border-bottom-width:0px;text-align:left;padding-left:5mm;">
+							<div class="styOMB" style="border-bottom-width:0px;text-align:left;padding-left:5mm;height:auto;">
                   Attachment Sequence No. <span class="styBoldText" style="font-size:8pt;">144</span>
 							</div>
 						</div>
@@ -88,7 +90,7 @@
 					<!-- End form title and Form number Section -->
 					<!-- Begin Name and Identifying Number Section-->
 					<div class="styBB" style="width:187mm;clear:both;">
-						<div class="styFNBox" style="width:144mm;height:8mm;">
+						<div class="styFNBox" style="width:147.5mm;">
 			  Name(s) shown on return<br/>
 							<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
 							<xsl:choose>
@@ -109,7 +111,7 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
-						<div class="styGenericDiv" style="width:42mm;height:4mm;padding-left:1mm;">
+						<div class="styGenericDiv" style="width:38.5mm;padding-left:1mm;">
 							<span class="styBoldText">Identifying number</span>
 							<br/>
 							<br/>
@@ -134,7 +136,7 @@
 					<!-- BEGIN Line Items -->
 					<!-- Start line 1 -->
 					<div style="width:187mm;">
-						<div style="float:left;clear:none;">
+						<div style="float:left;clear:none;padding-top:4px;">
 							<div class="styLNLeftNumBoxSD">1</div>
 							<div class="styLNDesc" style="width:89mm;">
                   Qualified railroad track maintenance expenditures paid or incurred 
@@ -209,6 +211,8 @@
 						</div>
 						<div style="float:right;clear:none">
 							<div class="styLNRightNumBoxNBB" style="height:7.5mm;background-color:lightgrey;padding-bottom:0mm;"/>
+							<div class="styLNAmountBoxNBB" style="width:38mm;height:7.5mm;padding-bottom:0mm;"/>
+							<div class="styLNRightNumBoxNBB" style="height:7.5mm;background-color:lightgrey;padding-bottom:0mm;"/>
 							<div class="styLNAmountBoxNBB" style="height:7.5mm;padding-bottom:0mm;"/>
 						</div>
 					</div>
@@ -229,7 +233,7 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none">
-							<div class="styLNRightNumBox" style="padding-top: 0mm;padding-bottom:0mm;">3b</div>
+							<div class="styLNRightNumBox" style="padding-top: .25mm;padding-bottom:0mm;">3b</div>
 							<div class="styLNAmountBox" style="width:38mm;padding-top: 0mm;padding-bottom:0mm;font-size:9px;">
 								<xsl:call-template name="PopulateNegativeNumber">
                   <xsl:with-param name="TargetNode" select="$FormData/LessNumOfMileRlrdTrckIsAsgnQty"/>
@@ -286,7 +290,7 @@
 					<!--end line 3c extension-->
 					<!-- Start line 3d -->
 					<div style="width:187mm">
-						<div style="float:left;clear:none;">
+						<div style="float:left;clear:none;padding-top:.5mm">
 							<div class="styLNLeftNumBoxSD" style="padding-left:4mm;">d</div>
 							<div class="styLNDesc" style="width:139mm;">
 								<span style="float:left;">
@@ -297,7 +301,7 @@
 						</div>
 						<div style="float:right;clear:none">
 							<div class="styLNRightNumBox" style="height:6mm;padding-top:2mm;">3d</div>
-							<div class="styLNAmountBox" style="height:6mm;padding-top:2mm;font-size:6pt;">
+							<div class="styLNAmountBox" style="height:6mm;padding-top:2mm;">
 								<xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/TotalRlrdTrackMilesQty"/>
 								</xsl:call-template>
@@ -374,7 +378,7 @@
 					</div>
 					<!--end line 6-->
 					<!-- Start line 7 -->
-					<div style="width:187mm">
+					<div style="width:187mm;height:7mm;">
 						<div style="float:left;clear:none;">
 							<div class="styLNLeftNumBoxSD">7</div>
 							<div class="styLNDesc" style="width:139mm;">
@@ -384,11 +388,9 @@
 								<div class="styDotLn" style="float:right;padding-right:1mm;">....................</div>
 							</div>
 						</div>
-						<div style="float:right;clear:none">
-							<div class="styLNRightNumBoxNBB" style="height:3.5mm;padding-top: 0mm;padding-bottom:0mm;"/>
-							<div class="styLNAmountBoxNBB" style="height:3.5mm;padding-top: 0mm;padding-bottom:0mm;"/>
-							<div class="styLNRightNumBoxNBB" style="height:3mm;padding-top: 0mm;padding-bottom:.5mm;">7</div>
-							<div class="styLNAmountBoxNBB" style="height:3mm;padding-top: 0mm;padding-bottom:.5mm;">
+						<div style="float:right;clear:none;width:40mm">
+							<div class="styLNRightNumBoxNBB" style="height:7mm;padding-top: 2mm;padding-bottom:.5mm;">7</div>
+							<div class="styLNAmountBoxNBB" style="height:7mm;padding-top: 2mm;padding-bottom:.5mm;">
 								<xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/CurrentYearCreditAmt"/>
 								</xsl:call-template>
@@ -397,7 +399,7 @@
 					</div>
 					<!--end line 7-->
 					<!-- Start Page footer   -->
-					<div style="width:187mm; border-top:1 solid Black; font-size:8pt">
+					<div style="width:187mm; border-top:1px solid Black; font-size:8pt">
 						<div style="font-weight:bold; float:left; padding-top:0.5mm">
               For Paperwork Reduction Act Notice, see instructions.  
             </div>
@@ -406,7 +408,7 @@
                 Form <b>8900</b> (2013)    
             </div>
 					</div>
-					<p style="page-break-before:always"/>
+					<!--<p style="page-break-before:always"/>-->
 					<!-- end Page footer-->
 					<!-- Start Additional Data Page -->
 					<div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif">

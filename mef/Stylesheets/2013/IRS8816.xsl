@@ -11,8 +11,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS8816"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -33,6 +35,7 @@
         <!-- HINTS:  -->
           <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="AddOnStyle"/>
+            <!--<xsl:call-template name="IRS8816Style"/>-->
           </xsl:if>
         </style>
       </head>
@@ -77,7 +80,7 @@
           <!--  End title of Form  -->
           <!--  Name and Employer identification number  -->
           <div class="styTBB" style="width:187mm">
-            <div class="styNameBox" style="width:139mm;font-size:7pt;font-weight:normal;">
+            <div class="styNameBox" style="width:125mm;font-size:7pt;font-weight:normal;">
       Name<br/>
               <div>
                 <xsl:choose>
@@ -105,7 +108,7 @@
               </div>
             </div>
             <div class="styEINBox" style="padding-left:2mm;font-size:7pt;font-weight:bold;">
-              <span class="BoldText">Employer Identification Number</span>
+              <span class="BoldText" style="display:inline;">Employer Identification Number</span><br/>
               <div style="text-align:left; padding-top:2mm;font-weight:normal;">
                 <xsl:choose>
                   <xsl:when test="normalize-space($FormData/EIN) != ''">
@@ -300,15 +303,11 @@
                       <!-- Line 3  -->
                       <tr style="height: 8mm">
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
-                          <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">3</span>
-                          <span style="width: 1mm"/>
-                          <span style="font-size: 7pt;">Special loss discount <br/>
-                            <span style="width: 5mm"/>limitation. Subtract line 2 from <br/>
-                            <span style="float:left;">
-                            <span style="width: 5mm"/>
-                            line 1</span>
-<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
-</span>
+                          <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm;width:5mm;float:left;">3</span>
+                          <span style="font-size: 7pt;width:45mm;float:left;">
+							  Special loss discount limitation. <br />Subtract line 2 from line 1
+							  <span class="styDotLn" style="float:right;padding-left:2mm;">..</span>
+                          </span>
                         </td>
                         <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
                           <xsl:call-template name="PopulateAmount">
@@ -355,7 +354,7 @@
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
                           <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">4</span>
                           <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Balance at the beginning of<br/>
+                          <span style="font-size: 7pt;display:inline;">Balance at the beginning of<br/>
                           <span style="float:left;">
                             <span style="width: 5mm"/> the year</span>
 <span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
@@ -474,11 +473,12 @@
                       <!-- Line 7  -->
                       <tr style="height: 8mm">
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
-                          <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">7</span>
-                          <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Balance at the end of the year.<br/>
-                            <span style="width: 5mm"/>Add lines 4 and 5 and<br/>
-                            <span style="width: 5mm"/> subtract line 6 from the result</span>
+                          <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm;width:5mm;float:left;">7</span>
+                          <span style="font-size: 7pt;width:45mm;float:left;">Balance at the end of the year.<br/>
+                            Add lines 4 and 5 and subtract <br/>
+                            line 6 from the result
+                            <span class="styDotLn" style="float:right;padding-left:2mm;">...</span>
+                          </span>
                         </td>
                         <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
                           <xsl:call-template name="PopulateAmount">
@@ -525,7 +525,7 @@
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
                           <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">8</span>
                           <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Balance at the beginning of<br/>
+                          <span style="font-size: 7pt;display:inline;">Balance at the beginning of<br/>
                             <span style="float:left;">
                             <span style="width: 5mm"/>the year</span>
                             <span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
@@ -656,10 +656,11 @@
                       <!-- Line 10  -->
                       <tr style="height: 8mm">
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
-                          <span class="styBoldText" style="font-size: 7pt">10</span>
-                          <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Prior section 847 payments<br/>
-                            <span style="width: 4mm"/>transferred to current year.</span>
+                          <span class="styBoldText" style="font-size: 7pt;width:5mm;float:left;">10</span>
+                          <span style="font-size: 7pt;width:45mm;float:left;">
+                            Prior section 847 payments <br/>transferred to current year
+                            <span class="styDotLn" style="float:right;padding-left:2mm;">..</span>
+                          </span>
                         </td>
                         <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
                           <xsl:call-template name="PopulateAmount">
@@ -737,11 +738,10 @@
                       <!-- Line 12  -->
                       <tr style="height: 8mm">
                         <td class="styTableCell" style="text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 47mm">
-                          <span class="styBoldText" style="font-size: 7pt">12</span>
-                          <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Balance at the end of the year.<br/>
-                            <span style="width: 4mm"/>Add lines 8 through 10 and<br/>
-                            <span style="width: 4mm"/>subtract line 11 from the result</span>
+                          <span class="styBoldText" style="font-size: 7pt;width:5mm;float:left;">12</span>
+                          <span style="font-size: 7pt;width:45mm;float:left;">
+                            Balance at the end of the year.<br/>Add lines 8 through 10 and<br/>subtract line 11 from the result
+                          </span>
                         </td>
                         <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
                           <xsl:call-template name="PopulateAmount">
@@ -782,7 +782,7 @@
           </xsl:if>
           <!-- Display if there are no elements, or if print is set to separated and there are more than 5 elements -->
           <xsl:if test="(count($FormData/SpclLossDscntAndEstTxPymntsGrp)=0) or (($Print = $Separated) and (count($FormData/SpclLossDscntAndEstTxPymntsGrp) &gt; 5))">
-            <div class="styTableContainer" style="overflow:hidden; height:  132.5mm; border-bottom-width: 0px" id="GDctn">
+            <div class="styTableContainer" style="overflow:hidden; height:  auto; border-bottom-width: 0px" id="GDctn">
               <!--print logic-->
               <xsl:call-template name="SetInitialState"/>
               <!--end-->
@@ -871,11 +871,9 @@
                   <!-- Line 3  -->
                   <tr style="height: 8mm">
                     <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
-                      <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">3</span>
+                      <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm;float:left;">3</span>
                       <span style="width: 1mm"/>
-                      <span style="font-size: 7pt">Special loss discount <br/>
-                        <span style="width: 5mm"/>limitation. Subtract line 2 from <br/>
-                        <span style="width: 5mm"/>line 1</span>
+                      <span style="font-size: 7pt">Special loss discount <br/>limitation. Subtract line 2 from <br/>line 1</span>
                     </td>
                     <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
                       <span class="styTableCellPad"/>
@@ -907,7 +905,7 @@
                     <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
                       <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">4</span>
                       <span style="width: 1mm"/>
-                      <span style="font-size: 7pt">Balance at the beginning of<br/>
+                      <span style="font-size: 7pt;display:inline;">Balance at the beginning of<br/>
                         <span style="width: 5mm"/> the year</span>
                       <b>
                         <span class="styNBSP"/>.
@@ -998,11 +996,9 @@
                   <!-- Line 7  -->
                   <tr style="height: 8mm">
                     <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
-                      <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">7</span>
+                      <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm;float:left;">7</span>
                       <span style="width: 1mm"/>
-                      <span style="font-size: 7pt">Balance at the end of the year.<br/>
-                        <span style="width: 5mm"/>Add lines 4 and 5 and<br/>
-                        <span style="width: 5mm"/> subtract line 6 from the result</span>
+                      <span style="font-size: 7pt">Balance at the end of the year. <br/>Add lines 4 and 5 and<br/> subtract line 6 from the result</span>
                     </td>
                     <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
                       <span class="styTableCellPad"/>
@@ -1034,7 +1030,7 @@
                     <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
                       <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">8</span>
                       <span style="width: 1mm"/>
-                      <span style="font-size: 7pt">Balance at the beginning of<br/>
+                      <span style="font-size: 7pt;display:inline;">Balance at the beginning of<br/>
                         <span style="width: 5mm"/>the year</span>
                       <b>
                         <span class="styNBSP"/>.
@@ -1102,10 +1098,9 @@
                   <!-- Line 10  -->
                   <tr style="height: 8mm">
                     <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
-                      <span class="styBoldText" style="font-size: 7pt">10</span>
+                      <span class="styBoldText" style="font-size: 7pt;float:left;">10</span>
                       <span style="width: 1mm"/>
-                      <span style="font-size: 7pt">Prior section 847 payments<br/>
-                        <span style="width: 4mm"/>transferred to current year.</span>
+                      <span style="font-size: 7pt">Prior section 847 payments <br/>transferred to current year.</span>
                     </td>
                     <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
                       <span class="styTableCellPad"/>
@@ -1152,11 +1147,9 @@
                   <!-- Line 12  -->
                   <tr style="height: 8mm">
                     <td class="styTableCell" style="text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width: 47mm">
-                      <span class="styBoldText" style="font-size: 7pt">12</span>
+                      <span class="styBoldText" style="font-size: 7pt;float:left;">12</span>
                       <span style="width: 1mm"/>
-                      <span style="font-size: 7pt">Balance at the end of the year.<br/>
-                        <span style="width: 4mm"/>Add lines 8 through 10 and<br/>
-                        <span style="width: 4mm"/>subtract line 11 from the result</span>
+                      <span style="font-size: 7pt">Balance at the end of the year.<br/>Add lines 8 through 10 and <br/>subtract line 11 from the result</span>
                     </td>
                     <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
                       <span class="styTableCellPad"/>
@@ -1367,11 +1360,9 @@
                       <!-- Line 3  -->
                       <tr class="styDepTblRow1" style="height: 8mm">
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
-                          <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">3</span>
+                          <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm;float:left;">3</span>
                           <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Special loss discount <br/>
-                            <span style="width: 5mm"/>limitation. Subtract line 2 from <br/>
-                            <span style="width: 5mm"/>line 1</span>
+                          <span style="font-size: 7pt">Special loss discount <br/>limitation. Subtract line 2 from <br/>line 1</span>
                         </td>
                         <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;font-size:6pt;">
                           <xsl:call-template name="PopulateAmount">
@@ -1417,7 +1408,7 @@
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
                           <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">4</span>
                           <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Balance at the beginning of<br/>
+                          <span style="font-size: 7pt;display:inline;">Balance at the beginning of<br/>
                             <span style="width: 5mm"/> the year</span>
                           <b>
                             <span class="styNBSP"/>.
@@ -1537,10 +1528,8 @@
                       <!-- Line 7  -->
                       <tr class="styDepTblRow1" style="height: 8mm">
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px">
-                          <div class="styGenericdiv" style="padding-left:2mm;font-weight:bold;">7</div>
-                          <div class="styGenericdiv" style="padding-left:1mm;">Balance at the end of the year.
-Add lines 4 and 5 and
-subtract line 6 from the result</div>
+                          <div class="styGenericDiv" style="padding-left:2mm;font-weight:bold;">7</div>
+                          <div class="styGenericDiv" style="padding-left:1mm;">Balance at the end of the year. <br/>Add lines 4 and 5 and <br/>subtract line 6 from the result</div>
                           <!--span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">7</span>
                           <span style="width: 1mm"/>
                           <span style="font-size: 7pt">Balance at the end of the year.<br/>
@@ -1591,7 +1580,7 @@ subtract line 6 from the result</div>
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
                           <span class="styBoldText" style="font-size: 7pt; padding-left: 2mm">8</span>
                           <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Balance at the beginning of<br/>
+                          <span style="font-size: 7pt;display:inline;">Balance at the beginning of<br/>
                             <span style="width: 5mm"/>the year</span>
                           <b>
                             <span class="styNBSP"/>.
@@ -1725,10 +1714,9 @@ subtract line 6 from the result</div>
                       <!-- Line 10  -->
                       <tr class="styDepTblRow2" style="height: 8mm">
                         <td class="styTableCell" style="width: 47mm; text-align: left; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:0px">
-                          <span class="styBoldText" style="font-size: 7pt">10</span>
+                          <span class="styBoldText" style="font-size: 7pt;float:left;">10</span>
                           <span style="width: 1mm"/>
-                          <span style="font-size: 7pt">Prior section 847 payments<br/>
-                            <span style="width: 4mm"/>transferred to current year.</span>
+                          <span style="font-size: 7pt">Prior section 847 payments <br/>transferred to current year.</span>
                         </td>
                         <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;font-size:6pt;">
                           <xsl:call-template name="PopulateAmount">
@@ -1810,8 +1798,8 @@ subtract line 6 from the result</div>
                           <span style="font-size: 7pt">Balance at the end of the year.<br/>
                             <span style="width: 4mm"/>Add lines 8 through 10 and<br/>
                             <span style="width: 4mm"/>subtract line 11 from the result</span-->
-                          <div class="styGenericdiv" style="padding-left:0mm;font-weight:bold;">12</div>
-                          <div class="styGenericdiv" style="padding-left:1mm;">Balance at the end of the year.  Add lines 8 through 10 and subtract line 11 from the result</div>
+                          <div class="styGenericDiv" style="padding-left:0mm;font-weight:bold;">12</div>
+                          <div class="styGenericDiv" style="padding-left:1mm;">Balance at the end of the year. <br/>Add lines 8 through 10 and <br/>subtract line 11 from the result</div>
                         </td>
                         <td class="styTableCellSmall" style="width: 28mm; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px;font-size:6pt;">
                           <xsl:call-template name="PopulateAmount">

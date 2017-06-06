@@ -56,74 +56,36 @@
       </label>
     </div>
   </xsl:template>
-
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////// (Template:              CreateBox) -->
+  <!-- /////////////////////////////////////////// (Template: CreateBox) -->
   <xsl:template name="CreateBox">
     <xsl:param name="TargetNode"/>
     <xsl:param name="PopulateAsText"/>
-    <xsl:param name="AmountBoxStyle"/>
-    <xsl:param name="NumberBoxStyle"/>
     <xsl:param name="Number"/>
-    <xsl:param name="Width">26mm</xsl:param>
-    <xsl:param name="Height">5mm</xsl:param>
     <div class="styLNAmountBox">
-    <xsl:if test="$Number!=12">
-      <xsl:attribute name="style">
-        width:<xsl:value-of select="$Width"/>;
-        height:<xsl:value-of select="$Height"/>;
-        border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:6pt;padding-top:3px;font-size:6pt;
-        <xsl:if test="$AmountBoxStyle"><xsl:value-of select="$AmountBoxStyle"/></xsl:if></xsl:attribute>
-        </xsl:if>
-        <xsl:if test="$Number=12">
-        <xsl:attribute name="style">
-        width:<xsl:value-of select="$Width"/>;
-        height:<xsl:value-of select="$Height"/>;
-        border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:6pt;padding-top:3px;font-size:6pt;
-        <xsl:if test="$AmountBoxStyle"><xsl:value-of select="$AmountBoxStyle"/></xsl:if></xsl:attribute>
-        </xsl:if>
-      <xsl:if test="$TargetNode">
-        <xsl:if test="$TargetNode/@referenceDocumentId">
-          <xsl:call-template name="SetFormLinkInline">
-            <xsl:with-param name="TargetNode" select="$TargetNode"/>
-          </xsl:call-template>
-        </xsl:if>
-        <xsl:if test="$Number=12">
-			<span>(</span>
-			<xsl:call-template name="PopulateAmount">
-			  <xsl:with-param name="TargetNode" select="$TargetNode"/>
-			</xsl:call-template>
-			<span>)</span>
-        </xsl:if>
-        <xsl:if test="$Number!=12">
-			<xsl:call-template name="PopulateAmount">
-			  <xsl:with-param name="TargetNode" select="$TargetNode"/>
-			</xsl:call-template>
-        </xsl:if>
-      </xsl:if>
-    </div>
-    <div class="styLNRightNumBox">
-      <xsl:attribute name="style">
-        float:right;
-        padding:3px 0px 0px 0px;
-        border-right-width:0px;
-        <xsl:choose>
-			<xsl:when test="$Number=12">
-				height:<xsl:value-of select="$Height"/>;
-			</xsl:when>
-			<xsl:otherwise>
-				height:<xsl:value-of select="$Height"/>;
-			</xsl:otherwise>
-        </xsl:choose>
-        <xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
-      <xsl:if test="$Number">
-        <xsl:value-of select="$Number"/>
-      </xsl:if>
+        <xsl:if test="$TargetNode">
+			<xsl:if test="$TargetNode/@referenceDocumentId">
+				<xsl:call-template name="SetFormLinkInline">
+					<xsl:with-param name="TargetNode" select="$TargetNode"/>
+				</xsl:call-template>
+			</xsl:if>
+			<xsl:if test="$Number=12">
+				<span>(</span>
+					<xsl:call-template name="PopulateAmount">
+					  <xsl:with-param name="TargetNode" select="$TargetNode"/>
+					</xsl:call-template>
+				<span>)</span>
+			</xsl:if>
+			<xsl:if test="$Number!=12">
+				<xsl:call-template name="PopulateAmount">
+				  <xsl:with-param name="TargetNode" select="$TargetNode"/>
+				</xsl:call-template>
+			</xsl:if>
+		</xsl:if>
     </div>
   </xsl:template>
-
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////// (Template:              CreateBox) -->
+  <!-- /////////////////////////////////////////// (Template: CreateBox) -->
   <xsl:template name="CreateBoxLine7">
     <xsl:param name="TargetNode"/>
     <xsl:param name="PopulateAsText"/>
@@ -162,11 +124,8 @@
       </xsl:if>
     </div>
   </xsl:template>
-
-
-
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
-  <!-- /////////////////////////////////////////// (Template:              CreateBoxText) -->
+  <!-- /////////////////////////////////////////// (Template: CreateBoxText) -->
   <xsl:template name="CreateBoxText">
     <xsl:param name="TargetNode"/>
     <xsl:param name="PopulateAsText"/>
@@ -176,36 +135,41 @@
     <xsl:param name="Width">26mm</xsl:param>
     <xsl:param name="Height">5mm</xsl:param>
     <div class="styLNAmountBox">
-      <xsl:attribute name="style">
-        width:<xsl:value-of select="$Width"/>;
-        height:<xsl:value-of select="$Height"/>;
-        border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:6pt;padding-top:3px;font-size:6pt;
-        <xsl:if test="$AmountBoxStyle"><xsl:value-of select="$AmountBoxStyle"/></xsl:if></xsl:attribute>
-      <xsl:if test="$TargetNode">
-        <xsl:if test="$TargetNode/@referenceDocumentId">
-          <xsl:call-template name="SetFormLinkInline">
-            <xsl:with-param name="TargetNode" select="$TargetNode"/>
-          </xsl:call-template>
-        </xsl:if>
-        <xsl:call-template name="PopulateText">
-          <xsl:with-param name="TargetNode" select="$TargetNode"/>
-        </xsl:call-template>
-      </xsl:if>
+		<xsl:attribute name="style">
+			width:<xsl:value-of select="$Width"/>;
+			height:<xsl:value-of select="$Height"/>;
+			border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:6pt;padding-top:3px;font-size:6pt;
+			<xsl:if test="$AmountBoxStyle">
+				<xsl:value-of select="$AmountBoxStyle"/>
+			</xsl:if>
+		</xsl:attribute>
+		<xsl:if test="$TargetNode">
+			<xsl:if test="$TargetNode/@referenceDocumentId">
+				<xsl:call-template name="SetFormLinkInline">
+					<xsl:with-param name="TargetNode" select="$TargetNode"/>
+				</xsl:call-template>
+			</xsl:if>
+			<xsl:call-template name="PopulateText">
+			  <xsl:with-param name="TargetNode" select="$TargetNode"/>
+			</xsl:call-template>
+		</xsl:if>
     </div>
     <div class="styLNRightNumBox">
-      <xsl:attribute name="style">
-        float:right;
-        padding:3px 0px 0px 0px;
-        border-right-width:0px;
-        height:<xsl:value-of select="$Height"/>;
-        <xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
-      <xsl:if test="$Number">
-        <xsl:value-of select="$Number"/>
-      </xsl:if>
+		<xsl:attribute name="style">
+			float:right;
+			padding:3px 0px 0px 0px;
+			border-right-width:0px;
+			height:<xsl:value-of select="$Height"/>;
+			<xsl:if test="$NumberBoxStyle">
+				<xsl:value-of select="$NumberBoxStyle"/>
+			</xsl:if>
+		</xsl:attribute>
+		
+		<xsl:if test="$Number">
+			<xsl:value-of select="$Number"/>
+		</xsl:if>
     </div>
   </xsl:template>
-
-
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- /////////////////////////////////////////// (Template:  CreateDataRowPartI) -->
   <xsl:template name="CreateDataRowPartI">
@@ -331,31 +295,28 @@
       </xsl:if>
     </div>
   </xsl:template>
-  
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- /////////////////////////////////////////// (Template:  CreatePartITableTemplate)     -->
   <xsl:template name="CreatePartITableTemplate">
-
     <xsl:param name="ColA"/>
     <xsl:param name="ColALetter"/>
     <xsl:param name="ColB"/>
     <xsl:param name="ColBLetter"/>
     <xsl:param name="ColC"/>
     <xsl:param name="ColCLetter"/>
-    
   <tr>
-    <td class="styLNLeftNumBox"/>
-    <td class="styGenericDiv" style="width:70mm;"/>
-    <td class="styLNAmountBox" style="width:75mm;border-left-width:1px;font-weight:bold;text-align:center;" colspan="3">
+    <td class="styLNLeftNumBox" style="width: 5mm; height: 4mm;"></td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;"></td>
+    <td class="styLNAmountBox" style="width: 75mm; border-left-width: 1px; font-weight:bold; text-align: center;" colspan="3">
       Foreign Country or U.S. Possession
     </td>
-    <td class="styLNAmountBoxNBB" style="text-align:center;" colspan="2">
-      <span class="styBoldText">Total</span>
-    </td>
+    <td class="styLNAmountBoxNBB" style="width: 34mm; text-align: center; font-weight: bold;" colspan="2">
+		Total					
+	</td>
   </tr>
   <tr>
-    <td class="styGenericDiv" style="width:8mm;font-weight:bold;">g</td>
-    <td class="styGenericDiv" style="width:70mm;font-weight:bold;padding-bottom:0mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 2mm; font-weight: bold;">g</td>
+    <td class="styGenericDiv" style="width:73mm;font-weight:bold;padding-bottom:0mm;">
       Enter the name of the foreign country or U.S.
     </td>
     <td class="styLNAmountBox" style="width:25mm;border-left-width:1px;font-weight:bold;text-align:center;">
@@ -371,11 +332,9 @@
       (Add cols. A, B, and C.)
     </td>
   </tr>
-  
-  
   <tr>
-    <td class="styLNLeftNumBox"/>
-    <td class="styGenericDiv" style="width:70mm;font-weight:bold;padding-top:0mm;padding-bottom:2mm;">
+    <td class="styLNLeftNumBox" style="width: 5mm; height: 4mm; font-weight: bold;"></td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm; padding-top: 0mm; font-weight: bold;">
       possession
       <xsl:choose>
         <xsl:when test="$Form1116Data/ForeignRegulatedInvestmtCompCd">
@@ -399,11 +358,11 @@
           <span style="width:2mm;"/>
         </xsl:otherwise>
       </xsl:choose>
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold;">..........</span>
+      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold;">.........</span>
       <span style="width:2mm;"/>
       <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
     </td>
-    <td class="styLNAmountBoxSmall" style="font-size:7pt;text-align:center;border-left-width:1px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; text-align: center; font-size: 7pt; border-left-width: 1px;">
       <xsl:choose>
           <xsl:when test="$ColA/ForeignTaxCrSplittingEventCd">
             <xsl:call-template name="PopulateText">
@@ -417,7 +376,7 @@
           </xsl:otherwise>
         </xsl:choose>
     </td>
-    <td class="styLNAmountBoxSmall" style="font-size:7pt;text-align:center;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; text-align: center; font-size: 7pt;">
       <xsl:choose>
           <xsl:when test="$ColB/ForeignTaxCrSplittingEventCd">
             <xsl:call-template name="PopulateText">
@@ -431,7 +390,7 @@
           </xsl:otherwise>
         </xsl:choose>
     </td>
-    <td class="styLNAmountBoxSmall" style="font-size:7pt;text-align:center;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; text-align: center; font-size: 7pt;">
       <xsl:choose>
           <xsl:when test="$ColC/ForeignTaxCrSplittingEventCd">
             <xsl:call-template name="PopulateText">
@@ -445,33 +404,28 @@
           </xsl:otherwise>
         </xsl:choose>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>  
-
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:2mm;">1a</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 10mm; padding-left: 1mm; font-weight: bold;">1a</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 10mm;">
       Gross income from sources within country shown
       above and of the type checked above (see
-      instructions): <span style="width:48mm;border-bottom:1px dashed black;"> </span>
+      instructions): <span style="width: 73mm; height: 3mm; border-bottom-color: black; border-bottom-width: 1px; border-bottom-style: dashed;"> </span>
     </td>
-    <td class="styLNAmountBoxSmallNBB" style="border-left-width:1px;background-color:lightgrey">
-      <span style="width:4mm;"/>
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 10mm; border-left-width: 1px; background-color: lightgrey;">
     </td>
-    <td class="styLNAmountBoxSmallNBB" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 10mm; background-color: lightgrey;">
     </td>
-    <td class="styLNAmountBoxSmallNBB" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 10mm; background-color: lightgrey;">
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>    
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 10mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 10mm;"></td>    
   </tr>
-  
   <tr>
-    <td class="styLNLeftNumBox" valign="top" style="padding-left:2mm;"/>
-    <td class="styGenericDiv" style="width:70mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom: 1px dashed black; border-left-width: 0px; border-right-width: 0px;">
+    <td class="styLNLeftNumBox" style="width: 5mm; height: 4mm; padding-left: 1mm;"/>
+    <td class="styGenericDiv" style="border-width: 0px 0px 1px; border-style: solid solid dashed; border-color: black; width: 73mm; height: 4mm;">
       <xsl:call-template name="PopulateText">
        <xsl:with-param name="TargetNode" select="$Form1116Data/IncomeFromForeignSourceTypeCd"/>
       </xsl:call-template>      
@@ -479,17 +433,17 @@
        <xsl:with-param name="TargetNode" select="$Form1116Data/IncomeFromForeignSourceTxt"/>
       </xsl:call-template>      
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/ForeignGrossIncomeAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/ForeignGrossIncomeAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/ForeignGrossIncomeAmt"/>
       </xsl:call-template>
@@ -501,10 +455,11 @@
       </xsl:call-template>      
     </td>    
   </tr>
-  
-  <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;border-bottom:1 solid black;">b</td>
-    <td class="styGenericDiv" style="width:70mm;border-bottom:1 solid black;">
+ <tr>
+    <td class="styGenericDiv" style="width: 5mm; height: 14mm; padding-left: 2.5mm; font-weight: bold; border-bottom-width: 1px; border-bottom-style: solid;">
+		b
+	</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 14mm; border-bottom-width: 1px; border-bottom-style: solid;">
       Check if line 1a is compensation for personal
       services as an employee, your total
       compensation from all sources is $250,000 or
@@ -513,7 +468,7 @@
          <xsl:call-template name="SetFormLinkInline">
             <xsl:with-param name="TargetNode" select="$Form1116Data/AltBasisCompensationSourceInd"/>
           </xsl:call-template>
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold;">........</span>
+      <span style="padding-left: 1mm; letter-spacing: 2.5mm; font-weight: bold;">..</span>
       <span style="width:2mm;"/>
       <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
       <span style="width:2mm;"/>
@@ -530,52 +485,43 @@
         </xsl:call-template>
       </label>      
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNAmountBoxSmall" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNAmountBoxSmall" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNRightNumBox" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>    
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 14mm; border-left-width: 1px; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 14mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 14mm; background-color: lightgrey;"></td>
+    <td class="styLNRightNumBox" style="width: 8mm; height: 14mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 14mm;"></td>    
   </tr>
-  
-  <tr>
-    <td class="styGenericDiv" style="width:78mm;" colspan="2">
-      <span class="styBoldText">
-        Deductions and losses
-        <span class="styItalicText">
-          (Caution:&#160;
-        </span>
-      </span> 
-      <span class="styItalicText">
-        See instructions):
-      </span>       
-    </td>
-    <td class="styLNAmountBoxSmallNBB" style="border-left-width:1px;background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNAmountBoxSmallNBB" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNAmountBoxSmallNBB" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>    
+  <tr>					
+    <td class="styGenericDiv" style="width: 78mm; height: 4mm; border-top-width: 1px;" colspan="2">						
+		<span class="styBoldText">
+			Deductions and losses        
+				<span class="styItalicText">          
+					(Caution:        
+				</span>
+		</span>						
+		<span class="styItalicText">        
+			See instructions):      
+		</span>					
+	</td>					
+	<td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; background-color: lightgrey;"></td>					
+	<td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; background-color: lightgrey;"></td>					
+	<td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; background-color: lightgrey;"></td>					
+	<td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>					
+	<td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>				
   </tr>
-
-
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:2mm;">2</td>
-    <td class="styGenericDiv" style="width:70mm;">
-      Expenses <span class="styBoldText">definitely related</span> to the income on line 1a (attach statement)
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">.........</span>
+    <td class="styGenericDiv" style="width: 5mm; height: 7mm; padding-left: 1mm; font-weight: bold;">
+		2
+	</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 7mm;">
+		Expenses 
+		<span class="styBoldText">
+			definitely related
+		</span> 
+		to the income on line 1a (attach statement)
+      <span style="padding-left:1mm;letter-spacing:3.3mm;font-weight:bold; ">...........</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 7mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="SetFormLinkInline">
        <xsl:with-param name="TargetNode" select="$ColA/ForeignIncRelatedExpensesAmt"/>
       </xsl:call-template>
@@ -583,7 +529,7 @@
        <xsl:with-param name="TargetNode" select="$ColA/ForeignIncRelatedExpensesAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 7mm; padding-right: 0px;">
       <xsl:call-template name="SetFormLinkInline">
        <xsl:with-param name="TargetNode" select="$ColB/ForeignIncRelatedExpensesAmt"/>
       </xsl:call-template>
@@ -591,7 +537,7 @@
         <xsl:with-param name="TargetNode" select="$ColB/ForeignIncRelatedExpensesAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 7mm; padding-right: 0px;">
       <xsl:call-template name="SetFormLinkInline">
        <xsl:with-param name="TargetNode" select="$ColC/ForeignIncRelatedExpensesAmt"/>
       </xsl:call-template>
@@ -599,339 +545,338 @@
        <xsl:with-param name="TargetNode" select="$ColC/ForeignIncRelatedExpensesAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 7mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 7mm;"></td>
   </tr>
       
   <tr>
-    <td class="styGenericDiv" valign="top" style="padding-left:2mm;font-weight:bold">3</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 1mm; font-weight: bold;">3</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm; font-size: 6.5pt;">
       Pro rata share of other deductions
-      <span class="styBoldText">not definitely related:</span>
+      <span class="styBoldText" style="font-size: font-size: 6.5pt;">
+		  not definitely related:
+	  </span>
     </td>
-    <td class="styLNAmountBoxSmallNBB" style="border-left-width:1px;background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNAmountBoxSmallNBB" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNAmountBoxSmallNBB" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
-  </tr>
-        
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
+  </tr>   
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">a</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 7mm; padding-left: 2.5mm; font-weight: bold;">a</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 7mm;">
       Certain itemized deductions or standard deduction (see instructions)
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">..........</span>
+      <span style="padding-left:1mm;letter-spacing:3.3mm;font-weight:bold; ">............</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 7mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/ItemizedOrStandardDeductionAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-left:0px; padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 7mm; padding-right: 0px; padding-left: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/ItemizedOrStandardDeductionAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 7mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/ItemizedOrStandardDeductionAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 7mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 7mm;"></td>
   </tr>
-
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">b</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" valign="top" style="width: 5mm; height: 4mm; padding-left: 2.5mm; font-weight: bold;">b</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;">
       Other deductions (attach statement)
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">....</span>
+      <span style="padding-left:1mm;letter-spacing:3.3mm;font-weight:bold; ">.....</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="SetFormLinkInline">
        <xsl:with-param name="TargetNode" select="$ColA/OtherDeductionsNotRelatedAmt"/>
-      </xsl:call-template>    
+      </xsl:call-template>   
+      <span style="float:left; font-size: 5.75pt;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/OtherDeductionsNotRelatedAmt"/>
       </xsl:call-template>
+      </span>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="SetFormLinkInline">
        <xsl:with-param name="TargetNode" select="$ColB/OtherDeductionsNotRelatedAmt"/>
       </xsl:call-template>
+      <span style="float:left; font-size: 5.75pt;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/OtherDeductionsNotRelatedAmt"/>
       </xsl:call-template>
+      </span>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="SetFormLinkInline">
        <xsl:with-param name="TargetNode" select="$ColC/OtherDeductionsNotRelatedAmt"/>
       </xsl:call-template>
+      <span style="float:left; font-size: 5.75pt;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/OtherDeductionsNotRelatedAmt"/>
       </xsl:call-template>
+      </span>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>
-
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">c</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 2.5mm; font-weight: bold;">c</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;">
       Add lines 3a and 3b
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">..........</span>
+      <span style="padding-left:1mm;letter-spacing:3.3mm;font-weight:bold; ">..........</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/TotalDeductionAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/TotalDeductionAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/TotalDeductionAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>
 
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">d</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" valign="top" style="width: 5mm; height: 5mm; padding-top:1mm; padding-left: 2.5mm; font-weight: bold;">d</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 5mm;">
       Gross foreign source income (see instructions)
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">.</span>
+      <span style="padding-left:1mm;letter-spacing:3.3mm;font-weight:bold; ">..</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px; padding-right:0px; padding-left:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 5mm; padding-top: 2mm; padding-right: 0px; padding-left: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/GrossForeignSourceIncomeAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 5mm; padding-top: 2mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/GrossForeignSourceIncomeAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 5mm; padding-top: 2mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/GrossForeignSourceIncomeAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 5mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 5mm;"></td>
   </tr>
 
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">e</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 2.5mm; font-weight: bold;">e</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;">
       Gross income from all sources (see instructions)
+      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">.</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/GrossIncomeAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/GrossIncomeAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/GrossIncomeAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>
 
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">f</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 2.5mm; font-weight: bold;">f</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;">
       Divide line 3d by line 3e (see instructions)
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">..</span>
+      <span style="padding-left:1mm;letter-spacing:3.3mm;font-weight:bold; ">...</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px; color: darkblue;">
       <xsl:call-template name="PopulateText">
        <xsl:with-param name="TargetNode" select="$ColA/ForeignIncomePct"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; color: darkblue;">
       <xsl:call-template name="PopulateText">
         <xsl:with-param name="TargetNode" select="$ColB/ForeignIncomePct"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; color: darkblue;">
       <xsl:call-template name="PopulateText">
        <xsl:with-param name="TargetNode" select="$ColC/ForeignIncomePct"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>
 
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">g</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 2.5mm; font-weight: bold;">g</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;">
       Multiply line 3c by line 3f
       <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">........</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/ProRataDeductionsNotRelatedAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/ProRataDeductionsNotRelatedAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/ProRataDeductionsNotRelatedAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>
       
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:2mm;">4</td>
-    <td class="styGenericDiv" style="width:70mm;ont-size:6.5pt;font-family:arial">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 1mm; font-weight: bold;">4</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;">
       Pro rata share of interest expense (see instructions):
     </td>
-    <td class="styLNAmountBoxSmallNBB" style="border-left-width:1px;background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNAmountBoxSmallNBB" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNAmountBoxSmallNBB" style="background-color:lightgrey">
-      <span style="width:4mm;"/>
-    </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; border-left-width: 1px; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 25mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"><span style="width:4px"/></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>
         
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">a</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 8mm; padding-left: 2.5mm; font-weight: bold; padding-top: 2mm;">a</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 8mm; padding-top: 2mm;">
       Home mortgage interest (use the Worksheet for Home Mortgage Interest in the instructions)
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">..</span>
+      <span style="padding-left:1mm;letter-spacing:3.3mm;font-weight:bold; ">.....</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 8mm; padding-right: 0px; border-left-width: 1px; padding-top: 2mm;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/ApportionedHomeMortgIntExpAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 8mm; padding-right: 0px; padding-top: 2mm;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/ApportionedHomeMortgIntExpAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 8mm; padding-right: 0px; padding-top: 2mm;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/ApportionedHomeMortgIntExpAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 8mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 8mm;"></td>
   </tr>
-
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:3.5mm;">b</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 2.5mm; font-weight: bold;">b</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;">
       Other interest expense
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">.........</span>
+      <span style="padding-left:2.5mm;letter-spacing:3.3mm;font-weight:bold; ">.........</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/ApportionedOtherInterestExpAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/ApportionedOtherInterestExpAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/ApportionedOtherInterestExpAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>
-
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:2mm;">5</td>
-    <td class="styGenericDiv" style="width:70mm;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 1mm; font-weight: bold;">5</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm;">
       Losses from foreign sources
-      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">.......</span>
+      <span style="padding-left:1mm;letter-spacing:3.3mm;font-weight:bold; ">........</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/ForeignSourceLossAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/ForeignSourceLossAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/ForeignSourceLossAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:4px"/></td>
-    <td class="styLNAmountBoxSmallNBB"><span style="width:4px"/></td>
+    <td class="styLNRightNumBoxNBB" style="width: 8mm; height: 4mm; background-color: lightgrey;"></td>
+    <td class="styLNAmountBoxSmallNBB" style="width: 26mm; height: 4mm;"></td>
   </tr>
-
   <tr>
-    <td class="styGenericDiv" valign="top" style="font-weight:bold;padding-left:2mm;border-bottom:1 solid black;">6</td>
-    <td class="styGenericDiv" style="width:70mm;border-bottom:1 solid black;">
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 1mm; font-weight: bold; border-bottom-width: 1px; border-bottom-style: solid;">6</td>
+    <td class="styGenericDiv" style="width: 73mm; height: 4mm; border-bottom-width: 1px; border-bottom-style: solid;">
       Add lines 2, 3g, 4a, 4b, and 5
       <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">.......</span>
     </td>
-    <td class="styLNAmountBoxSmall" style="border-left-width:1px;padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px; border-left-width: 1px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColA/ForeignIncNetDeductAndLossAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$ColB/ForeignIncNetDeductAndLossAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNAmountBoxSmall" style="padding-right:0px;">
+    <td class="styLNAmountBoxSmall" style="width: 25mm; height: 4mm; padding-right: 0px;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$ColC/ForeignIncNetDeductAndLossAmt"/>
       </xsl:call-template>
     </td>
-    <td class="styLNRightNumBox">6</td>
-    <td class="styLNAmountBoxSmall">
+    <td class="styLNRightNumBox" style="width: 8mm; height: 4mm;">6</td>
+    <td class="styLNAmountBoxSmall" style="width: 26mm; height: 4mm;">
       <xsl:call-template name="PopulateAmount">
        <xsl:with-param name="TargetNode" select="$Form1116Data/TotalDeductionOrLossAmt"/>
       </xsl:call-template>      
     </td>    
   </tr>
-
-
-
-
-
-
+<tr>
+    <td class="styGenericDiv" style="width: 5mm; height: 4mm; padding-left: 1mm; font-weight: bold; border-top-width: 1px; border-top-style: solid;">7</td>
+    <td class="styGenericDiv" style="width: 148mm; height: 4mm; border-top-width: 1px; border-top-style: solid;">
+      Subtract line 6 from line 1a. Enter the result here and on line 15, page 2
+      <span style="padding-left:2mm;letter-spacing:3.3mm;font-weight:bold; ">............</span>
+      <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
+    </td>
+    <td class="styLNRightNumBox" style="width: 8mm; height: 4mm; padding-top: 0px; border-top-width: 1px;">7</td>
+    <td class="styLNAmountBoxSmall" style="width: 26mm; height: 4mm; border-top-width: 1px;">
+      <xsl:call-template name="PopulateAmount">
+       <xsl:with-param name="TargetNode" select="$Form1116Data/TotalDeductionOrLossAmt"/>
+      </xsl:call-template>      
+    </td>    
+  </tr>
   </xsl:template>
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <!-- /////////////////////////////////////////// (Template:  CreatePartIITableHeaders)     -->
@@ -944,12 +889,12 @@
       </xsl:if>
       <!-- Country -->
       <th class="styIRS1116TableCell" scope="col" rowspan="4">
-        <xsl:attribute name="style">width:4%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+        <xsl:attribute name="style">width:4%;border-top-width: 1px; border-top-style: solid;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
         <img src="{$ImagePath}/1116_Country.gif" alt="CountryBullet"/>
       </th>
       <!-- Credit is claimed -->
       <th class="styIRS1116TableCell" scope="col" rowspan="3">
-        <xsl:attribute name="style">width:12%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+        <xsl:attribute name="style">width:12%; border-top-width: 1px; border-top-style: solid;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
         <b>Credit is claimed<br/>for taxes<br/>(you must check one)</b><br/>
         <div style="text-align:left;width:100%;height:auto;padding-left:7px;">
           <b>(h)</b><span style="width:5px;"/>
@@ -984,7 +929,7 @@
       </th>
       <!-- Foreign taxes -->
       <th class="styIRS1116TableCell" scope="col" rowspan="1" colspan="9">
-        <xsl:attribute name="style">width:84%;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
+        <xsl:attribute name="style">width:84%;border-top-width: 1px; border-top-style: solid;<xsl:value-of select="$CommonStyle"/></xsl:attribute>
         <b>Foreign taxes paid or accrued</b>    
       </th>
     </tr>
@@ -1334,8 +1279,10 @@
   </xsl:template>
   <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form1116Data)"/>
@@ -1363,63 +1310,82 @@
       <body class="styBodyClass">
         <form name="IRS1116">
           <!--  Begin Header section 1 -->
-          <xsl:call-template name="DocumentHeader"/>
-          <div class="styBB" style="width:187mm;border-bottom-width:2px;">
-            <div class="styFNBox" style="width:31mm;height:22.1mm;border-right-width:2px;padding-top:.5mm;">
-              <div style="padding-top:1mm;">
-                Form<span class="styFormNumber">  1116</span>
+             <div style="clear: left; float: left;">
+			   <xsl:call-template name="DocumentHeader"/>
+		     </div>
+          <div class="styBB" style="width: 187mm; height: 22.1mm; border-bottom-width: 2px;">
+            <div class="styFNBox" style="width: 30mm; height: 22.1mm; padding-top: 0.5mm; border-right-width: 2px;">
+              <div style="width: 7mm; height: 9mm; padding-top: 5mm;">
+                  Form
               </div>
+               <div class="styFormNumber" style="width: 21mm; height: 9mm; padding-top: 1mm;">       
+                  1116
+               </div>
               <!--General Dependency Push Pin-->
-              <xsl:call-template name="SetFormLinkInline">
+              <div>
+               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form1116Data"/>
               </xsl:call-template>
+              </div>
+              <div>
               <xsl:call-template name="LinkToLeftoverDataTableInline">
                 <xsl:with-param name="Desc">Alternative Minimum Tax Code</xsl:with-param>
                 <xsl:with-param name="TargetNode" select="$Form1116Data/AlternativeMinimumTaxCd"/>
               </xsl:call-template>
-              <br/>
-              <span class="styAgency">Department of the Treasury</span>
-              <br/>
-              <span class="styAgency">Internal Revenue Service (99)</span>
+              </div>
+              <div class="styAgency" style="width: 30mm; height: 4mm; padding-top: 1mm;"> 
+				  Department of the Treasury
+			  </div>
+              <div class="styAgency" style="width: 30mm; height: 3mm;">
+				  Internal Revenue Service (99)
+			  </div>
             </div>
-            <div class="styFTBox" style="width:125mm;">
+            <div class="styFTBox" style="width: 127mm; height: 22.1mm; padding-top: 0.5mm;">
               <!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-              <div class="styMainTitle" style="height:8mm;">
-                Foreign Tax Credit<br/>
-                <span class="styNormalText" style="font-size:8pt;">
-                  <span class="styBoldText">(Individual, Estate, or Trust)</span>
-                  <br/>
-                </span>
+              <div class="styMainTitle" style="width: 127mm; height: 6mm;">
+                Foreign Tax Credit
               </div>
-              <div class="styFST" style="height:5mm;font-size:7pt;margin-left:0mm;margin-top:1px;text-align:center;">
-                <span style="text-align:center;font-weight:bold;">
-                  <div style="width:100%;height:5mm;padding-left:0px;">
-                    <div style="width:100mm;height:5mm;">
+              <div class="styBoldText" style="width: 127mm; height: 5mm; font-size: 8pt;">
+				  (Individual, Estate, or Trust)
+			  </div>
+              <div class="styFST" style="width: 127mm; height: 3.5mm;">
+                 <img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="SmallBullet"/> 
+                      Attach to Form 1040, 1040NR, 1041, or 990-T.
+               </div>
+               <div class="styFST" style="width: 127mm; height: 3mm;">
                       <img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="SmallBullet"/> 
-                      Attach to Form 1040, 1040NR, 1041, or 990-T.<br/>
-                      <img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="SmallBullet"/> 
-                      Information about Form 1116 and its separate instructions is at<br/>
-                      <i>www.irs.gov/form1116</i>.
-                    </div>
-                  </div>
-                </span>
+                      Information about Form 1116 and its separate instructions is at
+               </div>
+               <div style="width: 127mm; height: 3.5mm; font-style: oblique; font-weight: bold;">
+					www.irs.gov/form1116.
+				</div>
               </div>
+            <div class="styTYBox" style="width: 30mm; height: 22.1mm; padding-top: 0.5mm; border-left-width: 2px;">
+                <div class="styOMB" style="width: 30mm; height: 4mm; font-size: 7pt;">
+              	   OMB No. 1545-0121  
+              	</div>   
+                <div class="styTY" style="width: 7.5mm; height: 9mm;">
+              	   20   
+                </div>   
+                <div class="styTY styTYColor" style="width: 7.5mm; height: 9mm;">
+                   14   
+                </div>   
+				<div style="width: 30mm; height: 3mm; text-align: left; padding-top: 0.5mm; padding-left: 5mm; font-size: 7pt;">
+				   Attachment   
+                </div>    
+                <div style="width: 30mm; height: 5mm; text-align: left; padding-left: 5mm; font-size: 7pt;">
+                   Sequence No.<span class="styBoldText" style="width: 5mm; font-size: 9pt;">19</span>    
+                </div>
             </div>
-            <div class="styTYBox" style="width:30mm;border-left-width:2px;height:22.1mm;">
-              <div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0121</div>
-              <div class="styTY">20<span class="styTYColor">14</span>
-              </div>
-              <div style="margin-left:3mm;text-align:left;font-size:7pt;">
-                Attachment<br/>Sequence No. 
-                <span class="styBoldText" style="font-size:9pt;">19</span>
-              </div>
-            </div>
-          </div>
+        </div>
           <!--  End Header section 1 -->
           <!-- Begin Names and Identifying number section -->
-          <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:108mm;height:8mm;font-weight:normal;font-size:7pt;">
-              Name<br/>
+          <div class="styBB" style="width: 187mm; height: 7mm;">
+            <div class="styNameBox" style="width: 108mm; height: 7mm;">
+             <div class="styNameBox" style="width: 108mm; height: 3.5mm; font-size: 7pt; font-weight: normal;">
+                Name 
+              </div>
+              <div class="styNameBox">
               <xsl:call-template name="PopulateReturnHeaderFiler">
                 <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
               </xsl:call-template>
@@ -1429,29 +1395,30 @@
 					  <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
 				  </xsl:call-template>
               </xsl:if>
+              </div>
             </div>
-            <div style="width:79mm;height:4mm;padding-left:2mm;font-size:7pt;" class="styEINBox">
-              Identifying number <span class="styNormalText">as shown on page 1 of your tax return</span>
-              <br/>
-              <span style="font-weight:normal;text-align:center;width:100%">
+            <div class="styEINBox" style="width: 79mm; height: 7mm; font-size: 7pt; font-weight: normal;" >
+              <div class="styEINBox" style="width: 29mm; height: 3.5mm; padding-left: 1mm; font-size: 7pt;">
+                   Identifying number
+               </div>
+              <div class="styNormalText" style="width: 49mm; height: 3.5mm;">       
+                 as shown on page 1 of your tax return        
+               </div>
+               <div style="width: 79mm; height: 3mm; padding-left: 1mm;">
                 <xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
-              </span>
+              </div>
             </div>
           </div>
           <!-- End Names and Identifying number section -->
           <!-- Begin Top Section -->
-          <div class="styBB" style="width:187mm;">
-            <!-- Description -->
-            <div class="styIRS1116LineItem">
-              <span style="height:100%;padding-bottom:7px;">
-                Use a separate Form 1116 for each category of income listed below. See <b>Categories of Income</b> in the instructions. Check only one box on<br/>
-                each Form 1116. Report all amounts in U.S. dollars except where specified in Part II below.<br/>
-              </span>
-            </div>
+			<div class="styIRS1116LineItem" style="border-style: solid; border-color: rgb(0, 0, 0); width: 187mm; height: 8mm; padding-top: 2px; clear: left; border-bottom-width: 1px; float: left;">
+				  Use a separate Form 1116 for each category of income listed below. See <b>Categories of Income</b> in the instructions.  
+				  Check only one box on each Form 1116. Report all amounts in U.S. dollars except where specified in Part II below.				
+			</div>
             <!-- 1st line of checkboxes -->
-            <div class="styIRS1116LineItem">
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 5mm; clear: left; float: left;">
               <!-- (a) Passive category income checkbox -->
-              <div class="styIRS1116LNDesc" style="padding:0px 0px 0px 0px;height:100%;width:33%">
+              <div class="styIRS1116LNDesc" style="padding: 0px; width: 60mm; height: 5mm;">
                 <xsl:call-template name="CreateTopSectionCheckbox">
                   <xsl:with-param name="SpaceBefore">2px</xsl:with-param>
                   <xsl:with-param name="Number">a</xsl:with-param>
@@ -1461,7 +1428,7 @@
                 </xsl:call-template>
               </div>
               <!-- (c) Section 901(j) income checkbox -->
-              <div class="styIRS1116LNDesc" style="padding:0px 0px 0px 0px;height:100%;width:33%">
+              <div class="styIRS1116LNDesc" style="padding: 0px; width: 60mm; height: 5mm;">
                 <xsl:call-template name="CreateTopSectionCheckbox">
                   <xsl:with-param name="Number">c</xsl:with-param>
                   <xsl:with-param name="Desc">Section 901(j) income</xsl:with-param>
@@ -1470,7 +1437,7 @@
                 </xsl:call-template>
               </div>
               <!-- (e) Lump-sum distributions checkbox -->
-              <div class="styIRS1116LNDesc" style="padding:0px 0px 0px 0px;height:100%;width:33.9%">
+              <div class="styIRS1116LNDesc" style="padding: 0px; width: 67mm; height: 5mm;">
                 <xsl:call-template name="CreateTopSectionCheckbox">
                   <xsl:with-param name="Number">e</xsl:with-param>
                   <xsl:with-param name="Desc">Lump-sum distributions</xsl:with-param>
@@ -1480,9 +1447,9 @@
               </div>
             </div>
             <!-- 2nd line of checkboxes -->
-            <div class="styIRS1116LineItem">
+            <div class="styIRS1116LineItem" style="border-style: solid; border-color: rgb(0, 0, 0); width: 187mm; height: 6mm; clear: left; border-bottom-width: 1px; float: left;">
               <!-- (b) General category income checkbox -->
-              <div class="styIRS1116LNDesc" style="padding:0px 0px 0px 0px;height:100%;width:33%">
+              <div class="styIRS1116LNDesc" style="padding: 0px; width: 60mm; height: 5mm;">
                 <xsl:call-template name="CreateTopSectionCheckbox">
                   <xsl:with-param name="SpaceBefore">2px</xsl:with-param>
                   <xsl:with-param name="Number">b</xsl:with-param>
@@ -1492,7 +1459,7 @@
                 </xsl:call-template>
               </div>
               <!-- (d) Certain income re-sourced by treaty checkbox -->
-              <div class="styIRS1116LNDesc" style="padding:0px 0px 0px 0px;height:100%;width:66.9%">
+              <div class="styIRS1116LNDesc" style="padding: 0px; width: 127mm; height: 5mm;">
                 <xsl:call-template name="CreateTopSectionCheckbox">
                   <xsl:with-param name="Number">d</xsl:with-param>
                   <xsl:with-param name="Desc">Certain income re-sourced by treaty</xsl:with-param>
@@ -1502,44 +1469,47 @@
               </div>
             </div>
             <br/>
-          </div>
-          <div class="styBB" style="width:187mm;">
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="padding-left:2px;text-align:left;width:auto;">f</div>
-              <div class="styIRS1116LNDesc" style="width:25%;height:100%;">
-                Resident of (name of country)
-                <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
-              </div>
-              <div class="styIRS1116LNDesc" style="width:72%;height:100%;">
+          <div class="styBB" style="width: 187mm; height: 5mm; padding-top: 0.5mm;">
+          	<div class="styIRS1116LineItem" style="width: 187mm; height: 5mm;">
+          	  <div class="styIRS1116LNLeftNumBox" style="width: 3mm; text-align: left; padding-right: 0mm; padding-left: 0mm;">
+          	  f
+          	  </div>					
+          	  <div class="styIRS1116LNDesc" style="width: 42mm; height: 5mm; padding-left: 0mm;">
+          	    Resident of (name of country)                
+          	    <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
+          	  </div>
+              <div class="styIRS1116LNDesc" style="width: 140mm; height: 5mm;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ResidenceForeignCountryCd"/>
                 </xsl:call-template>
               </div>
             </div>
           </div>
-          <div class="styBB" style="width:187mm;">
-            <span style="padding-bottom:3px;height:100%">
-              <b>Note:</b>
-              <span class="styItalicText"> If you paid taxes to only one foreign country or U.S. possession, use column A in Part I and line A in Part II. If you paid taxes to<br/>
-                <b>more than one</b> foreign country or U.S. possession, use a separate column and line for each country or possession.</span>
-            </span>
+          <div class="styBB" style="width: 187mm; height: 7.5mm; padding-top: 0.5mm; border-bottom-width: 0px;">
+             <div class="styBB" style="width: 9mm; height: 7mm; font-weight: bold;">
+                  Note:   
+             </div>    
+             <div class="styBB" style="width: 178mm; height: 7mm; clear: none; font-style: oblique;">
+                  If you paid taxes If you paid taxes to only one foreign country or U.S. possession, use column A in Part I and line A in Part II. If you paid taxes to <b>more than one</b> 
+                  foreign country or U.S. possession, use a separate column and line for each country or possession.
+             </div>
           </div>
           <!-- End Top Section -->
           <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
           <!--  Begin PART I -->
           <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
           <!-- Header -->
-          <div style="width:187mm;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
-            <!-- Content -->
-            <div class="styPartName" style="width:15mm;">Part I</div>
-            <div class="styPartDesc" style="padding-left:3mm;">
+          <!-- Content -->
+          <div style="border-width: 0px 0px 1px; border-style: solid; border-color: black; width: 187mm; height: 4mm; clear: left; float: left;">
+				<div class="styPartName" style="width: 15mm; height: 3.6mm;">Part I</div>
+				<div class="styPartDesc" style="width: 172mm; height: 3.6mm; padding-left: 3mm;">
               Taxable Income or Loss From Sources Outside the United States (for Category Checked Above)
             </div>
-          </div>
+		   </div>
           <!-- Body -->
           <!-- Table starts here -->
           <!-- Retrevie all ForeignTaxCreditSource elements -->
-          <table class="styTable" cellspacing="0" style="width:187mm;font-size:7pt;">
+          <table class="styTable" cellspacing="0" style="width:187mm; height:auto; font-size:7pt; clear: left; float: left;">
             <xsl:variable name="AllForeign" select="$Form1116Data/*[starts-with(name(), 'ForeignTaxCreditSource')]"/>
             <xsl:choose>
               <xsl:when test="count($Form1116Data/ForeignTaxCreditSource) &gt; 0">
@@ -1573,52 +1543,23 @@
               </xsl:otherwise>
             </xsl:choose>
           </table>
-          <div class="styBB" style="width:187mm;height:4.5mm;">
-            <!-- (7) ////////////////////////////////////////////////////////////////////// -->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;height:4.5mm;width:7mm;padding-left:2mm;">7</div>
-              <div class="styIRS1116LNDesc" style="width:auto;padding-left:2mm;height:4.5mm;">
-                Subtract line 6 from line 1a. Enter the result here and on line 15, page 2
-                <!--Dotted Line-->
-                <span class="styBoldText">
-                  <span style="width:5px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.       
-                  <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>                 
-                </span>
-              </div>
-              <xsl:call-template name="CreateBoxLine7">
-                <xsl:with-param name="Number">7</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;width:25.2mm;padding-right:.2mm;height:4.5mm;margin-left:-.02mm;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;width:7.6mm;height:4.5mm;</xsl:with-param>
-                <xsl:with-param name="TargetNode" select="$Form1116Data/NetForeignTaxableIncomeLossAmt"/>
-                <xsl:with-param name="Width">18mm;</xsl:with-param>
-              </xsl:call-template>
-            </div>
-          </div>
+          
           <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
           <!--  Begin PART II -->
           <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
           <!-- Header -->
-          <div style="width:187mm;" class="styBB">
+          <div class="styBB" style="width: 187mm; height: 4mm; border-top-width: 1px;" >
             <!-- Content -->
-            <div class="styPartName" style="width:15mm;">Part II</div>
+            <div class="styPartName" style="width: 15mm; height: 3.5mm;">Part II</div>
             <div class="styPartDesc" style="padding-left:3mm;">
               Foreign Taxes Paid or Accrued <span class="styNormalText">(see instructions)</span>
             </div>
           </div>
           <!-- Body -->
-          <div style="width:187mm;" class="styTBB">
+          <div class="styTBB" style="width: 187mm; height: auto; border-bottom-width: 0px;" >
             <!-- (Table) //////////////////////////////////////////////////////////////// -->
-            <div class="styIRS1116LineItem">
-              <div class="styGenericDiv" style="width:3.2mm;float:right;">
+            <div class="styIRS1116LineItem" style="width: 187mm; height: auto;">
+              <div class="styGenericDiv" style="width: 187mm; height: 4mm; text-align: right;">
                 <!-- button display logic -->
                 <xsl:call-template name="SetDynamicTableToggleButton">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxCreditSource"/>
@@ -1628,7 +1569,7 @@
                 </xsl:call-template>
                 <!-- end button display logic -->
               </div>
-              <div class="styTableContainer" id="ForeignTaxCreditSourceDiv">
+              <div class="styTableContainer" id="ForeignTaxCreditSourceDiv" style="width: 187mm; height: auto; border-top-width: 1px; border-bottom-width: 1px;">
                 <xsl:call-template name="SetInitialState"/>
                 <table class="styTable" cellspacing="0">
                   <thead class="styTableThead">
@@ -1678,52 +1619,50 @@
               </xsl:call-template>
               <!-- End Set Initial Height of Above Table -->
             </div>
-            <!-- (8) ////////////////////////////////////////////////////////////////////// -->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;">8</div>
-              <div class="styIRS1116LNDesc" style="width:auto;padding-left:0px;height:100%;">
-                <b>Add lines A through C, column (s). Enter the total here and on line 9, page 2</b>
-                <!--Dotted Line-->
-                <span class="styBoldText">
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>.
-                  <span style="width:11px"/>
-                  <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
-                </span>
-              </div>
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Number">8</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">width:25.3mm;border-bottom-width:0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">width:7.6mm;border-bottom-width:0px;</xsl:with-param>
-                <xsl:with-param name="TargetNode" select="$Form1116Data/TotalForeignTaxesPaidOrAccrAmt"/>
-              </xsl:call-template>
+	    </div>
+	    <!-- (8) ////////////////////////////////////////////////////////////////////// -->
+            <div class="styIRS1116LineItem" style="border-color: #000000; width: 187mm; height: 5mm; border-bottom-width: 2px; border-top-width: 0px; float: left; clear: left;">
+				<div class="styGenericDiv" style="padding: 0.5mm 1.5mm; width: 5mm; height: 5mm; font-weight: bold;">8</div>
+                <div class="styIRS1116LNDesc" style="width: 148mm; height: 5mm;">
+                	<b>Add lines A through C, column (s). Enter the total here and on line 9, page 2</b>
+                	<span class="styBoldText">
+                		<span style="width: 11px;"></span>.
+                	    <span style="width: 11px;"></span>.                  
+                	    <span style="width: 11px;"></span>.                  
+                	    <span style="width: 11px;"></span>.                  
+                	    <span style="width: 11px;"></span>.                 
+                	    <span style="width: 11px;"></span>.                  
+                	    <span style="width: 11px;"></span>.                  
+                	    <span style="width: 11px;"></span>
+                        <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
+                    </span>
+                </div>
+                <div class="styLNRightNumBox" style="width: 8mm; height: 5mm; padding-top: 1mm;">8</div>
+				<div class="styLNAmountBox" style="width: 26mm; height: 5mm;">
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form1116Data/TotalForeignTaxesPaidOrAccrAmt"/>
+				  </xsl:call-template>
+				</div>
             </div>
-          </div>
           <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
           <!-- Page Break and Footer-->
-          <div class="pageEnd" style="width:187mm;padding-top:1mm;">
-            <div style="float:left;">
-              <span class="styBoldText">
-                For Paperwork Reduction Act Notice, see instructions.
-              </span>
-            </div>
-            <div style="float:right;">
-              <span style="width:50px;"/>  
-                Form 
-              <span class="styBoldText" style="font-size:8pt;">1116</span> (2014)
-            </div>
-            <div style="float:right;text-align:center;width:26mm;font-size:7pt;">
-              Cat. No. 11440U
-            </div>
-          </div>
+         <div style="width: 187mm; height: 5mm; clear: left; float: left;">
+			<div style="width: 98mm; height: 5mm;">
+			 	<span class="styBoldText"> For Paperwork Reduction Act Notice, see instructions.</span>
+			</div>
+			<div style="width: 40mm; height: 5mm; font-size: 7pt;">
+			    Cat. No. 11440U
+			</div>
+			<div style="width: 47mm; height: 5mm; text-align: right;">
+				<span style="width: 50px;"></span>
+				  Form               
+				<span class="styBoldText" style="font-size: 8pt;">1116</span> (2014)            
+			</div>
+		</div>
           <!-- END Page Break and Footer-->
           <!-- BEGIN Page Header -->
-          <div class="styTBB" style="width:187mm;padding-top:.5mm;">
+          <div class="styTBB" style="width:187mm;padding-top: 10mm;">
+          <p style="width: 187mm; height: auto; page-break-before: always;"></p>
             <div style="float:left;">
               Form 1116 (2014)
             </div>
@@ -1736,71 +1675,53 @@
           <!--  Begin PART III -->
           <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
           <!-- Header -->
-          <div style="width:187mm;" class="styBB">
-            <!-- Content -->
-            <div class="styPartName" style="width:15mm;">Part III</div>
-            <div class="styPartDesc" style="padding-left:3mm;">
+          <div class="styBB" style="width: 187mm; height: 4mm;">
+				<div class="styPartName" style="width: 15mm; height: 4mm;">Part III</div>
+				<div class="styPartDesc" style="width: 172mm; height: 4mm; padding-left: 3mm;">
               Figuring the Credit
             </div>
-          </div>
+			</div>
           <!-- Body -->
-          <div style="width:187mm;" class="styBB">
+        <div class="styBB" style="width: 187mm; height: auto;" >
             <!-- (9) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;">9</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Enter the amount from line 8. These are your total foreign taxes paid<br/>
-                  or accrued for the category of income checked above Part I
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+                <div class="styIRS1116LNLeftNumBox" style="width: 5mm; height: 8mm; text-align: left; padding-top: 1.5mm; padding-left: 1mm;">
+					9
+				</div>
+				<div class="styIRS1116LNDesc" style="width: 114mm; height: 8mm; padding-top: 1.5mm;">
+					Enter the amount from line 8. These are your total foreign taxes paid or accrued<br/>
+					 for the category of income checked above Part I
+					<!--Dotted Line-->
+					<span class="styBoldText">
+						<span style="width:11px"/>.
+						<span style="width:11px"/>.
+						<span style="width:11px"/>.
+						<span style="width:11px"/>.
+					    <span style="width:11px"/>.
+						<span style="width:11px"/>.
+						<span style="width:11px"/>.
+						<span style="width:11px"/>.
+						<span style="width:11px"/>.
+						<span style="width:11px"/>.
+					</span>
                 </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">3.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">3.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/TotalForeignTaxesPaidOrAccrAmt"/>
-                  <xsl:with-param name="Number">9</xsl:with-param>
-                </xsl:call-template>
-              </div>
+                <div class="styLNRightNumBox" style="padding: 4.5mm 0mm 0mm; width: 8mm; height: 8mm; border-right-width: 0px;">
+					9
+				</div>
+				<div class="styLNAmountBox" style="padding: 4.5mm 0.5mm 0mm 0mm; width: 26mm; height: 8mm; text-align: right; font-size: 6pt; border-right-width: 0px;">
+					<xsl:call-template name="PopulateText">
+					  <xsl:with-param name="TargetNode" select="$Form1116Data/TotalForeignTaxesPaidOrAccrAmt"/>
+					</xsl:call-template>
+				</div>
+				<div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 8mm; background-color: lightgrey;">
+				</div>
+				<div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 8mm; text-align: right; font-size: 6pt;">
+				</div>
             </div>
             <!-- (10) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-              </xsl:call-template>
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">10</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+              <div class="styIRS1116LNLeftNumBox" style="width: 5mm; height: 8mm; text-align: left; padding-top: 4mm; padding-left: 1mm;">10</div>
+              <div class="styIRS1116LNDesc" style="width: 114mm; height: 8mm; padding-top: 4mm;">
                   Carryback or carryover (attach detailed computation)
                   <!--Dotted Line-->
                   <span class="styBoldText">
@@ -1812,37 +1733,25 @@
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
+                    <span style="width:11px"/>.
                   </span>
-                </div>
               </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
+              <div class="styLNRightNumBox" style="padding: 4.5mm 0mm 0mm; height: 8mm; border-right-width: 0px;">10</div>
+              <div class="styLNAmountBox" style="padding: 4.5mm 0mm 0mm 0mm; width: 26mm; height: 8mm; text-align: right; font-size: 6pt; border-right-width: 0px;">
+                <xsl:call-template name="SetFormLinkInline">
+				   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxCrCarrybackOrOverAmt"/>
+				</xsl:call-template>
+                <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxCrCarrybackOrOverAmt"/>
-                  <xsl:with-param name="Number">10</xsl:with-param>
                 </xsl:call-template>
               </div>
-            </div>
+              <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 8mm; background-color: lightgrey;"></div>
+              <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 8mm; text-align: right; font-size: 6pt;"></div>
+              </div>
             <!-- (11) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-              </xsl:call-template>
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">11</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+              <div class="styIRS1116LNLeftNumBox" style="width: 5mm; height: 8mm; text-align: left; padding-top: 4mm; padding-left: 1mm;">11</div>
+                <div class="styIRS1116LNDesc" style="width: 114mm; height: 8mm; padding-top: 4mm;">
                   Add lines 9 and 10
                   <!--Dotted Line-->
                   <span class="styBoldText">
@@ -1866,35 +1775,19 @@
                     <span style="width:11px"/>.
                   </span>
                 </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
+              <div class="styLNRightNumBox" style="padding: 4.5mm 0mm 0mm; height: 8mm; border-right-width: 0px;">11</div>
+              <div class="styLNAmountBox" style="padding: 4.5mm 0.5mm 0mm 0mm; width: 26mm; height: 8mm; text-align: right; font-size: 6pt; border-right-width: 0px;">
+                <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignGrossTaxPaidOrAccrAmt"/>
-                  <xsl:with-param name="Number">11</xsl:with-param>
                 </xsl:call-template>
               </div>
+              <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 8mm; background-color: lightgrey;"></div>
+              <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 8mm; text-align: right; font-size: 6pt;"></div>
             </div>
             <!-- (12) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-              </xsl:call-template>
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;padding-top:4mm">12</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;padding-top:4mm">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+              <div class="styIRS1116LNLeftNumBox" style="width: 5mm; height: 8mm; text-align: left; padding-top: 4mm; padding-left: 1mm;">12</div>
+              <div class="styIRS1116LNDesc" style="width: 114mm; height: 8mm; padding-top: 4mm;">
                   Reduction in foreign taxes (see instructions)
                    <!--Dotted Line-->
                   <span class="styBoldText">
@@ -1907,75 +1800,52 @@
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
                     <span style="width:11px"/>.
-                    <span style="width:8px"/>.
+                    <span style="width:11px"/>.
+                    <span style="width:11px"/>.
                   </span>
                 </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;height:100%</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;height:100%</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
+              <div class="styLNRightNumBox" style="padding: 4.5mm 0mm 0mm; height: 8mm; border-right-width: 0px;">12</div>
+              <div class="styLNAmountBox" style="padding: 4.5mm 0mm 0mm 0mm; width: 26mm; height: 8mm; text-align: right; font-size: 5.15pt; border-right-width: 0px;">
+                <xsl:call-template name="SetFormLinkInline">
+				   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxReductionAmt"/>
+				</xsl:call-template>
+				<span>(</span>
+                <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxReductionAmt"/>
-                  <xsl:with-param name="AmountBoxStyle">height:100%;padding-top:4mm</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">height:100%;padding-top:6mm</xsl:with-param>
-                  <xsl:with-param name="Number">12</xsl:with-param>
                 </xsl:call-template>
+                <span>)</span>
               </div>
+              <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 8mm; background-color: lightgrey;"></div>
+              <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 8mm; text-align: right; font-size: 6pt;"></div>
             </div>
             <!-- (13) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-              </xsl:call-template>
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">13</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Taxes reclassified under high tax kickout (see instructions)
-                   <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:8px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncHighTaxKickOutAdjAmt"/>
-                  <xsl:with-param name="Number">13</xsl:with-param>
-                </xsl:call-template>
-              </div>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="width: 5mm; height: 8mm; text-align: left; padding-top: 4mm; padding-left: 1mm;">13</div>
+            	<div class="styIRS1116LNDesc" style="width: 114mm; height: 8mm; padding-top: 4mm;">
+            		Taxes reclassified under high tax kickout (see instructions)                                     
+            		<span class="styBoldText">								
+            		    <span style="width: 8px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.   
+            		    <span style="width: 11px;"></span>.               
+            		</span>
+            	</div>						
+            	<div class="styLNRightNumBox" style="padding: 4.5mm 0mm 0mm; height: 8mm; border-right-width: 0px;">13</div>
+            	<div class="styLNAmountBox" style="padding: 4.5mm 0.5mm 0mm 0mm; width: 26mm; height: 8mm; text-align: right; font-size: 6pt; border-right-width: 0px;">
+					<xsl:call-template name="PopulateText">
+					  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncHighTaxKickOutAdjAmt"/>
+					</xsl:call-template>
+				</div>
+				<div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 8mm; background-color: lightgrey;"></div>
+				<div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 8mm; text-align: right; font-size: 6pt;"></div>
             </div>
             <!-- (14) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <xsl:call-template name="CreateBox">
-                <xsl:with-param name="Height">4mm</xsl:with-param>
-                <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">14</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="width: 5mm; height: 8mm; text-align: left; padding-top: 4.5mm; padding-left: 1mm;">14</div>
+                <div class="styIRS1116LNDesc" style="width: 148mm; height: 8mm; padding-top: 4.5mm;">
                   Combine lines 11, 12, and 13. This is the total amount of foreign taxes available for credit
                   <xsl:if test="$Form1116Data/ForeignTaxAvailableForCrRedAmt/@foreignIncHighTaxKickOutAdjAmt">
                     <span style="width:5px;"/>
@@ -1995,7 +1865,8 @@
                   <span class="styBoldText">
                     <span style="width:6px"/>.
                     <span style="width:11px"/>.
-                    <span style="width:11px"/>.                    
+                    <span style="width:11px"/>.  
+                    <span style="width:11px"/>.                   
                     <xsl:if test="not($Form1116Data/ForeignTaxAvailableForCrRedAmt/@foreignIncHighTaxKickOutAdjCd)">
                       <span style="width:11px"/>.
                     </xsl:if>
@@ -2004,684 +1875,562 @@
                     </xsl:if>
                   </span>
                 </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                
-                <xsl:call-template name="CreateBox">
-					<xsl:with-param name="Number">14</xsl:with-param>
+                <div class="styLNRightNumBox" style="padding: 4.5mm 0mm 0mm; height: 8mm; border-right-width: 0px;">14</div>
+                <div class="styLNAmountBox" style="width: 26mm; height: 8mm; text-align: right; padding-top: 4.5mm; padding-right: 0.5mm; font-size: 6pt; border-right-width: 0px;">
+                <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxAvailableForCrRedAmt"/>
-                  
                 </xsl:call-template>
               </div>
-            </div>
+           </div>
             <!-- (15) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">15</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Enter the amount from line 7. This is your taxable income or (loss) from<br/>
-                  sources outside the United States (before adjustments) for the category<br/>
-                  of income checked above Part I (see instructions)
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:7px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">6.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">6.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 10.5mm;">
+				<div class="styIRS1116LNLeftNumBox" style="padding: 1mm; width: 5mm; height: 12mm; text-align: left;">15</div>
+				<div class="styIRS1116LNDesc" style="padding: 1mm 3mm; width: 114mm; height: 12mm;">
+					<span style="vertical-align: middle; display: inline-block;">
+						Enter the amount from line 7. This is your taxable income or (loss) from sources outside the United States (before adjustments) for 
+						the category of income checked above Part I (see instructions)
+						<span class="styBoldText">	
+							<span style="width: 7px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.		    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.	            
+						</span>         
+					</span>
+			    </div>
+			    <div class="styLNRightNumBox" style="padding: 7mm 0mm 0mm; height: 10.5mm; border-right-width: 0px;">15</div>
+			    <div class="styLNAmountBox" style="padding: 7mm 0.5mm 0mm 0mm; width: 26mm; height: 10.5mm; text-align: right; font-size: 6pt; border-right-width: 0px;">
+                <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxableIncomeOrLossAmt"/>
-                  <xsl:with-param name="Number">15</xsl:with-param>
                 </xsl:call-template>
               </div>
-            </div>
+              <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 10.5mm; background-color: lightgrey;"></div>
+			  <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 10.5mm; text-align: right; font-size: 6pt;"></div>
+			</div>
             <!-- (16) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">16</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                    Adjustments to line 15 (see instructions)
-                  </div>
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;float:right;padding-right:6px;">
-                    <!--Dotted Line-->
-                    <span class="styBoldText">
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncomeNetAdjustmentAmt"/>
-                  <xsl:with-param name="Number">16</xsl:with-param>
-                </xsl:call-template>
-              </div>
-            </div>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 5mm;">
+				<div class="styIRS1116LNLeftNumBox" style="padding: 1.5mm 0.5mm 0.5mm 1mm; width: 5mm; height: 5mm; text-align: left;">16</div>
+					<div class="styIRS1116LNDesc" style="padding: 1.25mm 3mm 0.5mm; width: 114mm; height: 5mm;">
+						<span style="vertical-align: middle; display: inline-block;">
+							Adjustments to line 15 (see instructions)
+							<span class="styBoldText">
+								  <span style="width: 7px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+								  <span style="width: 11px;"></span>.
+							</span>
+						</span>
+					</div>
+					<div class="styLNRightNumBox" style="padding: 1.5mm 0mm 0mm; width: 8mm; height: 5mm; border-right-width: 0px;">16</div>
+					<div class="styLNAmountBox" style="padding: 1.5mm 0.5mm 0mm 0mm; width: 26mm; height: 5mm; text-align: right; font-size: 6pt; border-right-width: 0px;">
+						<xsl:call-template name="SetFormLinkInline">
+						   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncomeNetAdjustmentAmt"/>
+						</xsl:call-template>
+						<span style="float: left;">				
+						<xsl:call-template name="PopulateText">
+						  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncomeNetAdjustmentAmt"/>
+						</xsl:call-template>
+						</span>
+				    </div>
+				    <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 5mm; background-color: lightgrey;"></div>
+					<div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 5mm; text-align: right; font-size: 6pt;"></div>
+				</div>
             <!-- (17) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">17</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Combine the amounts on lines 15 and 16. This is your net foreign<br/>
-                  source taxable income. (If the result is zero or less, you have no<br/>
-                  foreign tax credit for the category of income you checked above<br/>
-                  Part I. Skip lines 18 through 22. However, if you are filing more than<br/>
-                  one Form 1116, you must complete line 20.)
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:17px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">13mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">13mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignNetTaxableIncomeAmt"/>
-                  <xsl:with-param name="Number">17</xsl:with-param>
-                </xsl:call-template>
-              </div>
-            </div>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 13mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="padding: 1mm 0.5mm 0.5mm 1mm; width: 5mm; height: 20mm; text-align: left;">17</div>
+            	<div class="styIRS1116LNDesc" style="padding: 1mm 3mm; width: 114mm; height: 13mm;">
+					<span style="vertical-align: middle; display: inline-block;">
+						   Combine the amounts on lines 15 and 16. This is your net foreign source taxable income. 
+						   (If the result is zero or less, you have no foreign tax credit for the category of income you 
+						   checked above Part I. Skip lines 18 through 22. However, if you are filing more than one 
+						   Form 1116, you must complete line 20.)
+							<span class="styBoldText">								
+								<span style="width: 7px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                     
+								<span style="width: 11px;"></span>.                   
+							</span>
+					</span>
+				</div>																																				
+				<div class="styLNRightNumBox" style="padding: 9mm 0mm 0mm; width: 8mm; height: 13mm; border-right-width: 0px;">17</div>
+				<div class="styLNAmountBox" style="padding: 9.5mm 0.5mm 0mm 0mm; width: 26mm; height: 13mm; text-align: right; font-size: 6pt; border-right-width: 0px;">
+					<xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="$Form1116Data/ForeignNetTaxableIncomeAmt"/>
+					</xsl:call-template>
+				</div>
+				<div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 13mm; background-color: lightgrey;"></div>
+				<div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 13mm; text-align: right; font-size: 6pt;"></div>
+			</div>
             <!-- (18) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">18</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  <b>Individuals:</b> Enter the amount from Form 1040, line 41, or Form<br/>
-                  1040NR, line 39. <b>Estates and trusts:</b> Enter your taxable income<br/>
-                  without the deduction for your exemption
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:4px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">6.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">6.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 10mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="padding: 1mm 0.5mm 0.5mm 1mm; width: 5mm; height: 10mm; text-align: left;">18</div>
+            	<div class="styIRS1116LNDesc" style="padding: 1mm 3mm; width: 114mm; height: 20mm;">
+					<span style="vertical-align: middle; display: inline-block;">
+							<b>Individuals:</b> Enter the amount from Form 1040, line 41, or Form 1040NR, line 39. 
+							<b>Estates and trusts:</b> Enter your taxable income without the deduction for your exemption
+	                    <span class="styBoldText">								
+							<span style="width: 4px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                     
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                     
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+						</span>
+					</span>
+				</div>
+				<div class="styLNRightNumBox" style="padding: 6mm 0mm 0mm; width: 8mm; height: 10mm; border-right-width: 0px;">18</div>
+				<div class="styLNAmountBox" style="padding: 7.5mm 0.5mm 0mm 0mm; width: 26mm; height: 10mm; text-align: right; font-size: 6pt; border-right-width: 0px;">
+                <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxableIncBfExemptAmt"/>
-                  <xsl:with-param name="Number">18</xsl:with-param>
                 </xsl:call-template>
               </div>
-            </div>
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;"/>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  <b>Caution:</b><span style="width:4px;"/><span class="styItalicText">If you figured your tax using the lower rates on qualified dividends or capital gains, see<br/>
-                  page 17 of the instructions.</span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">3.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-              </div>
-            </div>
+             <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 10mm; background-color: lightgrey;"></div>
+             <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 10mm; text-align: right; font-size: 6pt;"></div>				
+        </div>
+        <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+			<div class="styIRS1116LNLeftNumBox" style="width: 5mm; height: 8mm; text-align: left;"></div>
+            <div class="styIRS1116LNDesc" style="padding: 1mm 3mm; width: 148mm; height: 8mm;">
+				<span style="font-style: oblique; vertical-align: middle; display: inline-block;">
+				<b>Caution:</b> If you figured your tax using the lower rates on qualified dividends or capital gains, see page 17 of the instructions.
+				</span>
+			</div>
+			<div class="styLNRightNumBox" style="padding: 0px; width: 8mm; height: 8mm; border-bottom-width: 0px; border-left-width: 1px;"></div>
+			<div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 8mm; text-align: right; font-size: 6pt;"></div>
+		</div>
             <!-- (19) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">19</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Divide line 17 by line 18. If line 17 is more than line 18, enter "1"
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:14px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBoxText">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxableIncBfExemptRt"/>
-                  <xsl:with-param name="Number">19</xsl:with-param>
-                </xsl:call-template>
-              </div>
-            </div>
+        <div class="styIRS1116LineItem" style="width: 187mm; height: 5mm;">
+			<div class="styIRS1116LNLeftNumBox" style="padding: 1mm 0.5mm 0.5mm 1mm; width: 5mm; height: 5mm; text-align: left;">19</div>
+			<div class="styIRS1116LNDesc" style="padding: 1mm 3mm; width: 148mm; height: 5mm;">
+				<span style="vertical-align: middle; display: inline-block;">
+				    Divide line 17 by line 18. If line 17 is more than line 18, enter "1"                                    
+				    <span class="styBoldText">								
+				    <span style="width: 5px;"></span>.                    
+				    <span style="width: 11px;"></span>.                    
+				    <span style="width: 11px;"></span>.                    
+				    <span style="width: 11px;"></span>.                    
+				    <span style="width: 11px;"></span>.                    
+				    <span style="width: 11px;"></span>.                    
+				    <span style="width: 11px;"></span>.
+				    <span style="width: 11px;"></span>.                    
+				    <span style="width: 11px;"></span>.                    
+				    <span style="width: 11px;"></span>.  
+				    <span style="width: 11px;"></span>.                    
+				    <span style="width: 11px;"></span>.
+				    <span style="width: 11px;"></span>.  
+				    </span>
+				</span>
+			</div>
+			<div class="styLNRightNumBox" style="padding: 1.5mm 0mm 0mm; height: 5mm; border-right-width: 0px;">19</div>
+			<div class="styLNAmountBox" style="width: 26mm; height: 5mm; text-align: right; padding-top: 2mm; padding-right: 0.5mm; font-size: 6pt; border-right-width: 0px;">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxableIncBfExemptRt"/>
+				</xsl:call-template>
+			</div>
+        </div>
             <!-- (20) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">20</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                   <b>Individuals:</b> Enter the amounts from Form 1040, lines 44 and 46. If you are a nonresident alien, enter the amounts from Form 1040NR, lines 42 and 44.
-                   <b> Estates and trusts:</b> Enter the amount from Form 1041, Schedule G, line 1a, or the total of Form 990-T, lines 36 and 37
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:6px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">6.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
+        <div class="styIRS1116LineItem" style="width: 187mm; height: 12mm;">
+       		<div class="styIRS1116LNLeftNumBox" style="padding: 1mm 0.5mm 0.5mm 1mm; width: 5mm; height: 12mm; text-align: left;">20</div>
+       		<div class="styIRS1116LNDesc" style="padding: 1mm 3mm; width: 148mm; height: 12mm;">
+				<span style="vertical-align: middle; display: inline-block;">
+					<b>Individuals:</b> Enter the amounts from Form 1040, lines 44 and 46. If you are a nonresident alien, 
+					enter the amounts from Form 1040NR, lines 42 and 44. <b> Estates and trusts:</b> Enter the amount 
+					from Form 1041, Schedule G, line 1a, or the total of Form 990-T, lines 36 and 37                                    
+					<span class="styBoldText">
+						<span style="width: 6px;"></span>.                   
+						<span style="width: 11px;"></span>.                   
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>. 
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                        
+					</span>
+				</span>
+			</div>											
+			<div class="styLNRightNumBox" style="padding: 8mm 0mm 0mm; height: 12mm; border-right-width: 0px;">20</div>
+			<div class="styLNAmountBox" style="width: 26mm; height: 12mm; text-align: right; padding-top: 8.5mm; padding-right: 0.5mm; font-size: 6pt; border-right-width: 0px;">
+                <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/TaxFromTaxReturnAmt"/>
-                  <xsl:with-param name="Number">20</xsl:with-param>
                 </xsl:call-template>
-              </div>
             </div>
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;"/>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  <b>Caution:</b><span style="width:4px;"/><span class="styItalicText">If you are completing line 20 for separate category <span class="styBoldText">e</span> (lump-sum distributions), see instructions.</span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-              </div>
-            </div>
+        </div>
+        <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+			<div class="styIRS1116LNLeftNumBox" style="width: 5mm; height: 4mm; text-align: left;"></div>
+			<div class="styIRS1116LNDesc" style="padding: 0mm 3mm 1mm; width: 148mm; height: 4mm;">
+				<span style="font-style: oblique; vertical-align: middle; display: inline-block;">
+					<b>Caution:</b> If you are completing line 20 for separate category e (lump-sum distributions), see instructions.
+				</span>
+			</div>
+			<div class="styLNRightNumBox" style="padding: 0px; width: 8mm; height: 4mm; border-bottom-width: 0px; border-left-width: 1px;"></div>
+			<div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 4mm; text-align: right; font-size: 6pt;"></div> 
+		</div>
             <!-- (21) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">21</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Multiply line 20 by line 19 (maximum amount of credit)
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:17px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/MaxAllowedForeignTaxCreditAmt"/>
-                  <xsl:with-param name="Number">21</xsl:with-param>
-                </xsl:call-template>
-              </div>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="padding: 1mm 0.5mm 0.5mm 1mm; width: 5mm; height: 4mm; text-align: left;">21</div>
+            		<div class="styIRS1116LNDesc" style="padding: 0.5mm 3mm; width: 148mm; height: 4mm;">
+						<span style="vertical-align: middle; display: inline-block;">
+            		        Multiply line 20 by line 19 (maximum amount of credit)                                    
+							<span class="styBoldText">
+								<span style="width: 17px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>.                    
+								<span style="width: 11px;"></span>. 
+								<span style="width: 11px;"></span>.                  
+							</span>
+						</span>
+					</div>
+				<div class="styLNRightNumBox" style="padding: 0mm; height: 4mm; border-right-width: 0px;">21</div>
+				<div class="styLNAmountBox" style="width: 26mm; height: 4mm; text-align: right; padding-top: 1mm; padding-right: 0.5mm; font-size: 6pt; border-right-width: 0px;">
+					<xsl:call-template name="PopulateText">
+					  <xsl:with-param name="TargetNode" select="$Form1116Data/MaxAllowedForeignTaxCreditAmt"/>
+					</xsl:call-template>
+				</div>
             </div>
             <!-- (22) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">22</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Enter the <b>smaller</b> of line 14 or line 21. If this is the only Form 1116 you are filing, skip lines 23<br/>
-                  through 27 and enter this amount on line 28. Otherwise, complete the appropriate line in Part IV<br/>
-                  (see instructions)
-                  <xsl:if test="$Form1116Data/GrossForeignTaxCreditAmt/@foreignIncomeLumpSumDistribCd">
-                    <span style="width:4px;"/>
-                    <xsl:call-template name="LinkToLeftoverDataTableInline">
-                      <xsl:with-param name="Desc">Foreign Income Lump Sum Distribution Code</xsl:with-param>
-                      <xsl:with-param name="TargetNode" select="$Form1116Data/GrossForeignTaxCreditAmt/@foreignIncomeLumpSumDistribCd"/>
-                    </xsl:call-template>
-                  </xsl:if>
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:2px"/>
-                    <span style="width:15px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <xsl:if test="not($Form1116Data/GrossForeignTaxCreditAmt/@foreignIncomeLumpSumDistribCd)">
-                      <span style="width:11px"/>.
-                    </xsl:if>
-                    <span style="width:5px"/>
-                    <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
-                  </span>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="padding: 1mm 0.5mm 0.5mm 1mm; width: 5mm; height: 8mm; text-align: left;">22</div>
+            	<div class="styIRS1116LNDesc" style="padding: 0.5mm 3mm; width: 148mm; height: 8mm;">
+					<span style="vertical-align: middle; display: inline-block;">                  
+						Enter the <b>smaller</b> of line 14 or line 21. If this is the only Form 1116 you are filing, skip lines 23 through 27 
+						and enter this amount on line 28. Otherwise, complete the appropriate line in Part IV (see instructions)
+						<xsl:if test="$Form1116Data/GrossForeignTaxCreditAmt/@foreignIncomeLumpSumDistribCd">
+							<span style="width:4px;"/>
+							<xsl:call-template name="LinkToLeftoverDataTableInline">
+							  <xsl:with-param name="Desc">Foreign Income Lump Sum Distribution Code</xsl:with-param>
+							  <xsl:with-param name="TargetNode" select="$Form1116Data/GrossForeignTaxCreditAmt/@foreignIncomeLumpSumDistribCd"/>
+							</xsl:call-template>
+						</xsl:if>
+                             <!--Dotted Line-->
+						<span class="styBoldText">
+						  <span style="width: 9px;"></span>. 
+						  <span style="width: 9px;"></span>. 
+						  <span style="width: 5px;"></span>
+							<xsl:if test="not($Form1116Data/GrossForeignTaxCreditAmt/@foreignIncomeLumpSumDistribCd)">
+								<span style="width:11px"/>.
+							</xsl:if>
+							<span style="width:5px"/>
+							<img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
+						</span>
+					</span>	
                 </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">6.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/GrossForeignTaxCreditAmt"/>
-                  <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-                  <xsl:with-param name="Number">22</xsl:with-param>
-                </xsl:call-template>
-              </div>
+				<div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm; border-right-width: 0px; border-bottom-width: 0px;">22</div>
+				<div class="styLNAmountBox" style="width: 26mm; height: 8mm; text-align: right; padding-top: 4.5mm; padding-right: 0.5mm; font-size: 6pt; border-right-width: 0px; border-bottom-width: 0px;">
+					<xsl:call-template name="PopulateText">
+					  <xsl:with-param name="TargetNode" select="$Form1116Data/GrossForeignTaxCreditAmt"/>
+				    </xsl:call-template>
+				</div>
             </div>
-          </div>
+        </div>
           <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
           <!--  Begin PART IV -->
           <!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
           <!-- Header -->
-          <div style="width:187mm;" class="styBB">
+          <div class="styBB" style="width: 187mm; height: 4mm; border-top-width: 0px;" >
             <!-- Content -->
-            <div class="styPartName" style="width:15mm;">Part IV</div>
-            <div class="styPartDesc" style="padding-left:3mm;">
+            <div class="styPartName" style="width: 15mm; height: 4mm;">Part IV</div>
+            <div class="styPartDesc" style="width: 172mm; height: 4mm; padding-left: 3mm;">
               Summary of Credits From Separate Parts III <span class="styNormalText">(see instructions)</span>
             </div>
           </div>
           <!-- Body -->
-          <div style="width:187mm;" class="styBB">
+          <div class="styBB" style="width: 187mm; height: auto; border-bottom-width: 2px;" >
             <!-- (23) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">23</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Credit for taxes on passive category income
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:5px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="width: 8mm; height: 4mm; text-align: left; padding-left: 5px;">23</div>
+            		<div class="styIRS1116LNDesc" style="padding: 0.5mm 0mm; width: 111mm; height: 4mm;">
+            		    Credit for taxes on passive category income
+            		    <span class="styBoldText">								
+							<span style="width: 5px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                  
+						</span>
+					</div>
+				<div class="styLNRightNumBox" style="padding: 0.5mm; width: 8mm; height: 4mm; border-right-width: 0px;">23</div>
+				<div class="styLNAmountBox" style="width: 26mm; height: 4mm; padding-right: 0.5mm;">
+					<xsl:call-template name="PopulateText">
+                      <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignPassiveIncTaxCreditAmt"/>
+                   </xsl:call-template>
                 </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignPassiveIncTaxCreditAmt"/>
-                  <xsl:with-param name="Number">23</xsl:with-param>
-                </xsl:call-template>
-              </div>
+                <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 4mm; background-color: lightgrey;"></div>
+                <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 4mm; text-align: right; font-size: 6pt;"></div>
             </div>
             <!-- (24) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">24</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Credit for taxes on general category income
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:7px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                  </span>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignGeneralIncTaxCreditAmt"/>
-                  <xsl:with-param name="Number">24</xsl:with-param>
-                </xsl:call-template>
-              </div>
-            </div>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+				<div class="styIRS1116LNLeftNumBox" style="width: 8mm; height: 4mm; text-align: left; padding-left: 5px;">24</div>
+					<div class="styIRS1116LNDesc" style="padding: 0.5mm 0mm; width: 111mm; height: 4mm;">
+					   Credit for taxes on general category income
+					   <span class="styBoldText">								
+						   <span style="width: 5px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                    
+						   <span style="width: 11px;"></span>.                  
+						</span>
+					</div>
+					<div class="styLNRightNumBox" style="padding: 0.5mm; width: 8mm; height: 4mm; border-right-width: 0px;">24</div>
+					<div class="styLNAmountBox" style="width: 26mm; height: 4mm; padding-right: 0.5mm;">
+						<xsl:call-template name="PopulateText">
+						  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignGeneralIncTaxCreditAmt"/>
+					    </xsl:call-template>
+                   </div>
+                <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 4mm; background-color: lightgrey;"></div>
+            <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 4mm; text-align: right; font-size: 6pt;"></div>
+        </div>
             <!-- (25) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">25</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                    Credit for taxes on certain income re-sourced by treaty
-                  </div>
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;padding-right:3px;float:right;">
-                    <!--Dotted Line-->
-                    <span class="styBoldText">.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncRsrcdTreatyTaxCrAmt"/>
-                  <xsl:with-param name="Number">25</xsl:with-param>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="width: 8mm; height: 4mm; text-align: left; padding-left: 5px;">25</div>
+            		<div class="styIRS1116LNDesc" style="padding: 0.5mm 0mm; width: 111mm; height: 4mm;">
+						Credit for taxes on certain income re-sourced by treaty
+						<span class="styBoldText">								
+							<span style="width: 5px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                    
+							<span style="width: 11px;"></span>.                  
+						</span>
+					</div>
+				<div class="styLNRightNumBox" style="padding: 0.5mm; width: 8mm; height: 4mm; border-right-width: 0px;">25</div>
+				<div class="styLNAmountBox" style="width: 26mm; height: 4mm; padding-right: 0.5mm;">
+					<xsl:call-template name="PopulateText">
+					  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncRsrcdTreatyTaxCrAmt"/>
                 </xsl:call-template>
               </div>
+              <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 4mm; background-color: lightgrey;"></div>
+              <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 4mm; text-align: right; font-size: 6pt;"></div>
             </div>
             <!-- (26) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">26</div>
-              <div class="styIRS1116LNDesc" style="width:110mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                    Credit for taxes on lump-sum distributions
-                  </div>
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;padding-right:3px;float:right;">
-                    <!--Dotted Line-->
-                    <span class="styBoldText">.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:69mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncLumpSumDistribCrAmt"/>
-                  <xsl:with-param name="Number">26</xsl:with-param>
+           <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="width: 8mm; height: 4mm; text-align: left; padding-left: 5px;">26</div>
+            		<div class="styIRS1116LNDesc" style="padding: 0.5mm 0mm; width: 111mm; height: 4mm;">Credit for taxes on lump-sum distributions
+            		<span class="styBoldText">								
+						<span style="width: 5px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    	
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    	
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    	
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                  	
+					</span>
+				</div>
+			<div class="styLNRightNumBox" style="padding: 0.5mm; width: 8mm; height: 4mm; border-right-width: 0px;">26</div><div class="styLNAmountBox" style="width: 26mm; height: 4mm; padding-right: 0.5mm;">
+                <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$Form1116Data/ForeignIncLumpSumDistribCrAmt"/>
                 </xsl:call-template>
               </div>
+              <div class="styLNRightNumBox" style="border-width: 0px 0px 0px 1px; padding: 0px; height: 4mm; background-color: lightgrey;"></div>
+              <div class="styLNAmountBox" style="border-width: 0px 0px 0px 1px; padding: 0px; width: 26mm; height: 4mm; text-align: right; font-size: 6pt;"></div>
             </div>
             <!-- (27) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">27</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                    Add lines 23 through 26
-                  </div>
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;float:right;padding-right:16px;">
-                    <!--Dotted Line-->
-                    <span class="styBoldText">.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/TentativeForeignTaxCreditAmt"/>
-                  <xsl:with-param name="Number">27</xsl:with-param>
-                </xsl:call-template>
-              </div>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+            	    <div class="styIRS1116LNLeftNumBox" style="width: 8mm; height: 4mm; text-align: left; padding-left: 5px;">27</div>
+            		<div class="styIRS1116LNDesc" style="padding: 0.5mm 0mm; width: 145mm; height: 4mm;">Add lines 23 through 26
+            		<span class="styBoldText">
+            		    <span style="width: 5px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.		    
+            		    <span style="width: 11px;"></span>.                    
+            		    <span style="width: 11px;"></span>.                    
+            		</span>
+            		</div>
+            		<div class="styLNRightNumBox" style="padding: 0.5mm; width: 8mm; height: 4mm; border-right-width: 0px;">27</div>
+            		<div class="styLNAmountBox" style="width: 26mm; height: 4mm; padding-right: 0.5mm;">
+						<xsl:call-template name="PopulateText">
+						  <xsl:with-param name="TargetNode" select="$Form1116Data/TentativeForeignTaxCreditAmt"/>
+					    </xsl:call-template>
+                    </div>
             </div>
             <!-- (28) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">28</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                    Enter the <b>smaller</b> of line 20 or line 27
-                  </div>
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;float:right;padding-right:16px;">
-                    <!--Dotted Line-->
-                    <span class="styBoldText">.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/SmllrOfRtnTaxOrForeignTaxCrAmt"/>
-                  <xsl:with-param name="Number">28</xsl:with-param>
-                </xsl:call-template>
-              </div>
+           <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+					<div class="styIRS1116LNLeftNumBox" style="width: 8mm; height: 4mm; text-align: left; padding-left: 5px;">28</div>
+					<div class="styIRS1116LNDesc" style="padding: 0.5mm 0mm; width: 145mm; height: 4mm;">Enter the <b>smaller</b> of line 20 or line 27
+						<span class="styBoldText">
+								<span style="width: 5px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+								<span style="width: 11px;"></span>.
+						</span>
+                    </div>
+                    <div class="styLNRightNumBox" style="padding: 0.5mm; width: 8mm; height: 4mm; border-right-width: 0px;">28</div>
+                    <div class="styLNAmountBox" style="width: 26mm; height: 4mm; padding-right: 0.5mm;">
+						<xsl:call-template name="PopulateText">
+						  <xsl:with-param name="TargetNode" select="$Form1116Data/SmllrOfRtnTaxOrForeignTaxCrAmt"/>
+					    </xsl:call-template>
+				    </div>
             </div>
             <!-- (29) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">29</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                    Reduction of credit for international boycott operations. See instructions for line 12
-                  </div>
-                  <div class="styIRS1116LNDesc" style="width:auto;height:100%;float:right;padding-right:16px;">
-                    <!--Dotted Line-->
-                    <span class="styBoldText">.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                      <span style="width:11px"/>.
-                    </span>
-                  </div>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 4mm;">
+            	<div class="styIRS1116LNLeftNumBox" style="width: 8mm; height: 4mm; text-align: left; padding-left: 5px;">29</div>
+            		<div class="styIRS1116LNDesc" style="padding: 0.5mm 0mm; width: 145mm; height: 4mm;">
+						Reduction of credit for international boycott operations. See instructions for line 12
+						<span class="styBoldText">								
+						<span style="width: 9px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						<span style="width: 11px;"></span>.                    
+						</span>
+						</div>
+						<div class="styLNRightNumBox" style="padding: 0.5mm; width: 8mm; height: 4mm; border-right-width: 0px;">29</div>
+						<div class="styLNAmountBox" style="width: 26mm; height: 4mm; padding-right: 0.5mm;">
+							<xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="$Form1116Data/IntlBoycottCreditReductionAmt"/>
+						    </xsl:call-template>
+                       </div>
                 </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="TargetNode" select="$Form1116Data/IntlBoycottCreditReductionAmt"/>
-                  <xsl:with-param name="Number">29</xsl:with-param>
-                </xsl:call-template>
-              </div>
-            </div>
             <!-- (30) ////////////////////////////////////////////////////-->
-            <div class="styIRS1116LineItem">
-              <div class="styIRS1116LNLeftNumBox" style="text-align:left;padding-left:5px;">30</div>
-              <div class="styIRS1116LNDesc" style="width:145mm;height:100%;padding:0px 0px 0px 0px;">
-                <div class="styIRS1116LNDesc" style="width:auto;height:100%;">
-                  Subtract line 29 from line 28. This is your <b>foreign tax credit.</b> Enter here and on Form 1040, line 48;<br/>
+            <div class="styIRS1116LineItem" style="width: 187mm; height: 8mm;">
+				<div class="styIRS1116LNLeftNumBox" style="width: 8mm; height: 8mm; text-align: left; padding-left: 5px;">30</div>
+				<div class="styIRS1116LNDesc" style="padding: 0.5mm 0mm; width: 145mm; height: 8mm;">
+				  Subtract line 29 from line 28. This is your <b>foreign tax credit.</b> Enter here and on Form 1040, line 48;<br/>
                   Form 1040NR, line 46; Form 1041, Schedule G, line 2; or Form 990-T, line 40a
-                  <!--Dotted Line-->
-                  <span class="styBoldText">
-                    <span style="width:2px"/>
-                    <span style="width:15px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:11px"/>.
-                    <span style="width:5px"/>
-                    <img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/>
+				<span class="styBoldText">
+					<span style="width: 5px;"></span>.
+                    <span style="width: 11px;"></span>.
+                    <span style="width: 11px;"></span>.
+                    <span style="width: 11px;"></span>.
+                    <span style="width: 11px;"></span>.
+                    <span style="width: 11px;"></span>.
+                    <span style="width: 11px;"></span>.
+                    <span style="width: 11px;"></span>.
+                    <span style="width: 11px;"></span>.
+                    <span style="width: 5px;"></span>
+                    <span><img src="{$ImagePath}/1116_Bullet_Sm.gif" alt="SmallBullet"/></span>
                   </span>
                 </div>
-              </div>
-              <div class="styIRS1116LNDesc" style="height:100%;width:34mm;float:right;padding:0px 0px 0px 0px;">
-                <xsl:call-template name="CreateBox">
-                  <xsl:with-param name="Height">3.5mm</xsl:with-param>
-                  <xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-                </xsl:call-template>
-                <xsl:call-template name="CreateBox">
+                <div class="styLNRightNumBox" style="width: 8mm; height: 8mm; padding-top: 4mm; border-right-width: 0px; border-bottom-width: 0px;">30</div>
+                <div class="styLNAmountBox" style="width: 26mm; height: 8mm; padding-top: 4mm; padding-right: 0.5mm; border-bottom-width: 1px; border-bottom-width: 0px;">
+                <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form1116Data/ForeignTaxCreditAmt"/>
-                  <xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-                  <xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-                  <xsl:with-param name="Number">30</xsl:with-param>
                 </xsl:call-template>
               </div>
             </div>
           </div>
           <!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
           <!-- Page Break and Footer-->
-          <div class="pageEnd" style="width:187mm;padding-top:1mm;">
+          <div class="pageEnd" style="width:187mm; height:auto; padding-top:1mm; clear: left; float: left;">
             <div style="float:right;">
               <span style="width:50px;"/>  
                 Form 
               <span class="styBoldText" style="font-size:8pt;">1116</span> (2014)
             </div>
+            <p style="width: 187mm; height: 4mm; page-break-before: always;"></p> 
           </div>
           <!-- Additonal Data Title Bar and Button -->
-          <div class="styLeftOverTitleLine" id="LeftoverData" style="padding-top:5mm;">
+          <div class="styLeftOverTitleLine" id="LeftoverData" style="clear: left; float: left;">
             <div class="styLeftOverTitle">
               Additional Data        
             </div>
@@ -2690,7 +2439,7 @@
             </div>
           </div>
           <!-- Additional Data Table -->
-          <table class="styLeftOverTbl">
+          <table class="styLeftOverTbl" style="clear: left; float: left;">
             <xsl:call-template name="PopulateCommonLeftover">
               <xsl:with-param name="TargetNode" select="$Form1116Data"/>
               <xsl:with-param name="DescWidth" select="130"/>
@@ -2745,7 +2494,7 @@
               Form 1116, Part II - Foreign Taxes Paid or Accrued
             </span>
             <table class="styDepTbl" cellspacing="0">
-              <thead class="styTableThead">
+              <thead class="styTableThead" style="border-top-width:1px;">
                 <xsl:call-template name="CreatePartIITableHeaders">
                   <xsl:with-param name="AddColoredHeaders">true</xsl:with-param>
                 </xsl:call-template>

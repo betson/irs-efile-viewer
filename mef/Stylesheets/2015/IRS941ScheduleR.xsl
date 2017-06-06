@@ -13,8 +13,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="FormData" select="$RtnDoc/IRS941ScheduleR"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -39,7 +41,7 @@
 					</xsl:if>
 				</style>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm">
 				<form name="IRS941ScheduleR">
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- BEGIN FORM HEADER -->
@@ -54,19 +56,19 @@
 							<span class="styFBT" style="font-size:9pt;padding-left:4mm;">Allocation Schedule for Aggregate Form 941 Filers</span>
 						</div>
 						<div class="styTYBox" style="width:30mm;float:right;border-left-width:0px;">
-							<div style="font-size:12pt;font-family:Courier New;font-weight:bold;text-align:right;">950413</div>
+							<div style="font-size:12pt;font-family:Courier New;font-weight:bold;padding-left:14mm;">950413</div>
 							<div class="styOMB" style="border-bottom-width:0px;text-align:right;">OMB No. 1545-0029</div>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;padding-bottom:0mm;">
 						<div style="width:118mm;float:left;">
-							<div class="styAgency" style="padding-bottom:2mm;line-height:150%;">(Rev. January 2014)<br/>Department of the Treasury—Internal Revenue Service</div>
-							<div class="styBB" style="width:123mm;height:8mm;border-top-width:1px;border-left-width:1px;border-right-width:1px;float:left;padding-left:2mm;padding-bottom:0mm;">
-								<div style="width:118mm;padding-top:4mm;">
+							<div class="styAgency" style="padding-bottom:1mm;line-height:150%;">(Rev. January 2014)<br/>Department of the Treasury—Internal Revenue Service</div>
+							<div class="styBB" style="width:123mm;height:26mm;border-top-width:1px;border-left-width:1px;border-right-width:1px;float:left;padding-left:2mm;padding-bottom:0mm;">
+								<div style="width:118mm;padding-top:2mm;">
 									<span style="float:left;">
 										<b>Employer identification number<br/>(EIN)</b>
 									</span>
-									<span class="styLNCtrNumBox" style="width:73mm;border-top-width:1px;padding-top:2mm;float:right;">
+									<span class="styLNCtrNumBox" style="width:73mm;height:auto;border-top-width:1px;padding-top:2mm;float:right;">
 										<xsl:call-template name="PopulateReturnHeaderFiler">
 											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 										</xsl:call-template>
@@ -75,10 +77,10 @@
 								<div style="width:118mm;padding-bottom:2mm;padding-top:2mm;">
 									<span style="float:left;padding-top:1.4mm;">
 										<b>Name</b>
-										<i> as shown on<br/>
-Form 941</i>
+										<i> as shown on<br/>Form 941</i>
 									</span>
-									<span class="styLNCtrNumBox" style="width:92mm;border-top-width:1px;height:8mm;float:right;text-align:left;padding-left:1mm;">
+									<!-- 4/28/2015 AM: Adjust height of Name box from 8mm to 14mm (Defect 42785) -->
+									<span class="styLNCtrNumBox" style="width:92mm;border-top-width:1px;height:14mm;float:right;text-align:left;padding-left:1mm;">
 										<xsl:call-template name="PopulateReturnHeaderFiler">
 											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
 										</xsl:call-template><br/>
@@ -96,16 +98,16 @@ Form 941</i>
 									</span>
 								</div>
 							</div>
-							<div class="styLNDesc" style="padding-top:2mm;width:123mm;padding-bottom:0mm;">
+							<div class="styLNDesc" style="padding-top:1mm;width:123mm;padding-bottom:1mm;">
 								Read the instructions before you complete Schedule R (Form 941). Type or print within the boxes.
 								Complete a separate line for the amounts allocated to each of your clients.
 							</div>
 						</div>
 						<div style="float:right;padding-left:3mm;padding-top:1mm;padding-bottom:0mm;padding-right:2mm;">
-							<div class="styBB" style="width:54mm;height:40mm;border: black solid 2px;padding-left:2mm;padding-top:2mm;">
-								<div class="styPartName" style="width:48mm;text-align:left;padding-left:1mm;">Report for 
+							<div class="styBB" style="width:54mm;height:auto;border: black solid 2px;padding-left:2mm;padding-top:1mm;">
+								<div class="styPartName" style="width:48mm;height:auto;text-align:left;padding-left:1mm;">Report for 
 									calendar year:</div>
-								<div class="styBB" style="padding-top:2mm;width:48mm;border-bottom-width:0px;">
+								<div class="styBB" style="padding-top:1mm;width:48mm;border-bottom-width:0px;">
 									<span class="styLNCtrNumBox" style="width:20mm;border-top-width:1px;height:4mm;float:left;background-color:white;">
 										<xsl:call-template name="PopulateYear">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
@@ -122,8 +124,8 @@ Form 941</i>
 								</xsl:variable>
 								<div style="width:48mm;float:none;clear:both;">
 									<div style="width:48mm;float:none;clear:both;padding-left:2mm;">
-										<div style="width:48mm;padding-top:3mm;float:none;clear:both;">
-											<input type="checkbox" class="styCkbox">
+										<div style="width:48mm;padding-top:1mm;float:none;clear:both;">
+											<input type="checkbox" alt="FirstQuarter" class="styCkbox">
 												<xsl:call-template name="PopulateEnumeratedCheckbox">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
 													<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '03')"/>
@@ -140,8 +142,8 @@ Form 941</i>
 											</label>
 										</div>
 										<div style="width:48mm;">
-											<div style="float:left;clear:none;padding-top:2mm;">
-												<input type="checkbox" class="styCkbox">
+											<div style="float:left;clear:none;padding-top:1mm;">
+												<input type="checkbox" alt="SecondQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
 														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '06')"/>
@@ -159,8 +161,8 @@ Form 941</i>
 											</div>
 										</div>
 										<div style="width:48mm;">
-											<div style="float:left;clear:none;padding-top:2mm;">
-												<input type="checkbox" class="styCkbox">
+											<div style="float:left;clear:none;padding-top:1mm;">
+												<input type="checkbox" alt="ThirdQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
 														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '09')"/>
@@ -178,8 +180,8 @@ Form 941</i>
 											</div>
 										</div>
 										<div style="width:48mm;">
-											<div style="float:left;clear:none;padding-top:2mm;padding-bottom:2mm;">
-												<input type="checkbox" class="styCkbox">
+											<div style="float:left;clear:none;padding-top:1mm;padding-bottom:1mm;">
+												<input type="checkbox" alt="FourthQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
 														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '12')"/>
@@ -201,8 +203,7 @@ Form 941</i>
 							</div>
 						</div>
 					</div>
-					
-					<div style="width:188mm;height:1mm;float:none;clear:both;text-align:right;padding-top:0mm;">
+					<div style="width:187mm;height:4mm;float:none;clear:both;text-align:right;padding-top:0.5mm;">
 						<xsl:call-template name="SetDynamicTableToggleButton">
 							<xsl:with-param name="TargetNode" select="$FormData/ClientInformationGrp"/>
 							<xsl:with-param name="containerHeight" select="15"/>
@@ -210,8 +211,7 @@ Form 941</i>
 							<xsl:with-param name="containerID" select="'SchRCtn'"/>
 						</xsl:call-template>
 					</div>
-					
-					<div class="IRS941ScheduleRTableContainer" style="float:none;clear:both;" id="SchRCtn">
+					<div class="IRS941ScheduleRTableContainer" style="display:block" id="SchRCtn">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -220,7 +220,7 @@ Form 941</i>
 								<!-- Column a -->
 								<tr>
 									<th class="IRS941ScheduleR_GenericCellHeader" scope="col">
-										<div style="width:27.7mm;">
+										<div style="width:23mm;">
 											(a)<br/>Client’s<br/>Employer<br/>identification<br/>number (EIN)
 										</div>
 									</th>
@@ -261,10 +261,10 @@ Form 941</i>
 									</th>
 									<!-- Column g -->
 									<th class="IRS941ScheduleR_GenericCellHeader" style="border-right-width:0px;" scope="col">
-										<div style="width:25.8mm;">
-											(g)<br/>Total deposits<br/><span style="font-weight:normal;">from 
-											Form 941, line 11,<br/>plus any payments<br/>made with the return<br/>allocated to the 
-											listed<br/>client EIN</span>
+										<div style="width:25mm;vertical-align:none">
+											(g) <br/> Total deposits from 
+											Form 941, line 11, <span style="font-weight:normal;">plus any payments made with the return allocated to the 
+											listed client EIN</span>
 										</div>
 									</th>
 								</tr>
@@ -334,6 +334,7 @@ Form 941</i>
 											<div class="styLNLeftNumBox" style="width:5mm;height:6mm;background-color:lightgrey;padding-right:1mm;padding-left:2mm;padding-top:3mm;">1</div>
 											<xsl:if test="((count($FormData/ClientInformationGrp) &gt; 15) and ($Print = $Separated))">
 												<xsl:call-template name="PopulateAdditionalDataTableMessage">
+												<xsl:with-param name="ShortMessage">true</xsl:with-param>
 													<xsl:with-param name="TargetNode" select="$FormData/ClientInformationGrp"/>
 												</xsl:call-template>
 											</xsl:if>
@@ -545,7 +546,7 @@ Form 941</i>
 							</tbody>
 						</table>
 					</div>
-					<div class="IRS941ScheduleRTableContainer" style="float:none;clear:both;">
+					<div class="IRS941ScheduleRTableContainer" style="display:block">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -554,23 +555,21 @@ Form 941</i>
 							<tfoot/>
 							<tbody>
 								<tr>
-									<td class="IRS941ScheduleR_GenericCell" style="text-align:left;padding-left:0px;padding-top:0px;padding-bottom:0px;padding-right:0px;height:100%;">
-										<div style="width:28.2mm;height:100%;padding-top:0mm;">
-											<div class="styLNLeftNumBox" style="width:5mm;height:100%;background-color:lightgrey;padding-right:1mm;padding-left:0.5mm;text-align:right;">16</div>
-											<div style="font-size:6pt;padding-top:0.5mm;padding-bottom:1mm;">
-												<b>Subtotals for<br/>clients.</b> Add all<br/>amounts on lines<br/>1 through 15	
+									<td class="IRS941ScheduleR_GenericCell" style="width:23.7mm;height:12mm;text-align:left;padding-left:0px;padding-top:0px;padding-bottom:0px;padding-right:0px;">										
+											<div class="styLNLeftNumBox" style="width:5mm;height:14mm;background-color:lightgrey;padding-right:1mm;padding-left:0.5mm;text-align:right;">16</div>
+											<div style="font-size:6pt;padding-top:0.5mm;">
+												<b>Subtotals for<br/>clients.</b> Add all<br/>amounts on <br/>lines 1 through <br/>15	
 											</div>
-										</div>
 									</td>
 									<td class="IRS941ScheduleR_GenericCell" style="text-align:right;border-right-width:1px;vertical-align:bottom;padding-bottom:2mm;">
-										<div style="width:25.6mm;">
+										<div style="width:25.8mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormData/SubtotalForClientGrp/WagesAmt"/>
 											</xsl:call-template>
 										</div>
 									</td>
 									<td class="IRS941ScheduleR_GenericCell" style="text-align:right;border-right-width:1px;vertical-align:bottom;padding-bottom:2mm;">
-										<div style="width:26.4mm;">
+										<div style="width:26.2mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormData/SubtotalForClientGrp/FederalIncomeTaxWithheldAmt"/>
 											</xsl:call-template>
@@ -598,7 +597,7 @@ Form 941</i>
 										</div>
 									</td>
 									<td class="IRS941ScheduleR_GenericCell" style="text-align:right;border-right-width:0px;vertical-align:bottom;padding-bottom:2mm;">
-										<div style="width:25.8mm;">
+										<div style="width:25mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormData/SubtotalForClientGrp/TotalPaymentCreditAmt"/>
 											</xsl:call-template>
@@ -610,7 +609,7 @@ Form 941</i>
 									<td class="IRS941ScheduleR_GenericCell" style="text-align:left;font-weight:bold;padding-left:0px;padding-top:0px;padding-bottom:0px;padding-right:0px;height:22mm">
 										<div class="styLNLeftNumBox" style="width:5mm;background-color:lightgrey;height:22mm;padding-right:1mm;padding-left:0.5mm;text-align:right;">17</div>
 										<div style="font-size:6pt;padding-top:0.5mm;padding-bottom:0.2mm;">Enter the<br/>combined<br/>
-										subtotal from line<br/>26 of all<br/>Continuation<br/>Sheets for<br/>Schedule R<br/>(Form 941)
+										subtotal from <br/>line 26 of all<br/>Continuation<br/>Sheets for<br/>Schedule R<br/>(Form 941)
 										</div>
 									</td>
 									<td class="IRS941ScheduleR_GenericCell"><br/></td>
@@ -622,10 +621,9 @@ Form 941</i>
 								</tr>
 								
 								<tr>
-									<td class="IRS941ScheduleR_GenericCell" style="text-align:left;font-weight:bold;padding-left:0px;padding-top:0px;padding-bottom:0px;padding-right:0px;height:100%">
-										<div class="styLNLeftNumBox" style="width:5mm;height:10mm;background-color:lightgrey;height:100%;padding-right:1mm;padding-left:0.5mm;padding-top:2mm;text-align:right;">18</div>
-										<div style="font-size:6pt;padding-top:2mm;padding-bottom:2mm;">Enter Form 941<br/>amounts for 
-										your<br/>employees</div>
+									<td class="IRS941ScheduleR_GenericCell" style="text-align:left;font-weight:bold;padding-left:0px;padding-top:0px;padding-bottom:0px;padding-right:0px;">
+										<div class="styLNLeftNumBox" style="width:5mm;height:12mm;background-color:lightgrey;padding-right:1mm;padding-left:0.5mm;padding-top:0.5mm;text-align:right;">18</div>
+										<div style="font-size:6pt;padding-top:0.5mm;">Enter Form <br/>941 amounts <br/>for your <br/>employees</div>
 									</td>
 									<td class="IRS941ScheduleR_GenericCell" style="text-align:right;border-right-width:1px;vertical-align:bottom;padding-bottom:2mm;">
 										<xsl:call-template name="PopulateAmount">
@@ -660,11 +658,11 @@ Form 941</i>
 								</tr>
 								
 								<tr>
-									<td class="IRS941ScheduleR_GenericCell" style="text-align:left;padding-left:0px;padding-top:0px;padding-bottom:0px;padding-right:0px;height:100%">
-										<div class="styLNLeftNumBox" style="width:5mm;height:26mm;background-color:lightgrey;height:100%;padding-right:1mm;padding-left:0.5mm;text-align:right;">19</div>
-										<div style="font-size:6pt;padding-top:0.5mm;padding-bottom:1mm;">
-											<b>Totals.</b> Add lines<br/>16, 17, and 18.<br/>The column<br/>totals must<br/>match the<br/>
-											related lines on<br/>the aggregate<br/>Form 941
+									<td class="IRS941ScheduleR_GenericCell" style="text-align:left;padding-left:0px;padding-top:0px;padding-bottom:0px;padding-right:0px;height:24mm;">
+										<div class="styLNLeftNumBox" style="width:5mm;height:24mm;background-color:lightgrey;padding-right:1mm;padding-left:0.5mm;text-align:right;">19</div>
+										<div style="font-size:6pt;padding-top:0.5mm;">
+											<b>Totals.</b> Add <br/>lines 16, 17, <br/>and 18. The <br/>column totals <br/>must match <br/>the
+											related <br/>lines on the <br/>aggregate Form <br/>941
 										</div>
 									</td>
 									<td class="IRS941ScheduleR_GenericCell" style="text-align:right;border-right-width:1px;vertical-align:bottom;padding-bottom:2mm;">
@@ -701,14 +699,14 @@ Form 941</i>
 							</tbody>
 						</table>
 					</div>
-
+					<xsl:if test="($Print != $Separated)">
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$FormData/ClientInformationGrp/ClientAllocationInformationGrp"/>
 						<xsl:with-param name="containerHeight" select="15"/>
 						<xsl:with-param name="headerRowCount" select="1"/>
 						<xsl:with-param name="containerID" select="'SchRCtn'"/>
 					</xsl:call-template>
-					
+					</xsl:if>
 					<!--Page Footer-->
 					<div class="pageEnd" style="width:188mm;border-top-width:1px;border-bottom-width:0px;">
 						<div style="font-weight:bold;width:81mm;float:left;padding-left:0mm;">

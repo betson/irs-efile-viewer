@@ -37,7 +37,7 @@
             </xsl:attribute>
             <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt; width: 35mm;">
               <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermCntrctIncmGrp)"/>
+              <xsl:value-of select="count(PYLongTermCntrctIncmGrp/PYLTSmplfdYearlyInfoGrp)"/>
               </xsl:attribute>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="ContractNum"/>
@@ -45,7 +45,7 @@
             </td>
             <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
               <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermCntrctIncmGrp)"/>
+              <xsl:value-of select="count(PYLongTermCntrctIncmGrp/PYLTSmplfdYearlyInfoGrp)"/>
               </xsl:attribute>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="JobNm"/>
@@ -53,7 +53,7 @@
             </td>
             <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
               <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermCntrctIncmGrp)"/>
+              <xsl:value-of select="count(PYLongTermCntrctIncmGrp/PYLTSmplfdYearlyInfoGrp)"/>
               </xsl:attribute>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="OtherIdentifyingInformationTxt"/>
@@ -83,7 +83,7 @@
               </td>
             </xsl:if>  
             <!-- If there is more than one set of data, show the first set with Row 1 background -->
-            <xsl:if test="count(PYLongTermCntrctIncmGrp)&gt;1">              
+            <xsl:if test="count(PYLongTermCntrctIncmGrp)&gt;1 or count(PYLTSmplfdYearlyInfoGrp)&gt;1">              
               <td class="styDepTblRow1Cell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="PYLongTermCntrctIncmGrp/Yr"/>
@@ -91,17 +91,17 @@
               </td>
               <td class="styDepTblRow1Cell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm;">
                 <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="PYLongTermCntrctIncmGrp/PYIncmPrevRptBsdOnEstCntrctAmt"/>
+                  <xsl:with-param name="TargetNode" select="PYLongTermCntrctIncmGrp/PYLTSmplfdYearlyInfoGrp/PYIncmPrevRptBsdOnEstCntrctAmt"/>
                 </xsl:call-template>
               </td>
               <td class="styDepTblRow1Cell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm;">
                 <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="PYLongTermCntrctIncmGrp/PYIncmAllocBsdOnActlCntrctAmt"/>
+                  <xsl:with-param name="TargetNode" select="PYLongTermCntrctIncmGrp/PYLTSmplfdYearlyInfoGrp/PYIncmAllocBsdOnActlCntrctAmt"/>
                 </xsl:call-template>
               </td>
               <td class="styDepTblRow1Cell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm;">
                 <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="PYLongTermCntrctIncmGrp/PYNetAdjToIncmAmt"/>
+                  <xsl:with-param name="TargetNode" select="PYLongTermCntrctIncmGrp/PYLTSmplfdYearlyInfoGrp/PYNetAdjToIncmAmt"/>
                 </xsl:call-template>
               </td>
             </xsl:if>
@@ -124,6 +124,39 @@
                 </td>
                 <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
                   <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYLTSmplfdYearlyInfoGrp/PYIncmPrevRptBsdOnEstCntrctAmt"/>
+                  </xsl:call-template>
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
+                  <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYLTSmplfdYearlyInfoGrp/PYIncmAllocBsdOnActlCntrctAmt"/>
+                  </xsl:call-template>
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
+                  <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYLTSmplfdYearlyInfoGrp/PYNetAdjToIncmAmt"/>
+                  </xsl:call-template>
+                </td>
+             
+
+			  
+			<xsl:for-each select="PYLTSmplfdYearlyInfoGrp">        
+            <xsl:if test="position() &gt; 1">
+					<tr>
+					<!-- Set row background color -->
+                <xsl:attribute name="class">
+                  <xsl:choose>
+                     <xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+                     <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:attribute>
+                <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
+                  <!--<xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="Yr"/>
+                  </xsl:call-template>-->
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
+                  <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="PYIncmPrevRptBsdOnEstCntrctAmt"/>
                   </xsl:call-template>
                 </td>
@@ -137,11 +170,15 @@
                     <xsl:with-param name="TargetNode" select="PYNetAdjToIncmAmt"/>
                   </xsl:call-template>
                 </td>
-              </tr>
+					</tr>
             </xsl:if>
-          </xsl:for-each>
+            </xsl:for-each>
+        
+         </tr>
+        </xsl:if>
+		</xsl:for-each>  
+        
         </xsl:for-each>
-
       </tbody>
     </table>
   </xsl:template>
@@ -155,8 +192,10 @@
   <!-- Main template -->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
            <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>

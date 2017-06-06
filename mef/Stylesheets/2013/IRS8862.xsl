@@ -139,7 +139,7 @@
 		<xsl:param name="Number"/>
 		<xsl:param name="TargetNode"/>
 		<!-- (6#LETTER#) ////////////////////////////////////////////////////-->
-		<div class="styIRS8862LineItem">
+		<div class="styIRS8862LineItem" style="height:auto;">
 			<div class="styIRS8862LNLeftNumBox" style="padding-right:0px;height:auto;">
 				<xsl:value-of select="$Letter"/>
 			</div>
@@ -214,11 +214,10 @@
 					</div>
 				</xsl:if>
 				<div class="styIRS8862CleanDiv" style="width:100%;height:auto;">
-					<div class="styIRS8862LNDesc" style="width:28mm;height:auto;padding-left:0px;">
+					<div class="styIRS8862LNDesc" style="width:27mm;height:auto;padding-left:0px;">
 						Number and street
-						<span style="width:4px;"/>
 					</div>
-					<div class="styIRS8862LNDesc" style="width:134mm;height:auto;border-bottom-width:1px;border-color:black;border-style:dashed;">
+					<div class="styIRS8862LNDesc" style="width:134mm;min-height:3.5mm;height:auto;border-bottom-width:1px;border-color:black;border-style:dashed;">
 						<xsl:if test="$TargetNode">
 							<xsl:if test="count($TargetNode/following-sibling::*) = 0">
 								<xsl:choose>
@@ -267,11 +266,11 @@
 						</xsl:if>
 					</div>
 				</div>
-				<div class="styIRS8862CleanDiv" style="width:100%;height:4mm;">
-					<div class="styIRS8862LNDesc" style="width:45mm;height:4mm;padding-left:0px;padding-right:3px;">
+				<div class="styIRS8862CleanDiv" style="width:100%;height:auto;">
+					<div class="styIRS8862LNDesc" style="width:45mm;height:auto;padding-left:0px;padding-right:3px;">
 						City or town, state, and ZIP code						
 					</div>
-					<div class="styIRS8862LNDesc" style="width:117mm;height:4mm;border-bottom-width:1px;border-color:black;border-style:dashed;word-wrap:break-word;">
+					<div class="styIRS8862LNDesc" style="width:117mm;min-height:3.5mm;height:auto;border-bottom-width:1px;border-color:black;border-style:dashed;word-wrap:break-word;">
 						<xsl:if test="$TargetNode">
 							<xsl:if test="count($TargetNode/following-sibling::*) = 0">
 								<xsl:call-template name="PopulateCityStateInfo">
@@ -296,7 +295,7 @@
 		<xsl:param name="Number"/>
 		<xsl:param name="TargetNode"/>
 		<!-- (7#LETTER#) ////////////////////////////////////////////////////-->
-		<div class="styIRS8862LineItem">
+		<div class="styIRS8862LineItem" style="height:auto;">
 			<div class="styIRS8862LNLeftNumBox" style="padding-right:0px;">
 				<xsl:value-of select="$Letter"/>
 			</div>
@@ -371,7 +370,7 @@
 					<div class="styIRS8862LNDesc" style="width:9mm;height:auto;padding-left:0px;padding-right:3px;">
 						Name						
 					</div>
-					<div class="styIRS8862LNDesc" style="width:118mm;height:auto;border-bottom-width:1px;border-color:black;border-style:dashed;float:right;">
+					<div class="styIRS8862LNDesc" style="width:119mm;height:3.5mm;border-bottom-width:1px;border-color:black;border-style:dashed;float:right;">
 						<xsl:if test="$TargetNode">
 							<xsl:if test="count($TargetNode/following-sibling::*) = 0">
 								<xsl:call-template name="PopulateText">
@@ -404,7 +403,7 @@
 						Relationship to child <xsl:value-of select="$Number"/>
 						<span style="width:4px;"/>
 					</div>
-					<div class="styIRS8862LNDesc" style="width:95mm;height:auto;border-bottom-width:1px;border-color:black;border-style:dashed;word-wrap:break-word;float:right;">
+					<div class="styIRS8862LNDesc" style="width:98mm; height:3.5mm; border-bottom-width:1px; border-color:black; border-style:dashed; word-wrap:break-word; float:right;">
 						<xsl:if test="$TargetNode">
 							<xsl:if test="count($TargetNode/following-sibling::*) = 0">
 								<xsl:call-template name="PopulateText">
@@ -419,8 +418,10 @@
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8862Data)"/>
@@ -450,7 +451,7 @@
 					<!--  Begin Header section 1 -->
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
-						<div class="styFNBox" style="width:31mm;height:22mm;border-right-width:2px;padding-top:.5mm;">
+						<div class="styFNBox" style="width:31mm;height:19mm;border-right-width:2px;padding-top:.5mm;">
 							<div style="padding-top:1mm;">
 								Form<span class="styFormNumber">  8862</span>
 							</div>
@@ -466,7 +467,7 @@
 						</div>
 						<div class="styFTBox" style="width:125mm;">
 							<!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-							<div class="styMainTitle" style="height:8mm;">
+							<div class="styMainTitle" style="height:11mm;">
 								Information To Claim Earned Income Credit<br/>
 								After Disallowance
 							</div>
@@ -474,8 +475,6 @@
 								<span style="text-align:center;font-weight:bold;">
 									<div style="width:100%;height:5mm;padding-left:5px;">
 										<div style="width:100%;height:5mm;">
-											<br/>
-											<br/>
 											<img src="{$ImagePath}/8862_Bullet_Sm.gif" alt="SmallBullet"/> 
 											Attach to your tax return.<br/>
 											<img src="{$ImagePath}/8862_Bullet_Sm.gif" alt="SmallBullet"/> 
@@ -485,7 +484,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;border-left-width:2px;height:22mm;">
+						<div class="styTYBox" style="width:30mm;border-left-width:2px;height:19mm;">
 							<div class="styOMB" style="height:50%;font-size:7pt;padding-top:3mm;">OMB No. 1545-0074</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;height:50%;padding-top:3.5mm;">
 								Attachment<br/>Sequence No. 
@@ -496,13 +495,13 @@
 					<!--  End Header section 1 -->
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
+						<div class="styNameBox" style="width:137mm;height:7mm;font-weight:normal;font-size:7pt;">
 							Name(s) shown on return<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
 							</xsl:call-template>
 						</div>
-						<div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
+						<div style="height:8mm;width:50mm;height:7mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
 							Your social security number
 							<br/>
 							<span style="font-weight:normal;text-align:center;width:100%">
@@ -514,9 +513,8 @@
 					</div>
 					<!-- End Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS8862LineItem" style="height:4mm;"/>
 						<!-- Before You Begin (start) -->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto; padding-top:1mm;">
 							<div class="styIRS8862CleanDiv" style="width:28mm;font-size:9pt;">
 								<b>
 									<span class="styItalicText">Before you begin:</span>
@@ -568,7 +566,7 @@
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (1) ////////////////////////////////////////////////////-->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:4.5mm;">
 							<div class="styIRS8862LNLeftNumBox">1</div>
 							<div class="styIRS8862CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS8862LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -601,7 +599,7 @@
 							</div>
 						</div>
 						<!-- (2) ////////////////////////////////////////////////////-->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:8mm;">
 							<div class="styIRS8862LNLeftNumBox">2</div>
 							<div class="styIRS8862CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS8862LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -666,16 +664,17 @@
 								</span>
 							</div>
 						</div>
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox"/>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								<b>Caution.</b>
-								<span style="width:4px;"/>If you checked “Yes,” <b>stop. Do not</b> fill in the rest of this form. But you must attach it to your tax return to take the<br/>
+								<span style="width:4px;"/>If you checked “Yes,” <b>stop. Do not</b> fill in the rest of this form. But you must attach it to your tax return to take the
+								<br/>
 								EIC. If you checked “No,” continue.
 							</div>
 						</div>
 						<!-- (3) ////////////////////////////////////////////////////-->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:8mm;">
 							<div class="styIRS8862LNLeftNumBox">3</div>
 							<div class="styIRS8862CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS8862LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -749,7 +748,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox"/>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								<b>Caution.</b>
@@ -769,8 +768,8 @@
 						</div>
 					</div>
 					<!-- Body -->
-					<div class="styTBB" style="width:187mm;">
-						<div class="styIRS8862LineItem">
+					<div class="styTBB" style="width:187mm; float:none; clear:both;">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox"/>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								<b>Note. Child 1, Child 2, </b>and <b>Child 3</b> are the same children you listed as Child 1, Child 2, and Child 3 on <b>Schedule EIC</b> for the year<br/>
@@ -836,16 +835,17 @@
 								</span>
 							</div>
 						</div>
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto; padding-top:1mm;">
 							<div class="styIRS8862LNLeftNumBox"/>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								<b>Caution.</b>
-								<span style="width:4px;"/>If you entered less than <b>183</b> (184 if the year on line 1 is 2012) for any child, you cannot take the EIC based on that child, <br/>
+								<span style="width:4px;"/>
+								If you entered less than <b>183</b> (184 if the year on line 1 is 2012) for any child, you cannot take the EIC based on that child, <br/>
 								unless the special rule for a child who was born or died during the year shown on line 1 applies. See the instructions.
 							</div>
 						</div>
 						<!-- (5) ////////////////////////////////////////////////////-->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox">5</div>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								If your child was born or died during the year shown on line 1, enter the month and day the child was born and/or died.<br/>
@@ -868,7 +868,7 @@
 							<xsl:with-param name="TargetNode" select="$Form8862Data/EICEligClmQualifyingChildInfo[3]"/>
 						</xsl:call-template>
 						<!-- (6) ////////////////////////////////////////////////////-->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox">6</div>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								Enter the address where you and the child lived together during the year shown on line 1. If you lived with the child at more<br/>
@@ -894,7 +894,7 @@
 							<xsl:with-param name="TargetNode" select="$Form8862Data/EICEligClmLiveWithChld3AddrGrp/EICEligClmLivedWithChldAddrGrp[1]"/>
 						</xsl:call-template>
 						<!-- (7) ////////////////////////////////////////////////////-->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox">7</div>
 							<div class="styIRS8862CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS8862LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -965,7 +965,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox"/>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								If “Yes,” enter that person’s name and relationship to the child below. If more than one other person lived<br/>
@@ -1016,7 +1016,7 @@
 					</div>
 					<!-- END Page Break and Footer-->
 					<!-- BEGIN Page Header -->
-					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styTBB" style="width:187mm;padding-top:.5mm; float:none; clear:both;">
 						<div style="float:left;">
 							Form 8862 (Rev. 12-2012)<span style="width:148mm;"/>
 						</div>
@@ -1039,7 +1039,7 @@
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (8) ////////////////////////////////////////////////////-->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox">8</div>
 							<div class="styIRS8862CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS8862LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -1064,14 +1064,14 @@
 								</xsl:call-template>
 							</div>
 						</div>
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox"/>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								<b>Caution.</b><span style="width:3px;"/>If you entered less than <b>183 (184 if the year on line 1 is 2012), stop.</b> You cannot take the EIC. See the instructions.
 							</div>
 						</div>
 						<!-- (9) ////////////////////////////////////////////////////-->
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox">9</div>
 							<div class="styIRS8862CleanDiv" style="width:144mm;height:auto;padding:0px 0px 0px 0px;">
 								<div class="styIRS8862LNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
@@ -1114,7 +1114,7 @@
 								</xsl:call-template>
 							</div>
 						</div>
-						<div class="styIRS8862LineItem">
+						<div class="styIRS8862LineItem" style="height:auto;">
 							<div class="styIRS8862LNLeftNumBox"/>
 							<div class="styIRS8862LNDesc" style="width:181mm;height:auto;">
 								<b>Caution.</b><span style="width:3px;"/>If you entered less than <b>183 (184 if the year on line 1 is 2012), stop.</b> You cannot take the EIC. See the instructions.

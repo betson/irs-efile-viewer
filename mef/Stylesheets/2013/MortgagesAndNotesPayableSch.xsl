@@ -53,18 +53,18 @@
         </tr>
         <tr class="styDepTblRow1">    
           <th class="styDepTblCell" scope="col" nowrap="nowrap" style="text-align: right; width: 45%">Original Amount of Loan</th>                                
-          <td class="styDepTblCell" style="text-align:left">
+          <td class="styDepTblCell" style="text-align:right">
             <span style="width:44mm;text-align:right;">
-              <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="LoanOriginalAmt"/></xsl:call-template>             
+              <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="LoanOriginalAmt"/></xsl:call-template>             
             </span>
 
           </td>
         </tr>
         <tr class="styDepTblRow2">        
           <th class="styDepTblCell" scope="col" nowrap="nowrap" style="text-align: right; width: 45%">Balance Due</th>                            
-          <td class="styDepTblCell" style="text-align:left">
+          <td class="styDepTblCell" style="text-align:right">
             <span style="width:44mm;text-align:right;">
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="BalanceDueAmt"/></xsl:call-template>               </span>
+            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="BalanceDueAmt"/></xsl:call-template>               </span>
           </td>
         </tr>
         <tr class="styDepTblRow1">    
@@ -113,9 +113,9 @@
         </tr>
         <tr class="styDepTblRow2">  
           <th class="styDepTblCell" scope="col" nowrap="nowrap" style="text-align: right; width: 45%">Consideration FMV</th>                                
-          <td class="styDepTblCell" style="text-align:left">
+          <td class="styDepTblCell" style="text-align:right">
             <span style="width:44mm;text-align:right;">
-              <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="ConsiderationFMVAmt"/></xsl:call-template> 
+              <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="ConsiderationFMVAmt"/></xsl:call-template> 
             </span>            
           </td>
         </tr>                                    
@@ -127,8 +127,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -165,7 +167,7 @@
         <div class="styTopSectionLine">
           <span class="styTopSectionLineLbl"> Total Mortgage Amount: </span>      
           <span style="font-size:10pt;">
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990DepsData/MortgageAmt"/></xsl:call-template>
+            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form990DepsData/MortgageAmt"/></xsl:call-template>
           </span>  
         </div>      
         <br/>            

@@ -3,6 +3,7 @@
 	<!-- CSS Styles for form 8885 -->
 	<xsl:template name="IRS8885Style">
 
+   
     .styIRS8885Info {
       padding-top:0.5mm;
     }
@@ -13,7 +14,7 @@
       padding-left:2mm;
       font-weight:bold;
     }
-    
+	
     .styIRS8885LB {
       float:left;
       padding-left:3mm;
@@ -71,5 +72,6 @@
 		border-color:black;
 		float:left;
 	}
+	
 </xsl:template>
 </xsl:stylesheet>

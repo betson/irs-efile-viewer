@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS499W2PR"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -42,11 +44,11 @@
           <div style="width:256mm;">
             <br/>
           </div>
-          
+          <!-- Remove this later -->
           <!-- Big box covers entire form -->
           <div style="width:255mm;border-bottom:1px solid black">
             <div class="styGenericDiv" style="width:155mm;">
-              <div class="styGenericDiv" style="width:100%;height:16mm;border-right:0px solid black;">
+              <div class="styGenericDiv" style="width:100%;height:17mm;border-right:0px solid black;">
                 <span style="width:34mm;">
                   Formulario
                   <br/>
@@ -67,22 +69,18 @@
                 </span>
               </div>
             
-              <div class="styGenericDiv" style="width:105mm;
-                border-left:1px solid black;
-                border-right:1px solid black;
-                border-top:1px solid black;
-              ">
+              <div class="styGenericDiv" style="width:105mm;                 border-left:1px solid black;                 border-right:1px solid black;                 border-top:1px solid black;               ">
                 <div class="styIRS499W2PRCell" style="height:13mm;">
                   1. Nombre - First Name
                   <br/>
                   <br/>
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/EmployeeName"/>
+                    <xsl:with-param name="TargetNode" select="$FormData/EmployeeNm"/>
                   </xsl:call-template>
                   <span style="width:2mm;"/>
                   <xsl:call-template name="LinkToLeftoverDataTableInline">
                     <xsl:with-param name="Desc">Line 1 - Employee Name Control</xsl:with-param>
-                    <xsl:with-param name="TargetNode" select="$FormData/EmployeeNameControl"/>
+                    <xsl:with-param name="TargetNode" select="$FormData/EmployeeNameControlTxt"/>
                   </xsl:call-template>
                 </div>
                 <div class="styIRS499W2PRCell" style="height:13mm;">
@@ -116,17 +114,17 @@
                   Employer's Name and Mailing Address
                   <br/>
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/EmployerName/BusinessNameLine1"/>
+                    <xsl:with-param name="TargetNode" select="$FormData/EmployerName/BusinessNameLine1Txt"/>
                   </xsl:call-template>
                   <span style="width:2mm"/>
                   <xsl:call-template name="LinkToLeftoverDataTableInline">
                     <xsl:with-param name="Desc">Line 2 - Employer Name Control</xsl:with-param>
-                    <xsl:with-param name="TargetNode" select="$FormData/EmployerNameControl"/>
+                    <xsl:with-param name="TargetNode" select="$FormData/EmployerNameControlTxt"/>
                   </xsl:call-template>
                   <br/>
-                  <xsl:if test="$FormData/EmployerName/BusinessNameLine2">
+                  <xsl:if test="$FormData/EmployerName/BusinessNameLine2Txt">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/EmployerName/BusinessNameLine2"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/EmployerName/BusinessNameLine2Txt"/>
                     </xsl:call-template>
                     <br/>
                   </xsl:if>
@@ -151,7 +149,7 @@
                   <br/>
                   Employer's Telephone Number<span style="width:2mm"/>
                   <xsl:call-template name="PopulatePhoneNumber">
-                        <xsl:with-param name="TargetNode" select="$FormData/EmployerTelephoneNumber"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/EmployerTelephoneNum"/>
                   </xsl:call-template>
                 </div>
                 <div class="styIRS499W2PRCell" style="height:8.3mm;">
@@ -166,21 +164,21 @@
                   Day  
                   <span style="width:8mm;border-bottom:1px solid black;padding-left:2mm;">
                     <xsl:call-template name="PopulateDay">
-                        <xsl:with-param name="TargetNode" select="$FormData/CeaseOperationsDate"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/CeaseOperationsDt"/>
                     </xsl:call-template>
                   </span>
                   <span style="width:1mm"/>
                   Month  
                   <span style="width:8mm;border-bottom:1px solid black;padding-left:2mm;">
                     <xsl:call-template name="PopulateMonth">
-                        <xsl:with-param name="TargetNode" select="$FormData/CeaseOperationsDate"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/CeaseOperationsDt"/>
                     </xsl:call-template>
                   </span>
                   <span style="width:2mm"/>
                   Year
                   <span style="width:8mm;border-bottom:1px solid black;padding-left:1mm;">
                     <xsl:call-template name="PopulateYear">
-                        <xsl:with-param name="TargetNode" select="$FormData/CeaseOperationsDate"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/CeaseOperationsDt"/>
                     </xsl:call-template>
                   </span>
                 </div>
@@ -189,15 +187,12 @@
                   <br/>
                   <br/>
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$FormData/ControlNumber"/>
+                    <xsl:with-param name="TargetNode" select="$FormData/ControlNum"/>
                   </xsl:call-template>                
                 </div>
               </div>
 
-              <div class="styGenericDiv" style="width:50mm;
-                border-right:0px solid black;
-                border-top:1px solid black;
-              ">
+              <div class="styGenericDiv" style="width:50mm;                 border-right:0px solid black;                 border-top:1px solid black;               ">
                 <div class="styIRS499W2PRCell" style="height:10.4mm;">
                   3. Núm. Seguro Social<br/>                
                   <span style="width:3.75mm"/>Social Security No.<br/>
@@ -230,21 +225,21 @@
                   Day  
                   <span style="width:6mm;border-bottom:1px solid black;padding-left:1mm;">
                     <xsl:call-template name="PopulateDay">
-                        <xsl:with-param name="TargetNode" select="$FormData/PensionReceiptStartDate"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/PensionReceiptStartDt"/>
                     </xsl:call-template>
                   </span>
                   <span style="width:1mm"/>
                   Month  
                   <span style="width:6mm;border-bottom:1px solid black;padding-left:1mm;">
                     <xsl:call-template name="PopulateMonth">
-                        <xsl:with-param name="TargetNode" select="$FormData/PensionReceiptStartDate"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/PensionReceiptStartDt"/>
                     </xsl:call-template>
                   </span>
                   <span style="width:0mm"/>
                   Year
                   <span style="width:8mm;border-bottom:1px solid black;padding-left:.5mm;">
                     <xsl:call-template name="PopulateYear">
-                        <xsl:with-param name="TargetNode" select="$FormData/PensionReceiptStartDate"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/PensionReceiptStartDt"/>
                     </xsl:call-template>
                   </span>
                 </div>
@@ -294,7 +289,7 @@
                     <span style="width:100%">Year:</span>
                   </span>
                   <span style="width:24mm;font-family:Arial Narrow;font-size:16pt;float:left;">
-                    2013
+                    2014
                     <span style="width:2mm;"/>
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Bottom Center - Standard Or Non Standard Code</xsl:with-param>
@@ -313,12 +308,8 @@
 
             </div>
             <!--END Left Half DIV-->  
-            <div class="styGenericDiv" style="width:50mm;
-              border-right:1px solid black;
-			  border-left:1px solid black;
-              border-top:1px solid black;
-            ">
-              <div class="styIRS499W2PRCell" style="height:16mm;font-family:arial;font-weight:bold;padding-top:.5mm">
+            <div class="styGenericDiv" style="width:50mm;               border-right:1px solid black;      border-left:1px solid black;               border-top:1px solid black;             ">
+              <div class="styIRS499W2PRCell" style="height:17mm;font-family:arial;font-weight:bold;padding-top:.5mm">
                 INFORMACION PARA EL DEPARTAMENTO DE HACIENDA
                 <br/>
                 <br/>
@@ -434,11 +425,8 @@
               </div>      
             </div>
 
-            <div class="styGenericDiv" style="width:50mm;
-              border-right:1px solid black;
-              border-top:1px solid black;
-            ">
-              <div class="styIRS499W2PRCell" style="height:16mm;font-family:arial;font-weight:bold;padding-top:.5mm">
+            <div class="styGenericDiv" style="width:50mm;               border-right:1px solid black;               border-top:1px solid black;             ">
+              <div class="styIRS499W2PRCell" style="height:17mm;font-family:arial;font-weight:bold;padding-top:.5mm">
                 INFORMACION PARA EL SEGURO SOCIAL
                 <br/>                
                 <br/>                
@@ -550,18 +538,18 @@
             </xsl:call-template>
             <xsl:call-template name="PopulateLeftoverRowLandscape">
               <xsl:with-param name="Desc">Line 1 - Employee Name Control</xsl:with-param>
-              <xsl:with-param name="TargetNode" select="$FormData/EmployeeNameControl"/>
-              <xsl:with-param name="DescWidth" select="100"></xsl:with-param>
+              <xsl:with-param name="TargetNode" select="$FormData/EmployeeNameControlTxt"/>
+              <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateLeftoverRowLandscape">
               <xsl:with-param name="Desc">Line 2 - Employer Name Control</xsl:with-param>
-              <xsl:with-param name="TargetNode" select="$FormData/EmployerNameControl"/>
-              <xsl:with-param name="DescWidth" select="100"></xsl:with-param>
+              <xsl:with-param name="TargetNode" select="$FormData/EmployerNameControlTxt"/>
+              <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateLeftoverRowLandscape">
               <xsl:with-param name="Desc">Bottom Center - Standard Or Non Standard Code</xsl:with-param>
               <xsl:with-param name="TargetNode" select="$FormData/StandardOrNonStandardCd"/>
-              <xsl:with-param name="DescWidth" select="100"></xsl:with-param>
+              <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
           </table>
           <!-- END Left Over Table -->

@@ -15,8 +15,10 @@
 	</xsl:param>
     <!-- Main template -->
     <xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 		  <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 			<title>
 			  <xsl:value-of select="$depDocTitle"/>
 			</title>
@@ -42,7 +44,7 @@
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependencyLandscape"/>
 				<div class="styDepTitleLineLandscape">
-					<span class="styDepTitle" style="width:110mm;">
+					<span class="styDepTitle" style="width:120mm;">
 						<span style="padding-right:1.5mm;">TY</span>
 						<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
 						<span style="padding-left:1.5mm;">Expense or Deduction Items Statement</span>
@@ -74,25 +76,25 @@
 							  </xsl:call-template>
 							</td>
 							<!-- Expense Per Income Statement - Column 2 -->
-							<td class="stydepTblCell" style="width:36mm; text-align:right;padding-top:3mm;">
+							<td class="styDepTblCell" style="width:36mm; text-align:right;padding-top:3mm;">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="ExpensePerIncomeStmtAmt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Temporary Difference Amount - Column 3 -->
-							<td class="stydepTblCell" style="width:36mm; text-align:right;padding-top:3mm;">
+							<td class="styDepTblCell" style="width:36mm; text-align:right;padding-top:3mm;">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="TemporaryDifferenceAmt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Permanent Difference Amount - Column 4 -->
-							<td class="stydepTblCell" style="width:36mm; text-align:right;padding-top:3mm">
+							<td class="styDepTblCell" style="width:36mm; text-align:right;padding-top:3mm">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="PermanentDifferenceAmt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Deduction Per Tax Return - Column 5 -->
-							<td class="stydepTblCell" style="width:36mm; text-align:right;padding-top:3mm">
+							<td class="styDepTblCell" style="width:36mm; text-align:right;padding-top:3mm">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="DeductionPerTaxReturnAmt"/>
 							  </xsl:call-template>

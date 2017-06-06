@@ -9,9 +9,11 @@
     <xsl:strip-space elements="*"/>
     <xsl:param name="Form5884Data" select="$RtnDoc/IRS5884"/>
     <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
     <!-- Updated 5/8/2012-->
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form5884Data)"/>
@@ -61,7 +63,7 @@
             </div>
           </div>
           <div class="styTYBox" style="width:30mm;height:20mm;">
-            <div class="styOMB" style="height:2mm;">
+            <div class="styOMB" style="height:auto;">
               OMB No. 1545-0219
             </div>
             <div class="styTaxYear">
@@ -75,7 +77,7 @@
         </div>
         <!-- Begin Names and Identifying number section -->
         <div class="styBB" style="width:187mm;">
-          <div class="styNameBox" style="width:148mm;height:8mm;font-size:7pt;">
+          <div class="styNameBox" style="width:148mm;height:auto;font-size:7pt;">
             Name(s) shown on return<br/>
             <span>
               <xsl:choose>
@@ -125,13 +127,13 @@
                 during the tax year, and multiply by the percentage shown, for services of employees who are
               certified as members of a targeted group.       
             </div>
-            <div class="styLNRightNumBoxNBB" style="width:8.2mm;background-color:lightgrey;height:11mm;border-right-width:1px;padding-top:0mm;"/>
+            <div class="styLNRightNumBoxNBB" style="width:8.2mm;background-color:lightgrey;height:15mm;border-right-width:1px;padding-top:0mm;"/>
             </div>
             <!-- Begin Line 1a -->
             <div style="width:187mm;">
               <div class="styLNLeftNumBox" style="padding-left:4mm;">a</div>
               <div class="styLNDesc" style="width:138mm;">
-                Qualified first-year wages of employees who worked for you                
+                Qualified first-year wages of employees who worked for you  <br></br>              
                 <span style="float:left;width:60mm;">at least 120 hours but fewer than 400 hours</span>
                 <!--Dotted Line-->
                 <span class="styDotLn" style="padding-right:1mm;">.....</span>
@@ -142,14 +144,14 @@
                     <xsl:with-param name="TargetNode" select="$Form5884Data/WagesBetween120And399HrsAmt"/>
                   </xsl:call-template>
                 </span>
-                <span style="width:18mm;">
-                  <span style="width:4px;"/>X 25% (.25)</span>
+                <span style="width:18mm;display:inline;">
+                  <span style="width:4px;display:inline;"/>X 25% (.25)</span>
                   </span>
                 </div>
-                  <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;padding-top:0mm;"/>
-                  <div class="styLNAmountBoxNBB" style="padding-top:0mm;"/>
-                  <div class="styLNRightNumBox">1a</div>
-              <div class="styLNAmountBox">
+                  <div class="styLNRightNumBoxNBB" style="height:auto;background-color:lightgrey;padding-top:0mm;"/>
+                  <div class="styLNAmountBoxNBB" style="padding-top:0mm;height:auto;"/>
+                  <div class="styLNRightNumBox"  style="height:7mm;padding-top:3mm;">1a</div>
+              <div class="styLNAmountBox" style="height:7mm;padding-top:3mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5884Data/TotWagesBetween120And399HrsAmt"/>
                 </xsl:call-template>
@@ -160,7 +162,7 @@
  <div style="width:187mm;">
               <div class="styLNLeftNumBox" style="padding-left:4mm;">b</div>
               <div class="styLNDesc" style="width:138mm;">
-                Qualified first-year wages of employees who worked for you                
+                Qualified first-year wages of employees who worked for you  <br></br>                 
                 <span style="float:left;width:27mm;">at least 400 hours</span>
                 <!--Dotted Line-->
                 <span class="styDotLn" style="padding-right:1mm;">............</span>
@@ -171,14 +173,14 @@
                     <xsl:with-param name="TargetNode" select="$Form5884Data/Wages400OrMoreHoursAmt"/>
                   </xsl:call-template>
                 </span>
-                <span style="width:18mm;">
-                  <span style="width:4px;"/>X 40% (.40)</span>
+                <span style="width:18mm;display:inline;">
+                  <span style="width:4px;display:inline;"/>X 40% (.40)</span>
                   </span>
                 </div>
-                  <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;padding-top:0mm;height:6mm"/>
-                  <div class="styLNAmountBoxNBB" style="padding-top:0mm;height:6mm"/>
-                  <div class="styLNRightNumBox">1b</div>
-              <div class="styLNAmountBox">
+                  <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;padding-top:0mm;height:auto"/>
+                  <div class="styLNAmountBoxNBB" style="padding-top:0mm;height:auto;"/>
+                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">1b</div>
+              <div class="styLNAmountBox" style="height:7mm;padding-top:3mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5884Data/Wages400OrMoreHoursCreditAmt"/>
                 </xsl:call-template>
@@ -189,7 +191,7 @@
    <div style="width:187mm;">
               <div class="styLNLeftNumBox" style="padding-left:4mm;">c</div>
               <div class="styLNDesc" style="width:138mm;">
-                Qualified second-year wages of employees certified as              
+                Qualified second-year wages of employees certified as  <br></br>               
                 <span style="float:left;width:54mm;">long-term family assistance recipients</span>
                 <!--Dotted Line-->
                 <span class="styDotLn" style="padding-right:1mm;">......</span>
@@ -200,14 +202,14 @@
                     <xsl:with-param name="TargetNode" select="$Form5884Data/SecondYearWagesAmt"/>
                   </xsl:call-template>
                 </span>
-                <span style="width:18mm;">
-                  <span style="width:4px;"/>X 50% (.50)</span>
+                <span style="width:18mm;display:inline;">
+                  <span style="width:4px;display:inline;"/>X 50% (.50)</span>
                   </span>
                 </div>
-                  <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;padding-top:0mm;"/>
-                  <div class="styLNAmountBoxNBB" style="padding-top:0mm;"/>
-                  <div class="styLNRightNumBox">1c</div>
-              <div class="styLNAmountBox">
+                  <div class="styLNRightNumBoxNBB" style="height:auto;background-color:lightgrey;padding-top:0mm;"/>
+                  <div class="styLNAmountBoxNBB" style="padding-top:0mm;height:auto;"/>
+                  <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">1c</div>
+              <div class="styLNAmountBox" style="height:7mm;padding-top:3mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5884Data/TotalSecondYearWagesAmt"/>
                 </xsl:call-template>
@@ -215,8 +217,8 @@
              </div>
             <!--Line 2 Begin-->
             <div style="width:187mm;">
-              <div class="styLNLeftNumBoxSD" style="height:4mm;padding-top:3.5mm;">2</div>
-              <div class="styLNDesc" style="width:138mm;height:4mm;padding-top:3.5mm;">
+              <div class="styLNLeftNumBoxSD" style="height:4mm;padding-top:2mm;">2</div>
+              <div class="styLNDesc" style="width:138mm;height:4mm;padding-top:2mm;">
             Add lines 1a, 1b and 1c. See instructions for the adjustment you must make to salaries and wages
           <!--Dotted Line-->
                 <xsl:call-template name="SetFormLinkInline">
@@ -224,10 +226,10 @@
                 </xsl:call-template>
                 <span class="styBoldText"/>
               </div>
-              <div class="styLNRightNumBoxNBB" style="height:4mm;padding-top:0mm;background-color:lightgrey;"/>
-              <div class="styLNAmountBoxNBB" style="padding-top:0mm;height:4mm;"/>
-              <div class="styLNRightNumBox">2</div>
-              <div class="styLNAmountBox">
+              <div class="styLNRightNumBoxNBB" style="height:auto;padding-top:0mm;background-color:lightgrey;"/>
+              <div class="styLNAmountBoxNBB" style="padding-top:0mm;height:auto;"/>
+              <div class="styLNRightNumBox" style="height:7mm;padding-top:2mm;">2</div>
+              <div class="styLNAmountBox" style="height:7mm;padding-top:2mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5884Data/TotalWagesAmt"/>
                 </xsl:call-template>
@@ -235,14 +237,14 @@
             </div>
             <!--Line 3 -->
             <div style="width:187mm;">
-              <div class="styLNLeftNumBoxSD">3</div>
-              <div class="styLNDesc">
+              <div class="styLNLeftNumBoxSD"  style="height:7mm;padding-top:2mm;">3</div>
+              <div class="styLNDesc"  style="height:7mm;padding-top:2mm;">
                 <span style="float:left;">Work opportunity credit from partnerships, S corporations, cooperatives, estates, and trusts </span>                
                 <!-- Dotted Line -->
                 <span class="styDotLn" style="float:right;font-weight:bold;padding-right:1mm;margin-right:2mm;">...</span>
               </div>
-              <div class="styLNRightNumBox" style="height:4.25mm;padding-top:.5mm;padding-bottom:.5mm;">3</div>
-              <div class="styLNAmountBox">
+              <div class="styLNRightNumBox" style="height:7mm;padding-top:2mm;padding-bottom:.1mm;">3</div>
+              <div class="styLNAmountBox"  style="height:7mm;padding-top:2mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5884Data/PassThruWorkOpportunityCrAmt"/>
                 </xsl:call-template>
@@ -252,7 +254,7 @@
             <div style="width:187mm;">
               <div class="styLNLeftNumBox" style="height:4mm;padding-left:2mm">4</div>
               <div class="styLNDesc" style="width:138mm;height:4mm;">
-         Add lines 2 and 3. Cooperatives, estates, and trusts, go to line 5. Partnerships and S corporations, stop here and report this amount on Schedule K. All others, stop here and report this amount on Form 3800,<span style="float:left;">line 4b </span>
+         Add lines 2 and 3. Cooperatives, estates, and trusts, go to line 5. Partnerships and S corporations, stop here and report this amount on Schedule K. All others, stop here and report this amount on Form 3800,<br/><span style="float:left;">line 4b </span>
           <!-- Dotted Line -->
           <span class="styDotLn" style="float:right;font-weight:bold;padding-right:1mm;margin-right:2mm;">...............................</span>
               </div>
@@ -270,15 +272,16 @@
             <div style="width:187mm;">
               <div class="styLNLeftNumBox" style="height:4mm;padding-left:2mm">5</div>
               <div class="styLNDesc" style="width:138mm;height:4mm;">
-                Amount allocated to the patrons of the cooperative or beneficiaries of the estate or trust 
-                (see <span style="float:left;">instructions) </span>
+                Amount allocated to the patrons of the cooperative or beneficiaries of the estate or trust  (see
+                <br/>
+                <span style="float:left;">instructions) </span>
                 <!-- Dotted Line -->
                 <span class="styDotLn" style="float:right;font-weight:bold;padding-right:1mm;margin-right:2mm;">.............................</span>
               </div>
-              <div class="styLNRightNumBoxNBB" style="height:4mm;padding-top:0mm;background-color:lightgrey;"/>
-              <div class="styLNAmountBoxNBB" style="padding-top:0mm;height:4mm;"/>
-              <div class="styLNRightNumBox">5</div>
-              <div class="styLNAmountBox">
+              <div class="styLNRightNumBoxNBB" style="height:auto;padding-top:0mm;background-color:lightgrey;"/>
+              <div class="styLNAmountBoxNBB" style="padding-top:0mm;height:auto;"/>
+              <div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">5</div>
+              <div class="styLNAmountBox" style="height:7mm;padding-top:3mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5884Data/CreditAllocationAmt"/>
                 </xsl:call-template>
@@ -325,7 +328,7 @@
        Form <span class="styBoldText">5884</span> (2013)
         </div>
         <!--Page break for printing on separate page-->
-          <br class="pageEnd"/>
+          <div class="pageEnd"/>
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1120ScheduleM3" select="$RtnDoc/IRS1120SchM3EliminationsOrAdj"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1120ScheduleM3)"/>
@@ -68,7 +70,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:23mm;border-left-width:2px;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0123</div>
+							<div class="styOMB">OMB No. 1545-0123</div>
 							<div class="styTY" style="height:11mm;padding-top:4mm;">20<span class="styTYColor">13</span>
 							</div>
 						</div>
@@ -137,12 +139,12 @@
 							<span style="padding-left:10mm;">(1) </span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/        NonConsolidatedReturnInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/NonConsolidatedReturnInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/        NonConsolidatedReturnInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/NonConsolidatedReturnInd"/>
 								</xsl:call-template>
 					Non-Consolidated return
 					 </label>
@@ -151,12 +153,12 @@
            		 (2)
            			<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/        ConsolidatedReturnInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ConsolidatedReturnInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/        ConsolidatedReturnInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ConsolidatedReturnInd"/>
 								</xsl:call-template>
 					Consolidated return (Form 1120 only)
 					</label>
@@ -195,7 +197,7 @@
 					<!-- end check box line  -->
 					<!-- Part I - Header -->
 					<div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;clear:all;border-right-width:0px;border-left-width:0px;padding-top:2mm;float:left;">
-						<span class="styPartName" style="height:1mm;width:12mm;">Part I</span>
+						<span class="styPartName" style="width:12mm;">Part I</span>
 						<span style="width:140mm;" class="styPartDesc">
 							<span style="width:3mm;"/>Financial Information and Net Income (Loss) Reconciliation
           <span style="font-weight:normal"> (see instructions)</span>
@@ -216,18 +218,18 @@
 							<span style="width:.5mm;"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorporationFiledSECForm10KInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
 								</xsl:call-template>
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/                 CorporationFiledSECForm10KInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
@@ -241,18 +243,18 @@
 							<span style="width:.5mm;"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorporationFiledSECForm10KInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
 								</xsl:call-template>
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/                 CorporationFiledSECForm10KInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorporationFiledSECForm10KInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/               CorporationFiledSECForm10KInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorporationFiledSECForm10KInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -273,18 +275,18 @@
 							<span style="width:.5mm;"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpPrepCertAuditedIncmStmtInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
 								</xsl:call-template>
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/                 CorpPrepCertAuditedIncmStmtInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpPrepCertAuditedIncmStmtInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/               CorpPrepCertAuditedIncmStmtInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
@@ -298,18 +300,18 @@
 							<span style="width:.5mm;"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpPrepCertAuditedIncmStmtInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
 								</xsl:call-template>
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/                 CorpPrepCertAuditedIncmStmtInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpPrepCertAuditedIncmStmtInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/               CorpPrepCertAuditedIncmStmtInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorpPrepCertAuditedIncmStmtInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -331,18 +333,18 @@
 							<span style="width:.5mm;"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpPrepIncomeStatementInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepIncomeStatementInd"/>
 								</xsl:call-template>
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/                 CorpPrepIncomeStatementInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepIncomeStatementInd"/>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpPrepIncomeStatementInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/               CorpPrepIncomeStatementInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepIncomeStatementInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorpPrepIncomeStatementInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
@@ -356,18 +358,18 @@
 							<span style="width:.5mm;"/>
 							<span>
 								<xsl:call-template name="PopulateSpan">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpPrepIncomeStatementInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepIncomeStatementInd"/>
 								</xsl:call-template>
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/                 CorpPrepIncomeStatementInd"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepIncomeStatementInd"/>
 									</xsl:call-template>
 								</input>
 							</span>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpPrepIncomeStatementInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/               CorpPrepIncomeStatementInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpPrepIncomeStatementInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorpPrepIncomeStatementInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -396,7 +398,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">
 							<span style="width:1.5mm"/>b</div>
-						<div class="styLNDesc" style="width:179mm;">Has the corporation’s income statement been restated for the income statement period on line 2a?
+						<div class="styLNDesc" style="width:179mm;height:auto;">Has the corporation's income statement been restated for the income statement period on line 2a?
             <!-- Form Link -->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationIncmStmtRestatedInd"/>
@@ -421,11 +423,11 @@
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationIncmStmtRestatedInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/CorporationIncmStmtRestatedInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorporationIncmStmtRestatedInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
-          (If “Yes," attach an explanation and the amount of each item restated.)
+          (If "Yes," attach an explanation and the amount of each item restated.)
         </div>
 					</div>
 					<!-- Line 2b - No -->
@@ -446,7 +448,7 @@
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorporationIncmStmtRestatedInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/CorporationIncmStmtRestatedInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorporationIncmStmtRestatedInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -456,7 +458,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">
 							<span style="width:1.5mm"/>c</div>
-						<div class="styLNDesc" style="width:179mm;">Has the corporation’s income
+						<div class="styLNDesc" style="width:179mm;height:auto;">Has the corporation's income
          statement been restated for any of the five income statement periods preceding
           the period<br/> on line 2a?
             <!-- Form Link -->
@@ -483,11 +485,11 @@
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncmStmtRestated5PrecInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/CorpIncmStmtRestated5PrecInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorpIncmStmtRestated5PrecInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>          
-          (If “Yes," attach an explanation and the amount of each item restated.)
+          (If "Yes," attach an explanation and the amount of each item restated.)
         </div>
 					</div>
 					<!-- Line 2c - No -->
@@ -508,7 +510,7 @@
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncmStmtRestated5PrecInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/CorpIncmStmtRestated5PrecInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorpIncmStmtRestated5PrecInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
@@ -542,7 +544,7 @@
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpVotingComStkPubTrddInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/CorpVotingComStkPubTrddInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorpVotingComStkPubTrddInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">Yes.</span>
 							</label>
@@ -566,11 +568,11 @@
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpVotingComStkPubTrddInd"/>
-									<xsl:with-param name="BackupName" select="Form1120ScheduleM3/CorpVotingComStkPubTrddInd"/>
+									<xsl:with-param name="BackupName" select="$Form1120ScheduleM3/CorpVotingComStkPubTrddInd"/>
 								</xsl:call-template>
 								<span class="styBoldText" style="padding-left:1mm;">No.</span>
 							</label>
-          If “No," go to line 4a.
+          If "No," go to line 4a.
         </div>
 					</div>
 					<!-- Line 3b -->
@@ -592,7 +594,7 @@
 					<div class="styBB" style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">
 							<span style="width:1.5mm"/>c</div>
-						<div class="styLNDesc" style="width:113mm;">Enter the nine-digit CUSIP number of the corporation’s primary publicly traded voting 						<span style="float:left;">common stock</span>
+						<div class="styLNDesc" style="width:113mm;height:auto;">Enter the nine-digit CUSIP number of the corporation's primary publicly traded voting <span style="float:left;">common stock</span>
 							<span class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>
 						</div>
 						<div style="width:45mm;height:4.5mm;border: solid 1px;margin-top:1.5mm;float:left;margin-left:3mm;text-align:center;">
@@ -711,8 +713,8 @@
 							</div>
 						</div>
 						<div style="float:right;">
-							<div class="styLNRightNumBox" style="background-color:lightgrey"/>
-							<div class="styLNAmountBox" style="background-color:lightgrey"/>
+							<div class="styLNRightNumBox" style="background-color:lightgrey;height:8mm;"/>
+							<div class="styLNAmountBox" style="background-color:lightgrey;height:8mm;"/>
 						</div>
 					</div>
 					<!-- Line 5a -->
@@ -725,7 +727,7 @@
           (attach statement)
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               NetIncmNonincludibleFrgnEntAmt"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/NetIncmNonincludibleFrgnEntAmt"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
@@ -960,7 +962,7 @@
 					<!-- Line 10b -->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none;">
-							<div class="styLNLeftNumBox" style="padding-left:5mm">b</div>
+							<div class="styLNLeftNumBox" style="padding-left:4.5mm">b</div>
 							<div class="styLNDesc" style="width:138mm;">
 								<span style="float:left;">Other statutory accounting adjustments 
           to reconcile to line 11 (attach statement)
@@ -984,7 +986,7 @@
 					<!-- Line 10c -->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none;">
-							<div class="styLNLeftNumBox" style="padding-left:5mm">c</div>
+							<div class="styLNLeftNumBox" style="padding-left:4.5mm">c</div>
 							<div class="styLNDesc" style="width:138mm;">
 								<span style="float:left;">Other adjustments to reconcile to
            amount on line 11 (attach statement)
@@ -1009,7 +1011,7 @@
 					<div class="styBB" style="width:187mm;">
 						<div style="float:left;clear:none;">
 							<div class="styLNLeftNumBox">11</div>
-							<div class="styLNDesc" style="width:138mm;">
+							<div class="styLNDesc" style="width:138mm;height:8mm;">
 								<span style="float:left;">
 									<span class="styBoldText">
           Net income (loss) per income statement of includible corporations.</span> Combine lines 4 through 10
@@ -1144,13 +1146,13 @@
 							<span style="width:7mm;"/>                        
       Cat. No. 37961C 
     </div>
-						<div style="float:right;">
+						<div style="float:right;clear:none;">
 							<span class="styBoldText">Schedule M-3 (Form 1120) 2013</span>
 						</div>
 					</div>
 					<!-- Page 2 -->
 					<!-- Page 2 Header -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;clear:all;float:none;">
 						<div style="float:left;">Schedule M-3 (Form 1120) 2013</div>
 						<div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">2</span>
 						</div>
@@ -1192,12 +1194,12 @@
            	Check applicable box(es): <span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(1)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl        /ConsolidatedGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ConsolidatedGroupInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ConsolidatedGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ConsolidatedGroupInd"/>
 								</xsl:call-template>
 							</label>
 						</div>
@@ -1205,12 +1207,12 @@
            	<span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(2)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ParentCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ParentCorporationInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ParentCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ParentCorporationInd"/>
 								</xsl:call-template>
 							</label>
 						</div>
@@ -1218,12 +1220,12 @@
            	 Parent corp  <span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(3)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ConsolidatedEliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ConsolidatedEliminationsInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ConsolidatedEliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ConsolidatedEliminationsInd"/>
 								</xsl:call-template>
 							</label>
 						</div>
@@ -1232,26 +1234,26 @@
            	<span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(4)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        SubsidiaryCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubsidiaryCorporationInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        SubsidiaryCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubsidiaryCorporationInd"/>
 								</xsl:call-template>
 							</label>
 						</div>
-						<div class="styGenericDiv" style="padding-left:1px;">Subsidiary corp</div>
+						<div class="styGenericDiv" style="padding-left:1px;padding-top:6px;">Subsidiary corp</div>
 						<div class="styGenericDiv" style="padding-left:1px;;">
 							<span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(5)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Mixed1120LPCGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Mixed1120LPCGroupInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Mixed1120LPCGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Mixed1120LPCGroupInd"/>
 								</xsl:call-template>
 					Mixed 1120/L/PC group
 				</label>
@@ -1264,12 +1266,12 @@
            	Check if a sub-consolidated: <span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(6)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Is1120GroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Is1120GroupInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Is1120GroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Is1120GroupInd"/>
 								</xsl:call-template>
 							</label>
 						</div>
@@ -1277,30 +1279,30 @@
            	1120 group <span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(7)</span>
 							<input type="checkbox" alt="alt" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Is1120EliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Is1120EliminationsInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Is1120EliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Is1120EliminationsInd"/>
 								</xsl:call-template>
 							</label>
 						</div>
-						<div class="styGenericDiv" style="padding-left:1px;">
+						<div class="styGenericDiv" style="padding-left:1px;padding-top:6px;">
            	1120 eliminations</div>
 					</div>
 					<!-- end check box line2  -->
 					<!-- Subsidiary Name and EIN Line -->
 					<div style="width:187mm;">
 						<!-- Name -->
-						<div style="width:138mm;height:8mm;border-right:solid 1px;float:left;clear:none;                            border-top:solid 1px">Name of subsidiary (if consolidated return)<br/>
+						<div style="width:138mm;height:8mm;border-right:solid 1px;float:left;clear:none;border-top:solid 1px">Name of subsidiary (if consolidated return)<br/>
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/             CorpIncomeLossItemsDtl/SubsidiaryBusinessName/BusinessNameLine1"/>
+								<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/     CorpIncomeLossItemsDtl/SubsidiaryBusinessName/BusinessNameLine1"/>
 							</xsl:call-template>
-							<xsl:if test="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubsidiaryBusinessName/           BusinessNameLine2">
+							<xsl:if test="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubsidiaryBusinessName/   BusinessNameLine2">
 								<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SubsidiaryBusinessName/BusinessNameLine2"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubsidiaryBusinessName/BusinessNameLine2"/>
 								</xsl:call-template>
 							</xsl:if>
 						</div>
@@ -1326,35 +1328,35 @@
 					</div>
 					<!-- Part 2 - Header -->
 					<div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;border-top-width:1px; border-right-width:0px;border-left-width:0px;padding-top:0;float:left;">
-						<span class="styPartName" style="height:1mm;width:14mm;padding: .25mm 1mm .25mm 1mm;">Part II</span>
+						<span class="styPartName" style="height:4mm;width:14mm;padding: .25mm 1mm .25mm 1mm;">Part II</span>
 						<span class="styPartDesc" style="width:170mm;">
 							<span style="width:2mm;"/>Reconciliation of Net Income (Loss) per Income Statement of Includible Corporations With<br/>
 							<span style="width:2mm;"/>Taxable Income per Return<span style="padding-left:1mm;font-weight:normal">(see instructions)</span>
 						</span>
 					</div>
 					<!-- Part II Table -->
-					<table class="styTable" id="IRS1120ScheduleM3PartIITable" summary="Reconciliation of Net Income (Loss) per Income Statement of Includible       Corporations With Taxable Income per Return " cellspacing="0" cellpadding="0" style="font-size:7pt;width:187mm;clear:all;">
+					<table class="styTable" id="IRS1120ScheduleM3PartIITable" summary="Reconciliation of Net Income (Loss) per Income Statement of Includible Corporations With Taxable Income per Return " cellspacing="0" cellpadding="0" style="font-size:7pt;width:187mm;clear:all;">
 						<tr>
-							<th scope="col" class="styTableThead" style="width:6mm;"/>
-							<th scope="col" class="styTableThead" style="width:81mm;text-align:center;font-size:8pt;">
+							<th scope="col" class="styTableThead" style="width:6mm;display:table-cell;"/>
+							<th scope="col" class="styTableThead" style="width:81mm;text-align:center;font-size:8pt;display:table-cell;">
                            Income (Loss) Items<br/>
 								<span style="font-weight:normal">
                            (Attach schedules for lines 1 through 11)</span>
 							</th>
-							<th scope="col" class="styIRS1120ScheduleM3TheadCell">
+							<th scope="col" class="styIRS1120ScheduleM3TheadCell" style="display:table-cell;">
 								<span class="styBoldText">
                            (a)</span>
 								<br/> Income (Loss) per<br/> Income Statement<br/>
 							</th>
-							<th scope="col" class="styIRS1120ScheduleM3TheadCell">
+							<th scope="col" class="styIRS1120ScheduleM3TheadCell" style="display:table-cell;">
 								<span class="styBoldText">
                            (b)</span>
 								<br/> Temporary<br/> Difference</th>
-							<th scope="col" class="styIRS1120ScheduleM3TheadCell">
+							<th scope="col" class="styIRS1120ScheduleM3TheadCell" style="display:table-cell;">
 								<span class="styBoldText">
                            (c)</span>
 								<br/> Permanent<br/> Difference</th>
-							<th scope="col" class="styIRS1120ScheduleM3TheadCell">
+							<th scope="col" class="styIRS1120ScheduleM3TheadCell" style="display:table-cell;">
 								<span class="styBoldText">
                            (d)</span>
 								<br/> Income (Loss) per<br/> Tax Return<br/>
@@ -1362,20 +1364,17 @@
 						</tr>
 						<!-- Part II - Line 1 -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell">
+							<td class="styIRS1120ScheduleM3NumberCell" style="width:6mm;">
 								<span style="width:1.5mm;"/>1</td>
-							<td>Income (loss) from equity method foreign
-						 <span style="float:left;">
-						 corporations
+							<td style="width:81mm; text-align:left;padding-left:2mm;border:none;">
+								Income (loss) from equity method foreign corporations 
 						 		<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossEquityMethodFrgnCorp"/>
 									</xsl:call-template>
-								</span>
-								<span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossEquityMethodFrgnCorp/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossEquityMethodFrgnCorp/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
@@ -1385,7 +1384,7 @@
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossEquityMethodFrgnCorp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossEquityMethodFrgnCorp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell">
@@ -1397,7 +1396,7 @@
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>2</td>
 							<td>
-								<span style="float:left;">Gross foreign dividends not previously taxed
+								<span style="float:left;padding-left:2mm;">Gross foreign dividends not previously taxed
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GrossFrgnDividendsNotPrevTaxed"/>
@@ -1431,7 +1430,7 @@
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>3</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Subpart F, QEF, and similar income inclusions
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1464,7 +1463,7 @@
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>4</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Section 78 gross-up
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1497,7 +1496,7 @@
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>5</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Gross foreign distributions previously taxed 
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1530,7 +1529,7 @@
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>6</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Income (loss) from equity method U.S. corporations
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1563,7 +1562,7 @@
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>7</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							U.S. dividends not eliminated in tax consolidation
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1598,7 +1597,7 @@
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>8</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Minority interest for includible corporations
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1631,7 +1630,7 @@
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>9</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Income (loss) from U.S. partnerships
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1665,32 +1664,32 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">10</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Income (loss) from foreign partnerships
             <xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossForeignPartnerships/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1698,68 +1697,64 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">11</td>
 							<td style="padding-top:.5mm;">
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Income (loss) from other pass-through entities
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeLossPassThroughEntities/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 12 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">12</td>
-							<td>
-							Items relating to reportable transactions (attach 
-							<span style="float:left;">
-							statement)
+							<td style="padding-top:.5mm;padding-left:2mm;">
+							Items relating to reportable transactions (attach statement)
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp"/>
 									</xsl:call-template>
-								</span>
-								<span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ItemsRelatedReportableTransGrp/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1767,7 +1762,7 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">13</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Interest income (attach Form 8916-A)
            <xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp"/>
@@ -1777,22 +1772,22 @@
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/InterestIncomeForm8916AGrp/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1800,29 +1795,29 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">14</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Total accrual to cash adjustment
 									</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/TotalAccrualCashAdjustmentGrp/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalAccrualCashAdjustmentGrp/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/TotalAccrualCashAdjustmentGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalAccrualCashAdjustmentGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/TotalAccrualCashAdjustmentGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalAccrualCashAdjustmentGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/TotalAccrualCashAdjustmentGrp/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalAccrualCashAdjustmentGrp/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1830,29 +1825,29 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">15</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Hedging transactions
 									</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/HedgingTransactions/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/HedgingTransactions/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/HedgingTransactions/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/HedgingTransactions/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/HedgingTransactions/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/HedgingTransactions/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/HedgingTransactions/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/HedgingTransactions/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1860,29 +1855,29 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">16</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Mark-to-market income (loss)
 									</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/                      CorpIncomeLossItemsDtl/MarkToMarketIncomeLoss/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/MarkToMarketIncomeLoss/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/MarkToMarketIncomeLoss/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/MarkToMarketIncomeLoss/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/MarkToMarketIncomeLoss/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/MarkToMarketIncomeLoss/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/MarkToMarketIncomeLoss/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/MarkToMarketIncomeLoss/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1890,11 +1885,11 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">17</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Cost of goods sold (attach Form 8916-A) 
          <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/CostOfGoodsSoldGrp"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/CostOfGoodsSoldGrp"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
@@ -1906,17 +1901,17 @@
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/CostOfGoodsSoldGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/CostOfGoodsSoldGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/CostOfGoodsSoldGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/CostOfGoodsSoldGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateNegativeNumber">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/CostOfGoodsSoldGrp/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/CostOfGoodsSoldGrp/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1924,29 +1919,29 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">18</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Sale versus lease (for sellers and/or lessors)
 							</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SalesVersusLease/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SalesVersusLease/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SalesVersusLease/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SalesVersusLease/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SalesVersusLease/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SalesVersusLease/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SalesVersusLease/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SalesVersusLease/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1954,7 +1949,7 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">19</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Section 481(a) adjustments
 									</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
@@ -1964,17 +1959,17 @@
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/Section481aAdjustments/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Section481aAdjustments/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/Section481aAdjustments/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Section481aAdjustments/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/Section481aAdjustments/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Section481aAdjustments/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -1982,29 +1977,29 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">20</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 							Unearned/deferred revenue
 									</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/UnearnedDeferredRevenueGrp/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/UnearnedDeferredRevenueGrp/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/UnearnedDeferredRevenueGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/UnearnedDeferredRevenueGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/UnearnedDeferredRevenueGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/UnearnedDeferredRevenueGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/UnearnedDeferredRevenueGrp/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/UnearnedDeferredRevenueGrp/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2012,29 +2007,29 @@
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">21</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 Income recognition from long-term contracts
 									</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeRecognitionLTContracts/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeRecognitionLTContracts/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeRecognitionLTContracts/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeRecognitionLTContracts/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeRecognitionLTContracts/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeRecognitionLTContracts/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncomeRecognitionLTContracts/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncomeRecognitionLTContracts/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2042,36 +2037,36 @@ Income recognition from long-term contracts
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">22</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 Original issue discount and other imputed interest
 									</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OrigIssueDiscountOthImputedInt/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OrigIssueDiscountOthImputedInt/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OrigIssueDiscountOthImputedInt/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OrigIssueDiscountOthImputedInt/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OrigIssueDiscountOthImputedInt/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OrigIssueDiscountOthImputedInt/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OrigIssueDiscountOthImputedInt/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OrigIssueDiscountOthImputedInt/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 23a -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">23a</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 								<span style="float:left;">
 Income statement gain/loss on sale, exchange,
                       abandonment, worthlessness, or other disposition of
@@ -2081,17 +2076,17 @@ Income statement gain/loss on sale, exchange,
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncmStmtGainLossAstNotInvntry/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncmStmtGainLossAstNotInvntry/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncmStmtGainLossAstNotInvntry/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncmStmtGainLossAstNotInvntry/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/IncmStmtGainLossAstNotInvntry/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/IncmStmtGainLossAstNotInvntry/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell" style="border-bottom-width:1px;">
@@ -2100,8 +2095,8 @@ Income statement gain/loss on sale, exchange,
 						</tr>
 						<!-- Part II - Line 23b -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm">b</td>
-							<td style="padding-top:.5mm;">
+							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:.5mm;padding-left:4mm;">b</td>
+							<td style="padding-top:.5mm;padding-left:2mm;">
 Gross capital gains from Schedule D, excluding
 <span style="float:left;">
                               amounts from pass-through entities
@@ -2113,24 +2108,24 @@ Gross capital gains from Schedule D, excluding
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/GrossCapitalGainsFromSchD/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GrossCapitalGainsFromSchD/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/GrossCapitalGainsFromSchD/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GrossCapitalGainsFromSchD/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/GrossCapitalGainsFromSchD/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GrossCapitalGainsFromSchD/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 23c -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm">c</td>
-							<td style="padding-top:.5mm;">
+							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm;padding-left:4mm;">c</td>
+							<td style="padding-top:.5mm;padding-left:2mm;">
 Gross capital losses from Schedule D, excluding
               amounts from pass-through entities, abandonment
               <span style="float:left;">losses, and worthless stock losses
@@ -2142,24 +2137,24 @@ Gross capital losses from Schedule D, excluding
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/GrossCapitalLossesFromSchD/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GrossCapitalLossesFromSchD/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/GrossCapitalLossesFromSchD/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GrossCapitalLossesFromSchD/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/GrossCapitalLossesFromSchD/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GrossCapitalLossesFromSchD/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 23d -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm">d</td>
-							<td style="padding-top:.5mm;">
+							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm;padding-left:4mm;">d</td>
+							<td style="padding-top:.5mm;padding-left:2mm;">
 							Net gain/loss reported on Form 4797, line 17,
                            excluding amounts from pass-through entities,
                            <span style="float:left;">
@@ -2172,24 +2167,24 @@ Gross capital losses from Schedule D, excluding
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/               GainLossReportedOnForm4797/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GainLossReportedOnForm4797/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/               GainLossReportedOnForm4797/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GainLossReportedOnForm4797/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/               GainLossReportedOnForm4797/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/GainLossReportedOnForm4797/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 23e -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm">e</td>
-							<td style="padding-top:.5mm;">
+							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm;padding-left:4mm;">e</td>
+							<td style="padding-top:.5mm;padding-left:2mm;">
 								<span style="float:left;">
 Abandonment losses
 									</span>
@@ -2200,29 +2195,29 @@ Abandonment losses
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/AbandonmentLosses/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/AbandonmentLosses/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/AbandonmentLosses/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/AbandonmentLosses/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/AbandonmentLosses/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/AbandonmentLosses/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 23f -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm">f</td>
+							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm;padding-left:4mm;">f</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 Worthless stock losses (attach statement)
    <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/WorthlessStockLosses"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/WorthlessStockLosses"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
@@ -2232,46 +2227,46 @@ Worthless stock losses (attach statement)
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               WorthlessStockLosses/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/WorthlessStockLosses/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               WorthlessStockLosses/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/WorthlessStockLosses/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               WorthlessStockLosses/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/WorthlessStockLosses/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 23g -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm">g</td>
-							<td style="padding-top:.5mm;">
+							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm;padding-left:4mm;">g</td>
+							<td style="padding-top:.5mm;padding-left:2mm;">
 							Other gain/loss on disposition of assets other than
-							<span style="float:left;">
+							<span style="padding-top:1mm;float:left;">
 							inventory
 							</span>
-								<span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
+								<span class="styDotLn" style="padding-top:1mm;float:right;padding-right:1mm;">...............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell" style="border-bottom-width:0px;">
 								<span style="width:1mm"/>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/               OthGainLossAssetsNotInventory/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OthGainLossAssetsNotInventory/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               OthGainLossAssetsNotInventory/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OthGainLossAssetsNotInventory/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3               /CorpIncomeLossItemsDtl/               OthGainLossAssetsNotInventory/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OthGainLossAssetsNotInventory/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2279,123 +2274,125 @@ Worthless stock losses (attach statement)
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">24</td>
 							<td style="padding-top:.5mm;">
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 Capital loss limitation and carryforward used
 									</span>
-								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
+								<span class="styDotLn" style="padding-top:1mm;float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell" style="background-color:lightgrey">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/               CapLossLimitationAndCfwdUsed/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/CapLossLimitationAndCfwdUsed/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/              CapLossLimitationAndCfwdUsed /TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/      CapLossLimitationAndCfwdUsed /TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/ CapLossLimitationAndCfwdUsed/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ CapLossLimitationAndCfwdUsed/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/ CapLossLimitationAndCfwdUsed/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ CapLossLimitationAndCfwdUsed/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 25 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">25</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 Other income (loss) items with differences (attach<span style="float:left;">statement)
 <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OthIncmLossItemsDifferences/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 26 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">26</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 								<span class="styBoldText">Total income (loss) items.   </span>
-								<span style="font-weight:normal;float:left;">
+								<br/>
+								<span style="padding-top:1mm;float:left;">
 Combine lines 1 through 25	
 								</span>
-								<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
+								<span class="styDotLn" style="padding-top:1mm;float:right;padding-right:1mm;">.........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               TotalIncomeLossItems/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalIncomeLossItems/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               TotalIncomeLossItems/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalIncomeLossItems/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               TotalIncomeLossItems/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalIncomeLossItems/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               TotalIncomeLossItems/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalIncomeLossItems/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 27 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">27</td>
-							<td style="padding-top:.5mm;">
-								<b>Total expense/deduction items</b>
-								(from Part III,
-								<span style="float:left;">line 38)</span>
-								<span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
+							<td style="padding-top:.5mm;padding-left:2mm;">
+								<span class="styBoldText">Total expense/deduction items</span>
+								<br/>
+								<span style="padding-top:1mm;float:left;">
+								(from Part III, line 38) </span>
+								<span class="styDotLn" style="padding-top:1mm;float:right;padding-right:1mm;">..........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               TotalExpenseDeductionItems/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalExpenseDeductionItems/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               TotalExpenseDeductionItems/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalExpenseDeductionItems/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               TotalExpenseDeductionItems/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalExpenseDeductionItems/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               TotalExpenseDeductionItems/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/TotalExpenseDeductionItems/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2403,14 +2400,14 @@ Combine lines 1 through 25
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">28</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
 Other items with no differences
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               OtherItemsNoDifferences/IncomePerIncomeStatementAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OtherItemsNoDifferences/IncomePerIncomeStatementAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell" style="border-bottom-width:1px;">
@@ -2421,14 +2418,14 @@ Other items with no differences
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               OtherItemsNoDifferences/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/OtherItemsNoDifferences/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 29a -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">29a</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 							Mixed groups, see instructions. All others, combine
 							<span style="float:left;">
 							lines 26 through 28
@@ -2437,29 +2434,29 @@ Other items with no differences
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SubgroupReconciliationTotals/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubgroupReconciliationTotals/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SubgroupReconciliationTotals/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubgroupReconciliationTotals/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SubgroupReconciliationTotals/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubgroupReconciliationTotals/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/SubgroupReconciliationTotals/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubgroupReconciliationTotals/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 29b -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm">b</td>
-							<td style="padding-top:.5mm;">
+							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:4mm">b</td>
+							<td style="padding-top:.5mm;padding-left:2mm;">
 								<span style="float:left;">
 PC insurance subgroup reconciliation totals
 								</span>
@@ -2467,29 +2464,29 @@ PC insurance subgroup reconciliation totals
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/PCInsSubgroupRecnclTotals/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/PCInsSubgroupRecnclTotals/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/PCInsSubgroupRecnclTotals/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/PCInsSubgroupRecnclTotals/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/PCInsSubgroupRecnclTotals/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/PCInsSubgroupRecnclTotals/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/PCInsSubgroupRecnclTotals/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/PCInsSubgroupRecnclTotals/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part II - Line 29c -->
 						<tr>
-							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:5mm">c</td>
-							<td style="padding-top:.5mm;">
+							<td class="styIRS1120ScheduleM3NumberCell" style="padding-left:4mm">c</td>
+							<td style="padding-top:.5mm;padding-left:2mm;">
 								<span style="float:left;">
 Life insurance subgroup reconciliation totals
 								</span>
@@ -2497,22 +2494,22 @@ Life insurance subgroup reconciliation totals
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/LifeInsSubgroupRecnclTotals/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/LifeInsSubgroupRecnclTotals/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/LifeInsSubgroupRecnclTotals/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/LifeInsSubgroupRecnclTotals/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/LifeInsSubgroupRecnclTotals/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/LifeInsSubgroupRecnclTotals/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/LifeInsSubgroupRecnclTotals/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/LifeInsSubgroupRecnclTotals/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2520,27 +2517,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">30</td>
 							<td>
-								<span style="float:left"><b>Reconciliation totals.</b>Combine lines 29a through 29c</span>							
+								<span style="float:left;padding-left:2mm;"><b>Reconciliation totals. </b>Combine lines 29a through 29c</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/              ReconciliationTotals/IncomeLossPerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/      ReconciliationTotals/IncomeLossPerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/               ReconciliationTotals/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ReconciliationTotals/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/                 CorpIncomeLossItemsDtl/               ReconciliationTotals/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/  CorpIncomeLossItemsDtl/ReconciliationTotals/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               CorpIncomeLossItemsDtl/              ReconciliationTotals/IncomeLossPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/      ReconciliationTotals/IncomeLossPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2553,7 +2550,7 @@ Life insurance subgroup reconciliation totals
 					</div>
 					<!-- Page 3 -->
 					<!-- Page 3 Header -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;float:none;">
 						<div style="float:left;">Schedule M-3 (Form 1120) 2013</div>
 						<div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">3</span>
 						</div>
@@ -2637,7 +2634,7 @@ Life insurance subgroup reconciliation totals
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ConsolidatedGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ConsolidatedGroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($consolidatedGroup2BaseID, '[2]')"/></xsl:attribute>
 							</label>
@@ -2646,13 +2643,13 @@ Life insurance subgroup reconciliation totals
            	<span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(2)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ParentCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ParentCorporationInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($parentCorporation2BaseID, '[2]')"/></xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ParentCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ParentCorporationInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($parentCorporation2BaseID, '[2]')"/></xsl:attribute>
 							</label>
@@ -2661,13 +2658,13 @@ Life insurance subgroup reconciliation totals
            	 Parent corp  <span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(3)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ConsolidatedEliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ConsolidatedEliminationsInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($consolidatedEliminations2BaseID, '[2]')"/></xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        ConsolidatedEliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/ConsolidatedEliminationsInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($consolidatedEliminations2BaseID, '[2]')"/></xsl:attribute>
 							</label>
@@ -2677,29 +2674,29 @@ Life insurance subgroup reconciliation totals
            	<span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(4)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        SubsidiaryCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubsidiaryCorporationInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($subsidiaryCorporation2BaseID, '[2]')"/></xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        SubsidiaryCorporationInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/SubsidiaryCorporationInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($subsidiaryCorporation2BaseID, '[2]')"/></xsl:attribute>
 							</label>
 						</div>
-						<div class="styGenericDiv" style="padding-left:1px;">Subsidiary corp</div>
+						<div class="styGenericDiv" style="padding-left:1px;padding-top:6px;">Subsidiary corp</div>
 						<div class="styGenericDiv" style="padding-left:1px;;">
 							<span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(5)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Mixed1120LPCGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Mixed1120LPCGroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($mixed1120LPCGroup2BaseID, '[2]')"/></xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Mixed1120LPCGroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Mixed1120LPCGroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($mixed1120LPCGroup2BaseID, '[2]')"/></xsl:attribute>
 					Mixed 1120/L/PC group
@@ -2713,13 +2710,13 @@ Life insurance subgroup reconciliation totals
            	Check if a sub-consolidated: <span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(6)</span>
 							<input type="checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Is1120GroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Is1120GroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="id"><xsl:value-of select="concat($is1120Group2BaseID, '[2]')"/></xsl:attribute>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Is1120GroupInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Is1120GroupInd"/>
 								</xsl:call-template>
 								<xsl:attribute name="for"><xsl:value-of select="concat($is1120Group2BaseID, '[2]')"/></xsl:attribute>
 							</label>
@@ -2728,16 +2725,16 @@ Life insurance subgroup reconciliation totals
            	1120 group <span style="font-weight:bold;padding-left:.5mm;padding-right:.5mm;">(7)</span>
 							<input type="checkbox" alt="alt" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Is1120EliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Is1120EliminationsInd"/>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/        Is1120EliminationsInd"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/CorpIncomeLossItemsDtl/Is1120EliminationsInd"/>
 								</xsl:call-template>
 							</label>
 						</div>
-						<div class="styGenericDiv" style="padding-left:1px;">
+						<div class="styGenericDiv" style="padding-left:1px;padding-top:6px;">
            	1120 eliminations</div>
 					</div>
 					<!-- end check box line2  -->
@@ -2747,12 +2744,12 @@ Life insurance subgroup reconciliation totals
 						<div style="width:138mm;height:8mm;border-right:solid 1px;float:left;clear:none;border-top:solid 1px;">
           Name of subsidiary (if consolidated return)<br/>
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/             ExpenseDeductionItemsGrp/SubsidiaryBusinessName/BusinessNameLine1"/>
+								<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/     ExpenseDeductionItemsGrp/SubsidiaryBusinessName/BusinessNameLine1"/>
 							</xsl:call-template>
-							<xsl:if test="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/SubsidiaryBusinessName/           BusinessNameLine2">
+							<xsl:if test="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/SubsidiaryBusinessName/   BusinessNameLine2">
 								<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/SubsidiaryBusinessName/BusinessNameLine2"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/SubsidiaryBusinessName/BusinessNameLine2"/>
 								</xsl:call-template>
 							</xsl:if>
 						</div>
@@ -2767,22 +2764,22 @@ Life insurance subgroup reconciliation totals
 							<xsl:if test="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/SubsidiaryEIN !=' '">
 								<span style="font-weight:normal;">
 									<xsl:call-template name="PopulateEIN">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/                        SubsidiaryEIN"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/SubsidiaryEIN"/>
 									</xsl:call-template>
 								</span>
 							</xsl:if>
 							<xsl:if test="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/MissingEINReasonCd !=' '">
 								<span style="font-weight:normal;">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/                       MissingEINReasonCd"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/MissingEINReasonCd"/>
 									</xsl:call-template>
 								</span>
 							</xsl:if>
 						</div>
 					</div>
 					<!-- Part 3 - Header -->
-					<div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;                         border-top-width:1px; border-right-width:0px;border-left-width:0px;clear:all;padding-top:0;float:left;">
-						<span class="styPartName" style="height:1mm;width:14mm;padding: .25mm .5mm                       .25mm .5mm;">Part III</span>
+					<div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;          border-top-width:1px; border-right-width:0px;border-left-width:0px;clear:all;padding-top:0;float:left;">
+						<span class="styPartName" style="height:4mm;width:14mm;padding: .25mm .5mm .25mm .5mm;">Part III</span>
 						<span class="styPartDesc" style="width:170mm;">
 							<span style="width:2mm;"/>Reconciliation of Net Income (Loss) per Income Statement of Includible Corporations With <br/>
 							<span style="width:2mm;"/>Taxable Income per Return—Expense/Deduction Items<span style="padding-left:1mm;font-weight:normal">(see instructions)</span>
@@ -2791,19 +2788,19 @@ Life insurance subgroup reconciliation totals
 					<!-- Part III Table -->
 					<table class="styTable" id="IRS1120ScheduleM3PartIII" summary="Reconciliation of Net Income (Loss) per Income        Statement of Includible Corporations With Taxable Income        per Return—Expense/Deduction Items (See Instructions)" cellspacing="0" cellpadding="0" style="font-size:7pt;width:187mm;clear:all;">
 						<tr>
-							<th scope="col" class="styTableThead" style="width:6mm;"/>
-							<th scope="col" class="styTableThead" style="width:81mm;text-align:center;font-size:8pt;">Expense/Deduction Items</th>
+							<th scope="col" class="styTableThead" style="width:6mm;display:table-cell;"/>
+							<th scope="col" class="styTableThead" style="width:81mm;text-align:center;font-size:8pt;display:table-cell;">Expense/Deduction Items</th>
 							<th scope="col" class="styIRS1120ScheduleM3TheadCell">
 								<span class="styBoldText">(a)</span>
 								<br/> Expense per<br/> Income Statement<br/>
 							</th>
-							<th scope="col" class="styIRS1120ScheduleM3TheadCell">
+							<th scope="col" class="styIRS1120ScheduleM3TheadCell"  style="display:table-cell;">
 								<span class="styBoldText">(b)</span>
 								<br/> Temporary<br/> Difference</th>
-							<th scope="col" class="styIRS1120ScheduleM3TheadCell">
+							<th scope="col" class="styIRS1120ScheduleM3TheadCell"  style="display:table-cell;">
 								<span class="styBoldText">(c)</span>
 								<br/> Permanent<br/> Difference</th>
-							<th scope="col" class="styIRS1120ScheduleM3TheadCell">
+							<th scope="col" class="styIRS1120ScheduleM3TheadCell"  style="display:table-cell;">
 								<span class="styBoldText">(d)</span>
 								<br/> Deduction per<br/> Tax Return<br/>
 							</th>
@@ -2814,22 +2811,22 @@ Life insurance subgroup reconciliation totals
 								<span style="width:1.5mm;"/>1
 							</td>
 							<td>
-								<span style="float:left;">U.S. current income tax expense</span>
+								<span style="float:left;padding-left:2mm;">U.S. current income tax expense</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/USCurrentIncomeTaxExpense/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/USCurrentIncomeTaxExpense/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/USCurrentIncomeTaxExpense/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/USCurrentIncomeTaxExpense/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/USCurrentIncomeTaxExpense/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/USCurrentIncomeTaxExpense/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell" style="border-bottom-width:0px;">
@@ -2841,22 +2838,22 @@ Life insurance subgroup reconciliation totals
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>2</td>
 							<td>
-								<span style="float:left;">U.S. deferred income tax expense</span>
+								<span style="float:left;padding-left:2mm;">U.S. deferred income tax expense</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/USDeferredIncomeTaxExpense/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/USDeferredIncomeTaxExpense/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/USDeferredIncomeTaxExpense/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/USDeferredIncomeTaxExpense/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/USDeferredIncomeTaxExpense/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/USDeferredIncomeTaxExpense/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell">
@@ -2868,27 +2865,27 @@ Life insurance subgroup reconciliation totals
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>3</td>
 							<td>
-								<span style="float:left;">State and local current income tax expense</span>
+								<span style="float:left;padding-left:2mm;">State and local current income tax expense</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StateLocalCurrIncomeTaxExpense/               ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StateLocalCurrIncomeTaxExpense/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StateLocalCurrIncomeTaxExpense/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StateLocalCurrIncomeTaxExpense/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StateLocalCurrIncomeTaxExpense/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StateLocalCurrIncomeTaxExpense/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StateLocalCurrIncomeTaxExpense/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StateLocalCurrIncomeTaxExpense/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2897,22 +2894,22 @@ Life insurance subgroup reconciliation totals
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>4</td>
 							<td>
-								<span style="float:left;">State and local deferred income tax expense</span>
+								<span style="float:left;padding-left:2mm;">State and local deferred income tax expense</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StateLocalDefrdIncmTaxExpense/               ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StateLocalDefrdIncmTaxExpense/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StateLocalDefrdIncmTaxExpense/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StateLocalDefrdIncmTaxExpense/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StateLocalDefrdIncmTaxExpense/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StateLocalDefrdIncmTaxExpense/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell">
@@ -2923,29 +2920,29 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>5</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 							Foreign current income tax expense (other than foreign
 							<span style="float:left;">withholding taxes)</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignCurrentIncomeTaxExpense/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignCurrentIncomeTaxExpense/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignCurrentIncomeTaxExpense/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignCurrentIncomeTaxExpense/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignCurrentIncomeTaxExpense/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignCurrentIncomeTaxExpense/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignCurrentIncomeTaxExpense/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignCurrentIncomeTaxExpense/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -2954,22 +2951,22 @@ Life insurance subgroup reconciliation totals
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>6</td>
 							<td>
-								<span style="float:left;">Foreign deferred income tax expense</span>
+								<span style="float:left;padding-left:2mm;">Foreign deferred income tax expense</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignDeferredIncmTaxExpense/               ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignDeferredIncmTaxExpense/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignDeferredIncmTaxExpense/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignDeferredIncmTaxExpense/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignDeferredIncmTaxExpense/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignDeferredIncmTaxExpense/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell">
@@ -2981,27 +2978,27 @@ Life insurance subgroup reconciliation totals
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>7</td>
 							<td>
-								<span style="float:left;">Foreign withholding taxes</span>
+								<span style="float:left;padding-left:2mm;">Foreign withholding taxes</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignWithholdingTaxes/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignWithholdingTaxes/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignWithholdingTaxes/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignWithholdingTaxes/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignWithholdingTaxes/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignWithholdingTaxes/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ForeignWithholdingTaxes/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ForeignWithholdingTaxes/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3010,7 +3007,7 @@ Life insurance subgroup reconciliation totals
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>8</td>
 							<td>
-								<span style="float:left;">Interest expense (attach Form 8916-A)
+								<span style="float:left;padding-left:2mm;">Interest expense (attach Form 8916-A)
                <xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp"/>
 									</xsl:call-template>
@@ -3019,22 +3016,22 @@ Life insurance subgroup reconciliation totals
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/InterestExpenseForm8916AGrp/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3043,28 +3040,28 @@ Life insurance subgroup reconciliation totals
 							<td class="styIRS1120ScheduleM3NumberCell">
 								<span style="width:1.5mm;"/>9</td>
 							<td>
-								<span style="float:left;">Stock option expense
+								<span style="float:left;padding-left:2mm;">Stock option expense
           </span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StockOptionExpense/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StockOptionExpense/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StockOptionExpense/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StockOptionExpense/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StockOptionExpense/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StockOptionExpense/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/StockOptionExpense/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/StockOptionExpense/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3072,27 +3069,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">10</td>
 							<td>
-								<span style="float:left;">Other equity-based compensation</span>
+								<span style="float:left;padding-left:2mm;">Other equity-based compensation</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherEquityBasedCompensation/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherEquityBasedCompensation/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherEquityBasedCompensation/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherEquityBasedCompensation/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherEquityBasedCompensation/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherEquityBasedCompensation/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherEquityBasedCompensation/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherEquityBasedCompensation/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3100,27 +3097,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">11</td>
 							<td>
-								<span style="float:left;">Meals and entertainment</span>
+								<span style="float:left;padding-left:2mm;">Meals and entertainment</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/MealsAndEntertainmentGrp/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/MealsAndEntertainmentGrp/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/MealsAndEntertainmentGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/MealsAndEntertainmentGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/MealsAndEntertainmentGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/MealsAndEntertainmentGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/MealsAndEntertainmentGrp/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/MealsAndEntertainmentGrp/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3128,27 +3125,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">12</td>
 							<td>
-								<span style="float:left;">Fines and penalties</span>
+								<span style="float:left;padding-left:2mm;">Fines and penalties</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/FinesAndPenalties/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/FinesAndPenalties/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/FinesAndPenalties/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/FinesAndPenalties/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/FinesAndPenalties/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/FinesAndPenalties/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/FinesAndPenalties/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/FinesAndPenalties/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3156,28 +3153,28 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">13</td>
 							<td>
-								<span style="float:left;">Judgments, damages, awards, and similar costs
+								<span style="float:left;padding-left:2mm;">Judgments, damages, awards, and similar costs
           </span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/JudgmentsDamagesAwardsSmlrCost/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/JudgmentsDamagesAwardsSmlrCost/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/JudgmentsDamagesAwardsSmlrCost/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/JudgmentsDamagesAwardsSmlrCost/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/JudgmentsDamagesAwardsSmlrCost/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/JudgmentsDamagesAwardsSmlrCost/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/JudgmentsDamagesAwardsSmlrCost/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/JudgmentsDamagesAwardsSmlrCost/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3185,27 +3182,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">14</td>
 							<td>
-								<span style="float:left;">Parachute payments</span>
+								<span style="float:left;padding-left:2mm;">Parachute payments</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ParachutePayments/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ParachutePayments/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ParachutePayments/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ParachutePayments/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ParachutePayments/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ParachutePayments/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ParachutePayments/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ParachutePayments/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3213,27 +3210,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">15</td>
 							<td>
-								<span style="float:left;">Compensation with section 162(m) limitation</span>
+								<span style="float:left;padding-left:2mm;">Compensation with section 162(m) limitation</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CompWithSect162mLimitation/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CompWithSect162mLimitation/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CompWithSect162mLimitation/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CompWithSect162mLimitation/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CompWithSect162mLimitation/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CompWithSect162mLimitation/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CompWithSect162mLimitation/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CompWithSect162mLimitation/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3241,27 +3238,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">16</td>
 							<td>
-								<span style="float:left;">Pension and profit-sharing</span>
+								<span style="float:left;padding-left:2mm;">Pension and profit-sharing</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/PensionAndProfitSharing/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/PensionAndProfitSharing/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/PensionAndProfitSharing/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/PensionAndProfitSharing/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/PensionAndProfitSharing/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/PensionAndProfitSharing/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/PensionAndProfitSharing/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/PensionAndProfitSharing/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3269,27 +3266,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">17</td>
 							<td>
-								<span style="float:left;">Other post-retirement benefits</span>
+								<span style="float:left;padding-left:2mm;">Other post-retirement benefits</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherPostRetirementBenefits/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherPostRetirementBenefits/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherPostRetirementBenefits/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherPostRetirementBenefits/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherPostRetirementBenefits/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherPostRetirementBenefits/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherPostRetirementBenefits/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherPostRetirementBenefits/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3297,27 +3294,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">18</td>
 							<td>
-								<span style="float:left;">Deferred compensation</span>
+								<span style="float:left;padding-left:2mm;">Deferred compensation</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DeferredCompensation/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DeferredCompensation/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DeferredCompensation/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DeferredCompensation/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DeferredCompensation/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DeferredCompensation/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DeferredCompensation/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DeferredCompensation/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3325,27 +3322,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">19</td>
 							<td>
-								<span style="float:left;">Charitable contribution of cash and tangible property</span>
+								<span style="float:left;padding-left:2mm;">Charitable contribution of cash and tangible property</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitbleContriCashTngblProp/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitbleContriCashTngblProp/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitbleContriCashTngblProp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitbleContriCashTngblProp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitbleContriCashTngblProp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitbleContriCashTngblProp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitbleContriCashTngblProp/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitbleContriCashTngblProp/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3353,27 +3350,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">20</td>
 							<td>
-								<span style="float:left;">Charitable contribution of intangible property</span>
+								<span style="float:left;padding-left:2mm;">Charitable contribution of intangible property</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitableContriIntangibleProp/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitableContriIntangibleProp/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitableContriIntangibleProp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitableContriIntangibleProp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitableContriIntangibleProp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitableContriIntangibleProp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitableContriIntangibleProp/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitableContriIntangibleProp/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3381,7 +3378,7 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">21</td>
 							<td>
-								<span style="float:left;">Charitable contribution limitation/carryforward</span>
+								<span style="float:left;padding-left:2mm;">Charitable contribution limitation/carryforward</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell" style="border-bottom-width:0px;">
@@ -3389,17 +3386,17 @@ Life insurance subgroup reconciliation totals
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitableContriLimitationCfwd/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitableContriLimitationCfwd/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitableContriLimitationCfwd/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitableContriLimitationCfwd/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CharitableContriLimitationCfwd/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CharitableContriLimitationCfwd/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3407,7 +3404,7 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">22</td>
 							<td>
-								<span style="float:left;">Domestic production activities deduction</span>
+								<span style="float:left;padding-left:2mm;">Domestic production activities deduction</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3ShadedCell" style="border-bottom-width:1px;">
@@ -3415,24 +3412,24 @@ Life insurance subgroup reconciliation totals
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DomesticProductionActyDedGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DomesticProductionActyDedGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DomesticProductionActyDedGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DomesticProductionActyDedGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DomesticProductionActyDedGrp/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DomesticProductionActyDedGrp/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part III - Line 23 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">23</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 									Current year acquisition or reorganization investment
 									<span style="float:left;">banking fees
 							  </span>
@@ -3440,51 +3437,51 @@ Life insurance subgroup reconciliation totals
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgInvstBankingFees/               ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgInvstBankingFees/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgInvstBankingFees/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgInvstBankingFees/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgInvstBankingFees/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgInvstBankingFees/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/                CYAcquisReorgInvstBankingFees/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgInvstBankingFees/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part III - Line 24 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">24</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 							Current year acquisition or reorganization legal and
 							<span style="float:left;">accounting fees</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgLegalAcctFees/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgLegalAcctFees/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgLegalAcctFees/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgLegalAcctFees/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgLegalAcctFees/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgLegalAcctFees/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgLegalAcctFees/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgLegalAcctFees/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3492,27 +3489,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">25</td>
 							<td>
-								<span style="float:left;">Current year acquisition/reorganization other costs</span>
+								<span style="float:left;padding-left:2mm;">Current year acquisition/reorganization other costs</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgOtherCosts/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgOtherCosts/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgOtherCosts/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgOtherCosts/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgOtherCosts/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgOtherCosts/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CYAcquisReorgOtherCosts/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CYAcquisReorgOtherCosts/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3520,56 +3517,56 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">26</td>
 							<td>
-								<span style="float:left;">Amortization/impairment of goodwill</span>
+								<span style="float:left;padding-left:2mm;">Amortization/impairment of goodwill</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/AmortizationImpairmentGoodwill/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/AmortizationImpairmentGoodwill/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/AmortizationImpairmentGoodwill/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/AmortizationImpairmentGoodwill/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/AmortizationImpairmentGoodwill/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/AmortizationImpairmentGoodwill/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/AmortizationImpairmentGoodwill/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/AmortizationImpairmentGoodwill/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part III - Line 27 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">27</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 							Amortization of acquisition, reorganization, and start-up
 							<span style="float:left;">costs</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/AmortzAcquisReorgStartupCosts/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/AmortzAcquisReorgStartupCosts/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/AmortzAcquisReorgStartupCosts/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/AmortzAcquisReorgStartupCosts/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/AmortzAcquisReorgStartupCosts/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/AmortzAcquisReorgStartupCosts/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/AmortzAcquisReorgStartupCosts/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/AmortzAcquisReorgStartupCosts/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3577,27 +3574,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">28</td>
 							<td>
-								<span style="float:left;">Other amortization or impairment write-offs</span>
+								<span style="float:left;padding-left:2mm;">Other amortization or impairment write-offs</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherAmortzImpairmentWriteOffs/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherAmortzImpairmentWriteOffs/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherAmortzImpairmentWriteOffs/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherAmortzImpairmentWriteOffs/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherAmortzImpairmentWriteOffs/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherAmortzImpairmentWriteOffs/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherAmortzImpairmentWriteOffs/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherAmortzImpairmentWriteOffs/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3605,31 +3602,31 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">29</td>
 							<td>
-								<span style="float:left;">Reserved</span>
+								<span style="float:left;padding-left:2mm;">Reserved</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell" style="background-color:lightgrey">
 							    <span style="width:5px;"></span>
 								<!--<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Sect198EnvrmtRemediationCosts/               ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Sect198EnvrmtRemediationCosts/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>-->
 							</td>
 							<td class="styIRS1120ScheduleM3Cell"  style="background-color:lightgrey">
 							    <span style="width:5px;"></span>
 								<!--<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Sect198EnvrmtRemediationCosts/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Sect198EnvrmtRemediationCosts/TemporaryDifferenceAmt "/>
 								</xsl:call-template>-->
 							</td>
 							<td class="styIRS1120ScheduleM3Cell"  style="background-color:lightgrey">
 							    <span style="width:5px;"></span>
 								<!--<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Sect198EnvrmtRemediationCosts/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Sect198EnvrmtRemediationCosts/PermanentDifferenceAmt"/>
 								</xsl:call-template>-->
 							</td>
 							<td class="styIRS1120ScheduleM3Cell"   style="background-color:lightgrey">
 							     <span style="width:5px;"></span>
 								<!--<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Sect198EnvrmtRemediationCosts/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Sect198EnvrmtRemediationCosts/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>-->
 							</td>
 						</tr>
@@ -3637,27 +3634,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">30</td>
 							<td>
-								<span style="float:left;">Depletion</span>
+								<span style="float:left;padding-left:2mm;">Depletion</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DepletionGrp/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DepletionGrp/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DepletionGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DepletionGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DepletionGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DepletionGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DepletionGrp/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DepletionGrp/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3665,28 +3662,28 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">31</td>
 							<td>
-								<span style="float:left;">
+								<span style="float:left;padding-left:2mm;">
          Depreciation</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DepreciationGrp/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DepreciationGrp/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DepreciationGrp/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DepreciationGrp/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DepreciationGrp/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DepreciationGrp/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/DepreciationGrp/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/DepreciationGrp/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3694,27 +3691,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">32</td>
 							<td>
-								<span style="float:left;">Bad debt expense</span>
+								<span style="float:left;padding-left:2mm;">Bad debt expense</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/BadDebtExpnsAgencyBalWrttnOff/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/BadDebtExpnsAgencyBalWrttnOff/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/BadDebtExpnsAgencyBalWrttnOff/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/BadDebtExpnsAgencyBalWrttnOff/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/BadDebtExpnsAgencyBalWrttnOff/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/BadDebtExpnsAgencyBalWrttnOff/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/BadDebtExpnsAgencyBalWrttnOff/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/BadDebtExpnsAgencyBalWrttnOff/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3722,27 +3719,27 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">33</td>
 							<td>
-								<span style="float:left;">Corporate owned life insurance premiums</span>
+								<span style="float:left;padding-left:2mm;">Corporate owned life insurance premiums</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CorpOwnedLifeInsurancePremiums/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CorpOwnedLifeInsurancePremiums/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CorpOwnedLifeInsurancePremiums/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CorpOwnedLifeInsurancePremiums/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CorpOwnedLifeInsurancePremiums/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CorpOwnedLifeInsurancePremiums/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/CorpOwnedLifeInsurancePremiums/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/CorpOwnedLifeInsurancePremiums/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3750,28 +3747,28 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">34</td>
 							<td>
-								<span style="float:left;">Purchase versus lease (for purchasers and/or lessees)
+								<span style="float:left;padding-left:2mm;">Purchase versus lease (for purchasers and/or lessees)
           </span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/PurchaseVersusLease/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/PurchaseVersusLease/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/PurchaseVersusLease/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/PurchaseVersusLease/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/PurchaseVersusLease/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/PurchaseVersusLease/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/PurchaseVersusLease/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/PurchaseVersusLease/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3779,7 +3776,7 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">35</td>
 							<td>
-								<span style="float:left;">Research and development costs
+								<span style="float:left;padding-left:2mm;">Research and development costs
 								 <!--(attach schedule)-->
 							  <!-- Form Link -->
 <!--									<xsl:call-template name="SetFormLinkInline">
@@ -3791,22 +3788,22 @@ Life insurance subgroup reconciliation totals
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ResearchAndDevelopmentCosts/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ResearchAndDevelopmentCosts/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ResearchAndDevelopmentCosts/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ResearchAndDevelopmentCosts/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ResearchAndDevelopmentCosts/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ResearchAndDevelopmentCosts/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/ResearchAndDevelopmentCosts/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/ResearchAndDevelopmentCosts/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
@@ -3814,94 +3811,94 @@ Life insurance subgroup reconciliation totals
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">36</td>
 							<td>
-								<span style="float:left;">Section 118 exclusion (attach statement)
+								<span style="float:left;padding-left:2mm;">Section 118 exclusion (attach statement)
 							  <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Section118Exclusion"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Section118Exclusion"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Section118Exclusion/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Section118Exclusion/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Section118Exclusion/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Section118Exclusion/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Section118Exclusion/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Section118Exclusion/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/Section118Exclusion/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/Section118Exclusion/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part III - Line 37 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">37</td>
-							<td style="padding-top:.5mm;">
+							<td style="padding-top:.5mm;padding-left:2mm;">
 							Other expense/deduction items with differences
                             (attach<span style="float:left;">statement)
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences"/>
+										<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences"/>
 									</xsl:call-template>
 								</span>
 								<span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/OtherExpnsDedItemsDifferences/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 							</td>
 						</tr>
 						<!-- Part III - Line 38 -->
 						<tr>
 							<td class="styIRS1120ScheduleM3NumberCell">38</td>
-							<td style="padding-top:.5mm;font-weight:bold;">Total expense/deduction items.
+							<td style="padding-top:.5mm;font-weight:bold;padding-left:2mm;">Total expense/deduction items.
           <span style="font-weight:normal">Combine lines 1 through 37. Enter here and
            on Part II, line 27, reporting positive amounts as negative and negative amounts as positive</span>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/TotalExpenseDeductionItems/ExpensePerIncomeStmtAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/TotalExpenseDeductionItems/ExpensePerIncomeStmtAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/TotalExpenseDeductionItems/TemporaryDifferenceAmt "/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/TotalExpenseDeductionItems/TemporaryDifferenceAmt "/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/TotalExpenseDeductionItems/PermanentDifferenceAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/TotalExpenseDeductionItems/PermanentDifferenceAmt"/>
 								</xsl:call-template>
 							</td>
 							<td class="styIRS1120ScheduleM3Cell">
 								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/               ExpenseDeductionItemsGrp/TotalExpenseDeductionItems/DeductionPerTaxReturnAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form1120ScheduleM3/ExpenseDeductionItemsGrp/TotalExpenseDeductionItems/DeductionPerTaxReturnAmt"/>
 								</xsl:call-template>
 								<br/>
 							</td>

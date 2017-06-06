@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8697Data" select="$RtnDoc/IRS8697"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html xmlns="http://www.irs.gov/efile" xmlns:efile="http://www.irs.gov/efile">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8697Data)"/>
@@ -27,10 +29,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<xsl:if test="not($Print) or $Print=''">
+				<xsl:if test="not($Print) or $Print=''">
 					<xsl:call-template name="IRS8697Style"/>
 					<xsl:call-template name="AddOnStyle"/>
-					</xsl:if>
+				</xsl:if>
 				</style>
 			</head>
 			<body class="styBodyClass">
@@ -62,10 +64,14 @@
 								<span style="width:38mm;font-size:7pt;">See separate instructions</span>
 							</div>
 						</div>
-						<div style="float:left; font-size:7pt; width:30mm; padding-top:3.5mm; text-align:center; border-bottom:1 solid black; height:11mm">
-          OMB No. 1545-1031
-        </div>
-						<div style="float:left; font-size:7pt; padding-top:2mm; padding-left:4mm">
+						<div style="float:left; font-size:7pt; width:30mm;  text-align:center; border-bottom:1 solid black; height:11mm">
+						 <div class="styTYBox" style="width:30mm;height:22mm;">
+						  <div class="styOMB" style="height:4mm;">
+						  OMB No. 1545-1031
+						  </div>
+						  </div>
+						</div>
+						<div style="float:left; font-size:7pt; padding-top:1mm; padding-left:4mm">
           Attachment<br/>Sequence No. <b style="font-size:9pt">97</b>
 						</div>						
 					</div>
@@ -192,12 +198,11 @@
 						</div>
 													
 					
-								<div class="styEINBox" rowspan="2" style="text-align:center;font-face:Arial;font-size:7pt;font-weight:normal;width:55mm;height:20mm;border-top: 1 solid black;">
-							<span style="width:2px;"/>
+								<div class="styEINBox" rowspan="2" style="text-align:center;font-face:Arial;font-size:7pt;font-weight:normal;width:55mm;height:20mm;border-top: 1px solid black;">
 							<span style="font-weight:bold;">B</span>
 							<span style="width:.5mm;"/>
 							<span style="font-size:6pt;">Check applicable box to show type of taxpayer:</span>
-							<span style="width:55mm;height:5mm;font-weight:normal;text-align:left;padding-top:3mm;">
+							<span style="width:55mm;height:5mm;font-weight:normal;text-align:left;padding-top:2mm;">
 								<span style="width:3mm;"/>
 								<!--Corporation Checkbox -->
 								<input type="checkbox" class="styCkbox" style="width:5mm;">
@@ -275,7 +280,7 @@
 							<!-- Line C -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="width:4mm;padding-top:none;">C</div>
-						<div style="float:right;clear:all;width:183mm;font-size:6pt;">
+						<div style="float:right;width:183mm;font-size:6pt;">
       If you were an owner of an interest in a pass-through entity (such as a partnership or an S corporation)
        that holds one or more long-term contracts to which this interest computation relates, enter the name 
        and employer identification number of the entity. Attach a schedule if there is more than one such entity.
@@ -327,14 +332,14 @@
 					</div>
 					<!-- Part I title -->
 					<div style="width:187mm;height:8mm;border-style:solid;           border-bottom-width:1px;border-top-width:0px;           border-right-width:0px;border-left-width:0px;padding-top:2mm;float:none;clear:both;">
-						<span class="styPartName" style="height:2mm;">Part I</span>
+						<span class="styPartName" style="height:4mm;">Part I</span>
 						<span style="width 50mm;" class="styPartDesc">Regular Method 
 						<span style="font-weight:normal"> (see instructions)</span>
 						</span>
 					</div>
-					<xsl:variable name="PriorYearCount" select="count($Form8697Data/RegularMethodRedetermYrGrp/AdjustedTaxableIncomeForLkBck)"/>
+					<xsl:variable name="PriorYearCount" select="count($Form8697Data/RegularMethodRedetermYrGrp)"/>
 					<xsl:variable name="FilingYearCount">
-						<xsl:value-of select="count($Form8697Data/RegularMethodFilingYrGrp/TaxableIncomeOrLossAmt)"/>
+						<xsl:value-of select="count($Form8697Data/RegularMethodFilingYrGrp)"/>
 					</xsl:variable>
 					<xsl:variable name="FilingYearExists">
 						<xsl:choose>
@@ -350,7 +355,7 @@
 						<xsl:when test="($PriorYearCount  &gt; '2') and ($Print = $Separated)">
 							<table style="width:187mm;" id="TP1ctn">
 								<xsl:call-template name="SetInitialState"/>
-								<table cellspacing="0" summary="Table located under line C, having four columns and eight rows" style="width:187mm;border-top-width:0px;font-size:7pt;border-style: solid; border-color: black;         border-bottom-width:0px;border-left-width:0px;border-right-width: 0px;">
+								<table cellspacing="0" summary="Table located under line C, having four columns and eight rows0" style="width:187mm;border-top-width:0px;font-size:7pt;border-style: solid; border-color: black;         border-bottom-width:0px;border-left-width:0px;border-right-width: 0px;">
 									<tr>
 										<th class="styTableCell" rowspan="1" style="width:7mm;text-align:center;border-color:black;border-right:none;border-bottom:none;">
 											<span style="width:1px;"/>
@@ -684,10 +689,37 @@
 								</table>
 							</table>
 						</xsl:when>
+						<xsl:when test="($PriorYearCount  &gt; '2') and ($Print != $Separated)">
+	<!--Determine how many times to repeat Part I table-->
+						<xsl:variable name="Part1Count" select="count($Form8697Data/RegularMethodRedetermYrGrp)"/>
+						<xsl:variable name="Part1PreMax">
+							<xsl:choose>
+								<xsl:when test="$Part1Count mod 2 = 0">
+									<xsl:value-of select="$Part1Count div 2"/>
+								</xsl:when>
+								<xsl:otherwise>
+									<xsl:value-of select="ceiling($Part1Count div 2)"/>
+								</xsl:otherwise>
+							</xsl:choose>
+						</xsl:variable>
+						<xsl:call-template name="part1Table">
+							<xsl:with-param name="Part1Max">
+								<xsl:choose>
+									<!-- Check to see if there are exactly two records -->
+									<xsl:when test="$Part1PreMax = 0">
+										<xsl:value-of select="1"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:value-of select="$Part1PreMax"/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:with-param>
+						</xsl:call-template>
+						</xsl:when>
 						<xsl:otherwise>
 							<table style="width:187mm;" id="TP1ctn">
 								<xsl:call-template name="SetInitialState"/>
-								<table cellspacing="0" summary="Table located under line C, having four columns and eight rows" style="width:187mm;border-top-width:0px;font-size:7pt;border-style: solid; border-color: black;         border-bottom-width:0px;border-left-width:0px;border-right-width: 0px;">
+								<table cellspacing="0" summary="Table located under line C, having four columns and eight rows2" style="width:187mm;border-top-width:0px;font-size:7pt;border-style: solid; border-color: black;         border-bottom-width:0px;border-left-width:0px;border-right-width: 0px;">
 									<tr>
 										<th class="styTableCell" rowspan="1" style="width:7mm;text-align:center;border-color:black;border-right:none;border-bottom:none;">
 											<span style="width:1px;"/>
@@ -777,7 +809,7 @@
 												</td>
 											</xsl:if>
 										</xsl:for-each> 
-<!--										<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;font-weight:bold;border-color:black;">
 										(a)
 										<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
@@ -794,7 +826,7 @@
 										</xsl:if> 
 										<xsl:if test="$PriorYearCount &lt; '2'">
 											<td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;font-weight:bold;border-color:black;">
-												<xsl:if test="$index &lt;= 1">(b)</xsl:if>
+												<xsl:if test="$PriorYearCount &lt;= 1">(b)</xsl:if>
 												<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
 												<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
             <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
@@ -806,7 +838,7 @@
 													</span>
 												</span>
 											</td>
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;border-color:black;border-right:none">
 											<span style="font-weight:bold;">
 												<!--<xsl:if test="$index &lt;= 1">-->(c)<!--</xsl:if>-->
@@ -845,7 +877,7 @@
 												</td>
 											</xsl:if>
 										</xsl:for-each>
-	<!--									<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
@@ -854,7 +886,7 @@
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styForm8697TableCellEmptyGray" rowspan="1">
 											<span style="width:1mm;"/>
 										</td>
@@ -906,7 +938,7 @@
 												</td>
 											</xsl:if>
 										</xsl:for-each>
-<!--										<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
@@ -915,7 +947,7 @@
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>  
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styForm8697TableCell" rowspan="1" style="border-right:0px;border-top:1px;border-color:black;border-style:solid;">
 											<xsl:choose>
 												<xsl:when test="$PriorYearCount  &lt;= '2'">
@@ -950,15 +982,15 @@
 											</xsl:choose>
 										</td>
 										<xsl:for-each select="$Form8697Data/RegularMethodRedetermYrGrp/AdjTaxableIncomeLookBackAmt">
-											<xsl:if test="position() &lt;= 2 ">
+											<!--<xsl:if test="position() &lt;= 2">-->
 												<td class="styForm8697TableCell" rowspan="1">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="../AdjTaxableIncomeLookBackAmt"/>
 													</xsl:call-template>
 												</td>
-											</xsl:if>
+											<!--</xsl:if>-->
 										</xsl:for-each>
-<!--										<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
@@ -967,7 +999,7 @@
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styForm8697TableCellEmptyGray" rowspan="1">
 											<span style="width:1px;"/>
 										</td>
@@ -1004,7 +1036,7 @@
 												</td>
 											</xsl:if>
 										</xsl:for-each>
-<!--										<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
@@ -1013,7 +1045,7 @@
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styForm8697TableCellEmptyGray" rowspan="1">
 											<span style="width:1px;"/>
 										</td>
@@ -1042,7 +1074,7 @@
 												</td>
 											</xsl:if>
 										</xsl:for-each>
-<!--										<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
@@ -1051,7 +1083,7 @@
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styForm8697TableCellEmptyGray" rowspan="1">
 											<span style="width:1px;"/>
 										</td>
@@ -1077,7 +1109,7 @@
 												</td>
 											</xsl:if>
 										</xsl:for-each>
-<!--										<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
@@ -1086,7 +1118,7 @@
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styTableCell" rowspan="1" style="width:29mm;background-color:lightgrey;border-right:none;">
 											<span style="width:1px;"/>
 										</td>
@@ -1102,16 +1134,16 @@
 										<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;border-style:solid;">
 											<span style="width:1px;"/>
 										</td>
-										<xsl:for-each select="$Form8697Data/RegularMethodRedetermYrGrp/InterestDueOnIncreaseAmt">
+										<xsl:for-each select="$Form8697Data/RegularMethodRedetermYrGrp">
 											<xsl:if test="position() &lt;= 2 ">
 												<td class="styForm8697TableCell" rowspan="1">
 													<xsl:call-template name="PopulateAmount">
-														<xsl:with-param name="TargetNode" select="../InterestDueOnIncreaseAmt"/>
+														<xsl:with-param name="TargetNode" select="InterestDueOnIncreaseAmt"/>
 													</xsl:call-template>
 												</td>
 											</xsl:if>
 										</xsl:for-each>
-<!--										<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
@@ -1120,7 +1152,7 @@
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styForm8697TableCell" rowspan="1" style="border-right:none;">
 											<xsl:choose>
 												<xsl:when test="$PriorYearCount  &lt;= '2'">
@@ -1155,7 +1187,7 @@
 												</td>
 											</xsl:if>
 										</xsl:for-each>
-<!--										<xsl:if test="$PriorYearCount &lt; '1'">
+										<xsl:if test="$PriorYearCount &lt; '1'">
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
@@ -1164,7 +1196,7 @@
 											<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 												<span style="width:2mm;"/>
 											</td>
-										</xsl:if>  -->
+										</xsl:if>  
 										<td class="styForm8697TableCell" rowspan="1" style="border-right:none;">
 											<xsl:choose>
 												<xsl:when test="$PriorYearCount  &lt;= '2'">
@@ -1182,39 +1214,39 @@
 							</table>
 						</xsl:otherwise>
 					</xsl:choose>
-					<xsl:if test="($PriorYearCount  &gt; '2') and ($Print != $Separated)">
+<!--					<xsl:if test="($PriorYearCount  &gt; '2') and ($Print != $Separated)">
 						<xsl:call-template name="Page1">
 							<xsl:with-param name="MaxPages" select="ceiling($PriorYearCount div 2)"/>
 							<xsl:with-param name="StartingPage" select="2"/>
 						</xsl:call-template>
-					</xsl:if>
+					</xsl:if>-->
 					<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 					<!-- END PAGE 2 -->
 					<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 					<!-- Line 9 -->
-					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4mm;width:5mm;padding-left:1.5mm;">9</div>
+					<div  style="width:187mm;">
+						<div class="styLNLeftNumBox"  style="height:4mm;width:4mm;padding-left:.5mm;">9</div>
 						<div class="styLNDesc" style="width:152.25mm;height:4mm;padding-left:1mm;">
 						Net amount of <span style="font-weight:bold;">interest to be refunded to you.</span>
 						 If line 8, column (c), exceeds line 7, column (c), enter the excess. File
       Form 8697 separately; 
       <span style="font-weight:bold;">do not</span>
        attach it to your tax return (see page 5 of the instructions)
-       <span style="width:5mm;"/>
+       <span style="width:2mm;"/>
 							<span style="letter-spacing:4mm;">.....</span>
 						</div>
-						<div class="styLNAmountBox" style="float:right;clear:all;border-top-width:0px;width:30mm;height:7.5mm;"/>
+						<div class="styLNAmountBox" style="float:right;border-top-width:0px;width:29.75mm;height:7.5mm;"/>
 					</div>
 					<!-- Line 10 -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4mm;width:5mm;padding-left:.5mm;">10</div>
+						<div class="styLNLeftNumBox" style="height:4mm;width:4mm;padding-left:.5mm;">10</div>
 						<div class="styLNDesc" style="width:152.25mm;height:4mm;padding-left:1mm;">
       Net amount of <span style="font-weight:bold;">interest you owe.</span> If line 7, column (c), exceeds line 8, column (c), enter the excess. Attach
       Form 8697 to your tax return. See page 5 of the instructions for where to include this amount on your return
       <span style="width:2mm;"/>
 							<span style="letter-spacing:4mm;">...</span>
 						</div>
-						<div class="styLNAmountBox" style="float:right;clear:all;border-top-width:0px;border-bottom:none;width:30mm;height:7.5mm;">
+						<div class="styLNAmountBox" style="float:right;border-top-width:0px;border-bottom:none;width:29.75mm;height:7.5mm;">
 							<span style="width:30mm;"/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form8697Data/TotLookBackRegularMethodGrp/NetAmtOfInterestOwedAmt"/>
@@ -1230,6 +1262,7 @@
     Form 
     <span style="font-size:9pt;font-weight:bold;">8697</span> (Rev. 12-2011)
   </div>
+					  <div class="pageEnd"/>
 					<div style="page-break-after:always"/>
 					<!-- End Footer Line -->
 					<!-- Header -->
@@ -1242,7 +1275,7 @@
 					<!-- End of Header -->
 					<!-- Part II title -->
 					<div style="width:187mm;height:8mm;border-style:solid;           border-bottom-width:1px;border-top-width:0px;           border-right-width:0px;border-left-width:0px;padding-top:2mm;float:left;">
-						<span class="styPartName" style="height:2mm;">Part II</span>
+						<span class="styPartName" style="height:4mm;">Part II</span>
 						<span style="width:100mm; height: 2mm;" class="styPartDesc">Simplified Marginal Impact Method (see instructions)
     </span>
 					</div>
@@ -1286,12 +1319,12 @@
 					<!-- Line 10 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;width:5mm;padding-left:0mm;">10</div>
-						<div class="styLNDesc" style="width:152.25mm;height:4mm;">
+						<div class="styLNDesc" style="width:152mm;height:4mm;">
       Net amount of <span style="font-weight:bold;">interest to be refunded to you.</span> If line 9, column (d), exceeds line 8, column (d), enter the excess. File
-      Form 8697 separately; <span style="font-weight:bold;">do not</span> attach it to your tax return (see page 6 of the instructions)<span style="width:px;"/>
+      Form 8697 separately; <span style="font-weight:bold;">do not</span> attach it to your tax return (see page 6 of the instructions)<span style="width:2mm;"/>
 							<span style="letter-spacing:4mm;">......</span>
 						</div>
-						<div class="styLNAmountBox" style="float:right;clear:all;border-top-width:0px;width:30mm;height:7.5mm;">
+						<div class="styLNAmountBox" style="float:right;border-top-width:0px;width:29.75mm;height:7.5mm;">
 							<span style="width:1px;"/>
 <!--							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form8697Data/TotLookBackSmplfdMthdGrp/TotalInterestToBeRefunded"/>
@@ -1306,7 +1339,7 @@
       Form 8697 to your tax return. See page 6 of the instructions for where to include this amount on your return<span style="width:2mm;"/>
 							<span style="letter-spacing:4mm;">....</span>
 						</div>
-						<div class="styLNAmountBox" style="float:right;clear:all;border-top-width:0px;border-bottom:none;width:30mm;height:7.5mm;">
+						<div class="styLNAmountBox" style="float:right;border-top-width:0px;border-bottom:none;width:29.75mm;height:7.5mm;">
 							<span style="width:30mm;"/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form8697Data/TotLookBackSmplfdMthdGrp/NetAmtOfInterestOwedAmt"/>
@@ -1322,23 +1355,23 @@
 					</div>
 					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;clear:both;">
 						<tr>
-							<td rowspan="3" style="width:18mm;font-size: 11pt;font-weight:bold;border-right:1 solid black;border-bottom:1 solid black;">Sign Here</td>
+							<td rowspan="3" style="width:17.75mm;font-size: 11pt;font-weight:bold;text-align:left;border-width: 0px 1px 0px 0px; border-style: solid;">Sign Here</td>
 							<td colspan="4" style="padding-left:1mm;padding-bottom:1mm;">Under penalties of perjury, I declare that I have examined this form, including accompanying schedules and statements, and to the best of my
 knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer
 has any knowledge. </td>
 						</tr>
-						<tr>
-							<td rowspan="2" style="border-bottom:1 solid black;padding-left:1mm;">
+						<tr >
+							<td rowspan="2" style="padding-left:1mm;border-width: 0px 0px 0px 0px; border-style: solid;">
 								<img src="{$ImagePath}/8697_Bullet_Lg.gif" alt="Big Right Arrow"/>
 							</td>
-							<td style="width:103mm;border-bottom:1 solid black;vertical-align:bottom;">
+							<td style="width:103mm;vertical-align:bottom;border-width: 0px 1px 1px 0px; border-style: solid;">
       Your signature<br/>
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1px;"/>
 							</td>
-							<td style="width:53mm;border-top:0px; border-right:0px; border-left:1px; border-bottom:1px; border-style:solid; border-color:black;vertical-align:bottom;">
+							<td style="width:53mm;vertical-align:bottom;padding-left:1mm;border-width: 0px 0px 1px 0px; border-style: solid;">
       Date<br/>
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
@@ -1346,14 +1379,14 @@ has any knowledge. </td>
 							</td>
 						</tr>
 						<tr>
-							<td style="width:103mm;border-bottom:1 solid black;vertical-align:bottom;">
+							<td style="width:103mm;vertical-align:bottom;border-width: 0px 1px 0px 0px; border-style: solid;">
       Spouse's signature.  If a joint return, both must sign.<br/>
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1px;"/>
 							</td>
-							<td style="width:53mm;border-top:0px; border-right:0px; border-left:1px; border-bottom:1px; border-style:solid; border-color:black;vertical-align:bottom;">
+							<td style="width:53mm;vertical-align:bottom;padding-left:1mm;border-width: 0px 0px 0px 0px; border-style: solid;">
       Date<br/>
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
@@ -1364,29 +1397,29 @@ has any knowledge. </td>
 					<!-- End Signature Section -->
 					<!-- BEGIN PREPARER SIGNATURE SECTION -->
 					<!-- Implementing the Preparer section in table -->
-					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;border-color:black;border-bottom:1 solid black;">
+					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;border-width: 0px 0px 1px 0px; border-style:solid;">
 						<tr>
 							<!--row 1-->
-							<td rowspan="3" style="width:22mm;font-size:14pt;font-weight:bold;font-family:'arial narrow';border-right:1 solid black;border-bottom:1 solid black;text-align:left;">Paid Preparer Use Only</td>
-							<td style="width:43mm;border-right:1 solid black;border-bottom:1 solid black;padding-left:1mm;">Print/Type preparer's name
+							<td rowspan="3" style="width:18mm;font-size:11pt;font-weight:bold;font-family:'arial narrow';border-width: 1px 1px 0px 0px; border-style:solid;text-align:left;">Paid Preparer Use Only</td>
+							<td style="width:43mm;border-width: 1px 0px 0px 0px; border-style:solid;padding-left:1mm;">Print/Type preparer's name
                 <br/>
 								<xsl:call-template name="PopulateReturnHeaderPreparer">
 									<xsl:with-param name="TargetNode">Name</xsl:with-param>
 								</xsl:call-template>
 							</td>
-							<td style="width:55mm;border-right:1 solid black;border-bottom:1 solid black;padding-left:1mm;">Preparer's signature
+							<td style="width:65mm;border-width: 1px 0px 0px 1px; border-style: solid;padding-left:1mm;">Preparer's signature
                 <br/>
 								<span style="width:2px;"/>
 							</td>
-							<td style="width:24mm;border-right:1 solid black;border-bottom:1 solid black;padding-left:1mm;">
+							<td style="width:22mm;border-width: 1px 0px 0px 1px; border-style: solid;padding-left:1mm;">
 				Date <br/>
-								<span style="text-align:center; padding-left:7mm;">
+								<span style="text-align:left;">
 									<xsl:call-template name="PopulateReturnHeaderPreparer">
 										<xsl:with-param name="TargetNode">DatePrepared</xsl:with-param>
 									</xsl:call-template>
 								</span>
 							</td>
-							<td style="width:19mm;border-right:1 solid black;border-bottom:1 solid black;padding-left:1mm;vertical-align:bottom;padding-bottom:.5mm;">
+							<td style="width:19mm;border-width: 1px 1px 0px 1px; border-style: solid;vertical-align:bottom;padding-bottom:.5mm;">
 								<nobr>
 									<label for="dummyid1">
 										<xsl:call-template name="PopulateReturnHeaderPreparer">
@@ -1403,7 +1436,7 @@ has any knowledge. </td>
 								</input>
                 if <br/> self-employed
               </td>
-							<td style="width:35mm;border-bottom:1 solid black;padding-left:1mm;">PTIN
+							<td style="width:35mm;border-width: 1px 0px 0px 0px;border-style:solid;padding-left:1mm;">PTIN
                 <br/>
 								<span style="text-align:center;padding-left:10mm;">
 									<xsl:call-template name="PopulateReturnHeaderPreparer">
@@ -1417,7 +1450,7 @@ has any knowledge. </td>
 						</tr>
 						<tr>
 							<!--row 2-->
-							<td rowspan="1" colspan="4" style="border-bottom:1 solid black;border-right:1 solid black;padding-left:.5mm;">Firm's name
+							<td rowspan="1" colspan="4" style="border-width: 1px 1px 0px 0px; border-style: solid;padding-left:.5mm;">Firm's name
                 <img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 								<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 									<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -1429,7 +1462,7 @@ has any knowledge. </td>
 									</xsl:call-template>
 								</span>
 							</td>
-							<td style="border-bottom:1 solid black;padding-left:1mm;">Firm's EIN
+							<td style="border-width: 1px 0px 0px 0px; border-style: solid;">Firm's EIN
                 <img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 								<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
@@ -1441,7 +1474,7 @@ has any knowledge. </td>
 						</tr>
 						<tr>
 							<!--row 3-->
-							<td rowspan="1" colspan="4" style="border-bottom:1 solid black;border-right:1 solid black;padding-left:.5mm;">Firm's address
+							<td rowspan="1" colspan="4" style="border-width: 1px 1px 0px 0px; border-style: solid;padding-left:.5mm;">Firm's address
                 <img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 								<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 									<xsl:with-param name="TargetNode">AddressLine1</xsl:with-param>
@@ -1465,7 +1498,7 @@ has any knowledge. </td>
 									</xsl:call-template>
 								</span>
 							</td>
-							<td style="border-bottom:1 solid black;padding-left:1mm;"> Phone no. 
+							<td style="border-width:1px 0px 0px 0px; border-style: solid;padding-left:1mm;"> Phone no. 
 				<xsl:call-template name="PopulateReturnHeaderPreparer">
 									<xsl:with-param name="TargetNode">Phone</xsl:with-param>
 								</xsl:call-template>
@@ -1480,7 +1513,8 @@ has any knowledge. </td>
 					<div style="  clear:both;width:187mm;text-align:center;padding-top:1.5mm;">
   </div>
 					<!-- End Footer Line -->
-					<br class="pageEnd"/>
+					<div class="pageEnd"/>
+					<div style="page-break-after:always"/>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
@@ -1499,11 +1533,11 @@ has any knowledge. </td>
 					</table>
 					<!-- END Left Over Table -->
 					<!-- Additional Data Table for Separated Data from Part I -->
-					<xsl:if test="($Print = $Separated) and (count($Form8697Data/RegularMethodFilingYrGrp) &gt; 3)">
+					<xsl:if test="($Print = $Separated) and (count($Form8697Data/RegularMethodRedetermYrGrp) &gt; 2) "><!--)-->
 						<span class="styRepeatingDataTitle">
 							<br/>Form 8697, Part I - Regular Method:
     </span>
-						<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp">
+						<xsl:for-each select="$Form8697Data/RegularMethodRedetermYrGrp">
 							<xsl:variable name="pos" select="position()"/>
 							<xsl:if test="$pos mod 3 = 1">
 								<table class="styDepTbl" style="font-size:7pt">
@@ -1527,27 +1561,18 @@ has any knowledge. </td>
 									<tbody>
 										<!-- Line 1 -->
 										<tr class="styDepTblRow1">
-											<td class="styDepTblCell" rowspan="2" style="width:4mm;text-align:center;font-weight:bold;border-right:none;">1</td>
-											<td class="styDepTblCell" rowspan="2" style="width:67mm;text-align:left;border-left:none;">
-                Taxable income or loss for the prior years shown on tax
-                return (or as previously adjusted) before net operating loss
-                or capital loss carrybacks (other than carrybacks that must
-                be taken into account to properly compute interest under
-                section 460) (see page 4 of the instructions). If you were
-                required to file Form 8697 for an earlier year, enter adjusted
-                taxable income for the prior years from line 3, Form 8697,
-                for the most recent filing year that affects the prior years.
-              </td>
+											<td class="styDepTblCell"  style="width:4mm;text-align:center; font-weight:bold;border-right:none;border-top:none; "></td>
+											<td class="styDepTblCell"  style="width:67mm;text-align:left;border-left:none;border-top:none;"/>
 											<td class="styDepTblCell" style="width:29mm;text-align:center;font-weight:bold;">
                 (<xsl:number value="$pos" format="a"/>)<span style="width:2px"/>
 												<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
 												<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
                   <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
-														<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$pos]/YearEndedDt,6,7)"/>
+														<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$pos]/YearEndedDt,6,7)"/>
 													</span>
 													<span style="width:1mm;"/>yr.
                   <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
-														<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$pos]/YearEndedDt,1,4)"/>
+														<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$pos]/YearEndedDt,1,4)"/>
 													</span>
 												</span>
 											</td>
@@ -1556,11 +1581,11 @@ has any knowledge. </td>
 												<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
 												<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
                   <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
-														<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$pos + 1]/YearEndedDt,6,7)"/>
+														<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$pos + 1]/YearEndedDt,6,7)"/>
 													</span>
 													<span style="width:1mm;"/>yr.
                   <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
-														<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$pos + 1]/YearEndedDt,1,4)"/>
+														<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$pos + 1]/YearEndedDt,1,4)"/>
 													</span>
 												</span>
 											</td>
@@ -1569,11 +1594,11 @@ has any knowledge. </td>
 												<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
 												<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
                   <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
-														<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$pos +2 ]/YearEndedDt,6,7)"/>
+														<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$pos +2 ]/YearEndedDt,6,7)"/>
 													</span>
 													<span style="width:1mm;"/>yr.
                   <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
-														<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$pos + 2]/YearEndedDt,1,4)"/>
+														<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$pos + 2]/YearEndedDt,1,4)"/>
 													</span>
 												</span>
 											</td>
@@ -1586,19 +1611,31 @@ has any knowledge. </td>
 											</td>
 										</tr>
 										<tr class="styDepTblRow1">
+										<td class="styDepTblCell"  style="width:4mm;text-align:center; font-weight:bold;border-right:none;border-bottom:none; ">1</td>
+											<td class="styDepTblCell"  style="width:67mm;text-align:left;border-left:none;border-bottom:none;">
+                Taxable income or loss for the prior years shown on tax
+                return (or as previously adjusted) before net operating loss
+                or capital loss carrybacks (other than carrybacks that must
+                be taken into account to properly compute interest under
+                section 460) (see page 4 of the instructions). If you were
+                required to file Form 8697 for an earlier year, enter adjusted
+                taxable income for the prior years from line 3, Form 8697,
+                for the most recent filing year that affects the prior years.
+              </td>
+
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos]/TaxableIncomeOrLossAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos]/TaxableIncomeOrLossAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos + 1]/TaxableIncomeOrLossAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos + 1]/TaxableIncomeOrLossAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos + 2]/TaxableIncomeOrLossAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos + 2]/TaxableIncomeOrLossAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="background-color:lightgrey;width:29mm;border-bottom:none"/>
@@ -1621,31 +1658,31 @@ has any knowledge. </td>
 											<td class="styDepTblCell" style="vertical-align:bottom;text-align:right;width:29mm">
 												<div style="text-align:left;">
 													<xsl:call-template name="SetFormLinkInline">
-														<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos]/IncomeAdjustmentAmt"/>
+														<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos]/IncomeAdjustmentAmt"/>
 													</xsl:call-template>
 												</div>
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos]/IncomeAdjustmentAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos]/IncomeAdjustmentAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="vertical-align:bottom;text-align:right;width:29mm">
 												<div style="text-align:left;">
 													<xsl:call-template name="SetFormLinkInline">
-														<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos+1]/IncomeAdjustmentAmt"/>
+														<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos+1]/IncomeAdjustmentAmt"/>
 													</xsl:call-template>
 												</div>
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos + 1]/IncomeAdjustmentAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos + 1]/IncomeAdjustmentAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="vertical-align:bottom;text-align:right;width:29mm">
 												<div style="text-align:left;">
 													<xsl:call-template name="SetFormLinkInline">
-														<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos+2]/IncomeAdjustmentAmt"/>
+														<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos+2]/IncomeAdjustmentAmt"/>
 													</xsl:call-template>
 												</div>
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos + 2]/IncomeAdjustmentAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos + 2]/IncomeAdjustmentAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="vertical-align:bottom;text-align:right;width:29mm">
@@ -1671,17 +1708,17 @@ has any knowledge. </td>
 											</td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos]/AdjTaxableIncomeForLookBack"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos]/AdjTaxableIncomeForLookBack"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos + 1]/AdjTaxableIncomeForLookBack"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos + 1]/AdjTaxableIncomeForLookBack"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos + 2]/AdjTaxableIncomeForLookBack"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos + 2]/AdjTaxableIncomeForLookBack"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="background-color:lightgrey;width:29mm;border-top:none;border-bottom:none"/>
@@ -1694,17 +1731,17 @@ has any knowledge. </td>
               </td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos]/TaxLiabilityAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos]/TaxLiabilityAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos + 1]/TaxLiabilityAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos + 1]/TaxLiabilityAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$pos + 2]/TaxLiabilityAmt"/>
+													<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$pos + 2]/TaxLiabilityAmt"/>
 												</xsl:call-template>
 											</td>
 											<td class="styDepTblCell" style="background-color:lightgrey;width:29mm;border-top:none;border-bottom:none"/>
@@ -1868,26 +1905,13 @@ has any knowledge. </td>
 										</tr>
 									</thead>
 									<tfoot/>
-									<tbody>
-										<!-- Line 1 -->
-										<tr class="styDepTblRow1">
-											<td class="styDepTblCell" rowspan="2" style="width:4mm;text-align:center;font-weight:bold;border-right:none;">1</td>
-											<td class="styDepTblCell" rowspan="2" style="width:67mm;text-align:left;border-left:none;">
-                Adjustment to regular taxable income to reflect the
-                difference between: <span style="font-weight:bold;">(a)</span> the amount of such income required
-                to be allocated for post-February 1986 contracts
-                completed or adjusted during the tax year based on <span style="font-weight:bold;">actual</span>
-                contract price and costs, and <span style="font-weight:bold;">(b)</span> the amount of such
-                income reported for such contracts based on <span style="font-weight:bold;">estimated</span>
-                contract price and costs. See page 6 of the instructions
-                and attach a schedule listing each separate contract,
-                unless you were an owner of an interest in a pass-through
-                entity reporting this amount from Schedule K-1 or a similar
-                statement
-                <span style="width:6px;"/>
-												<span style="letter-spacing:4mm;">........</span>
+
+																											<!-- Line 1 -->
+										<tr class="styDepTblRow1" >
+											<td class="styDepTblCell" rowspan="1" style="width:4mm;text-align:center;font-weight:bold;border-right:none;border-bottom:none;"/>
+											<td class="styDepTblCell" rowspan="1" style="width:67mm;text-align:left;border-left:none;border-bottom:none;">
 											</td>
-											<td class="styDepTblCell" style="width:29mm;text-align:center;font-weight:bold;">
+											<td class="styDepTblCell" style="width:29mm;text-align:center;font-weight:bold;" rowspan="1">
                 (<xsl:number value="$pos" format="a"/>)<span style="width:2px"/>
 												<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
 												<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
@@ -1900,7 +1924,7 @@ has any knowledge. </td>
 													</span>
 												</span>
 											</td>
-											<td class="styDepTblCell" style="width:29mm;text-align:center;font-weight:bold;">
+											<td class="styDepTblCell" style="width:29mm;text-align:center;font-weight:bold;" rowspan="1">
                 (<xsl:number value="$pos+1" format="a"/>)<span style="width:2px"/>
 												<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
 												<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
@@ -1913,7 +1937,7 @@ has any knowledge. </td>
 													</span>
 												</span>
 											</td>
-											<td class="styDepTblCell" style="width:29mm;text-align:center;font-weight:bold;">
+											<td class="styDepTblCell" style="width:29mm;text-align:center;font-weight:bold;" rowspan="1">
                 (<xsl:number value="$pos+2" format="a"/>)<span style="width:2px"/>
 												<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
 												<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
@@ -1926,7 +1950,7 @@ has any knowledge. </td>
 													</span>
 												</span>
 											</td>
-											<td class="styDepTblCell" style="width:29mm;text-align:center;">
+											<td class="styDepTblCell" style="width:29mm;text-align:center;" rowspan="1">
 												<xsl:if test="$pos = 1">
 													<span style="text-align:center;width:20mm;">Totals</span>
 													<span style="float:left;clear:all;width:29mm;font-weight:normal">(Add columns (a),</span>
@@ -1935,6 +1959,12 @@ has any knowledge. </td>
 											</td>
 										</tr>
 										<tr class="styDepTblRow1">
+											<td class="styDepTblCell" rowspan="1" style="width:4mm;text-align:center;font-weight:bold;border-right:none;">1</td>
+											<td class="styDepTblCell" rowspan="1" style="width:67mm;text-align:left;border-left:none;">
+                Adjustment to regular taxable income to reflect the difference between: <b>(a)</b> the amount of such income required to be allocated for post-February 1986 contracts completed or adjusted during the tax year based on <b>actual</b> contract price and costs, and <b>(b)</b> the amount of such income reported for such contracts based on <b>estimated</b> contract price and costs. See page 6 of the instructions and attach a schedule listing each separate contract, unless you were an owner of an interest in a pass-through entity reporting this amount from Schedule K-1 or a similar statement
+                <span style="width:6px;"/>
+												<span style="letter-spacing:4mm;">........</span>
+											</td>
 											<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;width:29mm">
 												<div style="text-align:left;">
 													<xsl:call-template name="SetFormLinkInline">
@@ -1967,6 +1997,7 @@ has any knowledge. </td>
 											</td>
 											<td class="styDepTblCell" style="background-color:lightgrey;width:29mm;border-bottom:none"/>
 										</tr>
+			
 										<!-- Line 2 -->
 										<tr class="styDepTblRow2">
 											<td class="styDepTblCell" style="width:4mm;text-align:center;font-weight:bold;border-right:none;">2</td>
@@ -2225,7 +2256,9 @@ has any knowledge. </td>
 												</xsl:if>
 											</td>
 										</tr>
-									</tbody>
+										
+
+
 								</table>
 								<br/>
 							</xsl:if>
@@ -2243,12 +2276,12 @@ has any knowledge. </td>
 		<xsl:if test="$index &lt;= $Part1Max">
 			<table style="width:187mm;" id="TP1ctn">
 				<xsl:call-template name="SetInitialState"/>
-				<table cellspacing="0" summary="Table located under line C, having four columns and eight rows" style="width:187mm;border-top-width:0px;font-size:7pt;border-style: solid; border-color: black;         border-bottom-width:0px;border-left-width:0px;border-right-width: 0px;">
+				<table cellspacing="0" summary="Table located under line C, having four columns and eight rows3" style="width:187mm;border-top-width:0px;font-size:7pt;border-style: solid; border-color: black;         border-bottom-width:0px;border-left-width:0px;border-right-width: 0px;">
 					<tr>
-						<th class="styTableCell" rowspan="1" style="width:7mm;text-align:center;border-color:black;border-right:none;border-bottom:none;">
+						<th class="styTableCell" rowspan="1" style="border-color: black currentColor currentColor black; width: 7mm; text-align: center; border-right-width: medium; border-bottom-width: medium; border-right-style: none; border-bottom-style: none;">
 							<span style="width:1px;"/>
 						</th>
-						<th class="styTableCell" rowspan="1" style="width:80mm;text-align:left;border-color:black;border-bottom:none;">
+						<th class="styTableCell" rowspan="1" style="border-color: black black currentColor; width: 80mm; text-align: left; border-top-width: 0px; border-bottom-width: medium; border-bottom-style: none;">
 							<span style="width:1px;"/>
 						</th>
 						<th class="styTableCell" style="width:29mm;height:7mm;text-align:center;font-weight:normal;border-top-width:0px;border-color:black;">
@@ -2258,7 +2291,7 @@ has any knowledge. </td>
           Redetermination Years
         </th>
 						<th class="styTableCell" rowspan="1" style="width:29mm;text-align:center;border-top-width:0px;border-color:black;border-right:none;border-bottom:none;">
-							<span style="float:left;width:1px;"/>
+							<!--<span style="float:left;width:1px;"/>-->
 						</th>
 					</tr>
 					<tr>
@@ -2279,23 +2312,25 @@ has any knowledge. </td>
 							<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
 							<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
            <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
+								<xsl:if test="$index=1">
 									<xsl:choose>
-										<xsl:when test="substring($Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/YearEndedDt,6,7)=''"/>
+										<xsl:when test="substring($Form8697Data/RegularMethodFilingYrGrp/YearEndedDt,6,7)=''"/>
 										<xsl:otherwise>
-											<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/YearEndedDt,6,7)"/>
+											<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp/YearEndedDt,6,7)"/>
 										</xsl:otherwise>
 									</xsl:choose>
+								</xsl:if>
 								</span>
 								<span style="width:1mm;"/>yr.
             <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
+								<xsl:if test="$index=1">	
 									<xsl:choose>
-										<xsl:when test="substring($Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/YearEndedDt,1,4)=''">
-											<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/YearEndedDt,1,4)"/>
-										</xsl:when>
+										<xsl:when test="substring($Form8697Data/RegularMethodFilingYrGrp/YearEndedDt,1,4)=''"/>
 										<xsl:otherwise>
-											<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/YearEndedDt,1,4)"/>
+											<xsl:value-of select="substring($Form8697Data/RegularMethodFilingYrGrp/YearEndedDt,1,4)"/>
 										</xsl:otherwise>
 									</xsl:choose>
+								</xsl:if >
 								</span>
 							</span>
 						</td>
@@ -2305,18 +2340,18 @@ has any knowledge. </td>
 							<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
             <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
 									<xsl:choose>
-										<xsl:when test="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/YearEndedDt,6,7)=''"/>
+										<xsl:when test="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/YearEndedDt,6,7)=''"/>
 										<xsl:otherwise>
-											<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/YearEndedDt,6,7)"/>
+											<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/YearEndedDt,6,7)"/>
 										</xsl:otherwise>
 									</xsl:choose>
 								</span>
 								<span style="width:1mm;"/>yr.
             <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
 									<xsl:choose>
-										<xsl:when test="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/YearEndedDt,1,4)=''"/>
+										<xsl:when test="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/YearEndedDt,1,4)=''"/>
 										<xsl:otherwise>
-											<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/YearEndedDt,1,4)"/>
+											<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/YearEndedDt,1,4)"/>
 										</xsl:otherwise>
 									</xsl:choose>
 								</span>
@@ -2328,18 +2363,18 @@ has any knowledge. </td>
 							<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
             <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
 									<xsl:choose>
-										<xsl:when test="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*3]/YearEndedDt,6,7)=''"/>
+										<xsl:when test="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*2]/YearEndedDt,6,7)=''"/>
 										<xsl:otherwise>
-											<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*3]/YearEndedDt,6,7)"/>
+											<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*2]/YearEndedDt,6,7)"/>
 										</xsl:otherwise>
 									</xsl:choose>
 								</span>
 								<span style="width:1mm;"/>yr.
             <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
 									<xsl:choose>
-										<xsl:when test="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*3]/YearEndedDt,1,4)=''"/>
+										<xsl:when test="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*2]/YearEndedDt,1,4)=''"/>
 										<xsl:otherwise>
-											<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*3]/YearEndedDt,1,4)"/>
+											<xsl:value-of select="substring($Form8697Data/RegularMethodRedetermYrGrp[$index*2]/YearEndedDt,1,4)"/>
 										</xsl:otherwise>
 									</xsl:choose>
 								</span>
@@ -2360,6 +2395,8 @@ has any knowledge. </td>
 						</td>
 					</tr>
 					<tr>
+					<xsl:choose>
+						<xsl:when test="$index=1">
 						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 							<xsl:if test="$index=0 and $Part1Max=0">
 								<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -2368,17 +2405,24 @@ has any knowledge. </td>
 								</xsl:call-template>
 							</xsl:if>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/TaxableIncomeOrLossAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp/TaxableIncomeOrLossAmt"/>
+							</xsl:call-template>
+						</td>
+						</xsl:when>
+						<xsl:otherwise>
+								<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;border-style:solid;">
+									<span style="width:1px;"/>	
+								</td>
+						</xsl:otherwise>
+					</xsl:choose>
+						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/TaxableIncomeOrLossAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/TaxableIncomeOrLossAmt"/>
-							</xsl:call-template>
-						</td>
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/TaxableIncomeOrLossAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/TaxableIncomeOrLossAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCellEmptyGray" rowspan="1">
@@ -2403,51 +2447,63 @@ has any knowledge. </td>
 							<span style="width:2mm;"/>
 							<span style="letter-spacing:4mm;">.</span>
 						</td>
+						<xsl:choose >
+							<xsl:when test="$index=1">
 						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 							<div style="text-align:left;">
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/IncomeAdjustmentAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp/IncomeAdjustmentAmt"/>
 								</xsl:call-template>
 							</div>
 							<br/>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/IncomeAdjustmentAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp/IncomeAdjustmentAmt"/>
+							</xsl:call-template>
+						</td>
+							</xsl:when>
+							<xsl:otherwise>
+								<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;border-style:solid;">
+									<span style="width:1px;"/>	
+								</td>				
+							</xsl:otherwise>
+						</xsl:choose>
+						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
+							<div style="text-align:left;">
+								<xsl:call-template name="SetFormLinkInline">
+									<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/IncomeAdjustmentAmt"/>
+								</xsl:call-template>
+							</div>
+							<br/>
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/IncomeAdjustmentAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
 							<div style="text-align:left;">
 								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/IncomeAdjustmentAmt"/>
+									<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/IncomeAdjustmentAmt"/>
 								</xsl:call-template>
 							</div>
 							<br/>
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/IncomeAdjustmentAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/IncomeAdjustmentAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<div style="text-align:left;">
-								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/IncomeAdjustmentAmt"/>
-								</xsl:call-template>
-							</div>
-							<br/>
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/IncomeAdjustmentAmt"/>
-							</xsl:call-template>
-						</td>
-						<td class="styForm8697TableCell" rowspan="1" style="border-right:0px;border-top:1px;border-color:black;border-style:solid;">
+						
 							<xsl:choose>
 								<xsl:when test="$index = $Part1Max">
+						<td class="styForm8697TableCell" rowspan="1" style="border-right:0px;border-top:1px;border-color:black;border-style:solid;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$Form8697Data/TotalAdjustmentToIncomeAmt"/>
+										<xsl:with-param name="TargetNode" select="$Form8697Data/TotLookBackRegularMethodGrp/TotalAdjustmentToIncomeAmt"/>
 									</xsl:call-template>
+						</td>
 								</xsl:when>
 								<xsl:otherwise>
-									<span style="width:1mm;"/>
+							<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:0px;border-color:black;border-style:solid;">
+									<span style="width:1px;"/>	
+								</td>			
 								</xsl:otherwise>
 							</xsl:choose>
-						</td>
 					</tr>
 					<!-- Part 1 - Line 3 -->
 					<tr>
@@ -2455,19 +2511,28 @@ has any knowledge. </td>
 						<td class="styForm8697TableCellDescription" rowspan="1">
           Adjusted taxable income for look-back purposes. Combine lines 1 and 2.  If line 3 is a negative amount, see instructions.
         </td>
+					<xsl:choose>
+						<xsl:when test="$index=1">
+							<td class="styForm8697TableCell" rowspan="1">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp/AdjTaxableIncomeLookBackAmt"/>
+									</xsl:call-template>
+							</td>
+						</xsl:when>
+						<xsl:otherwise>
+							<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;border-style:solid;">
+								<span style="width:1px;"/>	
+							</td>				
+						</xsl:otherwise>
+					</xsl:choose>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/AdjTaxableIncomeForLookBack"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/AdjTaxableIncomeLookBackAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/AdjTaxableIncomeForLookBack"/>
-							</xsl:call-template>
-						</td>
-						<td class="styForm8697TableCell" rowspan="1">
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/AdjTaxableIncomeForLookBack"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/AdjTaxableIncomeLookBackAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCellEmptyGray" rowspan="1">
@@ -2483,19 +2548,28 @@ has any knowledge. </td>
           <span style="width:2mm;"/>
 							<span style="letter-spacing:4mm;">...</span>
 						</td>
+					<xsl:choose>
+						<xsl:when test="$index=1">
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp[$index*3-2]/TaxLiabilityAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodFilingYrGrp/TaxLiabilityAmt"/>
+							</xsl:call-template>
+								</td>
+						</xsl:when>
+						<xsl:otherwise>
+							<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;border-style:solid;">
+							<span style="width:1px;"/>
+						</td>
+						</xsl:otherwise>
+					</xsl:choose>
+						<td class="styForm8697TableCell" rowspan="1">
+							<xsl:call-template name="PopulateAmount">
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/TaxLiabilityAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/TaxLiabilityAmt"/>
-							</xsl:call-template>
-						</td>
-						<td class="styForm8697TableCell" rowspan="1">
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/TaxLiabilityAmt"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/TaxLiabilityAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCellEmptyGray" rowspan="1">
@@ -2519,12 +2593,12 @@ has any knowledge. </td>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/PriorYearIncomeTaxLiability"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/FederalIncomeTaxLiabilityAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/PriorYearIncomeTaxLiability"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/FederalIncomeTaxLiabilityAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCellEmptyGray" rowspan="1">
@@ -2545,12 +2619,12 @@ has any knowledge. </td>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/PriorYearTaxIncreaseOrDecrease"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/IncreaseOrDecreaseInTxForPYAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/PriorYearTaxIncreaseOrDecrease"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/IncreaseOrDecreaseInTxForPYAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styTableCell" rowspan="1" style="width:29mm;background-color:lightgrey;border-right:none;">
@@ -2570,26 +2644,28 @@ has any knowledge. </td>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/InterestDueOnIncrease1"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/InterestDueOnIncreaseAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/InterestDueOnIncrease1"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/InterestDueOnIncreaseAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styForm8697TableCell" rowspan="1" style="border-right:none;">
 							<xsl:choose>
 								<xsl:when test="$index = $Part1Max">
+								<td class="styForm8697TableCell" rowspan="1" style="border-right:none;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$Form8697Data/TotalInterestDueOnIncreaseAmt"/>
+										<xsl:with-param name="TargetNode" select="$Form8697Data/TotLookBackRegularMethodGrp/TotalInterestDueOnIncreaseAmt"/>
 									</xsl:call-template>
+								</td>
 								</xsl:when>
 								<xsl:otherwise>
-									<span style="width:1mm;"/>
+									<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;">
+									<span style="width:1px;"/>	
+								</td>	
 								</xsl:otherwise>
 							</xsl:choose>
-						</td>
 					</tr>
 					<tr>
 						<td class="styForm8697TableCellNumber" rowspan="1">8</td>
@@ -2604,40 +2680,44 @@ has any knowledge. </td>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3-1]/InterestToBeRefundedOnDecr1"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2-1]/InterestToBeRefundedOnDecrAmt"/>
 							</xsl:call-template>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*3]/InterestToBeRefundedOnDecr1"/>
+								<xsl:with-param name="TargetNode" select="$Form8697Data/RegularMethodRedetermYrGrp[$index*2]/InterestToBeRefundedOnDecrAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styForm8697TableCell" rowspan="1" style="border-right:none;">
 							<xsl:choose>
 								<xsl:when test="$index = $Part1Max">
+							<td class="styForm8697TableCell" rowspan="1" style="border-right:none;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$Form8697Data/TotalInterestToBeRefundedAmt"/>
+										<xsl:with-param name="TargetNode" select="$Form8697Data/TotLookBackRegularMethodGrp/TotalInterestToBeRefundedAmt"/>
 									</xsl:call-template>
+							</td>		
 								</xsl:when>
 								<xsl:otherwise>
-									<span style="width:1mm;"/>
+									<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:0px;border-bottom:1px;border-color:black;border-style:solid;">
+									<span style="width:1px;"/>	
+									</td>	
 								</xsl:otherwise>
 							</xsl:choose>
-						</td>
 					</tr>
 				</table>
 				<xsl:if test="$index != $Part1Max">
-					<xsl:choose>
-						<xsl:when test="$index = 1">
-							<div style="page-break-after:always"/>
+<!--					<xsl:choose>
+						<xsl:when test="$index = 1">					
+							<div class="pageEnd" style="page-break-after:always"/>
 						</xsl:when>
 						<xsl:otherwise>
+						<div class="pageEnd" style="page-break-after:always"/>
         </xsl:otherwise>
-					</xsl:choose>
+					</xsl:choose>-->
+					<div class="pageEnd" style="page-break-after:always"/>
 					<br/>
 					<div style="width:187mm;">
-						<span style="width:65mm;float:left;clear:none;"/>
-						<span style="width:122.75mm;float:right;clear:none;border-style:solid;border-top-width:0px;border-right-width:0px;               border-left-width:0px;border-bottom-width:1px;border-color:black;"/>
+						<span style="width:64mm;float:left;clear:none;"/>
+						<span style="width:123mm;float:right;clear:none;border-bottom:1px solid black;"/>
 					</div>
 				</xsl:if>
 				<xsl:call-template name="part1Table">
@@ -2670,24 +2750,8 @@ has any knowledge. </td>
 						</th>
 					</tr>
 					<tr>
-						<th class="styTableCell" rowspan="2" style="width:7mm;text-align:left;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1.5mm;">1</th>
-						<th class="styTableCell" rowspan="2" style="width:80mm;text-align:left;font-weight:normal;border-color:black;border-bottom:none;padding-right:1mm;">
-          Adjustment to regular taxable income to reflect the
-          difference between: <span style="font-weight:bold;">(a)</span> the amount of such income required
-          to be allocated for post-February 1986 contracts
-          completed or adjusted during the tax year based on <span style="font-weight:bold;">actual</span>
-          contract price and costs, and <span style="font-weight:bold;">(b)</span> the amount of such
-          income reported for such contracts based on <span style="font-weight:bold;">estimated</span>
-          contract price and costs. See page 6 of the instructions
-          and attach a schedule listing each separate contract,
-          unless you were an owner of an interest in a pass-through
-          entity reporting this amount from Schedule K-1 or a similar
-          statement           
-          <!-- Form Link to Additional Data -->
-							<!-- Form Link has been removed here and placed in each individual cell.  As the push pin is hiding some characters when tested with maximum digits placed a break next to it,as the space is already scarce -->
-							<span style="width:6px;"/>
-							<span style="letter-spacing:4mm;">.</span>
-						</th>
+						<td class="styTableCell" rowspan="1" style="width:7mm;text-align:left;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1.5mm;"></td>
+						<td class="styTableCell" rowspan="1" style="width:80mm;text-align:left;font-weight:normal;border-color:black;border-bottom:none;padding-right:1mm;"/>
 						<td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;font-weight:bold;border-color:black;">
 							<xsl:if test="$index = 1">(a)</xsl:if>
 							<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
@@ -2776,6 +2840,25 @@ has any knowledge. </td>
 						</td>
 					</tr>
 					<tr>
+						<td class="styTableCell" rowspan="1" style="width:7mm;text-align:left;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1.5mm;">1</td>
+						<td class="styTableCell" rowspan="1" style="width:80mm;height:42mm;text-align:left;font-weight:normal;border-color:black;border-bottom:none;padding-right:1mm;">						<div style="display:block;">
+          Adjustment to regular taxable income to reflect the
+          difference between: <span style="font-weight:bold;">(a)</span> the amount of such income required
+          to be allocated for post-February 1986 contracts
+          completed or adjusted during the tax year based on <span style="font-weight:bold;">actual</span>
+          contract price and costs, and <span style="font-weight:bold;">(b)</span> the amount of such
+          income reported for such contracts based on <span style="font-weight:bold;">estimated</span>
+          contract price and costs. See page 6 of the instructions
+          and attach a schedule listing each separate contract,
+          unless you were an owner of an interest in a pass-through
+          entity reporting this amount from Schedule K-1 or a similar
+          statement           
+          
+          <!-- Form Link to Additional Data -->
+							<!-- Form Link has been removed here and placed in each individual cell.  As the push pin is hiding some characters when tested with maximum digits placed a break next to it,as the space is already scarce -->
+							<span style="width:6px;"/>
+							<span style="letter-spacing:4mm;">.</span>
+</div>						</td>
 						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap">
 							<xsl:choose>
 								<xsl:when test="$index=0 and $Part2Max=0">
@@ -2826,11 +2909,13 @@ has any knowledge. </td>
 					<tr>
 						<td class="styTableCell" rowspan="1" style="width:7mm;text-align:left;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1.5mm;">2</td>
 						<td class="styTableCell" rowspan="1" style="width:80mm;text-align:left;border-color:black;border-bottom:none;padding-right:1mm;">
+						<div style="display:block;">
           Increase or decrease in regular tax for prior years. Multiply
           line 1 in each column by the applicable regular tax rate (see
           page 6 of the instructions)<span style="width:2mm;"/>
 							<span style="letter-spacing:4mm;">.........</span>
 							<span style="width:2px;"/>
+							</div>
 						</td>
 						<td class="styForm8697TableCell" rowspan="1">
 							<xsl:call-template name="PopulateAmount">
@@ -3129,439 +3214,5 @@ has any knowledge. </td>
 		<xsl:value-of select="."/>
 		<xsl:if test="string(number(.))='NaN'"> 
 is not a number</xsl:if>
-	</xsl:template>
-	<xsl:template name="Page1">
-		<xsl:param name="MaxPages"/>
-		<xsl:param name="StartingPage"/>
-		<xsl:variable name="PriorYearCount">
-			<xsl:value-of select="count($Form8697Data/RegularMethodFilingYrGrp/AdjTaxableIncomeForLookBack)"/>
-		</xsl:variable>
-		<xsl:variable name="LastPage">
-			<xsl:choose>
-				<xsl:when test="$StartingPage = $MaxPages">
-					<xsl:value-of select="true()"/>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:value-of select="false()"/>
-				</xsl:otherwise>
-			</xsl:choose>
-		</xsl:variable>
-		<!--<xsl:value-of select="$LastPage"/>
--->
-		<!--<xsl:value-of select="$MyPos+4"/>-->
-		<!--		<xsl:param name="index" select="1"/>
-		<xsl:param name="Part1Max"/>	-->
-		<!-- PAGE 1 -->
-		<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
-		<table style="width:187mm;" id="TP1ctn">
-			<xsl:call-template name="SetInitialState"/>
-			<table cellspacing="0" summary="Table located under line C, having four columns and eight rows" style="width:187mm;border-top-width:0px;font-size:7pt;border-style: solid; border-color: black;         border-bottom-width:0px;border-left-width:0px;border-right-width: 0px;">
-				<div style="width:187mm;">
-					<span style="width:65mm;float:left;clear:none;"/>
-					<span style="width:122.75mm;float:right;clear:none;border-style:solid;border-top-width:0px;border-right-width:0px;               border-left-width:0px;border-bottom-width:1px;border-color:black;"/>
-				</div>
-				<tr>
-					<th class="styTableCell" rowspan="1" style="width:7mm;text-align:center;border-color:black;border-right:none;border-bottom:none;">
-						<span style="width:1px;"/>
-					</th>
-					<th class="styTableCell" rowspan="1" style="width:80mm;text-align:left;border-color:black;border-bottom:none;">
-						<span style="width:1px;"/>
-					</th>
-					<th class="styTableCell" style="width:29mm;height:7mm;text-align:center;font-weight:normal;border-top-width:0px;border-color:black;">
-          Filing Year
-        </th>
-					<th class="styTableCell" colspan="2" style="width:67mm;text-align:center;font-weight:normal;border-top-width:0px;border-color:black;">
-          Redetermination Years
-        </th>
-					<th class="styTableCell" rowspan="1" style="width:29mm;text-align:center;border-top-width:0px;border-color:black;border-right:none;border-bottom:none;">
-						<span style="float:left;width:1px;"/>
-					</th>
-				</tr>
-				<tr>
-					<th class="styTableCell" rowspan="2" style="width:7mm;text-align:center;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;">1</th>
-					<th class="styForm8697TableCellDescription" rowspan="2" style="font-weight:normal;">
-          Taxable income or loss for the prior years shown on tax
-          return (or as previously adjusted) before net operating loss
-          or capital loss carrybacks (other than carrybacks that must
-          be taken into account to properly compute interest under
-          section 460) (see page 4 of the instructions). If you were
-          required to file Form 8697 for an earlier year, enter adjusted
-          taxable income for the prior years from line 3, Form 8697,
-          for the most recent filing year that affects the prior years.  
-          <span style="width:2mm;"/>
-						<span style="letter-spacing:4mm;">........</span>
-					</th>
-					<td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;font-weight:bold;border-color:black;">
-						<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
-						<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
-            <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
-
-</span>
-							<span style="width:1mm;"/>yr.
-            <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
-
-            </span>
-						</span>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/TaxableIncomeOrLossAmt">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;font-weight:bold;border-color:black;">
-								<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
-								<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
-            <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
-										<xsl:choose>
-											<xsl:when test="substring(../YearEndedDt,6,7)=''"/>
-											<xsl:otherwise>
-												<xsl:value-of select="substring(../YearEndedDt,6,7)"/>
-											</xsl:otherwise>
-										</xsl:choose>
-									</span>
-									<span style="width:1mm;"/>yr.
-            <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
-										<xsl:choose>
-											<xsl:when test="substring(../YearEndedDt,1,4)=''"/>
-											<xsl:otherwise>
-												<xsl:value-of select="substring(../YearEndedDt,1,4)"/>
-											</xsl:otherwise>
-										</xsl:choose>
-									</span>
-								</span>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;font-weight:bold;border-color:black;">
-							<span style="text-align:center;width:29mm;font-weight:normal">Year ended</span>
-							<span style="float:left;clear:all;width:29mm;font-weight:normal">mo
-            <span class="styFixedUnderline" style="width:5mm;float:none;padding-bottom:0;">
-
-            </span>
-								<span style="width:1mm;"/>yr.
-            <span class="styFixedUnderline" style="width:8mm;float:none;padding-bottom:0;">
-
-            </span>
-							</span>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;border-color:black;border-right:none">
-						<span style="font-weight:bold;"/>
-						<br/>
-						<span style="text-align:center;width:20mm;">Totals</span>
-						<span style="float:left;clear:all;width:29mm;font-weight:normal">
-            (Add columns (a)
-          </span>
-						<span style="float:left;clear:all;width:29mm;font-weight:normal">
-            and (b).)
-          </span>
-					</td>
-				</tr>
-				<tr>
-					<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-						<span style="width:2mm;"/>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/TaxableIncomeOrLossAmt">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="../TaxableIncomeOrLossAmt"/>
-								</xsl:call-template>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<span style="width:2mm;"/>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styForm8697TableCellEmptyGray" rowspan="1">
-						<span style="width:1mm;"/>
-					</td>
-				</tr>
-				<tr>
-					<td class="styForm8697TableCellNumber" rowspan="1">2</td>
-					<td class="styForm8697TableCellDescription" rowspan="1">
-          Adjustment to income to reflect the difference between:
-          <span style="font-weight:bold;">(a)</span> the amount of income required to be allocated for
-          post-February 1986 contracts completed or adjusted
-          during the tax year based on the <span style="font-weight:bold;">actual</span> contract price and
-          costs, and <span style="font-weight:bold;">(b)</span> the amount of income reported for such
-          contracts based on <span style="font-weight:bold;">estimated</span> contract price and costs.
-          See page 4 of the instructions and attach a schedule listing
-          each separate contract, unless you were an owner of an
-          interest in a pass-through entity reporting this amount from
-          Schedule K-1 or a similar statement             
-          <!-- Form Link to Additional Data -->
-						<!-- Form Link has been removed here and placed in each individual cell.  As the push pin is hiding some characters when tested with maximum digits placed a break next to it,as the space is already scarce -->
-						<span style="width:2mm;"/>
-						<span style="letter-spacing:4mm;">.</span>
-					</td>
-					<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-						<span style="width:2mm;"/>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/IncomeAdjustmentAmt">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-								<div style="text-align:left;">
-									<xsl:call-template name="SetFormLinkInline">
-										<xsl:with-param name="TargetNode" select="../IncomeAdjustmentAmt"/>
-									</xsl:call-template>
-								</div>
-								<br/>
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="../IncomeAdjustmentAmt"/>
-								</xsl:call-template>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<span style="width:2mm;"/>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styForm8697TableCell" rowspan="1" style="border-right:0px;border-top:1px;border-color:black;border-style:solid;">
-						<xsl:choose>
-							<xsl:when test="$LastPage = 'true'">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form8697Data/TotalAdjustmentToIncomeAmt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<xsl:otherwise>
-								<span style="width:2mm"/>
-							</xsl:otherwise>
-						</xsl:choose>
-					</td>
-				</tr>
-				<!-- Part 1 - Line 3 -->
-				<tr>
-					<td class="styForm8697TableCellNumber" rowspan="1">3</td>
-					<td class="styForm8697TableCellDescription" rowspan="1">
-          Adjusted taxable income for look-back purposes. Combine lines 1 and 2.  If line 3 is a negative amount, see instructions.
-        </td>
-					<td class="styForm8697TableCell" rowspan="1">
-						<span style="width:2mm;"/>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/AdjTaxableIncomeForLookBack">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styForm8697TableCell" rowspan="1">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="../AdjTaxableIncomeForLookBack"/>
-								</xsl:call-template>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<span style="width:2mm;"/>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styForm8697TableCellEmptyGray" rowspan="1">
-						<span style="width:1px;"/>
-					</td>
-				</tr>
-				<!-- Part 1 - Line 4 -->
-				<tr>
-					<td class="styForm8697TableCellNumber" rowspan="1">4</td>
-					<td class="styForm8697TableCellDescription" rowspan="1">
-          Income tax liability on line 3 amount using tax rates in effect
-          for the prior years (see page 4 of the instructions)
-          <span style="width:2mm;"/>
-						<span style="letter-spacing:4mm;">...</span>
-					</td>
-					<td class="styForm8697TableCell" rowspan="1">
-						<span style="width:2mm;"/>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/TaxLiabilityAmt">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styForm8697TableCell" rowspan="1">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="../TaxLiabilityAmt"/>
-								</xsl:call-template>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<span style="width:2mm;"/>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styForm8697TableCellEmptyGray" rowspan="1">
-						<span style="width:1px;"/>
-					</td>
-				</tr>
-				<!-- Part 1 - Line 5 -->
-				<tr>
-					<td class="styForm8697TableCellNumber" rowspan="1">5</td>
-					<td class="styForm8697TableCellDescription" rowspan="1">
-          Income tax liability shown on return (or as previously
-          adjusted) for the prior years (see page 4 of the instructions).
-          If you were required to file Form 8697 for an earlier year,
-          enter the amount required to be reported on line 4, Form
-          8697, for the most recent filing year that affects the prior
-          years <span style="width:2mm;"/>
-						<span style="letter-spacing:4mm;">........</span>
-					</td>
-					<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;border-style:solid;">
-						<span style="width:1px;"/>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/PriorYearIncomeTaxLiability">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styForm8697TableCell" rowspan="1">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="../PriorYearIncomeTaxLiability"/>
-								</xsl:call-template>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<span style="width:2mm;"/>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styForm8697TableCellEmptyGray" rowspan="1">
-						<span style="width:1px;"/>
-					</td>
-				</tr>
-				<!-- Part 1 - Line 6 -->
-				<tr>
-					<td class="styForm8697TableCellNumber" rowspan="1">6</td>
-					<td class="styForm8697TableCellDescription" rowspan="1">
-          Increase or decrease in tax for the prior years on which
-          interest is due (or is to be refunded). Subtract line 5 from
-          line 4.<span style="width:4mm;"/>
-						<span style="letter-spacing:4mm;">.</span>
-					</td>
-					<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;border-style:solid;">
-						<span style="width:1px;"/>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/PriorYearTaxIncreaseOrDecrease">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styForm8697TableCell" rowspan="1">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="../PriorYearTaxIncreaseOrDecrease"/>
-								</xsl:call-template>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<span style="width:2mm;"/>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styTableCell" rowspan="1" style="width:29mm;background-color:lightgrey;border-right:none;">
-						<span style="width:1px;"/>
-					</td>
-				</tr>
-				<!-- Part 1 - Line 7 -->
-				<tr>
-					<td class="styForm8697TableCellNumber" rowspan="1">7</td>
-					<td class="styForm8697TableCellDescription" rowspan="1">
-          Interest due on increase, if any, shown on line 6 (see
-          page 4 of the instructions)<span style="width:4mm;"/>
-						<span style="letter-spacing:4mm;">.</span>
-					</td>
-					<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-color:black;border-style:solid;">
-						<span style="width:1px;"/>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/InterestDueOnIncrease1">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styForm8697TableCell" rowspan="1">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="../InterestDueOnIncrease1"/>
-								</xsl:call-template>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<span style="width:2mm;"/>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styForm8697TableCell" rowspan="1" style="border-right:none;">
-						<xsl:choose>
-							<xsl:when test="$LastPage = 'true'">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form8697Data/TotalInterestDueOnIncreaseAmt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<xsl:otherwise>
-								<span style="width:2mm"/>
-							</xsl:otherwise>
-						</xsl:choose>
-					</td>
-				</tr>
-				<tr>
-					<td class="styForm8697TableCellNumber" rowspan="1">8</td>
-					<td class="styForm8697TableCellDescription" rowspan="1">
-          Interest to be refunded on decrease, if any, shown on
-          line 6 (see page 4 of the instructions)
-          <span style="width:2mm;"/>
-						<span style="letter-spacing:4mm;">........</span>
-					</td>
-					<td class="styForm8697TableCellEmptyGray" rowspan="1" style="border-right:1px;border-bottom:1px;border-color:black;border-style:solid;">
-						<span style="width:1px;"/>
-					</td>
-					<xsl:for-each select="$Form8697Data/RegularMethodFilingYrGrp/InterestToBeRefundedOnDecr1">
-						<xsl:if test="(position() &gt;= ($StartingPage*2-1)) and (position() &lt;= $StartingPage*2)">
-							<td class="styForm8697TableCell" rowspan="1">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="../InterestToBeRefundedOnDecr1"/>
-								</xsl:call-template>
-							</td>
-						</xsl:if>
-					</xsl:for-each>
-					<!--BLANK CELLS-->
-					<xsl:if test="($LastPage = 'true') and ($PriorYearCount mod 2 = 1)">
-						<td class="styForm8697TableCell" rowspan="1" nowrap="nowrap;">
-							<span style="width:2mm;"/>
-						</td>
-					</xsl:if>
-					<!--END BLANK CELLS-->
-					<td class="styForm8697TableCell" rowspan="1" style="border-right:none;">
-						<xsl:choose>
-							<xsl:when test="$LastPage = 'true'">
-								<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$Form8697Data/TotalInterestToBeRefundedAmt"/>
-								</xsl:call-template>
-							</xsl:when>
-							<xsl:otherwise>
-								<span style="width:2mm"/>
-							</xsl:otherwise>
-						</xsl:choose>
-					</td>
-				</tr>
-			</table>
-			<!--			<xsl:if test="$LastPage = 'false'">
-				<br/>
-				<div style="width:187mm;">
-					<span style="width:65mm;float:left;clear:none;"/>
-					<span style="width:122.75mm;float:right;clear:none;border-style:solid;border-top-width:0px;border-right-width:0px;
-              border-left-width:0px;border-bottom-width:1px;border-color:black;"/>
-				</div>
-			</xsl:if>-->
-		</table>
-		<xsl:if test="$StartingPage &lt; $MaxPages">
-			<xsl:call-template name="Page1">
-				<xsl:with-param name="MaxPages" select="$MaxPages"/>
-				<xsl:with-param name="StartingPage" select="$StartingPage + 1"/>
-			</xsl:call-template>
-		</xsl:if>
-		<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
-		<!-- END PAGE 1 -->
 	</xsl:template>
 </xsl:stylesheet>

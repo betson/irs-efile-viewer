@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1065SchDData" select="$RtnDoc/IRS1065ScheduleD"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1065SchDData)"/>
@@ -73,7 +75,7 @@
 							<!--</div>-->
 						</div>
 						<div class="styTYBox" style="width:30mm;height:23.7mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0123</div>
+							<div class="styOMB" style="height:auto;">OMB No. 1545-0123</div>
 							<div class="styTY" style="height:12.5mm;padding-top:3.5mm;">
 							  20<span class="styTYColor">14</span>
 							</div>
@@ -128,15 +130,16 @@
 					<!-- Start Line 1 -->
 					<!-- End Line 1 -->
 					<!-- BEGIN PART I TITLE -->
-					<div class="styBB" style="width:187mm;height:3.75mm;">
-						<div class="styPartName" style="height:3.75mm;font-size:9pt">Part I</div>
-						<div class="styPartDesc" style="float:left;width:167mm;font-size:9pt"> 
+					<div class="styBB" style="width:187mm;height:auto;">
+						<div class="styPartName" style="height:auto;font-size:9pt">Part I</div>
+						<div class="styPartDesc" style="float:left;width:167mm;font-size:9pt;height:auto;"> 
 						 Short-Term Capital Gains and Losses<img src="{$ImagePath}/1065SchD_Longdash.gif"
 						  alt="Longdash"/>Assets Held One Year or Less</div>
 					</div>
 					<!-- END PART I TITLE -->
 					<!-- BEGIN PART I TABLE -->
-					<table class="styTable" style="width:187mm" cellspacing="0">
+					<div style="width:187mm;height:auto;">
+					<table class="styTable" style="width:187mm;height:auto;" cellspacing="0">
 						<thead class="styTableThead" style="font-size:6.3pt;">
 							<tr>
 							  <th class="styTableCellHeader" style="width:1mm;border-right-width:0px;" scope="col"/>
@@ -314,13 +317,14 @@
 							</tr>
 						</tbody>
 					</table>
+					</div>
 					<!-- END PART I TABLE -->
 					<!-- Start Line 4 -->
-					<div style="width:187mm;font-size:7pt">
-						<div class="styLNLeftNumBox">
-							<br/><span style="width:1mm"/>4</div>
-						<div class="styLNDesc" style="width:138.5mm;">
-							<br/>Short-term capital gain from installment sales from Form 6252, line 26 or 37
+					<div style="width:187mm;font-size:7pt;height:7mm;">
+						<div class="styLNLeftNumBox" style="padding-top:3.5mm;">
+							<span style="width:1mm;"/>4</div>
+						<div class="styLNDesc" style="width:138.5mm;height:7mm;padding-top:3.5mm;">
+							Short-term capital gain from installment sales from Form 6252, line 26 or 37
                             <!--Dotted Line-->
 							<span class="styBoldText">
 								<span style="width:.5px"/>.
@@ -328,12 +332,15 @@
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.                                 
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
                             </span>
 						</div>
-						<div class="styLNRightNumBox">
-							<br/>4</div>
-						<div class="styLNAmountBox">
-							<br/>
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.5mm;">
+							4</div>
+						<div class="styLNAmountBox" style="height:7mm;padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode"
 								  select="$Form1065SchDData/STCapGainInstalSlsAmt"/>
@@ -342,10 +349,10 @@
 					</div>
 					<!-- End Line 4 -->
 					<!-- Start Line 5 -->
-					<div style="width:187mm;font-size:7pt">
-						<div class="styLNLeftNumBox">
+					<div style="width:187mm;font-size:7pt;height:7mm;">
+						<div class="styLNLeftNumBox" style="padding-top:3.5mm;">
 							<span style="width:1mm"/>5</div>
-						<div class="styLNDesc" style="width:138.5mm;">
+						<div class="styLNDesc" style="width:138.5mm;height:7mm;padding-top:3.5mm;">
 							Short-term capital gain or (loss) from like-kind exchanges from Form 8824
                             <!--Dotted Line-->
 							<span class="styBoldText">
@@ -354,11 +361,15 @@
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>. 
                             </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm">
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.5mm;">
 							5</div>
-						<div class="styLNAmountBox">
+						<div class="styLNAmountBox" style="height:7mm;padding-top:3.5mm;">
 							
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode"
@@ -369,9 +380,9 @@
 					<!-- End Line 5-->
 					<!-- Start Line 6 -->
 					<div style="width:187mm;font-size:7pt">
-						<div class="styLNLeftNumBox">
+						<div class="styLNLeftNumBox" style="padding-top:1mm;">
 							<span style="width:1mm"/>6</div>
-						<div class="styLNDesc" style="width:138.5mm;">
+						<div class="styLNDesc" style="width:138.5mm;padding-top:1mm;">
 							Partnership's share of net short-term capital gain (loss), including specially 
 							  allocated short-<br/>term capital gains (losses), from other partnerships, estates, and
 							  trusts
@@ -382,12 +393,17 @@
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
+								<span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
                             </span>
 						</div>
-						<div class="styLNRightNumBox" style="padding-top:4mm;height:8mm;
+						<div class="styLNRightNumBox" style="padding-top:4mm;height:7.5mm;
 						  border-bottom-width:1px">
 							6</div>
-						<div class="styLNAmountBox" style="height:8mm; padding-top:4mm;
+						<div class="styLNAmountBox" style="height:7.5mm; padding-top:4mm;
 						  border-bottom-width:1px">
 								<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode"
@@ -397,7 +413,7 @@
 					</div>
 					<!-- End Line 6 -->
 					<!-- Start Line 7 -->
-					<div class="styBB" style="width:187mm;font-size:7pt">
+					<div class="styBB" style="width:187mm;font-size:7pt;height:7mm;">
 						<div class="styLNLeftNumBox">
 							<span style="width:1mm"/>7</div>
 						<div class="styLNDesc" style="width:138.5mm;">
@@ -410,12 +426,17 @@
 								   <span style="width:11px"/>.
    								   <span style="width:11px"/>.
    								   <span style="width:11px"/>.
-                                </span>
+								   <span style="width:11px"/>.
+                                   <span style="width:11px"/>.
+                                   <span style="width:11px"/>.
+                                   <span style="width:11px"/>.
+                                   <span style="width:11px"/>. 
+                                   </span>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="width:8mm;height:6mm; 
+						<div class="styLNRightNumBoxNBB" style="width:8mm;height:7mm; 
 						  border-bottom-width:0px;">
 							<br/>7</div>
-						<div class="styLNAmountBox" style="height:6mm;border-bottom-width:0px">
+						<div class="styLNAmountBox" style="height:7mm;border-bottom-width:0px">
 							<br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" 
@@ -425,16 +446,18 @@
 					</div>
 					<!-- End Line 7 -->
 					<!-- BEGIN PART 2 TITLE -->
-					<table class="styTable" style="width:187mm" cellspacing="0">
-					  <div class="styBB" style="width:187mm;height:3.75mm;border-top-width:1px;">
-						<div class="styPartName" style="height:3.75mm;font-size:9pt">Part II</div>
-						<div class="styPartDesc" style="float:left;width:167mm;font-size:9pt">
+
+					  <div class="styBB" style="width:187mm;height:auto;border-top-width:1px;">
+						<div class="styPartName" style="height:auto;font-size:9pt">Part II</div>
+						<div class="styPartDesc" style="float:left;width:167mm;font-size:9pt;height:auto;">
 						  Long-Term Capital Gains and Losses<img src="{$ImagePath}/1065SchD_Longdash.gif"
 						  alt="Longdash"/>Assets Held More Than One Year</div>
-					</div>
+					 </div>
 					<!-- END PART II TITLE -->
 					<!-- BEGIN PART II TABLE -->
-					<thead class="styTableThead" style="font-size:6.3pt">
+					<div style="width:187mm;height:auto;">
+					<table class="styTable" style="width:187mm;height:auto;" cellspacing="0">
+						<thead class="styTableThead" style="font-size:6.3pt">
 							<tr>
 								<th class="styTableCellHeader" style="width:1mm;border-right-width:0px;" 
 								  scope="col"/>
@@ -610,25 +633,30 @@
 							</tr>		
 						</tbody>
 					</table>
+					</div>
 					<!-- END PART II TABLE -->
 					<!-- Start Line 11 -->
-					<div style="width:187mm;font-size:7pt">
-						<div class="styLNLeftNumBox">
-							<br/>11</div>
-						<div class="styLNDesc" style="width:138.5mm;">
-							<br/>Long-term capital gain from installment sales from Form 6252, line 26 or 37
+					<div style="width:187mm;font-size:7pt;height:7mm;">
+						<div class="styLNLeftNumBox" style="padding-top:3.5mm;">
+							11</div>
+						<div class="styLNDesc" style="width:138.5mm;padding-top:3.5mm;height:7mm;">
+							Long-term capital gain from installment sales from Form 6252, line 26 or 37
                             <!--Dotted Line-->
 							<span class="styBoldText">
 								<span style="width:7px"/>.
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>. 
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>. 
                             </span>
 						</div>
-						<div class="styLNRightNumBox">
-							<br/>11</div>
-						<div class="styLNAmountBox">
-							<br/>
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.5mm;">
+							11</div>
+						<div class="styLNAmountBox" style="height:7mm;padding-top:3.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode"
 								  select="$Form1065SchDData/LTCapGainInstalSlsAmt"/>
@@ -637,10 +665,10 @@
 					</div>
 					<!-- End Line 11 -->
 					<!-- Start Line 12 -->
-					<div style="width:187mm;font-size:7pt">
-						<div class="styLNLeftNumBox">
+					<div style="width:187mm;font-size:7pt;height:7mm;">
+						<div class="styLNLeftNumBox" style="padding-top:3.5mm">
 							12</div>
-						<div class="styLNDesc" style="width:138.5mm;">
+						<div class="styLNDesc" style="width:138.5mm;height:7mm;padding-top:3.5mm;">
 							    Long-term capital gain or (loss) from like-kind exchanges from Form 8824
                             <!--Dotted Line-->
 							<span class="styBoldText">
@@ -648,11 +676,16 @@
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
+							    <span style="width:13px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>. 
+                                <span style="width:11px"/>.
                             </span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.5mm;">
 							12</div>
-						<div class="styLNAmountBox">							
+						<div class="styLNAmountBox" style="height:7mm;padding-top:3.5mm;">							
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode"
 								  select="$Form1065SchDData/LTCapGainLossLikeKindExchAmt"/>
@@ -662,9 +695,9 @@
 					<!-- End Line 12 -->
 					<!-- Start Line 13 -->
 					<div style="width:187mm;font-size:7pt">
-						<div class="styLNLeftNumBox">
+						<div class="styLNLeftNumBox" style="padding-top:1mm">
 							13</div>
-						<div class="styLNDesc" style="width:138.5mm;">
+						<div class="styLNDesc" style="width:138.5mm;padding-top:1mm;">
 							Partnership's share of net long-term capital gain (loss), including specially
 							  allocated long-<br/>term capital gains (losses), from other partnerships, estates, 
 							  and trusts
@@ -675,6 +708,11 @@
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
+								<span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>. 
                             </span>
 						</div>
 						<div class="styLNRightNumBox" style="padding-top:4mm;height:8mm;">
@@ -689,10 +727,10 @@
 					</div>
 					<!-- End Line 13 -->
 					<!-- Start Line 14 -->
-					<div style="width:187mm;font-size:7pt">
-						<div class="styLNLeftNumBox">
+					<div style="width:187mm;font-size:7pt;height:7mm;">
+						<div class="styLNLeftNumBox" style="padding-top:3.5mm">
 							14</div>
-						<div class="styLNDesc" style="width:138.5mm;">
+						<div class="styLNDesc" style="width:138.5mm;padding-top:3.5mm;">
 							Capital gain distributions (see instructions)
                             <!--Dotted Line-->
 							<span class="styBoldText">
@@ -710,12 +748,16 @@
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
                                 <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
+                                <span style="width:11px"/>.
                             </span>
 						</div>
-						<div class="styLNRightNumBox" style="border-bottom-width:1px">
+						<div class="styLNRightNumBox" style="border-bottom-width:1px;padding-top:3.5mm;height:7mm;">
 							14</div> 
 					                    
-						<div class="styLNAmountBox" style="border-bottom-width:1px">
+						<div class="styLNAmountBox" style="border-bottom-width:1px;padding-top:3.5mm;height:7mm;">
 					            
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" 
@@ -726,7 +768,7 @@
 					<!-- End Line 14 -->
 					<!-- Start Line 15 -->
 					
-					<div style="width:187mm;border-bottom:solid black 2px;font-size:7pt">
+					<div style="width:187mm;border-bottom:solid black 2px;font-size:7pt;height:7mm;">
 						<div class="styLNLeftNumBox">
 							15</div>
 						<div class="styLNDesc" style="width:138.5mm;font-size:7pt">
@@ -738,13 +780,18 @@
 								   <span style="width:11px"/>.
    								   <span style="width:11px"/>.
    								   <span style="width:11px"/>.
+									<span style="width:11px"/>.
+									<span style="width:11px"/>.									
+									<span style="width:11px"/>.
+									<span style="width:11px"/>.
+									<span style="width:11px"/>.
                                 </span>
                         </div>
                        
-						<div class="styLNRightNumBox" style="height:6mm;
+						<div class="styLNRightNumBox" style="height:7mm;
 						  border-bottom-width:0px;">
 							<br/>15</div>
-						<div class="styLNAmountBox" style="height:6mm;padding-top:4mm;
+						<div class="styLNAmountBox" style="height:7mm;padding-top:3.5mm;
 						  border-bottom-width:0px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode"

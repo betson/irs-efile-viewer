@@ -36,14 +36,14 @@
               </xsl:call-template>
             </span>
           </td>          
-          <td class="styDepTblCell" style="text-align:right;width: 40mm">
+          <td class="styDepTblCell" style="width:40mm;text-align:right;">
             <span style="text-align:right;">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="Amt"/>
               </xsl:call-template>
             </span>
           </td>
-          <td class="styDepTblCell" style="text-align:left;font-family:verdana;font-size:9pt;width:61mm;">
+          <td class="styDepTblCell" style="width:61mm;text-align:left;font-family:verdana;font-size:9pt;">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1"/>
           </xsl:call-template>
@@ -52,7 +52,7 @@
             <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2"/>
           </xsl:call-template>            
         </td>
-        <td class="styDepTblCell" style="text-align:center;width:25mm;">
+        <td class="styDepTblCell" style="width:25mm;text-align:center;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="Cd"/>
             </xsl:call-template>
@@ -63,8 +63,10 @@
   </xsl:template>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -85,15 +87,13 @@
         </style>        
     <xsl:call-template name="GlobalStylesDep"/>
 </head>
-    <body class="styBodyClass">      
+    <body class="styBodyClass" style="width:187mm;">      
       <xsl:call-template name="DocumentHeaderDependency"/>    
         <div class="styDepTitleLine">
-          <span class="styDepTitle">
-            <span style="width:95mm;">
-              <xsl:value-of select="$depDocTitle"/>
-            </span>
-          </span>
-        </div>
+        <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+      </div>
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>
         <xsl:call-template name="ChartblContriSchTemp"/>
     </body>

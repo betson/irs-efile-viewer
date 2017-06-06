@@ -5,6 +5,14 @@
 <!-- Last modified on 11/30/2012 by Robert Jones for IBM Defect 34568 Sep/print verbiage for Part I 11h-->
 <!-- Last modified on 11/30/2012 by Robert Jones for IBM Defect 34565 Rejected ckbx not extending all the way right-->
 <!-- Last modified on 1/17/2012 by Robert Jones for TEGE PDF REVIEW-->
+<!-- Last modified on 3/12/2014 by Robert Jones per email from TEGE Part IV not populating during Fit test-->
+<!-- Updated 5/6/2015 per UWR 123023 changes caused by IE11 upgrade by Robert L Jones -->
+<!-- Updated 5/6/2015 per IBM Defect 42912 line 11d chkbox and line 11h element plus changes caused by IE11 upgrade by Robert L Jones -->
+<!-- Updated 5/6/2015 per IBM Defect 42913 inline and sep print behaving with overlapping caused by IE11 upgrade. NPF by Robert L Jones -->
+<!-- Updated 5/6/2015 per IBM Defect 42913 Part IV header not on printout, overlapping Part IV by Robert L Jones -->
+<!-- Updated 5/6/2015 per IBM Defect 42913 page 2 and 3 not at beginning of page by Robert L Jones -->
+<!-- Updated 11/20/2015 per IBM Defect 42913 overlapping sep print between instance 5 and 6 -  NPF by Robert L Jones -->
+<!-- Updated 12/17/2015 per IBM Defect 42913 overlapping sep print between instance 5 and 6 -  NPF by Robert L Jones -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -26,8 +34,10 @@
   </xsl:param>
 
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"/></xsl:call-template></title>
 
   <!-- No Browser Caching -->
@@ -45,10 +55,10 @@
   <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
   <xsl:call-template name="InitJS"/>
   <style type="text/css">
-   <xsl:if test="not($Print) or $Print=''">
+<xsl:if test="not($Print) or $Print=''">
       <xsl:call-template name="IRS990ScheduleAStyle"/>
       <xsl:call-template name="AddOnStyle"/>
-   </xsl:if>
+</xsl:if>
   </style>
 </head>
 
@@ -83,12 +93,12 @@
       <span style="font-weight:bold">
       4947(a)(1) nonexempt charitable trust.
     <div style="padding-top:1mm">
-    <span style="font-weight:bold;text-align:left;">
+    <span style="font-weight:bold;text-align:left;padding-left:5mm;">
      <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/> Attach to Form 990 or Form 990-EZ. </span>
      <span style="font-weight:bold;text-align:left;"> <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/> See separate instructions.</span><br/>
-      <span style="font-weight:bold;padding-left:15mm;">
+      <span style="font-weight:bold;padding-left:5mm;text-align:left;">
      <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/> Information about Schedule A (Form 990 or 990-EZ) and its instructions is at <!--www.irs.gov/form990.-->
-     <a href="http://www.irs.gov/form990" title="Link to IRS.gov">
+     <span style="padding-left:45mm;"/><a href="http://www.irs.gov/form990" title="Link to IRS.gov">
                 <i>www.irs.gov/form990</i>
             </a>.
      </span>
@@ -99,10 +109,10 @@
   
     <div class="IRS990ScheduleA_FormYearBlock">
     <div class="IRS990ScheduleA_OMB">OMB No. 1545-0047</div> 
-    <div class="styTY" style="height:2mm;text-align:center;">
+    <div class="styTY" style="height:12mm;width:30mm;text-align:center;">
       20<span class="styTYColor">13</span>
     </div>
-    <div style="height:7.2mm; background-color: black; color: white; font-size: 7.5pt;font-weight: bold;text-align:center;">Open to Public<br/>Inspection</div>
+    <div style="height:7.2mm;width:30mm;background-color: black; color: white; font-size: 7.5pt;font-weight: bold;text-align:center;">Open to Public<br/>Inspection</div>
   </div>
 
   <!-- Tax Year Box -->
@@ -117,9 +127,9 @@
 </div>
 <!-- Begin Name and Identifying Number Section-->      
 <div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-  <div class="styFNBox" style="width:134mm;height:8mm;">
+  <div class="styFNBox" style="width:134mm;height:Auto;">
     <b> Name of the organization</b><br/>
-    <div style="font-family:verdana;font-size:6pt;height:6.25mm">
+    <div style="font-family:verdana;font-size:6pt;height:Auto;">
      <xsl:call-template name="PopulateReturnHeaderFiler">
       <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
     </xsl:call-template>
@@ -130,7 +140,7 @@
    </div> 
   </div>
   
-  <div class="styGenericDiv" style="width:52mm;height:4mm;padding-left:1mm;">
+  <div class="styGenericDiv" style="width:52mm;height:auto;padding-left:1mm;">
     <span class="styBoldText">Employer identification number</span>
     <br/><br/>
     <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -141,9 +151,9 @@
 <!-- End Name and Identifying Number Section-->      
 
 <!-- Part I header -->
-<div class="styBB" style="width: 187mm">
-  <div class="styPartName">Part I</div>
-  <div class="styPartDesc">Reason for Public Charity Status
+<div class="styBB" style="width: 187mm;display:table;">
+  <div class="styPartName" style="height:auto;">Part I</div>
+  <div class="styPartDesc" style="height:auto;">Reason for Public Charity Status
        <span class="styNormalText">(All organizations must complete this part.) See instructions.</span>
    </div>
 <!--  <div class="styBB" style="height: 1mm; width: 187mm"></div> -->
@@ -231,6 +241,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/MedicalResearchOrganizationInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAMedicalResearchOrganizationInd</xsl:with-param>
       </xsl:call-template>
     </input>  
   </div>
@@ -238,6 +249,7 @@
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/MedicalResearchOrganizationInd"/>
+         <xsl:with-param name="BackupName">IRS990SchAMedicalResearchOrganizationInd</xsl:with-param>
       </xsl:call-template>
      A medical research organization operated in conjunction with a hospital described in
       <span style="font-weight:bold;">
@@ -247,21 +259,22 @@
       </label> 
      </div>
 </div>
+<br></br>
 <!-- Display all rows: If the print parameter is not set to be Separated, OR -->
      <!--If the print parameter is separated, but there are at most 2 data elements-->
     <xsl:choose>
       <xsl:when test="($Print != $Separated) or count($FormData/HospitalNameAndAddressGrp) &lt;= 2">
         <xsl:for-each select="$FormData/HospitalNameAndAddressGrp">
         
-         <div style="font-family:verdana;font-size:7pt;text-align:left;">
+         <div style="font-family:verdana;font-size:7pt;padding-left:16mm;">
           <xsl:call-template name="PopulateText">
-            <xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine1"/>
+            <xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine1Txt"/>
           </xsl:call-template>,
           </div>
           
-          <div style="font-family:verdana;font-size:7pt;">
+          <div style="font-family:verdana;font-size:7pt;padding-left:16mm;">
            <xsl:call-template name="PopulateText">
-            <xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine2"/>
+            <xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine2Txt"/>
            </xsl:call-template>,          
           </div>
           <xsl:call-template name="PopulateText">
@@ -282,6 +295,7 @@
       </xsl:otherwise>
     </xsl:choose>
   
+<br></br>
 
 
  <!-- line 5 -->
@@ -294,22 +308,16 @@
       </xsl:call-template>
     </input>
   </div>
-  <div class="IRS990ScheduleA_LineDescIV">
+  <div class="IRS990ScheduleA_LineDescV">
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/CollegeOrganizationInd"/>
       </xsl:call-template>
-      An organization operated for the benefit of a college or university owned or operated by a governmental unit described in
+      An organization operated for the benefit of a college or university owned or operated by a governmental unit described in<b> section 170(b)(1)(A)(iv).</b> (Complete Part II.)
     </label> 
   </div>
 </div>
-<div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineDescIV">
-  <span style="font-weight:bold;"> section 170(b)(1)(A)(iv).</span> (Complete Part II.)
-  </div>
-</div>
+
 <!-- line 6 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex">6</div>
@@ -320,14 +328,13 @@
       </xsl:call-template>
     </input>
   </div>
-  <div class="IRS990ScheduleA_LineDescIV">
+  <div class="IRS990ScheduleA_LineDescVI">
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/GovernmentalUnitInd"/>
       </xsl:call-template>
-       A federal, state, or local government or governmental unit described in
-       <span style="font-weight:bold;"> section 170(b)(1)(A)(v).</span>
-    </label>
+       A federal, state, or local government or governmental unit described in<b> section 170(b)(1)(A)(v).</b>
+        </label>
   </div>
 </div>
 <!-- line 7 -->
@@ -340,7 +347,7 @@
       </xsl:call-template>
     </input>  
   </div>
-  <div class="IRS990ScheduleA_LineDescIV">
+  <div class="IRS990ScheduleA_LineDescVII">
     <label> 
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PublicOrganization170Ind"/>
@@ -360,7 +367,7 @@
       </xsl:call-template>
     </input>  
   </div>
-  <div class="IRS990ScheduleA_LineDescIV">
+  <div class="IRS990ScheduleA_LineDescVIII">
     <label> 
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/CommunityTrustInd"/>
@@ -379,34 +386,20 @@
       </xsl:call-template>
     </input>
   </div>  
-  <div class="IRS990ScheduleA_LineDescIV">
+  <div class="IRS990ScheduleA_LineDescIX">
     <label> 
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PubliclySupportedOrg509a2Ind"/>
       </xsl:call-template>
       An organization that normally receives: (1) more than 33<span style="font-size:5pt;">1/3</span>% of its support from contributions, membership fees, and gross
-    </label>
-  </div>
-</div>
-<div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineDescIV">
+   
+
     receipts from activities related to its exempt functions—subject to certain exceptions, and (2) no more than 33<span style="font-size:5pt;">1/3</span>% of 
-  </div>
-</div>
-<div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineDescIV">
+  
     its support from gross investment income and unrelated business taxable income (less section 511 tax) from businesses 
-  </div>
-</div>
-<div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineDescIV">
+  
     acquired by the organization after June 30, 1975.  See<span style="font-weight:bold;"> section 509(a)(2).</span> (Complete Part III.)
+   </label>
   </div>
 </div>
 <!-- line 10 -->
@@ -443,21 +436,10 @@
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrganization509a3Ind"/>
       </xsl:call-template>
-      An organization organized and operated exclusively for the benefit of, to perform the functions of, or to carry out the purposes of one or more publicly supported organizations described in section 509(a)(1) or section 509(a)(2). See <span style="font-weight:bold;">section 509(a)(3).</span> Check the box that describes the type of supporting organization and complete lines 11e through 11h.
+      An organization organized and operated exclusively for the benefit of, to perform the functions of, or to carry out the purposes of one or more publicly supported organizations described in section 509(a)(1) or section 509(a)(2). See <b>section 509(a)(3).</b> Check the box that describes the type of supporting organization and complete lines 11e through 11h.
     </label> 
   </div>
 </div>
-<!-- <div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"></div>
-  <div class="IRS990ScheduleA_LineIndex"></div>
-  <div class="IRS990ScheduleA_LineDescIV">
-    <label>
-       <xsl:call-template name="PopulateLabel">
-        <xsl:with-param name="TargetNode" select="$FormData/SupportingOrganization509a3"/>
-      </xsl:call-template>
-     </label> 
-  </div>
-</div> -->
 
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex"/>
@@ -470,12 +452,9 @@
       </xsl:call-template>
            
  <!-- line 11 check boxes --> 
- <!--
-       <span style="padding-right: 3mm"> <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/></span> 
-     --> 
-         
+  
       <span style="width:22mm;">
-      <div class="IRS990ScheduleA_LineIndex">a</div>
+        <div style="vertical-align:center;font-weight:bold;">a</div>
            <input type="checkbox" class="IRS990ScheduleA_Checkbox">
          <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType1Ind"/>
@@ -493,7 +472,7 @@
       </span>     
              
       <span style="width:23mm;">
-      <div class="IRS990ScheduleA_LineIndex">b</div>
+      <div style="vertical-align:center;font-weight:bold;">b</div>
       <input alt="alt" type="checkbox" class="IRS990ScheduleA_Checkbox">
          <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType2Ind"/>
@@ -511,7 +490,7 @@
       </span>
      
       <span style="width:58mm;">
-       <div class="IRS990ScheduleA_LineIndex">c</div>
+       <div style="vertical-align:center;font-weight:bold;">c</div>
       <input alt="alt" type="checkbox" class="IRS990ScheduleA_Checkbox">
          <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType3FuncIntInd"/>
@@ -520,8 +499,8 @@
         </input>
         <label>
           <xsl:call-template name="PopulateLabel">
-            <xsl:with-param name="TargetNode" select="$FormData/SupportingOrg509a3Type3FuncIt"/>
-            <xsl:with-param name="BackupName">IRS990SupportingOrg509a3Type3FuncIt
+            <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType3FuncIntInd"/>
+            <xsl:with-param name="BackupName">IRS990SupportingOrgType3FuncIntInd
             </xsl:with-param>
           </xsl:call-template>
           Type III - Functionally integrated
@@ -529,17 +508,17 @@
       </span>
                         
          <span style="width:65mm;">
-           <div class="IRS990ScheduleA_LineIndex">d</div>
+           <div style="vertical-align:center;font-weight:bold;">d</div>
       <input alt="alt" type="checkbox" class="IRS990ScheduleA_Checkbox">
          <xsl:call-template name="PopulateCheckbox">
-          <xsl:with-param name="TargetNode" select="$FormData/PublicOrganizationType3OthInd"/>
-          <xsl:with-param name="BackupName">IRS990PublicOrganizationType3OthInd</xsl:with-param>
+          <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType3NonFuncInd"/>
+          <xsl:with-param name="BackupName">IRS990SupportingOrgType3NonFuncInd</xsl:with-param>
          </xsl:call-template>
         </input>
         <label>
           <xsl:call-template name="PopulateLabel">
-            <xsl:with-param name="TargetNode" select="$FormData/PublicOrganizationType3OthInd"/>
-            <xsl:with-param name="BackupName">IRS990PublicOrganizationType3OthInd
+            <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType3NonFuncInd"/>
+            <xsl:with-param name="BackupName">IRS990SupportingOrgType3NonFuncInd
             </xsl:with-param>
           </xsl:call-template>
           Type III - Non-functionally integrated
@@ -694,31 +673,32 @@
      </span> 
   </div>
 </div>
-<!-- line 11h -->
-  <div class="IRS990ScheduleA_LineIndex">h</div>
+<br></br>
+
+               <!-- line 11h -->
+  <div class="IRS990ScheduleA_LineIndexh">h</div>
   <div class="IRS990ScheduleA_LineIndex">
   </div>
   <div class="IRS990ScheduleA_LineDescIV">
     Provide the following information about the supported organization(s). 
    </div>
-
-               
+   <br></br>
     <!-- button display logic -->          
-    <xsl:call-template name="SetDynamicTableToggleButton">
+  <!--  <xsl:call-template name="SetDynamicTableToggleButton">
       <xsl:with-param name="TargetNode" select="$FormData/SupportedOrgInformationGrp"/>
       <xsl:with-param name="headerHeight" select="2"/>
-      <xsl:with-param name="containerHeight" select="2"/>
+      <xsl:with-param name="containerHeight" select="10"/>
       <xsl:with-param name="containerID" select="'p1Ln11TbCtnr'"/>                  
-    </xsl:call-template>               
+    </xsl:call-template>    -->           
      <!-- end button display logic -->              
   
    
   <!--Part I line 11h table -->
-  <div class="IRS990ScheduleAPart4_TableContainer" id="p1Ln11TbCtnr"> 
+  <div class="IRS990ScheduleAPart4_TableContainer" style="display:table;" id="p1Ln11TbCtnr"> 
     <!-- print logic -->
     <xsl:call-template name="SetInitialState"/>
     <!-- end -->        
-    <table cellspacing="0" style="font-size:7pt;">
+    <table cellspacing="0" style="font-size:7pt;display:table;">
  <!--     <tr>
         <th class="IRS990ScheduleA_GenericCell" style="width:187mm;height:4mm;border:1 black solid;border-left-width:0px;border-right-width:0px;border-top-						width:1px;text_align:center;font-weight:normal;" scope="col" colspan="6">
           Provide the following information about the supported organizations. (see page 7 of the instructions.)
@@ -916,7 +896,10 @@
           </tr>
         </xsl:if>
         <tr>
-             	<td style="border:black 0 solid;border-bottom-width:1;border-right-width:1" colspan="1"><span class="styBoldText">Total </span>					
+             	<td style="border:black 0 solid;border-bottom-width:1px;border-right-width:1px;" colspan="1"><span class="styBoldText">Total </span>	
+             	 <xsl:call-template name="PopulateAmount">
+												<xsl:with-param name="TargetNode" select="$FormData/SupportedOrganizationsTotalCnt"/>
+											</xsl:call-template>					
              </td>
       <td class="IRS990ScheduleA_MoneyCell" style="border-right-width:1px;background-color:lightgrey;width:25mm;font-size:6pt;Verdana;"><span style="width:1px;" /></td>
       <td class="IRS990ScheduleA_MoneyCell" style="border-right-width:1px;background-color:lightgrey;width:25mm;font-size:6pt;Verdana;"><span style="width:1px;" /></td>
@@ -937,12 +920,12 @@
      <br/>
   </div> 
     
-  <xsl:call-template name="SetInitialDynamicTableHeight">
+  <!--<xsl:call-template name="SetInitialDynamicTableHeight">
     <xsl:with-param name="TargetNode" select="$FormData/SupportedOrgInformationGrp"/>
     <xsl:with-param name="headerHeight" select="2"/>
     <xsl:with-param name="containerHeight" select="4"/>
     <xsl:with-param name="containerID" select="'p1Ln11TbCtnr'"/>
-  </xsl:call-template>
+  </xsl:call-template>-->
 
 
 
@@ -971,7 +954,7 @@
 						</div>
 					</div>-->
 
-
+<p style="page-break-before: always"/>
 <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2013</div>
@@ -983,9 +966,9 @@
 
 
 <!-- Part II header -->
-<div class="styBB" style="width:187mm;">
-  <div class="styPartName" style="width:16mm;">Part II</div>
-  <div class="styPartDesc" style="width:171mm;">Support Schedule for Organizations Described in Sections 170(b)(1)(A)(iv) and 170(b)(1)(A)(vi)<br/>
+<div class="styBB" style="width:187mm;display:table;">
+  <div class="styPartName" style="width:16mm;height:Auto;">Part II</div>
+  <div class="styPartDesc" style="width:171mm;height:Auto;">Support Schedule for Organizations Described in Sections 170(b)(1)(A)(iv) and 170(b)(1)(A)(vi)<br/>
       <span class="styNormalText">(Complete only if you checked the box on line 5, 7, or 8 of Part I or if the
 organization failed to qualify under Part III. If the organization fails to
 qualify under the tests listed below, please complete Part III.)</span>
@@ -1003,14 +986,14 @@ qualify under the tests listed below, please complete Part III.)</span>
 </div>
  
   <!-- <div class="styPartDesc" style="width:162mm;font-weight:bold">Public Support</div> -->
-  <span class="styPartDesc" style="width:162mm;font-weight:bold">Section A.  Public Support</span>
+  <span class="styPartDesc" style="width:162mm;font-weight:bold;height:Auto;">Section A.  Public Support</span>
 
 
 <!-- Part II  table  Public Support -->
-<div class="IRS990ScheduleA_TableContainer" style="border-bottom-width:0px;">
+<div class="IRS990ScheduleA_TableContainer" style="border-bottom-width:0px;display:table;">
    <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
      <tr>
-      <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px" scope="col" colspan="2">
+      <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px;height:Auto;" scope="col" colspan="2">
         <span style="float: left; clear:both"> Calendar year <span class="styBoldText">(or fiscal year beginning in) <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/></span>
         </span>
  <!--      <span style="float:right; clear: both"><img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/></span>  -->
@@ -1191,7 +1174,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
   </table>
 </div>
 
-<span class="styPartDesc" style="width:162mm;font-weight:bold;">Section B. Total Support</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:Auto;">Section B. Total Support</span>
 
 <!-- Part II  table  Total Support -->
 <div class="IRS990ScheduleA_TableContainer" style="border-bottom-width:0px;">
@@ -1422,7 +1405,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
        </div>
 
 <div class="styBB" style="width:187mm;border-top-width:1px;">
-<span class="styPartDesc" style="width:162mm;font-weight:bold">Section C.  Computation of Public Support Percentage</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:Auto;">Section C.  Computation of Public Support Percentage</span>
 </div>
 
      <!--xsl:for-each select="$FormData/CompOfHghstPaidCntrctProfSer"-->
@@ -1430,7 +1413,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
   <!-- line 14 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex" style="width:6mm;">14</div>
-  <div class="IRS990ScheduleA_LineDescIVA">
+  <div class="IRS990ScheduleA_LineDescIVA" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PublicSupportCY170Pct"/>
@@ -1441,7 +1424,10 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
     </div>
     
        <div class="styLNRightNumBox" style="height:4mm;">14</div>
-    <div class="styLNAmountBox" style="height:4mm;"><xsl:call-template name="PopulatePercent"><xsl:with-param name="TargetNode" select="$FormData/PublicSupportCY170Pct"/></xsl:call-template></div>
+    <div class="styLNAmountBox" style="height:4mm;">
+    <xsl:call-template name="PopulatePercent">
+    <xsl:with-param name="TargetNode" select="$FormData/PublicSupportCY170Pct"/>
+    </xsl:call-template></div>
 <!-- select="$FormData/PublicSupportPertcentage170"/></xsl:call-template>%</div> -->
 
  
@@ -1450,7 +1436,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
    <!-- line 15 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex" style="width:6mm;">15</div>
-  <div class="IRS990ScheduleA_LineDescIVA">
+  <div class="IRS990ScheduleA_LineDescIVA" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PublicSupportPY170Pct"/>
@@ -1468,17 +1454,17 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
 <!-- line 16a -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex" style="width:6mm;padding-right:9px;">16a</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsCY170Ind"/>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <b>
          33 <span style="font-size:5pt;">1/3</span>% support test—2013.
-      </span>
+      </b>
       If the organization did not check the box on line 13, and line 14 is 33 <span style="font-size:5pt;">1/3</span>% or more, check this box<br/>
       and <b>stop here.</b>  The organization qualifies as a publicly supported organization
-      <span class="IRS990ScheduleA_DotSpacing">.......................  </span>
+      <span class="IRS990ScheduleA_DotSpacing">....................... </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
@@ -1488,18 +1474,18 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
     </input>  
    </div>
 </div>
-
+<br></br>
 <!-- line 16b -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex" style="width:7.4mm;padding-right:9px;">b</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsPY509Ind"/>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <b>
          33 <span style="font-size:5pt;">1/3</span>% support test—2012.
-      </span>
+      </b>
       If the organization did not check a box on line 13 or 16a, and line 15 is 33 <span style="font-size:5pt;">1/3</span>% or more, check this<br/>
       box and <b>stop here.</b>  The organization qualifies as a publicly supported organization
       <span class="IRS990ScheduleA_DotSpacing">.....................  </span>
@@ -1512,23 +1498,23 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
     </input>  
    </div>
 </div>
-
+<br></br>
 <!-- line 17a -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex" style="width:6mm;padding-right:9px;">17a</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/TenPctFactsCrcmstncsTestCYInd"/>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <b>
          10%-facts-and-circumstances test—2013.
-      </span>
+      </b>
       If the organization did not check a box on line 13, 16a, or 16b, and line 14<br/>
       is 10% or more, and if the organization meets the "facts-and-circumstances" test, check this box and <b>stop here.</b>  Explain<br/>
       in Part IV how the organization meets the "facts-and-circumstances" test.  The organization qualifies as a publicly supported<br/>
       organization
-      <span class="IRS990ScheduleA_DotSpacing">.....................................................  </span>
+      <span class="IRS990ScheduleA_DotSpacing">..........................................................  </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
@@ -1538,22 +1524,22 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
     </input>  
    </div>
 </div>
-
+<br></br>
 <!-- line 17b -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex" style="width:7.2mm;padding-right:9px;">b</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/TenPctFactsCrcmstncsTestPYInd"/>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <b>
          10%-facts-and-circumstances test—2012.
-      </span>
+      </b>
       If the organization did not check a box on line 13, 16a, 16b, or 17a, and line<br/>
      15 is 10% or more, and if the organization meets the "facts-and-circumstances" test, check this box and <b>stop here.</b><br/>
      Explain in Part IV how the organization meets the "facts-and-circumstances" test.  The organization qualifies as a publicly<br/> supported organization
-      <span class="IRS990ScheduleA_DotSpacing">................................................  </span>
+      <span class="IRS990ScheduleA_DotSpacing">...............................................  </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
@@ -1563,15 +1549,15 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
     </input>  
    </div>
 </div>
-
+<br></br>
 <!-- line 18 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex" style="width:6mm;">18</div>
   
-     <div class="IRS990ScheduleA_LineDescIVB" style="width:178mm;">
-          <span style="font-weight:bold;">
+     <div class="IRS990ScheduleA_LineDescIVB" style="width:178mm;height:auto;">
+          <b>
          Private foundation.
-      </span>
+      </b>
       If the organization did not check a box on line 13, 16a, 16b, 17a, or 17b, check this box and see<br/>
       instructions
       <span class="IRS990ScheduleA_DotSpacing">.....................................................  </span>
@@ -1599,7 +1585,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
   </div>  
 </div>
 <!-- END Footer -->
-
+<p style="page-break-before: always"/>
 <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2013</div>
@@ -1608,9 +1594,9 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
 <!-- END Page Header -->      
 
 <!-- Part III header-->
-<div class="styBB" style="width:187mm;">
-  <div class="styPartName" style="width:20mm;">Part III</div>
-  <div class="styPartDesc" style="width:162mm;">Support Schedule for Organizations Described in Section 509(a)(2)<br/>
+<div class="styBB" style="width:187mm;display:table;">
+  <div class="styPartName" style="width:20mm;height:auto;">Part III</div>
+  <div class="styPartDesc" style="width:162mm;height:auto;">Support Schedule for Organizations Described in Section 509(a)(2)<br/>
       <span class="styNormalText">(Complete only if you checked the box on line 9 of Part I or if the organization
 failed to qualify under Part II. If the organization fails to qualify under
 the tests listed below, please complete Part II.)</span>
@@ -1622,10 +1608,10 @@ the tests listed below, please complete Part II.)</span>
         <span class="styNormalText">(See page 2 of the instructions.)</span>
   </div>  -->
 
-<span class="styPartDesc" style="width:162mm;font-weight:bold">Section A. Public Support</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:auto;">Section A. Public Support</span>
 
 <!--Part III  table -->
-<div class="IRS990ScheduleA_TableContainer" style="border-bottom-width:0px;">
+<div class="IRS990ScheduleA_TableContainer" style="border-bottom-width:0px;display:table;">
    <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
      <tr>
       <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px;" scope="col" colspan="2">
@@ -1983,7 +1969,7 @@ the tests listed below, please complete Part II.)</span>
   </table>
 </div>
 
-<span class="styPartDesc" style="width:162mm;font-weight:bold">Section B. Total Support</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:auto;">Section B. Total Support</span>
 
 <!--                                           Save above code               -->
 
@@ -2267,18 +2253,17 @@ the tests listed below, please complete Part II.)</span>
 <!-- Part III Line 14 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex">14</div>
-  <div class="IRS990ScheduleA_LineDescIVAL">
+  <div class="IRS990ScheduleA_LineDescIVAL" style="height:auto;">
   
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/First5Years509Ind"/>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <b>
          First five years.
-      </span>
-      If the Form 990 is for the organization's first, second, third, fourth, or fifth tax year as a 501(c)(3) organization,<br/>
-      check this box and <b>stop here</b>
-      <span class="IRS990ScheduleA_DotSpacing">............................................. </span>
+      </b>
+      If the Form 990 is for the organization's first, second, third, fourth, or fifth tax year as a 501(c)(3) organization, check this box and <b>stop here</b>
+      <span class="IRS990ScheduleA_DotSpacing">.................................................. </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
@@ -2292,7 +2277,7 @@ the tests listed below, please complete Part II.)</span>
 <!-- line 14 ends -->
 
 <div class="styBB" style="width:187mm;border-top-width: 1px">
-<span class="styPartDesc" style="width:162mm;font-weight:bold;">Section C.  Computation of Public Support Percentage</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:auto;">Section C.  Computation of Public Support Percentage</span>
 </div>
 
   <!-- line 15 -->
@@ -2331,7 +2316,7 @@ the tests listed below, please complete Part II.)</span>
  
 </div>
 <div class="styBB" style="width:187mm;border-top-width: 1px">
-<span class="styPartDesc" style="width:162mm;font-weight:bold">Section D. Computation of Investment Income Percentage</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:auto;">Section D. Computation of Investment Income Percentage</span>
 </div>
 
   <!-- line 17 -->
@@ -2372,16 +2357,15 @@ the tests listed below, please complete Part II.)</span>
 <!-- line 19a -->
 <div class="IRS990ScheduleA_LineContainer" style="padding-left:0.8mm;">
   <div class="IRS990ScheduleA_LineIndex" style="width:5mm;padding-right:9px;">19a</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsCY509Ind"/>
       </xsl:call-template>
-      <span style="font-weight:bold;">
-         33 <span style="font-size:5pt;">1/3</span>% support tests—2013.
+      <span style="font-weight:bold;padding-left:2mm;">33<span style="font-size:5pt;">1/3</span>% support tests—2013.
       </span>
-      If the organization did not check the box on line 14, and line 15 is more than 33 <span style="font-size:5pt;">1/3</span>%, and line 17 is not more than 33 <span style="font-size:5pt;">1/3</span>%, check this box and <b>stop here.</b>  The organization qualifies as a publicly supported organization
-      <span class="IRS990ScheduleA_DotSpacing">........ </span>
+    If the organization did not check the box on line 14, and line 15 is more than 33<span style="font-size:5pt;">1/3</span>%, and line 17 is not<span style="padding-left:4px;"></span>more than 33<span style="font-size:5pt;">1/3</span>%, check this box and <b>stop here.</b> The organization qualifies as a publicly supported organization
+      <span class="IRS990ScheduleA_DotSpacing">......... </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
@@ -2395,16 +2379,16 @@ the tests listed below, please complete Part II.)</span>
 <!-- line 19b -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex">b</div>
-  <div class="IRS990ScheduleA_LineDescIVAL">
+  <div class="IRS990ScheduleA_LineDescIVAL" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsPY509Ind"/>
       </xsl:call-template>
       <span style="font-weight:bold;">
-         33 <span style="font-size:5pt;">1/3</span>% support tests—2012.
+         33<span style="font-size:5pt;">1/3</span>% support tests—2012.
       </span>
-      If the organization did not check a box on line 14 or line 19a, and line 16 is more than 33 <span style="font-size:5pt;">1/3</span>% and line 18 is not more than 33 <span style="font-size:5pt;">1/3</span>%, check this box and <b>stop here.</b> The organization qualifies as a publicly supported organization
-      <span class="IRS990ScheduleA_DotSpacing">..... </span>
+   If the organization did not check a box on line 14 or line 19a, and line 16 is more than 33<span style="font-size:5pt;">1/3</span>% and line 18 is not more than 33<span style="font-size:5pt;">1/3</span>%, check this box and <b>stop here.</b> The organization qualifies as a publicly supported organization
+      <span class="IRS990ScheduleA_DotSpacing">........ </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
@@ -2418,7 +2402,7 @@ the tests listed below, please complete Part II.)</span>
 <!-- line 20 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex">20</div>
-  <div class="IRS990ScheduleA_LineDescIVAL">
+  <div class="IRS990ScheduleA_LineDescIVAL" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PrivateFoundation509Ind"/>
@@ -2427,7 +2411,7 @@ the tests listed below, please complete Part II.)</span>
          Private foundation.
       </span>
       If the organization did not check a box on line 14, 19a, or 19b, check this box and see instructions
-      <span class="IRS990ScheduleA_DotSpacing">..... </span>
+      <span class="IRS990ScheduleA_DotSpacing">....... </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
@@ -2447,7 +2431,7 @@ the tests listed below, please complete Part II.)</span>
     <span class="styBoldText"> Schedule A (Form 990 or 990-EZ) 2013</span> 
   </div>  
 </div>
-
+<p style="page-break-before: always"/>
  <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2013</div>
@@ -2456,10 +2440,9 @@ the tests listed below, please complete Part II.)</span>
 <!-- END Page Header --> 
   			
 <!-- Part IV header-->
-<div class="styBB" style="width: 187mm">
-  <div class="styPartName" style="width: 20mm">Part IV</div>
-  <div class="styPartDesc" style="width: 167mm">Supplemental Information.
-       <span class="styNormalText"> Provide the explanations required by Part II, line 10; Part II, line 17a or 17b; and Part III, line 12. Also complete this part for any additional information. (See instructions).</span>
+<div class="styBB" style="width: 187mm;display:table;">
+  <div class="styPartName" style="width: 20mm;height:auto;">Part IV</div>
+  <div class="styPartDesc" style="width: 167mm;height:auto;font-weight:normal;"><b>Supplemental Information.</b> Provide the explanations required by Part II, line 10; Part II, line 17a or 17b; and Part III, line 12. Also complete this part for any additional information. (See instructions).
   </div>
   </div>
   
@@ -2483,63 +2466,69 @@ the tests listed below, please complete Part II.)</span>
        
        <!--***FactsAndCircumTestENDGeneralExplanBEGIN****************-->
        
-  <xsl:variable name="pos" select="position()"/>
-						<xsl:if test="(position() mod 5)=1">
-							<span style="float:right">
-								<xsl:call-template name="SetDynamicTableToggleButton">
-									<xsl:with-param name="TargetNode" select="$FormData/GeneralExplanationTxt"/>
-									<xsl:with-param name="containerHeight" select="5"/>
-									<xsl:with-param name="containerID" select="'SUPctn'"/>
-								</xsl:call-template>
-							</span>
-							<div class="styTableContainer" style="width: 187mm;  border-bottom-width: 1px" id="SUPctn">
-								<xsl:call-template name="SetInitialState"/>
-								<table class="styTable" style="font-size: 7pt; border-color:black" cellspacing="0">
-									<thead class="styTableThead">
-										<tr class="styDepTblHdr">
-											<th class="styDepTblCell" scope="col" style="width:187mm;border-right-width:0px;border-left-width:0px">Explanation</th>
-										</tr>
-									</thead>
-									<tfoot/>
-									<tbody valign="top">
-										<tr>
-											<td class="styTableCell" style="border-right-width: 0px; width:187mm;text-align:left ">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/GeneralExplanationTxt"/>
-												</xsl:call-template>
-											</td>
-										</tr>
-										<tr>
-											<td class="styTableCell" style="border-right-width: 0px; width:187mm;text-align:left ">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/GeneralExplanationTxt[$pos + 1]"/>
-												</xsl:call-template>
-											</td>
-										</tr>
-										<tr>
-											<td class="styTableCell" style="border-right-width: 0px; width:187mm;text-align:left ">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/GeneralExplanationTxt[$pos + 2]"/>
-												</xsl:call-template>
-											</td>
-										</tr>
-										<tr>
-											<td class="styTableCell" style="border-right-width: 0px; width:187mm;text-align:left ">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$FormData/GeneralExplanationTxt[$pos + 3]"/>
-												</xsl:call-template>
-											</td>
-										</tr>
-										</tbody>
-								</table>
-							</div>
-						</xsl:if>
-					
-					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="GeneralExplanationTxt"/>
-						<xsl:with-param name="containerHeight" select="5"/>
-						<xsl:with-param name="containerID" select=" 'SUPctn' "/>
-					</xsl:call-template>
+<!-- <xsl:call-template name="SetDynamicTableToggleButton">
+              <xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleAPartIVGrp"/>              
+              <xsl:with-param name="containerHeight" select="5"/>
+              <xsl:with-param name="containerID" select="'SUPctn'"/>
+          </xsl:call-template>  -->
+      
+ 
+
+<div class="styTableContainer" style="width:187mm;clear:all;height:auto; border-bottom-width: 2px;display:table;" id="SUPctn">
+<xsl:call-template name="SetInitialState"/>
+<table class="styTable" style="font-size: 7pt; border-color:black;display:table;" cellspacing="0">
+  <thead class="styTableThead">
+    
+    <tr class="styDepTblHdr">
+          
+          <!--<th class="styDepTblCell" scope="col" style="width:50mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;">Identifier</th>-->
+          <th class="styDepTblCell" scope="col" style="width:75mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;">Return Reference</th>  
+          <th class="styDepTblCell" scope="col" style="width:110mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;">Explanation</th>                
+             
+
+    </tr>
+  </thead>
+  <tfoot/>
+  <tbody valign="top">
+   <xsl:if test="($Print!=$Separated) or (($Print=$Separated) and (count($FormData/Form990ScheduleAPartIVGrp) &lt;20))">
+      <xsl:for-each select="$FormData/Form990ScheduleAPartIVGrp">
+          <tr>
+    <!--  <td class="styTableCell" style="text-align:left;border-right-width: 1px; width:50mm; ">
+          <xsl:call-template name="PopulateText">
+            <xsl:with-param name="TargetNode" select="IdentifierTxt"/>
+            </xsl:call-template>
+      </td>-->
+      <td class="styTableCell" style="text-align:left; border-right-width: 1px; width: 50mm;height:auto;">
+          <xsl:call-template name="PopulateText">
+            <xsl:with-param name="TargetNode" select="FormAndLineReferenceDesc"/>
+              </xsl:call-template>
+           </td>      
+      <td class="styTableCell" style="text-align:left; border-right-width: 1px; width: 137mm;height:auto;">
+          <xsl:call-template name="PopulateText">
+            <xsl:with-param name="TargetNode" select="ExplanationTxt"/>
+              </xsl:call-template>
+           </td>      
+
+    </tr>     
+     </xsl:for-each>
+<!--     <xsl:call-template name="PopulateAdditionalRows">
+      <xsl:with-param name="RowCounter" select="count($FormData/Form990ScheduleMPartII) + 1" ></xsl:with-param>
+    </xsl:call-template>
+  </xsl:if>
+    <xsl:if test="($Print=$Separated) and (count($FormData/Form990ScheduleMPartII) &gt;5)">
+    <xsl:call-template name="PopulateAdditionalRows">
+      <xsl:with-param name="RowCounter" select="1" ></xsl:with-param>
+    </xsl:call-template> -->
+    </xsl:if>
+  </tbody>
+</table>
+</div>
+
+<xsl:call-template name="SetInitialDynamicTableHeight">
+            <xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleAPartIVGrp"/>
+            <xsl:with-param name="containerHeight" select="5"/>
+            <xsl:with-param name="containerID" select=" 'SUPctn' "/>
+ </xsl:call-template>
 
 
  
@@ -2553,7 +2542,7 @@ the tests listed below, please complete Part II.)</span>
 </div>  
 <!--END Page Footer-->
 
-
+    <p style="page-break-before: always"/> 
 <br/>
 <!-- leftover data table -->
 <div class="styLeftOverTitleLine" id="LeftoverData">

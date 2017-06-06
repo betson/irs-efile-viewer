@@ -103,7 +103,7 @@
     border-style: solid;
     border-color: black;
     border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width:1px;
-
+}
   
    .styIRS8880LargeCell{ /*Second Cell */
     font-size:7pt;

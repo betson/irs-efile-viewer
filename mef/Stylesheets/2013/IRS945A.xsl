@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*" />
 	<xsl:param name="Form945AData" select="$RtnDoc/IRS945A" />
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form945AData)">
@@ -35,46 +37,45 @@
 				</style>  
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass" >
+			<body class="styBodyClass" style="width:187mm;" >
 				<form name="Form945A">
 					<xsl:call-template name="DocumentHeader"></xsl:call-template>
 					<!-- Begin Form Number and Name -->
 					<!-- put comment here -->
-					<div class="styBB" style="width:187mm;height:20mm;">
-      <div class="styFNBox" style="width:29mm;height:21.3mm;">
+					<div class="styBB" style="width:187mm;height:auto;">
+      <div class="styFNBox" style="width:29mm;height:auto;">
         Form <span class="styFormNumber">945-A</span>
         <xsl:call-template name="SetFormLinkInline">
           <xsl:with-param name="TargetNode" select="$Form945AData"/>
         </xsl:call-template><br/>
-        <div class="styAgency" style="font-size:7.5pt;padding-bottom:1.6mm;padding-top:0.6mm;">
+        <div class="styAgency" style="height:auto;font-size:7.5pt;padding-bottom:2mm;padding-top:1mm;">
 			(Rev. February 2014)
 		</div>
-		<div class="styAgency" style="font-size:7.5pt;vertical-align:bottom;line-height:100%">
+		<div class="styAgency" style="height:auto;font-size:7.5pt;vertical-align:bottom;line-height:auto">
           Department of the Treasury<br/>
           Internal Revenue Service
         </div>
       </div>
-      <div class="styFTBox" style="width:128mm;height:20mm; ">
-        <div class="styMainTitle" style="height:4mm;padding-top:2mm;">Annual Record of Federal Tax Liability</div>    
- <div class="styFBT" style="height:3mm;margin-top:2mm;font:size:6pt;width:128mm;">
+      <div class="styFTBox" style="width:128mm;height:auto; ">
+        <div class="styMainTitle" style="height:auto;padding-top:2mm;">Annual Record of Federal Tax Liability</div>    
+ <div class="styFBT" style="width:128mm;height:auto;margin-top:2mm;font:size:6pt;">
  <img src="{$ImagePath}/945A_Bullet_Sm.gif"  alt="Bullet Image"/> Information about Form 945-A and its instructions is at <i>www.irs.gov/form945a</i>.<br/>
           <img src="{$ImagePath}/945A_Bullet_Sm.gif"  alt="Bullet Image"/> File with Form 945, 945-X, CT-1, CT-1 X, 944, or 944-X.        
         </div>
       </div>
-      <div class="styTYBox" style="width:30mm;height:20mm;">
-        <div class="styOMB" style="height:6mm;padding-top:2mm;">
+      <div class="styTYBox" style="width:30mm;height:auto;">
+        <div class="styOMB" style="height:auto;padding-top:2mm;">
         OMB No. 1545-1430</div>
-        <div class="styTaxYear" style="padding-top:0.5mm;height:12mm;">
-			<xsl:call-template name="PopulateYear">
-				<xsl:with-param name="TargetNode" select="$Form945AData/CalendarYr"/>
-			</xsl:call-template>
+        <div class="styTaxYear" style="width:20mm;height:auto;padding-top:0.5mm;border-bottom:1px dashed black;margin-bottom:1.4mm;">
+			<xsl:variable name="RHTaxYear"><xsl:call-template name="PopulateReturnHeaderTaxYear"/></xsl:variable>
+			<xsl:value-of select="substring($RHTaxYear, 1, 2)"/><span class="styTYColor"><xsl:value-of select="substring($RHTaxYear, 3, 2)"/></span> 
 		</div>
-        <span style="vertical-align:bottom">Calendar Year</span>
+        <span style="height:auto;vertical-align:bottom">Calendar Year</span>
       </div>
     </div>
     <!-- End Form Number and Name section -->
     <div class="styBB" style="width:187mm;">
-      <div class="styNameBox" style="width:130mm;height:8mm;font-size:7pt;">
+      <div class="styNameBox" style="width:130mm;height:auto;font-size:7pt;">
         Name (as shown on Form 945, 945-X, CT-1, CT-1 X, 944, or 944-X)<br/>
 		<xsl:call-template name="PopulateReturnHeaderFiler">
 			<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -85,7 +86,7 @@
       </div>        
       <div class="styEINBox" style="width:55mm;height:8mm;font-size:7pt;padding-left:2mm;">
         Employer identification number (EIN)<br/>
-        <span class="styEINFld" style="width:55mm; text-align:center;font-weight:normal;">
+        <span class="styEINFld" style="width:55mm; text-align:left;padding-top:3mm;font-weight:normal;">
 			<xsl:call-template name="PopulateReturnHeaderFiler">
 				<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 			</xsl:call-template>
@@ -93,11 +94,11 @@
       </div>
     </div>
     <!--Calendar Instructions-->
-    <div style="width:188mm;font-size:7pt">
+    <div style="width:187mm;font-size:7pt;float:left;clear:both;">
       <div class="styLNDesc" style="height:12mm;width:187mm;border-left-width:0px;border-right-width:0px;">You must complete this form if you are required to deposit on a semiweekly schedule or if your tax liability during any month was $100,000 or more. Show tax liability here, not deposits. (The IRS gets deposit data from electronic funds transfers.) <b>DO NOT change your tax liability by adjustments reported on any Form 945-X, 944-X, or CT-1 X.</b>
       </div>
     </div>
-	<div style="float:none;clear:both;width:188mm;">
+	<div style="float:left;clear:both;width:710px;">
 	<!--January-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -108,8 +109,7 @@
 			<xsl:with-param name="Month">JANUARY</xsl:with-param>
 			<xsl:with-param name="Letter">A</xsl:with-param>
 		</xsl:call-template>
-	</div>	
-	
+	</div>
 	<!--February-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -120,8 +120,7 @@
 			<xsl:with-param name="Month">FEBRUARY</xsl:with-param>
 			<xsl:with-param name="Letter">B</xsl:with-param>
 		</xsl:call-template>
-	</div>	
-	
+	</div>
 	<!--March-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -132,8 +131,7 @@
 			<xsl:with-param name="Month">MARCH</xsl:with-param>
 			<xsl:with-param name="Letter">C</xsl:with-param>
 		</xsl:call-template>
-	</div>	
-	
+	</div>
 	<!--April-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -144,8 +142,7 @@
 			<xsl:with-param name="Month">APRIL</xsl:with-param>
 			<xsl:with-param name="Letter">D</xsl:with-param>
 		</xsl:call-template>
-	</div>	
-	
+	</div>
 	<!--May-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -157,7 +154,6 @@
 			<xsl:with-param name="Letter">E</xsl:with-param>
 		</xsl:call-template>
 	</div>
-	
 	<!--June-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -176,13 +172,12 @@
 		<div class="styGenericDiv" style="float:left;width:50mm;text-align:right;">Cat. No. 14733M</div>                        
 		<div class="styGenericDiv" style="float:right" >Form <span style="font-weight:bold;font-size:8.5pt;">945-A</span> (Rev. 2-2014)</div>
 	</div>
-				
-	<div class="styBB" style="width:187mm;float:left;clear:none;">  
+		<p style="page-break-before: always"/>
+	<div class="styBB" style="width:187mm;float:left;clear:both;">  
 		<div style="float:left;">Form 945-A (Rev. 2-2014)<span style="width:130mm;"/></div>
 		<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></div>  
-	</div>				
-	
-	<div style="width:188mm;float:none;clear:both;">
+	</div>
+	<div style="width:710px;float:left;clear:both;">
 	<!--July-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -193,8 +188,7 @@
 			<xsl:with-param name="Month">JULY</xsl:with-param>
 			<xsl:with-param name="Letter">G</xsl:with-param>
 		</xsl:call-template>
-	</div>
-				
+	</div>	
 	<!--August-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -206,7 +200,6 @@
 			<xsl:with-param name="Letter">H</xsl:with-param>
 		</xsl:call-template>
 	</div>
-	
 	<!--September-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -218,7 +211,6 @@
 			<xsl:with-param name="Letter">I</xsl:with-param>
 		</xsl:call-template>
 	</div>
-		
 	<!--October-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -230,7 +222,6 @@
 			<xsl:with-param name="Letter">J</xsl:with-param>
 		</xsl:call-template>
 	</div>
-	
 	<!--November-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -242,7 +233,6 @@
 			<xsl:with-param name="Letter">K</xsl:with-param>
 		</xsl:call-template>
 	</div>
-	
 	<!--December-->
 	<div class="styIRS945ACalBox" style="width:236px;font-size:7pt;border-left-width:0px;">
 		<div style="height:4mm;width:234px;text-align:center;font-weight:bold;font-size:8pt;">
@@ -255,35 +245,17 @@
 		</xsl:call-template>
 	</div>
 	</div>
-		
     <!--FULL CALENDAR TOTAL ROW-->
-    <div style="width:187mm;font-size:7pt">
-      <div class="styLNAmountBox" style="height:4mm;width:187mm;border-left-width:0px;border-right-width:0px;font-weight:bold;text-align:left;">
+    <div style="width:187mm;float:left;font-size:7pt">
+      <div class="styLNAmountBox" style="width:187mm;height:auto;float:left;border-left-width:0px;border-right-width:0px;font-weight:bold;text-align:left;">
 		  <span style="float:left;">
 			  M <span style="padding-left: 1.4mm; font-weight:normal;">Total tax liability for the year (add lines <b>A</b> through 
 			  <b>L</b>). This should equal line 3 on Form 945 (line 15</span><br/>
-			  <span style="padding-left:4.5mm;font-weight:normal;">on Form CT-1, line 7 on Form 944)</span>
+			  <span style="float:left;padding-left:4.5mm;font-weight:normal;">on Form CT-1, line 7 on Form 944)</span>
 			  <!--Dotted Line-->
-			  <span class="styBoldText">
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/>.
-				  <span style="width:16px;"/><img src="{$ImagePath}/945A_Bullet_Sm.gif"  alt="Bullet Image"/>
+			  <span class="styDotLn" style="float:left;padding-left:4mm;padding-right:1mm;">.......................</span>
+			  <img src="{$ImagePath}/945A_Bullet_Sm.gif"  alt="Bullet Image"/>
 			  </span>
-		  </span>
 		  <span style="float:right;padding-top:3mm;">
 			<xsl:call-template name="PopulateAmount">
 			  <xsl:with-param name="TargetNode" select="$Form945AData/TotalTaxLiabilityAmt"/>
@@ -291,16 +263,15 @@
 		  </span>     
 		  </div>
     </div>
-  
     <!-- Page Break-->
     <!-- Footer-->   
-    <div class="pageEnd" style="width:187mm;border:1px solid black;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;">
+    <div class="pageEnd" style="width:187mm;float:left;border:1px solid black;border-right-width:0px;border-bottom-width:0px;border-left-width:0px;">
         <div class="styGenericDiv" style="float:right" >Form <b><span style="font-size:8pt;">945-A</span></b> (Rev. 2-2014)</div>
     </div>
-    
+    <p style="page-break-before: always"/>
     <!-- BEGIN Left Over Table -->
 	<!-- Additonal Data Title Bar and Button -->
-	<div class="styLeftOverTitleLine" id="LeftoverData">
+	<div class="styLeftOverTitleLine" id="LeftoverData" style="float:left;">
 		<div class="styLeftOverTitle">
 			Additional Data        
 		</div>
@@ -323,6 +294,7 @@
 		<xsl:param name="NumDays"/>
 		<xsl:param name="Month"/>
 		<xsl:param name="Letter"/>
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<body class="styBodyClass" >
 				<div style="float:left;width:117px;border:solid black;border-width:0px 1px 0px 0px;">
@@ -502,14 +474,12 @@
 						  <xsl:with-param name="TargetNode" select="$Form945AData/MonthlyTaxLiabilityGrp[MonthCd=$Month]/DailyTaxLiabilityDetail[DayNum=29]/TaxLiabilityAmt"/>
 						</xsl:call-template>
 					</div>
-					
 					<xsl:if test="$NumDays = 29">
 						<div class="styIRS945ACalNumBox" style="height:4.3mm;width:18px;background-color:lightgrey;"/>
 						<div class="styLNAmountBox" style="border-top-width:1px;height:4.3mm;width:98px;border-bottom-width:0px;border-left-width:0px;font-size:6pt;padding-top:1mm;padding-bottom:0px;background-color:lightgrey;"/>
 						<div class="styIRS945ACalNumBox" style="height:4.3mm;width:18px;background-color:lightgrey;"/>
 						<div class="styLNAmountBox" style="border-top-width:1px;height:4.3mm;width:98px;border-bottom-width:0px;border-left-width:0px;font-size:6pt;padding-top:1mm;padding-bottom:0px;background-color:lightgrey;"/>
 					</xsl:if>
-					
 					<xsl:if test="$NumDays = 30">
 						<div class="styIRS945ACalNumBox" style="height:4.3mm;width:18px;">30</div>
 						<div class="styLNAmountBox" style="border-top-width:1px;height:4.3mm;width:98px;border-bottom-width:0px;border-left-width:0px;font-size:6pt;padding-top:1mm;padding-bottom:0px;">
@@ -520,7 +490,6 @@
 						<div class="styIRS945ACalNumBox" style="height:4.3mm;width:18px;background-color:lightgrey;"/>
 						<div class="styLNAmountBox" style="border-top-width:1px;height:4.3mm;width:98px;border-bottom-width:0px;border-left-width:0px;font-size:6pt;padding-top:1mm;padding-bottom:0px;background-color:lightgrey;"/>
 					</xsl:if>
-					
 					<xsl:if test="$NumDays = 31">
 						<div class="styIRS945ACalNumBox" style="height:4.3mm;width:18px;">30</div>
 						<div class="styLNAmountBox" style="border-top-width:1px;height:4.3mm;width:98px;border-bottom-width:0px;border-left-width:0px;font-size:6pt;padding-top:1mm;padding-bottom:0px;">
@@ -535,7 +504,6 @@
 							</xsl:call-template>
 						</div>
 					</xsl:if>
-					
 					<div class="styIRS945ACalNumBox" style="height:4.3mm;width:18px;background-color:lightgrey;"/>
 						<div class="styLNAmountBox" style="border-top-width:1px;height:4.3mm;width:98px;border-bottom-width:0px;border-left-width:0px;background-color:lightgrey;padding-right:0px;padding-left:0px;padding-top:0px;padding-bottom:0px;"/>
 				</div>

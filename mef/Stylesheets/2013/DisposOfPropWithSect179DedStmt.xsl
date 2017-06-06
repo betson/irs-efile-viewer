@@ -10,7 +10,7 @@
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddOnTable.xsl"/>
 	<xsl:param name="DependencyData" select="$RtnDoc/DisposOfPropWithSect179DedStmt"/>
-	<!-- 1120 Common - Disposition of Property with Section 179 Deductions Statement -->
+	<!-- Common Form displays as - Disposition of Property with Section 179 Deductions Statement -->
 	<xsl:template name="ShowDependencyData">		
 		<table id="DependencyDataTbl" class="styDepTblLandscape" style="font-size: 6pt">
 			<thead class="styTableThead">
@@ -33,63 +33,64 @@
 			<tbody>
 				<xsl:for-each select="$DependencyData/DisposOfPropWithSect179DedGrp">
 					<tr>
-						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-						<td class="styDepTblCell" style="text-align:left">
+						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+						<xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+						<td class="styDepTblCell" style="text-align:left;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="Desc"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="GrossSalesPriceAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width:22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="CostOfSaleAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width:22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="DepreciationAllowedAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:center; width: 17mm">
+						<td class="styDepTblCell" style="width:22mm;text-align:center;">
 							<xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="AcquiredDt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:center; width: 17mm">
+						<td class="styDepTblCell" style="width:22mm;text-align:center; ">
 							<xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="SaleOrExchangeDt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="Section179DeductionAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:left">
+						<td class="styDepTblCell" style="width:17mm;text-align:left">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="YearsTxt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:left">
+						<td class="styDepTblCell" style="width:40mm;text-align:left">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="DispositionMethodDesc"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="InstalReceivedFutureTaxYrsAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;" >
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="InstalReceivedPriorTaxYearsAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="InstalReceivedCurrentTaxYrAmt"/>
 							</xsl:call-template>
@@ -99,32 +100,31 @@
 			</tbody>
 		</table>
 	</xsl:template>
-	<!-- *********************************************************************************************** -->
-	<!-- ********************************************************************************************* -->
 	<!-- Template to display table items -->
 	<xsl:template name="ShowDependencyData1">
 		<!-- Itemized Other Income Schedule Data -->
 		<table id="DependencyDataTbl1" class="styDepTblLandscape" style="font-size: 6pt">
 			<thead class="styTableThead">
 				<tr class="styDepTblHdr">
-					<th class="styDepTblCell" scope="col">EIN / SSN Of Related Party</th>
-					<th class="styDepTblCell" scope="col">Related Party Resold Or Disposed Of The Property</th>
-					<th class="styDepTblCell" scope="col">Second Disposition Was More Than 2 Years After The First Disposition</th>
-					<th class="styDepTblCell" scope="col">Date Of Disposition</th>
+					<th class="styDepTblCell" scope="col" style="width:18mm;">EIN / SSN Of Related Party</th>
+					<th class="styDepTblCell" scope="col" style="width:30mm;">Related Party Resold Or Disposed Of The Property</th>
+					<th class="styDepTblCell" scope="col" style="width: 25mm;">Second Disposition Was More Than 2 Years After The First Disposition</th>
+					<th class="styDepTblCell" scope="col" style="width:16mm;">Date Of Disposition</th>
 					<th class="styDepTblCell" scope="col">The First Disposition Was A Sale Or Exchange Of Stock To The Issuing Corporation</th>
 					<th class="styDepTblCell" scope="col">The Second Disposition Was An Involuntary Conversion And The Threat Of Conversion Occurred After The First Disposition</th>
 					<th class="styDepTblCell" scope="col">The Second Disposition Occurred After The Death Of The Original Seller Or Buyer</th>
 					<th class="styDepTblCell" scope="col">It Can Be Established To The Satisfaction Of The IRS That Tax Avoidance Was Not A Principal Purpose For Either Of The Dispositions</th>
 					<th class="styDepTblCell" scope="col">Selling Price Of Property Sold By Related Party</th>
-					<th class="styDepTblCell" scope="col">Related Party Installment Information</th>
+					<th class="styDepTblCell" scope="col" style="width: 130mm;" >Related Party Installment Information</th>
 				</tr>
 			</thead>
 			<tfoot/>
 			<tbody>
 				<xsl:for-each select="$DependencyData/DisposOfPropWithSect179DedGrp">
 					<tr>
-						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-						<td class="styDepTblCell" style="text-align:center;width: 16mm;">
+						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+						<xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+						<td class="styDepTblCell" style="width:18mm;text-align:center;" nowrap="yes">
 							<xsl:choose>
 								<xsl:when test="RelatedPartyEIN">
 									<xsl:call-template name="PopulateEIN">
@@ -143,15 +143,19 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</td>
-						<td class="styDepTblCell" style="text-align:left; width: 26mm;text-align:center">
+						<td class="styDepTblCell" style="text-align:left; width: 40mm;text-align:center">
+						<span>
+								<xsl:call-template name="PopulateSpan">
+									<xsl:with-param name="TargetNode" select="SecondDispositionInd"/>
+								</xsl:call-template>
 						<label>
-								<xsl:call-template name="PopulateLabel">
+								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="SecondDispositionInd"/>
 									<xsl:with-param name="BackupName">PropertySoldOrDisposed</xsl:with-param>
 								</xsl:call-template>
-								<span style="width:2mm;text-align:left;"/>Yes
+								<span style="width: 4mm;text-align:left;"/>Yes
 							</label>
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="Property Sold Or Disposed" class="styCkbox">
 								<xsl:call-template name="PopulateYesCheckbox">
 									<xsl:with-param name="TargetNode" select="SecondDispositionInd"/>
 									<xsl:with-param name="BackupName">PropertySoldOrDisposed</xsl:with-param>
@@ -162,17 +166,18 @@
 										<xsl:with-param name="TargetNode" select="SecondDispositionInd"/>
 										<xsl:with-param name="BackupName">PropertySoldOrDisposed</xsl:with-param>
 									</xsl:call-template>
-									<span style="width:2mm;text-align:left;"/>No
+									<span style="width:3mm;text-align:left;"/>No
 							   </label>
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="Property Sold Or Disposed" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="SecondDispositionInd"/>
 											<xsl:with-param name="BackupName">PropertySoldOrDisposed</xsl:with-param>
 										</xsl:call-template>
 									</input>
+								</span>
 							</td>
-						<td class="styDepTblCell" style="text-align:center; width: 22mm">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+						<td class="styDepTblCell" style="width:4mm;text-align:center; ">
+							<input type="checkbox" alt="Second Disposition More Than 2 Years After First Disposition" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="SndDisposMore2YrsAftrFirstInd"/>
 									<xsl:with-param name="BackupName">SecondDisposMore2YrsThanFirst</xsl:with-param>
@@ -186,13 +191,13 @@
 								</xsl:call-template>
 							</label>
 						</td>
-						<td class="styDepTblCell" style="text-align:center; width: 22mm">
+						<td class="styDepTblCell" style="width:16mm;text-align:center; ">
 							<xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="DispositionDt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:center; width: 28mm">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+						<td class="styDepTblCell" style="width:4mm;text-align:center; ">
+							<input type="checkbox" alt="First Disposition Sale Or Exchange Of Stock" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="FirstDisposSaleExchangeStkInd"/>
 									<xsl:with-param name="BackupName">FirstDisposSaleExchange</xsl:with-param>
@@ -206,8 +211,8 @@
 								</xsl:call-template>
 							</label>
 						</td>
-						<td class="styDepTblCell" style="text-align:center; width: 30mm">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+						<td class="styDepTblCell" style="width:4mm;text-align:center; ">
+							<input type="checkbox" alt="Second Disposition Was Involuntary Conversion" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="SecondDisposInvlntryCnvrtInd"/>
 									<xsl:with-param name="BackupName">SecondDisposInvoluntaryCnvrt</xsl:with-param>
@@ -221,14 +226,15 @@
 								</xsl:call-template>
 							</label>
 						</td>
-						<td class="styDepTblCell" style="text-align:center; width: 30mm">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+						<td class="styDepTblCell" style="width:4mm;text-align:center;">
+							<input type="checkbox" alt="Second Disposition Occured After Death of Selller or Buyer" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="SecondDisposAfterDeathSellrInd"/>
 									<xsl:with-param name="BackupName">SecondDisposAfterDeathSeller</xsl:with-param>
 								</xsl:call-template>
 							</input>
-							<span style="width: 2mm"/>
+							<span style="width:2mm">
+							</span>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="SecondDisposAfterDeathSellrInd"/>
@@ -236,14 +242,15 @@
 								</xsl:call-template>
 							</label>
 						</td>
-						<td class="styDepTblCell" style="text-align:center;width: 30mm">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+						<td class="styDepTblCell" style="width:10mm;text-align:center;">
+							<input type="checkbox" alt="Disposition Not to Avoid Tax" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="NotToAvoidTaxInd"/>
 									<xsl:with-param name="BackupName">DispositionNotToAvoidTax</xsl:with-param>
 								</xsl:call-template>
 							</input>
-							<span style="width:2mm"/>
+							<span style="width:2mm;">
+							</span>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="NotToAvoidTaxInd"/>
@@ -251,13 +258,13 @@
 								</xsl:call-template>
 							</label>
 						</td>
-						<td class="styDepTblCell" style="text-align:right;width: 22mm;">
+						<td class="styDepTblCell" style="width:22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="RealizedAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:left; width: 22mm">
-							<xsl:call-template name="PopulateAmount">
+						<td class="styDepTblCell" style="width:130mm;text-align:left;">
+							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="RelatedPartyInstalInfoDesc"/>
 							</xsl:call-template>
 						</td>
@@ -266,8 +273,6 @@
 			</tbody>
 		</table>
 	</xsl:template>
-	<!-- *******************************************************************************************  -->
-	<!-- ********************************************************************************************* -->
 	<!-- Template to display table items -->
 	<xsl:template name="ShowDependencyData2">
 		<!-- Itemized Other Income Schedule Data -->
@@ -289,8 +294,9 @@
 			<tbody>
 				<xsl:for-each select="$DependencyData/DisposOfPropWithSect179DedGrp">
 					<tr>
-						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-						<td class="styDepTblCell" style="text-align:left;width: 47.5mm">
+						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+						<xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+						<td class="styDepTblCell" style="width: 47mm;text-align:left;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="RelatedPartyName/BusinessNameLine1"/>
 							</xsl:call-template>
@@ -299,7 +305,7 @@
 								<xsl:with-param name="TargetNode" select="RelatedPartyName/BusinessNameLine2"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:left; width: 47.5mm">
+						<td class="styDepTblCell" style="width:47mm;text-align:left;">
 							<xsl:if test="RelatedPartyUSAddress != ' ' ">
 								<xsl:call-template name="PopulateUSAddressTemplate">
 									<xsl:with-param name="TargetNode" select="RelatedPartyUSAddress"/>
@@ -311,37 +317,37 @@
 								</xsl:call-template>
 							</xsl:if>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width:22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="FirstYearContractPriceAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width:22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="SmllrRealizedOrContractPrcAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="TotalPaymentsReceivedAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="TotalPaymentsRcvdLessPrcAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right; width: 22mm">
+						<td class="styDepTblCell" style=" width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="TotPymtPrcTimesGroPrftPctAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right;width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="OrdinaryIncmUndRecaptureRlsAmt"/>
 							</xsl:call-template>
 						</td>
-						<td class="styDepTblCell" style="text-align:right;width: 22mm">
+						<td class="styDepTblCell" style="width: 22mm;text-align:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="PaymentPriceLessOrdnryIncmAmt"/>
 							</xsl:call-template>
@@ -359,8 +365,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -383,14 +391,13 @@
 				</style>
 				<xsl:call-template name="GlobalStylesDep"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm">
 				<xsl:call-template name="DocumentHeaderDependencyLandscape"/>
-				<div class="styDepTitleLineLandscape">
-					<span class="styDepTitle" style="width:163mm;">
-						<xsl:value-of select="$depDocTitle"/>
-					</span>
-				</div>
-				<!-- *********************************************************************************************  -->
+				<div class="styDepTitleLine">
+        <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+      </div>
 				<!--Adding template for left over data  -->
 				<xsl:call-template name="PopulateDepCommonLeftoverLandscape">
 					<xsl:with-param name="TargetNode" select="$DependencyData"/>

@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
-<!--Created by Sandy Mathews  12-17-2007     Using Schema 228v2.0    and PDF  dated 12/19/07 -->
-<!-- 07/27/2010 - Modified per UWR #BSP101319OTH - Jeremy Nichols -->
-<!-- 12/07/2010 - Modified per ITAMS #7620946 - Jeremy Nichols -->
-<!-- 12/09/2010 - Modified per UWR #33594 - Jeremy Nichols -->
-<!-- 07/18/2011 - Modified for TY 2011 per UWR #40502 - Jeremy Nichols -->
-<!-- Updated 01/21/2012 per UWR 52085 by Robert L Jones -->
-<!-- 03/27/2012 - Modified per defect #32457 - Jeremy Nichols -->
-<!-- 06/04/2012 - Modified per UWR #58215 - Jeremy Nichols -->
-<!-- 07/24/2013 - Modified per UWR #81688 - Jeremy Nichols -->
-<!-- 10/11/2013 - Modified per defect #38384 - Jeremy Nichols -->
-<!-- 10/15/2013 - Modified per defect #38480 - Jeremy Nichols -->
-
+<!-- 03/10/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 07/14/2015 - Modified per defect 42916 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -31,8 +21,10 @@
   <xsl:variable name="SupplementalSize" select="count($FormData/Form990ScheduleFPartIV)"/>
   <xsl:variable name="RowsToShow4" select="22"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)">
@@ -80,7 +72,7 @@
           <xsl:call-template name="DocumentHeader"/>
           <!--     <xsl:call-template name="DocumentHeaderLandscape" />-->
           <!-- BEGIN FORM HEADER -->
-          <div class="styTBB" style="width:187mm;height:22mm;">
+          <div class="styTBB" style="width:187mm;height:25mm;">
             <div class="styFNBox" style="width:31mm;padding-top:1mm;">
               <div style="height:14mm;">
                 <span class="styFormNumber" style="font-size:10pt;">SCHEDULE F<span style="width:5mm;"/>(Form 990)<br/>
@@ -95,7 +87,7 @@
                 <span class="styAgency">Internal Revenue Service</span>
               </div>
             </div>
-            <div class="styFTBox" style="width:124mm;height:22mm;">
+            <div class="styFTBox" style="width:124mm;height:25mm;">
               <div class="styMainTitle" style="height:8mm;padding-top:1.5mm;">Statement of Activities Outside the United States</div>
               <div class="styFBT" style="height:6mm;margin-top:0mm;font-weight:bold;">
                 <span style="width:124mm;font-size:6pt;font-weight:bold;padding-bottom:0mm;padding-top:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Complete if the organization answered "Yes" to Form 990,</span>
@@ -104,12 +96,12 @@
                 <span style="width:124mm;font-size:6pt;font-weight:bold;padding-bottom:0mm;padding-top:1mm;"><img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Information about Schedule F (Form 990) and its instructions is at <i>www.irs.gov/form990</i>.</span>
               </div>
             </div>
-            <div class="styTYBox" style="width:31.5mm;height:22mm;">
-              <div class="styOMB">OMB No. 1545-0047</div>
+            <div class="styTYBox" style="width:31.5mm;height:25mm;">
+              <div class="styOMB" style="width:31.5mm;">OMB No. 1545-0047</div>
               <div class="styTaxYear" style="height:11mm;padding-top:2mm;padding-bottom:2mm;">
                 20<span class="styTYColor">13</span>
               </div>
-              <div class="styPartName" style="font-size:7pt;width:31.5mm;padding-top:.5mm;padding-bottom:.5mm;text-align:left;padding-left:6mm;">
+              <div class="styPartName" style="font-size:7pt;height:9.5mm;width:31.5mm;padding-top:1mm;padding-bottom:.5mm;text-align:left;padding-left:6mm;">
                 Open to Public Inspection
              </div>
             </div>
@@ -142,12 +134,13 @@
           <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
           <!-- BEGIN PART I TITLE -->
           <!-- <div class="styGenericDiv" style="width: 187mm;background-color:yellow;">-->
-          <div class="styBB" style="width:187mm;">
+          <div class="styBB" style="width:187mm;height:8mm;">
             <div class="styPartName">Part I</div>
             <div class="styPartDesc"> General Information on Activities Outside the United States. 
- 		<span class="styNormalText">Complete if the organization answered "Yes" to Form 990, Part IV, line 14b.</span>
+				<span class="styNormalText" style="display:inline;">Complete if the organization answered "Yes" to Form 990, Part IV, line 14b.</span>
             </div>
           </div>
+          
           <!-- LINE 1  -->
           <div class="IRS990ScheduleF_LineContainer" style="padding-top:1mm;width:160mm;">
             <div class="IRS990ScheduleF_LineIndex" style="padding-right:5mm;">1</div>
@@ -166,7 +159,31 @@
             <div class="IRS990ScheduleF_LineIndex"/>
             <div class="IRS990ScheduleF_LineDesc" style="width:149mm;border-right-width:0px;font-size:7.5pt;">
 				to award the grants or assistance?
-    <span class="IRS990ScheduleF_Dotspacing">...............................</span>
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
+				<span style="width:2mm;"/>.
             </div>
             <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
               <span>
@@ -208,7 +225,7 @@
             </div>
           </div>
           <!-- Start Line 2 -->
-          <div style="width:187mm;">
+          <div style="width:187mm;height:9mm;display:block;">
             <div class="styLNLeftNumBox" style="padding-top:2mm;">2</div>
             <div class="styLNDesc" style="width:175mm;padding-top:2mm;font-size:7.5pt;">
               <b>For grantmakers.</b> Describe in Part V the organization’s procedures for monitoring the use of its grants and other
@@ -216,7 +233,7 @@
           </div>
           <!-- End Line 2 -->
           <!-- Start Line 3-->
-          <div class="styBB" style="width:187mm;border-top-width:0px;">
+          <div class="styBB" style="width:187mm;height:6mm;border-top-width:0px;">
             <span class="styLNLeftNumBox" style="height:4mm;padding-top:2mm;">3</span>
             <div class="styLNDesc" style="width:175mm;padding-top:2mm;">Activites per Region. (The following Part I, line 3 table can be duplicated if additional space is needed.) </div>
           </div>
@@ -236,7 +253,7 @@
             </div>
           </xsl:if>
           <!-- END Table expand/collapse toggle button end-->
-          <div class="IRS990ScheduleF_TableContainer" id="Part1">
+          <div class="IRS990ScheduleF_TableContainer" id="Part1" style="display:block;">
             <xsl:call-template name="SetInitialState"/>
             <table cellspacing="0" class="styTable" cellpadding="0">
               <thead class="styTableThead">
@@ -375,12 +392,13 @@
           </xsl:call-template>
           <!-- END TABLE FOR AcctsActvsOutUSTable -->
           <!-- Page Footer -->
-          <div class="pageEnd" style="width:187mm;">
+          <div class="pageEnd" style="width:187mm;page-break-after:always;">
             <span style="width:113mm;font-size:6.25pt;font-weight:bold;">For Paperwork Reduction Act Notice, see the Instructions for Form 990.</span>
             <span style="width:5mm;font-size:6.25pt;"/>Cat. No. 50082W
       <span style="width:7mm;"/>
             <span style="font-weight:bold;font-size:6.25pt;">Schedule F (Form 990) 2013</span>
           </div>
+          <div class="pageEnd" />
           <!-- PAGE 2 HEADER  -->
           <div class="styBB" style="width:256mm; padding-bottom:.5mm;">
             <div style="float:left;">Schedule F (Form 990) 2013</div>
@@ -390,17 +408,17 @@
           <!-- END Page Header  -->
           <!--  BEGIN   PART II  GRANTS TO ORGANIZATIONS OR ENTITIES OUTSIDE THE US -->
           <!-- ##########################################################################################-->
-          <div class="styBB" style="width:256mm;">
-            <div class="styPartName" style="width:13mm;font-size:8.5pt;">Part II</div>
-            <div class="styPartDesc" style="width:240mm;font-size:8.5pt;border-bottom-width:1px;border-color:black;padding-top:0mm;padding-bottom:0mm;"> Grants and Other Assistance to Organizations or Entities Outside the United States.
-				<span class="styNormalText">Complete if the organization answered "Yes" to Form 990, Part IV, line 15, for any recipient who received more than $5,000. Part II can be duplicated if additional space is needed.</span>
+          <div class="styBB" style="width:256mm;height:8mm;border-bottom-width:0px;">
+            <div class="styPartName" style="width:13mm;height:4mm;font-size:8.5pt;">Part II</div>
+            <div class="styPartDesc" style="width:240mm;height:8mm;font-size:8.5pt;border-bottom-width:1px;border-color:black;padding-top:0mm;padding-bottom:0mm;"> Grants and Other Assistance to Organizations or Entities Outside the United States.
+				<span class="styNormalText" style="display:inline;">Complete if the organization answered "Yes" to Form 990, Part IV, line 15, for any recipient who received more than $5,000. Part II can be duplicated if additional space is needed.</span>
 
             </div>
             <!-- BEGIN TABLE FOR PART  2     GrantsToOrgsOutsideUS -->
             <!-- BEGIN Table expand/collapse toggle button end -->
             <!-- Test for size of GrantsToOrgsOutsideUS collection, don't display table expand / colapse toggle button if not needed -->
             <xsl:if test="$GrantsToOrgsOutsideUSSize&gt; $RowsToShow2">
-              <div class="styBB" style="width:256mm;border-top-width:1px">
+              <div class="styBB" style="width:256mm;border-top-width:1px;">
                 <!-- Table expand/collapse toggle button-->
                 <span class="styGenericDiv" style="float:right;clear:none;width:7mm;text-align:right;">
                   <xsl:call-template name="SetDynamicTableToggleButton">
@@ -412,14 +430,14 @@
               </div>
             </xsl:if>
             <!-- END Table expand/collapse toggle button end-->
-            <div class="styTableContainerLandscape" id="Part2">
+            <div class="styTableContainerLandscape" id="Part2" style="height:auto;width:256mm;display:inline;clear:none;">
               <xsl:call-template name="SetInitialState"/>
-              <table cellspacing="0" class="styTable" cellpadding="0">
+              <table cellspacing="0" class="styTable" cellpadding="0" style="height:auto;width:256mm;display:inline;clear:none;">
                 <thead class="styTableThead">
                   <tr>
                     <th class="styTableCell" scope="col" colspan="2" style="width:30mm;text-align:center;vertical-align:top;padding-top:1mm; font-size:7pt;font-weight:normal;border-color:black;border-top-width:1px;">
                       <span style="width:2mm;padding-bottom:4mm;padding-top:0mm;float:left;font-weight:bold;">1
-		       <span style="width:30mm;text-align:center;font-weight:normal;border-color:black;border-bottom-width:1px;border-right-width:1px;">
+						   <span style="width:30mm;text-align:center;font-weight:normal;border-color:black;border-bottom-width:1px;border-right-width:1px;">
                           <b>(a)</b> Name of organization</span>
                       </span>
                     </th>
@@ -473,14 +491,14 @@
             </xsl:call-template>
             <!-- END TABLE FOR GrantsToOrgsOutsideUS -->
             <!-- Part II  Line 2 -->
-            <table style="width:256mm;">
+            <table style="height:auto;width:256mm;display:inline;clear:none;">
 				<tr>
 					<td style="width:5mm;padding-left:1mm;padding-top:1mm;font-size:8pt;vertical-align:top;">2</td>
 					<td style="width:197mm;font-size:8pt;">
 						Enter total number of recipient organizations listed above that are recognized as charities by the foreign country, 
 						recognized as tax-exempt by the IRS, or for which the grantee or counsel has provided a section 501(c)(3) equivalency letter
 						<!--Dotted Line-->
-							<span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:1mm;">....</span>
+							<span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:1mm;">.......</span>
 							<span style="width:2mm;"/>
 							<img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="MediumBullet"/>
 					</td>
@@ -492,29 +510,35 @@
 					  </div>
 					</td>
 				</tr>
+				<tr><!-- Part II  Line 3 -->
+					<td style="width:5mm;padding-left:1mm;padding-top:1mm;font-size:8pt;vertical-align:top;">3</td>
+					<td style="width:197mm;font-size:8pt;">
+						Enter total number of other organizations or entities 
+						<!--Dotted Line-->
+						<span style="width:1mm;"/>
+						<span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; ">.......................</span>
+						<span style="width:2mm;"/>
+						<img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="MediumBullet"/>
+					</td>
+					<td>
+					  <div class="styLNAmountBoxNBB" style="width:48mm;border-left:0px;padding-right:1mm;padding-top:2mm;margin-right:2mm">
+						<xsl:call-template name="PopulateAmount">
+						  <xsl:with-param name="TargetNode" select="$FormData/TotalOtherOrgCnt"/>
+						</xsl:call-template>
+					  </div>
+					</td>
+				</tr>
 			</table>
-			
-            <!-- Part II  Line 3 -->
-            <div class="styTBB" style="width:256mm;padding-top:1mm;height:4mm;">
-              <div class="styLNLeftNumBoxSD" style="padding-left:1mm;padding-top:1mm;">3</div>
-              <div class="styLNDescLandscape" style="width:197mm;font-size:8pt;padding-top:1mm;">Enter total number of other organizations or entities
-          <!--Dotted Line-->
-                <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; ">.......................</span>
-                <span style="width:2mm;"/>
-                <img src="{$ImagePath}/990SchF_Bullet_Line.gif" alt="MediumBullet"/>
-              </div>
-              <div class="styLNAmountBoxNBB" style="width:48mm;border-left:0px;padding-right:1mm;padding-top:2mm;margin-right:2mm">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$FormData/TotalOtherOrgCnt"/>
-                </xsl:call-template>
-              </div>
-            </div>
+            <span style="width:256mm;height:1mm;border-top-width:0;border-bottom-width:2px;border-left-width:0;border-right-width:0;border-style:solid;border-color:black;"/>
+		
             <!-- Page 2 Footer -->
-            <div class="pageEnd" style="width:256mm;">
+            <div style="width:256mm;">
               <span style="width:213mm;"/>
               <span style="font-weight:bold;font-size:7pt;">Schedule F (Form 990) 2013</span>
             </div>
+            <div class="pageEnd"  />
             <!-- PAGE 3 HEADER  -->
+            <div style="display:block;">
             <div class="styBB" style="width:256mm; padding-bottom:.5mm;">
               <span style="width:212mm;float:left;">Schedule F (Form 990) 2013</span>
               <span style="float:right;padding-right:4mm;">Page <span style="font-weight:bold;width:1mm;font-size:8pt;">3</span>
@@ -523,10 +547,10 @@
             <!-- END Page Header  -->
             <!--  BEGIN   PART 3   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
             <!-- Begin PART III  Grants and Other Assistance  -->
-            <div class="styBB" style="width: 256mm;float:left;clear:none;">
-              <div class="styPartName" style="width:15mm;font-size:8.5pt;">Part III</div>
+            <div class="styBB" style="width: 256mm;height:8mm;display:block;clear:none;">
+              <div class="styPartName" style="width:15mm;height:4mm;font-size:8.5pt;">Part III</div>
               <div class="styPartDesc" style="width:238mm;font-size:8.5pt;border-bottom-width:1px;border-color:black;padding-top:0mm;padding-bottom:0mm;"> Grants and Other Assistance to Individuals Outside the United States.
-        <span class="styNormalText">Complete if the organization answered "Yes" to Form 990, Part IV, line 16.</span>
+				<span class="styNormalText" style="display:inline;">Complete if the organization answered "Yes" to Form 990, Part IV, line 16.</span>
                 <!--<div style="width:238mm;height:3mm;border-top-width: 1px;font-size:8.5pt;font-weight:normal;" >on Form 990, Part IX, line 3, if the aggregate amount of all grants and assistance, made to individuals located outside the U.S. exceeded $5,000. -->
                 <div style="width:238mm;height:3mm;border-top-width: 1px;font-size:8.5pt;font-weight:normal;">Part III can be duplicated if additional space is needed.</div>
               </div>
@@ -535,7 +559,7 @@
             <!-- BEGIN Table expand/collapse toggle button end -->
             <!-- Test for size of GrantsToIndOutsideUS collection, don't display table expand / colapse toggle button if not needed -->
             <xsl:if test="$GrantsToIndOutsideUSSize&gt; $RowsToShow3">
-              <div class="styBB" style="width:256mm;border-top-width:0px">
+              <div class="styBB" style="width:256mm;border-top-width:0px;display:block;clear:none;">
                 <!-- Table expand/collapse toggle button-->
                 <span class="styGenericDiv" style="float:right;clear:none;width:7mm;text-align:right;">
                   <xsl:call-template name="SetDynamicTableToggleButton">
@@ -548,9 +572,8 @@
               </div>
             </xsl:if>
             <!-- END Table expand/collapse toggle button end-->
-            <div class="styTableContainerLandscape" id="Part3">
               <xsl:call-template name="SetInitialState"/>
-              <table cellspacing="0" class="styTable" cellpadding="0">
+              <table cellspacing="0" class="styTable" cellpadding="0" style="height:auto;width:256mm;">
                 <thead class="styTableThead">
                   <tr>
                     <th class="styTableCell" colspan="2" scope="col" style="width:40mm;vertical-align:top; padding-top: 1mm; text-align:center;font-size:7pt;font-weight:normal;border-color:black;">
@@ -594,7 +617,7 @@
                   </xsl:if>
                 </tbody>
               </table>
-            </div>
+              </div>
             <xsl:call-template name="SetInitialDynamicTableHeight">
               <xsl:with-param name="TargetNode" select="$FormData/ForeignIndividualsGrantsGrp"/>
               <xsl:with-param name="containerHeight" select="$RowsToShow3"/>
@@ -617,12 +640,12 @@
             <!-- END Page Header  -->
             <!--   BEGIN  PART  IV   Supplemental Information
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-            <div class="styBB" style="width:187mm;height:4mm;border-top-width:2px;">
-              <div class="styPartName">Part IV</div>
-              <div class="styPartDesc"> Foreign Forms</div>
+            <div class="styBB" style="width:187mm;height:4.5mm;border-top-width:2px;">
+              <div class="styPartName" style="height:4mm;">Part IV</div>
+              <div class="styPartDesc" style="height:4mm;"> Foreign Forms</div>
             </div>
             
-            <table class="styTable" style="width:187mm;">
+            <table class="styTable" style="height:auto;width:187mm;display:inline;">
               <tbody>
                 <tr>
                   <td style="font-size:7pt;padding-top:3mm;text-align:center;vertical-align:top;width:7mm;"> 1</td>
@@ -630,10 +653,39 @@
                     Was the organization a U.S. transferor of property to a foreign corporation during the tax year? 
                     <i>If "Yes,"the organization may be required to file Form 926, Return by a U.S. Transferor of Property 
                     to a Foreign Corporation (see Instructions for Form 926)</i>
-                    <span class="IRS990ScheduleF_Dotspacing">......................................</span>
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">  
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/TransferToForeignCorpInd"/>
@@ -644,7 +696,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelYes">
                           <xsl:with-param name="TargetNode" select="$FormData/TransferToForeignCorpInd"/>
@@ -654,7 +705,7 @@
                     </div>                  
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/TransferToForeignCorpInd"/>
@@ -665,7 +716,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelNo">
                           <xsl:with-param name="TargetNode" select="$FormData/TransferToForeignCorpInd"/>
@@ -683,10 +733,44 @@
                     Report Transactions with Foreign Trusts and Receipt of Certain Foreign Gifts, and/or 
                     Form 3520-A, Annual Information Return of Foreign Trust With a U.S. Owner (see 
                     Instructions for Forms 3520 and 3520-A)</i>
-                    <span class="IRS990ScheduleF_Dotspacing">.......................................</span>
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">  
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/InterestInForeignTrustInd"/>
@@ -697,7 +781,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelYes">
                           <xsl:with-param name="TargetNode" select="$FormData/InterestInForeignTrustInd"/>
@@ -707,7 +790,7 @@
                     </div>                  
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/InterestInForeignTrustInd"/>
@@ -718,7 +801,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelNo">
                           <xsl:with-param name="TargetNode" select="$FormData/InterestInForeignTrustInd"/>
@@ -734,10 +816,37 @@
                     Did the organization have an ownership interest in a foreign corporation during the tax year?  <i>If "Yes," the organization may be 
                     required to file Form 5471, Information Return of U.S. Persons with Respect to Certain Foreign Corporations. (see Instructions
                     for Form 5471)</i>
-                    <span class="IRS990ScheduleF_Dotspacing">..............................</span>
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">  
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/ForeignCorpOwnershipInd"/>
@@ -748,7 +857,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelYes">
                           <xsl:with-param name="TargetNode" select="$FormData/ForeignCorpOwnershipInd"/>
@@ -758,7 +866,7 @@
                     </div>                  
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/ForeignCorpOwnershipInd"/>
@@ -769,7 +877,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelNo">
                           <xsl:with-param name="TargetNode" select="$FormData/ForeignCorpOwnershipInd"/>
@@ -785,10 +892,10 @@
                     Was the organization a direct or indirect shareholder of a passive foreign investment company or a
 					qualified electing fund during the tax year? <i>If “Yes,” the organization may be required to file Form 8621,
 					Information Return by a Shareholder of a Passive Foreign Investment Company or Qualified Electing
-					Fund. (see Instructions for Form 8621)</i><span class="IRS990ScheduleF_Dotspacing">...............................................</span>
+					Fund. (see Instructions for Form 8621)</i> .
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">  
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/PassiveForeignInvestmestCoInd"/>
@@ -799,7 +906,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelYes">
                           <xsl:with-param name="TargetNode" select="$FormData/PassiveForeignInvestmestCoInd"/>
@@ -809,7 +915,7 @@
                     </div>                  
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/PassiveForeignInvestmestCoInd"/>
@@ -820,7 +926,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelNo">
                           <xsl:with-param name="TargetNode" select="$FormData/PassiveForeignInvestmestCoInd"/>
@@ -835,10 +940,39 @@
                   <td style="font-size:7pt;padding-top:3mm;text-align:left;vertical-align:top;width:150mm;">
                     Did the organization have an ownership interest in a foreign partnership during the tax year?  <i>If "Yes," the organization
                     may be required to file Form 8865, Return of U.S. Persons with Respect to Certain Foreign Partnerships. (see Instructions for Form 8865)</i>
-                    <span class="IRS990ScheduleF_Dotspacing">....................................</span>
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
+                    <span style="width:2mm;"/>.
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">  
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnershipInd"/>
@@ -849,7 +983,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelYes">
                           <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnershipInd"/>
@@ -859,7 +992,7 @@
                     </div>                  
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnershipInd"/>
@@ -870,7 +1003,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelNo">
                           <xsl:with-param name="TargetNode" select="$FormData/ForeignPartnershipInd"/>
@@ -884,11 +1016,11 @@
                   <td style="font-size:7pt;padding-top:3mm;text-align:center;vertical-align:top;width:7mm;"> 6</td>
                   <td style="font-size:7pt;padding-top:3mm;text-align:left;vertical-align:top;width:150mm;">
                     Did the organization have any operations in or related to any boycotting countries during the tax year?  <i>If "Yes," the 
-                    organization may be required to file Form 5713, International Boycott Report (see Instructions for Form 5713).</i><span class="NBSP"/>
-                    <span class="IRS990ScheduleF_Dotspacing">...............................................</span>
+                    organization may be required to file Form 5713, International Boycott Report (see Instructions for Form 5713).</i>
+                    <span style="width:2mm;"/>.
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">  
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/BoycottCountriesInd"/>
@@ -899,7 +1031,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelYes">
                           <xsl:with-param name="TargetNode" select="$FormData/BoycottCountriesInd"/>
@@ -909,7 +1040,7 @@
                     </div>                  
                   </td>
                   <td style="font-size:7pt;padding-left:1mm;padding-top:3mm;text-align:left;vertical-align:bottom;width:15mm;">
-                    <div class="IRS990ScheduleF_LineDesc" style="width:15mm;border-right-width:0px;text-align:right;">
+                    <div class="IRS990ScheduleF_LineDesc" style="width:10mm;border-right-width:0px;text-align:right;">
                       <span>
                         <xsl:call-template name="PopulateSpan">
                           <xsl:with-param name="TargetNode" select="$FormData/BoycottCountriesInd"/>
@@ -920,7 +1051,6 @@
                           </xsl:call-template>
                         </input>
                       </span>
-                      <span style="width:3mm;"/>
                       <label>
                         <xsl:call-template name="PopulateLabelNo">
                           <xsl:with-param name="TargetNode" select="$FormData/BoycottCountriesInd"/>
@@ -952,8 +1082,8 @@
             
             <!--   BEGIN  PART  V   Supplemental Information
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-            <div class="styBB" style="width:187mm;height:4mm;border-top-width:2px;border-bottom-width:0px;">
-              <div class="styPartName">Part V</div>
+            <div class="styBB" style="width:187mm;height:19mm;border-top-width:2px;border-bottom-width:0px;">
+              <div class="styPartName" style="height:4mm;">Part V</div>
               <div class="styPartDesc"> Supplemental Information <br/>
                 <span class="styNormalText">Provide the information required by Part I, line 2 (monitoring of funds); Part I, line 3, column (f) (accounting method; amounts of investments vs. expenditures per region); Part II, line 1 (accounting method); Part III (accounting method); and Part III, column (c) (estimated number of recipients), as applicable. Also complete this part to provide any additional information (see instructions).</span>
               </div>
@@ -975,9 +1105,9 @@
               </div>
             </xsl:if>
             <!-- END Table expand/collapse toggle button end-->
-            <div class="IRS990ScheduleF_TableContainer" id="Part5">
+            <div class="IRS990ScheduleF_TableContainer" id="Part5" style="display:block;clear:none;">
               <xsl:call-template name="SetInitialState"/>
-              <table cellspacing="0" class="styTable" cellpadding="0">
+              <table cellspacing="0" class="styTable" cellpadding="0" style="height:auto;display:inline;">
                 <thead class="styTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell" scope="col" style="width:57mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;border-left-width:0px;">ReturnReference</th>
@@ -1014,30 +1144,34 @@
             <!-- END TABLE FOR SUPPLEMENTAL INFORMATION -->
             
             <!-- Page Footer For Page  5   -->
-            <div class="pageEnd" style="width:187mm;">
+            <div class="pageEnd" style="width:187mm;border-bottom-width:0px;">
               <span style="width:146mm;"/>
               <span style="font-weight:bold;font-size:7pt;">Schedule F (Form 990) 2013</span>
             </div>
             <!-- Recycle Image -->
             <div class="styLeftOverTitleLine" id="LeftoverData">
               <div class="styLeftOverTitle">
-          Additional Data        
-        </div>
+				  Additional Data        
+			  </div>
               <div class="styLeftOverButtonContainer">
                 <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
               </div>
             </div>
-            <table class="styLeftOverTbl">
+            <table class="styLeftOverTbl" style="height:auto;border-bottom-width:0px;">
               <xsl:call-template name="PopulateCommonLeftover">
                 <xsl:with-param name="TargetNode" select="$FormData"/>
                 <xsl:with-param name="DescWidth" select="100"/>
               </xsl:call-template>
             </table>
+          </div>
+        </form>
+      </body>
+    </html>
             <!-- Begin Separated Repeating Data table -->
             <!-- Begin SRD for PART I   -->
             <xsl:if test="($Print = $Separated) and (count($FormData/AccountActivitiesOutsideUSGrp) &gt;17)">
               <span class="styRepeatingDataTitle">Form 990 Schedule F Part I - Activities Outside The United States</span>
-              <table class="styLeftOverTbl" cellspacing="0" style="font-size:7pt;">
+              <table class="styLeftOverTbl" cellspacing="0" style="height:auto;font-size:7pt;display:inline;clear:none;">
                 <thead class="styTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell" scope="col" style="width:40mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;">(a) Region</th>
@@ -1098,7 +1232,7 @@
             <!-- Begin Separated Repeating Data for PART II  TABLE -->
             <xsl:if test="($Print = $Separated) and (count($FormData/GrantsToOrgOutsideUSGrp) &gt;16)">
               <span class="styRepeatingDataTitle">Form 990 Schedule F Part II - Grants or Entities Outside The United States</span>
-              <table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+              <table class="styLeftOverTblLandscape" cellspacing="0" style="height:auto;font-size:7pt;display:inline;clear:none;">
                 <thead class="styTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styTableCellHeader" scope="col" style="width:30mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;border-right-width:1px;">(a) Name of organization</th>
@@ -1180,7 +1314,7 @@
             <!-- Begin Separated Repeating Data for PART 3  TABLE -->
             <xsl:if test="($Print = $Separated) and (count($FormData/ForeignIndividualsGrantsGrp) &gt;18)">
               <span class="styRepeatingDataTitle">Form 990 Schedule F Part III - Grants and Assistance to Individuals Outside The U S</span>
-              <table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+              <table class="styLeftOverTblLandscape" cellspacing="0" style="height:auto;font-size:7pt;display:inline;clear:none;">
                 <thead class="styTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell" scope="col" style="width:40mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;">(a) Type of grant or assistance</th>
@@ -1251,9 +1385,9 @@
             <!-- End SRD for PART  3   -->
             <!-- Begin Separated Repeating Data FOR PART 4 TABLE -->
             <!-- Begin SRD for first part -->
-            <xsl:if test="($Print = $Separated) and (count($FormData/SupplementalInformationDetail) &gt;20               )">
+            <xsl:if test="($Print = $Separated) and (count($FormData/SupplementalInformationDetail) &gt;20)">
               <span class="styRepeatingDataTitle">Form 990 Schedule F - Supplemental Information</span>
-              <table cellspacing="0" class="styDepTbl" cellpadding="0" style="font-size:7pt;">
+              <table cellspacing="0" class="styDepTbl" cellpadding="0" style="height:auto;font-size:7pt;display:inline;clear:none;">
                 <thead class="styTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell" scope="col" style="width:57mm;height:5mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;border-left-weight:0px;">ReturnReference </th>
@@ -1282,10 +1416,6 @@
               </table>
             </xsl:if>
             <!-- End SRD for PART 4   -->
-          </div>
-        </form>
-      </body>
-    </html>
   </xsl:template>
   <!--  PART  I  TEMP DATA  -->
   <xsl:template name="AcctsActvsOutUSTableTemp">
@@ -1476,12 +1606,12 @@
   <xsl:template name="SupplementalTemp">
     <xsl:param name="IsSeparated">no</xsl:param>
     <tr>
-      <td class="styTableCell" style="font-size:7pt;border-color:black;text-align:left;vertical-align:top;">
+      <td class="styTableCell" style="width:57mm;font-size:7pt;border-color:black;text-align:left;vertical-align:top;">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="FormAndLineReferenceDesc"/>
         </xsl:call-template>
       </td>
-      <td class="styTableCell" style="font-size:7pt;border-color:black;border-right:none;text-align:left;vertical-align:top;">
+      <td class="styTableCell" style="width:130mm;font-size:7pt;border-color:black;border-right:none;text-align:left;vertical-align:top;">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="ExplanationTxt"/>
         </xsl:call-template>

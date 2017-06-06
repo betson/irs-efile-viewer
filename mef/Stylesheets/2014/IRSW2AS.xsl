@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Updated By Iskilu Lawal 07/21/2015 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -19,14 +20,14 @@
 					</span>
 				</div>
 				<div class="styIRSW2ASCleanDiv" style="width:43%;height:100%;border-left-width:0px;">
-					<span class="styMainTitle" style="font-size:10pt;width:100%;text-align:left;padding-top:1.5mm;padding-left:1.5mm;">
+					<span class="styMainTitle" style="font-size:10pt;width:100%;text-align:left;padding-top:1.5mm;padding-left:1.5mm">
             American Somoa<br/>
             Wage and Tax Statement
           </span>
 				</div>
 				<div class="styIRSW2ASCleanDiv" style="width:27%;height:100%;border-left-width:0px;">
 					<div class="styTY" style="float:left;clear:none;height:100%;font-size:25pt;padding-top:1mm;padding-left:7mm;">
-            20<span class="stytycolor">14</span>
+            20<span class="styTYColor">14</span>
 					</div>
 				</div>
 			</div>
@@ -54,8 +55,9 @@
 		<div class="pageEnd" style="width:187mm;font-size:7pt;font-family:arial;text-align:center;">
 			<span class="styBoldText" style="width:100%;font-size:11pt;">
         Do Not Cut, Fold, or Staple Forms on This Page
-        
-        <br/>
+        <!--<img src="{$ImagePath}/W2AS_Short_Line.gif" alt="Line image"/>
+        Do Not Cut, Fold, or Staple Forms on This Page-->
+				<br/>
 				<br/>
 			</span>
 		</div>
@@ -94,12 +96,12 @@
 						</div>
 					</div>
 				</xsl:if>
-				<div class="styIRSW2ASLNDesc" style="width:100%;text-align:center;height:32px;">
-					<div class="styIRSW2ASCleanDiv" style="width:4%;border-left-width:0px;height:100%;padding:0px 0px 0px 0px;">
-						<div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;border-right-width:0px;padding-bottom:.1mm">c o d e</div>
+				<div class="styIRSW2ASLNDesc" style="width:100%;text-align:center;height:10.6mm;">
+					<div class="styIRSW2ASCleanDiv" style="width:4%;border-left-width:0px;height:auto;padding:0px 0px 0px 0px;">
+						<div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;border-right-width:0px;padding-bottom:.1mm">C o d e</div>
 					</div>
-					<div class="styIRSW2ASCleanDiv" style="width:20%;height:100%;padding-top:1mm;border-left-width:0px;">
-						<div class="styIRSW2ASLNDesc" style="width:auto;text-align:center;padding-left:3mm;">
+					<div class="styIRSW2ASCleanDiv" style="width:auto;height:auto;padding-top:1mm;border-left-width:0px;">
+						<div class="styIRSW2ASLNDesc" style="width:auto;text-align:center;padding-left:10mm;">
 							<xsl:if test="$TargetNode">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$TargetNode/EmployersUseCd"/>
@@ -109,7 +111,7 @@
 					</div>
 					<div class="styIRSW2ASCleanDiv">
 						<xsl:attribute name="style">
-              width:auto;height:100%;padding-top:1mm;float:right;padding-right:3mm;
+              width:auto;height:10mm;padding-top:1mm;float:right;padding-right:4mm;
               <xsl:if test="$AddAdditionalMessage">
                 padding-top:0mm;
               </xsl:if></xsl:attribute>
@@ -145,12 +147,12 @@
 			<xsl:attribute name="style">
         width:100%;height:5mm;border-right-width:0px;<xsl:value-of select="$IsLast"/></xsl:attribute>
 			<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-			<td class="styIRSW2ASTableCell" style="width:50%;text-align:right;height:5mm;">
+			<td class="styIRSW2ASTableCell" style="width:50%;text-align:right;height:10mm;padding-right:1mm">
 				<xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$TargetNode/EmployersUseCd"/>
 				</xsl:call-template>
 			</td>
-			<td class="styIRSW2ASTableCell" style="width:50%;text-align:right;border-left-width:1px;height:5mm;">
+			<td class="styIRSW2ASTableCell" style="width:50%;text-align:right;border-left-width:1px;height:5mm;padding-right:1mm">
 				<xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$TargetNode/EmployersUseAmt"/>
 				</xsl:call-template>
@@ -171,7 +173,7 @@
 		</xsl:variable>
 		<tr>
 			<xsl:attribute name="style">
-        height:20.7mm;border-right-width:0px;border-left-width:0px;width:100%;<xsl:value-of select="$IsLast"/></xsl:attribute>
+        height:25mm;border-right-width:0px;border-left-width:0px;width:100%;<xsl:value-of select="$IsLast"/></xsl:attribute>
 			<td class="styIRSW2ASTableCell">
 				<xsl:attribute name="style">
         width:100%;border-left-width:0px;<xsl:value-of select="$IsLast"/></xsl:attribute>
@@ -202,7 +204,7 @@
 						</div>
 					</div>
 					<div class="styIRSW2ASCleanDiv" style="width:100%;height:auto;padding-top:0px;text-align:right;border-left-width:0px;">
-						<div class="styIRSW2ASLNDesc" style="width:100%;padding-top:0px;height:2.5mm;text-align:right;padding-right:1mm">
+						<div class="styIRSW2ASLNDesc" style="width:100%;padding-top:0px;height:2.5mm;text-align:right;padding-right:1mm;">
 							<xsl:if test="$TargetNode">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$TargetNode/Amt"/>
@@ -232,7 +234,7 @@
 					<xsl:with-param name="TargetNode" select="$TargetNode/Desc"/>
 				</xsl:call-template>
 			</td>
-			<td class="styIRSW2ASTableCell" style="width:25%;text-align:right;border-left-width:1px;height:5mm;">
+			<td class="styIRSW2ASTableCell" style="width:25%;text-align:right;border-left-width:1px;height:5mm;padding-right:1mm">
 				<xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$TargetNode/Amt"/>
 				</xsl:call-template>
@@ -274,8 +276,10 @@
 		</xsl:if>
 	</xsl:template>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormW2ASData)"/>
@@ -300,7 +304,7 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<form name="IRSW2AS">
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
@@ -308,19 +312,19 @@
 						<!-- Header -->
 						<div class="styIRSW2ASLineItemBB">
 							<!-- 22222 -->
-								<div class="styIRSW2ASCleanDiv" style="width:12%;height:100%;border-left-width:0px;">
+							<div class="styIRSW2ASCleanDiv" style="width:10%;height:100%;border-left-width:0px;">
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Corrected W2 American Samoa Indicator</xsl:with-param>
 									<xsl:with-param name="TargetNode" select="$FormW2ASData/CorrectedW2AmericanSamoaInd"/>
-								</xsl:call-template>				
+								</xsl:call-template>								
 								<xsl:call-template name="LinkToLeftoverDataTableInline">
 									<xsl:with-param name="Desc">Standard Or Non Standard Code</xsl:with-param>
- 									<xsl:with-param name="TargetNode" select="$FormW2ASData/StandardOrNonStandardCd"/>
-								</xsl:call-template>
+									<xsl:with-param name="TargetNode" select="$FormW2ASData/StandardOrNonStandardCd"/>
+								</xsl:call-template>								
 								<span class="styBoldText" style="font-size:12pt;width:100%;text-align:center;padding-bottom:2mm;">22222</span>
-								</div>
+							</div>
 							<!-- Void Checkbox -->
-							<div class="styIRSW2ASCleanDiv" style="width:10%;height:100%;text-align:center;border-right-width:1px;">
+							<div class="styIRSW2ASCleanDiv" style="width:12%;height:100%;text-align:center;border-right-width:1px;">
 								<span style="width:100%;padding-top:3mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
@@ -405,7 +409,7 @@
 							</div>
 						</div>
 						<!-- (c)(3)(4)(5)(6)(7)(8) /////////////////////////////////////-->
-						<div class="styIRSW2ASLineItemBB">
+						<div class="styIRSW2ASLineItemBB" style="height:31mm;">
 							<!-- (c) Employer's name, address, and ZIP code-->
 							<div class="styIRSW2ASCleanDiv" style="width:50%;height:100%;border-left-width:0px;">
 								<div class="styIRSW2ASCleanDiv" style="width:100%;height:auto;border-width:0px 0px 0px 0px;">
@@ -498,14 +502,14 @@
 									</div>
 								</div>
 								<!-- (7)(8) -->
-								<div class="styIRSW2ASLineItemBB" style="border-bottom-width:0px;">
+								<div class="styIRSW2ASLineItemBB" style="border-bottom-width:0px;height:10.60mm;">
 									<!-- (7) Social security tips-->
-									<div class="styIRSW2ASCleanDiv" style="width:50%;height:100%;">
+									<div class="styIRSW2ASCleanDiv" style="width:50%;height:15mm;">
 										<div class="styIRSW2ASCleanDiv" style="width:100%;height:auto;border-width:0px 0px 0px 0px;">
 											<div class="styIRSW2ASLNLeftNumBox" style="padding-right:9px;">7</div>
 											<div class="styIRSW2ASLNDesc" style="width:auto;">Social security tips</div>
 										</div>
-										<div class="styIRSW2ASLNDesc" style="width:100%;text-align:right;padding-right:1mm">
+										<div class="styIRSW2ASLNDesc" style="width:100%;text-align:right;padding-right:1mm;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormW2ASData/SocialSecurityTipsAmt"/>
 											</xsl:call-template>
@@ -548,10 +552,10 @@
 							</div>
 						</div>
 						<!-- ////////////////////////////////////////////////////-->
-						<div class="styIRSW2ASLineItemBB">
+						<div class="styIRSW2ASLineItemBB" style="height:100%;">
 							<div class="styIRSW2ASCleanDiv" style="width:50%;height:100%;border-left-width:0px;">
 								<!-- (e) Employee's first name and initial // Last Name // Suff.-->
-								<div class="styGenericDiv" style="border-bottom:1px black dashed;height:13mm;width:100%;">
+								<div class="styGenericDiv" style="border-bottom:1px black dashed;height:14.7mm;width:100%;">
 									<div class="styIRSW2ASLNLeftNumBox" style="padding-right:9px;">e</div>
 									<div class="styGenericDiv" style="border-right:1px solid black;height:100%;width:39mm;padding-top:.6mm;">
                     Employee's first name and initial
@@ -564,12 +568,12 @@
 									<div class="styGenericDiv" style="border-right:1px solid black;height:100%;width:39mm;padding-top:.6mm;padding-left:2mm;">
                     Last name
                   </div>
-									<div class="styGenericDiv" style="height:100%; width:7mm;padding-top:.6mm;padding-left:2mm;">
+									<div class="styGenericDiv" style="height:auto; width:7mm;padding-top:.6mm;padding-left:2mm;">
                     Suff.
                   </div>
 								</div>
 								<!-- (f) Employee's address and ZIP code-->
-								<div class="styIRSW2ASCleanDiv" style="width:100%;height:24mm;border-left-width:0px;">
+								<div class="styIRSW2ASCleanDiv" style="width:100%;height:43mm;border-left-width:0px;">
 									<div class="styIRSW2ASLNDesc" style="width:100%;padding-left:7.5mm;padding-top:2mm;word-wrap:break-word;height:40%;">
 										<xsl:if test="$FormW2ASData/EmployeeUSAddress">
 											<xsl:call-template name="PopulateUSAddressTemplate">
@@ -582,102 +586,31 @@
 											</xsl:call-template>
 										</xsl:if>
 									</div>
-									<span style="width:100%;height:18.8mm;"/>
+									<span style="width:100%;height:20.8mm;"/>
 									<div class="styIRSW2ASCleanDiv" style="width:100%;height:auto;border-width:0px 0px 0px 0px;">
 										<div class="styIRSW2ASLNLeftNumBox" style="padding-right:9px;">f</div>
 										<div class="styIRSW2ASLNDesc" style="width:auto;">Employee's address and ZIP code</div>
 									</div>
 								</div>
 							</div>
-							<div class="styIRSW2ASCleanDiv" style="width:49.9%;height:100%;">
+							<div class="styIRSW2ASCleanDiv" style="width:25.12%;">
 								<!-- (11) Nonqualified plans-->
-								<div class="styIRSW2ASCleanDiv" style="width:49.9%;height:13mm;border-bottom-width:1px;border-left-width:0px;">
+								<div class="styIRSW2ASCleanDiv" style="width:100%;height:14.7mm;border-bottom-width:1px;border-left-width:0px;border-right-width:1px;">
 									<div class="styIRSW2ASCleanDiv" style="width:100%;height:auto;border-width:0px 0px 0px 0px;">
-										<div class="styIRSW2ASLNLeftNumBox" style="padding-right:9px;">11</div>
+										<div class="styIRSW2ASLNLeftNumBox" style="padding-right:9.5px;">11</div>
 										<div class="styIRSW2ASLNDesc" style="width:auto;">Nonqualified plans</div>
 									</div>
-									<div class="styIRSW2ASLNDesc" style="width:100%;text-align:right;padding-right:1mm;padding-top:2mm;">
+									<div class="styIRSW2ASLNDesc" style="width:100%;text-align:right;padding-right:1mm;padding-top:3mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormW2ASData/NonqualifiedPlansAmt"/>
 										</xsl:call-template>
 									</div>
 								</div>
-								<!-- (12 a...) See the separate instructions-->
-								<div class="styIRSW2ASCleanDiv" style="width:50%;height:100%;float:right;">
-									<div class="styIRSW2ASCleanDiv" style="width:100%;height:auto;border-width:0px 0px 0px 0px;">
-										<div class="styIRSW2ASLNLeftNumBox">12a</div>
-										<div class="styIRSW2ASLNDesc" style="width:auto;">See instructions for box 12</div>
-										<div class="styIRSW2ASCleanDiv" style="width:auto;float:right;border-left-width:0px;">
-											<xsl:call-template name="SetDynamicTableToggleButton">
-												<xsl:with-param name="TargetNode" select="$FormW2ASData/NonUSEmployersUseGrp"/>
-												<xsl:with-param name="containerHeight" select="4"/>
-												<xsl:with-param name="containerID" select=" 'NonUSEmployersUseGrpDiv' "/>
-												<xsl:with-param name="headerRowCount" select="0"/>
-											</xsl:call-template>
-										</div>
-									</div>
-									<div class="styTableContainerNBB" id="NonUSEmployersUseGrpDiv">
-										<xsl:attribute name="style">
-                      width:100%;border-right-width:0px;padding:0px 0px 0px 0px;
-                      <xsl:if test="($Print='inline' or $Print='separated')">
-                        overflow:visible;
-                      </xsl:if></xsl:attribute>
-										<table class="styTable" cellspacing="0" style="width:100%;border-right-width:0px;padding:0px 0px 0px 0px;">
-											<thead/>
-											<tfoot/>
-											<tbody>
-												<xsl:for-each select="$FormW2ASData/NonUSEmployersUseGrp">
-													<!--JMI: If the print parameter is not set to be Separated, or there are less elements than the-->
-													<!--container height (4), execute-->
-													<xsl:variable name="Letter">
-														<xsl:number format="a"/>
-													</xsl:variable>
-													<xsl:if test="($Print != $Separated) or (count($FormW2ASData/NonUSEmployersUseGrp) &lt;=4)">
-														<xsl:call-template name="CreateLine12TableRows">
-															<xsl:with-param name="Letter" select="$Letter"/>
-															<xsl:with-param name="TargetNode" select="."/>
-														</xsl:call-template>
-													</xsl:if>
-												</xsl:for-each>
-												<!-- Table Filler Rows -->
-												<!-- JMI: added: or.... -->
-												<xsl:if test="count($FormW2ASData/NonUSEmployersUseGrp) &lt; 1 or ((count($FormW2ASData/NonUSEmployersUseGrp) &gt;4) and ($Print = $Separated))">
-													<xsl:call-template name="CreateLine12TableRows">
-														<xsl:with-param name="Letter">a</xsl:with-param>
-														<xsl:with-param name="AddAdditionalMessage">true</xsl:with-param>
-													</xsl:call-template>
-												</xsl:if>
-												<xsl:if test="count($FormW2ASData/NonUSEmployersUseGrp) &lt; 2 or ((count($FormW2ASData/NonUSEmployersUseGrp) &gt;4) and ($Print = $Separated))">
-													<xsl:call-template name="CreateLine12TableRows">
-														<xsl:with-param name="Letter">b</xsl:with-param>
-													</xsl:call-template>
-												</xsl:if>
-												<xsl:if test="count($FormW2ASData/NonUSEmployersUseGrp) &lt; 3 or ((count($FormW2ASData/NonUSEmployersUseGrp) &gt;4) and ($Print = $Separated))">
-													<xsl:call-template name="CreateLine12TableRows">
-														<xsl:with-param name="Letter">c</xsl:with-param>
-													</xsl:call-template>
-												</xsl:if>
-												<xsl:if test="count($FormW2ASData/NonUSEmployersUseGrp) &lt; 4 or ((count($FormW2ASData/NonUSEmployersUseGrp) &gt;4) and ($Print = $Separated))">
-													<xsl:call-template name="CreateLine12TableRows">
-														<xsl:with-param name="Letter">d</xsl:with-param>
-													</xsl:call-template>
-												</xsl:if>
-											</tbody>
-										</table>
-									</div>
-									<xsl:call-template name="SetInitialDynamicTableHeight">
-										<xsl:with-param name="TargetNode" select="$FormW2ASData/NonUSEmployersUseGrp"/>
-										<xsl:with-param name="containerHeight" select="4"/>
-										<xsl:with-param name="headerRowCount" select="0"/>
-										<xsl:with-param name="setDynamicHeight" select="4"/>
-										<xsl:with-param name="containerID" select="'NonUSEmployersUseGrpDiv'"/>
-									</xsl:call-template>
-								</div>
 								<!-- (13) Statutory Employee / Retirement Plan / Third-party Sick Pay-->
-								<div class="styIRSW2ASCleanDiv" style="width:49.9%;height:12.5mm;border-bottom-width:1px;border-left-width:0px;">
+								<div class="styIRSW2ASCleanDiv" style="width:100%;height:14mm;border-bottom-width:1px;border-left-width:0px;border-right-width:1px;">
 									<div class="styIRSW2ASCleanDiv" style="width:100%;height:auto;border-width:0px 0px 0px 0px;">
-										<div class="styIRSW2ASLNLeftNumBox" style="padding-right:9px;">13</div>
-										<div class="styIRSW2ASLNDesc" style="width:auto;">
+										<div class="styIRSW2ASLNLeftNumBox" style="padding-right:9px;">13</div> 
+										<div class="styIRSW2ASLNDesc" style="width:auto;padding-right:3mm;">
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="$FormW2ASData/StatutoryEmployeeInd"/>
@@ -685,16 +618,16 @@
 												</xsl:call-template>
 												<span style="font-size:6pt">Statutory<br/>employee<br/>
 												</span>
-											</label>
-											<input class="styCkbox" type="checkbox" style="width:4mm;">
+											</label><br/>
+											<input class="styCkbox" type="checkbox" style="width:5mm;height:5mm;">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$FormW2ASData/StatutoryEmployeeInd"/>
 													<xsl:with-param name="BackupName">FormW2ASDataStatutoryEmployeeInd</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</div>
-										<span style="width:3mm;float:left;"/>
-										<div class="styIRSW2ASLNDesc" style="width:auto;">
+										<!--<span style="width:3mm;float:left;"/>-->
+										<div class="styIRSW2ASLNDesc" style="width:auto;padding-right:3mm;">
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="$FormW2ASData/RetirementPlanInd"/>
@@ -702,25 +635,25 @@
 												</xsl:call-template>
 												<span style="font-size:6pt">Retirement<br/>plan<br/>
 												</span>
-											</label>
-											<input class="styCkbox" type="checkbox" style="width:4mm;">
+											</label><br/>
+											<input class="styCkbox" type="checkbox" style="width:5mm;height:5mm;">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$FormW2ASData/RetirementPlanInd"/>
 													<xsl:with-param name="BackupName">FormW2ASDataRetirementPlanInd</xsl:with-param>
 												</xsl:call-template>
 											</input>
 										</div>
-										<span style="width:3mm;float:left;"/>
+										<!--<span style="width:3mm;float:left;"/>-->
 										<div class="styIRSW2ASLNDesc" style="width:auto;">
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="$FormW2ASData/ThirdPartySickPayInd"/>
 													<xsl:with-param name="BackupName">FormW2ASDataThirdPartySickPayInd</xsl:with-param>
 												</xsl:call-template>
-												<span style="font-size:6pt">Third-party<br/>sick pay<br/>
+												<span style="font-size:6pt;">Third-party<br/>sick pay<br/>
 												</span>
-											</label>
-											<input class="styCkbox" type="checkbox" style="width:4mm;">
+											</label><br/>
+											<input class="styCkbox" type="checkbox" style="width:5mm;height:5mm;">
 												<xsl:call-template name="PopulateCheckbox">
 													<xsl:with-param name="TargetNode" select="$FormW2ASData/ThirdPartySickPayInd"/>
 													<xsl:with-param name="BackupName">FormW2ASDataThirdPartySickPayInd</xsl:with-param>
@@ -730,8 +663,8 @@
 									</div>
 								</div>
 								<!-- (14) Other-->
-								<div style="width:100%;height:auto;border-left-width:0px;border-right:">
-									<div class="styIRSW2ASCleanDiv" style="width:100%;height:auto;border-width:0px 0px 0px 0px;">
+								<div style="width:46.6mm;border-left-width:0px;border-right:1px solid black;height:auto;">
+									<div class="styIRSW2ASCleanDiv" style="width:46.6mm;height:auto;border-width:0px 0px 0px 0px;">
 										<div class="styIRSW2ASLNLeftNumBox" style="padding-right:9px;">14</div>
 										<div class="styIRSW2ASLNDesc" style="width:auto;">Other</div>
 										<div class="styIRSW2ASCleanDiv" style="width:auto;float:right;border-left-width:0px;">
@@ -745,11 +678,11 @@
 									</div>
 									<div class="styTableContainerNBB" id="OtherDeductsBenefitsDiv">
 										<xsl:attribute name="style">
-                      width:100%;border-right-width:0px;padding:0px 0px 0px 0px;
+                      width:100%;height:auto;border-right-width:0px;padding:0px 0px 0px 0px;
                       <xsl:if test="($Print='inline' or $Print='separated')">
                         overflow:visible;
                       </xsl:if></xsl:attribute>
-										<table class="styTable" cellspacing="0" style="width:100%;border-right-width:0px;padding:0px 0px 0px 0px;table-layout:fixed;">
+										<table class="styTable" cellspacing="0" style="width:100%;height:auto;border-right-width:0px;padding:0px 0px 0px 0px;table-layout:fixed;">
 											<thead/>
 											<tfoot/>
 											<tbody>
@@ -780,9 +713,81 @@
 										<xsl:with-param name="containerID" select="'OtherDeductsBenefitsDiv'"/>
 									</xsl:call-template>
 								</div>
+								<!-- end of 14 -->
 							</div>
+							<!-- (12 a...) See the separate instructions-->
+							<div style="width:24.85%;float:right;height:auto;">
+								<div class="styIRSW2ASCleanDiv" style="width:auto;height:auto;border-width:0px 0px 0px 0px;">
+									<div class="styIRSW2ASLNLeftNumBox">12a</div>
+									<div class="styIRSW2ASLNDesc" style="width:auto;height:auto;">See instructions for box 12</div>
+									<div class="styIRSW2ASCleanDiv" style="width:auto;float:right;border-left-width:0px;height:auto;">
+										<xsl:call-template name="SetDynamicTableToggleButton">
+											<xsl:with-param name="TargetNode" select="$FormW2ASData/NonUSEmployersUseGrp"/>
+											<xsl:with-param name="containerHeight" select="4"/>
+											<xsl:with-param name="containerID" select=" 'NonUSEmployersUseGrpDiv' "/>
+											<xsl:with-param name="headerRowCount" select="0"/>
+										</xsl:call-template>
+									</div>
+								</div>
+								<div class="styTableContainerNBB" id="NonUSEmployersUseGrpDiv">
+									<xsl:attribute name="style">
+                      width:100%;border-right-width:0px;padding:0px 0px 0px 0px;height:auto;
+                      <xsl:if test="($Print='inline' or $Print='separated')">
+                        overflow:visible;
+                      </xsl:if></xsl:attribute>
+									<table class="styTable" cellspacing="0" style="width:100mm;height:auto;border-right-width:0px;padding:0px 0px 0px 0px;">
+										<thead/>
+										<tfoot/>
+										<tbody>
+											<xsl:for-each select="$FormW2ASData/NonUSEmployersUseGrp">
+												<!--JMI: If the print parameter is not set to be Separated, or there are less elements than the-->
+												<!--container height (4), execute-->
+												<xsl:variable name="Letter">
+													<xsl:number format="a"/>
+												</xsl:variable>
+												<xsl:if test="($Print != $Separated) or (count($FormW2ASData/NonUSEmployersUseGrp) &lt;=4)">
+													<xsl:call-template name="CreateLine12TableRows">
+														<xsl:with-param name="Letter" select="$Letter"/>
+														<xsl:with-param name="TargetNode" select="."/>
+													</xsl:call-template>
+												</xsl:if>
+											</xsl:for-each>
+											<!-- Table Filler Rows -->
+											<!-- JMI: added: or.... -->
+											<xsl:if test="count($FormW2ASData/NonUSEmployersUseGrp) &lt; 1 or ((count($FormW2ASData/NonUSEmployersUseGrp) &gt;4) and ($Print = $Separated))">
+												<xsl:call-template name="CreateLine12TableRows">
+													<xsl:with-param name="Letter">a</xsl:with-param>
+													<xsl:with-param name="AddAdditionalMessage">true</xsl:with-param>
+												</xsl:call-template>
+											</xsl:if>
+											<xsl:if test="count($FormW2ASData/NonUSEmployersUseGrp) &lt; 2 or ((count($FormW2ASData/NonUSEmployersUseGrp) &gt;4) and ($Print = $Separated))">
+												<xsl:call-template name="CreateLine12TableRows">
+													<xsl:with-param name="Letter">b</xsl:with-param>
+												</xsl:call-template>
+											</xsl:if>
+											<xsl:if test="count($FormW2ASData/NonUSEmployersUseGrp) &lt; 3 or ((count($FormW2ASData/NonUSEmployersUseGrp) &gt;4) and ($Print = $Separated))">
+												<xsl:call-template name="CreateLine12TableRows">
+													<xsl:with-param name="Letter">c</xsl:with-param>
+												</xsl:call-template>
+											</xsl:if>
+											<xsl:if test="count($FormW2ASData/NonUSEmployersUseGrp) &lt; 4 or ((count($FormW2ASData/NonUSEmployersUseGrp) &gt;4) and ($Print = $Separated))">
+												<xsl:call-template name="CreateLine12TableRows">
+													<xsl:with-param name="Letter">d</xsl:with-param>
+												</xsl:call-template>
+											</xsl:if>
+										</tbody>
+									</table>
+								</div>
+								<xsl:call-template name="SetInitialDynamicTableHeight">
+									<xsl:with-param name="TargetNode" select="$FormW2ASData/NonUSEmployersUseGrp"/>
+									<xsl:with-param name="containerHeight" select="4"/>
+									<xsl:with-param name="headerRowCount" select="0"/>
+									<xsl:with-param name="containerID" select="'NonUSEmployersUseGrpDiv'"/>
+								</xsl:call-template>
+							</div>
+							<!-- End of (12 a...) See the separate instructions-->
 						</div>
-						<div class="styIRSW2ASLineItemBB" style="background-color:lightgrey;height:13mm;border-bottom-width:0px;"/>
+						<div class="styIRSW2ASLineItemBB" style="background-color:lightgrey;height:20mm;border-bottom-width:0px;"/>
 					</div>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<xsl:call-template name="CreateFormHeader"/>
@@ -809,12 +814,12 @@
 								<xsl:with-param name="TargetNode" select="$FormW2ASData/CorrectedW2AmericanSamoaInd"/>
 								<xsl:with-param name="BackupName">FormW2ASDataCorrectedW2AmericanSamoaInd</xsl:with-param>
 								<xsl:with-param name="DescWidth" select="$TableWidth"/>
-							</xsl:call-template>
+						</xsl:call-template>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Top Left - Standard Or Non Standard Code</xsl:with-param>
 							<xsl:with-param name="TargetNode" select="$FormW2ASData/StandardOrNonStandardCd"/>
 							<xsl:with-param name="DescWidth" select="$TableWidth"/>
-						</xsl:call-template>							
+						</xsl:call-template>						
 						</xsl:if>
 						<xsl:call-template name="PopulateLeftoverRow">
 							<xsl:with-param name="Desc">Line C - Employer Name Control</xsl:with-param>
@@ -830,8 +835,8 @@
 						<table class="styDepTbl" cellspacing="0">
 							<thead>
 								<tr class="styDepTblHdr">
-									<th class="styIRSW2ASTableCell" scope="col" style="width:50%;height:5mm;color:white;">Code</th>
-									<th class="styIRSW2ASTableCell" scope="col" style="width:50%;height:5mm;color:white;border-left-width:1px;">Amount</th>
+									<th class="styIRSW2ASTableCell" scope="col" style="width:50mm;height:5mm;color:white;">Code</th>
+									<th class="styIRSW2ASTableCell" scope="col" style="width:50mm;height:5mm;color:white;border-left-width:1px;">Amount</th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -856,8 +861,8 @@
 						<table class="styDepTbl" cellspacing="0">
 							<thead>
 								<tr class="styDepTblHdr">
-									<th class="styIRSW2ASTableCell" scope="col" style="width:75%;height:5mm;color:white;">Description</th>
-									<th class="styIRSW2ASTableCell" scope="col" style="width:25%;height:5mm;color:white;border-left-width:1px;">Amount</th>
+									<th class="styIRSW2ASTableCell" scope="col" style="width:75mm;height:5mm;color:white;">Description</th>
+									<th class="styIRSW2ASTableCell" scope="col" style="width:75mm;height:5mm;color:white;border-left-width:1px;">Amount</th>
 								</tr>
 							</thead>
 							<tfoot/>

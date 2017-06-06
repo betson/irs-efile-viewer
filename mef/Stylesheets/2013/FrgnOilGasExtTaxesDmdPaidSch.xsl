@@ -14,8 +14,10 @@
   </xsl:param>  
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title>           
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -38,10 +40,10 @@
             <xsl:call-template name="AddOnStyle"/>    
           </xsl:if>
         </style>
-      <xsl:call-template name="GlobalStylesDep"/>
-</head>
+        <xsl:call-template name="GlobalStylesDep"/>
+      </head>
     
-      <body class="styBodyClass">    
+      <body class="styBodyClass" style="width:187mm">
         <xsl:call-template name="DocumentHeaderDependency"/>
         
         <div class="styDepTitleLine">      
@@ -54,10 +56,11 @@
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$Form1118IDeps2Data"/></xsl:call-template>    
             
         <div class="styTopSectionLine">    
-          <div class="styTopSectionLineLbl" style="float:left">
-            <b>Schedule: </b>
+          <div class="styTopSectionLineLbl" style="float:none">
+            Explanation: 
           </div>
-          <div class="styExplanationLine" style="float:left">    
+          <div style="width:185mm;float:none">
+          <br/>    
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form1118IDeps2Data/ExplanationTxt"/></xsl:call-template>      
           </div>                  
         </div>  

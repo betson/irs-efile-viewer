@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by James Ganzy on 10/21/2014 -->
+<!-- Last Modified by Steven Fook on 6/12/2015 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
 	<xsl:import href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -192,8 +192,10 @@
 		</xsl:choose>
 	</xsl:template>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -298,7 +300,7 @@
 												</xsl:call-template>
 											</span>
 											<div class="styTY" style="float: right; clear: none; padding-right: 2mm;">
-											  20<span class="styTYColor">14</span>
+											  20<span class="styTYColor">15</span>
 											</div>
 										</div>
 									</td>
@@ -307,7 +309,7 @@
 									<td style="font-size: 7pt;">
                                         Department of the Treasury<br/>
 										<span style="float: left; clear: none;">Internal Revenue Service</span>
-										<span style="float: right; clear: none; padding-right: 1mm;">For calendar year 2014, or tax
+										<span style="float: right; clear: none; padding-right: 1mm;">For calendar year 2015, or tax
 											<br/>year beginning
 											<span style="width: 20mm; border-bottom: 1px solid black; text-align: center;">
 												<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
@@ -524,9 +526,7 @@
 									<td class="IRS1065ScheduleK1_tdLeft" style="height:10mm;">
 										<!-- PART II Line G -->
 										<div style="float:left;clear:none;">
-											<span style="font-weight: bold; width: 2mm;height:8mm;">G</span>
-											<span style="width: 3mm;"/>
-											<span style="width: 40mm;height:8mm;">
+											<span style="font-weight:bold; width:2mm;">G</span>											    
 												<input type="checkbox" class="styckbox" name="checkbox" id="dummyid">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="$FormData/GeneralPartnerOrLLCMemMgrInd"/>
@@ -539,12 +539,12 @@
 														  IRS1065ScheduleK1GenPartnerOrLLCMemManager</xsl:with-param>
 													</xsl:call-template>
 													General partner or LLC<br/>
-													<span style="width:5mm;"/>member-manager
+													<span style="width:9mm;"/>member-manager
                                                 </label>
-											</span>
+											
 										</div>
-										<div style="float:right;clear:all;">
-											<span style="width: 50mm;height:8mm;">
+										<div style="float:right;clear:none;">
+											<span style="width:45mm;">
 												<input type="checkbox" class="styckbox" name="checkbox" id="dummyid">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="$FormData/LimitedPartnerOrOtherLLCMemInd"/>
@@ -557,7 +557,7 @@
 														  IRS1065ScheduleK1LimitedPartnerOrOtherLLCMember</xsl:with-param>
 													</xsl:call-template>
 													Limited partner or other LLC<br/>
-													<span style="width:5mm;"/>member
+													<span style="width:7mm;"/>member
 												</label>
 											</span>
 										</div>
@@ -569,9 +569,8 @@
 										<xsl:choose>
 											<xsl:when test="$FormData/DomesticPartnerInd">
 												<div style="float:left;clear:none;">
-													<span style="font-weight: bold; width: 2mm;height:4mm;">H</span>
-													<span style="width: 3mm;"/>
-													<span style="width: 40mm;height:4mm;">
+													<span style="font-weight: bold; width 2mm;height:4mm;">H</span>
+													<span style="width:35mm;height:4mm;">
 														<input type="checkbox" class="styckbox" name="checkbox" id="dummyid">
 															<xsl:call-template name="PopulateCheckbox">
 																<xsl:with-param name="TargetNode" select="$FormData/DomesticPartnerInd"/>
@@ -587,8 +586,8 @@
 														</label>
 													</span>
 												</div>
-												<div style="float:right;clear:all;">
-													<span style="width: 50mm;height:4mm;">
+												<div style="float:right;clear:none;">
+													<span style="width:45mm;height:4mm;">
 														<input type="checkbox" alt="alt" class="styckbox" name="checkbox" id="dummyidforeign">
 															<xsl:call-template name="PopulateCheckbox">
 																<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInd"/>
@@ -607,9 +606,8 @@
 											</xsl:when>
 											<xsl:when test="$FormData/ForeignPartnerInd">
 												<div style="float:left;clear:none;">
-													<span style="font-weight: bold; width: 2mm;height:4mm;">H</span>
-													<span style="width: 3mm;"/>
-													<span style="width: 40mm;height:4mm;">
+													<span style="font-weight: bold; width:2mm;height:4mm;">H</span>
+													<span style="width:35mm;height:4mm;">
 														<input type="checkbox" alt="alt" class="styckbox" name="checkbox" id="dummyiddomestic">
 															<xsl:call-template name="PopulateCheckbox">
 																<xsl:with-param name="TargetNode" select="$FormData/DomesticPartnerInd"/>
@@ -625,8 +623,8 @@
 														</label>
 													</span>
 												</div>
-												<div style="float:right;clear:all;">
-													<span style="width: 50mm;height:4mm;">
+												<div style="float:right;clear:none;">
+													<span style="width:45mm;height:4mm;">
 														<input type="checkbox" class="styckbox">
 															<xsl:call-template name="PopulateCheckbox">
 																<xsl:with-param name="TargetNode" select="$FormData/ForeignPartnerInd"/>
@@ -698,16 +696,16 @@
 													<th scope="col" style="width:38mm;">Ending</th>
 												</tr>
 												<tr>
-													<td width="3" style="width:2mm;border:1px black solid;border-top:0px;                border-left:0;border-right:0;">Profit</td>
+													<td width="3" style="width:2mm;border:1px black solid;border-top:0px;border-left:0;border-right:0;">Profit</td>
 													<td style="border:1px black solid;border-top:0px;border-left:0;font-size:6pt" align="right">
-														<span style="width:10mm;text-align:right;">
+														<span style="width:35mm;text-align:right;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="$FormData/PartnersShareProfitLossCapGrp/PartnersInterestInProfitsBOYRt"/>
 															</xsl:call-template>%
 														</span>
 													</td>
 													<td style="border:1px black solid;border-top:0px;border-left:0;border-right:0px;                text-align:right;font-size:6pt">
-														<span style="width:32mm;text-align:right;font-size:6pt">
+														<span style="width:35mm;text-align:right;font-size:6pt">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="$FormData/PartnersShareProfitLossCapGrp/PartnersInterestInProfitsEOYRt"/>
 															</xsl:call-template>%
@@ -717,14 +715,14 @@
 												<tr>
 													<td width="3" style="width:2mm;border:1px black solid;border-top:0px;                border-left:0;                border-right:0;">Loss</td>
 													<td style="border:1px black solid;border-top:0px;border-left:0;font-size:6pt" align="right">
-														<span style="width:16mm;text-align:right;">
+														<span style="width:35mm;text-align:right;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="$FormData/PartnersShareProfitLossCapGrp/PartnersLossesBOYRt"/>
 															</xsl:call-template>%
 														</span>
 													</td>
 													<td style="border:1px black solid;border-top:0px;border-left:0;border-right:0px;                text-align:right;font-size:6pt">
-														<span style="width:32mm;text-align:right;">
+														<span style="width:35mm;text-align:right;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="$FormData/PartnersShareProfitLossCapGrp/PartnersLossesEOYRt"/>
 															</xsl:call-template>%
@@ -734,14 +732,14 @@
 												<tr>
 													<td width="3" style="width:2mm;border:1px black solid;border-top:0px;                border-left:0;                border-right:0;">Capital</td>
 													<td style="border:1px black solid;border-top:0px;border-left:0;font-size:6pt" align="right">
-														<span style="width:16mm;text-align:right;">
+														<span style="width:35mm;text-align:right;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="$FormData/PartnersShareProfitLossCapGrp/PartnersCapitalBOYRt"/>
 															</xsl:call-template>%
 														</span>
 													</td>
 													<td style="border:1px black solid;border-top:0px;border-left:0;border-right:0px;                text-align:right;font-size:6pt">
-														<span style="width:32mm;text-align:right;">
+														<span style="width:35mm;text-align:right;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="$FormData/PartnersShareProfitLossCapGrp/PartnersCapitalEOYRt"/>
 															</xsl:call-template>%
@@ -1059,8 +1057,8 @@
 									</td>
 								</tr>
 								<tr>
-									<td valign="top" style="border-right:1px solid black;">
-										<table width="46.5mm" border="0" cellpadding="0" cellspacing="0" style="">
+									<td valign="top" style="border-right:1px solid black;height:auto;">
+										<table width="46.5mm" border="0" cellpadding="0" cellspacing="0" style="height:auto;">
 											<!-- Part III columns 1-14 -->
 											<!-- Line 1 -->
 											<tr>
@@ -1068,17 +1066,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">1</td>
-													  <td style="float:left;font-size:6pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">1</td>
+													  <td style="font-size:6pt;">
 														<span style="width:1mm;"/>Ordinary business income (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/OrdinaryIncomeLossAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1086,12 +1084,12 @@
 													<xsl:for-each select="$FormData/OrdinaryIncomeLossAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/OrdinaryIncomeLossAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:left;padding-left:2px;">
 																<xsl:call-template name="SetFormLinkInline">
 																  <xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncomeLossAmt"/>
@@ -1116,17 +1114,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">2</td>
-													  <td style="float:left;font-size:6pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">2</td>
+													  <td style="font-size:6pt;">
 														<span style="width:1mm;"/>Net rental real estate income (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/RealEstateNetIncomeLossAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1134,12 +1132,12 @@
 													<xsl:for-each select="$FormData/RealEstateNetIncomeLossAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/RealEstateNetIncomeLossAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:left;padding-left:2px;">
 																<xsl:call-template name="SetFormLinkInline">
 																  <xsl:with-param name="TargetNode" select="$FormData/RealEstateNetIncomeLossAmt"/>
@@ -1164,17 +1162,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">3</td>
-													  <td style="float:left;font-size:6pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">3</td>
+													  <td style="font-size:6pt;">
 														<span style="width:1mm;"/>Other net rental income (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/OtherRentalIncomeAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1182,12 +1180,12 @@
 													<xsl:for-each select="$FormData/OtherRentalIncomeAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/OtherRentalIncomeAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:left;padding-left:2px;">
 																<xsl:call-template name="SetFormLinkInline">
 																  <xsl:with-param name="TargetNode" select="$FormData/OtherRentalIncomeAmt"/>
@@ -1212,17 +1210,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">4</td>
-													  <td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">4</td>
+													  <td style="font-size:7pt;">
 														<span style="width:1mm;"/>Guaranteed payments</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/GuaranteedPymtsToPartnerAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.63mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.63mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.63mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.63mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1230,12 +1228,12 @@
 													<xsl:for-each select="$FormData/GuaranteedPymtsToPartnerAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/GuaranteedPymtsToPartnerAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.63mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.63mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.63mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.63mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:right;">
 																 <xsl:call-template name="PopulateAmount">
 																   <xsl:with-param name="TargetNode" select="$FormData/GuaranteedPymtsToPartnerAmt"/>
@@ -1255,17 +1253,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">5</td>
-													  <td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">5</td>
+													  <td style="font-size:7pt;">
 														<span style="width:1mm;"/>Interest income</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/InterestIncomeAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1273,12 +1271,12 @@
 													<xsl:for-each select="$FormData/InterestIncomeAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/InterestIncomeAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:left;padding-left:2px;">
 																<xsl:call-template name="SetFormLinkInline">
 																  <xsl:with-param name="TargetNode" select="$FormData/InterestIncomeAmt"/>
@@ -1303,17 +1301,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">6a</td>
-													  <td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">6a</td>
+													  <td style="font-size:7pt;">
 														<span style="width:1mm;"/>Ordinary dividends</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/OrdinaryDividendsAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1321,12 +1319,12 @@
 													<xsl:for-each select="$FormData/OrdinaryDividendsAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/OrdinaryDividendsAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:left;padding-left:2px;">
 																  <xsl:call-template name="SetFormLinkInline">
 																    <xsl:with-param name="TargetNode" select="$FormData/OrdinaryDividendsAmt"/>
@@ -1351,17 +1349,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">6b</td>
-													  <td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">6b</td>
+													  <td style="font-size:7pt;">
 														<span style="width:1mm;"/>Qualified dividends</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/QualifiedDividendsAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1369,12 +1367,12 @@
 													<xsl:for-each select="$FormData/QualifiedDividendsAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/QualifiedDividendsAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:left;padding-left:2px;">
 																  <xsl:call-template name="SetFormLinkInline">
 																    <xsl:with-param name="TargetNode" select="$FormData/QualifiedDividendsAmt"/>
@@ -1399,17 +1397,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">7</td>
-													  <td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">7</td>
+													  <td style="font-size:7pt;">
 														<span style="width:1mm;"/>Royalties</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/PortfolioIncomeLossRyltsAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1417,12 +1415,12 @@
 													<xsl:for-each select="$FormData/PortfolioIncomeLossRyltsAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/PortfolioIncomeLossRyltsAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:right;">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="$FormData/PortfolioIncomeLossRyltsAmt"/>
@@ -1442,17 +1440,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">8</td>
-													  <td style="float:left;font-size:6pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">8</td>
+													  <td style="font-size:6pt;">
 														<span style="width:1mm;"/>Net short-term capital gain (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/NetSTCapitalGainOrLossAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1460,12 +1458,12 @@
 													<xsl:for-each select="$FormData/NetSTCapitalGainOrLossAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/NetSTCapitalGainOrLossAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:right;">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="$FormData/NetSTCapitalGainOrLossAmt"/>
@@ -1485,17 +1483,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">9a</td>
-													  <td style="float:left;font-size:6pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">9a</td>
+													  <td style="font-size:6pt;">
 														<span style="width:1mm;"/>Net long-term capital gain (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/NetLTCapitalGainOrLossAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:6.38mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:6.38mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:6.38mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:6.38mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1503,12 +1501,12 @@
 													<xsl:for-each select="$FormData/NetLTCapitalGainOrLossAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/NetLTCapitalGainOrLossAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:6.38mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:6.38mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:6.38mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:6.38mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:right;">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="$FormData/NetLTCapitalGainOrLossAmt"/>
@@ -1528,17 +1526,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">9b</td>
-													  <td style="float:left;font-size:6pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">9b</td>
+													  <td style="font-size:6pt;">
 														<span style="width:1mm;"/>Collectibles (28%) gain (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/CollectiblesGainLossAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1546,12 +1544,12 @@
 													<xsl:for-each select="$FormData/CollectiblesGainLossAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/CollectiblesGainLossAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:right;">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="$FormData/CollectiblesGainLossAmt"/>
@@ -1571,17 +1569,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">9c</td>
-													  <td style="float:left;font-size:6pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">9c</td>
+													  <td style="font-size:6pt;">
 														<span style="width:1mm;"/>Unrecaptured section 1250 gain</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/UnrecapturedSection1250GainAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1589,12 +1587,12 @@
 													<xsl:for-each select="$FormData/UnrecapturedSection1250GainAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/UnrecapturedSection1250GainAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:left;padding-left:2px;">
 																<xsl:call-template name="SetFormLinkInline">
 																  <xsl:with-param name="TargetNode" select="$FormData/UnrecapturedSection1250GainAmt"/>
@@ -1619,17 +1617,17 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;               float:left;">10</td>
-													  <td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">10</td>
+													  <td style="font-size:7pt;">
 														<span style="width:1mm;"/>Net section 1231 gain (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/NetSection1231GainLossAmt) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                 float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                 float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1637,12 +1635,12 @@
 													<xsl:for-each select="$FormData/NetSection1231GainLossAmt">
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/NetSection1231GainLossAmt) =1)">
 														  <tr>
-															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;                  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="SchK1OtherInformationCd"/>
 															  </xsl:call-template>
 															</td>
-															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;                  border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
+															<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;border-top:0px solid;width:41.40mm;font-size:7pt;" valign="bottom">
 															  <span style="float:left;padding-left:2px;">
 																<xsl:call-template name="SetFormLinkInline">
 																  <xsl:with-param name="TargetNode" select="$FormData/NetSection1231GainLossAmt"/>
@@ -1669,19 +1667,19 @@
 												  <tbody>
 													<tr>
 													  <td class="IRS1065ScheduleK1_itemLabel"
-													    style="text-align:center;float:left;">11</td>
-														<td style="float:left;font-size:7pt;">
+													    style="text-align:center;">11</td>
+														<td style="font-size:7pt;">
 														  <span style="width:1mm;"/>Other income (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/IRS1065K1OtherIncomeLossGrp/SchK1OtherIncomeLossGrp) = 0 ">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" 
-													     style="height:4.5mm;float:left;border-top:0px solid;font-size:7pt;">
+													     style="height:4.5mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox"
-														  style="height:4.5mm;float:left;border-top:0px solid;width:41.40mm;
+														  style="height:4.5mm;border-top:0px solid;width:41.40mm;
 														  font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
@@ -1689,21 +1687,21 @@
 													  <!-- Add 2 blank rows --> 
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm; 
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1715,7 +1713,7 @@
 														  <xsl:when test="position() = 1">
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-															    float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															    border-top:0px solid;font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
 																    select="SchK1OtherIncomeLossCd"/>
@@ -1741,7 +1739,7 @@
 														  <xsl:otherwise>
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-															    float:left;border-top:1px solid black;font-size:7pt;"
+															    border-top:1px solid black;font-size:7pt;"
 															    valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
@@ -1749,7 +1747,7 @@
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-															    float:left;border-top:1px solid black;width:41.40mm;
+															    border-top:1px solid black;width:41.40mm;
 															    font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="Amt"/>
@@ -1764,21 +1762,21 @@
 													<xsl:if test="count($FormData/IRS1065K1OtherIncomeLossGrp/SchK1OtherIncomeLossGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1787,11 +1785,11 @@
 													<xsl:if test="count($FormData/IRS1065K1OtherIncomeLossGrp/SchK1OtherIncomeLossGrp) = 2">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1800,11 +1798,11 @@
 													<xsl:if test="((count($FormData/IRS1065K1OtherIncomeLossGrp/SchK1OtherIncomeLossGrp) &gt;3)  and                  ($Print = $Separated))">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-														  float:left;border-top:0px solid black;font-size:7pt;">
+														  border-top:0px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
 													        <xsl:with-param name="TargetNode"
@@ -1813,21 +1811,21 @@
 														</td>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														    float:left;border-top:1px solid black;font-size:7pt;">
+														    border-top:1px solid black;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 													    </tr>
 													    <tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														    float:left;border-top:1px solid black;font-size:7pt;">
+														    border-top:1px solid black;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 													    </tr>
@@ -1844,20 +1842,20 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;">12</td>
-													  <td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel"
+													   style="text-align:center;">12</td>
+													  <td style="font-size:7pt;">
 														<span style="width:1mm;"/>Section 179 deduction</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/Section179ExpenseDeductionAmt) = 0 ">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;font-size:7pt;">
+														  border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1866,7 +1864,7 @@
 														<xsl:if test="($Print != $Separated) or                  (count($FormData/Section179ExpenseDeductionAmt) =1)">
 														  <tr>
 															<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-															  float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															  border-top:0px solid;font-size:7pt;" valign="bottom">
 															  <xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode"
 																  select="SchK1OtherInformationCd"/>
@@ -1875,7 +1873,7 @@
 															<td class="IRS1065ScheduleK1_amountBox" 
 															  style="height:4.5mm;border-top:0px solid;width:41.40mm;
 															  font-size:7pt;" valign="bottom">
-															  <span style="float:left;padding-left:2px;">
+															  <span style="padding-left:2px;">
 																<xsl:call-template name="SetFormLinkInline">
 																  <xsl:with-param name="TargetNode"
 																   select="$FormData/Section179ExpenseDeductionAmt"/>
@@ -1902,41 +1900,40 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;">13</td>
-													  <td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">13</td>
+													  <td style="font-size:7pt;">
 														<span style="width:1mm;"/>Other deductions</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/IRS1065K1OtherDeductionsGrp/SchK1OtherDeductionsGrp) = 0 ">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;font-size:7pt;">
+														  border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <!-- Add 2 blank rows -->
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -1948,7 +1945,7 @@
 														  <xsl:when test="position() = 1">
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-															    float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															    border-top:0px solid;font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode" 
 																   select="SchK1OtherDeductionsCd"/>
@@ -1957,7 +1954,7 @@
 															  <td class="IRS1065ScheduleK1_amountBox" 
 															    style="height:4.5mm;border-top:0px solid;width:41.40mm;
 															    font-size:7pt;" valign="bottom">
-																<span style="float:left;padding-left:2px;">
+																<span style="padding-left:2px;">
 																  <xsl:call-template name="SetFormLinkInline">
 																	<xsl:with-param name="TargetNode"
 																	  select="$FormData/IRS1065K1OtherDeductionsGrp"/>
@@ -1974,7 +1971,7 @@
 														  <xsl:otherwise>
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox" 
-															    style="height:7.795mm;float:left;border-top:1px solid black;
+															    style="height:7.795mm;border-top:1px solid black;
 															    font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
@@ -1982,7 +1979,7 @@
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox"
-															    style="height:7.795mm;float:left;border-top:1px solid black;
+															    style="height:7.795mm;border-top:1px solid black;
 															    width:41.40mm;font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="Amt"/>
@@ -1997,21 +1994,21 @@
 													<xsl:if test="count($FormData/IRS1065K1OtherDeductionsGrp/SchK1OtherDeductionsGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2020,11 +2017,11 @@
 													<xsl:if test="count($FormData/IRS1065K1OtherDeductionsGrp/SchK1OtherDeductionsGrp) = 2">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2033,11 +2030,11 @@
 													<xsl:if test="((count($FormData/IRS1065K1OtherDeductionsGrp/SchK1OtherDeductionsGrp) &gt;3)  and                 ($Print = $Separated))">
 													  <tr>
 													    <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-													      float:left;border-top:0px solid black;font-size:7pt;">
+													      border-top:0px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
 													        <xsl:with-param name="TargetNode"
@@ -2046,21 +2043,21 @@
 														</td>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.8mm;
-														    float:left;border-top:1px solid black;font-size:7pt;">
+														    border-top:1px solid black;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:7.8mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 													    </tr>
 													    <tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.8mm;
-														    float:left;border-top:1px solid black;font-size:7pt;">
+														    border-top:1px solid black;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:7.8mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 													    </tr>
@@ -2077,31 +2074,30 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;">14</td>
-													  <td style="float:left;font-size:6pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">14</td>
+													  <td style="font-size:6pt;">
 													    <span style="width:1mm;"/>Self-employment earnings (loss)</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/IRS1065K1SelfEmplmnEarnLossGrp/SchK1SelfEmploymentEarnLossGrp) = 0 ">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:4.35mm;
-														  float:left;border-top:0px solid;font-size:7pt;">
+														  border-top:0px solid;font-size:7pt;">
 															<span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.35mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <!-- Add 1 blank row -->
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.5mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.5mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2113,7 +2109,7 @@
 														  <xsl:when test="position() = 1">
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox" 
-															  style="height:4.35mm;float:left;border-top:0px solid;
+															  style="height:4.35mm;border-top:0px solid;
 															   font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
@@ -2121,7 +2117,7 @@
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox" 
-															  style="height:4.35mm;float:left;border-top:0px solid;
+															  style="height:4.35mm;border-top:0px solid;
 															   width:41.40mm;font-size:7pt;"
 															   valign="bottom">
 																<xsl:call-template name="PopulateAmount">
@@ -2134,7 +2130,7 @@
 														  <xsl:otherwise>
 														    <tr>
 															  <td class="IRS1065ScheduleK1_codeBox" 
-															  style="height:7.7mm;float:left;border-top:1px solid black;
+															  style="height:7.7mm;border-top:1px solid black;
 															  border-bottom:1px solid black; font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
@@ -2142,7 +2138,7 @@
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox" 
-															  style="height:7.7mm;float:left;border-top:1px solid black;
+															  style="height:7.7mm;border-top:1px solid black;
 															  border-bottom:1px solid black; width:41.40mm;font-size:7pt;"
 															   valign="bottom">
 																<xsl:call-template name="PopulateAmount">
@@ -2159,11 +2155,11 @@
 													<xsl:if test="count($FormData/IRS1065K1SelfEmplmnEarnLossGrp/SchK1SelfEmploymentEarnLossGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.5mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.5mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2172,11 +2168,11 @@
 													<xsl:if test="(($Print = $Separated)  and                 (count($FormData/IRS1065K1SelfEmplmnEarnLossGrp/SchK1SelfEmploymentEarnLossGrp) &gt;2))">
 													  <tr>
 													    <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-													      float:left;border-top:0px solid black;font-size:7pt;">
+													      border-top:0px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
 													        <xsl:with-param name="TargetNode"
@@ -2185,11 +2181,11 @@
 														</td>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.5mm;
-														    float:left;border-top:1px solid black;font-size:7pt;">
+														    border-top:1px solid black;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:7.5mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														    <span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														</tr>
@@ -2211,31 +2207,30 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;">15</td>
-														<td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">15</td>
+														<td style="font-size:7pt;">
 														  <span style="width:1mm;"/>Credits</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/IRS1065K1CreditsAndCrRcptrGrp/SchK1CreditsAndCrRcptrGrp) = 0 ">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;
-														  float:left;border-top:0px solid;font-size:7pt;">
+														  border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.6mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <!-- Add 1 blank row -->
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81m;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2247,14 +2242,14 @@
 														  <xsl:when test="position() = 1">
 														    <tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:4.6mm;
-															    float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															    border-top:0px solid;font-size:7pt;" valign="bottom">
 															    <xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
 																   select="SchK1CreditsAndCrRcptrCd"/>
 															    </xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox" 
-															   style="height:4.6mm;float:left;border-top:0px solid;
+															   style="height:4.6mm;border-top:0px solid;
 															   width:41.40mm;font-size:7pt;" valign="bottom">
 															    <span style="float:left;padding-left:2px;">
 															      <xsl:call-template name="SetFormLinkInline">
@@ -2273,7 +2268,7 @@
 														  <xsl:otherwise>
 														    <tr>
 															  <td class="IRS1065ScheduleK1_codeBox" 
-															    style="height:7.81mm;float:left;border-top:1px solid black;	
+															    style="height:7.81mm;border-top:1px solid black;	
 															    font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
@@ -2281,7 +2276,7 @@
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox"
-															   style="height:7.81mm;float:left;border-top:1px solid black;
+															   style="height:7.81mm;border-top:1px solid black;
 															   width:41.40mm;font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="Amt"/>
@@ -2297,11 +2292,11 @@
 													<xsl:if test="count($FormData/IRS1065K1CreditsAndCrRcptrGrp/SchK1CreditsAndCrRcptrGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2310,11 +2305,11 @@
 													<xsl:if test="(($Print = $Separated)  and                  (count($FormData/IRS1065K1CreditsAndCrRcptrGrp/SchK1CreditsAndCrRcptrGrp) &gt;2))">
 													  <tr>
 													    <td class="IRS1065ScheduleK1_codeBox" style="height:4.48mm;
-													      float:left;border-top:0px solid black;font-size:7pt;">
+													      border-top:0px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.48mm;
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
 													        <xsl:with-param name="TargetNode"
@@ -2323,11 +2318,11 @@
 														</td>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox"
-														    style="height:7.81mm;float:left;border-top:1px solid black;
+														    style="height:7.81mm;border-top:1px solid black;
 														    width:41.40mm;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -2356,72 +2351,72 @@
 													<xsl:if test="count($FormData/SchK1ForeignTransactionsGrp) = 0 ">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;font-size:7pt;">
+														  border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <!-- Add 6 blank rows -->
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2433,7 +2428,7 @@
 														    <xsl:when test="position() = 1">
 															  <tr>
 																<td class="IRS1065ScheduleK1_codeBox" 
-																 style="height:4.5mm;float:left;border-top:0px solid;
+																 style="height:4.5mm;border-top:0px solid;
 																 font-size:7pt;" valign="bottom">
 																  <xsl:call-template name="PopulateText">
 																    <xsl:with-param name="TargetNode"
@@ -2441,7 +2436,7 @@
 																  </xsl:call-template>
 																</td>
 																<td class="IRS1065ScheduleK1_amountBox"
-																 style="height:4.5mm;float:left;border-top:0px solid;
+																 style="height:4.5mm;border-top:0px solid;
 																 width:41.40mm;font-size:7pt;" valign="bottom">
 																  <span style="float:left;padding-left:2px;">
 																    <xsl:call-template name="SetFormLinkInline">
@@ -2466,7 +2461,7 @@
 															<xsl:otherwise>
 															  <tr>
 																<td class="IRS1065ScheduleK1_codeBox" 
-																 style="height:7.81m;float:left;border-top:1px solid black;
+																 style="height:7.81m;border-top:1px solid black;
 																 font-size:7pt;" valign="bottom">
 																  <xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode"
@@ -2474,7 +2469,7 @@
 																  </xsl:call-template>
 																</td>
 																<td class="IRS1065ScheduleK1_amountBox" 
-																 style="height:7.81mm;float:left;border-top:1px solid black;
+																 style="height:7.81mm;border-top:1px solid black;
 																 width:41.40mm;font-size:7pt;" valign="bottom">
 																  <span style="float:left;padding-left:2px;">
 																	<xsl:call-template name="SetFormLinkInline">
@@ -2503,7 +2498,7 @@
 															<xsl:when test="position() = 1">
 															  <tr>
 																<td class="IRS1065ScheduleK1_codeBox"
-																 style="height:4.5mm;float:left;border-top:0px solid;
+																 style="height:4.5mm;border-top:0px solid;
 																 font-size:7pt;" valign="bottom">
 																  <xsl:call-template name="PopulateText">
   																	<xsl:with-param name="TargetNode"
@@ -2511,7 +2506,7 @@
 																  </xsl:call-template>
 																</td>
 																<td class="IRS1065ScheduleK1_amountBox"
-																 style="height:4.5mm;float:left;border-top:0px solid;
+																 style="height:4.5mm;border-top:0px solid;
 																 width:41.40mm;font-size:7pt;" valign="bottom">
 																  <span style="float:left;padding-left:2px;">
 																    <xsl:call-template name="SetFormLinkInline">
@@ -2535,7 +2530,7 @@
 															<xsl:otherwise>
 															  <tr>
 																<td class="IRS1065ScheduleK1_codeBox"
-																 style="height:7.81mm;float:left;border-top:1px solid black;
+																 style="height:7.81mm;border-top:1px solid black;
 																 font-size:7pt;" valign="bottom">
 																  <xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode"
@@ -2543,7 +2538,7 @@
 																  </xsl:call-template>
 																</td>
 																<td class="IRS1065ScheduleK1_amountBox"
-																 style="height:7.81mm;float:left;border-top:1px solid black;
+																 style="height:7.81mm;border-top:1px solid black;
 																 width:41.40mm;font-size:7pt;" valign="bottom">
 																  <span style="float:left;padding-left:2px;">
 																	<xsl:call-template name="SetFormLinkInline">
@@ -2572,51 +2567,51 @@
 													<xsl:if test="count($FormData/SchK1ForeignTransactionsGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														 float:left;border-top:1px solid black;font-size:7pt;">
+														 border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2625,51 +2620,51 @@
 													<xsl:if test="count($FormData/SchK1ForeignTransactionsGrp) = 2">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2678,41 +2673,41 @@
 													<xsl:if test="count($FormData/SchK1ForeignTransactionsGrp) = 3">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2721,31 +2716,31 @@
 													<xsl:if test="count($FormData/SchK1ForeignTransactionsGrp) = 4">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2754,21 +2749,21 @@
 													<xsl:if test="count($FormData/SchK1ForeignTransactionsGrp) = 5">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2777,11 +2772,11 @@
 													<xsl:if test="count($FormData/SchK1ForeignTransactionsGrp) = 6">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2790,11 +2785,11 @@
 													<xsl:if test="count($FormData/SchK1ForeignTransactionsGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.81mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2803,11 +2798,11 @@
 													<xsl:if test="((count($FormData/SchK1ForeignTransactionsGrp) &gt;7)  and                  ($Print = $Separated))">
 													   <tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-														    float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+														    border-top:0px solid;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														    float:left;border-top:0px solid;width:41.40mm;font-size:7pt;"
+														    border-top:0px solid;width:41.40mm;font-size:7pt;"
 														    valign="bottom">
 															<span style="float:right;">
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -2818,66 +2813,66 @@
 														  </td>
 														  <tr>
 														    <td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														      float:left;border-top:1px solid black;font-size:7pt;">
+														      border-top:1px solid black;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 														    <td class="IRS1065ScheduleK1_amountBox"
-														      style="height:7.81mm;float:left;border-top:1px solid black;
+														      style="height:7.81mm;border-top:1px solid black;
 														      width:41.40mm;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 													      </tr>
 													      <tr>
 														    <td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														      float:left;border-top:1px solid black;font-size:7pt;">
+														      border-top:1px solid black;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 														    <td class="IRS1065ScheduleK1_amountBox"
-														      style="height:7.81mm;float:left;border-top:1px solid black;
+														      style="height:7.81mm;border-top:1px solid black;
 														      width:41.40mm;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 													      </tr>
 													      <tr>
 														    <td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														      float:left;border-top:1px solid black;font-size:7pt;">
+														      border-top:1px solid black;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 														    <td class="IRS1065ScheduleK1_amountBox"
-														      style="height:7.81mm;float:left;border-top:1px solid black;
+														      style="height:7.81mm;border-top:1px solid black;
 														      width:41.40mm;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 													      </tr>
 													      <tr>
 														    <td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														      float:left;border-top:1px solid black;font-size:7pt;">
+														      border-top:1px solid black;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 														    <td class="IRS1065ScheduleK1_amountBox"
-														      style="height:7.81mm;float:left;border-top:1px solid black;
+														      style="height:7.81mm;border-top:1px solid black;
 														      width:41.40mm;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 													      </tr>
 													      <tr>
 														    <td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm; 
-														      float:left;border-top:1px solid black;font-size:7pt;">
+														      border-top:1px solid black;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 														    <td class="IRS1065ScheduleK1_amountBox"
-														      style="height:7.81mm;float:left;border-top:1px solid black;
+														      style="height:7.81mm;border-top:1px solid black;
 														      width:41.40mm;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 													      </tr>
 													      <tr>
 														    <td class="IRS1065ScheduleK1_codeBox" style="height:7.81mm;
-														      float:left;border-top:1px solid black;font-size:7pt;">
+														      border-top:1px solid black;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
 														    <td class="IRS1065ScheduleK1_amountBox"
-														      style="height:7.81mm;float:left;border-top:1px solid black;
+														      style="height:7.81mm;border-top:1px solid black;
 														      width:41.40mm;font-size:7pt;">
 														      <span style="vertical-align:baseline;height:100%;"/>
 														    </td>
@@ -2895,8 +2890,7 @@
 												 <table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;" valign="top">17</td>
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;" valign="top">17</td>
 														<td style="font-size:6pt;">
 														  <span style="width:0.5mm;"/>Alternative minimum tax (AMT)
 														   items</td>
@@ -2905,32 +2899,32 @@
 													<xsl:if test="count($FormData/IRS1065K1AMTItemsGrp/SchK1AMTItemsGrp) = 0 ">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:4.2mm;
-														  float:left;border-top:0px solid;font-size:7pt;">
+														  border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.2mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <!-- Add 2 blank rows -->
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.87mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.87mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
   														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.87mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.87mm; 
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -2942,14 +2936,14 @@
 														  <xsl:when test="position() = 1">
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:4.2mm;
-															    float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															    border-top:0px solid;font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode" 
 																    select="SchK1AMTItemsCd"/>
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox" 
-															    style="height:4.2mm;float:left;border-top:0px solid;
+															    style="height:4.2mm;border-top:0px solid;
 															    width:41.40mm;font-size:7pt;" valign="bottom">
 																<span style="float:left;padding-left:2px;">
 																  <xsl:call-template name="SetFormLinkInline">
@@ -2968,7 +2962,7 @@
 														  <xsl:otherwise>
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox"
-															    style="height:7.87mm;float:left;border-top:1px solid black;
+															    style="height:7.87mm;border-top:1px solid black;
 															    font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
@@ -2976,7 +2970,7 @@
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox"
-															    style="height:7.87mm;float:left;border-top:1px solid black;
+															    style="height:7.87mm;border-top:1px solid black;
 															    width:41.40mm;font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="Amt"/>
@@ -2992,11 +2986,11 @@
 													<xsl:if test="count($FormData/IRS1065K1AMTItemsGrp/SchK1AMTItemsGrp) = 2">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.87mm; 
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.87mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3005,21 +2999,21 @@
 													<xsl:if test="count($FormData/IRS1065K1AMTItemsGrp/SchK1AMTItemsGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.87mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.87mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
   														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.87mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.87mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3028,11 +3022,11 @@
 													<xsl:if test="((count($FormData/IRS1065K1AMTItemsGrp/SchK1AMTItemsGrp) &gt;3)  and                                    ($Print = $Separated))">
 													  <tr>
 													    <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-													      float:left;border-top:0px solid black;font-size:7pt;">
+													      border-top:0px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
 													        <xsl:with-param name="TargetNode"
@@ -3041,11 +3035,11 @@
 														</td>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.87mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox"
-														    style="height:7.87mm;float:left;border-top:1px solid black;
+														    style="height:7.87mm;border-top:1px solid black;
 														    width:41.40mm;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -3053,11 +3047,11 @@
 														</tr>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.87mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox"
-														    style="height:7.87mm;float:left;border-top:1px solid black;
+														    style="height:7.87mm;border-top:1px solid black;
 														    width:41.40mm;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -3076,9 +3070,8 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;height:6.5mm;" valign="top">18</td>
-														<td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;height:6.5mm;" valign="top">18</td>
+														<td style="font-size:7pt;">
 														  <span style="width:1mm;"/>Tax-exempt income and <br/>
 														  <span style="width:1mm;"/>nondeductible expenses
                                                         </td>
@@ -3087,32 +3080,32 @@
 													<xsl:if test="count($FormData/IRS1065K1TxExmptNondedExpnsGrp/SchK1TxExmptNondedExpnsGrp) = 0 ">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;font-size:7pt;">
+														  border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <!-- Add 2 blank rows -->
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 													    </td>
 													  </tr>
@@ -3124,14 +3117,14 @@
 														  <xsl:when test="position() = 1">
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-															    float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															    border-top:0px solid;font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
 																    select="SchK1TxExmptNondedExpnsCd"/>
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox"
-															    style="height:4.5mm;float:left;border-top:0px solid;
+															    style="height:4.5mm;border-top:0px solid;
 															    width:41.40mm;font-size:7pt;" valign="bottom">
 															    <span style="float:left;padding-left:2px;">
 																  <xsl:call-template name="SetFormLinkInline">
@@ -3149,7 +3142,7 @@
 														  <xsl:otherwise>
 															<tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-															    float:left;border-top:1px solid black;font-size:7pt;"
+															    border-top:1px solid black;font-size:7pt;"
 															    valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
@@ -3157,7 +3150,7 @@
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-															    float:left;border-top:1px solid black;width:41.40mm;
+															    border-top:1px solid black;width:41.40mm;
 															    font-size:7pt;" valign="bottom">
 															    <span style="float:left;padding-left:2px;">
 																  <xsl:call-template name="SetFormLinkInline">
@@ -3179,11 +3172,11 @@
 													<xsl:if test="count($FormData/IRS1065K1TxExmptNondedExpnsGrp/SchK1TxExmptNondedExpnsGrp) = 2">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
  														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3192,21 +3185,21 @@
 													<xsl:if test="count($FormData/IRS1065K1TxExmptNondedExpnsGrp/SchK1TxExmptNondedExpnsGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 													    </td>
 													  </tr>
@@ -3215,11 +3208,11 @@
 													<xsl:if test="(($Print = $Separated) and                     (count($FormData/IRS1065K1TxExmptNondedExpnsGrp/SchK1TxExmptNondedExpnsGrp) &gt;3))">
 													  <tr>
 													    <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-													      float:left;border-top:0px solid black;font-size:7pt;">
+													      border-top:0px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
 													        <xsl:with-param name="TargetNode" 
@@ -3228,11 +3221,11 @@
 														</td>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;"
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;"
 														    valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -3240,11 +3233,11 @@
 														</tr>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;"
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;"
 														    valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -3263,31 +3256,30 @@
 												<table cellpadding="0" cellspacing="0" style="width:46.5mm;">
 												  <tbody>
 													<tr>
-													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;
-													    float:left;">19</td>
-														<td style="float:left;font-size:7pt;">
+													  <td class="IRS1065ScheduleK1_itemLabel" style="text-align:center;">19</td>
+														<td style="font-size:7pt;">
 														  <span style="width:1mm;"/>Distributions</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/IRS1065K1DistributionsGrp/SchK1DistributionsGrp) = 0 ">
 													  <tr>
 													    <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-													      float:left;border-top:0px solid;font-size:7pt;">
+													      border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <!-- Add 1 blank row -->
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 													      <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3300,7 +3292,7 @@
 															<xsl:when test="position() = 1">
 															  <tr>
 																<td class="IRS1065ScheduleK1_codeBox" 
-																  style="height:4.5mm;float:left;border-top:0px solid;
+																  style="height:4.5mm;border-top:0px solid;
 																  font-size:7pt;" valign="bottom">
 																  <xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode"
@@ -3308,7 +3300,7 @@
 																  </xsl:call-template>
 																</td>
 																<td class="IRS1065ScheduleK1_amountBox"
-																  style="height:4.5mm;float:left;border-top:0px solid;
+																  style="height:4.5mm;border-top:0px solid;
 																  width:41.40mm;font-size:7pt;" valign="bottom">
 																  <span style="float:left;padding-left:2px;">
 																    <xsl:call-template name="SetFormLinkInline">
@@ -3333,7 +3325,7 @@
 															<xsl:otherwise>
 															  <tr>
 																<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-																  float:left;border-top:1px solid black;font-size:7pt;"
+																  border-top:1px solid black;font-size:7pt;"
 																  valign="bottom">
 																  <xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode"
@@ -3341,7 +3333,7 @@
 																  </xsl:call-template>
 																</td>
 																<td class="IRS1065ScheduleK1_amountBox" 
-																  style="height:8mm;float:left;border-top:1px solid black;
+																  style="height:8mm;border-top:1px solid black;
 																  width:41.40mm;font-size:7pt;" valign="bottom">
 																  <span style="float:left;padding-left:2px;">
 																    <xsl:call-template name="SetFormLinkInline">
@@ -3371,11 +3363,11 @@
 													<xsl:if test="count($FormData/IRS1065K1DistributionsGrp/SchK1DistributionsGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 													      <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3384,11 +3376,11 @@
 													<xsl:if test="(($Print = $Separated) and                     (count($FormData/IRS1065K1DistributionsGrp/SchK1DistributionsGrp) &gt;2))">
 													  <tr>
 													    <td class="IRS1065ScheduleK1_codeBox" style="height:4.5mm;
-													      float:left;border-top:0px solid black;font-size:7pt;">
+													      border-top:0px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:4.5mm; 
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
 													        <xsl:with-param name="TargetNode"
@@ -3397,11 +3389,11 @@
 														</td>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:8mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:8mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;"
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;"
 														    valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -3421,51 +3413,49 @@
 												  <tbody>
 													<tr>
 													  <td class="IRS1065ScheduleK1_itemLabel" 
-													    style="text-align:center;float:left;">20</td>
-														<td style="float:left;font-size:7pt;">
+													    style="text-align:center;">20</td>
+														<td style="font-size:7pt;">
 														  <span style="width:1mm;"/>Other information
 														</td>
 													</tr>
 													<!-- Display a blank line if there are no data elements -->
 													<xsl:if test="count($FormData/IRS1065K1OtherInformationGrp/SchK1OtherInformationGrp) = 0 ">
 													  <tr>
-														<td class="IRS1065ScheduleK1_codeBox" style="height:8.6mm;
-														  float:left;border-top:0px solid;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_codeBox" style="height:8.6mm;border-top:0px solid;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
-														<td class="IRS1065ScheduleK1_amountBox" style="height:8.6mm;
-														  float:left;border-top:0px solid;width:41.40mm;font-size:7pt;">
+														<td class="IRS1065ScheduleK1_amountBox" style="height:8.6mm;border-top:0px solid;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <!-- Add 3 blank rows -->
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3477,7 +3467,7 @@
 														  <xsl:when test="position() = 1">
 														    <tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:8.6mm;
-															    float:left;border-top:0px solid;font-size:7pt;" valign="bottom">
+															    border-top:0px solid;font-size:7pt;" valign="bottom">
 															    <xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
 																   select="SchK1OtherInformationCd"/>
@@ -3504,7 +3494,7 @@
 														  <xsl:otherwise>
 														    <tr>
 															  <td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-															    float:left;border-top:1px solid black;font-size:7pt;" 
+															    border-top:1px solid black;font-size:7pt;" 
 															    valign="bottom">
 																<xsl:call-template name="PopulateText">
 																  <xsl:with-param name="TargetNode"
@@ -3512,7 +3502,7 @@
 																</xsl:call-template>
 															  </td>
 															  <td class="IRS1065ScheduleK1_amountBox"
-															    style="height:7.6mm;float:left;border-top:1px solid black;
+															    style="height:7.6mm;border-top:1px solid black;
 															    width:41.40mm;font-size:7pt;" valign="bottom">
 																<xsl:call-template name="PopulateAmount">
 																  <xsl:with-param name="TargetNode" select="Amt"/>
@@ -3528,31 +3518,31 @@
 													<xsl:if test="count($FormData/IRS1065K1OtherInformationGrp/SchK1OtherInformationGrp) = 1">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3561,21 +3551,21 @@
 													<xsl:if test="count($FormData/IRS1065K1OtherInformationGrp/SchK1OtherInformationGrp) = 2">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														 <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3584,11 +3574,11 @@
 													<xsl:if test="count($FormData/IRS1065K1OtherInformationGrp/SchK1OtherInformationGrp) = 3">
 													  <tr>
 														<td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;font-size:7pt;">
+														  border-top:1px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														  float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:1px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 													  </tr>
@@ -3597,11 +3587,11 @@
 													<xsl:if test="(($Print = $Separated) and                     (count($FormData/IRS1065K1OtherInformationGrp/SchK1OtherInformationGrp) &gt;4))">
 													  <tr>
 													    <td class="IRS1065ScheduleK1_codeBox" style="height:9.5mm;
-													      float:left;border-top:0px solid black;font-size:7pt;">
+													      border-top:0px solid black;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														</td>
 														<td class="IRS1065ScheduleK1_amountBox" style="height:9.5mm;
-														  float:left;border-top:0px solid black;width:41.40mm;font-size:7pt;">
+														  border-top:0px solid black;width:41.40mm;font-size:7pt;">
 														  <span style="vertical-align:baseline;height:100%;"/>
 														  <xsl:call-template name="PopulateAdditionalDataTableMessage">
 													        <xsl:with-param name="TargetNode"
@@ -3610,11 +3600,11 @@
 														</td>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;" 
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;" 
 														    valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -3622,11 +3612,11 @@
 														</tr>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														    float:left;border-top:1px solid black;width:41.40mm;font-size:7pt;"
+														    border-top:1px solid black;width:41.40mm;font-size:7pt;"
 														    valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -3634,11 +3624,11 @@
 														</tr>
 														<tr>
 														  <td class="IRS1065ScheduleK1_codeBox" style="height:7.6mm;
-														    float:left;border-top:1px solid black;font-size:7pt;" valign="bottom">
+														    border-top:1px solid black;font-size:7pt;" valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 														  </td>
 														  <td class="IRS1065ScheduleK1_amountBox" style="height:7.6mm;
-														    float:left;border-top:1px solid black;width:41.40mmfont-size:7pt;"
+														    border-top:1px solid black;width:41.40mmfont-size:7pt;"
 														    valign="bottom">
 															<span style="vertical-align:baseline;height:100%;"/>
 															<br/>
@@ -3679,7 +3669,7 @@
 						</span>
 						<span style="width: 28.5mm;">IRS.gov/form1065</span>
 						<span style="font-weight: normal; width: 26mm;">Cat. No. 11394R</span>
-						<span style="width: 40mm;">Schedule K-1 (Form 1065) 2014</span>
+						<span style="width: 40mm;">Schedule K-1 (Form 1065) 2015</span>
 					  </td>
 					</tr>
 				</table>

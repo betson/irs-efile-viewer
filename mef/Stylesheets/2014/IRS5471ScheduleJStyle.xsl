@@ -48,8 +48,10 @@
    }
  .sty5471ScheduleJCellGeneric {
     height: 8mm;
-    font-size: 6pt;
-    border: 1px solid;
+    width:32mm;
+    font-size: 7pt;
+    font-weight:normal;
+    border: 1px solid black;
     border-left: 0; border-top: 0;
     text-align: right;
     }

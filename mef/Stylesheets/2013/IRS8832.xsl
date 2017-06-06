@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8832Data" select="$RtnDoc/IRS8832"/>
 	<xsl:template match="/">
-	<html lang="EN-US">
+	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
 		<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 			<title>
 				<xsl:call-template name="FormTitle">
 					<xsl:with-param name="RootElement" select="local-name($Form8832Data)"/>
@@ -36,17 +38,17 @@
 			</style>
 			<xsl:call-template name="GlobalStylesForm"/>
 		</head>
-		<body class="styBodyClass">
+		<body class="styBodyClass" style="width:187mm">
 			<form name="Form8832">
 				<xsl:call-template name="DocumentHeader"/>      
 				<!-- Begin Form Number and Name -->
 				<div class="styTBB" style="width:187mm;height:22.5mm;">
-					<div class="styFNBox" style="width:32mm;height:22.5mm;">
-						<div style="height:13mm;">
+					<div class="styFNBox" style="width:32mm;height:22.5mm;border-right-width:2px;">
+						<div style="height:15.5mm;">
 							Form<span class="styFormNumber">8832</span><br/>
 							(Rev. December 2013)
 							<xsl:call-template name="SetFormLinkInline">
-              	<xsl:with-param name="TargetNode" select="$Form8832Data"/>
+								<xsl:with-param name="TargetNode" select="$Form8832Data"/>
 							</xsl:call-template>
 						</div>
 						<div style="height:7mm">
@@ -57,25 +59,27 @@
 					<div class="styFTBox" style="width:125mm;height:22.5mm;padding-top:5mm;">
 						<div class="styMainTitle">Entity Classification Election </div>
 						<span class="styFST" style="height:5mm;font-size:7pt;padding-top:8mm;">
-              <img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/> 
+							<img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/> 
 							Information about Form 8832 and its instructions is at  
 							<a href="http://www.irs.gov/form8832"><i> www.irs.gov/form8832</i></a>
 						</span>
 						<br/>   
 					</div>
-					<div class="styTYBox" style="width:30mm;height:22.5mm;padding-top:10mm;">        
-            OMB No. 1545-1516        
+					<div class="styTYBox" style="width:30mm;height:22.5mm;padding-top:9mm;border-left-width:2px;">        
+						OMB No. 1545-1516        
 					</div>
 				</div>      
 				<!-- End Form Number and Name -->
 				<!-- Begin Type of Print Name, EIN (input) and address -->       
 				<div class="styBB" style="width:187mm;">
 					<div class="styUseLbl" style="width:10mm;height:32mm; text-align:center;vertical-align:center;padding-top:10mm;font-size:7pt;">    
-            Type or Print
-          </div>
-					<div class="styNameAddr" style="width:130mm;height:9.7mm;font-size:7pt;">
-						Name of eligible entity making election<br/>          
-						<div style="font-family:verdana;font-size:6pt;height:6.25mm">
+						Type or Print
+					</div>
+					<div class="styNameAddr" style="width:130mm;height:10mm;font-size:7pt;">
+						<span style="width:130mm;height:4mm">						
+							Name of eligible entity making election  
+						</span>
+						<div style="font-family:verdana;font-size:6pt;height:6mm">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8832Data/EntityName/BusinessNameLine1"/>
 							</xsl:call-template>
@@ -85,9 +89,11 @@
 							</xsl:call-template>
 						</div>         
 					</div>          
-					<div class="styLNAmountBox" style="width:47mm;height: 9.7mm;font-size:7pt; text-align:left; padding-top: 0mm;">
-						<span style="width: 1mm;"/><b>Employer identification number</b><span style="width: 1mm;"/>          
-						<span style="width:25mm;text-align:left;padding-left:1mm;">
+					<div class="styLNAmountBox" style="width:47mm;height:10mm;font-size:7pt; text-align:left; padding-top: 0mm;padding-left:1mm">
+						<span style="height:6mm">
+							<b>Employer identification number</b>  
+						</span>
+						<span style="width:25mm;height:4mm;text-align:left">
 							<!-- If EntityEIN -->
 							<xsl:if test="not($Form8832Data/EntityEIN='' or not($Form8832Data/EntityEIN))">
 								<xsl:call-template name="PopulateEIN">
@@ -96,41 +102,43 @@
 							</xsl:if>        
 						</span>                
 					</div>   
-					<div class="styNameAddr" style="width:177mm;height:8mm;font-size:7pt;">
+					<div class="styNameAddr" style="width:177mm;height:10mm;font-size:7pt;">
 						Number, street, and room or suite no. If a P.O. box, see instructions.<br/>
 						<!-- US vs Foreign Address -->
 						<xsl:choose> 
-              <xsl:when test="$Form8832Data/ForeignAddress"> 
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/ForeignAddress/AddressLine1"/>
-                </xsl:call-template><br/>
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/ForeignAddress/AddressLine2"/>
-                </xsl:call-template>
-							</xsl:when>         
-              <xsl:otherwise> 
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/AddressLine1"/>
-                </xsl:call-template><br/>
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/AddressLine2"/>
-                </xsl:call-template>
-              </xsl:otherwise> 
-            </xsl:choose>                               
+						  <xsl:when test="$Form8832Data/ForeignAddress"> 
+							<xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="$Form8832Data/ForeignAddress/AddressLine1"/>
+							</xsl:call-template><br/>
+							<xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="$Form8832Data/ForeignAddress/AddressLine2"/>
+							</xsl:call-template>
+										</xsl:when>         
+						  <xsl:otherwise> 
+							<xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/AddressLine1"/>
+							</xsl:call-template><br/>
+							<xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/AddressLine2"/>
+							</xsl:call-template>
+						  </xsl:otherwise> 
+						</xsl:choose>                               
 					</div>                      
-					<div class="styNumberBox" style="height:8mm;font-size:7pt;">
+					<div class="styNameAddr" style="width:177mm;height:12mm;font-size:7pt;border-bottom-width:0px;">
+					<div style="width:177mm;height:6mm">
 						City or town, <span style="width:2px;"/>
 						state, <span style="width:2px;"/>
 						and <span style="width:2px;"/>
 						ZIP code. <span style="width:2px;"/>
 						If a foreign address, enter city, province or state, postal code and country. Follow the country’s practice for entering the postal code.
-            <br/>                    
-            <xsl:choose> 
+					</div>
+ 					<div style="width:177mm;height:6mm;">                
+						<xsl:choose> 
 							<xsl:when test="$Form8832Data/ForeignAddress">               
 								<xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/ForeignAddress/City"/>
+								  <xsl:with-param name="TargetNode" select="$Form8832Data/ForeignAddress/City"/>
 								</xsl:call-template>
-								<xsl:if test="$Form8832Data/ForeignAddress/City != '' and $Form8832Data/ForeignAddress/ProvinceOrState != ''">,
+								<xsl:if test="$Form8832Data/ForeignAddress/CityNm != '' and $Form8832Data/ForeignAddress/ProvinceOrState != ''">,
 									<span style="width:2px;"/>
 								</xsl:if>                            
 								<xsl:call-template name="PopulateText">
@@ -146,60 +154,61 @@
 								</xsl:call-template>
 							</xsl:when>         
 							<xsl:otherwise> 
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/City"/>
-                </xsl:call-template>
-                <xsl:if test="$Form8832Data/USAddress/City != '' and                  $Form8832Data/USAddress/State != ''">,
-                  <span style="width:2px;"/>
-                </xsl:if>
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/State"/>
-                </xsl:call-template>
-                <span style="width:7px"/> 
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/ZIPCode"/>
-                </xsl:call-template>
+								<xsl:call-template name="PopulateText">
+								  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/City"/>
+								</xsl:call-template>
+								<xsl:if test="$Form8832Data/USAddress/CityNm != '' and $Form8832Data/USAddress/StateAbbreviationCd != ''">,
+								  <span style="width:2px;"/>
+								</xsl:if>
+								<xsl:call-template name="PopulateText">
+								  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/State"/>
+								</xsl:call-template>
+								<span style="width:7px"/> 
+								<xsl:call-template name="PopulateText">
+								  <xsl:with-param name="TargetNode" select="$Form8832Data/USAddress/ZIPCode"/>
+								</xsl:call-template>
 							</xsl:otherwise> 
 						</xsl:choose> 
+					</div>
 					</div>      
 				</div>
 				<!-- Begin Check if choice -->            
 				<div style="width:187mm;">
-					<span style="width:22mm;padding-left:2.5mm;">
-            <img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/> Check if:        
-					</span>
-          <input type="checkbox" class="styCkbox" name="Checkbox">
-						<xsl:call-template name="PopulateCheckbox">
-              <xsl:with-param name="TargetNode" select="$Form8832Data/AddressChangeInd"/>
-              <xsl:with-param name="BackupName">IRS8832AddressChange</xsl:with-param>
-            </xsl:call-template>
-          </input>
-          <span style="width:8px"/>
-          <label>
-            <xsl:call-template name="PopulateLabel">
-              <xsl:with-param name="TargetNode" select="$Form8832Data/AddressChangeInd"/>
-              <xsl:with-param name="BackupName">IRS8832AddressChange</xsl:with-param>
-            </xsl:call-template> 
-            Address change
-          </label>       
-          <span style="width:5mm"/>
+				  <span style="width:22mm;padding-left:2.5mm;">
+					<img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/> Check if:        
+				  </span>
+				  <input type="checkbox" class="styCkbox" name="Checkbox">
+					  <xsl:call-template name="PopulateCheckbox">
+					  <xsl:with-param name="TargetNode" select="$Form8832Data/AddressChangeInd"/>
+					  <xsl:with-param name="BackupName">IRS8832AddressChange</xsl:with-param>
+					</xsl:call-template>
+				  </input>
+				  <span style="width:4px"/>
+				  <label>
+					  <xsl:call-template name="PopulateLabel">
+					  <xsl:with-param name="TargetNode" select="$Form8832Data/AddressChangeInd"/>
+					  <xsl:with-param name="BackupName">IRS8832AddressChange</xsl:with-param>
+					</xsl:call-template> 
+					Address change
+				  </label>       
+				  <span style="width:5mm"/>
 					<input type="checkbox" class="styCkbox" name="Checkbox">
-            <xsl:call-template name="PopulateCheckbox">
-              <xsl:with-param name="TargetNode" select="$Form8832Data/LateClsfReliefRevProc200941Ind"/>
-              <xsl:with-param name="BackupName">IRS8832LateClassReliefRevProc200941</xsl:with-param>
-            </xsl:call-template>
-          </input>
-          <span style="width:8px"/>
-          <label>
-            <xsl:call-template name="PopulateLabel">
-              <xsl:with-param name="TargetNode" select="$Form8832Data/LateClsfReliefRevProc200941Ind"/>
-              <xsl:with-param name="BackupName">IRS8832LateClassReliefRevProc200941</xsl:with-param>
-            </xsl:call-template> 
-            Late classification relief sought under Revenue Procedure 2009-41
-          </label>          
+					<xsl:call-template name="PopulateCheckbox">
+					  <xsl:with-param name="TargetNode" select="$Form8832Data/LateClsfReliefRevProc200941Ind"/>
+					  <xsl:with-param name="BackupName">IRS8832LateClassReliefRevProc200941</xsl:with-param>
+					</xsl:call-template>
+				  </input>
+				  <span style="width:4px"/>
+				  <label>
+					<xsl:call-template name="PopulateLabel">
+					  <xsl:with-param name="TargetNode" select="$Form8832Data/LateClsfReliefRevProc200941Ind"/>
+					  <xsl:with-param name="BackupName">IRS8832LateClassReliefRevProc200941</xsl:with-param>
+					</xsl:call-template> 
+					Late classification relief sought under Revenue Procedure 2009-41
+				  </label>          
 				</div>
         <!-- ***************************************************************************************************************** -->
-        <div class="styBB" style="width:187mm;">
+        <div class="styBB" style="width:187mm;border-bottom-width:0px">
           <span style="width:22mm;padding-left:2.5mm;"></span>
           <input type="checkbox" class="styCkbox" name="Checkbox">
             <xsl:call-template name="PopulateCheckbox">
@@ -207,7 +216,7 @@
               <xsl:with-param name="BackupName">IRS8832LateClassReliefRevProc201032</xsl:with-param>
             </xsl:call-template>
           </input>
-          <span style="width:8px"/>
+          <span style="width:4px"/>
           <label>
             <xsl:call-template name="PopulateLabel">
               <xsl:with-param name="TargetNode" select="$Form8832Data/LateClsfReliefRevProc201032Ind"/>
@@ -218,9 +227,9 @@
 				</div>
 				<!-- ***************************************************************************************************************** -->
 				<!-- Begin Part I, Election Information -->
-				<div class="styBB" style="width: 187mm;padding-top:0px;padding-bottom:0px;border-top-width:1pt">
-					<div class="styPartName">Part I</div>
-					<div class="styPartDesc">Election Information</div>
+				<div class="styBB" style="width:187mm;border-top-width:1px">
+					<div class="styPartName" style="height:4.5mm;padding-top:0.5px">Part I</div>
+					<div class="styPartDesc" style="height:4.5mm;padding-top:0.5px" >Election Information</div>
 				</div>
 				<!-- Begin Part I, Line 1 -->
 				<div style="width:187mm;"> </div>
@@ -231,24 +240,25 @@
 					</div>
 				</div>
 				<!-- Begin Part I, Line 1a -->
-				<div style="width:187mm;"/>
+				<div style="width:187mm"/>
 				<div style="width:187mm;">
 					<div class="styLNLeftLtrBox" style="height:4.5mm;">a</div>
 					<div class="styLNDesc" style="width:178mm;height:4.5mm;">
-						<input type="checkbox" class="styCkbox" name="Checkbox">
-							<xsl:call-template name="PopulateCheckbox">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/InitialClassificationInd"/>
-								<xsl:with-param name="BackupName">IRS8832InitialClassification</xsl:with-param>
-							</xsl:call-template>
-						</input>
-						<span style="width:8px"/>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/InitialClassificationInd"/>
-								<xsl:with-param name="BackupName">IRS8832InitialClassification</xsl:with-param>
-							</xsl:call-template> 
-							Initial classification by a newly-formed entity. Skip lines 2a and 2b and go to line 3.
-						</label>       
+							<input type="checkbox" class="styCkbox" name="Checkbox">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/InitialClassificationInd"/>
+									<xsl:with-param name="BackupName">IRS8832InitialClassification</xsl:with-param>
+								</xsl:call-template>
+							</input>
+						<div style="width:170mm;height:4.5mm;padding-top:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/InitialClassificationInd"/>
+									<xsl:with-param name="BackupName">IRS8832InitialClassification</xsl:with-param>
+								</xsl:call-template> 
+								Initial classification by a newly-formed entity. Skip lines 2a and 2b and go to line 3.
+							</label>      
+						</div> 
 					</div>
 				</div>
 				<!-- Begin Part I, Line 1b -->
@@ -261,14 +271,15 @@
 								<xsl:with-param name="BackupName">IRS8832ChangeInCurrentClassification</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<span style="width:8px"/>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/ChangeInCurrentClsfInd"/>
-								<xsl:with-param name="BackupName">IRS8832ChangeInCurrentClassification</xsl:with-param>
-							</xsl:call-template> 
-							Change in current classification. Go to line 2a
-						</label>
+						<div style="width:130mm;height:4.5mm;padding-top:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/ChangeInCurrentClsfInd"/>
+									<xsl:with-param name="BackupName">IRS8832ChangeInCurrentClassification</xsl:with-param>
+								</xsl:call-template> 
+								Change in current classification. Go to line 2a
+							</label>
+						</div>  
 					</div>  
 				</div>
 				<!-- Begin Part I, Line 2a -->
@@ -286,17 +297,19 @@
 					<div class="styLNDesc" style="width:178mm;height:4.5mm;">
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateYesCheckbox">
-               	<xsl:with-param name="TargetNode" select="$Form8832Data/ElectionWithPriorEffDtInd"/>
-               	<xsl:with-param name="BackupName">IRS8832ElecWithPriorEffectiveDateInd</xsl:with-param>
-              </xsl:call-template>
-						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelYes">
 								<xsl:with-param name="TargetNode" select="$Form8832Data/ElectionWithPriorEffDtInd"/>
-              	<xsl:with-param name="BackupName">IRS8832ElecWithPriorEffectiveDateInd</xsl:with-param>
-            	</xsl:call-template>
-						</label>
-						<b> Yes. </b>Go to line 2b.
+								<xsl:with-param name="BackupName">IRS8832ElecWithPriorEffectiveDateInd</xsl:with-param>
+							</xsl:call-template>
+						</input>
+						<div style="width:130mm;height:4.5mm;padding-top:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/ElectionWithPriorEffDtInd"/>
+									<xsl:with-param name="BackupName">IRS8832ElecWithPriorEffectiveDateInd</xsl:with-param>
+								</xsl:call-template>
+							</label>
+							<b> Yes. </b>Go to line 2b.
+						</div>
 					</div>  
 				</div>
 				<!-- No Check Box -->
@@ -306,16 +319,18 @@
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form8832Data/ElectionWithPriorEffDtInd"/>
-               	<xsl:with-param name="BackupName">IRS8832ElecWithPriorEffectiveDateInd</xsl:with-param>
-              	</xsl:call-template>
+								<xsl:with-param name="BackupName">IRS8832ElecWithPriorEffectiveDateInd</xsl:with-param>
+							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelNo">
-              	<xsl:with-param name="TargetNode" select="$Form8832Data/ElectionWithPriorEffDtInd"/>
-              	<xsl:with-param name="BackupName">IRS8832ElecWithPriorEffectiveDateInd</xsl:with-param>
-            	</xsl:call-template>
-						</label>
-						<b> No. </b>Skip line 2b and go to line 3.
+						<div style="width:130mm;height:4.5mm;padding-top:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/ElectionWithPriorEffDtInd"/>
+									<xsl:with-param name="BackupName">IRS8832ElecWithPriorEffectiveDateInd</xsl:with-param>
+								</xsl:call-template>
+							</label>
+							<b> No. </b>Skip line 2b and go to line 3.
+						</div>
 					</div>  
 				</div>      
 				<!-- end line 2a -->
@@ -334,17 +349,19 @@
 					<div class="styLNDesc" style="width:178mm;height:4.5mm;">
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateYesCheckbox">
-               	<xsl:with-param name="TargetNode" select="$Form8832Data/PriorElectionDtOfFormationInd"/>
-               	<xsl:with-param name="BackupName">IRS8832ElectionWithPriorEffDtInd</xsl:with-param>
-              </xsl:call-template>
+								<xsl:with-param name="TargetNode" select="$Form8832Data/PriorElectionDtOfFormationInd"/>
+								<xsl:with-param name="BackupName">IRS8832ElectionWithPriorEffDtInd</xsl:with-param>
+							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelYes">
-              	<xsl:with-param name="TargetNode" select="$Form8832Data/PriorElectionDtOfFormationInd"/>
-              	<xsl:with-param name="BackupName">IRS8832ElectionWithPriorEffDtInd</xsl:with-param>
-            	</xsl:call-template>
-						</label>
-						<b> Yes. </b>Go to line 3.
+						<div style="width:130mm;height:4.5mm;padding-top:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/PriorElectionDtOfFormationInd"/>
+									<xsl:with-param name="BackupName">IRS8832ElectionWithPriorEffDtInd</xsl:with-param>
+								</xsl:call-template>
+							</label>
+							<b> Yes. </b>Go to line 3.
+						</div>
 					</div>  
 				</div>
 				<!-- No Check Box -->
@@ -354,16 +371,18 @@
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form8832Data/PriorElectionDtOfFormationInd"/>
-               	<xsl:with-param name="BackupName">IRS8832ElectionWithPriorEffDtInd</xsl:with-param>
-              </xsl:call-template>
+								<xsl:with-param name="BackupName">IRS8832ElectionWithPriorEffDtInd</xsl:with-param>
+							</xsl:call-template>
 						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelNo">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/PriorElectionDtOfFormationInd"/>
-              	<xsl:with-param name="BackupName">IRS8832ElectionWithPriorEffDtInd</xsl:with-param>
-            	</xsl:call-template>
-						</label>
-						<b> No. </b>Stop here. You generally are not currently eligible to make the election (see instructions).
+						<div style="width:130mm;height:4.5mm;padding-top:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/PriorElectionDtOfFormationInd"/>
+									<xsl:with-param name="BackupName">IRS8832ElectionWithPriorEffDtInd</xsl:with-param>
+								</xsl:call-template>
+							</label>
+							<b> No. </b>Stop here. You generally are not currently eligible to make the election (see instructions).
+						</div>
 					</div>  
 				</div>     
 				<!-- end line 2b -->
@@ -382,17 +401,21 @@
 					<div class="styLNDesc" style="width:178mm;height:4.5mm;">
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateYesCheckbox">
-               	<xsl:with-param name="TargetNode" select="$Form8832Data/MultipleOwnerYesOrNoInd"/>
-               	<xsl:with-param name="BackupName">IRS8832MultipleOwnerYesOrNo</xsl:with-param>
-              </xsl:call-template>
-						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelYes">
 								<xsl:with-param name="TargetNode" select="$Form8832Data/MultipleOwnerYesOrNoInd"/>
-              	<xsl:with-param name="BackupName">IRS8832MultipleOwnerYesOrNo</xsl:with-param>
-            	</xsl:call-template>
-						</label>
-						<b> Yes. </b>You can elect to be classified as a partnership or an association taxable as a corporation. Skip line 4 and go to line 5.        </div>  
+								<xsl:with-param name="BackupName">IRS8832MultipleOwnerYesOrNo</xsl:with-param>
+							</xsl:call-template>
+						</input>
+						<div style="width:155mm;height:4.5mm;padding-top:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/MultipleOwnerYesOrNoInd"/>
+									<xsl:with-param name="BackupName">IRS8832MultipleOwnerYesOrNo</xsl:with-param>
+								</xsl:call-template>
+							</label>
+							<b> Yes. </b>
+							You can elect to be classified as a partnership or an association taxable as a corporation. Skip line 4 and go to line 5.        
+						</div>  
+					</div>
 				</div>
 				<!-- No Check Box -->
 				<div style="width:187mm;">
@@ -402,15 +425,18 @@
 							<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form8832Data/MultipleOwnerYesOrNoInd"/>
 								<xsl:with-param name="BackupName">IRS8832MultipleOwnerYesOrNo</xsl:with-param>
-              </xsl:call-template>
-						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelNo">
-              	<xsl:with-param name="TargetNode" select="$Form8832Data/MultipleOwnerYesOrNoInd"/>
-              	<xsl:with-param name="BackupName">IRS8832MultipleOwnerYesOrNo</xsl:with-param>
 							</xsl:call-template>
-						</label>
-						<b> No. </b>You can elect to be classified as an association taxable as a corporation or to be disregarded as a separate entity. Go to line 4.
+						</input>
+						<div style="width:165mm;height:4.5mm;padding-top:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/MultipleOwnerYesOrNoInd"/>
+									<xsl:with-param name="BackupName">IRS8832MultipleOwnerYesOrNo</xsl:with-param>
+								</xsl:call-template>
+							</label>
+							<b> No. </b>
+							You can elect to be classified as an association taxable as a corporation or to be disregarded as a separate entity. Go to line 4.
+						</div>
 					</div>  
 				</div>      
 				<!-- end line 3 -->
@@ -422,24 +448,25 @@
 						If the eligible entity has only one owner, provide the following information:
 					</div>
 				</div>
-				<div style="width:187mm;"/>
 				<!-- end line 4 -->
 				<!-- Begin Part I, Line 4a -->           
 				<div style="width:187mm;">
-					<div class="styLNLeftLtrBox" style="height:4.5mm;">a</div>
-					<div class="styLNDesc" style="width:30mm;height:4.5mm;">
+					<div class="styLNLeftLtrBox" style="height:7mm;padding-top:3mm">a</div>
+					<div class="styLNDesc" style="width:25mm;height:7mm;padding-top:3mm">
 						Name of owner <img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/>              
 					</div>        
-					<span class="styFixedUnderline" style="width:110mm;height:4.5mm;">        
-						<xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form8832Data/OwnerName/BusinessNameLine1"/>
-            </xsl:call-template>
-            <span style="width:16px;"/>
-            <br/>
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form8832Data/OwnerName/BusinessNameLine2"/>
-            </xsl:call-template>  
-          </span>                    
+					<div class="styFixedUnderline" style="width:110mm;height:7mm">        
+						<div style="font-family:verdana;font-size:6pt;">     
+							<xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="$Form8832Data/OwnerName/BusinessNameLine1"/>
+							</xsl:call-template>
+							<span style="width:16px;"/>
+							<br/>
+							<xsl:call-template name="PopulateText">
+							  <xsl:with-param name="TargetNode" select="$Form8832Data/OwnerName/BusinessNameLine2"/>
+							</xsl:call-template> 
+						</div> 
+					</div>                    
 				</div>
 				<!-- end line 4a -->
 				<!-- Begin Part I, Line 4b (EIN/SSN/MissingEIN)--> 
@@ -450,21 +477,21 @@
 					</div>        
 					<span class="styFixedUnderline" style="width:110mm; height: 4.5mm;">
 						<xsl:choose> 
-              <xsl:when test="$Form8832Data/EIN"> 
-                <xsl:call-template name="PopulateEIN">
-									<xsl:with-param name="TargetNode" select="$Form8832Data/EIN"/>
-                </xsl:call-template>
+						  <xsl:when test="$Form8832Data/EIN"> 
+							<xsl:call-template name="PopulateEIN">
+								<xsl:with-param name="TargetNode" select="$Form8832Data/EIN"/>
+							</xsl:call-template>
 							</xsl:when> 
 							<xsl:when test="$Form8832Data/SSN"> 
 								<xsl:call-template name="PopulateSSN">
 									<xsl:with-param name="TargetNode" select="$Form8832Data/SSN"/>
-                </xsl:call-template>
-              </xsl:when> 
-              <xsl:when test="$Form8832Data/MissingEINReasonCd"> 
-                <xsl:call-template name="PopulateText">
+								</xsl:call-template>
+							</xsl:when> 
+							<xsl:when test="$Form8832Data/MissingEINReasonCd"> 
+								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form8832Data/MissingEINReasonCd"/>
-                </xsl:call-template>
-              </xsl:when> 
+								</xsl:call-template>
+							</xsl:when> 
 						</xsl:choose>      
 					</span>        
 				</div>
@@ -482,18 +509,18 @@
 				<!-- end line 5 -->
 				<!-- Begin Part I, Line 5a--> 
 				<div style="width:187mm;">
-					<div class="styLNLeftLtrBox" style="height:4.5mm;">a</div>
-					<div class="styLNDesc" style="width:40mm;height:4.5mm;">
+					<div class="styLNLeftLtrBox" style="height:7mm;padding-top:3mm">a</div>
+					<div class="styLNDesc" style="width:40mm;height:7mm;padding-top:3mm">
 						Name of parent corporation <img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/>              
 					</div>        
-					<div class="styFixedUnderline" style="width:110mm;">        
+					<div class="styFixedUnderline" style="width:110mm;height:7mm">        
 						<div style="font-family:verdana;font-size:6pt;">        
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/ParentCorporationName /BusinessNameLine1"/>
+								<xsl:with-param name="TargetNode" select="$Form8832Data/ParentCorporationName/BusinessNameLine1"/>
 							</xsl:call-template>
 							<br/>
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/ParentCorporationName /BusinessNameLine2"/>
+								<xsl:with-param name="TargetNode" select="$Form8832Data/ParentCorporationName/BusinessNameLine2"/>
 							</xsl:call-template>  
 						</div>                    
 					</div>        
@@ -502,29 +529,29 @@
 				<!-- Begin Part I, Line 5b-->
 				<div style="width:187mm;">
 					<div class="styLNLeftLtrBox" style="height:4.5mm;">b</div>
-					<div class="styLNDesc" style="width:47mm;height:4.5mm;">
+					<div class="styLNDesc" style="width:44mm;height:4.5mm;">
 						Employer identification number <img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/>              
 					</div>        
 					<span class="styFixedUnderline" style="width:103mm; height: 4.5mm;">
 						<xsl:choose> 
 							<xsl:when test="$Form8832Data/ParentCorporationEIN"> 
 								<xsl:call-template name="PopulateEIN">
-                  <xsl:with-param name="TargetNode" select="$Form8832Data/ParentCorporationEIN"/>
-                </xsl:call-template>
+							  <xsl:with-param name="TargetNode" select="$Form8832Data/ParentCorporationEIN"/>
+							</xsl:call-template>
 							</xsl:when> 
 							<xsl:when test="$Form8832Data/EmployerMissingEINReasonCd"> 
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form8832Data/EmployerMissingEINReasonCd"/>
-                </xsl:call-template>
-              </xsl:when>              
+								</xsl:call-template>
+							</xsl:when>              
 						</xsl:choose>      
 					</span>        
 				</div>
-				<div style="width:187mm;"/>
+				<div style="width:187mm;"></div>
 				<div class="styBB" style="width:187mm;border-bottom-width:2px;"/>
 				<!-- end line 5b -->
 				<!-- Page Break and Footer-->
-				<div class="pageEnd" style="width:187mm;padding-top:3mm;">  
+				<div class="pageEnd" style="width:187mm;">  
 					<div style="float:left;">
 						<span class="styBoldText">For Paperwork Reduction Act Notice, see instructions. </span>
 						<span style="width:13mm;"/>                        
@@ -532,10 +559,11 @@
 					</div>
 					<div style="float:right;">
 						<span style="width:40px;"/>  
-						Form <span class="styBoldText" style="font-size:8pt;">8832</span>(Rev. 12-2013)
+						Form <span class="styBoldText" style="font-size:8pt;">8832</span> (Rev. 12-2013)
 					</div>    
 				</div>
 				<!-- END Page Break and Footer-->
+				<p style="page-break-before:always"/>
 				<!-- Page 2 -->
 				<!-- Page 2 Header -->
 				<div class="styBB" style="width:187mm;">
@@ -543,11 +571,10 @@
 					<div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">2</span></div>
 				</div>
 				<!-- Begin Part I, Election Information Continue-->
-				<div class="styBB" style="width: 187mm;padding-top:0px;padding-bottom:0px;border-top-width:1pt">
-					<div class="styPartName">Part I</div>
-					<div class="styPartDesc">Election Information <span style="font-weight:normal">(Continued)</span></div>
+				<div class="styBB" style="width:187mm;border-top-width:1px">
+					<div class="styPartName" style="height:4.5mm;padding-top:0.5px">Part I</div>
+					<div class="styPartDesc" style="height:4.5mm;padding-top:0.5px">Election Information <span style="font-weight:normal">(Continued)</span></div>
 				</div>
-				<div style="width:187mm;"/>
 				<!-- Begin Part I, Line 6-->
 				<div style="width:187mm;">
 					<div class="styLNLeftNumBox" style="height:4.5mm;">6</div>
@@ -565,14 +592,15 @@
 								<xsl:with-param name="BackupName">IRS8832DomAssocTaxableAsACorporation</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<span style="width:8px"/>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/USAssocTxblAsACorpInd"/>
-								<xsl:with-param name="BackupName">IRS8832DomAssocTaxableAsACorporation</xsl:with-param>
-							</xsl:call-template> 
-							A domestic eligible entity electing to be classified as an association taxable as a corporation.
-						</label>
+						<div style="width:150mm;height:4.5mm;padding-top:0.5mm;padding-left:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/USAssocTxblAsACorpInd"/>
+									<xsl:with-param name="BackupName">IRS8832DomAssocTaxableAsACorporation</xsl:with-param>
+								</xsl:call-template> 
+								A domestic eligible entity electing to be classified as an association taxable as a corporation.
+							</label>
+						</div>
 					</div>  
 				</div>
 				<!-- end line 6a -->
@@ -586,14 +614,15 @@
 								<xsl:with-param name="BackupName">IRS8832DomesticEntityAsAPartnership</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<span style="width:8px"/>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/USEntityAsAPrtshpInd"/>
-								<xsl:with-param name="BackupName">IRS8832DomesticEntityAsAPartnership</xsl:with-param>
-							</xsl:call-template> 
-							A domestic eligible entity electing to be classified as a partnership.
-						</label>
+						<div style="width:150mm;height:4.5mm;padding-top:0.5mm;padding-left:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/USEntityAsAPrtshpInd"/>
+									<xsl:with-param name="BackupName">IRS8832DomesticEntityAsAPartnership</xsl:with-param>
+								</xsl:call-template> 
+								A domestic eligible entity electing to be classified as a partnership.
+							</label>
+						</div>
 					</div>  
 				</div>
 				<!-- end line 6b -->
@@ -607,14 +636,15 @@
 								<xsl:with-param name="BackupName">IRS8832DomSnglOwnerDisregardedSepEnt</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<span style="width:8px"/>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/USEntityOwnerDsrgdSepEntityInd"/>
-								<xsl:with-param name="BackupName">IRS8832DomSnglOwnerDisregardedSepEnt</xsl:with-param>
-							</xsl:call-template> 
-							A domestic eligible entity with a single owner electing to be disregarded as a separate entity.
-						</label>
+						<div style="width:150mm;height:4.5mm;padding-top:0.5mm;padding-left:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/USEntityOwnerDsrgdSepEntityInd"/>
+									<xsl:with-param name="BackupName">IRS8832DomSnglOwnerDisregardedSepEnt</xsl:with-param>
+								</xsl:call-template> 
+								A domestic eligible entity with a single owner electing to be disregarded as a separate entity.
+							</label>
+						</div>
 					</div>  
 				</div>
 				<!-- end line 6c -->
@@ -628,14 +658,15 @@
 								<xsl:with-param name="BackupName">IRS8832FrgnAssocTaxableAsACorporation</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<span style="width:8px"/>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/ForeignEntityTxblAsACorpInd"/>
-								<xsl:with-param name="BackupName">IRS8832FrgnAssocTaxableAsACorporation</xsl:with-param>
-							</xsl:call-template> 
-							A foreign eligible entity electing to be classified as an association taxable as a corporation.
-						</label>
+						<div style="width:150mm;height:4.5mm;padding-top:0.5mm;padding-left:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/ForeignEntityTxblAsACorpInd"/>
+									<xsl:with-param name="BackupName">IRS8832FrgnAssocTaxableAsACorporation</xsl:with-param>
+								</xsl:call-template> 
+								A foreign eligible entity electing to be classified as an association taxable as a corporation.
+							</label>
+						</div>
 					</div>  
 				</div>
 				<!-- end line 6d -->
@@ -649,14 +680,15 @@
 								<xsl:with-param name="BackupName">IRS8832ForeignEntityAsAPartnership</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<span style="width:8px"/>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/ForeignPartnershipInd"/>
-                <xsl:with-param name="BackupName">IRS8832ForeignEntityAsAPartnership</xsl:with-param>
-							</xsl:call-template> 
-							A foreign eligible entity electing to be classified as a partnership.
-						</label>
+						<div style="width:150mm;height:4.5mm;padding-top:0.5mm;padding-left:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/ForeignPartnershipInd"/>
+									<xsl:with-param name="BackupName">IRS8832ForeignEntityAsAPartnership</xsl:with-param>
+								</xsl:call-template> 
+								A foreign eligible entity electing to be classified as a partnership.
+							</label>
+						</div>
 					</div>  
 				</div>
 				<!-- end line 6e --> 
@@ -670,14 +702,15 @@
 								<xsl:with-param name="BackupName">IRS8832FrgnSnglOwnerDisregardedSepEnt</xsl:with-param>
 							</xsl:call-template>
 						</input>
-						<span style="width:8px"/>
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8832Data/FrgnOwnerDsrgdSepEntityInd"/>
-								<xsl:with-param name="BackupName">IRS8832FrgnSnglOwnerDisregardedSepEnt</xsl:with-param>
-							</xsl:call-template> 
-							A foreign eligible entity with a single owner electing to be disregarded as a separate entity.
-						</label>
+						<div style="width:150mm;height:4.5mm;padding-top:0.5mm;padding-left:0.5mm">
+							<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form8832Data/FrgnOwnerDsrgdSepEntityInd"/>
+									<xsl:with-param name="BackupName">IRS8832FrgnSnglOwnerDisregardedSepEnt</xsl:with-param>
+								</xsl:call-template> 
+								A foreign eligible entity with a single owner electing to be disregarded as a separate entity.
+							</label>
+						</div>
 					</div>  
 				</div>
 				<!-- end line 6f -->
@@ -691,10 +724,10 @@
 				</div>
 				<div style="width:187mm;">
 					<div class="styLNLeftLtrBox" style="height:4.5mm;"/>
-					<div class="styLNDesc" style="width:10mm;height:4.5mm;">
+					<div class="styLNDesc" style="width:5mm;height:4.5mm;">
 						<img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/>              
 					</div>        
-					<div class="styFixedUnderline" style="width:160mm;">        
+					<div class="styFixedUnderline" style="width:174mm;">        
 						<div style="font-family:verdana;font-size:6pt;">        
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8832Data/OrganizationCountryCd"/>
@@ -710,7 +743,7 @@
 					<div class="styLNDesc" style="width:148mm;height:4.5mm;">
 						<span style="float:left;">Election is to be effective beginning (month, day, year) (see instructions) </span>
 						<!--Dotted Line-->
-						<div class="styDotLn" style="padding-right:1mm;">...........</div>
+						<div class="styDotLn" style="padding-right:1mm;padding-left:2mm">............</div>
 						<img src="{$ImagePath}/8832_Bullet_Lg.gif" alt="Bullet Image"/>
 					</div>
 					<div style="width:2mm;float:left;Clear:none;"/>   
@@ -722,29 +755,30 @@
 				</div>  
 				<!-- end line 8 -->
 				<!-- Begin Part I, Line 9-->
-				<div class="styTBB" style="width:187mm;">
-					<div class="styLNLeftNumBox" style="height:4.5mm;">9</div>        
-					<div class="styLNDesc" style="width:108mm;height:7mm;font-size:7pt;">
-						Name and title of contact person whom the IRS may call for more information
-						<br/><br/>  
-						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$Form8832Data/ContactPersonNm"/>
-						</xsl:call-template>  
-						<span style="width:8px;"/> 
-						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$Form8832Data/ContactPersonTitleTxt"/>
-						</xsl:call-template>        
+				<div class="styTBB" style="width:187mm;height:10mm;border-bottom-width:1px;">
+					<div class="styLNLeftNumBox" style="height:10mm;">9</div>        
+					<div class="styLNDesc" style="width:108mm;height:8mm;font-size:7pt;">
+						<div style="width:108mm;height:5mm">
+							Name and title of contact person whom the IRS may call for more information
+						</div>
+						<div style="height:5mm; text-align:left;">						
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form8832Data/ContactPersonNm"/>
+							</xsl:call-template>  
+							<span style="width:8px;"/> 
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form8832Data/ContactPersonTitleTxt"/>
+							</xsl:call-template>   
+						</div>     
 					</div>        
 					<!-- end line 9 -->
-					<!-- Begin Part I, Line 10-->
-					<div class="styLNAmountBox" style="border-bottom:0px;width:70mm;height:8mm;font-size:6pt; text-align:left;">
-						<div class="styLNLeftNumBox" style="width:55mm;height:4.5mm;">
-							<span class="styBoldText">10</span>
-							<span style="font-size:7pt; font-weight:normal; ">                  
-								<span style="width:8px;"/>Contact person’s telephone number
-								<br/><br/>
-								<span style="width:50mm; text-align:left;">
-									<span style="width:15px;"/>
+					<!-- Begin Part I, Line 10--> 
+					<div class="styLNAmountBox" style="width:70mm;height:10mm;font-size:6pt; text-align:left;">
+						<div class="styLNLeftNumBox" style="height:10mm;width:6mm">10</div>       
+						<div class="styLNLeftNumBox" style="width:55mm;height:10mm;">
+							<div style="font-size:7pt; font-weight:normal; ">                  
+								<div style="height:5mm">Contact person’s telephone number</div>
+								<div style="height:5mm; text-align:left;">
 									<xsl:choose>
 										<xsl:when test="$Form8832Data/ContactPersonPhoneNum">
 											<xsl:call-template name="PopulatePhoneNumber">
@@ -757,8 +791,8 @@
 											</xsl:call-template>  
 										</xsl:otherwise>
 									</xsl:choose>
-								</span>              
-							</span>
+								</div>              
+							</div>
 						</div>
 					</div>
 				</div>
@@ -766,7 +800,7 @@
 				<!-- Begin signature part -->
 				<div  style="width:187mm;">
 					<div class="styLNDesc" style="width:187mm;height:4.5mm;text-align:center;font-size:9pt;">
-            <span class="styBoldText">
+						<span class="styBoldText">
 							Consent Statement and Signature(s) (see instructions)                      
 						</span>
 						<div style="width:187mm;"> </div>                        
@@ -795,88 +829,188 @@
 						Title        
 					</span>        
 				</div>
-				<div class="styBB" style="width:187mm;border-top-width:1px;border-bottom-width:1px;">
+				<!--16 blanks line per PDF-->
+				<div class="styBB" style="width:187mm;border-top-width:1px;border-bottom-width:2px;">
 					<div style="width:187mm;">
 						<table cellspacing="0" class="TableContainer" style="width:187mm;" summary="Table for Signatures">          
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 							<tr>
-								<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"> </div></td>
-								<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"> </div></td>
+								<td class="styTableCell" scope="row" 
+								style="width:72mm;text-align:left;font-weight:bold;border-color:black;border-bottom-width:0px;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" 
+								style="width:43mm;text-align:center;font-weight:bold;border-color:black;border-bottom-width:0px;">
+									<div style="width:20mm;"> </div>
+								</td>
+								<td class="styTableCell" 
+								style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;border-bottom-width:0px;">
+									<div style="width:20mm;"> </div>
+								</td>
 							</tr>            
 						</table>
 					</div>
@@ -889,17 +1023,16 @@
 					<span style="width:88px;"/>        
 					Form <span class="styBoldText" style="font-size:8pt;">8832</span> (Rev. 12-2013)
 				</div>
-        <br/>
-        <br class="pageEnd"/>
+				<p style="page-break-before:always"/>
         <!-- Page 3 -->
 				<div class="styBB" style="width:187mm;">
 					<div style="float:left;">Form 8832 (Rev. 12-2013)</div>
 					<div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">3</span></div>
 				</div>     
 				<!-- BEGIN Part II, Late Election Relief -->  
-				<div class="styBB" style="width: 187mm;padding-top:0px;padding-bottom:0px;border-top-width:1pt;">
-					<div class="styPartName">Part II</div>
-					<div class="styPartDesc">Late Election Relief</div>
+				<div class="styBB" style="width:187mm;border-top-width:1px">
+					<div class="styPartName" style="height:4.5mm;padding-top:0.5px">Part II</div>
+					<div class="styPartDesc" style="height:4.5mm;padding-top:0.5px">Late Election Relief</div>
 				</div>
 				<div style="width:187mm;"> </div>
 				<!-- Part II, Line 11 -->
@@ -913,7 +1046,8 @@
 						<div style="width:187mm;">
 							<table cellspacing="0" class="TableContainer" style="width:187mm;" summary="Table for Signatures">          
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:normal;border-color:black;font-size:7pt;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:normal;border-color:black;font-size:7pt;">
 										<div style="width:180mm;">  
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form8832Data/LateFiledEntyClsElectnExplnTxt"/>
@@ -921,81 +1055,55 @@
 										</div>
 									</td>
 								</tr>
+								<!--9 blank lines per PDF-->
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
 										<div style="width:20mm;"/>
 									</td>
 								</tr>
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
 										<div style="width:20mm;"/>
 									</td>
 								</tr>
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
 										<div style="width:20mm;"/>
 									</td>
 								</tr>
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
 										<div style="width:20mm;"/> 
 									</td>
 								</tr>
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
 										<div style="width:20mm;"/> 
 									</td>
 								</tr>
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
 										<div style="width:20mm;"/>
 									 </td>
 								</tr>
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
 										<div style="width:20mm;"/>
 									</td>
 								</tr>
 								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
+									<td class="styTableCell" scope="row" colspan="3" 
+									style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
 										<div style="width:20mm;"/>
 									</td>
 								</tr>        
-								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
-										<div style="width:20mm;"/>
-									</td>
-								</tr>
-								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
-										<div style="width:20mm;"/>
-									</td>
-								</tr>
-								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
-										<div style="width:20mm;"/>
-									</td>
-								</tr>
-								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
-										<div style="width:20mm;"/>
-									</td>
-								</tr>
-								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
-										<div style="width:20mm;"/>
-									</td>
-								</tr>     
-								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
-										<div style="width:20mm;"/>
-									</td>
-								</tr>
-								<tr>
-									<td class="styTableCell" scope="row" colspan="3" style="border-right-width:0px;text-align:left;font-weight:bold;border-color:black;">
-										<div style="width:20mm;"/>
-									</td>
-								</tr>
 							</table>
 						</div>
 						<div class="styForm8832SignatureText" style="width:187mm">
@@ -1017,6 +1125,7 @@
 								Title        
 							</span>        
 						</div>
+						<!--16 blank lines per PDF-->
 						<div class="styBB" style="width:187mm;border-top-width:1px;border-bottom-width:0px;">
 							<div style="width:187mm;">
 								<table cellspacing="0" class="TableContainer" style="width:187mm;" summary="Table for Signatures">          
@@ -1054,69 +1163,111 @@
 										</td>
 									</tr>
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 									<tr>
-										<td class="styTableCell" scope="row" style="width:72mm;text-align:left;font-weight:bold;border-color:black;border-bottom-width:2px;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:43mm;text-align:center;font-weight:bold;border-color:black;border-bottom-width:2px;"><div style="width:20mm;"/></td>
-										<td class="styTableCell" style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;border-bottom-width:2px;"><div style="width:20mm;"/></td>
+										<td class="styTableCell" scope="row" 
+										style="width:72mm;text-align:left;font-weight:bold;border-color:black;border-bottom-width:2px;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" 
+										style="width:43mm;text-align:center;font-weight:bold;border-color:black;border-bottom-width:2px;">
+											<div style="width:20mm;"/></td>
+										<td class="styTableCell" 
+										style="width:72mm;text-align:center;font-weight:bold;border-color:black;border-right:none;border-bottom-width:2px;">
+											<div style="width:20mm;"/></td>
 									</tr>            
 								</table>
 							</div>
@@ -1126,16 +1277,14 @@
 					<!-- Page Break and Footer-->
 					<div class="pageEnd" style="width:187mm;padding-top:0mm;">  
 						<div style="float:left;">
-							<!--<span class="styBoldText">For Paperwork Reduction Act Notice, see instructions. </span>
-							<span style="width:13mm;"></span>                        
-							Cat. No. 22598R -->
 						</div>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
-							Form <span class="styBoldText" style="font-size:8pt;">8832</span>(Rev. 12-2013)
+							Form <span class="styBoldText" style="font-size:8pt;">8832</span> (Rev. 12-2013)
 						</div>    
 					</div>
 					<!-- END Page Break and Footer-->
+					<p style="page-break-before:always"/>
 					<!--*****ADDITIONAL DATA Title Bar and Button*********************************** -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">

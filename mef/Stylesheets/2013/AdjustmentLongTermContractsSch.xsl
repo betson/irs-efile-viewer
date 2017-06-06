@@ -36,30 +36,44 @@
                  <xsl:otherwise>styDepTblRow2</xsl:otherwise>
               </xsl:choose>
             </xsl:attribute>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt; width: 35mm;">
-              <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermContractGrp)"/>
-              </xsl:attribute>
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="ContractNum"/>
-              </xsl:call-template>
-            </td>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
-              <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermContractGrp)"/>
-              </xsl:attribute>
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="JobNm"/>
-              </xsl:call-template>
-            </td>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
-              <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermContractGrp)"/>
-              </xsl:attribute>
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="OtherIdentifyingInformationTxt"/>
-              </xsl:call-template>
-            </td>
+            
+            <xsl:choose>
+				<xsl:when test="count (PYLongTermContractGrp) &gt; 1">
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt; width: 35mm;border-bottom:0px;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="ContractNum"/>
+					  </xsl:call-template>
+					</td>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;border-bottom:0px;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="JobNm"/>
+					  </xsl:call-template>
+					</td>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;border-bottom:0px;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="OtherIdentifyingInformationTxt"/>
+					  </xsl:call-template>
+					</td>
+				</xsl:when>
+				<xsl:otherwise>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt; width: 35mm;">
+					   <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="ContractNum"/>
+					  </xsl:call-template>
+					</td>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
+					   <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="JobNm"/>
+					  </xsl:call-template>
+					</td>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="OtherIdentifyingInformationTxt"/>
+					  </xsl:call-template>
+					</td>
+				</xsl:otherwise>
+			</xsl:choose>	
+            
             <!-- Test for no data or only one instance of data - if, then fill the cell with the proper color -->
             <xsl:if test="count(PYLongTermContractGrp)=0 or count (PYLongTermContractGrp)=1">
               <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
@@ -128,7 +142,35 @@
                      <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                   </xsl:choose>
                 </xsl:attribute>
-                <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
+                
+               <!--empty for first three columns, if there are more than one records-->
+
+				<td class="styDepTblCell" style="text-align:left;font-size: 7pt; width: 35mm;border-right:1px;border-color:black;border-right-style:solid;">
+				   <xsl:attribute name="class">
+					  <xsl:choose>
+						 <xsl:when test="(count(../preceding-sibling::*)+1) mod 2 = 1">styDepTblRow1</xsl:when>
+						 <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+					  </xsl:choose>
+					</xsl:attribute>
+				</td>
+				<td class="styDepTblCell"  style="text-align:left;font-size: 7pt;border-right:1px;border-color:black;border-right-style:solid;">
+				   <xsl:attribute name="class">
+					  <xsl:choose>
+						 <xsl:when test="(count(../preceding-sibling::*)+1) mod 2 = 1">styDepTblRow1</xsl:when>
+						 <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+					  </xsl:choose>
+					</xsl:attribute>
+				</td>
+				<td class="styDepTblCell"  style="text-align:left;font-size: 7pt;">
+				   <xsl:attribute name="class">
+					  <xsl:choose>
+						 <xsl:when test="(count(../preceding-sibling::*)+1) mod 2 = 1">styDepTblRow1</xsl:when>
+						 <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+					  </xsl:choose>
+					</xsl:attribute>
+				</td>
+				
+				<td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="Yr"/>
                   </xsl:call-template>
@@ -150,7 +192,7 @@
                 </td>
                 <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
                   <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="PYNetAdjToIncmAmt"/>
+                    <xsl:with-param name="TargetNode" select="PYScheduleAdjustmentsGrp/PYNetAdjToIncmAmt"/>
                   </xsl:call-template>
                 </td>
               </tr>
@@ -167,8 +209,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>

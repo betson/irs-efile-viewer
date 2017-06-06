@@ -13,8 +13,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="FormData" select="$RtnDoc/IRS944"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -39,7 +41,7 @@
 					</xsl:if>
 				</style>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm">
 				<form name="IRS944" style="font-family:arial;">
 					<xsl:call-template name="DocumentHeader"/>
 					<!--  Begin Header-->
@@ -65,6 +67,7 @@
 						<xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$RtnDoc/IRS941ScheduleD"/>
 						</xsl:call-template>
+						<br/>
 						<div class="styFNBox" style="width:43mm;height:10mm;border:0px;">Form
 							<span class="styFormNumber" style="font-size:15pt;">944 for 2014: </span>
 						</div>
@@ -79,7 +82,7 @@
 						<div class="styTYBox" style="width:43.7mm;height:10mm;border:0px;">
 							<div class="styOMB" style="height:10mm;font-size:7pt;text-align:right;border:0px;padding-top:6mm;padding-right:2mm;">OMB No. 1545-2007</div>
 						</div>					
-						<div class="styBB" style="float:left;border:black solid 1px; padding-top:2mm; padding-left:1mm; padding-right:2mm; width:131mm;height:47.4mm;">
+						<div class="styBB" style=" width:131mm;height:62mm;float:left;border:black solid 1px;padding-top:2mm;padding-left:1mm;padding-right:2mm;">
 							<div style="width:128mm;padding-top:0mm;">
 								<span style="float:left;padding-top:3mm;"><b>Employer identification number (EIN)</b></span>
 								<span class="styLNCtrNumBox" style="width:80mm;border-top-width:1px;padding-top:1mm;float:right;height:6.3mm;">
@@ -89,9 +92,10 @@
 									</xsl:call-template>
 								</span>
 							</div>
+							<!-- 5/13/2015 AM: Adjusted Filer name height from 7mm to 12mm per Defect 43014 --> 
 							<div style="width:128mm;padding-bottom:2mm;padding-top:2mm;">
 								<span style="float:left;padding-top:4mm;"><b>Name</b><i> (not your trade name)</i></span>
-								<span class="styLNCtrNumBox" style="width:95mm;border-top-width:1px;float:right;height:7mm;text-align:left;padding-left:1mm;">
+								<span class="styLNCtrNumBox" style="width:95mm;border-top-width:1px;float:right;height:12mm;text-align:left;padding-left:1mm;">
 									<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
 										</xsl:call-template><br/>
@@ -112,66 +116,63 @@
 								</span>
 							</div>
 							<div style="width:128mm;padding-bottom:0mm;">
-								<span style="float:left;padding-top:4mm;font-weight:bold;height:15mm;">Address</span>
-								<span style="float:right;">
-									<span class="styLNCtrNumBox" style="width:116mm;border-top-width:1px;height:7mm;float:right;text-align:left;padding-left:1mm;">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/AddressLine1Txt"/>
-										</xsl:call-template>
-										<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/AddressLine2Txt"/>
-										</xsl:call-template>
-									</span>
-									<span style="width:118mm;font-size:6pt;padding-top:0mm;padding-bottom:1mm;">
-										<span style="float:left;">
-											<span style="width:11mm"/>Number<span style="width:26mm"/>Street
-										</span>
-										<span style="float:right;">Suite or room number </span>
-									</span>
-									<span class="styLNCtrNumBox" style="width:24mm;border-top-width:1px;padding-top:2mm;height:6.3mm;float:right;">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/ZIPCd"/>
-										</xsl:call-template>
-									</span>
-									<span style="width:2mm;float:right;"/>
-									<span class="styLNCtrNumBox" style="width:12mm;border-top-width:1px;padding-top:2mm;height:6.3mm;float:right;">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/StateAbbreviationCd"/>
-										</xsl:call-template>
-									</span>
-									<span style="width:2mm;float:right;"/>
-									<span class="styLNCtrNumBox" style="width:76mm;border-top-width:1px;padding-top:2mm;height:6.3mm;float:right;text-align:left;padding-left:1mm;">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/CityNm"/>
-										</xsl:call-template>
-									</span>
-									<span style="width:118mm;font-size:6pt;padding-top:0mm;padding-bottom:1mm;">
-										<span style="width:78mm;padding-left:11mm;">City</span><span style="width:16mm;text-align:center;">State</span>
-										<span style="width:23.9mm;text-align:center;">ZIP code</span>
-									</span>
-									<span class="styLNCtrNumBox" style="width:24mm;border-top-width:1px;padding-top:2mm;height:6.3mm;float:right;word-wrap:break-word;">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
-										</xsl:call-template>
-									</span>
-									<span style="width:2mm;float:right;"/>
-									<span class="styLNCtrNumBox" style="width:24mm;border-top-width:1px;padding-top:2mm;height:6.3mm;float:right;word-wrap:break-word;">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
-										</xsl:call-template>
-									</span>
-									<span style="width:2mm;float:right;"/>
-									<span class="styLNCtrNumBox" style="width:63.6mm;border-top-width:1px;padding-top:2mm;height:6.3mm;float:right;text-align:left;padding-left:1mm;word-wrap:break-word;">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
-										</xsl:call-template>
-									</span>
-									<span style="width:118mm;font-size:6pt;padding-top:0mm;padding-bottom:1mm;">
-										<span style="width:66mm;padding-left:11mm;">Foreign country name</span>
-										<span style="width:28mm;text-align:center;">Foreign province/county</span>
-										<span style="width:23.9mm;text-align:center;">Foreign postal code</span>
-									</span>
+								<span style="width:20mm;height:15mm;float:left;padding-top:2mm;font-weight:bold;">Address</span>
+								<span class="styLNCtrNumBox" style="width:108mm;height:6mm;float:right;border-top-width:1px;padding-top:1mm;padding-left:1mm;text-align:left;">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param>
+									</xsl:call-template>&nbsp;
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param>
+									</xsl:call-template>
+								</span>
+								<span style="width:108mm;font-size:6pt;padding-left:3mm;">
+									Number<span style="width:16mm"/>Street<span style="width:50mm;"/>Suite or room number
+								</span>
+								<span class="styLNCtrNumBox" style="width:66mm;border-top-width:1px;padding-top:1mm;height:6mm;text-align:left;padding-left:1mm;">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
+									</xsl:call-template>
+								</span>
+								<span class="styLNCtrNumBox" style="width:2.5mm;float:left;border:none"/>
+								<span class="styLNCtrNumBox" style="width:13mm;border-top-width:1px;padding-top:1mm;height:6mm;">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">StateAbbreviationCd</xsl:with-param>
+									</xsl:call-template>
+								</span>
+								<span class="styLNCtrNumBox" style="width:2.5mm;float:left;border:none"/>
+								<span class="styLNCtrNumBox" style="width:24mm;border-top-width:1px;padding-top:1mm;height:6mm;">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">ZIPCd</xsl:with-param>
+									</xsl:call-template>
+								</span>
+								<span style="width:128mm;font-size:6pt;padding-left:21mm;">
+									<span style="width:66mm;">City</span>
+									<span style="width:13mm;text-align:center;">State</span>
+									<span style="width:24mm;text-align:center;">ZIP code</span>
+								</span>
+								<span style="width:128mm;padding-left:20mm;">
+								<span class="styLNCtrNumBox" style="width:52mm;height:6mm;border-top-width:1px;padding-top:1mm;text-align:left;padding-left:1mm;word-wrap:break-word;">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">CountryCd</xsl:with-param>
+									</xsl:call-template>
+								</span>
+								<span class="styLNCtrNumBox" style="width:2.5mm;float:left;border:none"/>
+								<span class="styLNCtrNumBox" style="width:29mm;border-top-width:1px;padding-top:1mm;height:6mm;word-wrap:break-word;">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">ProvinceOrStateNm</xsl:with-param>
+									</xsl:call-template>
+								</span>
+								<span class="styLNCtrNumBox" style="width:2.5mm;float:left;border:none"/>
+								<span class="styLNCtrNumBox" style="width:22mm;border-top-width:1px;padding-top:1mm;height:6mm;word-wrap:break-word;">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="TargetNode">ForeignPostalCd</xsl:with-param>
+									</xsl:call-template>
+								</span>
+								</span>
+								<span style="width:128mm;font-size:6pt;padding-left:20mm;">
+									<span style="width:53mm;padding-left:1mm;">Foreign country name</span>
+									<span style="width:29.5mm;text-align:center;">Foreign province/county</span>
+									<span style="width:24mm;text-align:center;">Foreign postal code</span>
 								</span>
 							</div>
 						</div>
@@ -186,7 +187,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="styLNDesc" style="width:187mm;padding-top:0mm;padding-bottom:0mm;font-size:9pt;">
+					<div class="styLNDesc" style="width:187mm;font-size:9pt;">
 						<b>Read the separate instructions before you complete Form 944. Type or print within the boxes.</b>
 					</div>
 					<div class="styBB" style="width:187mm;border-top-width:1px;">
@@ -558,11 +559,12 @@
 						<span style="float:left;clear:none;margin-left:10mm;padding-top:0.5mm;">Cat. No. 39316N</span>
 						<span style="float:right;clear:none;">Form <span class="styBoldText" style="font-size:9pt;">944</span> (2014)</span>
 					</div>
+					<p style="page-break-before: always"/>
 					<!--Begin Page 2-->
 					<div style="width:187mm;">
 						<!--Name Shown on return-->
 						<div class="styBB" style="width:187mm;font-size:7pt;border-top-width:2px;">
-							<div class="styFNBox" style="width:126mm; height:8mm;">
+							<div class="styFNBox" style="width:126mm; height:8.5mm;">
 								<b>Name</b><i> (not your trade name)</i><br/>
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
@@ -573,7 +575,7 @@
 								<div style="line-height:100%; font-family:verdana;font-size:7pt"/>
 							</div>
 							<b>Employer identification number (EIN)</b><br/>
-							<div style="text-align:left;padding-top:2.75mm;">
+							<div style="text-align:left;padding-top:2.5mm;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 								</xsl:call-template>
@@ -581,7 +583,7 @@
 						</div>
 					</div>
 					<!--Part 2-->
-					<div class="styBB" style="width:187mm;border-top-width:1px;">			
+					<div class="styBB" style="width:187mm;">			
 						<div class="styPartName" style="width:13mm;text-align:center;height:6mm;padding-top:1mm;font-size:9pt;">Part 2:</div>
 						<div class="styPartDesc" style="width:173.9mm;text-align:left;height:6mm;padding-top:1mm;padding-left:2mm;font-size:9pt;">
 						Tell us about your deposit schedule and tax liability for this year.</div>
@@ -601,7 +603,7 @@
 								<xsl:with-param name="TargetNode" select="$FormData/AnnualDepositorInd"/>
 								<xsl:with-param name="BackupName">944AnnualDepositorInd</xsl:with-param>
 							</xsl:call-template>
-							<b>Line 7 is less than $2,500. Go to Part 3.</b>
+							<span style="width:150mm;padding-top:1mm"><b>Line 7 is less than $2,500. Go to Part 3.</b></span>
 						</label>
 						<br/><br/>
 						<input type="checkbox" class="styCkbox">
@@ -615,9 +617,9 @@
 								<xsl:with-param name="TargetNode" select="$FormData/MonthlyDepositorInd"/>
 								<xsl:with-param name="BackupName">944MonthlyDepositorInd</xsl:with-param>
 							</xsl:call-template>
-							<span style="font-size:7pt;font-weight:bold;">Line 7 is $2,500 or more. Enter your tax liability for each month. If 
+							<span style="width:150mm;font-size:7pt;padding-top:1mm"><b>Line 7 is $2,500 or more. Enter your tax liability for each month. If 
 								you are a semiweekly depositor or you accumulate $100,000 or more of liability on any day during a deposit 
-								period, you must complete Form 945-A instead of the boxes below.</span>
+								period, you must complete Form 945-A instead of the boxes below.</b></span>
 						</label>
 					</div>
 					<!--13a-->
@@ -787,13 +789,12 @@
 						<div class="styPartDesc" style="width:173.9mm;text-align:left;height:6mm;padding-top:1mm;padding-left:2mm;font-size:9pt;">
 							May we speak with your third-party designee?</div>
 					</div>
-					<div class="styLNDesc" style="width:187mm;padding-left:9mm;padding-right:6mm;font-size:8pt;">
+					<div class="styLNDesc" style="width:187mm;height:auto;padding-left:9mm;padding-right:6mm;font-size:8pt;">
 						<b>Do you want to allow an employee, a paid tax preparer, or another person to discuss this return with the IRS?</b> 
 						See the instructions for details.
 					</div>
 					<div style="width:187mm;float:none;clear:both;padding-bottom:2mm;font-size:8pt;">
-						<div style="width:19mm;float:left;padding-top:2mm;">
-							<span style="width:9mm;"/>
+						<div style="width:21mm;padding-top:.7mm;padding-left:8mm;float:left;">
 							<span>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/DiscussWithThirdPartyYesGrp/DiscussWithThirdPartyYesInd"/>
@@ -811,8 +812,7 @@
 								<xsl:with-param name="BackupName">944DiscussWithThirdPartyYesInd</xsl:with-param>
 							</xsl:call-template>Yes.
 						</label>
-						<br/><br/><br/><br/>
-						<span style="width:9mm;"/>
+						<br/><br/><br/><br/><br/>
 						<span>
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$RtnHdrData/DiscussWithThirdPartyNoInd"/>
@@ -831,15 +831,15 @@
 							</xsl:call-template>No.
 						</label>
 					</div>
-						<div style="width:167mm;float:right;font-size:8pt;padding-left:1mm;">
+						<div style="width:166mm;float:right;font-size:8pt;">
 							<div style="width:166mm;height:6mm;">
-								<div class="styLNDesc" style="width:50mm;float:left;padding-top:2mm;">Designee’s name and phone number </div>
-								<div class="styLNCtrNumBox" style="width:44mm;border-top-width:1px;height:6mm;float:left;padding-top:1mm;text-align:left;padding-left:1mm;">
+								<div class="styLNDesc" style="width:50mm;height:6mm;float:left;padding-top:2mm;">Designee’s name and phone number </div>
+								<div class="styLNCtrNumBox" style="width:54mm;height:6mm;border-top-width:1px;float:left;padding-top:1mm;text-align:left;padding-left:1mm;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/DiscussWithThirdPartyYesGrp/ThirdPartyDesigneeNm"/>
 									</xsl:call-template>
 								</div>
-								<span style="width:10mm;float:left;"/>
+								<span class="styLNCtrNumBox" style="width:10mm;border:none"/>
 								<div class="styLNCtrNumBox" style="width:52mm;border-top-width:1px;height:6mm;padding-top:1mm;word-wrap:break-word;">
 									<xsl:if test="$RtnHdrData/DiscussWithThirdPartyYesGrp/ThirdPartyDesigneePhoneNum">
 										<xsl:call-template name="PopulatePhoneNumber">
@@ -858,7 +858,7 @@
 									Select a 5-digit Personal Identification Number (PIN) to use when talking to IRS.
 								</div>
 								<div style="float:left;">
-									<div class="styLNCtrNumBox" style="width:36mm;border-top-width:1px;height:3mm;float:left;">
+									<div class="styLNCtrNumBox" style="width:36mm;border-top-width:1px;height:5mm;float:left;">
 										<xsl:call-template name="PopulatePin">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/DiscussWithThirdPartyYesGrp/ThirdPartyDesigneePIN"/>
 										</xsl:call-template>
@@ -873,17 +873,17 @@
 						<div class="styPartDesc" style="width:173.9mm;text-align:left;height:6mm;padding-top:1mm;padding-left:2mm;font-size:9pt;">Sign Here.
 							You MUST complete both pages of Form 944 and SIGN it.</div>
 					</div>
-					<div class="styLNDesc" style="width:187mm;padding-left:2mm;padding-right:2mm;font-size:7pt;padding-top:2mm;padding-bottom:4mm;">
+					<div class="styLNDesc" style="width:187mm;height:10mm;padding-left:2mm;padding-right:2mm;font-size:7pt;padding-top:2mm;">
 						Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and 
 						statements, and to the best of my knowledge and belief, it is true, correct, and complete. Declaration of preparer (other 
 						than taxpayer) is based on all information of which preparer has any knowledge.
 					</div>
 					<div style="width:187mm;float:none;clear:both;">
-						<div style="float:left;padding-bottom:0px;width:47px;">
+						<div style="width:13mm;float:left;padding-bottom:0px;">
 							<img src="{$ImagePath}/944_Signature.GIF" alt="Signature Image"/>
 						</div>
 						<div style="width:20mm;padding-top:3mm;font-weight:bold;font-size:10pt;float:left;">Sign your name here </div>
-						<div class="styLNCtrNumBox" style="width:75mm;border-top-width:1px;height:14mm;float:left;word-wrap:break-word;padding-top:1mm;text-align:left;padding-left:1mm;padding-right:1mm;">
+						<div class="styLNCtrNumBox" style="width:75mm;height:14mm;border-top-width:1px;float:left;word-wrap:break-word;padding-top:1mm;text-align:left;padding-left:1mm;padding-right:1mm;">
 							<xsl:if test="$RtnHdrData/ReportingAgentPINGrp/PIN">
 								<xsl:call-template name="PopulatePin">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/ReportingAgentPINGrp/PIN"/>
@@ -895,10 +895,10 @@
 								</xsl:call-template>
 							</xsl:if>
 						</div>
-						<div style="float:left;font-size:8pt;padding-left:10mm;padding-top:0mm;padding-right:3mm;">
+						<div style="width:78mm;float:left;font-size:8pt;padding-left:10mm;padding-top:0mm;padding-right:3mm;">
 							<div style="width:15mm;height:8mm;float:left;padding-top:0mm;">Print your name here</div>
-							<div style="height:8mm;float:right;">
-								<div class="styLNCtrNumBox" style="width:50mm;border-top-width:1px;height:6mm;float:right;text-align:left;padding-left:1mm;">
+							<div style="height:9mm;float:right;">
+								<div class="styLNCtrNumBox" style="width:50mm;border-top-width:1px;height:8mm;float:right;text-align:left;padding-left:1mm;">
 									<xsl:if test="$RtnHdrData/SignatureDocumentGrp/PersonNm">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/SignatureDocumentGrp/PersonNm"/>
@@ -949,8 +949,7 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;padding-bottom:2mm;padding-top:0mm;padding-right:3mm;float:none;clear:both;">
-						<div style="width:47px;float:left;"/>
-						<div class="styLNDesc" style="width:20mm;text-align:right;padding-right:2mm;font-size:8pt;padding-top:2mm;">Date </div>
+						<div class="styLNDesc" style="width:33mm;text-align:right;padding-right:2mm;font-size:8pt;padding-top:2mm;">Date </div>
 						<div class="styLNCtrNumBox" style="width:30mm;border-top-width:1px;height:6mm;padding-top:1mm;">
 							<xsl:if test="$RtnHdrData/SignatureDocumentGrp/SignatureDt">
 								<xsl:call-template name="PopulateMonthDayYear">
@@ -1032,10 +1031,11 @@
 							</xsl:call-template>
 						</div>
 					</div>
+					<!-- 5/13/2015 AM: Adjusted Firm name height from 8mm to 14mm per Defect 43014 --> 
 					<!--Preparer Business Name and EIN-->
 					<div style="width:187mm;font-size:8pt;padding-bottom:2mm;padding-right:3mm;">
 						<div class="styLNDesc" style="width:32mm;padding-left:2mm;padding-right:1mm;padding-top:0mm;">Firm's name (or yours if self-employed) </div>
-						<div class="styLNCtrNumBox" style="width:90mm;border-top-width:1px;height:7mm;text-align:left;padding-left:1mm;">
+						<div class="styLNCtrNumBox" style="width:90mm;height:14mm;border-top-width:1px;text-align:left;padding-left:1mm;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmName/BusinessNameLine1Txt"/>
 							</xsl:call-template><br/>
@@ -1044,7 +1044,7 @@
 							</xsl:call-template>
 						</div>
 						<div class="styLNDesc" style="width:20mm;height:6mm;padding-top:1mm;padding-left:8mm;">EIN </div>
-						<div class="styLNCtrNumBox" style="width:41mm;border-top-width:1px;height:6mm;padding-top:1mm;float:right;">
+						<div class="styLNCtrNumBox" style="width:41mm;height:6mm;border-top-width:1px;padding-top:1mm;float:right;">
 							<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN">
 								<xsl:call-template name="PopulateEIN">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN"/>
@@ -1060,7 +1060,7 @@
 					<!--Preparer Address and Phone Number-->
 					<div style="width:187mm;padding-bottom:2mm;padding-right:3mm;font-size:8pt;">
 						<div class="styLNDesc" style="width:32mm;height:6mm;padding-top:4mm;padding-left:2mm;padding-right:1mm;">Address </div>
-						<div class="styLNCtrNumBox" style="width:90mm;border-top-width:1px;height:7mm;text-align:left;padding-left:1mm;">
+						<div class="styLNCtrNumBox" style="width:90mm;height:8mm;border-top-width:1px;text-align:left;padding-left:1mm;">
 							<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerUSAddress">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerUSAddress/AddressLine1Txt"/>
@@ -1081,7 +1081,7 @@
 							</xsl:if>
 						</div>
 						<div class="styLNDesc" style="width:20mm;height:6mm;padding-top:1mm;padding-left:8mm;">Phone </div>
-						<div class="styLNCtrNumBox" style="width:41mm;border-top-width:1px;height:6mm;padding-top:1mm;float:right;word-wrap:break-word;">
+						<div class="styLNCtrNumBox" style="width:41mm;height:7mm;border-top-width:1px;padding-top:1mm;float:right;word-wrap:break-word;">
 							<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PhoneNum">
 								<xsl:call-template name="PopulatePhoneNumber">
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PhoneNum"/>

@@ -8,21 +8,25 @@
       float:none;clear:none;
       width:161mm;
       border-bottom-width: 0px;
+      display:block;
     }
     
     .stySchBLn2TblContainer {
-		width:600px;
+		width:604px;
 		float:none;clear:none;
-		border-bottom-width: 1px;
-		border-top-width: 1px;
+		<!--border-bottom-width: 1px;
+		border-top-width: 1px;-->
 		overflow-y: auto;
+		display:block;
     }
 
     .stySchBLn5TblContainer {   
-			width:602px;
+			<!-- width:602px; -->
+			width:161.5mm;
 			padding-top:0mm;
 			float:left;clear:none;
 			overflow-y: auto;
+			display:block;
 		}
 
 

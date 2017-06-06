@@ -43,8 +43,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -68,16 +70,18 @@
 			</head>
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
-				<div class="styDepTitleLine">
-					<span class="styDepTitle" style="width:92mm">
-						<xsl:value-of select="$depDocTitle"/>
-					</span>
+				<div class="styDepTitleLine" style="width: 187mm; clear: left; float: left;"> 
+				   <div class="styDepTitle" style="width:100mm"> 
+					 <xsl:value-of select="$depDocTitle"/>
+				   </div>
 				</div>
 				<!--Adding template for left over data  -->
 				<xsl:call-template name="PopulateDepCommonLeftover">
 					<xsl:with-param name="TargetNode" select="$OUSVIDASData"/>
 				</xsl:call-template>
+				<div class="NBB" style="width:187mm; clear: left; float: left;">
 				<xsl:call-template name="ShowOUSVIDAS"/>
+				</div><!--TESTING-->
 				<br/>
 			</body>
 		</html>

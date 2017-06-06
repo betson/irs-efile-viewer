@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/05/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 09/11/2015 - Changes made for defect 44506 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
@@ -66,8 +68,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -92,8 +96,8 @@
 			</head>
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
-				<div class="styDepTitleLine ">
-					<span class="styDepTitle" style="width:100mm">
+				<div class="styDepTitleLine " style="width:187mm">
+					<span class="styDepTitle" style="width:187mm">
 						<xsl:value-of select="$depDocTitle"/>
 					</span>
 				</div>

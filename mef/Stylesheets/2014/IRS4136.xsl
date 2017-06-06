@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="IRS4136Data" select="$RtnDoc/IRS4136"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($IRS4136Data)"/>
@@ -33,13 +35,14 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<form name="IRS4136">
-					<xsl:call-template name="DocumentHeader"/>
-					<!--    BEGIN FORM HEADER   -->
-					<div class="styIRS4136BB" style="width:187mm;border-bottom-width:2px;">
-						<div class="styIRS4136FN" style="width:29mm;height:21mm;border-right-width:2px;">
-							<div>
+					<div class="styGenericDiv" style="width:187mm;">
+						<xsl:call-template name="DocumentHeader"/>
+					</div>
+								<!--    BEGIN FORM HEADER   -->
+					<div class="styBB" style="width:187mm;height:21mm;border-bottom-width:2px;">
+						<div class="styFNBox" style="width:29mm;height:21mm;border-right-width:2px;">
 								<span>Form <span style="width: 4px"/>
 								</span>
 								<span class="styFormNumber">4136</span>
@@ -48,15 +51,15 @@
 									<xsl:with-param name="TargetNode" select="$IRS4136Data"/>
 								</xsl:call-template>
 								<span style="width:1mm"/>
+							<div style="padding-top:2mm;width:29mm;">
+								<span class="styAgency">Department of the Treasury</span>
+								<br/>
+								<span class="styAgency">Internal Revenue Service (99)</span>
 							</div>
-							<div class="styIRS4136Agency" style="padding-top:4mm;">Department of the Treasury Internal Revenue Service (99)
-    </div>
 						</div>
 						<div class="styGenericDiv" style="width:128mm;height:21mm;text-align:center;font-weight:bold;">
-							<div class="styMainTitle" style="font-size:16pt;padding-top:4mm;">Credit for Federal Tax Paid on Fuels</div>
-							<div style="padding-top:3mm;">
-    </div>
-							<div class="styFBT" style="height:4mm;">
+							<div class="styMainTitle" style="font-size:16pt;padding-top:1mm;">Credit for Federal Tax Paid on Fuels</div>
+							<div class="styFBT" style="height:4mm;padding-top:6mm;">
 								<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/> 
 								Information about Form 4136 and its separate instructions is at
 								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form4136" title="Link to irs.gov Form 4136">
@@ -64,51 +67,71 @@
 								</a>.
 							</div>
 						</div>
-						<div class="styIRS4136TYBox" style="width:29mm;height: 21mm;border-left-width:2px;">
-							<div class="styIRS4136OMB">OMB No. 1545-0162</div>
-							<div class="styIRS4136TY">20<span class="styTYColor">14</span>
+						<div class="styTYBox" style="width:29mm;height: 21mm;border-left-width:2px;">
+							<div class="styOMB">OMB No. 1545-0162</div>
+							<div class="styTY">20<span class="styTYColor">14</span>
 							</div>
-							<div class="styIRS4136Sequence">Attachment<br/>Sequence No. <b>23</b>
+							<div class="styTYBox" style="border:none;padding-left: 2mm; text-align: left;">Attachment<br/>Sequence No. <b>23</b>
 							</div>
 						</div>
 					</div>
 					<!--   END FORM HEADER -->
 					<!--   BEGIN TAXPAYER INFO   -->
 					<div style="width:187mm;">
-						<div class="styIRS4136BusinessName" style="font-size: 7pt; font-weight: normal;">Name (as shown on your income tax return)
+						<div class="styNameBox" style="width:140mm;height:10mm;font-size:7pt;">
+Name (as shown on your income tax return)
     <br/>
 							<span style="font-family: verdana, arial, sans-serif;font-size: 7pt; font-weight: normal;">
-								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">Name</xsl:with-param>
-										</xsl:call-template>
+								  <xsl:choose>
+								  <!-- Name from 1120/990/1065 Return Header -->
+									<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
+									  <xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+									  </xsl:call-template>
+									  <br/>
+									  <xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
+									  </xsl:call-template>
 									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-										</xsl:call-template>
-										<br/>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+									<!-- Name from 1040 Return Header -->
+									<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
+									  <br/>
+									  <xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+									  </xsl:call-template>
+									</xsl:when>
+									<!-- Name from 1041 Return Header 
+									<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+									  <xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+									  </xsl:call-template>
+									  <br/>
+									  <xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
+									  </xsl:call-template>
+									</xsl:when>
+									<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+									  <xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+									  </xsl:call-template>
+									  <br/>
+									</xsl:when> -->
+								  </xsl:choose>
 							</span>
 						</div>
-						<div class="styEINBox" style="padding-left: 2mm;font-size:7pt;font-weight:bold;">Taxpayer identification number
+						<div class="styEINBox" style="width:47mm;padding-left: 2mm;font-size:7pt;font-weight:bold;">Taxpayer identification number
     <div style="padding-top:3mm;font-weight:normal;">
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
+								  <xsl:when test="$RtnHdrData/Filer/EIN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:when>
+								  <xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:otherwise>
 								</xsl:choose>
 							</div>
 						</div>
@@ -118,15 +141,13 @@
 					<div class="styIRS4136CautionHdr" style="padding-left:1.5mm;border-top-width:2px;">
 						<span class="styIRS4136CautionHdrTitle" style="padding-left:2mm;padding-right:1mm;">Caution.</span>
 						<span style="width:160mm;float:left;font-size:7.75pt;padding-right:1mm;">
-        Claimant has the name and address of the person who sold the fuel to the claimant and the dates of purchase. <br/>
-         For claims on lines 1c and 2b (type of use 13 and 14), 3d, 4c, and 5, claimant has not waived the right to <br/>
-         make the claim. For claims on lines 1c and 2b (type of use 13 and 14), claimant certifies that a certificate has <br/>
+        Claimant has the name and address of the person who sold the fuel to the claimant and the dates of purchase. 
+         For claims on lines 1c and 2b (type of use 13 and 14), 3d, 4c, and 5, claimant has not waived the right to 
+         make the claim. For claims on lines 1c and 2b (type of use 13 and 14), claimant certifies that a certificate has 
          not been provided to the credit card issuer. 
-         <br/>
 							<br/>
 		The alternative fuel mixture credit cannot be claimed on this form or on Schedule 3 (Form 8849). It  must be taken
 		as a credit against your taxable fuel liability (gasoline, diesel fuel, and kerosene) reported on Form 720.
-         <br/>
 							<br/>
 						</span>
 					</div>
@@ -135,25 +156,24 @@
 					<!--   BEGIN LINE 1   -->
 					<!-- Count the number of rows in the table -->
 					<xsl:variable name="table1RowCount" select="3 + count($IRS4136Data/OtherNontaxableUseOfGasoline)"/>
-					<div class="styIRS4136NumLine" style="padding-left:2mm;border-top-width: 0px;">
-						<br/>
-						<span style="float:left;clear:none;"> 1<span class="styIRS4136NBSP" style="padding-right:3mm;"/> Nontaxable Use of Gasoline</span>
-						<span style="width:6mm"/>
+					<div class="styIRS4136NumLine" style="padding-top:2mm;padding-bottom:2mm;padding-left:2mm;border-top-width: 0px;">
+						<span style="float:left;clear:none;">
+						 1<span class="styIRS4136NBSP" style="padding-right:3mm;"/> Nontaxable Use of Gasoline</span>
+						<span style="width:10mm"/>
 						<b>Note. </b>
 						<span style="font-weight:normal"> CRN is credit reference number.</span>
-						<br/>
-						<span style="width:7mm;text-align:right;float:right; clear: none">
+<!--						<span style="width:7mm;text-align:right;float:right; clear: none">
 							<xsl:call-template name="SetDynamicTableToggleRowCount">
 								<xsl:with-param name="DataRowCount" select="$table1RowCount"/>
 								<xsl:with-param name="containerHeight" select="3"/>
 								<xsl:with-param name="containerID" select=" 'NGctn' "/>
 							</xsl:call-template>
-						</span>
+						</span>-->
 					</div>
-					<div class="styIRS4136TableContainer1" id="NGctn">
+					<div class="styTableContainer" id="NGctn">
 						<!--print logic-->
-						<xsl:call-template name="SetInitialState"/>
-						<!--end-->
+<!--						<xsl:call-template name="SetInitialState"/>
+-->						<!--end-->
 						<!-- Declare all varaible that hold the count of the repeating elements in this block -->
 						<xsl:variable name="AFRowCount" select="count($IRS4136Data/OtherNontaxableUseOfGasoline)"/>
 						<table class="styIRS4136Table" cellspacing="0">
@@ -235,7 +255,7 @@
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE" style="vertical-align:bottom;">
+									<td class="styIRS4136TableCellE" style="vertical-align:middle;">
 										<xsl:choose>
 											<xsl:when test="$AFRowCount &lt; 2">
 												<xsl:attribute name="rowspan"><xsl:number value="3"/></xsl:attribute>
@@ -295,11 +315,11 @@
 									<xsl:for-each select="$IRS4136Data/OtherNontaxableUseOfGasoline">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AFRowCount"/></xsl:attribute>
 													<b>c</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AFRowCount"/></xsl:attribute>
                 Other nontaxable use (see <b>Caution </b>above line 1)   
               </td>
@@ -331,33 +351,33 @@
 								<!-- End Loop  -->
 								<!-- Line D  position -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;padding-left:4mm;padding-right:2mm;">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:2mm;">
 										<b>d</b>
 									</td>
-									<td class="styIRS4136TableCellLine">
+									<td class="styIRS4136TableCellLine" style="border-bottom:0;">
                 Exported
          </td>
-									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
+									<td class="styIRS4136TableCellA" style="border-bottom:0;background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:2mm; text-align:center;">.184</td>
-									<td class="styIRS4136TableCellC" style="text-align:center;">
-										<span class="styIRS4136TableCellPad" style="padding-right:1mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="border-bottom:0;padding-left:2mm; text-align:center;">.184</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;border-bottom:0;">
+										<span class="styIRS4136TableCellPad" style="padding-right:2.5mm; text-align:center;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$IRS4136Data/ExportedNontxUseGasGalsQty"/>
 											</xsl:call-template>
 										</span>
 									</td>
-									<td class="styIRS4136Braces">
+									<td class="styIRS4136Braces" style="border-bottom:0;">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD">
+									<td class="styIRS4136TableCellD" style="border-bottom:0;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/ExportedNontxUseOfGasCrAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE">411
+									<td class="styIRS4136TableCellE" style="border-bottom:0;">411
         <span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
@@ -369,32 +389,30 @@
 					<!--					<div style="width:187mm;height:2mm;padding-left:8mm">
 						*There rates apply after Septemper 30, 2012
 					</div>-->
-					<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
+<!--					<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
 						<xsl:with-param name="DataRowCount" select="$table1RowCount"/>
 						<xsl:with-param name="containerHeight" select="2"/>
 						<xsl:with-param name="containerID" select=" 'NGctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					<!--  END LINE 1   -->
 					<!--   BEGIN BLOCK 2   -->
 					<!--   BEGIN LINE 2   -->
 					<!-- Track the number of rows in table 2-->
 					<xsl:variable name="table2RowCount" select="1 + count($IRS4136Data/AviationNontxUseGasGalsQty)"/>
-					<div class="styIRS4136NumLine" style="float:none;padding-top:3mm;padding-left:2mm;">
-						<br/>
+					<div class="styIRS4136NumLine" style="float:none;padding-top:6mm;padding-bottom:2mm;padding-left:2mm;">
 						<span style="float:left;clear:none;"> 2<span class="styIRS4136NBSP" style="padding-right:3mm;"/>  Nontaxable Use of Aviation Gasoline</span>
-						<br/>
-						<span style="width:7mm;text-align:right;float:right; clear: none">
+<!--						<span style="width:7mm;text-align:right;float:right; clear: none">
 							<xsl:call-template name="SetDynamicTableToggleRowCount">
 								<xsl:with-param name="DataRowCount" select="$table2RowCount"/>
 								<xsl:with-param name="containerHeight" select="2"/>
 								<xsl:with-param name="containerID" select=" 'AGctn' "/>
 							</xsl:call-template>
-						</span>
+						</span>-->
 					</div>
-					<div class="styIRS4136TableContainer2" id="AGctn">
+					<div class="styTableContainer" id="AGctn" style="border-bottom:0;">
 						<!--print logic-->
-						<xsl:call-template name="SetInitialState"/>
-						<!--end-->
+<!--						<xsl:call-template name="SetInitialState"/>
+-->						<!--end-->
 						<table class="styIRS4136Table" cellspacing="0">
 							<thead class="styIRS4136TableThead">
 								<tr>
@@ -498,11 +516,11 @@
 									<xsl:for-each select="$IRS4136Data/AviationNontxUseGasGalsQty">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 													<b>b</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>Other nontaxable use (see <b>Caution </b> above line 1)
         </td>
 											</xsl:if>
@@ -521,14 +539,14 @@
 												<span class="styIRS4136TableCellPad"/>
 											</td>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136TableCellD">
+												<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4136Data/AviationNontxGasCrAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4136TableCellPad"/>
 												</td>
-												<td class="styIRS4136TableCellE">
+												<td class="styIRS4136TableCellE" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>324
               <span class="styIRS4136TableCellPad"/>
 												</td>
@@ -545,7 +563,7 @@
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:5.5mm;">.194</td>
+									<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">.194</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -583,7 +601,7 @@
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:5.5mm;">.001</td>
+									<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">.001</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -615,16 +633,16 @@
 							</tbody>
 						</table>
 					</div>
-					<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
+<!--					<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
 						<xsl:with-param name="DataRowCount" select="$table2RowCount"/>
 						<xsl:with-param name="containerHeight" select="2"/>
 						<xsl:with-param name="containerID" select=" 'AGctn' "/>
-					</xsl:call-template>
+					</xsl:call-template>-->
 					<!-- END LINE 2   -->
 					<!--   BEGIN BLOCK 3  -->
 					<!--   BEGIN LINE 3   -->
-					<div class="styIRS4136NumLine" style="padding-top:4mm;padding-bottom:1mm;padding-left:2mm;float: none; clear: both">3
-          <span class="styIRS4136NBSP" style="padding-right:3mm;"/> Nontaxable Use of Undyed Diesel Fuel <br/>
+					<div class="styIRS4136NumLine" style="padding-top:6mm;padding-bottom:2mm;padding-left:2mm;">
+					3<span class="styIRS4136NBSP" style="padding-right:3mm;"/> Nontaxable Use of Undyed Diesel Fuel
 					</div>
 					<!--   BEGIN BLOCK DESCRIPTION   -->
 					<div class="styIRS4136DescLine" style="margin-left: 8mm; width:183mm;">Claimant certifies that the diesel fuel did not contain visible evidence of dye.
@@ -728,11 +746,11 @@
 									<xsl:for-each select="$IRS4136Data/NontaxableUseOfUndyedDiesel">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 													<b>a</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>Nontaxable use
                                              </td>
 											</xsl:if>
@@ -754,11 +772,11 @@
 												<span class="styIRS4136TableCellPad"/>
 											</td>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136TableCellD" style="border-bottom:0;">
+												<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 													<span class="styIRS4136TableCellPad"/>
 												</td>
-												<td class="styIRS4136TableCellE" style="border-bottom:0;">
+												<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 													<span class="styIRS4136TableCellPad"/>
 												</td>
 											</xsl:if>
@@ -774,7 +792,7 @@
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;">.243</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:4mm;">.243</td>
 									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -807,7 +825,7 @@
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;">.243</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:4mm;">.243</td>
 									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -830,15 +848,15 @@
 								</tr>
 								<!--  Row3D USE IN CERTAIN INTERCITY AND LOCAL BUSES  -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="padding-bottom:3.5mm;padding-left:4mm;padding-right:1.5mm;">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>d</b>
 									</td>
 									<td class="styIRS4136TableCellLine">Use in certain intercity and local buses (see <b>Caution</b>   above line 1)</td>
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;"> .17</td>
-									<td class="styIRS4136TableCellC" style="padding-top:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="vertical-align:bottom;text-align:center;padding-left:5mm;"> .17</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;vertical-align:bottom;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusUseOfUndyedDieselGalsQty"/>
@@ -848,26 +866,57 @@
 									<td class="styIRS4136Braces">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD" style="padding-top:2mm;">
+									<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusUseOfUndyedDieselCreditAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE" style="padding-top:2mm;">350
+									<td class="styIRS4136TableCellE" style="vertical-align:bottom;">350
         <span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
 								<!--  Row3E EXPORTED  -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="padding-bottom:.5mm;padding-right:1.5mm;padding-left:4mm;border-bottom-width:1px;">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;border-bottom-width:1px;">
 										<b>e</b>
 									</td>
 									<td class="styIRS4136TableCellLine">Exported</td>
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;">.244</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:4mm;">.244</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="MaxSize" select="9"/>
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/ExpUndyedDieselFuelGalsQty"/>
+										</xsl:call-template>
+										<span class="styIRS4136TableCellPad"/>
+									</td>
+									<td class="styIRS4136Braces">
+										<span class="styIRS4136TableCellPad"/>
+									</td>
+									<td class="styIRS4136TableCellD">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/ExpUndyedDieselFuelCreditAmt"/>
+										</xsl:call-template>
+										<span class="styIRS4136TableCellPad"/>
+									</td>
+									<td class="styIRS4136TableCellE">413
+        <span class="styIRS4136TableCellPad"/>
+									</td>
+								</tr>
+
+<!--
+								<tr>
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-right:1.5mm;padding-left:4mm;border-bottom-width:1px;">
+										<b>e</b>
+									</td>
+									<td class="styIRS4136TableCellLine" style="vertical-align:top">Exported</td>
+									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
+										<span class="styIRS4136TableCellPad"/>
+									</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:4mm;">.244</td>
 									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -887,7 +936,7 @@
 									<td class="styIRS4136TableCellE" style="padding-top:1mm;">413
         <span class="styIRS4136TableCellPad"/>
 									</td>
-								</tr>
+								</tr>-->
 							</tbody>
 						</table>
 					</div>
@@ -896,7 +945,7 @@
 * These rates apply after September 30, 2012</div>-->
 					<!--   BEGIN BLOCK 4 -->
 					<!--   BEGIN LINE 4  -->
-					<div class="styIRS4136NumLine" style="padding-top:3mm;padding-bottom:1.5mm;padding-left:2mm;float: none; clear: both"> 4
+					<div class="styIRS4136NumLine" style="padding-top:6mm;padding-bottom:2mm;padding-left:3mm;"> 4
           <span class="styIRS4136NBSP" style="padding-right:3mm;"/> Nontaxable Use of Undyed Kerosene (Other Than Kerosene Used in Aviation) 
                     </div>
 					<!--   BEGIN BLOCK DESCRIPTION   -->
@@ -978,7 +1027,7 @@
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styIRS4136TableCellB" style="padding-left:4mm;">$ .243</td>
+										<td class="styIRS4136TableCellB" style="text-align:center;padding-left:2mm;">$ .243</td>
 										<td class="styIRS4136TableCellC">
 											<xsl:attribute name="style">text-align:left;</xsl:attribute>
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -1003,11 +1052,11 @@
 									<xsl:for-each select="$IRS4136Data/NontaxableUseOfUndyedKerosene">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 													<b>a</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>Nontaxable use taxed at $.244
         </td>
 											</xsl:if>
@@ -1017,7 +1066,7 @@
 												</xsl:call-template>
 												<span class="styIRS4136TableCellPad"/>
 											</td>
-											<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">$ .243</td>
+											<td class="styIRS4136TableCellB" style="text-align:center;padding-left:2mm;">$ .243</td>
 											<td class="styIRS4136TableCellC" style="text-align:center;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="MaxSize" select="9"/>
@@ -1049,7 +1098,7 @@
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;">.243</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:4mm;">.243</td>
 									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -1081,8 +1130,8 @@
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;"> .17</td>
-									<td class="styIRS4136TableCellC" style="padding-top:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="vertical-align:bottom;text-align:center;padding-left:5mm;">.17</td>
+									<td class="styIRS4136TableCellC" style="vertical-align:bottom;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusUseOfUndyedKeroseneGalsQty"/>
@@ -1092,13 +1141,13 @@
 									<td class="styIRS4136Braces">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD" style="padding-top:2mm;">
+									<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusUseOfUndyedKeroseneCrAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE" style="padding-top:2mm;">347
+									<td class="styIRS4136TableCellE" style="vertical-align:bottom;">347
         <span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
@@ -1111,7 +1160,7 @@
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;">.244</td>
+									<td class="styIRS4136TableCellB" style="padding-left:3.5mm;text-align:center;">.244</td>
 									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -1169,11 +1218,11 @@
 									<xsl:for-each select="$IRS4136Data/NontxUseUndyedKrsnTxdAt044">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount2"/></xsl:attribute>
 													<b>e</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount2"/></xsl:attribute>Nontaxable use taxed at $.044</td>
 											</xsl:if>
 											<td class="styIRS4136TableCellA">
@@ -1194,14 +1243,14 @@
 												<span class="styIRS4136TableCellPad"/>
 											</td>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136TableCellD">
+												<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount2"/></xsl:attribute>
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxUseUndyedKrsnTxd044CrAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4136TableCellPad"/>
 												</td>
-												<td class="styIRS4136TableCellE">
+												<td class="styIRS4136TableCellE" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount2"/></xsl:attribute>377
               <span class="styIRS4136TableCellPad"/>
 												</td>
@@ -1248,11 +1297,11 @@
 									<xsl:for-each select="$IRS4136Data/NontxUseUndyedKrsnTxd219">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount3"/></xsl:attribute>
 													<b>f</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount3"/></xsl:attribute>Nontaxable use taxed at $.219</td>
 											</xsl:if>
 											<td class="styIRS4136TableCellA">
@@ -1287,14 +1336,14 @@
 												<span class="styIRS4136TableCellPad"/>
 											</td>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136TableCellD" style="border-bottom:0;">
+												<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount3"/></xsl:attribute>
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxUseUndyedKrsnTxd219CrAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4136TableCellPad"/>
 												</td>
-												<td class="styIRS4136TableCellE" style="border-bottom:0;">
+												<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount3"/></xsl:attribute>369
               <span class="styIRS4136TableCellPad"/>
 												</td>
@@ -1306,10 +1355,8 @@
 						</table>
 					</div>
 					<!--  END LINE 4  -->
-					<!--					<div style="width:187mm;height:2mm;padding-left:8mm">
-* These rates apply after September 30, 2012</div>-->
 					<!--BEGIN FOOTER-->
-					<div style="width:187mm; padding-top:1mm;padding-bottom:2mm;">
+					<div style="width:187mm;">
 						<div style="float: left; clear: none;">
 							<span class="styBoldText">For Paperwork Reduction Act Notice, see the separate instructions.</span>
 						</div>
@@ -1317,23 +1364,24 @@
     <span style="width:70px"/>Form <span class="styBoldText" style="font-size: 8pt">4136</span> (2014)
   </div>
 					</div>
-					<div class="pageEnd"/>
-					<!--END FOOTER-->
+<!--					<div class="pageEnd"/>
+-->					<!--END FOOTER-->
 					<!--BEGIN HEADER-->
+					<p style="page-break-before: always">
 					<div class="styBB" style="width:187mm;border-bottom:2px solid black;">
 						<div style="float: left; clear: none">Form 4136 (2014)</div>
 						<div style="float:right">
     Page <span class="styBoldText" style="font-size: 8pt">2</span>
 						</div>
 					</div>
+					</p>
 					<!--END HEADER-->
 					<!--   BEGIN LINE 5   -->
 					<!--   BEGIN BLOCK DESCRIPTION   -->
-					<div class="styIRS4136NumLine" style="float: none; clear: both;padding-top:1px;padding-left:2mm;padding-bottom:2mm;">
-						<br/>5
-    <span class="styIRS4136NBSP" style="padding-right:3mm;"/>
+					<div class="styIRS4136NumLine" style="padding-top:2mm;padding-bottom:2mm;padding-left:3mm;">
+						5<span class="styIRS4136NBSP" style="padding-right:3mm;"/>
 						<b>Kerosene Used in Aviation </b>
-						<span style="font-weight:normal">(see </span>Caution <span style="font-weight:normal">above line 1)</span>
+						<span style="font-weight:normal">(see </span> Caution <span style="font-weight:normal"> above line 1)</span>
 					</div>
 					<div style="width:187mm;float:left;clear:left;styBB;" id="UVctn">
 						<table class="styIRS4136Table" cellspacing="0">
@@ -1364,56 +1412,56 @@
 							<tbody>
 								<!--  Row 5A -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm; border-bottom-width:4mm;border-color:white">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;vertical-align:top;">
 										<b>a</b>
 									</td>
 									<td class="styIRS4136TableCellLine">Kerosene used in commercial aviation (other than foreign trade) taxed at $.244</td>
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:1mm;text-align:center;">$ .200</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="padding-left:1mm;text-align:center;vertical-align:bottom;">$ .200</td>
+									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;vertical-align:bottom;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/KeroseneUsedInAvnTxd244GalsQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD">$
+									<td class="styIRS4136TableCellD" style="vertical-align:bottom;">$
                   <xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/KeroseneUsedInAvnTxd244CrAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE">417<span class="styIRS4136TableCellPad"/>
+									<td class="styIRS4136TableCellE" style="vertical-align:bottom;">417<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
 								<!--  Row 5B -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;padding-left:4mm;padding-right:1.5mm;padding-top:5mm;         border-bottom-width:10mm;border-color:white">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;vertical-align:top;">
 										<b>b</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:90mm;padding-bottom:7mm;">
+									<td class="styIRS4136TableCellLine" style="width:90mm;">
                   Kerosene used in commercial aviation (other than foreign trade) taxed at $.219<br/>
 									</td>
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="text-align:center;padding:1.25mm;">.175</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="padding-left:4mm;vertical-align:bottom;">.175</td>
+									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;vertical-align:bottom;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/KeroseneUsedInAvnTxd219GalsQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD">
+									<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/KeroseneUsedInAvnTxd219CrAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE">355<span class="styIRS4136TableCellPad"/>
+									<td class="styIRS4136TableCellE" style="vertical-align:bottom;">355<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
 								<!--  Row 5C  -->
@@ -1421,16 +1469,16 @@
 								<xsl:variable name="AGRowCount" select="count($IRS4136Data/NonTxKrsnUsedInAvnTxd244)"/>
 								<xsl:if test="$AGRowCount = 0 or ((count($IRS4136Data/NonTxKrsnUsedInAvnTxd244) &gt; 1) and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>c</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 										Nontaxable use (other than use by state or local government) taxed at $.244
       </td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styIRS4136TableCellB" style="text-align:center;padding:1.25mm;">.243</td>
+										<td class="styIRS4136TableCellB" style="padding-left:4mm">.243</td>
 										<td class="styIRS4136TableCellC" style="text-align:left;">
 											<span class="styIRS4136TableCellPad"/>
 											<xsl:if test=" ((count($IRS4136Data/NonTxKrsnUsedInAvnTxd244) &gt; 1) and ($Print = $Separated))">
@@ -1444,7 +1492,7 @@
 										<td class="styIRS4136TableCellD">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styIRS4136TableCellE">346
+										<td class="styIRS4136TableCellE" style="vertical-align:bottom;">346
         <span class="styIRS4136TableCellPad"/>
 										</td>
 									</tr>
@@ -1454,11 +1502,11 @@
 									<xsl:for-each select="$IRS4136Data/NonTxKrsnUsedInAvnTxd244">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 													<b>c</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 										Nontaxable use (other than use by state or local government) taxed at $.244
         </td>
@@ -1478,14 +1526,14 @@
 												<span class="styIRS4136TableCellPad"/>
 											</td>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136TableCellD">
+												<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4136Data/NonTxKrsnUsedInAvnTxd244CrAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4136TableCellPad"/>
 												</td>
-												<td class="styIRS4136TableCellE">
+												<td class="styIRS4136TableCellE" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>346
               <span class="styIRS4136TableCellPad"/>
 												</td>
@@ -1498,16 +1546,16 @@
 								<xsl:variable name="AGRowCount2" select="count($IRS4136Data/NonTxKrsnUsedInAvnTxd219)"/>
 								<xsl:if test="$AGRowCount2 = 0 or ((count($IRS4136Data/NonTxKrsnUsedInAvnTxd219) &gt; 1) and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>d</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 										Nontaxable use (other than use by state or local government) taxed at $.219
       </td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styIRS4136TableCellB" style=";padding-left:4mm;">.218
+										<td class="styIRS4136TableCellB" style="padding-left:4mm;">.218
                     </td>
 										<td class="styIRS4136TableCellC" style="text-align:left;">
 											<span class="styIRS4136TableCellPad"/>
@@ -1522,7 +1570,7 @@
 										<td class="styIRS4136TableCellD">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styIRS4136TableCellE"> 360
+										<td class="styIRS4136TableCellE"> 369
         <span class="styIRS4136TableCellPad"/>
 										</td>
 									</tr>
@@ -1532,11 +1580,11 @@
 									<xsl:for-each select="$IRS4136Data/NonTxKrsnUsedInAvnTxd219">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount2"/></xsl:attribute>
 													<b>d</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount2"/></xsl:attribute>
 										Nontaxable use (other than use by state or local government) taxed at $.219
                        </td>
@@ -1547,8 +1595,8 @@
 												</xsl:call-template>
 												<span class="styIRS4136TableCellPad"/>
 											</td>
-											<td class="styIRS4136TableCellB" style="padding-left:4mm;">.218</td>
-											<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+											<td class="styIRS4136TableCellB" style="padding-left:4mm;vertical-align:bottom;">.218</td>
+											<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;vertical-align:bottom;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="MaxSize" select="9"/>
 													<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -1556,14 +1604,14 @@
 												<span class="styIRS4136TableCellPad"/>
 											</td>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136TableCellD">
+												<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount2"/></xsl:attribute>
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4136Data/NonTxKrsnUsedInAvnTxd219CrAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4136TableCellPad"/>
 												</td>
-												<td class="styIRS4136TableCellE">
+												<td class="styIRS4136TableCellE" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount2"/></xsl:attribute>369
               <span class="styIRS4136TableCellPad"/>
 												</td>
@@ -1656,10 +1704,9 @@
 					<!--   END LINE 5   -->
 					<!--   BEGIN BLOCK 6   -->
 					<!--   BEGIN LINE 6   -->
-					<div class="styIRS4136NumLine" style="width:186mm;float: none; clear: both;padding-left:2mm;padding-top:10mm;">
-						<br/>6
-          <span class="styIRS4136NBSP" style="padding-right:3mm;"/>  
-          Sales by Registered Ultimate Vendors of Undyed Diesel Fuel <span style="width:2mm;"/>
+					<div class="styIRS4136NumLine" style="padding-top:6mm;padding-bottom:2mm;padding-left:3mm;">
+						6 <span class="styIRS4136NBSP" style="padding-right:3mm;"/>  
+          Sales by Registered Ultimate Vendors of Undyed Diesel Fuel <span style="width:10mm;"/>
 						 Registration No.
   <img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
 						<span style="width:4px;"/>
@@ -1668,13 +1715,47 @@
 								<xsl:with-param name="TargetNode" select="$IRS4136Data/UndyedDieselRegistrationNum"/>
 							</xsl:call-template>
 						</span>
-						<div style="width:187mm;"/>
 					</div>
 					<!--   END LINE 6   -->
 					<!--   BEGIN BLOCK DESCRIPTION   -->
-					<div class="styIRS4136DescLine" style="width:180mm;font-size: 7pt; margin-left: 8mm; margin-right: 8mm; ">Claimant certifies that it sold the diesel fuel at a tax-excluded price, repaid the amount of tax to the buyer, or has obtained the written
-consent of the buyer to make the claim. Claimant certifies that the diesel fuel did not contain visible evidence of dye.
-</div>
+					<div class="styIRS4136DescLine" style="width:180mm;font-size: 7pt; padding-left: 8mm; margin-right: 8mm;">
+					Claimant certifies that it sold the diesel fuel at a tax-excluded price, repaid the amount of tax to the buyer, or has obtained
+					 the written consent of the buyer to make the claim. Claimant certifies that the diesel fuel did not contain visible evidence of dye.
+					 </div>
+					<div class="styBB" style="width:187mm;padding-left:8mm;">
+									<div style="float:left;padding-top:1mm;">
+										<label>
+											<xsl:call-template name="PopulateLabel">
+												<xsl:with-param name="TargetNode" select="$IRS4136Data/SalesUndyedDieselExceptionInd"/>
+											</xsl:call-template>
+											<b>Exception.</b> If any of the diesel fuel included in this claim <b> did </b> 
+											contain visible evidence of dye, attach an explanation and check here
+										</label>
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/SalesUndyedDieselExceptionInd"/>
+											<xsl:with-param name="TabOrder" select="1"/>
+										</xsl:call-template>
+<!--										<span style="letter-spacing:10px;font-weight:bold;"/>
+-->										<span style="margin-left: 1mm; margin-right:1mm">
+											<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
+										</span>
+									</div>
+									<div style="float:right;">
+										<input alt="SalesUndyedDieselExceptionInd" type="checkbox" class="styIRS4136Ckbox">
+											<xsl:call-template name="PopulateCheckbox">
+												<xsl:with-param name="TargetNode" select="$IRS4136Data/SalesUndyedDieselExceptionInd"/>
+												<xsl:with-param name="backupName">UndyedDieselSalesException</xsl:with-param>
+											</xsl:call-template>
+										</input>
+										<label>
+											<xsl:call-template name="PopulateLabel">
+												<xsl:with-param name="TargetNode" select="$IRS4136Data/SalesUndyedDieselExceptionInd"/>
+												<xsl:with-param name="BackupName">UndyedDieselSalesException</xsl:with-param>
+											</xsl:call-template>
+										</label>
+									</div>
+								</div>
+
 					<div style="width:187mm;float:left;clear:left;" id="UVctn">
 						<table class="styIRS4136Table" cellspacing="0">
 							<thead class="styIRS4136TableThead">
@@ -1700,46 +1781,13 @@ consent of the buyer to make the claim. Claimant certifies that the diesel fuel 
 							<tfoot/>
 							<tbody>
 								<!--   BEGIN BLOCK DESCRIPTION   -->
-								<div class="styBB" style="width:180mm;margin-left:8mm;font-size:6pt;">
-									<div style="float:left;padding-top:1mm;padding-left:.5mm;">
-										<label>
-											<xsl:call-template name="PopulateLabel">
-												<xsl:with-param name="TargetNode" select="$IRS4136Data/SalesUndyedDieselExceptionInd"/>
-											</xsl:call-template>
-											<b>Exception.</b> If any of the diesel fuel included in this claim <b>did</b> contain 
-      visible evidence of dye, attach an explanation and check here<span class="styDotLn" style="float:none;clear:none;">......</span>
-										</label>
-										<xsl:call-template name="SetFormLinkInline">
-											<xsl:with-param name="TargetNode" select="$IRS4136Data/SalesUndyedDieselExceptionInd"/>
-											<xsl:with-param name="TabOrder" select="1"/>
-										</xsl:call-template>
-										<span style="letter-spacing:10px;font-weight:bold;"/>
-										<span style="margin-left: 1mm; margin-right:1mm">
-											<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
-										</span>
-									</div>
-									<div style="float:right;padding-right:2mm;">
-										<input alt="SalesUndyedDieselExceptionInd" type="checkbox" class="styIRS4136Ckbox">
-											<xsl:call-template name="PopulateCheckbox">
-												<xsl:with-param name="TargetNode" select="$IRS4136Data/SalesUndyedDieselExceptionInd"/>
-												<xsl:with-param name="backupName">UndyedDieselSalesException</xsl:with-param>
-											</xsl:call-template>
-										</input>
-										<label>
-											<xsl:call-template name="PopulateLabel">
-												<xsl:with-param name="TargetNode" select="$IRS4136Data/SalesUndyedDieselExceptionInd"/>
-												<xsl:with-param name="BackupName">UndyedDieselSalesException</xsl:with-param>
-											</xsl:call-template>
-										</label>
-									</div>
-								</div>
 								<!--  Row 6A USE BY A STATE OR LOCAL GOVERNMENT -->
 								<tr>
 									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;">
 										<b>a</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">Use by a state or local government</td>
-									<td class="styIRS4136TableCellB" style="padding-left:5mm;">$ .243</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;">$ .243</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -1762,7 +1810,7 @@ consent of the buyer to make the claim. Claimant certifies that the diesel fuel 
 										<b>b</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">Use in certain intercity and local buses</td>
-									<td class="styIRS4136TableCellB" style="padding-left:7.5mm;"> .17</td>
+									<td class="styIRS4136TableCellB" style="padding-left:4mm;text-align:center;"> .17</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -1787,65 +1835,58 @@ consent of the buyer to make the claim. Claimant certifies that the diesel fuel 
 -->
 					<!--   BEGIN BLOCK 7   -->
 					<!--   BEGIN LINE 7   -->
-					<div class="styBB" style="padding-top:10mm;">
-						<table class="styIRS4136Table" style="width:187mm;border-bottom:0px solid black;">
-							<tbody>
-								<tr class="styIRS4136NumLine">
-									<td style="float: none; padding-top: 2mm; border-bottom-width: 0px;border-top-width: 0px;" rowspan="2">7
-                  <span class="styIRS4136NBSP"/>Sales by Registered Ultimate Vendors of Undyed Kerosene (Other <br/>
-										<span style="width:4.5mm"/>Than Kerosene For Use in Aviation)
-<span style="width:45mm"/>
-										<b>Registration No. </b>
-										<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
-										<span style="width:8px;"/>
-										<span style="font-weight:normal">
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$IRS4136Data/UndyedKeroseneRegistrationNum"/>
-											</xsl:call-template>
-										</span>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+					<div class="styIRS4136NumLine" style="padding-top:6mm;padding-bottom:2mm;padding-left:3mm;">
+						7 <span class="styIRS4136NBSP" style="padding-right:3mm;"/>  
+          Sales by Registered Ultimate Vendors of Undyed Kerosene (Other <br/>
+										<span style="width:7mm"/>Than Kerosene For Use in Aviation) <span style="width:48mm;"/>
+						 Registration No.
+  <img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
+						<span style="width:4px;"/>
+						<span style="font-weight:normal">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$IRS4136Data/UndyedKeroseneRegistrationNum"/>
+							</xsl:call-template>
+						</span>
 					</div>
 					<!--   END LINE 7   -->
 					<!--   BEGIN BLOCK DESCRIPTION   -->
-					<br/>
-					<div class="styIRS4136DescLine" style="font-size: 7pt; margin-left: 5mm; margin-right: 15mm; padding-right:10mm">Claimant certifies that it sold the kerosene at a tax-excluded price, repaid the amount of tax to the buyer, or has obtained the written consent
-of the buyer to make the claim. Claimant certifies that the kerosene did not contain visible evidence of dye.
-</div>
-					<div style="width:183mm;margin-left:2.75mm;font-size:6pt;">
-						<div style="float:left;padding-top:1mm;padding-left:3mm">
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKeroseneExceptionInd"/>
-								</xsl:call-template>
-								<b>Exception.</b> If any of the kerosene included in this claim <b>did </b> contain visible evidence of dye, attach an explanation and check here<span class="styDotLn" style="float:none;clear:none;">......</span>
-							</label>
-							<xsl:call-template name="SetFormLinkInline">
-								<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKeroseneExceptionInd"/>
-								<xsl:with-param name="TabOrder" select="1"/>
-							</xsl:call-template>
-							<span style="letter-spacing:10px;font-weight:bold;font-size:6pt;"/>
-							<span style="margin-left: 1mm; margin-right:1mm">
-								<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
-							</span>
-						</div>
-						<div style="float:right;padding-right:.5mm;">
-							<input alt="SlsUndyedKeroseneExceptionInd" type="checkbox" class="styIRS4136Ckbox">
-								<xsl:call-template name="PopulateCheckbox">
-									<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKeroseneExceptionInd"/>
-									<xsl:with-param name="backupName">UndyedKeroseneSalesException</xsl:with-param>
-								</xsl:call-template>
-							</input>
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKeroseneExceptionInd"/>
-									<xsl:with-param name="BackupName">UndyedKeroseneSalesException</xsl:with-param>
-								</xsl:call-template>
-							</label>
-						</div>
-					</div>
+					<div class="styIRS4136DescLine" style="width:180mm;font-size: 7pt; padding-left: 8mm; margin-right: 8mm;">
+					Claimant certifies that it sold the diesel fuel at a tax-excluded price, repaid the amount of tax to the buyer, or has obtained
+					 the written consent of the buyer to make the claim. Claimant certifies that the diesel fuel did not contain visible evidence of dye.
+					 </div>
+					<div class="styBB" style="width:187mm;padding-left:8mm;">
+									<div style="float:left;padding-top:1mm;">
+										<label>
+											<xsl:call-template name="PopulateLabel">
+												<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKeroseneExceptionInd"/>
+											</xsl:call-template>
+											<b>Exception.</b> If any of the diesel fuel included in this claim <b> did </b> 
+											contain visible evidence of dye, attach an explanation and check here
+										</label>
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKeroseneExceptionInd"/>
+											<xsl:with-param name="TabOrder" select="1"/>
+										</xsl:call-template>
+<!--										<span style="letter-spacing:10px;font-weight:bold;"/>
+-->										<span style="margin-left: 1mm; margin-right:1mm">
+											<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
+										</span>
+									</div>
+									<div style="float:right;">
+										<input alt="SalesUndyedDieselExceptionInd" type="checkbox" class="styIRS4136Ckbox">
+											<xsl:call-template name="PopulateCheckbox">
+												<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKeroseneExceptionInd"/>
+												<xsl:with-param name="backupName">SlsUndyedKeroseneExceptionInd</xsl:with-param>
+											</xsl:call-template>
+										</input>
+										<label>
+											<xsl:call-template name="PopulateLabel">
+												<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKeroseneExceptionInd"/>
+												<xsl:with-param name="BackupName">SlsUndyedKeroseneExceptionInd</xsl:with-param>
+											</xsl:call-template>
+										</label>
+									</div>
+								</div>
 					<div style="width:187mm;float:left;clear:left;" id="UVctn">
 						<table class="styIRS4136Table" style="width:187mm;" cellspacing="0">
 							<thead class="styIRS4136TableThead">
@@ -1853,25 +1894,25 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 									<th class="styIRS4136TableCellLine" style="width:3mm;height:4mm;border:0" scope="col">
 										<span class="styIRS4136TableCellPad"/>
 									</th>
-									<th class="styIRS4136TableCellLine" style="border-bottom-width:0px;border-top-width:1px;border-right-width:0px;" scope="col">
+									<th class="styIRS4136TableCellLine" style="border-bottom-width:0px;border-right-width:0px;" scope="col">
 										<span class="styIRS4136TableCellPad"/>
 									</th>
-									<th class="styIRS4136TableCellA" style="text-align: center;border-top-width:1px; border-bottom-width:0px;" scope="col">
+									<th class="styIRS4136TableCellA" style="text-align: center;border-bottom-width:0px;" scope="col">
 										<span style="width:1mm;"/>
 									</th>
-									<th class="styIRS4136TableCellB" style="text-align: center;border-top-width:1px;" scope="col">
+									<th class="styIRS4136TableCellB" style="text-align: center;" scope="col">
 										<b>(b) Rate</b>
 									</th>
-									<th class="styIRS4136TableCellC" style="text-align: center;border-top-width:1px;" scope="col">
+									<th class="styIRS4136TableCellC" style="text-align: center;" scope="col">
 										<b>(c) Gallons</b>
 									</th>
-									<th class="styIRS4136Braces" style="border-top-width:1px;" scope="col">
+									<th class="styIRS4136Braces" scope="col">
 										<span class="styIRS4136TableCellPad"/>
 									</th>
-									<th class="styIRS4136TableCellD" style="text-align: center;border-top-width:1px;" scope="col">
+									<th class="styIRS4136TableCellD" style="text-align: center;" scope="col">
 										<b>(d) Amount of credit</b>
 									</th>
-									<th class="styIRS4136TableCellE" style="text-align: center;border-top-width:1px;" scope="col">
+									<th class="styIRS4136TableCellE" style="text-align: center;" scope="col">
 										<b>(e) CRN</b>
 									</th>
 								</tr>
@@ -1880,7 +1921,7 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 							<tbody>
 								<!--  Row 7A USE ON A FARM FOR FARMING PURPOSES -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;">
 										<b>a</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="border-right-width:0px;">Use by a state or local government
@@ -1888,41 +1929,42 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 									<td class="styIRS4136TableCellA" style="border-left-width:0px;">
 										<span style="width:1mm;"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">$ .243</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="text-align:center;">$ .243</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;">
+									<span style="float:left;">
+										<xsl:call-template name="SetFormLinkInline">
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKrsnStLclGovtGalsQty"/>
+										</xsl:call-template>
+									</span>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKrsnStLclGovtGalsQty"/>
 										</xsl:call-template>
-										<xsl:call-template name="SetFormLinkInline">
-											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKrsnStLclGovtGalsQty"/>
-										</xsl:call-template>
-										<span class="styIRS4136TableCellPad"/>
 									</td>
 									<td class="styIRS4136Braces" rowspan="2">
 										<img src="{$ImagePath}/4136_Bracket_L2L3L4.gif" alt="bracket"/>
 									</td>
-									<td class="styIRS4136TableCellD" rowspan="2">$ 
+									<td class="styIRS4136TableCellD" rowspan="2" style="vertical-align:bottom;">$ 
                   <xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKrsnBlockPumpCrAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE" rowspan="2">346
+									<td class="styIRS4136TableCellE" rowspan="2" style="vertical-align:bottom;">346
         <span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
 								<!--  Row 7B USE BY A STATE OR LOCAL GOVERNMENT  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;">
 										<b>b</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="border-right-width:0px">Sales from a blocked pump</td>
 									<td class="styIRS4136TableCellA">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:3.5mm;text-align:center;">.243</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="padding-left:3mm;text-align:center;">.243</td>
+									<td class="styIRS4136TableCellC" style="padding-left:4.5mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKrsnBlockPumpGalsQty"/>
@@ -1932,15 +1974,15 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 								</tr>
 								<!--  Row 7C USE BY A STATE OR LOCAL GOVERNMENT  -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;border-bottom-width:1px;">
 										<b>c</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="border-right-width:0px;">Use in certain intercity and local buses</td>
 									<td class="styIRS4136TableCellA">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:7mm;"> .17</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="padding-left:4mm;text-align:center;"> .17</td>
+									<td class="styIRS4136TableCellC" style="padding-left:4.5mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsUndyedKrsnUseBusGalsQty"/>
@@ -1966,12 +2008,12 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 					<!--   END LINE 7    -->
 					<!--   BEGIN LINE 8   -->
 					<!--   BEGIN BLOCK DESCRIPTION   -->
-					<div class="styIRS4136NumLine" style="float: none; clear: both;padding-top:10mm;padding-left:2mm;padding-bottom:2mm;">
+					<div class="styIRS4136NumLine" style="float: none; clear: both;padding-top:6mm;padding-left:2mm;padding-bottom:2mm;">
 						<br/>8
     <span class="styIRS4136NBSP" style="padding-right:3mm;"/>
 						<span class="styIRS4136NBSP"/>Sales by Registered Ultimate Vendors of Kerosene <br/>
 						<span style="width:7.5mm"/>For Use in Aviation
-<span style="width:72mm"/>
+<span style="width:75mm"/>
 						<b>Registration No. </b>
 						<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
 						<span style="width:8px;"/>
@@ -2015,33 +2057,33 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 							<tbody>
 								<!--  Row 8A -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm; border-bottom-width:4mm;border-color:white">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;vertical-align:top;">
 										<b>a</b>
 									</td>
 									<td class="styIRS4136TableCellLine">Use in commercial aviation (other than foreign trade) taxed at $.219</td>
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:1mm;text-align:center;">$ .175</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="padding-left:1mm;text-align:center;vertical-align:bottom;">$ .175</td>
+									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;vertical-align:bottom;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsKrsnUsedInAvnTxd219GalsQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD">$
+									<td class="styIRS4136TableCellD" style="vertical-align:bottom;">$
                   <xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsKrsnUsedInAvnTxd219CrAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE">355<span class="styIRS4136TableCellPad"/>
+									<td class="styIRS4136TableCellE" style="vertical-align:bottom;">355<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
 								<!--  Row 8B -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;           border-bottom-width:4mm;border-color:white">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;vertical-align:top;">
 										<b>b</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:90mm;">
@@ -2050,21 +2092,21 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">.200</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;vertical-align:bottom;">.200</td>
+									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;vertical-align:bottom;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsKrsnUsedInAvnTxd244GalsQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD">
+									<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsKrsnUsedInAvnTxd244CrAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE">417<span class="styIRS4136TableCellPad"/>
+									<td class="styIRS4136TableCellE" style="vertical-align:bottom;">417<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
 								<!--  Row 8C -->
@@ -2098,12 +2140,12 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 								<!--  Row 8D  -->
 								<!-- LOOP -->
 								<xsl:variable name="Line8DRowCount" select="count($IRS4136Data/OtherNontaxableUseTaxedAt244)"/>
-								<xsl:if test="$Line8DRowCount = 0 or ((count($IRS4136Data/OtherNontaxableUseTaxedAt244) &gt; 1) and          ($Print = $Separated))">
+								<xsl:if test="$Line8DRowCount = 0 or ((count($IRS4136Data/OtherNontaxableUseTaxedAt244) &gt; 1) and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>d</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Other nontaxable uses taxed at $.244</td>
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">Other nontaxable uses taxed at $.244</td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
@@ -2131,22 +2173,22 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 									<xsl:for-each select="$IRS4136Data/OtherNontaxableUseTaxedAt244">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line8DRowCount"/></xsl:attribute>
 													<b>d</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line8DRowCount"/></xsl:attribute>Other nontaxable uses taxed at $.244
 												</td>
 											</xsl:if>
-											<td class="styIRS4136TableCellA">
+											<td class="styIRS4136TableCellA" style="vertical-align:bottom;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 												</xsl:call-template>
 												<span class="styIRS4136TableCellPad"/>
 											</td>
-											<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">.243</td>
-											<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+											<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;vertical-align:bottom;">.243</td>
+											<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;vertical-align:bottom;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="MaxSize" select="9"/>
 													<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -2154,14 +2196,14 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 												<span class="styIRS4136TableCellPad"/>
 											</td>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136TableCellD">
+												<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line8DRowCount"/></xsl:attribute>
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsKrsnOthNontxTxd244CrAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4136TableCellPad"/>
 												</td>
-												<td class="styIRS4136TableCellE">
+												<td class="styIRS4136TableCellE" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line8DRowCount"/></xsl:attribute>346
               <span class="styIRS4136TableCellPad"/>
 												</td>
@@ -2172,12 +2214,12 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 								<!--  Row 8E  -->
 								<!-- LOOP -->
 								<xsl:variable name="Line8ERowCount" select="count($IRS4136Data/OtherNontaxableUseTaxedAt219)"/>
-								<xsl:if test="$Line8ERowCount = 0 or ((count($IRS4136Data/OtherNontaxableUseTaxedAt219) &gt; 1) and          ($Print = $Separated))">
+								<xsl:if test="$Line8ERowCount = 0 or ((count($IRS4136Data/OtherNontaxableUseTaxedAt219) &gt; 1) and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>e</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Other nontaxable uses taxed at $.219</td>
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">Other nontaxable uses taxed at $.219</td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
@@ -2206,11 +2248,11 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 									<xsl:for-each select="$IRS4136Data/OtherNontaxableUseTaxedAt219">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line8ERowCount"/></xsl:attribute>
 													<b>e</b>
 												</td>
-												<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+												<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line8ERowCount"/></xsl:attribute>Other nontaxable uses taxed at $.219</td>
 											</xsl:if>
 											<td class="styIRS4136TableCellA">
@@ -2228,14 +2270,14 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 												<span class="styIRS4136TableCellPad"/>
 											</td>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136TableCellD">
+												<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line8ERowCount"/></xsl:attribute>
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="$IRS4136Data/SlsKrsnOthNontxTxd219CrAmt"/>
 													</xsl:call-template>
 													<span class="styIRS4136TableCellPad"/>
 												</td>
-												<td class="styIRS4136TableCellE">
+												<td class="styIRS4136TableCellE" style="vertical-align:bottom;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line8ERowCount"/></xsl:attribute>369
               <span class="styIRS4136TableCellPad"/>
 												</td>
@@ -2254,7 +2296,7 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 									<td class="styIRS4136TableCellA" style="background-color: lightgrey;">
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:5.5mm;">.001</td>
+									<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">.001</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -2276,7 +2318,7 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 					</div>
 					<!--   END LINE 8   -->
 					<!--BEGIN FOOTER-->
-					<div style="width:187mm; padding-top:1mm;padding-bottom:2mm;">
+					<div style="width:187mm;">
 						<div style="float: left; clear: none;">
 							<span class="styBoldText"/>
 						</div>
@@ -2295,26 +2337,12 @@ of the buyer to make the claim. Claimant certifies that the kerosene did not con
 					</div>
 					<!--END HEADER-->
 					<!--   BEGIN LINE 09   -->
-					<div class="styIRS4136NumLine" style="float: none; clear: both">
-						<br/>9
-    <span class="styIRS4136NBSP"/>
-    Reserved
-<!--    Alcohol Fuel Mixture Credit
--->
-						<span style="width:95mm;"/>Registration No.
-    <img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
+					<div class="styIRS4136NumLine" style="float: none; clear: both;padding-left:3mm;padding-top:2mm;padding-bottom:2mm;">
+						9 <span class="styIRS4136NBSP"/> Reserved
+						<span style="width:95mm;"/> Registration No.   <img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
 						<span style="width:8px;"/>
-						<span style="font-weight:normal">
-							<!--							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$IRS4136Data/AlcoholFuelCrRegistrationNum"/>
-							</xsl:call-template>-->
-						</span>
-						<br/>
-						<br/>
 					</div>
-					<div class="styIRS4136DescLine" style="font-size: 7pt; margin-left: 5mm; margin-right: 5mm; padding-right:10mm;width:182mm;border:solid black 1; border-top-width:0px;border-right-width:0px;border-left-width:0px;">
-						<br/>
-						<br/>
+					<div class="styIRS4136DescLine" style="height:8mm; margin-left: 5mm; margin-right: 5mm; padding-right:10mm;width:182mm;">
 						<!--Claimant produced an alcohol fuel mixture by mixing taxable fuel with alcohol. The alcohol fuel mixture was sold by the claimant to any person
 for use as a fuel or was used as a fuel by the claimant.-->
 					</div>
@@ -2324,19 +2352,19 @@ for use as a fuel or was used as a fuel by the claimant.-->
 							<thead class="styIRS4136TableThead">
 								<tr>
 									<th style="width:3mm;height:4mm;" scope="col"/>
-									<th class="styIRS4136TableCellLine" style="border-bottom-width:0px" scope="col">
+									<th class="styIRS4136TableCellLine" style="border-top-width:1px;border-bottom-width:0px" scope="col">
 										<span class="styIRS4136TableCellPad"/>
 									</th>
-									<th class="styIRS4136TableCellB" style="text-align: center" scope="col">
+									<th class="styIRS4136TableCellB" style="text-align: center;border-top-width:1px;" scope="col">
 										<b>(b) Rate</b>
 									</th>
-									<th class="styIRS4136TableCellC" style="text-align: center" scope="col">
+									<th class="styIRS4136TableCellC" style="border-top-width:1px;text-align: center" scope="col">
 										<b>(c) Gallons of alcohol</b>
 									</th>
-									<th class="styIRS4136TableCellD" style="text-align: center" scope="col">
+									<th class="styIRS4136TableCellD" style="border-top-width:1px;text-align: center" scope="col">
 										<b>(d) Amount of credit</b>
 									</th>
-									<th class="styIRS4136TableCellE" style="text-align: center" scope="col">
+									<th class="styIRS4136TableCellE" style="border-top-width:1px;text-align: center" scope="col">
 										<b>(e) CRN</b>
 									</th>
 								</tr>
@@ -2345,7 +2373,7 @@ for use as a fuel or was used as a fuel by the claimant.-->
 							<tbody>
 								<!--  Row 09A -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+									<td class="styIRS4136LetterCell" style="padding-right:1.5mm;padding-left:4mm;">
 										<b>a</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">
@@ -2380,7 +2408,7 @@ for use as a fuel or was used as a fuel by the claimant.-->
 								</tr>
 								<!--  Row 09B  -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;">
+									<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;border-bottom-width:1px;">
 										<b>b</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">
@@ -2481,8 +2509,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 							<tbody>
 								<!--  Row 10A -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="padding-bottom:.5mm">
-										<b>a</b>
+									<td class="styIRS4136LetterCell" style="padding-right:1.5mm;padding-left:4mm;">
+									 <b>a</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">
 									Biodiesel (other than agri-biodiesel) mixtures
@@ -2498,15 +2526,15 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 									<td class="styIRS4136TableCellD">
-																			$
-                  <xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$IRS4136Data/BiodieselMixtureCreditAmt"/>
-										</xsl:call-template>
-										<span class="styIRS4136TableCellPad">
+										<span style="float:left;">
 											<xsl:call-template name="SetFormLinkInline">
 												<xsl:with-param name="TargetNode" select=" $IRS4136Data/BiodieselMixtureCreditAmt"/>
 											</xsl:call-template>
 										</span>
+																			$
+                  <xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/BiodieselMixtureCreditAmt"/>
+										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 									<td class="styIRS4136TableCellE">
@@ -2515,7 +2543,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 10B  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+									<td class="styIRS4136LetterCell" style="padding-right:1.5mm;padding-left:4mm;">
 										<b>b</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">
@@ -2548,7 +2576,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 10C  -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;">
+									<td class="styIRS4136LetterCell" style="padding-right:1.5mm;padding-left:4mm;border-bottom-width:1px;">
 										<b>c</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;"> 
@@ -2596,20 +2624,21 @@ instructions for line 10 for information about renewable diesel used in aviation
     <span style="width:182mm;"/>
 						<br/>
 					</div>
-					<div style="width:187mm;padding-bottom:.5mm;border-top-width:1px;">
+					<div class="styBB" style="width:187mm;padding-bottom:.5mm;">
 						<div style="float:left;padding-top:2mm;margin-left:2.5mm;padding-left:4mm">
 							<b>Caution.</b> There is a reduced credit rate for use in certain intercity 
                 and local buses (type of use 5) (see instructions).  
               </div>
-						<span style="width:7mm;text-align:right;float:right; clear: none">
+<!--						<span style="width:7mm;text-align:right;float:right; clear: none">
 							<xsl:call-template name="SetDynamicTableToggleRowCount">
 								<xsl:with-param name="DataRowCount" select="$RowCount11 + 2"/>
 								<xsl:with-param name="containerHeight" select="3"/>
 								<xsl:with-param name="containerID" select=" '14ctn' "/>
 							</xsl:call-template>
-						</span>
+						</span>-->
 					</div>
-					<div style="width:187mm;float:left;clear:left;styBB;border-top:1px solid black;" id="14ctn">
+
+					<div  class="styTableContainer" style="height:auto;width:187mm;float:left;clear:left;border-bottom:1px solid black;" id="11ctn">
 						<table class="styIRS4136Table" cellspacing="0">
 							<thead class="styIRS4136TableThead">
 								<tr>
@@ -2641,7 +2670,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<!--  Row 11A -->
 								<!-- LOOP -->
 								<xsl:variable name="AGRowCount" select="count($IRS4136Data/NontxLiquifiedPetroleumGas)"/>
-									<xsl:if test="($AGRowCount + count($IRS4136Data/BusNontxLiquifiedPetroleumGas)  = 0) or                  ((count($IRS4136Data/NontxLiquifiedPetroleumGas) + count($IRS4136Data/BusNontxLiquifiedPetroleumGas) &gt; 1) and ($Print = $Separated))">
+									<xsl:if test="($AGRowCount + count($IRS4136Data/BusNontxLiquifiedPetroleumGas)  = 0) or ((count($IRS4136Data/NontxLiquifiedPetroleumGas) + count($IRS4136Data/BusNontxLiquifiedPetroleumGas) &gt; 1) and ($Print = $Separated))">
 								<tr>
 									<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
 										<b>a</b>
@@ -2675,22 +2704,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 																
 </xsl:if>
-
 								<!-- Adding check for the SRD -->
-								
 								<xsl:if test="($Print != $Separated) or (count($IRS4136Data/NontxLiquifiedPetroleumGas) + count($IRS4136Data/BusNontxLiquifiedPetroleumGas) &lt;= 1) ">
-
-
 									<xsl:for-each select="$IRS4136Data/NontxLiquifiedPetroleumGas">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 													<b>a</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiquifiedPetroleumGas) = 1)">
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>Liquefied petroleum gas (LPG)
         </td>
 													</xsl:when>
@@ -2718,14 +2743,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiquifiedPetroleumGas) = 1)">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>$
                <xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxLiquefiedPtrlmGasCrAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
 														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>419
              <span class="styIRS4136TableCellPad"/>
 														</td>
@@ -2830,33 +2855,10 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<!-- ====================================================================== -->
 																</xsl:if>
 								<!-- ====================================================================== -->
-								<!-- ============================================================================= -->
-								<!--  Row 11B -->
-<!--								<tr>
-									<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
-										<b>b</b>
-									</td>
-									<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Reserved
-      </td>
-									<td class="styIRS4136TableCellA" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:3mm;text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellC" style="text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellD" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellE" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-								</tr>-->
+
 								<!-- LOOP -->
 																<xsl:variable name="AGRowCountb" select="count($IRS4136Data/NontxPSeriesFuels)"/>
-								<xsl:if test="($AGRowCountb  + count($IRS4136Data/BusNontxPSeriesFuels)  = 0) or                  ((count($IRS4136Data/NontxPSeriesFuels) + count($IRS4136Data/BusNontxPSeriesFuels)  &gt; 1) and ($Print = $Separated))">
+								<xsl:if test="($AGRowCountb  + count($IRS4136Data/BusNontxPSeriesFuels)  = 0) or ((count($IRS4136Data/NontxPSeriesFuels) + count($IRS4136Data/BusNontxPSeriesFuels)  &gt; 1) and ($Print = $Separated))">
 									<tr>
 										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
 											<b>b</b>
@@ -2886,25 +2888,23 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</td>
 									</tr>
 								</xsl:if>
-								
 								<!-- Adding check for the SRD -->
-								
 								<xsl:if test="($Print != $Separated) or (count($IRS4136Data/NontxPSeriesFuels) + count($IRS4136Data/BusNontxPSeriesFuels)  &lt;= 1) ">
 									<xsl:for-each select="$IRS4136Data/NontxPSeriesFuels">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountb"/></xsl:attribute>
 													<b>b</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxPSeriesFuels) = 1)">
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountb"/></xsl:attribute>"P Series" fuels
         </td>
 													</xsl:when>
 													<xsl:otherwise>
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountb"/></xsl:attribute>"P Series" fuels
         </td>
 													</xsl:otherwise>
@@ -2927,15 +2927,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxPSeriesFuels) = 1)">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountb"/></xsl:attribute>
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxPSeriesFuelsCreditAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
-
 														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountb"/></xsl:attribute>420
               <span class="styIRS4136TableCellPad"/>
 														</td>
@@ -3032,43 +3031,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:otherwise>
 										</xsl:choose>
 									</xsl:if>
-
 								</xsl:if>
-
-
-								<!--  Row 11C -->
-<!--								<tr>
-									<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
-										<b>c</b>
-									</td>
-									<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Reserved
-      </td>
-									<td class="styIRS4136TableCellA" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:3mm;text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellC" style="text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellD" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellE" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-								</tr>-->
-								<!-- LOOP -->
-								
-
 								<xsl:variable name="AGRowCountc" select="count($IRS4136Data/NontxCompressedNaturalGas)"/>
-								<xsl:if test="($AGRowCountc  + count($IRS4136Data/BusNontxCompressedNaturalGas)  = 0) or                  ((count($IRS4136Data/NontxCompressedNaturalGas) + count($IRS4136Data/BusNontxCompressedNaturalGas)  &gt; 1) and ($Print = $Separated))">
+								<xsl:if test="($AGRowCountc  + count($IRS4136Data/BusNontxCompressedNaturalGas)  = 0) or ((count($IRS4136Data/NontxCompressedNaturalGas) + count($IRS4136Data/BusNontxCompressedNaturalGas)  &gt; 1) and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>c</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Compressed natural gas (CNG) (GGE = 126.67 cu. ft.)
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">Compressed natural gas (CNG) (GGE = 126.67 cu. ft.)
       </td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
@@ -3094,23 +3064,22 @@ instructions for line 10 for information about renewable diesel used in aviation
 									</tr>
 								</xsl:if>
 
-
 								<xsl:if test="($Print != $Separated) or (count($IRS4136Data/NontxCompressedNaturalGas) + count($IRS4136Data/BusNontxCompressedNaturalGas)  &lt;= 1) ">
 									<xsl:for-each select="$IRS4136Data/NontxCompressedNaturalGas">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountc"/></xsl:attribute>
 													<b>c</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxCompressedNaturalGas) = 1)">
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountc"/></xsl:attribute>Compressed natural gas (CNG) (GGE = 126.67 cu. ft.)
         </td>
 													</xsl:when>
 													<xsl:otherwise>
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountc"/></xsl:attribute>Compressed natural gas (CNG) (GGE = 126.67 cu. ft.)
         </td>
 													</xsl:otherwise>
@@ -3133,29 +3102,28 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxCompressedNaturalGas) = 1)">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountc"/></xsl:attribute>
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxCompressedNaturalGasCrAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
 
-
 														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountc"/></xsl:attribute>421
               <span class="styIRS4136TableCellPad"/>
 														</td>
 													</xsl:when>
 													<xsl:otherwise>
-														<td class="styIRS4136TableCellD">
+														<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountc"/></xsl:attribute>
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxCompressedNaturalGasCrAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
 														</td>
-														<td class="styIRS4136TableCellE">
+														<td class="styIRS4136TableCellE" style="vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountc"/></xsl:attribute>421
               <span class="styIRS4136TableCellPad"/>
 														</td>
@@ -3164,7 +3132,6 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:if>
 										</tr>
 									</xsl:for-each>
-
 									<xsl:if test="count($IRS4136Data/BusNontxCompressedNaturalGas) = 1">
 										<xsl:choose>
 											<xsl:when test="$AGRowCountc = 0">
@@ -3241,9 +3208,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:otherwise>
 										</xsl:choose>
 									</xsl:if>
-
 								</xsl:if>
-
 
 								<!--  Row 11D -->
 								<!-- LOOP -->
@@ -3251,10 +3216,10 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<xsl:if test="($AGRowCountd  + count($IRS4136Data/BusNontxLiquifiedHydrogen)  = 0) or
 								                  ((count($IRS4136Data/NontxLiquifiedHydrogen) &gt; 1) + count($IRS4136Data/BusNontxLiquifiedHydrogen)  and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>d</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Liquefied hydrogen
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">Liquefied hydrogen
       </td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
@@ -3272,7 +3237,6 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:if>
 										</td>
 										<td class="styIRS4136TableCellD">
-										
 											<span class="styIRS4136TableCellPad"/>
 										</td>
 										<td class="styIRS4136TableCellE">422
@@ -3285,18 +3249,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 									<xsl:for-each select="$IRS4136Data/NontxLiquifiedHydrogen">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountd"/></xsl:attribute>
 													<b>d</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiquifiedHydrogen) = 1)">
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountd"/></xsl:attribute>Liquefied hydrogen
         </td>
 													</xsl:when>
 													<xsl:otherwise>
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountd"/></xsl:attribute>Liquefied hydrogen
         </td>
 													</xsl:otherwise>
@@ -3319,14 +3283,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiquifiedHydrogen) = 1)">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountd"/></xsl:attribute> 
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxLiquefiedHydrogenCrAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
 														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountd"/></xsl:attribute>422
               <span class="styIRS4136TableCellPad"/>
 														</td>
@@ -3427,108 +3391,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 									</xsl:if>
 									<!-- ====================================================================== -->
 								</xsl:if>
-								<!--  Row 11E -->
-
-<!--								<tr>
-									<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
-										<b>e</b>
-									</td>
-									<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Reserved
-      </td>
-									<td class="styIRS4136TableCellA" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:3mm;text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellC" style="text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellD" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellE" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-								</tr>-->
-
-
-<!--								<tr>
-									<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
-										<b>f</b>
-									</td>
-									<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Reserved
-      </td>
-									<td class="styIRS4136TableCellA" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:3mm;text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellC" style="text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellD" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellE" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-								</tr>-->
-
-<!--								<tr>
-									<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
-										<b>g</b>
-									</td>
-									<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Reserved
-      </td>
-									<td class="styIRS4136TableCellA" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:3mm;text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellC" style="text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellD" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellE" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-								</tr>-->
-
-<!--								<tr>
-									<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
-										<b>h</b>
-									</td>
-									<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Reserved
-      </td>
-									<td class="styIRS4136TableCellA" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:3mm;text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellC" style="text-align:left;background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellD" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-									<td class="styIRS4136TableCellE" style="background-color: lightgrey;">
-										<span class="styIRS4136TableCellPad"/>
-									</td>
-								</tr>-->
-
 								<xsl:variable name="AGRowCounte" select="count($IRS4136Data/NontxLiqfdFuelDerivedFromCoal)"/>
-								<xsl:if test="($AGRowCounte  + count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal)  = 0) or                  ((count($IRS4136Data/NontxLiqfdFuelDerivedFromCoal) + count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal)  &gt; 1) and ($Print = $Separated))">
+								<xsl:if test="($AGRowCounte  + count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal)  = 0) or ((count($IRS4136Data/NontxLiqfdFuelDerivedFromCoal) + count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal)  &gt; 1) and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>e</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Fischer&#8211;Tropsch process liquid fuel from coal (including peat) </td>
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">Fischer&#8211;Tropsch process liquid fuel from coal (including peat) </td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
@@ -3553,18 +3422,17 @@ instructions for line 10 for information about renewable diesel used in aviation
 									</tr>
 								</xsl:if>
 
-
 								<xsl:if test="($Print != $Separated) or (count($IRS4136Data/NontxLiqfdFuelDerivedFromCoal) + count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal)  &lt;= 1) ">
 									<xsl:for-each select="$IRS4136Data/NontxLiqfdFuelDerivedFromCoal">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounte"/></xsl:attribute>
 													<b>e</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal) = 1)">
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounte"/></xsl:attribute>Fischer&#8211;Tropsch process liquid fuel from coal (including peat) </td>
 													</xsl:when>
 													<xsl:otherwise>
@@ -3590,15 +3458,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal) = 1)">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounte"/></xsl:attribute>
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxLiqfdFuelDerFromCoalCrAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
-
 														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounte"/></xsl:attribute>423
               <span class="styIRS4136TableCellPad"/>
 														</td>
@@ -3620,7 +3487,6 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:if>
 										</tr>
 									</xsl:for-each>
-
 									<xsl:if test="count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal) = 1">
 										<xsl:choose>
 											<xsl:when test="$AGRowCounte = 0">
@@ -3696,7 +3562,6 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:otherwise>
 										</xsl:choose>
 									</xsl:if>
-
 								</xsl:if>
 								
 								<!--  Row 11F -->
@@ -3704,10 +3569,10 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<xsl:variable name="AGRowCountf" select="count($IRS4136Data/NontaxLiqFuelDerFromBiomass)"/>
 								<xsl:if test="($AGRowCountf  + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass)  = 0) or ((count($IRS4136Data/NontaxLiqFuelDerFromBiomass) + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass)  &gt; 1) and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>f</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Liquid fuel derived from biomass
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">Liquid fuel derived from biomass
       </td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
@@ -3733,23 +3598,22 @@ instructions for line 10 for information about renewable diesel used in aviation
 									</tr>
 								</xsl:if>
 
-
 								<xsl:if test="($Print != $Separated) or (count($IRS4136Data/NontaxLiqFuelDerFromBiomass) + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass)  &lt;= 1) ">
 									<xsl:for-each select="$IRS4136Data/NontaxLiqFuelDerFromBiomass">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountf"/></xsl:attribute>
 													<b>f</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiqFuelDerFromBiomass) = 1)">
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountf"/></xsl:attribute>Liquid fuel derived from biomass
         </td>
 													</xsl:when>
 													<xsl:otherwise>
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountf"/></xsl:attribute>Liquid fuel derived from biomass
         </td>
 													</xsl:otherwise>
@@ -3772,16 +3636,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiqFuelDerFromBiomass) = 1)">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountf"/></xsl:attribute>
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxLiqFuelDerBiomassCrAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
-
-
-														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+													</td>
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountf"/></xsl:attribute>424
               <span class="styIRS4136TableCellPad"/>
 														</td>
@@ -3808,10 +3670,10 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<xsl:choose>
 											<xsl:when test="$AGRowCountf = 0">
 												<tr>
-													<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+													<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 														<b>f</b>
 													</td>
-													<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Liquid fuel derived from biomass
+													<td class="styIRS4136TableCellLine" style="vertical-align:top;">Liquid fuel derived from biomass
       </td>
 													<td class="styIRS4136TableCellA">
 														<xsl:call-template name="PopulateText">
@@ -3842,10 +3704,10 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:when>
 											<xsl:otherwise>
 												<tr>
-													<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+													<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+													<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 														<span class="styIRS4136TableCellPad"/>
 													</td>
 													<td class="styIRS4136TableCellA">
@@ -3882,18 +3744,16 @@ instructions for line 10 for information about renewable diesel used in aviation
 									</xsl:if>
 								</xsl:if>
 
-
 								<!--  Row 11G -->
 								<!-- LOOP -->
-
 
 								<xsl:variable name="AGRowCountg" select="count($IRS4136Data/NontxLiquefiedNaturalGas)"/>
 								<xsl:if test="($AGRowCountg  + count($IRS4136Data/BusNontxLiquefiedNaturalGas)  = 0) or ((count($IRS4136Data/NontxLiquefiedNaturalGas) &gt; 1) + count($IRS4136Data/BusNontxLiquefiedNaturalGas)  and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>g</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Liquefied natural gas (LNG)
+										<td class="styIRS4136TableCellLine" style="vertical-align:top;">Liquefied natural gas (LNG)
       </td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
@@ -3923,13 +3783,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 									<xsl:for-each select="$IRS4136Data/NontxLiquefiedNaturalGas">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountg"/></xsl:attribute>
 													<b>g</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiquefiedNaturalGas) = 1)">
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountg"/></xsl:attribute>Liquefied natural gas (LNG)
         </td>
 													</xsl:when>
@@ -3957,16 +3817,15 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiquefiedNaturalGas) = 1)">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountg"/></xsl:attribute>
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxLiquefiedNaturalGasCrAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
 
-
 														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCountg"/></xsl:attribute>425
               <span class="styIRS4136TableCellPad"/>
 														</td>
@@ -3988,7 +3847,6 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:if>
 										</tr>
 									</xsl:for-each>
-
 									<xsl:if test="count($IRS4136Data/BusNontxLiquefiedNaturalGas) = 1">
 										<xsl:choose>
 											<xsl:when test="$AGRowCountg = 0">
@@ -4065,23 +3923,20 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:otherwise>
 										</xsl:choose>
 									</xsl:if>
-
 								</xsl:if>
-
 
 								<!--  Row 11H -->
 								<!-- LOOP -->
 								
-
 								<xsl:variable name="AGRowCounth" select="count($IRS4136Data/NontxLiquefiedGasBiomass)"/>
 								<xsl:if test="($AGRowCounth + count($IRS4136Data/BusNontxLiquefiedGasDerBiomass)  = 0) or ((count($IRS4136Data/NontxLiquefiedGasBiomass) + count($IRS4136Data/BusNontxLiquefiedGasDerBiomass)  &gt; 1)  and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+										<td class="styIRS4136LetterCell" style="border-bottom:0;vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 											<b>h</b>
 										</td>
-										<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Liquefied gas derived from biomass
+										<td class="styIRS4136TableCellLine" style="border-bottom:0;vertical-align:top;">Liquefied gas derived from biomass
                     </td>
-										<td class="styIRS4136TableCellA">
+										<td class="styIRS4136TableCellA" style="border-bottom:0;">
 											<span class="styIRS4136TableCellPad"/>
 										</td>
 										<td class="styIRS4136TableCellB" style="text-align:center;padding:1.25mm;">.183</td>
@@ -4103,23 +3958,22 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</td>
 									</tr>
 								</xsl:if>
-
 								<xsl:if test="($Print != $Separated) or (count($IRS4136Data/NontxLiquefiedGasBiomass) + count($IRS4136Data/BusNontxLiquefiedGasDerBiomass) &lt;= 1) ">
 									<xsl:for-each select="$IRS4136Data/NontxLiquefiedGasBiomass">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+												<td class="styIRS4136LetterCell" style="border-bottom:0;vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounth"/></xsl:attribute>
 													<b>h</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiquefiedGasDerBiomass) = 1)">
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounth"/></xsl:attribute>Liquified gas derived from biomass
                          </td>
 													</xsl:when>
 													<xsl:otherwise>
-														<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounth"/></xsl:attribute>Liquified gas derived from biomass
                          </td>
 													</xsl:otherwise>
@@ -4142,16 +3996,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="(count($IRS4136Data/BusNontxLiquefiedGasDerBiomass) = 1)">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounth"/></xsl:attribute>
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxLiquefiedGasBiomassCrAmt"/>
 															</xsl:call-template>
 															<span class="styIRS4136TableCellPad"/>
-
-
 														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:bottom;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounth"/></xsl:attribute>435
               <span class="styIRS4136TableCellPad"/>
 														</td>
@@ -4173,15 +4025,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											</xsl:if>
 										</tr>
 									</xsl:for-each>
-
 									<xsl:if test="count($IRS4136Data/BusNontxLiquefiedGasDerBiomass) = 1">
 										<xsl:choose>
 											<xsl:when test="$AGRowCounth = 0">
 												<tr>
-													<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
+													<td class="styIRS4136LetterCell" style="border-bottom:0;vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
 														<b>h</b>
 													</td>
-													<td class="styIRS4136TableCellLine" style="vertical-align:middle;">Liquefied gas derived from biomass
+													<td class="styIRS4136TableCellLine" style="border-bottom:0;vertical-align:middle;">Liquefied gas derived from biomass
                     </td>
 													<td class="styIRS4136TableCellA">
 														<xsl:call-template name="PopulateText">
@@ -4189,22 +4040,22 @@ instructions for line 10 for information about renewable diesel used in aviation
 														</xsl:call-template>
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">.183</td>
-													<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+													<td class="styIRS4136TableCellB" style="border-bottom:0;padding-left:2mm;text-align:center;">.183</td>
+													<td class="styIRS4136TableCellC" style="border-bottom:0;padding-left:2mm;text-align:center;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="MaxSize" select="9"/>
 															<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedGasDerBiomass/GallonsQty"/>
 														</xsl:call-template>
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellD">
+													<td class="styIRS4136TableCellD" style="border-bottom:0;">
 														<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounth"/></xsl:attribute>
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxLiquefiedGasBiomassCrAmt"/>
 														</xsl:call-template>
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellE">
+													<td class="styIRS4136TableCellE" style="border-bottom:0;">
 														<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCounth"/></xsl:attribute>435
               <span class="styIRS4136TableCellPad"/>
 													</td>
@@ -4215,10 +4066,10 @@ instructions for line 10 for information about renewable diesel used in aviation
 													<td class="styIRS4136LetterCell" style="vertical-align:middle;padding-left:4mm;padding-right:1.5mm;">
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellLine" style="vertical-align:middle;">
+													<td class="styIRS4136TableCellLine" style="border-bottom:0;vertical-align:middle;">
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellA">
+													<td class="styIRS4136TableCellA" style="border-bottom:0;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedGasDerBiomass/FuelTaxLocalBusCd"/>
 														</xsl:call-template>
@@ -4228,44 +4079,35 @@ instructions for line 10 for information about renewable diesel used in aviation
 														</xsl:call-template>
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">
+													<td class="styIRS4136TableCellB" style="border-bottom:0;padding-left:2mm;text-align:center;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedGasDerBiomass/CreditRt"/>
 														</xsl:call-template>
 													</td>
-													<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+													<td class="styIRS4136TableCellC" style="border-bottom:0;padding-left:2mm;text-align:center;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="MaxSize" select="9"/>
 															<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedGasDerBiomass/GallonsQty"/>
 														</xsl:call-template>
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellD">
+													<td class="styIRS4136TableCellD" style="border-bottom:0;">
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellE">
+													<td class="styIRS4136TableCellE" style="border-bottom:0;">
 														<span class="styIRS4136TableCellPad"/>
 													</td>
 												</tr>
 											</xsl:otherwise>
 										</xsl:choose>
 									</xsl:if>
-
 								</xsl:if>
-
 							</tbody>
 						</table>
 					</div>
-					<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
-						<xsl:with-param name="DataRowCount" select="$RowCount11 + 2"/>
-						<xsl:with-param name="containerHeight" select="3"/>
-						<xsl:with-param name="containerID" select=" '14ctn' "/>
-					</xsl:call-template>
 					<!--   END LINE 11   -->
-					<!--					<div  style="width:187mm;height:2mm;padding-left:8mm;">* These rates apply after Septemper 30, 2012</div>
--->
 					<!--   BEGIN LINE 12   -->
-					<div class="styIRS4136NumLine" style="float: none; clear: both">
+					<div class="styIRS4136NumLine" style="float: none; clear: both;">
 						<br/>
 						<br/>12
     <span class="styIRS4136NBSP"/>  
@@ -4282,7 +4124,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 						<br/>
 						<br/>
 					</div>
-					<div style="width:187mm;float:left;clear:left;border-bottom:1px solid black;" id="UVctn">
+					<div style="width:187mm;float:left;clear:all;border-bottom:2px solid black;" id="UVctn">
 						<table class="styIRS4136Table" cellspacing="0">
 							<thead class="styIRS4136TableThead">
 								<tr>
@@ -4308,13 +4150,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 							<tbody>
 								<!--  Row 12A -->
 							<tr>
-									<td class="styIRS4136LetterCell">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>a</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">
 									Liquefied petroleum gas (LPG)
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6mm;">$ .50</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;">$ .50</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -4323,7 +4165,6 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 									<td class="styIRS4136TableCellD">
-									
 									$
                   <xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/LiquefiedPetroleumGasCrAmt"/>
@@ -4334,13 +4175,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 12B  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+												<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;">
 										<b>b</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">
 									"P Series" fuels
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:9mm;"> .50</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;"> .50</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -4358,13 +4199,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 12C  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+												<td class="styIRS4136LetterCell" style="padding-left:4mm;padding-right:1.5mm;">
 										<b>c</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">
 									Compressed natural gas (CNG) (GGE = 121 cu. ft.)
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:9mm;"> .50</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;"> .50</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -4382,11 +4223,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 12D  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>d</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">Liquefied hydrogen</td>
-									<td class="styIRS4136TableCellB" style="padding-left:9mm;"> .50</td>
+									<td class="styIRS4136TableCellLine" style="width:100mm;">Liquefied hydrogen</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;"> .50</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -4404,13 +4245,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 12e  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>e</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">
 										Fischer-Tropsch process liquid fuel from coal (including peat)
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:9mm;"> .50</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;"> .50</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -4428,13 +4269,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 12f  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>f</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">
 									Liquid fuel derived from biomass
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:9mm;"> .50</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;"> .50</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -4452,13 +4293,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 12g  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>g</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">
 									Liquefied natural gas (LNG)
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:9mm;"> .50</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;"> .50</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -4477,13 +4318,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<!--  Row 12h  -->
 								<!--  ******************************************************************************************  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+												<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>h</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">
 										Liquefied gas derived from biomass
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:9mm;"> .50</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;"> .50</td>
 									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
@@ -4502,27 +4343,27 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<!--  ******************************************************************************************  -->
 								<!--   Row 12i  -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>i</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;border-bottom:0;">
 										Compressed gas derived from biomass (GGE = 121 cu. ft.)
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:9mm;"> .50</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;border-bottom:0;"> .50</td>
+									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;border-bottom:0;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/CompressedGasBiomassGGEQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD">
+									<td class="styIRS4136TableCellD" style="border-bottom:0;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/CompressedGasBiomassCreditAmt"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE">437<span class="styIRS4136TableCellPad"/></td>
+									<td class="styIRS4136TableCellE" style="border-bottom:0;">437<span class="styIRS4136TableCellPad"/></td>
 								</tr>
 								<!--  ******************************************************************************************* -->
 							</tbody>
@@ -4531,7 +4372,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 					<!--   END LINE 12   -->
 					<!--   BEGIN BLOCK 13   -->
 					<!--BEGIN FOOTER-->
-					<div style="width:187mm; padding-top:1mm;padding-bottom:2mm;">
+					<div style="width:187mm;">
 						<div style="float: left; clear: none;padding-left:8mm">
 							<span class="styBoldText"/>
 						</div>
@@ -4542,7 +4383,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 					<div class="pageEnd"/>
 					<!--END FOOTER-->
 					<!--BEGIN HEADER-->
-					<div class="styBB" style="width:187mm; border-bottom:2 px;">
+					<div class="styBB" style="width:187mm; border-bottom-width:2px;">
 						<div style="float: left; clear: none">Form 4136 (2014)</div>
 						<div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">4</span>
 						</div>
@@ -4590,12 +4431,12 @@ instructions for line 10 for information about renewable diesel used in aviation
 							<tbody>
 								<!--  Row 13a -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>a</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">Diesel fuel sold for the exclusive use of a state or local government</td>
-									<td class="styIRS4136TableCellB" style="padding-left:4mm;">$ .243</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="text-align:center;">$ .243</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/DslFuelSoldStLocalGovtGalsQty"/>
@@ -4613,12 +4454,12 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 13b  -->
 								<tr>
-									<td class="styIRS4136LetterCell">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>b</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">Kerosene sold for the exclusive use of a state or local government</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;text-align:center:">.243</td>
-									<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;">.243</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/KrsnFuelSoldStLocalGovtGalsQty"/>
@@ -4636,37 +4477,41 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!-- Row 13C -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;padding-bottom:4mm;">
+									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>c</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:100mm;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;vertical-align:top;">
                   Kerosene for use in aviation sold for the exclusive use of a state or local government taxed at $.219
                    <span style="width:3px;"/>
 									</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6.5mm;padding-top:3mm;">.218</td>
-									<td class="styIRS4136TableCellC" style="padding-top:3mm;">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="MaxSize" select="9"/>
-											<xsl:with-param name="TargetNode" select="$IRS4136Data/KrsnAvnSoldStLocalGovtGalsQty"/>
-										</xsl:call-template>
-										<span class="styIRS4136TableCellPad"/>
+									<td class="styIRS4136TableCellB" style="text-align:center;padding-left:3mm;vertical-align:bottom;">.218</td>
+									<td class="styIRS4136TableCellC" style="vertical-align:bottom;text-align:center;">
+<span style="float:left;">
 										<xsl:call-template name="LinkToLeftoverDataTableInline">
 											<xsl:with-param name="Desc">Form 4136 line 13c(c),  AviationKeroseneGallons/@keroseneTaxRateCd</xsl:with-param>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/KrsnAvnSoldStLocalGovtGalsQty/@keroseneTaxRateCd"/>
 										</xsl:call-template>
-									</td>
-									<td class="styIRS4136TableCellD" style="padding-top:4mm;">
-										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$IRS4136Data/KrsnAvnSoldStLocalGovtCrAmt"/>
+</span>
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="MaxSize" select="9"/>
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/KrsnAvnSoldStLocalGovtGalsQty"/>
 										</xsl:call-template>
-										<span class="styIRS4136TableCellPad">
+										<span class="styIRS4136TableCellPad" style="width:4mm;"/>
+									</td>
+									<td class="styIRS4136TableCellD" style="vertical-align:bottom;">
+										<span style="float:left;">
 											<xsl:call-template name="SetFormLinkInline">
 												<xsl:with-param name="TargetNode" select="$IRS4136Data/KrsnAvnSoldStLocalGovtCrAmt"/>
 											</xsl:call-template>
 										</span>
+
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/KrsnAvnSoldStLocalGovtCrAmt"/>
+										</xsl:call-template>
+
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellE" style="padding-top:3mm;">369<span class="styIRS4136TableCellPad"/>
+									<td class="styIRS4136TableCellE" style="vertical-align:bottom;">369<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
 							</tbody>
@@ -4690,22 +4535,22 @@ instructions for line 10 for information about renewable diesel used in aviation
 							<b>Caution.</b>There is a reduced credit rate for use in certain intercity and local buses (type of use 5) (see instructions).
             </div>
 						<xsl:variable name="line14TableRowCount" select="1 + count($IRS4136Data/NontxUseDieselWaterEmulsion)"/>
-						<div class="styGenericDiv" style="float:right;">
+<!--						<div class="styGenericDiv" style="float:right;">
 							<xsl:call-template name="SetDynamicTableToggleRowCount">
 								<xsl:with-param name="DataRowCount" select="$line14TableRowCount"/>
 								<xsl:with-param name="containerHeight" select="2"/>
-								<xsl:with-param name="containerID" select=" '17ctn' "/>
+								<xsl:with-param name="containerID" select=" '14ctn' "/>
 							</xsl:call-template>
-						</div>
+						</div>-->
 					</div>
-					<div class="styTableContainer" id="17ctn">
+					<div class="styTableContainer" id="14ctn" style="border-bottom:none;">
 						<!--print logic-->
-						<xsl:call-template name="SetInitialState"/>
-						<!--end-->
+<!--						<xsl:call-template name="SetInitialState"/>
+-->						<!--end-->
 						<table class="styTable" cellspacing="0">
 							<thead class="styIRS4136TableThead">
 								<tr>
-									<th class="styIRS4136TableCellLine" style="border-bottom-width:0px;border-top-width:1px;border-right-width:0;                   width:3mm;height:4mm;" scope="col">
+									<th class="styIRS4136TableCellLine" style="border-bottom-width:0px;border-top-width:1px;border-right-width:0;width:3mm;height:4mm;" scope="col">
 										<span class="styIRS4136TableCellPad"/>
 									</th>
 									<th class="styIRS4136TableCellLine" style="border-bottom-width:0px;border-top-width:1px;" scope="col">
@@ -4733,9 +4578,9 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<!--  Row 14A  -->
 								<xsl:if test="($Line14aCount + count($IRS4136Data/BusNontxUseDieselWtrEmulsion) = 0) or (($Line14aCount + count($IRS4136Data/BusNontxUseDieselWtrEmulsion) &gt; 1) and ($Print = $Separated))">
 									<tr>
-										<td class="styIRS4136LetterCell ">
-											<b>a</b>
-										</td>
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
+										<b>a</b>
+									</td>
 										<td class="styIRS4136TableCellLine">Nontaxable use</td>
 										<td class="styIRS4136TableCellA">
 											<span class="styIRS4136TableCellPad"/>
@@ -4771,13 +4616,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 									<xsl:for-each select="$IRS4136Data/NontxUseDieselWaterEmulsion">
 										<tr>
 											<xsl:if test="position()=1">
-												<td class="styIRS4136LetterCell" style="padding-bottom:15mm;">
+										<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 													<xsl:attribute name="rowspan"><xsl:value-of select="$Line14aCount"/></xsl:attribute>
 													<b>a</b>
 												</td>
 												<xsl:choose>
 													<xsl:when test="count($IRS4136Data/BusNontxUseDieselWtrEmulsion) =1">
-														<td class="styIRS4136TableCellLine" style="padding-bottom:15mm;border-bottom:0;">
+														<td class="styIRS4136TableCellLine" style="vertical-align:top;border-bottom:0;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$Line14aCount"/></xsl:attribute>Nontaxable use</td>
 													</xsl:when>
 													<xsl:otherwise>
@@ -4793,12 +4638,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 												</xsl:call-template>
 												<span class="styIRS4136TableCellPad"/>
 											</td>
-											<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+									<td class="styIRS4136TableCellB" style="text-align:center;">$ .197</td>
+<!--											<td class="styIRS4136TableCellB" style="padding-top:1mm;">
 												<xsl:if test="position()=1">$ </xsl:if>
 												<xsl:if test="position()!=1">
 													<span style="padding-left:3mm; text-align:center;"/>
 												</xsl:if>.197
-              </td>
+              </td>-->
 											<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="MaxSize" select="9"/>
@@ -4809,18 +4655,21 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<xsl:if test="position()=1">
 												<xsl:choose>
 													<xsl:when test="count($IRS4136Data/BusNontxUseDieselWtrEmulsion) =1">
-														<td class="styIRS4136TableCellD" style="border-bottom:0;">
-															<xsl:attribute name="rowspan"><xsl:value-of select="$Line14aCount"/></xsl:attribute>$
-                              <xsl:call-template name="PopulateAmount">
-																<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxUseDieselWtrEmulsionCrAmt"/>
-															</xsl:call-template>
-															<span class="styIRS4136TableCellPad">
+														<td class="styIRS4136TableCellD" style="border-bottom:0;vertical-align:bottom;">
+<xsl:attribute name="rowspan"><xsl:value-of select="$Line14aCount"/></xsl:attribute>
+															<span style="float:left;">
 																<xsl:call-template name="SetFormLinkInline">
 																	<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxUseDieselWtrEmulsionCrAmt"/>
 																</xsl:call-template>
 															</span>
+
+															$
+																 <xsl:call-template name="PopulateAmount">
+																	<xsl:with-param name="TargetNode" select="$IRS4136Data/NontxUseDieselWtrEmulsionCrAmt"/>
+																</xsl:call-template>
+
 														</td>
-														<td class="styIRS4136TableCellE" style="border-bottom:0;">
+														<td class="styIRS4136TableCellE" style="border-bottom:0;vertical-align:top;">
 															<xsl:attribute name="rowspan"><xsl:value-of select="$Line14aCount"/></xsl:attribute> 309<span class="styIRS4136TableCellPad"/>
 														</td>
 													</xsl:when>
@@ -4850,7 +4699,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<xsl:choose>
 											<xsl:when test="$Line14aCount = 0">
 												<tr>
-													<td class="styIRS4136LetterCell ">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 														<b>a</b>
 													</td>
 													<td class="styIRS4136TableCellLine">Nontaxable use</td>
@@ -4907,7 +4756,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 														</xsl:call-template>
 														<span class="styIRS4136TableCellPad"/>
 													</td>
-													<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+													<td class="styIRS4136TableCellB" style="text-align:center;padding-left:4mm;">
 														<xsl:choose>
 															<xsl:when test="count($IRS4136Data/NontxUseDieselWaterEmulsion)= 0">$ 
                         </xsl:when>
@@ -4919,7 +4768,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 															<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxUseDieselWtrEmulsion/CreditRt"/>
 														</xsl:call-template>
 													</td>
-													<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+													<td class="styIRS4136TableCellC" style="text-align:center;">
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxUseDieselWtrEmulsion/GallonsQty"/>
 														</xsl:call-template>
@@ -4937,17 +4786,17 @@ instructions for line 10 for information about renewable diesel used in aviation
 									<!-- ====================================================================== -->
 								</xsl:if>
 								<!--  Row 14B OTHER NONTAXABLE USE  -->
-								<td class="styIRS4136LetterCell " style="border-bottom-width:1px;">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;border-bottom-width:1px;">
 									<b>b</b>
 								</td>
 								<td class="styIRS4136TableCellLine">Exported</td>
 								<td class="styIRS4136TableCellA" style="background-color: lightgrey;">
 									<span class="styIRS4136TableCellPad"/>
 								</td>
-								<td class="styIRS4136TableCellB" style="padding-left:3mm;">.198
+								<td class="styIRS4136TableCellB" style="text-align:center;padding-left:4mm;">.198
         <span class="styIRS4136TableCellPad"/>
 								</td>
-								<td class="styIRS4136TableCellC" style="padding-left:2mm;text-align:center;">
+								<td class="styIRS4136TableCellC" style="text-align:center;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="MaxSize" select="19"/>
 										<xsl:with-param name="TargetNode" select="$IRS4136Data/ExpNontxUseDslWtrEmulsionQty"/>
@@ -4966,11 +4815,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 							</tbody>
 						</table>
 					</div>
-					<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
+<!--					<xsl:call-template name="SetInitialDynamicTableHeightRowCount">
 						<xsl:with-param name="DataRowCount" select="$Line14aCount"/>
 						<xsl:with-param name="containerHeight" select="4"/>
-						<xsl:with-param name="containerID" select=" '17ctn' "/>
-					</xsl:call-template>
+						<xsl:with-param name="containerID" select=" '14ctn' "/>
+					</xsl:call-template>-->
 					<!--   END LINE 14   -->
 					<!--   BEGIN BLOCK 15   -->
 					<!--   BEGIN LINE 15   -->
@@ -5015,27 +4864,27 @@ instructions for line 10 for information about renewable diesel used in aviation
 							<tbody>
 								<!--  Row 15A -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom-width:1px;">
-										<span style="border-bottom-width:1px"/>
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;border-bottom-width:1px;">
+										<b> <span class="styIRS4136TableCellPad"> </span>  </b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">Blender credit</td>
-									<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">$ .046</td>
-									<td class="styIRS4136TableCellC" style="width=32mm;padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">Blender credit</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;">$ .046</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BlndrCrUseDslWtrEmulsionQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD" style="width=35mm">$
-                  <xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$IRS4136Data/BlndrCrUseDslWtrEmulsionCrAmt"/>
-										</xsl:call-template>
-										<span class="styIRS4136TableCellPad">
+									<td class="styIRS4136TableCellD">
+										<span style="float:left;">
 											<xsl:call-template name="SetFormLinkInline">
 												<xsl:with-param name="TargetNode" select="$IRS4136Data/BlndrCrUseDslWtrEmulsionCrAmt"/>
 											</xsl:call-template>
 										</span>
+										$ <xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$IRS4136Data/BlndrCrUseDslWtrEmulsionCrAmt"/>
+										</xsl:call-template>
 									</td>
 									<td class="styIRS4136TableCellE">310<span class="styIRS4136TableCellPad"/>
 									</td>
@@ -5079,19 +4928,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 							<tbody>
 								<!--  Row 16a -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="padding-bottom:4mm">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;">
 										<b>a</b>
 									</td>
-									<td class="styIRS4136TableCellLine" style="width:95mm;">Exported dyed diesel fuel and exported gasoline blendstocks taxed at $.001</td>
-									<td class="styIRS4136TableCellB" style="padding-left:2mm;text-align:center;">$ .001</td>
-									<td class="styIRS4136TableCellC" style="width=32mm;padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellLine" style="width:100mm;">Exported dyed diesel fuel and exported gasoline blendstocks taxed at $.001</td>
+									<td class="styIRS4136TableCellB" style="text-align:center;">$ .001</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/ExportedDyedDieselFuelGalsQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD" style="width=32mm">
+									<td class="styIRS4136TableCellD">
           $<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/ExportedDyedDieselFuelCrAmt"/>
 										</xsl:call-template>
@@ -5102,19 +4951,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 								</tr>
 								<!--  Row 16b -->
 								<tr>
-									<td class="styIRS4136LetterCell" style="border-bottom:1px solid black;">
+									<td class="styIRS4136LetterCell" style="vertical-align:top;padding-left:4mm;padding-right:1.5mm;border-bottom-width:1px;">
 										<b>b</b>
 									</td>
 									<td class="styIRS4136TableCellLine" style="width:100mm;">Exported dyed kerosene</td>
-									<td class="styIRS4136TableCellB" style="padding-left:6mm;"> .001</td>
-									<td class="styIRS4136TableCellC" style="width=32mm;padding-left:2mm;text-align:center;">
+									<td class="styIRS4136TableCellB" style="padding-left:5mm;"> .001</td>
+									<td class="styIRS4136TableCellC" style="text-align:center;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="19"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/ExportedDyedKeroseneGallonsQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styIRS4136TableCellD" style="width=32mm">
+									<td class="styIRS4136TableCellD">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/ExportedDyedKeroseneCreditAmt"/>
 										</xsl:call-template>
@@ -5138,9 +4987,9 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<img src="{$ImagePath}/4136_Bullet.gif" alt="Bullet"/>
 							</span>
 						</div>
-						<div class="styGenericDiv" style="width:7.2mm;height:11mm;font-weight: bold;text-align:center;padding-top:7mm;border-left:1 solid black;">17
+						<div class="styGenericDiv" style="width:7.2mm;height:11mm;font-weight: bold;text-align:center;padding-top:7mm;border-left:1px solid black;">17
             </div>
-						<div class="styGenericDiv" style="width:32.7mm;height:11mm;padding-top:6mm;text-align:right;padding-right:1mm;border-left:1 solid black;">$
+						<div class="styGenericDiv" style="width:32.7mm;height:11mm;padding-top:6mm;text-align:right;padding-right:1mm;border-left:1px solid black;">$
           <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS4136Data/TotalFuelTaxCreditAmt"/>
 							</xsl:call-template>
@@ -5235,7 +5084,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<span class="styIRS4136TableCellPad"/>
 										</td>
 										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
-											<xsl:if test="position()=1">$ </xsl:if>
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/>
+</xsl:if>
 											<xsl:if test="position()!=1">
 												<span style="padding-left:3mm; text-align:center;"/>
 											</xsl:if>.183
@@ -5248,14 +5098,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<span class="styIRS4136TableCellPad"/>
 										</td>
 										<xsl:if test="position()=1">
-											<td class="styDepTblRow2Cell" style="width:32mm;text-align:right;">
+											<td class="styDepTblRow1Cell" style="width:32mm;text-align:right;">
 												<xsl:attribute name="rowspan"><xsl:value-of select="$AFRowCount "/></xsl:attribute>$
                       <xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$IRS4136Data/NontaxableUseOfGasolineCrAmt"/>
 												</xsl:call-template>
 												<span class="styIRS4136TableCellPad"/>
 											</td>
-											<td class="styDepTblRow2Cell" style="width:9mm;">
+											<td class="styDepTblRow1Cell" style="width:9mm;">
 												<xsl:attribute name="rowspan"><xsl:value-of select="$AFRowCount "/></xsl:attribute>362
                       <span class="styIRS4136TableCellPad"/>
 											</td>
@@ -5305,11 +5155,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 									<tr>
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 										<xsl:if test="position()=1">
-											<td class="styDepTblRow2Cell" style="vertical-align:top;width:3mm;border-right-width:0px;text-align:left;">
+											<td class="styDepTblRow1Cell" style="vertical-align:top;width:3mm;border-right-width:0px;text-align:left;">
 												<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>
 												<b>b</b>
 											</td>
-											<td class="styDepTblRow2Cell" style="vertical-align:top;width:77mm;border-left-width:0px;text-align:left;">
+											<td class="styDepTblRow1Cell" style="vertical-align:top;width:77mm;border-left-width:0px;text-align:left;">
 												<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>Other nontaxable use (see<b> Caution </b> above line 1)
                     </td>
 										</xsl:if>
@@ -5320,7 +5170,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<span class="styIRS4136TableCellPad"/>
 										</td>
 										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
-											<xsl:if test="position()=1">$ </xsl:if>
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/>
+</xsl:if>
 											<xsl:if test="position()!=1">
 												<span style="padding-left:3mm; text-align:center;"/>
 											</xsl:if>.193
@@ -5334,14 +5185,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<span class="styIRS4136TableCellPad"/>
 										</td>
 										<xsl:if test="position()=1">
-											<td class="styDepTblRow2Cell" style="width:32mm;text-align:right;">
+											<td class="styDepTblRow1Cell" style="width:32mm;text-align:right;">
 												<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>$
                       <xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$IRS4136Data/AviationNontxGasCrAmt"/>
 												</xsl:call-template>
 												<span class="styIRS4136TableCellPad"/>
 											</td>
-											<td class="styDepTblRow2Cell" style="width:9mm;">
+											<td class="styDepTblRow1Cell" style="width:9mm;">
 												<xsl:attribute name="rowspan"><xsl:value-of select="$AGRowCount"/></xsl:attribute>324
                       <span class="styIRS4136TableCellPad"/>
 											</td>
@@ -5398,20 +5249,20 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount"/></xsl:attribute>Nontaxable use
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1">$</xsl:if>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/>
+</xsl:if>
 											<xsl:if test="position()!=1">
-												<span style="padding-left:3mm;"/>
+												<span style="padding-left:3mm; text-align:center;"/>
 											</xsl:if>.243
-            <span class="styIRS4136TableCellPad"/>
-										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+              </td>
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -5480,20 +5331,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount"/></xsl:attribute>Nontaxable use taxed at $.244
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1">$</xsl:if>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
 											<xsl:if test="position()!=1">
-												<span style="padding-left:3mm;"/>
+												<span style="padding-left:3mm; text-align:center;"/>
 											</xsl:if>.243
-            <span class="styIRS4136TableCellPad"/>
-										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+              </td>
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -5561,20 +5411,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount4e"/></xsl:attribute>Nontaxable use taxed at $.044
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1">$</xsl:if>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
 											<xsl:if test="position()!=1">
-												<span style="padding-left:3mm;"/>
+												<span style="padding-left:3mm; text-align:center;"/>
 											</xsl:if>.044
-            <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -5647,20 +5496,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount4f"/></xsl:attribute>Nontaxable use taxed at $.219
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1">$</xsl:if>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
 											<xsl:if test="position()!=1">
-												<span style="padding-left:3mm;"/>
+												<span style="padding-left:3mm; text-align:center;"/>
 											</xsl:if>.219
-            <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -5740,18 +5588,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Nontaxable use (Other than use by state or local government) taxed at $.244
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1"/>
-											<xsl:if test="position()!=1"/>.243
-            <span class="styIRS4136TableCellPad"/>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
+											<xsl:if test="position()!=1">
+												<span style="padding-left:3mm; text-align:center;"/>
+											</xsl:if>.243
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -5828,18 +5677,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Nontaxable use (Other than use by state or local government) taxed at $.219
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1"/>
-											<xsl:if test="position()!=1"/>.218
-            <span class="styIRS4136TableCellPad"/>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
+											<xsl:if test="position()!=1">
+												<span style="padding-left:3mm; text-align:center;"/>
+											</xsl:if>.218
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -5913,18 +5763,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>LUST tax on aviation fuels used in foreign trade
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="Type"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1"/>
-											<xsl:if test="position()!=1"/>.001
-            <span class="styIRS4136TableCellPad"/>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
+											<xsl:if test="position()!=1">
+												<span style="padding-left:3mm; text-align:center;"/>
+											</xsl:if>.001
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="."/>
@@ -5998,20 +5849,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Other nontaxable uses taxed at $.244
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1">$</xsl:if>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
 											<xsl:if test="position()!=1">
-												<span style="padding-left:3mm;"/>
+												<span style="padding-left:3mm; text-align:center;"/>
 											</xsl:if>.243
-            <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6086,20 +5936,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Other nontaxable uses taxed at $.219
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1">$</xsl:if>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
 											<xsl:if test="position()!=1">
-												<span style="padding-left:3mm;"/>
+												<span style="padding-left:3mm; text-align:center;"/>
 											</xsl:if>.218
-            <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6128,7 +5977,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ end line 8e $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  11a $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11a SRD table -->
-<!--					
+					
 					<xsl:if test="(count($IRS4136Data/NontxLiquifiedPetroleumGas) + count($IRS4136Data/BusNontxLiquifiedPetroleumGas) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6157,8 +6006,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 							</thead>
 							<tfoot/>
 							<tbody>
-								--><!--  Row 11a  --><!--
-								--><!-- LOOP --><!--
+								<!--  Row 11a  -->
+								<!-- LOOP -->
 								<xsl:variable name="UKRowCount8" select="count($IRS4136Data/NontxLiquifiedPetroleumGas) + count($IRS4136Data/BusNontxLiquifiedPetroleumGas)"/>
 								<xsl:for-each select="$IRS4136Data/NontxLiquifiedPetroleumGas">
 									<tr>
@@ -6173,18 +6022,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Liquefied petroleum gas (LPG)
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
+										<td style="border-bottom:1px solid black;padding-top:2mm;">
 											<xsl:if test="position()=1">$</xsl:if>
 											<xsl:if test="position()!=1"/>.183
             <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6206,11 +6055,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:if>
 									</tr>
 								</xsl:for-each>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquifiedPetroleumGas/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -6220,7 +6069,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()=1">$</xsl:if>
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
@@ -6229,27 +6078,26 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span style="width:1mm"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquifiedPetroleumGas/GallonsQty"/>
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-								</tr> -->
+								</tr> 
 								
 								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
-<!--
 							</tbody>
 						</table>
 						<br/>
 					</xsl:if>
--->
+
 <!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  11a $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  11b $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11b SRD table -->
-<!--
+
 					<xsl:if test="(count($IRS4136Data/NontxPSeriesFuels) + count($IRS4136Data/BusNontxPSeriesFuels) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6278,8 +6126,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 							</thead>
 							<tfoot/>
 							<tbody>
-								--><!--  Row 11b  --><!--
-								--><!-- LOOP --><!--
+								<!--  Row 11b  -->
+								<!-- LOOP -->
 								<xsl:variable name="UKRowCount8" select="count($IRS4136Data/NontxPSeriesFuels) + count($IRS4136Data/BusNontxPSeriesFuels)"/>
 								<xsl:for-each select="$IRS4136Data/NontxPSeriesFuels">
 									<tr>
@@ -6294,18 +6142,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>"P Series" fuels
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
+										<td style="border-bottom:1px solid black;padding-top:2mm;">
 											<xsl:if test="position()=1"/>
 											<xsl:if test="position()!=1"/>.183
             <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6327,11 +6175,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:if>
 									</tr>
 								</xsl:for-each>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxPSeriesFuels/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -6341,14 +6189,14 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxPSeriesFuels/CreditRt"/>
 										</xsl:call-template>
 										<span style="width:2mm"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxPSeriesFuels/GallonsQty"/>
@@ -6356,20 +6204,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 							</tbody>
 						</table>
 						<br/>
 					</xsl:if>
 
--->
 
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  11b $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11c $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11c SRD table -->
 					
-<!--
+
 					<xsl:if test="(count($IRS4136Data/NontxCompressedNaturalGas) + count($IRS4136Data/BusNontxCompressedNaturalGas) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6398,8 +6245,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 							</thead>
 							<tfoot/>
 							<tbody>
-								--><!--  Row 11b  --><!--
-								--><!-- LOOP --><!--
+								<!--  Row 11c  -->
+								<!-- LOOP -->
 								<xsl:variable name="UKRowCount8" select="count($IRS4136Data/NontxCompressedNaturalGas) +                  count($IRS4136Data/BusNontxCompressedNaturalGas)"/>
 								<xsl:for-each select="$IRS4136Data/NontxCompressedNaturalGas">
 									<tr>
@@ -6414,18 +6261,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Compressed natural gas (CNG) (GGE = 126.67 cu. ft.)
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
+										<td style="border-bottom:1px solid black;padding-top:2mm;">
 											<xsl:if test="position()=1"/>
 											<xsl:if test="position()!=1"/>.183
             <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6447,11 +6294,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:if>
 									</tr>
 								</xsl:for-each>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxCompressedNaturalGas/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -6461,7 +6308,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxCompressedNaturalGas/CreditRt"/>
@@ -6469,7 +6316,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxCompressedNaturalGas/GallonsQty"/>
@@ -6477,13 +6324,12 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 							</tbody>
 						</table>
 						<br/>
 					</xsl:if>
--->
 
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11c $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11d $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
@@ -6532,18 +6378,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Liquefied hydrogen
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1"/>
-											<xsl:if test="position()!=1"/>.183
-            <span class="styIRS4136TableCellPad"/>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
+											<xsl:if test="position()!=1">
+												<span style="padding-left:3mm; text-align:center;"/>
+											</xsl:if>.183
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6569,7 +6416,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquifiedHydrogen/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -6579,7 +6426,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquifiedHydrogen/CreditRt"/>
@@ -6587,7 +6434,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span style="width:1mm"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquifiedHydrogen/GallonsQty"/>
@@ -6605,8 +6452,6 @@ instructions for line 10 for information about renewable diesel used in aviation
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11e $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11e SRD table -->
 
-
-<!--
 					<xsl:if test="(count($IRS4136Data/NontxLiqfdFuelDerivedFromCoal) + count($IRS4136Data/BusNontxLqfdFuelDerivedFromCoal) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6635,8 +6480,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 							</thead>
 							<tfoot/>
 							<tbody>
-								--><!--  Row 11e  --><!--
-								--><!-- LOOP --><!--
+								<!--  Row 11e  -->
+								<!-- LOOP -->
 								<xsl:variable name="UKRowCount8" select="count($IRS4136Data/NontxLiqfdFuelDerivedFromCoal) +                  count($IRS4136Data/BusNontxLiqfdFuelDerFromCoal)"/>
 								<xsl:for-each select="$IRS4136Data/NontxLiqfdFuelDerivedFromCoal">
 									<tr>
@@ -6650,18 +6495,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 											<td class="styDepTblCell" style="vertical-align:top;border-left-width:0px;text-align:left;width:77mm;border-right-width:1px;">
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Fischer&#8211;Tropsch process liquid fuel from coal (including peat) </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
+										<td style="border-bottom:1px solid black;padding-top:2mm;">
 											<xsl:if test="position()=1"/>
 											<xsl:if test="position()!=1"/>.243
                         <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6683,11 +6528,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:if>
 									</tr>
 								</xsl:for-each>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiqfdFuelDerFromCoal/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -6698,7 +6543,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiqfdFuelDerFromCoal/CreditRt"/>
@@ -6706,7 +6551,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span style="width:1mm"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiqfdFuelDerFromCoal/GallonsQty"/>
@@ -6714,19 +6559,17 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 							</tbody>
 						</table>
 						<br/>
 					</xsl:if>
 
--->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11e $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11f $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11f SRD table -->
 
-<!--
 					<xsl:if test="(count($IRS4136Data/NontaxLiqFuelDerFromBiomass) + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6755,8 +6598,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 							</thead>
 							<tfoot/>
 							<tbody>
-								--><!--  Row 11f  --><!--
-								--><!-- LOOP --><!--
+								<!--  Row 11f  -->
+								<!-- LOOP -->
 								<xsl:variable name="UKRowCount8" select="count($IRS4136Data/NontaxLiqFuelDerFromBiomass) +                  count($IRS4136Data/BusNontxLiqFuelDerFromBiomass)"/>
 								<xsl:for-each select="$IRS4136Data/NontaxLiqFuelDerFromBiomass">
 									<tr>
@@ -6771,18 +6614,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Liquid fuel derived from biomass
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
+										<td style="border-bottom:1px solid black;padding-top:2mm;">
 											<xsl:if test="position()=1"/>
 											<xsl:if test="position()!=1"/>.243
                         <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6804,11 +6647,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:if>
 									</tr>
 								</xsl:for-each>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiqFuelDerFromBiomass/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -6818,7 +6661,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiqFuelDerFromBiomass/CreditRt"/>
@@ -6826,7 +6669,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span style="width:1mm"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiqFuelDerFromBiomass/GallonsQty"/>
@@ -6834,20 +6677,17 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 							</tbody>
 						</table>
 						<br/>
 					</xsl:if>
 
--->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11f $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11g $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11g SRD table -->
 					
-
-<!--
 					<xsl:if test="(count($IRS4136Data/NontaxLiqFuelDerFromBiomass) + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -6876,8 +6716,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 							</thead>
 							<tfoot/>
 							<tbody>
-								--><!--  Row 11g  --><!--
-								--><!-- LOOP --><!--
+								<!--  Row 11g  -->
+								<!-- LOOP -->
 								<xsl:variable name="UKRowCount8" select="count($IRS4136Data/NontxLiquefiedNaturalGas) +                  count($IRS4136Data/BusNontxLiquefiedNaturalGas)"/>
 								<xsl:for-each select="$IRS4136Data/NontxLiquefiedNaturalGas">
 									<tr>
@@ -6892,18 +6732,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Liquefied natural gas (LNG)
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
+										<td style="border-bottom:1px solid black;padding-top:2mm;">
 											<xsl:if test="position()=1"/>
 											<xsl:if test="position()!=1"/>.243
                         <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -6925,11 +6765,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:if>
 									</tr>
 								</xsl:for-each>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedNaturalGas/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -6940,7 +6780,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedNaturalGas/CreditRt"/>
@@ -6948,7 +6788,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span style="width:1mm"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedNaturalGas/GallonsQty"/>
@@ -6956,19 +6796,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 							</tbody>
 						</table>
 						<br/>
 					</xsl:if>
 
--->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11g $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ start 11h $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 11h SRD table -->
 
-<!--
+
 					<xsl:if test="(count($IRS4136Data/NontaxLiqFuelDerFromBiomass) + count($IRS4136Data/BusNontxLiqFuelDerFromBiomass) &gt;1) and ($Print = $Separated)">
 						<span class="styRepeatingDataTitle">
             Form 4136, Line 11 - Nontaxable Use of Alternative Fuel</span>
@@ -6998,8 +6837,8 @@ instructions for line 10 for information about renewable diesel used in aviation
 							</thead>
 							<tfoot/>
 							<tbody>
-								--><!--  Row 11h --><!--
-								--><!-- LOOP --><!--
+								<!--  Row 11h -->
+								<!-- LOOP -->
 								<xsl:variable name="UKRowCount8" select="count($IRS4136Data/NontxLiquefiedGasBiomass) +                  count($IRS4136Data/BusNontxLiquefiedGasDerBiomass)"/>
 								<xsl:for-each select="$IRS4136Data/NontxLiquefiedGasBiomass">
 									<tr>
@@ -7014,18 +6853,18 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Liquified gas derived from biomass
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
+										<td style="border-bottom:1px solid black;padding-top:2mm;">
 											<xsl:if test="position()=1"/>
 											<xsl:if test="position()!=1"/>.183
                         <span class="styIRS4136TableCellPad"/>
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -7047,11 +6886,11 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:if>
 									</tr>
 								</xsl:for-each>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedGasDerBiomass/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -7061,7 +6900,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedGasDerBiomass/CreditRt"/>
@@ -7069,7 +6908,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span style="width:1mm"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxLiquefiedGasDerBiomass/GallonsQty"/>
@@ -7077,15 +6916,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span class="styIRS4136TableCellPad"/>
 									</td>
 								</tr>
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
-								--><!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& --><!--
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
+								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 							</tbody>
 						</table>
 						<br/>
 					</xsl:if>
 					
--->
-
 					<!-- $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  end 11h $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!--  $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$  start 12h $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ -->
 					<!-- Begin line 12h SRD table -->
@@ -7130,12 +6967,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Liquified gas derived from biomass
             </td>
 										</xsl:if>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1"/>
-											<xsl:if test="position()!=1"/>.50*
-                        <span class="styIRS4136TableCellPad"/>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
+											<xsl:if test="position()!=1">
+												<span style="padding-left:3mm; text-align:center;"/>
+											</xsl:if>.50*
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="."/>
@@ -7205,12 +7043,13 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Compressed gas derived from biomass (GG = 121 cu.ft.)
             </td>
 										</xsl:if>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1"/>
-											<xsl:if test="position()!=1"/>.50*
-                        <span class="styIRS4136TableCellPad"/>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
+											<xsl:if test="position()!=1">
+												<span style="padding-left:3mm; text-align:center;"/>
+											</xsl:if>.50*
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="."/>
@@ -7283,18 +7122,19 @@ instructions for line 10 for information about renewable diesel used in aviation
 												<xsl:attribute name="rowspan"><xsl:value-of select="$UKRowCount8"/></xsl:attribute>Nontaxable use
             </td>
 										</xsl:if>
-										<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+										<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
 											</xsl:call-template>
 											<span class="styIRS4136TableCellPad"/>
 										</td>
-										<td style="border-bottom:1 solid black;padding-top:2mm;">
-											<xsl:if test="position()=1">$</xsl:if>
-											<xsl:if test="position()!=1"/>.197
-                        <span class="styIRS4136TableCellPad"/>
+										<td class="styIRS4136TableCellB" style="padding-top:1mm;">
+											<xsl:if test="position()=1">$<span style="padding-left:1.5mm; text-align:center;"/></xsl:if>
+											<xsl:if test="position()!=1">
+												<span style="padding-left:3mm; text-align:center;"/>
+											</xsl:if>.197
 										</td>
-										<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+										<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="MaxSize" select="9"/>
 												<xsl:with-param name="TargetNode" select="GallonsQty"/>
@@ -7320,7 +7160,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 								<!-- &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& -->
 								<tr>
 									<xsl:attribute name="class"><xsl:choose><xsl:when test="$UKRowCount8 mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-									<td class="styDepTblCell" style="border:1 solid black;border-left-width:1px;width:16mm;">
+									<td class="styDepTblCell" style="border:1px solid black;border-left-width:1px;width:16mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxUseDieselWtrEmulsion/FuelTaxLocalBusCd"/>
 										</xsl:call-template>
@@ -7330,7 +7170,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										</xsl:call-template>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td style="border-bottom:1 solid black;">
+									<td style="border-bottom:1px solid black;">
 										<xsl:if test="position()!=1"/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxUseDieselWtrEmulsion/CreditRt"/>
@@ -7338,7 +7178,7 @@ instructions for line 10 for information about renewable diesel used in aviation
 										<span style="width:1mm"/>
 										<span class="styIRS4136TableCellPad"/>
 									</td>
-									<td class="styDepTblCell" style="border:1 solid black;text-align:right;">
+									<td class="styDepTblCell" style="border:1px solid black;text-align:right;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="MaxSize" select="9"/>
 											<xsl:with-param name="TargetNode" select="$IRS4136Data/BusNontxUseDieselWtrEmulsion/GallonsQty"/>

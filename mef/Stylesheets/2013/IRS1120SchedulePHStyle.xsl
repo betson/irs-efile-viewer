@@ -5,7 +5,7 @@
 
 <xsl:template name="IRS1120SchedulePHStyle">
   .styIRS1120SchedulePHBB {   /* Bottom Border */
-    width: 187mm; height: 16mm;
+    width: 187mm; height: auto;
     border-style: solid; border-color: black;
     border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
     float: left; clear: left;
@@ -45,7 +45,7 @@
     font-size: 26pt; font-weight: bold;
   } 
   .styIRS1120SchedulePHPartHdr {   /* Part Header */
-    height: 8mm;
+    height: auto;
     width:187mm;
     font-size: 10pt; font-weight: bold;
     padding-top: 7px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
@@ -84,7 +84,7 @@
     width: 2mm;
     color: black;
     font-weight: bold; text-align: right;
-    float: left; clear: none;
+    float: none; clear: none;
   } 
   .styIRS1120SchedulePHLNLtMargin {   /* Line Number Left Margin */
     width: 4mm;
@@ -129,12 +129,12 @@
   .styIRS1120SchedulePHTableContainer {   /* Scrollable Table Container */
     border-style: solid; border-color: black;
     border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
-    width: 187mm; height: 35mm;
+    width: 187mm; height: auto;
     overflow-y: auto;
   }
   .styIRS1120SchedulePHTable {   /* Table */
     font-size: 7pt;
-    width: 187mm
+    width: 187mm;
     text-align: left;
   }
   .styIRS1120SchedulePHTableCellA {   /* Table Cell (a) */
@@ -238,7 +238,7 @@
   }
   .styIRS1120SchedulePHImg {
     width: 6mm;
-    height: 26mm;
+    height: auto;
     padding-left: 0px; padding-right: 0px; padding-top: 4mm; padding-bottom:0mm;
     border-style: solid;
     border-color: black;

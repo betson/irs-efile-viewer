@@ -11,8 +11,10 @@
 	<xsl:variable name="FRTbl1">5</xsl:variable>
 	<xsl:variable name="FRTbl2">5</xsl:variable>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8283Data)"/>
@@ -26,20 +28,21 @@
 				<meta name="Description" content="IRS Form 8283"/>
 				<META name="GENERATOR" content="IBM WebSphere Studio"/>
 				<xsl:call-template name="GlobalStylesForm"/>
+			
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
 					<xsl:if test="not($Print) or $Print=''">
 							<xsl:call-template name="IRS8283Style"/>
 							<xsl:call-template name="AddOnStyle"/>
-					</xsl:if> 
+					</xsl:if>
 				</style>
 			</head>
 			<body class="styBodyClass">
 				<form name="Form8283">
 					<xsl:call-template name="DocumentHeader"/>
 					<div style="width:187mm;">
-						<div class="styFNBox" style="width:32mm;height:21mm;">
+						<div class="styFNBox" style="width:32mm;height:28mm;">
 							<div>
 								<span style="padding-top:1mm;">Form<span style="width:6px;"/>
 								</span>
@@ -80,7 +83,7 @@
 								<span style="width:6px;"/>OMB No.1545-0908
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:10.5mm">
+						<div class="styTYBox" style="width:30mm;height:17.5mm">
 							<br/>
 							<div style="font-size:7pt;text-align:left;">
 								<span style="width:6px;"/>Attachment<br/>
@@ -90,49 +93,66 @@
 						</div>
 						<!-- Name(s) & EIN Box  -->
 						<div class="styBB" style="width:187mm;border-top-width:1px">
-							<div class="styNameBox" style="font-size:7pt;width:139mm;height:10mm;font-weight:normal;">Name(s) shown on your income tax return
- <!--  WARNING: Return Type will need to be update with various future form 1040 return type  -->
+						<div class="styNameBox" style="width:144mm;height:auto;font-size:7pt;">
+						   Name(s) shown on your income tax return<br/>
+							  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
 							  <xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-								<br/>								  
-									 <xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="TargetNode">Name</xsl:with-param>
-								   </xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-								<br/>
-							  <xsl:call-template name="PopulateReturnHeaderFiler">
-							<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+							  <!-- Name from 1120/990/1065 Return Header -->
+								<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
 								  </xsl:call-template>
 								  <br/>
-							  <xsl:call-template name="PopulateReturnHeaderFiler">
-							<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
 								  </xsl:call-template>
-								</xsl:otherwise>
+								</xsl:when>
+								<!-- Name from 1040 Return Header -->
+								<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
+								  <br/>
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								  </xsl:call-template>
+								</xsl:when>
+								<!-- Name from 1041 Return Header 
+								<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								  </xsl:call-template>
+								  <br/>
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
+								  </xsl:call-template>
+								</xsl:when>
+								<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								  </xsl:call-template>
+								  <br/>
+								</xsl:when> -->
 							  </xsl:choose>
-												</div>
-							<div class="styEINBox" style="font-size:7pt;width:47mm;height:4mm;padding-left:2mm;">Identifying number<br/><br/>
-															<span style="font-weight:normal;">
-								  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-									<xsl:choose>
-										<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:call-template name="PopulateReturnHeaderFiler">
-												<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-											</xsl:call-template>
-										</xsl:otherwise>
-									</xsl:choose>
-									</span>
+						</div>
+						<div class="styEINBox" style="width:42mm;height:9mm;padding-left:2mm;font-size:7pt;">
+							Identifying number<br/><br/>
+								<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
+								<xsl:choose>
+								  <xsl:when test="$RtnHdrData/Filer/EIN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:when>
+								  <xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:otherwise>
+								</xsl:choose>
 							</div>
 						</div>
 					</div>
 					<!--Name(s) & EIN Box -->
 					<!--Note -->
-					<div style="width:187mm;">
+				
 						<div class="styBB" style="width:187mm;border-top-width:0px">
 							<span style="font-size:8pt;">
 								<b>Note.</b>
@@ -140,18 +160,20 @@
 							<span style="width:6px;"/>Figure the amount of your contribution deduction before completing this form. See your tax return instructions.
   </div>
 						<!--Section A -->
-						<div style="width:187mm;">
-							<div class="styBB" style="width:187mm;border-top-width:0px;border-bottom-width:0px;">
-								<span style="font-size:8pt;">
-									<b>Section A.  Donated Property of $5,000 or Less and Publicly Traded Securities-</b>
-								</span>
+						<div style="width:187mm;border-top-width:0px;border-bottom-width:0px;clear:none;">
+							<div class="styNameBox" style="width:17mm;height:10mm;border-right-width:0px;clear:none;font-size:8pt;">							
+									<b>Section A. </b>
+							</div>
+							<div class="styEINBox" style="width:169mm;height:10mm;clear:none;font-weight:normal;font-size:7pt;">					
+									<b style="font-size:8pt;">
+									Donated Property of $5,000 or Less and Publicly Traded Securities-
+									</b>								
         List in this section <b>only</b>
-								items (or groups of similar items) for which you claimed a deduction of $5,000 or less. Also, list publicly traded
-      securities even if the deduction is more than $5,000 (see instructions).
+								items (or groups of similar items) for which you claimed a deduction of $5,000 or less. Also, list 		publicly traded securities even if the deduction is more than $5,000 (see instructions).
     
 							</div>
 						</div>
-					</div>
+		
 					<!--Part I -->
 					<div class="styBB" style="width:187mm;border-top-width:1px">
 						<div class="styPartName" style="width:15mm;">Part I</div>
@@ -512,7 +534,7 @@
 					</div>
 					<div style="width:187mm;" id="TP1ctn" class="styTableContainerNBB">
 						<xsl:call-template name="SetInitialState"/>
-						<table cellspacing="0" summary="Part I Information on Donated Property If the amount you claimed as a deduction for an item is $500 or less, you do not have to complete columns (d), (e), and (f)." class="styTable" style="" name="TYTable1" id="TYTable1">
+						<table cellspacing="0" summary="Information on Donated Property table columns (d) through (i)." class="styTable" style="" name="TYTable1" id="TYTable1">
 							<thead class="styTableThead">
 								<tr>
 									<th scope="col" colspan="7" class="styTableCell" style="width:187mm;text-align:left;font-size:7pt;border-right:none;font-weight:normal;border-top-width:0px;border-color:black;">
@@ -522,7 +544,7 @@
 									</th>
 								</tr>
 								<tr>
-									<th scope="col" class="styTableCell" style="width:7mm;background-color:lightgrey;border-right:1 solid black;border-bottom:1 solid black;">
+									<th scope="col" class="styTableCell" style="width:7mm;background-color:lightgrey;border-right:1px solid black;border-bottom:1px solid black;">
 										<span style="width:1mm;"/>
 									</th>
 									<th scope="col" class="styTableCell" style="width:28mm;text-align:center;font-size: 7pt;font-weight:normal;border-color:black;">
@@ -569,7 +591,7 @@
 													</xsl:otherwise>
 												</xsl:choose>
 											</td>
-											<td class="styTableCell" style="float:right;width:28mm;text-align:center;font-size: 7pt;font-weight:normal;             border-color:black;">
+											<td class="styTableCell" style="float:none;width:28mm;text-align:center;font-size: 7pt;font-weight:normal;             border-color:black;">
 												<span style="width:0.1mm;float:left;">
 													<xsl:call-template name="LinkToLeftoverDataTableInline">
 														<xsl:with-param name="Desc">Section A Part I Line 1 Columns (c) - (f) Donor line detail</xsl:with-param>
@@ -650,7 +672,7 @@
 										</td>
 										<xsl:choose>
 											<xsl:when test="($Print = $Separated) and (count($Form8283Data/InformationOnDonatedProperty) &gt; 5)">
-												<td class="styTableCell" style="float:right;width:26mm;text-align:left;font-size: 7pt;font-weight:normal;border-color:black;">
+												<td class="styTableCell" style="width:26mm;text-align:left;font-size: 7pt;font-weight:normal;border-color:black;">
 													<span class="styTableCellPad" style="width:26mm">
 														<xsl:call-template name="PopulateAdditionalDataTableMessage">
 															<xsl:with-param name="TargetNode" select="$Form8283Data/InformationOnDonatedProperty"/>
@@ -660,12 +682,12 @@
 												</td>
 											</xsl:when>
 											<xsl:otherwise>
-												<td class="styTableCell" style="float:right;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+												<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
 													<span class="styTableCellPad"/>
 												</td>
 											</xsl:otherwise>
 										</xsl:choose>
-										<td class="styTableCell" style="float:left;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
@@ -686,10 +708,10 @@
 									<tr>
 										<td class="styTableCell" style="width:7mm;text-align:left;padding-left:2mm;font-size: 7pt;font-weight:bold;border-color:black;">B<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="float:right;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style=";width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="float:left;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style=";width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
@@ -710,10 +732,10 @@
 									<tr>
 										<td class="styTableCell" style="width:7mm;text-align:left;padding-left:2mm;font-size: 7pt;font-weight:bold;border-color:black;">C<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="float:right;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="float:left;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
@@ -734,10 +756,10 @@
 									<tr>
 										<td class="styTableCell" style="width:7mm;text-align:left;padding-left:2mm;font-size: 7pt;font-weight:bold;border-color:black;">D<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="float:right;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="float:left;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
@@ -758,10 +780,10 @@
 									<tr>
 										<td class="styTableCell" style="width:7mm;text-align:left;padding-left:2mm;font-size: 7pt;font-weight:bold;border-color:black;">E<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="float:right;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="float:left;width:26mm;text-align:center;font-weight:bold;border-color:black;">
+										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
 											<span class="styTableCellPad"/>
 										</td>
 										<td class="styTableCell" style="width:26mm;text-align:center;font-weight:bold;border-color:black;">
@@ -788,7 +810,7 @@
 						<xsl:with-param name="containerID" select=" 'TP1ctn' "/>
 					</xsl:call-template>
 					<!-- PART II -->
-					<div style="width:187mm;height:34mm;" id="TPXctn">
+					<div style="width:187mm;height:auto;" id="TPXctn">
 						<xsl:call-template name="SetInitialState"/>
 						<table cellspacing="0" summary="Part II Partial Interests and Restricted Use Property" class="styIRS8283TableContainer" style="width:183mm;border-top:none;" name="TYTable3" id="TYTable3">
 							<!--Display empty Section A Part II -->
@@ -796,27 +818,25 @@
 								<tr>
 									<th scope="col" colspan="7" class="styTableCell" style="width:187mm;text-align:left;font-size:7pt;border-right:none;">
 										<div style="width:187mm;border-top-width:0px">
-											<span class="styPartName" style="width:16mm;">Part II</span>
-											<span style="font-family:verdana;font-size:8pt;">
-												<span style="width:6px;"/>
-												<b>Partial Interests and Restricted Use Property&#8212;</b>
-											</span>
-											<span style="font-family:verdana;font-size:8pt;font-weight:normal;">
+											<div class="styPartName" style="width:16mm;">Part II</div>
+											<div style="font-family:verdana;font-size:8pt;font-weight:normal;width:171mm;padding-left:3mm;"><b>Partial Interests and Restricted Use Property&#8212;</b>
+						
+											
 											Complete lines 2a through 2e if you gave less than an entire interest in
               a property listed in Part I.  Complete lines 3a through 3c if conditions were placed on a contribution listed in Part I; also attach the required statement (see instructions).
-										 </span>
+										</div>
 										</div>
 									</th>
 								</tr>
 								<tr>
-									<td colspan="7" class="styTableCell" style="width:187mm;text-align:left;font-size:7pt;border-right:none;">
+									<td colspan="7" class="styTableCell" style="width:187mm;text-align:left;                          font-size:7pt;border-right:none;">
 										<div style="width:187mm;">
 											<div class="styLNLeftNumBox" style="height:4mm;">2a</div>
 											<div class="styLNDesc" style="height:4mm;font-weight:normal;">Enter the letter from Part I that identifies the property for which you gave less than an entire interest</div>
 											<div class="" style="float:right;">
 												<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 												<span style="width:6px;"/>
-												<span style="width:32mm;border-bottom:1 solid black;">
+												<span style="width:32mm;border-bottom:1px solid black;">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="PropertyId"/>
 													</xsl:call-template>
@@ -831,14 +851,14 @@
 												<div class="styGenericDiv" style="width:95mm;">
                   Total amount claimed as a deduction for the property listed in Part I:
                 </div>
-												<div class="styGenericDiv" style="padding-left:0mm;width:48mm;">
+												<div class="styGenericDiv" style="padding-left:0mm;width:45mm;">
 													<b>(1)</b>
 													<span style="width:12px;"/>For this tax year
              </div>
 												<div class="" style="float:right;">
 													<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 													<span style="width:6px;"/>
-													<span style="width:32mm;border-bottom:1 solid black;padding-left:3mm;">
+													<span style="width:32mm;border-bottom:1px solid black;padding-left:3mm;">
 														<xsl:choose>
 															<xsl:when test="((count($Form8283Data/InformationOnDonatedProperty) &gt; 5) and ($Print = $Separated))">
 																<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -858,16 +878,16 @@
 										<div style="width:187mm;">
 											<div class="styLNLeftLtrBox" style="height:4.5mm;"/>
 											<div class="styLNDesc" style="width:179mm;height:4mm;font-weight:normal;">
-												<div class="styGenericDiv" style="width:95mm;">
+												<div class="styGenericDiv" style="width:94mm;float:none;">
             </div>
-												<div class="styGenericDiv" style="padding-left:0mm;width:48mm;">
+												<div class="styGenericDiv" style="padding-left:0mm;width:45mm;float:none;">
 													<b>(2)</b>
 													<span style="width:12px;"/>For any prior tax years
          </div>
 												<div class="" style="float:right;">
 													<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 													<span style="width:6px;"/>
-													<span style="width:32mm;border-bottom:1 solid black;">
+													<span style="width:32mm;border-bottom:1px solid black;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="TotalDeductionClaimedPrTYAmt"/>
 														</xsl:call-template>
@@ -875,12 +895,12 @@
 												</div>
 											</div>
 										</div>
-										<div class="styLNLeftLtrBox" style="height:4.5mm;">c</div>
-										<div class="styLNDesc" style="width:172mm;height:4.5mm;border-bottom-width:1px;font-weight:normal;">Name and address of each organization to which any such contribution was made in a prior year (complete only if different from the donee organization above):</div>
+										<div class="styLNLeftLtrBox" style="height:7mm;">c</div>
+										<div class="styLNDesc" style="width:172mm;height:7mm;border-bottom-width:1px;font-weight:normal;">Name and address of each organization to which any such contribution was made in a prior year (complete only if different from the donee organization above):</div>
 										<br/>
 										<div class="styBB" style="width:180mm;margin-left:4mm;float:left;"/>
 										<div style="width:187mm;">
-											<div class="styLNLeftLtrBox" style="height:4.5mm;">
+											<div class="styLNLeftLtrBox" style="height:7mm;">
 												<span style="width:1mm;"/>
 											</div>
 											<div style="font-size:6pt;font-weight:normal;">Name of charitable organization (donee)</div>
@@ -889,7 +909,7 @@
 											<span style="width:1px;"/>
 										</div>
 										<div style="width:172mm;">
-											<div class="styLNLeftLtrBox" style="height:4.5mm;">
+											<div class="styLNLeftLtrBox" style="height:7mm;">
 												<span style="width:1mm;"/>
 											</div>
 											<div style="font-size:6pt;font-weight:normal;">Address (number, street, and room or suite no.)</div>
@@ -898,7 +918,7 @@
 											<span style="width:1px;"/>
 										</div>
 										<div style="width:172mm;">
-											<div class="styLNLeftLtrBox" style="height:4.5mm;">
+											<div class="styLNLeftLtrBox" style="height:7mm;">
 												<span style="width:1mm;"/>
 											</div>
 											<div style="font-size:6pt;font-weight:normal;">City or town, state, and ZIP code</div>
@@ -987,10 +1007,7 @@
 										</div>
 										<div style="width:187mm;">
 											<div class="styLNLeftLtrBox" style="height:4mm;padding-bottom:0mm;padding-top:0mm"/>
-											<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;padding-bottom:0mm;padding-top:0mm">
-												<span style="float:left;">
-													or to designate the person having such income, possession, or right to acquire?
- 												</span>
+											<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;padding-bottom:0mm;padding-top:0mm"> or to designate the person having such income, possession, or right to acquire?
 												<!--Dotted Line-->
 												<div class="styDotLn" style="float:right;padding-right:1mm;">...............</div>
 											</div>
@@ -1027,21 +1044,18 @@
 									<tr>
 										<th scope="col" colspan="7" class="styTableCell" style="width:187mm;text-align:left;font-size:7pt;border-right:none;">
 											<div style="width:187mm;border-top-width:0px">
-												<span class="styPartName" style="width:16mm;">Part II</span>
-												<span style="font-family:verdana;font-size:8pt;">
-													<span style="width:6px;"/>
-													<b>Partial Interests and Restricted Use Property&#8212;</b>
-												</span>
-												<span style="font-family:verdana;font-size:8pt;font-weight:normal;">
-													Complete lines 2a through 2e if you gave less than an <br/>
-													<span style="width:18mm;"/>entire interest in a property listed in Part I. Complete lines 3a through 3c if conditions were placed on a <br/>
-													<span style="width:18mm;"/>contribution listed in Part I; also attach the required statement (see instructions).
-												</span>
+											<div class="styPartName" style="width:16mm;">Part II</div>
+											<div style="font-family:verdana;font-size:8pt;font-weight:normal;width:171mm;padding-left:3mm;">
+											<b>Partial Interests and Restricted Use Property&#8212;</b>											
+              Complete lines 2a through 2e if you gave less than an entire interest in
+              a property listed in Part I.  Complete lines 3a through 3c if conditions were placed on a contribution listed in Part I; also attach the required statement (see instructions).
+       
+										</div>
 											</div>
 										</th>
 									</tr>
 									<tr>
-										<td colspan="7" class="styTableCell" style="width:187mm;text-align:left;font-size:7pt;border-right:none;">
+										<td colspan="7" class="styTableCell" style="width:187mm;text-align:left;font-size:7pt;border-right:none;height:auto;">
 											<!--Line 2a begin-->
 											<div style="width:187mm;">
 												<div class="styLNLeftNumBox" style="height:4mm;">2a</div>
@@ -1049,7 +1063,7 @@
 												<div class="" style="float:right;">
 													<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 													<span style="width:6px;"/>
-													<span style="width:32mm;border-bottom:1 solid black;">
+													<span style="width:32mm;border-bottom:1px solid black;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="PropertyId"/>
 														</xsl:call-template>
@@ -1072,7 +1086,7 @@
 													<div class="" style="float:right;">
 														<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 														<span style="width:6px;"/>
-														<span style="width:32mm;border-bottom:1 solid black;">
+														<span style="width:32mm;border-bottom:1px solid black;">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="TotalDeductionClaimedThisTYAmt"/>
 															</xsl:call-template>
@@ -1083,7 +1097,7 @@
 											<div style="width:187mm;">
 												<div class="styLNLeftLtrBox" style="height:4.5mm;"/>
 												<div class="styLNDesc" style="width:179mm;height:4mm;font-weight:normal;">
-													<div class="styGenericDiv" style="width:95mm;">
+													<div class="styGenericDiv" style="width:95mm;">&#160;
               </div>
 													<div class="styGenericDiv" style="padding-left:0mm;width:45mm;">
 														<b>(2)</b>
@@ -1092,7 +1106,7 @@
 													<div class="" style="float:right;">
 														<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 														<span style="width:6px;"/>
-														<span style="width:32mm;border-bottom:1 solid black;">
+														<span style="width:32mm;border-bottom:1px solid black;">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="TotalDeductionClaimedPrTYAmt"/>
 															</xsl:call-template>
@@ -1100,37 +1114,43 @@
 													</div>
 												</div>
 											</div>
-											<div class="styLNLeftLtrBox" style="height:4.5mm;">c</div>
-											<div class="styLNDesc" style="width:179mm;height:4.5mm;border-color:black;border-style:solid;border-left:none;border-right:none;border-top:none;border-bottom-width:1px;font-weight:normal;">Name and address of each organization to which any such contribution was made in a prior year (complete only if different from the donee organization above):</div>
+											<div class="styLNLeftLtrBox" style="height:7mm;">c</div>
+											<div class="styLNDesc" style="width:179mm;height:4.5mm;border-color:black;border-style:solid;border-left:none;border-right:none;border-top:none;border-bottom-width:1px;font-weight:normal;height:7mm;">Name and address of each organization to which any such contribution was made in a prior year (complete only if different from the donee organization above):</div>
 											<!-- Name of Charitable Organization (Donee) -->
-											<div style="width:172mm;">
-												<div style="font-size:6pt;font-weight:normal;padding-left:9mm;">Name of charitable organization (donee)</div>
+											<div style="width:187mm;">
+												<div class="styLNLeftLtrBox" style="height:9mm;">
+													<span style="width:1mm;"/>
 											</div>
-											<div class="styBB" style="width:180mm;margin-left:4mm;float:left;">
+												<div style="width:177mm;font-size:6pt;font-weight:normal;height:auto;border-bottom:1px solid black;">Name of charitable organization (donee) 
+												<br />
 												<xsl:if test="OrganizationNm/BusinessNameLine1Txt !=''">
-												<span style="width:5mm"/>
+												
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="OrganizationNm/BusinessNameLine1Txt"/>
 													</xsl:call-template>
 												</xsl:if>
 												<xsl:if test="OrganizationNm/BusinessNameLine2Txt !=''">
-													<br/><span style="width:5mm"/>
+													<br/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="OrganizationNm/BusinessNameLine2Txt"/>
 													</xsl:call-template>
 												</xsl:if>
+												</div>
 											</div>
 											<!-- Address of Organization -->
-											<div style="width:172mm;">
-												<div style="font-size:6pt;font-weight:normal;padding-left:9mm;">Address (number, street, and room or suite no.)</div>
-											</div>
-											<div class="styBB" style="width:180mm;margin-left:4mm;float:left;">
+											<div style="width:187mm;height:10mm;">
+												<div class="styLNLeftLtrBox" style="height:10mm;">
+													<span style="width:1mm;"/>
+												</div>
+												<div style="font-size:6pt;font-weight:normal;height:auto;border-bottom:1px solid black;height:10mm;width:177mm;">Address (number, street, and room or suite no.)
+												<br />
+											<!--div class="styBB" style="width:180mm;margin-left:4mm;float:left;"-->
 												<xsl:if test="OrganizatonUSAddress!=''">
-												<span style="width:5mm"/>
+												
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="OrganizatonUSAddress/AddressLine1Txt"/>
 													</xsl:call-template>
-													<br/><span style="width:5mm"/>
+													<br/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="OrganizatonUSAddress/AddressLine2Txt"/>
 													</xsl:call-template>
@@ -1144,13 +1164,17 @@
 														<xsl:with-param name="TargetNode" select="OrganizatonForeignAddress/AddressLine2Txt"/>
 													</xsl:call-template>
 												</xsl:if>
+												<!--/div-->
+											    </div>
 											</div>
 											<!-- Organization City, State & Zip Code-->
-											<div style="width:172mm;">
-												<div style="font-size:6pt;font-weight:normal;padding-left:9mm;">City or town, state, and ZIP code</div>
-											</div>
-											<div class="styBB" style="width:180mm;margin-left:4mm;float:left;">
-												<xsl:if test="OrganizatonUSAddress"><span style="width:5mm"/>
+											<div style="width:187mm;">
+												<div class="styLNLeftLtrBox" style="height:auto;">
+													<span style="width:1mm;"/>
+												</div>
+												<div style="font-size:6pt;font-weight:normal;width:177mm;border-bottom:1px solid black;height:auto;">City or town, state, and ZIP code
+												<br />
+												<xsl:if test="OrganizatonUSAddress">
 													<xsl:call-template name="PopulateCityStateInfo">
 														<xsl:with-param name="TargetNode" select="OrganizatonUSAddress"/>
 													</xsl:call-template>
@@ -1165,6 +1189,7 @@
 														<xsl:with-param name="TargetNode" select="OrganizatonForeignAddress/CountryCd"/>
 													</xsl:call-template>
 												</xsl:if>
+												</div>
 											</div>
 											<div style="width:187mm;">
 												<div class="styLNLeftLtrBox" style="height:4.5mm;">d</div>
@@ -1183,14 +1208,14 @@
 											<div style="width:187mm;">
 												<div class="styLNLeftLtrBox" style="height:4.5mm;">e</div>
 												<div class="styLNDesc" style="width:134mm;height:4mm;font-weight:normal;float:left;clear:none;">
-													<span style="width:128mm;">Name of any person, other than the donee organization, having actual possession of the property</span>
+													<span style="width:130mm;">Name of any person, other than the donee organization, having actual possession of the property</span>
 													<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 												</div>
-												<div style="width:47mm;float:right;clear:all;">
-													<span class="styUnderlineText" style="width:47mm;float:right;">
+												<div style="width:40mm;float:right;clear:right;">
+													<span class="styUnderlineText" style="width:40mm;float:right;">
 														<!--    *****************************************************************************  -->
-														<choice>
-															<when test="PersonPossessingPropBusName">
+														<xsl:choose>
+															<xsl:when test="PersonPossessingPropBusName">
 																<xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode" select="PersonPossessingPropBusName/BusinessNameLine1Txt"/>
 																</xsl:call-template>
@@ -1198,33 +1223,34 @@
 																<xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode" select="PersonPossessingPropBusName/BusinessNameLine2Txt"/>
 																</xsl:call-template>
-															</when>
-															<Otherwise>
+															</xsl:when>
+															<xsl:otherwise>
 																<xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode" select=" PersonPossessingPropPersonNm"/>
 																</xsl:call-template>
-															</Otherwise>
-														</choice>
+															</xsl:otherwise>
+														</xsl:choose>
 														<!--**********************************************************************************  -->
 													</span>
 												</div>
-												<div class="styFixedUnderline" style="width:180mm;margin-left:4mm;"></div>
+												<div class="styFixedUnderline" style="width:180mm;margin-left:4mm;">
+            </div>
 											</div>
 											<!-- Section A Part II line 3a begin-->
 											<div style="width:187mm;">
 												<div class="styLNLeftNumBox" style="height:4mm;">3a</div>
 												<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal">Is there a restriction, either temporary or permanent, on the donee's right to use or dispose of the donated </div>
-												<div class="styIRS8283LNYesNoBox" style="width:6mm;height:2mm;font-weight:bold;border-top-width:1px;">Yes</div>
-												<div class="styIRS8283LNYesNoBox" style="width:6mm;height:2mm;font-weight:bold;border-top-width:1px;">No</div>
+												<div class="styIRS8283LNYesNoBox" style="width:6mm;height:4mm;font-weight:bold;border-top-width:1px;">Yes</div>
+												<div class="styIRS8283LNYesNoBox" style="width:6mm;height:4mm;font-weight:bold;border-top-width:1px;">No</div>
 											</div>
 											<div style="width:186mm;float:left;">
 												<div class="styLNLeftLtrBox" style="height:4.5mm;"/>
 												<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;">              
-													<span style="float:left;">property?  
+             <span> property? </span>  
 														<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="DonatedPropertyRestrictionInd"/>
 														</xsl:call-template>
-													</span>
+													
 													<!--Dotted Line-->
 													<div class="styDotLn" style="float:right;padding-right:1mm;">...................................</div>
 												</div>
@@ -1279,15 +1305,14 @@
 					<!-- start 3c  -->	
 						<div style="width:187mm;">
 							<div class="styLNLeftLtrBox" style="height:4.5mm;">c</div>
-						<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;">
-						<span style="float:left;">
-							Is there a restriction limiting the donated property for a particular use?
+							<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;">Is there a restriction limiting the donated property for a particular use?
+							 <span style="width:2px;"/>
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="DonatedPropertyLimitingRstrInd"/>
 							</xsl:call-template>
-						</span>
-						<!--Dotted Line-->
-						<div class="styDotLn" style="float:right;padding-right:1mm;">................</div>
+							  <span style="width:6mm;"/>
+								<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">................</div>
 						</div>
 						<div class="styLNAmountBox" style="width:6mm;height:4.5mm;border-bottom:none; text-align: center;">
 					<xsl:call-template name="PopulateYesBoxText">
@@ -1300,9 +1325,11 @@
 																		</xsl:call-template>
 																	</div>
 					<!-- end 3b -->
+																<!--/div-->
 																</div>
+															
 															</td>
-														</tr>
+										</tr>
 													</xsl:for-each>
 												</xsl:if>
 											</table>
@@ -1322,7 +1349,7 @@
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 2 -->
 					<!-- Page Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
 						<div style="float:left;">Form 8283 (Rev. 12-2014)<span style="width:130mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
@@ -1330,7 +1357,7 @@
 					</div>
 					<!-- END Page Header -->
 					<div style="width:187mm;border-top:none;">
-						<div class="styNameBox" style="font-size:7pt;width:133mm;height:7mm;border-left:none;border-top:none;border-bottom:none;">Name(s) shown on your income tax return
+						<div class="styNameBox" style="font-size:7pt;width:133mm;height:auto;border-left:none;border-top:none;border-bottom:none;">Name(s) shown on your income tax return
 						  <br/>
                           <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
 							  <xsl:choose>
@@ -1351,7 +1378,7 @@
 								</xsl:otherwise>
 							  </xsl:choose>
 						</div>
-						<div class="styNameBox" style="padding-left:2mm;font-size:7pt;width:47mm;height:7mm;border-right:none;border-left:none;border-top:none;border-bottom:none;font-weight:bold;">Identifying number
+						<div class="styNameBox" style="padding-left:2mm;font-size:7pt;width:47mm;height:9mm;border-right:none;border-left:none;border-top:none;border-bottom:none;font-weight:bold;">Identifying number
 						  <br/>
 						  <br/>
 							<span style="font-weight:normal;">
@@ -1372,15 +1399,20 @@
 						</div>
 					</div>
 					<!--Section B -->
-					<div style="width:187mm;">
-						<div class="styBB" style="width:187mm;border-style:solid;border-top-width:1px;border-bottom-width:0px;">
+					<div class="styBB" style="width:187mm;border-top-width:1px;">
+						<div  style="width:15mm;float:left;clear:none">
+							<b>Section B.</b>
+						</div>
+						<div  style="width:172mm;float:left;clear:none;">
 							<span style="font-size:8pt;">
-								<b>Section B.  Donated Property Over $5,000 (Except Publicly Traded Securities)&#8212;</b>
-							</span>Complete this section for one item
-							<span style="width: 164mm; float: right; clear: none">(or one group of similar items) for which you claimed a deduction of more than $5,000 per item or group (except contributions of publicly traded securities reported in Section A). Provide a separate form for each property donated unless it is part of a group of similar items. An appraisal is generally required for property listed in Section B (see instructions).</span>
-					    </div>
+								<b> Donated Property Over $5,000 (Except Publicly Traded Securities)&#8212;</b>
+							</span>List in this section only  items (or groups of similar items) for which you claimed a deduction of more than $5,000 per item or group (except contributions of publicly traded securities reported in Section A). An appraisal is generally required for property listed in Section B (see instructions).
+							</div>
+
+      </div>
+<div>
 						<!-- Section B Part I -->
-						<div class="styBB" style="width:187mm;border-top-width:1px;">
+						<div class="styBB" style="width:187mm;">
 							<span class="styPartName" style="width:16mm;">Part I</span>
 							<span style="font-family:verdana;font-size:8pt;font-weight:bold;">
 							<span style="width:2mm;"/>Information on Donated Property&#8212;</span>
@@ -1567,7 +1599,7 @@
 						</span>
 								</div>
 					<!-- End drop 7 modification-->
-					<div style="width:187mm;">*Art includes paintings, sculptures, watercolors, prints, drawings, ceramics, antiques, decorative arts, textiles, carpets, silver, rare manuscripts, historical memorabilia, and other similar objects.</div>
+					<div style="width:187mm;padding-bottom:1mm;padding-top:.5mm;">*Art includes paintings, sculptures, watercolors, prints, drawings, ceramics, antiques, decorative arts, textiles, carpets, silver, rare manuscripts, historical memorabilia and other similar objects.</div>
 					<div style="width:187mm;">**Collectibles include coins, stamps, books, gems, jewelry, sports memorabilia, dolls, etc., but not art as defined above.
        
         <div style="width:180mm;">
@@ -1750,7 +1782,7 @@
 							</xsl:call-template>
 						</div>
 						<!--Table expand/collapse toggle button end-->
-						<div class="styTableContainerForTP3ctn" style="height:27mm" id="TP3ctn">
+						<div class="styTableContainerForTP3ctn" style="" id="TP3ctn">
 							<xsl:call-template name="SetInitialState"/>
 							<table cellspacing="0" class="styTable" style=" border-bottom: 0px;">
 								<thead class="styTableThead">
@@ -1823,8 +1855,8 @@
 													<span style="width:2px;"/>
 													<!-- Tags are pushed up against the hyphen to prevent spaces from getting between the hyphen and numbers -Kevin Chang -->
 												</td>
-												<td class="styTableCell" style="text-align:left;width:20mm;font-size:7pt;border-color:black;">
-													<span style="width:3px;float:left;">
+												<td class="styTableCell" style="text-align:center;width:20mm;font-size:7pt;border-color:black;">
+													<span style="width:4px;float:left;">
 														<xsl:call-template name="SetFormLinkInline">
 															<xsl:with-param name="TargetNode" select="DonorAcquisitionDesc"/>
 														</xsl:call-template>
@@ -1984,12 +2016,12 @@
 						</xsl:call-template>
 					</div>
 					<!-- Section B part II  Taxpayer (Donor) Statement-->
-					<div class="styBB" style="width:187mm;border-top-width:0px">
-						<span class="styPartName" style="width:16mm;">Part II</span>
-						<span style="font-family:verdana;font-size:8pt;font-weight:bold;">
-							<span style="width:2mm;"/>Taxpayer (Donor) Statement&#8212;</span>
-						<span style="font-family:verdana;font-size:8pt;">List each item included in Part I above that the appraisal identifies as<br/>
-        <span style="width:19mm;"/>having a value of $500 or less. See instructions.</span>
+					<div class="styBB" style="width:187mm;border-top-width:0px;font-family:verdana;font-size:8pt;">
+						<div class="styPartName" style="float:left;clear:none;"><b>Part II</b></div>
+						<div style="float:left;clear:none;width:168mm;padding-left:3mm;"><b>Taxpayer (Donor) Statement&#8212;</b>
+List each item included in Part I above that the appraisal identifies as
+        having a value of $500 or less. See instructions.						
+						</div>						
 					</div>
 					<div style="width:187mm;"/>
 					<div style="width:187mm;">
@@ -1997,7 +2029,7 @@
 						<div style="width:138mm;float:left;" class="styGenericDiv">$500 (per item). Enter identifying letter from Part I and describe the specific item. See instructions.<span style="width:2mm;"/>
 							<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 						</div>
-						<div style="width:49mm;border-bottom:1 solid black;padding-left:1mm;float:right;clear:none;" class="styGenericDiv">
+						<div style="width:49mm;border-bottom:1px solid black;padding-left:1mm;float:right;clear:none;height:auto;" class="styGenericDiv">
 							<xsl:if test="($Print != $Separated) or ( ($Print = $Separated) and (count($Form8283Data/PropertyIdLetterAndDescGrp) &lt;= 1) )">
 								<xsl:for-each select="$Form8283Data/PropertyIdLetterAndDescGrp">
 									<span style="width:8mm;">
@@ -2039,9 +2071,9 @@
 					</div>
 					<div style="width:187mm;"/>
 					<div class="styBB" style="width:187mm;">
-						<span class="styIRS8283SignatureBox" style="width:10mm;font-size:9pt;font-weight:bold;border-bottom-width:0px;">Sign Here</span>
+					    <div class="styIRS8283SignatureBox" style="width:10mm;font-size:9pt;font-weight:bold;border-bottom-width:0px;height:8mm;">Sign Here</div>
 						<span style="width:6mm;"/>
-						<span class="styIRS8283SignatureBox" style="width:90mm;border-right-width:0px;             padding-left: 2mm;border-bottom-width:0px;">Signature            
+						<div class="styIRS8283SignatureBox" style="width:87mm;border-right-width:0px; padding-bottom:0px;            padding-left: 2mm;border-bottom-width:0px;height:8mm;padding-top:4mm;">Signature            
             <span style="width:1mm;"/>
 							<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/><span style="width:1mm;"/>
 							<xsl:call-template name="PopulateText">
@@ -2051,28 +2083,32 @@
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserName/PersonLastNm"/>
 							</xsl:call-template>
-						</span>
-						<span class="styIRS8283SignatureBox" style="width:45mm;border-right-width:0px;border-bottom-width:0px;">
+						</div>
+						<div class="styIRS8283SignatureBox" style="width:54mm;border-right-width:0px;border-bottom-width:0px;padding-top:4mm;height:8mm;">
             Title<span style="width:1mm;"/>
 							<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/><span style="width:1mm;"/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserTitleTxt"/>
 							</xsl:call-template>
-						</span>
-						<span class="styIRS8283SignatureBox" style="width:35mm;border-right-width:0px;border-bottom-width:0px;">
+						</div>
+						<div class="styIRS8283SignatureBox" style="width:29mm;border-right-width:0px;border-bottom-width:0px;padding-top:4mm;height:8mm;">
         Date <span style="width:1mm;"/>
 							<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/><span style="width:1mm;"/>
 							<xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserSignedDt"/>
 							</xsl:call-template>
-						</span>
+						</div>
 					</div>
 					<!-- Could not reduce the height for name and EIN line -->
 					<div style="width:187mm;border-top-width:1px;">
-						<div class="styNameBox" style="font-family:Arial;font-size:7pt;width:135mm;">Business address (including room or suite no.)
+						<div class="styNameBox" style="font-family:Arial;font-size:7pt;width:135mm;">
+						<span style="width:100%">
+						Business address (including room or suite no.)</span>
+						
 							<br/>
-								<choice>
-									<when test="$Form8283Data/AppraiserUSAddress">
+							<span style="padding-top:3mm;">
+								<xsl:choose>
+									<xsl:when test="$Form8283Data/AppraiserUSAddress">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserUSAddress/AddressLine1Txt"/>
 										</xsl:call-template>
@@ -2080,8 +2116,8 @@
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserUSAddress/AddressLine2Txt"/>
 											</xsl:call-template>
-									</when>
-									<Otherwise>
+									</xsl:when>
+									<xsl:otherwise>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserForeignAddress/AddressLine1Txt"/>
 										</xsl:call-template>
@@ -2089,12 +2125,14 @@
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserForeignAddress/AddressLine2Txt"/>
 										</xsl:call-template>
-									</Otherwise>
-								</choice>
+									</xsl:otherwise>
+								</xsl:choose>
+							</span>
 						</div>
 						<div class="styEINBox" style="font-family:Arial;font-size:7pt;width:47mm;padding-left: 2mm;">
-							<b>Identifying number</b><br/>
 							<br/>
+							<b>Identifying number</b>
+							<br/><br/>
 								<span style="font weight:normal;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserIdentifyingNum"/>
@@ -2104,9 +2142,10 @@
 					</div>
 					<div class="styBB" style="width:187mm;border-top-width:1px">
 						<div class="styNameBox" style="font-family:Arial;font-size:7pt;width:187mm;height:8mm;border-right-width:0px;">City or town, state, and ZIP code
-        <div>
-								<choice>
-									<when test="$Form8283Data/AppraiserUSAddress">
+						<br/>
+						<div style="padding-top:2mm;">
+								<xsl:choose>
+									<xsl:when test="$Form8283Data/AppraiserUSAddress">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserUSAddress/CityNm"/>
 										</xsl:call-template><span style="width=1mm"/>
@@ -2117,8 +2156,8 @@
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserUSAddress/ZIPCd"/>
 										</xsl:call-template>
-									</when>
-									<Otherwise>
+									</xsl:when>
+									<xsl:otherwise>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserForeignAddress/CityNm"/>
 										</xsl:call-template><span style="width:1mm;"/> 
@@ -2131,8 +2170,8 @@
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form8283Data/AppraiserForeignAddress/ForeignPostalCd"/>
 										</xsl:call-template>
-									</Otherwise>
-								</choice>
+									</xsl:otherwise>
+								</xsl:choose>
 							</div>
 						</div>
 					</div>
@@ -2152,11 +2191,13 @@
 						</span>
 					</div>
 					<br/>
+					<br />
 					<div style="width:187mm;">Furthermore, this organization affirms that in the event it sells, exchanges, or otherwise disposes of the property described in Section B, Part I (or any portion thereof) within 3 years after the date of receipt, it will file <b>Form 8282,</b> Donee Information Return, with the IRS and give the donor a copy of that form. This acknowledgment does not represent agreement with the claimed fair market value.</div>
+					<br/>
 					<br/>
 					<div style="width:187mm;border-top-width:1px;">
 						<!--  <div style="width:187mm;">-->
-						<div class="styLNDesc" style="width:179mm;height:4.0mm;">Does the organization intend to use the property for an unrelated use?
+						<div class="styLNDesc" style="width:179mm;height:7mm;">Does the organization intend to use the property for an unrelated use?
           <span class="styBoldText" style="width:19px;">.</span>
 							<span class="styBoldText" style="width:19px;">.</span>
 							<span class="styBoldText" style="width:19px;">.</span>
@@ -2207,7 +2248,7 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;border-top-width:1px;">
-						<div class="styNameBox" style="font-face:Arial;font-size:7pt;width:94mm;">Name of charitable organization (donee)<br/>
+						<div class="styNameBox" style="font-face:Arial;font-size:7pt;width:94mm;height:auto;">Name of charitable organization (donee)<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8283Data/DoneeName/BusinessNameLine1Txt"/>
 							</xsl:call-template>
@@ -2218,7 +2259,7 @@
 								</xsl:call-template>
 							</xsl:if>
 						</div>
-						<div class="styEINBox" style="font-family:face;font-size:7pt;width:93mm;">
+						<div class="styEINBox" style="font-family:face;font-size:7pt;width:93mm;height:auto;">
 							<b>Employer identification number</b>
 							<br/>
 							<br/>
@@ -2230,7 +2271,7 @@
 						</div>
 					</div>
 					<div style="width:187mm;border-top-width:1px">
-						<div class="styNameBox" style="font-family:Arial;font-size:7pt;width:94mm;">Address (number, street, and room or suite no.) <br/>
+						<div class="styNameBox" style="font-family:Arial;font-size:7pt;width:94mm;height:auto;">Address (number, street, and room or suite no.) <br/>
 							<xsl:if test="$Form8283Data/DoneeUSAddress">
 								<xsl:if test="$Form8283Data/DoneeUSAddress/AddressLine1Txt!=''">
 									<xsl:call-template name="PopulateText">
@@ -2468,7 +2509,7 @@
 										</th>
 									</tr>
 									<tr class="styDepTblHdr">
-										<th scope="col" class="styDepTblCell" style="width:7mm;background-color:lightgrey;border-right:1 solid black;border-bottom:1 solid black;">
+										<th scope="col" class="styDepTblCell" style="width:7mm;background-color:lightgrey;border-right:1px solid black;border-bottom:1px solid black;">
 											<span style="width:1mm;"/>
 										</th>
 										<th scope="col" class="styDepTblCell" style="width:26mm;text-align:center;font-size: 7pt;font-weight:normal;border-color:black;padding-top:3mm;">
@@ -2515,7 +2556,7 @@
 													</xsl:otherwise>
 												</xsl:choose>
 											</td>
-											<td class="styTableCell" style="float:right;width:26mm;text-align:center;font-size: 7pt;font-weight:normal;border-color:black;">
+											<td class="styTableCell" style="float:none;width:26mm;text-align:center;font-size: 7pt;font-weight:normal;border-color:black;">
 												<!--
             <span style="width:0.1mm;float:left;">
             <xsl:call-template name="LinkToLeftoverDataTableInline">
@@ -2532,7 +2573,7 @@
 														<xsl:with-param name="Style">padding-left:3mm;</xsl:with-param>
 													</xsl:call-template>
 												</span>
-												<xsl:call-template name="PopulateText">
+												<xsl:call-template name="PopulateMonthDayYear">
 													<xsl:with-param name="TargetNode" select="DonorLineDetail/ContributionDt"/>
 												</xsl:call-template>
 											</td>
@@ -2621,7 +2662,7 @@
 											<div class="" style="float:right;clear:none;">
 												<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 												<span style="width:6px;"/>
-												<span style="width:32mm;border-bottom:1 solid black;">
+												<span style="width:32mm;border-bottom:1px solid black;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="PropertyId"/>
 													</xsl:call-template>
@@ -2645,7 +2686,7 @@
 												<div class="" style="float:right;">
 													<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 													<span style="width:6px;"/>
-													<span style="width:32mm;border-bottom:1 solid black;">
+													<span style="width:32mm;border-bottom:1px solid black;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="TotalDeductionClaimedThisTYAmt"/>
 														</xsl:call-template>
@@ -2665,7 +2706,7 @@
 												<div class="" style="float:right;">
 													<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 													<span style="width:6px;"/>
-													<span style="width:32mm;border-bottom:1 solid black;">
+													<span style="width:32mm;border-bottom:1px solid black;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="TotalDeductionClaimedPrTYAmt"/>
 														</xsl:call-template>
@@ -2675,12 +2716,15 @@
 										</div>
 										<div class="styDepTblRow1" style="width:187mm;">
 											<div class="styLNLeftLtrBox" style="height:8mm;">c</div>
-											<div class="styLNDesc" style="width:179mm;height:4.5mm;border-color:black;border-style:solid;border-left:none;border-right:none;border-top:none;border-bottom-width:1px;font-weight:normal;">Name and address of each organization to which any such contribution was made in a prior year (complete only if different from the donee organization above):</div>
+											<div class="styLNDesc" style="width:179mm;height:7mm;border-color:black;border-style:solid;border-left:none;border-right:none;border-top:none;border-bottom-width:1px;font-weight:normal;">Name and address of each organization to which any such contribution was made in a prior year (complete only if different from the donee organization above):</div>
 										</div>
 										<!-- Name of Charitable Organization (Donee) -->
 										<div class="styDepTblRow1" style="width:187mm;">
-											<div style="font-size:6pt;font-weight:normal;padding-left:8mm;">Name of charitable organization (donee)</div>
-											<div class="styBB" style="width:180mm;margin-left:4mm;float:left;padding-left:4mm;">
+											<div class="styLNLeftLtrBox" style="height:4.5mm;">
+												<span style="width:1mm;"/>
+											</div>
+											<div style="font-size:6pt;font-weight:normal;">Name of charitable organization (donee)</div>
+											<div class="styBB" style="width:180mm;margin-left:8mm;float:left;">
 												<xsl:if test="OrganizationNm/BusinessNameLine1Txt !=''">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="OrganizationNm/BusinessNameLine1Txt"/>
@@ -2696,8 +2740,11 @@
 										</div>
 										<!-- Address of Organization -->
 										<div class="styDepTblRow1" style="width:187mm;">
-											<div style="font-size:6pt;font-weight:normal;padding-left:8mm;">Address (number, street, and room or suite no.)</div>
-											<div class="styBB" style="width:180mm;margin-left:4mm;float:left;padding-left:4mm;">
+											<div class="styLNLeftLtrBox" style="height:4.5mm;">
+												<span style="width:1mm;"/>
+											</div>
+											<div style="font-size:6pt;font-weight:normal;">Address (number, street, and room or suite no.)</div>
+											<div class="styBB" style="width:180mm;margin-left:8mm;float:left;">
 												<xsl:if test="OrganizatonUSAddress">
 													<xsl:if test="OrganizatonUSAddress/AddressLine1Txt!=''">
 														<xsl:call-template name="PopulateText">
@@ -2729,8 +2776,11 @@
 										</div>
 										<!-- Organization City, State & Zip Code-->
 										<div class="styDepTblRow1" style="width:187mm;">
-											<div style="font-size:6pt;font-weight:normal;padding-left:8mm;">City or town, state, and ZIP code</div>
-											<div class="styBB" style="width:180mm;margin-left:4mm;float:left;padding-left:4mm;">
+											<div class="styLNLeftLtrBox" style="height:4.5mm;">
+												<span style="width:1mm;"/>
+											</div>
+											<div style="font-size:6pt;font-weight:normal;">City or town, state, and ZIP code</div>
+											<div class="styBB" style="width:180mm;margin-left:8mm;float:left;">
 												<xsl:if test="OrganizatonUSAddress">
 													<xsl:if test="OrganizatonUSAddress/CityNm!=''">
 														<xsl:call-template name="PopulateText">
@@ -2789,12 +2839,12 @@
 									<div style="width:187mm;">
 		<!--  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  -->
 											<div class="styLNLeftLtrBox" style="height:4.5mm;">e</div>
-											<div class="styLNDesc" style="width:179mm;height:4mm;font-weight:normal;">
+											<div class="styLNDesc" style="width:179mm;height:10mm;font-weight:normal;">
 											Name of any person, other than the donee organization, having actual possession of the property
 												<img src="{$ImagePath}/8283_Bullet_Sm.gif" alt="bullet image pointing to right"/>
 												<br/>
-														<choice>
-															<when test="PersonPossessingPropBusName">
+														<xsl:choose>
+															<xsl:when test="PersonPossessingPropBusName">
 																<xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode" select="PersonPossessingPropBusName/BusinessNameLine1Txt"/>
 																</xsl:call-template>
@@ -2802,13 +2852,13 @@
 																<xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode" select="PersonPossessingPropBusName/BusinessNameLine2Txt"/>
 																</xsl:call-template>
-															</when>
-															<Otherwise>
+															</xsl:when>
+															<xsl:otherwise>
 																<xsl:call-template name="PopulateText">
 																	<xsl:with-param name="TargetNode" select=" PersonPossessingPropPersonNm"/>
 																</xsl:call-template>
-															</Otherwise>
-														</choice>
+															</xsl:otherwise>
+														</xsl:choose>
 												</div>
 										</div>	
 <!--					<div class="styFixedUnderline" style="width:160mm;margin-left:4mm;background-color:yellow"/>-->
@@ -2818,8 +2868,8 @@
 										<div class="styDepTblRow2" style="width:187mm;float:left;">
 											<div class="styLNLeftNumBox" style="height:4.5mm;">3a</div>
 											<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;">Is there a restriction, either temporary or permanent, on the donee's right to use or dispose of the donated </div>
-											<div class="styIRS8283LNYesNoBox" style="width:6mm;height:2mm;font-weight:bold;border-top-width:1px;">Yes</div>
-											<div class="styIRS8283LNYesNoBox" style="width:6mm;height:2mm;font-weight:bold;border-top-width:1px;">No</div>
+											<div class="styIRS8283LNYesNoBox" style="width:6mm;height:5mm;font-weight:bold;border-top-width:1px;">Yes</div>
+											<div class="styIRS8283LNYesNoBox" style="width:6mm;height:5mm;font-weight:bold;border-top-width:1px;">No</div>
 										</div>
 										<div class="styDepTblRow2" style="width:187mm;float:left;">
 											<div class="styLNLeftLtrBox" style="height:4mm;"/>
@@ -2864,13 +2914,10 @@
 										</div>
 										<div class="styDepTblRow1" style="width:187mm;">
 											<div class="styLNLeftLtrBox" style="height:4.5mm;"/>
-											<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;"> 
-												<span style="float:left;">
-													or to designate the person having such income, possession, or right to acquire?
+											<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;"> or to designate the person having such income, possession, or right to acquire?
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="DonatedPropertyRightsGivenInd"/>
 													</xsl:call-template>
-												</span>
 												<!--Dotted Line-->
 												<div class="styDotLn" style="float:right;padding-right:1mm;">...........</div>
 											</div>
@@ -2888,12 +2935,10 @@
 										<div class="styDepTblRow2" style="width:187mm;">
 											<div class="styLNLeftLtrBox" style="height:4.5mm;">c</div>
 											<div class="styLNDesc" style="width:166mm;height:4mm;font-weight:normal;">
-												<span style="float:left;">
 													Is there a restriction limiting the donated property for a particular use?
 													<xsl:call-template name="SetFormLinkInline">
 														<xsl:with-param name="TargetNode" select="DonatedPropertyLimitingRstrInd"/>
 													</xsl:call-template>
-												</span>
 												<!--Dotted Line-->
 												<div class="styDotLn" style="float:right;padding-right:1mm;">................</div>
 											</div>

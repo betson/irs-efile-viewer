@@ -13,6 +13,23 @@ body {   /* Global Styles */
 	float: none; clear: none;
 	display: block; cursor: auto; white-space: normal;
 }
+/************************/
+/* Add changes for IE11 */
+/************************/
+span{
+display:inline-block;
+vertical-align:bottom;
+}
+a{
+color:black; /* the first two lines are moved from bottom of the file. */
+text-decoration:none;
+display:inline-block;
+vertical-align:bottom;
+}
+*{
+box-sizing:border-box;
+}
+
 .UserTypeLbl {   /* User Type Label */
 	color: darkorange;
 	vertical-align: middle;
@@ -42,11 +59,11 @@ body {   /* Global Styles */
 	font-size: 9pt; font-weight: normal;
 	vertical-align: top;
 	padding-top: 2px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
-	cursor: hand;
+	cursor: pointer;
 }
 .FormFieldCB {   /* Form Field - Checkbox */
 	vertical-align: top;
-	cursor: hand;
+	cursor: pointer;
 }
 .FormFieldBtn {   /* Form Field - Button */
 	height: 25px;
@@ -54,7 +71,7 @@ body {   /* Global Styles */
 	font-family: verdana, arial, sans-serif;
 	font-size: 9pt; font-weight: bold;
 	text-align: center;
-	cursor: hand;
+	cursor: pointer;
 }
 .FormFieldBtnSmall {   /* Form Field - Small Button */
 	height: 18px;
@@ -62,7 +79,7 @@ body {   /* Global Styles */
 	font-size: 7pt; font-weight: bold;
 	text-align: center;
 	vertical-align: top;
-	cursor: hand;
+	cursor: pointer;
 }
 .FormFieldRadioLbl {   /* Form Field Label - Radio */
 	font-family: verdana, arial, sans-serif;
@@ -70,11 +87,11 @@ body {   /* Global Styles */
 	text-align: left;
 	vertical-align: top;
 	padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
-	cursor: hand;
+	cursor: pointer;
 }
 .FormFieldRadio {   /* Form Field - Radio */
 	vertical-align: top;
-	cursor: hand;
+	cursor: pointer;
 }
 .FormFieldPrintBtn {   /* Form Field - Print Button */
 	height: 6mm;
@@ -82,7 +99,7 @@ body {   /* Global Styles */
 	font-family: verdana, arial, sans-serif;
 	font-size: 9pt; font-weight: bold;
 	text-align: center;
-	cursor: hand;
+	cursor: pointer;
 	background-image:url(/mef/rrdprd/common/images/printer.gif);
 	background-position:center;
 	background-repeat:no-repeat;
@@ -133,7 +150,7 @@ Search Groups Title
 	border-top-color: beige; border-bottom-color: DarkKhaki; border-left-color: beige; border-right-color: DarkKhaki;
 	border-top-width: 2px; border-bottom-width: 0px; border-left-width: 2px; border-right-width: 2px;
 	padding-top: 5px;
-	cursor: hand;
+	cursor: pointer;
 }
 .SearchGrpFolderTabDn {   /* Search Group Tab - not selected */
 	height: 22px;
@@ -145,7 +162,7 @@ Search Groups Title
 	border-style: solid;
 	border-top-color: beige; border-bottom-color: DarkKhaki; border-left-color: beige; border-right-color: DarkKhaki;
 	border-top-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-right-width: 2px;
-	cursor: hand;
+	cursor: pointer;
 }
 .SearchGrpFolderTabSpacer {   /* Search Group Tab Spacer */
 	height: 22px;
@@ -223,11 +240,11 @@ body{}
 }
 .styTblRow1 {   /* Table Row 1 */
 	background-color: #d6ecee;
-	cursor: hand;
+	cursor: pointer;
 }
 .styTblRow2 {   /* Table Row 2 */
 	background-color: #f3fafb;
-	cursor: hand;
+	cursor: pointer;
 }
 .styNoClickTblRow1 {   /* Table Row 1 with no hand */
 	background-color: #d6ecee;
@@ -245,16 +262,16 @@ body{}
 }
 .styTblRowHighlight {   /* Table Row Highlight */
 	background-color: gold;
-	cursor: hand;
+	cursor: pointer;
 }
 .styMsgTblRowClickedHighlight {   /* Message Table Row Highlight After Clicked */
 /*	background-color: rgb(255, 227, 107); */
        background-color: gold;
-	cursor: hand;
+	cursor: pointer;
 }
 .styMsgTblClickableRowHighlight { /* Highlighted Row in a Message Table that can be Clicked */
 	background-color: #FFE36B;
-	cursor: hand;
+	cursor: pointer;
 }
 
 .styMsgTblRowHighlight { /* Highlighted Row in a Message Table that cannot be Clicked */
@@ -291,7 +308,7 @@ body{}
 }
 .styErrorTblCell {   /* Error Table Cell */
       	padding-top: 4px; padding-bottom: 4px; padding-left: 4px; padding-right: 4px;
-      	border:1 solid black;	
+      	border:1px solid black;	
 }
 
 /*
@@ -327,7 +344,7 @@ body{}
 	padding-top: 2px; padding-bottom: 2px; padding-left: 5px; padding-right: 5px;
 }
 
-a { color:black; text-decoration:none;}
+/*a { color:black; text-decoration:none;}*/
 
 /* Styles for the Search Results Table */
 .styResultsColumnHeadingClk {
@@ -340,7 +357,7 @@ a { color:black; text-decoration:none;}
     color: black;
     background-color: #95c0ff;
     vertical-align: middle;
-    cursor: hand;
+    cursor: pointer;
 }
 .styResultsBtnClkClass {
     font-family: verdana, arial, sans-serif;
@@ -353,7 +370,7 @@ a { color:black; text-decoration:none;}
     border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
     padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
     vertical-align: middle;
-    cursor: hand;
+    cursor: pointer;
 }
 
 .RqInfoFieldSetLbl 	{ /* Field Set Label */
@@ -365,7 +382,7 @@ a { color:black; text-decoration:none;}
 }
 
 .FieldSetOneRowLbl 	{ /* Field Set Label */
-	height:65px;
+	height:98px;
 	width:684px;
 	border-width:2px;
 	border-color:white;
@@ -373,7 +390,7 @@ a { color:black; text-decoration:none;}
 }
 
 .FieldSetTwoRowsLbl 	{ /* Field Set Label */
-	height:100px;
+	height:149px; /* MODIFIED FROM PRE-IE11 VALUE: 100px */
 	width:684px;
 	border-width:2px;
 	border-color:white;
@@ -389,7 +406,7 @@ a { color:black; text-decoration:none;}
 }
 				   	
 .EINOnlyLegendLbl 	{ /* Field Set Legend Label */
-	height: 5px;
+	height: 18px;
 	border-width:1px;
 	border-style:"NONE";
 	font-size: 8pt; font-weight: bold;
@@ -403,21 +420,21 @@ a { color:black; text-decoration:none;}
 }
 
 .ReqInfoLegendLbl 	{ /* Field Set Legend Label */
-	height: 5px;
+	height: 18px;
 	border-width:1px;
 	border-style:"NONE";
 	font-size: 8pt; font-weight: bold;
 }
 .InfoGroupsDivLabel	{
 	display:block;
-	margin-top:10px;
-	margin-left:15px;
+	margin-top:7px; /* MODIFIED FROM PRE-IE11 VALUE: 10px */
+	margin-left:12px;
 }
 
 .GroupBoxRowDivLabel {
 	display:block;
-	margin-top:15px;
-	margin-left:15px
+	margin-top:10px;	/* Changed from 15 to 10 for IE11 */
+	margin-left:7px
 }
 
 .styRcvDateRangeSpan {
@@ -435,7 +452,7 @@ a { color:black; text-decoration:none;}
 	font-size: 8pt; font-weight: normal;
 	vertical-align: middle;
 	cursor: default;
-
+}
 .styFldLabel {   /* Field Label */
 	font-family: verdana, arial, sans-serif; font-size: 8pt;
 	font-weight: bold; color: black;
@@ -452,8 +469,6 @@ a { color:black; text-decoration:none;}
 	font-size: 8pt;
 	height:19px;
 	vertical-align: top;
-	border-style: none; border-color: black;
-	border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;
 }
 
 .searchPagesFormElement { /* Used by the form element in the search pages */
@@ -470,14 +485,14 @@ a { color:black; text-decoration:none;}
 }
 
 .styInfoGroupFieldsSeparator { /* Used to set the width of the some <span> elements used to separate fields in a row */
-	width:17px;
+	width:9px; /* MODIFIED FROM PRE-IE11 VALUE: 17px */
 }
 
 .EINFormFieldText {   /* Form Field - Text Input */
 	height: 19px;
 	font-family: verdana, arial, sans-serif;
 	font-size: 8pt; font-weight: normal;
-	width:76px;
+	width:82px;
 }
 
 .ETINFormFieldText {   /* Form Field - Text Input */
@@ -498,21 +513,21 @@ a { color:black; text-decoration:none;}
 	height: 19px;
 	font-family: verdana, arial, sans-serif;
 	font-size: 8pt; font-weight: normal;
-	width:110px;
+	width:116px;
 }
 
 .SSNFormFieldText {   /* Form Field - Text Input */
 	height: 19px;
 	font-family: verdana, arial, sans-serif;
 	font-size: 8pt; font-weight: normal;
-	width:76px;
+	width:82px;
 }
 
 .GTXFormFieldText {   /* Form Field - Text Input */
 	height: 19px;
 	font-family: verdana, arial, sans-serif;
 	font-size: 8pt; font-weight: normal;
-	width:153px;
+	width:190px;
 }
 
 .TaxPeriodYearFieldText {   /* Form Field - Text Input */
@@ -533,7 +548,7 @@ a { color:black; text-decoration:none;}
 	height: 19px;
 	font-family: verdana, arial, sans-serif;
 	font-size: 8pt; font-weight: normal;
-	width:79px;
+	width:85px;
 }
 
 .styCalendar { /* Style for Calendar for Rcvd Date, Rcvd Date From, To etc. */
@@ -551,7 +566,7 @@ a { color:black; text-decoration:none;}
 
 .styDivFormButtons { /* Style for the <DIV> Element that surrounds the 'Find' and 'Reset' Buttons */
 	text-align:center;
-	margin-top:12px;
+	margin-top:15px; /* MODIFIED FROM PRE-IE11 VALUE: margin-top:12px;*/
 }
 
 .styFooter {   /* Footer */
@@ -571,7 +586,7 @@ a { color:black; text-decoration:none;}
 	font-family: verdana, arial, sans-serif;
 	font-size: 9pt; font-weight: bold;
 	text-align: center;
-	cursor: hand;
+	cursor: pointer;
 }
 
 .sty508LabelButton {  /* style for field label on a modal window that is implemented as a button to meet Section 508 need */

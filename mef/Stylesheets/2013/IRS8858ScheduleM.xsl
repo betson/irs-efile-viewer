@@ -11,8 +11,10 @@
 	<xsl:param name="Form8858Data" select="$RtnDoc/IRS8858"/>
 	<xsl:param name="Form8858SchMData" select="$RtnDoc/IRS8858ScheduleM"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8858SchMData)"/>
@@ -45,7 +47,7 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- END WARNING LINE -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:27mm;height:18mm;">
+						<div class="styFNBox" style="width:27mm;height:21.5mm;">
 							<span class="styFormNumber" style="font-size:9pt;">SCHEDULE M <br/> (Form 8858)</span>
 							<br/>(Rev. December 2012)
               <!--General Dependency Push Pin -->
@@ -78,7 +80,7 @@ Foreign Tax Owner and the Filer or Other Related Entities
 					</div>
 					<!-- Names and ID's -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:144mm;height:8mm;font-size:7pt;">
+						<div class="styNameBox" style="width:144mm;height:9mm;font-size:7pt;">
            Name of person filing Form 8858<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8858SchMData/FilerName/BusinessNameLine1"/>
@@ -88,7 +90,7 @@ Foreign Tax Owner and the Filer or Other Related Entities
 								<xsl:with-param name="TargetNode" select="$Form8858SchMData/FilerName/BusinessNameLine2"/>
 							</xsl:call-template>
 						</div>
-						<div class="styEINBox" style="width:42mm;height:4mm;padding-left:2mm;font-size:7pt;">
+						<div class="styEINBox" style="width:42mm;height:9mm;padding-left:2mm;font-size:7pt;">
             Identifying number<br/>
 							<br/>
 							<xsl:if test="$Form8858SchMData/FilerSSN !=' '">
@@ -117,7 +119,7 @@ Foreign Tax Owner and the Filer or Other Related Entities
 					<!-- End of Names and ID's -->
 					<!--  Foreign disregarded entity -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:62mm;height:10mm;font-size:7pt;">
+						<div class="styNameBox" style="width:62mm;height:15mm;font-size:7pt;">
            Name of foreign disregarded entity<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8858SchMData/ForeignDisregardedEntityName/BusinessNameLine1"/>
@@ -127,7 +129,7 @@ Foreign Tax Owner and the Filer or Other Related Entities
 								<xsl:with-param name="TargetNode" select="$Form8858SchMData/ForeignDisregardedEntityName/BusinessNameLine2"/>
 							</xsl:call-template>
 						</div>
-						<div class="styNameBox" style="width:47mm;height:10mm;padding-left:2mm;font-size:7pt;">
+						<div class="styNameBox" style="width:47mm;height:15mm;padding-left:2mm;font-size:7pt;">
             U.S. identifying number, if any<br/>
 							<br/>
 							<xsl:if test="$Form8858SchMData/ForeignCorporationEIN !=' '">
@@ -145,7 +147,7 @@ Foreign Tax Owner and the Filer or Other Related Entities
 							<!-- ***************************************************************************************************************** -->
 							<!-- ***************************************************************************************************************** -->
 							<xsl:when test="((count($Form8858SchMData/ForeignEntityIdentificationGrp) &gt; 1)) ">
-								<div class="styEINBox" style="width:78mm;height:10mm;padding-left:2mm;font-size:7pt;font-weight:normal;">
+								<div class="styEINBox" style="width:78mm;height:15mm;padding-left:2mm;font-size:7pt;font-weight:normal;">
             Reference ID number (see instructions)
 										<br/>
 									<br/>See Additional Data Table
@@ -170,7 +172,7 @@ Foreign Tax Owner and the Filer or Other Related Entities
 					<!--  END Foreign disregarded entity -->
 					<!--  Tax owner -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:94mm;height:10mm;font-size:7pt;">
+						<div class="styNameBox" style="width:94mm;height:15mm;font-size:7pt;">
            Name of tax owner<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8858SchMData/TaxOwnerName/BusinessNameLine1"/>
@@ -180,7 +182,7 @@ Foreign Tax Owner and the Filer or Other Related Entities
 								<xsl:with-param name="TargetNode" select="$Form8858SchMData/TaxOwnerName/BusinessNameLine2"/>
 							</xsl:call-template>
 						</div>
-						<div class="styEINBox" style="width:93mm;height:10mm;padding-left:2mm;font-size:7pt;font-weight:normal;">
+						<div class="styEINBox" style="width:93mm;height:15mm;padding-left:2mm;font-size:7pt;font-weight:normal;">
             U.S. identifying number, if any<br/>
 							<br/>
 							<span style="width: 5mm;"/>
@@ -206,8 +208,8 @@ Foreign Tax Owner and the Filer or Other Related Entities
 					<!--  END Tax owner -->
 					<div class="styBB" style="width:187mm;">
 						<div style="padding-top:1.5mm;text-align:justify;">
-							<span class="styBoldText">Important:</span>
-							<span class="styItalicText">  Complete a <span class="styBoldText">separate</span> Schedule M for each foreign disregarded entity for which the tax owner is a controlled foreign
+							<span class="styBoldText" style="display:inline;">Important:</span>
+							<span class="styItalicText" style="display:inline;">  Complete a <span class="styBoldText" style="display:inline;">separate</span> Schedule M for each foreign disregarded entity for which the tax owner is a controlled foreign
 corporation or controlled foreign partnership. Enter the totals for each type of transaction that occurred during the annual accounting
 period between the foreign disregarded entity and the persons listed in the applicable columns (b) through (f). All amounts must be
 stated in U.S. dollars translated from functional currency at the appropriate exchange rate for the foreign disregarded entity’s tax
@@ -221,6 +223,7 @@ year (see instructions).  </span>
 									<xsl:with-param name="TargetNode" select="$Form8858SchMData/FunctionalCurrencyDesc"/>
 								</xsl:call-template>
 							</span>
+							<span style="width:4mm;" />
 							<span style="float:right;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form8858SchMData/ExchangeRt"/>
@@ -234,10 +237,10 @@ year (see instructions).  </span>
 owner and complete lines 1 through 19 with respect to the applicable set of column headings:	
 	</div>
 					</div>
-					<table cellpadding="0" cellspacing="0" class="styTable" style="width:187mm;font-weight:normal;font-size:7pt;">
+					<table cellpadding="0" cellspacing="0" class="styTable" style="width:187mm;font-weight:normal;font-size:7pt;border:1px solid black;">
 						<thead class="stythead">
 							<tr>
-								<th style="width:47mm;border-color:black;font-weight:normal;vertical-align:top;" class="styTablecellHeader" scope="col">
+								<th style="width:47mm;border-color:black;font-weight:normal;vertical-align:top;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<div class="styGenericDiv" style="padding-top:3mm;">
 										<input type="Checkbox" class="styCkbox" name="ControlledForeignPrtshpInd">
 											<xsl:call-template name="PopulateCheckbox">
@@ -261,25 +264,25 @@ owner and complete lines 1 through 19 with respect to the applicable set of colu
 			              </div>
 								</th>
 								<!-- tthis col occupies 28mm wide -->
-								<th style="border-color:black;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="border-color:black;font-weight:normal;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<span style="width:2px;"/>
 									<span class="styBoldText">(b) </span> U.S. person filing this return
 				</th>
-								<th style="width:28mm;border-color:black;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="width:28mm;border-color:black;font-weight:normal;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<span class="styBoldText">(c) </span> Any domestic corporation or partnership controlling or controlled by the filer
 				</th>
-								<th style="width:28mm;border-color:black;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="width:28mm;border-color:black;font-weight:normal;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<span class="styBoldText">(d) </span> Any foreign corporation or partnership controlling or controlled by the filer (other than the tax owner)<!--br /><span style="font-size:6pt">other than tax owner</span-->
 								</th>
-								<th style="width:28mm;border-color:black;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="width:28mm;border-color:black;font-weight:normal;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<span class="styBoldText">(e) </span> Any U.S. person with a 10% or more direct interest in the controlled foreign partnership (other than the filer)
 				</th>
-								<th style="width:28mm;background-color:lightgrey;border-color:black;border-right-width:0px;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="width:28mm;background-color:lightgrey;border-color:black;border-right-width:0px;font-weight:normal;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<span style="width:2px;"/>
 								</th>
 							</tr>
 							<tr>
-								<th style="width:47mm;border-color:black;font-weight:normal;vertical-align:top;" class="styTablecellHeader" scope="col">
+								<th style="width:47mm;border-color:black;font-weight:normal;vertical-align:top;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<div class="styGenericDiv" style="padding-top:3mm;">
 										<input type="Checkbox" class="styCkbox" name="ControlledForeignCorpInd">
 											<xsl:call-template name="PopulateCheckbox">
@@ -302,24 +305,24 @@ owner and complete lines 1 through 19 with respect to the applicable set of colu
 										<span class="styBoldText">(a) </span> Transactions of <br/>foreign disregarded <br/>entity
 			              </div>
 								</th>
-								<th style="border-color:black;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="border-color:black;font-weight:normal;border:1px solid black;border-top:0px;border-left:0px" class="styTablecellHeader" scope="col">
 									<span style="width:2px;"/>
 									<span class="styBoldText">(b) </span> U.S. person filing this return
 				</th>
-								<th style="border-color:black;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="border-color:black;font-weight:normal;border:1px solid black;border-top:0px;border-left:0px" class="styTablecellHeader" scope="col">
 									<span class="styBoldText">(c) </span> Any domestic corporation or partnership controlled by the filer
 				</th>
-								<th style="border-color:black;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="border-color:black;font-weight:normal;border:1px solid black;border-top:0px;border-left:0px" class="styTablecellHeader" scope="col">
 									<span class="styBoldText">(d) </span> Any foreign corporation or partnership controlled by the filer (other than tax owner)
 				</th>
-								<th style="border-color:black;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="border-color:black;font-weight:normal;border:1px solid black;border-top:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<span class="styBoldText">(e) </span> 10% or more U.S.
 shareholder of any
 corporation
 controlling the tax
 owner
 				</th>
-								<th style="border-color:black;border-right-width:0px;font-weight:normal;" class="styTablecellHeader" scope="col">
+								<th style="border-color:black;border-right-width:0px;font-weight:normal;border:1px solid black;border-right:0px;border-left:0px;" class="styTablecellHeader" scope="col">
 									<span class="styBoldText">(f) </span> 10% or more U.S. shareholder, or other owner, of any entity controlling the tax owner
 				</th>
 							</tr>
@@ -857,7 +860,7 @@ owner
 									<span style="float:left;">
 						Commissions paid					
 					</span>
-												<span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
+												<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
 								</td>
 								<td class="styIRS8858SchMTableCell">
 									<xsl:call-template name="PopulateAmount">
@@ -899,7 +902,7 @@ owner
 <br/>									<span style="float:left;">
 						fees paid					
 					</span>
-												<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+												<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
 								</td>
 								<td class="styIRS8858SchMTableCell">
 									<xsl:call-template name="PopulateAmount">
@@ -937,7 +940,7 @@ owner
 									<span style="float:left;padding-top:.5mm;padding-bottom:.5mm;">
 						Interest paid					
 					</span>
-												<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+												<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 								</td>
 								<td class="styIRS8858SchMTableCell">
 									<xsl:call-template name="PopulateAmount">
@@ -1020,7 +1023,7 @@ owner
 									<span style="float:left;">
 						instructions)				
 					</span>
-												<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+												<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
 								</td>
 								<td class="styIRS8858SchMTableCell">
 									<xsl:call-template name="PopulateAmount">
@@ -1098,7 +1101,7 @@ owner
 						</tbody>
 					</table>
 					<!-- Footer -->
-					<div style="width:187mm;padding-top:1mm;">
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;float:none;">
 						<div style="float:left;font-weight:bold;width:107mm;">For Paperwork Reduction Act Notice, see the Instructions for Form 8858.
   </div>
 						<div style="width:30mm;float:left;">Cat. No. 37387C</div>
@@ -1107,9 +1110,9 @@ owner
   </div>
 					</div>
 					<!-- Introducing page end -->
-					<p class="pageend"/>
-					<!-- Begininning of write-in data -->
-					<div class="styLeftOverTitleLine" id="LeftoverData">
+					<br /><br />
+							<!-- Begininning of write-in data -->
+					<div class="styLeftOverTitleLine" id="LeftoverData" style="float:none;">
 						<div class="styLeftOverTitle">
         Additional Data        
       </div>

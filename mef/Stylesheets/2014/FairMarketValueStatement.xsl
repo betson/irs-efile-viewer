@@ -4,20 +4,19 @@
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
-
 <xsl:output method="html" indent="yes"/>
 <xsl:strip-space elements="*"/>
-  
-  <xsl:param name="DependencyData" select="$RtnDoc/FairMarketValueStatement"/>  
-
+  <xsl:param name="DependencyData" select="$RtnDoc/FairMarketValueStatement"/>
+		  <!-- - Form 8283 displays as -  Fair Market Value Statement -  -->
   <xsl:param name="depDocTitle">
   <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>  
   </xsl:param>
-  
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -29,7 +28,6 @@
          <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
          <meta name="Author" content="Venkata Boggavarapu :: boggav@us.ibm.com"/>
          <meta name="Description" content="{$depDocTitle}"/>
-         
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
         <xsl:call-template name="InitJS"/>
         <style type="text/css">
@@ -38,33 +36,25 @@
   </xsl:if>
 </style>        
       <xsl:call-template name="GlobalStylesDep"/>
-</head>
-    
+</head> 
       <body class="styBodyClass">
-
       <xsl:call-template name="DocumentHeaderDependency"/>  
-    
         <div class="styDepTitleLine">
-          <span class="styDepTitle">
-            <span style="width:100mm;">
-              <xsl:value-of select="$depDocTitle"/>
-            </span>
-          </span>
-        </div>
-
-        <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>
-                
+        <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+      </div>
+        <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>  
     <xsl:if test="$DependencyData/ShortExplanationTxt !=''">
         <div class="styTopSectionLine" style="width:187mm;">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Statement:</span></div>
-            <div style="float:left;clear:none;">           
+            <div class="styExplanationLine">           
                <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$DependencyData/ShortExplanationTxt"/>
               </xsl:call-template>
             </div>
           </div>
-      </xsl:if>
-                    
+      </xsl:if> 
       </body>
     </html>
   </xsl:template>

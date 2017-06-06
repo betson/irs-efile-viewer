@@ -18,10 +18,20 @@
 		<xsl:param name="NumberBoxStyle"/>
 		<xsl:param name="Width">29mm</xsl:param>
 		<xsl:param name="Height">5mm</xsl:param>
+		<div class="styLNRightNumBox">
+			<xsl:attribute name="style">
+				padding:3px 0px 0px 0px;
+				border-right-width:0px;
+				height:<xsl:value-of select="$Height"/>;
+				<xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
+			<xsl:if test="$Number">
+				<xsl:value-of select="$Number"/>
+			</xsl:if>
+		</div>
 		<div class="styLNAmountBox">
 			<xsl:attribute name="style">
 				width:<xsl:value-of select="$Width"/>;height:<xsl:value-of select="$Height"/>;
-				border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:6pt;
+				border-right-width:0px;text-align:right;padding-right:2px;font-size:6pt;
 				<xsl:choose>
 					<xsl:when test="$TargetNode">
 						<xsl:choose>
@@ -58,22 +68,13 @@
 				</xsl:when>
 			</xsl:choose>
 		</div>
-		<div class="styLNRightNumBox">
-			<xsl:attribute name="style">
-				float:right;
-				padding:3px 0px 0px 0px;
-				border-right-width:0px;
-				height:<xsl:value-of select="$Height"/>;
-				<xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
-			<xsl:if test="$Number">
-				<xsl:value-of select="$Number"/>
-			</xsl:if>
-		</div>
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8689Data)"/>
@@ -101,9 +102,11 @@
 			<body class="styBodyClass">
 				<form name="IRS8689">
 					<!--  Begin Header section 1 -->
-					<xsl:call-template name="DocumentHeader"/>
-					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
-						<div class="styFNBox" style="width:31mm;height:22mm;border-right-width:2px;padding-top:.5mm;">
+					<div style="clear: left; float: left;">
+					 <xsl:call-template name="DocumentHeader"/>
+					</div>
+					<div class="styBB" style="width: 187mm; height: 22mm; clear: left; border-bottom-width: 2px; float: left;">
+						<div class="styFNBox" style="width: 31mm; height: 22mm; padding-top: 0.5mm; border-right-width: 2px;">
 							<div style="padding-top:1mm;">
 								Form<span class="styFormNumber">  8689</span>
 							</div>
@@ -116,16 +119,15 @@
 							<br/>
 							<span class="styAgency">Internal Revenue Service</span>
 						</div>
-						<div class="styFTBox" style="width:125mm;">
+						<div class="styFTBox" style="width: 125mm; height: 22mm;">
 							<!--  Main Title >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-							<div class="styMainTitle" style="height:8mm;">
+							<div class="styMainTitle" style="height:10mm;">
 								Allocation of Individual Income Tax<br/>
 								to the U.S. Virgin Islands
 							</div>
-							<div class="styFST" style="height:5mm;font-size:7pt;margin-left:1mm;text-align:center;">
+							<div class="styFST" style="width: 125mm; height: 6mm; text-align: center; font-size: 7pt;">
 								<span style="text-align:center;font-weight:bold;">
-									<div style="width:100%;height:5mm;padding-left:5px;">
-										
+									<div style="width: 125mm; height: 11.5mm; padding-left: 5px;">
 											<br/>
 											<img src="{$ImagePath}/8689_Bullet_Sm.gif" alt="SmallBullet"/> 
 											Attach to Form 1040.<br/>
@@ -136,8 +138,8 @@
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;border-left-width:2px;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+						<div class="styTYBox" style="width: 30.5mm; height: 22mm; border-left-width: 2px;">
+							<div class="styOMB" style="height: 4mm; font-size: 7pt;">OMB No. 1545-0074</div>
 							<div class="styTY">20<span class="styTYColor">14</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -148,14 +150,14 @@
 					</div>
 					<!--  End Header section 1 -->
 					<!-- Begin Names and Identifying number section -->
-					<div class="styGenericDiv" style="width:187mm;clear:all;">
+					<div class="styGenericDiv" style="width: 187mm; height: 8mm; clear: left; float: left;">
 						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
 							Name(s) shown on Form 1040<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 									 <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
 								  </xsl:call-template>
 						</div>
-						<div style="height:8mm;width:50mm;height:4mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
+						<div style="height:8mm;width:50mm;height:8mm;padding:0px 0px 0px 2mm;font-size:7pt;" class="styEINBox">
 							Your social security number
 							<br/>
 							<span style="font-weight:normal;text-align:center;width:100%">
@@ -171,7 +173,7 @@
 					<!-- Begin Part I																									 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div class="styGenericDiv" style="width:187mm;border-top:1px solid black;border-bottom:1px solid black;clear:all;">
+					<div class="styGenericDiv" style="width:187mm; height: 4.5mm; clear: left; float: left; border-top:1px solid black; border-bottom:1px solid black;">
 						<!-- Content -->
 						<div class="styPartName" style="width:15mm;height:4mm;">Part I</div>
 						<div class="styPartDesc" style="padding-left:3mm;">
@@ -179,13 +181,13 @@
 						</div>
 					</div>
 						<!-- (1) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem" style="clear:all;">
-							<div class="styIRS8689LNLeftNumBox">1</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">1</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width: 34.5mm; height: 4.5mm; padding-top: 1.75mm;">
 									Wages, salaries, tips, etc
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="padding: 2mm 3mm 0mm 0mm; width: auto; height: 100%; text-align: right; float: right;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -220,13 +222,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (2) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">2</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">2</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Taxable interest
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -263,13 +265,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (3) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">3</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">3</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Ordinary dividends
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -305,13 +307,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (4) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">4</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">4</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Taxable refunds, credits, or offsets of local USVI income taxes
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -335,13 +337,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (5) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">5</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">5</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Alimony received
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -378,13 +380,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (6) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">6</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">6</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Business income or (loss)
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -419,13 +421,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (7) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">7</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">7</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Capital gain or (loss)
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -461,13 +463,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (8) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">8</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">8</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Other gains or (losses)
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -502,13 +504,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (9) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">9</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">9</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									IRA distributions (taxable amount)
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -540,13 +542,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (10) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">10</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">10</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Pensions and annuities (taxable amount)
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -576,13 +578,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (11) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">11</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">11</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Rental real estate, royalties, partnerships, S corporations, trusts, etc.
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -604,13 +606,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (12) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">12</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">12</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Farm income or (loss)
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -645,13 +647,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (13) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">13</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">13</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Unemployment compensation
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -684,13 +686,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (14) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">14</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">14</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Social security benefits (taxable amount)
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -720,16 +722,16 @@
 							</xsl:call-template>
 						</div>
 						<!-- (15) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">15</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">15</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Other income. List type and amount
 									<span style="width:5px;"/>
 									<img src="{$ImagePath}/8689_Bullet_Sm.gif" alt="SmallBullet"/>
 									<span style="width:5px;"/> 
 								</div>
-								<div class="styIRS8689LNDesc" style="width:85mm;height:100%;text-align:right;padding:0px 3mm 0px 0px;border-style:dotted;border-bottom-width:1px;border-color:black;"/>
+								<div class="styIRS8689LNDesc" style="width:85mm;height:100%;text-align:right;padding: 2mm 3mm 0mm 0mm;border-style:dotted;border-bottom-width:1px;border-color:black;"/>
 							</div>
 							<xsl:call-template name="CreateBox">
 								<xsl:with-param name="TargetNode" select="$Form8689Data/TotalOtherUSVIIncomeAmt"/>
@@ -737,13 +739,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (16) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">16</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.5mm;">16</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.5mm;">
 									Add lines 1 through 15. This is your <b>total USVI income</b>
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 1.5mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -775,7 +777,7 @@
 					<!-- Begin Part II																									 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div class="styGenericDiv" style="width:187mm;border-top:1px solid black; border-bottom:1px solid black">
+					<div class="styGenericDiv" style="width:187mm;border-top:1px solid black; border-bottom:1px solid black; clear: left; float: left;">
 						<!-- Content -->
 						<div class="styPartName" style="width:15mm;height:4mm;">Part II</div>
 						<div class="styPartDesc" style="padding-left:3mm;">
@@ -783,13 +785,13 @@
 						</div>
 					</div>
 						<!-- (17) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem" style="clear:all;">
-							<div class="styIRS8689LNLeftNumBox">17</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">17</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Educator expenses
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; text-align:right; float:right; padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -829,10 +831,10 @@
 							</div>
 						</div>
 						<!-- (18) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">18</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 7mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">18</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:7mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Certain business expenses of reservists, performing artists, and<br/>
 									fee-basis government officials
 									<!--Dotted Line-->
@@ -884,13 +886,13 @@
 							</div>
 						</div>
 						<!-- (19) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">19</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">19</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Health savings account deduction
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -925,13 +927,13 @@
 							</div>
 						</div>
 						<!-- (20) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">20</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">20</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Moving expenses
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -970,13 +972,13 @@
 							</div>
 						</div>
 						<!-- (21) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">21</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">21</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Deductible part of self-employment tax
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1009,13 +1011,13 @@
 							</div>
 						</div>
 						<!-- (22) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">22</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">22</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Self-employed SEP, SIMPLE, and qualified plans
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1046,13 +1048,13 @@
 							</div>
 						</div>
 						<!-- (23) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">23</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">23</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Self-employed health insurance deduction
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1084,13 +1086,13 @@
 							</div>
 						</div>
 						<!-- (24) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">24</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">24</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Penalty on early withdrawal of savings
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1124,13 +1126,13 @@
 							</div>
 						</div>
 						<!-- (25) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">25</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">25</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									IRA deduction
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1170,13 +1172,13 @@
 							</div>
 						</div>
 						<!-- (26) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">26</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">26</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Student loan interest deduction
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1212,13 +1214,13 @@
 							</div>
 						</div>
 						<!-- (27) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">27</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">27</div>
+							<div class="styIRS8689LNDesc" style="width:105mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Tuition and fees deduction
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1256,13 +1258,13 @@
 							</div>
 						</div>
 						<!-- (28) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">28</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">28</div>
+							<div class="styIRS8689LNDesc" style="width:144mm; height:4.5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Add lines 17 through 27
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1297,13 +1299,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (29) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">29</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">29</div>
+							<div class="styIRS8689LNDesc" style="width:144mm; height:5mm; padding:0px 0px 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.50mm;">
 									Subtract line 28 from line 16. This is your <b>USVI adjusted gross income</b>
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 1.5mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1331,7 +1333,7 @@
 					<!-- Begin Part III																									 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;border-top:1px solid black; border-bottom:1px solid black" class="styGenericDIv">
+					<div  class="styGenericDiv" style="width:187mm;border-top:1px solid black; border-bottom:1px solid black; clear: left; float: left;">
 						<!-- Content -->
 						<div class="styPartName" style="width:15mm;height:4mm;">Part III</div>
 						<div class="styPartDesc" style="padding-left:3mm;">
@@ -1339,13 +1341,13 @@
 						</div>
 					</div>
 						<!-- (30) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem" style="clear:all">
-							<div class="styIRS8689LNLeftNumBox">30</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">30</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Enter amount from Form 1040, line 63
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1376,16 +1378,17 @@
 							</xsl:call-template>
 						</div>
 						<!-- (31) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">31</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 13.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">31</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 13.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Enter the total of the amounts from Form 1040, lines 57, 58, 60a, 66a, 67, 68, and 73 (box d). Include <br/>
 									any uncollected social security and Medicare or tier 1 RRTA tax, tax on excess golden parachute <br/>
 									payments, or excise tax on insider stock compensation reported on line 62. Also include any amount <br/>
 									from Form 5329, Parts III, IV, V, VI, VII, or VIII reported on Form 1040, line 59
 									<span class="styBoldText">
-										<span style="width:6px;"/>.
+										<span style="width:12px;"/>.
+										<span style="width:11px;"/>.
 										<span style="width:11px;"/>.
 										<span style="width:11px;"/>.
 										<span style="width:11px;"/>.
@@ -1406,16 +1409,16 @@
 							</xsl:call-template>
 						</div>
 						<!-- (32) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">32</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">32</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%; padding-top: 1.75mm;">
 									Subtract line 31 from line 30
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3.5mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
-										<span style="width:11px"/>.
+										<span style="width:7px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
@@ -1446,13 +1449,13 @@
 							</xsl:call-template>
 						</div>
 						<!-- (33) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">33</div>
-							<div class="styIRS8689LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">33</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 105mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.75mm;">
 									Enter amount from Form 1040, line 38
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 2mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1465,7 +1468,7 @@
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
-										<span style="width:7px"/>
+										<span style="width:11px"/>.
 									</span>
 								</div>
 							</div>
@@ -1486,11 +1489,19 @@
 							</div>
 						</div>
 						<!-- (34) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem">
-							<div class="styIRS8689LNLeftNumBox">34</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;font-family:Arial Narrow;font-size:8pt;">
+						<div class="styIRS8689LineItem" style="width: 187mm; height: 4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">34</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; font-family:Arial Narrow; font-size:8pt; padding-top: 1.75mm;">
 									Divide line 29 above by line 33. Enter the result as a decimal (rounded to at least 3 places). Do not enter more than 1.000
+								</div>
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 1.5mm 3.5mm 0mm 0mm;">
+									<!--Dotted Line-->
+									<span class="styBoldText">
+									    <span style="width:8px"/>.
+										<span style="width:11px"/>.
+										<span style="width:11px"/>.
+									</span>
 								</div>
 							</div>
 							<div class="styLNRightNumBox" style="padding:3px 0px 0px 0px;border-right-width:0px;height:5mm;">
@@ -1506,16 +1517,17 @@
 							</div>
 						</div>
 						<!-- (35) ////////////////////////////////////////////////////-->
-						<div class="styIRS8689LineItem" style="page-break-after:always;">
-							<div class="styIRS8689LNLeftNumBox">35</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styIRS8689LineItem" style="page-break-after:always; width: 187mm; height: 5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.5mm;">35</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.5mm;">
 									Multiply line 32 by line 34. This is your <b>tax allocated to the USVI</b>
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 1.5mm 3.5mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
-									    <span style="width:11px"/>.
+									    <span style="width:3px"/>.
+										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
@@ -1540,7 +1552,7 @@
 					<!-- Begin Part IV																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;border-top:1px solid black; border-bottom: 1px solid black" class="styGenericDiv">
+					<div class="styGenericDiv" style="width:187mm;border-top:1px solid black; border-bottom: 1px solid black; clear: left; float: left;">
 						<!-- Content -->
 						<div class="styPartName" style="width:15mm;height:4mm;">Part IV</div>
 						<div class="styPartDesc" style="padding-left:3mm;">
@@ -1548,13 +1560,13 @@
 						</div>
 					</div>
 						<!-- (36) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all">
-							<div class="styIRS8689LNLeftNumBox">36</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:4.5; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">36</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 105mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.5mm;">
 									Income tax withheld by the USVI
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1569,7 +1581,6 @@
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
-										<span style="width:3px"/>
 									</span>
 								</div>
 							</div>
@@ -1590,15 +1601,16 @@
 							</div>
 						</div>
 						<!-- (37) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all;"> 
-							<div class="styIRS8689LNLeftNumBox">37</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:4.5; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">37</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 105mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.5mm;">
 									2014 estimated tax payments and amount applied from 2013 return
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
+										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 									</span>
@@ -1621,15 +1633,16 @@
 							</div>
 						</div>
 						<!-- (38) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all;">
-							<div class="styIRS8689LNLeftNumBox">38</div>
-							<div class="styIRS8689LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:4.5; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">38</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 105mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.5mm;">
 									Amount paid with Form 4868 (extension request)
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
+										<span style="width:9px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
@@ -1637,7 +1650,6 @@
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
-										<span style="width:3px"/>
 									</span>
 								</div>
 							</div>
@@ -1658,15 +1670,16 @@
 							</div>
 						</div>
 						<!-- (39) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all;">
-							<div class="styIRS8689LNLeftNumBox">39</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:4.5mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">39</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.5mm;">
 									Add lines 36 through 38. These are your <b>total payments to the USVI</b>
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
+										<span style="width:5px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
@@ -1687,11 +1700,12 @@
 							</xsl:call-template>
 						</div>
 						<!-- (40) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;border-bottom:1px solid black;clear:all;">
-							<div class="styIRS8689LNLeftNumBox">40</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:7mm; clear: left; float: left; border-bottom:1px solid black;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 0.5mm;">40</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 7mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 0.5mm;">
 									Enter the smaller of line 35 or line 39. Include this amount in the total on Form 1040, line 74. On the<br/>dotted line next to line 74, enter "Form 8689" and show this amount
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 0mm 1.5mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:5px"/>.
@@ -1705,7 +1719,9 @@
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
+										<span style="width:11px"/>.
 									</span>
+								  </div>
 								</div>
 							</div>
 							<div class="styIRS8689LNDesc" style="height:100%;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -1728,30 +1744,42 @@
 							
 						</div>
 						<!-- (41) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all;">
-							<div class="styIRS8689LNLeftNumBox">41</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:8.5; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 3.75mm;">41</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 7mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 4mm;">
 									<b>Overpayment</b> to the USVI. If line 39 is more than line 35, subtract line 35 from line 39.
+								</div>
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 4mm 3mm 0mm 0mm;">
+								<!--Dotted Line-->
+									<span class="styBoldText">
+										<span style="width:5px"/>.
+										<span style="width:11px"/>.
+										<span style="width:11px"/>.
+										<span style="width:11px"/>.
+										<span style="width:11px"/>.
+										<span style="width:11px"/>.
+									</span>
 								</div>
 							</div>
 							<xsl:call-template name="CreateBox">
 								<xsl:with-param name="TargetNode" select="$Form8689Data/OverpaidToUSVIAmt"/>
 								<xsl:with-param name="Number">41</xsl:with-param>
-								<xsl:with-param name="AmountBoxStyle">border-bottom-width:1px;</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">border-bottom-width:1px;</xsl:with-param>
+								<xsl:with-param name="AmountBoxStyle">height: 8.5mm; border-bottom-width:1px;padding-top:4mm;</xsl:with-param>
+								<xsl:with-param name="NumberBoxStyle">height: 8.5mm; border-bottom-width:1px;padding-top:4mm;</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<!-- (42) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all;">
-							<div class="styIRS8689LNLeftNumBox">42</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:1px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:8mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 4.5mm;">42</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 8mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 4.5mm;">
 									Amount of line 41 you want <b>refunded to you</b>
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 4mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
+										<span style="width:14px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
@@ -1767,7 +1795,7 @@
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
-										<span style="width:11px"/>.
+										<span style="width:10px"/>
 										<img src="{$ImagePath}/8689_Bullet_Sm.gif" alt="SmallBullet"/>
 									</span>
 								</div>
@@ -1775,22 +1803,24 @@
 							<xsl:call-template name="CreateBox">
 								<xsl:with-param name="TargetNode" select="$Form8689Data/RefundAmt"/>
 								<xsl:with-param name="Number">42</xsl:with-param>
+								<xsl:with-param name="AmountBoxStyle">height: 8.5mm; border-bottom-width:0px; padding-top:4mm;</xsl:with-param>
+								<xsl:with-param name="NumberBoxStyle">height: 8.5mm; border-bottom-width:0px; padding-top:4mm;</xsl:with-param>
 							</xsl:call-template>
 						</div>
 						<!-- (43) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all;">
-							<div class="styIRS8689LNLeftNumBox">43</div>
-							<div class="styIRS8689LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:4.5; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">43</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 105mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.5mm;">
 									Amount of line 41 you want <b>applied to your 2015 estimated tax</b>
 								</div>
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 2mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:7px"/>
+									    <span style="width:9px"/>.
+										<span style="width:9px"/>.
+										<span style="width:9px"/>.
+										<span style="width:9px"/>.
 									</span>
 								</div>
 							</div>
@@ -1798,8 +1828,8 @@
 								<div class="styIRS8689LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:1px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:1px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8689LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -1811,18 +1841,21 @@
 							</div>
 						</div>
 						<!-- (44) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all;">
-							<div class="styIRS8689LNLeftNumBox">44</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:4.5; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">44</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 4.5mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.5mm;">
 									<b>Amount you owe</b> to the USVI. If line 39 is less than line 35, Subtract line 39 from line 35
+								</div>
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 2mm 3mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:7px"/>
+										<span style="width:7px"/>.
+										<span style="width:9px"/>.
+										<span style="width:9px"/>.
+										<span style="width:9px"/>.
+										<span style="width:9px"/>.
+										<span style="width:9px"/>.
 									</span>
 								</div>
 							</div>
@@ -1838,15 +1871,17 @@
 							</div>
 						</div>
 						<!-- (45) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;clear:all;">
-							<div class="styIRS8689LNLeftNumBox">45</div>
-							<div class="styIRS8689LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS8689LNDesc" style="width:auto;height:100%;">
+						<div class="styGenericDiv" style="width:187mm; height:11mm; clear: left; float: left;">
+							<div class="styIRS8689LNLeftNumBox" style="padding-top: 1.75mm;">45</div>
+							<div class="styIRS8689LNDesc" style="padding: 0px; width: 144mm; height: 11mm;">
+								<div class="styIRS8689LNDesc" style="width:auto; height:100%; padding-top: 1.5mm;">
 									Enter the amount from line 44 that you will pay when you file your income tax return. Include this amount<br/>
 									in the total of Form 1040, line 74. On the dotted line next to line 74, enter "Form 8689" and show this<br/>
-									amount.
+									amount
+								<div class="styIRS8689LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding: 0mm 2.5mm 0mm 0mm;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
+										<span style="width:9px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
@@ -1874,10 +1909,9 @@
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
 										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:7px"/>
 									</span>
 								</div>
+							</div>.
 							</div>
 							<xsl:call-template name="CreateBox">
 								<xsl:with-param name="Height">6mm</xsl:with-param>
@@ -1894,7 +1928,7 @@
 					<!--</div>-->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;border-top:1px solid black;padding-top:1mm;clear:all;">
+					<div class="pageEnd" style="width:187mm; height: 8mm; border-top:1px solid black;padding-top:1mm; clear: left; float: left;">
 						<div style="float:left;">
 							<span class="styBoldText">
 								For Paperwork Reduction Act Notice, see Form 1040 instructions.
@@ -1902,7 +1936,7 @@
 						</div>
 						<div style="float:right;">
 							<span style="width:20px;"/>
-							Form<span class="styBoldText" style="font-size:7pt;"> 8689 </span>(2014)
+							Form <span class="styBoldText" style="width:7.5mm; font-size:7pt;"> 8689 </span>(2014)
 						</div>
 						<div style="float:right;text-align:center;width:60mm;font-size:7pt;">
 							Cat. No. 64603D
@@ -1910,17 +1944,17 @@
 					</div>
 					<!-- END Page Break and Footer-->
 					<!-- Additonal Data Title Bar and Button -->
-					<div class="styLeftOverTitleLine" id="LeftoverData" style="padding-top:5mm;clear:all;">
+					<div class="styLeftOverTitleLine" id="LeftoverData" style="width:187mm; height: 5.5mm; clear: left; float: left;">
 						<div class="styLeftOverTitle">
 							Additional Data        
 						</div>
-						<div class="styLeftOverButtonContainer">
+						<div class="styLeftOverButtonContainer" style="float: right;">
 							<input class="styLeftoverTableBtn" type="button" TabIndex="-1" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 						</div>
 					</div>
 					<!-- Additional Data Table -->
 					<xsl:variable name="TableWidth">100</xsl:variable>
-					<table class="styLeftOverTbl">
+					<table class="styLeftOverTbl" style="width:187mm; clear: left; float: left;">
 						<xsl:call-template name="PopulateCommonLeftover">
 							<xsl:with-param name="TargetNode" select="$Form8689Data"/>
 							<xsl:with-param name="DescWidth" select="$TableWidth"/>

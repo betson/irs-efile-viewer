@@ -11,8 +11,10 @@
 	<xsl:variable name="StockInformationSize" select="count($Form973Data/StockInformation)"/>
 	<xsl:variable name="RowsToShow" select="9"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form973Data)"/>
@@ -126,7 +128,7 @@ For tax year beginning
 						</div>
 					</xsl:if>
 					<!-- END Table expand/collapse toggle button end-->
-					<div class="styIRS973TableContainer" id="SIctn">
+					<div class="styIRS973TableContainer" style="height:72mm;" id="SIctn">
 						<xsl:call-template name="SetInitialState"/>
 						<table cellspacing="0" class="styTable" cellpadding="0">
 							<thead class="styTableThead">

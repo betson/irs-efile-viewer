@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormW2GData" select="$RtnDoc/IRSW2G"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormW2GData)"/>
@@ -38,7 +40,7 @@
       <body class="styBodyClass">
         <form name="FormW2G">
           <xsl:call-template name="DocumentHeader"/>
-          <div class="styIRSW2GRowItem" style="width:187mm;height:90mm;padding:0px 0px 0px 0px;border-right-width:0px;border-left-width:0px;border-top-width:0px;border-bottom-width:0px;">
+          <div class="styIRSW2GRowItem" style="width:187mm;height:125mm;padding:0px 0px 0px 0px;border-right-width:0px;border-left-width:0px;border-top-width:0px;border-bottom-width:0px;">
             <!-- BEGIN: Header  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
             <div class="styIRSW2GHeaderFrame">
               <span style="width:22mm;"/>
@@ -79,11 +81,11 @@
             <div class="styIRSW2GLeftTopFrame">
 				
               <!-- 1st Col -->
-              <div class="styIRSW2GRowItem" style="78.4mm;float:left;">
+              <div class="styIRSW2GRowItem" style="width:79mm;height:95mm;float:left;">
                 <!-- Payers Name, street address, city, state, and ZIP code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:78.4mm;height:40mm;float:left;">
-                  <div class="styIRSW2GDataTitleLeft">
-                    <span style="width:3px;height:100%;float:left;"/>
+                <div class="styIRSW2GRowItem" style="width:79mm;height:40mm;float:left;">
+                  <div class="styIRSW2GDataTitleLeft" style="height:10mm;">
+                    <span style="width:3px;float:left;"/>
                     <span style="font-size:6pt;font-family:Arial;">PAYER'S name, street address, city or town, province or state, country, ZIP or foreign postal code</span>
                     <span style="width:3px;"/>
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
@@ -137,14 +139,14 @@
                 </div>
                  
                 <!-- Federal identification number/Telephone number >>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:78.4mm;float:left;border:0px solid black;border-top-width:1px;">
+                <div class="styIRSW2GRowItem" style="width:79mm;float:left;border:0px solid black;border-top-width:1px;">
                   <div class="styIRSW2GDataTitleLeft">
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">Federal identification number
                     <span style="width:13mm;"/>Telephone number</span>
                   </div>
                   <div class="styIRSW2GDataLTxtField">
-                    <div class="styIRSW2GDataLTxtField" style="padding-left:0px;padding-right:10mm;width:50%;text-align:center;float:left;height:6.6mm;">
+                    <div class="styIRSW2GDataLTxtField" style="padding-left:0px;padding-right:10mm;width:50%;text-align:center;float:left;height:6mm;">
                       <xsl:choose>
                         <xsl:when test="$FormW2GData/PayerSSN">
                           <xsl:call-template name="PopulateSSN">
@@ -231,12 +233,12 @@
                   </div>
                 </div>
                 
-                <div class="styIRSW2GRowItem" style="width:79mm;height:15.6mm;float:left;background-color:lightgrey;border:0px black solid;border-top-width:1px;"/>
+                <div class="styIRSW2GRowItem" style="width:79mm;height:14mm;float:left;background-color:lightgrey;border:0px black solid;border-top-width:1px;"/>
 				
               </div>
               
-              <!-- ##@2nd Col -->
-              <div class="styIRSW2GRowItem">
+			  <!-- ##@1st Row -->
+			  <div class="styIRSW2GRowItem">
 				  <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
                   <div class="styIRSW2GDataMRTitle" style="padding-left:8px;">
                     <b>1</b>
@@ -251,7 +253,7 @@
                   </div>
                 </div>
               
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle" style="padding-left:8px;">
                     <b>2</b>
                     <span style="width:3px;"/>
@@ -262,7 +264,10 @@
                       <xsl:with-param name="TargetNode" select="$FormW2GData/GamblingWinningDt"/>
                     </xsl:call-template>
                   </div>
-                </div>
+                </div>			  
+			  </div>
+              <!-- ##@2nd Col -->
+              <div class="styIRSW2GRowItem">
                
                 <!-- (3) Type of wager >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
                 <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
@@ -279,7 +284,7 @@
                   </div>
                 </div>
                 <!-- (4) Federal income tax withheld >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle" style="padding-left:8px;">
                     <b>4</b>
                     <span style="width:3px;"/>
@@ -311,7 +316,7 @@
                   </div>
                 </div>
                 <!-- (6) Race >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle" style="padding-left:8px;">
                     <b>6</b>
                     <span style="width:3px;"/>
@@ -343,7 +348,7 @@
                   </div>
                 </div>
                 <!-- (8) Cashier >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle" style="padding-left:8px;">
                     <b>8</b>
                     <span style="width:3px;"/>
@@ -367,20 +372,20 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial Narrow;">Winner's taxpayer identification no.</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:6mm;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientsIdNumber"/>
                     </xsl:call-template>
                   </div>
                 </div>
                 <!-- (10) Window >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>10</b>
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">Window</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="height:6mm;">
                     <span style="width:7px;"/>
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/GamblingWinWindowNum"/>
@@ -398,20 +403,20 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">First I.D.</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:6mm;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientFirstAddtionalIDNum"/>
                     </xsl:call-template>
                   </div>
                 </div>
                 <!-- (12) Second I.D. >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>12</b>
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">Second I.D.</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:6mm;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/RecipientSecondAddtionalIDNum"/>
                     </xsl:call-template>
@@ -429,7 +434,7 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial Narrow;">State/Payer's state identification no.</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:6mm;">
                     <xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/StateAbbreviationCd"/>
                     </xsl:call-template>
@@ -440,13 +445,13 @@
                   </div>
                 </div>
                 <!-- (14) State winnings >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>14</b>
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">State winnings </span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:6mm;">
                     <div style="text-align:left;float:left;">$</div>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/GamblingWinningAmt"/>
@@ -465,7 +470,7 @@
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial Narrow;">State income tax withheld</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:6mm;">
                     <div style="text-align:left;float:left;">$</div>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/StateTaxWithheldAmt"/>
@@ -473,13 +478,13 @@
                   </div>
                 </div>
                 <!-- (16) Local winnings >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>16</b>
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">Local winnings</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:6mm;">
                     <div style="text-align:left;float:left;">$</div>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp/W2GLocalTaxGrp/GamblingWinningAmt"/>
@@ -506,7 +511,7 @@
                   </div>
                 </div>
                 <!-- (18) Name of locality >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;height: 13.2mm;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;height: 13.2mm;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>18</b>
                     <span style="width:3px;"/>
@@ -524,18 +529,18 @@
               <!-- ##@7th Row -->
               <div class="styIRSW2GRowItem">             
                 <!-- (13) State/Payer's state identification no. >>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>13</b>
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial Narrow;">State/Payer's state identification no.</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:center;height:6mm;">
                     
                   </div>
                 </div>
                 <!-- (14) State winnings >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>14</b>
                     <span style="width:3px;"/>
@@ -545,7 +550,7 @@
                         <xsl:with-param name="TargetNode" select="$FormW2GData/W2GStateLocalTaxGrp"/>
                     </xsl:call-template>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:6mm;">
                     <div style="text-align:left;float:left;">$</div>                    
                   </div>
                 </div>
@@ -555,24 +560,24 @@
               <div class="styIRSW2GRowItem">
                 
                 <!-- (15) State income tax withheld >>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>15</b>
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial Narrow;">State income tax withheld</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:6mm;">
                     <div style="text-align:left;float:left;">$</div>
                   </div>
                 </div>
                 <!-- (16) Local winnings >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>16</b>
                     <span style="width:3px;"/>
                     <span style="font-size:6pt;font-family:Arial;">Local winnings</span>
                   </div>
-                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:7mm;">
+                  <div class="styIRSW2GDataMRTxtFields" style="text-align:right;padding-right:3px;height:6mm;">
                     <div style="text-align:left;float:left;">$</div>
                   </div>
                 </div>
@@ -581,7 +586,7 @@
               <!-- ##@9th Row -->
               <div class="styIRSW2GRowItem">
                 <!-- (17) Local income tax withheld >>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;height:13.2mm">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;height:13.2mm">
                   <div class="styIRSW2GDataMRTitle">
                     <b>17</b>
                     <span style="width:3px;"/>
@@ -592,7 +597,7 @@
                   </div>
                 </div>
                 <!-- (18) Name of locality >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
-                <div class="styIRSW2GRowItem" style="width:37mm;float:left;height:13.2mm;">
+                <div class="styIRSW2GRowItem" style="width:37mm;float:right;height:13.2mm;">
                   <div class="styIRSW2GDataMRTitle">
                     <b>18</b>
                     <span style="width:3px;"/>
@@ -608,7 +613,7 @@
             </div>
             <!-- END: Top Left  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
             <!-- BEGIN: Top Right ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-            <div class="styIRSW2GRightTopFrame" style="width:31.8mm;height:40.2mm;border-bottom-width:0px;">
+            <div class="styIRSW2GRightTopFrame" style="width:31.8mm;height:38.8mm;border-bottom-width:0px;">
               <div style="width:100%;text-align:right;float:right;">
                 <div class="styOMB" style="height:2mm;font-size:7pt;border-bottom-width:0px;">OMB No. 1545-0238</div>
                 <div class="styTY">20<span class="styTYColor">13</span>
@@ -624,7 +629,7 @@
               </div>
             </div>
             
-            <div class="styIRSW2GRightBottomFrame" style="width:31.5mm;height:32.6mm;text-align:right;border-top-width:1px;border-bottom-width:0px;">
+            <div class="styIRSW2GRightBottomFrame" style="width:31.5mm;height:32mm;text-align:right;border-top-width:1px;border-bottom-width:0px;">
               <br/>
               <br/>
               <span style="font-family:Arial;font-size:6.5pt;">
@@ -640,7 +645,7 @@
             </div>
             
              
-            <div class="styIRSW2GRightBottomFrame" style="width:31.5mm;height:24.6mm;border-top-width:1px;">
+            <div class="styIRSW2GRightBottomFrame" style="width:31.5mm;height:24mm;border-top-width:1px;">
               <div style="width:100%;text-align:right;float:right;">
                 <div style="font-family:Arial;font-size:7.7pt;padding-top:4mm;float:right;">
 					<b>

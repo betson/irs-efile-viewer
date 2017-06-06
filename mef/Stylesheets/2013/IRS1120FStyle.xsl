@@ -140,7 +140,7 @@
       font-weight:normal;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;
-      float:left; clear: none;
+      clear: none;
     }
     .styIRS1120FShadingCell {   /* Shading with a left border */
 	width:6mm;
@@ -171,7 +171,7 @@
 	padding-top:.5mm;
 	padding-bottom:.5mm;
 	font-weight:bold;
-	float:left; clear:none;
+    clear:none;
 	padding-left:1mm;
       border-style: solid; border-color: black;	
       border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;	
@@ -181,7 +181,7 @@
 	padding-top:.5mm;
 	padding-bottom:.5mm;
 	font-weight:bold;
-	float:left; clear:none;
+	clear:none;
 	padding-left:1mm;
       border-style: solid; border-color: black;	
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;	
@@ -191,7 +191,7 @@
 	padding-left:2mm;
 	padding-top:.5mm;
 	padding-bottom:.5mm;
-	float:left; clear: none;
+	clear: none;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
     }
@@ -203,7 +203,7 @@
       font-weight:normal;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-      float:left; clear: none;
+      clear: none;
 }
       .styIRS1120FRGColumnBox{/*Right Column Box for storing data/amount on computation */
 	width:30mm;
@@ -213,7 +213,7 @@
       font-weight:normal;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
-      float:left; clear: none;
+      clear: none;
 }
       .styIRS1120FAdditionInfoTitle{/Additional Information title */
       border-right:1 solid black;

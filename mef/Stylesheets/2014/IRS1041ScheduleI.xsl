@@ -12,8 +12,10 @@
 	
 	<!--<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>-->
 	
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1041ScheduleIData)">
@@ -43,12 +45,12 @@
 				</style>  
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass" >
+			<body class="styBodyClass" style="width:187mm;" >
 				<form name="Form1041ScheduleI">
 					<xsl:call-template name="DocumentHeader"></xsl:call-template>
 					<!-- Begin Form Number and Name -->					
 					<div class="styBB" style="width:187mm;height:16mm;">
-						<div class="styFNBox" style="width:29mm;height:16mm;">
+						<div class="styFNBox" style="width:28mm;height:16mm;">
 							<div style="line-height:130%;">                  
 								<span class="styFormNumber" style="font-size:9pt;" >SCHEDULE I</span>
 								<br/>
@@ -67,14 +69,14 @@
 							<div class="styMainTitle" style="height:4mm;">Alternative Minimum Tax
 								<img src="{$ImagePath}/1041SchI_Longdash.gif"  alt="Longdash Image" style="vertical-align:middle;"/>Estates and Trusts
 							</div>    
-							<div class="styFBT" style="height:3mm;margin-top:1mm;font:size:6pt;width:128mm;">
+							<div class="styFBT" style="height:10mm;margin-top:1mm;font:size:6pt;width:128mm;">
 								<img src="{$ImagePath}/1041SchI_Bullet_Sm.gif"  alt="Bullet Image"/> Attach to Form 1041<br/>
 								<img src="{$ImagePath}/1041SchI_Bullet_Sm.gif"  alt="Bullet Image"/> Information about Schedule I (Form 1041) and its separate instructions is at 
 								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form1041" title="Link to IRS.gov"><i>www.irs.gov/form1041</i>.</a>       
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:16mm;">
-							<div class="styOMB" style="height:2mm;padding-top:0.4mm;padding-bottom:0.5mm;"> OMB No. 1545-0092</div>
+							<div class="styOMB" style="padding-top:0.4mm;padding-bottom:0.5mm;"> OMB No. 1545-0092</div>
 							<div class="styTaxYear" style="padding-top:0.6mm;"> 20<span class="styTYColor">14</span>			
 							</div>
 						</div>
@@ -568,7 +570,7 @@
 					</div>    
 					<div style="width:187mm;font-size:7pt">
 						<div class="styLNLeftNumBox" style="height:3.8mm;padding-top:0mm;padding-bottom:0mm;"/>
-						<div class="styLNDesc" style="width:139.5mm;height:3.8mm;padding-top:0mm;padding-bottom:0mm;">
+						<div class="styLNDesc" style="width:139.5mm;height:6mm;padding-top:0mm;padding-bottom:0mm;">
 							<li>$23,500 or less, stop here and enter -0- on Form 1041, Schedule G, line 1c. The estate or trust is not liable for the alternative minimum tax.</li>
 						</div>
 					</div>    
@@ -788,10 +790,11 @@
 					<!-- Footer-->   
 					<div class="pageEnd" style="width:187mm;">  
 						<div class="styGenericDiv" style="font-weight:bold">For Paperwork Reduction Act Notice, see the Instructions for Form 1041.</div>   
-						<div class="styGenericDiv" style="padding-left:15mm">Cat. No. 51517Q</div>                        
+						<div class="styGenericDiv" style="padding-left:10mm;">Cat. No. 51517Q</div>                        
 						<div class="styGenericDiv" style="font-weight:bold;float:right" >Schedule I (Form 1041) (2014) </div>
 					</div>    
 					<!--Begin Page 2 -->   
+					<p style="page-break-before: always"/>
 					<!-- Header -->    
 					<div class="styBB" style="width:187mm;border-bottom-width: 0px;"/>         
 					<div class="styBB" style="width:187mm;float:left;clear:none;">  
@@ -946,12 +949,12 @@
 						</div>
 					</div>    
 					<!--Line 52--> 
-					<div style="width:187mm;font-size:7pt; padding-bottom:0mm;">
+					<div style="width:187mm;font-size:7pt;">
 						<div class="styLNLeftNumBox">52</div>      
 						<div class="styLNDesc" style="width:139.5mm;">Go to Part IV of Schedule I to figure line 52 if the estate or trust has qualified dividends or has a gain on lines 18a and 19 of column (2) of Schedule D (Form 1041) (as refigured for the AMT, if necessary). Otherwise, if line 51 is
 							<img src="{$ImagePath}/1041SchI_Longdash.gif"  alt="Longdash Image"/><br/>
-							<li>$182,500 or less, multiply line 51 by 26% (.26).</li><br/>
-							<span style="float:left;"><li>Over $182,500, multiply line 51 by 28% (.28) and subtract $3,650 from the result</li></span>
+							<span style="padding-left:4mm"><li>$182,500 or less, multiply line 51 by 26% (.26).</li></span>
+							<span style="float:left;padding-left:4mm"><li>Over $182,500, multiply line 51 by 28% (.28) and subtract $3,650 from the result</li></span>
 							<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
 						</div>
@@ -959,7 +962,7 @@
 							<span style="width:100%;height:76%;background-color:lightgrey;"/>
 							<span style="width:100%;height:24%;padding-top:0.6mm;padding-bottom:0mm;">52</span>
 						</div>
-						<div class="styLNAmountBox" style="height:17mm;width:31.5mm;padding-top:12mm;">        
+						<div class="styLNAmountBox" style="height:17mm;width:31.5mm;padding-top:14mm;">        
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1041ScheduleIData/MaximumCapitalGainsOrNetAmt"/>
 							</xsl:call-template>        
@@ -1262,6 +1265,7 @@
 						<div class="styGenericDiv" style="font-weight:bold;float:right" >Schedule I (Form 1041) (2014) </div>
 					</div>    
 					<!--Begin Page 3 -->   
+					<p style="page-break-before: always"/>
 					<!-- Header -->    
 					<div class="styBB" style="width:187mm;border-bottom-width: 0px;"></div>  
 					<div class="styBB" style="width:187mm;float:left;clear:none;">  
@@ -1373,8 +1377,8 @@
 								<xsl:with-param name="TargetNode" select="$Form1041ScheduleIData/SmllrAdjNetGainOrTxblIncAmt"/>
 							</xsl:call-template>        
 						</div>
-						<div class="styLNRightNumBox" style="height:4.4mm;width:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
-						<div class="styLNAmountBox" style="height:4.4mm;width:31.5mm;border-bottom-width:0px;"/>
+						<div class="styLNRightNumBox" style="height:4.5mm;width:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
+						<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;border-bottom-width:0px;"/>
 					</div> 
 					<!--Line 76--> 
 					<div style="width:187mm;font-size:7pt">
@@ -1466,14 +1470,14 @@
 							<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;width:8mm;">80</div>
-						<div class="styLNAmountBox" style="height:4mm;width:31.5mm;">        
+						<div class="styLNRightNumBox" style="height:4.5mm;width:8mm;">80</div>
+						<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">        
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1041ScheduleIData/TotalNetAmt"/>
 							</xsl:call-template>        
 						</div>
-						<div class="styLNRightNumBox" style="height:4.4mm;width:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
-						<div class="styLNAmountBox" style="height:4.4mm;width:31.5mm;border-bottom-width:0px;"/>
+						<div class="styLNRightNumBox" style="height:4.5mm;width:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
+						<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;border-bottom-width:0px;"/>
 					</div>    
 					<!--Line 81--> 
 					<div style="width:187mm;font-size:7pt">
@@ -1483,14 +1487,14 @@
 							<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;width:8mm;">81</div>
-						<div class="styLNAmountBox" style="height:4mm;width:31.5mm;">        
+						<div class="styLNRightNumBox" style="height:4.5mm;width:8mm;">81</div>
+						<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">        
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1041ScheduleIData/NetSmallerSchDOrAdjNetGainAmt"/>
 							</xsl:call-template>        
 						</div>
-						<div class="styLNRightNumBox" style="height:4.4mm;width:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
-						<div class="styLNAmountBox" style="height:4.4mm;width:31.5mm;border-bottom-width:0px;"/>
+						<div class="styLNRightNumBox" style="height:4.5mm;width:8mm;background-color:lightgrey;border-bottom-width:0px;"/>
+						<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;border-bottom-width:0px;"/>
 					</div>    
 					<!--Line 82--> 
 					<div style="width:187mm;font-size:7pt">

@@ -9,8 +9,10 @@
 <xsl:strip-space elements="*"/>
 <xsl:param name="Form5713CData" select="$RtnDoc/IRS5713ScheduleC"/>
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <META http-equiv="Content-Type" content="text/html"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form5713CData)"/></xsl:call-template></title>
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -33,7 +35,7 @@
  <body class="styBodyClass">     
   <form name="Form5713C">
     <xsl:call-template name="DocumentHeader"/>
-    <div class="styTBB" style="width:187mm;height:16mm; border-bottom: 0px;">
+    <div class="styTBB" style="width:187mm;height:auto; border-bottom: 0px;">
       <div class="styFNBox" style="width:32mm;height:19mm;">
         <div class="styFormNumber" style="font-size:9pt;">SCHEDULE C</div>
         <div class="styFormNumber" style="font-size:9pt;">(Form 5713)</div>
@@ -59,7 +61,7 @@
         <div style="font-size:7pt;padding-top:3mm;">OMB No. 1545-0216</div>
       </div>
       <div class="styBB" style="width:187mm;border-top-width:1px;">
-        <div class="styNameBox" style="font-family:verdana;font-size:7pt;width:139mm;height:4mm;text-align:bottom;">Name<br/>
+        <div class="styNameBox" style="font-family:verdana;font-size:7pt;width:139mm;height:10mm;text-align:bottom;">Name<br/>
         <xsl:if test="$Form5713CData/NameLine1Txt != ''">
         <br/>
             <xsl:call-template name="PopulateText">
@@ -104,11 +106,16 @@
                 <xsl:with-param name="TargetNode" select="$Form5713CData/MissingEINReasonCd"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="PopulateReturnHeaderFiler">
-                <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-              </xsl:call-template>
-            </xsl:otherwise>
+			  <xsl:when test="$RtnHdrData/Filer/EIN">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+				  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				</xsl:call-template>
+			  </xsl:when>
+			  <xsl:otherwise>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+				  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				</xsl:call-template>
+			  </xsl:otherwise>
           </xsl:choose>
           
 		  </span>
@@ -121,50 +128,50 @@
       <div class="styLNDesc" style="width:90mm;height:4.5mm;">Method used to compute loss of tax benefits (check one):</div>
     </div>
     <div style="width:187mm;">
-      <!-- To accomodate right floats, items listed in reverse: -->   
-      <input type="checkbox" class="styCkbox" style="float: right; clear: none;">
-        <xsl:call-template name="PopulateCheckbox">
-          <xsl:with-param name="TargetNode" select="$Form5713CData/IntntlBoycottFactorMethodInd"/>
-          <xsl:with-param name="BackupName">IRS5713SchCIntntlBoycottFactorMethod</xsl:with-param>
-        </xsl:call-template>        
-      </input>
-      <label style="float: right; clear: none;">
+      <span class="styLNLeftLtrBox" style="height:4.5mm; float: left; clear: none;">a</span>
+      <span class="styLNDesc" style="width:169mm; height:4.0mm;">
+        <span style="float:left;"><label>
         <xsl:call-template name="PopulateLabel">
           <xsl:with-param name="TargetNode" select="$Form5713CData/IntntlBoycottFactorMethodInd"/>
           <xsl:with-param name="BackupName">IRS5713SchCIntntlBoycottFactorMethod</xsl:with-param>
-        </xsl:call-template>
-      </label>
-      <span class="styBoldText" style="width: 3mm; float: right; clear: none;"/>
-      <img src="{$ImagePath}/5713SchC_Bullet.gif" alt="bullet image pointing to right" style="float: right; clear: none;"/>
-      <span class="styLNLeftLtrBox" style="height:4.5mm; float: left; clear: none;">a</span>
-      <span class="styLNDesc" style="width:169mm; height:4.0mm;">
-        <span style="float:left;">International boycott factor from Schedule A (Form 5713). See lines 2a, 3a, 4a, and 5a below </span> 
+        </xsl:call-template>International boycott factor from Schedule A (Form 5713). See lines 2a, 3a, 4a, and 5a below </label></span> 
         <!--Dotted Line-->
         <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
+      </span>
+      <!-- To accomodate right floats, items listed in reverse: -->   
+      <span style="float:right;width:10mm;">
+      <img src="{$ImagePath}/5713SchC_Bullet.gif" alt="bullet image pointing to right" style=""/>
+      <span style="width: 2px;"/>
+      <input type="checkbox" class="styCkbox" style="">
+        <xsl:call-template name="PopulateCheckbox">
+          <xsl:with-param name="TargetNode" select="$Form5713CData/IntntlBoycottFactorMethodInd"/>
+          <xsl:with-param name="BackupName">IRS5713SchCIntntlBoycottFactorMethod</xsl:with-param>
+        </xsl:call-template>
+      </input>
       </span>
     </div>
     <div class="styBB" style="width:187mm;">
       <!-- To accomodate right floats, items listed in reverse: -->   
-      <input type="checkbox" class="styCkbox" style="float: right; clear: none;">
+      <div class="styLNLeftLtrBox" style="height:4.5mm;">b</div>
+    <div class="styLNDesc" style="width:169mm;height:4.5mm;border-bottom-width:1px;">
+      <span style="float:left;"><label>
+        <xsl:call-template name="PopulateLabel">
+          <xsl:with-param name="TargetNode" select="$Form5713CData/SpcfcAttrblTxsAndIncmMethodInd"/>
+          <xsl:with-param name="BackupName">IRS5713SchCSpcfcAttrblTaxesAndIncmMethod</xsl:with-param>
+        </xsl:call-template>Identification of specifically attributable taxes and income from Schedule B (Form 5713). See lines 2b, 3b, 4b, and 5b below </label></span> 
+      <!--Dotted Line-->
+        <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+    </div>
+    <span style="float:right;width:10mm;">
+      <img src="{$ImagePath}/5713SchC_Bullet.gif" alt="bullet image pointing to right"/>
+      <span style="width:2px;"/>
+      <input type="checkbox" class="styCkbox" style="">
         <xsl:call-template name="PopulateCheckbox">
           <xsl:with-param name="TargetNode" select="$Form5713CData/SpcfcAttrblTxsAndIncmMethodInd"/>
           <xsl:with-param name="BackupName">IRS5713SchCSpcfcAttrblTaxesAndIncmMethod</xsl:with-param>
         </xsl:call-template>
       </input>
-      <span class="styBoldText" style="width:3mm; float: right; clear: none;"/>
-      <label style="float: right; clear: none;">
-        <xsl:call-template name="PopulateLabel">
-          <xsl:with-param name="TargetNode" select="$Form5713CData/SpcfcAttrblTxsAndIncmMethodInd"/>
-          <xsl:with-param name="BackupName">IRS5713SchCSpcfcAttrblTaxesAndIncmMethod</xsl:with-param>
-        </xsl:call-template>
-      </label>
-      <img src="{$ImagePath}/5713SchC_Bullet.gif" alt="bullet image pointing to right" style="float: right; clear: none;"/>       
-    <div class="styLNLeftLtrBox" style="height:4.5mm;">b</div>
-    <div class="styLNDesc" style="width:169mm;height:4.5mm;border-bottom-width:1px;">
-      <span style="float:left;">Identification of specifically attributable taxes and income from Schedule B (Form 5713). See lines 2b, 3b, 4b, and 5b below </span> 
-      <!--Dotted Line-->
-        <span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
-    </div>
+    </span>
   </div>
 <!-- Item 1 end -->
 <!-- Item 2 start -->
@@ -216,7 +223,7 @@
       <!--Dotted Line-->
       <span class="styDotLn" style="float:right;padding-right:1mm;">.............................</span>
     </div>
-    <div class="styLNAmountBox" style="border-top-width:0px;height=8mm;text-align:bottom;padding-top:4mm;">
+    <div class="styLNAmountBox" style="border-top-width:0px;height:8mm;padding-top:4mm;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$Form5713CData/ForeignTaxCreditReductionAmt"/>
       </xsl:call-template>
@@ -289,7 +296,7 @@
     <div class="styLNLeftLtrBox"/>
     <div class="styLNDesc" style="width:146mm">
       <b>(2)<span style="width:1.5mm;"/></b>Prorated share of income attributable to earnings and profits of controlled foreign corporations included in 
-      <span style="padding-left:5.5mm;"/>income under sections 951(a)(1)(A)(ii), 951(a)(1)(A)(iii), 951(a)(1)(B), 952(a)(1), 952(a)(2), 952(a)(4),
+      <span style="float:left;"><span style="width:5.5mm;"/>income under sections 951(a)(1)(A)(ii), 951(a)(1)(A)(iii), 951(a)(1)(B), 952(a)(1), 952(a)(2), 952(a)(4),</span>
       <span style="float:left;"><span style="width:5.5mm;"/>952(a)(5), and 952(b) </span>
       <!--Dotted Line-->
       <span class="styDotLn" style="float:right;padding-right:1mm;">...........................</span>

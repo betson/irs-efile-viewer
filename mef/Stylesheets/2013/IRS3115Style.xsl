@@ -7,8 +7,8 @@
       width:33mm;      
       font-size:8pt;
       text-align:right;      
-      border-bottom:1 solid black;
-      border-left:1 solid black;      
+      border-bottom:1px solid black;
+      border-left:1px solid black;      
       float:left;         
     }
       
@@ -16,8 +16,8 @@
       height:4.5mm;              
       width:23mm;      
       font-size:7pt;      
-      border-bottom:1 solid black;
-      border-left:1 solid black;      
+      border-bottom:1px solid black;
+      border-left:1px solid black;      
       float:left;   
       padding-top:0.5mm;
       text-align:center      
@@ -40,10 +40,10 @@
       height:4mm;    
       width:7mm;      
       text-align:center;
-      border-right:1 solid black;
-      border-left:1 solid black;      
+      border-right:1px solid black;
+      border-left:1px solid black;      
       float:left;   
-      border-bottom:1 solid black;  
+      border-bottom:1px solid black;  
       font-size:7.5pt      
     }    
     
@@ -52,7 +52,7 @@
       height:4mm;        
       text-align:center;        
       float:left; 
-      border-bottom:1 solid black;    
+      border-bottom:1px solid black;    
       font-size:7.5pt      
     }  
     
@@ -60,8 +60,8 @@
       height:4mm;    
       width:7mm;      
       background-color:lightgrey;
-      border-right:1 solid black;
-      border-left:1 solid black;      
+      border-right:1px solid black;
+      border-left:1px solid black;      
       float:left;                 
     }  
         
@@ -78,7 +78,8 @@
       float:left;        
       text-align:right;
       padding-right:1mm;        
-      clear:left
+      clear:left;
+
     }
     
     
@@ -91,13 +92,13 @@
     }                    
           
     .styIRS3115TblRB {
-      border-bottom:1 solid black;
-      border-right:1 solid black;                  
+      border-bottom:1px solid black;
+      border-right:1px solid black;                  
     }  
     
     .styIRS3115TblRB2 {
-      border-bottom:1 solid black;
-      border-left:1 solid black;    
+      border-bottom:1px solid black;
+      border-left:1px solid black;    
       font-size:7pt; 
       height:4.5mm    
     }            

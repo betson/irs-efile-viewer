@@ -11,17 +11,14 @@
 
   <xsl:param name="AdjLongTermData" select="$RtnDoc/AdjLongTermContractsFromK1Sch"/>
 
-  <xsl:param name="depDocTitle">
-    <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$AdjLongTermData"/></xsl:call-template>  
-  </xsl:param>
 
 <!-- Template to display Retained earnings-appropriated schedule Data -->
 
 <!-- count($DependencyData/RetainedEarnings/RetainedEarningLineItem) is rowcount for inner loop; so add 1 to account for additional row in outer loop -->
 <xsl:template name="AdjLongTermContractsFromK1SchTemp">
-    <table id="AdjLongTermContractsFromK1SchTbl" class="styDepTbl">
-      <thead class="styTableThead">
-        <tr class="styDepTblHdr">
+    <table id="AdjLongTermContractsFromK1SchTbl" class="styDepTblLandscape" >
+      <thead class="styDepTableThead">
+        <tr class="styDepTblHdr" >
           <th class="styDepTblCell" scope="col">Entity Name</th>
           <th class="styDepTblCell" scope="col">1. Year identifier</th>
           <th class="styDepTblCell" scope="col">2. Adjustment from <br/>K-1</th>
@@ -31,7 +28,7 @@
         <tfoot/>
         <tbody>
         <xsl:for-each select="$AdjLongTermData/AdjLongTermContractsK1Grp">  
-          <tr>
+          <tr style="page-break-inside:avoid">
             <!-- Set row background color -->
             <xsl:attribute name="class">
               <xsl:choose>
@@ -41,15 +38,15 @@
             </xsl:attribute>
             <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
               <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermContractsFromK1Grp)"/>
+              <xsl:value-of select="count(PYLongTermContractsFromK1Grp/PYScheduleK1YearlyInfoGrp)"/>
               </xsl:attribute>
               <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine1"/>
+                <xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine1Txt"/>
               </xsl:call-template>
-              <xsl:if test="EntityName/BusinessNameLine2">
+              <xsl:if test="EntityName/BusinessNameLine2Txt">
                 <br/>
                 <xsl:call-template name="PopulateText">          
-                  <xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine2"/>
+                  <xsl:with-param name="TargetNode" select="EntityName/BusinessNameLine2Txt"/>
                 </xsl:call-template>
               </xsl:if>
             </td>
@@ -72,8 +69,8 @@
               </td>
             </xsl:if>  
             <!-- If there is more than one set of data, show the first set with Row 1 background -->
-            <xsl:if test="count(PYLongTermContractsFromK1Grp)&gt;1">                        <!-- If there is more than one instance of data, fill the first cell with dark blue -->
-              <td class="styDepTblRow1Cell" scope="col" style="text-align:center;font-size: 7pt;">
+            <xsl:if test="count(PYLongTermContractsFromK1Grp)&gt;1 or count (PYScheduleK1YearlyInfoGrp)&gt; 1">                        <!-- If there is more than one instance of data, fill the first cell with dark blue -->
+              <td class="styDepTblRow1Cell" scope="col" style="text-align:center;font-size: 7pt;width:15mm">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="PYLongTermContractsFromK1Grp/Yr"/>
                 </xsl:call-template>
@@ -117,6 +114,36 @@
                   </xsl:call-template>
                 </td>
               </tr>
+
+			<xsl:for-each select="PYScheduleK1YearlyInfoGrp">        
+            <xsl:if test="position() &gt; 1">
+              <tr>
+                <!-- Set row background color -->
+                <xsl:attribute name="class">
+                  <xsl:choose>
+                     <xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+                     <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:attribute>
+                <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt;">
+           <!--       <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="Yr"/>
+                  </xsl:call-template>-->
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 40mm">
+                  <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYAdjustmentAmt"/>
+                  </xsl:call-template>
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 40mm">
+                  <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYNetAdjToIncmAmt"/>
+                  </xsl:call-template>
+                </td>
+              </tr>
+            </xsl:if>
+          </xsl:for-each>              
+              
             </xsl:if>
           </xsl:for-each>
         </xsl:for-each>
@@ -125,9 +152,16 @@
 </xsl:template>
   
   <!-- Main template -->
+  <xsl:param name="depDocTitle">
+    <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$AdjLongTermData"/></xsl:call-template>  
+  </xsl:param>
+  
+  
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -140,7 +174,7 @@
          <meta name="Author" content="Ravi Venigalla"/>
          <meta name="Description" content="{$depDocTitle}"/>
                   
-        <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
+        <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js"/>
         <xsl:call-template name="InitJS"/>
         <style type="text/css">
           <xsl:if test="not($Print) or $Print=''">
@@ -148,23 +182,21 @@
           </xsl:if>
         </style>
       <xsl:call-template name="GlobalStylesDep"/>
-    </head>
-    
+    </head>   
       <body class="styBodyClass">
-        <xsl:call-template name="DocumentHeaderDependency"/>            
-          <div class="styDepTitleLine">
+        <xsl:call-template name="DocumentHeaderDependencyLandscape"/>            
+          <div class="styDepTitleLineLandscape">
             <span class="styDepTitle">
               <span style="width:82mm;">
                 <xsl:value-of select="$depDocTitle"/>
               </span>
             </span>
           </div>
-
-        <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$AdjLongTermData"/></xsl:call-template>
-        
+        <xsl:call-template name="PopulateDepCommonLeftoverLandscape"><xsl:with-param name="TargetNode" select="$AdjLongTermData"/></xsl:call-template>
+        <span style="height:5px;"/>
         <!-- Transform Retained Earnings Appr Schedule -->
-        <xsl:call-template name="AdjLongTermContractsFromK1SchTemp"/>
-        
+        <xsl:call-template name="AdjLongTermContractsFromK1SchTemp"/>  
+        <br/>
       </body>
     </html>
   </xsl:template>

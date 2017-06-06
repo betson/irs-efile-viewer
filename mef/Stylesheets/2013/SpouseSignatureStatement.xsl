@@ -12,8 +12,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/" >
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle" /></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache" />
@@ -36,7 +38,7 @@
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"  />  
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:87mm;">
+          <span class="styDepTitle" style="width:187mm;">
             <span><xsl:value-of select="$depDocTitle" /></span>
           </span>
         </div>
@@ -45,7 +47,8 @@
 		</xsl:call-template>
         <div class="styTopSectionLine" style="width:187mm;">
           <div class="styTopSectionLineLbl" style="float:left;clear:none;">Spouse Signature Statement:</div>
-          <div style="float:left;clear:none;width:118mm;">
+          <br/>
+          <div style="float:left;clear:none;width:187mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/Statement"/>
             </xsl:call-template>

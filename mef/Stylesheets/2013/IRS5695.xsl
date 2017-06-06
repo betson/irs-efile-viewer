@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form5695Data" select="$RtnDoc/IRS5695"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form5695Data)"/>
@@ -49,6 +51,7 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data"/>
 							</xsl:call-template>
 							<br/>
+							<br/>
 							<span class="styAgency">Department of the Treasury</span>
 							<br/>
 							<span class="styAgency">Internal Revenue Service</span>
@@ -58,7 +61,7 @@
 							<div class="styMainTitle" style="height:8mm;">
 								Residential Energy Credits
 							</div>
-							<div class="styGenericDiv" style="height:5mm;font-size:7pt;margin-left:0mm;text-align:center;">
+							<div class="styGenericDiv" style="height:5mm;font-size:7pt;margin-left:0mm;text-align:center;float:right;">
 								<span style="text-align:center;">
 									<div style="width:100%;height:5mm;font-weight:bold;">
 										<br/>
@@ -72,7 +75,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;border-left-width:2px;float:right">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+							<div class="styOMB" style="height:4mm;font-size:7pt;">OMB No. 1545-0074</div>
 							<div class="styTaxYear">20<span class="styTYColor">13</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -231,7 +234,7 @@
 						<div class="styLNDesc" style="">
 							<span style="float:left;">Add lines 1 through 4</span>
 							<!--Dotted Line-->
-							<span class="styIRS5695Dots">..........................</span>
+							<span class="styIRS5695Dots">.........................</span>
 						</div>
 						<div class="styLNRightNumBox" style="">5</div>
 						<div class="styLNAmountBox" style="">
@@ -252,7 +255,7 @@
 						<div class="styLNDesc" style="">
 							<span style="float:left;">Multiply line 5 by 30% (.30)</span>
 							<!--Dotted Line-->
-							<span class="styIRS5695Dots">........................</span>
+							<span class="styIRS5695Dots">.......................</span>
 						</div>
 						<div class="styLNRightNumBox" style="">6</div>
 						<div class="styLNAmountBox" style="">
@@ -262,18 +265,18 @@
 						</div>
 					</div>
 					<!-- (7a) ////////////////////////////////////////////////////-->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:7mm;">
 						<div class="styLNLeftNumBoxSD" style="">7a</div>
-						<div class="styLNDesc" style="">
+						<div class="styLNDesc" style="height:7mm;">
 								Qualified fuel cell property. Was qualified fuel cell property installed on or in connection with your
 								<span style="float:left;">main home located in the United States? (See instructions)</span>
 							<!--Dotted Line-->
 							<span class="styIRS5695Dots" style="padding-right:7px;">.............<img src="{$ImagePath}/5695_Bullet_Sm.gif" alt="SmallBullet"/>
 							</span>
 						</div>
-						<div class="styLNRightNumBox" style="">
+						<div class="styLNRightNumBox" style="height:8mm;">
 							<br/>7a</div>
-						<div class="styLNAmountBox" style="text-align:center;">
+						<div class="styLNAmountBox" style="text-align:center;height:8mm;">
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/QlfyFuelCellPropertyInUSInd"/>
 							</xsl:call-template>
@@ -310,7 +313,7 @@
 						</div>
 					</div>
 					<!-- Caution -->
-					<div class="styIRS5695LineItem">
+					<div class="styIRS5695LineItem" style="height:8mm;">
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="">
 							<b>Caution. </b>
@@ -436,7 +439,7 @@
 						<div class="styLNDesc" style="">
 							<span style="float:left;">Enter the smaller of line 9 or line 10</span>
 							<!--Dotted Line-->
-							<span class="styIRS5695Dots">......................</span>
+							<span class="styIRS5695Dots">.....................</span>
 						</div>
 						<div class="styLNRightNumBox" style="">11</div>
 						<div class="styLNAmountBox" style="">
@@ -494,17 +497,17 @@
 						<div class="styLNRightNumBoxNBB" style="height:3mm;font-size:4pt;"/>
 						<div class="styLNAmountBoxNBB" style="height:3mm;font-size:4pt;"/>
 					</div>
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:7mm;">
 						<div class="styLNLeftNumBox" style="">14</div>
 						<div class="styLNDesc" style="">
 								Limitation based on tax liability. Enter the amount from the Residential Energy Efficient Property Credit<br/>
 							<span style="float:left;">Limit Worksheet (see instructions)</span>
 							<!--Dotted Line-->
-							<span class="styIRS5695Dots">......................</span>
+							<span class="styIRS5695Dots">.....................</span>
 						</div>
-						<div class="styLNRightNumBox" style="">
+						<div class="styLNRightNumBox" style="height:7mm;">
 							<br/>14</div>
-						<div class="styLNAmountBox" style="">
+						<div class="styLNAmountBox" style="height:7mm;">
 							<br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/TaxLessCreditsAmt"/>
@@ -512,7 +515,7 @@
 						</div>
 					</div>
 					<!-- (15) ////////////////////////////////////////////////////-->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:7mm;">
 						<div class="styLNLeftNumBox" style="">15</div>
 						<div class="styLNDesc" style="">
 							<b>Residential energy efficient property credit. </b> Enter the smaller of line 13 or line 14. Also include <br/>
@@ -520,9 +523,9 @@
 							<!--Dotted Line-->
 							<span class="styIRS5695Dots">.............</span>
 						</div>
-						<div class="styLNRightNumBox" style="">
+						<div class="styLNRightNumBox" style="height:7mm;">
 							<br/>15</div>
-						<div class="styLNAmountBox" style="">
+						<div class="styLNAmountBox" style="height:7mm;">
 							<br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/ResidentialEgyEffPropCrAmt"/>
@@ -530,12 +533,12 @@
 						</div>
 					</div>
 					<!-- (16) ////////////////////////////////////////////////////-->
-					<div class="styIRS5695LineItem" style="border-bottom:1px solid black">
+					<div class="styIRS5695LineItem" style="border-bottom:1px solid black;height:7.5mm;">
 						<div class="styLNLeftNumBox">16</div>
 						<div class="styLNDesc" style="width:98.05mm;">
 								Credit carryforward to 2014. If line 15 is less than line 13, subtract <br/>
 							<span style="float:left;">line 15 from line 13</span>
-							<span class="styIRS5695Dots">.................</span>
+							<span class="styIRS5695Dots">................</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="margin-top:3.5mm;">16</div>
 						<div class="styLNAmountBoxNBB" style="margin-top:3.5mm;padding-right:2px;">
@@ -543,8 +546,8 @@
 								<xsl:with-param name="TargetNode" select="$Form5695Data/RsdntlEnergyEffcntPropCrGrp/CarryfwdEnergyEffPropertyCrAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="height:7.5mm;background-color:lightgrey;"/>
-						<div class="styLNAmountBoxNBB" style="height:7.5mm;"/>
+						<div class="styLNRightNumBoxNBB" style="height:7.2mm;background-color:lightgrey;"/>
+						<div class="styLNAmountBoxNBB" style="height:7.2mm;"/>
 					</div>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Page Break and Footer-->
@@ -556,6 +559,7 @@
 						</span>
 						<span style="float:right;">Form<span class="styBoldText" style="font-size:7pt;"> 5695 </span>(2013)</span>
 					</div>
+					<br></br>
 					<!-- END Page Break and Footer-->
 					<!-- BEGIN Page Header -->
 					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
@@ -583,15 +587,15 @@
 						<div class="styLNAmountBoxNBB" style="height:3mm;font-size:4pt;"/>
 					</div>
 					<!-- 17a -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:8mm;">
 						<div class="styLNLeftNumBox">17a</div>
 						<div class="styLNDesc">
 							Were the qualified energy efficiency improvements or residential energy property costs for your <br/>
 							<span style="float:left;">main home located in the United States? (see instructions)</span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:8mm;">
 							<br/>17a</div>
-						<div class="styLNAmountBox" style="text-align:center;">
+						<div class="styLNAmountBox" style="text-align:center;height:8mm;">
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/HomeLocatedInUSAInd"/>
 							</xsl:call-template>
@@ -636,17 +640,17 @@
 						<div class="styShadingCell" style="width:40mm;height:4.4mm;"/>
 					</div>
 					<!-- 17b -->
-					<div class="styIRS5695LineItem">
+					<div class="styIRS5695LineItem" style="height:10mm;">
 						<div class="styLNLeftLtrBox">b</div>
 						<div class="styLNDesc" style="">
 							Print the complete address of the main home where you made the qualifying improvements. <br/>
 							<b>Caution: </b>
 							<i>You can only have one main home at a time.</i>
 						</div>
-						<div class="styShadingCell" style="width:40mm;height:8mm;"/>
+						<div class="styShadingCell" style="width:40mm;height:10mm;"/>
 					</div>
 					<!-- Address////////////////////////////////////////////////////-->
-					<div class="styIRS5695LineItem" style="height:22mm;">
+					<div class="styIRS5695LineItem" style="height:18mm;">
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="padding-left:10mm;">
 							<xsl:call-template name="PopulateText">
@@ -669,16 +673,16 @@
 								City, State, ZIP code
 							</div>
 						</div>
-						<div class="styShadingCell" style="width:40mm;height:24mm;"/>
+						<div class="styShadingCell" style="width:40mm;height:18mm;"/>
 					</div>
 					<!-- 17c -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:6mm;">
 						<div class="styLNLeftLtrBox">c</div>
 						<div class="styLNDesc">
 							<span style="float:left;">Were any of these improvements related to the construction of this main home?</span>
 						</div>
-						<div class="styLNRightNumBox">17c</div>
-						<div class="styLNAmountBox" style="text-align:center;">
+						<div class="styLNRightNumBox" style="height:6mm;">17c</div>
+						<div class="styLNAmountBox" style="text-align:center;height:6mm;">
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/ImprvRltdToConstMainHomeInd"/>
 							</xsl:call-template>
@@ -713,7 +717,7 @@
 							</label>
 						</div>
 					</div>
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:10mm">
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="font-family:Arial;">
 							<span style="font-weight:bold;font-family:Verdana;">Caution: </span>
@@ -724,21 +728,21 @@
 						<div class="styShadingCell" style="width:40mm;height:10.8mm;"/>
 					</div>
 					<!-- 18 -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:4mm;">
 						<div class="styLNLeftNumBox">18</div>
 						<div class="styLNDesc" style="">
 							<span style="float:left;">Lifetime limitation. Enter the amount from the Lifetime Limitation Worksheet (see instructions)</span>
 							<span class="styIRS5695Dots">...</span>
 						</div>
-						<div class="styLNRightNumBox">18</div>
-						<div class="styLNAmountBox" style="">
+						<div class="styLNRightNumBox" style="height:4mm;">18</div>
+						<div class="styLNAmountBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/TotNonBusinessEgyPropCrPYAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<!-- 19 -->
-					<div class="styIRS5695LineItem">
+					<div class="styIRS5695LineItem" style="height:8mm;">
 						<div class="styLNLeftNumBox">19</div>
 						<div class="styLNDesc" style="">
 							Qualified energy efficiency improvements (original use must begin with you and the component must <br/>
@@ -747,16 +751,16 @@
 						<div class="styShadingCell" style="width:40mm;height:8mm;"/>
 					</div>
 					<!-- 19a -->
-					<div class="styIRS5695LineItem">
+					<div class="styIRS5695LineItem" style="height:7mm;">
 						<div class="styLNLeftLtrBox">a</div>
 						<div class="styLNDesc">
 							Insulation material or system specifically and primarily designed to reduce heat loss or gain of <br/>
 							<span style="float:left;">your home that meets the prescriptive criteria established by the 2009 IECC</span>
 							<span class="styIRS5695Dots">.......</span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:7mm;">
 							<br/>19a</div>
-						<div class="styLNAmountBox">
+						<div class="styLNAmountBox" style="height:7mm;">
 							<br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/InsulationOrSysHtGnLossCostAmt"/>
@@ -764,21 +768,21 @@
 						</div>
 					</div>
 					<!-- 19b -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:5mm;">
 						<div class="styLNLeftLtrBox">b</div>
 						<div class="styLNDesc" style="">
 							<span style="float:left;">Exterior doors that meet or exceed the Energy Star program requirements</span>
 							<span class="styIRS5695Dots">........</span>
 						</div>
-						<div class="styLNRightNumBox">19b</div>
-						<div class="styLNAmountBox" style="">
+						<div class="styLNRightNumBox" style="height:5mm;">19b</div>
+						<div class="styLNAmountBox" style="height:5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/ExteriorDoorsCostAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<!-- 19c -->
-					<div class="styIRS5695LineItem">
+					<div class="styIRS5695LineItem" style="height:12mm;">
 						<div class="styLNLeftLtrBox">c</div>
 						<div class="styLNDesc">
 							Metal or asphalt roof that meets or exceeds the Energy Star program requirements and has <br/>
@@ -786,10 +790,10 @@
 							<span style="float:left;">to reduce the heat gain of your home</span>
 							<span class="styIRS5695Dots">.....................</span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:12mm;">
 							<br/>
 							<br/>19c</div>
-						<div class="styLNAmountBox">
+						<div class="styLNAmountBox" style="height:12mm;">
 							<br/>
 							<br/>
 							<xsl:call-template name="PopulateAmount">
@@ -798,12 +802,12 @@
 						</div>
 					</div>
 					<!-- 19d -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:7.8mm;">
 						<div class="styLNLeftLtrBox">d</div>
 						<div class="styLNDesc" style="width:98.05mm;">
 							Exterior windows and skylights that meet or exceed the Energy Star <br/>
 							<span style="float:left;">program requirements</span>
-							<span class="styIRS5695Dots">................</span>
+							<span class="styIRS5695Dots">...............</span>
 						</div>
 						<div class="styLNRightNumBox" style="margin-top:3.5mm;height:4.4mm;">19d</div>
 						<div class="styLNAmountBox" style="margin-top:3.5mm;padding-right:2px;height:4.4mm;">
@@ -814,7 +818,7 @@
 						<div class="styShadingCell" style="width:40mm;height:8mm;"/>
 					</div>
 					<!-- 19e -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:4.4mm;">
 						<div class="styLNLeftLtrBox">e</div>
 						<div class="styLNDesc" style="width:98.05mm;">
 							<span style="float:left;">Maximum amount of cost on which the credit can be figured</span>
@@ -829,7 +833,7 @@
 						<div class="styShadingCell" style="width:40mm;height:4.4mm;"/>
 					</div>
 					<!-- 19f -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:10.8mm;">
 						<div class="styLNLeftLtrBox">f</div>
 						<div class="styLNDesc" style="width:98.05mm;">
 							If you claimed window expenses on your Form 5695 for 2006, 2007, <br/>
@@ -908,7 +912,7 @@
 						</div>
 					</div>
 					<!-- 22 -->
-					<div class="styIRS5695LineItem">
+					<div class="styIRS5695LineItem" style="height:8mm;">
 						<div class="styLNLeftNumBox">22</div>
 						<div class="styLNDesc" style="">
 							Residential energy property costs (must be placed in service by you; include labor costs for onsite <br/>
@@ -1020,7 +1024,7 @@
 						<div class="styLNLeftNumBox">26</div>
 						<div class="styLNDesc" style="">
 							<span style="float:left;">Enter the amount, if any, from line 18</span>
-							<span class="styIRS5695Dots">.....................</span>
+							<span class="styIRS5695Dots">....................</span>
 						</div>
 						<div class="styLNRightNumBox" style="">26</div>
 						<div class="styLNAmountBox" style="">
@@ -1058,16 +1062,16 @@
 						</div>
 					</div>
 					<!-- 29 -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:6mm;">
 						<div class="styLNLeftNumBox">29</div>
 						<div class="styLNDesc" style="">
 							Limitation based on tax liability. Enter the amount from the Nonbusiness Energy Property Credit Limit<br/>
 							<span style="float:left;">Worksheet (see instructions)</span>
-							<span class="styIRS5695Dots">........................</span>
+							<span class="styIRS5695Dots">.......................</span>
 						</div>
-						<div class="styLNRightNumBox" style="">
+						<div class="styLNRightNumBox" style="height:7mm;">
 							<br/>29</div>
-						<div class="styLNAmountBox" style="">
+						<div class="styLNAmountBox" style="height:7mm;">
 							<br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/TaxesLessCreditsAmt"/>
@@ -1075,16 +1079,16 @@
 						</div>
 					</div>
 					<!-- 30 -->
-					<div class="styIRS5695LineItem" style="">
+					<div class="styIRS5695LineItem" style="height:7mm;">
 						<div class="styLNLeftNumBox">30</div>
 						<div class="styLNDesc" style="">
 							<b>Nonbusiness energy property credit. </b> Enter the smaller of line 28 or line 29. Also include this <br/>
 							<span style="float:left;">amount on Form 1040, line 52, or Form 1040NR, line 49</span>
 							<span class="styIRS5695Dots">...............</span>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="">
+						<div class="styLNRightNumBoxNBB" style="height:7mm;">
 							<br/>30</div>
-						<div class="styLNAmountBoxNBB" style="">
+						<div class="styLNAmountBoxNBB" style="height:7mm;">
 							<br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form5695Data/NonBusinessEgyEffcntPropCrGrp/NonBusinessEnergyCrAmt"/>

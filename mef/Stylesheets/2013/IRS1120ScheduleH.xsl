@@ -10,8 +10,10 @@
 <!-- Defines the stage of the data, e.g. original or latest -->
 <xsl:param name="IRS1120ScheduleHData" select="$RtnDoc/IRS1120ScheduleH"/>
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($IRS1120ScheduleHData)"/></xsl:call-template></title>
 <meta http-equiv="Pragma" content="no-cache"/>
 <meta http-equiv="Cache-Control" content="no-cache"/>
@@ -36,7 +38,7 @@
 <!--   END WARNING LINE   -->
 <!--   BEGIN FORM HEADER   -->
 <div class="sty1120ScheduleHBB" style="width:187mm;height:17mm">
-  <div class="sty1120ScheduleHFN" style="height:17mm;">
+  <div class="sty1120ScheduleHFN" style="height:17mm;width:35mm">
     <div class="styFormNumber" style="width:29mm;font-size:9pt;">SCHEDULE H
       <br/>
       <span style="font-size:9pt;">(Form 1120)</span>
@@ -64,7 +66,7 @@
 <!--   END FORM HEADER   -->
 <!--   BEGIN TAXPAYER INFO   -->
 <div style="width:187mm;float:left;clear:left;">
-  <div class="styNameBox" style="width:135mm;height:8mm;font-size:7pt;font-weight:normal;">
+  <div class="styNameBox" style="width:135mm;height:9mm;font-size:7pt;font-weight:normal;">
     Name<br/>
     <span>
       <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -86,10 +88,10 @@
 <!--   END TAXPAYER INFO   -->
 <!--   BEGIN NOTE HEADER   -->
 <div class="sty1120ScheduleHNoteHdr" style="float:left;clear:left;">
-  <span class="sty1120ScheduleHNoteHdrTitle" style="width: 16mm; padding-bottom: 10mm">
+  <span class="sty1120ScheduleHNoteHdrTitle" style="width: 16mm; display:inline;">
     <span class="sty1120ScheduleHNoteHdrTitleSpanner"/>Note:
   </span>
-  <span style="padding-left: 2mm; width: 170mm">
+  <span style="padding-left: 2mm; width: 170mm;display:inline;">
   A newly organized PSC is considered to have met the section 280H distribution requirements for the first year of its existence and does not have to complete Schedule H. If, during the tax year, an existing 
   corporation becomes a PSC and makes a section 444 election, the corporation is treated as if it were a PSC for the 3 preceding tax years. See Temporary Regulations section 1.280H-1T(e).
   </span>
@@ -109,7 +111,7 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">1</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Enter applicable amounts from preceding tax year
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Enter applicable amounts from preceding tax year
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -139,13 +141,13 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">2</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Divide number of months in deferral period of preceding tax year by number</span>
-  <span class="sty1120ScheduleHLNValBox" style="border-right-width: 0px; border-bottom-width: 0px"/>
-  <span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Divide number of months in deferral period of preceding tax year by number</span>
+  <span class="sty1120ScheduleHLNValBox" style="border-right-width: 0px; border-bottom-width: 0px">&#160;</span>
+  <span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc">of months in preceding tax year.  Enter the result as a percentage
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;">of months in preceding tax year.  Enter the result as a percentage
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -171,7 +173,7 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">3</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc"><b>Amount figured under preceding year test.</b> Multiply line 1 by the percentage on line 2
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;"><b>Amount figured under preceding year test.</b> Multiply line 1 by the percentage on line 2
     <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -191,7 +193,7 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">4</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Enter applicable amounts from the deferral period of the applicable election year
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Enter applicable amounts from the deferral period of the applicable election year
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -208,19 +210,20 @@
   </span><span class="sty1120ScheduleHLNBox">4</span></div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc">If line 4 is less than line 3, go to line 5.  Otherwise, <b>stop here.</b>  The PSC has met the </span>
-  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px;"/><span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;"> </span>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;">If line 4 is less than line 3, go to line 5.  Otherwise, <b>stop here.</b>  The PSC has met the </span>
+  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px;">&#160;</span>
+  <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;"> &#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc">minimum distribution requirement.  <b>Do not</b> attach Schedule H to the PSC's income tax return. </span>
-  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px;"/>
-  <span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;background-color:lightgrey;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;">minimum distribution requirement.  <b>Do not</b> attach Schedule H to the PSC's income tax return. </span>
+  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px;">&#160;</span>
+  <span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;background-color:lightgrey;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc"> Keep Schedule H with the PSC's tax records.  </span>
-  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px;"/><span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;background-color:lightgrey;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;"> Keep Schedule H with the PSC's tax records.  </span>
+  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px;">&#160;</span><span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;background-color:lightgrey;">&#160;</span>
 </div>
 <!--  END LINE 4   -->
 <!-- BEGIN LINE 5   -->
@@ -228,13 +231,14 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">5</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Enter applicable amounts from the:</span>
-  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px"/>
-  <span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;background-color:lightgrey;">
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Enter applicable amounts from the:</span>
+  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px">&#160;</span>
+  <span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;background-color:lightgrey;">&#160;
   </span>
   <!--   BEGIN LINE 5a   -->
      <span class="sty1120ScheduleHLNLtMargin3"/>
-    <span class="sty1120ScheduleHLN">a</span>
+     <br/>
+    <span class="sty1120ScheduleHLN"  style="margin-left: 1mm;">a</span>
     <span class="sty1120ScheduleHLNDesc" style="margin-left: 1mm;">1st tax year before applicable election year
     <b>
       <span class="sty1120ScheduleHNBSP"/>.
@@ -262,7 +266,7 @@
   <!--   BEGIN LINE 5b   -->
   <div>
     <span class="sty1120ScheduleHLNLtMargin3"/>
-    <span class="sty1120ScheduleHLN">b</span>
+    <span class="sty1120ScheduleHLN"  style="margin-left: 1mm;">b</span>
     <span class="sty1120ScheduleHLNDesc" style="margin-left: 1mm;">2nd tax year before applicable election year
     <b>
       <span class="sty1120ScheduleHNBSP"/>.
@@ -291,7 +295,7 @@
   <!--   BEGIN LINE 5c   -->
   <div>
     <span class="sty1120ScheduleHLNLtMargin3"/>
-    <span class="sty1120ScheduleHLN">c</span>
+    <span class="sty1120ScheduleHLN"  style="margin-left: 1mm;">c</span>
     <span class="sty1120ScheduleHLNDesc" style="margin-left: 1mm;">3rd tax year before applicable election year
     <b>
       <span class="sty1120ScheduleHNBSP"/>.
@@ -324,9 +328,8 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">6</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc"><b>Total.</b><span style="width: 4px"/> Add lines 5a through 5c
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;"><b>Total.</b><span style="width: 4px"/> Add lines 5a through 5c
   <b>
-      <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -357,10 +360,11 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">7</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Enter adjusted taxable income for the:</span><span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px"/><span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Enter adjusted taxable income for the:</span><span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px">&#160;</span><span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;">&#160;</span>
   <!--   BEGIN LINE 7a   -->
      <span class="sty1120ScheduleHLNLtMargin3"/>
-    <span class="sty1120ScheduleHLN">a</span>
+     <br/>
+    <span class="sty1120ScheduleHLN"  style="margin-left: 1mm;">a</span>
     <span class="sty1120ScheduleHLNDesc" style="margin-left: 1mm;">1st tax year before applicable election year
     <b>
       <span class="sty1120ScheduleHNBSP"/>.
@@ -388,7 +392,7 @@
   <!--   BEGIN LINE 7b   -->
   <div>
     <span class="sty1120ScheduleHLNLtMargin3"/>
-    <span class="sty1120ScheduleHLN">b</span>
+    <span class="sty1120ScheduleHLN"  style="margin-left: 1mm;">b</span>
     <span class="sty1120ScheduleHLNDesc" style="margin-left: 1mm;">2nd tax year before applicable election year
     <b>
       <span class="sty1120ScheduleHNBSP"/>.
@@ -417,7 +421,7 @@
   <!--   BEGIN LINE 7c   -->
   <div>
     <span class="sty1120ScheduleHLNLtMargin3"/>
-    <span class="sty1120ScheduleHLN">c</span>
+    <span class="sty1120ScheduleHLN"  style="margin-left: 1mm;">c</span>
     <span class="sty1120ScheduleHLNDesc" style="margin-left: 1mm;">3rd tax year before applicable election year
     <b>
       <span class="sty1120ScheduleHNBSP"/>.
@@ -450,9 +454,8 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">8</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc"><b>Total.</b><span style="width: 4px"/> Add lines 7a through 7c
+  <span class="sty1120ScheduleHLNDesc"  style="padding-left:2mm;"><b>Total.</b><span style="width: 4px"/> Add lines 7a through 7c
   <b>
-      <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -483,9 +486,8 @@
   <span class="sty1120ScheduleHLNLtMargin"/>
   <span class="sty1120ScheduleHLN">9</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Divide line 6 by line 8
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Divide line 6 by line 8
   <b>
-      <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -517,7 +519,7 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">10</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Enter the percentage from line 9 or 95%, whichever is smaller
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Enter the percentage from line 9 or 95%, whichever is smaller
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -542,7 +544,7 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">11</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Enter adjusted taxable income for the deferral period of the applicable election year
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Enter adjusted taxable income for the deferral period of the applicable election year
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -562,9 +564,8 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">12</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc"><b>Amount figured under 3-year average test.</b><span style="width: 4px"/> Multiply line 11 by line 10
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;"><b>Amount figured under 3-year average test.</b><span style="width: 4px"/> Multiply line 11 by line 10
   <b>
-      <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -585,7 +586,7 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN" style="height:3.5mm">13</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc" style="height:3.5mm"><b>Minimum distribution requirement.</b><span style="width: 4px"/> Enter the smaller of line 3 or line 12
+  <span class="sty1120ScheduleHLNDesc" style="height:3.5mm;padding-left:2mm;"><b>Minimum distribution requirement.</b><span style="width: 4px"/> Enter the smaller of line 3 or line 12
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -603,33 +604,33 @@
   </span><span class="sty1120ScheduleHLNBox">13</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
-  <span class="sty1120ScheduleHLNLtMargin" style="width:4mm"/>
-  <img src="{$ImagePath}/1120SchH_Bullet_Round.gif" width="4" height="7" alt="Bullet" style="float: left; clear: none"/>
-  <span class="sty1120ScheduleHLNDesc">If line 13 is <b>equal to or less</b> than line 4, <b>stop here.</b><span style="width: 4px"/> 	The PSC has met the minimum</span>
-  <span class="sty1120ScheduleHLNValBox" style="height:0mm;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;"/>
-  <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;"/>
+  <span class="sty1120ScheduleHLNLtMargin" style="width:4mm;"/>
+  <img src="{$ImagePath}/1120SchH_Bullet_Round.gif" width="4" height="7" alt="Bullet" style="float: left; clear: none;margin-left:2mm;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:1mm;">If line 13 is <b>equal to or less</b> than line 4, <b>stop here.</b><span style="width: 4px"/> 	The PSC has met the minimum</span>
+  <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;">&#160;</span>
+  <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
-  <span class="sty1120ScheduleHLNLtMargin2"/><span class="sty1120ScheduleHLNDesc">distribution requirement.  <b>Do not</b> complete 	Part II and <b>do not</b> attach Schedule H to the </span>
-  <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;"/>
-  <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;"/>
+  <span class="sty1120ScheduleHLNLtMargin2"/><span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">distribution requirement.  <b>Do not</b> complete 	Part II and <b>do not</b> attach Schedule H to the </span>
+  <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;">&#160;</span>
+  <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
-  <span class="sty1120ScheduleHLNLtMargin2"/><span class="sty1120ScheduleHLNDesc">PSC's income tax return.  Keep Schedule H with the PSC's tax records.</span>
- <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;"/>
- <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;"/>
+  <span class="sty1120ScheduleHLNLtMargin2"/><span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;">PSC's income tax return.  Keep Schedule H with the PSC's tax records.</span>
+ <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;">&#160;</span>
+ <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
-  <span class="sty1120ScheduleHLNLtMargin" style="width:4mm"/>
-  <img src="{$ImagePath}/1120SchH_Bullet_Round.gif" width="4" height="7" alt="Bullet" style="float: left; clear: none"/>
-  <span class="sty1120ScheduleHLNDesc">If line 13 is <b>more than </b>line 4, the PSC's deduction for applicable amounts is limited</span>                 <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;"/>
- <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;"/>
+  <span class="sty1120ScheduleHLNLtMargin" style="width:4mm;"/>
+  <img src="{$ImagePath}/1120SchH_Bullet_Round.gif" width="4" height="7" alt="Bullet" style="float: left; clear: none;margin-left:2mm;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:1mm;">If line 13 is <b>more than </b>line 4, the PSC's deduction for applicable amounts is limited</span>                 <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;">&#160;</span>
+ <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc"> under section 280H.  Complete Part II to figure the maximum amount the PSC can deduct.</span>
-  <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;"/>
- <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;"> under section 280H.  Complete Part II to figure the maximum amount the PSC can deduct.</span>
+  <span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;">&#160;</span>
+ <span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;background-color:lightgrey;">&#160;</span>
 </div>
 <!--   END LINE 13   -->
 <!--  BEGIN PART II HEADER   -->
@@ -645,7 +646,7 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">14</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Enter amount from line 4
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Enter amount from line 4
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -678,7 +679,7 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">15</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Enter number of months in deferral period of applicable election year
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Enter number of months in deferral period of applicable election year
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -702,7 +703,7 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">16</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Divide line 14 by line 15
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Divide line 14 by line 15
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -735,11 +736,13 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">17</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc"><b>Nondeferral period.</b> Subtract the number of months in the deferral period from</span><span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px"/><span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;"><b>Nondeferral period.</b> Subtract the number of months in the deferral period from</span>
+  <span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px">&#160;</span>
+  <span class="sty1120ScheduleHLNBox" style="border-bottom-width: 0px;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc">the number of months in the applicable tax year.  Enter the result
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;">the number of months in the applicable tax year.  Enter the result
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -764,7 +767,7 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">18</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc">Multiply line 16 by line 17
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;">Multiply line 16 by line 17
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.
@@ -797,19 +800,19 @@
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLN">19</span>
   <span class="sty1120ScheduleHLNLtMargin"/>
-  <span class="sty1120ScheduleHLNDesc"><b> Maximum deductible amount.</b> <span style="width: 4px"/> Add lines 14 and 18.  The PSC's deduction for applicable </span><span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px"/><span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:2mm;"><b> Maximum deductible amount.</b> <span style="width: 4px"/> Add lines 14 and 18.  The PSC's deduction for applicable </span><span class="sty1120ScheduleHLNValBox" style="border-left-width:0px;border-bottom-width:0px">&#160;</span><span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc">amounts paid or incurred to employee-owners is limited to this amount. <b>Attach Schedule</b></span><span class="sty1120ScheduleHLNValBox" style="border-bottom-width:0px"/><span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;">amounts paid or incurred to employee-owners is limited to this amount. <b>Attach Schedule</b></span><span class="sty1120ScheduleHLNValBox" style="border-bottom-width:0px">&#160;</span><span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc"><b>H to the PSC's income tax return.</b> Any amount not allowed because of the section</span><span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px;"/><span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;"/>
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;"><b>H to the PSC's income tax return.</b> Any amount not allowed because of the section</span><span class="sty1120ScheduleHLNValBox" style="border-bottom-width: 0px;">&#160;</span><span class="sty1120ScheduleHLNBox" style="border-bottom-width:0px;">&#160;</span>
 </div>
 <div class="sty1120ScheduleHLineItem">
   <span class="sty1120ScheduleHLNLtMargin2"/>
-  <span class="sty1120ScheduleHLNDesc">280H(d) limitation is treated as paid or incurred in the PSC's succeeding tax year
+  <span class="sty1120ScheduleHLNDesc" style="padding-left:4mm;">280H(d) limitation is treated as paid or incurred in the PSC's succeeding tax year
   <b>
       <span class="sty1120ScheduleHNBSP"/>.
       <span class="sty1120ScheduleHNBSP"/>.

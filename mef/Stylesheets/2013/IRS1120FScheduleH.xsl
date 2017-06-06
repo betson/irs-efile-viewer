@@ -10,8 +10,10 @@
   <!-- Defines the stage of the data, e.g. original or latest -->
   <xsl:param name="FormData" select="$RtnDoc/IRS1120FScheduleH"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -119,10 +121,10 @@
           <!--End Name/EIN-->
           <!--Begin Part 1-->
           <!--Part 1 Header-->
-          <div class="styBB" style="width:187mm">
+          <div class="styBB" style="width:187mm;float:none;">
             <div class="styPartName">Part I</div>
-            <div class="styPartDesc">
-              Home Office Deductible Expenses Definitely Related Solely to ECI or Non?ECI
+            <div class="styPartDesc" style="height: auto;">
+              Home Office Deductible Expenses Definitely Related Solely to ECI or Non-ECI
               <br/>
               <span style="font-size:7pt">Note. 
                 <span style="font-weight:normal">
@@ -688,9 +690,9 @@
                 <!--Begin Part II-->
                 <!--Part II Header-->
                 <tr>
-                  <td class="styBB" colspan="6" style="border-top-width:1px">
+                  <td class="styBB" colspan="6" style="border-top-width:1px;float:none;">
                     <div class="styPartName">Part II</div>
-                    <div class="styPartDesc">
+                    <div class="styPartDesc" style="height: auto;">
                       Home Office Deductible Expenses Allocated and Apportioned to ECI<br/>
                       Note.<span style="font-weight:normal"> Enter the amounts on lines 15 through 20 in U.S. dollars.</span>
                     </div>
@@ -753,11 +755,9 @@
                   <td class="sty1120FSchHLNRightNumBox">15</td>
                   <td class="sty1120FSchHLNAmountBox" style="font-size:6pt">
                     <span style="width:1px"/>
-                    <xsl:if test="$FormData/USDollarsInd">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormData/RemainingDedExpnssECIUSDolAmt"/>
                       </xsl:call-template>
-                    </xsl:if>
                     </td>
                 </tr>
                 <!--L16-->
@@ -766,22 +766,18 @@
                   <td class="sty1120FSchHLNDesc" colspan="3" scope="row">
                     Remaining home office deductible expenses on line 15 allocated and apportioned under Regulations
                     <span style="float:left;">section 1.861&#151;8 to ECI (attach computation)
-                     <xsl:if test="$FormData/USDollarsInd">
                       <xsl:call-template name="SetFormLinkInline">
                         <xsl:with-param name="TargetNode" select="$FormData/RemainingDedExpnssSect18618Amt"/>
                       </xsl:call-template>
-                    </xsl:if>
                     </span>
                     <span class="styDotLn" style="float:right;letter-spacing:4mm;font-weight:bold;padding-right:0.5mm;">..............</span>
                   </td>
                   <td class="sty1120FSchHLNRightNumBox">16</td>
                   <td class="sty1120FSchHLNAmountBox" style="font-size:6pt;padding-top:3.5mm">
                     <span style="width:1px"/>
-                    <xsl:if test="$FormData/USDollarsInd">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormData/RemainingDedExpnssSect18618Amt"/>
                       </xsl:call-template>
-                    </xsl:if>
                      </td>
                 </tr>
                 <!--L17-->
@@ -794,11 +790,9 @@
                   <td class="sty1120FSchHLNRightNumBox">17</td>
                   <td class="sty1120FSchHLNAmountBox" style="font-size:6pt">
                     <span style="width:1px"/>
-                    <xsl:if test="$FormData/USDollarsInd">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormData/DeductibleExpensesECIUSDolAmt"/>
                       </xsl:call-template>
-                    </xsl:if>
                     </td>
                 </tr>
                 <!--L18-->
@@ -811,11 +805,9 @@
                   <td class="sty1120FSchHLNRightNumBox">18</td>
                   <td class="sty1120FSchHLNAmountBox" style="font-size:6pt">
                     <span style="width:1px"/>
-                    <xsl:if test="$FormData/USDollarsInd">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormData/TotalHomeOfficeDedAllocECIAmt"/>
                       </xsl:call-template>
-                    </xsl:if>
                     </td>
                 </tr>
                 <!--L19-->
@@ -833,11 +825,9 @@
                   <td class="sty1120FSchHLNRightNumBox">19</td>
                   <td class="sty1120FSchHLNAmountBox" style="font-size:6pt">
                     <span style="width:1px"/>
-                    <xsl:if test="$FormData/USDollarsInd">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormData/TotalDedOthNonUSLocAllocECIAmt"/>
                       </xsl:call-template>
-                    </xsl:if>
                     </td>
                 </tr>
                 <!--L20-->
@@ -851,11 +841,9 @@
                   <td class="sty1120FSchHLNRightNumBoxNBB">20</td>
                   <td class="sty1120FSchHLNAmountBoxNBB" style="padding-top:3.5mm;font-size:6pt">
                     <span style="width:1px"/>
-                    <xsl:if test="$FormData/USDollarsInd">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormData/TotDedExpnssAllocApprtnECIAmt"/>
                       </xsl:call-template>
-                    </xsl:if>
                     </td>
                 </tr>
                 <!--End L13-20-->
@@ -863,9 +851,9 @@
                 <!--Begin Part III-->
                 <!--Part III Header-->
                 <tr>
-                  <td class="styBB" colspan="6" style="border-top-width:1px">
+                  <td class="styBB" colspan="6" style="border-top-width:1px;float:none;">
                     <div class="styPartName">Part III</div>
-                    <div class="styPartDesc">
+                    <div class="styPartDesc" style="height: auto;">
                      Allocation and Apportionment Methods and Financial Records Used to Complete Parts I and II<br/>
                       Note.<span style="font-weight:normal"> Enter the amounts in Part III, lines 21a, 21b, 22a, and 22b in U.S. dollars.</span>
                     </div>
@@ -873,7 +861,7 @@
                 </tr>
                 <!--Part III Notes-->
                 <tr>
-                  <td class="styBB" colspan="6" style="padding-top:1mm">
+                  <td class="styBB" colspan="6" style="padding-top:1mm;float:none;">
                     <div style="float:right;clear:none">
                       <span style="letter-spacing:4mm;font-weight:bold">..................</span>
                       <span style="width:2mm"/>
@@ -1123,7 +1111,7 @@
             </table>
           </div>
           <!--Begin L24-25-->
-          <div class="styBB" style="width:187mm">
+          <div class="styBB" style="width:187mm;float:none;">
             <table cellpadding="0" cellspacing="0" style="width:187mm;font-size:7pt">
               <tbody>
                 <!--L24 R1-->
@@ -1199,7 +1187,7 @@
           <!-- End Page 1 Footer-->
           <!--BEGIN PAGE 2-->
           <!--Page 2 Header-->
-          <div class="styTBB" style="width:187mm">
+          <div class="styTBB" style="width:187mm;float:none;">
             <div style="float:right;clear:none">
               Page <span style="font-size:8pt;font-weight:bold">2</span>
             </div>
@@ -1208,7 +1196,7 @@
           <!--Part III Header Continued-->
           <div style="width:187mm">
             <div class="styPartName">Part III</div>
-            <div class="styPartDesc">
+            <div class="styPartDesc"  style="height: auto;">
              Allocation and Apportionment Methods and Financial Records Used to Complete
              Parts I and II <span style="font-weight:normal">
                 <i>(continued)</i>
@@ -1323,7 +1311,7 @@
           <!--Part IV Header-->
           <div class="styBB" style="width:187mm">
             <div class="styPartName">Part IV</div>
-            <div class="styPartDesc" style="font-size:7.5pt;">
+            <div class="styPartDesc" style="font-size:7.5pt;height:auto;">
             Allocation and Apportionment of Expenses on Books and Records Used to Prepare Form 1120F, Schedule L<br/>
             Note.<span style="font-weight:normal"> Enter all amounts in Part IV in U.S. dollars.</span>
             </div>

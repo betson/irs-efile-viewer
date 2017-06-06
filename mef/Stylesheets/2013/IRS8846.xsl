@@ -4,6 +4,7 @@
 <!--Updated per UWR 56925 on 08/23/2012 Changed element at line 4 to EmpWagesExceededMaxAmtInd By Robert Jones -->
 <!--Updated per IBM Defect  33282 on 12/04/2012 Changed element at line 4 to EmpWagesExceededMaxAmtInd By Robert Jones Looks like code overwritten at some point with older code-rlj -->
 <!--Updated per IBM Defect  38275 on 10/08/2013 Changed link verbiage attop of form to match PDF-rlj -->
+<!--Updated per IBM Defect  42749 on 06/02/2015 Additional Data not on page by itself-rlj -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -14,8 +15,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form8846Data" select="$RtnDoc/IRS8846"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8846Data)"/>
@@ -48,7 +51,7 @@
           <xsl:call-template name="DocumentHeader"/>
           <!-- Begin Form Number and Name -->
           <div class="styBB" style="width:187mm;">
-            <div class="styFNBox" style="width:31mm;height:21mm;">
+            <div class="styFNBox" style="width:31mm;height:auto;">
             Form <span class="styFormNumber">8846</span>
               <br/>
               <br/>
@@ -58,11 +61,11 @@
                 <span class="styAgency">Internal Revenue Service</span>
               </div>
             </div>
-            <div class="styFTBox" style="width:125mm;height:13mm;padding-top:2mm;">
+            <div class="styFTBox" style="width:125mm;height:auto;padding-top:2mm;">
               <div class="styMainTitle">
           	Credit for Employer Social Security and Medicare Taxes<br/>
           	Paid on Certain Employee Tips      
-                 <div class="styFST" style="height:5mm;font-size:7pt;">
+                 <div class="styFST" style="height:auto;font-size:7pt;">
                  <img src="{$ImagePath}/8846_Bullet_Md.gif" width="4" height="7" alt="Bullet Image"/>
               Attach to your tax return.<br/>
                 <img src="{$ImagePath}/8846_Bullet_Md.gif" width="4" height="7" alt="Bullet Image"/>
@@ -74,9 +77,9 @@
             </div>
             </div>
             <!-- This can be taken out later -->
-            <div class="styTYBox" style="width:30mm;height:21mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-1414</div>
-              <div class="styTY" style="height:7.5mm;font-size:24pt;">
+            <div class="styTYBox" style="width:30mm;height:auto;">
+              <div class="styOMB" style="height:auto;">OMB No. 1545-1414</div>
+              <div class="styTY" style="height:auto;font-size:24pt;">
            20<span class="styTYColor">13</span>
               </div>
               <div class="stySequence">Attachment<br/>Sequence No. <b>98</b>
@@ -86,7 +89,7 @@
           <!-- End Form Number and Name section -->
           <!-- Begin Names and Identifying number section -->
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:156mm;height:8mm;font-weight:normal;font-size:7pt;">
+            <div class="styNameBox" style="width:156mm;height:auto;font-weight:normal;font-size:7pt;">
             Name(s) shown on return
             <br/>
               <div style="font-family:verdana;font-size:6pt;height:6.25mm">
@@ -110,7 +113,7 @@
 			   </xsl:choose>
               </div>
             </div>
-            <div class="styEINBox" style="width:30mm;height:4mm;padding-left:2mm;font-size:7pt;">
+            <div class="styEINBox" style="width:30mm;height:auto;padding-left:2mm;font-size:7pt;">
               Identifying number<br/>
               <br/>
               <span style="font-weight:normal;">
@@ -244,7 +247,7 @@
               Credit for employer social security and Medicare taxes paid on certain employee tips from partnerships 
               <span style="float:left;">and S corporations </span>
   		 <!--Dotted Line-->
-              <span class="styDotLn" style="float:right;padding-right:1mm;">............................</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">...................</span>
               </div>
               <div class="styLNRightNumBox" style="height:8mm;padding-top:0mm;">
                 <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;"/>
@@ -265,7 +268,7 @@
                 Add lines 4 and 5. Partnerships and S corporations, report this amount on Schedule K. All others,  
               <span style="float:left;">report this amount on Form 3800, line 4f </span>
 		<!--Dotted Line-->
-            <span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
+            <span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
               </div>
               </div>
               <div class="styLNRightNumBox" style="height:9.5mm;padding-top:0mm;border-bottom-width:0px;">
@@ -441,7 +444,7 @@
                 Form <span class="styBoldText">8846</span> (2013)
             </div>
           <!--Page End break -->
-          <br class="pageEnd"/>
+          <div class="pageEnd"/>
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -464,6 +467,8 @@
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
           </table>
+          <br/>
+		<br/>
           <!-- END Left Over Table -->
         </form>
       </body>

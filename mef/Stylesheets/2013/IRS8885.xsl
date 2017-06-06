@@ -94,8 +94,10 @@
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8885Data)"/>
@@ -124,7 +126,7 @@
 				<form name="IRS8885">
 					<!--  Begin Header section 1 -->
 					<xsl:call-template name="DocumentHeader"/>
-					<div class="styBB" style="width:187mm;border-bottom-width:2px;height:21mm;">
+					<div class="styBB" style="width:187mm;border-bottom-width:2px">
 						<div class="styFNBox" style="width:31mm;height:100%;border-right-width:2px;">
 							<div style="height:13mm;">
 								Form<span class="styFormNumber">  8885</span>
@@ -161,7 +163,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:31mm;border-left-width:2px;height:100%;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+							<div class="styOMB" style="height:4mm;font-size:7pt;">OMB No. 1545-0074</div>
 							<div class="styTaxYear" style="font-size:21pt;">20<span class="styTYColor" style="font-size:21pt">13</span>
 							</div>
 							<div class="stySequence">Attachment<br/>Sequence No. <b style="font-size:8pt">134</b>
@@ -170,7 +172,7 @@
 					</div>
 					<!--  End Header section 1 -->
 					<!-- Begin Names and Identifying number section -->
-					<div class="styTBB" style="width:187mm;">
+					<div class="styTBB" style="width:187mm">
 						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
 							Name of recipient (if both spouses are recipients, complete a separate form for each spouse)<br/>
 							<xsl:choose>
@@ -205,7 +207,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="styTBB" style="width:187mm">
+					<div class="styTBB" style="width:187mm;height:20mm;">
 						<div class="styIRS8885LineItem" style="padding-top:1.5mm;padding-bottom:1mm;">
 							<div class="styIRS8885CleanDiv" style="height:100%;width:auto;">
 								<img src="{$ImagePath}/8885_Caution.gif" alt="Caution"/>
@@ -219,7 +221,7 @@
 					<!-- Begin Part I																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;padding:0px 0px 0px 0px;" class="styBB">
+					<div style="width:187mm;padding:0px 0px 0px 0px;height:4mm;" class="styBB">
 						<!-- Content -->
 						<div class="styPartName" style="width:15mm;">Part I</div>
 						<div class="styPartDesc" style="padding-left:3mm;font-size:8.5pt;">
@@ -227,7 +229,7 @@
 						</div>
 					</div>
 					<!-- Body -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;height:75mm">
 						<!-- (1) ////////////////////////////////////////////////////-->
 						<div class="styIRS8885LineItem">
 							<div class="styIRS8885LNLeftNumBox">1</div>
@@ -366,7 +368,7 @@
 					<!-- Body -->
 						<!-- (Column Headers) ////////////////////////////////////////////////////-->
 						<!-- (2) //////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="height:14mm;width:187mm;">
+						<div class="styGenericDiv" style="height:16mm;width:187mm;">
 							<div class="styLNLeftNumBoxSD" style="height:100%;width:6mm">2</div>
 							<div class="styGenericDiv" style="padding-left:2mm;padding-right:1mm;width:138.6mm;padding-top:0.5mm;">
 								Enter the total amount paid directly to your health plan for qualified health insurance coverage for <br/>
@@ -377,41 +379,41 @@
 								<!--Dotted Line-->
 								<span class="styBoldText" style="float:right;letter-spacing:12px;padding-right:3mm;">.......</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:14mm;"><br/><br/><br/><br/>2</div>
-							<div class="styLNAmountBox" style="height:14mm;width:34mm;"><br/><br/><br/><br/>
+							<div class="styLNRightNumBox" style="height:16mm;"><br/><br/><br/><br/>2</div>
+							<div class="styLNAmountBox" style="height:16mm;width:34mm;"><br/><br/><br/><br/>
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8885Data/HealthPlanPaidAmt"/>
 								</xsl:call-template>
 							</div>
 						</div>
 						<!-- (Caution) ////////////////////////////////////////////////////-->
-						<div class="styGenericDiv" style="width:187mm;height:15mm;">
+						<div class="styGenericDiv" style="width:187mm;height:16mm;">
 							<div class="styLNLeftNumBoxSD" style="width:6mm"/>
 							<div class="styGenericDiv" style="padding-left:2mm;width:20mm;">
 								<img src="{$ImagePath}/8863_Caution.gif" alt="Caution" width="50" height="50"/>
 							</div>
-							<div class="styGenericDiv" style="padding-left:0mm;padding-top:2mm;width:118.5mm;">
+							<div class="styGenericDiv" style="padding-left:0mm;padding-left:1mm;padding-top:2mm;width:118.6mm;">
 								<span class="styItalicText">
 									You <b>must</b> attach the required documents listed in the instructions for any
 									amounts included on line 2. If you do not attach the required documents,
 									your credit will be disallowed.
 								</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:15mm;border-bottom-width:0"/>
-							<div class="styLNAmountBox" style="height:15mm;width:34mm;padding-bottom:0;border-bottom-width:0">
+							<div class="styLNRightNumBox" style="height:16mm;border-bottom-width:0"/>
+							<div class="styLNAmountBox" style="height:16mm;width:34mm;padding-bottom:0;border-bottom-width:0">
 							</div>
 						</div>
 						<!--(3) /////////////////////////////////////////////////// -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBoxSD" style="height:100%;width:6mm">3</div>
+							<div class="styLNLeftNumBoxSD" style="height:auto;width:6mm">3</div>
 							<div class="styGenericDiv" style="padding-left:2mm;padding-right:1mm;width:138.6mm;padding-top:0.5mm;">
 								Enter the total amount of any Archer MSA or health savings accounts distributions used to pay for <br/>
 								<span style="float:left;">qualified health insurance coverage for the months checked on line 1</span>
 								<!--Dotted Line-->
 								<span class="styBoldText" style="float:right;letter-spacing:12px;padding-right:3mm;">...........</span>
 							</div>
-							<div class="styLNRightNumBox" style=""><br/>3</div>
-							<div class="styLNAmountBox" style="width:34mm"><br/>
+							<div class="styLNRightNumBox" style="height:auto"><br/>3</div>
+							<div class="styLNAmountBox" style="height:auto;width:34mm"><br/>
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8885Data/HealthPlanPaidWithMSAOrHSAAmt"/>
 								</xsl:call-template>
@@ -443,8 +445,8 @@
 								<!--Dotted Line-->
 								<span class="styBoldText" style="float:right;letter-spacing:12px;padding-right:3mm;">......</span>
 							</div>
-							<div class="styLNRightNumBox" style="border-bottom-width:0;"><br/><br/><br/>5</div>
-							<div class="styLNAmountBox" style="width:34mm;border-bottom-width:0;"><br/><br/><br/>
+							<div class="styLNRightNumBox" style="border-bottom-width:0;;height:auto"><br/><br/><br/>5</div>
+							<div class="styLNAmountBox" style="width:34mm;border-bottom-width:0;;height:auto"><br/><br/><br/>
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8885Data/HealthCoverageTaxCreditAmt"/>
 								</xsl:call-template>
@@ -469,13 +471,13 @@
 					</div>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Additonal Data Title Bar and Button -->
-					<div class="styLeftOverTitleLine" id="LeftoverData" style="padding-top:5mm;">
-						<div class="styLeftOverTitle">
-							Additional Data        
-						</div>
-						<div class="styLeftOverButtonContainer">
-							<input class="styLeftoverTableBtn" type="button" TabIndex="-1" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
-						</div>
+					<div class="styLeftOverTitleLine" id="LeftoverData" style="display:inline-block;padding-top:5mm;">
+						<span class="styLeftOverTitle">
+							Additional Data
+						</span>
+						<span class="styLeftOverButtonContainer" style="float:right">
+							<input class="styLeftoverTableBtn" type="button" TabIndex="-1" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>							
+						</span>
 					</div>
 					<!-- Additional Data Table -->
 					<xsl:variable name="TableWidth">100</xsl:variable>

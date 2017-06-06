@@ -20,7 +20,7 @@
   
   .styIRS2106SSNBox{ /* Line description for the various tables in this form*/
     width:35mm;
-    height:8mm;
+    height:9mm;
     font-size:7pt;
     font-weight: bold;
     padding-left:2mm;

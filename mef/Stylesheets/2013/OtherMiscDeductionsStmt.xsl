@@ -17,8 +17,10 @@
   <!-- Main template end-->
   <xsl:template match="/" >
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
            <title><xsl:value-of select="$depDocTitle" /></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache" />
@@ -52,8 +54,8 @@
     	   <table id="OtherMiscDeductionsStmtTbl" class="styDepTbl">
         	<thead class="styTableThead">
         		<tr class="styDepTblHdr">
-           		    <th class="styDepTblCell"  scope="col" style="width: 60mm;text-align:left">Type Of Miscellaneous Deduction</th>
-           		    <th class="styDepTblCell"  scope="col" style="width: 60mm;text-align:left">Miscellaneous Deduction Amount</th>
+           		    <th class="styDepTblCell"  scope="col" style="width: 60mm;">Type Of Miscellaneous Deduction</th>
+           		    <th class="styDepTblCell"  scope="col" style="width: 60mm;">Miscellaneous Deduction Amount</th>
            		</tr>
       	</thead>
       	<xsl:for-each select="$DependencyData/MiscellaneousDeduction">
@@ -69,9 +71,9 @@
                 		       <xsl:with-param name="TargetNode" select="TypeOfMiscellaneousDeduction" />
            			    </xsl:call-template>
          			</td>   
-         			<td class="styDepTblCell" style="text-align:left;" >
-            			<xsl:call-template name="PopulateText">          
-                 			<xsl:with-param name="TargetNode" select="MiscellaneousDeductionAmount" />
+         			<td class="styDepTblCell" style="text-align:right;" >
+            			<xsl:call-template name="PopulateAmount">          
+                 			<xsl:with-param name="TargetNode" select="MiscellaneousDeductionAmt" />
             			</xsl:call-template>
           		    </td>         
          	</tr>

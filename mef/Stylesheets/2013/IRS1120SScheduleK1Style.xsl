@@ -96,6 +96,7 @@
   border-left: 0px;
   border-right: 1px solid black;
   margin-top: 0mm;
+  margin-bottom: -1mm;
 }
 .IRS1120SScheduleK1_amountBox
 {

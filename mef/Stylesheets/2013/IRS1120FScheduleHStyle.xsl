@@ -20,7 +20,7 @@
     .sty1120FSchHFTBox {   /* 1120F Schedule H Form Title Box*/
       font-size:7pt;
       text-align: center;
-      float: left; clear: none;
+      clear: none;
     }
       
     .sty1120FSchHMainTitle {   /* Form Main Title */

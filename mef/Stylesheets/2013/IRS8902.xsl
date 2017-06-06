@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS8902"/>
 	<xsl:template match="/">
-		<html xmlns="http://www.irs.gov/efile" xmlns:efile="http://www.irs.gov/efile">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -26,11 +28,11 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-<!--					<xsl:if test="not($Print) or $Print=''">
--->						<xsl:call-template name="IRS8902Style"/>
+					<xsl:if test="not($Print) or $Print=''">
+						<xsl:call-template name="IRS8902Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-<!--					</xsl:if>
--->				</style>
+					</xsl:if>
+				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
 			
@@ -73,8 +75,8 @@
 						</div>
 					</div>
 					<!-- Parent Corporation Name and EIN -->
-					<div class="styBB" style="width:187mm;border-top-width:1px;">
-						<div class="styNameBox" style="width:133mm;">Name of corporation (common parent, if consolidated return)<br/>
+					<div class="styBB" style="width:187mm;border-top-width:1px;height:12mm">
+						<div class="styNameBox" style="width:133mm;height:100%">Name of corporation (common parent, if consolidated return)<br/>
 							<span style="font-size:7pt;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -96,8 +98,8 @@
 						</div>
 					</div>
 					<!--Subsidiary Name and EIN -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:133mm;">Name of subsidiary (if consolidated return)<br/>
+					<div class="styBB" style="width:187mm;height:13mm">
+						<div class="styNameBox" style="width:133mm;height:100%">Name of subsidiary (if consolidated return)<br/>
 							<span style="font-size:7pt;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/SubsidiaryBusinessName/BusinessNameLine1"/>
@@ -134,7 +136,7 @@
 					</div>
 					<div style="width:187mm;">
 						<div class="styGenericDiv" style="width:7mm;padding-top:3mm;">
-							<input alt="IRS8902PriorTaxYearElection" type="checkbox" class="sty6Ckbox">
+							<input alt="IRS8902PriorTaxYearElection" type="checkbox" class="sty6Ckbox" style="width:4mm;height:4mm">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/PriorTaxYearElectionInd"/>
 									<xsl:with-param name="backupName">IRS8902PriorTaxYearElection</xsl:with-param>
@@ -170,7 +172,7 @@
 					<br/>
 					<div style="width:187mm;">
 						<div class="styGenericDiv" style="width:7mm;">
-							<input alt="IRS8902CurrentSubsequentTYElection" type="checkbox" class="sty6Ckbox">
+							<input alt="IRS8902CurrentSubsequentTYElection" type="checkbox" class="sty6Ckbox" style="width:4mm;height:4mm">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/CurrentSubsequentTYElectInd"/>
 									<xsl:with-param name="backupName">IRS8902CurrentSubsequentTYElection</xsl:with-param>
@@ -191,7 +193,7 @@
 					<br/>
 					<div style="width:187mm;">
 						<div class="styGenericDiv" style="width:7mm;">
-							<input alt="IRS8902RevokingElection" type="checkbox" class="sty6Ckbox">
+							<input alt="IRS8902RevokingElection" type="checkbox" class="sty6Ckbox" style="width:4mm;height:4mm">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/RevokingElectionInd"/>
 									<xsl:with-param name="backupName">IRS8902RevokingElection</xsl:with-param>
@@ -227,7 +229,7 @@
 					<br/>
 					<div class="styBB" style="width:187mm;">
 						<div class="styGenericDiv" style="width:7mm;">
-							<input alt="IRS8902ElectAutomaticallyTerminated" type="checkbox" class="sty6Ckbox">
+							<input alt="IRS8902ElectAutomaticallyTerminated" type="checkbox" class="sty6Ckbox" style="width:4mm;height:4mm">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$FormData/ElectionAutomaticallyTermInd"/>
 									<xsl:with-param name="backupName">IRS8902ElectAutomaticallyTerminated</xsl:with-param>
@@ -274,7 +276,7 @@
 			...................
 		</span>
 							<span style="width:13mm;padding-top:1mm;">
-								<input type="checkbox" class="sty6Ckbox" name="Checkbox">
+								<input type="checkbox" class="sty6Ckbox" name="Checkbox" style="width:4mm;height:4mm">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/MemberElectingGroupInd"/>
 										<xsl:with-param name="BackupName">MemberOfElectingGroup</xsl:with-param>
@@ -290,7 +292,7 @@
 							</span>
 							<span style="width:7mm;"/>
 							<span style="width:12.5mm;padding-top:1mm;">
-								<input type="checkbox" class="sty6Ckbox" name="Checkbox">
+								<input type="checkbox" class="sty6Ckbox" name="Checkbox" style="width:4mm;height:4mm">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/MemberElectingGroupInd"/>
 										<xsl:with-param name="BackupName">MemberOfElectingGroup</xsl:with-param>
@@ -311,7 +313,7 @@
 							<div class="styGenericDiv" style="width:4mm;"/>
 							<div class="styIRS8902LeftLtr" style=""/>
 							<div style="float:left;">
-     			If “No,᾿ skip item F and go to item G.
+     			If "No," skip item F and go to item G.
      	</div>
 						</div>
 					</div>
@@ -322,11 +324,11 @@
 						<div class="styIRS8902LeftLtr">F</div>
 						<!-- F-->
 						<div style="float:left;">
-         		If the answer to item E is “Yes᾿:
+         		If the answer to item E is "Yes":
      </div>
 					</div>
 					<div class="IRS8902Container" style="padding-top:2mm;">
-						<div class="IRS8902Index">(1)</div>
+						<div class="IRS8902Index" style="width:18mm">(1)</div>
 						<!-- 1-->
 						<div class="IRS8902LongDesc" style="width:66mm;border-right-width:0px;">
 			How many corporations are in the electing group?
@@ -344,7 +346,7 @@
 						</div>
 					</div>
 					<div class="IRS8902Container" style="padding-top:1.5mm;">
-						<div class="IRS8902Index">(2)</div>
+						<div class="IRS8902Index" style="width:18mm">(2)</div>
 						<!-- 2-->
 						<div class="IRS8902LongDesc" style="width:103mm;border-right-width:0px;">
 			Enter the number of vessels included under the election for the electing group 
@@ -362,7 +364,7 @@
 						</div>
 					</div>
 					<div style="width:187mm;padding-top:1.5mm;">
-						<div class="IRS8902Index" style="">(3)</div>
+						<div class="IRS8902Index" style="width:18mm">(3)</div>
 						<div class="IRS8902LongDesc" style="width:134mm;border-right-width:0px;">
 		Does any member of the electing group have income from qualifying secondary activities or
 	</div>
@@ -374,12 +376,12 @@
 					qualifying incidental activities?
 				</span>
 						</span>
-						<div style="float:right;">
+						<div style="float:none;">
 							<span class="styDotLn" style="padding-top:1mm;">  
-			......................
+			.......................
 		</span>
-							<span class="styGenericDiv" style="width:13mm;margin-right:1mm;padding-top:0mm;">
-								<input type="checkbox" class="sty6Ckbox" name="Checkbox">
+							<span class="styGenericDiv" style="width:18mm;margin-right:1mm;padding-top:0mm;margin-left:2mm;">
+								<input type="checkbox" class="sty6Ckbox" name="Checkbox" style="width:4mm;height:4mm">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/SecondaryOrIncdtlActyIncInd"/>
 										<xsl:with-param name="BackupName">IRS8902IncomeFromSecIncidentalActy</xsl:with-param>
@@ -394,8 +396,8 @@
         </label>
 							</span>
 							<span class="styGenericDiv" style="width:7mm;padding-top:0mm;"/>
-							<span class="styGenericDiv" style="width:12.5mm;margin-right:1mm;padding-top:0mm;">
-								<input type="checkbox" class="sty6Ckbox" name="Checkbox">
+							<span class="styGenericDiv" style="width:12.5mm;margin-left:1mm;padding-top:0mm;">
+								<input type="checkbox" class="sty6Ckbox" name="Checkbox" style="width:4mm;height:4mm">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/SecondaryOrIncdtlActyIncInd"/>
 										<xsl:with-param name="BackupName">IRS8902IncomeFromSecIncidentalActy</xsl:with-param>
@@ -447,7 +449,7 @@
 						</div>
 					</div>
 					<div class="IRS8902Container" style="padding-top:1.5mm;">
-						<div class="IRS8902Index">(2)</div>
+						<div class="IRS8902Index" style="width:18mm;">(2)</div>
 						<!-- 2-->
 						<div class="IRS8902LongDesc" style="width:44mm;border-right-width:0px;">
 			Qualifying secondary activities:
@@ -488,7 +490,7 @@
 						</div>
 					</div>
 					<div class="IRS8902Container" style="padding-top:1.5mm;">
-						<div class="IRS8902Index">(3)</div>
+						<div class="IRS8902Index" style="width:18mm;">(3)</div>
 						<!-- 3-->
 						<div class="IRS8902LongDesc" style="width:42mm;border-right-width:0px;">
 			Qualifying incidental activities:
@@ -560,6 +562,9 @@
   		<span style="font-weight:bold;">8902</span> (12-2007)
   	</div>
 					</div>
+					<!-- END of Page 1 -->
+					<div class="pageEnd" style="width:187mm;"/>
+					<br></br>
 					<!--Page 2 start-->
 					<div class="styGenericDiv" style="width:187mm;padding-bottom:.5mm;">
 						<div style="float:left">Form 8902 (12-2007)</div>
@@ -573,13 +578,13 @@
 						<xsl:for-each select="$FormData/VesselInformation">
 							<xsl:variable name="pos" select="position()"/>
 							<xsl:if test="position() mod 4 = 1">
-								<div class="styBB" style="width:187mm;border-top-width:2px;padding-bottom:1.5mm;padding-top:1.5mm;border-color;red;">
+								<div class="styBB" style="width:187mm;border-top-width:1px;padding-bottom:1.5mm;padding-top:1.5mm;border-color;red;">
 									<span class="styPartName" style="width:16mm;">Part III</span>
 									<span style="width:151mm;" class="styPartDesc"> Vessel Information
   </span>
 								</div>
 								<div class="sty8902TableContainerNBB">
-									<table class="styTable" cellspacing="0" style="font-size:7pt;">
+									<table class="styTable" cellspacing="0" style="font-size:7pt;border-color:black;">
 										<tr>
 											<th style="width:58mm;border:none;text-align:center;padding-left:6mm;font-weight:medium;">
                   Description
@@ -1188,25 +1193,25 @@
 													</div>
 												</div>
 											</td>
-											<td class="styTableCell" style="border-left-width:1px;text-align:center;">
+											<td class="styTableCell" style="border-left-width:1px;text-align:center;border-bottom-width: 0px;">
 												<span class="styTableCellPad"/>
 												<xsl:call-template name="PopulateMonthDayYear">
 													<xsl:with-param name="TargetNode" select="PlacedInServiceDt"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCell" style="text-align:center;">
+											<td class="styTableCell" style="text-align:center;border-bottom-width: 0px;">
 												<span class="styTableCellPad"/>
 												<xsl:call-template name="PopulateMonthDayYear">
 													<xsl:with-param name="TargetNode" select="$FormData/VesselInformation[$pos + 1]/PlacedInServiceDt"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCell" style="text-align:center;">
+											<td class="styTableCell" style="text-align:center;border-bottom-width: 0px;">
 												<span class="styTableCellPad"/>
 												<xsl:call-template name="PopulateMonthDayYear">
 													<xsl:with-param name="TargetNode" select="$FormData/VesselInformation[$pos + 2]/PlacedInServiceDt"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCell" style="text-align:center;">
+											<td class="styTableCell" style="text-align:center;border-bottom-width: 0px;">
 												<span class="styTableCellPad"/>
 												<xsl:call-template name="PopulateMonthDayYear">
 													<xsl:with-param name="TargetNode" select="$FormData/VesselInformation[$pos + 3]/PlacedInServiceDt"/>
@@ -1222,13 +1227,13 @@
 					<!-- Part III empty table Begin -->
 					<xsl:if test="(count($FormData/VesselInformation) &lt; 1) or (($Print = $Separated) and (count($FormData/VesselInformation) &gt; 4))">
 						<!-- Populating columns of property data -->
-						<div class="styBB" style="width:187mm;border-top-width:2px;padding-bottom:1.5mm;padding-top:1.5mm;border-color;red;">
+						<div class="styBB" style="width:187mm;border-top-width:1px;padding-bottom:1.5mm;padding-top:1.5mm;border-color;red;">
 							<span class="styPartName" style="width:16mm;">Part III</span>
 							<span style="width:151mm;" class="styPartDesc"> Vessel Information
   </span>
 						</div>
 						<div class="sty8902TableContainerNBB">
-							<table class="styTable" cellspacing="0" style="font-size:7pt;">
+							<table class="styTable" cellspacing="0" style="font-size:7pt;border-color:black;">
 								<tr>
 									<th style="width:58mm;border:none;text-align:center;padding-left:6mm;font-weight:medium;">
                   Description
@@ -1516,16 +1521,16 @@
 											</div>
 										</div>
 									</td>
-									<td class="styTableCell" style="border-left-width:1px;">
+									<td class="styTableCell" style="border-left-width:1px;border-bottom-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell">
+									<td class="styTableCell;" style="border-left-width:1px;border-bottom-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell">
+									<td class="styTableCell" style="border-left-width:1px;border-bottom-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell">
+									<td class="styTableCell" style="border-left-width:1px;border-bottom-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
 								</tr>
@@ -1533,21 +1538,21 @@
 						</div>
 					</xsl:if>
 					<!-- Part III empty table End -->
-					<!-- Part IV -->
+					<!-- Part IV -->											
 					<!-- Part IV Repeating table Begin -->
 					<xsl:if test="$FormData/NotionalShippingIncome and ($Print != $Separated or count($FormData/NotionalShippingIncome ) &lt;= 4)">
 						<!-- Populating columns of property data -->
 						<xsl:for-each select="$FormData/NotionalShippingIncome ">
 							<xsl:variable name="pos" select="position()"/>
 							<xsl:if test="position() mod 4 = 1">
-								<div class="styBB" style="width:187mm;border-top-width:2px;padding-bottom:1.5mm;padding-top:1.5mm;">
+								<div class="styBB" style="width:187mm;border-top-width:1px;padding-bottom:1.5mm;padding-top:1.5mm;">
 									<span class="styPartName" style="width:16mm;">Part IV</span>
 									<span style="width:151mm;" class="styPartDesc"> Notional Shipping Income
    </span>
 								</div>
 								<!-- Notational Shipping Income Table begin -->
 								<div class="sty8902TableContainerNBB">
-									<table class="styTable" cellspacing="0" style="font-size:7pt;">
+									<table class="styTable" cellspacing="0" style="font-size:7pt;border-color:black;">
 										<tr>
 											<th style="width:58mm;border:none;text-align:center;padding-left:6mm;font-weight:medium;"/>
 											<td class="styTableCell" style="text-align:center;font-weight:bold;border-left-width:1px;">
@@ -1981,7 +1986,7 @@
 	   through 27. Otherwise, skip lines 23 through 27 and enter the amount from line 22 on line 28.
 </div>
 								<div class="sty8902TableContainerNBB">
-									<table class="styTable" cellspacing="0" style="font-size:7pt;">
+									<table class="styTable" cellspacing="0" style="font-size:7pt;border-color:black;">
 										<tr>
 											<th style="width:58mm;border:none;text-align:center;padding-left:6mm;font-weight:medium;"/>
 											<td class="styTableCell" style="text-align:center;font-weight:bold;border-left-width:1px;">
@@ -2265,13 +2270,13 @@
 					<!-- Part IV Repeating table End -->
 					<!-- Part IV Empty table Begin -->
 					<xsl:if test="(count($FormData/NotionalShippingIncome ) &lt; 1) or (($Print = $Separated) and (count($FormData/NotionalShippingIncome ) &gt; 4))">
-						<div class="styBB" style="width:187mm;border-top-width:2px;padding-bottom:1.5mm;padding-top:1.5mm;">
+						<div class="styBB" style="width:187mm;border-top-width:1px;padding-bottom:1.5mm;padding-top:1.5mm;">
 							<span class="styPartName" style="width:16mm;">Part IV</span>
 							<span style="width:151mm;" class="styPartDesc"> Notional Shipping Income
    </span>
 						</div>
 						<div class="sty8902TableContainerNBB">
-							<table class="styTable" cellspacing="0" style="font-size:7pt;">
+							<table class="styTable" cellspacing="0" style="font-size:7pt;border-color:black;">
 								<tr>
 									<th style="width:58mm;border:none;text-align:center;padding-left:6mm;font-weight:medium;"/>
 									<td class="styTableCell" style="text-align:center;font-weight:bold;border-left-width:1px;">A<span class="styTableCellPad"/>
@@ -2568,7 +2573,7 @@
 	   through 27. Otherwise, skip lines 23 through 27 and enter the amount from line 22 on line 28.
 </div>
 						<div class="sty8902TableContainerNBB">
-							<table class="styTable" cellspacing="0" style="font-size:7pt;">
+							<table class="styTable" cellspacing="0" style="font-size:7pt;border-color:black;">
 								<tr>
 									<th style="width:58mm;border:none;text-align:center;padding-left:6mm;font-weight:medium;"/>
 									<td class="styTableCell" style="text-align:center;font-weight:bold;border-left-width:1px;">A<span class="styTableCellPad"/>
@@ -2755,7 +2760,7 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<div class="styBB" style="width:187mm;height:6mm;">
+					<div class="styBB" style="width:187mm;height:8mm;">
 						<div class="styLNLeftNumBox" style="height:100%;">
                 30
           </div>
@@ -2806,6 +2811,7 @@
 						<xsl:for-each select="$FormData/VesselInformation">
 							<xsl:variable name="pos" select="position()"/>
 							<xsl:if test="position() mod 4 = 1">
+								<br/><br/>
 								<div class="styRepeatingDataTitle">Form 8902, Part III - Vessel Information:</div>
 								<div class="sty8902TableContainerNBB">
 									<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
@@ -2835,7 +2841,8 @@
 										<tfoot/>
 										<tbody>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
+												<!--<td class="styDepTblCell" style="width:58mm;">-->
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">1</div>
 														<div class="styGenericDiv">
@@ -2872,14 +2879,15 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
+												<!--<td class="styDepTblCell" style="width:58mm;">-->
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">2</div>
 														<div class="styGenericDiv">
                      	 IMO number
                       	</div>
 														<div style="clear:none;float:right; margin-right:1mm;">
-															<span class="styDotLn">........</span>
+															<span class="styDotLn">.......</span>
 														</div>
 													</div>
 												</td>
@@ -2909,7 +2917,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">3</div>
 														<div class="styGenericDiv">
@@ -2946,7 +2954,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">4</div>
 														<div class="styGenericDiv"> 
@@ -2983,7 +2991,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">5</div>
 														<div class="styGenericDiv">
@@ -3020,7 +3028,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">6</div>
 														<div class="styGenericDiv">
@@ -3057,7 +3065,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">7</div>
 														<div class="styGenericDiv">
@@ -3240,7 +3248,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;">8</div>
 														<div class="styGenericDiv">Percentage of U.S. ownership in the </div>
@@ -3276,7 +3284,7 @@
                 </td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;">9</div>
 														<div class="styGenericDiv">
@@ -3310,7 +3318,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">10</div>
 														<div class="styGenericDiv">
@@ -3344,7 +3352,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">11</div>
 														<div class="styGenericDiv">
@@ -3395,13 +3403,15 @@
 						<xsl:for-each select="$FormData/NotionalShippingIncome ">
 							<xsl:variable name="pos" select="position()"/>
 							<xsl:if test="position() mod 4 = 1">
+								<div class="pageEnd"></div>
 								<div class="styRepeatingDataTitle">Form 8902, Part IV - Notional Shipping Income:</div>
 								<!-- Notational Shipping Income Table begin-->
 								<div class="sty8902TableContainerNBB">
 									<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 										<thead class="styTableThead">
 											<tr class="styDepTblHdr">
-												<th class="styDepTblCell" style="width:58mm;text-align:center;padding-left:6mm;"/>
+												<th class="styDepTblCell" style="width:58mm;text-align:center;padding-left:6mm;">
+												Description </th>
 												<th class="styDepTblCell" style="width:32mm;text-align:center;">
 													<xsl:number value="position()" format="A"/>
 													<span class="styTableCellPad"/>
@@ -3423,7 +3433,7 @@
 										<tfoot/>
 										<tbody>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">12</div>
 														<div class="styGenericDiv" style="float:left;">
@@ -3461,7 +3471,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;">13</div>
 														<div class="styGenericDiv" style="float:left;">
@@ -3498,7 +3508,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" style="width:58mm;border:none;" scope="row">
+												<td class="styDepTblCell" style="width:58mm;border:none;text-align:left;" scope="row">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">14</div>
 														<div class="styGenericDiv">
@@ -3536,7 +3546,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">15</div>
 														<div class="styGenericDiv" style="float:left;"> 
@@ -3573,7 +3583,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1" style="text-align:right;">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;text-align:center;">16</div>
 														<div class="styGenericDiv">
@@ -3610,7 +3620,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">17</div>
 														<div class="styGenericDiv" style="float:left;">
@@ -3647,7 +3657,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" style="width:58mm;border:none;" scope="row">
+												<td class="styDepTblCell" style="width:58mm;border:none;text-align:left;" scope="row">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">18</div>
 														<div class="styGenericDiv" style="font-size:7pt;">
@@ -3685,7 +3695,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">19</div>
 														<div class="styGenericDiv">Days operated in U.S. foreign <span style="width:2mm;"/> </div>
@@ -3721,7 +3731,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">20</div>
 														<div class="styGenericDiv" style="float:left;">
@@ -3758,7 +3768,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">21</div>
 														<div class="styGenericDiv" style="float:left;">
@@ -3795,7 +3805,7 @@
                 </td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">22</div>
 														<div class="styGenericDiv" style="float:left;"> 
@@ -3842,7 +3852,8 @@
 									<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
 										<thead class="styTableThead">
 											<tr class="styDepTblHdr">
-												<th class="styDepTblCell" style="width:58mm;text-align:center;padding-left:6mm;"/>
+												<th class="styDepTblCell" style="width:58mm;text-align:center;padding-left:6mm;">
+												Description </th>
 												<th class="styDepTblCell" style="width:32mm;text-align:center;">
 													<xsl:number value="position()" format="A"/>
 													<span class="styTableCellPad"/>
@@ -3864,7 +3875,7 @@
 										<tfoot/>
 										<tbody>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left;">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;">23</div>
 														<div class="styGenericDiv">Gross income excluded under </div>
@@ -3900,7 +3911,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" style="border:none;" scope="row">
+												<td class="styDepTblCell" style="width:58mm;text-align:left;" scope="row">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;padding-left:.5mm;">24</div>
 														<div class="styGenericDiv">Gross income from operation </div>
@@ -3936,7 +3947,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;">25</div>
 														<div class="styGenericDiv" style="float:left;">
@@ -3973,7 +3984,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;">26</div>
 														<div class="styGenericDiv" style="float:left;"> 
@@ -4046,7 +4057,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow1">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left">
 													<div>
 														<div class="styGenericDiv" style="width:5mm;font-weight:bold;">27</div>
 														<div class="styGenericDiv" style="float:left;">
@@ -4083,7 +4094,7 @@
 												</td>
 											</tr>
 											<tr class="styDepTblRow2">
-												<td class="styDepTblCell" scope="row" style="width:58mm;">
+												<td class="styDepTblCell" scope="row" style="width:58mm;text-align:left">
 													<div class="styGenericDiv" style="width:5mm;font-weight:bold;">28</div>
 													<div class="styGenericDiv" style="font-weight:bold;">Annual notional shipping </div>
 													<div class="styGenericDiv" style="float:left;padding-left:5mm;"><b>income.</b> Enter the amount </div>
@@ -4126,6 +4137,8 @@
 					</xsl:if>
 					<!-- Part IV Repeating table End -->
 					<!-- Additional Data Table for separated data from Part IV Lines 12-28 -->
+								
+					
 				</form>
 			</body>
 		</html>

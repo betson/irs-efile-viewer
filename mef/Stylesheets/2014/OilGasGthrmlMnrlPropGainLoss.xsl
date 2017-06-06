@@ -15,8 +15,10 @@
 	</xsl:param>
     <!-- Main template -->
     <xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 		  <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 			<title>
 			  <xsl:value-of select="$depDocTitle"/>
 			</title>
@@ -42,7 +44,7 @@
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependencyLandscape"/>
 				<div class="styDepTitleLineLandscape">
-					<span class="styDepTitle" style="width:150mm;">
+					<span class="styDepTitle" style="width:155mm;">
 						<span style="padding-right:1.5mm;">TY</span>
 						<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
 						<span style="padding-left:1.5mm;">Oil, Gas, And Geothermal Mineral Properties Gain Or Loss</span>
@@ -75,31 +77,31 @@
 							  </xsl:call-template>
 							</td>
 							<!-- Partner's Share Of Amount Realized From Disposition - Column 2 -->
-							<td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm;">
+							<td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm;">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="RealizedFromDisposSharedAmt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Partner's Share of the Partnership's Adjusted Basis in the Property - Column 3 -->
-							<td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm;">
+							<td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm;">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="PartnershipsAdjBasisSharedAmt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Partner's Share of the Total Intangible Drilling Cost - Column 4 -->
-							<td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+							<td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="TotIntngblDrllngCostsSharedAmt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Partner's Share of the Development Cost - Column 5 -->
-							<td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+							<td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="TotalDevelopmentCostsSharedAmt"/>
 							  </xsl:call-template>
 							</td>
 							<!-- Partner's Share of the Total Mining Exploration Costs (Section 59(e) Expenditures - Column 6 -->
-							<td class="stydepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
+							<td class="styDepTblCell" style="width:30mm; text-align:right;padding-top:3mm">
 							  <xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="TotMiningExplrtnCostSharedAmt"/>
 							  </xsl:call-template>

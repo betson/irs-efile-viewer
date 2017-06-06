@@ -53,8 +53,11 @@ function toggle( containerId, imageId, buttonId )
    // set action according to current state.     
    if( isExpandable )
    {
-    // expand table.
+    // store height
+	container.setAttribute("origHeight",container.style.height);
+	// expand table.
     container.style.overflowY = "visible";
+	container.style.height = "auto";
     // change the image to collapse
     image.src = collapseImg.src;
    // set the button title to "Click here to collapse table", for 508.
@@ -65,6 +68,7 @@ function toggle( containerId, imageId, buttonId )
    {
     // collapse table.
     container.style.overflowY = "auto";
+	container.style.height = container.getAttribute("origHeight");
     // change the image to expand
     image.src = expandImg.src;
     // set the button title to "Click here to expand table"
@@ -102,7 +106,7 @@ function dynamicHeightToggle ( containerId, imageId, buttonId, headerRowCount, d
    var container = document.getElementById( containerId );
    var image = document.getElementById( imageId );
    var button = document.getElementById( buttonId );
-   var table = container.firstChild;
+   var table = container.children[0];
    // check the current image to determine action.
    var isExpandable;
    if( expandImg.src == image.src )
@@ -114,6 +118,7 @@ function dynamicHeightToggle ( containerId, imageId, buttonId, headerRowCount, d
    {
     // expand table.
     container.style.overflowY = "visible";
+    container.style.height = "auto";
     // change the image to collapse
     image.src = collapseImg.src;
    // set the button title to "Click here to collapse table", for 508.
@@ -131,7 +136,7 @@ function dynamicHeightToggle ( containerId, imageId, buttonId, headerRowCount, d
     for (var i = 0; i < endRow; i++) {
     containerHeight += table.rows[i].clientHeight; 
     }
-    container.style.height = containerHeight;
+    container.style.height = containerHeight + "px";
     
     // change the image to expand
     image.src = expandImg.src;
@@ -163,7 +168,7 @@ function setInitialDynamicTableHeight( containerId, headerRowCount, displayRowCo
   {
     // initialize variables.
     var container = document.getElementById( containerId );
-    var table = container.firstChild;   
+    var table = container.children[0];   
     if (setDynamicHeight == 'false') {
       container.style.overflowY = "visible";
     }
@@ -176,7 +181,7 @@ function setInitialDynamicTableHeight( containerId, headerRowCount, displayRowCo
       for (var i = 0; i < endRow; i++) {
       containerHeight += table.rows[i].clientHeight; 
       }
-      container.style.height = containerHeight;
+      container.style.height = containerHeight + "px";
           }
    }
 
@@ -207,7 +212,7 @@ function showAttachedDocs( elemId, colorSchema, docList ){
 	// elemId is the id of the element that evokes this function
 	// check to see if the tree is ready.
 	// uncomment during integration
-	 if( top.ReturnTree.document.body.readyState != "complete" )
+	 if( top.ReturnTree.document.readyState != "complete" )
 	 {
 	   alert("The attached documents are not ready for review yet. Please try again later.");
 	   return;

@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form6252Data" select="$RtnDoc/IRS6252"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form6252Data)"/>
@@ -77,7 +79,7 @@
 						<!-- Close middle box -->
 						<!--Right Title box -->
 						<div class="styTYBox" style="width:30mm;height:23.5mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0228</div>
+							<div class="styOMB" style="height:4mm;">OMB No. 1545-0228</div>
 							<div class="styTY" style="height:11mm">
                 20<span class="styTyColor">13</span>
 							</div>
@@ -90,7 +92,7 @@
 					<!-- End Form Number and Name -->
 					<!-- Begin Names shown on return line -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+						<div class="styNameBox" style="width:140mm;height:10mm;font-size:7pt;">
               Name(s) shown on return
               <br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -209,19 +211,10 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBoxSD">4</div>
 							<div class="styLNDesc" style="width:148mm;">
-                Was the property you sold to a related party a marketable security? If "Yes", complete Part III.  If "No,"  
-                <span style="float:left;">complete Part III for the year of sale and the 2 years after the year of sale </span>
+								Was the property you sold to a related party a marketable security? If "Yes", complete Part III.  If "No,"  
+								<span style="float:left;">complete Part III for the year of sale and the 2 years after the year of sale </span>
 								<!--Dotted Line-->
-								<span class="styBoldText" style="float:right;padding-right:2mm;">
-									<span style="width:16px;"/>.
-                  <span style="width:16px;"/>.
-                  <span style="width:16px;"/>.
-                  <span style="width:16px;"/>.
-                  <span style="width:16px;"/>.
-                  <span style="width:16px;"/>.
-                  <span style="width:16px;"/>.
-                  <span style="width:16px;"/>.            
-                </span>
+								<div class="styDotLn" style="float:right;padding-right:1mm;">...........</div>
 							</div>
 							<div class="styLNDesc" style="width:15mm;text-align:right; padding-top:3.5mm;">
 								<span>
@@ -244,7 +237,7 @@
                     Yes            
                 </label>
 							</div>
-							<div class="styLNDesc" style="width:15mm;height:4.5mm;text-align:right;padding-top:3.5mm;">
+							<div class="styLNDesc" style="width:15mm;height:auto;text-align:right;padding-top:3.5mm;">
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/PropSoldRltdPartyMrktblSecInd"/>
@@ -703,10 +696,10 @@
 					<!-- BEGIN Part II Title -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName">Part II</div>
-						<div class="styPartDesc">Installment Sale Income.
-              <span class="styNormalText"> Complete this part for the year of sale  <span class="styBoldText">and</span> 
-                any year you receive a payment or have certain debts you must treat as a payment on installment obligations. 
-              </span>
+						<div class="styPartDesc" style="height:auto;">
+						  <span class="styNormalText"><span class="styBoldText">Installment Sale Income.</span> Complete this part for the year of sale  <span class="styBoldText">and</span> 
+							any year you receive a payment or have certain debts you must treat as a payment on installment obligations. 
+						  </span>
 						</div>
 					</div>
 					<!-- END Part II Title -->
@@ -945,7 +938,7 @@
 					<!-- BEGIN Part III Title -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName">Part III</div>
-						<div class="styPartDesc">Related Party Installment Sale Income. Do not<span class="styNormalText"> complete if you received the final payment this tax year. </span>
+						<div class="styPartDesc">Related Party Installment Sale Income. Do not <span class="styNormalText"> complete if you received the final payment this tax year. </span>
 						</div>
 					</div>
 					<!-- END Part III Title -->
@@ -956,7 +949,7 @@
 						<div class="styLNLeftNumBox" style="width:8mm;">27</div>
 						<div class="styLNDesc" style="width:179mm;">
 							<span style="float:left;clear:none;">Name, address, and taxpayer identifying number of related party</span>
-							<span style="width:93mm;float:right;clear:none;border-bottom:1px solid black;"/>
+							<span style="width:93mm;float:right;clear:none;border-bottom:1px solid black;height:3.5mm;"/>
 						</div>
 						<!-- Begin L27 Name and Address Data Line-->
 						<div style="width:187mm;">
@@ -972,27 +965,37 @@
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/RelatedPartyName/BusinessNameLine1"/>
 									</xsl:call-template>
-									<span style="width:16px;"/>
-									<br/>
+									<xsl:if test="$Form6252Data/RelatedPartyName/BusinessNameLine1 != ''">
+										<span style="width:16px;"/>
+										<br/>
+									</xsl:if>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form6252Data/RelatedPartyName/BusinessNameLine2"/>
 									</xsl:call-template>
-									<span style="width:8px;"/>
-									<br/>
+									<xsl:if test="$Form6252Data/RelatedPartyName/BusinessNameLine2 != ''">
+										<span style="width:8px;"/>
+										<br/>
+									</xsl:if>
 									<!-- Choice of US and Foreign Address -->
 									<xsl:choose>
 										<xsl:when test="$Form6252Data/RelatedPartyUSAddress">
-											<xsl:call-template name="PopulateUSAddressTemplate">
-												<xsl:with-param name="TargetNode" select="$Form6252Data/RelatedPartyUSAddress"/>
-											</xsl:call-template>
+											<xsl:if test="$Form6252Data/RelatedPartyUSAddress != ''">
+												<xsl:call-template name="PopulateUSAddressTemplate">
+													<xsl:with-param name="TargetNode" select="$Form6252Data/RelatedPartyUSAddress"/>
+												</xsl:call-template>
+											</xsl:if>
 										</xsl:when>
 										<xsl:otherwise>
-											<xsl:call-template name="PopulateForeignAddressTemplate">
-												<xsl:with-param name="TargetNode" select="$Form6252Data/RelatedPartyForeignAddress"/>
-											</xsl:call-template>
+											<xsl:if test="$Form6252Data/RelatedPartyForeignAddress != ''">
+												<xsl:call-template name="PopulateForeignAddressTemplate">
+													<xsl:with-param name="TargetNode" select="$Form6252Data/RelatedPartyForeignAddress"/>
+												</xsl:call-template>
+											</xsl:if>
 										</xsl:otherwise>
 									</xsl:choose>
-									<br/>
+									<xsl:if test="$Form6252Data/RelatedPartyUSAddress != '' or $Form6252Data/RelatedPartyForeignAddress != ''">
+										<br/>
+									</xsl:if>
 									<!--Choice of SSN, EIN or Missing EIN Reason -->
 									<xsl:if test="$Form6252Data/RelatedPartySSN != ''">
 										<!--<span style="width:8px;">,</span> -->
@@ -1080,7 +1083,7 @@
 					<!--L29-->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">29</div>
-						<div class="styLNDesc" style="width:178mm;">
+						<div class="styLNDesc" style="width:178mm;height:auto;">
 							<span class="styBoldText"> 
                 If the answer to question 28 is "Yes," complete lines 30 through 37 below unless one of the following conditions is met. Check the box that applies.
               </span>
@@ -1089,7 +1092,7 @@
 					<!--L29a-->
 					<div style="width:187mm;">
 						<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
-						<div class="styLNDesc" style="width:146mm;">
+						<div class="styLNDesc" style="width:146mm;height:auto;">
 							<input type="checkbox" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6252Data/SndDisposMore2YrsAftrFirstInd"/>
@@ -1111,7 +1114,7 @@
                 <img src="{$ImagePath}/6252_Bullet.gif" alt="Bullet Image"/>
 							</label>
 						</div>
-						<div class="styLNAmountBox" style="width:32mm;border-bottom-width:1px; border-right-width:0px;padding-top:4mm;text-align:center;border-left-width:0px">
+						<div class="styLNAmountBox" style="width:32mm;border-bottom-width:1px; border-right-width:0px;padding-top:4mm;text-align:center;border-left-width:0px;height:auto;">
 							<xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="$Form6252Data/DispositionDt"/>
 							</xsl:call-template>
@@ -1176,7 +1179,7 @@
 					<!--L29e-->
 					<div style="width:187mm;">
 						<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
-						<div class="styLNDesc" style="width:178mm;">
+						<div class="styLNDesc" style="width:178mm;height:auto;">
 							<input type="checkbox" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form6252Data/NotToAvoidTaxInd"/>
@@ -1199,7 +1202,7 @@
 						</div>
 					</div>
 					<!--Blank Row-->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;float:none;display:block;">
 						<!--L30-->
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox">30</div>
@@ -1425,7 +1428,7 @@
                 Form <span class="styBoldText">6252</span> (2013)
             </div>
 					<br/>
-					<br class="pageEnd"/>
+					<div class="pageEnd"/>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">

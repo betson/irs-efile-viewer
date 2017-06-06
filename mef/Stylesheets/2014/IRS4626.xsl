@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS4626"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -39,13 +41,13 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<!-- Standard Warning Line -->
 				<xsl:call-template name="DocumentHeader"/>
 				<!-- BEGIN FORM HEADER -->
 				<div class="styBB" style="width:187mm;">
 					<!-- Form Name -->
-					<div class="styFNBox" style="font-size:7pt;width:28mm;height:16mm;">
+					<div class="styFNBox" style="font-size:7pt;width:28mm;">
             Form <span class="styFormNumber">4626</span>
 						<br/>
 						<span class="styAgency">Department of the Treasury
@@ -58,7 +60,7 @@
 						<span class="styAgency">Internal Revenue Service</span>
 					</div>
 					<!-- Form Title Box -->
-					<div class="styFTBox" style="padding-top:2mm;width:126mm;height:16mm;">
+					<div class="styFTBox" style="padding-top:2mm;width:126mm;">
 						<!-- Form Title -->
 						<span class="styMainTitle">Alternative Minimum Tax—Corporations</span>
 						<!-- Form Subtitle -->
@@ -70,15 +72,14 @@
 							<span style="font-size:6pt">
 								 Information about Form 4626 and its separate instructions is at</span> 
 								 <a href="http://www.irs.gov/form4626" title="Link to IRS.gov">
-								<i>www.irs.gov/form4626</i>
-								
+								<i>www.irs.gov/form4626</i>								
 							</a>.
 						  </div>
 					</div>
 					<!-- Tax Year Box -->
-					<div class="styTYBox" style="height:16mm;width:32mm;">
+					<div class="styTYBox" style="width:32mm;height:16mm;">
 						<!-- OMB No. -->
-						<div class="styOMB" style="font-size:7pt;width:32mm;">OMB No. 1545-0123</div>
+						<div class="styOMB" style="width:32mm;font-size:7pt;">OMB No. 1545-0123</div>
 						<!-- Tax Year -->
 						<div class="styTY" style="text-align:center;">
 							<span>20<span class="styTYColor">14</span>
@@ -87,22 +88,23 @@
 					</div>
 				</div>
 				<!-- Name and Address -->
-				<div class="STyBB" style="width:187mm;">
-					<div class="styNameBox" style="height:8mm;width:140mm;font-size:7pt;">
-            Name<br/>
-						<xsl:call-template name="PopulateReturnHeaderFiler">
-							<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-						</xsl:call-template>
-						<br/>
-						<xsl:call-template name="PopulateReturnHeaderFiler">
-							<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-						</xsl:call-template>
-					</div>
-					<div class="styEINBox" style="height:8mm;padding-left:2mm;text-align:left;font-size:7pt;width:46mm;">
-						<span style="font-weight:bold;">Employer identification number<br/>
+					<div class="styBB" style="width:187mm;">
+						<div class="styNameBox" style="width:130mm;font-size:7pt;">
+              Name
+              <br/>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+							<br/>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
+							</xsl:call-template>
+						</div>
+					<div class="styEINBox" style="width:50mm;padding-left:2mm;text-align:left;font-size:7pt;">
+						<span style="font-weight:bold;">Employer identification number
 							<br/>
 						</span>
-						<span style="text-align:left;font-weight:normal;">
+						<span style="float:left;font-weight:normal;padding-top:3mm;">
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 							</xsl:call-template>
@@ -111,17 +113,17 @@
 				</div>
 				<!-- Form body -->
 				<!-- Part I - Header -->
-<!--				<div class="styBB" style="width:187mm;">
-					<span class="styPartName" style="width:16mm;">Part I</span>
+				<div class="styBB" style="width:187mm;">
+				<!--	<span class="styPartName" style="width:16mm;">Part I</span>
 					<span class="styPartDesc" style="width:150mm;">
               Alternative Minimum Tax Computation
-         </span>
-				</div>-->
+         </span>-->
+				</div>
 				<!-- notes line -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD"/>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="font-weight:bold;width:9mm;">Note:</span>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="width:9mm;font-weight:bold;">Note:</span>
 						<span style="font-style:italic;">See the instructions to find out if the corporation is a small corporation exempt from the </span>
 					</div>
 					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
@@ -129,7 +131,7 @@
 				</div>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD"/>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNDesc" style="width:134mm;">
 						<!--span style="width:9mm;"></span-->
 						<span style="font-style:italic;">alternative minimum tax (AMT) under section 55(e).</span>
 					</div>
@@ -139,9 +141,9 @@
 				<!-- actual line -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD">1</div>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNDesc" style="width:134mm;">
 						<span style="float:left;">Taxable income or (loss) before net operating loss deduction</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+						<span class="styDotLn" style="padding-right:2mm;">..............</span>
 					</div>
 					<div class="styLNRightNumBox">1</div>
 					<div class="styLNAmountBox">
@@ -154,18 +156,16 @@
 				<!-- actual line -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD">2</div>
-					<div class="styLNDesc" style="font-weight:bold;width:139mm;">Adjustments and preferences:</div>
+					<div class="styLNDesc" style="width:134mm;font-weight:bold;">Adjustments and preferences:</div>
 					<div class="styLNRightNumBoxNBB"/>
 					<div class="styLNAmountBoxNBB"/>
 				</div>
 				<!-- line 2 sub a -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">a</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Depreciation of post-1986 property
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.......................</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Depreciation of post-1986 property</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">......................</span>
 					</div>
 					<div class="styLNRightNumBox">2a</div>
 					<div class="styLNAmountBox">
@@ -176,12 +176,10 @@ Depreciation of post-1986 property
 				</div>
 				<!-- line 2 sub b -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">b</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Amortization of certified pollution control facilities
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..................</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">b</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Amortization of certified pollution control facilities</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
 					</div>
 					<div class="styLNRightNumBox">2b</div>
 					<div class="styLNAmountBox">
@@ -192,12 +190,10 @@ Amortization of certified pollution control facilities
 				</div>
 				<!-- line 2 sub c -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">c</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Amortization of mining exploration and development costs
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">c</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Amortization of mining exploration and development costs</span>
+						<span class="styDotLn" style="float:right;">..............</span>
 					</div>
 					<div class="styLNRightNumBox">2c</div>
 					<div class="styLNAmountBox">
@@ -209,12 +205,10 @@ Amortization of mining exploration and development costs
 				<!-- line 2 sub d -->
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">d</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Amortization of circulation expenditures (personal holding companies only)
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..........</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">d</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Amortization of circulation expenditures (personal holding companies only)</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
 					</div>
 					<div class="styLNRightNumBox">2d</div>
 					<div class="styLNAmountBox">
@@ -225,12 +219,10 @@ Amortization of circulation expenditures (personal holding companies only)
 				</div>
 				<!-- line 2 sub e -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">e</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Adjusted gain or loss
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">...........................</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Adjusted gain or loss</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">..........................</span>
 					</div>
 					<div class="styLNRightNumBox">2e</div>
 					<div class="styLNAmountBox">
@@ -241,12 +233,10 @@ Adjusted gain or loss
 				</div>
 				<!-- line 2 sub f -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">f</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Long-term contracts
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">...........................</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">f</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Long-term contracts</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">..........................</span>
 					</div>
 					<div class="styLNRightNumBox">2f</div>
 					<div class="styLNAmountBox">
@@ -257,12 +247,10 @@ Long-term contracts
 				</div>
 				<!-- line 2 sub g -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">g</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Merchant marine capital construction funds
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">....................</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">g</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Merchant marine capital construction funds</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 					</div>
 					<div class="styLNRightNumBox">2g</div>
 					<div class="styLNAmountBox">
@@ -274,11 +262,9 @@ Merchant marine capital construction funds
 				<!-- line 2 sub h -->
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">h</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Section 833(b) deduction (Blue Cross, Blue Shield, and similar type organizations only)
-</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">h</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Section 833(b) deduction (Blue Cross, Blue Shield, and similar type organizations only)</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
 					</div>
 					<div class="styLNRightNumBox">2h</div>
@@ -290,11 +276,9 @@ Section 833(b) deduction (Blue Cross, Blue Shield, and similar type organization
 				</div>
 				<!-- line 2 sub i -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">i</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Tax shelter farm activities (personal service corporations only)
-</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">i</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Tax shelter farm activities (personal service corporations only)</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
 					</div>
 					<div class="styLNRightNumBox">2i</div>
@@ -307,11 +291,9 @@ Tax shelter farm activities (personal service corporations only)
 				<!-- line 2 sub j -->
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">j</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Passive activities (closely held corporations and personal service corporations only)
-</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">j</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Passive activities (closely held corporations and personal service corporations only)</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
 					</div>
 					<div class="styLNRightNumBox">2j</div>
@@ -323,11 +305,9 @@ Passive activities (closely held corporations and personal service corporations 
 				</div>
 				<!-- line 2 sub k -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">k</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Loss limitations
-</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">k</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Loss limitations</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">............................</span>
 					</div>
 					<div class="styLNRightNumBox">2k</div>
@@ -339,11 +319,9 @@ Loss limitations
 				</div>
 				<!-- line 2 sub l -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">l</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Depletion
-</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">l</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Depletion</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">..............................</span>
 					</div>
 					<div class="styLNRightNumBox">2l</div>
@@ -355,12 +333,10 @@ Depletion
 				</div>
 				<!-- line 2 sub m -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">m</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Tax-exempt interest income from specified private activity bonds
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4.mm;">m</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Tax-exempt interest income from specified private activity bonds</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
 					</div>
 					<div class="styLNRightNumBox">2m</div>
 					<div class="styLNAmountBox">
@@ -371,12 +347,10 @@ Tax-exempt interest income from specified private activity bonds
 				</div>
 				<!-- line 2 sub n -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">n</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Intangible drilling costs
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..........................</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">n</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Intangible drilling costs</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.........................</span>
 					</div>
 					<div class="styLNRightNumBox">2n</div>
 					<div class="styLNAmountBox">
@@ -387,11 +361,9 @@ Intangible drilling costs
 				</div>
 				<!-- line 2 sub o -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">o</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Other adjustments and preferences
-</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">o</div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Other adjustments and preferences</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">......................</span>
 					</div>
 					<div class="styLNRightNumBox">2o</div>
@@ -405,10 +377,8 @@ Other adjustments and preferences
 				<!-- actual line -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD">3</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-Pre-adjustment alternative minimum taxable income (AMTI). Combine lines 1 through 2o
-</span>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Pre-adjustment alternative minimum taxable income (AMTI). Combine lines 1 through 2o</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
 					</div>
 					<div class="styLNRightNumBox">3</div>
@@ -423,37 +393,33 @@ Pre-adjustment alternative minimum taxable income (AMTI). Combine lines 1 throug
 				<!-- actual line -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD">4</div>
-					<div class="styLNDesc" style="width:139mm;font-weight:bold">
-						<span style="float:left;"/>
-Adjusted current earnings (ACE) adjustment:</div>
-					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-					<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+					<div class="styLNDesc" style="width:134mm;font-weight:bold">
+						<span style="float:left;"/>Adjusted current earnings (ACE) adjustment:</div>
+					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
+					<div class="styLNAmountBoxNBB" style=""/>
 				</div>
 				<!-- line 4 sub a -->
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">a</div>
-					<div class="styLNDesc" style="width:99mm;">
-						<span style="float:left;">
-ACE from line 10 of the ACE worksheet in the instructions
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
+					<div class="styLNDesc" style="width:94mm;">
+						<span style="float:left;">ACE from line 10 of the ACE worksheet in the instructions</span>
+						<span class="styDotLn" style="float:right;">....</span>
 					</div>
-					<div class="styLNRightNumBox" style="height:4.5mm;">4a</div>
-					<div class="styLNAmountBox" style="height:4.5mm;">
+					<div class="styLNRightNumBox" style="">4a</div>
+					<div class="styLNAmountBox" style="">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/AdjustedCurrentEarningsAmt"/>
 						</xsl:call-template>
 					</div>
-					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-					<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+					<div class="styLNRightNumBoxNBB" style="height:4mm;background-color:lightgrey;"/>
+					<div class="styLNAmountBoxNBB" style=""/>
 				</div>
 				<!-- line 4 sub b -->
 				<!-- triple lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">b</div>
-					<div class="styLNDesc" style="width:99mm;">Subtract line 3 from line 4a. If line 3 exceeds line 4a, enter the difference
-       </div>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">b</div>
+					<div class="styLNDesc" style="width:94mm;">Subtract line 3 from line 4a. If line 3 exceeds line 4a, enter the difference</div>       
 					<div class="styLNRightNumBoxNBB"/>
 					<div class="styLNAmountBoxNBB"/>
 					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
@@ -461,11 +427,9 @@ ACE from line 10 of the ACE worksheet in the instructions
 				</div>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftLtrBox"/>
-					<div class="styLNDesc" style="width:99mm;">
-						<span style="float:left;">
-as a negative amount (see instructions)
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
+					<div class="styLNDesc" style="width:94mm;">
+						<span style="float:left;">as a negative amount (see instructions)</span>
+						<span class="styDotLn" style="float:right;">..........</span>
 					</div>
 					<div class="styLNRightNumBox" style="height:4.5mm;">4b</div>
 					<div class="styLNAmountBox" style="height:4.5mm;" >
@@ -479,15 +443,13 @@ as a negative amount (see instructions)
 				<!-- line 4 sub c -->
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">c</div>
-					<div class="styLNDesc" style="width:99mm;">
-						<span style="float:left;">
-Multiply line 4b by 75% (.75). Enter the result as a positive amount
-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
+					<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">c</div>
+					<div class="styLNDesc" style="width:94mm;">
+						<span style="float:left;">Multiply line 4b by 75% (.75). Enter the result as a positive amount</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.</span>
 					</div>
 					<div class="styLNRightNumBox" style="height:4.5mm;">4c</div>
-					<div class="styLNAmountBox" style="height:4.5mm;">
+					<div class="styLNAmountBox" style="width:32mm;height:4.5mm;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/RedACELessPreadjustmentAMTIAmt"/>
 						</xsl:call-template>
@@ -498,42 +460,40 @@ Multiply line 4b by 75% (.75). Enter the result as a positive amount
 				<!-- line 4 sub d -->
 				<!-- five lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">d</div>
-					<div class="styLNDesc" style="width:99mm;">Enter the excess, if any, of the corporation's total increases in AMTI from
-       </div>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">d</div>
+					<div class="styLNDesc" style="width:94mm;">Enter the excess, if any, of the corporation's total increases in AMTI from</div>    
 					<div class="styLNRightNumBoxNBB"/>
 					<div class="styLNAmountBoxNBB"/>
-					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
-					<div class="styLNAmountBoxNBB"/>
+					<div class="styLNRightNumBoxNBB" style="height:4mm;border-left-width:1px;background-color:lightgrey;"/>
+					<div class="styLNAmountBoxNBB" style="height:4mm;"/>
 				</div>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftLtrBox"/>
-					<div class="styLNDesc" style="width:99mm;">prior year ACE adjustments over its total reductions in AMTI from prior
-       </div>
+					<div class="styLNDesc" style="width:94mm;">prior year ACE adjustments over its total reductions in AMTI from prior
+				</div>
 					<div class="styLNRightNumBoxNBB"/>
 					<div class="styLNAmountBoxNBB"/>
-					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
+					<div class="styLNRightNumBoxNBB" style="height:4mm;border-left-width:1px;background-color:lightgrey;"/>
 					<div class="styLNAmountBoxNBB"/>
 				</div>
-				<div class="IRS4626_LineContainer">
+				<div class="IRS4626_LineContainer" style="height:4mm;">
 					<div class="styLNLeftLtrBox"/>
-					<div class="styLNDesc" style="width:99mm;">year ACE adjustments (see instructions).
-         <span style="font-weight:bold"> Note:</span>
+					<div class="styLNDesc" style="width:94mm;">year ACE adjustments (see instructions).
+						 <span style="font-weight:bold"> Note:</span>
 						<span style="font-style:italic"> You</span>
 						<span style="font-weight:bold;font-style:italic"> must</span>
 						<span style="font-style:italic"> enter an amount </span>
 					</div>
 					<div class="styLNRightNumBoxNBB"/>
 					<div class="styLNAmountBoxNBB"/>
-					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
+					<div class="styLNRightNumBoxNBB" style="height:4mm;border-left-width:1px;background-color:lightgrey;"/>
 					<div class="styLNAmountBoxNBB"/>
 				</div>
-				<div class="IRS4626_LineContainer" style="height:5mm;">
+				<div class="IRS4626_LineContainer" style="height:4mm;">
 					<div class="styLNLeftLtrBox"/>
-					<div class="styLNDesc" style="width:99mm;">
-						<span style="font-style:italic; float:left;">
-on line 4d (even if line 4b is positive)</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
+					<div class="styLNDesc" style="width:94mm;">
+						<span style="font-style:italic; float:left;">on line 4d (even if line 4b is positive)</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
 					</div>
 					<div class="styLNRightNumBox">4d</div>
 					<div class="styLNAmountBox" style="border-right-width:0px;">
@@ -547,31 +507,28 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- line 4 sub e -->
 				<!-- five lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">e</div>
-					<div class="styLNDesc" style="width:139mm;">ACE adjustment.</div>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">e</div>
+					<div class="styLNDesc" style="width:134mm;">ACE adjustment.</div>
 					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
 					<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
 				</div>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftLtrBox"/>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNDesc" style="width:134mm;">
 						<span style="float:left;">
 							<span style="float:left;width:118mm;">
 								<img src="{$ImagePath}\4626_Bullet_Round.gif" alt="Arrow to right" border="0"/>
-		If line 4b is zero or more, enter the amount from line 4c 
-	<br/>
+							If line 4b is zero or more, enter the amount from line 4c 
+							<br/>
 								<img src="{$ImagePath}\4626_Bullet_Round.gif" alt="Arrow to right" border="0"/>
-		If line 4b is less than zero, enter the <b>smaller </b>of line 4c or line 4d as a negative amount 
-</span>
+								If line 4b is less than zero, enter the <b>smaller </b>of line 4c or line 4d as a negative amount</span>
 							<span style="width:4mm;height:4mm;">
 								<img src="{$ImagePath}\4626_SMBracket.gif" alt="Bracket"/>
 							</span>
 						</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;padding-top:3mm;">...</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;padding-top:3mm;">..</span>
 					</div>
-					<div class="styLNRightNumBox" style="height:10mm;padding-top:5.5mm;">
-      4e
-      </div>
+					<div class="styLNRightNumBox" style="height:10mm;padding-top:5.5mm;">4e</div>   
 					<div class="styLNAmountBox" style="height:10mm;padding-top:5.5mm;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/ACEAdjustmentAmt"/>
@@ -582,10 +539,8 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- single lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD">5</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-         Combine lines 3 and 4e. If zero or less, stop here; the corporation does not owe any AMT
-         </span>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Combine lines 3 and 4e. If zero or less, stop here; the corporation does not owe any AMT</span>        
 						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
 					</div>
 					<div class="styLNRightNumBox">5</div>
@@ -599,9 +554,9 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer" >
 					<div class="styLNLeftNumBoxSD">6</div>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNDesc" style="width:134mm;">
 						<span style="float:left;">Alternative tax net operating loss deduction (see instructions)</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
 					</div>
 					<div class="styLNRightNumBox">6</div>
 					<div class="styLNAmountBox">
@@ -614,23 +569,20 @@ on line 4d (even if line 4b is positive)</span>
 								<!-- triple lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD">7</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="font-weight:bold">
-         Alternative minimum taxable income. </span>
-        Subtract line 6 from line 5. If the corporation held a residual
-     </div>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="font-weight:bold">Alternative minimum taxable income. </span>         
+						Subtract line 6 from line 5. If the corporation held a residual</div>     
 					<div class="styLNRightNumBoxNBB"/>
 					<div class="styLNAmountBoxNBB"/>
 				</div>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD"/>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">       
-       interest in a REMIC, see instructions
-      <xsl:call-template name="LinkToLeftoverDataTableInline">
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">interest in a REMIC, see instructions            
+								 <xsl:call-template name="LinkToLeftoverDataTableInline">
 								<xsl:with-param name="TargetNode" select="$FormData/ResidualInterestAmt/@residualInterestInREMICCd"/>
 								<xsl:with-param name="Desc">
-        Line 7 - Note on Residual Interests</xsl:with-param>
+								Line 7 - Note on Residual Interests</xsl:with-param>
 							</xsl:call-template>
 						</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">.....................</span>
@@ -653,19 +605,19 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- triple lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD">8</div>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNDesc" style="width:134mm;">
 						<span style="font-weight:bold">Exemption phase-out </span>
-        (if line 7 is $310,000 or more, skip lines 8a and 8b and enter -0- on line 8c):
-     </div>
+						(if line 7 is $310,000 or more, skip lines 8a and 8b and enter -0- on line 8c):
+					 </div>
 					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
 					<div class="styLNAmountBoxNBB"/>
 				</div>
 				<!-- line 8 sub a -->
 				<!-- triple lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">a</div>
-					<div class="styLNDesc" style="width:99mm;">Subtract $150,000 from line 7 (if completing this line for a member of a
-       </div>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">a</div>
+					<div class="styLNDesc" style="width:94mm;">Subtract $150,000 from line 7 (if completing this line for a member of a
+				   </div>
 					<div class="styLNRightNumBoxNBB"/>
 					<div class="styLNAmountBoxNBB"/>
 					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
@@ -673,26 +625,26 @@ on line 4d (even if line 4b is positive)</span>
 				</div>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftLtrBox"/>
-					<div class="styLNDesc" style="width:99mm;">
+					<div class="styLNDesc" style="width:94mm;">
 						<span style="float:left;">controlled group, see instructions). If zero or less, enter -0-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
 					</div>
-					<div class="styLNRightNumBox" style="height:5mm">8a</div>
-					<div class="styLNAmountBox" style="height:5mm">
+					<div class="styLNRightNumBox" style="">8a</div>
+					<div class="styLNAmountBox" style="">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/QualifiedAMTIExemptionAmt"/>
 						</xsl:call-template>
 					</div>
-					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:5mm;"/>
-					<div class="styLNAmountBoxNBB" style="height:5mm;"/>
+					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
+					<div class="styLNAmountBoxNBB" style=""/>
 				</div>
 				<!-- line 8 sub b -->
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">b</div>
-					<div class="styLNDesc" style="width:99mm;">
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">b</div>
+					<div class="styLNDesc" style="width:94mm;">
 						<span style="float:left;">Multiple line 8a by 25% (.25)</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
 					</div>
 					<div class="styLNRightNumBox">8b</div>
 					<div class="styLNAmountBox">
@@ -706,18 +658,18 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- line 8 sub c -->
 				<!-- triple lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">c</div>
-					<div class="styLNDesc" style="width:139mm;">
-        Exemption. Subtract line 8b from $40,000 (if completing this line for a member of a controlled
-     </div>
+					<div class="styLNLeftLtrBox" style="padding-left:4mm;">c</div>
+					<div class="styLNDesc" style="width:134mm;">
+					Exemption. Subtract line 8b from $40,000 (if completing this line for a member of a controlled
+					 </div>
 					<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
 					<div class="styLNAmountBoxNBB"/>
 				</div>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftLtrBox"/>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNDesc" style="width:134mm;">
 						<span style="float:left;">group, see instructions). If zero or less, enter -0-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..................</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 					</div>
 					<div class="styLNRightNumBox">8c</div>
 					<div class="styLNAmountBox">
@@ -730,9 +682,9 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBoxSD">9</div>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNDesc" style="width:134mm;">
 						<span style="float:left;">Subtract line 8c from line 7. If zero or less, enter -0-</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 					</div>
 					<div class="styLNRightNumBox">9</div>
 					<div class="styLNAmountBox">
@@ -745,11 +697,9 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBox">10</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-       Multiply line 9 by 20% (.20)
-	  </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.........................</span>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Multiply line 9 by 20% (.20)</span>	  
+						<span class="styDotLn" style="float:right;padding-right:2mm;">......................</span>
 					</div>
 					<div class="styLNRightNumBox">10</div>
 					<div class="styLNAmountBox">
@@ -762,11 +712,9 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBox">11</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-       Alternative minimum tax foreign tax credit (AMTFTC) (see instructions)
-       </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Alternative minimum tax foreign tax credit (AMTFTC) (see instructions)</span>       
+						<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
 					</div>
 					<div class="styLNRightNumBox">11</div>
 					<div class="styLNAmountBox">
@@ -779,11 +727,9 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBox">12</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-       Tentative minimum tax.  Subtract line 11 from line 10
-       </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.................</span>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Tentative minimum tax.  Subtract line 11 from line 10</span>  
+						<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
 					</div>
 					<div class="styLNRightNumBox">12</div>
 					<div class="styLNAmountBox">
@@ -796,11 +742,9 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- double lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBox">13</div>
-					<div class="styLNDesc" style="width:139mm;">
-						<span style="float:left;">
-       Regular tax liability before applying all credits except the foreign tax credit
-       </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..........</span>
+					<div class="styLNDesc" style="width:134mm;">
+						<span style="float:left;">Regular tax liability before applying all credits except the foreign tax credit</span>    
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
 					</div>
 					<div class="styLNRightNumBox" style="height:4mm;">13</div>
 					<div class="styLNAmountBox" style="height:4mm;">
@@ -813,7 +757,7 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- quadruple lines -->
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBox">14</div>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNDesc" style="width:134mm;">
 						<span style="font-weight:bold">Alternative minimum tax. </span>
         Subtract line 13 from line 12. If zero or less, enter -0-. Enter here and on
      </div>
@@ -822,10 +766,8 @@ on line 4d (even if line 4b is positive)</span>
 				</div>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftNumBox" style="border-bottom-width:1px"/>
-					<div class="styLNDesc" style="width:139mm;border-bottom-width:1px">
-						<span style="float:left;">
-       Form 1120, Schedule J, line 3, or the appropriate line of the corporation's income tax return
-       </span>
+					<div class="styLNDesc" style="width:134mm;border-bottom-width:1px;">
+						<span style="float:left;">Form 1120, Schedule J, line 3, or the appropriate line of the corporation's income tax return</span>      
 						<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
 					</div>
 					<div class="styLNRightNumBoxNBB">14</div>
@@ -836,25 +778,25 @@ on line 4d (even if line 4b is positive)</span>
 					</div>
 				</div>
 				<!-- Page 1 Break and Footer-->
-				<div class="pageEnd" style="width:187mm;padding-top:1mm;border-top:1 solid black;">
+				<div class="pageEnd" style="width:187mm;solid black;border-style:solid;border-width:.25mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;">
 					<div style="float:left;">
-						<span class="styBoldText">For Paperwork Reduction Act Notice, see the instructions. </span>
-						<span style="width:30mm;"/>                        
-       Cat. No. 12955I
-    </div>
+						<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions. </span>
+						<span style="width:20mm;"/>Cat. No. 12955I </div>                      
 					<div style="float:right;">
 						<span style="width:70px;"/>  
-      Form <span class="styBoldText" style="font-size:8pt;">4626</span> (2014)
-    </div>
+				  Form <span class="styBoldText" style="font-size:8pt;">4626</span> (2014)
+				</div>
 				</div>
 				<!-- END Page 1 Break and Footer-->
 				<!--Begin ADDITIONAL DATA SECTION -->
-				<div class="styLeftOverTitleLine" id="LeftoverData">
-					<div class="styLeftOverTitle">
-    Additional Data        
-  </div>
+				<div style="width:187mm;clear:both;">
+				<div class="styLeftOverTitleLine" id="LeftoverData"><br>
+					</br><div class="styLeftOverTitle">
+						Additional Data        
+					</div>
 					<div class="styLeftOverButtonContainer">
 						<input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+					</div>
 					</div>
 				</div>
 				<table class="styLeftOverTbl">

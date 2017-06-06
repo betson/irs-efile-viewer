@@ -159,19 +159,19 @@
 
 .IRS990ScheduleF_LineContainer {
   clear:both;
-  width:188mm;
+  width:187mm;
 }
 
 .IRS990ScheduleF_TableContainer {
   clear:both;
-  width:188mm;
+  width:187mm;
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   overflow-y:auto;
 }
 
 .IRS990ScheduleFPart1_TableContainer {
   clear:both;
-  width:188mm;
+  width:187mm;
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   overflow-y:auto;
 }
@@ -187,14 +187,14 @@
 
 .IRS990ScheduleFPartII_TableContainer {
   clear:both;
-  width:188mm;
+  width:187mm;
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   overflow-y:auto;
 }
 
 .IRS990ScheduleFPartIII_TableContainer {
   clear:both;
-  width:188mm;
+  width:187mm;
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   overflow-y:auto;
 }

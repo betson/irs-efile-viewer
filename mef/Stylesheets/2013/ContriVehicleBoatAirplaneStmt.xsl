@@ -7,7 +7,7 @@
 	<xsl:include href="AddHeader.xsl"/>
 	<xsl:include href="AddOnTable.xsl"/>
 	<xsl:param name="DependencyData" select="$RtnDoc/ContriVehicleBoatAirplaneStmt"/>
-<!-- 8281-Display Name is Contributions of Motor Vehicles, Boats, and Airplanes Statement -->
+<!-- 8283-Display Name is Contributions of Motor Vehicles, Boats, and Airplanes Statement -->
 	<xsl:param name="depDocTitle">
 		<xsl:call-template name="PopulateDisplayName">
 			<xsl:with-param name="TargetNode" select="$DependencyData"/>
@@ -15,8 +15,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -40,15 +42,13 @@
 				</style>
 				<xsl:call-template name="GlobalStylesDep"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm">
 				<xsl:call-template name="DocumentHeaderDependency"/>
 				<div class="styDepTitleLine">
-					<span class="styDepTitle" style="width:164mm;">
-						<span>
-							<xsl:value-of select="$depDocTitle"/>
-						</span>
-					</span>
-				</div>
+				<span class="styDepTitle"  style="padding-right:2mm;">
+				<xsl:value-of select="$depDocTitle"/>
+			  </span>        
+			  </div>
 				<xsl:call-template name="PopulateDepCommonLeftover">
 					<xsl:with-param name="TargetNode" select="$DependencyData"/>
 				</xsl:call-template>
@@ -56,7 +56,7 @@
 				<div class="styTopSectionLine" style="width:187mm;">
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Corrected Box Indicator:</div>
 					<div style="float:left;clear:none;width:118mm;">
-            <input type="checkbox" class="styCkbox" name="Checkbox">
+           <input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$DependencyData/CorrectedInd"/>
                 <xsl:with-param name="BackupName">DependencyDataCorrectedBoxInd</xsl:with-param>
@@ -75,13 +75,13 @@
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Donee Name:</div>
 					<div style="float:left;clear:none;width:118mm;">
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$DependencyData/DoneeName/BusinessNameLine1"/>
+							<xsl:with-param name="TargetNode" select="$DependencyData/DoneeName/BusinessNameLine1Txt"/>
 						</xsl:call-template>
 						<xsl:choose>
-							<xsl:when test="$DependencyData/DoneeName/BusinessNameLine2 != ''">
+							<xsl:when test="$DependencyData/DoneeName/BusinessNameLine2Txt != ''">
 								<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$DependencyData/DoneeName/BusinessNameLine2"/>
+									<xsl:with-param name="TargetNode" select="$DependencyData/DoneeName/BusinessNameLine2Txt"/>
 								</xsl:call-template>
 							</xsl:when>
 						</xsl:choose>
@@ -104,7 +104,7 @@
 						<!-- ============================  OR  ======================================= -->
 						<div class="styTopSectionLine" style="width:187mm;">
 							<div class="styTopSectionLineLbl" style="float:left;clear:none;">Foreign Address of Donee:</div>
-							<div style="float:left;clear:none;width:118mm;">
+							<div style="width:100mm;">
 								<xsl:call-template name="PopulateForeignAddressTemplate">
 									<xsl:with-param name="TargetNode" select="$DependencyData/DoneeForeignAddress"/>
 								</xsl:call-template>
@@ -118,7 +118,7 @@
 					<xsl:when test="$DependencyData/USTelephoneNum">
 						<div class="styTopSectionLine" style="width:187mm;">
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Donee Telephone Number:</div>
-							<div style="float:left;clear:none;width:118mm;">
+							<div style="width:118mm;float:left;clear:none;">
 						<xsl:call-template name="PopulatePhoneNumber">
 							<xsl:with-param name="TargetNode" select="$DependencyData/USTelephoneNum"/>
 						</xsl:call-template>
@@ -129,6 +129,7 @@
 						<!-- ============================  OR  ======================================= -->
 						<div class="styTopSectionLine" style="width:187mm;">
 							<div class="styTopSectionLineLbl" style="float:left;clear:none;">Donee Foreign Telephone Number:</div>
+							<br></br>
 							<div style="float:left;clear:none;width:118mm;">
 						<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$DependencyData/ForeignTelephoneNum"/>
@@ -140,7 +141,7 @@
 				<!-- ========================================================================== -->
 				<div class="styTopSectionLine" style="width:187mm;">
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Donee EIN:</div>
-					<div style="float:left;clear:none;width:118mm;">
+					<div style="width:118mm;float:left;clear:none;">
 						<xsl:call-template name="PopulateEIN">
 							<xsl:with-param name="TargetNode" select="$DependencyData/DoneeEIN"/>
 						</xsl:call-template>
@@ -150,7 +151,7 @@
 				<!-- ========================================================================== -->
 						<div class="styTopSectionLine" style="width:187mm;">
 							<div class="styTopSectionLineLbl" style="float:left;clear:none;">Donor Identification Number:</div>
-							<div style="float:left;clear:none;width:118mm;">
+							<div style="width:118mm;float:left;clear:none;">
 							<xsl:choose>
 					<xsl:when test="$DependencyData/DonorEIN">
 								<xsl:call-template name="PopulateEIN">
@@ -171,13 +172,13 @@
 					<xsl:when test="$DependencyData/DonorPersonNm">
 						<div class="styTopSectionLine" style="width:187mm;">
 					      <div class="styTopSectionLineLbl" style="float:left;clear:none;">Donor Person Name:</div>
-							<div style="float:left;clear:none;width:118mm;">
+							<div style="width:118mm;float:left;clear:none;">
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$DependencyData/DonorPersonNm/PersonFirstName"/>
+							<xsl:with-param name="TargetNode" select="$DependencyData/DonorPersonNm/PersonFirstNm"/>
 						</xsl:call-template>
 						<span style="width:0.5mm;"> </span>
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$DependencyData/DonorPersonNm/PersonLastName"/>
+							<xsl:with-param name="TargetNode" select="$DependencyData/DonorPersonNm/PersonLastNm"/>
 						</xsl:call-template>
 							</div>
 						</div>
@@ -185,16 +186,16 @@
 					<xsl:otherwise>
 						<!-- ============================  OR  ======================================= -->
 				<div class="styTopSectionLine" style="width:187mm;">
-					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Donor business name:</div>
+					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Donor Business Name:</div>
 					<div style="float:left;clear:none;width:118mm;">
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$DependencyData/DonorBusinessName/BusinessNameLine1"/>
+							<xsl:with-param name="TargetNode" select="$DependencyData/DonorBusinessName/BusinessNameLine1Txt"/>
 						</xsl:call-template>
 						<xsl:choose>
-							<xsl:when test="$DependencyData/DonorBusinessName/BusinessNameLine2 != ''">
+							<xsl:when test="$DependencyData/DonorBusinessName/BusinessNameLine2Txt != ''">
 								<br/>
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$DependencyData/DonorBusinessName/BusinessNameLine2"/>
+									<xsl:with-param name="TargetNode" select="$DependencyData/DonorBusinessName/BusinessNameLine2Txt"/>
 								</xsl:call-template>
 							</xsl:when>
 						</xsl:choose>
@@ -208,7 +209,7 @@
 					<xsl:when test="$DependencyData/DonorUSAddress">
 						<div class="styTopSectionLine" style="width:187mm;">
 							<div class="styTopSectionLineLbl" style="float:left;clear:none;">US Address of Donor:</div>
-							<div style="float:left;clear:none;width:118mm;">
+							<div style="width:116mm;float:left;clear:none;">
 								<xsl:call-template name="PopulateUSAddressTemplate">
 									<xsl:with-param name="TargetNode" select="$DependencyData/DonorUSAddress"/>
 								</xsl:call-template>
@@ -219,7 +220,7 @@
 						<!-- ============================  OR  ======================================= -->
 						<div class="styTopSectionLine" style="width:187mm;">
 							<div class="styTopSectionLineLbl" style="float:left;clear:none;">Foreign Address of Donor:</div>
-							<div style="float:left;clear:none;width:118mm;">
+							<div style="width:112mm;float:left;clear:none;">
 								<xsl:call-template name="PopulateForeignAddressTemplate">
 									<xsl:with-param name="TargetNode" select="$DependencyData/DonorForeignAddress"/>
 								</xsl:call-template>
@@ -243,15 +244,15 @@
 					<div style="float:left;clear:none;width:118mm;">
 						<br/>
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$DependencyData/VehicleDescriptionGrp/VehicleYear"/>
+							<xsl:with-param name="TargetNode" select="$DependencyData/VehicleDescriptionGrp/VehicleModelYr"/>
 						</xsl:call-template>
                         <span style="width:7px"/> 
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$DependencyData/VehicleDescriptionGrp/VehicleMake"/>
+							<xsl:with-param name="TargetNode" select="$DependencyData/VehicleDescriptionGrp/VehicleMakeNameTxt"/>
 						</xsl:call-template>
                        <span style="width:7px"/> 
 						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$DependencyData/VehicleDescriptionGrp/VehicleModel"/>
+							<xsl:with-param name="TargetNode" select="$DependencyData/VehicleDescriptionGrp/VehicleModelNameTxt"/>
 						</xsl:call-template>
 					</div>
 				</div>
@@ -269,7 +270,7 @@
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Certifies Vehicle Sold to Unrelated Party Indicator:</div>
 					<div style="float:left;clear:none;width:118mm;">
 						<br/>
-            <input type="checkbox" class="styCkbox" name="Checkbox">
+            <input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$DependencyData/CertifiesVehSoldToUnrltPrtyInd"/>
                 <xsl:with-param name="BackupName">DependencyDataCertifiesVehSoldToUnrltPrtyInd</xsl:with-param>
@@ -307,7 +308,7 @@
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Certifies Vehicle not Transferred Indicator:</div>
 					<div style="float:left;clear:none;width:118mm;">
 						<br/>
-						<input type="checkbox" class="styCkbox" name="Checkbox">
+						<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$DependencyData/CertifiesVehicleNotTrnsfrInd"/>
 								<xsl:with-param name="BackupName">DependencyDataCertifiesVehicleNotTrnsfrInd</xsl:with-param>
@@ -326,7 +327,7 @@
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Certifies Vehicle Transferred to Needy Indicator:</div>
 					<div style="float:left;clear:none;width:118mm;">
 						<br/>
-            <input type="checkbox" class="styCkbox" name="Checkbox">
+            <input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$DependencyData/CertifiesVehTrnsfrToNeedyInd"/>
                 <xsl:with-param name="BackupName">DependencyDataCertifiesVehTrnsfrToNeedyInd</xsl:with-param>
@@ -343,7 +344,7 @@
 				<!-- ========================================================================== -->
 				<div class="styTopSectionLine" style="width:187mm;">
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Certifies Detailed Description of Improvement:</div>
-					<div style="float:left;clear:none;width:118mm;">
+					<div style="float:left;clear:none;">
 						<br/>
 						<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="$DependencyData/CertifiesDetailedImprvDesc"/>
@@ -385,7 +386,7 @@
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Intangible Religious Benefits Indicator:</div>
 					<div style="float:left;clear:none;width:118mm;">
 						<br/>
-            <input type="checkbox" class="styCkbox" name="Checkbox">
+            <input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$DependencyData/IntangibleReligiousBenefitsInd"/>
                 <xsl:with-param name="BackupName">DependencyDataIntangibleReligiousBenefitsInd</xsl:with-param>
@@ -414,7 +415,7 @@
 					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Vehicle Claim Deduction Under Specifed Amount Indicator:</div>
 					<div style="float:left;clear:none;width:118mm;">
 						<br/>
-            <input type="checkbox" class="styCkbox" name="Checkbox">
+            <input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$DependencyData/VehClaimDedUnderSpcfdAmtInd"/>
                 <xsl:with-param name="BackupName">DependencyDataVehClaimDedUnderSpcfdAmtInd</xsl:with-param>

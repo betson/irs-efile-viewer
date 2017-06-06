@@ -15,7 +15,7 @@
 		<!-- Add stylesheet dependency code here -->
 		<div class="styTopSectionLine">
 			<span class="styTopSectionLineLbl" style="float:left;clear:none;">Mortgage Credit Certificate Interest Calculation Statement: </span><br/>
-			<span style="float:left;clear:none;">
+			<span style="clear:none;width:118mm;">
 				<xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$DependencyData/MCCInterestCalculationStmt"/>
 				</xsl:call-template>
@@ -29,8 +29,10 @@
 
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title><xsl:value-of select="$depDocTitle" /></title>
 
 				<!-- No Browser Caching -->
@@ -53,10 +55,10 @@
 				</style>
 				<xsl:call-template name="GlobalStylesDep"/>
 			</head>
-			<body class="styBodyClass" >
+			<body class="styBodyClass" style="width:187mm;">
 				<xsl:call-template name="DocumentHeaderDependency"></xsl:call-template>
 				<div class="styDepTitleLine">
-					<span class="styDepTitle" style="width:79mm">
+					<span class="styDepTitle" style="width:152mm">
 						<xsl:value-of select="$depDocTitle" />
 					</span>
 				</div>

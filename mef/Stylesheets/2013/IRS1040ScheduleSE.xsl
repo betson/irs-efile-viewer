@@ -10,8 +10,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1040ScheduleSEData" select="$RtnDoc/IRS1040ScheduleSE"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1040ScheduleSEData)"/>
@@ -71,7 +73,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:32mm;height:19mm">
-							<div class="styOMB" style="height:2mm;">
+							<div class="styOMB" style="height:4mm;">
 								OMB No. 1545-0074
 							</div>
 							<div class="styTY" style="height:6mm;font-size:21pt;padding-top:0mm;padding-bottom:0mm;line-height:100%;">
@@ -109,11 +111,11 @@
 					</div>
 					<!-- Comments-->
 		<div class="styBB" style="width:187mm;border-width:0px;">
-             <div class="styLNDesc" style="width:187mm;border-width:0px 0px 1px 0px;border-style:solid;border-color:black;">
+             <div class="styLNDesc" style="width:187mm;border-width:0px 0px 1px 0px;border-style:solid;border-color:black;height:auto;">
 				 <span style="font-size:9pt;padding-bottom:1mm;">
                 <b><i>Before you begin:</i></b><span style="width:1mm"/>
                 To determine if you must file Schedule SE, see the instructions.</span><br/></div>
-			<div class="styLNDesc" style="width:187mm;border-width:0px 0px 0px 0px;">
+			<div class="styLNDesc" style="width:187mm;border-width:0px 0px 0px 0px;height:auto;">
 			   <b> <span style="font-size:9pt;padding-bottom:1mm;">
 				 May l Use Short Schedule SE or Must l Use Long Schedule SE?</span></b><br/><br/>
 			   <b>Note. </b> Use this flowchart <b>only if</b> you must file Schedule SE. If unsure, see 
@@ -149,10 +151,10 @@
 						<div class="styGenericDiv" style="width:10mm;height:3.5mm;border-width:1px 0px 0px 1px;border-style:solid;border-color:black;" />						
 					</div>
 					<div class="styGenericDiv" style="width:78mm;height:1mm;" >
-						<div class="styGenericDiv" style="width:38.5mm;" />
+						<div class="styGenericDiv" style="width:38.5mm;height:1px" />
 						<div class="styGenericDiv" style="border-top:2.99mm solid #000;border-left:1.45mm solid transparent;border-right:1.45mm solid transparent;font-size:0; 
   line-height:0;width:0;" />
-						<div class="styGenericDiv" style="width:25.4mm;" />
+						<div class="styGenericDiv" style="width:25.4mm;height:1px;" />
 						<div class="styGenericDiv" style="border-top:2.99mm solid #000;border-left:1.45mm solid transparent;border-right:1.45mm solid transparent;font-size:0; 
   line-height:0;width:0;" />
 						<div class="styGenericDiv" style="width:8.1mm;" />
@@ -231,9 +233,9 @@
 					<div class="styGenericDiv" style="width:28mm;height:5mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;padding-left:1mm;padding-top:1mm;text-align:left;" ><b>No</b>
 					</div>
 					<div class="styGenericDiv" style="width:78mm;height:1mm;" >
-						<div class="styGenericDiv" style="width:38.5mm;" />
+						<div class="styGenericDiv" style="width:38.5mm;height:1px;" />
 						<div class="styGenericDiv" style="border-top:2.99mm solid #000;border-left:1.45mm solid transparent;border-right:1.45mm solid transparent;font-size:0;line-height:0;width:0;" />
-						<div class="styGenericDiv" style="width:36.5mm;" />
+						<div class="styGenericDiv" style="width:36.5mm;height:1px;" />
 					</div>
 				</div>
 				<div class="styGenericDiv" style="width:22mm;height:8.1mm;">
@@ -245,10 +247,10 @@
 					<div class="styGenericDiv" style="width:32mm;height:5mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;padding-left:1mm;padding-top:1mm;text-align:left;" ><b>No</b>
 					</div>
 					<div class="styGenericDiv" style="width:73mm;height:1mm;" >
-						<div class="styGenericDiv" style="width:34.7mm;" />
+						<div class="styGenericDiv" style="width:34.7mm;height:1px;" />
 						<div class="styGenericDiv" style="border-top:2.99mm solid #000;border-left:1.45mm solid transparent;border-right:1.45mm solid transparent;font-size:0; 
   line-height:0;width:0;" />
-						<div class="styGenericDiv" style="width:35.3mm;" />
+						<div class="styGenericDiv" style="width:35.3mm;height:1px;" />
 					</div>					
 				</div>
 				<div class="styGenericDiv" style="width:9mm;height:8mm;" />
@@ -297,8 +299,8 @@
 					</div>
 				</div>
 				<div class="styGenericDiv" style="width:5mm;height:12mm;" >
-					<div class="styGenericDiv" style="width:5mm;height:6mm;border-width:0x 0px 0px 1px;border-style:solid;border-color:black;" />
-					<div class="styGenericDiv" style="width:5mm;height:6.4mm;border-width:0x 0px 0px 1px;border-style:solid;border-color:black;" />
+					<div class="styGenericDiv" style="width:5mm;height:6mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;" />
+					<div class="styGenericDiv" style="width:5mm;height:6.4mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;" />
 				</div>
 			</div>
 			<!--End of fifth row-->
@@ -309,10 +311,10 @@
 					<div class="styGenericDiv" style="width:28mm;height:5mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;padding-left:1mm;padding-top:1mm;text-align:left;" ><b>No</b>
 					</div>
 					<div class="styGenericDiv" style="width:78mm;height:1mm;" >
-						<div class="styGenericDiv" style="width:38.5mm;" />
+						<div class="styGenericDiv" style="width:38.5mm;height:1px;" />
 						<div class="styGenericDiv" style="border-top:2.99mm solid #000;border-left:1.45mm solid transparent;border-right:1.45mm solid transparent;font-size:0; 
   line-height:0;width:0;" />
-						<div class="styGenericDiv" style="width:36.5mm;" />
+						<div class="styGenericDiv" style="width:36.5mm;height:1px;" />
 					</div>
 				</div>
 				<div class="styGenericDiv" style="width:22mm;height:8.1mm;">
@@ -324,10 +326,10 @@
 					<div class="styGenericDiv" style="width:32mm;height:5mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;padding-left:1mm;padding-top:1mm;text-align:left;" ><b>No</b>
 					</div>
 					<div class="styGenericDiv" style="width:73mm;height:1mm;" >
-						<div class="styGenericDiv" style="width:34.7mm;" />
+						<div class="styGenericDiv" style="width:34.7mm;height:1px;" />
 						<div class="styGenericDiv" style="border-top:2.99mm solid #000;border-left:1.45mm solid transparent;border-right:1.45mm solid transparent;font-size:0; 
   line-height:0;width:0;" />
-						<div class="styGenericDiv" style="width:35.3mm;" />
+						<div class="styGenericDiv" style="width:35.3mm;height:1px;" />
 					</div>					
 				</div>
 				<div class="styGenericDiv" style="width:9mm;height:8mm;" />
@@ -385,8 +387,8 @@
 					</div>
 				</div>
 				<div class="styGenericDiv" style="width:5mm;height:12mm;" >
-					<div class="styGenericDiv" style="width:5mm;height:6mm;border-width:0x 0px 0px 1px;border-style:solid;border-color:black;" />
-					<div class="styGenericDiv" style="width:5mm;height:6.4mm;border-width:0x 0px 0px 1px;border-style:solid;border-color:black;" />
+					<div class="styGenericDiv" style="width:5mm;height:6mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;" />
+					<div class="styGenericDiv" style="width:5mm;height:6.4mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;" />
 				</div>
 			</div>
 			<!--End of seventh row-->
@@ -397,10 +399,10 @@
 					<div class="styGenericDiv" style="width:28mm;height:5mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;padding-left:1mm;padding-top:1mm;text-align:left;" ><b>No</b>
 					</div>
 					<div class="styGenericDiv" style="width:78mm;height:1mm;" >
-						<div class="styGenericDiv" style="width:38.5mm;" />
+						<div class="styGenericDiv" style="width:38.5mm;height:1px;" />
 						<div class="styGenericDiv" style="border-top:2.99mm solid #000;border-left:1.45mm solid transparent;border-right:1.45mm solid transparent;font-size:0; 
   line-height:0;width:0;" />
-						<div class="styGenericDiv" style="width:36.5mm;" />
+						<div class="styGenericDiv" style="width:36.5mm;height:1px;" />
 					</div>
 				</div>
 				<div class="styGenericDiv" style="width:22mm;height:8.1mm;">
@@ -411,9 +413,9 @@
 					<div class="styGenericDiv" style="width:82mm;height:5mm;" />					
 					<div class="styGenericDiv" style="height:5.1mm;border-width:0px 0px 0px 1px;border-style:solid;border-color:black;padding-left:1mm;padding-top:1mm;text-align:left;" />
 					<div class="styGenericDiv" style="width:87mm;height:1mm;" >
-						<div class="styGenericDiv" style="width:80.7mm;" />
+						<div class="styGenericDiv" style="width:80.7mm;height:1px;" />
 						<div class="styGenericDiv" style="border-top:2.99mm solid #000;border-left:1.45mm solid transparent;border-right:1.45mm solid transparent;font-size:0;line-height:0;width:0;" />
-						<div class="styGenericDiv" style="width:2mm;" />
+						<div class="styGenericDiv" style="width:2mm;height:1px;" />
 					</div>
 				</div>
 			</div>
@@ -484,7 +486,7 @@
                  b
                <!-- Position makes the 'a' in "1a" line up with the other letters. -->
                </div>
-               <div class="styLNDesc" style="width:139mm;height:5mm;padding-top:1mm">
+               <div class="styLNDesc" style="width:139mm;height:10mm;padding-top:1mm">
                   If you received social security retirement or disability benefits, enter the amount of 
                   Conservation <br/>Reserve Program payments included on Schedule F, line 4b, 
                   or listed on Schedule K-1 (Form 1065),<br/> box 20, code Y
@@ -492,9 +494,9 @@
                   <span style="width:2mm"/>
                   <span style=" letter-spacing:3.2mm; font-weight:bold; ">............................</span>
                </div>
-               <div class="styLNRightNumBox" style="height:7.5mm;padding-top:7.5mm;">
+               <div class="styLNRightNumBox" style="height:10mm;padding-top:6.5mm;">
                  1b</div>
-               <div class="styLNAmountBox" style="text-align:right;height:7.5mm;padding-top:7.5mm">
+               <div class="styLNAmountBox" style="text-align:right;height:10mm;padding-top:6.5mm">
                  <span style="font-size:6pt">(</span>
                   <xsl:call-template name="PopulateAmount">
                      <xsl:with-param name="TargetNode" 
@@ -509,7 +511,7 @@
             <div style="width:187mm;">
                <div class="styLNLeftNumBoxSD" style="height:10mm;">
                  2</div>
-               <div class="styLNDesc" style="width:139mm;height:10mm;">
+               <div class="styLNDesc" style="width:139mm;height:11mm;">
                  Net profit or (loss) from Schedule C, line 31; Schedule
                  K-1 (Form 1065), box 14, <br/>code A (other than farming); and Schedule K-1 (Form 
                 1065-B), box 9, code J1. Ministers and members<br/>of religious orders, see instructions
@@ -520,9 +522,9 @@
                   <span style="width:.3mm"/>
                   <span style=" letter-spacing:3.2mm; font-weight:bold; ">............................</span>
                </div>
-               <div class="styLNRightNumBox" style="height:12mm;padding-top:10mm">
+               <div class="styLNRightNumBox" style="height:11mm;padding-top:7.5mm">
                  2</div>
-               <div class="styLNAmountBox" style="height:12mm;text-align:right;padding-top:10mm;">
+               <div class="styLNAmountBox" style="height:11mm;text-align:right;padding-top:7.5mm;">
                   <xsl:call-template name="PopulateAmount">
                      <xsl:with-param name="TargetNode" 
                        select="$Form1040ScheduleSEData/SectionA/NetNonFarmProfitLossAmt"/>
@@ -604,7 +606,7 @@
                  4
                <!-- Position makes the 'a' in "1a" line up with the other letters. -->
                </div>
-               <div class="styLNDesc" style="width:139mm;height:6mm;">
+               <div class="styLNDesc" style="width:139mm;height:7mm;">
                   Multiply line 3 by 92.35% (.9235). If less than $400, you do not<br/>
                         owe self-employment tax;<b> do not </b> file this schedule unless you have an amount on line 1b
                   <!--Dotted Line-->
@@ -612,17 +614,26 @@
                   <span style=" letter-spacing:3.2mm; font-weight:bold; ">....</span>
                   <span style="width:8px;"/>
                   <img src="{$ImagePath}/1040SchSE_Bullet_Md.gif" alt="MediumBullet"/><br/>
-                    <b>Note.</b><span style="width:.5mm"/>
-                     If line 4 is less than $400 due to Conservation Reserve Program payments on line 1b,<br/>
-                     see instructions.
                </div>
-               <div class="styLNRightNumBox" style="height:6mm;padding-top:3.4mm">
+               <div class="styLNRightNumBox" style="height:7mm;padding-top:3.4mm">
                  4</div>
-               <div class="styLNAmountBox" style="text-align:right;height:6mm;padding-top:3.4mm">
+               <div class="styLNAmountBox" style="text-align:right;height:7mm;padding-top:3.4mm">
                   <xsl:call-template name="PopulateAmount">
                      <xsl:with-param name="TargetNode"
                        select="$Form1040ScheduleSEData/SectionA/MinimumProfitForSETaxAmt"/>
                   </xsl:call-template>
+               </div>
+            </div>
+            <!--End of line 4 -->
+                    <!-- Line 4 Note -->
+            <div style="width:187mm;">
+               <div class="styLNLeftNumBoxSD" style="height:6mm;">   
+               <!-- Position makes the 'a' in "1a" line up with the other letters. -->
+               </div>
+               <div class="styLNDesc" style="width:139mm;height:6mm;">
+                    <b>Note.</b><span style="width:.5mm"/>
+                     If line 4 is less than $400 due to Conservation Reserve Program payments on line 1b,<br/>
+                     see instructions.
                </div>
                <div class="styLNRightNumBox" style="height:6mm;padding-top:3.4mm;
                  border-bottom:0 solid black"></div>
@@ -681,7 +692,7 @@
          </div>
          <!-- capturing the page bottom info -->
          <!--  FOOTER-->
-         <div style="width:187mm;">
+         <div style="width:187mm;float:none;">
             <span style="width:140mm;float:left;">
               <b>For Paperwork Reduction Act Notice, see your tax return instructions.</b>
               <span style="width:12mm;"/>                      
@@ -690,9 +701,9 @@
             <span class="styBoldText" style="float:right;">Schedule SE (Form 1040) 2013</span>
          </div>
          <!-- Adding page break -->
-         <p class="pageend"/>
+         <p class="pageEnd" style="float:none;"/>
          <!-- Page Header -->
-         <div class="styBB" style="width:187mm;padding-top:.5mm;">
+         <div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
             <div style="float:left;">Schedule SE (Form 1040) 2013<span style="width:70mm;"/>
               Attachment Sequence No. <b>17</b></div>
             <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></div>
@@ -738,7 +749,7 @@
 					<!-- SB-Line A -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="height:6mm;">A</div>
-						<div class="styLNDesc" style="width:178mm;height:6mm;">
+						<div class="styLNDesc" style="width:178mm;height:8mm;">
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/SectionB/ExemptForm4361Ind"/>
@@ -765,15 +776,15 @@
 					<!-- SB-Line 1a -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="height:6mm;">1a</div>
-						<div class="styLNDesc" style="width:139mm;height:6mm;">
+						<div class="styLNDesc" style="width:139mm;height:7mm;">
 							Net farm profit or (loss) from Schedule F, line 34, and farm partnerships, Schedule K-1 (Form 1065), <br/>
 							<span style="float:left;">box 14, code A. <b>Note.</b> Skip lines 1a and 1b if you use the farm optional method (see instructions)</span>
 						   <!--Dotted Line-->
 							<span class="styIRS1040ScheduleSEDotLn">..</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:6mm;padding-top:4mm;border-top-width:1px">
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.5mm;border-top-width:1px">
               1a</div>
-						<div class="styLNAmountBox" style="text-align:right;height:6mm;padding-top:4mm;border-top-width:1px">
+						<div class="styLNAmountBox" style="text-align:right;height:7mm;padding-top:3.5mm;border-top-width:1px">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form1040ScheduleSEData/SectionB/NetFarmProfitLossAmt"/>
 							</xsl:call-template>
@@ -969,7 +980,7 @@
 						<div class="styLNLeftNumBoxSD">6</div>
 						<div class="styLNDesc" style="width:139mm;">
 							<span style="float:left;">Add lines 4c and 5b</span>
-							<span class="styIRS1040ScheduleSEDotLn">..........................</span>
+							<span class="styIRS1040ScheduleSEDotLn">.......................</span>
 						</div>
 						<div class="styLNRightNumBox">6</div>
 						<div class="styLNAmountBox">
@@ -1050,7 +1061,7 @@
 						<div class="styLNLeftNumBoxSD" style="padding-left:4mm;">d</div>
 						<div class="styLNDesc" style="width:139mm;">
 							<span style="float:left;">Add lines 8a, 8b, and 8c</span>
-							<span class="styIRS1040ScheduleSEDotLn">.........................</span>
+							<span class="styIRS1040ScheduleSEDotLn">......................</span>
 						</div>
 						<div class="styLNRightNumBox">8d</div>
 						<div class="styLNAmountBox">
@@ -1096,7 +1107,7 @@
 						<div class="styLNLeftNumBox">11</div>
 						<div class="styLNDesc" style="width:139mm;">
 							<span style="float:left;">Multiply line 6 by 2.9% (.029)</span>
-							<span class="styIRS1040ScheduleSEDotLn">.......................</span>
+							<span class="styIRS1040ScheduleSEDotLn">......................</span>
 						</div>
 						<div class="styLNRightNumBox">11</div>
 						<div class="styLNAmountBox">
@@ -1111,7 +1122,7 @@
 						<div class="styLNLeftNumBox">12</div>
 						<div class="styLNDesc" style="width:139mm;">
 							<span style="float:left;font-family:Arial;"><b>Self-employment tax.</b> Add lines 10 and 11. Enter here and on <b>Form 1040, line 56,</b> or <b>Form 1040NR, line 54</b></span>
-							<span class="styIRS1040ScheduleSEDotLn">....</span>
+							<span class="styIRS1040ScheduleSEDotLn">...</span>
 						</div>
 						<div class="styLNRightNumBox">12</div>
 						<div class="styLNAmountBox">
@@ -1142,7 +1153,7 @@
 						<div class="styLNLeftNumBox"/>
 						<div class="styLNDesc" style="width:99mm;padding-top:0px;height:4mm">
 							<span style="float:left;"><b>line 27,</b> or <b>Form 1040NR, line 27</b></span>
-							<span class="styIRS1040ScheduleSEDotLn">............</span>
+							<span class="styIRS1040ScheduleSEDotLn">...........</span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:4mm;">13</div>
 						<div class="styLNAmountBoxNBB" style="padding-right:1px;height:4mm;">
@@ -1197,7 +1208,7 @@
 								Enter the <b>smaller</b> of: two-thirds (<sup style="font-size:6pt;">2</sup>/<span style="font-size:5pt;">3</span>)
 								of gross farm income <sup style="font-size:6pt;">1</sup> (not less than zero) <b>or</b> $4,640. Also <br/>
 								<span style="float:left;">include this amount on line 4b above</span>
-								<span class="styIRS1040ScheduleSEDotLn">.....................</span>
+								<span class="styIRS1040ScheduleSEDotLn">....................</span>
 							</div>
 							<div class="styLNRightNumBoxNBB" style="height:8.1mm;"><br/>15</div>
 							<div class="styLNAmountBoxNBB" style="height:8.1mm;"><br/>

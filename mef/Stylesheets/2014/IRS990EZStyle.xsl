@@ -5,11 +5,9 @@
 
 <xsl:template name="IRS990EZStyle">
   .styIRS990EZImg {
-    width: 6mm;
-    border-style: solid;
-    border-color: black;
-    border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px;  border-right-width: 1px;
-    float: left; clear: none;
+   width:5mm;
+      border-style: solid; border-color: black;
+      border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
   }
   .styIRS990EZLineItem {  /* Line Item */
     width: 187mm;
@@ -60,7 +58,7 @@
   }
 
   .styIRS990EZTableCellA {   /* Table Cell (a or 1) */
-    width: 58mm;
+    width: 70mm;
     font-size: 7pt;
     font-weight: normal;
     color: black;
@@ -69,7 +67,7 @@
     border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
   }
   .styIRS990EZTableCellB {   /* Table Cell (b or 2) */
-    width: 35mm;
+    width: 28mm;
     font-size: 7pt;
     font-weight: normal;
     color: black;
@@ -118,8 +116,8 @@
       float:left; clear: none;
   }
   .styIRS990EZCkBox{
-    height: 4mm;
-    width: 4mm;
+    height: 2mm;
+    width: 2mm;
   }
   .styIRS990EZUnderlinedBox{
     width: 38mm;

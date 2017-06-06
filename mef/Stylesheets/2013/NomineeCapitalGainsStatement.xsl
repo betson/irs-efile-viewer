@@ -14,7 +14,8 @@
 	<xsl:template name="ShowDependencyData">
 		<div class="styTopSectionLine" style="width:187mm;">
           <div style="float:left;clear:none;" class="styTopSectionLineLbl">Nominee Capital Gains Statement:</div>
-          <div class="styExplanationLine">
+          <br/>
+          <div class="styExplanationLine" style="width:187mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/MediumExplanationTxt"/>
             </xsl:call-template>
@@ -28,8 +29,10 @@
 
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title><xsl:value-of select="$depDocTitle" /></title>
 
 				<!-- No Browser Caching -->
@@ -55,7 +58,7 @@
 			<body class="styBodyClass" >
 				<xsl:call-template name="DocumentHeaderDependency"></xsl:call-template>
 				<div class="styDepTitleLine">
-					<span class="styDepTitle" style="width:99mm">
+					<span class="styDepTitle" style="width:187mm">
 						<xsl:value-of select="$depDocTitle" />
 					</span>
 				</div>

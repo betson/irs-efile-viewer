@@ -4,7 +4,19 @@
 <!-- CSS Styles for form 1120ScheduleM -->
 
 <xsl:template name="IRS1120ScheduleM3Style">
+
+
+
+
   .styIRS1120ScheduleM3TheadCell{ /*Header Cell */
+
+  color: black;
+  border-style: solid;
+  border-color:black;
+  border-top-width:0px; border-bottom-width:1px; border-left-width:1px; border-right-width:0px;
+
+/**  Commented out by PJ March 11, 2015
+
     font-size:6pt;
     width:25mm;
     font-weight:normal;
@@ -13,6 +25,9 @@
     border-style: solid;
     border-color: black;
     border-top-width:0px; border-bottom-width:1px; border-left-width:1px; border-right-width:0px;
+
+**/
+
   }
   
   .styIRS1120ScheduleM3Cell { /*Cell for amounts */
@@ -45,6 +60,14 @@
     padding-left:1mm;
     vertical-align:top;
   }
+
+.styIRS1120ScheduleM3_styTable {   /* Table */ Added by PJ March 11, 2015
+  font-size: 7pt;
+  text-align: left;
+  float:none; clear:both;  
+  width:100%
+
+}
 
 </xsl:template>
 

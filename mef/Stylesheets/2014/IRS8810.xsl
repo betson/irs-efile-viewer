@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8810Data" select="$RtnDoc/IRS8810"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8810Data)"/>
@@ -80,7 +82,7 @@
 						</div>
 					</div>
 					<div style="width:187mm;" class="styBB">
-						<div style="width:138mm;height:8mm;font-weight:normal;font-size:7pt;" class="styNameBox">
+						<div style="width:138mm;height:10mm;font-weight:normal;font-size:7pt;" class="styNameBox">
                      Name<br/>
 							<div style="font-family:verdana;font-size:7pt;height:7mm">
 								<span>
@@ -107,7 +109,7 @@
 					<!-- Begin Part I -->
 					<div style="width:187mm;" class="styBB">
 						<div class="styPartName" style="width:15mm;">Part I</div>
-						<div class="styPartDesc" style="padding-left:3mm;width:172mm;">
+						<div class="styPartDesc" style="padding-left:3mm;width:172mm;height:auto;">
                      2014 Passive Activity Loss <br/>
                      Caution:<span class="styItalicText" style="font-weight:normal;">
                       See the instructions and complete Worksheets 1 and 2 before completing Part I.</span>
@@ -275,7 +277,7 @@
 					<!-- Begining Part II -->
 					<div style="width:187mm;" class="styBB">
 						<div class="styPartName" style="width:15mm;">Part II</div>
-						<div class="styPartDesc" style="padding-left:3mm;">
+						<div class="styPartDesc" style="padding-left:3mm;height:auto;">
                      2014 Passive Activity Credits <br/>
                      Caution:<span class="styItalicText" style="font-weight:normal;"> 
                      See the instructions and complete Worksheet 5 before completing Part II.</span>
@@ -406,7 +408,7 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<div class="styTableContainer" id="DEctn" style="height:28.5mm;">
+					<div class="styTableContainer" id="DEctn" style="height:auto;">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" cellspacing="0" name="TYTable" id="TYTable" style="font-size:7pt;width:100%;">
 							<thead class="styTableThead"/>
@@ -450,7 +452,7 @@
 			                                       Name of passive activity disposed of <span style="width:4px;"/>
 															<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 														</span>
-														<span style="border-bottom:1 solid black; width:121mm;float:right;">
+														<span style="border-bottom:1px solid black;height:3mm;width:121mm;float:right;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="DisposedPassiveActivityNm"/>
 															</xsl:call-template>
@@ -466,7 +468,7 @@
 			                                    Description of the credit property for which the election is being made <span style="width:7px;"/>
 															<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 														</span>
-														<span style="border-bottom:1 solid black; width:75mm;float:right;">
+														<span style="border-bottom:1px solid black; width:75mm;float:right;">
 															<span style="width:1px;"/>
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="PropertyDesc"/>
@@ -507,7 +509,7 @@
 			                                    Name of passive activity disposed of <span style="width:4px;"/>
 														<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 													</span>
-													<span style="border-bottom:1 solid black; width:121mm;float:right;">
+													<span style="border-bottom:1px solid black;width:121mm;float:right;">
 														<xsl:call-template name="PopulateAdditionalDataTableMessage">
 															<xsl:with-param name="TargetNode" select="$Form8810Data/CrPropForWhichElectIsMadeGrp/DisposedPassiveActivityNm"/>
 														</xsl:call-template>
@@ -523,7 +525,7 @@
 			                                    Description of the credit property for which the election is being made <span style="width:7px;"/>
 														<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 													</span>
-													<span style="border-bottom:1 solid black; width:80mm;float:right;">
+													<span style="border-bottom:1px solid black; width:80mm;float:right;">
 														<xsl:call-template name="PopulateAdditionalDataTableMessage">
 															<xsl:with-param name="TargetNode" select="$Form8810Data/CrPropForWhichElectIsMadeGrp/PropertyDesc"/>
 														</xsl:call-template>
@@ -561,7 +563,7 @@
                                     Name of passive activity disposed of <span style="width:4px;"/>
 													<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 												</span>
-												<span style="border-bottom:1 solid black; width:121mm;float:right;"/>
+												<span style="border-bottom:1px solid black;height:3mm;width:121mm;float:right;"/>
 											</td>
 										</tr>
 										<tr style="height:6mm;">
@@ -573,7 +575,7 @@
                                     Description of the credit property for which the election is being made <span style="width:7px;"/>
 													<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 												</span>
-												<span style="border-bottom:1 solid black; width:80mm;float:right;">
+												<span style="border-bottom:1px solid black; width:80mm;float:right;">
 													<span style="width:1px;"/>
 												</span>
 											</td>
@@ -611,7 +613,7 @@
 						<div style="width:55mm;text-align:center;" class="styGenericDiv">Cat. No. 10356T</div>
 						<div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8810</span> (2014)</div>
 					</div>
-					<p class="pageend"/>
+					<p class="pageEnd"/>
 					<!-- Begininning of write-in data -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">
@@ -651,7 +653,7 @@
 	                             Name of passive activity disposed of <span style="width:4px;"/>
 												<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 											</span>
-											<span style="border-bottom:1 solid black; width:121mm;float:right;">
+											<span style="border-bottom:1px solid black;height:3mm;width:121mm;float:right;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="DisposedPassiveActivityNm"/>
 												</xsl:call-template>
@@ -667,7 +669,7 @@
 	                          Description of the credit property for which the election is being made <span style="width:7px;"/>
 												<img src="{$ImagePath}/8810_Bullet_Md.gif" width="7" alt="bullet image"/>
 											</span>
-											<span style="border-bottom:1 solid black; width:75mm;float:right;">
+											<span style="border-bottom:1px solid black; width:75mm;float:right;">
 												<span style="width:1px;"/>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="PropertyDesc"/>

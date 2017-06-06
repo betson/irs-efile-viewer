@@ -12,8 +12,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle" /></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache" />
@@ -47,8 +49,9 @@
         <div class="styTopSectionLine" style="width:187mm;">
           <div style="float:left;clear:none;">
           <span class="styTopSectionLineLbl">Reason:</span></div>
+			<br/>
             <div style="float:left;clear:none;">
-              <div class="styExplanationLine">                   
+              <div class="styExplanationLine" style="width:187mm;">                   
                  <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$DependencyData/Reason"></xsl:with-param>
                 </xsl:call-template>

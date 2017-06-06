@@ -2,23 +2,21 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes" />
   <xsl:strip-space elements="*" />
-  
-  <xsl:include href="PopulateTemplate.xsl"/>
+   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
-
   <xsl:param name="MPSData" select="$RtnDoc/MultiplePayeesStatement" />
-  
-  
   <!-- Main template -->
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$MPSData" /></xsl:call-template>  
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/" >
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle" /></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache" />
@@ -38,11 +36,11 @@
         </style>
       <xsl:call-template name="GlobalStylesDep"/>
     </head>    
-    <body class="styBodyClass">
+    <body class="styBodyClass" style="width:187mm;">
       <xsl:call-template name="DocumentHeaderDependencyLandscape" />  
       <div class="styDepTitleLineLandscape">
           <span class="styDepTitle">
-            <span style="width:162mm;"><xsl:value-of select="$depDocTitle" /></span>        
+            <span style="width:78mm;"><xsl:value-of select="$depDocTitle" /></span>        
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftoverLandscape"><xsl:with-param name="TargetNode" select="$MPSData"/></xsl:call-template>
@@ -51,7 +49,6 @@
       </body>
     </html>
   </xsl:template>
-
   <!-- Template to display Additional Information for Gross Foreign Distributions Schedule -->
   <xsl:template name="ShowMPS">
     <table id="MPSTbl" class="styDepTblLandscape">
@@ -60,7 +57,7 @@
            <th class="styDepTblCell" scope="col" style="width:auto;text-align:center;font-size:6pt;">LTC Insurance Qualified Amount</th>
            <th class="styDepTblCell" scope="col" style="width:auto;text-align:center;font-size:6pt;">Accelerated Death Benefit Received Amount</th>
            <th class="styDepTblCell" scope="col" style="width:auto;text-align:center;font-size:6pt;">Total LTC And Death Benefit Received Amount</th>
-           <th class="styDepTblCell" scope="col" style="width:auto;text-align:center;font-size:6pt;">LTC Days Multiple By Per Diem Amount</th>
+           <th class="styDepTblCell" scope="col" style="width:auto;text-align:center;font-size:6pt;">LTC Days Multiply By Per Diem Amount</th>
            <th class="styDepTblCell" scope="col" style="width:auto;text-align:center;font-size:6pt;">LTC Cost Incurred Amount</th>
            <th class="styDepTblCell" scope="col" style="width:auto;text-align:center;font-size:6pt;">Larger Calculation Or Actual LTC Costs Amount</th>
           <th class="styDepTblCell" scope="col" style="width:auto;text-align:center;font-size:6pt;">LTC Reimbursement Amount</th>
@@ -100,7 +97,7 @@
             <!-- Column 4 -->
             <td class="styDepTblCell" style="text-align:right;font-size:6pt;">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="LTCDaysMultipleByPerDiemAmt" />
+                <xsl:with-param name="TargetNode" select="LTCDaysMultiplyByPerDiemAmt" />
               </xsl:call-template>
             </td>
             <!-- Column 5 -->
@@ -138,7 +135,6 @@
       </tbody>
     </table>
   </xsl:template>
-  
 </xsl:stylesheet>
 
 

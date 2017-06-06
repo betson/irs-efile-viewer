@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form1120SScheduleM3" select="$RtnDoc/IRS1120SScheduleM3"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form1120SScheduleM3)"/>
@@ -38,19 +40,20 @@
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm;">
         <form name="Form1120SScheduleM3">
           <xsl:call-template name="DocumentHeader"/>
           <!-- Header - Form1120SSchM3 Number, Title, and Year -->
-          <div class="styTBB" style="width:187mm;">
-            <div class="styFNBox" style="width:31mm;height:20mm;border-right-width:2px;">
+          <div class="styTBB" style="width:187mm;border-bottom-width: 1px;">
+            <div class="styFNBox" style="width:31mm;height:22mm;border-right-width:1px;">
               <span class="styFormNumber" style="font-size:10pt;">SCHEDULE M-3(Form 1120S)
+              <br/>
             <!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3"/>
                 </xsl:call-template>
               </span>
-              <span class="styAgency" style="height:5mm;padding-top:5.1mm;">
+              <span class="styAgency" style="height:5mm;padding-top:3.1mm;">
 				  <span style="width:25mm;"> Department of the Treasury </span>
 				  Internal Revenue Service</span>
             </div>
@@ -62,13 +65,13 @@
                  Attach to Form 1120S.<br/>
                 <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/>
                  Information about Sch. M-3 (Form 1120S) and its separate instructions is at
-                  <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form1120s" title="Link to IRS.gov">
+                  <a href="http://www.irs.gov/form1120s" title="Link to IRS.gov">
 						<i>www.irs.gov/form1120s.</i>
 					</a><br/>
                 </div>                
             </div>            
-            <div class="styTYBox" style="width:30mm;height:20mm;border-left-width:2px;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-0123</div>
+            <div class="styTYBox" style="width:30mm;height:22mm;border-left-width:1px;">
+              <div class="styOMB" style="width:30mm;height:4mm;">OMB No. 1545-0123</div>
               <div class="styTY" style="height:11mm;padding-top:4mm;">20<span class="styTYColor">14</span>
               </div>
             </div>
@@ -107,7 +110,7 @@
           </div>
           <!-- Part I - Header -->
           <div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;           border-right-width:0px;border-left-width:0px;padding-top:2mm;float:left;">
-            <span class="styPartName" style="height:1mm;width:12mm;">Part I</span>
+            <span class="styPartName" style="height:4mm;width:12mm;">Part I</span>
             <span style="width:175mm;" class="styPartDesc">
               <span style="width:3mm;"/>Financial Information and Net Income (Loss) Reconciliation <span style="font-weight:normal;">(see instructions)
               </span>
@@ -117,7 +120,7 @@
           <!-- Line 1a -->
           <div style="width:187mm;">
             <div class="styLNLeftNumBoxSD">1a</div>
-            <div class="styLNDesc" style="width:179mm;">
+            <div class="styLNDesc" style="width:179mm;height:6mm;">
        Did the corporation prepare a certified audited non-tax-basis income statement for 
        the period ending with or within this tax year? (See instructions if multiple non-tax-basis income statements are prepared.)</div>
 			</div>
@@ -316,7 +319,7 @@
           <div style="width:187mm;">
             <div class="styLNLeftNumBoxSD">
               <span style="width:1.5mm"/>b</div>
-            <div class="styLNDesc" style="width:179mm;">Has the corporation's income
+            <div class="styLNDesc" style="width:179mm;height:6mm;">Has the corporation's income
 			 statement been restated for any of the five income statement periods immediately preceding
 			  the period<br/> on line 2?
             <!-- Form Link -->
@@ -413,7 +416,7 @@
                 <span style="width:1.5mm;"/>
               </div>
               <!--Check Box 1 -->
-              <div class="styLNDesc" style="width:131mm;padding-top:.5mm;">(1)
+              <div class="styLNDesc" style="width:138.45mm;padding-top:.5mm;">(1)
                <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/GAAPInd"/>
@@ -461,7 +464,7 @@
               <div class="styLNLeftNumBoxSD">
                 <span style="width:1.5mm;"/>
               </div>
-              <div class="styLNDesc" style="width:138mm;padding-top:.5mm;">(3)
+              <div class="styLNDesc" style="width:138.45mm;padding-top:.5mm;">(3)
                 <!--NOTE- this check box for Tax-basis is not present on the PDF submit with work request WSP-08-0870 -->
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
@@ -494,7 +497,7 @@
                   <span style="padding-left:.5px;">Other (specify)</span>
                   <span style="width:1.5mm;"/>
                   <!-- A straight Line -->
-                  <span style="width:77mm;border-bottom:solid 1px;">
+                  <span style="width:67mm;border-bottom:solid 1px;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/OtherInd/@methodOfAccountingOtherDesc"/>
                     </xsl:call-template>
@@ -514,8 +517,8 @@
           <!-- blank line -->
           <div style="width:187mm;">
             <div style="float:right;">
-              <div class="styLNRightNumBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
-              <div class="styLNAmountBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNRightNumBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNAmountBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
             </div>
           </div>
           <!-- Line 5a -->
@@ -567,8 +570,8 @@
           </div>
           <div style="width:187mm;">
             <div style="float:right;">
-              <div class="styLNRightNumBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
-              <div class="styLNAmountBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNRightNumBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNAmountBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
             </div>
           </div>
           <!-- Line 6a -->
@@ -620,8 +623,8 @@
           </div>
           <div style="width:187mm;">
             <div style="float:right;">
-              <div class="styLNRightNumBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
-              <div class="styLNAmountBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNRightNumBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNAmountBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
             </div>
           </div>
           <!-- Line 7a -->
@@ -697,8 +700,8 @@
           </div>
           <div style="width:187mm;">
             <div style="float:right;">
-              <div class="styLNRightNumBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
-              <div class="styLNAmountBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNRightNumBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNAmountBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
             </div>
           </div>
           <!-- Line 8 -->
@@ -727,8 +730,8 @@
           </div>
           <div style="width:187mm;">
             <div style="float:right;">
-              <div class="styLNRightNumBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
-              <div class="styLNAmountBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNRightNumBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNAmountBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
             </div>
           </div>
           <!-- Line 9 -->
@@ -756,8 +759,8 @@
           </div>
           <div style="width:187mm;">
             <div style="float:right;">
-              <div class="styLNRightNumBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
-              <div class="styLNAmountBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNRightNumBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNAmountBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
             </div>
           </div>
           <!-- Line 10 -->
@@ -786,19 +789,20 @@
           <!-- L11 R1 blank -->
           <div style="width:187mm;">
             <div style="float:right;">
-              <div class="styLNRightNumBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
-              <div class="styLNAmountBoxNBB" style="height:2mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNRightNumBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
+              <div class="styLNAmountBoxNBB" style="height:3mm;padding-top:0;padding-bottom:0;"/>
             </div>
           </div>
           <!-- L11 R2 -->
-          <div style="width:187mm;">
+          <div class="styBB" style="width:187mm;">
             <div style="float:left;clear:none;">
               <div class="styLNLeftNumBox">11</div>
-              <div class="styLNDesc" style="width:137mm;">
+              <div class="styLNDesc" style="width:138mm;height:8mm;">
                 <span style="float:left;">
-                 <!-- Exception #33352 PDF is wrong lines 4 should be Lines 4a-->
                   <span class="styBoldText">Net income (loss) per income statement of the corporation.</span> Combine lines 4 through 10 </span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+				  <br/>
+				  <b>Note. </b>Part I, line 11, must equal Part II, line 26, column (a) or Schedule M-1, line 1 (see instructions).
               </div>
             </div>
             <div style="float:right;">
@@ -812,20 +816,7 @@
             <!-- close float right -->
           </div>
           <!-- L11 Note -->
-          <div style="width:187mm;">
-            <div style="float:left;clear:none;">
-              <div class="styLNLeftNumBox"/>
-              <div class="styLNDesc" style="width:137mm;">
-                <span class="styBoldText">Note. </span>Part I, line 11, must equal Part II, line 26, column (a) or Schedule M-1, line 1 (see instructions). 
-              </div>
-            </div>
-            <div style="float:right;">
-              <div style="width:40mm;"/>
-            </div>
-            <!-- close float right -->
-          </div>
-          <!--Blank Line -->
-          <!--<div class="styBB" style="width:187mm;"/>-->
+          
           <!-- L12 R1-->
           <div style="width:187mm;">
             <div style="float:left;clear:none;">
@@ -952,13 +943,13 @@
             <div style="float:right;clear:none;">
               <div style="width:137mm;">
                 <!--Assets column -->
-                <div class="styLNAmountBox" style="width:50mm;">
+                <div class="styLNAmountBox" style="width:50mm;border-bottom-width:0px;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/EntIncldOtherIncludibleAstAmt"/>
                   </xsl:call-template>
                 </div>
                 <!--Liabilities column -->
-                <div class="styLNAmountBox" style="width:50mm;border-right-width:1px;">
+                <div class="styLNAmountBox" style="width:50mm;border-right-width:1px;border-bottom-width:0px;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/EntIncldOtherIncludibleLiabAmt"/>
                   </xsl:call-template>
@@ -969,13 +960,14 @@
             <!-- close float right -->
           </div>
           <!--Blank Row -->
-          <div class="styTBB" style="width:187mm;"/>
+          <div class="styTBB" style="width:187mm;border-bottom-width: 1px;"/>
           <!-- Page 1 Footer -->
           <div class="pageEnd" style="width:187mm;">
             <div class="styBoldText" style="width:95mm;float:left;font-size:6pt;">For Paperwork Reduction Act Notice, see the Instructions for Form 1120S.	</div>
             <div style="width:25mm;float:left;">Cat. No. 39666W</div>
             <div class="styBoldText" style="float:right;">Schedule M-3 (Form 1120S) 2014</div>
           </div>
+          <p style="page-break-before: always"/>
           <!-- Page 2 -->
           <!-- Page 2 Header -->
           <div class="styBB" style="width:187mm;border-bottom-width:2px">
@@ -1017,33 +1009,37 @@
             </div>
           </div>
           <!-- Part 2 - Header -->
-          <div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;border-top-width:1px; border-right-width:0px;border-left-width:0px;padding-top:0;float:left;">
-            <span class="styPartName" style="height:1mm;width:14mm;padding: .25mm 1mm .25mm 1mm;">Part II</span>
+          <div style="width:187mm;height:8mm;border-style:solid;border-bottom-width:1px;border-top-width:1px; border-right-width:0px;border-left-width:0px;padding-top:0;float:left;">
+            <span class="styPartName" style="height:4mm;width:14mm;padding: .25mm 1mm .25mm 1mm;">Part II</span>
             <span class="styPartDesc" style="width:170mm;">
               <span style="width:2mm;"/>Reconciliation of Net Income (Loss) per Income Statement of the Corporation With Total <br/>
-              <span style="width:3mm;"/>Income (Loss) per Return <span style="font-weight:normal;">(see instructions)</span>
+              <span style="width:3mm;"/>Income (Loss) per Return <span style="padding-left:1mm;font-weight:normal;">(see instructions)</span>
             </span>
           </div>
           <!-- Part II Table -->
-          <table class="styTable" id="IRS1120SScheduleM3PartIITable" summary="Reconciliation of Net Income (Loss) per Income Statement of Includible Corporations With Taxable Income per Return " cellspacing="0" cellpadding="0" style="font-size:7pt;width:187mm;">
+          <div style="width:187mm;">
+          <table class="styIRS1120ScheduleM3_styTable" id="IRS1120SScheduleM3PartIITable" summary="Reconciliation of Net Income (Loss) per Income Statement of the Corporations With Total Income (loss) per Return " cellspacing="0" cellpadding="0" style="width:187mm;">
             <tr>
-              <th class="styTableThead" scope="col" style="width:6mm"/>
-              <th class="styTableThead" scope="col" style="width:81mm;text-align:center;font-size:8pt;font-weight:normal;">
-                    Income (Loss) Items
-                    <br/>(Attach statements for lines 1 through 10)</th>                    
-              <th class="styIRS1120SScheduleM3TheadCell" scope="col">
+              <th class="styIRS1120ScheduleM3TheadCell" scope="col" style="width:6mm;border:none;" />
+			  <th class="styIRS1120ScheduleM3TheadCell" scope="col" style="width:81mm; height:auto;text-align:center;font-size:8pt;border:none;" >
+				<span style="font-weight:normal">
+					Income (Loss) Items<br/>
+					(Attach statements for lines 1 through 10)
+				</span>
+				</th>                    
+              <th class="styIRS1120SScheduleM3TheadCell" scope="col" style="width:31mm;font-weight:normal;">
                 <span class="styBoldText">
                     (a)</span>
                 <br/> Income (Loss) per<br/> Income Statement</th>
-              <th class="styIRS1120SScheduleM3TheadCell" scope="col">
+              <th class="styIRS1120SScheduleM3TheadCell" scope="col" style="width:25mm;font-weight:normal;">
                 <span class="styBoldText">
                     (b)</span>
                 <br/> Temporary<br/> Difference</th>
-              <th class="styIRS1120SScheduleM3TheadCell" scope="col">
+              <th class="styIRS1120SScheduleM3TheadCell" scope="col" style="width:25mm;font-weight:normal;">
                 <span class="styBoldText">
                     (c)</span>
                 <br/> Permanent<br/> Difference</th>
-              <th class="styIRS1120SScheduleM3TheadCell" scope="col">
+              <th class="styIRS1120SScheduleM3TheadCell" scope="col" style="width:25mm;font-weight:normal;">
                 <span class="styBoldText">
                     (d)</span>
                 <br/> Income (Loss) per<br/> Tax Return</th>
@@ -1053,7 +1049,7 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>1</td>
               <td>
-              <span style="float:left;">Income (loss) from equity method foreign corporations  </span>             
+              <span style="float:left;padding-left:2mm;">Income (loss) from equity method foreign corporations  </span>             
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/IncomeLossEquityMethodFrgnCorp"/>
@@ -1083,7 +1079,7 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>2</td>
               <td>
-              <span style="float:left;">Gross foreign dividends not previously taxed
+              <span style="float:left;padding-left:2mm;">Gross foreign dividends not previously taxed
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/GrossFrgnDividendsNotPrevTaxed"/>
@@ -1116,12 +1112,12 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>3</td>
               <td>
-              <span style="float:left;">Subpart F, QEF, and similar income inclusions       
+              <span style="float:left;padding-left:2mm;">Subpart F, QEF, and similar income inclusions       
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/SubpartFQEFSimilarIncmInclsn"/>
                 </xsl:call-template></span>    
-                <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
               </td>
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col" style="border-bottom-width:1px;">
                 <span style="width:1mm"/>
@@ -1147,7 +1143,7 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>4</td>
               <td>
-                <span style="float:left;">Gross foreign distributions previously taxed               
+                <span style="float:left;padding-left:2mm;">Gross foreign distributions previously taxed               
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/GrossForeignDistriPrevTaxed"/>
@@ -1178,12 +1174,12 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>5</td>
               <td>
-                <span style="float:left;">Income (loss) from equity method U.S. corporations              
+                <span style="float:left;padding-left:2mm;">Income (loss) from equity method U.S. corporations              
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/IncomeLossEquityMethodUSCorp"/>
                 </xsl:call-template></span>
-                <!--<span class="styDotLn" style="float:right;padding-right:1mm;">.</span>-->
+                <span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1209,12 +1205,12 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>6</td>
               <td>
-              <span style="float:left;">U.S. dividends not eliminated in tax consolidation         
+              <span style="float:left;padding-left:2mm;">U.S. dividends not eliminated in tax consolidation         
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/USDivNotEliminatedTaxConsol"/>
                 </xsl:call-template></span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1242,7 +1238,7 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>7</td>
               <td style="white-space:nowrap;">
-              <span style="float:left;">Income (loss) from U.S. partnerships                   
+              <span style="float:left;padding-left:2mm;">Income (loss) from U.S. partnerships                   
 			   <!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/IncomeLossUSPartnerships"/>
@@ -1276,12 +1272,12 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>8</td>
               <td>
-              <span style="float:left;">Income (loss) from foreign partnerships             
+              <span style="float:left;padding-left:2mm;">Income (loss) from foreign partnerships             
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/IncomeLossForeignPartnerships"/>
                 </xsl:call-template></span>               
-                <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1309,12 +1305,12 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>9</td>
               <td style="padding-top:.5mm;">
-              <span style="float:left;">Income (loss) from other pass-through entities             
+              <span style="float:left;padding-left:2mm;">Income (loss) from other pass-through entities             
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/IncomeLossPassThroughEntities"/>
                 </xsl:call-template></span>                
-                <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1341,12 +1337,12 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">10</td>
               <td>
-              <span style="float:left;padding-right:10px;">Items relating to reportable transactions             
+              <span style="float:left;padding-left:2mm;padding-right:10px;">Items relating to reportable transactions             
                <!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/ItemsRelatedReportableTransGrp"/>
                 </xsl:call-template></span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1373,7 +1369,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">11</td>
               <td>
-              <span style="float:left;">Interest income (see instructions)
+              <span style="float:left;padding-left:2mm;">Interest income (see instructions)
               <!-- form link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/InterestIncomeForm8916AGrp"/>
@@ -1406,8 +1402,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">12</td>
               <td>
-                <span style="float:left;">Total accrual to cash adjustment</span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+                <span style="float:left;padding-left:2mm;">Total accrual to cash adjustment</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1434,8 +1430,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">13</td>
               <td>
-                 <span style="float:left;">Hedging transactions</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
+                 <span style="float:left;padding-left:2mm;">Hedging transactions</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1462,8 +1458,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">14</td>
               <td>
-               <span style="float:left;">Mark-to-market income (loss)</span>
-               <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+               <span style="float:left;padding-left:2mm;">Mark-to-market income (loss)</span>
+               <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1490,12 +1486,12 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">15</td>
               <td>
-               <span style="float:left;">Cost of goods sold (see instructions)
+               <span style="float:left;padding-left:2mm;">Cost of goods sold (see instructions)
 			   <!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/CostOfGoodsSoldNNGrp"/>
                 </xsl:call-template></span>
-               <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
+               <span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateNegativeNumber">
@@ -1522,8 +1518,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">16</td>
               <td>
-				  <span style="float:left;">Sale versus lease (for sellers and/or lessors)</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+				  <span style="float:left;padding-left:2mm;">Sale versus lease (for sellers and/or lessors)</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1550,8 +1546,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">17</td>
               <td>
-				  <span style="float:left;">Section 481(a) adjustments</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
+				  <span style="float:left;padding-left:2mm;">Section 481(a) adjustments</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
               </td>
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col">
                 <span style="width:1mm"/>
@@ -1576,8 +1572,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">18</td>
               <td>
-                  <span style="float:left;">Unearned/deferred revenue</span>
-                  <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
+                  <span style="float:left;padding-left:2mm;">Unearned/deferred revenue</span>
+                  <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1604,8 +1600,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">19</td>
               <td>
-				  <span style="float:left;">Income recognition from long-term contracts</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+				  <span style="float:left;padding-left:2mm;">Income recognition from long-term contracts</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1631,7 +1627,7 @@
             <!-- Part II - Line 20 -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">20</td>
-              <td>Original issue discount and other imputed interest</td>
+              <td style="padding-top:.5mm;padding-left:2mm;">Original issue discount and other imputed interest</td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/OrigIssueDiscountOthImputedInt/IncomeLossPerIncomeStmtAmt"/>
@@ -1656,7 +1652,7 @@
             <!-- Part II - Line 21a -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">21a</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;padding-left:2mm;">
                      Income statement gain/loss on sale, exchange,
                       abandonment, worthlessness, or other disposition of
                       assets other than inventory and pass-through entities
@@ -1683,10 +1679,10 @@
             <!-- Part II - Line 21b -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="padding-left:5mm">b</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;padding-left:2mm;">
                     <span style="float:left;">Gross capital gains from Schedule D, excluding</span>
                     <span style="float:left;white-space:nowrap;">amounts from pass-through entities</span>
-                    <span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+                    <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
               </td>
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col" style="border-bottom-width:0px;">
                 <span style="width:1mm"/>
@@ -1710,11 +1706,11 @@
             <!-- Part II - Line 21c -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="padding-left:5mm">c</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;padding-left:2mm;">
 				  <span style="float:left;">Gross capital losses from Schedule D, excluding</span>
 				  <span style="float:left;">amounts from pass-through entities, abandonment</span>
 				  <span style="float:left;">losses, and worthless stock losses</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
               </td>
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col" style="border-bottom-width:0px;">
                 <span style="width:1mm"/>
@@ -1738,11 +1734,11 @@
             <!-- Part II - Line 21d -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="padding-left:5mm">d</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;padding-left:2mm;">
                     <span style="float:left;">Net gain/loss reported on Form 4797, line 17,
                     excluding amounts from pass-through entities,</span>
 					<span style="float:left;">  abandonment losses, and worthless stock losses</span>                   
-					<span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
+					<span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
               </td>
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col" style="border-bottom-width:0px;">
                 <span style="width:1mm"/>
@@ -1766,9 +1762,9 @@
             <!-- Part II - Line 21e -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="padding-left:5mm">e</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;padding-left:2mm;">
                  <span style="float:left;">Abandonment losses</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
               </td>
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col" style="border-bottom-width:0px;">
                 <span style="width:1mm"/>
@@ -1793,7 +1789,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="padding-left:5mm">f</td>
               <td>
-                <span style="float:left;">Worthless stock losses (attach statement)
+                <span style="float:left;padding-left:2mm;">Worthless stock losses (attach statement)
                 <!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/WorthlessStockLosses"/>
@@ -1822,10 +1818,10 @@
             <!-- Part II - Line 21g -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="padding-left:5mm">g</td>
-              <td style="padding-top:.5mm;">
-                 <span style="float:left;padding-right:10px;">Other gain/loss on disposition of assets other than </span>
+              <td style="padding-top:.5mm;padding-left:2mm;">
+                 <span style="float:left;padding-right:12px;">Other gain/loss on disposition of assets other than </span>
                  <span style="float:left;">inventory</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
               </td>
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col" style="border-bottom-width:1px;">
                 <span style="width:1mm"/>
@@ -1849,14 +1845,14 @@
             <!-- Part II - Line 22 -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">22</td>
-              <td style="padding-top:.5mm;">
-              <span style="float:left;">Other income (loss) items with differences (attach </span>
+              <td style="padding-top:.5mm;padding-left:2mm;">
+              <span style="float:left;">Other income (loss) items with differences (attach </span><br/>
               <span style="float:left;">statement)
             <!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IncomeLossItems/OthIncmLossItemsDifferences"/>
                 </xsl:call-template></span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1883,7 +1879,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">23</td>
               <td>
-                <span class="styBoldText" style="font-weight:bold">Total income (loss) items. </span>
+                <span class="styBoldText" style="padding-top:.5mm;padding-left:2mm;font-weight:bold">Total income (loss) items. </span>
                 <span style="font-weight:normal">Combine lines 1 through 22</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
@@ -1911,7 +1907,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">24</td>
               <td>
-                <span class="styBoldText" style="font-weight:bold">Total expense/deduction items </span>
+                <span class="styBoldText" style="padding-top:.5mm;padding-left:2mm;font-weight:bold">Total expense/deduction items </span>
                 <span style="font-weight:normal">(from Part III, line 32)</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
@@ -1939,8 +1935,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">25</td>
               <td>
-                <span style="font-weight:normal;float:left;">Other items with no differences</span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+                <span style="font-weight:normal;float:left;padding-left:2mm;">Other items with no differences</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -1963,7 +1959,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">26</td>
               <td>
-                <span class="styBoldText" style="font-weight:bold">Reconciliation totals. </span>
+                <span class="styBoldText" style="padding-top:.5mm;padding-left:2mm;font-weight:bold">Reconciliation totals. </span>
                 <span style="font-weight:normal">Combine lines 23 through 25</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
@@ -1988,16 +1984,18 @@
               </td>
             </tr>
           </table>
+          </div>
           <br/>
-          <div class="styBB" style="width:187mm;padding-left:11mm">
+          <div class="styBB" style="width:187mm;padding-left:8mm;padding-top:1mm;">
             <span class="styBoldText">Note.</span> 
          Line 26, column (a), must equal Part I, line 11, and column (d) must equal Form 1120S, Schedule K, line 18.</div>
           <div class="pageEnd" style="width:187mm;">
             <div class="styBoldText" style="float:right;padding-top:1mm;">Schedule M-3 (Form 1120S) 2014</div>
           </div>
+          <p style="page-break-before: always"/>
           <!-- Page 3 -->
           <!-- Page 3 Header -->
-          <div class="styBB" style="width:187mm;border-bottom-width:2px;">
+          <div class="styBB" style="width:187mm;border-bottom-width:2px;float:none;clear:both;">
             <div style="float:left;">Schedule M-3 (Form 1120S) 2014</div>
             <div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">3</span>
             </div>
@@ -2035,57 +2033,55 @@
             </div>
           </div>
           <!-- Part 3 - Header -->
-          <div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px; border-top-width:1px; border-right-width:0px;border-left-width:0px;     padding-top:0;float:left;">
-            <span class="styPartName" style="height:1mm;width:14mm;padding: .25mm .5mm  .25mm .5mm;">Part III</span>
+          <div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;border-right-width:0px;border-left-width:0px;padding-top:0;float:left;">
+            <span class="styPartName" style="height:4mm;width:14mm;padding: .25mm .5mm  .25mm .5mm;">Part III</span>
             <span class="styPartDesc" style="width:170mm;">
-              <span style="width:2mm;"/>
-              Reconciliation of Net Income (Loss) per Income Statement of the Corporation With Total <br/>
-              <span style="width:3mm;"/>Income (Loss) per Return—Expense/Deduction Items <span style="font-weight:normal;">(see instructions)
-              </span>
+              <span style="width:2mm;"/>Reconciliation of Net Income (Loss) per Income Statement of the Corporation With Total <br/>
+              <span style="width:2mm;"/>Income (Loss) per Return—Expense/Deduction Items <span style="padding-left:1mm;font-weight:normal;">(see instructions)</span>
             </span>
           </div>
           <!-- Part III Table -->
-          <table class="styTable" id="IRS1120SScheduleM3PartIII" summary="Reconciliation of Net Income (Loss) per Income Statement of Includible Corporation With Taxable Income per Return—Expense/Deduction Items (see instructions)" cellspacing="0" cellpadding="0" style="font-size:7pt;width:187mm;">
+          <div style="width:187mm;">
+          <table class="styTable" id="IRS1120SScheduleM3PartIII" summary="Reconciliation of Net Income (Loss) per Income Statement of Corporation With Total Income (loss) per Return—Expense/Deduction Items (see instructions)" cellspacing="0" cellpadding="0" style="font-size:7pt;width:187mm;clear:all;">
             <tr>
-              <th class="styTableThead" scope="col" style="width:6mm"/>
-              <th class="styTableThead" scope="col" style="width:81mm;text-align:center;font-size:8pt;font-weight:normal;">Expense/Deduction Items</th>
-              <th class="styIRS1120SScheduleM3TheadCell" scope="col">
+              <th scope="col" class="styIRS1120ScheduleM3TheadCell" style="width:6mm;border:none;"/>
+              <th scope="col" class="styIRS1120ScheduleM3TheadCell" style="width:81mm;text-align:center;font-size:8pt;border:none;font-weight:normal;">Expense/Deduction Items</th>
+              <th class="styIRS1120SScheduleM3TheadCell" scope="col" style="width:25mm;font-weight:normal;">
                 <span class="styBoldText">(a)</span>
                 <br/> Expense per<br/> Income Statement</th>
-              <th class="styIRS1120SScheduleM3TheadCell" scope="col">
+              <th class="styIRS1120SScheduleM3TheadCell" scope="col" style="width:25mm;font-weight:normal;">
                 <span class="styBoldText">(b)</span>
                 <br/> Temporary<br/> Difference</th>
-              <th class="styIRS1120SScheduleM3TheadCell" scope="col">
+              <th class="styIRS1120SScheduleM3TheadCell" scope="col" style="width:25mm;font-weight:normal;">
                 <span class="styBoldText">(c)</span>
                 <br/> Permanent<br/> Difference</th>
-              <th class="styIRS1120SScheduleM3TheadCell" scope="col">
+              <th class="styIRS1120SScheduleM3TheadCell" scope="col" style="width:25mm;font-weight:normal;">
                 <span class="styBoldText">(d)</span>
                 <br/> Deduction per<br/> Tax Return</th>
             </tr>
             <!-- Part III - Line 1 -->
             <tr>
-              <td class="styIRS1120SScheduleM3NumberCell" scope="col">
+              <td class="styIRS1120SScheduleM3NumberCell" style="width:6mm;">
                 <span style="width:1.5mm;"/>1</td>
-              <td>
-              <span style="float:left;">U.S. current income tax expense</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+              <td style="width:81mm; text-align:left;border:none;padding-left:2mm;">U.S. current income tax expense
+              <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
               </td>
-              <td class="styIRS1120SScheduleM3Cell" scope="col">
+              <td class="styIRS1120SScheduleM3Cell" style="width:25mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/USCurrentIncomeTaxExpenseGrp/ExpensePerIncomeStmtAmt"/>
                 </xsl:call-template>
               </td>
-              <td class="styIRS1120SScheduleM3Cell" scope="col">
+              <td class="styIRS1120SScheduleM3Cell" style="width:25mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/USCurrentIncomeTaxExpenseGrp/TemporaryDifferenceAmt"/>
                 </xsl:call-template>
               </td>
-              <td class="styIRS1120SScheduleM3Cell" scope="col">
+              <td class="styIRS1120SScheduleM3Cell" style="width:25mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/USCurrentIncomeTaxExpenseGrp/PermanentDifferenceAmt"/>
                 </xsl:call-template>
               </td>
-             <td class="styIRS1120SScheduleM3ShadedCell" style="border-bottom-width:0px;">
+             <td class="styIRS1120SScheduleM3ShadedCell"  style="width:25mm;border-bottom-width:0px;">
 				<span style="width:1mm"/>
 			 </td>
             </tr>
@@ -2094,8 +2090,8 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>2</td>
               <td>
-				  <span style="float:left;">U.S. deferred income tax expense</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+				  <span style="float:left;padding-left:2mm;">U.S. deferred income tax expense</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2121,8 +2117,8 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>3</td>
               <td>
-              <span style="float:left;">State and local current income tax expense</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
+              <span style="float:left;left;padding-left:2mm;">State and local current income tax expense</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2150,8 +2146,8 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>4</td>
               <td>
-				  <span style="float:left;">State and local deferred income tax expense</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
+				  <span style="float:left;left;padding-left:2mm;">State and local deferred income tax expense</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2176,10 +2172,10 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>5</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;left;padding-left:2mm;">
                  <span style="float:left;">Foreign current income tax expense (other than foreign </span>
                  <span style="float:left;"> withholding taxes)</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2207,8 +2203,8 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>6</td>
               <td>
-              <span style="float:left;">Foreign deferred income tax expense</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+              <span style="float:left;left;padding-left:2mm;">Foreign deferred income tax expense</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2234,8 +2230,8 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>7</td>
               <td>
-              <span style="float:left;">Equity-based compensation</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+              <span style="float:left;left;padding-left:2mm;">Equity-based compensation</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2263,8 +2259,8 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>8</td>
               <td>
-              <span style="float:left;">Meals and entertainment</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
+              <span style="float:left;left;padding-left:2mm;">Meals and entertainment</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2292,8 +2288,8 @@
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">
                 <span style="width:1.5mm;"/>9</td>
               <td>
-                 <span style="float:left;">Fines and penalties </span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
+                 <span style="float:left;left;padding-left:2mm;">Fines and penalties </span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2320,8 +2316,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">10</td>
               <td>
-                <span style="float:left;">Judgments, damages, awards, and similar costs</span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+                <span style="float:left;left;padding-left:2mm;">Judgments, damages, awards, and similar costs</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2348,7 +2344,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">11</td>
               <td>
-              <span style="float:left;">Pension and profit-sharing</span>
+              <span style="float:left;left;padding-left:2mm;">Pension and profit-sharing</span>
               <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
@@ -2376,8 +2372,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">12</td>
               <td>
-				  <span style="float:left;">Other post-retirement benefits</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
+				  <span style="float:left;left;padding-left:2mm;">Other post-retirement benefits</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2404,7 +2400,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">13</td>
               <td>
-              <span style="float:left;">Deferred compensation</span>
+              <span style="float:left;left;padding-left:2mm;">Deferred compensation</span>
               <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
@@ -2432,8 +2428,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">14</td>
               <td>
-                 <span style="float:left;">Charitable contribution of cash and tangible property</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
+                 <span style="float:left;left;padding-left:2mm;">Charitable contribution of cash and tangible property</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2460,8 +2456,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">15</td>
               <td>
-              <span style="float:left;">Charitable contribution of intangible property</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+              <span style="float:left;left;padding-left:2mm;">Charitable contribution of intangible property</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2488,9 +2484,9 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">16</td>
               <td>
-              <span style="float:left;">Current year acquisition or reorganization investment</span>
-              <span style="float:left;">banking fees</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
+              <span style="float:left;padding-left:2mm;">Current year acquisition or reorganization investment</span>
+              <span style="float:left;padding-left:2mm;">banking fees</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2516,10 +2512,10 @@
             <!-- Part III - Line 17 -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">17</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;padding-left:2mm;">
                 <span style="float:left;">Current year acquisition or reorganization legal and</span>
                 <span style="float:left;">accounting fees</span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2546,8 +2542,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">18</td>
               <td>
-                 <span style="float:left;">Current year acquisition/reorganization other costs</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
+                 <span style="float:left;padding-left:2mm;">Current year acquisition/reorganization other costs</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2574,8 +2570,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">19</td>
               <td>
-				  <span style="float:left;">Amortization/impairment of goodwill</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
+				  <span style="float:left;padding-left:2mm;">Amortization/impairment of goodwill</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2601,10 +2597,10 @@
             <!-- Part III - Line 20 -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">20</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;padding-left:2mm;">
                     <span style="float:left;white-space:nowrap;">Amortization of acquisition, reorganization, and</span>
                     <span style="float:left;white-space:nowrap;">start-up costs</span>
-                    <span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
+                    <span class="styDotLn" style="float:right;padding-right:1mm;"></span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2631,8 +2627,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">21</td>
               <td>
-              <span style="float:left;">Other amortization or impairment write-offs</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
+              <span style="float:left;padding-left:2mm;">Other amortization or impairment write-offs</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2659,8 +2655,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">22</td>
               <td>
-				  <span style="float:left;">Reserved</span>
-				  <span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
+				  <span style="float:left;padding-left:2mm;">Reserved</span>
+				  <span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
               </td>
               <td class="styIRS1120SScheduleM3ShadedCell" scope="col">
                 <span style="width:1mm"/>
@@ -2679,8 +2675,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">23a</td>
               <td>
-              <span style="float:left;">Depletion—Oil and Gas</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
+              <span style="float:left;padding-left:2mm;">Depletion—Oil &#038; Gas</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2705,8 +2701,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="padding-left:5mm">b</td>
               <td>
-                 <span style="float:left;">Depletion—Other than Oil and Gas</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+                 <span style="float:left;padding-left:2mm;">Depletion—Other than Oil &#038; Gas</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2733,8 +2729,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">24</td>
               <td>
-                 <span style="float:left;">Depreciation</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
+                 <span style="float:left;padding-left:2mm;">Depreciation</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2761,8 +2757,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">25</td>
               <td>
-              <span style="float:left;">Bad debt expense</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
+              <span style="float:left;padding-left:2mm;">Bad debt expense</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2789,12 +2785,12 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">26</td>
               <td>
-               <span style="float:left;">Interest income (see instructions) 
+               <span style="float:left;padding-left:2mm;">Interest income (see instructions) 
 			   <!-- form link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/InterestExpenseForm8916AGrp"/>
                 </xsl:call-template></span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2821,8 +2817,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">27</td>
               <td>
-                 <span style="float:left;">Corporate owned life insurance premiums</span>
-                 <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
+                 <span style="float:left;padding-left:2mm;">Corporate owned life insurance premiums</span>
+                 <span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2849,7 +2845,7 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">28</td>
               <td>
-                Purchase versus lease (for purchasers and/or lessees)          
+                 <span style="float:left;padding-left:2mm;">Purchase versus lease (for purchasers and/or lessees)</span>          
                 <!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/PurchaseVersusLease"/>
@@ -2880,8 +2876,8 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">29</td>
               <td style="padding-top:.5mm;">
-              <span style="float:left;">Research and development costs</span>
-              <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+              <span style="float:left;padding-left:2mm;">Research and development costs</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2908,12 +2904,12 @@
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">30</td>
               <td>
-              <span style="float:left;">Section 118 exclusion (attach statement)
+              <span style="float:left;padding-left:2mm;">Section 118 exclusion (attach statement)
                  <!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/Section118Exclusion"/>
                 </xsl:call-template></span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2939,14 +2935,14 @@
             <!-- Part III - Line 31 -->
             <tr>
               <td class="styIRS1120SScheduleM3NumberCell" scope="col">31</td>
-              <td style="padding-top:.5mm;">
+              <td style="padding-top:.5mm;padding-left:2mm;">
              <span style="float:left;">Other expense/deduction items with differences  </span>
              <span style="float:left;white-space:nowrap;">(attach statement)
 				<!-- Form Link -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form1120SScheduleM3/IRS1120SSchM3ExpenseDedItems/OtherExpnsDedItemsDifferences"/>
                 </xsl:call-template></span>
-                <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
                 <xsl:call-template name="PopulateAmount">
@@ -2971,9 +2967,9 @@
             </tr>
             <!-- Part III - Line 32 -->
             <tr>
-              <td class="styIRS1120SScheduleM3NumberCell" scope="col" style="border-bottom-width:1px;border-color:black;border-style:solid;border-left-width:0px;border-top-width:0px;border-right-width:0px">32</td>
-              <td style="padding-top:.5mm;font-weight:bold;border-bottom-width:1px;border-color:black;border-style:solid;border-left-width:0px;border-top-width:0px;border-right-width:0px">Total expense/deduction items.
-          <span style="font-weight:normal">Combine lines 1 through 31. Enter here and on Part II, line 24, reporting positive amounts as negative and negative amounts as positive. </span>
+              <td class="styIRS1120SScheduleM3NumberCell">32</td>
+              <td style="padding-top:.5mm;font-weight:bold;padding-left:2mm;border-style:solid;border-bottom-width:1px; border-top-width:0px; border-right-width:0px;border-left-width:0px;padding-top:0;">Total expense/deduction items.
+          <span style="font-weight:normal;">Combine lines 1 through 31. Enter here and on Part II, line 24, reporting positive amounts as negative and negative amounts as positive. </span>
                 <!--<span class="styDotLn" style="float:none;padding-left:3mm;">............</span>-->
               </td>
               <td class="styIRS1120SScheduleM3Cell" scope="col">
@@ -2998,6 +2994,7 @@
               </td>
             </tr>
           </table>
+          </div>
           <div class="pageEnd" style="width:187mm;">
             <div class="styBoldText" style="float:right;padding-top:1mm;">Schedule M-3 (Form 1120S) 2014</div>
           </div>

@@ -25,7 +25,7 @@
 	.styIRS1116LineItem {  /* Line Item */
 		border-color:#00CBFF;
 		width: 187mm;
-		height: 3mm;
+		height:auto;min-height:3mm;
 		padding: 0px 0px 0px 0px;
 		border-style: solid;
 		border-width: 0px 0px 0px 0px;
@@ -68,5 +68,105 @@
 		border-style: solid;
 		border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
 	}
+	.sty1116GenericDiv { /* definition of a generic placeholder div */
+	 clear:none;float:none;
+}
+
+.sty1116LNLeftNumBox{ /* Double digit item number to the left of the page */
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			clear:none;
+			padding-left:1mm;
+		}
+		
+		.sty1116LNAmountBox{ /* Box for storing line item amounts. */
+			width:32mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+			clear: none;
+		}
+		.sty1116LNAmountBoxNBB{ /* Amount Box with no bottom border */
+			width:32mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			clear: none;
+		}
+		.sty1116LNAmountBoxNB{ /* Amount Box with no border */
+			width:32mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			clear: none;
+		}
+		.sty1116LNAmountBoxSmall{ /* Small Amount Box with small text size*/ 
+			width:26mm;height:4mm;
+			font-size:6pt;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+			clear: none;
+		}
+		.sty1116LNAmountBoxFormLink{ /* Small Amount Box to be used with Form to Form links */ 
+			width:27mm;height:4mm;
+			font-size:6pt;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+			clear: none;
+		}
+		.sty1116LNAmountBoxSmallNBB{ /* Small Amount Box with small text size and no bottom border*/ 
+			width:26mm;height:4mm;
+			font-size:6pt;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			clear: none;
+		}
+		.sty1116LNRightNumBox{ /* Right number box */
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			text-align:center;
+			vertical-align:bottom;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+			clear: none;
+		}
+		.sty1116LNRightNumBoxNBB{ /* Right number box with no bottom border*/
+			width:8mm;height:4mm;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			font-weight:bold;
+			text-align:center;
+			vertical-align:bottom;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			clear: none;
+		}
+		.sty1116LNAmountBoxSmallNBB{ /* Small Amount Box with small text size and no bottom border*/ 
+			width:26mm;height:4mm;
+			font-size:6pt;
+			padding-top:.5mm;
+			padding-bottom:.5mm;
+			text-align:right;
+			border-style: solid; border-color: black;
+			border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+			clear: none;
+		}
 </xsl:template>
 </xsl:stylesheet>

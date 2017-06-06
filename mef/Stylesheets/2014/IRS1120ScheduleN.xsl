@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form1120ScheduleN" select="$RtnDoc/IRS1120ScheduleN"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form1120ScheduleN)"/>
@@ -35,20 +37,16 @@
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm">
         <form name="Form1120ScheduleN">
           <xsl:call-template name="DocumentHeader"/>
           <div class="styTBB" style="width:187mm;">
             <div class="styFNBox" style="width:31mm;height:18.5mm;">
               <span class="styFormNumber" style="font-size:9pt;font-family:arial;">SCHEDULE N<br/>
                 <span style="font-size:9pt;">(Form 1120)</span>
-                <!--General Dependency Push Pin
-				<xsl:call-template name="SetFormLinkInline">
-				  <xsl:with-param name="TargetNode" select="$Form1120ScheduleN"/>
-				</xsl:call-template> -->
                 <br/>
               </span>
-              <div style="line-height:120%;padding-top:1.5mm;">
+              <div style="line-height:120%;padding-top:4mm;">
                 <span class="styAgency">Department of the Treasury</span>
                 <br/>
                 <span class="styAgency">Internal Revenue Service</span>
@@ -56,9 +54,9 @@
             </div>
             <div class="styFTBox" style="width:125mm;height:18.5mm;">
               <div class="styMainTitle" style="height:5mm;">Foreign Operations of U.S. Corporations</div>
-              <div class="styFST" style="height:5mm;">
+              <div class="styFST" style="height:6mm;">
                 <img src="{$ImagePath}/1120SchN_Bullet_Title.gif" alt="Bullet"/> Attach to Form 1120, 1120-C, 1120-IC-DISC, 1120-L, 1120-PC, 1120-REIT, 1120-RIC, or 1120S.
-              </div>
+              </div><br/>
               <div class="styFST" style="height:5mm;">
                 <img src="{$ImagePath}/1120SchN_Bullet_Title.gif" alt="Bullet"/> 
                   Information about Schedule N (Form 1120) and its instructions is available at 
@@ -66,14 +64,14 @@
               </div>
               </div>
             <div class="styTYBox" style="width:30mm;height:18.5mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-0123</div>
-              <div class="styTY" style="height:11mm;">20<span class="styTYColor">14</span>
+              <div class="styOMB" style="height:4mm;width:30mm;">OMB No. 1545-0123</div><br/>
+              <div class="styTY" style="height:8mm;padding-top:2mm">20<span class="styTYColor">14</span>
               </div>
             </div>
           </div>
           <!--Name Line -->
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:120mm;height:8mm;font-size:7pt;font-weight:normal;">
+            <div class="styNameBox" style="width:120mm;height:9mm;font-size:7pt;font-weight:normal;">
 			  Name<br/>
               <xsl:call-template name="PopulateReturnHeaderFiler">
                 <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
@@ -84,7 +82,7 @@
               </xsl:call-template>
             </div>
             <!-- EIN Line -->
-            <div class="styEINBox" style="width:65mm;height:8mm;text-align:left;padding-left:2mm;font-size:7pt;font-weight:bold;">
+            <div class="styEINBox" style="width:65mm;height:9mm;text-align:left;padding-left:2mm;font-size:7pt;font-weight:bold;">
 			  Employer identification number (EIN)<br/>
               <br/>
               <span style="font-weight:normal;">
@@ -95,7 +93,7 @@
             </div>
           </div>
           <!-- Foreign Operations Information Line -->
-          <div class="styBB" style="width:187mm;height:8mm;">
+          <div class="styBB" style="width:187mm;height:8mm;padding-left:65mm">
             <div class="styIRS1120ScheduleNInfoTitle">Foreign Operations Information</div>
           </div>
           <!-- Yes and No Line -->
@@ -121,6 +119,7 @@
               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/OwnedDisregardedForeignEntInd"/>
               </xsl:call-template>
+                <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">...</span>
             </div>
             <div class="styIRS1120ScheduleNLNYesNoBox" style="height:4.5mm;">
               <xsl:call-template name="PopulateYesBoxText">
@@ -156,12 +155,11 @@
 			  Enter the number of Forms 8858 attached to the tax return          
 			  <!--Dotted Line-->
 			  <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">........</span>
-              <span style="width:10px;"/>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
             <!--UnderLine-->
-            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-left:2mm;padding-right:3.75mm;">
-              <xsl:call-template name="PopulateAmount">
+            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-left:2mm;padding-right:3.75mm;text-align:left;">
+              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="MaxSize" select="3"/>
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/Form8858AttachedCnt"/>
               </xsl:call-template>
@@ -191,13 +189,12 @@
             <div class="styLNDesc" style="width:115mm;height:4.5mm;">
               corporation's income tax return
 			  <!--Dotted Line-->
-              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">.................</span>
-              <span style="width:10px;"/>
+              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">................</span>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
             <!--UnderLine-->
-            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-left:2mm;padding-right:3.75mm;">
-              <xsl:call-template name="PopulateAmount">
+            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-left:2mm;padding-right:3.75mm;;text-align:left;">
+              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="MaxSize" select="3"/>
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/Form8865AttachedCnt"/>
               </xsl:call-template>
@@ -311,11 +308,11 @@
 							Enter the number of Forms 5471 attached to the tax return
 							<!--Dotted Line-->
               <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">........</span>
-              <span style="width:10px;"/>
+              
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
-            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;">
-              <xsl:call-template name="PopulateAmount">
+            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;text-align:left;">
+              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="MaxSize" select="3"/>
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/Form5471AttachedCnt"/>
               </xsl:call-template>
@@ -431,22 +428,21 @@
             <table class="styTable" style="float:left;font-size:7pt;width:178mm;" cellspacing="0">
               <tr>
                 <td scope="col" style="width: 157.5mm;">
-                  <div class="styLNDesc" style="width:157.5mm;">
+                  <div class="styLNDesc" style="width:157.4mm;">
 										<span style="float:left;clear:none;">
 										If "Yes," enter the name of the foreign country                    
-										<span style="font-weight:bold;letter-spacing:3.3mm;">.........</span>
+										<span style="font-weight:bold;letter-spacing:3.3mm;">........</span>
                     <span style="width:5px;"/>
                     <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" style="float:none;clear:none;" alt="Bullet"/>
-                    <span style="width:6px;"/>
                     </span>
                     <span style="float:right;clear;none;">
-                    <span style="width:58mm;border-bottom: 1 black solid;padding-left:4mm;">
+                    <span class="styIRS1120ScheduleNUnderlineAmount" style="width:58mm;border-bottom: 1 black solid;padding-left:1mm;">
                       <xsl:for-each select="$Form1120ScheduleN/ForeignCountryCd">
                         <xsl:if test="($Print != $Separated) or count($Form1120ScheduleN/ForeignCountryCd) &lt;=10">
                           <xsl:call-template name="PopulateText">
                             <xsl:with-param name="TargetNode" select="."/>
                           </xsl:call-template>
-                          <xsl:if test="position() != last()">,<span style="width:4px;"/>
+                          <xsl:if test="position() != last()">,<span style="width:2px;"/>
                           </xsl:if>
                         </xsl:if>
                       </xsl:for-each>
@@ -459,10 +455,10 @@
                     </span>
                   </div>
                 </td>
-                <td class="styShadingCell" scope="col" style="width:10mm;">
+                <td class="styShadingCell" scope="col" style="width:10.1mm;;height:6mm">
                   <span style="width:0.5px"/>
                 </td>
-                <td class="styShadingCell" scope="col" style="width:10mm;">
+                <td class="styShadingCell" scope="col" style="width:9.8mm;height:6mm">
                   <span style="width:1px"/>
                 </td>
               </tr>
@@ -502,32 +498,24 @@
             <div class="styLNLeftLtrBox" style="height:4.5mm;"/>
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
 							If "Yes," attach a separate <span class="styBoldText">Form 8873</span>, Extraterritorial
-							Income Exclusion, for <span class="styBoldText">each</span> transaction or group of
+							Income Exclusion, for <span class="styBoldText">each</span> transaction or group of transactions.
 						</div>
             <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
             <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
           </div>
           <!-- Line 7a Row 3 -->
-          <div style="width:187mm;">
-            <div class="styLNLeftLtrBox" style="height:4.5mm;"/>
-            <div class="styLNDesc" style="width:158mm;height:4.5mm;">
-							transactions.
-						</div>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-          </div>
           <!--7b-->
           <div style="width:187mm;">
             <div class="styLNLeftLtrBox" style="height:4.5mm;">b</div>
             <div class="styLNDesc" style="width:115mm;height:4.5mm;">
               Enter the number of Forms 8873 attached to the tax return
 							<!--Dotted Line-->
-              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">........</span>
+              <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">.......</span>
               <span style="width:10px;"/>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
-            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;">
-              <xsl:call-template name="PopulateAmount">
+            <div class="styIRS1120ScheduleNUnderlineAmount" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;text-align:left;">
+              <xsl:call-template name="PopulateText">
                 <xsl:with-param name="MaxSize" select="3"/>
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/Form8873AttachedCnt"/>
               </xsl:call-template>
@@ -550,11 +538,11 @@
             <div class="styLNDesc" style="width:115mm;height:4.5mm;">
               Forms 8873 attached to the tax return
               <!--Dotted Line-->
-							<span style="padding-left:1mm;font-weight:bold;letter-spacing:3.3mm;">...............</span>
+							<span style="padding-left:1mm;font-weight:bold;letter-spacing:3.3mm;">..............</span>
               <span style="width:10px;"/>
               <img src="{$ImagePath}/1120SchN_Bullet_Line.gif" alt="Bullet"/>
             </div>
-            <div class="styGenericDiv" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;">$
+            <div class="styGenericDiv" style="width:42.95mm;padding-right:3.75mm;padding-left:2mm;text-align:right;">$
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleN/TotExtraterritorialIncmExclAmt"/>
               </xsl:call-template>
@@ -576,6 +564,7 @@
           <br/>
           <br/>
           <br class="pageEnd"/>
+          <p style="page-break-before:always"/>
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

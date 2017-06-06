@@ -12,8 +12,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="IRS8868Data" select="$RtnDoc/IRS8868"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($IRS8868Data)"/>
@@ -76,14 +78,12 @@
 						<img src="{$ImagePath}/8868_Bullet_Round.gif" alt="bullet"/>
 						<label for="3MonthExtension"> If you are filing for an <b>Automatic 3-Month Extension, complete only Part I </b> and check this box</label>
 						<b>
-							<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.
-  <span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.
-  <span class="styIRS8868NBSP"/>.
+	<span class="styDotLn" style="float:none;padding-left:2mm">...........</span>
   </b>
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
 						<!--						<input type="checkbox" class="styIRS8868Ckbox" name="3MonthExtension" TabIndex="-1" id="3MonthExtension" onclick="return false;"/>   -->
-						<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="Automatic3MonthExtensionInd" TabIndex="-1" id="Automatic3MonthExtensionInd">
+						<input type="checkbox" alt="alt" class="styIRSCkbox" name="Automatic3MonthExtensionInd" TabIndex="-1" id="Automatic3MonthExtensionInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/Automatic3MonthExtensionInd"/>
 							</xsl:call-template>
@@ -111,14 +111,15 @@
 					<div class="styIRS8868NoteHdr" style="border-bottom-width: 0px">
 						<span>
 							<label for="6MonthExtension">
-								<span style="font-style:normal; font-weight: normal">A corporation required to file Form 990-T and requesting an automatic 6-month extension?check this box and complete<br/> Part I only</span>
+								<span style="font-style:normal; font-weight: normal">A corporation required to file Form 990-T and requesting an automatic 6-month extension?check this box and complete Part I only</span>
 							</label>
 						</span>
-						<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span style="width: 11px"/>
+						<span class="styDotLn" style="float:none;padding-left:2mm">..</span>
+						<!--<span style="width: 5px"/>-->
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
-						<span style="width: 2mm"/>
+						<span style="width:1mm"/>
 						<!--						<input type="checkbox" class="styIRS8868Ckbox" name="6MonthExtension" TabIndex="-1" id="6MonthExtension" onclick="return false;"/>    -->
-						<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="Automatic6MonthExtensionInd" TabIndex="-1" id="Automatic6MonthExtensionInd">
+						<input type="checkbox" alt="alt" class="styIRSCkbox" name="Automatic6MonthExtensionInd" TabIndex="-1" id="Automatic6MonthExtensionInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/Automatic6MonthExtensionInd"/>
 							</xsl:call-template>
@@ -135,13 +136,13 @@
 							<br/>
 							<span style="font-size: 6pt; font-weight: normal">File by the due date for filing your return. See instructions.</span>
 						</div>
-						<div class="styNameAddr" style=" border-bottom-width: 0px; border-top-width: 0px; border-right-width: 1px;width:110mm;height:8mm;font-size: 7pt">
+						<div class="styNameAddr" style=" border-bottom-width: 0px; border-top-width: 0px; border-right-width: 1px;width:110mm;height:auto;font-size: 7pt">
       Name of exempt organization or other filer, see instructions.<br/>
       <!--  xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/BooksInCareOfDetail/BusinessName/BusinessNameLine2"/>
 											</xsl:call-template>  -->
 							<span style="font-family:verdana;font-size:6pt;">
-								<xsl:call-template name="PopulateText">
+<!--								<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerFirmGrp/PreparerFirmName/BusinessNameLine1"/>
 											</xsl:call-template> 
 								<br/>
@@ -152,9 +153,27 @@
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">InCareOfName</xsl:with-param>
 								</xsl:call-template>
-							</span>
+-->	
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+								</xsl:call-template>
+								<br/>
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+								</xsl:call-template>
+								<br/>
+
+								<xsl:call-template name="LinkToLeftoverDataTableInline">
+									<xsl:with-param name="Desc">Header - In Care Of Name</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/InCareOfNm"/>
+								</xsl:call-template>
+								<xsl:call-template name="LinkToLeftoverDataTableInline">
+									<xsl:with-param name="Desc">Header - Business Name Control</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessNameControlTxt"/>
+								</xsl:call-template>
+						</span>
 						</div>
-						<div class="styFNBox" style="padding-left:2mm;font-size:7pt;width:59mm;height:8mm;border-right-width:0px;border-bottom-width:1px;">Employer identification number (EIN) <b>or</b>
+						<div class="styFNBox" style="padding-left:2mm;font-size:7pt;width:59mm;height:auto;border-right-width:0px;border-bottom-width:1px;">Employer identification number (EIN) <b>or</b>
 							<br/>
 							<br/>
 							<span style="text-align:left;font-size: 7pt; font-weight:normal;">
@@ -331,12 +350,11 @@
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/OrgHasNoOfficeInUSInd"/>
 							</xsl:call-template> If the organization does not have an office or place of business in the United States, check this box</label>
 						<b>
-							<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.
-  <span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.
+							<span class="styDotLn" style="float:none;padding-left:2mm">...........</span>
   </b>
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
-						<input type="checkbox" class="styIRS8868Ckbox" name="OrgHasNoOfficeInUSInd" id="OrgHasNoOfficeInUSInd">
+						<input type="checkbox" class="styIRSCkbox" name="OrgHasNoOfficeInUSInd" id="OrgHasNoOfficeInUSInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/OrgHasNoOfficeInUSInd"/>
 							</xsl:call-template>
@@ -357,7 +375,7 @@
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
 						<!--						<input type="checkbox" class="styIRS8868Ckbox" name="WholeGroup" TabIndex="-1" id="WholeGroup" onclick="return false"/>   -->
-						<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="WholeGroupInd" TabIndex="-1" id="WholeGroupInd">
+						<input type="checkbox" alt="alt" class="styIRSCkbox" name="WholeGroupInd" TabIndex="-1" id="WholeGroupInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/WholeGroupInd"/>
 							</xsl:call-template>
@@ -369,7 +387,7 @@
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
 						<!--						<input type="checkbox" class="styIRS8868Ckbox" name="PartGroup" TabIndex="-1" id="PartGroup" onclick="return false"/>    -->
-						<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="PartialGroupInd" id="PartialGroupInd">
+						<input type="checkbox" alt="alt" class="styIRSCkbox" name="PartialGroupInd" id="PartialGroupInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/PartialGroupInd"/>
 							</xsl:call-template>
@@ -390,7 +408,73 @@
 						to file the exempt organization return for the organization named above.  The extension is for the organization's return for:
 					  </span>
 					</div>
-					<div class="styIRS8868LineItem" style="margin-left: 3mm">
+					<xsl:choose>
+						<xsl:when test="$RtnHdrData/TaxYr != ''  ">					
+								<div class="styIRS8868LineItem" style="margin-left: 3mm">
+									<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
+									<span style="width: 2mm"/>
+									<input type="checkbox" class="styIRSCkbox" name="CalendarYearInd" id="CalendarYearInd" checked="checked"/>
+									
+									<span class="styIRS8868CkboxText" style="float: none; clear:none">
+										<label for="CalendarYearInd"> calendar year 
+											<span style="width:10mm;border-style:solid;float:none;clear:none;padding-left: .5mm" class="styBB">
+												<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
+											</span>  or
+										</label>
+									</span>
+								</div>
+								<div class="styIRS8868LineItem" style="margin-left: 3mm">
+									<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
+									<span style="width: 2mm"/>
+											<input type="checkbox" class="styIRSCkbox" name="CalendarYearInd" TabIndex="-1" id="CalendarYearInd" onclick="return false;"/>
+									<span class="styIRS8868CkboxText" style="width: 160mm; float: none; clear: none">
+										<label for="TaxYearCheckBox"> tax year beginning   
+											<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB"/>
+										</label>
+										<label for="TaxYearCheckBox">, and ending
+											<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB"/>
+										</label>
+									</span>
+								</div>
+							</xsl:when>
+							<xsl:otherwise>
+								<div class="styIRS8868LineItem" style="margin-left: 3mm">
+									<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
+									<span style="width: 2mm"/>
+									<input type="checkbox" class="styIRSCkbox" name="CalendarYearInd" id="CalendarYearInd" onclick="return false"/>
+									<span class="styIRS8868CkboxText" style="float: none; clear:none">
+									<label for="CalendarYearInd"> calendar year 
+										<span style="width:8mm;border-style:solid;float:none;clear:none;padding-left: .5mm" class="styBB"/>  or
+									</label>
+									</span>
+								</div>
+							<div class="styIRS8868LineItem" style="margin-left: 3mm">
+								<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
+								<span style="width: 2mm"/>
+								<xsl:choose>
+									<xsl:when test="substring($RtnHdrData/TaxPeriodEndDt,6,5) != ''">
+										<input type="checkbox" class="styIRSCkbox" name="TaxYearCheckBox" id="TaxYearCheckBox" onclick="return false" checked="checked"/>
+									</xsl:when>
+									<xsl:otherwise>
+										<input type="checkbox" class="styIRSCkbox" name="TaxYearCheckBox" TabIndex="-1" id="TaxYearCheckBox" checked=""/><!--onclick="return false;"-->
+									</xsl:otherwise>
+								</xsl:choose>
+								<span class="styIRS8868CkboxText" style="width: 160mm; float: none; clear: none">
+							<label for="TaxYearCheckBox"> tax year beginning         
+								<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB">
+									<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
+								</span>
+							</label>
+							<label for="TaxYearCheckBox">, and ending
+								<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB">
+									<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
+								</span>
+							</label>
+						</span>
+					</div>				
+				</xsl:otherwise>
+			</xsl:choose>					
+<!--					<div class="styIRS8868LineItem" style="margin-left: 3mm">
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
 						<xsl:choose>
@@ -414,7 +498,7 @@
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
 						<xsl:choose>
-							<xsl:when test="substring($RtnHdrData/TaxPeriodEndDt,6,5) != '12-31'">
+							<xsl:when test="substring($RtnHdrData/TaxPeriodEndDt,6,5) != ''">
 								<input type="checkbox" class="styIRS8868Ckbox" name="TaxYearCheckBox" id="TaxYearCheckBox" onclick="return false" checked="checked"/>
 							</xsl:when>
 							<xsl:otherwise>
@@ -437,10 +521,10 @@
           </xsl:otherwise>
 								</xsl:choose>
 							</label>
-							<!-- Deleted in the 2003V02 schema
+							--><!-- Deleted in the 2003V02 schema
       <xsl:call-template name="PopulateText">
         <xsl:with-param name="TargetNode" select="$IRS8868Data/TaxYearBeginningDate" />
-      </xsl:call-template>  -->
+      </xsl:call-template>  --><!--
 							<label for="TaxYearCheckBox"> and ending
         <xsl:choose>
 									<xsl:when test="substring($RtnHdrData/TaxPeriodEndDt,6,5) != '12-31'">
@@ -457,11 +541,11 @@
 								</xsl:choose>
 							</label>
 						</span>
-						<!--  Deleted in the 2003V02 schema
+						--><!--  Deleted in the 2003V02 schema
     <xsl:call-template name="PopulateText">
       <xsl:with-param name="TargetNode" select="$IRS8868Data/TaxYearEndingDate" />
-    </xsl:call-template>  -->
-					</div>
+    </xsl:call-template>  --><!--
+					</div>-->
 					<!--   END LINE 1   -->
 					<br/>
 					<br/>
@@ -470,7 +554,7 @@
 						<span class="styIRS8868LNLeftNumBox" style="margin-right: 1mm;padding-top:3mm;">2</span>
 						<span class="styIRS8868LNDesc" style="width: 180mm">If the tax year entered in line 1 is for less than 12 months, check reason: <span style="width: 1mm"/>
 							<!--							<input type="checkbox" class="styIRS8868Ckbox" name="InitialReturn" TabIndex="-1" id="InitialReturn" onclick="return false;"/>   -->
-							<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="InitialReturn" TabIndex="-1" id="InitialReturn">
+							<input type="checkbox" alt="alt" class="styIRSCkbox" name="InitialReturn" TabIndex="-1" id="InitialReturn">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/InitialReturnInd"/>
 								</xsl:call-template>
@@ -480,7 +564,7 @@
 							</span>
 							
 							<!--							<input type="checkbox" class="styIRS8868Ckbox" name="FinalReturn" TabIndex="-1" id="FinalReturn" onclick="return false;"/>   -->
-							<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="FinalReturnInd" id="FinalReturnInd">
+							<input type="checkbox" alt="alt" class="styIRSCkbox" name="FinalReturnInd" id="FinalReturnInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/FinalReturnInd"/>
 								</xsl:call-template>
@@ -490,7 +574,7 @@
 							</span>
 							<span style="width:3mm"></span>
 							<!--							<input type="checkbox" class="styIRS8868Ckbox" name="ChangeAccountingPeriod" TabIndex="-1" id="ChangeAccountingPeriod" onclick="return false;"/>   -->
-							<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="AccountingPeriodChangeInd" TabIndex="-1" id="AccountingPeriodChangeInd">
+							<input type="checkbox" alt="alt" class="styIRSCkbox" name="AccountingPeriodChangeInd" TabIndex="-1" id="AccountingPeriodChangeInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/AccountingPeriodChangeInd"/>
 								</xsl:call-template>
@@ -568,6 +652,7 @@
 					<!--END FOOTER-->
 					<br/>
 					<div class="pageEnd"/>
+					<div style="page-break-after:always"/>
 					<div class="styBB" style="width:187mm;">
 						<div style="float:left;clear:none;">Form 8868 (Rev. 1-2014)</div>
 						<div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">2</span>
@@ -578,13 +663,12 @@
 						<img src="{$ImagePath}/8868_Bullet_Round.gif" alt="bullet"/>
 						<label for="3MonthExtension"> If you are filing for an <b>Additional (Not Automatic) 3-Month Extension, complete only Part II </b> and check this box</label>
 						<b>
-							<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.
-  <span class="styIRS8868NBSP"/>.
+<span class="styDotLn" style="float:none;padding-left:2mm">....</span>
   </b>
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
 						<!--						<input type="checkbox" class="styIRS8868Ckbox" name="3MonthExtension" TabIndex="-1" id="3MonthExtension" onclick="return false;"/>   -->
-						<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="Additional3MonthExtensionInd" TabIndex="-1" id="Additional3MonthExtensionInd">
+						<input type="checkbox" alt="alt" class="styIRSCkbox" name="Additional3MonthExtensionInd" TabIndex="-1" id="Additional3MonthExtensionInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd"/>
 							</xsl:call-template>
@@ -613,10 +697,11 @@
 							<br/>
 							<span style="font-size: 6pt; font-weight: normal">File by the due date for filing your return. See instructions.</span>
 						</div>
-						<div class="styNameAddr" style=" border-bottom-width: 0px; border-top-width: 0px; border-right-width: 1px;width:110mm;height:8mm;font-size: 7pt">
+						<div class="styNameAddr" style=" border-bottom-width: 0px; border-top-width: 0px; border-right-width: 1px;width:110mm;height:auto;font-size: 7pt">
       Name of exempt organization or other filer, see instructions.<br/>
+						  <xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
 							<span style="font-family:verdana;font-size:6pt;">
-								<xsl:call-template name="PopulateText">
+<!--								<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerFirmGrp/PreparerFirmName/BusinessNameLine1"/>
 											</xsl:call-template> 
 								<br/>
@@ -627,24 +712,46 @@
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">InCareOfName</xsl:with-param>
 								</xsl:call-template>
+-->
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+								</xsl:call-template>
+								<br/>
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+								</xsl:call-template>
+								<br/>
+
+								<xsl:call-template name="LinkToLeftoverDataTableInline">
+									<xsl:with-param name="Desc">Header - In Care Of Name</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/InCareOfNm"/>
+								</xsl:call-template>
+								<xsl:call-template name="LinkToLeftoverDataTableInline">
+									<xsl:with-param name="Desc">Header - Business Name Control</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessNameControlTxt"/>
+								</xsl:call-template>							
 							</span>
+						  </xsl:if>
 						</div>
 						<!--						<div class="styFNBox" style="padding-left:2mm;font-size:7pt;">Employer identification number (EIN) <b>or</b><br/>    -->
-						<div class="styFNBox" style="padding-left:2mm;font-size:7pt;width:59mm;height:8mm;border-right-width:0px;border-bottom-width:1px;">Employer identification number (EIN) <b>or</b>
+						<div class="styFNBox" style="padding-left:2mm;font-size:7pt;width:59mm;height:auto;border-right-width:0px;border-bottom-width:1px;">Employer identification number (EIN) <b>or</b>
 							<br/>
 							<br/>
-							<span style="text-align:left;font-size: 7pt; font-weight:normal;">
-								<!-- Since this is a main form, we must check for and display an updated EIN.  To do this, we use the EINChanged parameter when calling PopulateReturnHeaderFiler.-->
-								<xsl:call-template name="PopulateReturnHeaderFiler">
-									<xsl:with-param name="EINChanged">true</xsl:with-param>
-									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-								</xsl:call-template>
-							</span>
+							<xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
+								<span style="text-align:left;font-size: 7pt; font-weight:normal;">
+									<!-- Since this is a main form, we must check for and display an updated EIN.  To do this, we use the EINChanged parameter when calling PopulateReturnHeaderFiler.-->
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+										<xsl:with-param name="EINChanged">true</xsl:with-param>
+										<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+								</span>
+							</xsl:if>						
 						</div>
 						<!--						<div class="styNameAddr" style="width:110mm;height:10mm; font-size:7pt; border-top-width: 1px">    -->
 						<div class="styNameAddr" style="width:110mm;height:10mm; font-size:7pt; border-top-width: 1px;border-right-width: 1px;border-bottom-width:0px;">
 							<!-- width used to be 169mm -->
 	Number, street, and room or suite no. If a P.O. box, see instructions.<br/>
+						<xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">AddressLine1</xsl:with-param>
 							</xsl:call-template>
@@ -652,20 +759,25 @@
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">AddressLine2</xsl:with-param>
 							</xsl:call-template>
+							</xsl:if>							
 						</div>
 						<div class="styFNBox" style="padding-left:2mm;font-size:7pt;width:59mm;border-right-width:0px;">Social security number (SSN)<br/>
 							<br/>
+							<xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
 							<span style="text-align:left;font-size: 7pt; font-weight:normal;">
 								<!-- Since this is a main form, we must check for and display an updated EIN.  To do this, we use the EINChanged parameter when calling PopulateReturnHeaderFiler.-->
+								
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="EINChanged">false</xsl:with-param>
 									<xsl:with-param name="TargetNode">SSN</xsl:with-param>
 								</xsl:call-template>
 							</span>
+							</xsl:if>
 						</div>
 						<!--						<div class="styNameAddr" style="border-bottom-width: 0px;width:169mm;height:8mm;font-size: 7pt">  -->
 						<div class="styNameAddr" style="border-bottom-width: 0px;border-top-width:1px;width:169mm;height:8mm;font-size: 7pt">  
       City, town or post office, state, and ZIP code. For a foreign address, see instructions.<br/>
+						  <xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
 							</xsl:call-template>
@@ -674,6 +786,7 @@
 								<xsl:with-param name="TargetNode">Country</xsl:with-param>
 								<xsl:with-param name="MainForm">true</xsl:with-param>
 							</xsl:call-template>
+						</xsl:if>	
 						</div>
 					</div>
 					<div style="width: 187mm; border-style:solid; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 1px; font-size: 8pt">
@@ -812,12 +925,11 @@
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Addnl3MonthExtensionOfTime/OrgHasNoOfficeInUSInd"/>
 							</xsl:call-template> If the organization does not have an office or place of business in the United States, check this box</label>
 						<b>
-							<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.
-  <span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.<span class="styIRS8868NBSP"/>.
+						<span class="styDotLn" style="float:none;padding-left:2mm">...........</span>
   </b>
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
-						<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="OrgHasNoOfficeInUSInd" id="OrgHasNoOfficeInUSInd">
+						<input type="checkbox" alt="alt" class="styIRSCkbox" name="OrgHasNoOfficeInUSInd" id="OrgHasNoOfficeInUSInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Addnl3MonthExtensionOfTime/OrgHasNoOfficeInUSInd"/>
 							</xsl:call-template>
@@ -836,7 +948,7 @@
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
 						<!--						<input type="checkbox" class="styIRS8868Ckbox" name="WholeGroup" TabIndex="-1" id="WholeGroup" onclick="return false"/>   -->
-						<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="WholeGroupInd" TabIndex="-1" id="WholeGroupInd">
+						<input type="checkbox" alt="alt" class="styIRSCkbox" name="WholeGroupInd" TabIndex="-1" id="WholeGroupInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Addnl3MonthExtensionOfTime/WholeGroupInd"/>
 							</xsl:call-template>
@@ -846,7 +958,7 @@
 						<img src="{$ImagePath}/8868_Bullet_Lg.gif" alt="bullet"/>
 						<span style="width: 2mm"/>
 						<!--						<input type="checkbox" class="styIRS8868Ckbox" name="PartGroup" TabIndex="-1" id="PartGroup" onclick="return false"/>   -->
-						<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="PartialGroupInd" TabIndex="-1" id="PartialGroupInd">
+						<input type="checkbox" alt="alt" class="styIRSCkbox" name="PartialGroupInd" TabIndex="-1" id="PartialGroupInd">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS8868Data/Addnl3MonthExtensionOfTime/PartialGroupInd"/>
 							</xsl:call-template>
@@ -872,28 +984,32 @@
 						<span class="styIRS8868LNLeftNumBox" style="margin-right: 1mm">5</span>
 						<span class="styIRS8868LNDesc" style="width: 180mm">For calendar year 
     <span style="width:10mm;border-style:solid;float:none;clear:none;padding-left: .5mm" class="styBB">
-								<xsl:if test="$RtnHdrData/TaxYr != '' ">
+								<xsl:if test="$RtnHdrData/TaxYr != ''  and $IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
 									<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
 								</xsl:if>
-							</span>,  or other tax year beginning
+							</span>  or other tax year beginning						
      							   <xsl:choose>
+											<xsl:when test="substring($RtnHdrData/TaxPeriodEndDt,6,5) != '12-31'">
+												<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB">
+													<xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
+														<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
+													</xsl:if>	
+												</span>
+											</xsl:when>
+											<xsl:otherwise>
+												<span style="width:20mm;border-style:solid;float:none;clear:none;" class="styBB"/>
+												<span style="width:4px;"/>,<span style="width:4px;"/>
+												<span style="width:8mm;border-style:solid;float:none;clear:none;padding-left: .5mm" class="styBB"/>
+												<span style="width:4px;"/>,
+											</xsl:otherwise>
+									</xsl:choose>									
+								 and ending
+     						 <xsl:choose>
 								<xsl:when test="substring($RtnHdrData/TaxPeriodEndDt,6,5) != '12-31'">
 									<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB">
-										<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
-									</span>
-								</xsl:when>
-								<xsl:otherwise>
-									<span style="width:20mm;border-style:solid;float:none;clear:none;" class="styBB"/>
-									<span style="width:4px;"/>,<span style="width:4px;"/>
-									<span style="width:8mm;border-style:solid;float:none;clear:none;padding-left: .5mm" class="styBB"/>
-									<span style="width:4px;"/>,
-        								  </xsl:otherwise>
-							</xsl:choose>
-								, and ending
-       						 <xsl:choose>
-								<xsl:when test="substring($RtnHdrData/TaxPeriodEndDt,6,5) != '12-31'">
-									<span style="padding-left: 1mm;width:20mm;border-style:solid;float:none;clear:none;" class="styBB">
-										<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
+										<xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
+											<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
+										</xsl:if>	
 									</span>
 								</xsl:when>
 								<xsl:otherwise>
@@ -901,8 +1017,8 @@
 									<span style="width:4px;"/>,<span style="width:4px;"/>
 									<span style="width:8mm;border-style:solid; float:none;clear:none;padding-left: .5mm" class="styBB"/>
 									<span style="width:4px;"/>,
-    								      </xsl:otherwise>
-							</xsl:choose>
+    							</xsl:otherwise>
+							</xsl:choose>							
 						</span>
 					</div>
 					<!--   END LINE 5   -->
@@ -911,31 +1027,33 @@
 					<div class="styIRS8868LineItem">
 						<span class="styIRS8868LNLeftNumBox" style="margin-right: 1mm;padding-top:3mm">6</span>
 						<span class="styIRS8868LNDesc" style="width: 180mm">If the tax year entered in line 5 is for less than 12 months, check reason: <span style="width: 1mm"/>
-							<!--							<input type="checkbox" class="styIRS8868Ckbox" name="InitialReturn" TabIndex="-1" id="InitialReturn" onclick="return false;"/>   -->
-							<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="InitialReturn" TabIndex="-1" id="InitialReturn">
+							<input type="checkbox" alt="alt" class="styIRSCkbox" name="InitialReturn" TabIndex="-1" id="InitialReturn">
+								<xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/InitialReturnInd"/>
 								</xsl:call-template>
+								</xsl:if>
 							</input>
 							<span class="styIRS8868CkboxText" style="width: 15mm; float: none; clear: none">
 								<label for="InitialReturn"> Initial return</label>
 							</span>
-							
-							<!--							<input type="checkbox" class="styIRS8868Ckbox" name="FinalReturn" TabIndex="-1" id="FinalReturn" onclick="return false;"/>   -->
-							<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="FinalReturnInd" id="FinalReturnInd">
+							<input type="checkbox" alt="alt" class="styIRSCkbox" name="FinalReturnInd" id="FinalReturnInd">
+							<xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/FinalReturnInd"/>
 								</xsl:call-template>
+							</xsl:if>	
 							</input>
 							<span class="styIRS8868CkboxText" style="width: 15mm; float: none; clear: none">
 								<label for="FinalReturnInd"> Final return</label>
 							</span>
 							<span style="width:3mm"></span>
-							<!--							<input type="checkbox" class="styIRS8868Ckbox" name="ChangeAccountingPeriod" TabIndex="-1" id="ChangeAccountingPeriod" onclick="return false;"/>   -->
-							<input type="checkbox" alt="alt" class="styIRS8868Ckbox" name="AccountingPeriodChangeInd" TabIndex="-1" id="AccountingPeriodChangeInd">
+							<input type="checkbox" alt="alt" class="styIRSCkbox" name="AccountingPeriodChangeInd" TabIndex="-1" id="AccountingPeriodChangeInd">
+							<xsl:if test="$IRS8868Data/Addnl3MonthExtensionOfTime/Additional3MonthExtensionInd">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS8868Data/Automatic3MonthExtensionOfTime/AccountingPeriodChangeInd"/>
 								</xsl:call-template>
+							</xsl:if>
 							</input>
 							<span class="styIRS8868CkboxText" style="width:30mm; float: none; clear: none">
 								<label for="AccountingPeriodChangeInd"> Change in accounting period</label>
@@ -1006,9 +1124,9 @@
 						<!--  END LINE 8a  -->
 						<!--  BEGIN LINE 8b  -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;">
+							<div class="styLNLeftNumBox" style="height:8mm;"><!--4mm-->
 								<span style="width:2mm"/>b</div>
-							<div class="styLNDesc" style="border: 0 solid black;border-bottom-width:1px;height:6mm;width:136mm">If this application is for Forms 990-PF, 990-T, 4720, or 6069, enter any refundable credits and estimated tax payments made. Include any prior year overpayment allowed as a credit and any amount paid previously with Form 8868. <span style="width:2px;"/>
+							<div class="styLNDesc" style="border: 0 solid black;border-bottom-width:1px;height:auto;width:136mm">If this application is for Forms 990-PF, 990-T, 4720, or 6069, enter any refundable credits and estimated tax payments made. Include any prior year overpayment allowed as a credit and any amount paid previously with Form 8868. <span style="width:2px;"/>
 								<!-- Form to Form Link -->
 							</div>
 							<div class="styLNRightNumBox" style="border-bottom-width:0; height:6mm;background-color:lightgrey"/>

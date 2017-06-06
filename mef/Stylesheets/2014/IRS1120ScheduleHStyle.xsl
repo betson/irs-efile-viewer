@@ -142,7 +142,7 @@
     float: left; clear:  none;
   }
   .sty1120ScheduleHLNDesc {   /* Line Description */
-    width: 142mm;
+    width: 145.5mm;
     float: left; clear: none;
   }
   .sty1120ScheduleHLNBox {   /* Boxed Line Numbers */

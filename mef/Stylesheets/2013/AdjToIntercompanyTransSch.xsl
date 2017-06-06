@@ -7,7 +7,7 @@
 	<xsl:include href="AddHeader.xsl"/>
 	<xsl:include href="AddOnTable.xsl"/>
 	<xsl:param name="DependencyData" select="$RtnDoc/AdjToIntercompanyTransSch"/>
-	<!-- 1120F Schedule-M3 Display Name is Adjustments To Intercompany Transactions Schedule  -->
+	<!-- - 1120F Schedule-M3 Display Name is -  Adjustments To Intercompany Transactions Schedule - -->
 	<xsl:param name="depDocTitle">
 		<xsl:call-template name="PopulateDisplayName">
 			<xsl:with-param name="TargetNode" select="$DependencyData"/>
@@ -68,8 +68,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -91,7 +93,7 @@
 				</style>
 				<xsl:call-template name="GlobalStylesDep"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<xsl:call-template name="DocumentHeaderDependency"/>
 				<div class="styDepTitleLine">
 					<span class="styDepTitle">

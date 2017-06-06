@@ -10,9 +10,11 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="FormData" select="$RtnDoc/IRS1120FScheduleM1M2"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
-		<!-- Updated 10/28/2010 (RLW) -->
+		<!-- Updated 10/28/2010 (RLW) -->	
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -62,7 +64,7 @@
 										<div class="styAgency" style="font-weight:normal;font-family: 'Arial'">Internal Revenue Service</div>
 									</th>
 									<!--Form Name-->
-									<th rowspan="2" class="styFTBox" style="width:119mm;font-size:7pt" scope="col">
+									<th rowspan="2" class="styFTBox" style="width:119mm;font-size:7pt;float:none;" scope="col">
 										<div class="styMainTitle">
                     Reconciliation of Income (Loss) and Analysis of
                     Unappropriated Retained Earnings per Books
@@ -114,7 +116,7 @@
 					<!--Begin Sch M-1 Header-->
 					<div class="styBB" style="width:187mm;height:8mm">
 						<div class="styPartName" style="width:24mm;margin-top:2mm;margin-bottom:2mm">Schedule M-1</div>
-						<div class="stypartDesc" style="width:150mm;padding-top:0.5mm;font-weight:normal">
+						<div class="stypartDesc" style="width:150mm;padding-top:0.5mm;padding-left:2.5mm;font-weight:normal">
 							<b>Reconciliation of Income (Loss) per Books With Income per Return<br/>
             Note:</b> Schedule M-3 may be required instead of Schedule M-1—see instructions.
           </div>
@@ -162,12 +164,12 @@
 							<!--Line 4-->
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;height:4.25mm">4</div>
 							<div class="styLNDesc" style="width:53.3mm;height:4.25mm">Income subject to tax not recorded on </div>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:4.25mm"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0px;height:4.25mm"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;height:4.25mm"/>
 							<div class="styLNDesc" style="width:35.3mm;float:left;clear:none;height:4.25mm">books this year (itemize):</div>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:15.5mm;height:4.25mm"/>
 							<div style="width:2.5mm;float:left;clear:none;height:4.25mm"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:4.25mm"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0px;height:4.25mm"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm;text-align:left">
 								<xsl:call-template name="SetFormLinkInline">
@@ -175,11 +177,11 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:5mm"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0px;height:5mm;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;clear:left"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm"/>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;float:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalTaxableIncmNotRecOnBksAmt"/>
 								</xsl:call-template>
@@ -187,7 +189,7 @@
 							<!--Line 5-->
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;height:8mm">5</div>
 							<div class="styLNDesc" style="width:53.3mm">Expenses recorded on books this year not deducted on this return (itemize):</div>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="height:8mm;border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="height:8mm;border-right-width:0px;"/>
 							<!--Line 5a-->
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:3mm">a</div>
 							<div class="styLNDesc" style="width:24.8mm">
@@ -199,7 +201,7 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;float:right;"/>
 							<!--Line 5b-->
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:3mm;height:8mm">b</div>
 							<div class="styLNDesc" style="height:8mm;width:24.8mm">
@@ -233,7 +235,7 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;float:right"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm;text-align:left">
 								<xsl:call-template name="SetFormLinkInline">
@@ -241,7 +243,7 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;height:5mm">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;height:5mm;float:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalExpensesNotDeductedAmt"/>
 								</xsl:call-template>
@@ -287,7 +289,7 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm;text-align:left">
 								<xsl:call-template name="SetFormLinkInline">
@@ -295,11 +297,11 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:5mm"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:5mm;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;clear:left"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.7mm"/>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;float:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotIncmRecordedNotIncludedAmt"/>
 								</xsl:call-template>
@@ -321,7 +323,7 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;float:right;"/>
 							<!--Line 8b-->
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:3mm;height:8mm">b</div>
 							<div class="styLNDesc" style="height:8mm;width:25.1mm">
@@ -343,7 +345,7 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm;text-align:left">
 								<xsl:call-template name="SetFormLinkInline">
@@ -351,11 +353,11 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:5mm"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:5mm;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;clear:left"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.7mm"/>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;float:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalDeductionsNotChargedAmt"/>
 								</xsl:call-template>
@@ -430,7 +432,7 @@
 							<div class="styLNDesc" style="width:36.3mm">Other increases (itemize):</div>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:14.5mm"/>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm;text-align:left">
 								<xsl:call-template name="SetFormLinkInline">
@@ -438,15 +440,15 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:5mm"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;height:5mm;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm"/>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style="border-right-width:0;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm"/>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;float:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalOtherIncreasesAmt"/>
 								</xsl:call-template>
@@ -470,10 +472,10 @@
 							<!--Line 5a-->
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm">5</div>
 							<div class="styLNDesc" style="width:19.2mm;float:left;clear:none">Distributions:</div>
-							<div class="styLNDesc" style="width:33.9mm">
+							<div class="styLNDesc" style="width:34.2mm">
 								<b>a</b> Cash
 								<!--Dotted Line -->
-								<span class="sty1120FSchM1M2DotLn" style="padding-left:1.4mm">......</span>
+								<span class="sty1120FSchM1M2DotLn" style="padding-left:1.4mm">.....</span>
 							</div>
 							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0">
 								<xsl:call-template name="PopulateAmount">
@@ -481,25 +483,24 @@
 								</xsl:call-template>
 							</div>
 							<!--Line 5b-->
-							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
-							<div style="width:19.2mm;float:left;clear:none"/>
-							<div class="styLNDesc" style="width:33.9mm">
+							
+							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>							
+							<div class="styLNDesc" style="width:53mm;padding-left:19mm">
 							<!--Dotted Line-->
-								<b>b</b> Stock<span class="sty1120FSchM1M2DotLn" style="padding-left:4.4mm">.....</span>
+								<b>b</b> Stock<span class="sty1120FSchM1M2DotLn" style="padding-left:4.4mm">....</span>
 							</div>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;float:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/StockDistributionAmt"/>
 								</xsl:call-template>
 							</div>
 							<!--Line 5c-->
-							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
-							<div style="width:19.2mm;float:left;clear:none"/>
-							<div class="styLNDesc" style="width:33.9mm">
+							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>							
+							<div class="styLNDesc" style="width:53mm;padding-left:19mm;">
 							<!--Dotted Line-->
-								<b>c</b> Property<span class="sty1120FSchM1M2DotLn" style="padding-left:1.1mm">.....</span>
+								<b>c</b> Property<span class="sty1120FSchM1M2DotLn" style="padding-left:1.1mm">....</span>
 							</div>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;float:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/PropertyDistributionAmt"/>
 								</xsl:call-template>
@@ -509,7 +510,7 @@
 							<div class="styLNDesc" style="width:37.3mm">Other decreases (itemize):</div>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:13.5mm"/>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBoxShaded" style=";border-right-width:0"/>
+							<div class="sty1120FSchM1M2LNAmountBoxShaded" style=";border-right-width:0;float:right;"/>
 							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm"/>
 							<div class="sty1120FSchM1M2ItemUnderline" style="width:50.8mm;text-align:left">
 								<xsl:call-template name="SetFormLinkInline">
@@ -517,7 +518,7 @@
 								</xsl:call-template>
 							</div>
 							<div style="width:2.5mm;float:left;clear:none"/>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;height:5mm">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;height:5mm;float:right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/TotalOtherDecreasesAmt"/>
 								</xsl:call-template>
@@ -535,14 +536,14 @@
 								</xsl:call-template>
 							</div>
 							<!--Line 8-->
-							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;height:4.5mm">8</div>
-							<div class="styLNDesc" style="width:53.3mm;font-size:6pt;height:4.5mm">
+							<div class="styLNLeftNumBox" style="width:6mm;padding-left:1.5mm;height:4.7mm">8</div>
+							<div class="styLNDesc" style="width:53.3mm;height:4.7mm">
 							<span style="float:left;">Balance at end of year (line 4 less line 7)</span>
 							<!-- Dotted Line -->
-							<span class="styDotLn" style="float:right;font-weight:bold;padding-right:1mm;">..</span>
+							<span class="styDotLn" style="float:right;font-weight:bold;padding-right:1mm;"></span>
 
 							</div>
-							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;border-bottom-width:0;height:4.5mm">
+							<div class="sty1120FSchM1M2LNAmountBox" style="border-right-width:0;border-bottom-width:0;height:4.7mm">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/EndYearBalanceAmt"/>
 								</xsl:call-template>

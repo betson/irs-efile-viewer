@@ -38,7 +38,7 @@
             </xsl:attribute>
             <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt; width: 35mm;">
               <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermContractGrp)"/>
+              <xsl:value-of select="count(PYLongTermContractGrp/PYScheduleAdjustmentsGrp)"/>
               </xsl:attribute>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="ContractNum"/>
@@ -46,7 +46,7 @@
             </td>
             <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
               <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermContractGrp)"/>
+              <xsl:value-of select="count(PYLongTermContractGrp/PYScheduleAdjustmentsGrp)"/>
               </xsl:attribute>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="JobNm"/>
@@ -54,7 +54,7 @@
             </td>
             <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
               <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermContractGrp)"/>
+              <xsl:value-of select="count(PYLongTermContractGrp/PYScheduleAdjustmentsGrp)"/>
               </xsl:attribute>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="OtherIdentifyingInformationTxt"/>
@@ -89,7 +89,7 @@
               </td>
             </xsl:if>
             <!-- If there is more than one set of data, show the first set with Row 1 background -->
-            <xsl:if test="count(PYLongTermContractGrp)&gt;1">              
+            <xsl:if test="count(PYLongTermContractGrp)&gt;1 or count(PYScheduleAdjustmentsGrp)&gt;1">              
               <td class="styDepTblRow1Cell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="PYLongTermContractGrp/Yr"/>
@@ -150,12 +150,54 @@
                 </td>
                 <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
                   <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYScheduleAdjustmentsGrp/PYNetAdjToIncmAmt"/>
+                  </xsl:call-template>
+                </td>
+              </tr>
+  
+     <!-- For Each remaining set of data, make rows with alternating bgcolors -->                                
+          <xsl:for-each select="PYScheduleAdjustmentsGrp">        
+            <xsl:if test="position() &gt; 1">
+              <tr>
+                <!-- Set row background color -->
+                <xsl:attribute name="class">
+                  <xsl:choose>
+                     <xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+                     <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+                  </xsl:choose>
+                </xsl:attribute>
+                <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
+                  <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="Yr"/>
+                  </xsl:call-template>
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
+                  <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYIncmPrevRptBsdOnEstCntrctAmt"/>
+                  </xsl:call-template>
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
+                  <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYIncmAllocBsdOnActlCntrctAmt"/>
+                  </xsl:call-template>
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
+                  <xsl:call-template name="PopulateAmount">
+                    <xsl:with-param name="TargetNode" select="PYOtherAdjustmentsAmt"/>
+                  </xsl:call-template>
+                </td>
+                <td class="styDepTblCell" scope="col" style="text-align:right;font-size: 7pt; width: 30mm">
+                  <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="PYNetAdjToIncmAmt"/>
                   </xsl:call-template>
                 </td>
               </tr>
             </xsl:if>
+          </xsl:for-each> <!-- End of For Each remaining set of data, make rows with alternating bgcolors -->          
+
+          </xsl:if>        
           </xsl:for-each> <!-- End of For Each remaining set of data, make rows with alternating bgcolors -->
+           
         </xsl:for-each> <!-- End of For Each schedule -->
       </tbody>
     </table>
@@ -167,8 +209,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>

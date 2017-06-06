@@ -40,19 +40,33 @@
       width:187mm;                   
     }
     
+    /** May 4, 2015 WWT modified styIRS5472Table
+    
     .styIRS5472Table  {  
       display:table-header-group;
       font-size:8pt;            
       width:100%;
       clear:both;    
       text-align:left;
-      border-bottom:1 solid black    
-    }              
+      border-bottom:1 solid black 
+         
+    }  **/           
+    
+    .styIRS5472Table  {  
+      font-size:8pt;            
+      width:100%;
+      clear:both;    
+      text-align:left;
+	  color: black;
+      border-style: solid;
+	  border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+    } 
+        
         
     .styIRS5472DotBB {
       border-bottom:1 dashed black;  
       text-align:center;        
     }      
-            
+       
   </xsl:template>
 </xsl:stylesheet>

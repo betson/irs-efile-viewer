@@ -17,8 +17,13 @@ updated 10/14/2005 by Charlie Moore to add "styTopSectionLineLandscape" for land
 *****************************************************************************************************
 -->
   <xsl:template name="AddOnStyle">
+    * {box-sizing:border-box;}
+    input[type=checkbox] {box-sizing:content-box;}
+    span {display:inline-block;}
+    div {display:inline-block;vertical-align:bottom;}
+    
     .styBodyClass {   /* body style for all stylesheets */
-      width: auto; height: auto;
+      width: 188mm; height: auto;
       margin-top: 6px; margin-right: 0px; margin-bottom: 0px; margin-left: 6px;
       color: black; background-color: white;
       background-image: url( "<xsl:value-of select="$PageWatermark"/>" );  /*  url({url}) || none  */
@@ -43,7 +48,7 @@ updated 10/14/2005 by Charlie Moore to add "styTopSectionLineLandscape" for land
       font-family: verdana, arial, sans-serif; font-size: 11pt;
       font-weight: bold;
       text-align: left;
-      padding-left: 8px; padding-right: 0px; padding-top:0px; padding-bottom:0px;
+      padding-left: 8px; padding-right: 8px; padding-top:0px; padding-bottom:0px;
     }
     .styDepTitleLine {   /* Dependency Document Title Line */
       width:187mm;
@@ -76,7 +81,7 @@ updated 10/14/2005 by Charlie Moore to add "styTopSectionLineLandscape" for land
 
     .styDepTblHdr {   /* Dependency Table Header */
       background-color: <xsl:value-of select="$UserPref/View/TableHeaderBgColor"/>;   /* set in User Preferences */
-      color: white;,
+      color: white;
       text-align: center;
       vertical-align: middle;
     }
@@ -92,17 +97,17 @@ updated 10/14/2005 by Charlie Moore to add "styTopSectionLineLandscape" for land
     }
     .styDepTblCell {   /* Dependency Table Cell */
       padding-top: 4px; padding-bottom: 4px; padding-left: 4px; padding-right: 4px;vertical-align: top; 
-      border:1 solid black;
+      border:1px solid black;
     }    
     .styDepTblRow1Cell {   /* Dependency Table Cell with Background Color for Row 1 */
       background-color: <xsl:value-of select="$UserPref/View/TableRow1BgColor"/>;   /* set in User Preferences */
       padding-top: 4px; padding-bottom: 4px; padding-left: 4px; padding-right: 4px;vertical-align: top; 
-      border:1 solid black;
+      border:1px solid black;
     }    
     .styDepTblRow2Cell {   /* Dependency Table Cell with Background Color for Row 2 */
       background-color: <xsl:value-of select="$UserPref/View/TableRow2BgColor"/>;   /* set in User Preferences */
       padding-top: 4px; padding-bottom: 4px; padding-left: 4px; padding-right: 4px;vertical-align: top; 
-      border:1 solid black;
+      border:1px solid black;
     }    
     .styDepTableThead{ /* Style for Dependency HTML 'thead' element  */
       display:table-header-group;
@@ -111,7 +116,8 @@ updated 10/14/2005 by Charlie Moore to add "styTopSectionLineLandscape" for land
       font-size: 10pt;
       margin-top: 5px;
       margin-bottom:5px;
-      width:187mm
+      width:187mm;
+      display:table;
     }
     .styTopSectionLineLbl {
       font-weight: bold;
@@ -123,7 +129,8 @@ updated 10/14/2005 by Charlie Moore to add "styTopSectionLineLandscape" for land
       font-size: 10pt;
       margin-top: 5px;
       margin-bottom:5px;
-      width:256mm
+      width:256mm;
+      display:table;
     }
     .styDepTableCellPad {   /* Dependency Table Cell Padding */
       width: 4px;
@@ -191,6 +198,9 @@ updated 10/14/2005 by Charlie Moore to add "styTopSectionLineLandscape" for land
     .styLeftOverButtonContainerLandscape { /* Style for Container of Left Over Table Button in Landscape Format */
       width:220.5mm;
       text-align:right;
+      <xsl:if test="string($Print)">
+      visibility:hidden;
+      </xsl:if>
     }
     .styLeftOverTblLandscape {   /* Left Over Table in Landscape Format */
       width:256mm;

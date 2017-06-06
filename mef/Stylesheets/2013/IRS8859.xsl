@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS8859"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<META http-equiv="Content-Type" content="text/html"/>
 				<title>
 					<xsl:call-template name="FormTitle">
@@ -65,7 +67,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:31mm;height:22mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0074</div>
+							<div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
 							<div class="styTY" style="height:7mm;font-size:22pt;">20<span class="styTYColor">13</span></div>
 							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;">
 								Attachment<br/>
@@ -98,7 +100,7 @@
 					</div>
 					
 					<!-- Spacer -->
-					<div class="styGenericDiv" style="width:187mm;">
+					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
 						<div class="styLNDesc"/>
 						<div class="styLNRightNumBoxNBB"/>
@@ -108,7 +110,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">1</div>
 						<div class="styLNDesc"> 
-							<span class="styGenericDiv">
+							<span>
 								Credit carryforward from 2012. Enter the amount from line 10 of your 2012 Form 8859 
 								<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$FormData/DCHmByrCreditCarryforwardPYAmt"/>
@@ -125,14 +127,14 @@
 					</div>
 					
 					<!-- Line 2 -->
-					<div class="styGenericDiv" style="width:187mm;">
+					<div  style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">2</div>
-						<div class="styLNDesc">
+						<div class="styLNDesc" style="height:auto;">
 							<span style="float:left;">Limitation based on tax liability. Enter the amount from the Tax Liability Limit Worksheet in the</span><br/><span style="float:left;">instructions</span>
-							<span class="styIRS8859Dots">...............................</span>
+							<span class="styIRS8859Dots">..............................</span>
 						</div>
-						<div class="styLNRightNumBox"><br/>2</div>
-						<div class="styLNAmountBox"><br/>
+						<div class="styLNRightNumBox" style="height:8mm;"><br/>2</div>
+						<div class="styLNAmountBox" style="height:8mm;"><br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TaxLiabLmtFromCrLmtWrkshtAmt"/>
 							</xsl:call-template>
@@ -141,16 +143,16 @@
 					</div>
 					
 					<!-- Line 3 -->
-					<div class="styGenericDiv" style="width:187mm;">
+					<div  style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">3</div>
-						<div class="styLNDesc">
+						<div class="styLNDesc" style="height:auto;">
 							<b>Current year credit.</b> Enter the <b>smaller</b> of line 1 or line 2. Also include this amount on Form 1040, <br/>
 							line 53, or Form 1040NR, line 50. Check box <b>c</b> on that line and enter "8859" in the space next to <br/>
-							<span class="styGenericDiv">that box</span>
-							<span class="styIRS8859Dots">................................</span>
+							<span>that box</span>
+							<span class="styIRS8859Dots">...............................</span>
 						</div>
-						<div class="styLNRightNumBox"><br/><br/>3</div>
-						<div class="styLNAmountBox">
+						<div class="styLNRightNumBox" style="height:12mm;"><br/><br/>3</div>
+						<div class="styLNAmountBox" style="height:12mm;">
 							<br/><br/>
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/DCHmByrCurrentYearCreditAmt"/>
@@ -160,21 +162,21 @@
 					</div>
 					
 					<!-- Line 4 -->
-					<div class="styGenericDiv" style="width:187mm;">
+					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">4</div>
 						<div class="styLNDesc">
-							<span class="styGenericDiv"><b>Credit carryforward to 2014.</b> Subtract line 3 from line 1</span>
-							<span class="styIRS8859Dots">................</span>
+							<span ><b>Credit carryforward to 2014.</b> Subtract line 3 from line 1</span>
+							<span class="styIRS8859Dots">...............</span>
 						</div>
-						<div class="styLNRightNumBoxNBB">4</div>
-						<div class="styLNAmountBoxNBB">
+						<div class="styLNRightNumBoxNBB" style="border-bottom-width:1px;">4</div>
+						<div class="styLNAmountBoxNBB" style="border-bottom-width:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/DCHmByrCreditCfwdNextYearAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
 					<!--Page Footer-->
-					<div class="pageEnd" style="width:187mm; font-size:7pt;border-top:2px solid black; padding-top:0.5mm">
+					<div  style="width:187mm; font-size:7pt;border-top:2px solid black; padding-top:0.5mm;">
 						<div style="float:left; font-size:8pt">
 							<b>For Paperwork Reduction Act Notice, see your tax return instructions.</b>
 						</div>
@@ -184,9 +186,11 @@
 						Form <b style="font-size:9pt">8859</b> (2013)
 						</div>
 					</div>
+					<br></br>
+					<br></br>
 					<!--END Page Footer-->
 					<!-- Additonal Data Title Bar and Button -->
-					<div class="styLeftOverTitleLine" id="LeftoverData">
+					<div class="styLeftOverTitleLine" id="LeftoverData" >
 						<div class="styLeftOverTitle">
 							Additional Data        
 						</div>

@@ -17,6 +17,16 @@
 <!-- Last modified on 5/29/2014 for UWR 107551 and pdf dated 2/25/14 by Robert Jones -->
 <!-- Last modified on 6/26/2014 for IBM Defect 40581 by Robert Jones -->
 <!-- Last modified on 7/31/2014 for IBM Defect 41157 by Robert Jones -->
+<!-- Last modified on 5/05/2015 for UWR 123023 IE11 changes by Robert Jones -->
+<!-- Last modified on 6/5/2015 for IBM Defect 43116 by Robert Jones -->
+<!-- Last modified on 6/5/2015 for IBM Defect 43117 by Robert Jones -->
+<!-- Last modified on 7/22/2015 for IBM Defect 43947 Sep Print overlapping of data Part III by Robert Jones -->
+<!-- Last modified on 9/1/2015 for IBM Defect 43116 by Robert Jones -->
+<!-- Last modified on 9/1/2015 for IBM Defect 43117 by Robert Jones -->
+<!-- Last modified on 10/8/2015 for IBM Defect 43116 by Robert Jones -->
+<!-- Last modified on 10/8/2015 for IBM Defect 43947 Doesn't like Part II and III tables and the way they display when flooded with data Part III by Robert Jones -->
+<!-- Updated 11/19/2015 per IBM Defect 43947 Missing right border and numbering by Robert L Jones -->
+<!-- Updated 12/22/2015 per IBM Defect 43947 Part II Header displaying as if Portrait. NPF but made like 2015 by Robert L Jones -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -31,8 +41,10 @@
 
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
 <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"/></xsl:call-template></title>
 <meta http-equiv="Pragma" content="no-cache"/>
@@ -63,27 +75,26 @@
 
 <!--   BEGIN FORM HEADER   -->
 <!--   BEGIN FORM HEADER   -->
-<div class="sty990ScheduleIBB" style="width:256mm;height:18mm">
-  <div class="sty990ScheduleIFN">
+<div class="sty990ScheduleIBB" style="width:256mm;height:auto;">
+  <div class="sty990ScheduleIFN" style="height:auto;">
     <div class="sty990ScheduleIFNum" style="width:29mm;">Schedule I
       <br/>
       <span class="sty990ScheduleIFNum2">(Form 990)</span>
-    </div>
     
-    <div class="sty990ScheduleIAgency" style="padding-top: 8mm">Department of the Treasury
-      <br/>Internal Revenue Service
+    
+    <div class="sty990ScheduleIAgency" style="padding-top: 8mm;float:left;height:auto;">Department of the Treasury
+      <br/>Internal Revenue Service</div>
     </div>
   </div>
-  <div class="sty990ScheduleIFTBox" style="width:180mm;border-right-width:1px;height:18mm;padding-top:2mm">
+  <div class="sty990ScheduleIFTBox" style="width:180mm;border-right-width:1px;height:auto;padding-top:2mm">
     <div class="styMainTitle">Grants and Other Assistance to Organizations,<br />Governments and Individuals in the United States</div>
     <span class="sty990ScheduleIFST">    
 Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22.
         </span><br />
    <span class="sty990ScheduleIFST">
 <img src="{$ImagePath}/990SchI_Bullet.gif" alt="lBullet"/> 
- Attach to Form 990.</span>
+ Attach to Form 990.</span><br></br>
  <span class="sty990ScheduleIFST">
- <br />
 <img src="{$ImagePath}/990SchI_Bullet.gif" alt="lBullet"/> 
  Information about Schedule I (Form 990) and its instructions is at <!--www.irs.gov/form990.-->
  <a href="http://www.irs.gov/form990" title="Link to IRS.gov">
@@ -91,14 +102,14 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
             </a>.
  </span>
  </div>
-  <div class="IRS990ScheduleI_FormYearBlock" style="height:18mm;float:right">
+  <div class="IRS990ScheduleI_FormYearBlock" style="height:auto;float:right">
     <!-- OMB No. -->
-    <div class="IRS990ScheduleI_OMB">OMB No. 1545-0047</div>
+    <div class="IRS990ScheduleI_OMB" style="height:auto;padding-top:0mm">OMB No. 1545-0047</div>
     <!-- Tax Year -->
-<div class="IRS990ScheduleI_TaxYear" style="padding-top:0mm;padding-bottom:0;">
+<div class="IRS990ScheduleI_TaxYear" style="padding-top:0mm;padding-bottom:0;height:auto;">
        <span>20<span class="styTYColor">14</span></span>
     
-    <div class="sty990ScheduleIPartName" style="font-size:7pt;font-family:verdana;width:45mm;padding-top:0mm;padding-bottom:0mm;height:7mm">Open to Public <br/>Inspection</div>
+    <div class="sty990ScheduleIPartName" style="font-size:7pt;font-family:verdana;width:45mm;padding-top:0mm;padding-bottom:0mm;height:10.5mm">Open to Public <br/>Inspection</div>
 </div>
 
  </div></div>
@@ -106,7 +117,7 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
 
 <!--   BEGIN TAXPAYER INFO   -->
 <div style="width:256mm;float:left;clear:left;">
-  <div class="sty990ScheduleIBusinessName" style="width:200mm;height:30px;">Name of the organization
+  <div class="sty990ScheduleIBusinessName" style="width:200mm;height:auto;">Name of the organization
   <br/>
     <span style="font-family: verdana, arial, sans-serif;font-size: 7pt;">
       <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -118,7 +129,7 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
     </xsl:call-template>
     </span>
   </div>
-  <div class="sty990ScheduleIIN" style="width:56mm;height:30px;"><span style="font-weight:bold;float:left; clear: none; margin-left: 1mm">Employer identification number</span><br/>
+  <div class="sty990ScheduleIIN" style="width:56mm;height:auto;"><span style="font-weight:bold;float:left; clear: none; margin-left: 1mm">Employer identification number</span><br/>
       <span class="sty990ScheduleIINBox" style="font-weight:normal;font-size: 7pt; height:4mm;float:left; margin-left: 1mm; padding-top:2mm;">
               
            <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -138,11 +149,11 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
   
   <div style=" width: 256mm; ">
 <div class="styLNLeftNumBox" style="padding-left: 1mm;padding-top:1mm">1</div>
- <div class="styLNDescLandscape" style="border-top-width:1px;padding-top:1mm; ">
+ <div class="styLNDescLandscape" style="border-top-width:1px;padding-top:1mm; height:auto;">
    
  Does the organization maintain records to substantiate the amount of the grants or assistance, the grantees' eligibility for the grants or assistance, and<br/> the selection criteria used to award the grants or assistance?
 
-<span style="letter-spacing:3mm; font-weight:bold;">....................................</span> 
+<span style="letter-spacing:3mm; font-weight:bold;">........................</span> 
 </div>
 <span style="float:right;"> 
 <span style="padding-top:4mm;">
@@ -184,14 +195,15 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
 
    <div style=" width: 256mm; ">
    <div class="styLNLeftNumBox">2</div>
-   <div class="styLNDescLandscape " style="padding-top:0mm ">
+   <div class="styLNDescLandscape " style="padding-top:0mm; height:auto;">
    Describe in Part IV the organization's procedures for monitoring the use of grant funds in the United States.
 </div>
 </div>
 <!-- Begin Part II -->
 <div class="styBB" style="width: 256mm;border-top-width:1px">
-  <div class="sty990ScheduleIPartName">Part II</div>
-  <div class="sty990ScheduleIPartDesc">Grants and Other Assistance to Domestic Organizations and Domestic Governments.<span style="font-weight:normal;padding-top:1mm"> Complete if the organization answered "Yes" to <br/>Form 990, Part IV, line 21,  for any recipient that received more than $5,000. Part II can be duplicated if additional space is needed.</span>    
+  <div class="sty990ScheduleIPartName" style="height:auto;">Part II</div>
+  <div class="sty990ScheduleIDescLine" style="height:auto;width:240mm;"><b><span style="width:2mm;"/>Grants and Other Assistance to Domestic Organizations and Domestic Governments.</b> Complete if the organization answered "Yes" on Form 990, Part IV, line 21,  for any recipient  
+     <div class="sty990ScheduleIDescLine" style="padding-left:2.5mm;height:auto;width:240mm;"> that received more than $5,000. Part II can be duplicated if additional space is needed. </div>   
 <!--<span class="styNoAudioRead" style="font-weight:bold;"> </span>   
    
       <span style="letter-spacing:4mm; font-weight:bold; ">  
@@ -222,51 +234,53 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
      </xsl:call-template>
    </span>-->
    
-   <div class="styGenericDiv" style="float:right">
-							<!-- button display logic -->
+  <!-- <div class="styGenericDiv" style="float:right">
+							 button display logic 
 							<xsl:call-template name="SetDynamicTableToggleButton">
 			<xsl:with-param name="TargetNode" select="$FormData/RecipientTable"/>
 								<xsl:with-param name="containerHeight" select="12"/>
 								<xsl:with-param name="containerID" select=" 'p2TbCtnr' "/>
 							</xsl:call-template>
-							<!-- end button display logic -->
+							end button display logic -->
 						
    </div>     
    
    </div>
 
   <!--Part II  table -->
-  <div class="styTableContainerLandscape" id="p2TbCtnr"> 
+  <div class="styTableLandscape" id="p2TbCtnr" style="display:table;"> 
      
 <!-- print logic -->
     <xsl:call-template name="SetInitialState"/> 
     <!-- end -->        
-    <table cellspacing="0" style="font-size:7pt;margin-left:0mm">
-<thead class="styTableThead">
+    <table cellspacing="0" style="font-size:7pt;margin-left:0mm;">
+
 <!--<div style="width: 256mm;">-->
   <tr>
 	
-	<th class="sty990ScheduleILNCol" scope="col" style="border-style: solid; border-color: black;text-align: center;font-size: 7pt;   height: 15mm; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top;width:42mm">
+	<th class="sty990ScheduleILNCol" scope="col" style="border-style: solid; border-color: black;text-align: center;font-size: 7pt;   height: 17mm; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top;width:42mm">
 	<b>(a)</b> Name and address of organization<br/>or government</th>
 
-<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;text-align: center;font-size: 7pt; height: 15mm; border-bottom-width: 1px; border-top-width:1px; padding-top:1mm;font-weight:normal;vertical-align:top;width:24mm"><b>(b)</b> EIN</th>
+<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;text-align: center;font-size: 7pt; height: 17mm; border-bottom-width: 1px; border-top-width:1px; padding-top:1mm;font-weight:normal;vertical-align:top;width:24mm"><b>(b)</b> EIN</th>
 
- 	 <th class="sty990ScheduleIColB" scope="col" style="border-style: solid; border-color: black;text-align: center; height: 15mm; width:20mm;border-bottom-width: 1px;    border-top-width:1px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top;width:30mm"><b>(c)</b> IRC section<br/>if applicable</th>
+ 	 <th class="sty990ScheduleIColB" scope="col" style="border-style: solid; border-color: black;text-align: center; height: 17mm; width:20mm;border-bottom-width: 1px;    border-top-width:1px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top;width:30mm"><b>(c)</b> IRC section<br/>if applicable</th>
 
- 	 <th class="sty990ScheduleIColB" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 15mm; width:32mm; padding-right: 0px;     font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(d)</b> Amount of cash grant</th>
+ 	 <th class="sty990ScheduleIColB" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 17mm; width:32mm; padding-right: 0px;     font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(d)</b> Amount of cash grant</th>
   <!--<span style="width:94.75mm; height: 8mm">-->
-    	<th class="sty990ScheduleIColC" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 15mm;width:32mm;  margin-top: 0mm;      padding-top: 1mm;padding-right: 0px; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(e)</b> Amount of non-cash<br/>assistance</th>
+    	<th class="sty990ScheduleIColC" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 17mm;width:28mm;  margin-top: 0mm;      padding-top: 1mm;padding-right: 0px; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(e)</b> Amount of non-cash<br/>assistance</th>
   
-  	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 15mm; width:32mm; padding-top: 1mm;     padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear: none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(f)</b> Method of valuation<br/>(book, FMV, appraisal,<br/>other)</th>
+  	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 17mm; width:32mm; padding-top: 1mm;     padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear: none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(f)</b> Method of valuation<br/>(book, FMV, appraisal,<br/>other)</th>
 	
-	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 15mm; width:32mm; padding-top: 1mm;   padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(g)</b> Description of<br/>non-cash assistance</th>
+	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 17mm; width:36mm; padding-top: 1mm;   padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(g)</b> Description of<br/>non-cash assistance</th>
 	
-	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: left; height: 15mm; width: 32m;padding-top: 1mm;   padding-right: 0px; padding-bottom: 0px; padding-left: 2mm; float: none; clear: none;font-size:7pt;font-weight:normal;vertical-align:top"><b>(h)</b> Purpose of grant<br/>or assistance</th>
+	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: left; height: 17mm; width: 32m;padding-top: 1mm;   padding-right: 0px; padding-bottom: 0px; padding-left: 2mm; float: none; clear: none;font-size:7pt;font-weight:normal;vertical-align:top"><b>(h)</b> Purpose of grant<br/>or assistance</th>
 		</tr>
-	</thead>
-        <tfoot/>
-        <tbody>
-	
+	</table>
+
+	<div class="styTable" style="width: 256mm; border-bottom-width:1px;display:table;">
+
+<table class="styTable" style="font-size: 7pt; border-color:black;width:256mm;display:table;" cellspacing="0">
+		
 <!--   END HEADER   -->
 
 <!--   BEGIN LINE 1   -->
@@ -274,7 +288,7 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
 	<xsl:if test="($Print != $Separated) or count($FormData/RecipientTable) &lt;= 12">
           <xsl:for-each select="$FormData/RecipientTable">
             <tr>
-            <td class="sty990ScheduleILNCol" style="border-style: solid; border-color: black;padding-top: 1mm;width:42mm;font-size:7pt;padding-left: 2.5mm;vertical-align:top">(<xsl:number value="position()" format="1"/>)
+            <td class="sty990ScheduleILNCol" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width:42mm;font-size:7pt;padding-left: 2.5mm;vertical-align:top">(<xsl:number value="position()" format="1"/>)
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="RecipientBusinessName/BusinessNameLine1Txt"/>
                 </xsl:call-template><br/>
@@ -297,38 +311,38 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
                   </xsl:otherwise>  
                 </xsl:choose>
               </td>
-   <td class="sty990ScheduleICol" style="border-style: solid; border-color: black;padding-top: 1mm;width:24mm;font-size:7pt;padding-left: 2.5mm;text-align:center;vertical-align:top"> 
+   <td class="sty990ScheduleICol" style="height:auto;border-style: solid; border-color: black;border-width-right:1px;padding-top: 1mm;width:24mm;font-size:7pt;padding-left: 2.5mm;text-align:center;vertical-align:top"> 
                 <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="RecipientEIN"/>
                 </xsl:call-template>
               </td>
                           
                  <!-- Address -->           
-            <td class="sty990ScheduleIColA" style="border-style: solid; border-color: black;padding-top: 1mm;width:32mm;font-size:7pt;vertical-align:top">
+            <td class="sty990ScheduleIColA" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width:30mm;font-size:7pt;vertical-align:top;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="IRCSectionDesc"/>
                 </xsl:call-template> 
               </td>      
-  		<td class="sty990ScheduleIColB" style="border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top">
+  		<td class="sty990ScheduleIColB" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="CashGrantAmt"/>
                 </xsl:call-template> 
               </td> 
 <!-- Employer Identification Number -->
-              <td class="sty990ScheduleIColC" style="border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top">
+              <td class="sty990ScheduleIColC" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 28mm;font-size:7pt;vertical-align:top">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="NonCashAssistanceAmt"/>
                 </xsl:call-template> 
               </td>  
               <!-- Amount Paid from Internal Funds -->
-               <td class="sty990ScheduleICol" style="border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top;text-align:left">
+               <td class="sty990ScheduleICol" style="padding-left:1mm;height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top;text-align:left">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="ValuationMethodUsedDesc"/>
                 </xsl:call-template> 
               </td>      
     
 								<!-- Amount of contributions received and delivered-->
-              <td class="sty990ScheduleICol" style="border-style: solid; border-color: black; padding-top: 1mm;width: 32mm;font-size:7pt;text-align:left;vertical-align:top">
+              <td class="sty990ScheduleICol" style="padding-left:1mm;height:auto;border-style: solid; border-color: black; padding-top: 1mm;width: 36mm;font-size:6pt;text-align:left;vertical-align:top">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="NonCashAssistanceDesc"/>
                 </xsl:call-template> 
@@ -336,90 +350,76 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
                
  		</td>  
   
-  		 <td class="sty990ScheduleICol" style="border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;padding-right:4mm;text-align:left;vertical-align:top">
+  	 <td class="sty990ScheduleICol" style="padding-left:1mm;height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;padding-right:0mm;text-align:left;vertical-align:top;float:none;">
    		 <xsl:call-template name="PopulateText">
      		 <xsl:with-param name="TargetNode" select="PurposeOfGrantTxt"/>
    		 </xsl:call-template>
   		</td>
        </tr>
+       	
+       
       </xsl:for-each>
     </xsl:if>
-
-        <!--<xsl:if test="count($FormData/RecipientTable) &lt; 1 or             (($Print = $Separated) and (count($FormData/RecipientTable) &gt; 12)) ">-->
-        <xsl:if test="count($FormData/RecipientTable) &lt; 1 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated)) ">
-          <tr>
-            <td class="sty990ScheduleILNCol" style="border-bottom-width:1px;width">
+ 
+       <xsl:if test="count($FormData/RecipientTable) &lt; 1 or             (($Print = $Separated) and (count($FormData/RecipientTable) &gt; 12)) ">
+      
+       
+            <xsl:if test="position()=1">
+           
        <xsl:call-template name="PopulateAdditionalDataTableMessage">
                 <xsl:with-param name="TargetNode" select="$FormData/RecipientTable"/>
               </xsl:call-template>
-              <span style="width:3px"/>
-           </td>
-              <td class="sty990ScheduleICol">
-              <span style="width:3px"/>
-           </td>  <td class="sty990ScheduleICola">
-              <span style="width:3px"/>
-           </td><td class="sty990ScheduleIColB">
-              <span style="width:3px"/>
-           </td>
-		 <td class="sty990ScheduleIColC">
-              <span style="width:3px"/>
-           </td>
-		<td class="sty990ScheduleICol">
-              <span style="width:3px"/>
-           </td>
-		<td class="sty990ScheduleICol">
-              <span style="width:3px"/>
-            </td>
-		<td class="sty990ScheduleICol">
-              <span style="width:3px;"/>
-           </td>
-		</tr>
+              </xsl:if>
+          
         </xsl:if>
         
         
 								<xsl:if test="count($FormData/RecipientTable) &lt; 2 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(1)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 3 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(2)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 4 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(3)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 5 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(4)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 6 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(5)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 7 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(6)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 8 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(7)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 9 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(8)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 10 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(9)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 11 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(10)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/RecipientTable) &lt; 12 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(11)</xsl:with-param></xsl:call-template>
 								</xsl:if>
-			</tbody>
-        </table>   
+								<xsl:if test="count($FormData/RecipientTable) &lt; 12 or ((count($FormData/RecipientTable) &gt; 12) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990SchIPartIITableFillerRow"><xsl:with-param name="index">(12)</xsl:with-param></xsl:call-template>
+								</xsl:if>
+		  </table> 
+ </div>
 </div>  
-</div>
+<!--</div>
   <xsl:call-template name="SetInitialDynamicTableHeight">
     <xsl:with-param name="TargetNode" select="$FormData/RecipientTable"/>
     
     <xsl:with-param name="containerHeight" select="12"/>
     <xsl:with-param name="containerID" select="'p2TbCtnr'"/>
-  </xsl:call-template> 
+  </xsl:call-template> -->
 
 
 <!--   END LINE 1   -->
@@ -427,15 +427,15 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
 <!-- Line 2 -->
        <div style="width:256mm;padding-top:1mm">
         <div class="styLNLeftNumBox">2</div>
-        <div class="styLNDescLandscape" style="width:216mm">Enter total number of section 501(c)(3) and government organizations listed in the line 1 table
+        <div class="styLNDescLandscape" style="height:auto;width:216mm">Enter total number of section 501(c)(3) and government organizations listed in the line 1 table
           <!--Dotted Line-->
          <span class="styNoAudioRead" style="font-weight:bold;">
-             <span style="letter-spacing:4mm; font-weight:bold; "> ................ </span>  <span style="letter-spacing:2mm; font-weight:bold; ">  
+             <span style="letter-spacing:4mm; font-weight:bold; "> ................. </span>  <span style="letter-spacing:2mm; font-weight:bold; ">  
          </span>
           </span>
    <img src="{$ImagePath}/990SchI_Bullet.gif" alt="Bullet Image"/>
    </div>
-    <div class="styFixedUnderline" style="width:30mm;text-align:right;padding-right:1mm">
+    <div class="styFixedUnderline" style="height:auto;width:30mm;text-align:right;padding-right:1mm">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$FormData/Total501c3OrgCnt"/>
           </xsl:call-template>
@@ -448,7 +448,7 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
       
   <div class="styBB" style="width:256mm;">
         <div class="styLNLeftNumBox">3</div>
-        <div class="styLNDescLandscape" style="width:216mm;">Enter total number of other organizations listed in the line 1 table
+        <div class="styLNDescLandscape" style="height:auto;width:216mm;">Enter total number of other organizations listed in the line 1 table
           <!--Dotted Line-->
          <span class="styNoAudioRead" style="font-weight:bold;">
             <span style="letter-spacing:4mm; font-weight:bold; ">  
@@ -458,7 +458,7 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
           </span>
     <img src="{$ImagePath}/990SchI_Bullet.gif" alt="Bullet Image"/>
    </div>
-    <div class="styFixedUnderline" style="width:30mm;text-align:right;padding-right:1mm;">
+    <div class="styFixedUnderline" style="height:auto;width:30mm;text-align:right;padding-right:1mm;">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$FormData/TotalOtherOrgCnt"/>
           </xsl:call-template>
@@ -489,10 +489,9 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
 
 <!--   BEGIN HEADER   -->
 <div class="styBB" style="width: 256mm;">
-  <div class="sty990ScheduleIPartName">Part III</div>
- <div class="sty990ScheduleIPartDesc">Grants and Other Assistance to Domestic Individuals.
-       <span style="font-weight:normal;">Complete if the organization answered "Yes" to Form 990, Part IV, line 22.<br/>Part III can be duplicated if additional space is needed.
-</span> </div>
+  <div class="sty990ScheduleIPartName" style="height:auto;">Part III</div>
+ <div class="sty990ScheduleIDescLine" style="height:auto;font-size:7pt;width:240mm;"><b><span style="width:2mm;"/>Grants and Other Assistance to Domestic Individuals.</b> Complete if the organization answered "Yes" to Form 990, Part IV, line 22. <br></br><span style="width:2.5mm;"/>Part III can be duplicated if additional space is needed.
+ </div>
 
 <!--==============================Part III Table ======================================-->
 
@@ -500,16 +499,16 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
  
 
   <span style="width:1mm;text-align:right;float:right; clear: none;padding-left:4mm">
-    <xsl:call-template name="SetDynamicTableToggleRowCount">
+ <!--   <xsl:call-template name="SetDynamicTableToggleRowCount">
        <xsl:with-param name="DataRowCount" select="$table2RowCount"/>
        <xsl:with-param name="containerHeight" select="7"/>
        <xsl:with-param name="containerID" select=" 'p3TbCtnr' "/>
-     </xsl:call-template>
+     </xsl:call-template>-->
    </span>
  </div>
 
   <!--Part I-C  line 5 table -->
-  <div class="styTableContainerLandscape" id="p3TbCtnr"> 
+  <div class="styTableContainerLandscape" id="p3TbCtnr" style="display:table;"> 
      
 <!-- print logic -->
     <xsl:call-template name="SetInitialState"/> 
@@ -520,63 +519,68 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
 <!--<div style="width: 256mm;">-->
   <tr>
 			
-	<th class="sty990ScheduleILNCol" scope="col" style="border-style: solid; border-color: black;width:60mm;text-align: center;font-size: 7pt; height: 14mm; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top"><b>(a)</b>Type of grant or assistance</th>
+	<th class="sty990ScheduleILNCol" scope="col" style="border-style: solid; border-color: black;width:60mm;text-align: center;font-size: 7pt; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top"><b>(a)</b> Type of grant or assistance</th>
 
- 	 <th class="sty990ScheduleIColA" scope="col" style="border-style: solid; border-color: black;text-align: center; height: 14mm; width:24mm;border-bottom-width: 1px;border-top-width:1px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(b)</b>Number of<br/>recipients</th>
+ 	 <th class="sty990ScheduleIColA" scope="col" style="border-style: solid; border-color: black;text-align: center; width:24mm;border-bottom-width: 1px;border-top-width:1px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(b)</b> Number of<br/>recipients</th>
 
- 	 <th class="sty990ScheduleIColB" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 14mm; width:32mm; padding-right: 0px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(c)</b>Amount of<br/>cash grant</th>
+ 	 <th class="sty990ScheduleIColB" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; width:32mm; padding-right: 0px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(c)</b> Amount of<br/>cash grant</th>
   <!--<span style="width:94.75mm; height: 8mm">-->
-    	<th class="sty990ScheduleIColC" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 14mm;width:31mm;  margin-top: 0mm;padding-top: 1mm;padding-right: 0px; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(d)</b>Amount of<br/>non-cash assistance</th>
+    	<th class="sty990ScheduleIColC" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; width:31mm;  margin-top: 0mm;padding-top: 1mm;padding-right: 0px; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(d)</b> Amount of<br/>non-cash assistance</th>
   
-  	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 14mm; width:40mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(e)</b>Method of valuation (book,<br/>FMV, appraisal, other)</th>
+  	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; width:40mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(e)</b> Method of valuation (book,<br/>FMV, appraisal, other)</th>
 	
-	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 14mm; width:59mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(f)</b>Description of non-cash assistance</th>
+	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center;  width:59mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(f)</b> Description of non-cash assistance</th>
 	</tr>
 	</thead>
-        <tfoot/>
-        <tbody>
-
+       
+</table>
+		
 		
 		
 <!--   END HEADER   -->
 
 <!--   Part III Table  -->
 
+	
+<div class="styTableContainer" style="width: 256mm; border-bottom-width:1px;display:table;">
+
+<table class="styTable" style="font-size: 7pt; border-color:black;width:256mm;display:table;" cellspacing="0"><!--need this to keep seeadditionaldata msg at top line of table-->
+	
 	<xsl:if test="($Print != $Separated) or count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt;= 7">
           <xsl:for-each select="$FormData/GrantsOtherAsstToIndivInUSGrp">
             <tr>
-              <td class="sty990ScheduleILNCol" style="border-style: solid; border-color: black;padding-top: 1mm;width:60mm;font-size:7pt;padding-left: 2.5mm;vertical-align:top;">(<xsl:number value="position()" format="1"/>) 
+              <td class="sty990ScheduleILNCol" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width:60mm;font-size:7pt;padding-left: 2.5mm;vertical-align:top;">(<xsl:number value="position()" format="1"/>) 
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="GrantTypeTxt"/>
                 </xsl:call-template>
               </td>
                           
                  <!-- Address -->           
-            <td class="sty990ScheduleIColA" style="border-style: solid; border-color: black;padding-top: 1mm;width:24mm;font-size:7pt;vertical-align:top;">
+            <td class="sty990ScheduleIColA" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width:24mm;font-size:7pt;vertical-align:top;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="RecipientCnt"/>
                 </xsl:call-template> 
               </td>      
-  		<td class="sty990ScheduleIColB" style="border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top;">
+  		<td class="sty990ScheduleIColB" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="CashGrantAmt"/>
                 </xsl:call-template> 
               </td> 
 <!-- Employer Identification Number -->
-              <td class="sty990ScheduleIColC" style="border-style: solid; border-color: black;padding-top: 1mm;width: 31.75mm;font-size:7pt;vertical-align:top;">
+              <td class="sty990ScheduleIColC" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 31mm;font-size:7pt;vertical-align:top;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="NonCashAssistanceAmt"/>
                 </xsl:call-template> 
               </td>  
               <!-- Amount Paid from Internal Funds -->
-               <td class="sty990ScheduleICol" style="border-style: solid; border-color: black;padding-top: 1mm;width: 40mm;font-size:7pt;text-align:left;vertical-align:top;">
+               <td class="sty990ScheduleICol" style="padding-left:1mm;height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 40mm;font-size:7pt;text-align:left;vertical-align:top;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="ValuationMethodUsedDesc"/>
                 </xsl:call-template> 
               </td>      
     
 								<!-- Amount of contributions received and delivered--> 
-  		 <td class="sty990ScheduleICol" style="border-style: solid; border-color: black;padding-top: 1mm;width: 59mm;font-size:7pt;padding-right:3mm;text-align:left;vertical-align:top;">
+  		 <td class="sty990ScheduleICol" style="padding-left:1mm;height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 59mm;font-size:7pt;padding-right:3mm;text-align:left;vertical-align:top;">
    		 <xsl:call-template name="PopulateText">
      		 <xsl:with-param name="MaxSize" select="17"/>
      		 <xsl:with-param name="TargetNode" select="NonCashAssistanceDesc"/>
@@ -587,80 +591,75 @@ Complete if the organization answered "Yes," to Form 990, Part IV, line 21 or 22
     </xsl:if>
 
       
-<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 1 or ((count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 7) and ($Print = $Separated))">
-          <tr>
-                 <td class="sty990ScheduleILNCol">
-       <xsl:call-template name="PopulateAdditionalDataTableMessage">
+<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 1 or             (($Print = $Separated) and (count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 8)) ">
+      
+<xsl:if test="position()=1">
+<tr>
+
+
+          <xsl:call-template name="PopulateAdditionalDataTableMessage">
                 <xsl:with-param name="TargetNode" select="$FormData/GrantsOtherAsstToIndivInUSGrp"/>
               </xsl:call-template>
-              <span style="width:3px"/>
-           </td>
-            <td class="sty990ScheduleIColA">
-              <span style="width:3px"/>
-           </td>
-		<td class="sty990ScheduleIColB">
-              <span style="width:3px"/>
-           </td>
-		<td class="sty990ScheduleIColC">
-              <span style="width:3px"/>
-            </td>
-		<td class="sty990ScheduleICol">
-              <span style="width:3px;"/>
-           </td>
-<td class="sty990ScheduleICol">
-              <span style="width:3px;"/>
-           </td>		
-		</tr>
+       </tr>
+           
        </xsl:if>
+       
+</xsl:if>
  
 								<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 2 or ((count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 7) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"><xsl:with-param name="index">(1)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 3 or ((count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 7) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"><xsl:with-param name="index">(2)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 4 or ((count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 7) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"><xsl:with-param name="index">(3)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 5 or ((count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 7) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"><xsl:with-param name="index">(4)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 6 or ((count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 7) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"/>
+									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"><xsl:with-param name="index">(5)</xsl:with-param></xsl:call-template>
 								</xsl:if>
 								<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 7 or ((count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 7) and ($Print = $Separated))">
-									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"/>
-								</xsl:if>       
-       </tbody>
-     </table>   
-
+									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"><xsl:with-param name="index">(6)</xsl:with-param></xsl:call-template>
+								</xsl:if>     
+									<xsl:if test="count($FormData/GrantsOtherAsstToIndivInUSGrp) &lt; 7 or ((count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt; 7) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990SchIPartIIITableFillerRow"><xsl:with-param name="index">(7)</xsl:with-param></xsl:call-template>
+								</xsl:if>     
+							
+       </table>
+ </div>
 </div>
- <xsl:call-template name="SetInitialDynamicTableHeight">
+
+
+ <!--<xsl:call-template name="SetInitialDynamicTableHeight">
     <xsl:with-param name="TargetNode" select="$FormData/GrantsOtherAsstToIndivInUSGrp"/>
    
     <xsl:with-param name="containerHeight" select="7"/>
     <xsl:with-param name="containerID" select="'p3TbCtnr'"/>
   </xsl:call-template>
-  
-<div class="styGenericDiv" style="width: 256mm;border-bottom-width:1px;">
-  <div class="styPartName" style="width:18mm;">Part IV</div>
-  <div class="styPartDesc" style="width:238mm;font-weight:bold;">
+  -->
+<div class="styGenericDiv" style="width: 256mm;border-bottom-width:1px;border-top-width:1px;">
+  <div class="styPartName" style="width:18mm; height:4.5mm;">Part IV</div>
+  <div class="styPartDesc" style="width:238mm;font-weight:bold;height:4.5mm;">
 Supplemental Information. <span style="font-weight:normal;">Provide the information required in Part I, line 2, Part III, column (b), and any other additional information.</span>
 </div>
 </div>
 
-<span style="float:right"> 
-            <xsl:call-template name="SetDynamicTableToggleButton">
+ <span style="float:right"> 
+         <!--  <xsl:call-template name="SetDynamicTableToggleButton">
               <xsl:with-param name="TargetNode" select="$FormData/SupplementalInformationDetail"/>              
               <xsl:with-param name="containerHeight" select="15"/>
               <xsl:with-param name="containerID" select="'SUPctn'"/>
-          </xsl:call-template>  </span>   
+          </xsl:call-template>   -->
+          </span>  
        
 
 
-<div class="styTableContainer" style="width: 256mm; border-bottom-width:1px" id="SUPctn">
-<xsl:call-template name="SetInitialState"/>
-<table class="styTable" style="font-size: 7pt; border-color:black;width:256mm" cellspacing="0">
+<div class="styTableContainer" style="width: 256mm; border-bottom-width:0px;display:table;" id="SUPctn">
+
+<table class="styTable" style="font-size: 7pt; display:table;width: 256mm;" cellspacing="0">
   <thead>
     
     <tr class="styDepTblHdr">
@@ -669,7 +668,7 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
 
           <th class="styDepTblCell" scope="col" style="width:45mm;border-right-width:1px;border-left-width:0px;text-align:left">Return Reference</th>
 
-          <th class="styDepTblCell" scope="col" style="width:166mm;border-right-width:1px;border-left-width:0px;text-align:left">Explanation</th>
+          <th class="styDepTblCell" scope="col" style="width:211mm;border-right-width:1px;border-left-width:0px;text-align:left">Explanation</th>
                      
 
     </tr>
@@ -703,11 +702,11 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
 </table>
 </div> 
 
-<xsl:call-template name="SetInitialDynamicTableHeight">
+<!--<xsl:call-template name="SetInitialDynamicTableHeight">
             <xsl:with-param name="TargetNode" select="$FormData/SupplementalInformationDetail"/>
             <xsl:with-param name="containerHeight" select="15"/>
             <xsl:with-param name="containerID" select=" 'SUPctn' "/>
- </xsl:call-template>
+ </xsl:call-template>-->
 
 <!--Page Footer-->
 <div class="pageEnd" style="width:256mm">
@@ -719,10 +718,10 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
 <!--END Page Footer-->
 
 
-
+ <p style="page-break-before: always"/> 
   
   <br/><br/>
-  <div class="styLeftOverTitleLineLandscape" id="LeftoverData">
+  <div class="styLeftOverTitleLineLandscape" id="LeftoverData" style="display:table;">
         <div class="styLeftOverTitle">
           Additional Data        
         </div>
@@ -739,34 +738,39 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
   </table> 
 
 <br/>
+
   <!-- Begin SRD for Part II -->
 <xsl:if test="($Print = $Separated) and count($FormData/RecipientTable) &gt;= 12">	
- <span class="styRepeatingDataTitle" style="width:228mm">Form 990,Schedule I, Part II, Grants and Other Assistance to Domestic Organizations and Domestic Governments.</span>
- <table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+ <span class="styRepeatingDataTitle" style="width:256mm">Form 990,Schedule I, Part II, Grants and Other Assistance to Domestic Organizations and Domestic Governments.</span>
+ <table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table">
     <thead class="styTableThead">
     <tr class="styDepTblHdr">
  
-	<th class="sty990ScheduleILNCol" scope="col" style="text-align: center;font-size: 7pt; height: 15mm; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top;width:42mm"><b>(a)</b> Name and address of organization<br/>or government</th>
+	
+	
+	<th class="sty990ScheduleILNCol" scope="col" style="border-style: solid; border-color: black;text-align: center;font-size: 7pt;   height: 17mm; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top;width:42mm">
+	<b>(a)</b> Name and address of organization<br/>or government</th>
 
-<th class="sty990ScheduleICol" scope="col" style="text-align: center;font-size: 7pt; height: 15mm; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top;width:24mm"><b>(b)</b> EIN</th>
+<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;text-align: center;font-size: 7pt; height: 17mm; border-bottom-width: 1px; border-top-width:1px; padding-top:1mm;font-weight:normal;vertical-align:top;width:24mm"><b>(b)</b> EIN</th>
 
- 	 <th class="sty990ScheduleIColB" scope="col" style="text-align: center; height: 15mm; width:20mm;border-bottom-width: 1px;border-top-width:1px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top;width:30mm"><b>(c)</b> IRC Code section<br/>if applicable</th>
+ 	 <th class="sty990ScheduleIColB" scope="col" style="border-style: solid; border-color: black;text-align: center; height: 17mm; width:20mm;border-bottom-width: 1px;    border-top-width:1px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top;width:30mm"><b>(c)</b> IRC section<br/>if applicable</th>
 
- 	 <th class="sty990ScheduleIColB" scope="col" style="border-top-width:1px;text-align: center; height: 15mm; width:32mm; padding-right: 0px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(d)</b> Amount of cash grant</th>
+ 	 <th class="sty990ScheduleIColB" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 17mm; width:32mm; padding-right: 0px;     font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(d)</b> Amount of cash grant</th>
   <!--<span style="width:94.75mm; height: 8mm">-->
-    	<th class="sty990ScheduleIColC" scope="col" style="border-top-width:1px;text-align: center; height: 15mm;width:32mm;  margin-top: 0mm;padding-top: 1mm;padding-right: 0px; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(e)</b> Amount of non-cash<br/>assistance</th>
+    	<th class="sty990ScheduleIColC" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 17mm;width:28mm;  margin-top: 0mm;      padding-top: 1mm;padding-right: 0px; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(e)</b> Amount of non-cash<br/>assistance</th>
   
-  	<th class="sty990ScheduleICol" scope="col" style="border-top-width:1px;text-align: center; height: 15mm; width:32mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(f)</b> Method of valuation<br/>(book, FMV, appraisal,<br/>other)</th>
+  	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 17mm; width:32mm; padding-top: 1mm;     padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear: none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(f)</b> Method of valuation<br/>(book, FMV, appraisal,<br/>other)</th>
 	
-	<th class="sty990ScheduleICol" scope="col" style="border-top-width:1px;text-align: center; height: 15mm; width:32mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(g)</b> Description of<br/>non-cash assistance</th>
+	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: center; height: 17mm; width:36mm; padding-top: 1mm;   padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(g)</b> Description of<br/>non-cash assistance</th>
 	
-	<th class="sty990ScheduleICol" scope="col" style="border-top-width:1px;text-align: left; height: 15mm; width: 32m;padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 2mm; float: none; clear: none;font-size:7pt;font-weight:normal;vertical-align:top"><b>(h)</b> Purpose of grant<br/>or assistance</th>
+	<th class="sty990ScheduleICol" scope="col" style="border-style: solid; border-color: black;border-top-width:1px;text-align: left; height: 17mm; width: 32m;padding-top: 1mm;   padding-right: 0px; padding-bottom: 0px; padding-left: 2mm; float: none; clear: none;font-size:7pt;font-weight:normal;vertical-align:top"><b>(h)</b> Purpose of grant<br/>or assistance</th>
 		</tr>
 		
  </thead>
     <tfoot/>
-	
-	
+	</table>
+	<div class="styTableContainer" style="width: 256mm; border-bottom-width:1px;display:table">
+	<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table;width: 256mm;">
           <xsl:for-each select="$FormData/RecipientTable">
             <tr>
              <xsl:attribute name="class">
@@ -774,15 +778,17 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
                <xsl:when test="position() mod 2 = 1">styDepTblRow1Cell </xsl:when>
                <xsl:otherwise>styDepTblRow2Cell </xsl:otherwise>
             </xsl:choose>
-          </xsl:attribute>  <td class="sty990ScheduleILNCol" style="padding-top: 1mm;width:42mm;font-size:7pt;padding-left: 2.5mm;">
+          </xsl:attribute> 
+        
+            <td class="sty990ScheduleILNCol" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width:42mm;font-size:7pt;padding-left: 2.5mm;vertical-align:top">(<xsl:number value="position()" format="1"/>)
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="RecipientBusinessName/BusinessNameLine1Txt"/>
-                </xsl:call-template>
-               <xsl:if test="RecipientBusinessName/BusinessNameLine2Txt">
-                      <br/>
- <xsl:call-template name="PopulateText">
+                </xsl:call-template><br/>
+           
+      <xsl:if test="RecipientBusinessName/BusinessNameLine2Txt">
+                     <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="RecipientBusinessName/BusinessNameLine2Txt"/>
-                </xsl:call-template>
+                </xsl:call-template><br/>
  </xsl:if>
   <xsl:choose>
                   <xsl:when test="USAddress">                    
@@ -790,45 +796,45 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
                         <xsl:with-param name="TargetNode" select="USAddress"/>
                       </xsl:call-template>                    
                   </xsl:when>
-                  <xsl:otherwise>
+                  <xsl:otherwise><br/>
                       <xsl:call-template name="PopulateForeignAddressTemplate">
                         <xsl:with-param name="TargetNode" select="ForeignAddress"/>
                       </xsl:call-template>
                   </xsl:otherwise>  
-                </xsl:choose></td>
-
-   <td class="sty990ScheduleICol" style="padding-top: 1mm;width:24mm;font-size:7pt;padding-left: 2.5mm;text-align: center;"> 
+                </xsl:choose>
+              </td>
+   <td class="sty990ScheduleICol" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width:24mm;font-size:7pt;padding-left: 2.5mm;text-align:center;vertical-align:top"> 
                 <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="RecipientEIN"/>
                 </xsl:call-template>
               </td>
                           
                  <!-- Address -->           
-            <td class="sty990ScheduleIColA" style="padding-top: 1mm;width:32mm;font-size:7pt;">
+            <td class="sty990ScheduleIColA" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width:30mm;font-size:7pt;vertical-align:top;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="IRCSectionDesc"/>
                 </xsl:call-template> 
               </td>      
-  		<td class="sty990ScheduleIColB" style="padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top">
+  		<td class="sty990ScheduleIColB" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="CashGrantAmt"/>
                 </xsl:call-template> 
               </td> 
 <!-- Employer Identification Number -->
-              <td class="sty990ScheduleIColC" style="padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top">
+              <td class="sty990ScheduleIColC" style="height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 28mm;font-size:7pt;vertical-align:top">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="NonCashAssistanceAmt"/>
                 </xsl:call-template> 
               </td>  
               <!-- Amount Paid from Internal Funds -->
-               <td class="sty990ScheduleICol" style="padding-top: 1mm;width: 32mm;font-size:7pt;text-align: left;">
+               <td class="sty990ScheduleICol" style="padding-left:.5mm;height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;vertical-align:top;text-align:left">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="ValuationMethodUsedDesc"/>
                 </xsl:call-template> 
               </td>      
     
 								<!-- Amount of contributions received and delivered-->
-              <td class="sty990ScheduleICol" style=" padding-top: 1mm;width: 32mm;font-size:7pt;text-align: left;">
+              <td class="sty990ScheduleICol" style="padding-left:.5mm;height:auto;border-style: solid; border-color: black; padding-top: 1mm;width: 36mm;font-size:6pt;text-align:left;vertical-align:top">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="NonCashAssistanceDesc"/>
                 </xsl:call-template> 
@@ -836,15 +842,14 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
                
  		</td>  
   
-  		 <td class="sty990ScheduleICol" style="padding-top: 1mm;width: 32mm;font-size:7pt;padding-right:4mm;text-align: left;">
-   		 <xsl:call-template name="PopulateAmount">
-     		 <!--<xsl:with-param name="MaxSize" select="12"/>-->
+  	 <td class="sty990ScheduleICol" style="padding-left:.5mm;height:auto;border-style: solid; border-color: black;padding-top: 1mm;width: 32mm;font-size:7pt;padding-right:0mm;text-align:left;vertical-align:top;float:none;">
+   		 <xsl:call-template name="PopulateText">
      		 <xsl:with-param name="TargetNode" select="PurposeOfGrantTxt"/>
    		 </xsl:call-template>
   		</td>
        </tr>
       </xsl:for-each>
-    </table></xsl:if>
+    </table></div></xsl:if>
 
 <br/>
 
@@ -853,25 +858,27 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
 <!-- SRD for Part III -->
  <xsl:if test="($Print = $Separated) and count($FormData/GrantsOtherAsstToIndivInUSGrp) &gt;= 7">
 <span class="styRepeatingDataTitle">Form 990, Schedule I, Part III, Grants and Other Assistance to Domestic Individuals.</span>
- <table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;">
+ <table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table">
     <thead class="styTableThead">
     <tr class="styDepTblHdr">
 			
-	<th class="sty990ScheduleILNCol" scope="col" style="width:60mm;text-align: center;font-size: 7pt; height: 14mm; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top"><b>(a)</b>Type of grant or assistance</th>
+	<th class="sty990ScheduleILNCol" scope="col" style="width:60mm;text-align: center;font-size: 7pt; height: 14mm; border-bottom-width: 1px; border-top-width:1px;padding-top:1mm;font-weight:normal;vertical-align:top"><b>(a)</b> Type of grant or assistance</th>
 
- 	 <th class="sty990ScheduleIColA" scope="col" style="text-align: center; height: 14mm; width:24mm;border-bottom-  width: 1px;border-top-width:1px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(b)</b>Number of<br/>recipients</th>
+ 	 <th class="sty990ScheduleIColA" scope="col" style="text-align: center; height: 14mm; width:24mm;border-bottom-  width: 1px;border-top-width:1px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(b)</b> Number of<br/>recipients</th>
 
- 	 <th class="sty990ScheduleIColB" scope="col" style="border-top-width:1px;text-align: center; height: 14mm; width:   32mm; padding-right: 0px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(c)</b>Amount of<br/>cash grant</th>
+ 	 <th class="sty990ScheduleIColB" scope="col" style="border-top-width:1px;text-align: center; height: 14mm; width:   32mm; padding-right: 0px; font-size: 7pt; padding-top: 1mm;font-weight:normal;vertical-align:top"><b>(c)</b> Amount of<br/>cash grant</th>
   <!--<span style="width:94.75mm; height: 8mm">-->
-    	<th class="sty990ScheduleIColC" scope="col" style="border-top-width:1px;text-align: center; height: 14mm;width:   31mm;  margin-top: 0mm;padding-top: 1mm;padding-right: 0px; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(d)</b>Amount of<br/>non-cash assistance</th>
+    	<th class="sty990ScheduleIColC" scope="col" style="border-top-width:1px;text-align: center; height: 14mm;width:   31mm;  margin-top: 0mm;padding-top: 1mm;padding-right: 0px; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(d)</b> Amount of<br/>non-cash assistance</th>
   
-  	<th class="sty990ScheduleICol" scope="col" style="border-top-width:1px;text-align: center; height: 14mm; width:    40mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:   none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(e)</b>Method of valuation (book,<br/>FMV, appraisal, other)</th>
+  	<th class="sty990ScheduleICol" scope="col" style="border-top-width:1px;text-align: center; height: 14mm; width:    40mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:   none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(e)</b> Method of valuation (book,<br/>FMV, appraisal, other)</th>
 	
-	<th class="sty990ScheduleICol" scope="col" style="border-top-width:1px;text-align: center; height: 14mm; width:    59mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:   none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(f)</b>Description of non-cash assistance</th>
+	<th class="sty990ScheduleICol" scope="col" style="border-top-width:1px;text-align: center; height: 14mm; width:    59mm; padding-top: 1mm; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; float: none; clear:   none; font-size: 7pt;font-weight:normal;vertical-align:top"><b>(f)</b> Description of non-cash assistance</th>
 	</tr>
 	 </thead>
     <tfoot/>
-	
+    </table>
+    <div class="styTableContainer" style="width: 256mm; border-bottom-width:1px;display:table;height:auto;">
+	<table class="styLeftOverTblLandscape" cellspacing="0" style="font-size:7pt;display:table;height:auto;">
           <xsl:for-each select="$FormData/GrantsOtherAsstToIndivInUSGrp">
             <tr>
              <xsl:attribute name="class">
@@ -880,45 +887,45 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
                <xsl:otherwise>styDepTblRow2Cell </xsl:otherwise>
             </xsl:choose>
           </xsl:attribute>  
-            <td class="sty990ScheduleILNCol" style="padding-top: 1mm;width:60mm;font-size:7pt;padding-left: 2.5mm;"> 
+            <td class="sty990ScheduleILNCol" style="padding-top: 1mm;width:60mm;font-size:7pt;padding-left: 2.5mm;height:auto;"> 
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="GrantTypeTxt"/>
                 </xsl:call-template>
               </td>
                           
                  <!-- Address -->           
-            <td class="sty990ScheduleIColA" style="padding-top: 1mm;width:24mm;font-size:7pt">
+            <td class="sty990ScheduleIColA" style="padding-top: 1mm;width:24mm;font-size:7pt;height:auto;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="RecipientCnt"/>
                 </xsl:call-template> 
               </td>      
-  		<td class="sty990ScheduleIColB" style="padding-top: 1mm;width: 32mm;font-size:7pt">
+  		<td class="sty990ScheduleIColB" style="padding-top: 1mm;width: 32mm;font-size:7pt;height:auto;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="CashGrantAmt"/>
                 </xsl:call-template> 
               </td> 
 <!-- Employer Identification Number -->
-              <td class="sty990ScheduleIColC" style="padding-top: 1mm;width: 31.75mm;font-size:7pt">
+              <td class="sty990ScheduleIColC" style="padding-top: 1mm;width: 41mm;font-size:7pt;height:auto;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="NonCashAssistanceAmt"/>
                 </xsl:call-template> 
               </td>  
               <!-- Amount Paid from Internal Funds -->
-               <td class="sty990ScheduleICol" style="padding-top: 1mm;width: 40mm;font-size:7pt;text-align: left;">
+               <td class="sty990ScheduleICol" style="padding-left:.5mm;padding-top: 1mm;width: 40mm;font-size:7pt;text-align: left;height:auto;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="ValuationMethodUsedDesc"/>
                 </xsl:call-template> 
               </td>      
     
 								<!-- Amount of contributions received and delivered--> 
-  		 <td class="sty990ScheduleICol" style="padding-top: 1mm;width: 59mm;font-size:7pt;padding-right:3mm;text-align: left;">
+  		 <td class="sty990ScheduleICol" style="padding-left:.5mm;padding-top: 1mm;width: 59mm;font-size:7pt;padding-right:0mm;text-align: left;height:auto;">
    		 <xsl:call-template name="PopulateText">
      		<xsl:with-param name="TargetNode" select="NonCashAssistanceDesc"/>
    		 </xsl:call-template>
   		</td>
        </tr>
       </xsl:for-each>
-    </table></xsl:if>
+    </table></div></xsl:if>
 
 <!-- END Left Over Table -->
 </form>
@@ -926,58 +933,58 @@ Supplemental Information. <span style="font-weight:normal;">Provide the informat
 </html>
 </xsl:template>
 <xsl:template name="IRS990SchIPartIITableFillerRow">
+<xsl:param name="index"/>
 		<tr>
-			<td class="styTableCellText">
-				<br/>
-				<br/>
-				<span style="width:4px;"/>
+			<td class="styTableCell" style="width:42mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:1px;">
+			 <xsl:value-of select="$index"/>
+		        <span style="width:3px;border-right-width:1px;"/>
 			</td>
-			<td class="styTableCell">
-				<span style="width:4px"/>
+			<td class="styTableCell" style="width:24mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:1px;">
+				<span style="width:3px"/>
 			</td>
-			<td class="styTableCell">
-				<span style="width:4px"/>
+			<td class="styTableCell" style="width:30mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:1px;">
+				<span style="width:3px"/>
 			</td>
-			<td class="styTableCell">
-				<span style="width:4px"/>
+			<td class="styTableCell" style="width:32mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:1px;">
+				<span style="width:3px"/>
 			</td>
-			<td class="styTableCell">
-				<span style="width:4px"/>
+			<td class="styTableCell" style="width:28mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:1px;">
+				<span style="width:3px"/>
 			</td>
-			<td class="styTableCell">
-				<span style="width:4px"/>
+			<td class="styTableCell" style="width:32mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:1px;">
+				<span style="width:3px"/>
 			</td>
-			<td class="styTableCell">
-				<span style="width:4px"/>
+			<td class="styTableCell" style="width:36mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:1px;">
+				<span style="width:3px"/>
 			</td>
-			<td class="styTableCell" style="width:32mm;border-right-width:0px">
-				<span style="width:4px;border-right-width:0px;"/>
+			<td class="styTableCell" style="width:32mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:0px;">
+				<span style="width:3px;"/>
 			</td>
 			
 		</tr>
 	</xsl:template>
 	
 	<xsl:template name="IRS990SchIPartIIITableFillerRow">
+	<xsl:param name="index"/>
 		<tr>
-			<td class="styTableCellText">
-				<br/>
-				<br/>
+			<td class="styTableCell" style="width:60mm;border-top-width:1px;height:7.5mm;text-align:left;">
+			 <xsl:value-of select="$index"/>
 				<span style="width:4px;"/>
 			</td>
-			<td class="styTableCell">
+			<td class="styTableCell" style="width:24mm;border-top-width:1px;height:7.5mm;text-align:left;">
 				<span style="width:4px"/>
 			</td>
-			<td class="styTableCell">
+			<td class="styTableCell" style="width:32mm;border-top-width:1px;height:7.5mm;text-align:left;">
 				<span style="width:4px"/>
 			</td>
-			<td class="styTableCell">
+			<td class="styTableCell" style="width:31mm;border-top-width:1px;height:7.5mm;text-align:left;">
 				<span style="width:4px"/>
 			</td>
-			<td class="styTableCell">
+			<td class="styTableCell" style="width:40mm;border-top-width:1px;height:7.5mm;text-align:left;">
 				<span style="width:4px"/>
 			</td>
 			
-			<td class="styTableCell" style="border-right-width:0px">
+			<td class="styTableCell" style="width:69mm;border-top-width:1px;height:7.5mm;text-align:left;border-right-width:0px;">
 				<span style="width:4px;border-right-width:0px;"/>
 			</td>
 			

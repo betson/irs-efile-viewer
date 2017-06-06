@@ -12,8 +12,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle" /></title>
 
          <!-- No Browser Caching -->
@@ -53,11 +55,12 @@
 		<div class="styTopSectionLineLbl" style="float:left">
 			<b>Explanation: </b>
 		</div>
-          <div class="styExplanationLine" style="float:left">
+		<br/>
+		<div class="styExplanationLine" style="float:left; width: 187mm;">
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$FormData/Explanation"/>
+				<xsl:with-param name="TargetNode" select="$FormData/Explanation"/>
             </xsl:call-template>            
-          </div>
+		</div>
         </div>     
       </body>
     </html>

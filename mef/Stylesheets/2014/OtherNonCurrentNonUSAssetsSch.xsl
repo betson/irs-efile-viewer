@@ -42,11 +42,11 @@
 						<xsl:value-of select="count(OtherNonCurrNonUSAstLnItemGrp)"/>
           </xsl:attribute>
           <xsl:call-template name="PopulateText">
-            <xsl:with-param name="TargetNode" select="CorporationName/BusinessNameLine1"/>
+            <xsl:with-param name="TargetNode" select="CorporationName/BusinessNameLine1Txt"/>
           </xsl:call-template>
           <br/>
           <xsl:call-template name="PopulateText">
-            <xsl:with-param name="TargetNode" select="CorporationName/BusinessNameLine2"/>
+            <xsl:with-param name="TargetNode" select="CorporationName/BusinessNameLine2Txt"/>
           </xsl:call-template>
         </td>
         <xsl:choose>
@@ -124,8 +124,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -148,15 +150,13 @@
 				</style>
 				<xsl:call-template name="GlobalStylesDep"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm">
 				<xsl:call-template name="DocumentHeaderDependency"/>
 				<div class="styDepTitleLine">
-					<span class="styDepTitle">
-						<span style="width:118mm;">
-							<xsl:value-of select="$depDocTitle"/>
-						</span>
-					</span>
-				</div>
+               <span class="styDepTitle"  style="padding-right:2mm;">
+             <xsl:value-of select="$depDocTitle"/>
+            </span>        
+             </div>
 				<div class="styTopSectionLine">
 					<xsl:call-template name="SetFormLinkInline">
 						<xsl:with-param name="TargetNode" select="$DependencyData"/>

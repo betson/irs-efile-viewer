@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*" />  
 	<xsl:param name="FormData" select="$RtnDoc/IRS940ScheduleA" />  
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -38,7 +40,7 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm">
 				<form id="IRS940ScheduleA">
 					<xsl:call-template name="DocumentHeader"/>
 					<!--General Dependency Push Pin-->
@@ -54,16 +56,15 @@
 						<div class="styMainTitle" style="width:125mm;float:left;font-size:14pt;padding-top:0mm;">
 							Schedule A (Form 940) for 2013:
 							<div class="styFBT" style="font-size:10pt;padding-bottom:0mm;padding-top:0mm;">Multi-State Employer and Credit Reduction Information</div>
-							<div class="styAgency" style="padding-bottom:1mm;">Department of the Treasury — Internal Revenue Service</div>
+							<div class="styAgency" style="padding-bottom:4mm;">Department of the Treasury — Internal Revenue Service</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:100%;float:right;border-left-width:0px;">
 							<div style="font-size:12pt;font-family:Courier New;font-weight:bold;text-align:right;">860312</div>
 							<div class="styOMB" style="border-bottom-width:0px;padding-top:4mm;text-align:right;font-size:7pt;">OMB No. 1545-0028</div>
 						</div>
 					</div>
-					
 					<div style="width:187mm;padding-bottom:2mm;">
-					<div class="styBB" style="width:131mm;height:20.5mm;border-top-width:1px;border-left-width:1px;border-right-width:1px;float:left;">
+					<div class="styBB" style="width:131mm;height:auto;border-top-width:1px;border-left-width:1px;border-right-width:1px;float:left;">
 							<div style="width:131mm;padding-top:2mm;">
 								<span style="float:left;padding-top:3mm;padding-left:3mm;font-size:6pt;"><b>Employer identification number (EIN)</b></span>
 								<span style="float:right;padding-right:3.2mm;">
@@ -74,10 +75,9 @@
 									</span>
 								</span>
 							</div>
-						
 							<div style="width:131mm;padding-top:2mm;padding-bottom:2mm;padding-right:2.4mm;">
 								<span style="float:left;padding-top:4mm;padding-left:3mm;font-size:6pt;"><b>Name</b><i> (not your trade name)</i></span>
-								<span class="styLNCtrNumBox" style="width:92mm;border-top-width:1px;float:left;height:8mm;float:right;text-align:left;padding-left:1mm;">
+								<span class="styLNCtrNumBox" style="width:92mm;border-top-width:1px;float:left;height:auto;float:right;text-align:left;padding-left:1mm;">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
 										<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
 									</xsl:call-template><br/>
@@ -91,19 +91,17 @@
 								See the instructions on page 2. File this schedule with Form 940.
 						</div>
 						</div>
-						
 						<div class="styBB" style="width:187mm;border-left-width:2px;border-top-width:2px;border-right-width:2px;float:none;clear:both;font-weight:bold;font-size:9pt;padding-bottom:1mm;padding-top:1mm;padding-right:1mm;padding-left:1mm;">Place an “X” in the box of EVERY state in which you had to pay state unemployment tax this year. For each state with a credit reduction rate greater than zero, enter the FUTA taxable wages, multiply by the reduction rate, and enter the credit reduction amount. Do not include in the <i>FUTA Taxable Wages</i> box wages that were excluded from state unemployment tax (see the instructions for Step 2). If any states do not apply to you, leave them blank.
 					</div>
-					
 	<div style="width:187mm;">
 		<!--Left Column-->
-		<div style="width:351px;float:left;border:black solid 0px;border-right-width:2px;border-left-width:2px;">
+		<div style="width:93.5mm;float:left;border:black solid 0px;border-right-width:2px;border-left-width:2px;">
 			<div class="styIRS940SATableRow">
 				<div style="float:left;">
 					<div class="styIRS940SAHeaderPA">Postal Abbreviation</div>
 					<div class="styIRS940SAHeaderLong">FUTA<br/>Taxable Wages</div>
 					<div class="styIRS940SAHeaderRR">Reduction Rate</div>
-					<div class="styIRS940SAHeaderLong">Credit Reduction</div>
+					<div class="styIRS940SAHeaderLong" style="border-right-width:1px;">Credit Reduction</div>
 				</div>
 			</div>
 			<xsl:call-template name="PopulateState"><xsl:with-param name="StateAbrv">AK</xsl:with-param></xsl:call-template>
@@ -137,7 +135,7 @@
 		<!--End Left Column-->
 		
 		<!--Right Column-->
-		<div style="width:350px;float:right;border:black solid 0px;border-right-width:2px;">
+		<div style="width:93mm;float:right;border:black solid 0px;border-right-width:2px;">
 			<div class="styIRS940SATableRow">
 				<div style="float:left;">
 					<div class="styIRS940SAHeaderPA">Postal Abbreviation</div>
@@ -174,9 +172,9 @@
 			<xsl:call-template name="PopulateState"><xsl:with-param name="StateAbrv">VI</xsl:with-param></xsl:call-template>
 		</div>
 		</div>
-		
-		<div class="styBB" style="width:187mm;padding-bottom:1mm;border-bottom-width:2px;padding-top:0mm;">
-		<div class="styLNDesc" style="width:150mm;height:4mm;padding-left:8mm;padding-top:0mm;float:left;font-size:8pt;">
+		<br/>
+		<div class="styBB" style="width:187mm;height:auto;padding-bottom:1mm;border-bottom-width:2px;padding-top:0mm;">
+		<div class="styLNDesc" style="width:150mm;height:auto;padding-left:8mm;padding-top:0mm;float:left;font-size:8pt;">
 			<b>Total Credit Reduction. </b>Add all amounts shown in the <i>Credit Reduction </i>boxes. Enter the total here and on Form 940, line 11
 			<span class="styBoldText">
 			  <span style="width:16px;"/>.
@@ -207,7 +205,7 @@
 		<!-- Page boundary -->
 		<div class="pageEnd" style="width:187mm;">
 			<span style="float:left;clear:none;font-weight:bold;">For Privacy Act and Paperwork Reduction Act Notice, see the Instructions for Form 940.</span>
-			<span style="float:left;clear:none;margin-left:10mm;font-size:6pt;padding-top:0.4mm;">Cat. No. 16997C</span>
+			<span style="float:left;clear:none;margin-left:6mm;font-size:6pt;padding-top:0.4mm;">Cat. No. 16997C</span>
 			<span style="float:right;clear:none;font-weight:bold;font-size:6pt;padding-top:0.4mm;">Schedule A (Form 940) 2013</span>
 		</div>
       
@@ -227,7 +225,7 @@
 				<xsl:with-param name="TargetNode" select="$FormData"/>
 				<xsl:with-param name="DescWidth" select="100"/>
 			</xsl:call-template>
-			<xsl:call-template name="PopulateLeftoverRow">
+			<xsl:call-template name="PopulateLeftoverRowAmount">
 				<xsl:with-param name="Desc">Top Left Margin - Total Credit Reduction Wages Amount</xsl:with-param>
 				<xsl:with-param name="TargetNode" select="$FormData/TotalCreditReductionWagesAmt"/>
 				<xsl:with-param name="DescWidth" select="105"/>
@@ -241,6 +239,7 @@
 <!--State Row Generator-->
 <xsl:template name="PopulateState">
 		<xsl:param name="StateAbrv"/>
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<body class="styBodyClass" >
 				<div class="styIRS940SATableRow">

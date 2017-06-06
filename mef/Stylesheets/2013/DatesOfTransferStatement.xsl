@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/05/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   
   <xsl:output method="html" indent="yes"/>
@@ -16,8 +17,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -44,8 +47,8 @@
 </head>    
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>    
-        <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:112mm">          
+        <div class="styDepTitleLine" style="width:187mm">
+          <span class="styDepTitle" style="width:187mm">          
             <xsl:value-of select="$depDocTitle"/>        
           </span>
         </div>
@@ -61,10 +64,14 @@
           </div>        
         </div>
         
-        <div class="styTopSectionLine" style="clear:both;">
-          <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Description:</span></div>
-          <div style="float:left;clear:none;"><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DOTSData/Desc"/></xsl:call-template></div>
-        </div>        
+        <div class="styTopSectionLine" style="width:187mm;">
+          <div class="styTopSectionLineLbl" style="float:left;clear:none;">Description:</div>
+          <div style="float:left;clear:none;width:118mm;">
+            <xsl:call-template name="PopulateText">
+              <xsl:with-param name="TargetNode" select="$DOTSData/Desc"/>
+            </xsl:call-template>
+          </div>
+        </div>     
         
       </body>
     </html>

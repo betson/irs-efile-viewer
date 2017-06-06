@@ -12,8 +12,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -40,14 +42,14 @@
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>    
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:65mm">
+          <span class="styDepTitle" style="width:100mm">
             <xsl:value-of select="$depDocTitle"/>
           </span>
         </div>
         <!--Adding template for left over data  -->
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>        
         
-        <div class="styTopSectionLine">
+        <div class="styTopSectionLine" style="display:block;">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
           <div class="styExplanationLine">
             <xsl:call-template name="PopulateText">

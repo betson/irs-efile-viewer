@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/03/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -14,8 +15,10 @@
   <!-- Main template -->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -41,15 +44,15 @@
       <body class="styBodyClass">
   
         <xsl:call-template name="DocumentHeaderDependency"/>  
-        <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:94mm;">
-            <span><xsl:value-of select="$depDocTitle"/></span>
+        <div class="styDepTitleLine" style="width:187mm;">
+          <span class="styDepTitle" style="width:187mm;">
+            <span style="width:187mm;"><xsl:value-of select="$depDocTitle"/></span>
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>
         <div class="styTopSectionLine" style="width:187mm;">
-          <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
-          <div style="float:left;clear:none;">
+          <div class="styTopSectionLineLbl" style="float:left;clear:none;">Explanation:</div>
+          <div style="float:left;clear:none;width:118mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/ShortExplanationTxt"/>
             </xsl:call-template>

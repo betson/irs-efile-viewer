@@ -24,8 +24,10 @@
 	<xsl:param name="FormData" select="$RtnDoc/IRS990ScheduleC"/>
 	
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -94,7 +96,7 @@ Complete if the organization is described below.</span>
 							See separate instructions.</span>
 							<span style="padding-right:1mm;"/>
 							<img src="{$ImagePath}/990SchC_Bullet_Md.gif" alt="SchCMd Bullet"/>
-							<span style="font-weight:bold;font-size:7pt;">
+							<span style="font-weight:bold;font-size:7pt;display:inline;">
 							Information about Schedule C (Form 990 or 990-EZ) and its instructions is at <!--www.irs.gov/form990.-->
 							<a href="http://www.irs.gov/form990" title="Link to IRS.gov">
                 <i>www.irs.gov/form990</i>
@@ -135,7 +137,7 @@ Complete if the organization is described below.</span>
 		</div>
 					<!-- Begin Name and Identifying Number Section-->
 					<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-						<div class="styFNBox" style="width:134mm;height:8mm;padding-left:2mm">
+						<div class="styFNBox" style="width:134mm;height:auto;padding-left:2mm">
      Name of the organization<br/>
 							<div style="font-family:verdana;font-size:6pt;height:6.25mm">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -259,7 +261,7 @@ Enter the amount of any excise tax incurred by organization managers under secti
 If the organization incurred a section 4955 tax, did it file Form 4720 for this year?
 <span class="IRS990ScheduleC_Dotspacing">..............</span>
 						</div>
-						<span style="padding-top:1mm">
+						<span style="padding-top:1mm;display:inline;">
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/Form4720FiledSection4955TaxInd"/>
 							</xsl:call-template>
@@ -276,7 +278,7 @@ If the organization incurred a section 4955 tax, did it file Form 4720 for this 
 							</xsl:call-template>            
         Yes
       </label>
-						<span style="width:4mm;padding-top:1mm"/>
+						<span style="width:4mm;padding-top:1mm;display:inline;"/>
 						<span>
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/Form4720FiledSection4955TaxInd"/>
@@ -302,7 +304,7 @@ If the organization incurred a section 4955 tax, did it file Form 4720 for this 
  Was a correction made?
  <span class="IRS990ScheduleC_Dotspacing">.........................................</span>
 						</div>
-						<span style="padding-top:1mm">
+						<span style="padding-top:1mm;display:inline;">
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/CorrectionMadeInd"/>
 							</xsl:call-template>
@@ -319,7 +321,7 @@ If the organization incurred a section 4955 tax, did it file Form 4720 for this 
 							</xsl:call-template>            
         Yes
       </label>
-						<span style="width:4mm;padding-top:1mm"/>
+						<span style="width:4mm;padding-top:1mm;display:inline;"/>
 						<span>
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/CorrectionMadeInd"/>
@@ -349,7 +351,7 @@ If the organization incurred a section 4955 tax, did it file Form 4720 for this 
 					<div class="styGenericDiv" style="width: 187mm; border-bottom-width: 1px;border-bottom-style:solid;border-top-width: 1px;border-top-style:solid">
 						<div class="styPartName">Part I-C</div>
 						<div class="styPartDesc">
-							<span class="styNormalText;font-weight:bold;">Complete if the organization is exempt under section 501(c),
+							<span class="styNormalText;font-weight:bold;display:inline;">Complete if the organization is exempt under section 501(c),
 except section 501(c)(3).</span>
 						</div>
 					</div>
@@ -418,7 +420,7 @@ Total exempt function expenditures. Add lines 1 and 2. Enter here and on Form 11
 Did the filing organization file<span style="font-weight:bold"> Form 1120-POL</span> for this year?
 <span class="IRS990ScheduleC_Dotspacing">..........................</span>
 						</div>
-						<span style="padding-top:1mm">
+						<span style="padding-top:1mm;display:inline;">
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/Form1120POLFiledInd"/>
 							</xsl:call-template>
@@ -435,7 +437,7 @@ Did the filing organization file<span style="font-weight:bold"> Form 1120-POL</s
 							</xsl:call-template>            
         Yes
       </label>
-						<span style="width:4mm;padding-top:1mm"/>
+						<span style="width:4mm;padding-top:1mm;display:inline;"/>
 						<span>
 							<xsl:call-template name="PopulateSpan">
 								<xsl:with-param name="TargetNode" select="$FormData/Form1120POLFiledInd"/>
@@ -457,7 +459,7 @@ Did the filing organization file<span style="font-weight:bold"> Form 1120-POL</s
 					<!-- Line 5 -->
 					<div style=" width: 187mm; ">
 						<div class="styLNLeftNumBox" style="padding-left: 1mm;padding-top:1mm">5</div>
-						<div class="IRS990ScheduleC_LineDesc" style="width:178mm;border-right-width:0;padding-top:1mm;margin-left:0mm;">
+						<div class="IRS990ScheduleC_LineDesc" style="width:178mm;border-right-width:0;padding-top:1mm;margin-left:0mm;height:auto;">
 Enter the names, addresses and employer identification number (EIN) of all section 527 political organizations to which  the filing<br/> organization made payments. For each
 organization listed, enter the amount paid from the filing organization’s funds. Also
 enter the amount of political contributions received that were promptly and directly
@@ -475,7 +477,7 @@ political action committee (PAC). If additional space is needed, provide informa
 						</span>
 					</div>
 					<!--Part I-C  line 5 table -->
-					<div class="IRS990ScheduleCPart1C_TableContainer" id="p1CLn5TbCtnr">
+					<div class="IRS990ScheduleCPart1C_TableContainer" id="p1CLn5TbCtnr" style="display:block;">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -619,8 +621,8 @@ political action committee (PAC). If additional space is needed, provide informa
 					<!-- Part II_A header -->
 					<div class="styGenericDiv" style="width: 187mm">
 						<div class="styPartName" style="width:18mm;">Part II-A</div>
-						<div class="styPartDesc" style="width:169mm;">
-							<span class="styNormalText;font-wight:bold;">
+						<div class="styPartDesc" style="width:169mm;height:auto;">
+							<span class="styNormalText;font-wight:bold;display:inline;">
           Complete if the organization is
 exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h)).
       </span>
@@ -632,7 +634,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 					</div>
 					<!-- comment line -->
 					<div class="IRS990ScheduleC_LineContainer">
-						<div class="IRS990ScheduleC_LineDesc" style="width:188mm;border-right-width:0px;border-top-width:1px;">
+						<div class="IRS990ScheduleC_LineDesc" style="width:188mm;border-right-width:0px;border-top-width:1px;height:auto;">
 							<span style="width:4mm;font-weight:bold">A</span>
     Check <span style="width:2mm;"/>
 							<img src="{$ImagePath}/990SchC_Bullet_Md.gif" alt="SchCMd Bullet"/><span style="width:1mm;"/>
@@ -691,15 +693,15 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- line a -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA">1a</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:126mm;" colspan="3">Total lobbying expenditures to influence public opinion (grass roots lobbying)
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:126mm;float:none;" colspan="3">Total lobbying expenditures to influence public opinion (grass roots lobbying)
     <span class="IRS990ScheduleC_Dotspacing"> ......</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left:0">
+								<td class="styLNAmountBox" style="border-left:0;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalGrassrootsLobbyingGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px">
+								<td class="styLNAmountBox" style="border-right-width:0px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalGrassrootsLobbyingGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -708,15 +710,15 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- line b -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA">b</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:126mm;" colspan="3">Total lobbying expenditures to influence a legislative body (direct lobbying) 
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:126mm;float:none;" colspan="3">Total lobbying expenditures to influence a legislative body (direct lobbying) 
        <span class="IRS990ScheduleC_Dotspacing"> .......</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left:0">
+								<td class="styLNAmountBox" style="border-left:0;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalDirectLobbyingGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px">
+								<td class="styLNAmountBox" style="border-right-width:0px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalDirectLobbyingGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -725,15 +727,15 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- line c -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA"> c</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:126mm;" colspan="3">Total lobbying expenditures (add lines 1a and 1b)
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:126mm;float:none;" colspan="3">Total lobbying expenditures (add lines 1a and 1b)
        <span class="IRS990ScheduleC_Dotspacing"> ...................</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left:0">
+								<td class="styLNAmountBox" style="border-left:0;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalLobbyingExpendGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px">
+								<td class="styLNAmountBox" style="border-right-width:0px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalLobbyingExpendGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -742,15 +744,15 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- line d -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA">d</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:126mm;" colspan="3">Other exempt purpose expenditures
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:126mm;float:none;" colspan="3">Other exempt purpose expenditures
        <span class="IRS990ScheduleC_Dotspacing"> ........................</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left:0">
+								<td class="styLNAmountBox" style="border-left:0;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherExemptPurposeExpendGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px">
+								<td class="styLNAmountBox" style="border-right-width:0px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/OtherExemptPurposeExpendGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -759,15 +761,15 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- line e -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA">e</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:126mm;" colspan="3">Total exempt purpose expenditures (add lines 1c and 1d)
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:126mm;float:none;" colspan="3">Total exempt purpose expenditures (add lines 1c and 1d)
       <span class="IRS990ScheduleC_Dotspacing"> ...............</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left:0">
+								<td class="styLNAmountBox" style="border-left:0;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalExemptPurposeExpendGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px">
+								<td class="styLNAmountBox" style="border-right-width:0px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotalExemptPurposeExpendGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -776,13 +778,13 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- line f -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA" style="padding-bottom:2mm">f</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:128mm;padding-top:1mm;padding-bottom:.5mm" colspan="3">Lobbying nontaxable amount. Enter the amount from the following table in both <br/> columns.</td> 
-								<td class="styLNAmountBox" style="border-left:0">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:128mm;padding-top:1mm;padding-bottom:.5mm;float:none;" colspan="3">Lobbying nontaxable amount. Enter the amount from the following table in both <br/> columns.</td> 
+								<td class="styLNAmountBox" style="border-left:0;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/LobbyingNontaxableAmountGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px">
+								<td class="styLNAmountBox" style="border-right-width:0px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/LobbyingNontaxableAmountGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -790,84 +792,84 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							</tr>
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA"><span style="width:1px;" /></td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:123mm; height:4.5mm" colspan="3">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:123mm; height:4.5mm;float:none;" colspan="3">
 									<span style="width:66mm;font-weight:bold;border-left:1px solid;border-top:1px solid;border-bottom:1px solid;height:4.5mm">If the amount on line 1e, column (a) or (b) is:</span>
 									<span style="width:57mm;font-weight:bold;border-right:1px solid;border-left:1px solid;border-top:1px solid;border-bottom:1px solid;height:4.5mm">The lobbying nontaxable amount is:</span>
 								</td>
-								<td class="styLNAmountBox" style="border-bottom-width:0px;background-color:lightgrey;border-left:0"><span style="width:1px;" /></td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-bottom-width:0px;background-color:lightgrey;border-left:0;float:none;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
 							</tr>
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA"><span style="width:1px;" /></td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:123mm; height:4.5mm" colspan="3">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:123mm; height:4.5mm;float:none;" colspan="3">
 									<span style="width:66mm; font-size: 6pt;border-left:1px solid;border-top:0px solid;height:4.5mm">Not over $500,000</span>
 									<span style="width:57mm; font-size: 6pt;border-right:1px solid;border-left:1px solid;border-top:0px solid;height:4.5mm">20% of the amount on line 1e.</span>
 									<!--<td rowspan="5" style="width: 4mm; border-style: solid; border-color:black; border-top-width: 0px; border-bottom-width: 0px; border-left-width:0px; border-right-width: 1px"><span style="width:1px"></span></td>-->
 								</td>
-								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey; width: 29mm"><span style="width:1px;" /></td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey; width: 29mm"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey; width: 29mm;float:none;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey; width: 29mm;float:none;"><span style="width:1px;" /></td>
 							</tr>
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA"><span style="width:1px;" /></td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:123mm;height:4.5mm " colspan="3">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:123mm;height:4.5mm;float:none;" colspan="3">
 									<span style="width:66mm; font-size: 6pt;border-left:1px solid;border-top:1px solid;height:4.5mm">Over $500,000 but not over $1,000,000</span>
 									<span style="width:57mm; font-size: 6pt;border-right:1px solid;border-left:1px solid;border-top:1px solid;height:4.5mm">$100,000 plus 15% of the excess over $500,000.</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey;b"><span style="width:1px;" /></td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
 							</tr>
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA"><span style="width:1px;" /></td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:123mm;height:4.5mm" colspan="3">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:123mm;height:4.5mm;float:none;" colspan="3">
 									<span style="width:66mm; font-size: 6pt;border-left:1px solid;border-top:1px solid;height:4.5mm">Over $1,000,000 but not over $1,500,000</span>
 									<span style="width:57mm; font-size: 6pt;border-right:1px solid;border-left:1px solid;border-top:1px solid;height:4.5mm">$175,000 plus 10% of the excess over $1,000,000.</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey;"><span style="width:1px;" /></td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
 							</tr>
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA"><span style="width:1px;" /></td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:123mm; height:4.5mm" colspan="3">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:123mm; height:4.5mm;float:none;" colspan="3">
 									<span style="width:66mm; font-size: 6pt;border-left:1px solid;border-top:1px solid;height:4.5mm">Over $1,500,000 but not over $17,000,000</span>
 									<span style="width:57mm; font-size: 6pt;border-right:1px solid;border-left:1px solid;border-top:1px solid;height:4.5mm">$225,000 plus 5% of the excess over $1,500,000.</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey;"><span style="width:1px;" /></td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
 							</tr>
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA"><span style="width:1px;" /></td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:123mm; height:4.5mm" colspan="3">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:123mm; height:4.5mm;float:none;" colspan="3">
 									<span style="width:66mm;height:4.5mm; font-size: 6pt;border-left:1px solid;border-top:1px solid;border-bottom:1px solid">Over $17,000,000</span>
 									<span style="width:57mm; height:4.5mm;font-size: 6pt;border-bottom:1px solid;border-right:1px solid;border-left:1px solid;border-top:1px solid">$1,000,000.</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey;"><span style="width:1px;" /></td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-left-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;float:none;"><span style="width:1px;" /></td>
 							</tr>
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA" style="border-bottom-width:1px;width:4mm;height:1mm"><span style="width:1px;" /></td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:146mm;border-bottom-width:1px;border-right:0px;height:1mm">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:146mm;border-bottom-width:1px;border-right:0px;height:1mm;float:none;">
 									<span style="width:107mm; font-size: 6pt"/>
 									<!--<span style="width:57mm; font-size: 6pt;background-color:red">$1,000,000</span>-->
 									<td rowspan="1" style="width: 8mm; border-style: solid; border-color:black; border-top-width: 0px; border-bottom-width: 1px; border-left-width:0px; border-right-width: 0px;height:1mm">
 										<span style="width:1px"/>
 									</td>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:1px;border-left-width:0px;border-bottom-width:1px;height:1mm"><span style="width:1px;" /></td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;border-left-width:0px;height:1mm"><span style="width:1px;" /></td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;height:1mm"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:1px;border-left-width:0px;border-bottom-width:1px;height:1mm;float:none;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;border-left-width:0px;height:1mm;float:none;"><span style="width:1px;" /></td>
+								<td class="styLNAmountBox" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;height:1mm;float:none;"><span style="width:1px;" /></td>
 							</tr>
 							<!-- line g -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA">g</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:126mm;" colspan="3">Grassroots nontaxable amount (enter 25% of line 1f)
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:126mm;float:none;" colspan="3">Grassroots nontaxable amount (enter 25% of line 1f)
        <span class="IRS990ScheduleC_Dotspacing"> .................</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left:0;border-top-width:1px;">
+								<td class="styLNAmountBox" style="border-left:0;border-top-width:1px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/GrassrootsNontaxableGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px;border-top-width:1px;">
+								<td class="styLNAmountBox" style="border-right-width:0px;border-top-width:1px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/GrassrootsNontaxableGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -876,15 +878,15 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- line h -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA">h</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:126mm;" colspan="3">Subtract line 1g from line 1a. If zero or less, enter -0-.
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:126mm;float:none;" colspan="3">Subtract line 1g from line 1a. If zero or less, enter -0-.
         <span class="IRS990ScheduleC_Dotspacing"> ................</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left:0">
+								<td class="styLNAmountBox" style="border-left:0;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotLbbyngGrassrootMnsNonTxGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px">
+								<td class="styLNAmountBox" style="border-right-width:0px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotLbbyngGrassrootMnsNonTxGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -893,15 +895,15 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- line i -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA">i</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:126mm;" colspan="3">Subtract line 1f from line 1c. If zero or less, enter -0-.
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:126mm;float:none;" colspan="3">Subtract line 1f from line 1c. If zero or less, enter -0-.
        <span class="IRS990ScheduleC_Dotspacing"> ................</span>
 								</td>
-								<td class="styLNAmountBox" style="border-left:0">
+								<td class="styLNAmountBox" style="border-left:0;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotLbbyExpendMnsLbbyngNonTxGrp/FilingOrganizationsTotalAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:0px">
+								<td class="styLNAmountBox" style="border-right-width:0px;float:none;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$FormData/TotLbbyExpendMnsLbbyngNonTxGrp/AffiliatedGroupTotalAmt"/>
 									</xsl:call-template>
@@ -910,11 +912,11 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 							<!-- Notes line -->
 							<tr>
 								<td class="IRS990ScheduleC_IndexCellIIA" style="padding-bottom:4mm">j</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:155mm;border-right:0px;padding-top:0mm" colspan="4">If there is an amount other than zero on either line 1h or line 1i, did the organization file Form 4720 reporting<br/> section 4911 tax for this year?
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:155mm;border-right:0px;padding-top:0mm;float:none;" colspan="4">If there is an amount other than zero on either line 1h or line 1i, did the organization file Form 4720 reporting<br/> section 4911 tax for this year?
 <span class="IRS990ScheduleC_Dotspacing"> ......................................</span>
 								</td>
-								<td class="IRS990ScheduleC_LineDesc" style="width:32mm;border-right:0px;padding-top:0mm" colspan="1">
-									<span style="padding-top:1mm">
+								<td class="IRS990ScheduleC_TableLineDesc" style="width:35mm;border-right:0px;padding-top:0mm" colspan="1">
+									<span style="padding-top:1mm;display:inline;">
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="$FormData/Form4720FiledInd"/>
 										</xsl:call-template>
@@ -931,7 +933,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 										</xsl:call-template>            
         Yes
       </label>
-									<span style="width:2mm;padding-top:1mm"/>
+									<span style="width:2mm;padding-top:1mm;display:inline;"/>
 									<span>
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="$FormData/Form4720FiledInd"/>
@@ -1225,7 +1227,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 					<!-- Part II_B header -->
 					<div class="styGenericDiv" style="width: 187mm">
 						<div class="styPartName" style="width:18mm;">Part II-B</div>
-						<div class="styPartDesc" style="width:140mm;font-weight:bold"> 
+						<div class="styPartDesc" style="width:140mm;font-weight:bold;height:auto;"> 
 						<span style="float:left;">Complete if the organization is exempt under section 501(c)(3) and has NOT filed Form 5768 (election under section 501(h)).
 							
 							<xsl:call-template name="SetFormLinkInline">
@@ -1240,9 +1242,9 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 					<span style="float:left;"><i>For each "Yes" response to lines 1a through 1i below, provide in Part IV a detailed description of the lobbying activity.</i></span>
 						</div>
 						
-						<div class="IRS990ScheduleC_LineIndexMid" style="height:12mm;border-top-width:1px;padding-top:0mm;width:20mm;border-right-width:0px;">(a)
-  <div class="IRS990ScheduleC_LineIndexMid" style="height:8.2mm;border-top-width:1px;padding-top:2mm;width:9.9mm;float:right;border-right-width:1px;border-bottom-width:0px">No</div>
-							<div class="IRS990ScheduleC_LineIndexMid" style="height:8.2mm;border-top-width:1px;padding-top:2mm;width:9.9mm;float:right;border-right-width:1px;border-bottom-width:0px">Yes</div>
+						<div class="IRS990ScheduleC_LineIndexMid" style="height:12mm;border-top-width:1px;padding-top:0mm;width:20mm;border-right-width:1px;">(a)
+  <div class="IRS990ScheduleC_LineIndexMid" style="height:8mm;border-top-width:1px;padding-top:3mm;width:9.9mm;float:right;border-right-width:0px;border-bottom-width:0px;margin-top:3mm;">No</div>
+							<div class="IRS990ScheduleC_LineIndexMid" style="height:9mm;border-top-width:1px;padding-top:2mm;width:9.8mm;border-bottom-width:0px;">Yes</div>
 						</div>
 						<div class="IRS990ScheduleC_LineIndexMid" style="height:12mm;border-top-width:1px;padding-top:0mm;width:20mm;border-right-width:0px;">(b)
 <div class="IRS990ScheduleC_LineIndexMid" style="height:8.2mm;border-right-width:0px;width:20mm;border-top-width:1px;padding-top:2mm;border-bottom-width:0px">Amount </div>
@@ -1255,7 +1257,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
    During the year, did the filing organization attempt to influence foreign, national, state or local legislation, including any attempt to influence public opinion on a legislative matter or referendum, through the use of:
    <!-- <span class="IRS990ScheduleC_Dotspacing">.......................</span>-->
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-right-width:0px;height:10mm;width:10mm;border-bottom-width:0px;"/>
+						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-right-width:1px;height:10mm;width:9.8mm;border-bottom-width:0px;"/>
 						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;height:10mm;width:10mm;border-bottom-width:0px;"/>
 						<div class="IRS990ScheduleC_MoneyField" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey;height:10mm;width:20mm"/>
 					</div>
@@ -1266,7 +1268,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Volunteers?
     <span class="IRS990ScheduleC_Dotspacing">.........................................</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/VolunteersInd"/>
@@ -1289,7 +1291,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Paid staff or management (include  compensation in expenses reported on lines 1c through 1i)?
     <span class="IRS990ScheduleC_Dotspacing">....</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/PaidStaffOrManagementInd"/>
@@ -1314,7 +1316,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Media advertisements?
     <span class="IRS990ScheduleC_Dotspacing">....................................</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/MediaAdvertisementsInd"/>
@@ -1341,7 +1343,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Mailings to members, legislators, or the public?
     <span class="IRS990ScheduleC_Dotspacing">.........................</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/MailingsMembersInd"/>
@@ -1368,7 +1370,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Publications, or published or broadcast statements?
     <span class="IRS990ScheduleC_Dotspacing">.......................</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/PublicationsOrBroadcastInd"/>
@@ -1395,7 +1397,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Grants to other organizations for lobbying purposes?
     <span class="IRS990ScheduleC_Dotspacing">.......................</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/GrantsOtherOrganizationsInd"/>
@@ -1422,7 +1424,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Direct contact with legislators, their staffs, government officials, or a legislative body?
     <span class="IRS990ScheduleC_Dotspacing">........</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/DirectContactLegislatorsInd"/>
@@ -1449,7 +1451,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Rallies, demonstrations, seminars, conventions, speeches, lectures, or any similar means?
     <span class="IRS990ScheduleC_Dotspacing">......</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/RalliesDemonstrationsInd"/>
@@ -1476,7 +1478,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
   Other activities? 
    <span class="IRS990ScheduleC_Dotspacing">..........................</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/OtherActivitiesInd"/>
@@ -1503,7 +1505,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Total. Add lines 1c through 1i
     <span class="IRS990ScheduleC_Dotspacing">...............................</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-right-width:0px;width:10mm;border-bottom-width:0px;"/>
+						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-right-width:1px;width:9.8mm;border-bottom-width:0px;"/>
 						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;width:10mm;border-bottom-width:0px;"/>
 						<div class="IRS990ScheduleC_MoneyField" style="border-right-width:0px;width:20mm">
 							<xsl:call-template name="PopulateAmount">
@@ -1518,7 +1520,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     Did the activities in line 1 cause the organization to be not described in section 501(c)(3)?
     <span class="IRS990ScheduleC_Dotspacing">.....</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:10mm;">
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:9.8mm;">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/NotDescribedSection501c3Ind"/>
@@ -1541,7 +1543,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     If "Yes," enter the amount of any tax incurred under section 4912
     <span class="IRS990ScheduleC_Dotspacing">.................</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-right-width:0px;border-bottom-width:0px;width:10mm"/>
+						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-right-width:1px;border-bottom-width:0px;width:9.8mm;"/>
 						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-bottom-width:0px;width:10mm"/>
 						<div class="IRS990ScheduleC_MoneyField" style="border-right-width:0px;width:20mm">
 							<xsl:call-template name="PopulateAmount">
@@ -1556,7 +1558,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     If "Yes," enter the amount of any tax incurred by organization managers under section 4912
     <span class="IRS990ScheduleC_Dotspacing">.....</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-right-width:0px;width:10mm;border-bottom-width:0px;"/>
+						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;border-right-width:1px;width:9.8mm;border-bottom-width:0px;"/>
 						<div class="IRS990ScheduleC_LineIndexMid" style="background-color:lightgrey;width:10mm;border-bottom-width:0px;"/>
 						<div class="IRS990ScheduleC_MoneyField" style="border-right-width:0px;width:20mm">
 							<xsl:call-template name="PopulateAmount">
@@ -1571,7 +1573,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
     If the filing organization incurred a section 4912 tax, did it file Form 4720 for this year?
     <span class="IRS990ScheduleC_Dotspacing">.......</span>
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="border-bottom-width:1px;width:10mm">
+						<div class="IRS990ScheduleC_LineIndexMid" style="border-bottom-width:1px;width:9.8mm">
 							<span style="font-weight: normal">
 								<xsl:call-template name="PopulateYesBoxText">
 									<xsl:with-param name="TargetNode" select="$FormData/Form4720Filed4912TaxInd"/>
@@ -1590,7 +1592,7 @@ exempt under section 501(c)(3) and filed Form 5768 (election under section 501(h
 					<!-- Part III-A header -->
 					<div class="styGenericDiv" style="width: 187mm">
 						<div class="styPartName" style="width:18mm;">Part III-A</div>
-						<div class="styPartDesc" style="width:169mm;font-weight:bold ">
+						<div class="styPartDesc" style="width:169mm;font-weight:bold;height:auto;">
 Complete if the organization is exempt under
 section 501(c)(4), section 501(c)(5), or section 501(c)(6).
 							
@@ -1665,7 +1667,7 @@ section 501(c)(4), section 501(c)(5), or section 501(c)(6).
 					<!-- Part III_B header -->
 					<div class="styGenericDiv" style="width: 187mm;border-bottom-width:1px">
 						<div class="styPartName" style="width:18mm;">Part III-B</div>
-						<div class="styPartDesc" style="width:169mm;font-weight:bold">
+						<div class="styPartDesc" style="width:169mm;font-weight:bold;height:auto;">
 Complete if the
 organization is exempt under section 501(c)(4), section 501(c)(5), or section 501(c)(6)
 and if either (a) BOTH Part III-A, lines 1 and 2, are answered "No" OR (b) Part III-A, line 3, is
@@ -1698,10 +1700,10 @@ answered “Yes."
 					<div class="IRS990ScheduleC_LineContainer">
 						<div class="IRS990ScheduleC_LineIndex" style="padding-top:0mm;padding-right: 18px">2</div>
 						<div class="IRS990ScheduleC_LineDesc" style="width:140mm;height:4mm;border-top-width:0px;padding-top:0mm;">
-   Section 162(e) nondeductible lobbying and political expenditures <span style="font-weight:bold; ">(do not include amounts of political <br/>expenses for which the section 527(f) tax was paid).</span>
+   Section 162(e) nondeductible lobbying and political expenditures <span style="font-weight:bold;display:inline; ">(do not include amounts of political <br/>expenses for which the section 527(f) tax was paid).</span>
 							<!--<span class="IRS990ScheduleC_Dotspacing">..........</span>-->
 						</div>
-						<div class="IRS990ScheduleC_LineIndexMid" style="width:8mm;height:6mm;border-top-width:0px;padding-left:1mm;border-right-width:1px;text-align:left;background:lightgrey;border-bottom:0px"/>
+						<div class="IRS990ScheduleC_LineIndexMid" style="width:8mm;height:4mm;border-top-width:0px;padding-left:1mm;border-right-width:1px;text-align:left;background:lightgrey;border-bottom:0px"/>
 					</div>
 					<div class="IRS990ScheduleC_LineContainer">
 						<div class="IRS990ScheduleC_SubLineIndex" style="padding-top:1mm;">a</div>
@@ -1794,12 +1796,12 @@ instructions)
 							</xsl:call-template>
 						</div>
 					</div>
-					<div class="styGenericDiv" style="width: 187mm;">
+					<div class="styGenericDiv" style="width: 187mm;display:block;">
 						<div class="styPartName" style="width:18mm;">Part IV</div>
 						<div class="styPartDesc" style="width:169mm;font-weight:bold;">
 Supplemental Information
 </div>
-						<div class="IRS990ScheduleC_LineDesc" style="width:187mm;height:4mm;border-top-width:1px;padding-top:1mm;border-bottom-width:1px;border-right-width:0px;padding-left:2mm">
+						<div class="IRS990ScheduleC_LineDesc" style="width:187mm;height:auto;border-top-width:1px;padding-top:1mm;border-bottom-width:1px;border-right-width:0px;padding-left:2mm">
 Provide the descriptions required for Part l-A, line 1; Part l-B, line 4; Part l-C, line 5; Part II-A (affiliated group list); Part II-A, line 2; and Part ll-B, line 1. Also, complete this part for any additional information.
 </div>
 						<span style="float:right">
@@ -1812,7 +1814,7 @@ Provide the descriptions required for Part l-A, line 1; Part l-B, line 4; Part l
 							</xsl:call-template>
 						</span>
 					</div>
-					<div class="styTableContainer" style="width: 187mm; border-bottom-width: 2px" id="SUPctn">
+					<div class="styTableContainer" style="width: 187mm; border-bottom-width: 2px;display:block;" id="SUPctn">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" style="font-size: 7pt; border-color:black" cellspacing="0">
 							<thead>
@@ -1863,6 +1865,7 @@ Provide the descriptions required for Part l-A, line 1; Part l-B, line 4; Part l
 						</div>
 					</div>
 					<!--END Page Footer-->
+							<p style="page-break-before: always;"/>
 					<br/>
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">

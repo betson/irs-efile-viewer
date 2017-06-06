@@ -16,8 +16,10 @@
   <!-- Main template -->
   <xsl:template match="/">
     <!-- New -->
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -43,7 +45,7 @@
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>
         <div class="styDepTitleLine">
-            <span class="styDepTitle" style="width:120mm;">
+            <span class="styDepTitle" style="width:125mm;">
 				<span style="padding-right:1.5mm;">TY</span>
 				<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
 				<span style="padding-left:1.5mm;">Other Tax Exempt Income Under Section892</span>
@@ -66,7 +68,7 @@
             <div style="float:left;clear:none;">
 				<span class="styTopSectionLineLbl">Explanation:</span>
             </div>
-            <div style="float:left;clear:none;">
+            <div style="width:118mm;float:left;clear:none;">
 				<xsl:call-template name="PopulateText">
 				  <xsl:with-param name="TargetNode" select="$DependencyData/ShortExplanationTxt"/>
 				</xsl:call-template>

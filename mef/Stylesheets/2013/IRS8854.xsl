@@ -275,8 +275,10 @@
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8854Data)"/>
@@ -305,7 +307,7 @@
 				<form name="IRS8854">
 					<!--  Begin Header section 1 -->
 					<xsl:call-template name="DocumentHeader"/>
-					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
+					<div class="styBB" style="width:187mm;border-bottom-width:2px;height:auto;">
 						<div class="styFNBox" style="width:31mm;height:22mm;border-right-width:2px;padding-top:.5mm;">
 							<div style="padding-top:1mm;font-size:8pt;">
 								Form<span class="styFormNumber">  8854</span>
@@ -362,7 +364,7 @@
 						<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<!-- END:	Header Title-->
 						<div class="styTYBox" style="width:30mm;border-left-width:2px;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+							<div class="styOMB" style="height:auto;font-size:7pt;">OMB No. 1545-0074</div>
 							<div class="styTY">20<span class="styTYColor">11</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -372,7 +374,7 @@
 						</div>
 					</div>
 					<!-- BEGIN: Header section 1 -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;height:auto;">
 						<div class="styNameBox" style="width:132mm;height:8mm;font-size:7pt;">
 							Name<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -689,7 +691,7 @@
 							</div>
 							<xsl:if test="$Form8854Data/CountryCitizenshipGroup">
 								<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-								<div class="styTableContainerNBB" id="CountryCitizenshipGroupDiv">
+								<div class="styTableContainerNBB" id="CountryCitizenshipGroupDiv" style="height:auto;">
 									<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 									<!--													Table Start																	-->
 									<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -1189,7 +1191,7 @@
 					</xsl:call-template>
 					<!-- END Page Header -->
 					<!-- BEGIN: Part III (Header)-->
-					<div style="width:187mm;" class="styBB">
+					<div style="width:187mm;float:none;clear:both;" class="styBB">
 						<div class="styPartName" style="width:15mm;">Part III</div>
 						<div class="styPartDesc" style="padding-left:3mm;">
 							For Persons Who Expatriated After June 16, 2008, and Before January 1, 2010
@@ -1240,7 +1242,7 @@
 								</xsl:if>
 							</div>
 								<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-								<div class="styTableContainerNBB" id="TaxDeferredPropertyPYF8854GrpDiv">
+								<div class="styTableContainerNBB" id="TaxDeferredPropertyPYF8854GrpDiv" style="height:auto;">
 									<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 									<!--													Table Start																	-->
 									<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -2616,7 +2618,7 @@
 								<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 							</xsl:if>
 								<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
-								<div class="styTableContainerNBB" id="MarkToMarketPropertySaleGrpDiv">
+								<div class="styTableContainerNBB" id="MarkToMarketPropertySaleGrpDiv" style="height:auto;">
 									<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 									<!--													Table Start																	-->
 									<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -3017,12 +3019,12 @@
 						<!-- Begin (Line) 9 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 						<div class="styIRS8854LineItem">
-							<div class="styIRS8854LNLeftNumBox" style="padding-top:3px;">
-								<br/>9</div>
-							<div class="styIRS8854LNDesc" style="width:179mm;padding-left:0mm;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNDesc" style="width:69mm;padding-left:1mm;padding-top:0px;padding-bottom:0px;">
+							<div class="styIRS8854LNLeftNumBox" style="padding-top:5px;">
+								9
+							</div>
+							<div class="styIRS8854LNDesc" style="width:179mm;padding-left:0mm;padding-top:0px;padding-bottom:0px;height:6mm;">
+								<div class="styIRS8854LNDesc" style="width:75.6mm;padding-left:1mm;padding-top:0px;padding-bottom:0px;">
 									<span class="stySmallText" style="float:left;padding-top:7px;">
-										<br/>
 										<span class="styBoldText">Total</span>. Add the amounts in column (d) and column (e)
 										<span class="styBoldText">
 											<span style="width:12px"/>.
@@ -3030,11 +3032,11 @@
 										</span>
 									</span>
 								</div>
-								<div class="styIRS8854LNDesc" style="width:auto;padding-left:1mm;padding-top:0px;padding-bottom:0px;">
-									<div class="styLNAmountBoxNBB" style="width:25mm;height:2mm;float:right;padding-top:0px;background-color:lightgrey;border-top-width:1px;border-right-width:1px;border-color:#000000;"/>
-									<div class="styLNAmountBoxNBB" style="width:28mm;height:2mm;float:right;padding-top:0px;background-color:lightgrey;border-top-width:1px;border-color:#000000;"/>
-									<div class="styLNAmountBoxNBB" style="width:26.5mm;height:2mm;float:right;padding-top:0px;border-top-width:1px;border-color:#000000;"/>
-									<div class="styLNAmountBoxNBB" style="width:23mm;height:2mm;float:right;padding-top:0px;border-top-width:1px;border-color:#000000;"/>
+								<div class="styIRS8854LNDesc" style="width:103.4mm;padding-left:1mm;padding-top:0px;padding-bottom:0px;">
+									<div class="styLNAmountBoxNBB" style="width:25mm;height:2mm;float:right;padding-top:0px;background-color:lightgrey;border-top-width:0px;border-right-width:1px;border-color:#000000;"/>
+									<div class="styLNAmountBoxNBB" style="width:28mm;height:2mm;float:right;padding-top:0px;background-color:lightgrey;border-top-width:0px;border-color:#000000;"/>
+									<div class="styLNAmountBoxNBB" style="width:26.5mm;height:2mm;float:right;padding-top:0px;border-top-width:0px;border-color:#000000;"/>
+									<div class="styLNAmountBoxNBB" style="width:22.9mm;height:2mm;float:right;padding-top:0px;border-top-width:0px;border-color:#000000;"/>
 									<div class="styLNAmountBoxNBB" style="width:25mm;height:4mm;border-color:#000000;float:right;padding-top:0px;background-color:lightgrey;border-right-width:1px;border-color:"/>
 									<div class="styLNAmountBoxNBB" style="width:28mm;height:4mm;border-color:#000000;float:right;padding-top:0px;background-color:lightgrey;"/>
 									<span style="font-size:6pt;">
@@ -3043,7 +3045,7 @@
 												<xsl:with-param name="TargetNode" select="$Form8854Data/TotalGainAfterAllocnOfExclAmt"/>
 											</xsl:call-template>
 										</div>
-										<div class="styLNAmountBoxNBB" style="width:23mm;height:4mm;border-color:#000000;float:right;padding-right:2px;">
+										<div class="styLNAmountBoxNBB" style="width:22.9mm;height:4mm;border-color:#000000;float:right;padding-right:2px;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form8854Data/TotalGainOrLossAmt"/>
 											</xsl:call-template>
@@ -3059,10 +3061,10 @@
 						<!-- Begin (Line) 10 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 						<div class="styIRS8854LineItem">
-							<div class="styIRS8854LNLeftNumBox" style="padding-left:9px;padding-top:8px;">10</div>
+							<div class="styIRS8854LNLeftNumBox" style="padding-left:9px;padding-top:0px;">10</div>
 							<div class="styIRS8854LNDesc" style="width:179mm;padding-left:0mm;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNDesc" style="width:73mm;padding-left:1mm;padding-top:0px;padding-bottom:0px;">
-									<span class="stySmallText" style="float:left;padding-top:8px;">
+								<div class="styIRS8854LNDesc" style="width:75.6mm;padding-left:1mm;padding-top:0px;padding-bottom:0px;">
+									<span class="stySmallText" style="float:left;padding-top:0px;">
 										<span class="styBoldText">Total tax deferred.</span> Add the amounts in column (g). Enter here<br/>and on line 15
 										<span class="styBoldText">
 											<span style="width:11px"/>.
@@ -3080,21 +3082,21 @@
 										</span>
 									</span>
 								</div>
-								<div class="styIRS8854LNDesc" style="width:auto;padding-left:1mm;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNDesc" style="width:103.4mm;padding-left:1mm;padding-top:0px;padding-bottom:0px;">
 									<div class="styLNAmountBoxNBB" style="width:25mm;height:2mm;float:right;padding-top:0px;border-right-width:1px;"/>
 									<div class="styLNAmountBoxNBB" style="width:28mm;height:2mm;float:right;padding-top:0px;background-color:lightgrey;"/>
 									<div class="styLNAmountBoxNBB" style="width:26.5mm;height:2mm;float:right;padding-top:0px;background-color:lightgrey;"/>
-									<div class="styLNAmountBoxNBB" style="width:23mm;height:2mm;float:right;padding-top:0px;background-color:lightgrey;"/>
-									<span style="font-size:6pt;">
-										<div class="styLNAmountBoxNBB" style="width:25mm;height:4mm;border-color:#000000;float:right;border-bottom:0px;border-right-width:1px;padding-right:2px;">
+									<div class="styLNAmountBoxNBB" style="width:22.9mm;height:2mm;float:right;padding-top:0px;background-color:lightgrey;"/>
+									<div class="styLNAmountBoxNBB" style="width:25mm;height:4mm;border-color:#000000;float:right;border-bottom:0px;border-right-width:1px;padding-right:2px;">
+										<span style="font-size:6pt;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form8854Data/TotalTaxDeferredAmt"/>
 											</xsl:call-template>
-										</div>
-									</span>
+										</span>
+									</div>
 									<div class="styLNAmountBoxNBB" style="width:28mm;height:4mm;border-color:#000000;float:right;background-color:lightgrey;border-bottom:0px;"/>
 									<div class="styLNAmountBoxNBB" style="width:26.5mm;height:4mm;border-color:#000000;float:right;padding-right:4px;background-color:lightgrey;border-bottom:0px;"/>
-									<div class="styLNAmountBoxNBB" style="width:23mm;height:4mm;border-color:#000000;float:right;padding-right:4px;background-color:lightgrey;border-bottom:0px;"/>
+									<div class="styLNAmountBoxNBB" style="width:22.9mm;height:4mm;border-color:#000000;float:right;padding-right:4px;background-color:lightgrey;border-bottom:0px;"/>
 								</div>
 							</div>
 						</div>
@@ -3226,7 +3228,7 @@
 										<span style="width:11px"/>.
 									</span>
 							</div>
-							<span style="padding-top:1px;">
+							<span style="padding-top:0px;width:41mm;">
 								<div class="styLNRightNumBox" style="height:2mm;border-bottom-width:0px;"/>
 								<div class="styLNAmountBox" style="height:2mm;width:33mm;border-bottom-width:0px;"/>
 								<div class="styLNRightNumBox" style="height:4mm;">12</div>
@@ -3266,7 +3268,7 @@
 										<span style="width:11px"/>.
 									</span>
 							</div>
-							<span style="padding-top:1px;">
+							<span style="padding-top:0px;width:41mm;">
 								<div class="styLNRightNumBox" style="background-color:lightgrey;height:2mm;border-bottom-width:0px;"/>
 								<div class="styLNAmountBox" style="height:2mm;width:33mm;border-bottom-width:0px;"/>
 								<div class="styLNRightNumBox" style="height:4mm;">13</div>
@@ -3401,7 +3403,7 @@
 					</div>
 					<!-- +++++++++++++++ Assets Headers +++++++++++++++-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS8854LineItem" style="height:4mm;">
+						<div class="styIRS8854LineItem">
 							<!-- Assets -->
 							<div class="styIRS8854LNDesc" style="width:40%;height:100%;float:left;text-align:center;">
 								<br/><span class="styBoldText" style="font-size:9pt;">Assets</span><br/><br/>
@@ -3472,7 +3474,7 @@
 						<!-- End (Line) 1-->
 						<!-- Begin (Line) 2 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
+						<div class="styIRS8854LineItem">
 							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">2</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
@@ -3509,7 +3511,7 @@
 						<!-- End (Line) 2-->
 						<!-- Begin (Line) 3 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
+						<div class="styIRS8854LineItem">
 							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">3</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
@@ -3545,7 +3547,7 @@
 						<!-- End (Line) 3-->
 						<!-- Begin (Line) 4 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
+						<div class="styIRS8854LineItem">
 							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">4</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
@@ -3581,7 +3583,7 @@
 						<!-- End (Line) 4-->
 						<!-- Begin (Line) 5 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
+						<div class="styIRS8854LineItem">
 							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">5</div>
 								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
@@ -3611,10 +3613,10 @@
 						<!-- End (Line) 5-->
 						<!-- Begin (Line) 5a -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;">a</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" >a</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Separately state stock issued by foreign<br/>
 									companies that would be controlled foreign<br/>
 									corporations if you were still a U.S. citizen or<br/>
@@ -3682,10 +3684,10 @@
 						<!-- End (Line) 5b-->
 						<!-- Begin (Line) 6 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">6</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">6</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Pensions from services performed in the<br/>
 									United States
 									<!--Dotted Line-->
@@ -3720,10 +3722,10 @@
 						<!-- End (Line) 6-->
 						<!-- Begin (Line) 7 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">7</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">7</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Pensions from services performed outside<br/>
 									the United States
 									<!--Dotted Line-->
@@ -3757,10 +3759,10 @@
 						<!-- End (Line) 7-->
 						<!-- Begin (Line) 8 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">8</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">8</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Partnership interests (see instructions)
 									<!--Dotted Line-->
 									<span class="styBoldText">.
@@ -3779,10 +3781,10 @@
 						<!-- End (Line) 8-->
 						<!-- Begin (Line) 9 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">9</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem" style="padding-bottom:0px;">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">9</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;padding-bottom:0px;">
 									Assets held by trusts you own under<br/>
 									sections 671 through 679 (see instructions)
 								</div>
@@ -3805,10 +3807,10 @@
 						<!-- End (Line) 9-->
 						<!-- Begin (Line) 10 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">10</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">10</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Beneficial interests in nongrantor trusts (see<br/>
 									instructions)
 									<!--Dotted Line-->
@@ -3844,10 +3846,10 @@
 						<!-- End (Line) 10-->
 						<!-- Begin (Line) 11 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">11</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">11</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Intangibles used in the United States
 									<!--Dotted Line-->
 									<span class="styBoldText">
@@ -3965,10 +3967,10 @@
 						<!-- End (Line) 15-->
 						<!-- Begin (Line) 16 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">16</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">16</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Real property located outside the United States
 									<!--Dotted Line-->
 									<span class="styBoldText">
@@ -4004,10 +4006,10 @@
 						<!-- End (Line) 16-->
 						<!-- Begin (Line) 17 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">17</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">17</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Business property located in the United States
 									<!--Dotted Line-->
 									<span class="styBoldText">
@@ -4043,10 +4045,10 @@
 						<!-- End (Line) 17-->
 						<!-- Begin (Line) 18 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">18</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">18</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Business property located outside the United States
 									<!--Dotted Line-->
 									<span class="styBoldText">
@@ -4107,10 +4109,10 @@
 						<!-- End (Line) 19-->
 						<!-- Begin (Line) 20 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">20</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="padding-left:0px;">20</div>
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									Total assets. Add lines 1 through 5 and lines 6 through 19. Do not include amounts on line 5a in this total
 									<!--Dotted Line-->
 									<span class="styBoldText">
@@ -4150,7 +4152,7 @@
 					<div class="styNBB" style="width:187mm;">
 						<div class="styIRS8854LineItem" style="height:4mm;">
 							<!-- Assets -->
-							<div class="styIRS8854LNDesc" style="width:40%;height:100%;float:left;text-align:center;border-bottom-width:1px;border-color:black;">
+							<div class="styIRS8854LNDesc" style="width:40%;height:100%;float:left;text-align:center;border-bottom-width:1px;border-color:black;padding-top:0px;">
 								<span class="styBoldText" style="font-size:9pt;">Liabilities</span>
 							</div>
 							<!-- Part D -->
@@ -4160,7 +4162,7 @@
 							<!-- Part B -->
 							<div class="styIRS8854LNDesc" style="width:106px;height:100%;border-left-width:1px;float:right;text-align:center;background-color:lightgrey;"/>
 							<!-- Part A -->
-							<div class="styIRS8854LNDesc" style="width:106px;height:100%;border-left-width:1px;float:right;padding-left:20px;text-align:center;border-bottom-width:1px;">
+							<div class="styIRS8854LNDesc" style="width:106px;height:100%;border-left-width:1px;float:right;padding-left:20px;text-align:center;border-bottom-width:1px;padding-top:0px;">
 								<span class="stySmallText" style="text-align:center;">
 									<span class="styBoldText" style="font-size:9pt;">Amount</span>
 								</span>
@@ -4279,10 +4281,10 @@
 					<div class="styTBB" style="width:187mm;">
 						<!-- Begin (Line) 25 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:40%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:40%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">25</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:60mm;padding-left:0px;">
+								<div class="styIRS8854LNDesc" style="width:60mm;padding-left:0px;">
 									<b>Net worth.</b> Subtract line 24 from line 20, column (a)
 									<!--Dotted Line-->
 									<span class="styBoldText">
@@ -4724,11 +4726,11 @@
 						<!-- End (Line) 4-->
 						<!-- Begin (Line) 4a -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:100%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:100%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-right:7px;text-align:right;">a</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:108mm;padding:0px 0px 0px 0px;">
-									<div class="styIRS8854LNDesc" style="height:4mm;width:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS8854LNDesc" style="width:108mm;padding:0px 0px 0px 0px;">
+									<div class="styIRS8854LNDesc" style="width:auto;padding:0px 0px 0px 0px;">
 										Property (other than stock or debt obligations) located in the United
 										<br/>States
 										<!--Dotted Line-->
@@ -4821,11 +4823,11 @@
 						<!-- End (Line) 4b-->
 						<!-- Begin (Line) 4c -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:100%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+						<div class="styIRS8854LineItem">
+							<div class="styIRS8854LNDesc" style="width:100%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-right:7px;text-align:right;">c</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:108mm;padding:0px 0px 0px 0px;">
-									<div class="styIRS8854LNDesc" style="height:4mm;width:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS8854LNDesc" style="width:108mm;padding:0px 0px 0px 0px;">
+									<div class="styIRS8854LNDesc" style="width:auto;padding:0px 0px 0px 0px;">
 										Debt obligations of U.S. persons or of the United States, a state or<br/>
 										political subdivision thereof, or the District of Columbia
 										<!--Dotted Line-->
@@ -4869,7 +4871,7 @@
 						<div class="styIRS8854LineItem" style="height:4mm;">
 							<div class="styIRS8854LNDesc" style="width:100%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
 								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-right:7px;text-align:right;">d</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:142mm;padding:0px 0px 0px 0px;">
+								<div class="styIRS8854LNDesc" style="height:4mm;width:142mm;padding:2px 0px 0px 0px;">
 									<div class="styIRS8854LNDesc" style="height:4mm;width:auto;padding:0px 0px 0px 0px;">
 										<b>Total.</b> Add lines a through c
 									</div>
@@ -4912,11 +4914,11 @@
 						<!-- End (Line) 4d-->
 						<!-- Begin (Line) 5 -->
 						<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-						<div class="styIRS8854LineItem" style="height:4mm;">
-							<div class="styIRS8854LNDesc" style="width:100%;height:4mm;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
-								<div class="styIRS8854LNLeftNumBox" style="height:4mm;padding-left:0px;">5</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:142mm;padding:0px 0px 0px 0px;">
-									<div class="styIRS8854LNDesc" style="height:4mm;width:auto;padding:0px 0px 0px 0px;">
+						<div class="styIRS8854LineItem" style="height:auto;">
+							<div class="styIRS8854LNDesc" style="width:100%;border-right-width:0px;float:left;padding-top:0px;padding-bottom:0px;">
+								<div class="styIRS8854LNLeftNumBox" style="height:auto;padding-left:0px;">5</div>
+								<div class="styIRS8854LNDesc" style="width:142mm;padding:0px 0px 0px 0px;">
+									<div class="styIRS8854LNDesc" style="width:auto;padding:2px 0px 0px 0px;">
 										Income or gain derived from certain foreign corporations to the extent of your share of earnings<br/>
 										and profits earned or accumulated before the date of expatriation (see instructions)
 										<!--Dotted Line-->
@@ -4930,7 +4932,7 @@
 										</span>
 									</div>
 								</div>
-								<div class="styIRS8854LNDesc" style="height:4mm;width:34mm;padding:0px 0px 0px 0px;float:right;">
+								<div class="styIRS8854LNDesc" style="height:auto;width:34mm;padding:0px 0px 0px 0px;float:right;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">3.5mm</xsl:with-param>
 										<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
@@ -5199,7 +5201,7 @@
 										<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationDateSigned</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:6mm;width:18mm;border-right:1 solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
+								<div class="styLNDesc" style="height:auto;width:18mm;border-right:1 solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>

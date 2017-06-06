@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*" />  
 	<xsl:param name="FormData" select="$RtnDoc/IRS8958" />  
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -31,7 +33,7 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<xsl:if test="not($Print) or $Print=''">
+				    <xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS8958Style"/>
 						<xsl:call-template name="AddOnStyle"/>
 					</xsl:if>
@@ -73,7 +75,7 @@
 					</div>
 					<!-- Primary Taxpayer -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:75mm;height:10mm;">
+						<div class="styNameBox" style="width:84.8mm;height:8mm;">
 							Your first name and initial<br/>
 							<span style="font-size:7pt;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -81,10 +83,10 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styNameBox" style="width:74mm;height:10mm;padding-left:2px;">
+						<div class="styNameBox" style="width:64.6mm;height:8mm;padding-left:2px;">
 							Your last name
 						</div>
-						<div class="styEINBox" style="width:37.8mm;height:10mm;padding-left:2px;">
+						<div class="styEINBox" style="width:35.4mm;height:8mm;padding-left:2px;">
 							Your social security number<br/><br/>
 							<span style="width:100%;text-align:center;font-size:7pt;font-weight:normal;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -95,7 +97,7 @@
 					</div>
 					<!-- Spouse -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:75mm;height:10mm;">
+						<div class="styNameBox" style="width:84.8mm;height:9mm;">
 							Spouse's or partner's first name and initial<br/>
 							<span style="font-size:7pt;">
 								<xsl:call-template name="PopulateText">
@@ -103,7 +105,7 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styNameBox" style="width:74mm;height:10mm;padding-left:2px;">
+						<div class="styNameBox" style="width:64.6mm;height:9mm;padding-left:2px;">
 							Spouse's or partner's last name<br/>
 							<span style="font-size:7pt;">
 								<xsl:call-template name="PopulateText">
@@ -111,7 +113,7 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styEINBox" style="width:37.8mm;height:10mm;padding-left:2px;">
+						<div class="styEINBox" style="width:37.4mm;height:9mm;padding-left:2px;">
 							Spouse's or partner's social security number<br/>
 							<span style="width:100%;text-align:center;font-size:7pt;font-weight:normal;">
 								<xsl:call-template name="PopulateSSN">
@@ -125,21 +127,25 @@
 						<table class="sty8958Table">
 							<tbody>
 								<tr valign="top">
-									<td class="sty8958LCell" style="height:20.5mm;width:74mm;">&nbsp;</td>
-									<td class="sty8958RCell" style="height:20.5mm;width:36.2mm;text-align:center;">
-										1<br/>Total Income<br/>(Community/Separate)
+									<td class="sty8958LCell" style="height:20mm;width:84.8mm;">&nbsp;</td>
+									<td class="sty8958RCell" style="height:20mm;width:32.5mm;text-align:center;">
+									1<br/>Total Income<br/>(Community/Separate)
 									</td>
-									<td class="sty8958RCell" style="height:20.5mm;width:36.2mm;text-align:center;">
+									<td class="sty8958RCell" style="height:20mm;width:32.2mm;text-align:center;">
 										2<br/>Allocated to<br/>Spouse, RDP, or<br/>California Same-Sex<br/>Spouse<br/>SSN 
+										<span style="width:18mm;border-bottom:solid black 1px;">
 										<xsl:call-template name="PopulateReturnHeaderFiler">
 											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 										</xsl:call-template>
+										</span>
 									</td>
-									<td class="sty8958RCell" style="height:20.5mm;border-right-width:0px;width:auto;text-align:center;">
+									<td class="sty8958RCell" style="height:20mm;border-right-width:0px;width:33.5mm;text-align:center;">
 										3<br/>Allocated to<br/>Spouse, RDP, or<br/>California Same-Sex<br/>Spouse<br/>SSN 
+										<span style="width:18mm;border-bottom:solid black 1px">
 										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode" select="$FormData/SpouseOrPartnerSSN"/>
 										</xsl:call-template>
+										</span>
 									</td>
 								</tr>
 							</tbody>
@@ -150,7 +156,7 @@
 						<xsl:with-param name="target" select="$FormData/WagesAllocnGrp"/>
 						<xsl:with-param name="number" select="1"/>
 						<xsl:with-param name="description">Wages (each employer)</xsl:with-param>
-						<xsl:with-param name="lines" select="5"/>
+						<xsl:with-param name="lines" select="3"/>
 					</xsl:call-template>
 					<!-- Line 2 table -->
 					<xsl:call-template name="LineTableGroup">
@@ -178,7 +184,7 @@
 						<xsl:with-param name="target" select="$FormData/SelfEmploymentIncomeAllocnGrp"/>
 						<xsl:with-param name="number" select="5"/>
 						<xsl:with-param name="description">Self-Employment Income (See instructions)</xsl:with-param>
-						<xsl:with-param name="lines" select="3"/>
+						<xsl:with-param name="lines" select="2"/>
 					</xsl:call-template>
 					<!-- Line 6 table -->
 					<xsl:call-template name="LineTableGroup">
@@ -199,15 +205,15 @@
 						<xsl:with-param name="target" select="$FormData/RentalRealEstateAllocnGrp"/>
 						<xsl:with-param name="number" select="8"/>
 						<xsl:with-param name="description">Rents, Royalties, Partnerships, Estates, Trusts</xsl:with-param>
-						<xsl:with-param name="lines" select="3"/>
+						<xsl:with-param name="lines" select="2"/>
 					</xsl:call-template>
 					<!-- Footer Page 1 -->
 					<div class="pageEnd" style="width:187mm;float:none;clear:both;">
 						<span style="float:left;clear:none;font-weight:bold;">For Paperwork Reduction Act Notice, see your tax return instructions.</span>
 						<span style="float:left;clear:none;margin-left:20mm;">Cat. No. 37779G</span>
-						<span style="float:right;clear:none;">Form <span style="font-weight:bold;font-size:9pt;">8958</span> (12-2012)</span>
+						<span style="float:right;clear:none;">Form <span style="font-weight:bold;">8958</span> (12-2012)</span>
 					</div>
-					<div class="styTBB" style="width:187mm;">
+					<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
 						<span style="float:left;clear:none;">Form 8958 (12-2012)</span>
 						<span style="float:right;clear:none;">Page <span style="font-weight:bold;font-size:9pt;">2</span></span>
 					</div>
@@ -216,21 +222,25 @@
 						<table class="sty8958Table">
 							<tbody>
 								<tr valign="top">
-									<td class="sty8958LCell" style="height:20.5mm;width:74mm;">&nbsp;</td>
-									<td class="sty8958RCell" style="height:20.5mm;width:36.2mm;text-align:center;">
+									<td class="sty8958LCell" style="height:20mm;width:84.8mm;">&nbsp;</td>
+									<td class="sty8958RCell" style="height:20mm;width:32.5mm;text-align:center;">
 										1<br/>Total Income<br/>(Community/Separate)
 									</td>
-									<td class="sty8958RCell" style="height:20.5mm;width:36.2mm;text-align:center;">
+									<td class="sty8958RCell" style="height:20mm;width:32.2mm;text-align:center;">
 										2<br/>Allocated to<br/>Spouse, RDP, or<br/>California Same-Sex<br/>Spouse<br/>SSN 
+										<span style="width:18mm;border-bottom:solid black 1px">
 										<xsl:call-template name="PopulateReturnHeaderFiler">
 											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 										</xsl:call-template>
+										</span>
 									</td>
-									<td class="sty8958RCell" style="height:20.5mm;border-right-width:0px;width:auto;text-align:center;">
+									<td class="sty8958RCell" style="height:20mm;border-right-width:0px;width:33.5mm;text-align:center;">
 										3<br/>Allocated to<br/>Spouse, RDP, or<br/>California Same-Sex<br/>Spouse<br/>SSN 
+										<span style="width:18mm;border-bottom:solid black 1px">
 										<xsl:call-template name="PopulateSSN">
 											<xsl:with-param name="TargetNode" select="$FormData/SpouseOrPartnerSSN"/>
 										</xsl:call-template>
+										</span>
 									</td>
 								</tr>
 							</tbody>
@@ -255,7 +265,7 @@
 						<xsl:with-param name="target" select="$FormData/WithholdingTaxAllocnGrp"/>
 						<xsl:with-param name="number" select="11"/>
 						<xsl:with-param name="description">Taxes Withheld</xsl:with-param>
-						<xsl:with-param name="lines" select="4"/>
+						<xsl:with-param name="lines" select="3"/>
 					</xsl:call-template>
 					<!-- Line 12 table -->
 					<xsl:call-template name="LineTableGroup">
@@ -394,7 +404,7 @@
 		<xsl:param name="target"/>
 		<xsl:variable name="conID">Line<xsl:value-of select="$number"/>Table</xsl:variable>
 		<xsl:variable name="tcount" select="count($target)"/>
-		<div class="sty8958TableContainer">
+		<div class="sty8958TableContainer" style="width:187mm;clear:all;height:auto;" >
 			<xsl:attribute name="id"><xsl:value-of select="$conID"/></xsl:attribute>
 			<xsl:call-template name="SetInitialState"/>
 			<table class="sty8958Table">
@@ -402,24 +412,24 @@
 					<xsl:choose>
 						<xsl:when test="(($Print = $Separated) and $tcount &gt; $lines) or ($tcount = 0)">
 							<tr>
-								<td class="sty8958LCell" style="width:74mm;">
+								<td class="sty8958LCell" style="width:85mm;height:10mm;">
 									<div style="width:6mm;font-weight:bold;padding-left:1mm;float:left;"><xsl:value-of select="$number"/></div><div style="float:left;"><xsl:value-of select="$description"/></div>
 									<br/>
-									<span style="width:73mm;padding-left:6mm;">
+									<span style="width:75mm;padding-left:6mm;">
 										<xsl:call-template name="PopulateAdditionalDataTableMessage">
 											<xsl:with-param name="TargetNode" select="$target"/>
 										</xsl:call-template>
 									</span>
 								</td>
-								<td class="sty8958RCell" style="width:36.2mm;">
+								<td class="sty8958RCell" style="width:32mm;height:10mm;">
 									<br/>
 									&nbsp;
 								</td>
-								<td class="sty8958RCell" style="width:36.2mm;">
+								<td class="sty8958RCell" style="width:32.5mm;height:10mm;">
 									<br/>
 									&nbsp;
 								</td>
-								<td class="sty8958RCell" style="border-right-width:0px;width:auto;">
+								<td class="sty8958RCell" style="border-right-width:0px;width:32.2mm;height:10mm;">
 									<br/>
 									&nbsp;
 								</td>
@@ -433,30 +443,31 @@
 						<xsl:otherwise>
 							<xsl:for-each select="$target">
 								<tr>
-									<td class="sty8958LCell" style="width:74mm;">
-										<xsl:if test="position() = 1">
-											<div style="width:6mm;font-weight:bold;padding-left:1mm;float:left;"><xsl:value-of select="$number"/></div><div style="float:left;"><xsl:value-of select="$description"/></div>
-										</xsl:if>
-										<br/>
-										<span style="padding-left:6mm;width:73mm;">
-											<xsl:call-template name="PopulateText">
+									<td class="sty8958LCell" style="width:85mm;height:10mm;">
+										<xsl:if test="position() = 1">																			
+											<div style="width:6mm;font-weight:bold;padding-left:1mm;float:left;"><xsl:value-of select="$number"/></div><div style="float:left;width:77mm;">
+											<xsl:value-of select="$description"/></div>											
+										</xsl:if>										
+										<span style="padding-left:6mm;width:78mm;">
+
+											<xsl:call-template name="PopulateText">											   
 												<xsl:with-param name="TargetNode" select="Desc"/>
 											</xsl:call-template>
 										</span>
 									</td>
-									<td class="sty8958RCell" style="width:36.2mm;" valign="bottom">
+									<td class="sty8958RCell" style="width:32.2mm;height:10mm;" valign="bottom">
 										<br/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="TotalAllocationAmt"/>
 										</xsl:call-template>
 									</td>
-									<td class="sty8958RCell" style="width:36.2mm;" valign="bottom">
+									<td class="sty8958RCell" style="width:32.2mm;height:10mm;" valign="bottom">
 										<br/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="PrimaryTaxpayerAllocationAmt"/>
 										</xsl:call-template>
 									</td>
-									<td class="sty8958RCell" style="border-right-width:0px;width:auto;" valign="bottom">
+									<td class="sty8958RCell" style="border-right-width:0px;width:32.2mm;height:10mm;" valign="bottom">
 										<xsl:if test="position() = 1">
 											<xsl:call-template name="SetDynamicTableToggleButton">
 												<xsl:with-param name="TargetNode" select="$target"/>
@@ -554,19 +565,19 @@
 			</xsl:call-template>
 		</xsl:if>
 		<tr>
-			<td class="sty8958LCell" style="width:74mm;">
+			<td class="sty8958LCell" style="width:84.8mm;">
 				<br/>
 				&nbsp;
 			</td>
-			<td class="sty8958RCell" style="width:36.2mm;">
+			<td class="sty8958RCell" style="width:32.2mm;">
 				<br/>
 				&nbsp;
 			</td>
-			<td class="sty8958RCell" style="width:36.2mm;">
+			<td class="sty8958RCell" style="width:32.4mm;">
 				<br/>
 				&nbsp;
 			</td>
-			<td class="sty8958RCell" style="border-right-width:0px;width:auto;">
+			<td class="sty8958RCell" style="border-right-width:0px;width:32mm;">
 				<br/>
 				&nbsp;
 			</td>

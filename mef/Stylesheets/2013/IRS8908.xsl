@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by James Ganzy on 10/10/2012 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!-- Last Modified by James Ganzy on 04/07/2015 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="CommonPathRef.xsl"/>
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -14,8 +14,10 @@
 
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form8908)"/></xsl:call-template></title>
   <!-- No Browser Caching -->
   <meta http-equiv="Pragma" content="no-cache"/>
@@ -43,8 +45,8 @@
       <xsl:call-template name="DocumentHeader"/>
 
     <!--Title of Form -->    
-  <div class="styBB" style="width:187mm;height: 20mm;">
-    <div class="styFNBox" style="width:31mm;font-size: 7pt;height: 22mm;">
+  <div class="styBB" style="height: 19mm;width:187mm;">
+    <div class="styFNBox" style="height: 19mm;width:26mm;font-size: 7pt;">
       Form <span class="styFormNumber">8908</span>      
       <br/>
       <span>
@@ -52,23 +54,24 @@
           <xsl:with-param name="TargetNode" select="$Form8908"/>
         </xsl:call-template>  
       </span>  
-      <br/>
-      <br/>
+       <br/>
       <span class="styAgency">Department of the Treasury</span><br/><span class="styAgency">Internal Revenue Service</span>
     </div>
-    <div class="styFTBox" style="height: 22mm;width:125mm;padding-top:4mm;">
+    <div class="styFTBox" style="height: 19mm;width:130mm;padding-top:4mm;">
       <div class="styMainTitle" style="height: 8mm">Energy Efficient Home Credit</div>
-      <div class="styFST" style="font-size:7pt;margin-left:3mm;font-weight:bold">
+      <div class="styFST" style="width:130mm;font-size:7pt;">
         <img src="{$ImagePath}/8908_Bullet_Md.gif" alt="MediumBullet"/>  
         Attach to your tax return. <br/>
-        <img src="{$ImagePath}/8908_Bullet_Md.gif" alt="MediumBullet"/> Information about Form 8908 and its instructions is at 
-        <a href="http://www.irs.gov/form8909" title="Link to IRS.gov"><i>www.irs.gov/form8908.</i></a>
+        <span style="text-align:left">
+			<img src="{$ImagePath}/8908_Bullet_Md.gif" alt="MediumBullet"/> Information about Form 8908 and its separate instructions is at 
+			<a href="http://www.irs.gov/form8909" title="Link to IRS.gov"><i>www.irs.gov/form8908.</i></a>
+		 </span>
         <br/>
       </div>
     </div>
-    <div class="styTYBox" style="width:30mm;height:22mm; border-left-width: 1px;">
-      <div class="styOMB" style="height:2mm;">OMB No. 1545-1979</div>
-      <div class="styTaxYear" style="height:10mm">20<span class="styTYColor">13</span></div>
+    <div class="styTYBox" style="width:30mm;height:19mm; border-left-width: 1px;">
+      <div class="styOMB">OMB No. 1545-1979</div>
+      <div class="styTaxYear" style="height:8mm">20<span class="styTYColor">13</span></div>
       <div class="stySequence">Attachment<br/>Sequence No. <b>153</b></div>
     </div>
   </div>
@@ -111,8 +114,8 @@
         <div class="styLNAmountBox" style="height:13mm;padding-top:9.5mm;">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8908/TotalHomesMeetingStandardQty"/></xsl:call-template>
         </div>
-        <div class="styLNRightNumBox" style="background-color:lightgrey;height:13.8mm;border-bottom-width:0px"/>
-        <div class="styLNAmountBoxNBB" style="height:13.8mm;"/>
+        <div class="styLNRightNumBox" style="background-color:lightgrey;height:13mm;border-bottom-width:0px"/>
+        <div class="styLNAmountBoxNBB" style="height:13mm;"/>
     </div>
     <div style="width:187mm;">
         <div class="styLNLeftNumBox" style="height:4.5mm;"><span style="width:6px"/>b</div>
@@ -172,27 +175,26 @@
         </div>
     </div>
     
-    <div style="width:187mm;border-bottom:solid black 1;">
-        <div class="styLNLeftNumBox" style="height:4.5mm;">4</div>
-        <div class="styLNDesc" style="width:132mm;height:5mm;">Add lines 1b, 2b, and 3. Partnerships and S corporations, report this amount on Schedule K. All<br/>
-			<span style="float:left;clear:none;">others, report this amount on Form 3800, line 1p</span>
+    <div class="styBB" style="width:187mm;">
+        <div class="styLNLeftNumBox" style="height:7mm;">4</div>
+        <div class="styLNDesc" style="width:132mm;height:7mm;">Add lines 1b, 2b, and 3. Partnerships and S corporations, report this amount on Schedule K. All<br/>
+			<span style="float:left;clear:none;">others, report this amount on Form 3800, Part lll, line 1p</span>
         <!--Dotted Line-->
-        <span class="styDotLn" style="float:right;clear:none;padding-right:2mm;">.................</span>
+        <span class="styDotLn" style="float:right;clear:none;padding-right:2mm;">..............</span>
         </div>
-        <div class="styLNRightNumBox" style="height:6.5mm;padding-top:4mm;border-bottom-width:0px">4</div>
-        <div class="styLNAmountBox" style="width:39mm;height:6.5mm;padding-top:4mm;border-bottom-width:0px">
+        <div class="styLNRightNumBox" style="height:7mm;padding-top:4mm;border-bottom-width:0px">4</div>
+        <div class="styLNAmountBox" style="width:39mm;height:7mm;padding-top:4mm;border-bottom-width:0px">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8908/TotalCreditAmt"/></xsl:call-template>
         </div>
     </div>
     
     <div style="width:187mm"> 
-        <span class="styBoldText" style="width:100mm">For Paperwork Reduction Act Notice, see instructions.</span>
+        <span class="styBoldText" style="width:100mm">For Paperwork Reduction Act Notice, see separate instructions.</span>
           Cat. No. 37718T
-        <span style="width:62.5mm;text-align:right;">Form 
+        <span style="width:64.5mm;text-align:right;">Form 
 			<span style="font-size:8pt"><b>8908</b></span> (2013)
         </span>
-    </div><br/>
-
+    </div>
     <div class="pageEnd"/>
       
     <div class="styLeftOverTitleLine" id="LeftoverData">

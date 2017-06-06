@@ -12,8 +12,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS8873"/>
   <xsl:template match="/">
-	<html>
+	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 	  <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 			<title>
 				<xsl:call-template name="FormTitle">
 					<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -129,17 +131,16 @@
 				<div style="float:left">
 					<div class="styLNLeftNumBox" style="padding-left: 3mm">1</div>
 					<div class="styLNDesc" style="width: 170mm">
-            Check the box if you are electing under section 942(a)(3) to exclude a portion of your gross receipts from foreign trading 
+						<label>
+							<xsl:call-template name="PopulateLabel">
+								<xsl:with-param name="TargetNode" select="$FormData/UnderSection942a3BoxInd"/>
+								<xsl:with-param name="BackupName">IRS8873UnderSection942a3Box</xsl:with-param>
+							</xsl:call-template>
+						Check the box if you are electing under section 942(a)(3) to exclude a portion of your gross receipts from foreign trading  gross receipts </label>
             <br/>
-						<span>
+						<span style="width:170mm;">
 							<span style="float:left;">
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/CategoryOfFiler1"/>
-										<xsl:with-param name="BackupName">IRS8873CategoryOfFiler1</xsl:with-param>
-									</xsl:call-template>
-                  gross receipts on line 15. Attach a schedule indicating which receipts are being excluded
-                </label>
+								on line 15. Attach a schedule indicating which receipts are being excluded 
 								<span>
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$FormData/UnderSection942a3BoxInd"/>
@@ -147,7 +148,7 @@
 								</span>
 							</span>
 							<span class="styBoldText" style="float:right;padding-right:2mm;">
-								<span class="styDotLn">...........</span>
+								<span class="styDotLn">................</span>
 								<img src="{$ImagePath}/8873_Bullet_Lg.gif" alt="MediumBullet"/>
 							</span>
 						</span>
@@ -161,12 +162,6 @@
 							<xsl:with-param name="BackupName">IRS8873UnderSection942a3Box</xsl:with-param>
 						</xsl:call-template>
 					</input>
-					<label>
-						<xsl:call-template name="PopulateLabel">
-							<xsl:with-param name="TargetNode" select="$FormData/UnderSection942a3BoxInd"/>
-							<xsl:with-param name="BackupName">IRS8873UnderSection942a3Box</xsl:with-param>
-						</xsl:call-template>
-					</label>
 			  </div>
 			</div>
 			<!--  End Line 1  -->
@@ -176,16 +171,16 @@
 					<span class="styLNLeftNumBox" style="padding-left: 3mm">2</span>
 					<div class="styLNDesc" style="width: 170mm">
             Check the box if you are electing to apply the extraterritorial income 
-            exclusion provisions to certain transactions involving
+            exclusion provisions to certain transactions involving a FSC
             <br/>
-            <span>
+            <span style="width: 170mm">
 							<span style="float:left;">
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$FormData/TransInLieuOfFSCPrvsnBoxInd"/>
 										<xsl:with-param name="BackupName">IRS8873TransInLieuOfFSCPrvsnBox</xsl:with-param>
 									</xsl:call-template>                
-                  a FSC (see instructions). Attach a schedule listing the affected transactions
+                   (see instructions). Attach a schedule listing the affected transactions
                 </label>
 								<span>
 									<xsl:call-template name="SetFormLinkInline">
@@ -194,7 +189,7 @@
 								</span>
 							</span>
 							<span class="styBoldText" style="float:right;padding-right:2mm;">
-								<span class="styDotLn">...............</span>
+								<span class="styDotLn">...................</span>
 								<img src="{$ImagePath}/8873_Bullet_Lg.gif" alt="MediumBullet"/>
 							</span>
 						</span>
@@ -222,7 +217,7 @@
 				<div style="float:left">
 				  <span class="styLNLeftNumBox" style="padding-left: 3mm">3</span>
 				  <div class="styLNDesc" style="width: 170mm">
-					<span>
+					<span style="width: 170mm">
 					  <span style="float:left;">
 						<label>
 						  <xsl:call-template name="PopulateLabel">
@@ -238,7 +233,7 @@
 						</span>
 					  </span>
 					  <span class="styBoldText" style="float:right;padding-right:2mm;">
-						<span class="styDotLn"/>
+						<span class="styDotLn">...</span>
 						  <img src="{$ImagePath}/8873_Bullet_Lg.gif" alt="MediumBullet"/>
 						</span>
 					  </span>
@@ -257,11 +252,11 @@
 				<!--  Line 3  -->
 				<!--  Line 4a -->
 				<div style="width: 187mm">
-				  <div style="float:left">
+				  <div style="float:left;height:7mm;">
 					<span class="styLNLeftNumBox" style="padding-left: 3mm">4a</span>
-					<div class="styLNDesc" style="width: 152mm">
+					<div class="styLNDesc" style="width: 150mm">
                       Are you excepted from the foreign economic process requirements because your foreign trading gross receipts are
-                      <span>
+                      <span style="width: 150mm">
 						<span style="float:left;">
                           $5 million or less?
                         </span>
@@ -272,8 +267,8 @@
 						</span>
 					  </div>
 					</div>
-					<div style="padding-top: 4mm;width:15mm;height:4.5mm;" class="styLNDesc">
-					  <span style="width: 2px;"/>
+					<div style="padding-top: 4mm;width:12mm;height:4.5mm;" class="styLNDesc">
+					  <span style="width: 1px;"/>
 					  <span>
 						<xsl:call-template name="PopulateSpan">
 						  <xsl:with-param name="TargetNode" select="$FormData/FrgnEconProcessExcReqrmntsInd"/>
@@ -295,7 +290,7 @@
                       </label>
 					  <span style="width: 2px"/>
 					</div>
-					<div style="padding-top: 4mm;width:9mm;height:4.5mm;float:right;" class="styLNDesc">
+					<div style="padding-top: 4mm;width:12mm;height:4.5mm;float:right;" class="styLNDesc">
 					  <span>
 						<xsl:call-template name="PopulateSpan">
 						  <xsl:with-param name="TargetNode" select="$FormData/FrgnEconProcessExcReqrmntsInd"/>
@@ -365,8 +360,8 @@
 					<div style="width: 187mm">
 					  <div class="styLNLeftNumBox" style="padding-left: 3mm">5</div>
 					  <div class="sty8873LongLNDesc" style="float: left; clear:none; padding-top: .5mm">
-					    See instructions before completing lines 5a through 5c. <span class="styBoldText"> Note:</span>
-						<span class="styItalicText"> 
+					    See instructions before completing lines 5a through 5c. <span class="styBoldText" style="display:inline;"> Note:</span>
+						<span class="styItalicText" style="display:inline;"> 
                           For transactions for which the exclusion is determined using<br/>the foreign sale and leasing income
                           method (i.e., line 44 equals line 45), complete only lines 5a and 5c(1).
                         </span>
@@ -419,8 +414,8 @@
 					  </div>
 					  <div style="width: 187mm">
 					  <div class="styLNLeftLtrBox"/>
-						  <div class="styIRS8873LongLNDesc" style="width:4mm;font-weight:bold;">(a)</div>
-							<span style="width: 2mm"/>
+						  <div class="styIRS8873LongLNDesc" style="width:12mm;font-weight:bold;padding-left:6mm;">(a)</div>
+							<span style="width: 2mm;display:inline;"/>
 							<input type="checkbox" class="styCkbox" name="AggregateOnForm8873BoxInd">
 							  <xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/AggregateOnForm8873BoxInd"/>
@@ -501,18 +496,18 @@
 					  <!--  Heading -->
 					  <div style="width: 187mm">
 					  <div class="styLNLeftLtrBox"/>
-					  <div class="styLNDesc" style="width:106.9mm;">
+					  <div class="styLNDesc" style="width:107mm;height:auto;">
 						  <span class="styBoldText">Caution:  </span>
-						  <span class="styItalicText">
+						  <span class="styItalicText" style="display:inline;">
                             If a related person is also eligible for an extraterritorial income <br/>exclusion, see 
                             <span class="styBoldText">Excluded property </span>
                             in the instructions.
                           </span>
 						</div>
-						<div class="styLNAmountBox" style="width: 39mm; text-align: center">
+						<div class="styLNAmountBox" style="width: 38.7mm; text-align: center;height:auto;">
 						  <span class="styBoldText">(a) Foreign Trade<br/>Income</span>
 						</div>
-						<div class="styLNAmountBox" style="width: 33mm; text-align: center">
+						<div class="styLNAmountBox" style="width: 33mm; text-align: center;height:auto;">
 						  <span class="styBoldText">(b) Foreign Sale and<br/>Leasing Income</span>
 						</div>
 					  </div>
@@ -521,15 +516,15 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftNumBox" style="padding-left: 3mm">6</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span style="float:left;">
+						 
                             Sale, exchange, or other disposition of qualifying foreign trade property
-                          </span>
-						  <span class="styBoldText" style="float:right;padding-right:2mm;">
-							<span class="styDotLn">...</span>
-						  </span>
+                          
+						  
+							<span class="styDotLn" style="float:right;">...</span>
+						 
 						</div>
 						<div class="styLNRightNumBox" style="height: 4.5mm; width: 6mm">6</div>
-						<div class="styLNAmountBox" style="width: 32.75mm">
+						<div class="styLNAmountBox" style="width: 32.75mm;height: 4.5mm;">
 						  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/FrgnTrdSaleOrExchIncmAmt"/>
 						  </xsl:call-template>
@@ -541,15 +536,21 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftNumBox" style="padding-left: 3mm">7</div>
 						<div class="styIRS8873ShortLNDesc">
-                          Enter the amount from line 6, column (a), attributable to the sale of property<br/>
-						  <span>
-						    <span style="float:left;">      
-                              formerly leased or rented for use by the lessee outside the United States
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">..</span>
-							</span>
-						  </span>
+						     <!--span style="float:left;display:inline;"-->
+								Enter the amount from line 6, column (a), attributable to the sale of property<br/> formerly leased or rented for use by the lessee outside the United States
+						
+						 
+							<span class="styDotLn" style="float:right;display:inline;">...</span>
+						
+                          
+						  <!--span-->
+						    <!--span style="float:left;"-->      
+                             
+                            <!--/span-->
+							<!--span class="styBoldText" >
+							  <span class="styDotLn"  style="float:right;display:inline;clear:none;">...</span>
+							</span-->
+						  <!--/span-->
 						</div>
 						<div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm; width: 6mm">7</div>
 						<div class="styShadingCell" style="height: 8mm; border-bottom-width: 1px; width: 32.75mm"/>
@@ -565,14 +566,13 @@
 						<div class="styLNLeftNumBox" style="padding-left: 3mm">8</div>
 						<div class="styIRS8873ShortLNDesc">
                           Lease or rental of qualifying foreign trade property for use by the lessee outside<br/>
-						  <span>
-							<span style="float:left">     
+						      
                               the United States. Enter the same amount in both columns
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">.......</span>
-							</span>
-						  </span>
+                           
+							
+							  <span class="styDotLn" style="float:right;display:inline;">.......</span>
+						
+						
 						</div>
 						<div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm; width: 6mm">8</div>
 						<div class="styLNAmountBox" style="height: 8mm; padding-top: 4mm; width: 32.75mm">
@@ -592,14 +592,11 @@
 						<div class="styLNLeftNumBox" style="padding-left: 3mm">9</div>
 						<div class="styIRS8873ShortLNDesc">
                           Services related and subsidiary to the sale, exchange, or other disposition of<br/>
-						  <span>
-							<span style="float:left;">
+						  
                               qualifying foreign trade property
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">................</span>
-							</span>
-						  </span>
+                           
+							  <span class="styDotLn" style="float:right;display:inline;">................</span>
+							
 						</div>
 						<div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm; width: 6mm">9</div>
 						<div class="styLNAmountBox" style="height: 8mm; padding-top: 4mm; width: 32.75mm">
@@ -615,14 +612,11 @@
 							<div class="styLNLeftNumBox">10</div>
 							<div class="styIRS8873ShortLNDesc">
                 Enter the amount from line 9, column (a), attributable to the sale of property<br/>
-						  <span>
-						    <span style="float:left;">
+						
                   formerly leased or rented for use by the lessee outside the United States
-                </span>
-								<span class="styBoldText" style="float:right;padding-right:2mm;">
-									<span class="styDotLn">..</span>
-								</span>
-						  </span>
+               
+									<span class="styDotLn" style="float:right;display:inline;">..</span>
+								
 						</div>
 						<div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm; width: 6mm">10</div>
 						<div class="styShadingCell" style="height: 8mm; border-bottom-width: 1px; width: 32.75mm"/>
@@ -639,14 +633,12 @@
 						<div class="styIRS8873ShortLNDesc">
                           Services related and subsidiary to the lease of qualifying foreign trade property<br/>
                           for use by the lessee outside the United States. Enter the same amount in both<br/>
-						  <span>
-							<span style="float:left;">
+						 
                               columns
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">.......................</span>
-							</span>
-						  </span>
+                          
+							
+							  <span class="styDotLn" style="float:right;display:inline;">.......................</span>
+							
 						</div>
 						<div class="styLNRightNumBox" style="height: 12mm; padding-top: 8mm; width: 6mm">11</div>
 						<div class="styLNAmountBox" style="height: 12mm; padding-top: 8mm; width: 32.75mm">
@@ -666,14 +658,12 @@
 						<div class="styLNLeftNumBox">12</div>
 						<div class="styIRS8873ShortLNDesc">
                           Engineering or architectural services for construction projects outside the
-                          <span>
-							<span style="float:left;">
+                   
                               United States
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">.....................</span>
-							</span>
-						  </span>
+                            
+				
+							  <span class="styDotLn" style="float:right;display:inline;">.......................</span>
+				
 						</div>
 						<div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm; width: 6mm">12</div>
 						<div class="styLNAmountBox" style="height: 8mm; padding-top: 4mm; width: 32.75mm">
@@ -688,17 +678,14 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftNumBox">13</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
+			
                               Managerial services provided to unrelated persons (see instructions)
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">....</span>
-							</span>
-						  </span>
+                            
+							  <span class="styDotLn" style="float:right;display:inline;">....</span>
+		
 						</div>
 						<div class="styLNRightNumBox" style="height: 4.5mm; width: 6mm">13</div>
-						<div class="styLNAmountBox" style="width: 32.75mm">
+						<div class="styLNAmountBox" style="width: 32.75mm;height: 4.5mm; ">
 						  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/ManagerialSrvcFrgnTrdIncmAmt"/>
 						  </xsl:call-template>
@@ -713,12 +700,12 @@
                           Enter the sum of the amounts from lines 6, 9, 12, and 13 of column (a)<br/>
                           attributable to foreign economic processes. <span class="styBoldText"> Do not </span>
                           include any amounts already<br/>
-						  <span>
-							<span style="float:left;">included on lines 7, 8, 10, or 11 in column (b)</span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">...........</span>
-							</span>
-						  </span>
+						
+							included on lines 7, 8, 10, or 11 in column (b)
+						
+							  <span class="styDotLn" style="float:right;display:inline;">...........</span>
+							
+					
 						</div>
 						<div class="styLNRightNumBox" style="height: 10.5mm; padding-top: 7mm; width: 6mm">14</div>
 						<div class="styShadingCell" style="height: 10.5mm; border-bottom-width: 1px; width: 32.75mm"/>
@@ -733,18 +720,17 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftNumBox">15</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
-							  <span class="styBoldText">Foreign trading gross receipts. </span>
+			
+							  <b>Foreign trading gross receipts. </b>
 							    Add lines 6 through 13 in column (a)
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">....</span>
-							</span>
-						  </span>
+                      
+							
+							  <span class="styDotLn" style="float:right;display:inline;">....</span>
+						
+				
 						</div>
 						<div class="styLNRightNumBox" style="height: 4.5mm; width: 6mm">15</div>
-						<div class="styLNAmountBox" style="width: 32.75mm">
+						<div class="styLNAmountBox" style="width: 32.75mm;height: 4.5mm;">
 						  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/ForeignTradingGrossRcpts1Amt"/>
 						  </xsl:call-template>
@@ -756,18 +742,15 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftNumBox">16</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
+		
                               Add lines 7 through 14 in column (b)
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">..............</span>
-							</span>
-						  </span>
+                           
+							  <span class="styDotLn" style="float:right;display:inline;">..............</span>
+			
 						</div>
 						<div class="styLNRightNumBox" style="height: 4.5mm; width: 6mm">16</div>
 						<div class="styShadingCell" style="height: 4.5mm; border-bottom-width: 1px; width: 32.75mm"/>
-						<div class="styLNAmountBox" style="width: 33.25mm">
+						<div class="styLNAmountBox" style="width: 33.25mm;height: 4.5mm;">
 						  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/SumOfForeignSaleLsngIncmAmt"/>
 						  </xsl:call-template>
@@ -789,14 +772,11 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">a</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
+		
                               Inventory at beginning of year
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">................</span>
-							</span>
-						  </span>
+                           
+							  <span class="styDotLn" style="float:right;display:inline;">................</span>
+			
 						</div>
 						<div class="styLNRightNumBox" style="width: 6mm">17a</div>
 						<div class="styLNAmountBox" style="width: 32.75mm">
@@ -815,14 +795,11 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">b</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
+	
                               Purchases
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">......................</span>
-							</span>
-						  </span>
+                          
+							  <span class="styDotLn" style="float:right;display:inline;">......................</span>
+				
 						</div>
 						<div class="styLNRightNumBox" style="width: 6mm">17b</div>
 						<div class="styLNAmountBox" style="width: 32.75mm">
@@ -841,14 +818,11 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">c</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">        
+    
                               Cost of labor
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">......................</span>
-							</span>
-						  </span>
+                           
+							  <span class="styDotLn" style="float:right;display:inline;">......................</span>
+					
 						</div>
 						<div class="styLNRightNumBox" style="width: 6mm">17c</div>
 						<div class="styLNAmountBox" style="width: 32.75mm">
@@ -867,17 +841,15 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">d</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
+		
                               Additional section 263A costs (attach schedule)
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">..........</span>
-							</span>
-						  </span>
+                       
+							
+							  <span class="styDotLn" style="float:right;display:inline;">..........</span>
+						
 						</div>
 						<div class="styLNRightNumBox" style="width: 6mm;height:4.8mm;">17d</div>
-						<div class="styLNAmountBox" style="width: 32.75mm">
+						<div class="styLNAmountBox" style="width: 32.75mm;height:4.8mm;">
 						  <xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/Section263AForeignTradeIncmAmt"/>
 						  </xsl:call-template>
@@ -885,7 +857,7 @@
 							<xsl:with-param name="TargetNode" select="$FormData/Section263AForeignTradeIncmAmt"/>
 						  </xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="width: 33.25mm;">
+						<div class="styLNAmountBox" style="width: 33.25mm;height:4.8mm;">
 						  <xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/Sect263AFrgnSaleLeasingIncmAmt"/>
 						  </xsl:call-template>
@@ -898,17 +870,11 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">e</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
-                              Other costs (attach schedule)
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">.................</span>
-							</span>
-						  </span>
+                              Other costs (attach schedule)       
+							  <span class="styDotLn"  style="float:right;display:inline;">.................</span>		
 						</div>
 						<div class="styLNRightNumBox" style="width: 6mm;height:4.8mm;">17e</div>
-						<div class="styLNAmountBox" style="width: 32.75mm">
+						<div class="styLNAmountBox" style="width: 32.75mm;height:4.8mm;">
 						  <xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/OtherCostsForeignTradeIncmAmt"/>
 						  </xsl:call-template>
@@ -916,7 +882,7 @@
 							<xsl:with-param name="TargetNode" select="$FormData/OtherCostsForeignTradeIncmAmt"/>
 						  </xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="width: 33.25mm;">
+						<div class="styLNAmountBox" style="width: 33.25mm;height:4.8mm;">
 						  <xsl:call-template name="SetFormLinkInline">
 							<xsl:with-param name="TargetNode" select="$FormData/OthCostsFrgnSaleLeasingIncmAmt"/>
 						  </xsl:call-template>
@@ -928,23 +894,22 @@
 					  <!--  Line 17f  -->
 					  <div style="width: 187mm">
 						<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">f</div>
-						<div class="styIRs8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
-                              Total. Add lines 17a through 17e
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">...............</span>
-							</span>
-						  </span>
+						<!--div class="styIRs8873ShortLNDesc">			
+                              Total. Add lines 17a through 17e                           
+							  <span class="styDotLn"  style="float:right;display:inline;">...............</span>	
+						</div-->
+												<div class="styIRS8873ShortLNDesc">
+                             Total. Add lines 17a through 17e      
+							  <span class="styDotLn"  style="float:right;display:inline;">...............</span>		
 						</div>
-						<div class="styLNRightNumBox" style="width: 6mm">17f</div>
-						<div class="styLNAmountBox" style="width: 32.75mm">
+		
+						<div class="styLNRightNumBox" style="width: 6mm;height:4.8mm;">17f</div>
+						<div class="styLNAmountBox" style="width: 32.75mm;height:4.8mm;">
 						  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/TotalOfCostForeignTradeIncmAmt"/>
 						  </xsl:call-template>
 						</div>
-						<div class="styLNAmountBox" style="width: 33.25mm">
+						<div class="styLNAmountBox" style="width: 33.25mm;height:4.8mm;">
 						  <xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/TotOfCostFrgnSaleLsngIncmAmt"/>
 						  </xsl:call-template>
@@ -955,14 +920,11 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">g</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
+			
                               Inventory at end of year
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">..................</span>
-							</span>
-						  </span>
+                           
+							  <span class="styDotLn" style="float:right;display:inline;">..................</span>
+			
 						</div>
 						<div class="styLNRightNumBox" style="width: 6mm">17g</div>
 						<div class="styLNAmountBox" style="width: 32.75mm">
@@ -981,14 +943,12 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftLtrBox" style="padding-left:4.5mm;">h</div>
 						<div class="styIRS8873ShortLNDesc">
-						  <span>
-							<span style="float:left;">
+				
                               Subtract line 17g from line 17f
-                          </span>
-						  <span class="styBoldText" style="float:right;padding-right:2mm;">
-							<span class="styDotLn">................</span>
-						  </span>
-						</span>
+                     
+					
+							<span class="styDotLn" style="float:right;display:inline;">................</span>
+		
 					  </div>
 					  <div class="styLNRightNumBox" style="width: 6mm">17h</div>
 					  <div class="styLNAmountBox" style="width: 32.75mm">
@@ -1008,14 +968,11 @@
 					  <div class="styLNLeftNumBox">18</div>
 					  <div class="styIRS8873ShortLNDesc">
                         In column (a), subtract line 17h from line 15. In column (b), subtract line 17h<br/>
-						<span>
-						  <span style="float:left;">
+			
                             from line 16
-                          </span>
-						  <span class="styBoldText" style="float:right;padding-right:2mm;">
-							<span class="styDotLn">......................</span>
-						  </span>
-						</span>
+           
+							<span class="styDotLn" style="float:right;display:inline;">......................</span>
+		
 					  </div>
 					  <div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm; width: 6mm">18</div>
 					  <div class="styLNAmountBox" style="height: 8mm; padding-top: 4mm; width: 32.75mm">
@@ -1034,17 +991,14 @@
 					<div style="width: 187mm">
 					  <div class="styLNLeftNumBox">19</div>
 					  <div class="styIRS8873ShortLNDesc">
-						<span>
-						  <span style="float:left;">
+
                             Other expenses and deductions (see instructions) (attach schedule)
-                          </span>
-						  <span class="styBoldText" style="float:right;padding-right:2mm;">
-							<span class="styDotLn">....</span>
-						  </span>
-						</span>
+
+							<span class="styDotLn" style="float:right;display:inline;">....</span>
+	
 					  </div>
 					  <div class="styLNRightNumBox" style="height: 4.75mm; width: 6mm">19</div>
-					  <div class="styLNAmountBox" style="width: 32.75mm">
+					  <div class="styLNAmountBox" style="width: 32.75mm;height: 4.75mm; ">
 						<xsl:call-template name="SetFormLinkInline">
 						  <xsl:with-param name="TargetNode" select="$FormData/DeductionsForeignTradeIncmAmt"/>
 						</xsl:call-template>
@@ -1052,7 +1006,7 @@
 						  <xsl:with-param name="TargetNode" select="$FormData/DeductionsForeignTradeIncmAmt"/>
 						</xsl:call-template>
 					  </div>
-					  <div class="styLNAmountBox" style="width: 33.25mm">
+					  <div class="styLNAmountBox" style="width: 33.25mm;height: 4.75mm; ">
 						<xsl:call-template name="SetFormLinkInline">
 						  <xsl:with-param name="TargetNode" select="$FormData/DedFrgnSaleLeasingIncmAmt"/>
 						</xsl:call-template>
@@ -1068,14 +1022,11 @@
 					  <div class="styIRS8873ShortLNDesc">
 						<span class="styBoldText">Foreign trade income. </span> 
 						In column (a), subtract line 19 from line 18. If -0- or less,<br/>
-						<span>
-						  <span style="float:left;">
+
                             or less, stop here. You do not qualify for the exclusion
-                          </span>
-						  <span class="styBoldText" style="float:right;padding-right:2mm;">
-							<span class="styDotLn">.........</span>
-						  </span>
-						</span>
+
+							<span class="styDotLn" style="float:right;display:inline;">.........</span>
+
 					  </div>
 					  <div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm; width: 6mm; ">20</div>
 					  <div class="styLNAmountBox" style="height: 8mm; padding-top: 4mm; width: 32.75mm">
@@ -1090,14 +1041,11 @@
 					<div style="width: 187mm; border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px">
 					  <div class="styLNLeftNumBox">21</div>
 					  <div class="styIRS8873ShortLNDesc">
-						<span>
-						  <span style="float:left;">
+
 							<b>Foreign sale and leasing income.</b> In column (b), subtract line 19 from line 18
-                          </span>
-						  <span class="styBoldText" style="float:right;padding-right:2mm;">
-							<span class="styDotLn">.</span>
-						  </span>
-						</span>
+
+							<span class="styDotLn" style="float:right;display:inline;">.</span>
+
 					  </div>
 					  <div class="styLNRightNumBox" style="height: 4mm; border-bottom-width: 0px; width: 6mm">21</div>
 					  <div class="styShadingCell" style="height: 4mm; width: 32.75mm"/>
@@ -1109,7 +1057,7 @@
 					</div>
 					<!--Line 21  -->
 					<!--  page footer  -->
-					<div style="width:187mm">
+					<div class="pageEnd" style="width:187mm;float:none;" >
 					  <div style="float: left; clear: none;">
 						<span class="styBoldText">For Paperwork Reduction Act Notice, see instructions.</span>
 					  </div>
@@ -1119,16 +1067,16 @@
                         Form <b style="font-size:8pt;">8873</b> (Rev. 12-2010)
                       </div>
 					</div>
-					<div class="pageEnd"/>
+					
 					<!--  pager header  -->
-					<div class="styBB" style="width:187mm">
+					<div class="styBB" style="width:187mm;float:none;">
 					  <div style="float: left; clear: none">Form 8873 (Rev. 12-2010)</div>
 					  <div style="float:right">
                         Page <span class="styBoldText" style="font-size: 8pt">2</span>
 					  </div>
 					</div>
 					<!--  Part III  -->
-					<div class="styBB" style="width: 187mm">
+					<div class="styBB" style="width: 187mm;float:none;">
 					  <div class="styPartName" style="width: 16mm; font-size: 10pt">Part III</div>
 					  <div class="styPartDesc" style="font-size: 8pt;width:170mm">Marginal Costing 
                         <span class="styNormalText" style="font-size: 9pt">(<span class="styBoldText">Note: </span>
@@ -1361,22 +1309,21 @@
 					<div style="width: 187mm">
 					  <div class="styLNLeftNumBox">27</div>
 					  <div class="styIRS8873MedLNDesc">
-                        Subtract line 26c from line 25. (<span class="styBoldText">Note: </span>
-						<span>
-						  <span class="styItalicText">
+                        Subtract line 26c from line 25. (<span class="styBoldText"  style="display:inline;">Note: </span>
+		
+						  <span class="styItalicText" style="display:inline;">
                             If -0- or less, stop here. You may not use Part III to determine your<br/>
 						  </span>
-						  <span>
-							<span class="styItalicText" style="float:left;">
+					
+							<span class="styItalicText" style="float:left;display:inline;">
                               qualifying foreign trade income. Go to line 37.)
                             </span>
-						  </span>
-						  <span class="styBoldText" style="float:right;padding-right:2mm;">
-							<span class="styNormalText">
-							  <span class="styDotLn">...................</span>
-							</span>
-						  </span>
-						</span>
+					
+			
+							  <span class="styDotLn"  style="float:right;display:inline;">...................</span>
+						
+						
+				
 					  </div>
 					  <div class="styLNRightNumBox" style="height: 8mm; padding-top: 4mm">27</div>
 					  <div class="styLNAmountBox" style="height: 8mm; padding-top: 4mm">
@@ -1479,15 +1426,9 @@
 					  <div style="width: 187mm">
 						<div class="styLNLeftNumBox">32</div>
 						<div class="styIRS8873MedLNDesc">
-						  <span>
-							<span style="float:left;">
 							  <span class="styBoldText">Foreign trade income using full costing. </span>  
 							    Enter the amount from line 20
-                            </span>
-							<span class="styBoldText" style="float:right;padding-right:2mm;">
-							  <span class="styDotLn">...........</span>
-							</span>
-						  </span>
+							  <span class="styDotLn"  style="float:right;display:inline;">.........</span>
 						</div>
 						<div class="styLNRightNumBox">32</div>
 						<div class="styLNAmountBox">
@@ -1793,13 +1734,17 @@
 					<!--  Line 45  -->
 					<!--  Note  -->
 					<div style="width: 187mm">
-					  <div class="styIRS8873MedLNDesc" style="width: 146.95mm; padding-left: 8mm">
-						<span class="styBoldText">Note: </span>
-						<span class="styItalicText">
+					  <div class="styIRS8873MedLNDesc" style="width: 147mm; padding-left: 8mm">
+					  <b>Note: </b>
+					  <i>  If you do not have a reduction for international boycott operations, illegal bribes, kickbacks,<br/>
+                          etc. (see the instructions for line 50), skip lines 46 through 51 and enter on line 52 the amount
+                          from line 45.</i>
+						<!--span class="styBoldText" style="display:inline">Note: </span-->
+						<!--span class="styItalicText">
 						  If you do not have a reduction for international boycott operations, illegal bribes, kickbacks,<br/>
                           etc. (see the instructions for line 50), skip lines 46 through 51 and enter on line 52 the amount<br/>
                           from line 45.
-                        </span>
+                        </span-->
 					  </div>
 					  <div class="styLNRightNumBox" style="height: 12mm; padding-top: 7mm; background-color: lightgrey; border-bottom-width: 0px"/>
 					  <div class="styLNAmountBox" style="height: 12mm; padding-top: 4mm; border-bottom-width: 0px"/>
@@ -1967,13 +1912,13 @@
 						</xsl:choose>
 					  </div>
 					  <!--   End Line 52  -->
- 				      <div class="styBB" style="width: 187mm;border-top-width: 1px; border-bottom-width: 0px;">
+ 				      <div class="pageEnd" style="width: 187mm;border-top: 1px solid black; border-bottom-width: 0px;">
                         <span style="float:right;">
                           Form <b style="font-size:8pt;">8873</b> (Rev. 12-2010)
                         </span>
                         <br/>
                       </div>
- 					  <br class="pageEnd"/>
+ 					  <br class="pageEnd" style="float:none;"/>
 					  <!-- BEGIN Left Over Table -->
 					  <!-- Additonal Data Title Bar and Button -->
 					  <div class="styLeftOverTitleLine" id="LeftoverData">

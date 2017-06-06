@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS8910"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -47,10 +49,10 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!--Title of Form -->
 					<div class="styBB" style="width:187mm;height: 20mm">
-						<div class="styFNBox" style="width:31mm;font-size: 7pt;height:22mm;">
+						<div class="styFNBox" style="width:31mm;font-size: 7pt;height:20mm;">
 							Form <span class="styFormNumber">8910</span>
 							<br/>
-							<br/>
+					
 							<br/>
 							<span class="styAgency">Department of the Treasury</span>
 							<xsl:call-template name="SetFormLinkInline">
@@ -59,9 +61,9 @@
 							<br/>
 							<span class="styAgency">Internal Revenue Service</span>
 						</div>
-						<div class="styFTBox" style="height: 22mm;width:125mm;padding-top:3mm;">
-							<div class="styMainTitle" style="height: 8mm">Alternative Motor Vehicle Credit</div>
-							<div class="styFST" style="font-size:7pt;margin-left:1mm;font-weight:bold;padding-top:2mm">
+						<div class="styFTBox" style="height: 20mm;width:125mm;padding-top:3mm;">
+							<div class="styMainTitle" style="height: 6mm">Alternative Motor Vehicle Credit</div>
+							<div class="styFST" style="font-size:7pt;margin-left:1mm;font-weight:bold">
 								<div style="margin-left: .5mm;">
 									<img src="{$ImagePath}/8910_Triangle_Title.gif" alt="Pointer"/>
 								    Attach to your tax return.<br/>
@@ -73,8 +75,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:22mm; border-left-width:1px;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-1998</div>
+						<div class="styTYBox" style="width:30mm;height:20mm; border-left-width:1px;">
+							<div class="styOMB" style="height:auto;">OMB No. 1545-1998</div>
 							<div class="styTY" style="height:10mm">20<span class="styTYColor">14</span>
 							</div>
 							<div class="stySequence">Attachment<br/>Sequence No. <b>152</b>
@@ -106,7 +108,7 @@
 						</div>
 						<!--   ****************************************************************************** -->
 						<div class="styEINBox" style=" padding-left:2mm; font-size:7pt;">
-							<span class="BoldText">Identifying number</span>
+							<span class="BoldText">Identifying number</span><br/>
 							<div style="text-align:left;font-weight:normal; ">
 								<br/>
 								<xsl:choose>
@@ -182,10 +184,10 @@
 												</td>
 												<td class="styTableCell" style="width:84mm;padding-left:2mm;border:none;border-top:1px solid black;padding-top:4mm;">
 													<span style="float: left; clear: none;">Year, make, and model of vehicle</span>
-													<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
+													<span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
 												</td>
-												<td class="styLNRightNumBoxNBB" style="width:8mm;border-width:1px;border-right:0;">1 </td>
-												<td class="styTableCell" style="width:45mm;border:1px solid black;text-align:left;padding-left:1mm;">
+												<td class="styLNRightNumBoxNBB" style="width:8mm;height:10mm;padding-top:6mm;border-width:1px;border-right:0;">1 </td>
+												<td class="styTableCell" style="width:52mm;border:1px solid black;text-align:left;padding-left:1mm;">
 													<xsl:call-template name="PopulateYear">
 														<xsl:with-param name="TargetNode" select="$FormData/IRS8910TentativeCreditGrp[$pos]/VehicleDescriptionGrp/VehicleModelYr"/>
 													</xsl:call-template>
@@ -198,7 +200,7 @@
 														<xsl:with-param name="TargetNode" select="$FormData/IRS8910TentativeCreditGrp [$pos]/VehicleDescriptionGrp/VehicleModelNameTxt"/>
 													</xsl:call-template>
 												</td>
-												<td class="styTableCell" style="width:45mm;border:1px solid black;border-left:0;border-right:0;text-align:left;padding-left:1mm;">
+												<td class="styTableCell" style="width:52mm;border:1px solid black;border-left:0;border-right:0;text-align:left;padding-left:1mm;">
 													<xsl:call-template name="PopulateYear">
 														<xsl:with-param name="TargetNode" select="$FormData/IRS8910TentativeCreditGrp [$pos + 1]/VehicleDescriptionGrp/VehicleModelYr"/>
 													</xsl:call-template>
@@ -309,12 +311,12 @@
 										</td>
 										<td class="styTableCell" style="width:84mm;text-align:left; border:none;border-top:1px solid black;padding-top:6mm;">
 											<span style="float: left;">Year, make, and model of vehicle</span>
-											<span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
+											<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
 										</td>
-										<td class="styLNRightNumBoxNBB" style="width:8mm;border:1px solid black;border-right:0;padding-left:0;">
+										<td class="styLNRightNumBoxNBB" style="width:8mm;height:10mm;padding-top:6mm;border:1px solid black;border-right:0;padding-left:0;">
 											1
 										</td>
-										<td class="styTableCell" style="width:45mm;border:1px solid black;text-align:center;">
+										<td class="styTableCell" style="width:52mm;border:1px solid black;text-align:center;">
 											<!-- Display "Additional Data" message if Print is set to separated and there are more than 3 elements -->
 											<xsl:choose>
 												<xsl:when test="(($Print = $Separated) and (count($FormData/IRS8910TentativeCreditGrp) &gt; 2))">
@@ -328,7 +330,7 @@
 												</xsl:otherwise>
 											</xsl:choose>
 										</td>
-										<td class="styTableCell" style="width:45mm;border:1px solid black;border-left:0;border-right:0;">
+										<td class="styTableCell" style="width:52mm;border:1px solid black;border-left:0;border-right:0;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -386,6 +388,7 @@
 						<span style="padding-left:7mm"/>
 						<b>Next:</b> If you did NOT use your vehicle for business or 
 						investment purposes and did not have a credit from a partnership or S corporation, 
+						<br/>
 						<span style="padding-left:7mm;border-top-width:0px;"/>skip Part II and go to Part III. ALL others, go to Part II.<br/>
 					</div>
 					<!-- PART II -->
@@ -409,20 +412,20 @@
 											<tbody>
 												<!-- line 5 -->
 												<tr>
-													<td class="styTableCell" style="width:5mm;text-align:right;border-right:0;border-bottom:0;">
+													<td class="styTableCell" style="width:5mm;text-align:center;border-right:0;border-bottom:0;padding-left:1.5mm;">
 														<b>5</b>
 													</td>
 													<td class="styTableCell" style="width:77.5mm; padding-left:2mm;text-align:left;border:none;">
 														Business/Investment use percentage (see instructions)
 													</td>
 													<td class="styLNRightNumBox">5</td>
-													<td class="styTableCell" style="border:1px solid black;border-right:0;width:46.5mm;border-top:0;">
+													<td class="styTableCell" style="border:1px solid black;border-right:0;width:47mm;border-top:0;">
 														<span class="styTableCellPad"/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="BusinessInvestmentUsePct"/>
 														</xsl:call-template>%
 													</td>
-													<td class="styTableCell" style="border:1px solid black;border-right:0;width:47mm;border-top:0;">
+													<td class="styTableCell" style="border:1px solid black;border-right:0;width:50mm;border-top:0;">
 														<span class="styTableCellPad"/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="$FormData/BusinessInvestmentUseGrp[$pos + 1]/BusinessInvestmentUsePct"/>
@@ -431,7 +434,7 @@
 												</tr>
 												<!-- Line 6 -->
 												<tr>
-													<td class="styTableCell" style="width:5mm;text-align:right;border-right:0;border-bottom:0;">
+													<td class="styTableCell" style="width:5mm;text-align:center;border-right:0;border-bottom:0;padding-left:1.5mm">
 														<b>6</b>
 													</td>
 													<td class="styTableCell" style="width:77.5mm; padding-left:2mm;text-align:left;border:none;">
@@ -445,7 +448,7 @@
 															<xsl:with-param name="TargetNode" select="$FormData/BusinessInvestmentUseGrp[$pos]/BusinessInvestmentUseAmt"/>
 														</xsl:call-template>
 													</td>
-													<td class="styTableCell" style="border:1px solid black;width:47mm;border-right:0;border-top:0;">
+													<td class="styTableCell" style="border:1px solid black;width:50mm;border-right:0;border-top:0;">
 														<span class="styTableCellPad"/>
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="$FormData/BusinessInvestmentUseGrp[$pos + 1]/BusinessInvestmentUseAmt"/>
@@ -469,14 +472,14 @@
 									<tbody>
 										<!-- line 5  -->
 										<tr>
-											<td class="styTableCell" style="width:5mm;text-align:right;border-right:0;border-bottom:0;">
+											<td class="styTableCell" style="width:5mm;text-align:center;border-right:0;border-bottom:0;padding-left:1.5mm;">
 												<b>5</b>
 											</td>
-											<td class="styTableCell" style="width:78mm; padding-left:2mm;text-align:left;border:none;">
+											<td class="styTableCell" style="width:77.3mm; padding-left:2mm;text-align:left;border:none;">
 												Business/Investment use percentage (see instructions)
 											</td>
 											<td class="styLNRightNumBox">5</td>
-											<td class="styTableCell" style="border:1px solid black;width:47.5mm;border-top:none;">
+											<td class="styTableCell" style="border:1px solid black;width:47mm;border-top:none;">
 												<xsl:if test="(($Print = $Separated) and (count($FormData/BusinessInvestmentUseGrp) &gt; 2))">
 												<span style="text-align:center;">
 													<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -493,10 +496,10 @@
 										</tr>
 										<!-- Line 6  -->
 										<tr>
-											<td class="styTableCell" style="width:5mm;text-align:right;border-right:0;border-bottom:0;">
+											<td class="styTableCell" style="width:5mm;text-align:center;border-right:0;border-bottom:0;padding-left:1.5mm">
 												<b>6</b>
 											</td>
-											<td class="styTableCell" style="width:78mm; padding-left:2mm;text-align:left;border:none;">
+											<td class="styTableCell" style="width:77.3mm; padding-left:2mm;text-align:left;border:none;">
 												<span style="float:left;">Multiply line 4 by line 5</span>
 												<span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
 											</td>
@@ -525,7 +528,7 @@
 										<span class="styDotLn" style="float:right;padding-right:2mm;">...................</span>
 									</td>
 									<td class="styLNRightNumBox" style="width:8mm;border-bottom-width:1px;border-right:1px;">7</td>
-									<td class="styTableCell" style="border:1px solid black;width:48mm;border-right:0;border-top:0;">
+									<td class="styTableCell" style="border:1px solid black;width:50.5mm;border-right:0;border-top:0;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/TotalBusinessInvestmentUseAmt"/>
@@ -540,7 +543,7 @@
 										<span class="styDotLn" style="float:right;padding-right:2mm;">.</span>
 									</td>
 									<td class="styLNRightNumBox" style="width:8mm;border-bottom-width:1px;border-right:0;">8</td>
-									<td class="styTableCell" style="border:1px solid black;width:48mm;border-right:0;border-top:0;">
+									<td class="styTableCell" style="border:1px solid black;width:50.5mm;border-right:0;border-top:0;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/AlternativeMotorVehicleCrAmt"/>
@@ -556,7 +559,7 @@
 									<td class="styLNRightNumBox" style="background-color:lightgrey;width:8mm;border-bottom:0;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell" style="border:none; border-left:1px solid black;width:48mm;">
+									<td class="styTableCell" style="border:none; border-left:1px solid black;width:50.5mm;">
 										<span class="styTableCellPad"/>
 									</td>
 								</tr>
@@ -573,7 +576,7 @@
 									<td class="styLNRightNumBox" style="background-color:lightgrey;width:8mm;border-bottom:0;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell" style="border:none;border-left:1px solid black;width:48mm;">
+									<td class="styTableCell" style="border:none;border-left:1px solid black;width:50.5mm;">
 										<span class="styTableCellPad"/>
 									</td>
 								</tr>
@@ -587,7 +590,7 @@
 										<span class="styDotLn" style="float:right;padding-right:2mm;">.......................</span>
 									</td>
 									<td class="styLNRightNumBox" style="width:8mm;border:none;border-left:1px solid black;">9</td>
-									<td class="styTableCell" style="border:none;width:48mm;border-left:1px solid black">
+									<td class="styTableCell" style="border:none;width:50.5mm;border-left:1px solid black">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/BusinessInvstUsePartOfCrAmt"/>
@@ -627,10 +630,10 @@
 													<td class="styLNRightNumBox" style="border-bottom:0;">
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="width:46.5mm;border:none;border-left:1px solid black;">
+													<td class="styTableCell" style="width:47.9mm;border:none;border-left:1px solid black;">
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="border:none;border-left:1px solid black;width:47.5mm;">
+													<td class="styTableCell" style="border:none;border-left:1px solid black;width:49mm;">
 														<span class="styTableCellPad"/>
 													</td>
 												</tr>
@@ -644,12 +647,12 @@
 														<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
 													</td>
 													<td class="styLNRightNumBox">10</td>
-													<td class="styTableCell" style="border:none;border-left:1px solid black;width:46.5mm;border-bottom:1px solid black;">
+													<td class="styTableCell" style="border:none;border-left:1px solid black;width:47.9mm;border-bottom:1px solid black;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="$FormData/TentativeCreditForPrsnlUseAmt[$pos]"/>
 														</xsl:call-template>
 													</td>
-													<td class="styTableCell" style="width:47.5mm;border:none;border-left:1px solid black;border-bottom:1px solid black;">
+													<td class="styTableCell" style="width:49mm;border:none;border-left:1px solid black;border-bottom:1px solid black;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="$FormData/TentativeCreditForPrsnlUseAmt[$pos + 1]"/>
 														</xsl:call-template>
@@ -682,10 +685,10 @@
 											<td class="styLNRightNumBox" style="border-bottom:0;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:46.5mm;border:none;border-left:1px solid black;">
+											<td class="styTableCell" style="width:47.9mm;border:none;border-left:1px solid black;">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="border:none;border-left:1px solid black;width:48mm;">
+											<td class="styTableCell" style="border:none;border-left:1px solid black;width:49mm;">
 												<span class="styTableCellPad"/>
 											</td>
 										</tr>
@@ -699,7 +702,7 @@
 												<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
 											</td>
 											<td class="styLNRightNumBox">10</td>
-											<td class="styTableCell" style="width:46.5mm;border:1px solid black;border-top:0;border-right:0;text-align:center;">
+											<td class="styTableCell" style="width:47.9mm;border:1px solid black;border-top:0;border-right:0;text-align:center;">
 												<xsl:if test="(($Print = $Separated) and (count($FormData/TentativeCreditForPrsnlUseAmt) &gt; 2))">
 													<xsl:call-template name="PopulateAdditionalDataTableMessage">
 														<xsl:with-param name="ShortMessage">true</xsl:with-param>
@@ -708,7 +711,7 @@
 												</xsl:if>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:48mm;border:none;border-left:1px solid black;border-bottom:1px solid black;">
+											<td class="styTableCell" style="width:49mm;border:none;border-left:1px solid black;border-bottom:1px solid black;">
 												<span class="styTableCellPad"/>
 											</td>
 										</tr>
@@ -729,7 +732,7 @@
 										<span class="styDotLn" style="float:right;padding-right:2mm;">...................</span>
 									</td>
 									<td class="styLNRightNumBox" style="width:8mm;border-bottom-width:1px;border-right:1px;">11</td>
-									<td class="styTableCell" style="border:1px solid black;width:48mm;border-right:0;border-top:0;">
+									<td class="styTableCell" style="border:1px solid black;width:49mm;border-right:0;border-top:0;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/TotalTentativeCrForPrsnlUseAmt"/>
@@ -744,7 +747,7 @@
 										<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
 									</td>
 									<td class="styLNRightNumBox" style="width:8mm;border-bottom-width:1px;border-right:1px;">12</td>
-									<td class="styTableCell" style="border:1px solid black;width:48mm;border-right:0;border-top:0;">
+									<td class="styTableCell" style="border:1px solid black;width:49mm;border-right:0;border-top:0;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/TotalTaxBeforeCrAndOthTaxesAmt"/>
@@ -759,7 +762,7 @@
 										<span class="styDotLn" style="float:right;padding-right:2mm;">.........</span>
 									</td>
 									<td class="styLNRightNumBox" style="width:8mm;border-bottom-width:1px;border-right:1px;">13</td>
-									<td class="styTableCell" style="border:1px solid black;width:48mm;border-right:0;border-top:0;">
+									<td class="styTableCell" style="border:1px solid black;width:49mm;border-right:0;border-top:0;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/AltMotorVehCreditFromFormsAmt"/>
@@ -775,7 +778,7 @@
 									<td class="styLNRightNumBox" style="width:8mm;border-bottom:0;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell" style="border:none; border-left:1px solid black;width:48mm;">
+									<td class="styTableCell" style="border:none; border-left:1px solid black;width:49mm;">
 										<span class="styTableCellPad"/>
 									</td>
 								</tr>
@@ -789,7 +792,7 @@
 										<span class="styDotLn" style="float:right;padding-right:2mm;">....................</span>
 									</td>
 									<td class="styLNRightNumBox" style="width:8mm;;border:1px solid black; border-top:none;border-right:none;">14</td>
-									<td class="styTableCell" style="width:48mm;;border:1px solid black; border-top:none;border-right:none;">
+									<td class="styTableCell" style="width:49mm;;border:1px solid black; border-top:none;border-right:none;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/AltMotorVehAdjustedCreditAmt"/>
@@ -805,7 +808,7 @@
 									<td class="styLNRightNumBox" style="background-color:lightgrey;width:8mm;border-bottom:0;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell" style="border:none; border-left:1px solid black;width:48mm;">
+									<td class="styTableCell" style="border:none; border-left:1px solid black;width:49mm;">
 										<span class="styTableCellPad"/>
 									</td>
 								</tr>
@@ -822,7 +825,7 @@
 									<td class="styLNRightNumBox" style="background-color:lightgrey;width:8mm;border-bottom:0;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCell" style="border:none;border-left:1px solid black;width:48mm;">
+									<td class="styTableCell" style="border:none;border-left:1px solid black;width:49mm;">
 										<span class="styTableCellPad"/>
 									</td>
 								</tr>
@@ -836,7 +839,7 @@
 										<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
 									</td>
 									<td class="styLNRightNumBox" style="width:8mm;">15</td>
-									<td class="styTableCell" style="width:48mm;border:1px solid black; border-top:none;border-right:none;">
+									<td class="styTableCell" style="width:49mm;border:1px solid black; border-top:none;border-right:none;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$FormData/PersonalUsePartOfCreditAmt"/>
@@ -854,7 +857,7 @@
 						<span style="width:80px;"/>Form <span class="styBoldText">8910</span> (2014)
 					</div>
 					<br/>
-					<br class="pageEnd"/>
+					<div class="pageEnd"/>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
@@ -882,7 +885,7 @@
 								<table class="styDepTbl" cellspacing="0" style="font-size: 7pt">
 									<thead class="styTableThead">
 										<tr class="styDepTblHdr">
-											<th scope="col" class="styDepTblCell" colspan="3" style="border:none;border-top-width:1mm;text-align:left;">
+											<th scope="col" class="styDepTblCell" colspan="3" style="text-align:left;">
 												<span class="styNormalText"> Use a separate column for each vehicle. If you need more columns,
 											 use additional Forms 8910 and include the total on lines 7 and 11.
 											</span>
@@ -906,11 +909,11 @@
 											</td>
 											<td class="styTableCell" style="width:84mm;padding-left:2mm;border:none;border-top:1px solid black;padding-top:4mm;">
 												<span style="float: left; clear: none;">Year, make, and model of vehicle</span>
-												<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
+												<span class="styDotLn" style="float:right;padding-right:2mm;">.......</span>
 											</td>
-											<td class="styLNRightNumBoxNBB" style="width:8mm;border-width:1px;border-right:0;">1
+											<td class="styLNRightNumBoxNBB" style="width:8mm;height:10mm;padding-top:6mm;border-width:1px;border-right:0;">1
 											</td>
-											<td class="styTableCellText" style="width:45mm;border:1px solid black;text-align:left;padding-left:1mm;">
+											<td class="styTableCellText" style="width:52mm;border:1px solid black;text-align:left;padding-left:1mm;">
 												<xsl:call-template name="PopulateYear">
 													<xsl:with-param name="TargetNode" select="$FormData/IRS8910TentativeCreditGrp[$pos]/VehicleDescriptionGrp/VehicleModelYr"/>
 												</xsl:call-template>
@@ -923,7 +926,7 @@
 													<xsl:with-param name="TargetNode" select="$FormData/IRS8910TentativeCreditGrp [$pos]/VehicleDescriptionGrp/VehicleModelNameTxt"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="width:45mm;border:1px solid black;border-left:0;border-right:0; text-align:left;padding-left:1mm;">
+											<td class="styTableCellText" style="width:52mm;border:1px solid black;border-left:0;border-right:0; text-align:left;padding-left:1mm;">
 												<xsl:call-template name="PopulateYear">
 													<xsl:with-param name="TargetNode" select="$FormData/IRS8910TentativeCreditGrp [$pos + 1]/VehicleDescriptionGrp/VehicleModelYr"/>
 												</xsl:call-template>
@@ -1021,20 +1024,20 @@
 										<!-- line 5 -->
 										<!-- line 5 -->
 										<tr class="styDepTblRow1">
-											<td class="styTableCell" style="width:5mm;text-align:right;border-right:0;border-bottom:0;">
+											<td class="styTableCell" style="width:5mm;text-align:center;border-right:0;border-bottom:0;padding-left:1.5mm">
 												<b>5</b>
 											</td>
 											<td class="styTableCell" style="width:77.5mm; padding-left:2mm;text-align:left;border:none;">
 												Business/Investment use percentage (see instructions)
 											</td>
 											<td class="styLNRightNumBox">5</td>
-											<td class="styTableCell" style="border:none;border-left:1px solid black;width:46.5mm;border-bottom:1px solid black;">
+											<td class="styTableCell" style="border:none;border-left:1px solid black;width:47mm;border-bottom:1px solid black;">
 												<span class="styTableCellPad"/>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="BusinessInvestmentUsePct"/>
 												</xsl:call-template>%
 											</td>
-											<td class="styTableCell" style="border:1px solid black;border-right:0;width:47mm;border-top:0;">
+											<td class="styTableCell" style="border:1px solid black;border-right:0;width:48mm;border-top:0;">
 												<span class="styTableCellPad"/>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="$FormData/BusinessInvestmentUseGrp[$pos + 1]/BusinessInvestmentUsePct"/>
@@ -1043,7 +1046,7 @@
 										</tr>
 										<!-- Line 6 -->
 										<tr class="styDepTblRow2">
-											<td class="styTableCell" style="width:5mm;text-align:right;border-right:0;border-bottom:0;">
+											<td class="styTableCell" style="width:5mm;text-align:center;border-right:0;border-bottom:0;padding-left:1.5mm;">
 												<b>6</b>
 											</td>
 											<td class="styTableCell" style="width:77.5mm; padding-left:2mm;text-align:left;border:none;">
@@ -1100,7 +1103,7 @@
 													<td class="styTableCell" style="border:none;border-left:1px solid black;">
 														<span class="styTableCellPad"/>
 													</td>
-													<td class="styTableCell" style="border:none;border-left:1px solid black;width:48mm;">
+													<td class="styTableCell" style="border:none;border-left:1px solid black;width:47.9mm;">
 														<span class="styTableCellPad"/>
 													</td>
 												</tr>
@@ -1114,12 +1117,12 @@
 														<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
 													</td>
 													<td class="styLNRightNumBox">10</td>
-													<td class="styTableCell" style="border:none;border-left:1px solid black;width:48mm;border-bottom:1px solid black;">
+													<td class="styTableCell" style="border:none;border-left:1px solid black;width:47.9mm;border-bottom:1px solid black;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="$FormData/TentativeCreditForPrsnlUseAmt[$pos]"/>
 														</xsl:call-template>
 													</td>
-													<td class="styTableCell" style="width:48mm;border:none;border-left:1px solid black;border-bottom:1px solid black;">
+													<td class="styTableCell" style="width:47.9mm;border:none;border-left:1px solid black;border-bottom:1px solid black;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="$FormData/TentativeCreditForPrsnlUseAmt[$pos + 1]"/>
 														</xsl:call-template>

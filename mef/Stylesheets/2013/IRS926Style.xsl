@@ -3,15 +3,15 @@
   <xsl:template name="IRS926Style">  
 
     .styIRS926TblRB {
-      border-bottom:1 solid black;
-      border-right:1 solid black;
+      border-bottom:1px solid black;
+      border-right:1px solid black;
       padding-left:2mm; 
       width:104mm;      
     }
   
     .styIRS926TblRT {
-      border-top:1 solid black;
-      border-right:1 solid black;
+      border-top:1px solid black;
+      border-right:1px solid black;
     }
   
     .styIRS926OL {      
@@ -39,7 +39,7 @@
     .styIRS926InerTable {    
       font-size:8.5pt;  
       width:187mm;  
-      border-top:1 solid black;              
+      border-top:1px solid black;              
     }
   
     .styIRS926Table {  
@@ -50,9 +50,10 @@
     }
   
     .styIRS926TblCell {
-      border-bottom:1 solid black;
+      border-bottom:1px solid black;
       padding-left:2mm;
       height:8mm;
+	  width:83mm;
     }    
   
     .styIRS926DotLn {
@@ -69,7 +70,7 @@
   
     .styIRS926BB {
       width:100%;
-      border-bottom:1 solid black;
+      border-bottom:1px solid black;
       height:8mm;
       padding-left:8mm;
       font-size:6pt;
@@ -91,7 +92,7 @@
     border-color: black;
     border-style: solid;
     vertical-align: bottom;
-    border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+    border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
   }
   
    .styIRS926TableCellA {   /* Table Cell (a or 1) */

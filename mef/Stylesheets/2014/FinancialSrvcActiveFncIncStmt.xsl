@@ -24,15 +24,13 @@
             <td class="styDepTblCell" style="text-align:left;width:140mm;padding:0px 0px 0px 0px;">
               <div style="padding:0px 3px 0px 3px;border-width:0px 0px 0px 0px;width:140mm;height:auto;word-wrap:break-word;">
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="Description"/>
+                  <xsl:with-param name="TargetNode" select="Desc"/>
                 </xsl:call-template>
               </div>
             </td>
             <td class="styDepTblCell" style="text-align:right;width:40mm;">
-              <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="Amount"/>
-              </xsl:call-template>
-            </td>
+              <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="ForeignAmt" /></xsl:call-template>
+			</td>
           </tr>
         </xsl:for-each>
       </tbody>
@@ -45,8 +43,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -70,16 +70,18 @@
       </head>
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>
-        <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:92mm">
+        <div class="styDepTitleLine" style="width: 187mm; clear: left; float: left;"> 
+          <div class="styDepTitle" style="width:100mm"> 
             <xsl:value-of select="$depDocTitle"/>
-          </span>
+          </div>
         </div>
         <!--Adding template for left over data  -->
         <xsl:call-template name="PopulateDepCommonLeftover">
           <xsl:with-param name="TargetNode" select="$FSAFISData"/>
         </xsl:call-template>
+        <div class="NBB" style="width:187mm; clear: left; float: left;">
         <xsl:call-template name="ShowFSAFIS"/>
+        </div>
         <br/>
       </body>
     </html>

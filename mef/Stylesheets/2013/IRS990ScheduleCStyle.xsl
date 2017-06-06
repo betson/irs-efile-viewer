@@ -150,6 +150,13 @@
   height:4mm;width:156mm;
 }
 
+.IRS990ScheduleC_TableLineDesc { /* description space */
+  padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+  border-style: solid; border-color: black;
+  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
+  height:4mm;width:156mm;
+}
+
 .IRS990ScheduleC_LineDescIV { /* description space */
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
   border-style: solid; border-color: black;

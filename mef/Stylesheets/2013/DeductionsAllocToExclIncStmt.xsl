@@ -31,7 +31,7 @@
             <xsl:otherwise>styDepTblRow2</xsl:otherwise>
           </xsl:choose>
           </xsl:attribute>
-              <td class="styDepTblCell" style="text-align:right;" >
+              <td class="styDepTblCell" style="text-align:right;vertical-align:bottom;" >
               <span style="width:38mm;text-align:right;padding-right:1mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="AmountExcludable" />
@@ -50,8 +50,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle" /></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache" />
@@ -72,11 +74,11 @@
         <xsl:call-template name="GlobalStylesDep"/>
       </head>
     
-      <body class="styBodyClass">      
+      <body class="styBodyClass" style="width:187mm;">      
         <xsl:call-template name="DocumentHeaderDependency"></xsl:call-template>    
           <div class="styDepTitleLine">
             <span class="styDepTitle">
-              <span style="width:80mm;">
+              <span style="width:132mm;">
                 <xsl:value-of select="$depDocTitle" />
               </span>
             </span>

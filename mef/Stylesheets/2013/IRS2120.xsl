@@ -10,8 +10,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="Form2120Data" select="$RtnDoc/IRS2120"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form2120Data)"/>
@@ -45,19 +47,19 @@
 					<!-- Begin Form Number and Name -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styFNBox" style="width:31mm;height:22mm;">
-            Form<span class="styFormNumber"> 2120</span>
+            Form<span class="styFormNumber" style="padding-left:2mm"> 2120</span>
             <div >(Rev. October 2005)</div>
 							<div class="styAgency" style="padding-top:3mm;">Department of the Treasury<br/>Internal Revenue Service</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:12mm;">
-							<div class="styMainTitle" style="height:8mm;padding-top:2mm;">Multiple Support Declaration</div>
-						<div class="styFST" style="height:5mm;font-size:7pt;padding-top:4mm;">
+						<div class="styFTBox" style="width:125mm;height:auto;">
+							<div class="styMainTitle" style="height:auto;padding-top:2mm;">Multiple Support Declaration</div><br/>
+						<div class="styFST" style="height:auto;font-size:7pt;padding-top:4mm;">
 							<img src="{$ImagePath}/2120_Bullet.gif" width="9" height="9" alt="bullet image"/> Attach to Form 1040 or Form 1040A.</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:19mm;">
-							<div class="styOMB" style="height:1mm;">OMB No. 1545-0074</div>
+						<div class="styTYBox" style="width:30mm;height:22mm;">
+							<div class="styOMB" style="height:auto; padding-top:3mm;padding-bottom:2mm;">OMB No. 1545-0074</div>
 							<div class="styTY" style="height:7mm;font-size:22pt;"></div>
-							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;">
+							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:1mm;padding-top:3mm;border-left-width:0px;">
 								Attachment<br/>
 								Sequence No. <span class="styBoldText">114</span>
 							</div>

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-
 <!-- CSS Styles for form 8865ScheduleO -->
-
   <xsl:template name="IRS8865ScheduleOStyle">
     .styForm8865ScheduleOFST {   /* Form Main Subtitle */
         font-size: 9pt; font-weight: bold;
@@ -21,8 +19,8 @@
       height: 5mm;
       font-weight: normal;      
       text-align: right;
-      border-right:1 solid black;
-      border-bottom:1 solid black;  
+      border-right:1px solid black;
+      border-bottom:1px solid black;  
       padding-right:0.5mm;
       padding-left:0.5mm
     }  
@@ -32,8 +30,8 @@
       height: 5mm;
       font-weight: normal;      
       text-align: right;
-      border-right:1 solid black;
-      border-bottom:1 solid black;  
+      border-right:1px solid black;
+      border-bottom:1px solid black;  
       padding-right:0.5mm;
       padding-left:0.5mm;
       padding-top:2.5mm;

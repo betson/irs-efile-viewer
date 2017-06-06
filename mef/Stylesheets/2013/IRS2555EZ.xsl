@@ -12,8 +12,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS2555EZ"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <META http-equiv="Content-Type" content="text/html"/>
         <title>
           <xsl:call-template name="FormTitle">
@@ -71,8 +73,8 @@
               </div>
             </div>
             <div class="styTYBox" style="width:36mm;height:22mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-0074</div>
-              <div class="styTY" style="height:7mm;font-size:22pt;">2013</div>
+              <div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
+              <div class="styTY" style="height:9mm;font-size:22pt;">2013</div>
               <div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;">
                 Attachment<br/>
                 Sequence No. <span class="styBoldText">34A</span>
@@ -97,13 +99,14 @@
             </div>
           </div>
           <!-- You may use this form line -->
-          <div style="width:187mm;clear:none;height:20mm;padding-top:3mm;border-bottom:1px solid black">
-			  <div style="float:left;clear:none;width:30mm;height:20mm;font-size:9pt;text-align:center;padding-top:4mm">
+          <div style="width:187mm;clear:none;height:26mm;padding-top:3mm;border-bottom:1px solid black">
+			  <div style="float:left;clear:none;width:30mm;height:20mm;font-size:9pt;text-align:center;padding-right:6mm;padding-top:4mm">
 				  <b>You May Use This Form If You:</b>
 			   </div>
 			   <div style="float:left;clear:none;width:60mm;height:20mm;">
 				   <div style="width:60mm;">
-						<div style="float:left;clear:none;width:3mm;"><li/></div><div style="width:50mm;float:left;clear:none;"> Are a U.S. citizen or a resident alien.</div>
+						<div style="float:left;clear:none;width:3mm;"><li/></div>
+						<div style="width:50mm;float:left;clear:none;"> Are a U.S. citizen or a resident alien.</div>
 					</div>
 					
 					<div style="width:60mm;padding-top:1px">
@@ -144,24 +147,21 @@
           <!-- END PART I TITLE -->
           <!-- Line 1 -->
           <div style="width:187mm;margin-top:1mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">1</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">1</div>
             <div style="float:left;width:176mm;">
               <b>Bona Fide Residence Test</b>
             </div>
           </div>
           <!-- Line 1a -->
           <div style="width:187mm;margin-top:1mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">a</div>
+            <div style="float:left;width:10mm;font-weight:bold;padding-left:5mm;">a</div>
             <div style="float:left;width:156mm;height:8mm;padding-right:1mm;">
               Were you a bona fide resident of a foreign country or countries for a period that includes an entire tax year (see instructions)?
-              <span style="font-weight:bold;letter-spacing:3mm;">....................................</span>
+              <span style="font-weight:bold;letter-spacing:3mm;">.................................</span>
             </div>
             <div style="float:left;width:20mm;">
-              <div style="height:4mm;"/>
-              <div style="height:5mm;text-align:right;">
-                <input type="checkbox" style="padding:0;margin:0;height:15px;width:15px;">
+              <div style="height:8mm;text-align:right;">
+                <input type="checkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
                     <xsl:with-param name="BackupName">IRS2555BonaFideResidentInd</xsl:with-param>
@@ -176,7 +176,7 @@
                   <b>Yes</b>
                 </label>
                 </span>
-                <input type="checkbox" style="padding:0;margin:0;height:15px;width:15px;">
+                <input type="checkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
                     <xsl:with-param name="BackupName">IRS2555BonaFideResidentInd</xsl:with-param>
@@ -195,17 +195,15 @@
             </div>
           </div>
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
-              <li>If you answered "Yes," you meet this test. Fill in line 1b and then go to line 3.</li>
-              <li>If you answered "No," you <b>do not</b> meet this test. Go to line 2 to see if you meet the Physical Presence Test.</li>
+            <div style="float:left;width:14mm;height:8mm;font-weight:bold;text-align:right;padding-left:14mm;"><li/><li/></div>
+            <div style="float:left;width:172mm;height:8mm;padding-right:1mm;">
+              If you answered "Yes," you meet this test. Fill in line 1b and then go to line 3.<br/>
+              If you answered "No," you <b>do not</b> meet this test. Go to line 2 to see if you meet the Physical Presence Test.
             </div>
           </div>
           <!-- Line 1b -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">b</div>
+            <div style="float:left;width:10mm;font-weight:bold;padding-left:5mm;">b</div>
             <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
               Enter the date your bona fide residence began <img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
               <span style="width:25mm;border-bottom:1px solid black">
@@ -234,16 +232,14 @@
           </div>
           <!-- Line 2 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">2</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">2</div>
             <div style="float:left;width:176mm;">
               <b>Physical Presence Test</b>
             </div>
           </div>
           <!-- Line 2a -->
-          <div style="width:187mm;margin-top:1mm;height:5mm">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">a</div>
+          <div style="width:187mm;margin-top:1mm;height:12mm">
+            <div style="float:left;width:10mm;font-weight:bold;padding-left:5mm;">a</div>
             <div style="float:left;width:156mm;height:8mm;padding-right:1mm;">
               Were you physically present in a foreign country or countries for at least 330 full days during -
               <div style="width:100mm;float:left;">
@@ -257,8 +253,7 @@
               </div>
             </div>
             <div style="float:left;width:20mm;">
-              <div style="height:4mm;"/>
-              <div style="height:5mm;text-align:right;">
+              <div style="height:8mm;text-align:right;">
                 <input type="checkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
@@ -293,17 +288,15 @@
             </div>
           </div>
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
-              <li>If you answered "Yes," you meet this test. Fill in line 2b and then go to line 3.</li>
-              <li>If you answered "No," you <b>do not</b> meet this test. You <b>cannot</b> take the exclusion unless you meet the Bona Fide Residence Test above.</li>
+            <div style="float:left;width:14mm;height:8mm;font-weight:bold;text-align:right;padding-left:14mm;"><li/><li/></div>
+            <div style="float:left;width:172mm;height:8mm;padding-right:1mm;">
+              If you answered "Yes," you meet this test. Fill in line 2b and then go to line 3.<br/>
+              If you answered "No," you <b>do not</b> meet this test. You <b>cannot</b> take the exclusion unless you meet the Bona Fide Residence Test above.
             </div>
           </div>
           <!-- Line 2b -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">b</div>
+            <div style="float:left;width:10mm;font-weight:bold;padding-left:5mm;">b</div>
             <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
               The physical presence test is based on the 12-month period from <img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
               <span style="width:25mm;border-bottom:1px solid black">
@@ -332,15 +325,13 @@
           </div>
           <!-- Line 3 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">3</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">3</div>
             <div style="float:left;width:156mm;height:8mm;padding-right:1mm;">
               <b>Tax Home Test.</b> Was your tax home in a foreign country or countries throughout your period of bona fide residence or physical presence, whichever applies?
-              <span style="font-weight:bold;letter-spacing:3mm;">............................</span>
+              <span style="font-weight:bold;letter-spacing:3mm;">.........................</span>
             </div>
             <div style="float:left;width:20mm;">
-              <div style="height:4mm;"/>
-              <div style="height:5mm;text-align:right;">
+              <div style="height:8mm;text-align:right;">
                 <input type="checkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
@@ -375,11 +366,10 @@
             </div>
           </div>
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
-              <li>If you answered "Yes," you can take the exclusion. Complete Part II below and then go to page 2.</li>
-              <li>If you answered "No," you <b>cannot</b> take the exclusion. <b>Do not</b> file this form.</li>
+            <div style="float:left;width:14mm;height:8mm;font-weight:bold;text-align:right;padding-left:14mm;"><li/><li/></div>
+            <div style="float:left;width:172mm;height:8mm;padding-right:1mm;">
+              If you answered "Yes," you can take the exclusion. Complete Part II below and then go to page 2.<br/>
+              If you answered "No," you <b>cannot</b> take the exclusion. <b>Do not</b> file this form.
             </div>
           </div>
           <!-- BEGIN PART II TITLE -->
@@ -391,7 +381,7 @@
           <!-- Line 4,5 container -->
           <div style="width:187mm;border-bottom:1px solid black;">
             <!-- Line 4 -->
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">4</div>
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-right:3mm;">4</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div style="float:left;width:137mm;border-right:1px solid black;">
               Your foreign address (including country)<br/>
@@ -410,11 +400,10 @@
             </div>
           </div>
           <!-- Line 6,7,8 container -->
-          <div style="height:18mm;width:187mm;border-bottom:1px solid black;">
+          <div style="height:22mm;width:187mm;border-bottom:1px solid black;">
             <!-- Line 6 -->
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">6</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:35mm;">
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-right:3mm;">6</div>            
+            <div style="float:left;width:40mm;">
               Employer's name<br/>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$FormData/EmployerName/BusinessNameLine1"/>
@@ -447,8 +436,7 @@
           </div>
           <!-- Line 9 -->
           <div style="width:187mm;margin-top:1mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">9</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm">9</div>
             <div style="float:left;width:176mm;">
               Employer is (check any that apply):
             </div>
@@ -456,8 +444,13 @@
           <!-- Line 9a -->
           <div style="width:187mm;">
             <div style="float:left;width:7mm;padding-left:5mm;padding-top:1mm;font-weight:bold;">a</div>
-            <div style="float:left;width:173.5mm;height:4mm;padding-top:1mm;padding-left:3.5mm">A U.S. business
-				<span style="font-weight:bold;letter-spacing:3mm;">.......................................</span>
+            <div style="float:left;width:173.5mm;height:4mm;padding-top:1mm;padding-left:3.5mm"><label>
+				<xsl:call-template name="PopulateLabel">
+				  <xsl:with-param name="TargetNode" select="$FormData/EmployerUnitedStatesCompanyInd"/>
+				  <xsl:with-param name="BackupName">IRS2555EZEmployerUnitedStatesCompanyInd</xsl:with-param>
+				  </xsl:call-template>
+				A U.S. business</label>
+				<span style="font-weight:bold;letter-spacing:3mm;">.....................................</span>
 				</div>
 			<div class="styGenericDiv" style="">
               <input type="checkbox"  style="height:4mm;width:4mm">
@@ -466,21 +459,19 @@
                   <xsl:with-param name="BackupName">IRS2555EZEmployerUnitedStatesCompanyInd</xsl:with-param>
                 </xsl:call-template>
               </input>
-              <label>
-				  <xsl:call-template name="PopulateLabel">
-				  <xsl:with-param name="TargetNode" select="$FormData/EmployerUnitedStatesCompanyInd"/>
-				  <xsl:with-param name="BackupName">IRS2555EZEmployerUnitedStatesCompanyInd</xsl:with-param>
-				  </xsl:call-template>
-				  
-				</label>
             </div>
           </div>
           <!-- Line 9b -->
-          <div style="width:187mm;">
+          <div style="width:187mm;height:5mm;">
             <div style="float:left;width:7mm;padding-top:1mm;padding-left:5mm;font-weight:bold;">b</div>
             <div style="float:left;width:173.5mm;padding-top:1mm;padding-left:3.5mm">
-				A foreign business
-				<span style="font-weight:bold;letter-spacing:3mm;">......................................</span>
+				<label>
+				  <xsl:call-template name="PopulateLabel">
+					<xsl:with-param name="TargetNode" select="$FormData/EmployerForeignEntityInd"/>
+					<xsl:with-param name="BackupName">IRS2555EZEmployerForeignEntityInd</xsl:with-param>
+				  </xsl:call-template>
+				A foreign business</label>
+				<span style="font-weight:bold;letter-spacing:3mm;">....................................</span>
 			</div>
 			<div class="styGenericDiv" style="width:4mm;height:4mm">
               <input type="checkbox" style="height:4mm;width:4mm">
@@ -489,20 +480,18 @@
                   <xsl:with-param name="BackupName">IRS2555EZEmployerForeignEntityInd</xsl:with-param>
                 </xsl:call-template>
               </input>
-              <label>
-				  <xsl:call-template name="PopulateLabel">
-					<xsl:with-param name="TargetNode" select="$FormData/EmployerForeignEntityInd"/>
-					<xsl:with-param name="BackupName">IRS2555EZEmployerForeignEntityInd</xsl:with-param>
-				  </xsl:call-template>
-				
-				</label>
             </div>
           </div>
           <!-- Line 9c -->
           <div style="width:187mm;">
             <div style="float:left;width:7mm;padding-top:1mm;padding-left:5mm;font-weight:bold;">c</div>
-            <div style="float:left;width:173.5mm;padding-top:0.75mm;padding-left:3.5mm;height:4mm">
-				Other (specify)
+            <div style="float:left;width:173.5mm;padding-top:0.75mm;padding-left:3.5mm;height:5mm">
+				<label>
+				  <xsl:call-template name="PopulateLabel">
+					<xsl:with-param name="TargetNode" select="$FormData/OtherEmployerTypeGroup/OtherEmployerTypeInd"/>
+					<xsl:with-param name="BackupName">IRS2555EZOtherEmployerTypeInd</xsl:with-param>
+				  </xsl:call-template>
+				Other (specify)</label>
 				<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
 				<span style="border-bottom:1px solid black;width:140mm">
               <xsl:call-template name="PopulateText">
@@ -510,19 +499,13 @@
               </xsl:call-template>
               </span>
             </div>
-            <div class="styGenericDiv" style="height:4mm;width:4mm">
-              <input type="checkbox" style="height:4mm;width:4mm">
+            <div class="styGenericDiv" style="height:5mm;width:4mm">
+              <input type="checkbox" style="height:5mm;width:4mm">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/OtherEmployerTypeGroup/OtherEmployerTypeInd"/>
                   <xsl:with-param name="BackupName">IRS2555EZOtherEmployerTypeInd</xsl:with-param>
                 </xsl:call-template>
               </input>
-              <label>
-				  <xsl:call-template name="PopulateLabel">
-					<xsl:with-param name="TargetNode" select="$FormData/OtherEmployerTypeGroup/OtherEmployerTypeInd"/>
-					<xsl:with-param name="BackupName">IRS2555EZOtherEmployerTypeInd</xsl:with-param>
-				  </xsl:call-template>
-				</label>
             </div>
           </div>
           <!-- Line 10a -->
@@ -563,19 +546,19 @@
             <div class="styGenericDiv" style="padding-top:1mm;padding-left:0.5mm">and go to line 11a now.</div>
           </div>
           <!-- Line 10c -->
-          <div style="width:187mm;height:3mm;">
+          <div style="width:187mm;height:5mm;">
             <div class="styLNLeftNumBox" style="width:10mm;padding-left:5mm">c</div>
-            <div class="styGenericDiv" style="width:156mm;height:3mm;padding-top:1mm;">
-              Have you ever revoked the foreign earned income exclusion?<span style="letter-spacing:3mm;">.....................</span>
+            <div class="styGenericDiv" style="width:156mm;height:5mm;padding-top:1mm;">
+              Have you ever revoked the foreign earned income exclusion?<span style="letter-spacing:3mm;">....................</span>
               </div>
-              <div class="styGenericDiv" style="width:20mm;margin-bottom:0.5mm;height:3mm" >
+              <div class="styGenericDiv" style="width:20mm;margin-bottom:0.5mm;height:5mm" >
               <input type="checkbox">
                 <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
                   <xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
                 </xsl:call-template>
               </input>
-              <span style="height:3mm;padding-bottom:1.15mm;">
+              <span style="height:5mm;padding-bottom:1.15mm;">
               <label>
                 <xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
@@ -590,7 +573,7 @@
                   <xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
                 </xsl:call-template>
               </input>
-              <span style="height:3mm;padding-bottom:1.15mm;">
+              <span style="height:5mm;padding-bottom:1.15mm;">
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
@@ -603,8 +586,7 @@
           </div>
           <!-- Line 10d -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">d</div>
+            <div style="float:left;width:10mm;font-weight:bold;padding-left:5mm;">d</div>
             <div style="float:left;width:176mm;">
               If you answered "Yes," enter the tax year for which the revocation was effective.<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
               <span style="border-bottom:1px solid black;width:57mm">
@@ -648,8 +630,7 @@
           </div>
           <!-- Line 11b -->
           <div class="styTBB" style="width:187mm;margin-top:1mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">b</div>
+            <div style="float:left;width:10mm;font-weight:bold;padding-left:5mm;">b</div>
             <div style="float:left;width:176mm;">
               Of what country are you a citizen/national?<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
               <span style="border-bottom:1px solid black;">
@@ -671,6 +652,7 @@
               Form <span class="styBoldText" style="font-size:8pt;">2555-EZ</span> (2013)
             </div>
           </div>
+		  <div class="pageEnd" style="width:187mm;display:inline-block;"/>
           <!-- Page 2 Header -->
           <div class="styTBB" style="width:187mm;padding-top:.5mm;">
             <div style="float:left;">Form 2555-EZ (2013)</div>
@@ -1115,11 +1097,11 @@
           <!-- END PART IV TITLE -->
           <!-- Line 13 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">13</div>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">13</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:126mm;">
               Maximum foreign earned income exclusion
-              <span style="letter-spacing:3mm;font-weight:bold;">...................</span>
+              <span style="letter-spacing:3mm;font-weight:bold;">.................</span>
             </div>
             <div style="float:left;">
               <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">13</div>
@@ -1130,22 +1112,19 @@
           </div>
           <!-- Line 14 -->
           <div style="width:187mm;">
-            <div style="float:left;width:10mm;padding-top:5mm;">
-              <div style="float:left;width:5mm;font-weight:bold;text-align:right;">14</div>
+            <div style="float:left;width:10mm;height:9mm;padding-top:5mm;">
+              <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">14</div>
             </div>
-            <div style="float:left;height:9mm;width:101mm;">
-              <div style="height:4.5mm;"/>
-              <div class="styLNDesc" style="width:100mm;">
+            <div style="float:left;height:9mm;width:102mm;">
+              <div class="styLNDesc" style="width:100mm;height:9mm;padding-top:4.5mm;">
                 Enter the number of days in your qualifying period that fall within 2013<span style="letter-spacing:3mm;font-weight:bold;">..</span>
               </div>
             </div>
             <div style="float:left;">
-              <div style="height:4.5mm;width:8mm;border-left:1px solid black;"/>
-              <div style="height:4.5mm;width:8mm;text-align:center;font-weight:bold;border-bottom:1px solid black;border-left:1px solid black;">14</div>
+              <div style="height:9mm;width:8mm;text-align:center;font-weight:bold;border-bottom:1px solid black;border-left:1px solid black;padding-top:5mm;">14</div>
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="float:none;height:4.5mm;width:17mm;border-bottom:none;"/>
-              <div class="styLNAmountBox" style="float:none;height:4.5mm;width:17mm;position:relative;">
+              <div class="styLNAmountBox" style="float:none;height:9mm;width:16mm;position:relative;padding-top:5mm;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncmExclQlfyDaysCnt"/>
                 </xsl:call-template><b style="margin-right:1mm;"> days</b>
@@ -1156,7 +1135,7 @@
           </div>
           <!-- Line 15 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">15</div>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">15</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:126mm;">
               Did you enter 365 on line 14?
@@ -1170,7 +1149,7 @@
           </div>
           <div class="styGenericDiv" style="width:187mm;">
 			  <div class="styGenericDiv" style="height:10mm;width:9mm;"/>
-			  <div class="styGenericDiv" style="height:10mm;width 90mm">
+			  <div class="styGenericDiv" style="height:10mm;width:90mm">
 				  <div class="styGenericDiv" style="height:5mm;width:90mm">
 					  <div class="styGenericDiv" style="height:5mm;width:5mm;">
 						   <input type="checkbox">
@@ -1212,6 +1191,7 @@
 						  </div>
 				   </div>
 			  </div>
+			  
 			   <div class="styGenericDiv" style="heigth:10mm;width:10mm">
 					  <img src="{$ImagePath}/2555EZ_lg_rt_bracket.gif" alt="left bracket"/>
 			   </div>
@@ -1229,11 +1209,11 @@
             
           <!-- Line 16 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">16</div>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">16</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:126mm;">
               Multiply line 13 by line 15
-              <span style="letter-spacing:3mm;font-weight:bold;">........................</span>
+              <span style="letter-spacing:3mm;font-weight:bold;">.......................</span>
             </div>
             <div style="float:left;">
               <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">16</div>
@@ -1248,19 +1228,17 @@
           </div>
           <!-- Line 17 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">17</div>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">17</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:126mm;">
               Enter, in U.S. dollars, the total foreign earned income you earned and received in 2013 (see instructions). Be sure to include this amount on Form 1040, line 7
-              <span style="font-weight:bold;letter-spacing:3mm;">...........</span>
+              <span style="font-weight:bold;letter-spacing:3mm;">..........</span>
             </div>
             <div style="float:left;">
-              <div style="height:4.5mm;width:8mm;border-left:1px solid black;"/>
-              <div style="height:4.5mm;width:8mm;text-align:center;font-weight:bold;border-bottom:1px solid black;border-left:1px solid black;">17</div>
+              <div style="height:9mm;width:8mm;text-align:center;font-weight:bold;border-bottom:1px solid black;border-left:1px solid black;padding-top:5mm;">17</div>
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="height:4.5mm;width:42mm;border-bottom:none;"/>
-              <div class="styLNAmountBox" style="height:4.5mm;width:42mm;position:relative;">
+              <div class="styLNAmountBox" style="height:9mm;width:42mm;position:relative;padding-top:5mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/TotalForeignEarnedIncomeAmt" />
                 </xsl:call-template>
@@ -1269,7 +1247,7 @@
           </div>
           <!-- Line 18 -->
           <div class="styTBB" style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">18</div>
+            <div style="float:left;width:10mm;font-weight:bold;text-align:right;padding-right:5mm;">18</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
             <div class="styLNDesc" style="width:126mm;">
               <b>Foreign earned income exclusion.</b> Enter the <b>smaller</b> of line 16 or line 17 here and in parentheses on <b>Form 1040, line 21.</b> Next to the amount enter "2555-EZ." On Form 1040, subtract this amount from your income to arrive at total income on Form 1040, line 22
@@ -1277,12 +1255,10 @@
               <img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
             </div>
             <div style="float:left;">
-              <div style="height:7mm;width:8mm;border-left:1px solid black;"/>
-              <div style="height:4.5mm;width:8mm;text-align:center;font-weight:bold;border-left:1px solid black;">18</div>
+              <div style="height:11.5mm;width:8mm;text-align:center;font-weight:bold;border-left:1px solid black;padding-top:7mm;">18</div>
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="height:7mm;width:42mm;border-bottom:none;"/>
-              <div class="styLNAmountBox" style="height:4.5mm;width:42mm;border-bottom:none;">
+              <div class="styLNAmountBox" style="height:11.5mm;width:42mm;border-bottom:none;padding-top:8mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnedIncExclusionAmt" />
                 </xsl:call-template>

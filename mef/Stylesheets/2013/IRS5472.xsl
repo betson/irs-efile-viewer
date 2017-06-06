@@ -11,8 +11,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form5472Data" select="$RtnDoc/IRS5472"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form5472Data)"/>
@@ -30,28 +32,32 @@
 				<xsl:call-template name="InitJS"/>
 				<script> function expandParentCtn(containerId) { var container = document.getElementById(containerId); container.style.overflowY = "visible"; } </script>
 				<style type="text/css">
-					<!--<xsl:if test="not($Print) or $Print=''">-->
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS5472Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-					<!--</xsl:if>-->
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<form style="font-family:arial; font-size:8pt" name="Form5472">
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styTBB" style="width:187mm; clear:both">
-						<div class="styFNBox" style="height:18mm; width:30mm; font-size:7pt">
+						<div class="styFNBox" style="height:26mm; width:30mm; font-size:7pt;border-right-width: 2px;">
 							<div>
 								Form  
 								<span class="styFormNumber">5472</span>
-								(Rev. December 2012)
-								<br/>
-								<xsl:call-template name="SetFormLinkInline">
-									<xsl:with-param name="TargetNode" select="$Form5472Data"/>
-								</xsl:call-template>
-								<!--General Dependency Push Pin <xsl:call-template name="SetFormLinkInline"> <xsl:with-param name="TargetNode" select="$Form5472Data"/> </xsl:call-template> -->
-								<div style="font-size:6pt;">
+								<span style="width:29mm;">
+									(Rev. December 2012)
+									<br/>
+									<!--General Dependency Push Pin -->
+									<xsl:call-template name="SetFormLinkInline">
+										<xsl:with-param name="TargetNode" select="$Form5472Data"/>
+									</xsl:call-template>
+								</span>
+								<div style="font-size:6pt;padding-top:1mm;">
+									<br/>
+									<br/>
 									Department of the Treasury
 									<br/>
 									Internal Revenue Service
@@ -65,14 +71,21 @@
 								or a Foreign Corporation Engaged in a U.S. Trade or Business
 								<br/>
 								<font style="font-size:9pt">(Under Sections 6038A and 6038C of the Internal Revenue Code)</font>
+								<br/>
+								<font style="font-size:8pt">
+								<img src="{$ImagePath}/5472_Bullet_Sm.gif" alt="Bullet"/>	Information about Form 5472 and its separate instructions is at 
+								<a style="text-decoration:none;color:black;" href="http://www.irs.gov/form5472" title="Link to IRS.gov">
+									<i>www.irs.gov/form5472.</i>
+								</a>
+								</font>
 							</div>
-							<div style="font-size:6.5pt;">
+							<div style="font-size:6.5pt;padding-top:2mm;">
 								For tax year of the reporting corporation beginning
-								<span style="width:20mm;border-bottom:1 solid black;">
+								<span style="width:20mm;border-bottom:1px solid black;">
 									<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
 								</span>
 								, and ending
-								<span style="width:20mm;border-bottom:1 solid black;">
+								<span style="width:20mm;border-bottom:1px solid black;">
 									<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
 								</span>
 								<br/>
@@ -82,7 +95,8 @@
 								</font>
 							</div>
 						</div>
-						<div class="styTYBox" style="font-size:7pt; height:21mm; width:30mm; padding-top:3mm">
+						<div class="styTYBox" style="font-size:7pt; height:26mm; width:31mm; padding-top:3mm;border-left-width: 2px;">
+							<br/>
 							<br/>
 							<br/>
 							OMB No. 1545-0805
@@ -90,88 +104,95 @@
 					</div>
 					<!-- BEGIN Part I Title -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartName" style="width:11mm">Part I</div>
-						<div class="styPartDesc">
+						<div class="styPartName" style="width:11mm;padding-top:.5mm;">Part I</div>
+						<div class="styPartDesc" style="padding-top:.5mm;">
 							Reporting Corporation
 							<span class="styNormalText">(see instructions). All reporting corporations must complete Part I.</span>
 						</div>
 					</div>
 					<!-- END Part I Title -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:135mm; height:8mm">
+						<div class="styFNBox" style="width:138mm; height:10mm;border-bottom:1 solid black;">
 							<div class="styIRS5472TextTitle">1a</div>
-							<div class="styGenericDiv">
-								Name of reporting corporation
-								<div style="margin-left:1mm">
+							Name of reporting corporation <br/>
+							<span style="padding-left:6mm;">
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/CorporationName/BusinessNameLine1"/>
+								</xsl:call-template>
+								<xsl:if test="normalize-space($Form5472Data/ReportingCorporationInfo/CorporationName/BusinessNameLine2) != ''">
+									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/CorporationName/BusinessNameLine1"/>
+										<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/CorporationName/BusinessNameLine2"/>
 									</xsl:call-template>
-									<xsl:if test="normalize-space($Form5472Data/ReportingCorporationInfo/CorporationName/BusinessNameLine2) != ''">
-										<br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/CorporationName/BusinessNameLine2"/>
-										</xsl:call-template>
-									</xsl:if>
-								</div>
-							</div>
+								</xsl:if>
+							</span>
 						</div>
-						<div style="float:left">
+						<div class="styFNBox" style="width:49mm;border-right:0px;">
 							<div class="styIRS5472TextTitle">1b</div>
-							<div style="float:right">
 								<b>Employer identification number</b>
 								<!--point one -->
-								<xsl:if test="$Form5472Data/ReportingCorporationInfo/EIN">
-									<div class="styIRS5472CenterTxt" style="vertical-align:bottom;text-align:left;">
+								<xsl:choose>
+									<xsl:when test="$Form5472Data/ReportingCorporationInfo/EIN">
+										<div class="styIRS5472CenterTxt" style="vertical-align:bottom;text-align:left;padding-left:6mm;">
 										<br/>
-										<xsl:call-template name="PopulateEIN">
-											<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/EIN"/>
+											<xsl:call-template name="PopulateEIN">
+												<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/EIN"/>
+											</xsl:call-template>
+										</div>									
+									</xsl:when>																	
+								<xsl:otherwise>									
+									<div class="styIRS5472CenterTxt" style="vertical-align:bottom;text-align:left;padding-left:6mm;">
+									<br/>
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/MissingEINReasonCd"/>
 										</xsl:call-template>
-									</div>
-								</xsl:if>
+									</div>									
+								</xsl:otherwise>
+								</xsl:choose>
 							</div>
 						</div>
-					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:135mm; height:8mm">
-							<div style="border-bottom:1 solid black">
-								<div style="padding-left:6mm; height:8mm">
-									Number, street, and room or suite no. (if a P.O. box, see instructions)
-									<div style="margin-left:1mm;">
-										<xsl:choose>
-											<xsl:when test="$Form5472Data/ReportingCorporationInfo/USAddress">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/USAddress/AddressLine1"/>
-												</xsl:call-template>
-												<xsl:if test="normalize-space($Form5472Data/ReportingCorporationInfo/USAddress/AddressLine2) != ''">
-													<br/>
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/USAddress/AddressLine2"/>
-													</xsl:call-template>
-												</xsl:if>
-											</xsl:when>
-											<xsl:otherwise>
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/ForeignAddress/AddressLine1"/>
-												</xsl:call-template>
-												<xsl:if test="normalize-space($Form5472Data/ReportingCorporationInfo/ForeignAddress/AddressLine2) != ''">
-													<br/>
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/ForeignAddress/AddressLine2"/>
-													</xsl:call-template>
-												</xsl:if>
-											</xsl:otherwise>
-										</xsl:choose>
-									</div>
-								</div>
-							</div>
-							<div style="padding-left:6mm; height:8mm">
-								City or town, state, and ZIP code (if a foreign address, see instructions.)
+						<div class="styFNBox" style="width:138mm; height:20mm;">
+							<div style="padding-left:6mm; height:10mm;border-bottom:1px solid black;width:138mm;">
+								Number, street, and room or suite no. (if a P.O. box, see instructions)
+								<br/>
 								<div>
 									<xsl:choose>
 										<xsl:when test="$Form5472Data/ReportingCorporationInfo/USAddress">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/USAddress/AddressLine1"/>
+											</xsl:call-template>
+											<xsl:if test="normalize-space($Form5472Data/ReportingCorporationInfo/USAddress/AddressLine2) != ''">
+												<br/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/USAddress/AddressLine2"/>
+												</xsl:call-template>
+											</xsl:if>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/ForeignAddress/AddressLine1"/>
+											</xsl:call-template>
+											<xsl:if test="normalize-space($Form5472Data/ReportingCorporationInfo/ForeignAddress/AddressLine2) != ''">
+												<br/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/ForeignAddress/AddressLine2"/>
+												</xsl:call-template>
+											</xsl:if>
+										</xsl:otherwise>
+									</xsl:choose>
+								</div>
+							</div>
+							<div style="padding-left:6mm; height:12mm">
+								City or town, state, and ZIP code (if a foreign address, see instructions)
+								<br/>
+								<div>
+									<xsl:choose>
+										<xsl:when test="$Form5472Data/ReportingCorporationInfo/USAddress">
+										<br/>
 											<xsl:attribute name="style">
-                    margin-left:1mm; 
-                  </xsl:attribute>
+												margin-left:0mm; 
+											</xsl:attribute>
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/USAddress/City"/>
 											</xsl:call-template>
@@ -208,20 +229,19 @@
 								</div>
 							</div>
 						</div>
-						<div style="float:left">
+						<div class="styFNBox" style="float:left;width:49mm;height:20mm;border-right:0px;">
 							<div class="styIRS5472TextTitle">1c</div>
-							<div class="styGenericDiv">
-								Total assets
-								<div style="margin-top:8.5mm;">
-									$
-									<span style="width:40mm;;text-align:right;">
-										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/TotalAssetsAmt"/>
-										</xsl:call-template>
-									</span>
-								</div>
-							</div>
-						</div>
+								<div class="styGenericDiv">Total assets</div>
+							<br/><br/><br/><br/><br/>
+							<span style="padding-left:6.5mm;">
+								$
+								<span style="width:39mm;text-align:right;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/TotalAssetsAmt"/>
+									</xsl:call-template>
+								</span>
+							</span>
+						</div>												
 					</div>
 					<div class="styBB" style="width:187mm;">
 						<div class="styFNBox" style="width:118mm">
@@ -253,58 +273,57 @@
 							</div>
 						</div>
 					</div>
-					<div class="styBB" style="width:187mm;">
-						<div style="float:left; width:70mm">
-							<div class="styIRS5472TextTitle">1f</div>
-							<div class="styGenericDiv">
-								Total value of gross payments made or received (see instructions) reported on
+					<div class="styBB" style="width:187mm;height:12mm;">
+						<div class="styFNBox" style="float:left; width:70mm">
+							<div class="styIRS5472TextTitle">1f</div>							
+							Total value of gross payments made or received
+							<span style="padding-left:6mm;">									
+							 (see instructions) reported on
 								<b>this</b>
 								Form 5472
-								<div style="padding-top:2mm">
-									$
-									<span style="width:40mm;text-align:right;">
-										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/TotalValueGrossPaymentsAmt"/>
-										</xsl:call-template>
-									</span>
-								</div>
-							</div>
-						</div>
-						<div style="float:left; width:48mm; border-left:1 solid; border-right:1 solid">
-							<div class="styIRS5472TextTitle">1g</div>
-							<div class="styGenericDiv">
-								Total number of Forms 5472 filed for the tax year
-								<div style="padding-top:2mm" class="styIRS5472CenterTxt">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="MaxSize" select="4"/>
-										<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/TotalForm5472FiledCnt"/>
+							</span>
+							<div style="padding-top:2mm;padding-left:6.5mm;">
+								$
+								<span style="width:58mm;text-align:right;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/TotalValueGrossPaymentsAmt"/>
 									</xsl:call-template>
-								</div>
-							</div>
+								</span>
+							</div>							
 						</div>
-						<div style="float:left">
-							<div class="styIRS5472TextTitle">1h</div>
-							<div class="styGenericDiv">
-								Total value of gross payments made or received
-								<br/>
-								(see instructions) reported on
-								<b>all</b>
-								Forms 5472
-								<div style="padding-top:2mm">
-									$
-									<span style="width:40mm;text-align:right;">
-										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/TotalVlGroPymtRptAll5472Amt"/>
-										</xsl:call-template>
-									</span>
-								</div>
-							</div>
+						<div class="styFNBox" style="float:left; width:48mm; border-left:1 solid; border-right:1px solid">
+							<div class="styIRS5472TextTitle">1g</div>							
+							Total number of Forms 5472 
+							<span style="padding-left:6mm;">filed for the tax year</span>
+							<br/>
+							<div style="padding-top:2mm;padding-left:6mm;text-align:left;">
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="MaxSize" select="4"/>
+									<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/TotalForm5472FiledCnt"/>
+								</xsl:call-template>
+							</div>							
+						</div>
+						<div class="styFNBox" style="float:left;width:69mm;border-right:0px;">
+							<div class="styIRS5472TextTitle">1h</div>							
+							Total value of gross payments made or received 
+							<span style="padding-left:6mm;">(see instructions) reported on
+							<b>all</b>
+							Forms 5472
+							</span>
+							<div style="padding-top:2mm;padding-left:6.5mm;">
+								$
+								<span style="width:59mm;text-align:right;">
+									<xsl:call-template name="PopulateAmount">
+										<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/TotalVlGroPymtRptAll5472Amt"/>
+									</xsl:call-template>
+								</span>
+							</div>							
 						</div>
 					</div>
-					<table style="font-size:8pt; width:187mm; line-height:110%;empty-cells:show;border-collapse:collapse;      border-style:solid;border-color:black;border-top-width:0px;border-bottom-width:1;border-left-width:0;border-right-width:0;" cellpadding="0" cellspacing="0">
+					<table style="font-size:8pt; width:187mm; line-height:110%;empty-cells:show;border-collapse:collapse;      border-style:solid;border-color:black;border-top-width:0px;border-bottom-width:0;border-left-width:0;border-right-width:0;" cellpadding="0" cellspacing="0">
 						<tr>
-							<th rowspan="2" scope="row" style="width:6mm; border-bottom:1 solid black;" valign="top"> 1i </th>
-							<th rowspan="2" scope="col" valign="top" align="left" style="width:32mm; font-weight:normal; border-right:1 solid black; border-bottom:1 solid black; line-height:100%">
+							<th rowspan="2" scope="row" style="width:6mm;" valign="top"> 1i </th>
+							<th rowspan="2" scope="col" valign="top" align="left" style="width:32mm; font-weight:normal; border-right:1px solid black; border-bottom:1 solid black; line-height:100%;">
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/ConsolidatedFilingForm5472Ind"/>
@@ -312,15 +331,14 @@
 											IRS5472ConsolidatedFilingOfForm5472
 										</xsl:with-param>
 									</xsl:call-template>
-									Check here if this
+									Check here if this is
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/ConsolidatedFilingForm5472Ind"/>
 									</xsl:call-template>
 									<br/>
-									is a consolidated
+									 a consolidated filing
 									<br/>
-									filing of Form 5472
-									<span style="letter-spacing:3.3mm; font-weight:bold">...</span>  
+									 <span style="padding-right:2mm;">of Form 5472</span>									
 									<img src="{$ImagePath}/5472_Bullet_Sm.gif" alt="Arrow Bullet"/>  
 								</label>
 								<input type="Checkbox" class="styCkbox">
@@ -333,39 +351,31 @@
 								</input>
 							</th>
 							<th rowspan="2" scope="row" style="width:6mm" valign="top"> 1j </th>
-							<th scope="col" valign="top" align="left" style="width:22mm; font-weight:normal; border-right:1 solid black">
+							<th scope="col" valign="top" align="left" style="width:22mm; font-weight:normal; border-right:1px solid black;">
 								Country of
 								<br/>
 								incorporation
 							</th>
 							<th rowspan="2" scope="row" style="width:6mm;" valign="top"> 1k </th>
-							<th scope="col" style="font-weight:normal; width:75mm" align="left" valign="top">
-								Country(ies) under whose laws the reporting
+							<th scope="col" style="font-weight:normal; width:75mm;border-right:1px solid black;" align="left" valign="top">
+								Country(ies) under whose laws the reporting corporation
 								<br/>
-								corporation files an income tax return as a resident
+								  files an income tax return as a resident
 							</th>
-							<td align="right" valign="bottom" width="15px">
-								<!-- button display logic -->
-								<!-- end button display logic -->
-							</td>
-							<th rowspan="2" scope="row" valign="top" style="border-left:1 solid black; width:6mm"> 1l </th>
+							<th rowspan="2" scope="row" valign="top" style="width:6mm"> 1l </th>
 							<th scope="col" style="font-weight:normal; width:40mm;" align="left" valign="top">
 								Principal country(ies) where
 								<br/>
 								business is conducted
 							</th>
-							<td align="right" valign="bottom" width="15px">
-								<!-- button display logic -->
-								<!-- end button display logic -->
-							</td>
 						</tr>
 						<tr style="height:6mm">
-							<td style="border-right:1 solid black" valign="top">
+							<td style="border-right:1px solid black;" valign="top">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form5472Data/ReportingCorporationInfo/IncorporationCountryCd"/>
 								</xsl:call-template>
 							</td>
-							<td colspan="2" valign="top">
+							<td  style="width:65mm;border-right:1px solid black;"  valign="top">
 								<xsl:for-each select="$Form5472Data/ReportingCorporationInfo/FilesIncmTaxResidentCountryCd">
 									<xsl:if test="position()!=1">
 										,
@@ -391,7 +401,7 @@
 							</td>
 						</tr>
 					</table>
-					<div class="styBB" style="width:187mm;padding-bottom:0.5mm; padding-top:0.5mm">
+					<div class="styBB" style="width:187mm;padding-bottom:0.5mm; padding-top:0.5mm;border-bottom-width:2px;border-top-width:1px;">
 						<div class="styIRS5472TextTitle">2</div>
 						<div class="styGenericDiv">
 							<label>
@@ -427,28 +437,30 @@
 					<!-- BEGIN Part II Title -->
 					<xsl:variable name="p2DirectCount" select="count($Form5472Data/Direct25PctFrgnShareholderInfo)"/>
 					<xsl:variable name="containerHeight" select="2"/>
-					<div class="styBB" style="width:187mm; border-top:1 solid black">
-						<div class="styPartName" style="width:11mm">Part II</div>
-						<div class="styPartDesc">
+					<div class="styBB" style="width:187mm; border-top:1 solid black;">
+						<div class="styPartName" style="width:11mm;height:5mm;padding-top:.5mm;">Part II</div>
+						<div class="styPartDesc" style="padding-top:1mm;">
 							25% Foreign Shareholder
 							<span class="styNormalText">(see instructions)</span>
-						</div>
-						<div style="float:right">
-							<!-- button display logic -->
-							<xsl:call-template name="SetTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$Form5472Data/Direct25PctFrgnShareholderInfo"/>
-								<xsl:with-param name="containerHeight" select="$containerHeight"/>
-								<xsl:with-param name="containerID" select="'part2TPctn1'"/>
-							</xsl:call-template>
-							<!-- end button display logic -->
-						</div>
+						</div>						
+						<xsl:if test="$p2DirectCount &gt; $containerHeight">
+							<div style="float:right">
+								<!-- button display logic -->
+								<xsl:call-template name="SetDynamicTableToggleButton">
+									<xsl:with-param name="TargetNode" select="$Form5472Data/Direct25PctFrgnShareholderInfo"/>
+									<xsl:with-param name="containerHeight" select="$containerHeight"/>
+									<xsl:with-param name="containerID" select="'part2TPctn1'"/>
+								</xsl:call-template>
+								<!-- end button display logic -->
+							</div>
+						</xsl:if>
 					</div>
 					<!-- END Part II Title -->
 					<!-- BEGIN Part II Line Items -->
-					<div class="styIRS5472TableContainer2" id="part2TPctn1">
+					<div class="styTableContainer" id="part2TPctn1" style="width:187mm;border-bottom:0px;">
 						<xsl:attribute name="style"><xsl:if test="$p2DirectCount &gt; $containerHeight">
-            height:51.2mm;
-          </xsl:if></xsl:attribute>
+							height:51.2mm;
+						</xsl:if></xsl:attribute>
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -466,11 +478,18 @@
 							</xsl:with-param>
 						</xsl:call-template>
 					</div>
+					<xsl:if test="($Form5472Data/Direct25PctFrgnShareholderInfo &gt;1) and ($Print = $Separated)">
+						<xsl:call-template name="SetInitialDynamicTableHeight">
+							<xsl:with-param name="TargetNode" select="$Form5472Data/Direct25PctFrgnShareholderInfo"/>
+							<xsl:with-param name="containerHeight" select="$containerHeight"/>
+							<xsl:with-param name="containerID" select="'part2TPctn1'"/>
+						</xsl:call-template>
+					</xsl:if>
 					<xsl:variable name="p2UltimateCount" select="count($Form5472Data/UltimateIndr25PctFrgnShrInfo)"/>
 					<xsl:if test="$p2UltimateCount &gt; $containerHeight">
-						<div class="styBB" style="width:187mm;border-top:1 solid black">
+						<div class="styBB" style="width:187mm;border-top:1 solid black;">
 							<div style="float:right">
-								<xsl:call-template name="SetTableToggleButton">
+								<xsl:call-template name="SetDynamicTableToggleButton">
 									<xsl:with-param name="TargetNode" select="$Form5472Data/UltimateIndr25PctFrgnShrInfo"/>
 									<xsl:with-param name="containerHeight" select="$containerHeight"/>
 									<xsl:with-param name="containerID" select="'part2TPctn2'"/>
@@ -480,8 +499,8 @@
 					</xsl:if>
 					<div class="styIRS5472TableContainer2" id="part2TPctn2">
 						<xsl:attribute name="style"><xsl:if test="$p2UltimateCount &gt; $containerHeight">
-            height:51.2mm; 
-          </xsl:if> </xsl:attribute>
+							height:51.2mm; 
+						</xsl:if> </xsl:attribute>
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -499,10 +518,17 @@
 							</xsl:with-param>
 						</xsl:call-template>
 					</div>
+					<xsl:if test="($Form5472Data/UltimateIndr25PctFrgnShrInfo &gt;1) and ($Print = $Separated)">
+						<xsl:call-template name="SetInitialDynamicTableHeight">
+							<xsl:with-param name="TargetNode" select="$Form5472Data/UltimateIndr25PctFrgnShrInfo"/>
+							<xsl:with-param name="containerHeight" select="$containerHeight"/>
+							<xsl:with-param name="containerID" select="'part2TPctn2'"/>
+						</xsl:call-template>
+					</xsl:if>
 					<!-- END Part II Line Items -->
 					<div style="width:187mm; font-size:7pt;  border-top:1 solid black; padding-top:0.5mm">
 						<div style="float:left; font-size:8pt">
-							<b>For Paperwork Reduction Act Notice, see page 4.</b>
+							<b>For Paperwork Reduction Act Notice, see instructions.</b>
 						</div>
 						<div style="float:right">
 							Cat. No. 49987Y
@@ -512,6 +538,7 @@
 							(Rev. 12-2012)
 						</div>
 					</div>
+					<div class="pageEnd"/>
 					<div style="width:187mm; font-size:7pt;  page-break-before:always; padding-bottom:0.5mm">
 						<div style="float:left"> Form 5472 (Rev. 12-2012) </div>
 						<div style="float:right">
@@ -520,13 +547,15 @@
 						</div>
 					</div>
 					<!-- BEGIN Part III Title -->
-					<div style="width:187mm;height:8mm; border-top:1 solid black; border-bottom:1 solid black">
+					<div class="styBB" style="width:187mm;height:13mm;border-top:2 solid black;border-top-width: 2px;">
 						<div class="styPartName" style="width:13mm;">Part III</div>
 						<div class="styPartDesc">
 							Related Party
 							<span class="styNormalText">
 								(see instructions)
+								</span>
 								<br/>
+								<span class="styNormalText">
 								Check applicable box: Is the related party a
 								<input type="Checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
@@ -566,91 +595,90 @@
 								?
 								<br/>
 								All reporting corporations must complete this question and the rest of Part III.
-							</span>
+								</span>
 						</div>
 					</div>
 					<!-- END Part III Title -->
 					<!-- BEGIN Part III Line Items -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:117mm;border-right-width: 0px;">
-							<div class="styIRS5472TextTitle">1a</div>
-							<div class="styGenericDiv">
-								Name and address of related party
-								<div style="margin-left:1mm">
+						<div class="styFNBox" style="width:96mm;height:28mm;border-right:1px solid black;clear:none;">
+							<div class="styIRS5472TextTitle" style="width:4mm;">1a</div>
+							<div class="styGenericDiv" style="padding-left:2mm;">Name and address of related party</div>
+							<br/>
+							<div style="margin-left:6mm;">
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/RelatedPartyName/BusinessNameLine1"/>
+								</xsl:call-template>
+								<xsl:if test="normalize-space($Form5472Data/RelatedPartyInfo/RelatedPartyName/BusinessNameLine2)!=''">
+									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/RelatedPartyName/BusinessNameLine1"/>
+										<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/RelatedPartyName/BusinessNameLine2"/>
 									</xsl:call-template>
-									<xsl:if test="normalize-space($Form5472Data/RelatedPartyInfo/RelatedPartyName/BusinessNameLine2)!=''">
+								</xsl:if>
+								<br/>
+								<xsl:choose>
+									<xsl:when test="$Form5472Data/RelatedPartyInfo/ForeignAddress">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/AddressLine1"/>
+										</xsl:call-template>
+										<xsl:if test="normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/AddressLine2)!=''">
+											<br/>
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/AddressLine2"/>
+											</xsl:call-template>
+										</xsl:if>
 										<br/>
 										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/RelatedPartyName/BusinessNameLine2"/>
+											<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/City"/>
 										</xsl:call-template>
-									</xsl:if>
-									<br/>
-									<xsl:choose>
-										<xsl:when test="$Form5472Data/RelatedPartyInfo/ForeignAddress">
+										<xsl:if test="(normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/City) != '') and (normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/ProvinceOrState) != '' or normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/PostalCode) != '')">											,
+										</xsl:if>
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/ProvinceOrState"/>
+										</xsl:call-template>  
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/PostalCode"/>
+										</xsl:call-template>
+										<xsl:if test="normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/City) != '' or normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/ProvinceOrState) != '' or normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/PostalCode) != ''">
+											<br/>
+										</xsl:if>
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/Country"/>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:if test="$Form5472Data/RelatedPartyInfo/USAddress">
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/AddressLine1"/>
+												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/AddressLine1"/>
 											</xsl:call-template>
-											<xsl:if test="normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/AddressLine2)!=''">
+											<xsl:if test="normalize-space($Form5472Data/RelatedPartyInfo/USAddress/AddressLine2)!=''">
 												<br/>
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/AddressLine2"/>
+													<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/AddressLine2"/>
 												</xsl:call-template>
 											</xsl:if>
 											<br/>
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/City"/>
+												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/City"/>
 											</xsl:call-template>
-											<xsl:if test="(normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/City) != '') and (normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/ProvinceOrState) != '' or normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/PostalCode) != '')">
-												,
-											</xsl:if>
+											,
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/ProvinceOrState"/>
+												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/State"/>
 											</xsl:call-template>  
 											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/PostalCode"/>
+												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/ZIPCode"/>
 											</xsl:call-template>
-											<xsl:if test="normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/City) != '' or normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/ProvinceOrState) != '' or normalize-space($Form5472Data/RelatedPartyInfo/ForeignAddress/PostalCode) != ''">
-												<br/>
-											</xsl:if>
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignAddress/Country"/>
-											</xsl:call-template>
-										</xsl:when>
-										<xsl:otherwise>
-											<xsl:if test="$Form5472Data/RelatedPartyInfo/USAddress">
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/AddressLine1"/>
-												</xsl:call-template>
-												<xsl:if test="normalize-space($Form5472Data/RelatedPartyInfo/USAddress/AddressLine2)!=''">
-													<br/>
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/AddressLine2"/>
-													</xsl:call-template>
-												</xsl:if>
-												<br/>
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/City"/>
-												</xsl:call-template>
-												,
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/State"/>
-												</xsl:call-template>  
-												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/USAddress/ZIPCode"/>
-												</xsl:call-template>
-											</xsl:if>
-										</xsl:otherwise>
-									</xsl:choose>
-								</div>
+										</xsl:if>
+									</xsl:otherwise>
+								</xsl:choose>
 							</div>
 						</div>
-						<div style="float:left;width:70mm;border-bottom:1 solid black;border-left:1 solid black;">
+						<div style="width:91mm;border-bottom:1px solid black;height:13mm;">
 							<div class="styIRS5472TextTitle" style="white-space:nowrap;">1b(1) </div>
-							<div class="styGenericDiv" style="padding-left:1mm;">
+							<div class="styGenericDiv" style="padding-left:3mm;height:9mm;">
 								U.S. identifying number, if any
-								<div style="text-align:center; padding-top:3mm;">
+								<br/><br/><br/>
+								<div style="padding-left:14mm;">
 									<xsl:choose>
 										<xsl:when test="$Form5472Data/RelatedPartyInfo/EIN !=''">
 											<xsl:call-template name="PopulateEIN">
@@ -670,21 +698,110 @@
 									</xsl:choose>
 								</div>
 							</div>
-						</div>
-						<div style="float:left;width:70mm;border-left:1 solid black;">
-							<div class="styIRS5472TextTitle" style="white-space:nowrap;">1b(2) </div>
-							<div class="styGenericDiv" style="padding-left:1mm;">
-								Reference ID number (see instructions)
-								<div style="text-align:center; padding-top:3mm;height:44px;"> 
-                  <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp"/>
-                  </xsl:call-template>
-                </div>
-							</div>
-						</div>
+						</div>						
+						<xsl:choose>
+							<xsl:when test="($Print = $Separated)">
+								<tr>
+									<td class="styTableCell" valign="top" style="width: 91mm;height:11mm;border-left:1px solid black;border-right: 0;">
+										<span style="width:86mm;text-align:left;padding-left:1mm;">
+											<b>1b(2)</b>
+											<span style="padding-left:1mm;">Reference ID number (see instructions)
+											</span>
+										</span>
+										<br/><br/><br/>
+										<xsl:choose>
+											<xsl:when test="count($Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp) = 1">
+												<span style="text-align:left; width: 91mm; padding-left:7mm;">
+													<xsl:call-template name="PopulateText">
+														<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum"/>
+													</xsl:call-template>
+													<br/>
+												</span>
+											</xsl:when>
+											<xsl:otherwise>
+												<span style="text-align:left; width: 91mm; padding-left:7mm;">
+													<xsl:call-template name="PopulateAdditionalDataTableMessage">
+														<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp"/>
+														<xsl:with-param name="ShortMessage" select=" 'false' "/>
+													</xsl:call-template>
+													<br/>
+												</span>												
+											</xsl:otherwise>
+										</xsl:choose>
+									</td>
+								</tr>
+							</xsl:when>	
+							<!--Exception: left border and bottom border dsiplay thick are due to repearting table when display either as a blank form and/or with data-->					
+							<xsl:when test="($Print != $Separated)">
+								<div style="width:91mm;border-top:0 solid black;border-left:0px solid black;">
+									<span class="styTableCell" style="width:91mm;border:none;border-top:0 solid black;padding-left:1mm;">
+										<span style="width:86mm;text-align:left;">
+											<b>1b(2)</b>
+											<span style="padding-left:12mm;">Reference ID number (see instructions)
+											</span>
+										</span>
+										<span style="float:right;">
+											<xsl:call-template name="SetDynamicTableToggleButton">
+												<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp"/>
+												<xsl:with-param name="containerHeight" select="1"/>
+												<xsl:with-param name="headerHeight" select="0"/>
+												<xsl:with-param name="containerID" select=" 'FEIdctn' "/>
+											</xsl:call-template>
+										</span>
+									</span>
+									<div class="styIRS5472TableContainer" id="FEIdctn" style="width:91mm;height:11mm;border-top:0;border-left:0px;">
+									<xsl:call-template name="SetInitialState"/>
+										<table class="styTable" cellspacing="0" style="font-size:8pt;">
+											<tbody>
+												<xsl:choose>
+													<xsl:when test="count($Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp) = 0">
+														<tr>
+															<td class="styTableCell" style="vertical-align:bottom;height:11mm;border-right:0;">
+																<span style="text-align:left;width:91mm;">
+																	<br/>
+																</span>
+															</td>
+														</tr>
+													</xsl:when>
+												<xsl:otherwise>
+													<xsl:for-each select="$Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp">
+														<tr>
+															<td class="styTableCell" style="vertical-align:bottom;height:11mm;border-right:0;border-left-width:1px;">
+															<!-- 06/01/2015 WWT: if statements are for last border-widths -->																
+																<xsl:if test="(position() = last())">
+																	<xsl:attribute name="style">vertical-align:bottom;height:11mm;border-right:0;border-bottom:0;border-left-width:1px</xsl:attribute>
+																</xsl:if>
+																<!-- 03/08/2016 WWT: if statements are for first border-widths -->
+																<xsl:if test="(position() = 1)">
+																	<xsl:attribute name="style">vertical-align:bottom;height:11mm;border-right:0;border-bottom:1;border-left-width:0px;
+																	</xsl:attribute>
+																</xsl:if>
+																<span style="text-align:left;width: 84mm; padding-left:5mm;">
+																	<xsl:call-template name="PopulateText">
+																		<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
+																	</xsl:call-template>
+																	<br/>
+																</span>
+															</td>
+														</tr>
+													</xsl:for-each>
+												</xsl:otherwise>
+												</xsl:choose>
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<xsl:call-template name="SetInitialDynamicTableHeight">
+									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp"/>
+									<xsl:with-param name="containerHeight" select="1"/>
+									<xsl:with-param name="headerHeight" select="0"/>
+									<xsl:with-param name="containerID" select=" 'FEIdctn' "/>
+								</xsl:call-template>
+								</xsl:when>
+							</xsl:choose>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:117.3mm">
+						<div class="styFNBox" style="width:118mm;">
 							<div class="styIRS5472TextTitle">1c</div>
 							<div class="styGenericDiv">
 								Principal business activity
@@ -713,62 +830,57 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS5472TextTitle">1e</div>
-						<div class="styGenericDiv">
+					<div class="styFNBox" style="border-right:0px;">
+						<div class="styIRS5472TextTitle" style="padding-top:1mm;">1e</div>
 							Relationship—Check boxes that apply:
-							<span style="width:1mm"/>
+							<xsl:call-template name="PopulateSpan">
+									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/RelatedReportingCorporationInd"/>
+							</xsl:call-template>
 							<input type="Checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/RelatedReportingCorporationInd"/>
-									<xsl:with-param name="BackupName">
-										IRS5472RelatedToReportingCorporation
-									</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS5472RelatedToReportingCorporation</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/RelatedReportingCorporationInd"/>
-									<xsl:with-param name="BackupName">
-										IRS5472RelatedToReportingCorporation
-									</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS5472RelatedToReportingCorporation</xsl:with-param>
 								</xsl:call-template>
 								Related to reporting corporation
 							</label>
-							<span style="width:1mm"/>
+							<xsl:call-template name="PopulateSpan">
+									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/Related25PercentForeignShrInd"/>
+							</xsl:call-template>
 							<input type="Checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/Related25PercentForeignShrInd"/>
-									<xsl:with-param name="BackupName">
-										IRS5472RelatedTo25PctFrgnShareholder
-									</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS5472RelatedTo25PctFrgnShareholder</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/Related25PercentForeignShrInd"/>
-									<xsl:with-param name="BackupName">
-										IRS5472RelatedTo25PctFrgnShareholder
-									</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS5472RelatedTo25PctFrgnShareholder</xsl:with-param>
 								</xsl:call-template>
 								Related to 25% foreign shareholder
 							</label>
-							<span style="width:1mm"/>
+							<xsl:call-template name="PopulateSpan">
+									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignShareholder25PercentInd"/>
+							</xsl:call-template>
 							<input type="Checkbox" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignShareholder25PercentInd"/>
-									<xsl:with-param name="BackupName">
-										IRS5472ForeignShareholder25Percent
-									</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS5472ForeignShareholder25Percent</xsl:with-param>
 								</xsl:call-template>
 							</input>
 							<label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form5472Data/RelatedPartyInfo/ForeignShareholder25PercentInd"/>
-									<xsl:with-param name="BackupName">
-										IRS5472ForeignShareholder25Percent
-									</xsl:with-param>
+									<xsl:with-param name="BackupName">IRS5472ForeignShareholder25Percent</xsl:with-param>
 								</xsl:call-template>
-								25% foreign shareholder
+								25% foreign
+								<span style="padding-left:5mm">shareholder</span> 
 							</label>
 						</div>
 					</div>
@@ -777,16 +889,16 @@
 							<thead class="styTableThead">
 								<tr>
 									<th scope="row" style="padding-left:1mm; width:5mm;" valign="top" align="left"> 1f </th>
-									<th scope="col" valign="top" align="left" style="font-weight:normal" nowrap="nowrap"> Principal country(ies) where business is conducted </th>
+									<th scope="col" valign="top" align="left" style="font-weight:normal;padding-right:2mm;" nowrap="nowrap"> Principal country(ies) where business is conducted </th>
 									<th align="right" valign="bottom">
 										<!-- button display logic -->
 										<!-- end button display logic -->
 									</th>
-									<th scope="row" style="width:6mm; border-left:1 solid black;" valign="top" align="center"> 1g </th>
+									<th scope="row" style="width:6mm; border-left:1px solid black;" valign="top" align="center"> 1g </th>
 									<th scope="col" valign="top" align="left" style="font-weight:normal" nowrap="nowrap">
-										Country(ies) under whose laws the related party files an income tax return as
+										Country(ies) under whose laws the related party files an income tax return as a
 										<br/>
-										a resident
+										resident
 									</th>
 									<th align="right" valign="bottom">
 										<!-- button display logic -->
@@ -811,7 +923,7 @@
 											</xsl:call-template>
 										</xsl:for-each>
 									</td>
-									<td style="border-left:1 solid black"> 
+									<td style="border-left:1px solid black"> 
 									</td>
 									<td colspan="2" valign="top">
 										<xsl:for-each select="$Form5472Data/RelatedPartyInfo/FilesIncmTaxResidentCountryCd">
@@ -832,14 +944,14 @@
 					</div>
 					<!-- END Part III Line Items -->
 					<!-- BEGIN Part IV Title -->
-					<div class="styBB" style="width:187mm;height:4mm; border-top:2 solid black">
+					<div class="styBB" style="width:187mm;height:13mm;border-top:2 solid black;border-top-width: 1px">
 						<div class="styPartName" style="width:13mm;">Part IV</div>
-						<div class="styPartDesc">
+						<div class="styPartDesc" style="padding-top:.5mm;">
 							Monetary Transactions Between Reporting Corporations and Foreign Related Party
 							<span style="font-weight:normal;">(see instructions)</span>
 							<br/>
 							<b>Caution:</b> 
-							<i style="font-weight:normal">
+							<i style="font-weight:normal;">
 								Part IV
 								<b>must</b>
 								be completed if the "foreign person" box is checked in the heading for Part III.
@@ -871,10 +983,10 @@
 					<!-- BEGIN Part IV Line Items -->
 					<div style="width:187mm">
 						<div class="styLNLeftNumBoxSD">1</div>
-						<div style="float:left"> Sales of stock in trade (inventory) </div>
+						<div style="float:left;padding-top:.5mm;"> Sales of stock in trade (inventory) </div>
 						<div style="float:right">
-							<span class="styDotLn"> ..................... </span>
-							<div class="styLNRightNumBox">1</div>
+							<span class="styDotLn"> ........................ </span>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:2.5mm;">1</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -884,7 +996,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/StockSalesTrade50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -898,7 +1010,7 @@
 						<div style="float:left"> Sales of tangible property other than stock in trade </div>
 						<div style="float:right">
 							<span class="styDotLn"> ................ </span>
-							<div class="styLNRightNumBox">2</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:2.5mm;">2</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -908,7 +1020,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/TangiblePropertySls50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -922,7 +1034,7 @@
 						<div style="float:left">Platform contribution transaction payments received</div>
 						<div style="float:right">
 							<span class="styDotLn"> ................ </span>
-							<div class="styLNRightNumBox">3</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:2.5mm;">3</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -932,7 +1044,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/PlatformContriRcvd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -946,7 +1058,7 @@
 						<div style="float:left">Cost sharing transaction payments received</div>
 						<div style="float:right">
 							<span class="styDotLn"> .................. </span>
-							<div class="styLNRightNumBox">4</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:2.5mm;">4</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -956,7 +1068,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/CostSharingRcvd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -980,7 +1092,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/RentsReceived50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1004,7 +1116,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/RoyaltiesReceived50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1018,7 +1130,7 @@
 						<div style="float:left;"> Sales, leases, licenses, etc., of intangible property rights (e.g., patents, trademarks, secret formulas) </div>
 						<div style="float:right">
 							<span class="styDotLn"> .. </span>
-							<div class="styLNRightNumBox">6</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:2.5mm;">6</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1028,7 +1140,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/PropertyRightsSales50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1042,7 +1154,7 @@
 						<div style="float:left"> Consideration received for technical, managerial, engineering, construction, scientific, or like services </div>
 						<div style="float:right">
 							<span class="styDotLn"> .. </span>
-							<div class="styLNRightNumBox">7</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:2.5mm;">7</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1052,7 +1164,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/TechSrvcCompRcvd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1066,7 +1178,7 @@
 						<div style="float:left"> Commissions received </div>
 						<div style="float:right">
 							<span class="styDotLn"> .......................... </span>
-							<div class="styLNRightNumBox">8</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:2.5mm;">8</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1076,7 +1188,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/CommissionsReceived50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1092,47 +1204,55 @@
 							<span style="font-family:'Arial Narrow'">
 								(see instructions)
 								<span style="width:1mm"/>
-								<b>a</b>  Beginning
-								balance 
+								<b>a</b>  Beginning	balance 
 								<span style="width:21mm; border-bottom:1 solid black; text-align:right">
 									<!-- *************************************************************************************** -->
 									<xsl:choose>
 										<xsl:when test="normalize-space($Form5472Data/BorrowedBegngBalAmt) != ''">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedBegngBalAmt"/>
-											</xsl:call-template>
+											<span class="styFixedUnderline" style="width:20mm;padding-top:0mm;padding-bottom:0mm;">
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedBegngBalAmt"/>
+												</xsl:call-template>
+											</span>
 										</xsl:when>
 										<xsl:otherwise>
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedBegngBal50000LessCd"/>
-											</xsl:call-template>
+											<span class="styFixedUnderline" style="width:20mm;padding-top:0mm;padding-bottom:0mm;">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedBegngBal50000LessCd"/>
+												</xsl:call-template>
+											</span>
 										</xsl:otherwise>
 									</xsl:choose>
 									<!-- *************************************************************************************** -->
 								</span>
 								<span style="width:1mm"/>
-								<b>b</b>  Ending
-								balance or monthly average 
+								<b>b</b>  Ending	balance or monthly average 
 							</span>
 							<span style="width:2mm"/>
 							<img src="{$ImagePath}/5472_Bullet_Sm.gif" alt="Small Right Arrow Bullet"/>
 						</div>
 						<div style="float:right">
-							<div class="styLNRightNumBox">9b</div>
-							<div class="styLNAmountBox">
-								<!-- *************************************************************************************** -->
+							<div class="styLNRightNumBox" style="height:4.2mm;text-align:left;padding-left:2.5mm;">9b</div>
+							<div class="styLNAmountBox" style="height:4.2mm;">
+							<!--  ** 02/02/2016 WT: Exception, a choice of three items for line 9b**********************   -->
+								<!-- *********************************************************************************************** -->
 								<xsl:choose>
-									<xsl:when test="normalize-space($Form5472Data/BorrowedEndingBalAmt) != ''">
-										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedEndingBalAmt"/>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
-											<xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedEndingBal50000LessCd"/>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
+                                    <xsl:when test="normalize-space($Form5472Data/BorrowedMonthlyAverageAmt) != ''">
+                                        <xsl:call-template name="PopulateAmount">
+                                            <xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedMonthlyAverageAmt"/>
+                                        </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:when test="normalize-space($Form5472Data/BorrowedEndingBalAmt) != ''">
+                                        <xsl:call-template name="PopulateAmount">
+                                            <xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedEndingBalAmt"/>
+                                        </xsl:call-template>
+                                    </xsl:when>
+                                    <xsl:otherwise>
+                                        <xsl:call-template name="PopulateText">
+                                            <xsl:with-param name="TargetNode" select="$Form5472Data/BorrowedEndingBal50000LessCd"/>
+                                        </xsl:call-template>
+                                    </xsl:otherwise>
+                                </xsl:choose>
 								<!-- *************************************************************************************** -->
 							</div>
 						</div>
@@ -1142,7 +1262,7 @@
 						<div style="float:left"> Interest received </div>
 						<div style="float:right">
 							<span class="styDotLn"> ............................ </span>
-							<div class="styLNRightNumBox">10</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:1.5mm;">10</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1152,7 +1272,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/InterestReceived50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1166,7 +1286,7 @@
 						<div style="float:left"> Premiums received for insurance or reinsurance </div>
 						<div style="float:right">
 							<span class="styDotLn"> ................... </span>
-							<div class="styLNRightNumBox">11</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:1.5mm;">11</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1176,7 +1296,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/InsReinsPremRcvd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1190,7 +1310,7 @@
 						<div style="float:left"> Other amounts received (see instructions) </div>
 						<div style="float:right">
 							<span class="styDotLn"> ..................... </span>
-							<div class="styLNRightNumBox">12</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:1.5mm;">12</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1200,7 +1320,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/OthTransactionsRcvd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1217,7 +1337,7 @@
 						</div>
 						<div style="float:right">
 							<span class="styDotLn"> ................... </span>
-							<div class="styLNRightNumBox" style="border-bottom:0">13</div>
+							<div class="styLNRightNumBox" style="border-bottom:0;text-align:left;padding-left:1.5mm;">13</div>
 							<div class="styLNAmountBoxNBB">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1227,7 +1347,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/TotalReceived50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1241,7 +1361,7 @@
 						<div style="float:left"> Purchases of stock in trade (inventory) </div>
 						<div style="float:right">
 							<span class="styDotLn"> ..................... </span>
-							<div class="styLNRightNumBox">14</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:1.5mm;">14</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1251,7 +1371,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/StockPurchasesTrade50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1265,7 +1385,7 @@
 						<div style="float:left"> Purchases of tangible property other than stock in trade </div>
 						<div style="float:right">
 							<span class="styDotLn"> ................ </span>
-							<div class="styLNRightNumBox">15</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:1.5mm;">15</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1275,7 +1395,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/TangiblePropPrchs50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1289,17 +1409,17 @@
 						<div style="float:left"> Platform contribution transaction payments paid </div>
 						<div style="float:right">
 							<span class="styDotLn"> ................. </span>
-							<div class="styLNRightNumBox">16</div>
+							<div class="styLNRightNumBox"  style="text-align:left;padding-left:1.5mm;">16</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
-									<xsl:when test="normalize-space($Form5472Data/PlatformContributionRcvdAmt) != ''">
+									<xsl:when test="normalize-space($Form5472Data/PlatformContributionPaidAmt) != ''">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/PlatformContributionPaidAmt"/>
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/PlatformContriPaid50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1313,17 +1433,17 @@
 						<div style="float:left"> Cost sharing transaction payments paid </div>
 						<div style="float:right">
 							<span class="styDotLn"> ................. </span>
-							<div class="styLNRightNumBox">17</div>
+							<div class="styLNRightNumBox"  style="text-align:left;padding-left:1.5mm;">17</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
-									<xsl:when test="normalize-space($Form5472Data/CostSharingReceivedAmt) != ''">
+									<xsl:when test="normalize-space($Form5472Data/CostSharingPaidAmt) != ''">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/CostSharingPaidAmt"/>
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/CostSharingPaid50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1347,7 +1467,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/RentsPaid50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1371,7 +1491,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/RoyaltiesPaid50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1385,7 +1505,7 @@
 						<div style="float:left"> Purchases, leases, licenses, etc., of intangible property rights (e.g., patents, trademarks, secret formulas) </div>
 						<div style="float:right">
 							<span class="styDotLn"> . </span>
-							<div class="styLNRightNumBox">19</div>
+							<div class="styLNRightNumBox" style=" text-align:left;padding-left:1.5mm;">19</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1395,7 +1515,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/PropertyRightsPrchs50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1409,7 +1529,7 @@
 						<div style="float:left"> Consideration paid for technical, managerial, engineering, construction, scientific, or like services </div>
 						<div style="float:right">
 							<span class="styDotLn"> .... </span>
-							<div class="styLNRightNumBox">20</div>
+							<div class="styLNRightNumBox"  style="text-align:left;padding-left:1.5mm;">20</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1419,7 +1539,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/TechnicalSrvcCompPd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1433,7 +1553,7 @@
 						<div style="float:left"> Commissions paid </div>
 						<div style="float:right">
 							<span class="styDotLn"> ............................ </span>
-							<div class="styLNRightNumBox">21</div>
+							<div class="styLNRightNumBox"  style="text-align:left;padding-left:1.5mm;">21</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1443,7 +1563,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/CommissionsPaid50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1458,44 +1578,52 @@
 							Amounts loaned
 							<span style="font-family:'Arial Narrow'">
 								(see instructions)
-								<span style="width:3mm"/>
-								<b>a</b>  Beginning
-								balance 
+								<span style="width:1mm"/>
+								<b>a</b>  Beginning	balance 
 								<span style="width:21mm; border-bottom:1 solid black; text-align:right">
 									<!-- *************************************************************************************** -->
 									<xsl:choose>
 										<xsl:when test="normalize-space($Form5472Data/LoanedBeginningBalAmt) != ''">
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/LoanedBeginningBalAmt"/>
-											</xsl:call-template>
+											<span class="styFixedUnderline" style="width:24mm;padding-top:0mm;padding-bottom:0mm;">
+												<xsl:call-template name="PopulateAmount">
+													<xsl:with-param name="TargetNode" select="$Form5472Data/LoanedBeginningBalAmt"/>
+												</xsl:call-template>
+											</span>
 										</xsl:when>
 										<xsl:otherwise>
-											<xsl:call-template name="PopulateAmount">
-												<xsl:with-param name="TargetNode" select="$Form5472Data/LoanedBeginningBal50000LessCd"/>
-											</xsl:call-template>
+											<span class="styFixedUnderline" style="width:24mm;padding-top:0mm;padding-bottom:0mm;">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$Form5472Data/LoanedBeginningBal50000LessCd"/>
+												</xsl:call-template>
+											</span>
 										</xsl:otherwise>
 									</xsl:choose>
 									<!-- *************************************************************************************** -->
 								</span>
 								<span style="width:4mm"/>
-								<b>b</b>  Ending
-								balance or monthly average 
+								<b>b</b>  Ending	balance or monthly average 
 							</span>
 							<span style="width:2mm"/>
 							<img src="{$ImagePath}/5472_Bullet_Sm.gif" alt="Small Right Arrow Bullet"/>
 						</div>
 						<div style="float:right">
-							<div class="styLNRightNumBox">22b</div>
-							<div class="styLNAmountBox">
+							<div class="styLNRightNumBox" style="height:4.2mm;">22b</div>
+							<div class="styLNAmountBox" style="height:4.2mm;">
+							<!--  ** 02/02/2016 WT: Exception, a choice of three items for line 22b*************   -->
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
+									<xsl:when test="normalize-space($Form5472Data/LoanedMonthlyAverageAmt) != ''">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$Form5472Data/LoanedMonthlyAverageAmt"/>
+										</xsl:call-template>
+									</xsl:when>
 									<xsl:when test="normalize-space($Form5472Data/LoanedEndingBalanceAmt) != ''">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/LoanedEndingBalanceAmt"/>
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/LoanedEndingBalance50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1509,7 +1637,7 @@
 						<div style="float:left"> Interest paid </div>
 						<div style="float:right">
 							<span class="styDotLn"> ............................. </span>
-							<div class="styLNRightNumBox">23</div>
+							<div class="styLNRightNumBox"  style="text-align:left;padding-left:1.5mm;">23</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1519,7 +1647,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/InterestPaid50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1533,7 +1661,7 @@
 						<div style="float:left"> Premiums paid for insurance or reinsurance </div>
 						<div style="float:right">
 							<span class="styDotLn"> .................... </span>
-							<div class="styLNRightNumBox">24</div>
+							<div class="styLNRightNumBox"  style="text-align:left;padding-left:1.5mm;">24</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1543,7 +1671,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/InsReinsPremPd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1557,7 +1685,7 @@
 						<div style="float:left"> Other amounts paid (see instructions) </div>
 						<div style="float:right">
 							<span class="styDotLn"> ...................... </span>
-							<div class="styLNRightNumBox">25</div>
+							<div class="styLNRightNumBox" style="text-align:left;padding-left:1.5mm;">25</div>
 							<div class="styLNAmountBox">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1567,7 +1695,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/OtherTransactionsPd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1576,7 +1704,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="styBB" style="width:187mm">
+					<div class="styBB" style="width:187mm;">
 						<div class="styLNLeftNumBox">26</div>
 						<div style="float:left">
 							<b>Total.</b>
@@ -1584,7 +1712,7 @@
 						</div>
 						<div style="float:right">
 							<span class="styDotLn"> ................... </span>
-							<div class="styLNRightNumBox" style="border-bottom:0">26</div>
+							<div class="styLNRightNumBox" style="border-bottom:0;text-align:left;padding-left:1.5mm;">26</div>
 							<div class="styLNAmountBoxNBB">
 								<!-- *************************************************************************************** -->
 								<xsl:choose>
@@ -1594,7 +1722,7 @@
 										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateAmount">
+										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form5472Data/TotalTransactionsPd50000LessCd"/>
 										</xsl:call-template>
 									</xsl:otherwise>
@@ -1605,12 +1733,10 @@
 					</div>
 					<!-- END Part IV Line Items -->
 					<!-- BEGIN Part V Title -->
-					<div class="styBB" style="width:187mm;border-top:1 solid black">
+					<div class="styBB" style="width:187mm;height:12mm;border-top:1 solid black">
 						<div class="styPartName" style="width:12mm;">Part V</div>
 						<div class="styPartDesc" style="width:170mm">
-							Nonmonetary and Less-Than-Full Consideration Transactions Between the Reporting Corporation
-							<br/>
-							and the Foreign Related Party
+							Nonmonetary and Less-Than-Full Consideration Transactions Between the Reporting Corporation	and the Foreign Related Party
 							<span class="styNormalText"> (see instructions)</span>
 							<br/>
 							<span class="styNormalText">
@@ -1678,7 +1804,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<span style="width:7mm"/>
+								<span style="width:4mm"/>
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form5472Data/ImportGoodsForeignRltdPartyInd"/>
@@ -1744,7 +1870,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<span style="width:7mm"/>
+								<span style="width:4mm"/>
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form5472Data/GoodsCostGrtrThanCustomsVlInd"/>
@@ -1806,7 +1932,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<span style="width:7mm"/>
+								<span style="width:4mm"/>
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form5472Data/SupportingDocumentsExstUSInd"/>
@@ -1860,7 +1986,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<span style="width:7mm"/>
+								<span style="width:4mm"/>
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form5472Data/FrgnPrntCorpPartcpCostShrInd"/>
@@ -1886,16 +2012,16 @@
 							</div>
 						</div>
 					</div>
-					<div style="width:187mm; padding-top:1mm">
+					<div style="width:187mm; padding-top:1mm;">
 						<div class="styLNLeftNumBox">4</div>
 						<div style="float:left"> During the course of the tax year, did the foreign parent corporation become a participant in any cost sharing </div>
 					</div>
-					<div style="width:187mm;padding-bottom:1mm; border-bottom:2 solid black">
+					<div style="width:187mm;padding-bottom:1mm; border-bottom:2px solid black">
 						<div class="styLNLeftNumBox" style="padding-left:4mm"/>
 						<div style="float:left"> arrangement ? </div>
 						<div style="float:right; margin-right:1mm">
 							<span class="styDotLn"> ................................ </span>
-							<div class="styLNDesc" style="clear:none; width: 26mm">
+							<div class="styLNDesc" style="clear:none; width: 26mm;">
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form5472Data/FrgnPrntBecamePartcpCostShrInd"/>
@@ -1918,7 +2044,7 @@
 									</xsl:call-template>
 									Yes
 								</label>
-								<span style="width:7mm"/>
+								<span style="width:4mm"/>
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form5472Data/FrgnPrntBecamePartcpCostShrInd"/>
@@ -1945,6 +2071,12 @@
 						</div>
 					</div>
 					<!-- END Part VI Line Items -->
+					<div style="float:right">
+						<span style="width:35mm"/>
+							Form
+							<b style="font-size:8pt">5472</b>
+							(Rev. 12-2012)
+					</div>
 					<p style="page-break-before:always"/>
 					<div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif">
 						<div class="styLeftOverTitle"> Additional Data </div>
@@ -1965,12 +2097,12 @@
 								<!-- Label the Column Headers -->
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" scope="col" style="width:4mm;"/>
-									<th class="styDepTblCell" scope="col" style="width:60mm;">(a) Name and address of direct 25% foreign shareholder</th>
-									<th class="styDepTblCell" scope="col" style="width:20mm;">(b1) U.S. identifying number, if any </th>
-									<th class="styDepTblCell" scope="col" style="width:20mm;">(b2) Reference ID number </th>
-									<th class="styDepTblCell" scope="col" style="width:20mm;">(c) Principal country(ies) where business is conducted</th>
-									<th class="styDepTblCell" scope="col" style="width:20mm;">(d) Country of citizenship, organization, or incorporation</th>
-									<th class="styDepTblCell" scope="col" style="width:30mm;">(e) Country(ies) under whose laws the direct 25% foreign shareholder files an income tax return as a resident</th>
+									<th class="styDepTblCell" scope="col" style="width:38mm;">(a) Name and Address of Direct 25% Foreign Shareholder</th>
+									<th class="styDepTblCell" scope="col" style="width:25mm;">(b1) U.S. Identifying Number, if any </th>
+									<th class="styDepTblCell" scope="col" style="width:70mm;">(b2) Reference ID Number </th>
+									<th class="styDepTblCell" scope="col" style="width:18mm;">(c) Principal Country(ies) Where Business is Conducted</th>
+									<th class="styDepTblCell" scope="col" style="width:18mm;">(d) Country of Citizenship, Organization, or Incorporation</th>
+									<th class="styDepTblCell" scope="col" style="width:18mm;">(e) Country(ies) Under Whose Laws the Direct 25% Foreign Shareholder Files an Income Tax Return as a Resident</th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -1978,12 +2110,12 @@
 								<xsl:for-each select="$Form5472Data/Direct25PctFrgnShareholderInfo">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+											<xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose>
+										</xsl:attribute>
 										<!-- First Column -->
-										<td class="styDepTblCell" style="text-align:center;">
-											<!--xsl:if test="position() &lt; 3" -->
-											<xsl:value-of select="position()"/>
-											<!--/xsl:if -->
+										<td class="styDepTblCell" style="text-align:center;">											
+											<xsl:value-of select="position()"/>											
 										</td>
 										<!-- Second Column -->
 										<td class="styDepTblCell" style="text-align:left;">
@@ -2005,7 +2137,7 @@
 													<xsl:if test="normalize-space(USAddress/AddressLine2)!=''">
 														<br/>
 														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="USAddress/AddressLine2"/>
+															<xsl:with-param name="TargetNode" select="USAddress/AddressLine2Txt"/>
 														</xsl:call-template>
 													</xsl:if>
 													<br/>
@@ -2035,7 +2167,7 @@
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="ForeignAddress/City"/>
 													</xsl:call-template>
-													<xsl:if test="(normalize-space(ForeignAddress/City) != '') and (normalize-space(ForeignAddress/ProvinceOrState) != '' or normalize-space(ForeignAddress/PostalCode) != '')">
+													<xsl:if test="(normalize-space(ForeignAddress/CityNm) != '') and (normalize-space(ForeignAddress/ProvinceOrState) != '' or normalize-space(ForeignAddress/PostalCode) != '')">
 														,
 													</xsl:if>
 													<xsl:call-template name="PopulateText">
@@ -2044,7 +2176,7 @@
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="ForeignAddress/PostalCode"/>
 													</xsl:call-template>
-													<xsl:if test="normalize-space(ForeignAddress/City) != '' or normalize-space(ForeignAddress/ProvinceOrState) != '' or normalize-space(ForeignAddress/PostalCode) != ''">
+													<xsl:if test="normalize-space(ForeignAddress/CityNm) != '' or normalize-space(ForeignAddress/ProvinceOrState) != '' or normalize-space(ForeignAddress/PostalCode) != ''">
 														<br/>
 													</xsl:if>
 													<xsl:call-template name="PopulateText">
@@ -2054,7 +2186,7 @@
 											</xsl:choose>
 										</td>
 										<!-- Third Column -->
-										<td class="styDepTblCell" style="text-align:left;">
+										<td class="styDepTblCell" style="text-align:center;">
 											<xsl:choose>
 												<xsl:when test="EIN !=''">
 													<xsl:call-template name="PopulateEIN">
@@ -2073,10 +2205,10 @@
 												</xsl:otherwise>
 											</xsl:choose>
 										</td>
-										<td class="styDepTblCell" style="text-align:left;">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber"/>
-													</xsl:call-template>
+										<td class="styDepTblCell" style="text-align:left;font-size:83%;">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum"/>
+											</xsl:call-template>
 										</td>
 										<!-- Fourth Column -->
 										<td class="styDepTblCell" style="text-align:left;">
@@ -2090,7 +2222,7 @@
 											</xsl:for-each>
 										</td>
 										<!-- Fifth Column -->
-										<td class="styDepTblCell" style="text-align:left;">
+										<td class="styDepTblCell" style="text-align:center;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="CtznOrgIncorporationCountryCd"/>
 											</xsl:call-template>
@@ -2120,12 +2252,12 @@
 								<!-- Label the Column Headers -->
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" scope="col" style="width:4mm;"/>
-									<th class="styDepTblCell" scope="col" style="width:60mm;">(a) Name and address of ultimate indirect 25% foreign shareholder</th>
-									<th class="styDepTblCell" scope="col" style="width:20mm;">(b) U.S. identifying number, if any </th>
-									<th class="styDepTblCell" scope="col" style="width:20mm;">(b2) Reference ID number </th>
-									<th class="styDepTblCell" scope="col" style="width:20mm;">(c) Principal country(ies) where business is conducted</th>
-									<th class="styDepTblCell" scope="col" style="width:20mm;">(d) Country of citizenship, organization, or incorporation</th>
-									<th class="styDepTblCell" scope="col" style="width:30mm;">(e) Country(ies) under whose laws the ultimate indirect 25% foreign shareholder files an income tax return as a resident </th>
+									<th class="styDepTblCell" scope="col" style="width:38mm;">(a) Name and Address of Ultimate Indirect 25% Foreign Shareholder</th>
+									<th class="styDepTblCell" scope="col" style="width:25mm;">(b) U.S. Identifying Number, if any </th>
+									<th class="styDepTblCell" scope="col" style="width:70mm;">(b2) Reference ID Number </th>
+									<th class="styDepTblCell" scope="col" style="width:18mm;">(c) Principal Country(ies) Where Business is Conducted</th>
+									<th class="styDepTblCell" scope="col" style="width:18mm;">(d) Country of Citizenship, Organization, or Incorporation</th>
+									<th class="styDepTblCell" scope="col" style="width:18mm;">(e) Country(ies) Under Whose Laws the Ultimate Indirect 25% Foreign Shareholder Files an Income Tax Return as a Resident </th>
 								</tr>
 							</thead>
 							<tfoot/>
@@ -2133,7 +2265,9 @@
 								<xsl:for-each select="$Form5472Data/UltimateIndr25PctFrgnShrInfo">
 									<tr>
 										<!-- Define background colors to the rows -->
-										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+											<xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose>
+										</xsl:attribute>
 										<!-- First Column -->
 										<td class="styDepTblCell" style="text-align:left;">
 											<!--xsl:if test="position() &lt; 3" -->
@@ -2184,7 +2318,7 @@
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="ForeignAddress/AddressLine1"/>
 													</xsl:call-template>
-													<xsl:if test="normalize-space(ForeignAddress/AddressLine2)!=''">
+													<xsl:if test="normalize-space(ForeignAddress/AddressLine2Txt)!=''">
 														<br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/AddressLine2"/>
@@ -2213,7 +2347,7 @@
 											</xsl:choose>
 										</td>
 										<!-- Third Column -->
-										<td class="styDepTblCell" style="text-align:left;">
+										<td class="styDepTblCell" style="text-align:center;">
 											<xsl:choose>
 												<xsl:when test="EIN !=''">
 													<xsl:call-template name="PopulateEIN">
@@ -2232,10 +2366,10 @@
 												</xsl:otherwise>
 											</xsl:choose>
 										</td>
-										<td class="styDepTblCell" style="text-align:left;">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber"/>
-													</xsl:call-template>
+										<td class="styDepTblCell" style="text-align:left;font-size:83%;">
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNum"/>
+											</xsl:call-template>
 										</td>
 										<!-- Fourth Column -->
 										<td class="styDepTblCell" style="text-align:left;">
@@ -2249,7 +2383,7 @@
 											</xsl:for-each>
 										</td>
 										<!-- Fifth Column -->
-										<td class="styDepTblCell" style="text-align:left;">
+										<td class="styDepTblCell" style="text-align:center;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="CtznOrgIncorporationCountryCd"/>
 											</xsl:call-template>
@@ -2269,6 +2403,35 @@
 								</xsl:for-each>
 							</tbody>
 						</table>
+					<!-- /Separated Repeating Data Table Line D -->
+					<!-- Start Separate Data for Line 1b(2) -->
+					<xsl:if test="(($Print = $Separated) and (count($Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp) &gt; 1))">
+						<br/>
+						<span class="styRepeatingDataTitle">
+							<br/>Form 5472, Line 1b(2) - Reference ID number (see instructions):
+					    </span>
+						<table class="styDepTbl" style="font-size:7pt;">
+							<tbody>
+								<xsl:for-each select="$Form5472Data/RelatedPartyInfo/ForeignEntityIdentificationGrp">
+									<tr>
+										<xsl:attribute name="class"><xsl:choose>
+										<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+										<xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose>
+										</xsl:attribute>
+										<td class="styDepTblCell" style="text-align:left;">
+											<span style="text-align:left;">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="ForeignEntityReferenceIdNum"/>
+												</xsl:call-template>
+												<br/>
+											</span>
+										</td>
+									</tr>
+								</xsl:for-each>
+							</tbody>
+						</table>
+						<br/>
+					</xsl:if>
 					</xsl:if>
 					<br/>
 				</form>
@@ -2282,26 +2445,25 @@
 		<xsl:if test="$index &lt;= $max">
 			<table class="styIRS5472Table" cellspacing="0" cellpadding="0" border="0">
 				<tr>
-					<th scope="row" valign="top" align="center" style="width:6mm">
+					<th scope="row" valign="top" align="center" style="width:6mm;">
 						<xsl:if test="$index &lt; 3">
 							<xsl:value-of select="$index"/>
-						</xsl:if>
-						a
+						</xsl:if>a
+						<!--Warning:a need to be after the closing if otherwise it will introduce a line break between 1 and a -->
 					</th>
-					<th scope="col" style="font-weight:normal; width:120mm;border-right:1 solid black;"> Name and address of direct 25% foreign shareholder </th>
+					<th scope="col" align="left" style="font-weight:normal; width:120mm;border-right:1px solid black;padding-left:2mm;"> Name and address of direct 25% foreign shareholder 
+					</th>
 					<th scope="row" nowrap="nowrap" valign="top" align="left" style="width:9mm; padding-left:2pt;">
 						<xsl:if test="$index &lt; 3">
 							<xsl:value-of select="$index"/>
-						</xsl:if>
-						b(1)
+						</xsl:if>b(1)
 					</th>
-					<th style="font-weight:normal" nowrap="nowrap"> U.S. identifying number, if any </th>
+					<th style="font-weight:normal" align="left" nowrap="nowrap"> U.S. identifying number, if any </th>
 				</tr>
-				<tr style="height:9mm;">
+				<tr style="height:16mm;">
 					<td rowspan="4">
 					</td>
-					<td rowspan="4" style="border-right:1 solid black;" valign="top">
-            <span style="width: 1px;"/>
+					<td rowspan="4" style="border-right:1px solid black;padding-left:2mm;" valign="top">						
 						<xsl:if test="($Print = $Separated) and (count($Form5472Data/Direct25PctFrgnShareholderInfo) &gt; 2) and ($index = 1)">
 							<xsl:call-template name="PopulateAdditionalDataTableMessage">
 								<xsl:with-param name="TargetNode" select="$Form5472Data/Direct25PctFrgnShareholderInfo"/>
@@ -2402,59 +2564,55 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row" nowrap="nowrap" valign="top" align="left" style="border-top:1 solid black; width:9mm; padding-left:2pt;">
+					<th scope="row" nowrap="nowrap" valign="top" align="left" style="border-top:1px solid black; width:9mm; padding-left:2pt;">
 						<xsl:if test="$index &lt; 3">
 							<xsl:value-of select="$index"/>
-						</xsl:if>
-						b(2)
+						</xsl:if>b(2)
 					</th>
-					<th style="font-weight:normal;border-top:1 solid black;;" valign="top" nowrap="nowrap"> Reference ID number (see instructions) </th>
+					<th style="font-weight:normal;border-top:1px solid black;" valign="top" nowrap="nowrap"> Reference ID number (see instructions) </th>
 				</tr>
-				<tr style="border-left:1 solid black;">
+				<tr style="border-left:1px solid black;">
 					<td> 
 					</td>
-					<td align="center" valign="middle">
+					<td align="left" valign="middle">
 						<xsl:if test="($Print != $Separated) or (count($Form5472Data/Direct25PctFrgnShareholderInfo) &lt; 3)">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5472Data/Direct25PctFrgnShareholderInfo[$index]/ForeignEntityIdentificationGrp"/>
-									</xsl:call-template>
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form5472Data/Direct25PctFrgnShareholderInfo[$index]/ForeignEntityIdentificationGrp"/>
+							</xsl:call-template>
 						</xsl:if>
 					</td>
 				</tr>
 			</table>
 			<table class="styIRS5472Table" cellspacing="0" cellpadding="0" border="0">
 				<thead class="styTableThead">
-					<tr style="line-height:120%">
-						<th valign="top" scope="row" align="center" style="width:6mm">
+					<tr style="line-height:120%;" >
+						<th valign="top" scope="row" align="center" style="width:6mm;">
 							<xsl:if test="$index &lt; 3">
 								<xsl:value-of select="$index"/>
-							</xsl:if>
-							c
+							</xsl:if>c
 						</th>
-						<th scope="col" style="font-weight:normal;" valign="top" nowrap="nowrap">
+						<th scope="col" align="left" style="font-weight:normal;" valign="top" nowrap="nowrap">
 							Principal country(ies) where
 							<br/>
 							business is conducted
 						</th>
 						<td align="right" valign="bottom" style="width:3.5mm"/>
-						<th scope="row" valign="top" align="center" style="width:6mm; border-left:1 solid black">
+						<th scope="row" valign="top" align="center" style="width:6mm; border-left:1px solid black">
 							<xsl:if test="$index &lt; 3">
 								<xsl:value-of select="$index"/>
-							</xsl:if>
-							d
+							</xsl:if>d
 						</th>
-						<th scope="col" style="font-weight:normal; width:40mm" nowrap="nowrap" valign="top">
+						<th scope="col" align="left" style="font-weight:normal; width:40mm" nowrap="nowrap" valign="top">
 							Country of citizenship,
 							<br/>
 							organization, or incorporation
 						</th>
-						<th valign="top" style="width:6mm; border-left:1 solid black;" align="center">
+						<th valign="top" style="width:6mm; border-left:1px solid black;" align="center">
 							<xsl:if test="$index &lt; 3">
 								<xsl:value-of select="$index"/>
-							</xsl:if>
-							e
+							</xsl:if>e
 						</th>
-						<th style="font-weight:normal" nowrap="nowrap" valign="top">
+						<th align="left" style="font-weight:normal;width:40mm;" nowrap="nowrap" valign="top">
 							Country(ies) under whose laws the direct 25% foreign
 							<br/>
 							shareholder files an income tax return as a resident
@@ -2480,7 +2638,7 @@
 								</xsl:for-each>
 							</xsl:if>
 						</td>
-						<td style="border-left:1 solid black;"> 
+						<td style="border-left:1px solid black;"> 
 						</td>
 						<td valign="top">
 							<xsl:if test="($Print != $Separated) or (count($Form5472Data/Direct25PctFrgnShareholderInfo) &lt; 3)">
@@ -2489,7 +2647,7 @@
 								</xsl:call-template>
 							</xsl:if>
 						</td>
-						<td style="border-left:1 solid black;"> 
+						<td style="border-left:1px solid black;"> 
 						</td>
 						<td colspan="2" valign="top">
 							<xsl:if test="($Print != $Separated) or (count($Form5472Data/Direct25PctFrgnShareholderInfo) &lt; 3)">
@@ -2537,19 +2695,17 @@
 					<th scope="row" valign="top" style="width:6mm" align="center">
 						<xsl:if test="$index &lt; 3">
 							<xsl:value-of select="$index + 2"/>
-						</xsl:if>
-						a
+						</xsl:if>a
 					</th>
-					<th scope="col" style="font-weight:normal; width:120mm;border-right:1 solid black;"> Name and address of ultimate indirect 25% foreign shareholder </th>
+					<th scope="col" align="left" style="font-weight:normal; width:119mm;border-right:1px solid black;"> Name and address of ultimate indirect 25% foreign shareholder </th>
 					<th scope="row" nowrap="nowrap" valign="top" align="left" style="width:9mm; padding-left:2pt;">
 						<xsl:if test="$index &lt; 3">
 							<xsl:value-of select="$index + 2"/>
-						</xsl:if>
-						b(1)
+						</xsl:if>b(1)
 					</th>
-					<th style="font-weight:normal" nowrap="nowrap"> U.S. identifying number, if any </th>
+					<th style="font-weight:normal" align="left" nowrap="nowrap"> U.S. identifying number, if any </th>
 				</tr>
-				<tr style="height:9mm;">
+				<tr style="height:16mm;border-bottom:1px solid black;">
 					<td valign="bottom" rowspan="4">  
 						<xsl:if test="($Print != $Separated) or (count($Form5472Data/UltimateIndr25PctFrgnShrInfo) &lt; 3)">
 							<xsl:call-template name="SetFormLinkInline">
@@ -2557,8 +2713,7 @@
 							</xsl:call-template>
 						</xsl:if>
 					</td>
-					<td rowspan="4" style="border-right:1 solid black" valign="top">
-            <span style="width: 1px;"/>
+					<td rowspan="4" style="border-right:1px solid black;" valign="top">						
 						<xsl:if test="($Print = $Separated) and (count($Form5472Data/UltimateIndr25PctFrgnShrInfo) &gt; 2) and ($index = 1)">
 							<xsl:call-template name="PopulateAdditionalDataTableMessage">
 								<xsl:with-param name="TargetNode" select="$Form5472Data/UltimateIndr25PctFrgnShrInfo"/>
@@ -2660,22 +2815,21 @@
 					</td>
 				</tr>
 				<tr>
-					<th scope="row" nowrap="nowrap" valign="top" align="left" style="border-top:1 solid black; width:9mm; padding-left:2pt;">
+					<th scope="row" nowrap="nowrap" valign="top" align="left" style="border-top:1px solid black; width:9mm; padding-left:2pt;">
 						<xsl:if test="$index &lt; 3">
 							<xsl:value-of select="$index+ 2"/>
-						</xsl:if>
-						b(2)
+						</xsl:if>b(2)
 					</th>
-					<th style="font-weight:normal;border-top:1 solid black;" valign="top" nowrap="nowrap"> Reference ID number (see instructions) </th>
+					<th style="font-weight:normal;border-top:1px solid black;" valign="top" nowrap="nowrap"> Reference ID number (see instructions) </th>
 				</tr>
 				<tr>
 					<td> 
 					</td>
-					<td align="center" valign="middle">
+					<td align="left" valign="middle">
 						<xsl:if test="($Print != $Separated) or (count($Form5472Data/UltimateIndr25PctFrgnShrInfo) &lt; 3)">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$Form5472Data/UltimateIndr25PctFrgnShrInfo[$index]/ForeignEntityIdentificationGrp"/>
-									</xsl:call-template>
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$Form5472Data/UltimateIndr25PctFrgnShrInfo[$index]/ForeignEntityIdentificationGrp"/>
+							</xsl:call-template>
 						</xsl:if>
 					</td>
 				</tr>
@@ -2686,10 +2840,9 @@
 						<th valign="top" scope="row" align="center" style="width:6mm">
 							<xsl:if test="$index &lt; 3">
 								<xsl:value-of select="$index + 2"/>
-							</xsl:if>
-							c
+							</xsl:if>c
 						</th>
-						<th scope="col" style="font-weight:normal" valign="top" nowrap="nowrap">
+						<th scope="col" align="left" style="font-weight:normal" valign="top" nowrap="nowrap">
 							Principal country(ies) where
 							<br/>
 							business is conducted
@@ -2721,24 +2874,22 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</th>
-						<th scope="row" valign="top" align="center" style="width:6mm; border-left:1 solid black">
+						<th scope="row" valign="top" align="center" style="width:6mm; border-left:1px solid black">
 							<xsl:if test="$index &lt; 3">
 								<xsl:value-of select="$index + 2"/>
-							</xsl:if>
-							d
+							</xsl:if>d
 						</th>
-						<th scope="col" style="font-weight:normal; width:40mm" nowrap="nowrap" valign="top">
+						<th scope="col" align="left" style="font-weight:normal; width:40mm;" nowrap="nowrap" valign="top">
 							Country of citizenship,
 							<br/>
 							organization, or incorporation
 						</th>
-						<th valign="top" style="width:6mm; border-left:1 solid black" align="center">
+						<th valign="top" style="width:6mm; border-left:1px solid black" align="center">
 							<xsl:if test="$index &lt; 3">
 								<xsl:value-of select="$index + 2"/>
-							</xsl:if>
-							e
+							</xsl:if>e
 						</th>
-						<th style="font-weight:normal" nowrap="nowrap" valign="top">
+						<th align="left" style="font-weight:normal" nowrap="nowrap" valign="top">
 							Country(ies) under whose laws the ultimate indirect 25%
 							<br/>
 							foreign shareholder files an income tax return as a resident
@@ -2806,7 +2957,7 @@
 								</div>
 							</xsl:if>
 						</td>
-						<td style="border-left:1 solid black"> 
+						<td style="border-left:1px solid black"> 
 						</td>
 						<td valign="middle">
 							<xsl:if test="($Print != $Separated) or (count($Form5472Data/UltimateIndr25PctFrgnShrInfo) &lt; 3)">
@@ -2815,7 +2966,7 @@
 								</xsl:call-template>
 							</xsl:if>
 						</td>
-						<td style="border-left:1 solid black"> 
+						<td style="border-left:1px solid black"> 
 						</td>
 						<td valign="top" colspan="2">
 							<xsl:if test="($Print != $Separated) or (count($Form5472Data/UltimateIndr25PctFrgnShrInfo) &lt; 3)">

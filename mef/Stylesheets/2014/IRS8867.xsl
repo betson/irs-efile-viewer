@@ -4,7 +4,7 @@
   <!ENTITY bull "&#8226;">
   <!ENTITY ndash "&#8211;">
   <!ENTITY mdash "&#8212;">
-]><!-- Last Modified by Eugenia McDonald on 08/05/2014 -->
+]>
     <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -15,8 +15,10 @@
 	<xsl:strip-space elements="*"/>  
 	<xsl:param name="FormData" select="$RtnDoc/IRS8867"/>  
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -51,16 +53,20 @@
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData"/>
 							</xsl:call-template> <br/><br/>
-							<span class="styAgency">Department of the Treasury <br/>Internal Revenue Service</span>
+							<span class="styAgency" style="padding-top:2mm;">Department of the Treasury <br/>Internal Revenue Service</span>
 						</div>
-						<div class="styFTBox" style="width:122mm;padding-top:2mm;height:21.2mm;">
+						<div class="styFTBox" style="width:122mm;height:21.2mm;">
 							<span class="styFMT" style="font-size:12.5pt;">Paid Preparer's Earned Income Credit Checklist</span>
 							<br/><br/>
 							<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 							<span class="styFBT"> To be completed by preparer and filed with Form 1040, 1040A, or 1040EZ.</span>
-							<br/>
-							<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
-							<span class="styFBT"> Information about Form 8867 and its separate instructions is at <i>www.irs.gov/form8867.</i></span>
+				
+							<!-- <img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
+							<span class="styFBT"> Information about Form 8867 and its separate instructions is at <i>www.irs.gov/form8867.</i>
+							</span>-->
+							
+							 <br/><img src="{$ImagePath}/8867_Bullet.gif" alt="Bullet"/> 
+                     <b>Information about Form 8867 and its separate instructions is at <a href="http://www.irs.gov/form8867"  title="Link to IRS.gov"> <i>www.irs.gov/form8867</i></a></b> 
 						</div>
 						<div class="styTYBox" style="width:33.7mm;height:21.2mm;">
 							<div class="styOMB">OMB No. 1545-1629</div>
@@ -78,7 +84,7 @@
 						</div>
 						<div class="styEINBox" style="width:48mm;">
 							Taxpayer's social security number <br/>
-							<span style="font-weight:normal;width:100%;text-align:center;">
+							<span style="padding-left:1mm;font-weight:normal;width:100%;text-align:left;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 								</xsl:call-template>
@@ -90,9 +96,9 @@
 						For the definitions of <b>Qualifying Child</b> and <b>Earned Income</b>, see <b>Pub. 596.</b><br/>
 					</div>
 					<!-- BEGIN Part I -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styPartName">Part I</div>
-						<div class="styPartDesc">All Taxpayers</div>
+					<div class="styBB" style="width:187mm;height:3.30mm;;">
+						<div class="styPartName" style="font-size:7pt;">Part I</div>
+						<div class="styPartDesc" style="font-size:7pt;">All Taxpayers</div>
 					</div>
 					<div class="styTBB" style="width:187mm;">
 						<div class="styGenericDiv" style="width:187mm;">
@@ -129,7 +135,7 @@
 								<span style="float:left;clear:none;">Is the taxpayer's filing status married filing separately?</span>
 								<span class="styIRS8867Dots">..............</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="padding-bottom:4mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerFSMarriedFilingSepInd"/>
@@ -168,7 +174,7 @@
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
 							<div class="styIRS8867BranchDesc">
-								<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
+								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"Yes"</b> on line 2, <b>stop;</b> the taxpayer <b>cannot</b> take the EIC. Otherwise, continue.
 							</div>
 						</div>
@@ -179,12 +185,12 @@
 						<div class="styGenericDiv" style="width:187mm;">
 							<div class="styLNLeftNumBoxSD">3</div>
 							<div class="styIRS8867LNDesc">
-								Does the taxpayer (and the taxpayer's spouse if filing jointly) have a social security number <br/>
-								(SSN) that allows him or her to work and is valid for EIC purposes? See the instructions before <br/>
+								Does the taxpayer (and the taxpayer's spouse if filing jointly) have a social security number 
+								(SSN)<br/> that allows him or her to work and is valid for EIC purposes? See the instructions before <br/>
 								<span style="float:left;clear:none;">answering</span>
-								<span class="styIRS8867Dots">..........................</span>
+								<span class="styIRS8867Dots">........................</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox"  style="height:11mm;">
 								<br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -237,9 +243,9 @@
 							<div class="styIRS8867LNDesc">
 								Is the taxpayer (or the taxpayer's spouse if filing jointly) filing Form 2555 or Form 2555-EZ (relating to the <br/>
 								<span style="float:left;clear:none;">exclusion of foreign earned income)?</span>
-								<span class="styIRS8867Dots">...................</span>
+								<span class="styIRS8867Dots">.................</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:8mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -293,7 +299,7 @@
 								<span style="float:left;clear:none;">Was the taxpayer (or the taxpayer's spouse) a nonresident alien for any part of 2014?</span>
 								<span class="styIRS8867Dots">......</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:5mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/NonresidentAlienInd"/>
@@ -312,7 +318,7 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:24px;"/>
+										<span style="width:24px;"/>
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/NonresidentAlienInd"/>
@@ -344,9 +350,9 @@
 							<div class="styLNLeftLtrBox">b</div>
 							<div class="styIRS8867LNDesc">
 								<span style="float:left;clear:none;">Is the taxpayer's filing status married filing jointly?</span>
-								<span class="styIRS8867Dots">................</span>
+								<span class="styIRS8867Dots">..............</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:5mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TxpyrFSMarriedFilingJointlyInd"/>
@@ -383,21 +389,21 @@
 								</span>
 							</div>
 						</div>
-						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867BranchDesc">
-								<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
-								If you checked <b>"Yes"</b> on line 5a and <b>"No"</b> on line 5b, <b>stop;</b> the taxpayer <b>cannot</b> take the EIC. Otherwise, continue.
+						<div class="styGenericDiv" style="width:187mm;height:4mm;">
+							<div class="styIRS8867BranchDesc" style="padding-top:3mm;">
+							<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
+								If you checked <b>"Yes"</b> on line 5a and <b>"No"</b> on line 5b, <b>stop;</b> the taxpayer <b>cannot</b> take the EIC. <br/>Otherwise, continue.
 								<br/><br/>
 							</div>
 						</div>
                         <!-- Line 6 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBoxSD">6</div>
+							<div class="styLNLeftNumBoxSD" style="padding-top:6mm;">6</div>
 							<div class="styIRS8867LNDesc">
-								<span style="float:left;clear:none;">Is the taxpayer's <b>investment income</b> more than $3,350? See the instructions before answering.</span>
+								<span style="float:left;clear:none;padding-top:6mm;">Is the taxpayer's <b>investment income</b> more than $3,350? See the instructions before answering.</span>
 								<span class="styIRS8867Dots"></span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:10mm;padding-top:5.5mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/InvestmentIncomeOverLimitInd"/>
@@ -441,17 +447,17 @@
 							</div>
 						</div>
 						<!-- Line 7 -->
-						<div class="styGenericDiv" style="width:187mm">
-							<div class="styLNLeftNumBoxSD"><br/>7</div>
-							<div class="styIRS8867LNDesc"> <br/>
+						<div class="styGenericDiv" style="width:187mm;height:12mm;">
+							<div class="styLNLeftNumBoxSD" style="padding-top:2mm;"><br/>7</div>
+							<div class="styIRS8867LNDesc" style="padding-top:2mm;"> <br/>
 								Could the taxpayer be a <b>qualifying child</b> of another person for 2014? If the taxpayer's filing status is <br/>
 								married filing jointly, check "No." Otherwise, see Rule 10 (Rule 13 if the taxpayer does not have a <br/>
 								<span style="float:left;clear:none;">qualifying child) in Pub. 596 before answering</span>
-								<span class="styIRS8867Dots">.................</span>
+								<span class="styIRS8867Dots">...............</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox"  style="height:15mm;">
 								<br/><br/><br/>
-								<span style="width:100%;">
+								<span style="width:100%;padding-top:1mm;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/EICEligClmQlfyChldOfOtherInd"/>
 									</xsl:call-template>
@@ -488,11 +494,11 @@
 							</div>
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867BranchDesc" style="height:8mm;">
+							<div class="styIRS8867BranchDesc" style="height:12mm;padding-top:2.5mm;">
 								<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"Yes"</b> on line 7, <b>stop;</b> the taxpayer <b>cannot</b> take the EIC. Otherwise, go to Part II or Part III, whichever applies.
-							</div>
-							<div class="styShading" style="height:10mm;"/>
+							</div><br/>
+							<div class="styShading" style="height:9mm;"/>
 						</div>
 					</div>
 					<!-- END Part I -->
@@ -502,69 +508,76 @@
 						<span style="float:left;clear:none;margin-left:30mm;">Cat. No. 26142H</span>
 						<span style="float:right;clear:none;">Form <span style="font-weight:bold;font-size:9pt;">8867</span> (2014)</span>
 					</div>
+					<p style="page-break-before: always"/>
+
+<br/><br/>
 					<div class="styTBB" style="width:187mm;">
 						<span style="float:left;clear:none;">Form 8867 (2014)</span>
 						<span style="float:right;clear:none;">Page <span style="font-weight:bold;font-size:9pt;">2</span></span>
 					</div>
 					<!-- BEGIN Part II -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styPartName">Part II</div>
-						<div class="styPartDesc">Taxpayers With a Child</div>
+					<div class="styBB" style="width:187mm;height:3.3mm;">
+						<div class="styPartName" style="font-size:7pt;">Part II</div>
+						<div class="styPartDesc" style="font-size:7pt;">Taxpayers With a Child</div>
 					</div>
 					<div class="styTBB" style="width:187mm;">
 						<!-- Caution Line -->
 						<div class="styGenericdiv" style="width:187mm;">
 							<div class="styLNLeftNumBoxSD"/>
-							<div class="styIRS8867ChildDesc">
+							<div class="styIRS8867ChildDesc"  style="height:6mm;padding-top:4mm;width:105mm;">
 								<b>Caution.</b> If there is more than one child, complete lines 8 through 14 for one <br/>
 								child before going to the next column.
 							</div>
-							<div class="styIRS8867ChildBox" style="text-align:center;">
+							<div class="styIRS8867ChildBox" style="text-align:center;width:24mm;">
 								Child 1
 							</div>
-							<div class="styIRS8867ChildBox" style="text-align:center;">
+							<div class="styIRS8867ChildBox" style="text-align:center;width:24mm;">
 								Child 2
 							</div>
-							<div class="styIRS8867ChildBox" style="text-align:center;">
+							<div class="styIRS8867ChildBox" style="text-align:center;width:26mm;">
 								Child 3
 							</div>
-							<div class="styIRS8867ChildBox" style="height:3mm;padding:0px;border-bottom-width:0px;"/>
-							<div class="styIRS8867ChildBox" style="height:3mm;padding:0px;border-bottom-width:0px;"/>
-							<div class="styIRS8867ChildBox" style="height:3mm;padding:0px;border-bottom-width:0px;"/>
+							<div class="styIRS8867ChildBox" style="height:2.5mm;padding:0px;border-bottom-width:0px;border-left-width:1px;"/>
+							<div class="styIRS8867ChildBox" style="height:2.5mm;padding:0px;border-bottom-width:0px;border-left-width:1px;"/>
+							<div class="styIRS8867ChildBox" style="height:2.5mm;padding:0px;border-bottom-width:0px;border-left-width:1px;"/>
 						</div>
+						
 						<!-- Line 8 -->
-						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBoxSD">8</div>
-							<div class="styIRS8867ChildDesc">
-								<span style="float:left;clear:none;">Child's name</span>
-								<span class="styIRS8867Dots">.................</span>
-							</div>							
-										<div class="styIRS8867ChildBox">
+							
+							
+						<div class="styGenericDiv" style="width:187mm;height:3.5mm;">
+							<div class="styLNLeftNumBoxSD"  style="padding-top:6mm;">8</div>
+							<div class="styIRS8867ChildDesc"  style="width:105mm;padding-top:4mm;">
+								<span style="float:left;clear:none;padding-top:2mm;"  >Child's name</span>
+								<span class="styIRS8867Dots"  style="padding-top:2mm;">...............</span>
+							</div>	
+										
+										<div class="styIRS8867ChildBox" style="valign:bottom;background-color:lightgrey;height:13mm;word-wrap:break-word;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildNm"/>
 											</xsl:call-template>
 										</div>
-										<div class="styIRS8867ChildBox">
+										<div class="styIRS8867ChildBox" style="background-color:lightgrey;height:13mm;word-wrap:break-word;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildNm"/>
 											</xsl:call-template>
 										</div>
-										<div class="styIRS8867ChildBox">
+										<div class="styIRS8867ChildBox" style="background-color:lightgrey;height:13mm;word-wrap:break-word;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildNm"/>
 											</xsl:call-template>
 										</div>									
 						</div>
 						<!-- Line 9 -->
-						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBoxSD">9</div>
-							<div class="styIRS8867ChildDesc">
-								<span style="float:left;clear:none;">Is the child the taxpayer's son, daughter, stepchild, foster child, brother, <br/>
+						<div class="styGenericDiv" style="width:187mm;height:6mm;padding-top:4mm;">
+							<div class="styLNLeftNumBoxSD" style="padding-top:4mm;">9</div>
+							<div class="styIRS8867ChildDesc" style="width:105mm;padding-top:4mm;">
+								<span style="float:left;clear:none;">Is the child the taxpayer's son, daughter, stepchild, foster child, brother,
 								sister, stepbrother, stepsister, half brother, half sister, or a descendant of any of them? </span>
 								</div>
-							<div class="styIRS8867ChildBox">
-								<br/><br/>
-								<span style="width:100%;">
+							<div class="styIRS8867ChildBox" style="height:11mm;">
+								
+								<span style="width:100%;padding-top:5.5mm;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildRelationshipTestInd"/>
 									</xsl:call-template>
@@ -574,7 +587,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1ChildRelationshipTestInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildRelationshipTestInd"/>
@@ -582,14 +595,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+									
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildRelationshipTestInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1ChildRelationshipTestInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildRelationshipTestInd"/>
@@ -599,9 +612,9 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
-								<br/><br/>
-								<span style="width:100%;">
+							<div class="styIRS8867ChildBox" style="height:11mm;">
+								
+								<span style="width:100%;height:7mm;padding-top:5.5mm;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildRelationshipTestInd"/>
 									</xsl:call-template>
@@ -611,7 +624,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2ChildRelationshipTestInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildRelationshipTestInd"/>
@@ -619,14 +632,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+									
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildRelationshipTestInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2ChildRelationshipTestInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildRelationshipTestInd"/>
@@ -636,9 +649,9 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
-								<br/><br/>
-								<span style="width:100%;">
+							<div class="styIRS8867ChildBox"  style="height:11mm;">
+								
+								<span style="width:100%;height:8mm;padding-top:5.5mm;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildRelationshipTestInd"/>
 									</xsl:call-template>
@@ -648,7 +661,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3ChildRelationshipTestInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildRelationshipTestInd"/>
@@ -656,14 +669,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+									
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildRelationshipTestInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3ChildRelationshipTestInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildRelationshipTestInd"/>
@@ -675,15 +688,15 @@
 							</div>
 						</div>
 						<!-- Line 10 -->
-						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">10</div>
-							<div class="styIRS8867ChildDesc">
+						<div class="styGenericDiv" style="width:187mm;height:12mm;">
+							<div class="styLNLeftNumBox" style="padding-top:10mm;">10</div>
+							<div class="styIRS8867ChildDesc" style="width:105mm;padding-top:10mm" >
 								Was the child unmarried at the end of 2014? <br/>
-								If the child was married at the end of 2014, see the instructions before <br/>
-								<span style="float:left;clear:none;">answering.</span>
-								<span class="styIRS8867Dots">.................</span>
+								<span style="padding-top:1mm">If the child was married at the end of 2014, see the instructions before <br/>
+								<span style="float:left;clear:none;">answering</span>
+								<span class="styIRS8867Dots">..............</span></span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:15mm;padding-top:4.75mm;">
 								<br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -695,7 +708,6 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1ChldUnmarriedOrMarClmAsDepdInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChldUnmarriedOrMarClmAsDepdInd"/>
@@ -703,14 +715,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+								
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChldUnmarriedOrMarClmAsDepdInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1ChldUnmarriedOrMarClmAsDepdInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+							
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChldUnmarriedOrMarClmAsDepdInd"/>
@@ -720,7 +732,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:15mm;padding-top:4.75mm;" >
 								<br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -732,7 +744,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2ChldUnmarriedOrMarClmAsDepdInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+							
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChldUnmarriedOrMarClmAsDepdInd"/>
@@ -740,14 +752,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+									
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChldUnmarriedOrMarClmAsDepdInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2ChldUnmarriedOrMarClmAsDepdInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChldUnmarriedOrMarClmAsDepdInd"/>
@@ -757,7 +769,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:15mm;padding-top:4.75mm;">
 								<br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -769,7 +781,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3ChldUnmarriedOrMarClmAsDepdInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChldUnmarriedOrMarClmAsDepdInd"/>
@@ -777,14 +789,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+							
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChldUnmarriedOrMarClmAsDepdInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3ChldUnmarriedOrMarClmAsDepdInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChldUnmarriedOrMarClmAsDepdInd"/>
@@ -796,14 +808,14 @@
 							</div>
 						</div>
 						<!-- Line 11 -->
-						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">11</div>
-							<div class="styIRS8867ChildDesc">
+						<div class="styGenericDiv" style="width:187mm;height:10mm;padding-top:3mm;">
+							<div class="styLNLeftNumBox" style="height:10mm;padding-top:6mm;">11</div>
+							<div class="styIRS8867ChildDesc"  style="height:10mm;padding-top:6mm;width:105mm;">
 								Did the child live with the taxpayer in the United States for over half of 2014? <br/>
 								<span style="float:left;clear:none;">See the instructions before answering</span>
 								<span class="styIRS8867Dots">.........</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:11mm;padding-top:3.8mm;" >
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -815,7 +827,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1LiveWithChldInUSOverHalfYrInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/LiveWithChldInUSOverHalfYrInd"/>
@@ -823,14 +835,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+								
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/LiveWithChldInUSOverHalfYrInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1LiveWithChldInUSOverHalfYrInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/LiveWithChldInUSOverHalfYrInd"/>
@@ -840,7 +852,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:11mm;padding-top:3.8mm;" >
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -852,7 +864,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2LiveWithChldInUSOverHalfYrInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/LiveWithChldInUSOverHalfYrInd"/>
@@ -860,14 +872,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+						
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/LiveWithChldInUSOverHalfYrInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2LiveWithChldInUSOverHalfYrInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+							
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/LiveWithChldInUSOverHalfYrInd"/>
@@ -877,7 +889,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:11mm;padding-top:3.8mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -889,7 +901,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3LiveWithChldInUSOverHalfYrInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/LiveWithChldInUSOverHalfYrInd"/>
@@ -897,14 +909,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+						
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/LiveWithChldInUSOverHalfYrInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3LiveWithChldInUSOverHalfYrInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+							
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/LiveWithChldInUSOverHalfYrInd"/>
@@ -917,8 +929,8 @@
 						</div>
 						<!-- Line 12 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">12</div>
-							<div class="styIRS8867ChildDesc">
+							<div class="styLNLeftNumBox" style="height:19mm;padding-top:6mm;">12</div>
+							<div class="styIRS8867ChildDesc" style="height:19mm;width:105mm;padding-top:6mm" >
 								Was the child (at the end of 2014) &#8212; <br/>
 								&#8226; Under age 19 and younger than the taxpayer (or the taxpayer's spouse, <br/>
 								if the taxpayer files jointly), <br/>
@@ -927,7 +939,7 @@
 								<span style="float:left;clear:none;">&#8226; Any age and permanently and totally disabled?</span>
 								<span class="styIRS8867Dots">........</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:23mm;padding-top:3mm;">
 								<br/><br/><br/><br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -939,7 +951,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1ChildUnder19YngrStdntOrDsblInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildUnder19YngrStdntOrDsblInd"/>
@@ -947,14 +959,13 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+								
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildUnder19YngrStdntOrDsblInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1ChildUnder19YngrStdntOrDsblInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildUnder19YngrStdntOrDsblInd"/>
@@ -964,7 +975,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:23mm;padding-top:3mm;">
 								<br/><br/><br/><br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -976,7 +987,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2ChildUnder19YngrStdntOrDsblInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildUnder19YngrStdntOrDsblInd"/>
@@ -984,14 +995,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+							
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildUnder19YngrStdntOrDsblInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2ChildUnder19YngrStdntOrDsblInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildUnder19YngrStdntOrDsblInd"/>
@@ -1001,7 +1012,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:23mm;padding-top:3mm;" >
 								<br/><br/><br/><br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1013,7 +1024,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3ChildUnder19YngrStdntOrDsblInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildUnder19YngrStdntOrDsblInd"/>
@@ -1021,14 +1032,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+								
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildUnder19YngrStdntOrDsblInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3ChildUnder19YngrStdntOrDsblInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildUnder19YngrStdntOrDsblInd"/>
@@ -1041,27 +1052,27 @@
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
 						
-							<div class="styIRS8867ChildBranch">
+							<div class="styIRS8867ChildBranch" style="height:4mm;width:113mm;padding-top:5mm;">
 								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"Yes"</b> on lines 9, 10, 11, <b>and</b> 12, the child is the <br/>
 								taxpayer's qualifying child; go to line 13a. If you checked <b>"No"</b> on line <br/>
 								9, 10, 11, <b>or</b> 12, the child is not the taxpayer's qualifying child; see the <br/>
 								instructions for line 12.
 							</div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><br/><br/><span style="width:0px;"/></div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><br/><br/><span style="width:0px;"/></div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:14mm;"><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:14mm;"><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:14mm;"><br/><br/><br/><span style="width:0px;"/></div>
 						</div>
 						<!-- Line 13a -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">13a</div>
-							<div class="styIRS8867ChildDesc">
+							<div class="styLNLeftNumBox" style="height:11mm;padding-top:4mm;">13a</div>
+							<div class="styIRS8867ChildDesc" style="height:11mm;width:105mm;padding-top:4mm;">
 								Do you or the taxpayer know of another person who could check <b>"Yes"</b> on lines 9, 10, 11, <b>and</b> 12 for the child? 
 								(If the only other person is the <br/>
 								<span style="float:left;clear:none;">taxpayer's spouse, see the instructions before answering.)</span>
 								<span class="styIRS8867Dots">.....</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox"  style="height:11mm;">
 								<br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1073,7 +1084,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1OtherPersonClaimAsQlfyChildInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/OtherPersonClaimAsQlfyChildInd"/>
@@ -1081,14 +1092,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+									
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/OtherPersonClaimAsQlfyChildInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1OtherPersonClaimAsQlfyChildInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/OtherPersonClaimAsQlfyChildInd"/>
@@ -1098,7 +1109,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:11mm;">
 								<br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1110,7 +1121,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2OtherPersonClaimAsQlfyChildInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/OtherPersonClaimAsQlfyChildInd"/>
@@ -1118,14 +1129,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+									
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/OtherPersonClaimAsQlfyChildInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2OtherPersonClaimAsQlfyChildInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/OtherPersonClaimAsQlfyChildInd"/>
@@ -1135,7 +1146,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:11mm;" >
 								<br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1147,7 +1158,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3OtherPersonClaimAsQlfyChildInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/OtherPersonClaimAsQlfyChildInd"/>
@@ -1155,14 +1166,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+								
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/OtherPersonClaimAsQlfyChildInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3OtherPersonClaimAsQlfyChildInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+									
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/OtherPersonClaimAsQlfyChildInd"/>
@@ -1174,33 +1185,33 @@
 							</div>
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867ChildBranch">
+							<div class="styIRS8867ChildBranch" style="height:6mm;width:113mm;padding-top:4mm;">
 								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"No"</b> on line 13a, go to line 14. Otherwise, go to <br/>
 								line 13b.
 							</div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><span style="width:0px;"/></div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><span style="width:0px;"/></div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:6mm;"><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:6mm;"><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:6mm;"><br/><span style="width:0px;"/></div>
 						</div>
 						<!-- Line 13b -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftLtrBox">b</div>
-							<div class="styIRS8867ChildDesc">
+							<div class="styLNLeftLtrBox" style="padding-top:4mm;">b</div>
+							<div class="styIRS8867ChildDesc" style="width:105mm;padding-top:4mm;">
 								<span style="float:left;clear:none;">Enter the child's relationship to the other person(s)</span>
 								<span class="styIRS8867Dots">.......</span>
 							</div>
-							<div class="styIRS8867ChildBox" style="font-weight:normal;padding-left:2px;">
+							<div class="styIRS8867ChildBox" style="font-weight:normal;padding-left:2px;background-color:lightgrey;height:8mm;padding-top:5mm;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/ChildRelationshipCd"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS8867ChildBox" style="font-weight:normal;padding-left:2px;">
+							<div class="styIRS8867ChildBox" style="font-weight:normal;padding-left:2px;background-color:lightgrey;height:8mm;padding-top:5mm;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/ChildRelationshipCd"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS8867ChildBox" style="font-weight:normal;padding-left:2px;">
+							<div class="styIRS8867ChildBox" style="font-weight:normal;padding-left:2px;background-color:lightgrey;height:8mm;padding-top:5mm;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/ChildRelationshipCd"/>
 								</xsl:call-template>
@@ -1208,13 +1219,13 @@
 						</div>
 						<!-- Line 13c -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftLtrBox">c</div>
-							<div class="styIRS8867ChildDesc">
+							<div class="styLNLeftLtrBox" style="height:7mm;padding-top:4mm;">c</div>
+							<div class="styIRS8867ChildDesc"  style="height:7mm;width:105mm;padding-top:4mm;">
 								Under the tiebreaker rules, is the child treated as the taxpayer's qualifying <br/>
 								<span style="float:left;clear:none;">child? See the instructions before answering</span>
 								<span class="styIRS8867Dots">.........</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:10mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1225,7 +1236,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1QlfyChldUnderTiebreakerRuleInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1233,14 +1244,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+							
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/QlfyChldUnderTiebreakerRuleInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1QlfyChldUnderTiebreakerRuleInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+						
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1256,16 +1267,16 @@
 										<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1DoNotKnowInd</xsl:with-param>
 									</xsl:call-template>
 								</input>
-								<span style="width:2px;"/>
+								
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/DoNotKnowInd"/>
 										<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1DoNotKnowInd</xsl:with-param>
 									</xsl:call-template>
-									Don't Know
+									Don't know
 								</label>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:10mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1276,7 +1287,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2QlfyChldUnderTiebreakerRuleInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+							
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1284,14 +1295,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+							
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/QlfyChldUnderTiebreakerRuleInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2QlfyChldUnderTiebreakerRuleInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1307,16 +1318,16 @@
 										<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2DoNotKnowInd</xsl:with-param>
 									</xsl:call-template>
 								</input>
-								<span style="width:2px;"/>
+							
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/DoNotKnowInd"/>
 										<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2DoNotKnowInd</xsl:with-param>
 									</xsl:call-template>
-									Don't Know
+									Don't know
 								</label>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:10mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1327,7 +1338,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3QlfyChldUnderTiebreakerRuleInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1335,14 +1346,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+								
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/QlfyChldUnderTiebreakerRuleInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3QlfyChldUnderTiebreakerRuleInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/QlfyChldUnderTiebreakerRuleInd"/>
@@ -1358,18 +1369,18 @@
 										<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3DoNotKnowInd</xsl:with-param>
 									</xsl:call-template>
 								</input>
-								<span style="width:2px;"/>
+							
 								<label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/DoNotKnowInd"/>
 										<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3DoNotKnowInd</xsl:with-param>
 									</xsl:call-template>
-									Don't Know
+									Don't know
 								</label>
 							</div>
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867ChildBranch">
+							<div class="styIRS8867ChildBranch" style="height:33mm;width:113mm;padding-top:4mm;">
 								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"Yes"</b> on line 13c, go to line 14. If you checked <br/>
 								<b>"No,"</b> the taxpayer <b>cannot</b> take the EIC based on this child and cannot <br/>
@@ -1383,19 +1394,19 @@
 								taxpayers without a qualifying child; do not complete Part III. If there <br/>
 								is more than one child, see the <b>Note</b> at the bottom of this page.
 							</div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><span style="width:0px;"/></div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><span style="width:0px;"/></div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:33mm;"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:33mm;"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:33mm;"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><span style="width:0px;"/></div>
 						</div>
 						<!-- Line 14 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">14</div>
-							<div class="styIRS8867ChildDesc">
+							<div class="styLNLeftNumBox"  style="height:1mm;padding-top:5mm;">14</div>
+							<div class="styIRS8867ChildDesc" style="height:1mm;padding-top:2mm;width:105mm;padding-top:5mm;" >
 								Does the qualifying child have an SSN that allows him or her to work and is <br/>
 								<span style="float:left;clear:none;">valid for EIC purposes? See the instructions before answering</span>
-								<span class="styIRS8867Dots">.....</span>
+								<span class="styIRS8867Dots">...</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:11mm;padding-top:3mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1407,7 +1418,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1SSNValidForEmplmnOrEICPrpsInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/SSNValidForEmplmnOrEICPrpsInd"/>
@@ -1415,14 +1426,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+								
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/SSNValidForEmplmnOrEICPrpsInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp1SSNValidForEmplmnOrEICPrpsInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[1]/SSNValidForEmplmnOrEICPrpsInd"/>
@@ -1432,7 +1443,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:11mm;padding-top:3mm;" >
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1444,7 +1455,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2SSNValidForEmplmnOrEICPrpsInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/SSNValidForEmplmnOrEICPrpsInd"/>
@@ -1452,14 +1463,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+		
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/SSNValidForEmplmnOrEICPrpsInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp2SSNValidForEmplmnOrEICPrpsInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+						
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[2]/SSNValidForEmplmnOrEICPrpsInd"/>
@@ -1469,7 +1480,7 @@
 									</label>
 								</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:11mm;padding-top:3mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1481,7 +1492,7 @@
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3SSNValidForEmplmnOrEICPrpsInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/SSNValidForEmplmnOrEICPrpsInd"/>
@@ -1489,14 +1500,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+							
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/SSNValidForEmplmnOrEICPrpsInd"/>
 											<xsl:with-param name="BackupName">IRS8867TaxpayerWithAChildGrp3SSNValidForEmplmnOrEICPrpsInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+							
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/QualifyingChldDeterminationGrp[3]/SSNValidForEmplmnOrEICPrpsInd"/>
@@ -1508,32 +1519,32 @@
 							</div>
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867ChildBranch">
+							<div class="styIRS8867ChildBranch" style="height:12mm;padding-top:1mm;width:113mm;padding-top:4mm;">
 								<img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"No"</b> on line 14, the taxpayer <b>cannot</b> take the EIC <br/>
 								based on this child and cannot take the EIC available to taxpayers <br/>without 
 								a qualifying child. If there is more than one child, see the <b>Note</b> <br/>at 
 								the bottom of this page. If you checked <b>"Yes"</b> on line 14, continue.
 							</div>
-							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;"><br/><br/><br/><span style="width:0px;"/></div>
-							<div class="styIRS8867ChildBox" style="border-width:0px;"><br/><br/><br/><span style="width:0px;"/></div>
-							<div class="styIRS8867ChildBox" style="border-width:0px;"><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-bottom-width:0px;height:12mm;"><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-width:0px;height:12mm;"><br/><br/><br/><span style="width:0px;"/></div>
+							<div class="styIRS8867ChildBox" style="border-width:0px;height:12mm;"><br/><br/><br/><span style="width:0px;"/></div>
 						</div>
 						<!-- Line 15 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">15</div>
-							<div class="styIRS8867ChildDesc">
+							<div class="styLNLeftNumBox" style="height:4mm;padding-top:5mm;">15</div>
+							<div class="styIRS8867ChildDesc" style="height:4mm;padding-top:5mm;width:105mm;" >
 								Are the taxpayer's <b>earned income</b> and <b>adjusted gross income</b> each less <br/>
 								<span style="float:left;clear:none;">than the limit that applies to the taxpayer for 2014? See instructions</span>
 								<span class="styIRS8867Dots">...</span>
 							</div>
-							<div class="styIRS8867ChildBox">
+							<div class="styIRS8867ChildBox" style="height:9mm;">
 								<br/><span style="width:0px;"/>
 							</div>
-							<div class="styIRS8867ChildBox" style="border-left-width:0px;">
+							<div class="styIRS8867ChildBox" style="border-left-width:0px;height:9mm;">
 								<br/><span style="width:0px;"/>
 							</div>
-							<div class="styIRS8867ChildBox" style="border-left-width:0px;">
+							<div class="styIRS8867ChildBox" style="border-left-width:0px;height:9mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1545,7 +1556,7 @@
 											<xsl:with-param name="BackupName">IRS8867EarnedIncmAndAGIBelowLimitInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+							
 									<label>
 										<xsl:call-template name="PopulateLabelYes">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/EarnedIncmAndAGIBelowLimitInd"/>
@@ -1553,14 +1564,14 @@
 										</xsl:call-template>
 										Yes
 									</label>
-									<span style="width:4px;"/>
+							
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateNoCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/EarnedIncmAndAGIBelowLimitInd"/>
 											<xsl:with-param name="BackupName">IRS8867EarnedIncmAndAGIBelowLimitInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+							
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/TaxpayerWithAChildGrp/EarnedIncmAndAGIBelowLimitInd"/>
@@ -1569,64 +1580,64 @@
 										No
 									</label>
 								</span>
-								<span style="width:0px;"/>
+						
 							</div>
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867ChildBranch">
+							<div class="styIRS8867ChildBranch" style="height:24mm;text-align:left;padding-top:4mm;width:113mm;">
 								<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"No"</b> on line 15, <b>stop</b>; the taxpayer <b>cannot</b> take the <br/>
 								EIC. If you checked <b>"Yes"</b> on line 15, the taxpayer can take the EIC. <br/>
 								Complete <b>Schedule EIC</b> and attach it to the taxpayer's return. If there <br/>
 								are two or three qualifying children with valid SSNs, list them on <br/>
-								Schedule EIC in the same order as they are listed here. If the taxpayer's
-								EIC was reduced or disallowed for a year after 1996, see Pub. 596 to <br/>
-								see if <b>Form 8862</b> must be filed. Go to line 20.
+								Schedule EIC in the same order as they are listed here. If the taxpayer's<br/>
+								EIC was reduced or disallowed for a year after 1996, see Pub. 596 to 
+								see<br/> if <b>Form 8862</b> must be filed. Go to line 20.
 							</div>
-							<div class="styIRS8867ChildBox" style="border-width:0px;background-color:lightgrey;"><br/><br/><br/><br/><br/><br/><br/>
+							<div class="styIRS8867ChildBox" style="height:24mm;border-width:0px;background-color:lightgrey;border-left-width:1px;"><br/><br/><br/><br/><br/><br/><br/>
 							    <span style="width:0px"/></div>
-							<div class="styIRS8867ChildBox" style="border-width:0px;background-color:lightgrey;"><br/><br/><br/><br/><br/><br/><br/>
+							<div class="styIRS8867ChildBox" style="height:24mm;border-width:0px;background-color:lightgrey;"><br/><br/><br/><br/><br/><br/><br/>
 							    <span style="width:0px"/></div>
-							<div class="styIRS8867ChildBox" style="border-width:0px;background-color:lightgrey;"><br/><br/><br/><br/><br/><br/><br/>
+							<div class="styIRS8867ChildBox" style="height:24mm;border-width:0px;background-color:lightgrey;"><br/><br/><br/><br/><br/><br/><br/>
 							    <span style="width:0px"/></div>
 						</div>
 						<!-- Note Line -->
 						<div class="styGenericdiv" style="width:187mm;">
 							<div class="styLNLeftNumBoxSD"/>
-							<div class="styIRS8867ChildDesc">
+							<div class="styIRS8867ChildDesc" style="height:12mm;padding-top:6mm;width:105mm;">
 								<b>Note.</b> If there is more than one child, complete lines 8 through 14 for the <br/>other child(ren) (but for no more
 								than three qualifying children). 
 							</div>
-							<div class="styIRS8867ChildBox" style="border-width:0px;background-color:lightgrey;"><br/><span style="width:0px"/></div>
-							<div class="styIRS8867ChildBox" style="border-width:0px;background-color:lightgrey;"><br/><span style="width:0px"/></div>
-							<div class="styIRS8867ChildBox" style="border-width:0px;background-color:lightgrey;"><br/><span style="width:0px"/></div>
+							<div class="styIRS8867ChildBox" style="height:12mm;border-width:0px;background-color:lightgrey;border-left-width:1px;"><br/><span style="width:0px"/></div>
+							<div class="styIRS8867ChildBox" style="height:12mm;border-width:0px;background-color:lightgrey;"><br/><span style="width:0px"/></div>
+							<div class="styIRS8867ChildBox" style="height:12mm;border-width:0px;background-color:lightgrey;"><br/><span style="width:0px"/></div>
 						</div>
 					</div>
 					<!-- END Part II -->
 					<!-- Page boundary -->
 					<div class="pageEnd" style="width:187mm;clear:all;">
 						<span style="float:right;clear:none;">Form <span style="font-weight:bold;font-size:9pt;">8867</span> (2014)</span>
-					</div>
+					</div><br/><br/><br/>
 					<div class="styTBB" style="width:187mm;clear:all;">
 						<span style="float:left;clear:none;">Form 8867 (2014)</span>
 						<span style="float:right;clear:none;">Page <span style="font-weight:bold;font-size:9pt;">3</span></span>
 					</div>
 					<!-- BEGIN Part III -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styPartName">Part III</div>
-						<div class="styPartDesc">Taxpayers Without a Qualifying Child</div>
+					<div class="styBB" style="width:187mm;height:3.25mm;">
+						<div class="styPartName" style="font-size:7pt;">Part III</div>
+						<div class="styPartDesc" style="font-size:7pt;">Taxpayers Without a Qualifying Child</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
 						<!-- Line 16 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">16</div>
-							<div class="styIRS8867LNDesc">
+							<div class="styLNLeftNumBox" style="height:4mm;">16</div>
+							<div class="styIRS8867LNDesc" style="height:4mm;">
 								Was the taxpayer's main home, and the main home of the taxpayer's spouse if filing jointly, in the <br/>
 								United States for more than half the year? (Military personnel on extended active duty outside the <br/>
 								<span style="float:left;clear:none;">United States are considered to be living in the United States during that duty period.) See the
-								Instructions<br/> before answering.</span>
+								<br/>Instructions before answering.</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:14mm;">
 								<br/><br/><br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1665,7 +1676,7 @@
 							</div>
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867BranchDesc">
+							<div class="styIRS8867BranchDesc" style="height:6mm;">
 								<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"No"</b> on line 16, <b>stop</b>; the taxpayer <b>cannot</b> take the EIC. Otherwise, continue. 
 								<br/><br/>
@@ -1673,13 +1684,13 @@
 						</div>
 						<!-- Line 17 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">17</div>
-							<div class="styIRS8867LNDesc">
+							<div class="styLNLeftNumBox" style="padding-top:1mm;height:1mm;">17</div>
+							<div class="styIRS8867LNDesc" style="padding-top:1mm;height:1mm;">
 								Was the taxpayer, or the taxpayer's spouse if filing jointly, at least age 25 but under age 65 at <br/>
 								<span style="float:left;clear:none;">the end of 2014? See the instructions before answering</span>
 								<span class="styIRS8867Dots">..............</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:8mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1718,7 +1729,7 @@
 							</div>
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867BranchDesc">
+							<div class="styIRS8867BranchDesc" style="height:6mm;">
 								<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"No"</b> on line 17, <b>stop</b>; the taxpayer <b>cannot</b> take the EIC. Otherwise, continue.
 								<br/><br/>
@@ -1726,13 +1737,13 @@
 						</div>
 						<!-- Line 18 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">18</div>
-							<div class="styIRS8867LNDesc">
+							<div class="styLNLeftNumBox" style="height:2mm;">18</div>
+							<div class="styIRS8867LNDesc" style="height:2mm;">
 								Is the taxpayer eligible to be claimed as a dependent on anyone else's federal income tax return<br/>
 								<span style="float:left;clear:none;">for 2014? If the taxpayer's filing status is married filing jointly, check <b>"No"</b></span>
 								<span class="styIRS8867Dots">.........</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:8.5mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1771,7 +1782,7 @@
 							</div>
 						</div>
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867BranchDesc">
+							<div class="styIRS8867BranchDesc" style="height:6mm;">
 								<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
 								If you checked <b>"Yes"</b> on line 18, <b>stop</b>; the taxpayer <b>cannot</b> take the EIC. Otherwise, continue.
 								<br/><br/>
@@ -1779,13 +1790,13 @@
 						</div>
 						<!-- Line 19 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">19</div>
-							<div class="styIRS8867LNDesc">
+							<div class="styLNLeftNumBox" style="padding-top:2mm;height:4mm;">19</div>
+							<div class="styIRS8867LNDesc" style="padding-top:2mm;height:4mm;">
 								Are the taxpayer's <b>earned income</b> and <b>adjusted gross income</b> each less than the limit that <br/>
 								<span style="float:left;clear:none;">applies to the taxpayer for 2014? See Instructions</span>
 								<span class="styIRS8867Dots">...............</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:8mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1823,32 +1834,46 @@
 								</span>
 							</div>
 						</div>
-						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styIRS8867BranchDesc" style="">
+						<div class="styIRS8867ChildBox" style="float:right;width:32.75mm;height:18mm;border-width:0px;background-color:lightgrey;">
+							    <span style="width:0px"/></div>
+						<div class="styIRS8867BranchDesc" style="height:18mm;">
 								<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
-								If you checked <b>"No"</b> on line 19, <b>stop</b>; the taxpayer <b>cannot</b> take the EIC. If you checked <br/>
-								<b>"Yes"</b> on line 19, the taxpayer can take the EIC. If the taxpayer's EIC was reduced or disallowed <br/>
-								for a year after 1996, see Pub. 596 to find out if <b>Form 8862</b> must be filed. Go to line 20.<br/><br/>
+								If you checked <b>"No"</b> on line 19, <b>stop</b>; the taxpayer <b>cannot</b> take the EIC. If you checked 
+								<b>"Yes"</b><br/> on line 19, the taxpayer can take the EIC. If the taxpayer's EIC was reduced or disallowed 
+								for a <br/>year after 1996, see Pub. 596 to find out if <b>Form 8862</b> must be filed. Go to line 20.<br/>
 						    </div>
-						    <div class="styGenericDiv" style="height:15.5mm;background-color:lightgrey;width:32.6mm"/>	
+						<div style="float:right;">
+							
+						
+							    
+							</div>
+						
+						
+						<div class="styGenericDiv" style="width:187mm;">
+							
+						
+						
+							    
+						
+						
 					    </div>
 				    </div>
 					<!-- END Part III -->
 					<!-- BEGIN Part IV -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartName">Part IV</div>
-						<div class="styPartDesc">Due Diligence Requirements</div>
+						<div class="styPartName" style="font-size:7pt;">Part IV</div>
+						<div class="styPartDesc" style="font-size:7pt;">Due Diligence Requirements</div>
 					</div>
 					<div class="styTBB" style="width:187mm;">
 						<!-- Line 20 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">20</div>
-							<div class="styIRS8867LNDesc">
+							<div class="styLNLeftNumBox" style="height:7mm;">20</div>
+							<div class="styIRS8867LNDesc" style="height:7mm;">
 								Did you complete Form 8867 based on current information provided by the taxpayer or reasonably <br/>
 								<span style="float:left;clear:none;">obtained by you?</span>
-								<span class="styIRS8867Dots">........................</span>
+								<span class="styIRS8867Dots">......................</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:8mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1888,13 +1913,13 @@
 						</div>
 						<!-- Line 21 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">21</div>
-							<div class="styIRS8867LNDesc">
+							<div class="styLNLeftNumBox" style="height:7mm;">21</div>
+							<div class="styIRS8867LNDesc" style="height:7mm;">
 								Did you complete the EIC worksheet found in the Form 1040, 1040A, or 1040EZ instructions (or your <br/>
 								<span style="float:left;clear:none;">own worksheet that provides the same information as the 1040, 1040A, or 1040EZ worksheet)?</span>
 								<span class="styIRS8867Dots">...</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:8mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -1934,13 +1959,13 @@
 						</div>
 						<!-- Line 22 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">22</div>
-							<div class="styIRS8867LNDesc">
+							<div class="styLNLeftNumBox" style="height:7mm;padding-top:2mm;">22</div>
+							<div class="styIRS8867LNDesc" style="height:7mm;padding-top:2mm;" >
 								If any qualifying child was not the taxpayer's son or daughter, do you know or did you ask why the <br/> 
 								<span style="float:left;clear:none;">parents were not claiming the child?</span>
-								<span class="styIRS8867Dots">................</span>
+								<span class="styIRS8867Dots">..................</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:10mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/ParentsNotClaimQlfyChildInd"/>
@@ -1966,7 +1991,7 @@
 											<xsl:with-param name="BackupName">IRS8867ParentsNotClaimQlfyChildInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								<span style="width:2px;"/>
 									<label>
 										<xsl:call-template name="PopulateLabelNo">
 											<xsl:with-param name="TargetNode" select="$FormData/ParentsNotClaimQlfyChildInd"/>
@@ -1975,14 +2000,14 @@
 										No
 									</label>
 								</span>
-								<span style="width:100%">
+								<span style="width:100%;text-align:left;padding-left:.5mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApplyInd"/>
 											<xsl:with-param name="BackupName">IRS8867DoesNotApplyInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-									<span style="width:2px;"/>
+								
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApplyInd"/>
@@ -1995,14 +2020,14 @@
 						</div>
 						<!-- Line 23 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">23</div>
-							<div class="styIRS8867LNDesc">
-								If the answer to question 13a is <b>"Yes"</b> (indicating that the child lived for more than half the year <br/>
-								with someone else who could claim the child for the EIC), did you explain the tiebreaker rules and <br/>
+							<div class="styLNLeftNumBox" style="height:12mm;padding-top:2mm;">23</div>
+							<div class="styIRS8867LNDesc" style="height:12mm;padding-top:2mm;">
+								If the answer to question 13a is <b>"Yes"</b> (indicating that the child lived for more than half the year 
+								with <br/>someone else who could claim the child for the EIC), did you explain the tiebreaker rules and <br/>
 								<span style="float:left;clear:none;">possible consequences of another person claiming your client's qualifying child?</span>
 								<span class="styIRS8867Dots">.......</span>
 							</div>
-							<div class="styIRS8867LNAmountBox">
+							<div class="styIRS8867LNAmountBox" style="height:13mm;">
 								<br/>
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
@@ -2038,7 +2063,7 @@
 										No
 									</label>
 								</span>
-								<span style="width:100%">
+								<span style="width:100%;text-align:left;padding-left:.5mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApply2Ind"/>
@@ -2058,16 +2083,15 @@
 						</div>
 						<!-- Line 24 -->
 						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">24</div>
-							<div class="styIRS8867LNDesc">
+							<div class="styLNLeftNumBox" style="padding-top:2mm;">24</div>
+							<div class="styIRS8867LNDesc" style="padding-top:2mm;">
 								Did you ask this taxpayer any additional questions that are necessary to meet your knowledge requirement?<br/>
 								<span style="float:left;clear:none;">See the instructions before answering</span>
 								<span class="styIRS8867Dots">..................</span><br/><br/>
-								<span style="font-weight:bold;">To comply with the EIC knowledge requirement, you must not know or have reason to know that any<br/>
-								information you used to determine the taxpayer's eligibility for, and the amount of, the EIC is incorrect.<br/>
-								You may not ignore the implications of information furnished to you or known by you, and you must <br/>make
-								reasonable inquiries if the information furnished to you appears to be incorrect, inconsistent, or <br/>incomplete.
-								At the time you make these inquiries, you must document in your files the inquiries you <br/>made and
+								<span style="font-weight:bold;">To comply with the EIC knowledge requirement, you must not know or have reason to know <br/>that any	information you used to determine the taxpayer's eligibility for, and the amount of,<br/> the EIC is incorrect.
+								You may not ignore the implications of information furnished to you or <br/>known by you, and you must make
+								reasonable inquiries if the information furnished to you <br/>appears to be incorrect, inconsistent, or incomplete.
+								At the time you make these inquiries, <br/>you must document in your files the inquiries you made and
 								the taxpayer's responses.</span>
 							</div>
 							<div class="styIRS8867LNAmountBox" style="height:27.8mm;padding-top:0mm;border-bottom-width:solid black">
@@ -2105,7 +2129,7 @@
 										No
 									</label>
 								</span>
-								<span style="width:100%">
+									<span style="width:100%;text-align:left;padding-left:.5mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApply3Ind"/>
@@ -2121,50 +2145,21 @@
 										Does not apply
 									</label>
 								</span>
-								<div class="styGenericDiv" style="height:24.5mm;background-color:lightgrey;width:32.6mm;border-style:solid;border-color:black;
-								  border-width:1px 0px 0px 0px border-top:black"/>
+								<div class="styGenericDiv" style="height:19mm;background-color:lightgrey;width:32.6mm;"/>
 							</div>
 						</div>
 						<!-- Line 25 -->
 						<div class="styGenericDiv" style="width:187mm;">
-						    <div class="styGenericDiv">
-								<div class="styLNLeftNumBox">25</div>
-								<div class="styIRS8867LNDesc">
+						    <div class="styGenericDiv" style="height:10mm;">
+								<div class="styLNLeftNumBox" style="height:2mm;padding-top:3mm;">25</div>
+								<div class="styIRS8867LNDesc" style="height:8mm;padding-top:3mm;" >
 								Did you document (a) the taxpayer's answer to question 22 (if applicable), (b) whether you explained the <br/>
-								tiebreaker rules to the taxpayer and any additional information you got from the taxpayer as a result, and <br/>
+								tiebreaker rules to the taxpayer and any additional information you got from the taxpayer as a<br/> result, and 
 									<span style="float:left;clear:none;">(c) any additional questions you asked and the taxpayer's answers?</span>
-									<span class="styIRS8867Dots">..........</span>
+									<span class="styIRS8867Dots">........</span>
 								</div>
-								<div class="styGenericDiv">
-									<div class="styIRS8867LNDesc" style="padding-left:2mm">
-										<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
-										You have complied with all the due diligence requirements if you:<br/>
-										<span style="padding-left:5mm"> 1. Completed the actions described on lines 20 and 21 and checked <b>"Yes"</b> on those lines,</span><br/>
-										<span style="padding-left:5mm"> 2. Completed the actions described on lines 22, 23, 24, and 25 (if they apply) and checked <b>"Yes"</b> (or <br/>
-											<span style="padding-left:8.5mm"><b>"Does not apply"</b>) on those lines,</span>
-										</span><br/>
-										<span style="padding-left:5mm"> 3. Submit Form 8867 in the manner required, <b>and</b></span><br/>   
-										<span style="padding-left:5mm"> 4. Keep all five of the following records for 3 years from the latest of the dates specified in the <br/>
-											<span style="padding-left:8.5mm">instructions under <i>Document Rentention:</i></span>
-										</span><br/><br/>
-										<span style="padding-left:9mm"> a. Form 8867,</span><br/>
-										<span style="padding-left:9mm"> b. The EIC worksheet(s) or your own worksheet(s),</span><br/> 
-										<span style="padding-left:9mm"> c. Copies of any taxpayer documents you relied on to determine eligibility for or amount of EIC,</span><br/>  
-										<span style="padding-left:9mm"> d. A record of how, when, and from whom the information used to prepare the form and <br/>
-											<span style="padding-left:12.5mm">worksheet(s) was obtained, and</span>
-										</span><br/>  
-										<span style="padding-left:9mm"> e. A record of any additional questions you asked and your client's answers.</span><br/>     
-									</div>
-								</div>
-								<div class="styGenericDiv">
-									<div class="styIRS8867LNDesc" style="padding-left:2mm">
-										<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
-										You have not complied with all the due diligence requirements if you checked <b>"No"</b>on line 20, 21, 22,<br/>
-										<span style="padding-left:3mm"> 23, 24, or 25. You may have to pay a $500 penalty for each failure to comply.</span>
-									</div>
-								</div>
-							</div>
-							<div class="styIRS8867LNAmountBox" style="border-bottom:none;"><br/>
+								
+									<div class="styIRS8867LNAmountBox" style="height:9.30mm;padding-top:0mm;">
 								<span style="width:100%;">
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$FormData/AdditionalQstnDocumentedInd"/>
@@ -2199,7 +2194,7 @@
 										No
 									</label>
 								</span>
-								<span style="width:100%">
+									<span style="width:100%;text-align:left;padding-left:.5mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApply4Ind"/>
@@ -2215,41 +2210,80 @@
 										Does not apply
 									</label>
 								</span>
-								<div class="styGenericDiv" style="height:56.5mm;background-color:lightgrey;width:32.6mm;border-style:solid;border-color:black;
-								  border-width:1px 0px 0px 0px border-top:black"/>
+								<div class="styIRS8867ChildBox" style="float:right;width:32mm;height:56mm;border-left-width:1px;background-color:lightgrey;">
+							    <span style="width:0px"/></div>
 							</div>
 						</div>
-					</div>
+								
+								
+								
+								
+								<div class="styGenericDiv" >
+									<div class="styIRS8867LNDesc" style="padding-left:2mm;height:23mm;float:left;">
+										<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
+										You have complied with all the due diligence requirements if you:<br/>
+										<span style="padding-left:5mm"> 1. Completed the actions described on lines 20 and 21 and checked <b>"Yes"</b> on those lines,</span><br/>
+										<span style="padding-left:5mm"> 2. Completed the actions described on lines 22, 23, 24, and 25 (if they apply) and checked <b>"Yes"</b> (or <br/>
+											<span style="padding-left:8.5mm"><b>"Does not apply"</b>) on those lines,</span>
+										</span><br/>
+										<span style="padding-left:5mm"> 3. Submit Form 8867 in the manner required, <b>and</b></span><br/>   
+										<span style="padding-left:5mm"> 4. Keep all five of the following records for 3 years from the latest of the dates specified in the <br/>
+											<span style="padding-left:8.5mm;">instructions under <i>Document Rentention:</i></span>
+										</span><br/>
+										<span style="padding-left:9mm;height:4mm;padding-top:2mm;"> a. Form 8867,</span><br/>
+										<span style="padding-left:9mm;height:4mm;"> b. The EIC worksheet(s) or your own worksheet(s),</span><br/> 
+										<span style="padding-left:9mm;height:4mm;"> c. Copies of any taxpayer documents you relied on to determine eligibility for or amount of EIC,</span><br/>  
+										<span style="padding-left:9mm;height:4mm;"> d. A record of how, when, and from whom the information used to prepare the form and <br/>
+											<span style="padding-left:12.5mm;height:4mm;">worksheet(s) was obtained, and</span>
+										</span><br/>  
+										<span style="padding-left:9mm;height:4mm;"> e. A record of any additional questions you asked and your client's answers.</span><br/>     
+									</div>
+								</div>
+								<div class="styGenericDiv">
+									<div class="styIRS8867LNDesc" style="padding-left:2mm;height:32mm;padding-top:22mm;">
+										<br/><img alt="Bullet" src="{$ImagePath}/8867_Bullet.gif" height="9" width="9"/>
+										You have not complied with all the due diligence requirements if you checked <b>"No"</b>on line 20, 21, 22,<br/>
+										<span style="padding-left:3mm"> 23, 24, or 25. You may have to pay a $500 penalty for each failure to comply.</span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					
 					<!-- END Part IV -->
+				
 					<div class="pageEnd" style="width:187mm;clear:all;">
 						<span style="float:right;clear:none;">Form <span style="font-weight:bold;font-size:9pt;">8867</span> (2014)</span>
 					</div>
-					<div class="styTBB" style="width:187mm;clear:all;">
+					<p style="page-break-before: always"/>
+
+
+					<div class="styTBB" style="width:187mm;clear:all;padding-top:4mm;">
 						<span style="float:left;clear:none;">Form 8867 (2014)</span>
 						<span style="float:right;clear:none;">Page <span style="font-weight:bold;font-size:9pt;">4</span></span>
 					</div>
 					<!-- BEGIN Part V -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartName">Part V</div>
-						<div class="styPartDesc">Documents Provided to You</div>
+						<div class="styPartName"  style="font-size:7pt;">Part V</div>
+						<div class="styPartDesc" style="font-size:7pt;">Documents Provided to You</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
 					    <br/>
 						<!-- Line 26 -->
 						<div class="styGenericDiv" style="width:187mm;">
 							<div class="styLNLeftNumBox">26</div>
-							<div class="styIRS8867LNDesc" style="width:170mm;">
+							<div class="styIRS8867LNDesc" style="width:170mm;height:10mm;">
 								Identify below any document that the taxpayer provided to you and that you relied on to determine the taxpayer's EIC<br/>
 								eligibility. Check all that apply. <b>Keep a copy of any documents you relied on.</b> See the instructions before answering.  If there <br/>
 								is no qualifying child, check box a. If there is no disabled child, check box o.
 							</div>
 						</div>
-						<div class="styGenericDiv" style="width:187mm;"/>
+						<div class="styGenericDiv" style="width:187mm;padding-top:2mm;"/>
 						<!-- Line 26 table -->
 						<div class="styIRS8867Page4Box">
 							<div class="styIRS8867Page4BoxHeader">Residency of Qualifying Child(ren)</div>
 							<!-- 26a -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="1">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/NoQualifyingChildInd"/>
@@ -2266,7 +2300,7 @@
 								</label>
 							</div>
 							<!-- 26i -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"   tabindex="2">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlaceOfWorshipStatementInd"/>
@@ -2283,7 +2317,7 @@
 								</label>
 							</div>
 							<!-- 26b -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"   tabindex="3">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/SchoolRecordsOrStatementInd"/>
@@ -2300,7 +2334,7 @@
 								</label>
 							</div>
 							<!-- 26j -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"   tabindex="4">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/IndianTribalOfficialStmtInd"/>
@@ -2317,7 +2351,7 @@
 								</label>
 							</div>
 							<!-- 26c -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="5">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/LandlordOrPropertyMgmtStmtInd"/>
@@ -2334,7 +2368,7 @@
 								</label>
 							</div>
 							<!-- 26k -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="6" >
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/EmployerStatementInd"/>
@@ -2351,7 +2385,7 @@
 								</label>
 							</div>
 							<!-- 26d -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="7" >
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/HealthCareProviderStatementInd"/>
@@ -2368,7 +2402,7 @@
 								</label>
 							</div>
 							<!-- 26l -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"   tabindex="8">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/OtherInformationGrp/OtherInd"/>
@@ -2391,7 +2425,7 @@
 								</label>
 							</div>
 							<!-- 26e -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="9" >
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/MedicalRecordsInd"/>
@@ -2410,7 +2444,7 @@
 							<!-- 26 other blank 1 -->
 							<div class="styIRS8867CheckboxBlank"><span style="width:0px;"/></div>
 							<!-- 26f -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="10" >
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/ChildCareProviderRecordsInd"/>
@@ -2427,9 +2461,9 @@
 								</label>
 							</div>
 							<!-- 26 other blank 2 -->
-							<div class="styIRS8867CheckboxBox"><span style="width:0px;"/></div>
+							<div class="styIRS8867CheckboxBox" tabindex="11"  ><span style="width:0px;"/></div>
 							<!-- 26g -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="12">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlacementAgencyStatementInd"/>
@@ -2446,9 +2480,9 @@
 								</label>
 							</div>
 							<!-- 26 other blank 3 -->
-							<div class="styIRS8867CheckboxBlank"><span style="width:0px;"/></div>
+							<div class="styIRS8867CheckboxBlank" tabindex="13"><span style="width:0px;"/></div>
 							<!-- 26h -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="14">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/SocialServiceRecordsOrStmtInd"/>
@@ -2465,7 +2499,7 @@
 								</label>
 							</div>
 							<!-- 26m -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="15">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/DidNotRelyOnDocFileNotatedInd"/>
@@ -2482,7 +2516,7 @@
 								</label>
 							</div>
 							<!-- 26 blank 4 -->
-							<div class="styIRS8867CheckboxBox"><span style="width:0px;"/></div>
+							<div class="styIRS8867CheckboxBox"   tabindex="16"><span style="width:0px;"/></div>
 							<!-- 26n -->
 							<div class="styIRS8867CheckboxBox">
 								<input type="checkbox" class="styCkbox">
@@ -2502,7 +2536,7 @@
 							</div>
 							<div class="styIRS8867Page4BoxHeader">Disability of Qualifying Child(ren)</div>
 							<!-- 26o -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="17">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/NoDisabledChildInd"/>
@@ -2519,7 +2553,7 @@
 								</label>
 							</div>
 							<!-- 26s -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="18">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/OtherInformationGrp/OtherInd"/>
@@ -2542,7 +2576,7 @@
 								</label>
 							</div>
 							<!-- 26p -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="19">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DoctorStatementInd"/>
@@ -2559,9 +2593,9 @@
 								</label>
 							</div>
 							<!-- 26 other blank 1 -->
-							<div class="styIRS8867CheckboxBlankTop"><span style="width:0px;"/></div>
+							<div class="styIRS8867CheckboxBlankTop"  tabindex="20"><span style="width:0px;"/></div>
 							<!-- 26q -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="21">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/OtherHealthCareProviderStmtInd"/>
@@ -2578,9 +2612,9 @@
 								</label>
 							</div>
 							<!-- 26 other blank 2 -->
-							<div class="styIRS8867CheckboxBlank"><span style="width:0px;"/></div>
+							<div class="styIRS8867CheckboxBlank" tabindex="22"><span style="width:0px;"/></div>
 							<!-- 26r -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="23">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/SocialServicesAgOrProgStmtInd"/>
@@ -2597,7 +2631,7 @@
 								</label>
 							</div>
 							<!-- 26t -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="24">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DidNotRelyOnDocFileNotatedInd"/>
@@ -2614,9 +2648,9 @@
 								</label>
 							</div>
 							<!-- 26 blank 4 -->
-							<div class="styIRS8867CheckboxBox"><span style="width:0px;"/></div>
+							<div class="styIRS8867CheckboxBox"  tabindex="25"><span style="width:0px;"/></div>
 							<!-- 26u -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="26">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DidNotRelyOnDocumentsInd"/>
@@ -2637,8 +2671,8 @@
 						<span class="styGenericDiv" style="width=180mm;border-style:solid;border-color:black;border-width:1px 0px 0px 0px;"/>
 						</div>
 						<!-- Line 27 -->
-						<div class="styGenericDiv" style="width:187mm;">
-							<div class="styLNLeftNumBox">27</div>
+						<div class="styGenericDiv" style="width:187mm;height:12mm;padding-top:2mm;">
+							<div class="styLNLeftNumBox" >27</div>
 							<div class="styIRS8867LNDesc" style="width:178mm;">
 								If a Schedule C is included with this return, identify below the information that the taxpayer provided to you and that you relied<br/>
 								on to prepare the Schedule C. Check all that apply. <span style="font-weight:bold;">Keep a copy of any documents you relied on.</span>
@@ -2650,7 +2684,7 @@
 						<div class="styIRS8867Page4Box">
 							<div class="styIRS8867Page4BoxHeader">Documents or Other Information</div>
 							<!-- 27a -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="27">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/NoScheduleCInd"/>
@@ -2667,7 +2701,7 @@
 								</label>
 							</div>
 							<!-- 27h -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="28">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/BankStatementInd"/>
@@ -2684,7 +2718,7 @@
 								</label>
 							</div>
 							<!-- 27b -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="29">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/BusinessLicenseInd"/>
@@ -2701,7 +2735,7 @@
 								</label>
 							</div>
 							<!-- 27i -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="30">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/ReconstrOfIncomeAndExpnssInd"/>
@@ -2718,7 +2752,7 @@
 								</label>
 							</div>
 							<!-- 27c -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="31">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/Form1099Ind"/>
@@ -2735,7 +2769,7 @@
 								</label>
 							</div>
 							<!-- 27j -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="32">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/OtherInformationGrp/OtherInd"/>
@@ -2758,7 +2792,7 @@
 								</label>
 							</div>
 							<!-- 27d -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox"  tabindex="33">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfGrossReceiptsProvInd"/>
@@ -2775,7 +2809,7 @@
 								</label>
 							</div>
 							<!-- 27 other blank 1 -->
-							<div class="styIRS8867CheckboxBlankTop"><span style="width:0px;"/></div>
+							<div class="styIRS8867CheckboxBlankTop" tabindex="34"><span style="width:0px;"/></div>
 							<!-- 27e -->
 							<div class="styIRS8867CheckboxBox">
 								<input type="checkbox" class="styCkbox">
@@ -2794,7 +2828,7 @@
 								</label>
 							</div>
 							<!-- 27 other blank 2 -->
-							<div class="styIRS8867CheckboxBlank"><span style="width:0px;"/></div>
+							<div class="styIRS8867CheckboxBlank" tabindex="35"><span style="width:0px;"/></div>
 							<!-- 27f -->
 							<div class="styIRS8867CheckboxBox">
 								<input type="checkbox" class="styCkbox">
@@ -2813,7 +2847,7 @@
 								</label>
 							</div>
 							<!-- 27k -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="36">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/DidNotRelyOnDocFileNotatedInd"/>
@@ -2830,7 +2864,7 @@
 								</label>
 							</div>
 							<!-- 27g -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="37">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfExpensesInd"/>
@@ -2847,7 +2881,7 @@
 								</label>
 							</div>
 							<!-- 27l -->
-							<div class="styIRS8867CheckboxBox">
+							<div class="styIRS8867CheckboxBox" tabindex="38">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/DidNotRelyOnDocumentsInd"/>

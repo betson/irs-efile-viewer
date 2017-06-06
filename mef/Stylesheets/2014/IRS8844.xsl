@@ -5,6 +5,7 @@
 <!-- Updated per UWR 101606 -->
 <!-- Updated per UWR 111640 6/18/14 -->
 <!-- Updated 8/7/2014 per IBM Defect 41255 by Robert L Jones -->
+<!--Updated per IBM Defect  42896 on 06/02/2015 Additional Data not on page by itself-rlj -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -15,8 +16,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form8844Data" select="$RtnDoc/IRS8844"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8844Data)"/>
@@ -45,39 +48,39 @@
         <form id="Form8844">
           <xsl:call-template name="DocumentHeader"/>
           <div class="styTBB" style="width:187mm;">
-            <div class="styFNBox" style="width:30mm;height:16mm;">
+            <div class="styFNBox" style="width:30mm;height:auto;">
               <div style="height:9mm;">Form<span class="styFormNumber">  8844</span>
                 <br/>
               </div>
-              <div style="height:6mm;padding-top:5mm;">
+              <div style="height:auto;padding-top:7mm;">
                 <span class="styAgency">Department of the Treasury</span>
                 <br/>
                 <span class="styAgency">Internal Revenue Service</span>
               </div>
             </div>
-            <div class="styFTBox" style="width:125mm;height:10mm;">
-              <div class="styMainTitle" style="height:10mm;font-size:13pt;padding-top:1mm;">
+            <div class="styFTBox" style="width:125mm;height:auto;">
+              <div class="styMainTitle" style="height:auto;font-size:13pt;padding-top:1mm;">
             Empowerment Zone Employment Credit
           </div>
-              <div class="styFMT" style="height:2mm;font-size:7pt;padding-top:1mm;">
+              <div class="styFMT" style="height:auto;font-size:7pt;padding-top:1mm;">
                 <img src="{$ImagePath}/8844_Bullet.gif" alt="Bullet Image"/>
               Attach to your tax return.
           </div>
-          <div class="styFMT" style="height:2mm;font-size:7pt;padding-top:2mm;">
+          <div class="styFMT" style="height:auto;font-size:7pt;padding-top:2mm;">
                 <img src="{$ImagePath}/8844_Bullet.gif" alt="Bullet Image"/> Information about Form 8844 and its separate instructions is at 
                  <a href="http://www.irs.gov/form8844" title="Link to IRS.gov">
                  <i>www.irs.gov/form 8844.</i>
                  </a>
           </div>
             </div>
-            <div class="styTYBox" style="width:32mm;height:12mm;">
-              <div class="styOMB" style="height:3mm;padding-top:0mm;">
+            <div class="styTYBox" style="width:32mm;height:auto;">
+              <div class="styOMB" style="height:auto;padding-top:0mm;">
             OMB No. 1545-1444
           </div>
-              <div class="styTY" style="height:3mm;font-size:21pt;padding-top:0mm;padding-bottom:0mm;">
+              <div class="styTY" style="height:auto;font-size:21pt;padding-top:0mm;padding-bottom:0mm;">
             20<span class="styTYcolor">14</span>
               </div>
-              <div class="styOMB" style="height:3.5m;text-align:left;padding-left:5mm;border-bottom-width:0px;">
+              <div class="styOMB" style="height:auto;text-align:left;padding-left:5mm;border-bottom-width:0px;">
              Attachment <br/>Sequence No. <span class="styBoldText">99</span>
               </div>
             </div>
@@ -85,9 +88,9 @@
           <!-- End Form Number and Name section -->
           <!-- Begin Names and Identifying number section -->
           <div style="width:187mm;" class="styBB">
-            <div style="width:138mm;height:8mm;font-weight:normal;font-size:7pt;" class="styNameBox">
+            <div style="width:138mm;height:auto;font-weight:normal;font-size:7pt;" class="styNameBox">
           Name(s) shown on return<br/>
-              <div style="font-family:verdana;font-size:7pt;height:7mm">
+              <div style="font-family:verdana;font-size:7pt;height:auto">
               <!-- Added per UWR 31342 to allow 1040/ssn filer to use this form -->
               <xsl:choose>
 								    <xsl:when test="$RtnHdrData/ReturnType='1040'">
@@ -108,7 +111,7 @@
 				                  </xsl:choose>
               </div>
             </div>
-            <div style="width:49mm;height:4mm;padding-left:2mm;font-size:7pt;" class="styEINBox">
+            <div style="width:49mm;height:auto;padding-left:2mm;font-size:7pt;" class="styEINBox">
             Identifying number<br/>
               <br/>
               <span style="font-weight:normal;">
@@ -143,7 +146,7 @@
               <div style="float:left;">
                 <div class="styLNLeftNumBoxSD">1</div>
                 <div class="styLNDesc" style="height:4mm;"> <!--Reserved  -->     
-               Enter the total qualified wages paid or incurred during <span class="styBoldText"> calendar year </span>2014 only (see instructions)
+               Enter the total qualified wages paid or incurred during <span class="styBoldText"> calendar year </span> 2014 only (see instructions)
               </div>
               </div>
               <div style="float:right;">
@@ -248,15 +251,15 @@
                 <div class="styLNLeftNumBoxSD" style="">3</div>
                 <div class="styLNDesc" style="width:139mm;">
                     Empowerment zone employment credit from partnerships, S corporations,
-                    cooperatives, estates, and 
-                    <span style="float:left;">trusts</span>
-                  <span class="styDotLn" style="float:right;padding-right:2mm;">.......................</span>
+                    cooperatives, estates, and trusts
+                  
+               <!--   <span class="styDotLn" style="float:right;padding-right:2mm;">.......................</span>-->
                     
                 </div>
               </div>
               <div style="float:right;">
-                <div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">3</div>
-                <div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
+                <div class="styLNRightNumBox" style="height:4mm;padding-top:0mm;">3</div>
+                <div class="styLNAmountBox" style="height:4mm;padding-top:0mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form8844Data/FlowthroughEntityCreditAmt"/>
                   </xsl:call-template>
@@ -309,7 +312,7 @@ instructions)
                 <div class="styLNDesc" style="width:139mm;height:7.5mm;">
                     Cooperatives, estates, and trusts, subtract line 5 from line 4. Report this amount on Form 3800, 
 <span style="float:left;">Part III, line 3  </span>
-                    <span class="styDotLn" style="padding-right:2mm;">............................</span>
+                   <!-- <span class="styDotLn" style="padding-right:2mm;"></span>-->
                 </div>
               </div>
               <div style="float:right;">
@@ -442,7 +445,7 @@ instructions)
             <div style="width:55mm;text-align:center;" class="styGenericDiv">Cat. No. 16145S</div>
             <div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8844</span> (2014)</div>
           </div>
-          <p class="pageend"/>
+          <div class="pageEnd"/>
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

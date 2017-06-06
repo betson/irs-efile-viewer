@@ -19,53 +19,30 @@
 		<xsl:param name="Number"/>
 		<xsl:param name="NumberStyle"/>
 		<xsl:param name="Width">33mm</xsl:param>
-		<xsl:param name="Height">5mm</xsl:param>
-		<div class="styLNAmountBox">
+		<xsl:param name="Height">4mm</xsl:param>
+		<div class="styLNRightNumBox">
 			<xsl:attribute name="style">
-				width:<xsl:value-of select="$Width"/>;height:<xsl:value-of select="$Height"/>;
-				border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:6pt;
-				<xsl:choose>
-					<xsl:when test="$CNMI">
-						<xsl:choose>
-							<xsl:when test="$CNMI/@referenceDocumentId">padding-top:3px;</xsl:when>
-							<xsl:otherwise>padding-top:6px;</xsl:otherwise>
-						</xsl:choose>
-					</xsl:when>
-					<xsl:otherwise>padding-top:6px;</xsl:otherwise>
-				</xsl:choose>
-				<xsl:if test="$CNMIStyle"><xsl:value-of select="$CNMIStyle"/></xsl:if></xsl:attribute>
-			<xsl:if test="$CNMI">
-				<xsl:choose>
-					<xsl:when test="$CNMIPopulateAsText">
-						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$CNMI"/>
-						</xsl:call-template>
-					</xsl:when>
-					<xsl:otherwise>
-						<xsl:call-template name="PopulateAmount">
-							<xsl:with-param name="TargetNode" select="$CNMI"/>
-						</xsl:call-template>
-					</xsl:otherwise>
-				</xsl:choose>
-				<xsl:if test="$CNMI/@referenceDocumentId">
-					<xsl:call-template name="SetFormLinkInline">
-						<xsl:with-param name="TargetNode" select="$CNMI"/>
-					</xsl:call-template>
-				</xsl:if>
+				padding:3px 0px 0px 0px;
+				border-right-width:0px;
+				height:4mm;<xsl:value-of select="$Height"/>;
+				<xsl:if test="$NumberStyle"><xsl:value-of select="$NumberStyle"/></xsl:if>
+			</xsl:attribute>
+			<xsl:if test="$Number">
+				<xsl:value-of select="$Number"/>
 			</xsl:if>
 		</div>
 		<div class="styLNAmountBox">
 			<xsl:attribute name="style">
-				width:<xsl:value-of select="$Width"/>;height:<xsl:value-of select="$Height"/>;
-				border-right-width:0px;float:right;text-align:right;padding-right:2px;font-size:6pt;
+				width:<xsl:value-of select="$Width"/>;height:4mm<xsl:value-of select="$Height"/>;
+				border-right-width:0px;text-align:right;padding-right:2px;font-size:6pt;
 				<xsl:choose>
 					<xsl:when test="$Guam">
 						<xsl:choose>
 							<xsl:when test="$Guam/@referenceDocumentId">padding-top:3px;</xsl:when>
-							<xsl:otherwise>padding-top:6px;</xsl:otherwise>
+							<xsl:otherwise>padding-top:4px;</xsl:otherwise>
 						</xsl:choose>
 					</xsl:when>
-					<xsl:otherwise>padding-top:6px;</xsl:otherwise>
+					<xsl:otherwise>padding-top:4px;</xsl:otherwise>
 				</xsl:choose>
 				<xsl:if test="$GuamStyle"><xsl:value-of select="$GuamStyle"/></xsl:if>
 			</xsl:attribute>
@@ -89,16 +66,38 @@
 				</xsl:if>
 			</xsl:if>
 		</div>
-		<div class="styLNRightNumBox">
+		<div class="styLNAmountBox">
 			<xsl:attribute name="style">
-				float:right;
-				padding:3px 0px 0px 0px;
-				border-right-width:0px;
-				height:<xsl:value-of select="$Height"/>;
-				<xsl:if test="$NumberStyle"><xsl:value-of select="$NumberStyle"/></xsl:if>
-			</xsl:attribute>
-			<xsl:if test="$Number">
-				<xsl:value-of select="$Number"/>
+				width:<xsl:value-of select="$Width"/>;height:4mm<xsl:value-of select="$Height"/>;
+				border-right-width:0px;;text-align:right;padding-right:2px;font-size:6pt;
+				<xsl:choose>
+					<xsl:when test="$CNMI">
+						<xsl:choose>
+							<xsl:when test="$CNMI/@referenceDocumentId">padding-top:3px;</xsl:when>
+							<xsl:otherwise>padding-top:4px;</xsl:otherwise>
+						</xsl:choose>
+					</xsl:when>
+					<xsl:otherwise>padding-top:4px;</xsl:otherwise>
+				</xsl:choose>
+				<xsl:if test="$CNMIStyle"><xsl:value-of select="$CNMIStyle"/></xsl:if></xsl:attribute>
+			<xsl:if test="$CNMI">
+				<xsl:choose>
+					<xsl:when test="$CNMIPopulateAsText">
+						<xsl:call-template name="PopulateText">
+							<xsl:with-param name="TargetNode" select="$CNMI"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="PopulateAmount">
+							<xsl:with-param name="TargetNode" select="$CNMI"/>
+						</xsl:call-template>
+					</xsl:otherwise>
+				</xsl:choose>
+				<xsl:if test="$CNMI/@referenceDocumentId">
+					<xsl:call-template name="SetFormLinkInline">
+						<xsl:with-param name="TargetNode" select="$CNMI"/>
+					</xsl:call-template>
+				</xsl:if>
 			</xsl:if>
 		</div>
 	</xsl:template>
@@ -130,7 +129,7 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<form name="IRS5074">
 					<!--  Begin Header section 1 -->
 					<xsl:call-template name="DocumentHeader"/>
@@ -169,8 +168,8 @@
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;border-left-width:2px;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+						<div class="styTYBox" style="width:30mm;height:22mm;border-left-width:2px;">
+							<div class="styOMB" style="width:30mm;height:4mm;font-size:7pt;">OMB No. 1545-0074</div>
 							<div class="styTY">20<span class="styTYColor">14</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -212,43 +211,27 @@
 						</div>
 					</div>
 					<!-- Body -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;padding-bottom:1mm">
 						<!-- (Headers) //////////////////////////////////////// -->
-						<div class="styIRS5074LineItem">
-							<div class="styLNAmountBox" style="border-right-width:0px;float:right;text-align:center;width:33mm;">
+						<div class="styIRS5074LineItem" style="height:4mm;">
+							<div class="styLNAmountBox" style="border-right-width:0px;float:right;text-align:center;width:34mm;height:4mm">
 								<span class="styBoldText">CNMI</span>
 							</div>
-							<div class="styLNAmountBox" style="border-right-width:0px;float:right;text-align:center;width:33mm;">
+							<div class="styLNAmountBox" style="border-right-width:0px;float:right;text-align:center;width:33mm;height:4mm">
 								<span class="styBoldText">Guam</span>
 							</div>
-							<div class="styLNRightNumBox" style="float:right;padding:3px 0px 0px 0px;border-width:0px 0px 1px 0px;height:100%"/>
+							<div class="styLNRightNumBox" style="float:right;border-width:0px 0px 1px 0px;height:100%;padding:0px 3mm 0px 0px"/>
 						</div>
 						<!-- (1) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">1</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Wages, salaries, tips, etc
 								</div>
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">.................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -266,25 +249,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">....................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -302,24 +267,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">...................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -337,9 +285,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">.</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -357,25 +303,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">...................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -393,22 +321,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -426,24 +339,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">..................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -461,23 +357,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">.................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -495,20 +375,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">.............</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -526,18 +393,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">...........</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -555,10 +411,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">..</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -576,23 +429,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">.................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -610,21 +447,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">...............</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -642,18 +465,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">...........</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -682,26 +494,15 @@
 						<!-- (16) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">16</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									<b>Total income.</b> Add lines 1 through 15
 								</div>
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
+									<span class="styDotLn">...........</span>
 										<span style="width:6px"/>
 										<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="SmallBullet"/>
-									</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -730,30 +531,13 @@
 						<!-- (17) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">17</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Educator expenses 
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">..................</span>
 								</div>
 							</div> 
                             <xsl:call-template name="PopulateRow">
@@ -763,34 +547,18 @@
 							</xsl:call-template>
 						</div>
 						<!-- (18) ////////////////////////////////////////////////// -->
-						<div class="styIRS5074LineItem">
+						<div class="styIRS5074LineItem " style="height:7mm;">
 							<div class="styIRS5074LNLeftNumBox">18</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
-									<span style="width:100%;height:auto">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 5px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
+									<span style="width:auto;height:auto">
 									Certain business expenses of reservists, performing artists, and fee-basis
 									</span>
-									<span style="width:100%;height:auto;padding-right:11px;">
+									<span style="width:auto;height:auto;padding-right:11px;">
 										<span style="float:left;width:auto;">government officials</span>
 										<span style="float:right;width:auto;">
 											<!--Dotted Line-->
-											<span class="styBoldText">
-												<span style="width:17px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-											</span>
+											<span class="styDotLn">..................</span>
 										</span>
 									</span>
 								</div>
@@ -810,26 +578,13 @@
 						<!-- (19) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">19</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Health savings account deduction
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">.............</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -841,31 +596,13 @@
 						<!-- (20) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">20</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Moving expenses
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+								<span class="styDotLn">...................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -877,25 +614,13 @@
 						<!-- (21) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">21</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Deductible part of self-employment tax
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">............</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -907,22 +632,13 @@
 						<!-- (22) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">22</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Self-employed SEP, SIMPLE, and qualified plans
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">........</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -934,24 +650,13 @@
 						<!-- (23) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">23</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Self-employed health insurance deduction
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">..........</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -963,25 +668,13 @@
 						<!-- (24) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">24</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Penalty on early withdrawal of savings
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">............</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -993,31 +686,13 @@
 						<!-- (25) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">25</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									IRA deduction
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">....................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -1029,27 +704,13 @@
 						<!-- (26) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">26</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Student loan interest deduction
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">..............</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -1061,30 +722,13 @@
 						<!-- (27) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">27</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Tuition and fees
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">...................</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -1096,8 +740,8 @@
 							<!-- (28) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">28</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									Add lines 17 through 27
 									<xsl:if test="$Form5074Data/CNMIAllocationGroup/OtherDeductionsFrom1040TotAmt">
 										<xsl:call-template name="LinkToLeftoverDataTableInline">
@@ -1123,18 +767,7 @@
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
+									<span class="styDotLn">..............</span>
 										<xsl:if test="not($Form5074Data/CNMIAllocationGroup/OtherDeductionsFrom1040TotAmt)">
 											<span style="width:11px"/>.
 											<span style="width:11px"/>.
@@ -1143,7 +776,6 @@
 											<span style="width:11px"/>.
 											<span style="width:11px"/>.
 										</xsl:if>
-									</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -1153,23 +785,17 @@
 							</xsl:call-template>
 						</div>
 						<!-- (29) ////////////////////////////////////////////////// -->
-						<div class="styIRS5074LineItem">
+						<div class="styIRS5074LineItem" style="height:4mm;">
 							<div class="styIRS5074LNLeftNumBox">29</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									<span class="styBoldText">Adjusted gross income.</span> Subtract line 28 from line 16
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
+									<span class="styDotLn">......</span>
 										<span style="width:6px"/>
 										<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="SmallBullet"/>
-									</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -1198,18 +824,13 @@
 						<!-- (30) ////////////////////////////////////////////////// -->
 						<div class="styIRS5074LineItem">
 							<div class="styIRS5074LNLeftNumBox">30</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto">
 									Payments on estimated tax return filed with Guam or the CNMI
 								</div>
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-									</span>
+									<span class="styDotLn">....</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">
@@ -1219,27 +840,18 @@
 							</xsl:call-template>
 						</div>
 						<!-- (31) ////////////////////////////////////////////////// -->
-						<div class="styIRS5074LineItem">
+						<div class="styIRS5074LineItem" style="height:7mm;">
 							<div class="styIRS5074LNLeftNumBox">31</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
-									<span style="width:100%;height:auto">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
+									<span style="width:auto;height:auto">
 									Income tax withheld from your wages while employed by the U.S.
 									</span>
-									<span style="width:100%;height:auto;">
+									<span style="width:auto;height:auto;"> 
 										<span style="float:left;width:auto;">Government as a civilian in Guam or the CNMI</span>
 										<span style="float:right;width:auto;padding-right:11px;">
 											<!--Dotted Line-->
-											<span class="styBoldText">
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-											</span>
+											<span class="styDotLn">..........</span>
 										</span>
 									</span>
 								</div>
@@ -1257,29 +869,18 @@
 							</xsl:call-template>
 						</div>
 						<!-- (32) ////////////////////////////////////////////////// -->
-						<div class="styIRS5074LineItem">
+						<div class="styIRS5074LineItem" style="height:7mm;">
 							<div class="styIRS5074LNLeftNumBox">32</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
-									<span style="width:100%;height:auto;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
+									<span style="width:auto;height:auto;">
 									Income tax withheld from your wages while employed as a member of the
 									</span>
-									<span style="width:100%;height:auto;">
+									<span style="width:auto;height:auto;">
 										<span style="float:left;width:auto;">U.S. Armed Forces in Guam or the CNMI</span>
 										<span style="float:right;width:auto;padding-right:11px;">
 											<!--Dotted Line-->
-											<span class="styBoldText">
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-											</span>
+											<span class="styDotLn">...........</span>
 										</span>
 									</span>
 								</div>
@@ -1297,30 +898,18 @@
 							</xsl:call-template>
 						</div>
 						<!-- (33) ////////////////////////////////////////////////// -->
-						<div class="styIRS5074LineItem">
+						<div class="styIRS5074LineItem" style="height:7mm;">
 							<div class="styIRS5074LNLeftNumBox">33</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
-									<span style="width:100%;height:auto;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
+									<span style="width:auto;height:auto;">
 									Income tax withheld from your wages earned in Guam or the CNMI other
 									</span>
-									<span style="width:100%;height:auto;">
+									<span style="width:auto;height:auto;">
 										<span style="float:left;width:auto;">than amounts on lines 30 through 32</span>
 										<span style="float:right;width:auto;padding-right:11px;">
 											<!--Dotted Line-->
-											<span class="styBoldText">
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-												<span style="width:11px"/>.
-											</span>
+											<span class="styDotLn">............</span>
 										</span>
 									</span>
 								</div>
@@ -1338,27 +927,17 @@
 							</xsl:call-template>
 						</div>
 						<!-- (34) ////////////////////////////////////////////////// -->
-						<div class="styIRS5074LineItem">
+						<div class="styIRS5074LineItem" style="height:4mm;">
 							<div class="styIRS5074LNLeftNumBox">34</div>
-							<div class="styIRS5074LNDesc" style="width:106mm;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS5074LNDesc" style="width:auto;height:100%;">
+							<div class="styIRS5074LNDesc" style="width:106mm;height:auto;padding:0px 0px 0px 0px;">
+								<div class="styIRS5074LNDesc" style="width:auto;height:auto;">
 									<span class="styBoldText">Total payments.</span> Add lines 30 through 33
 								</div>
 								<div class="styIRS5074LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
-										<span style="width:11px"/>.
+									<span class="styDotLn">..........</span>
 										<span style="width:6px"/>
 										<img src="{$ImagePath}/1040ScheduleH_Bullet_Sm.gif" alt="SmallBullet"/>
-									</span>
 								</div>
 							</div>
 							<xsl:call-template name="PopulateRow">

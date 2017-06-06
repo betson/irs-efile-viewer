@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 9/23/09  Added the new Special Condition Description to end of form per ETA091682OTH  -->
-<!-- 9/23/09  Added pushpin for the General Dependency Medium per ETA091653OTH -->
-<!-- 12/14/09  Removed the box lines from Part I Line 1 as unable to get date to conform and enter correctly per business and IBM -->
-<!-- 04/19/11 - Made changes to tax period as per UWR WSP101182OTH - Jeremy Nichols -->
-<!-- 04/25/11 - Made changes to tax period as per UWR WSP101182OTH Additional requirements - Jeremy Nichols -->
-<!-- 05/19/11 - Made changes per ITAMS #28985 - Jeremy Nichols -->
-<!-- 05/20/11 - Made changes per ITAMS #28986 - Jeremy Nichols -->
-<!-- 09/28/11 - Made changes per UWR #47823 - Jeremy Nichols -->
-<!-- 12/14/11 - Made changes per defect #54388 - Jeremy Nichols -->
-<!-- 01/09/12 - Made changes per KISAM #158562 - Jeremy Nichols -->
-<!-- 05/15/12 - Made changes per defect #32686 - Jeremy Nichols -->
-<!-- 08/08/2013 - Modified per IBM defect #36989 - Jeremy Nichols-->
+<!-- 05/20/2014 - Modified per UWR #107611 - Jeremy Nichols -->
+<!-- 08/03/2015 - Modified per defect 43682 - Jeremy Nichols-->
+<!-- 02/08/2016 - Modified per defect 45419 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -43,7 +34,7 @@
         <xsl:call-template name="InitJS"/>
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
         <style type="text/css">
-          <xsl:if test="not($Print) or $Print=''">
+          <xsl:if test="not($Print) or $Print=&apos;&apos;">
             <xsl:call-template name="IRS2290Style"/>
             <xsl:call-template name="AddOnStyle"/>
           </xsl:if>
@@ -54,8 +45,8 @@
         <form name="Form2290">
           <xsl:call-template name="DocumentHeader"/>
           <!-- Begin Form Title -->
-          <div class="styBB" style="width:187mm;">
-            <div class="styFNBox" style="width:31mm;height:25mm;">
+          <div class="styBB" style="height:20mm;width:187mm;">
+            <div class="styFNBox" style="width:29mm;height:20mm;">
         Form <span class="styFormNumber">2290</span>
               <!-- General Dependency pushpin added -->
                 <xsl:call-template name="SetFormLinkInline">
@@ -72,21 +63,21 @@
               <br/>
               <span class="styAgency">Internal Revenue Service  (99)</span>
             </div>
-            <div class="styFTBox" style="width:125mm;height:25mm;">
+            <div class="styFTBox" style="width:128mm;height:20mm;">
               <div class="styMainTitle" style="">Heavy Highway Vehicle Use Tax Return</div>
-              <div style="font-family: ';Arial'font-size:10pt;">
+              <div style="height:2.5mm;font-family: ';Arial'font-size:10pt;">
           For the period July 1, 2013, through June 30, 2014
         </div>
-              <div class="styFBT">
+              <div class="styFBT" style="height:2.5mm;">
                 <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/> 
           Attach both copies of Schedule 1 to this return
         </div>
-              <div class="styFBT" style="font-weight:normal;">
+              <div class="styFBT" style="height:2.5mm;font-weight:normal;">
                 <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/> 
                 <b>Information about Form 2290 and its separate instructions is at www.irs.gov/form2290.</b>
         </div>
             </div>
-            <div class="styTYBox" style="width:31mm;height:25mm;">
+            <div class="styTYBox" style="width:30mm;height:20mm;">
               <div class="styOMB" style="height:10mm;padding-left:1mm;padding-top:1mm;text-align:left;font-family:'Arial Narrow';font-size:8pt">Keep a copy of this<br/>return for your records</div>
               <div style="height:10mm;padding-left:0.5mm;padding-top:3mm;text-align:left;border-bottom-width:0">OMB No. 1545-0143</div>
             </div>
@@ -96,96 +87,96 @@
           <table border="0" cellspacing="0" cellpadding="0" style="font-size:6pt;width:187mm">
             <tbody>
               <tr>
-                <td rowspan="3" style="border:0 solid black;border-right-width:1;width:15mm;font-size:7pt;text-align:center">
+                <td rowspan="3" style="border:0 solid black;border-right-width:1px;width:15mm;font-size:7pt;text-align:center">
                   <span class="styBoldText">Type<br/> or<br/> Print</span>
                 </td>
-                <td style="height:8mm;width:90mm;border:0 solid black;border-right-width:1;border-bottom-width:1;padding-left:2mm;">Name
+                <td style="height:8mm;width:90mm;border:0 solid black;border-right-width:1px;border-bottom-width:1px;padding-left:2mm;">Name
               <br/>
                   <br/>
                   <xsl:call-template name="PopulateReturnHeaderFiler">
                     <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
                   </xsl:call-template>
                 </td>
-                <td style="width:47mm;height:8mm;border:0 solid black;border-right-width:1;border-bottom-width:1;vertical-align:top;padding-bottom:0.25mm;padding-left:1mm">
+                <td style="width:47mm;height:8mm;border:0 solid black;border-right-width:0px;border-bottom-width:1px;vertical-align:top;padding-bottom:0.25mm;padding-left:1mm">
                   <b>Employer identification number</b>
                   <br/>
                   <div style="padding-top:1.25mm">
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="1"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                     <span style="width:0.5mm;float:left;clear:none"/>
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="2"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                     <span style="float:left;clear:none"> - </span>
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="3"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                     <span style="width:0.5mm;float:left;clear:none"/>
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="4"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                     <span style="width:0.5mm;float:left;clear:none"/>
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="5"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                     <span style="width:0.5mm;float:left;clear:none"/>
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="6"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                     <span style="width:0.5mm;float:left;clear:none"/>
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="7"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                     <span style="width:0.5mm;float:left;clear:none"/>
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="8"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                     <span style="width:0.5mm;float:left;clear:none"/>
                     <xsl:call-template name="PopulateIndividualSizableLetterBox">
                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
                       <xsl:with-param name="BoxNum" select="9"/>
-                      <xsl:with-param name="BoxWidth" select="'4mm'"/>
-                      <xsl:with-param name="BoxHeight" select="'3.5mm'"/>
-                      <xsl:with-param name="BoxTopPadding" select="'0mm'"/>
+                      <xsl:with-param name="BoxWidth" select="&apos;4mm&apos;"/>
+                      <xsl:with-param name="BoxHeight" select="&apos;3.5mm&apos;"/>
+                      <xsl:with-param name="BoxTopPadding" select="&apos;0mm&apos;"/>
                     </xsl:call-template>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td colspan="2" valign="top" style="border:0 solid black;padding-top:.5mm;border-right-width:1;border-bottom-width:1;padding-left:2mm;height:8mm;">Address (number, street, and room or suite no.)
+                <td colspan="2" valign="top" style="border:0 solid black;padding-top:.5mm;border-right-width:0px;border-bottom-width:1px;padding-left:2mm;height:8mm;">Address (number, street, and room or suite no.)
               <br/>
                   <xsl:call-template name="PopulateReturnHeaderFiler">
                     <xsl:with-param name="TargetNode">AddressLine1</xsl:with-param>
@@ -197,7 +188,7 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" valign="top" style="border:0 solid black;border-right-width:1;padding-left:2mm;height:8mm;padding-bottom:1mm;">City or town, state or province, country, and ZIP or foreign postal code
+                <td colspan="2" valign="top" style="border:0 solid black;border-right-width:0px;padding-left:2mm;height:8mm;padding-bottom:1mm;">City or town, state or province, country, and ZIP or foreign postal code
               <br/>
                   <xsl:call-template name="PopulateReturnHeaderFiler">
                     <xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
@@ -212,136 +203,127 @@
             </tbody>
           </table>
           <!-- End Address Change Table -->
-          <!--  *****************ADDITION OF 4 CHECKBOXES PER WSP-090336OTH    FEB. 2009 *****************************************************-->
-          <div class="styNBB" style="width:187mm;border-top-width:1px;border-color: black;border-style:solid;border-bottom-width:0px;border-right-width:0px; border-left-width:0px; ">
+         <!--  *****************ADDITION OF 4 CHECKBOXES PER WSP-090336OTH    FEB. 2009 *****************************************************-->
+          <div class="styNBB" style="height:auto;width:187mm;border-top-width:1px;border-color: black;border-style:solid;border-bottom-width:0px;border-right-width:0px; border-left-width:0px; ">
             <div class="styLNLeftNumBox" style="padding-left: 0mm;padding-top:.3mm;"/>
-            <div class="styLNDesc" style="width:179mm;border-right-width:0;padding-top:1mm;padding-bottom:1mm;border-top-width:0;">
+            <div class="styLNDesc" style="height:4mm;width:179mm;border-right-width:0;padding-top:1mm;padding-bottom:1mm;border-top-width:0;">
 Check if applicable:</div>
           </div>
           <!-- Address Change Checkbox -->
-          <div style=" width: 187mm; ">
-            <div class="styLNLeftNumBox" style="padding-left: 0mm;padding-top:0mm;"/>
-            <div class="styLNDesc" style="width:175mm;border-right-width:0;padding-left: 5mm;padding-top:0mm;">
-              <span style="width:89mm;float:left;clear:all;">
-                <span style="padding-top:0mm;">
-                  <!--<xsl:call-template name="PopulateSpan">
-                    <xsl:with-param name="TargetNode" select="$Form2290/AddressChange"/>
-                  </xsl:call-template>-->
-                  <input type="checkbox" class="styCkbox" onclick="return false;">
-                    <xsl:call-template name="PopulateCheckbox">
-                      <xsl:with-param name="TargetNode" select="$Form2290/AddressChangeInd"/>
-                      <xsl:with-param name="BackupName">Form2290AddressChange</xsl:with-param>
-                    </xsl:call-template>
-                  </input>
-                </span>
-                <label style="padding-top:0mm;padding-left:2mm;">
-                  <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$Form2290/AddressChangeInd"/>
-                  </xsl:call-template>            
-             Address Change    <br/>
-
-                  <!-- Amended Return Box  -->
-                  <span style="width:90mm;float:left;clear:all;">
-                    <span style="padding-top:0mm;">
-                      <xsl:call-template name="PopulateSpan">
-                        <xsl:with-param name="TargetNode" select="$Form2290/AmendedReturnInd"/>
-                      </xsl:call-template>
-                      <input type="checkbox" class="styCkbox" onclick="return false;">
-                        <xsl:call-template name="PopulateCheckbox">
-                          <xsl:with-param name="TargetNode" select="$Form2290/AmendedReturnInd"/>
-                          <xsl:with-param name="BackupName">Form990ScheduleDProtectionOfNaturalHabitat</xsl:with-param>
-                        </xsl:call-template>
-                      </input>
-                    </span>
-                    <label style="padding-left:2mm">
-                      <xsl:call-template name="PopulateLabel">
-                        <xsl:with-param name="TargetNode" select="$Form2290/AmendedReturnInd"/>
-                      </xsl:call-template>            
-					  <span style="width:84mm;">Amended Return</span>
-                      <span style="width:5mm;padding-top:.5mm;"/><span style="width:84mm;">Check this box if reporting (a) additional tax from</span>
-                      <span style="width:5mm;"/><span style="width:84mm;">an increase in taxable gross vehicle weight or</span>
-                      <span style="width:5mm;"/><span style="width:84mm;">(b) suspended vehicles exceeding the mileage</span>
-                      <span style="width:5mm;"/><span style="width:84mm;">use limit.  <b>Do not </b>check this box for any other</span>
-                      <span style="width:5mm;"/><span style="width:84mm;">reason.</span>
-                      <br/>
-                    </label>
-                  </span>
-                </label>
-              </span>
-              <!-- VIN Correction Box -->
-              <div style="float:right;clear:all;" valign="top">
-                <span style="width:80mm;padding-left:4mm;">
-                  <input type="checkbox" class="styCkbox" onclick="return false;">
-                    <xsl:call-template name="PopulateCheckbox">
-                      <xsl:with-param name="TargetNode" select="$Form2290/VINCorrectionInd"/>
-                      <xsl:with-param name="BackupName">Form2290VINCorrection</xsl:with-param>
-                    </xsl:call-template>
-                  </input>
-                  <label style="padding-top:0mm;padding-left:2mm">
-                    <xsl:call-template name="PopulateLabel">
-                      <xsl:with-param name="TargetNode" select="$Form2290/VINCorrectionInd"/>
-                    </xsl:call-template>            
-					<span style="width:70mm;">VIN Correction </span>
-                    <span style="width:5mm;padding-top:.5mm;"/><span style="width:70mm;">Check this box if you are correcting a vehicle</span>
-                    <span style="width:5mm;"/><span style="width:70mm;">identification number (VIN) listed on a previously</span>
-                    <span style="width:5mm;"/><span style="width:70mm;">filed Schedule 1 (Form 2290).  <b>Do not</b> check this</span>
-                    <span style="width:5mm;"/><span style="width:70mm;">box for any other reason.</span>
-                    <br/>
-                    <!-- Final Return Box -->
-                    <span style="width:80mm;padding-left:0mm;float:right;clear:all;">
-                      <xsl:call-template name="PopulateSpan">
-                        <xsl:with-param name="TargetNode" select="$Form2290/FinalReturnInd"/>
-                      </xsl:call-template>
-                      <input type="checkbox" class="styCkbox" onclick="return false;">
-                        <xsl:call-template name="PopulateCheckbox">
-                          <xsl:with-param name="TargetNode" select="$Form2290/FinalReturnInd"/>
-                          <xsl:with-param name="BackupName">Form990ScheduleDHistoricStructure</xsl:with-param>
-                        </xsl:call-template>
-                      </input>
-                      <label style="padding-top:0mm;padding-left:2mm">
-                        <xsl:call-template name="PopulateLabel">
-                          <xsl:with-param name="TargetNode" select="$Form2290/FinalReturnInd"/>
-                        </xsl:call-template>            
-					    <span style="width:70mm;">Final Return</span>
-                        <span style="width:5.25mm;padding-top:.5mm;"/><span style="width:70mm;">Check this box if you no longer have taxable</span>
-                        <span style="width:5.25mm;"/><span style="width:70mm;">vehicles to report.</span>
-                      </label>
-                    </span>
-                  </label>
-                </span>
+          <div style=" height;auto;width: 187mm; ">
+            <div class="styLNDesc" style="height:auto;width:175mm;font-size:7pt;border-right-width:0;padding-left: 5mm;padding-top:0mm;">
+				<table style="height:auto;width:175mm;font-size:7pt;">
+					<tbody>
+						<tr>
+							<td style="height:auto;width:5mm;vertical-align:top;">
+							  <input type="checkbox" class="styCkbox" onclick="return false;" style="height:5mm;width:5mm;">
+								<xsl:call-template name="PopulateCheckbox">
+								  <xsl:with-param name="TargetNode" select="$Form2290/AddressChange"/>
+								  <xsl:with-param name="BackupName">Form2290AddressChange</xsl:with-param>
+								</xsl:call-template>
+							  </input>
+							  <span style="height:5mm;width:5mm;"/>
+							  <input type="checkbox" class="styCkbox" onclick="return false;" style="height:5mm;width:5mm;">
+								<xsl:call-template name="PopulateCheckbox">
+									  <xsl:with-param name="TargetNode" select="$Form2290/AmendedReturn"/>
+									  <xsl:with-param name="BackupName">Form990ScheduleDProtectionOfNaturalHabitat</xsl:with-param>
+								</xsl:call-template>
+							  </input>
+							</td>
+							<td style="height:auto;width:82.5mm;padding-top:1mm;">
+								<label>
+								  <xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form2290/AddressChange"/>
+								  </xsl:call-template>            
+								  Address Change
+								</label><br/>
+								<span style="height:10mm;width;82mm;"/>
+								<label>
+								  <xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form2290/AmendedReturn"/>
+								  </xsl:call-template>            
+								  Amended Return
+								</label><br/>
+								  <span style="padding-left:0.5mm;padding-top:1mm;">Check this box if reporting (a) additional tax from<br/>
+								  an increase in taxable gross vehicle weight or<br/>
+								  (b) suspended vehicles exceeding the mileage<br/>
+								  use limit.  <b>Do not </b>check this box for any other<br/>
+								  reason.
+								  </span>
+							</td>
+							<td style="height:auto;width:5mm;vertical-align:top;">
+							  <input type="checkbox" class="styCkbox" onclick="return false;" style="height:5mm;width:5mm;">
+								<xsl:call-template name="PopulateCheckbox">
+									  <xsl:with-param name="TargetNode" select="$Form2290/VINCorrection"/>
+								  <xsl:with-param name="BackupName">Form2290VINCorrection</xsl:with-param>
+								</xsl:call-template>
+							  </input>
+							  <span style="height:13mm;width:5mm;"/>
+							  <input type="checkbox" class="styCkbox" onclick="return false;" style="height:5mm;width:5mm;">
+								<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$Form2290/FinalReturn"/>
+								  <xsl:with-param name="BackupName">Form990ScheduleDHistoricStructure</xsl:with-param>
+								</xsl:call-template>
+							  </input>
+							</td>
+							<td style="height:auto;width:82.5mm;padding-top:1mm;vertical-align:top;">
+								<label>
+								  <xsl:call-template name="PopulateLabel">
+									  <xsl:with-param name="TargetNode" select="$Form2290/VINCorrection"/>
+								  </xsl:call-template>            
+								  VIN Correction
+								</label><br/>
+								  <span style="padding-left:0.5mm;padding-top:1mm;">Check this box if you are correcting a vehicle<br/>
+								  identification number (VIN) listed on a previously<br/>
+								  filed Schedule 1 (Form 2290).  <b>Do not</b> check this<br/>
+								  box for any other reason.
+								  </span><br/>
+								<span style="height:5mm;width;82mm;"/>
+								<label>
+								  <xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form2290/FinalReturn"/>
+								  </xsl:call-template>            
+								  Final Return
+								</label><br/>
+								  <span style="padding-left:0.5mm;padding-top:1mm;">Check this box if you no longer have taxable<br/>
+								  vehicles to report.
+								  </span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
               </div>
             </div>
-          </div>
           <!--  BEGIN  PART I  -->
-          <div class="styBB" style="width:187mm;height:4.75mm;border-top-width:1;">
+          <div class="styBB" style="width:187mm;height:4.75mm;border-top-width:1px;">
             <div class="styPartName" style="height:4.75mm;padding-top:.5mm;">Part I</div>
             <div class="styPartDesc" style="float:left;width:167mm;padding-top:.5mm;"> Figuring the Tax</div>
           </div>
           <!-- Line 1 -->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:7mm;padding-top:2mm;">1</div>
-            <div class="styLNDesc" style="width:135mm;height:7mm;padding-top:2mm;">Was the vehicle(s) reported on this return used on public highways during <b>July</b> 2013? If YES,</div>
+            <div class="styLNDesc" style="width:135mm;height:7mm;padding-top:2mm;">Was the vehicle(s) reported on this return used on public highways during <b>July</b> 2014? If YES,</div>
             <div style="float:right">
                <div class="styLNRightNumBox" style="height:7mm;padding-left:.25mm;width:8.25mm;border-bottom-width:0;border-right-width:1px;"/>
-               <div class="styLNAmountBox" style="padding-left:.25mm;height:5mm;width:33mm;border-bottom-width:1;border-left-width:0px;">
-            <span style="float:left;clear:none;width:5mm;padding-left:.5mm;padding-right:0mm;padding-top:.5mm;text-align:center;font-size:6.5pt;">Y</span>
-                <span style="width:5.5mm;float:left;clear:none;text-align:center;padding-right:0mm;padding-left:.5mm;padding-top:.5mm;font-size:6.5pt;">Y</span>
-                <span style="float:left;clear:none;padding-left:.5mm;width:5.5mm;text-align:center;padding-top:.5mm;font-size:6.5pt;">Y</span>
-                <span style="width:5.75mm;float:left;clear:none;text-align:center;padding-left:.5mm;padding-top:.5mm;font-size:6.5pt;">Y</span>
-                <span style="width:5.75mm;float:left;clear:none;text-align:center;padding-left:.25mm;padding-top:.5mm;font-size:6.5pt;">M</span>
-                <span style="width:5.75mm;float:right;clear:all;text-align:center;padding-top:.5mm;font-size:6.5pt;">M</span>
+               <div class="styLNAmountBox" style="height:5mm;width:33.75mm;border-bottom-width:1px;border-left-width:0px;">
+				<span style="float:left;clear:none;width:5.35mm;padding-left:.25mm;padding-right:0mm;padding-top:.5mm;text-align:center;font-size:6.5pt;">Y</span>
+                <span style="width:5.35mm;float:left;clear:none;text-align:center;padding-right:0mm;padding-left:.25mm;padding-top:.5mm;font-size:6.5pt;">Y</span>
+                <span style="float:left;clear:none;padding-left:.25mm;width:5.35mm;text-align:center;padding-top:.5mm;font-size:6.5pt;">Y</span>
+                <span style="width:5.35mm;float:left;clear:none;text-align:center;padding-left:.25mm;padding-top:.5mm;font-size:6.5pt;">Y</span>
+                <span style="width:5.45mm;float:left;clear:none;text-align:center;padding-left:.25mm;padding-top:.5mm;font-size:6.5pt;">M</span>
+                <span style="width:5.45mm;float:left;clear:none;text-align:center;padding-left:.25mm;padding-top:.5mm;font-size:6.5pt;">M</span>
               </div>
             </div>
           </div>
 <div style="width:187mm;">
   <div class="styLNLeftNumBox" style="height:5mm;"/>
-  <div class="styLNDesc" style="width:117mm;height:5mm">enter <span class="styBoldText">201307</span> in the boxes to the right. If NO, see the table on page 3 of the instructions</div>
+  <div class="styLNDesc" style="width:117mm;height:5mm">enter <span class="styBoldText">201407</span> in the boxes to the right. If NO, see the table on page 3 of the instructions</div>
   <div class="styLNAmountBox" style="height:5mm;width:34mm;float:right">      
     <xsl:call-template name="PopulateYear">
-      <xsl:with-param name="TargetNode" select="$RtnHdrData/FirstUsedDt"/>
+      <xsl:with-param name="TargetNode" select="$RtnHdrData/FirstUsedDate"/>
     </xsl:call-template>
     <xsl:call-template name="PopulateMonth">
-      <xsl:with-param name="TargetNode" select="$RtnHdrData/FirstUsedDt"/>
+      <xsl:with-param name="TargetNode" select="$RtnHdrData/FirstUsedDate"/>
     </xsl:call-template>
   </div>
   <div class="styLNRightNumBox" style="height:5mm;float:right">1</div>
@@ -352,14 +334,14 @@ Check if applicable:</div>
            
            
                </div>
-          <!-- Line 2 -->
+           <!-- Line 2 -->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:5mm;">2</div>
             <div class="styLNDesc" style="width:77mm;height:5mm">
               <span class="styBoldText">Tax.</span> Enter the <span class="styBoldText">Total</span> from Form 2290, page 2, column (4)</div>
             <div class="styLNAmountBox" style="height:5mm;width:34mm;float:right">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form2290/TotalTaxComputationAmt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290/TaxFromTaxComputation"/>
               </xsl:call-template>
             </div>
             <div class="styLNRightNumBox" style="height:5mm;float:right">2</div>
@@ -373,12 +355,12 @@ Check if applicable:</div>
             <div class="styLNLeftNumBox" style="height:5mm;">3</div>
             <div class="styLNDesc" style="width:98mm;height:5mm;">Additional tax from increase in taxable gross weight (see instructions).  
     <xsl:call-template name="SetFormLinkInline">
-                <xsl:with-param name="TargetNode" select="$Form2290/AdditionalTaxAmt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290/AdditionalTax"/>
               </xsl:call-template>
             </div>
             <div class="styLNAmountBox" style="height:5mm;width:34mm;float:right">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form2290/AdditionalTaxAmt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290/AdditionalTax"/>
               </xsl:call-template>
             </div>
             <div class="styLNRightNumBox" style="height:5mm;float:right">3</div>
@@ -394,14 +376,14 @@ Check if applicable:</div>
               <span class="styBoldText">Total tax.</span> Add lines 2 and 3</div>
             <div class="styLNAmountBox" style="height:5mm;width:34mm;float:right">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form2290/TotalTaxAmt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290/TotalTax"/>
               </xsl:call-template>
             </div>
             <div class="styLNRightNumBox" style="height:5mm;float:right">4</div>
             <span style="float:right;padding-right:3mm;padding-top:1mm">
               <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
             </span>
-            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">......................</div>
+            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">.......................</div>
           </div>
           <!-- Line 5 -->
           <div style="width:187mm;">
@@ -409,19 +391,19 @@ Check if applicable:</div>
             <div class="styLNDesc" style="width:44mm;height:5mm;">
               <span class="styBoldText">Credits.</span> (see instructions).
     <xsl:call-template name="SetFormLinkInline">
-                <xsl:with-param name="TargetNode" select="$Form2290/TaxCreditsAmt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290/CreditsAmount"/>
               </xsl:call-template>
             </div>
             <div class="styLNAmountBox" style="width:34mm;height:5mm;float:right">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form2290/TaxCreditsAmt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290/CreditsAmount"/>
               </xsl:call-template>
             </div>
             <div class="styLNRightNumBox" style="height:5mm;float:right">5</div>
             <span style="float:right;padding-right:3mm;padding-top:1mm">
               <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
             </span>
-            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">.....................</div>
+            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">......................</div>
           </div>
           <!-- Line 6 -->
           <div style="width:187mm;">
@@ -431,32 +413,32 @@ Check if applicable:</div>
             <div class="styLNAmountBox" style="height:4mm;width:34mm;border-bottom-width:0;float:right"/>
             <div class="styLNRightNumBox" style="height:4mm;border-bottom-width:0;float:right"/>
           </div>
-          <div style="width:187mm;height:4mm;">
-            <div class="styLNLeftNumBox" style="height:4mm;"/>
-            <div class="styLNDesc" style="width:30mm;height:4mm">EFTPS, check here <span style="width2mm"/>
-              <input type="checkbox" class="styCkbox">
+          <div style="width:187mm;height:5mm;">
+            <div class="styLNLeftNumBox" style="height:5mm;"/>
+            <div class="styLNDesc" style="width:34mm;height:5mm">EFTPS, check here <span style="width2mm"/>
+              <input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
                 <xsl:call-template name="PopulateCheckbox">
-                  <xsl:with-param name="TargetNode" select="$Form2290/EFTPSPaymentInd"/>
+                  <xsl:with-param name="TargetNode" select="$Form2290/EFTPSPayment"/>
                   <xsl:with-param name="BackupName">IRS2290EFTPSPayment</xsl:with-param>
                 </xsl:call-template>
               </input>
               <label>
                 <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form2290/EFTPSPaymentInd"/>
+                  <xsl:with-param name="TargetNode" select="$Form2290/EFTPSPayment"/>
                   <xsl:with-param name="BackupName">IRS2290EFTPSPayment</xsl:with-param>
                 </xsl:call-template>
               </label>
             </div>
-            <div class="styLNAmountBox" style="width:34mm;height:4mm;float:right;border-bottom-width:0px">
+            <div class="styLNAmountBox" style="width:34mm;height:6mm;float:right;padding-top:3mm;border-bottom-width:0px">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="$Form2290/BalanceDueAmt"/>
+                <xsl:with-param name="TargetNode" select="$Form2290/BalanceDue"/>
               </xsl:call-template>
             </div>
-            <div class="styLNRightNumBox" style="height:4mm;float:right;border-bottom-width:0px">6</div>
-            <span style="float:right;padding-right:3mm;padding-top:1mm">
+            <div class="styLNRightNumBox" style="height:6mm;float:right;border-bottom-width:0px;padding-top:3mm;">6</div>
+            <span style="float:right;padding-right:3mm;padding-top:3mm">
               <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
             </span>
-            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:1mm">........................</div>
+            <div class="styDotLn" style="float:right;padding-right:2mm;padding-top:3mm">........................</div>
           </div>
           <!-- Begin Part II -->
           <div class="styBB" style="width:187mm;height:4.75mm;border-top-width:1">
@@ -469,37 +451,36 @@ Check if applicable:</div>
             <div class="styLNLeftNumBox" style="height:6mm;">7</div>
             <div class="styLNDesc" style="width:178mm;height:6mm;padding-top:.5mm;">
               <!--Dotted Line-->
-             I declare that the vehicles reported on Schedule 1 as suspended (category W) are expected to be used on public highways (check the boxes that
-apply):<br/>
-              <span style="padding-left:36mm;padding-top:.5mm;">
-                <input type="checkbox" class="styCkbox">
+             I declare that the vehicles reported on Schedule 1 as suspended (category W) are expected to be used on public highways <br/>(check the boxes that apply):
+              <span style="padding-left:2mm;display:inline;">
+                <input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
                   <xsl:call-template name="PopulateCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form2290/MileageUsed5000OrLessInd"/>
+                    <xsl:with-param name="TargetNode" select="$Form2290/Checkbox5000Miles"/>
                     <xsl:with-param name="BackupName">IRS2290Checkbox5000Miles</xsl:with-param>
                   </xsl:call-template>
                 </input>
                 <label>
                   <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$Form2290/MileageUsed5000OrLessInd"/>
+                    <xsl:with-param name="TargetNode" select="$Form2290/Checkbox5000Miles"/>
                     <xsl:with-param name="BackupName">IRS2290Checkbox5000Miles</xsl:with-param>
                   </xsl:call-template>
         5,000 miles or less </label>
                 <span style="width:10mm"/>
-                <input type="checkbox" class="styCkbox">
+                <input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
                   <xsl:call-template name="PopulateCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form2290/AgricMileageUsed7500OrLessInd"/>
+                    <xsl:with-param name="TargetNode" select="$Form2290/Checkbox7500Miles"/>
                     <xsl:with-param name="BackupName">IRS2290Checkbox7500Miles</xsl:with-param>
                   </xsl:call-template>
                 </input>
                 <label>
                   <xsl:call-template name="PopulateLabel">
-                    <xsl:with-param name="TargetNode" select="$Form2290/AgricMileageUsed7500OrLessInd"/>
+                    <xsl:with-param name="TargetNode" select="$Form2290/Checkbox7500Miles"/>
                     <xsl:with-param name="BackupName">IRS2290Checkbox7500Miles</xsl:with-param>
                   </xsl:call-template>
         7,500 miles or less for agricultural vehicles</label>
               </span>
               <br/>
-during the period July 1, 2013, through June 30, 2014, and are suspended from the tax. Complete and attach Schedule 1.
+			<span style="padding-top:2mm;">during the period July 1, 2013, through June 30, 2014, and are suspended from the tax. Complete and attach Schedule 1.</span>
        </div>
           </div>
           <!-- Line 8a -->
@@ -511,15 +492,15 @@ subject to the tax for that period except for any vehicles listed on line 8b. <s
               <span style="width:3mm"/>
               <img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/>
               <span style="width:3mm"/>
-              <input type="checkbox" class="styCkbox">
+              <input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
                 <xsl:call-template name="PopulateCheckbox">
-                  <xsl:with-param name="TargetNode" select="$Form2290/NotSubjectToTaxInd "/>
+                  <xsl:with-param name="TargetNode" select="$Form2290/NotSubjectToTax "/>
                   <xsl:with-param name="BackupName">IRS2290NotSubjectToTax </xsl:with-param>
                 </xsl:call-template>
               </input>
               <label>
                 <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form2290/NotSubjectToTaxInd "/>
+                  <xsl:with-param name="TargetNode" select="$Form2290/NotSubjectToTax "/>
                   <xsl:with-param name="BackupName">IRS2290NotSubjectToTax </xsl:with-param>
                 </xsl:call-template>
               </label>
@@ -533,7 +514,7 @@ subject to the tax for that period except for any vehicles listed on line 8b. <s
                 
           <span style="width:130mm;border-bottom:1 black solid">
                 <xsl:call-template name="SetFormLinkInline">
-                  <xsl:with-param name="TargetNode" select="$Form2290/SuspendedVINReferenceTyp"/>
+                  <xsl:with-param name="TargetNode" select="$Form2290/SuspendedVIN"/>
                 </xsl:call-template>
               </span>
             </div>
@@ -546,7 +527,7 @@ subject to the tax for that period except for any vehicles listed on line 8b. <s
            I declare that vehicle identification numbers 
             <span style="width:110mm;border-bottom:1 black solid">
                 <xsl:call-template name="SetFormLinkInline">
-                  <xsl:with-param name="TargetNode" select="$Form2290/TrnsfrSuspendedVINReferenceTyp"/>
+                  <xsl:with-param name="TargetNode" select="$Form2290/TransferredSuspendedVIN"/>
                 </xsl:call-template>
               </span>
               <br/>
@@ -566,33 +547,33 @@ At the time of the transfer, the vehicles were still eligible for the suspension
             <tbody>
               <tr>
                 <td style="font-size:8pt;border:1 solid black;border-left-width:0;font-weight:bold">Third<br/> Party<br/> Designee</td>
-                <td style="padding-left:2mm;border:1 solid black;border-left-width:0;border-right-width:0">Do you want to allow another person to discuss this return with the IRS (see instructions)?
-					<input type="checkbox" class="styCkbox">
+                <td style="font-size:6pt;padding-left:2mm;border:1 solid black;border-left-width:0;border-right-width:0">Do you want to allow another person to discuss this return with the IRS (see instructions)?
+					<input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
                     <xsl:call-template name="PopulateCheckbox">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DiscussWithThirdPartyYesInd"/>
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DiscussWithThirdPartyYes"/>
                       <xsl:with-param name="BackupName">IRS2290ThirdPartyDesigneeDiscussWithThirdPartyYes</xsl:with-param>
                     </xsl:call-template>
                   </input>
                   <label>
                     <xsl:call-template name="PopulateLabel">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DiscussWithThirdPartyYesInd"/>
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DiscussWithThirdPartyYes"/>
                       <xsl:with-param name="BackupName">IRS2290ThirdPartyDesigneeDiscussWithThirdPartyYes</xsl:with-param>
                     </xsl:call-template>
                   </label>
                   <b> Yes.</b> Complete the following. 
-					<input type="checkbox" class="styCkbox">
+					<input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
                     <xsl:call-template name="PopulateCheckbox">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DiscussWithThirdPartyNoInd"/>
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DiscussWithThirdPartyNo"/>
                       <xsl:with-param name="BackupName">IRS2290ThirdPartyDesigneeDiscussWithThirdPartyNo</xsl:with-param>
                     </xsl:call-template>
                   </input>
                   <label>
                     <xsl:call-template name="PopulateLabel">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DiscussWithThirdPartyNoInd"/>
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DiscussWithThirdPartyNo"/>
                       <xsl:with-param name="BackupName">IRS2290ThirdPartyDesigneeDiscussWithThirdPartyNo</xsl:with-param>
                     </xsl:call-template>
                   </label>
-                  <b>No</b>
+                  <b> No</b>
                   <br/>
                   <br/>
                   <div style="float:left">
@@ -601,7 +582,7 @@ At the time of the transfer, the vehicles were still eligible for the suspension
                     <span style="width:1mm"/>
                     <span style="width:40mm">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/ThirdPartyDesigneeNm"/>
+                        <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DesigneeName"/>
                       </xsl:call-template>
                     </span>
                   </div>
@@ -611,7 +592,7 @@ At the time of the transfer, the vehicles were still eligible for the suspension
                     <span style="width:1mm"/>
                     <span style="width:30mm">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/ThirdPartyDesigneePhoneNum"/>
+                        <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DesigneePhone"/>
                       </xsl:call-template>
                     </span>
                   </div>
@@ -621,7 +602,7 @@ At the time of the transfer, the vehicles were still eligible for the suspension
                     <span style="width:1mm"/>
                     <span style="width:30mm">
                       <xsl:call-template name="PopulatePin">
-                        <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/ThirdPartyDesigneePIN"/>
+                        <xsl:with-param name="TargetNode" select="$RtnHdrData/ThirdPartyDesignee/DesigneePIN"/>
                       </xsl:call-template>
                     </span>
                   </div>
@@ -630,7 +611,7 @@ At the time of the transfer, the vehicles were still eligible for the suspension
               <!-- END Third Party Designee block -->
               <!--  BEGIN Sign Here block -->
               <tr>
-                <td style="font-size:8pt;border:0 solid black; border-right-width:1;border-bottom-width:1;font-weight:bold">Sign Here</td>
+                <td style="font-size:8pt;border:0 solid black; border-right-width:1px;border-bottom-width:1px;font-weight:bold">Sign Here</td>
                 <td style="padding-left:2mm;border: 0 solid black;border-bottom-width:1">Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my
                   knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge.<br/>
                   <br/>
@@ -657,7 +638,7 @@ At the time of the transfer, the vehicles were still eligible for the suspension
 Telephone number 
 <span style="padding-left:2mm">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$RtnHdrData/DaytimePhoneNum"/>
+                        <xsl:with-param name="TargetNode" select="$RtnHdrData/DaytimePhoneNumber"/>
                       </xsl:call-template>
                     </span>
                   </div>
@@ -674,36 +655,23 @@ Telephone number
 					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;border-color:black;border-bottom:1 solid black;">
             <tr>
 							<!--row 1-->
-							<td rowspan="3" style="width:17.5mm;font-size:9pt;font-weight:bold;font-family:'arial narrow';border-right:1 solid black;border-bottom:1 solid black;text-align:left;">Paid<br/> Preparer<br/> Use Only</td>
-							<td style="width:45.5mm;border-right:1 solid black;border-bottom:1 solid black;padding-left:1mm;">Print/Type preparer's name
-								<br/>
-								<xsl:choose>
-									<xsl:when test="$RtnHdrData/Preparer/Name">
-										<span style="text-align:left;">
-											<xsl:call-template name="PopulateReturnHeaderPreparer">
-											  <xsl:with-param name="TargetNode">Name</xsl:with-param>
-											</xsl:call-template>
-										</span>
-									</xsl:when>
-									<xsl:otherwise>
-										<span style="text-align:left;">
-											<xsl:call-template name="PopulateReturnHeaderPreparer">
-											  <xsl:with-param name="TargetNode">BusinessName</xsl:with-param>
-											</xsl:call-template>
-										</span>
-									</xsl:otherwise>
-								</xsl:choose>
+							<td rowspan="3" style="width:17.5mm;font-size:9pt;font-weight:bold;font-family:'arial narrow';border-right:1px solid black;border-bottom:0px solid black;text-align:left;">Paid<br/> Preparer<br/> Use Only</td>
+							<td style="width:45.5mm;border-right:1px solid black;border-bottom:1px solid black;padding-left:1mm;">Print/Type preparer's name
+                <br/>
+								<xsl:call-template name="PopulateReturnHeaderPreparer">
+									<xsl:with-param name="TargetNode">BusinessName</xsl:with-param>
+								</xsl:call-template>
 							</td>
 							<td style="width:57mm;border-right:1 solid black;border-bottom:1 solid black;padding-left:1mm;">Preparer's signature
-								<br/>
+                <br/>
 								<span style="width:2px;"/>
 							</td>
 							<td style="width:24mm;border-right:1 solid black;border-bottom:1 solid black;padding-left:1mm;">
-								Date <br/>
+		    Date <br/>
 								<span style="text-align:center; padding-left:7mm;">
-									<xsl:call-template name="PopulateReturnHeaderPreparer">
-									  <xsl:with-param name="TargetNode">DatePrepared</xsl:with-param>
-									</xsl:call-template>
+                <xsl:call-template name="PopulateReturnHeaderPreparer">
+                  <xsl:with-param name="TargetNode">DatePrepared</xsl:with-param>
+                </xsl:call-template>
 								</span>
 							</td>
 							<td style="width:19mm;border-right:1 solid black;border-bottom:1 solid black;padding-left:1mm;vertical-align:bottom;padding-bottom:.5mm;">
@@ -715,32 +683,24 @@ Telephone number
 										</xsl:call-template>Check  
           </label>
                 </nobr>
-                <input class="styCkbox" type="checkbox" id="dummyid1" style="width:4mm;">
+                <input class="styCkbox" type="checkbox" id="dummyid1" style="height:5mm;width:4mm;">
                   <xsl:call-template name="PopulateReturnHeaderPreparer">
                     <xsl:with-param name="TargetNode">SelfEmployedCheckbox</xsl:with-param>
                     <xsl:with-param name="BackupName">PreparerSelfEmployed</xsl:with-param>
                   </xsl:call-template>
-                </input>
+                </input><span style="width:1mm;"/>
                 if <br/> self-employed
               </td>
-			  <td style="width:35mm;border-bottom:1 solid black;padding-left:1mm;">PTIN
+							<td style="width:35mm;border-bottom:1 solid black;padding-left:1mm;">PTIN
                 <br/>
-                <xsl:choose>
-					<xsl:when test="$RtnHdrData/Preparer/SSN">
-						<span style="text-align:center;padding-left:10mm;">
-							<xsl:call-template name="PopulateReturnHeaderPreparer">
-							  <xsl:with-param name="TargetNode">SSN</xsl:with-param>
-							</xsl:call-template>
-						</span>
-					</xsl:when>
-					<xsl:otherwise>
-						<span style="text-align:center;padding-left:10mm;">
-							<xsl:call-template name="PopulateReturnHeaderPreparer">
-							  <xsl:with-param name="TargetNode">PTIN</xsl:with-param>
-							</xsl:call-template>
-						</span>
-					</xsl:otherwise>
-				</xsl:choose>
+								<span style="text-align:center;padding-left:10mm;">
+                <xsl:call-template name="PopulateReturnHeaderPreparer">
+                  <xsl:with-param name="TargetNode">SSN</xsl:with-param>
+                </xsl:call-template>
+                <xsl:call-template name="PopulateReturnHeaderPreparer">
+                  <xsl:with-param name="TargetNode">PTIN</xsl:with-param>
+                </xsl:call-template>
+								</span>
               </td>
             </tr>
             <tr>
@@ -769,7 +729,7 @@ Telephone number
 						</tr>
 						<tr>
 							<!--row 3-->
-							<td rowspan="1" colspan="4" style="border-bottom:1 solid black;border-right:1 solid black;padding-left:.5mm;">Firm's address
+							<td rowspan="1" colspan="4" style="border-bottom:0px solid black;border-right:1px solid black;padding-left:.5mm;">Firm's address
                 <img src="{$ImagePath}/2290_Bullet_Sm.gif" alt="SmallBullet"/>
 								<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 									<xsl:with-param name="TargetNode">AddressLine1</xsl:with-param>
@@ -793,7 +753,7 @@ Telephone number
 									</xsl:call-template>
 								</span>
               </td>
-              <td style="border-bottom:1 solid black;padding-left:1mm;"> Phone no. 
+              <td style="border-bottom:0px solid black;padding-left:1mm;"> Phone no. 
         <xsl:call-template name="PopulateReturnHeaderPreparer">
                   <xsl:with-param name="TargetNode">Phone</xsl:with-param>
                 </xsl:call-template>
@@ -827,7 +787,7 @@ Tax Computation
               <tbody>
                 <tr style="height:17mm">
                   <th scope="col" class="styTableCellHeader" style="width:8mm;height:32mm" rowspan="2">
-                    <img src="{$ImagePath}/2290_Category.gif" alt="VehicleCategoryCd"/>
+                    <img src="{$ImagePath}/2290_Category.gif" alt="Category"/>
                   </th>
                   <th scope="col" class="styTableCellHeader" style="width:16mm;background-color:lightgrey">
                     <span style="width:1px"/>
@@ -843,7 +803,7 @@ Tax Computation
                     <span style="font-weight:normal">(col. (1) or (2)</span><br/><span style="font-weight:normal">multiplied by col.(3))</span>
                   </th>
                   <th scope="col" class="styTableCellHeader" style="width:8mm;height:32mm;border-right-width:0px" rowspan="2">
-                    <img src="{$ImagePath}/2290_Category.gif" alt="VehicleCategoryCd"/>
+                    <img src="{$ImagePath}/2290_Category.gif" alt="Category"/>
                   </th>
                 </tr>
                 <tr style="height:15mm;font-weight:bold">
@@ -951,20 +911,20 @@ Tax Computation
                 <tr>
                   <td class="styTableCellText" style="width:105mm;height:12mm;text-align:justify" colspan="6">
                     <b>Totals.</b> Add the number of vehicles in columns (3a) and (3b). Enter the total
-				here (should be the same total of taxable vehicles shown on Schedule 1, Part II, line c). Add the amounts in column (4). Enter
-				the total here and on Form 2290, line 2 <span class="styDotLn" style="float:none;padding-left:1.5mm">............ </span>
+				here (this should be the same total of taxable vehicles shown on Schedule 1, Part II, line c). Add the amounts in column (4). Enter
+				the total here and on Form 2290, line 2 <span class="styDotLn" style="float:none;padding-left:1.5mm">................... </span>
 				<img src="{$ImagePath}/2290_Bullet_Md.gif" alt="MediumBullet"/> 
 
                   </td>
                   <td class="styTableCell" style="width:44mm;vertical-align:bottom;font-size:6pt;padding-right:.5mm" colspan="2">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form2290/TotalVehicleCnt"/>
+                      <xsl:with-param name="TargetNode" select="$Form2290/TotalNumberOfVehicles"/>
                     </xsl:call-template>
                   </td>
                   <td class="styTableCell" style="font-size:6pt;width:30mm;vertical-align:bottom;padding-right:1mm">
                     <span style="float:left;clear:none">$</span>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form2290/TotalTaxComputationAmt"/>
+                      <xsl:with-param name="TargetNode" select="$Form2290/TotalAmountOfTax"/>
                     </xsl:call-template>
                   </td>
                   <td class="styTableCell" style="width:8mm;background-color:lightgrey;border-right-width:0px;border-bottom-width:0px">
@@ -983,12 +943,12 @@ Tax Computation
                   </td>
                   <td class="styTableCell" style="font-size:6pt;width:22mm;vertical-align:bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form2290/TaxSuspendedLoggingVehCnt"/>
+                      <xsl:with-param name="TargetNode" select="$Form2290/NumberTaxSuspendedLoggingVeh"/>
                     </xsl:call-template>
                   </td>
                   <td class="styTableCell" style="font-size:6pt;width:22mm;vertical-align:bottom">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$Form2290/TaxSuspendedNonLoggingVehCnt"/>
+                      <xsl:with-param name="TargetNode" select="$Form2290/NumTaxSuspendedNonLoggingVeh"/>
                     </xsl:call-template>
                   </td>
                   <td class="styTableCell" style="width:30mm;background-color:lightgrey;border-right-width:0px">
@@ -999,7 +959,7 @@ Tax Computation
                   </td>
                 </tr>
                 <tr>
-                  <td class="styTableCellCtr" style="width:179mm;height:8mm;vertical-align:middle;font-weight:bold;font-size:9pt;border-bottom-width:2px" colspan="9">
+                  <td class="styTableCellCtr" style="width:179mm;height:8mm;vertical-align:middle;font-weight:bold;font-size:9pt;border-bottom-width:1px" colspan="9">
 				Complete both copies of Schedule 1 (Form 2290) and attach them to Form 2290.
 			</td>
                   <td class="styLNCtrNumBox" style="background-color:lightgrey;border-left-width:0px;border-right-width:0px;border-bottom-width:0px">
@@ -1007,10 +967,10 @@ Tax Computation
                   </td>
                 </tr>
                 <tr>
-                  <td class="styTableCellText" style="width:179mm;height:8mm;vertical-align:middle;border-bottom-width:2px" colspan="9">
+                  <td class="styTableCellText" style="width:179mm;height:8mm;vertical-align:middle;border-bottom-width:1px" colspan="9">
 				* See page 2 of the instructions for information on logging vehicles.
 			</td>
-                  <td class="styLNCtrNumBox" style="background-color:lightgrey;border-left-width:0px;border-right-width:0px;border-bottom-width:2px">
+                  <td class="styLNCtrNumBox" style="background-color:lightgrey;border-left-width:0px;border-right-width:0px;border-bottom-width:1px">
                     <span style="width:1px"/>
                   </td>
                 </tr>
@@ -1039,12 +999,12 @@ Tax Computation
               <xsl:with-param name="TargetNode" select="$Form2290"/>
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>          
-            <xsl:if test="$Form2290/AmendedMonthNum">
+            <xsl:if test="$Form2290/AmendedMonth">
               <tr>
                 <td class="styLeftOverTableRowDesc" style="width:100mm;" scope="row">
                   <xsl:call-template name="PopulateLeftoverRow">
                     <xsl:with-param name="Desc">Amended Month</xsl:with-param>
-                    <xsl:with-param name="TargetNode" select="$Form2290/AmendedMonthNum"/>
+                    <xsl:with-param name="TargetNode" select="$Form2290/AmendedMonth"/>
                     <xsl:with-param name="DescWidth" select="100"/>
                   </xsl:call-template>
                 </td>
@@ -1064,7 +1024,7 @@ Special Condition Description</th>
 </thead>
 <tfoot/>
 <tbody>
-<xsl:for-each select="$Form2290Data/SpecialConditionDesc">
+<xsl:for-each select="$Form2290Data/SpecialConditionDescription">
 <tr style="border-color:black;height:6mm;">
 <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 <td class="styTableCellText" style="width:179mm;">
@@ -1351,53 +1311,53 @@ Special Condition Description</th>
     <xsl:param name="pos"/>
     <xsl:param name="internal">1</xsl:param>
     <xsl:choose>
-      <xsl:when test="$TargetCategory=$Form2290/HighwayMtrVehTxComputationGrp[position()=$internal]/VehicleCategoryCd">
+      <xsl:when test="$TargetCategory=$Form2290/TaxComputation[position()=$internal]/Category">
         <tr>
           <td class="styLNCtrNumBox" style="border-left-width:0px">
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form2290/HighwayMtrVehTxComputationGrp[position()=$internal]/VehicleCategoryCd"/>
+              <xsl:with-param name="TargetNode" select="$Form2290/TaxComputation[position()=$internal]/Category"/>
             </xsl:call-template>
           </td>
           <xsl:call-template name="CategoryDetails">
             <xsl:with-param name="TargetCategory" select="$pos"/>
           </xsl:call-template>
           <td class="styTableCell" style="font-size:6pt;width:28mm;padding-right:.5mm">
-            <xsl:if test="$TargetCategory = 'A'">
+            <xsl:if test="$TargetCategory = &apos;A&apos;">
               <span style="float:left;clear:none">$</span>
             </xsl:if>
             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="$Form2290/HighwayMtrVehTxComputationGrp[position()=$internal]/HighwayMtrVehTxCmptColumnsGrp/NonLoggingVehPartialTaxAmt"/>
+              <xsl:with-param name="TargetNode" select="$Form2290/TaxComputation[position()=$internal]/ComputationColumns/NonLoggingPartialTax"/>
             </xsl:call-template>
           </td>
           <td class="styTableCell" style="font-size:6pt;width:28mm;padding-right:.5mm">
-            <xsl:if test="$TargetCategory = 'A'">
+            <xsl:if test="$TargetCategory = &apos;A&apos;">
               <span style="float:left;clear:none">$</span>
             </xsl:if>
             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="$Form2290/HighwayMtrVehTxComputationGrp[position()=$internal]/HighwayMtrVehTxCmptColumnsGrp/LoggingVehPartialTaxAmt"/>
+              <xsl:with-param name="TargetNode" select="$Form2290/TaxComputation[position()=$internal]/ComputationColumns/LoggingPartialTax"/>
             </xsl:call-template>
           </td>
           <td class="styTableCell" style="font-size:6pt;width:21mm;padding-right:.5mm">
             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="$Form2290/HighwayMtrVehTxComputationGrp[position()=$internal]/HighwayMtrVehTxCmptColumnsGrp/NonLoggingVehicleCnt"/>
+              <xsl:with-param name="TargetNode" select="$Form2290/TaxComputation[position()=$internal]/ComputationColumns/NumberVehicleNonLogging"/>
             </xsl:call-template>
           </td>
           <td class="styTableCell" style="font-size:6pt;width:21mm;padding-right:.5mm">
             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="$Form2290/HighwayMtrVehTxComputationGrp[position()=$internal]/HighwayMtrVehTxCmptColumnsGrp/LoggingVehicleCnt"/>
+              <xsl:with-param name="TargetNode" select="$Form2290/TaxComputation[position()=$internal]/ComputationColumns/NumberVehicleLogging"/>
             </xsl:call-template>
           </td>
           <td class="styTableCell" style="font-size:6pt;width:30mm;padding-right:.5mm">
-            <xsl:if test="$TargetCategory = 'A'">
+            <xsl:if test="$TargetCategory = &apos;A&apos;">
               <span style="float:left;clear:none">$</span>
             </xsl:if>
             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="$Form2290/HighwayMtrVehTxComputationGrp[position()=$internal]/HighwayMtrVehTxCmptColumnsGrp/TaxAmt"/>
+              <xsl:with-param name="TargetNode" select="$Form2290/TaxComputation[position()=$internal]/ComputationColumns/AmountOfTax"/>
             </xsl:call-template>
           </td>
           <td class="styLNCtrNumBox" style="border-left-width:0px;border-right-width:0px">
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form2290/HighwayMtrVehTxComputationGrp[position()=$internal]/VehicleCategoryCd"/>
+              <xsl:with-param name="TargetNode" select="$Form2290/TaxComputation[position()=$internal]/Category"/>
             </xsl:call-template>
           </td>
         </tr>
@@ -1414,13 +1374,13 @@ Special Condition Description</th>
             </xsl:with-param>
           </xsl:call-template>
           <td class="styTableCell" style="font-size:6pt;width:28mm;padding-right:.5mm">
-            <xsl:if test="$TargetCategory = 'A'">
+            <xsl:if test="$TargetCategory = &apos;A&apos;">
               <span style="float:left;clear:none">$</span>
             </xsl:if>
             <span style="width:1px"/>
           </td>
           <td class="styTableCell" style="font-size:6pt;width:28mm;padding-right:.5mm">
-            <xsl:if test="$TargetCategory = 'A'">
+            <xsl:if test="$TargetCategory = &apos;A&apos;">
               <span style="float:left;clear:none">$</span>
             </xsl:if>
             <span style="width:1px"/>
@@ -1432,7 +1392,7 @@ Special Condition Description</th>
             <span style="width:1px"/>
           </td>
           <td class="styTableCell" style="font-size:6pt;width:30mm;padding-right:.5mm">
-            <xsl:if test="$TargetCategory = 'A'">
+            <xsl:if test="$TargetCategory = &apos;A&apos;">
               <span style="float:left;clear:none">$</span>
             </xsl:if>
             <span style="width:1px"/>

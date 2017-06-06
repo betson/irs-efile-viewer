@@ -7,6 +7,7 @@
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="DependencyData" select="$RtnDoc/TabularScheduleOfTransactions"/>
+	 <!-- - 8873 form displays as - Tabular Schedule Of Transactions - -->
 	<xsl:param name="depDocTitle">
 	<xsl:call-template name="PopulateDisplayName">
 	<xsl:with-param name="TargetNode" select="$DependencyData"/>
@@ -14,10 +15,8 @@
 	</xsl:param>
 	<xsl:template name="TabularScheduleOfTransactionsTemp">
 	<!--<xsl:call-template name="DocumentHeaderDependencyLandscape"/>-->
-	<!-- Updated 6/23/11 (RLW) -->
-	<!-- Updated 8/30/11 (RLW) -->
 		<div class="styDepTitleLineLandscape">
-			<table id="TabularScheduleOfTransactionsTemp" class="styDepTblLandscape" style="font-size: 7pt">
+			<table id="TabularScheduleOfTransactionsTemp" class="styDepTblLandscape" style="font-size:8pt">
 				<thead class="styTableThead">
 					<tr class="styDepTblHdr">
 						<th class="styDepTblCell" scope="col">Business Name </th>
@@ -58,7 +57,7 @@
 								</xsl:if>
 							</td>
 				<!-- Return EIN/SSN -->
-							<td class="stydepTblCell" style="width:5%;">
+							<td class="styDepTblCell" style="width:5%;">
 							<xsl:if test="SSN">   
 						   <xsl:call-template name="PopulateSSN">
 							<xsl:with-param name="TargetNode" select="SSN"/>
@@ -77,13 +76,13 @@
                </xsl:if>             
 			  </td>
 			 <!-- US Amount -->
-			<td class="stydepTblCell" style="width:7%;text-align:right;">
+			<td class="styDepTblCell" style="width:7%;text-align:right;">
 				<xsl:call-template name="PopulateAmount">
 				<xsl:with-param name="TargetNode" select="Amt"/>
 				</xsl:call-template>
 				</td>
 				<!-- Ratio -->
-				<td class="stydepTblCell" style="width:7%;text-align:right;">
+				<td class="styDepTblCell" style="width:7%;text-align:right;">
 				<xsl:call-template name="PopulateText">
 				<xsl:with-param name="TargetNode" select="Rt"/>
 				</xsl:call-template>%
@@ -96,8 +95,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -124,7 +125,7 @@
 				<xsl:call-template name="DocumentHeaderDependencyLandscape"/>
 				<div class="styDepTitleLineLandscape">
 					<span class="styDepTitle">
-						<span style="width:100mm;">
+						<span style="padding-right:2mm;">
 							<xsl:value-of select="$depDocTitle"/>
 						</span>
 					</span>

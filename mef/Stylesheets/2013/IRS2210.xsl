@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form2210Data" select="$RtnDoc/IRS2210"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form2210Data)"/>
@@ -39,7 +41,7 @@
 				<form name="Form2210">
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;">
-		<div class="styFNBox" style="width:31mm;height:20mm;padding:bottom:0mm;">
+		<div class="styFNBox" style="width:31mm;height:22mm;padding:bottom:0mm;">
                          Form<span style="width:1mm;"></span>
                             <span class="styFormNumber">2210</span>
                             <br/>
@@ -50,15 +52,15 @@
 						Internal Revenue Service 
                             </div>
 						</div>
-	<div class="styFTBox" style="width:125mm;height:20mm;">           
-			<div class="styMainTitle" style="height:5mm;padding:bottom:0mm;">Underpayment of<br/>
+	<div class="styFTBox" style="width:125mm;height:22mm;">           
+			<div class="styMainTitle" style="height:auto;padding:bottom:0mm;">Underpayment of<br/>
             Estimated Tax By Individuals, Estates, and Trusts</div>
 							<div class="styFBT" stype="font-size:7pt;height:5mm;padding-top:1mm;">
 								<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> Information about Form 2210 and its separate instructions is at <i>www.irs.gov/form2210.</i><br/>
 								<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040, 1040A, 1040NR, 1040NR-EZ, or 1041.</div>
 						</div>
-	<div class="styTYBox" style="width:31mm; height:20mm">
-							<div style="padding-top:0mm;border-bottom:1 solid black;font:6pt;">OMB No. 1545-0140</div>
+	<div class="styTYBox" style="width:31mm; height:22mm;">
+							<div  class="styOMB" style="padding-top:0mm;border-bottom:1 solid black;font:6pt;">OMB No. 1545-0140</div>
 							<div>
 								<span class="styTaxYear" style="font-size:21pt;">20</span>
 								<span class="styTYColor" style="font-family: 'Arial Narrow';font-size:21pt">
@@ -70,8 +72,8 @@
 						</div>
 					</div>
 					<!-- Name(s) shown on return -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:140mm; height:8mm">
+					<div class="styBB" style="width:187mm;height:10mm;">
+						<div class="styFNBox" style="width:140mm; height:10mm">
                     Name(s) shown on tax return<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -87,19 +89,19 @@
 						<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
 					</div>
 					<!--  start instructions -->
-	<div style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+	<div style="width:187mm;height:105mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px; padding bottom:1mm;float:left;">
 						<div>
 			<span class="styBoldText" style="font-size:16px; width:187mm; height:7mm; padding-top:0mm;text-align:center;">Do You Have To File Form 2210?
                             </span>
 						</div>
-			<div style="width:187mm;">
-			<span class="styIRS2210Box" style="width:90mm;height:8mm;text-align:center;padding-top:2mm;">Complete lines 1 through 7 below.  Is line 7 less than $1,000?</span>
+			<div style="width:187mm;height:auto;">
+			<span class="styIRS2210Box" style="width:90mm;height:16mm;text-align:center;padding-top:2mm;">Complete lines 1 through 7 below.  Is line 7 less than $1,000?</span>
 							<span style="font-size:10px; width:1mm;height:8mm;padding-top:1mm;">_</span>
-							<span style="font-size:10px; width:7mm;height:8mm;padding-top:1mm;">
+							<span style="font-size:10px; width:9mm;height:8mm;padding-top:1mm;">
 								<u>_<b>Yes</b>_</u>
 							</span>
-							<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet" align="absmiddle"/>
+							<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet" align="absmiddle" style="padding-top:2.5mm;"/>
 							<span class="styIRS2210Box" style="width:70mm;height:6mm;text-align:center;padding-top:1mm;"><b>Do not file Form 2210.</b>  You do not owe a penalty.</span>
 						</div>
 	<div style="width:187mm;">
@@ -112,16 +114,16 @@
 							<span style="width:28.8mm;height:1mm;padding-top:0mm;"/>
 							<img src="{$ImagePath}/2210_Bullet_Dn.gif" alt="MediumBulletDown" align="abstop"/>
 						</div>
-		<div style="width:187mm;">
-		<span class="styIRS2210Box" style="width:90mm;height:12mm;text-align:left;padding-top:2mm;">
+		<div style="width:187mm;height:14mm;">
+		<span class="styIRS2210Box" style="width:90mm;height:14mm;text-align:left;padding-top:4mm;">
 		<span style= "width:4mm;"></span>Complete lines 8 and 9 below. Is line 6 equal to or more<br/>
 		<span style= "width:4mm;"></span>than line 9?</span>
-							<span style="font-size:10px; width:1mm;height:10mm;padding-top:1mm;">_</span>
-							<span style="font-size:10px; width:7mm;height:10mm;padding-top:1mm;">
+							<span style="font-size:10px; width:1mm;height:12mm;padding-top:1mm;">_</span>
+							<span style="font-size:10px; width:9mm;height:12mm;padding-top:1mm;">
 								<u>_<b>Yes</b>_</u>
 							</span>
-							<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet" align="absmiddle"/>
-							<span class="styIRS2210Box" style="width:75mm;height:6mm;text-align:left;padding-top:1mm;">
+							<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet" align="absmiddle" style="padding-top:2.5mm;"/>
+							<span class="styIRS2210Box" style="width:75mm;height:12mm;text-align:left;padding-top:1mm;">
 							<span style= "width:2mm;"></span>You do not owe a penalty. <b>Do not file Form 2210</b><br/>
 							<span style= "width:2mm;"></span> (but if box <b>E</b> in Part II applies, you must file page 1 <br/>
 							<span style= "width:2mm;"></span>of Form 2210).</span>
@@ -137,13 +139,13 @@
 							<img src="{$ImagePath}/2210_Bullet_Dn.gif" alt="MediumBulletDown" align="abstop"/>
 						</div>
 						<div style="width:187mm;">
-							<span class="styIRS2210Box" style="width:90mm;height:6mm;text-align:center;padding-top:1mm;">You may owe a penalty. Does any box in Part II below apply?</span>
+							<span class="styIRS2210Box" style="width:90mm;height:15mm;text-align:center;padding-top:5mm;">You may owe a penalty. Does any box in Part II below apply?</span>
 							<span style="font-size:10px; width:1mm;height:8mm;padding-top:1mm;">_</span>
-							<span style="font-size:10px; width:7mm;height:8mm;padding-top:1mm;">
+							<span style="font-size:10px; width:9mm;height:8mm;padding-top:1mm;">
 								<u>_<b>Yes</b>_</u>
 							</span>
-							<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet" align="absmiddle"/>
-							<span class="styIRS2210Box" style="width:70mm;height:6mm;text-align:left;padding-top:1mm;">	
+							<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet" align="absmiddle" style="padding-top:2.5mm;"/>
+							<span class="styIRS2210Box" style="width:70mm;min-height:14mm;text-align:left;padding-top:1mm;">	
 							<span style= "width:2mm;"></span>You <b>must </b>file Form 2210. Does box <b>B, C,</b> or <b><br/>
 						   <span style= "width:2mm;"></span>D</b> in Part II apply?</span>
 						</div>
@@ -161,7 +163,7 @@
 								<b>Yes</b>
 							</span>
 						</div>
-						<div style="width:187mm;">
+						<div style="width:187mm;height:5.5mm;">
 							<span style="width:30mm;height:6mm;padding-top:0mm;"/>
 							<span class="styIRS2210Border" style="width:28.8mm;height:6mm; padding-left:1mm;  padding-top:0mm; border-left-width:1px;"/>
 							<span style="width:61.3mm;height:6mm;padding-top:0mm;"/>
@@ -176,7 +178,7 @@
 							<img src="{$ImagePath}/2210_Bullet_Dn.gif" alt="MediumBulletDown" align="abstop"/>
 						</div>
 						<div style="width:187mm;padding-bottom:0mm;">
-							<span class="styIRS2210Box" style="width:90mm;height:8mm;text-align:let;padding-top:1mm;">
+							<span class="styIRS2210Box" style="width:90mm;text-align:let;padding-top:1mm;">
 								<span style= "width:2mm;"></span><b>Do not file Form 2210.</b> You are not required to figure<br/>
 								<span style= "width:2mm;"></span>your penalty because the IRS will figure it and send<br/>
 								<span style= "width:2mm;"></span>you a bill for any unpaid amount.  If you want to figure<br/>
@@ -184,8 +186,8 @@
 								<span style= "width:2mm;"></span>enter your penalty amount on your tax return, but <b>do <br/>
 								<span style= "width:2mm;"></span>not file Form 2210.</b>
 							</span>
-							<span style=" width:20mm;height:8mm;padding-top:1mm;"/>
-							<span class="styIRS2210Box" style="width:75mm;height:6mm;text-align:left;padding-top:1mm;">
+							<span style=" width:20mm;height:15mm;padding-top:1mm;"/>
+							<span class="styIRS2210Box" style="width:75mm;text-align:left;padding-top:1mm;">
 							<span style= "width:2mm;"></span>You are <b>not</b> required to figure your penalty because <br/>
 							<span style= "width:2mm;"></span>the IRS will figure it and send you a bill for any unpaid<br/>
 							<span style= "width:2mm;"></span>amount.  If you want to figure it, you may use Part lll<br/>
@@ -195,19 +197,48 @@
 							</span>
 						</div>
 					</div>
+						<!-- Page Break and Footer-->
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+						<div style="float:left;">
+							<span class="styBoldText">
+							For Paperwork Reduction Act Notice, see separate instructions.
+							</span>
+							</div>
+							
+							<div style="float:right;">
+							<span style="width:50px;"/> 
+							Form 
+							<span class="styBoldText" style="font-size:8pt;">2210</span> (2013)                          
+                          </div>
+                          <div style="float:right;text-align:center;width:26mm;font-size:7pt;">
+             Cat. No. 11744P
+                             </div>    
+                           </div>
+					<br></br>
+					<!-- Page Header -->
+						<div  class="styBB" style="width:187mm; border-bottom-width:0px;padding-top:.5mm;">
+							<div style="float:right;font-size:6pt;font-weight:bold;"></div>
+						</div>
+					<div class="styBB" style="width:187mm;padding-top:0mm;">
+						<div style="float:left;">Form 2210 (2013)<span style="width:148mm;"/>
+						</div>
+						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
+						</div>
+					</div>
+					<!-- END Page Header -->
 					<!-- Part l -->
 					<!-- Part I - Header -->
-					<div style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;padding-top:0mm;">
-						<span class="styPartName" style="height:1mm;width:12mm;font-size:13;">Part l</span>
+						<span class="styPartName" style="height:auto;width:12mm;font-size:13;">Part l</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
-							<span style="width:3mm;font-size:10pt;height:0mm;vertical-align:top;"/>
+							<span style="width:3mm;font-size:10pt;height:auto;vertical-align:top;"/>
 							<b>Required Annual Payment</b>
 						</span>
 					</div>
 					<!-- End Part 1 Header -->
 					<!-- Part 1 body -->
-					<div  style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div  style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">
 						<!-- Line 1 -->
 						<div style="width:187mm;">
@@ -372,7 +403,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">
 									<b>Required annual payment.</b>  Enter the <b>smaller</b> of line 5 or line 8</span>
-								<span class="styIRS2210DotLn">.............</span>
+								<span class="styIRS2210DotLn">............</span>
 							</div>
 		<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">9</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;bottom-border-width:1px;">
@@ -447,10 +478,10 @@
 					</div>
 					<!-- Part ll -->
 					<!-- Part Il - Header -->
-					<div style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;">
-						<span class="styPartName" style="height:1mm;width:12mm;font-size:13;">Part ll</span>
-						<div class="styPartDesc" style="width:170mm;font-weight:normal;" >
+						<span class="styPartName" style="height:auto;width:12mm;font-size:13;">Part ll</span>
+						<div class="styPartDesc" style="width:170mm;height:auto;font-weight:normal;" >
 							<span style="width:3mm;font-size:10pt;height:0mm;vertical-align:top;"/>
 							<b>Reasons for Filing.</b>  Check applicable boxes.  If none apply, <b>do not </b>file Form 2210.
 						</div>
@@ -463,11 +494,11 @@
 							<xsl:with-param name="TargetNode" select="$Form2210Data/WaiverOfEntirePenaltyInd"/>
 						</xsl:call-template>
 					</xsl:variable>
-					<div  style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div  style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;">
 						<!-- Line A -->
-						<div style="width:187mm;padding-top:1mm;height:7mm;">
-							<div class="styLNLeftLtrBox" style="font-size:7pt;height:5mm;aligh-text:top;padding-top:0mm; padding-left: 2.25mm">A
+						<div style="width:187mm;padding-top:1mm;height:auto;">
+							<div class="styLNLeftLtrBox" style="font-size:7pt;height:auto;aligh-text:top;padding-top:0mm; padding-left: 2.25mm">A
                             </div>
 							<input type="checkbox" alt="alt" class="styCkbox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -497,11 +528,11 @@
 									</xsl:choose>
 								</xsl:attribute>
 								You request a <b>waiver</b> (see instructions) of your entire penalty. You must check this box and file page 1<br/>
-								<span style="width:4mm;"/>of Form 2210, but you are not required to figure your penalty.
+								<span style="width:12mm;"/>of Form 2210, but you are not required to figure your penalty.
                             </label>
 						</div>
 						<!-- Line B -->
-						<div style="width:187mm;padding-top:0mm;height:7mm;">
+						<div style="width:187mm;padding-top:0mm;height:auto;">
 							<div class="styLNLeftLtrBox" style="font-size:7pt;height:5mm;aligh-text:top; padding-top:0mm; padding-left: 2.25mm">B
                             </div>
 							<input type="checkbox" alt="alt" class="styCkbox">
@@ -542,7 +573,7 @@
 									<xsl:with-param name="TargetNode" select="$Form2210Data/AnnualizedIncomeMethodInd"/>
 							</xsl:call-template>
 						</xsl:variable>
-						<div style="width:187mm;padding-top:0mm;height:7mm;">
+						<div style="width:187mm;padding-top:0mm;height:auto;">
 							<div class="styLNLeftLtrBox" style="font-size:7pt;height:5mm;align-text:top; padding-top:0mm; padding-left: 2.25mm">C
                             </div>
 							<input type="checkbox" alt="alt" class="styCkbox">
@@ -579,7 +610,7 @@
                             </label>
 						</div>
 						<!-- Line D -->
-						<div style="width:187mm;padding-top:0mm;height:8mm;">
+						<div style="width:187mm;padding-top:0mm;height:auto;">
 							<div class="styLNLeftLtrBox" style="font-size:7pt;height:5mm;align-text:top; padding-top:0mm; padding-left: 2.25mm">D
                             </div>
                             <!-- Define the base ID for ActuallyWithheldInd-->
@@ -613,7 +644,7 @@
                             </label>
 						</div>
 						<!-- Line E -->
-						<div style="width:187mm;padding-top:0mm;height:8mm;">
+						<div style="width:187mm;padding-top:0mm;height:auto;">
 							<div class="styLNLeftLtrBox" style="font-size:7pt;height:4mm;align-text:top; padding-top:0mm; padding-left: 2.25mm">E
                             </div>
                             <!-- Define the base ID for IRS2210JointReturnInd -->
@@ -642,25 +673,30 @@
 									</xsl:choose>
 								</xsl:attribute>
 								You filed or are filing a joint return for either 2012 or 2013, but not for both years, and line 8 above is smaller than<br/>
-								<span style="width:4mm;"/>line 5 above. You must file page 1 of Form 2210, but you are <b>not</b> required to figure your penalty (unless box <b>B,</b>
+								<span style="width:12mm;"/>line 5 above. You must file page 1 of Form 2210, but you are <b>not</b> required to figure your penalty (unless box <b>B,</b>
 								<br/>
-								<span style="width:13mm;"/>
+								<span style="width:12mm;"/>
 								<b>C, </b>or <b>D</b> applies).
                             </label>
 						</div>
 						</div>
+					
+         
 					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:0mm;">
-						<div style="float:left;">
-							<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions.</span>
-							<span style="width:23mm;"/>                        
-      Cat. No. 11744P
-       <span style="width:29mm;"/>  
-      Form <span class="styBoldText" style="font-size:8pt;">2210</span> (2013)
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+						
+							
+							<div style="float:right;">
+							<span style="width:50px;"/> 
+							Form 
+							<span class="styBoldText" style="font-size:8pt;">2210</span> (2013)                          
+                          </div>
+   
                            </div>
-					</div>
+					
+					<br></br>
 					<!-- END Page Break and Footer-->
-					<!--Begin Page 2 -->
+					<!--Begin Page 3 -->
 					<!-- Page Header -->
 						<div  class="styBB" style="width:187mm; border-bottom-width:0px;padding-top:.5mm;">
 							<div style="float:right;font-size:6pt;font-weight:bold;"></div>
@@ -668,13 +704,13 @@
 					<div class="styBB" style="width:187mm;padding-top:0mm;">
 						<div style="float:left;">Form 2210 (2013)<span style="width:148mm;"/>
 						</div>
-						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
+						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span>
 						</div>
 					</div>
 					<!-- END Page Header -->
 					<!-- Part lll -->
 					<!-- Part Ill - Header -->
-<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+<div style="width:187mm;height:5mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">
 						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part lll</span>
 						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
@@ -684,9 +720,9 @@
 					</div>
 					<!-- END Part lll Header-->
 					<!--Section 1 Part III-->
-<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">
-						<div style="width:187mm;padding-top:1mm;height:8;">
+						<div style="width:187mm;padding-top:1mm;height:auto;">
 						<span style="width:14.6mm;"/><i><b>Can You Use </b></i>
 							<span style="width:16.3mm;"/>You may use the short method if:
                         </div>
@@ -713,8 +749,9 @@
                         <br/>	
                        </div>
 						<br/>
+						
 						<!--Section 2 Part III Instructions-->
-					<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">	
 						<div>
 							<div class="styBB" style="width:187mm;border-bottom-width:0px;">
@@ -752,7 +789,7 @@
                  </div>
                             </div>
 						</div>
-						<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+						<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">
 							<div style="width:187mm;padding-top:1mm;height:4;">
 								<br/>
@@ -822,7 +859,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:5mm;padding-bottom:0mm;">
 								<span style="float:left">Add lines 11 and 12</span>
-								<span class="styIRS2210DotLn">...........................</span>
+								<span class="styIRS2210DotLn">..........................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:5mm;padding-bottom:0mm;padding-top:1.5mm;bottom-border-width:1px;">13</div>
 							<div class="styLNAmountBox" style="width:36mm;height:5mm;padding-bottom:0mm;padding-top:1.5mm;bottom-border-width:1px;">
@@ -913,9 +950,9 @@
                                 </span>                        
 								<span class="styIRS2210DotLn" style="float:right;padding-right:2mm;">..........</span>								
 							</div>							
-							<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:1px; border-right-width:1px;width:8.3mm;padding-bottom:0;padding-top:1.5mm">16
+							<div class="styLNRightNumBox" style="height:auto;border-bottom-width:1px; border-right-width:1px;width:8.3mm;padding-bottom:0;padding-top:1.5mm">16
                             </div>
-							<div class="styLNAmountBox" style="width:35mm;height:3mm;border-left-width:0px;border-bottom-width:1px;padding-bottom:0;padding-top:1.5mm">
+							<div class="styLNAmountBox" style="width:35mm;height:auto;border-left-width:0px;border-bottom-width:1px;padding-bottom:0;padding-top:1.5mm">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2210Data/DueDatePaidMultipliedAmt"/>
 								</xsl:call-template>
@@ -949,8 +986,8 @@
                                 </span>
 								<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/>
 							</div>
-							<div class="styLNRightNumBox" style="height:11mm;padding-bottom:0;padding-top:9mm;border-bottom-width:0px;">17</div>
-							<div class="styLNAmountBox" style="width:36mm;height:11.5mm;padding-top:9mm; padding-bottom:0mm; border-bottom-width:0px;">
+							<div class="styLNRightNumBox" style="height:auto;padding-bottom:0;padding-top:9mm;border-bottom-width:0px;">17</div>
+							<div class="styLNAmountBox" style="width:36mm;height:auto;padding-top:9mm; padding-bottom:0mm; border-bottom-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2210Data/PenaltyAmt"/>
 								</xsl:call-template>
@@ -964,7 +1001,7 @@
       Form 
                             <span class="styBoldText" style="font-size:8pt;">2210</span> (2013)
                         </div>
-					</div>
+					</div><br></br>
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 3 -->
 					<!-- Page Header -->
@@ -974,16 +1011,16 @@
 					<div class="styBB" style="width:187mm;padding-top:0mm;">
 						<div style="float:left;">Form 2210 (2013)<span style="width:148mm;"/>
 						</div>
-						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span>
+						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">4</span>
 						</div>
 					</div>
 					<!-- END Page Header -->
 					<!-- Part lV -->
 					<!-- Part lV - Header -->
-	<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+	<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part lV</span>
-						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
+						<span class="styPartName" style="height:auto;width:15mm;font-size:13;">Part lV</span>
+						<span style="width:170mm;font-weight:normal;height:auto;" class="styPartDesc">
 							<span style="width:3mm;font-size:10pt;height:4mm;vertical-align:center;"/>
 							<b>Regular Method</b> (See the instructions if you are filing Form 1040NR or 1040NR-EZ.)
                         </span>
@@ -996,7 +1033,7 @@
 						</span>
 						<span class="styLNRightNumBox" style="font-size:7pt;height:13.8mm; width:7.1mm; border-bottom-width:0px; background-color:lightgrey;border-right-width:1px;"/>
 						<span style="float:left;">
-							<span class="styLnDesc" style="font-size:7pt;text-align:center; width:99.9mm; height:5mm; border-style: solid; border-color: black;border-bottom-width:1px; border-left-width:0px; border-right-width:0px; border-top-width:0px;">
+							<span class="styLnDesc" style="font-size:7pt;text-align:center;display:block; width:99.9mm; height:5mm; border-style: solid; border-color: black;border-bottom-width:1px; border-left-width:0px; border-right-width:0px; border-top-width:0px;">
 								<b>Payment Due Dates</b>
 							</span>
 							<span class="styLNDesc" style="font-size:7pt; width:25mm; height:8.6mm;text-align:center; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px;padding-top:0mm;line-height:150%;">
@@ -1060,7 +1097,7 @@
 							<span style="float:left;">
 								<b>2210 unless you checked a box in Part II</b>
 							</span>
-							<span class="styIRS2210DotLn">....</span>
+							<span class="styIRS2210DotLn">...</span>
 						</div>
 						<span class="styLNRightNumBox" style="font-size:7pt;height:20mm; width:7.1mm; border-bottom-width:1px; border-right-width:1px;padding-top:16mm;">19
                         </span>
@@ -1094,7 +1131,7 @@
 							<br/>
  Enter the amount, if any, from line 26 in the previous<br/>
 							<span style="float:left">column</span>
-							<span class="styIRS2210DotLn">................</span>
+							<span class="styIRS2210DotLn">...............</span>
 						</div>
 						<span class="styLNRightNumBox" style="height:14mm; width:7.1mm; border-bottom-width:1px; border-right-width:1px;padding-bottom:0;padding-top:10mm;">20
                         </span>
@@ -1121,7 +1158,7 @@
 						<span class="styLNLeftNumBox" style="width:7mm;height:5mm;">21</span>
 						<div class="styLNDesc" style="width:73mm;font-size:7pt;border-right-width:1px;height:5mm;">
 							<span style="float:left;">Add lines 19 and 20</span>
-							<span class="styIRS2210DotLn">............</span>
+							<span class="styIRS2210DotLn">...........</span>
 						</div>
 						<span class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:7.1mm; border-bottom-width:1px; border-right-width:1px;padding-bottom:0;padding-top:1.5mm">21
                         </span>
@@ -1148,7 +1185,7 @@
 						<div class="styLNDesc" style="width:73mm;font-size:7pt;border-right-width:1px;height:7mm;">       
         Add the amounts on lines 24 and 25 in the previous
       <span style="float:left">column</span>
-							<span class="styIRS2210DotLn">................</span>
+							<span class="styIRS2210DotLn">...............</span>
 						</div>
 						<span class="styLNRightNumBox" style="height:7.5mm; width:7.1mm; border-bottom-width:1px; border-right-width:1px ;padding-bottom:0;padding-top:4mm;">22
                         </span>
@@ -1205,7 +1242,7 @@
 						<div class="styLNDesc" style="width:73mm;font-size:7pt;border-right-width:1px;height:4mm;">   
         If line 23 is zero, subtract line 21 from line 22.<br/>
 							<span style="float:left;">Otherwise, enter -0-.</span>
-							<span class="styIRS2210DotLn">............</span>
+							<span class="styIRS2210DotLn">...........</span>
 						</div>
 						<span class="styLNRightNumBox" style="font-size:7pt;height:8mm; width:7.1mm; padding-top:4mm; border-bottom-width:1px; border-right-width:1px;">24
                         </span>
@@ -1260,8 +1297,8 @@
 		<span class="styLNLeftNumBox" style="width:7mm;height:9mm;padding-top:0mm;">26</span>
 						<div class="styLNDesc" style="width:73mm;font-size:7pt;border-right-width:1px;height:10mm;padding-top:0mm;">       
         Overpayment. If line 23 is more than line 18, subtract line 18 from line 23. Then go to line 20 of the next 
-        <span style="float:left;">column</span>
-							<span class="styIRS2210DotLn">...............</span>
+        <span style="float:none;">column</span>
+							<span class="styIRS2210DotLn">..............</span>
 						</div>
 						<span class="styLNRightNumBox" style="font-size:7pt;height:10mm; width:7.1mm; border-bottom-width:0px; border-right-width:1px;padding-top:6mm;">26</span>
 						<span class="styLNDesc" style="font-size:6pt; width:25mm; height:10mm; ;border-style: solid; text-align:right; border-color:black; border-top-width:0px; border-bottom-width:0px; border-left-width:0px; border-right-width:1px; padding-top:6mm;">
@@ -1353,12 +1390,12 @@
 						</div>
 					</div>
 					<!-- END Page Header -->
-					<div class="styBB" style="width:187mm;float:left;clear:none;">
+					<div class="styBB" style="width:187mm;float:left;clear:none;height:auto;">
 						<div class="styLNDesc" style="width:187mm;font-size:8pt;border-right-width:1px;height:4mm;">
 							<b>Schedule AI—Annualized Income Installment Method</b> (See the instructions.)
                         </div>
 					</div>
-					<div class="styBB" style="width:187mm;float:left;clear:none;">
+					<div class="styBB" style="width:187mm;float:left;clear:none;height:auto;">
 						<div class="styLNDesc" style="font-size:7pt; width:77mm; border-right-width:1px;height:11mm;">Estates and trusts, <b>do not</b> use the period ending dates shown to the right.
         Instead, use the following: 2/28/13, 4/30/13, 7/31/13, and 11/30/13.
                         </div>
@@ -1379,17 +1416,17 @@
 					</div>
 					<!-- Part l -->
 					<!-- Part I - Header -->
-					<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;clear:none;">
-						<span class="styPartName" style="height:1mm;width:12mm;font-size:13;">Part l</span>
-						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
-							<span style="width:3mm;font-size:10pt;height:0mm;vertical-align:top;"/>
+						<span class="styPartName" style="height:auto;width:12mm;font-size:13;">Part l</span>
+						<span style="width:170mm;font-weight:normal;height:auto;" class="styPartDesc">
+							<span style="width:3mm;font-size:10pt;height:auto;vertical-align:top;"/>
 							<b>Annualized Income Installments</b>
 						</span>
 					</div>
 					<!-- End Part 1 Header -->
 					<!-- Part 1 body -->
-					<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;clear:none;">
 						<!-- Line 1 -->
 						<div style="width:187mm;">
@@ -1509,7 +1546,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">
 								<span style="float:left;">Annualization amounts</span>
-								<span class="styIRS2210DotLn">..........</span>
+								<span class="styIRS2210DotLn">.........</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:6mm;  border-bottom-width:1px; border-right-width:1px; padding-top:1mm; ">5
                             </div>
@@ -1600,7 +1637,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:5mm;">
 								<span style="float:left;">Enter the <b>larger</b> of line 6 or line 7</span>
-								<span class="styIRS2210DotLn">.......</span>
+								<span class="styIRS2210DotLn">......</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:6mm;  border-bottom-width:1px; border-right-width:1px; padding-bottom:0;padding-top:1.5mm; ">8
                             </div>
@@ -1656,6 +1693,33 @@
 								</xsl:call-template>
 							</div>
 						</div>
+							<div class="styBoldText" style="width:187mm; height:1mm;"/>
+							<!-- Page Break and Footer-->
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+						
+							
+							<div style="float:right;">
+							<span style="width:50px;"/> 
+							Form 
+							<span class="styBoldText" style="font-size:8pt;">2210</span> (2013)                          
+                          </div>
+   
+                           </div>
+					
+					<br></br>
+					<!-- END Page Break and Footer-->
+					<!--Begin Page 5 -->
+					<!-- Page Header -->
+						<div  class="styBB" style="width:187mm; border-bottom-width:0px;padding-top:.5mm;">
+							<div style="float:right;font-size:6pt;font-weight:bold;"></div>
+						</div>
+					<div class="styBB" style="width:187mm;padding-top:0mm;">
+						<div style="float:left;">Form 2210 (2013)<span style="width:148mm;"/>
+						</div>
+						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">5</span>
+						</div>
+					</div>
+					<!-- END Page Header -->
 						<!-- Line10 -->
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left: 2.25mm;height:14mm;">10
@@ -1666,7 +1730,7 @@
 							<span style="float:left;">line 3 is more than $150,000). (Estates, trusts, and</span><br/>
 							<span style="float:left;">Form 1040NR or 1040NR-EZ filers, see</span><br/>
 							<span style="float:left;">instructions.)</span>
-							<span class="styIRS2210DotLn">.............</span>
+							<span class="styIRS2210DotLn">............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:17mm; width:6mm;border-bottom-width:1px; border-right-width:1px; padding-top:12.4mm; ">10
                             </div>
@@ -1696,8 +1760,8 @@
 							<div class="styLNLeftNumBox" style="padding-left: 2.25mm;height:8mm;">11
                             </div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:8mm;">Subtract line 10 from line 9. If zero or less, 
-								<span style="float:left;">enter -0-</span>
-								<span class="styIRS2210DotLn">.............</span>
+								<span style="float:none;">enter -0-</span>
+								<span style="float:right;" class="styIRS2210DotLn">............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:8mm; width:6mm;  border-bottom-width:1px; border-right-width:1px; padding-top:3mm; ">11
                             </div>
@@ -1759,7 +1823,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:8mm;">
 								Self-employment tax from line 34  (complete <span style="float:left;">Part II below)</span>
-								<span class="styIRS2210DotLn">.............</span>
+								<span class="styIRS2210DotLn">............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:8mm; width:6mm;  border-bottom-width:1px; border-right-width:1px; padding-top:3mm; ">13
                             </div>
@@ -1884,7 +1948,7 @@
 							<div class="styLNLeftNumBox" style="padding-left: 2.25mm;height:8mm;">17
                             </div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:8mm;">
-							Subtract line 16 from line 15. If zero or less, enter <span style="float:left;">-0-</span>
+							Subtract line 16 from line 15. If zero or less, enter <span style="float:none;">-0-</span>
 								<span class="styIRS2210DotLn">................</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:8mm; width:6mm;  border-bottom-width:1px; border-right-width:1px;padding-top:4mm">17
@@ -1990,7 +2054,7 @@
 							<div class="styLNLeftNumBox" style="padding-left: 2.25mm;height:8mm;">21
                             </div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:8mm;">
-								Subtract line 20 from line 19. If zero or less, enter<span style="float:left;"> -0-</span>
+								Subtract line 20 from line 19. If zero or less, enter<span style="float:none;"> -0-</span>
 								<span class="styIRS2210DotLn">..............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:8mm; width:6mm;  border-bottom-width:1px; border-right-width:1px; padding-top:4mm; ">21
@@ -2079,7 +2143,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:5mm;">
 								<span style="float:left;">Add lines 22 and 23</span>
-								<span class="styIRS2210DotLn">...........</span>
+								<span class="styIRS2210DotLn">..........</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:6mm;  border-bottom-width:1px; border-right-width:1px;padding-bottom:0;padding-top:1.5mm">24
                             </div>
@@ -2211,10 +2275,10 @@
 								<div style="width:187mm;float:none;clear:none;">
 								<!-- Part II -->
 								<!-- Part || - Header -->
-								<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px; border-top-width:0px;
+								<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px; border-top-width:0px;
           border-right-width:0px; border-left-width:0px;float:left;clear:none;">
-									<span class="styPartName" style="height:1mm;width:14mm; font-family:arial; font-size:13;">Part II</span>
-									<span style="width:170mm;font-weight:normal;" class="styPartDesc">
+									<span class="styPartName" style="height:auto;width:14mm; font-family:arial; font-size:13;">Part II</span>
+									<span style="width:170mm;font-weight:normal;height:auto;" class="styPartDesc">
 										<span style="width:3mm;font-size:10pt;height:0mm;vertical-align:top;"/>
 										<b>Annualized Self-Employment Tax </b>(Form 1040 and Form 1040NR filers only)
                                     </span>
@@ -2222,15 +2286,15 @@
 								<!-- End Part II Header -->
 								<!-- Part II body -->
 							</div>
-		<table class="styTable" cellspacing="0" style="width:187mm;float:left;clear:none">
+		<table class="styTable" cellspacing="0" style="width:187mm;float:none;height:auto;clear:none">
 				<tr>
 				<!--Line 26-->
-			<td class="styLNLeftNumBox" style="width:5mm; padding-left: 2mm; height:4mm; padding-bottom:3mm;">26
+			<td class="sty2210LNLeftNumBox" style="width:8mm;padding-left:2.25mm; height:4mm; padding-bottom:3mm;font-weight:bold;font-size:7pt;">26
                                     </td>
 			<td style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">Net earnings from self-employment for the period
 			<span style="float:left;">(see instructions)</span><span class="styIRS2210DotLn">...........</span>
               </td>
-		<td class="styLNRightNumBox" style="font-size:7pt;height:4mm; width:5mm;  border-bottom-width:1px; border-right-width:1px; padding-top:1mm; ">26
+		<td class="sty2210LNRightNumBox" style="font-size:7pt;height:4mm; width:6mm; border-style:solid;border-bottom-width:1px; border-right-width:1px; padding-top:1mm; font-weight:bold;text-align:center;border-left-width:1px;border-top-width:0px;">26
                                     </td>
 									<td class="styTableCellSmall" style="height:4mm; width:26mm;border-color:black; border-left-width:0px; vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
@@ -2255,30 +2319,30 @@
 								</tr>
 	<!--Line 27-->
 		<tr>
-		<td class="styLNLeftNumBox" style="width:5mm;padding-left: 2.25mm;height:5mm;">27
+		<td class="sty2210LNLeftNumBox" style="width:8mm;padding-left: 2.25mm;height:5mm;font-weight:bold;font-size:7pt;">27
                                     </td>
 									<td style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">
-										<span style="float:left;">Prorated social security tax limit</span>
-										<span class="styIRS2210DotLn">.....</span>
+										<span style="float:none;">Prorated social security tax limit</span>
+										<span class="styIRS2210DotLn" style="float:none;">.....</span>
 									</td>
-				<td class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:5mm;  border-bottom-width:1px; border-right-width:1px; padding-top:1mm; ">27
+				<td class="sty2210LNRightNumBox" style="font-size:7pt;height:5mm; width:5mm; border-style:solid; border-bottom-width:1px; border-right-width:1px; padding-top:1mm; font-weight:bold; text-align:center;border-left-width:1px;border-top-width:0px;">27
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; ;border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">$28,425</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">$47,375</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">$75,800</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px;border-left-width:0px; border-right-width:0px; border-bottom-width:1px; text-align:center;padding-top:1mm;">$113,700</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; ;border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">$28,425</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">$47,375</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">$75,800</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px;border-left-width:0px; border-right-width:0px; border-bottom-width:1px; text-align:center;padding-top:1mm;">$113,700</td>
 								</tr>
      <!--Line 28-->
 		<tr>
-		<td class="styLNLeftNumBox" style="width:5mm; padding-left: 2mm; padding-bottom:9mm; height:9mm;">28
+		<td class="sty2210LNLeftNumBox" style="width:8mm; padding-left: 2.25mm; padding-bottom:9mm; height:9mm;font-weight:bold;font-size:7pt;">28
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:9mm;">
+									<td class="sty2210LNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:9mm;">
                                     Enter actual wages for the period subject to social<br/>
 									security tax or the 6.2% portion of the 7.65%<br/>
 									railroad retirement (tier 1) tax. <b>Exception:</b> If you<br/>
 									filed Form 4137 or Form 8919, see instructions
 									</td>
-									<td class="styLNRightNumBox" style="font-size:7pt;height:8mm; width:5mm;  border-bottom-width:1px; border-right-width:1px; padding-top:4mm; ">28
+									<td class="sty2210LNRightNumBox" style="font-size:7pt;height:8mm; width:5mm; border-style:solid; border-bottom-width:1px; border-right-width:1px; padding-top:4mm; font-weight:bold;text-align:center;border-left-width:1px;border-top-width:0px;">28
                                     </td>
 									<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
@@ -2303,9 +2367,9 @@
 								</tr>
 <!--Line 29-->
 								<tr>
-									<td class="styLNLeftNumBox" style="width:5mm; padding-left: 2.25mm;height:5mm;padding-bottom:3mm;">29
+									<td class="sty2210LNLeftNumBox" style="width:8mm; padding-left: 2.25mm;height:5mm;padding-bottom:3mm;font-weight:bold;font-size:7pt;">29
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:5mm;">
+									<td class="sty2210LNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:5mm;">
 										<span style="float:left;">Subtract line 28 from line 27. If zero or less, enter </span>
 										<br/>-0-
 										<span class="styBoldText">
@@ -2321,7 +2385,7 @@
                                     <span style="width:16px"/>.
                                   </span>
 									</td>
-									<td class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:5mm;  border-bottom-width:1px; border-right-width:1px; padding-top:1mm; ">29
+									<td class="sty2210LNRightNumBox" style="font-size:7pt;height:5mm; width:5mm; border-style:solid; border-bottom-width:1px; border-right-width:1px; padding-top:1mm; font-weight:bold;text-align:center;border-left-width:1px;border-top-width:0px;">29
                                     </td>
 									<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
@@ -2346,28 +2410,28 @@
 								</tr>
 <!--Line 30-->
 								<tr>
-									<td class="styLNLeftNumBox" style="width:5mm; padding-left: 2mm;height:5mm;">30
+									<td class="sty2210LNLeftNumBox" style="width:8mm; padding-left: 2.25mm;height:5mm;font-weight:bold;font-size:7pt;">30
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">
+									<td class="sty2210LNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">
 										<span style="float:left;">Annualization amounts</span>
 										<span class="styIRS2210DotLn">.........</span>
 									</td>
-									<td class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:5mm;  border-bottom-width:1px; border-right-width:1px; padding-top:1mm; ">30
+									<td class="sty2210LNRightNumBox" style="font-size:7pt;height:5mm; width:5mm; border-style:solid; border-bottom-width:1px; border-right-width:1px; padding-top:1mm; font-weight:bold;text-align:center;border-left-width:1px;border-top-width:0px;">30
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; ;border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.496</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.2976</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.186</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px;border-left-width:0px; border-right-width:0px; border-bottom-width:1px; text-align:center;padding-top:1mm;">0.124</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; ;border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.496</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.2976</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.186</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px;border-left-width:0px; border-right-width:0px; border-bottom-width:1px; text-align:center;padding-top:1mm;">0.124</td>
 								</tr>
 <!--Line 31-->
 								<tr>
-									<td class="styLNLeftNumBox" style="width:5mm; padding-left: 2mm;height:5mm;padding-bottom:0mm;">31
+									<td class="sty2210LNLeftNumBox" style="width:8mm; padding-left: 2.25mm;height:5mm;padding-bottom:0mm;font-weight:bold;font-size:7pt;">31
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">
+									<td class="sty2210LNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">
 										<span style="float:left;">Multiply line 30 by the <b>smaller</b> of line 26 or line 29</span>
 										<span class="styIRS2210DotLn"></span>
 									</td>
-				<td class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:5mm;  border-bottom-width:1px; border-right-width:1px; padding-top:1mm; ">31
+				<td class="sty2210LNRightNumBox" style="font-size:7pt;height:5mm; width:5mm; border-style:solid; border-bottom-width:1px; border-right-width:1px; padding-top:1mm; font-weight:bold;text-align:center;border-left-width:1px;border-top-width:0px;">31
                                     </td>
 									<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
@@ -2392,28 +2456,28 @@
 								</tr>
 <!--Line 32-->
 								<tr>
-									<td class="styLNLeftNumBox" style="width:5mm; padding-left: 2.25mm;height:5mm;">32
+									<td class="sty2210LNLeftNumBox" style="width:8mm; padding-left: 2.25mm;height:5mm;font-weight:bold;font-size:7pt;">32
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">
+									<td class="sty2210LNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:4mm;">
 										<span style="float:left;">Annualization amounts</span>
 										<span class="styIRS2210DotLn">........</span>
 									</td>
-									<td class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:5mm;  border-bottom-width:1px; border-right-width:1px; padding-top:1mm; ">32
+									<td class="sty2210LNRightNumBox" style="font-size:7pt;height:5mm; width:5mm; border-style:solid; border-bottom-width:1px; border-right-width:1px; padding-top:1mm; font-weight:bold;text-align:center;border-left-width:1px;border-top-width:0px;">32
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; ;border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.116</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.0696</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.0435</td>
-									<td class="styLNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px;border-left-width:0px; border-right-width:0px; border-bottom-width:1px; text-align:center;padding-top:1mm;">0.029</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; ;border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.116</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.0696</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px; border-bottom-width:1px; border-left-width:0px; border-right-width:1px; text-align:center;padding-top:1mm;">0.0435</td>
+									<td class="sty2210LNDesc" style="font-size:7pt; width:26mm; height:5mm; border-style: solid; border-color:black; border-top-width:0px;border-left-width:0px; border-right-width:0px; border-bottom-width:1px; text-align:center;padding-top:1mm;">0.029</td>
 								</tr>
 <!--Line 33-->
 								<tr>
-									<td class="styLNLeftNumBox" style="width:5mm; padding-left: 2.25mm;height:5mm;">33
+									<td class="sty2210LNLeftNumBox" style="width:8mm; padding-left: 2.25mm;height:5mm;font-weight:bold;font-size:7pt;">33
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:5mm;">
+									<td class="sty2210LNDesc" style="font-size:7pt; width:69mm; border-right-width:1px;height:5mm;">
 										<span style="float:left;">Multiply line 26 by line 32</span>
 										<span class="styIRS2210DotLn">.......</span>
 									</td>
-									<td class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:5mm;  border-bottom-width:1px; border-right-width:1px; padding-top:1mm; ">33
+									<td class="sty2210LNRightNumBox" style="font-size:7pt;height:5mm; width:5mm; border-style:solid; border-bottom-width:1px; border-right-width:1px; padding-top:1mm; font-weight:bold;text-align:center;border-left-width:1px;border-top-width:0px;">33
                                     </td>
 									<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">
@@ -2438,16 +2502,16 @@
 								</tr>
 <!--Line 34-->
 								<tr>
-									<td class="styLNLeftNumBox" style="width:5mm;padding-left: 2mm;height:5mm; border-bottom-width:1px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px;padding-bottom:3mm;">34
+									<td class="sty2210LNLeftNumBox" style="width:8mm;padding-left: 2.25mm;height:5mm; border-bottom-width:1px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px;padding-bottom:3mm;font-weight:bold;font-size:7pt;">34
                                     </td>
-									<td class="styLNDesc" style="font-size:7pt; width:69mm; border-bottom-width:1px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px; height:5mm;">
+									<td class="sty2210LNDesc" style="font-size:7pt; width:69mm; border-bottom-width:1px; border-color:black; border-style:solid; border-left-width:0px; border-right-width:0px; border-top-width:0px; height:5mm;">
 									Add lines 31 and 33. Enter here and on line 
-										<span style="float:left;"> 13 above</span>
-										<span class="styIRS2210DotLn">...........
+										<span style="float:none;"> 13 above</span>
+										<span class="styIRS2210DotLn" style="float:none;">...........
                                             <img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/>
 										</span>
 									</td>
-									<td class="styLNRightNumBox" style="font-size:7pt;height:5mm; width:5mm;  border-bottom-width:0px; border-right-width:1px; border-bottom-width:1px;padding-top:1mm; ">34
+									<td class="sty2210LNRightNumBox" style="font-size:7pt;height:5mm; width:5mm; border-style:solid; border-bottom-width:0px; border-right-width:1px; border-bottom-width:1px;padding-top:1mm;font-weight:bold;text-align:center;border-left-width:1px;border-top-width:0px;">34
                                     </td>
 									<td class="styTableCellSmall" style="width:26mm; border-color:black; border-left-width:0px; vertical-align:bottom;">
 										<xsl:call-template name="PopulateAmount">

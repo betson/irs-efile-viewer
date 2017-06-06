@@ -89,8 +89,10 @@
     </xsl:if>
   </xsl:template>
   <xsl:template match="/">
-  <html>
+  <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
     <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
       <title>
         <xsl:call-template name="FormTitle">
           <xsl:with-param name="RootElement" select="local-name($IRS1120SchedulePHData)"/>
@@ -123,7 +125,7 @@
         <!--   END WARNING LINE   -->
         <!--   BEGIN FORM HEADER   -->
         <div class="styIRS1120SchedulePHBB">
-          <div class="styIRS1120SchedulePHFN" style="height:19mm;">
+          <div class="styIRS1120SchedulePHFN" style="height:19mm;width:30mm">
             <div class="styFormNumber" style="width:29mm;font-size:9pt;">SCHEDULE PH
               <br/>
               <span style="font-size:9pt;">(Form 1120)</span>      
@@ -132,7 +134,6 @@
               </xsl:call-template>
               <span style="font-size:7pt;font-weight:normal;">
                 <br/>(Rev. December 2013)
-                <br/>
                 <br/>
               </span>
             </div>
@@ -157,7 +158,7 @@
         <!--  END FORM HEADER   -->
         <!--   BEGIN TAXPAYER INFO   -->
         <div style="width:187mm;float:left;clear:left;">
-          <div class="styNameBox" style="width:135mm;height:8mm;font-size:7pt;font-weight:normal;">
+          <div class="styNameBox" style="width:135mm;height:auto;font-size:7pt;font-weight:normal;">
             Name<br/>
             <span>
               <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -191,7 +192,7 @@
         <!--   END PART I HEADER   -->
         <!--   BEGIN LINES 1 THROUGH 4   -->
         <div style="width:187mm;">
-          <span class="styIRS1120SchedulePHImg" style="width:6mm;height:22.3mm;text-align:center;">
+          <span class="styIRS1120SchedulePHImg" style="width:6mm;height:22.3mm;text-align:center;padding-top: 2mm;">
             <img src="{$ImagePath}/1120SchPH_Additions.gif" alt="Additions" valign="center"/>
           </span>
           <!-- BEGIN LINE 1 -->
@@ -203,8 +204,8 @@
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="border-bottom-width: 0px; height:4mm"/>
-              <span class="styLNAmountBox" style="border-bottom-width: 0px;border-right-width: 0px; height:4mm"/>
+              <div class="styLNRightNumBox" style="border-bottom-width: 0px; height:4mm"/>
+              <div class="styLNAmountBox" style="border-bottom-width: 0px;border-right-width: 0px; height:4mm"/>
             </span>
           </div>
           <div class="styGenericDiv" style="width:181mm;">
@@ -213,16 +214,16 @@
               <span class="styLNDesc" style="width:133mm;">
                 <span style="float:left;">Form 1120, line 28 </span> 
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">..........................</span>
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">........................</span>
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4mm">1</span>
-              <span class="styLNAmountBox" style="height: 4mm; border-right-width: 0px;">    
+              <div class="styLNRightNumBox" style="height: 4mm">1</div>
+              <div class="styLNAmountBox" style="height: 4mm; border-right-width: 0px;">    
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/TaxableIncomeNetOprLossAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--   END LINE 1   -->
@@ -233,16 +234,16 @@
               <span class="styLNDesc" style="width: 133mm">
                 <span style="float:left;">Contributions deducted in figuring line 1.  Enter amount from Form 1120, line 19 </span>
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.......</span> 
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.......</span> 
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4mm;">2</span>
-              <span class="styLNAmountBox" style="height: 4mm;border-right-width: 0px;">
+              <div class="styLNRightNumBox" style="height: 4mm;">2</div>
+              <div class="styLNAmountBox" style="height: 4mm;border-right-width: 0px;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/ContributionsDeductedAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--   END LINE 2   -->
@@ -257,16 +258,16 @@
                   </xsl:call-template>
                 </span>
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.</span>  
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.</span>  
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4.5mm;border-bottom-width: 1px;">3</span>
-              <span class="styLNAmountBox" style="height: 4.5mm;border-right-width:0px;border-bottom-width:1px;">
+              <div class="styLNRightNumBox" style="height: 4.5mm;border-bottom-width: 1px;">3</div>
+              <div class="styLNAmountBox" style="height: 4.5mm;border-right-width:0px;border-bottom-width:1px;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/ExcessExpensesDeprec545b6Amt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--  END LINE 3   -->
@@ -277,16 +278,16 @@
               <span class="styLNDesc" style="width:133mm;padding-top:.5mm;">
                 <span style="float:left;">Total.  Add lines 1 through 3 </span>
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.......................</span> 
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.....................</span> 
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height:5mm;border-bottom-width:0px;padding-top:1mm;">4</span>
-              <span class="styLNAmountBox" style="height:5mm;border-bottom-width:0px;padding-top:1mm;">
+              <div class="styLNRightNumBox" style="height:6mm;border-bottom-width:0px;padding-top:1mm;">4</div>
+              <div class="styLNAmountBox" style="height:6mm;border-bottom-width:0px;padding-top:1mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/TotalNetAdditionsAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--  END LINE 4   -->
@@ -306,8 +307,8 @@
               </span>
             </span>
             <span style="float:right;clear:none:">
-              <span class="styLNRightNumBox" style="border-bottom-width: 0px; height: 4mm"/>
-              <span class="styLNAmountBox" style="border-bottom-width:0px; height: 4mm"/>
+              <div class="styLNRightNumBox" style="border-bottom-width: 0px; height: 4mm"/>
+              <div class="styLNAmountBox" style="border-bottom-width:0px; height: 4mm"/>
             </span>
           </div>
           <div class="styGenericDiv" style="width:181mm;">
@@ -320,16 +321,16 @@
                   </xsl:call-template>
                 </span>
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.........................</span>  
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.........................</span>  
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4.5mm">5</span>
-              <span class="styLNAmountBox" style="border-right-width: 0px; height: 4.5mm">
+              <div class="styLNRightNumBox" style="height: 4.5mm">5</div>
+              <div class="styLNAmountBox" style="border-right-width: 0px; height: 4.5mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/OtherTaxesNotDeductedAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--   END LINE 5   -->
@@ -340,16 +341,16 @@
               <span class="styLNDesc" style="width: 133mm">
                 <span style="float:left;">Contributions deductible under section 545(b)(2).  See instructions for limitation </span> 
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">......</span> 
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">......</span> 
 			  </span>
 			</span>
 			<span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4mm">6</span>
-              <span class="styLNAmountBox" style="height: 4mm">
+              <div class="styLNRightNumBox" style="height: 4mm">6</div>
+              <div class="styLNAmountBox" style="height: 4mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/ContributionsDedUnder545b5Amt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--   END LINE 6   -->
@@ -360,16 +361,16 @@
               <span class="styLNDesc" style="width: 133mm">
                 <span style="float:left;">Net operating loss for the preceding tax year deductible under section 545(b)(4) </span> 
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">......</span>
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">......</span>
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4mm">7</span>
-              <span class="styLNAmountBox" style="height: 4mm">
+              <div class="styLNRightNumBox" style="height: 4mm">7</div>
+              <div class="styLNAmountBox" style="height: 4mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/NetOperatingLossPrecTYDedAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--   END LINE 7   -->
@@ -381,18 +382,18 @@
               <span class="styLNDesc" style="width:92.50mm;">
                 <span style="float:left;">Net capital gain from Schedule D (Form 1120), line 17 </span>  
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.....</span>
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.....</span>
               </span>
             </span>
             <span style="float:right;clear:none;">     
-              <span class="styLNRightNumBox" style="height:4.5mm;">8a</span>
-              <span class="styLNAmountBox" style="height:4.5mm;">
+              <div class="styLNRightNumBox" style="height:4.5mm;">8a</div>
+              <div class="styLNAmountBox" style="height:4.5mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/NetCapitalGainAmt"/>
                 </xsl:call-template>
-              </span>            
-              <span class="styLNRightNumBox" style="border-bottom-width:0px;background-color: lightgrey; height: 4.5mm"/>
-              <span class="styLNAmountBox" style="height: 4.5mm;border-bottom-width:0px"/>
+              </div>            
+              <div class="styLNRightNumBox" style="border-bottom-width:0px;background-color: lightgrey; height: 4.5mm"/>
+              <div class="styLNAmountBox" style="height: 4.5mm;border-bottom-width:0px"/>
             </span>
           </div>
           <!--   END LINE 8a   -->
@@ -405,10 +406,10 @@
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="border-bottom-width: 0px; height: 4.5mm"/>
-              <span class="styLNAmountBox" style="border-bottom-width: 0px;border-left-width: 1px; height: 4.5mm"/>
-              <span class="styLNRightNumBox" style="border-bottom-width:1px;border-right-width: 0px; background-color: lightgrey; height: 4.5mm"/>
-              <span class="styLNAmountBox" style="border-bottom-width: 0px;border-left-width: 1px; height: 4.5mm"/>
+              <div class="styLNRightNumBox" style="border-bottom-width: 0px; height: 4.5mm"/>
+              <div class="styLNAmountBox" style="border-bottom-width: 0px;border-left-width: 1px; height: 4.5mm"/>
+              <div class="styLNRightNumBox" style="border-bottom-width:1px;border-right-width: 0px; background-color: lightgrey; height: 4.5mm"/>
+              <div class="styLNAmountBox" style="border-bottom-width: 0px;border-left-width: 1px; height: 4.5mm"/>
             </span>
           </div>
           <div class="styGenericDiv" style="width:181mm;">
@@ -421,22 +422,22 @@
                   </xsl:call-template>
                 </span>
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">..............</span> 
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">..............</span> 
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4.5mm">8b</span>
-              <span class="styLNAmountBox" style="height: 4.5mm">
+              <div class="styLNRightNumBox" style="height: 4.5mm">8b</div>
+              <div class="styLNAmountBox" style="height: 4.5mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/IncomeTaxNetCapitalGainAmt"/>
                 </xsl:call-template>
-              </span>
-              <span class="styLNRightNumBox" style="height: 4.5mm">8c</span>
-              <span class="styLNAmountBox" style="height: 4.5mm">
+              </div>
+              <div class="styLNRightNumBox" style="height: 4.5mm">8c</div>
+              <div class="styLNAmountBox" style="height: 4.5mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/NetCapitalGainLessIncomeTaxAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--   END LINE 8b  -->
@@ -449,16 +450,16 @@
                 Deduction for dividends paid (other than dividends paid after the end of the tax year).  Enter amount
                 <span style="float:left;">from Part VI, line 5 </span>
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">..........................</span>  
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">..........................</span>  
               </span> 
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 8mm;border-bottom-width:1px;padding-top:4mm;">9</span>
-              <span class="styLNAmountBox" style="height: 8mm;border-right-width: 0px;border-bottom-width:1px;padding-top:4mm;">
+              <div class="styLNRightNumBox" style="height: 8mm;border-bottom-width:1px;padding-top:4mm;">9</div>
+              <div class="styLNAmountBox" style="height: 8mm;border-right-width: 0px;border-bottom-width:1px;padding-top:4mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/DeductionDividendsPaidAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--   END LINE 9   -->
@@ -469,8 +470,8 @@
               <span class="styLNDesc" style="width: 133mm"/>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="border-bottom-width: 0px; height: 4mm"/>
-              <span class="styLNAmountBox" style="border-bottom-width: 0px; height: 4mm"/>
+              <div class="styLNRightNumBox" style="border-bottom-width: 0px; height: 4mm"/>
+              <div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4mm"/>
             </span>
           </div>
           <div class="styGenericDiv" style="width:181mm;">
@@ -488,16 +489,16 @@
                   </xsl:call-template>
                 </span>
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">......................</span> 
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">......................</span> 
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="border-bottom-width:1px; height: 4.5mm;">10</span>
-              <span class="styLNAmountBox" style="border-bottom-width:1px;height:4.5mm;">
+              <div class="styLNRightNumBox" style="border-bottom-width:1px; height: 4.5mm;">10</div>
+              <div class="styLNAmountBox" style="border-bottom-width:1px; height: 4.5mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/TotalDeductionsAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>          
           </div>
           <!--   END LINE 10   -->
@@ -508,8 +509,8 @@
               <span class="styLNDesc" style="width: 133mm"/>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="border-bottom-width: 0px; height:4mm;"/>
-              <span class="styLNAmountBox" style="border-bottom-width: 0px; height:4mm;"/>
+              <div class="styLNRightNumBox" style="border-bottom-width: 0px; height: 4mm"/>
+              <div class="styLNAmountBox" style="border-bottom-width: 0px; height: 4mm"/>
 			</span>
           </div>
           <div class="styGenericDiv" style="width:181mm;">
@@ -518,16 +519,16 @@
               <span class="styLNDesc" style="width: 133mm">
                 <span style="float:left;">Subtract line 10 from line 4 </span>
                 <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.......................</span>  
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.......................</span>  
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4.5mm;">11</span>
-              <span class="styLNAmountBox" style="height: 4.5mm;">
+              <div class="styLNRightNumBox" style="height: 4.5mm;">11</div>
+              <div class="styLNAmountBox" style="height: 4.5mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/AdditionsLessDeductionsAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>          
           </div>
           <!--   END LINE 11   -->
@@ -538,16 +539,16 @@
               <span class="styLNDesc" style="width: 133mm">Dividends paid after the end of the tax year (other than deficiency dividends defined in section 
                 <span style="float:left;"> 547(d)), but not more than the smaller of line 11 or 20% of Part VI, line 1 </span>
 			    <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.........</span>
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.........</span>
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 8mm;border-bottom-width:1px;padding-top:4mm; ">12</span>
-              <span class="styLNAmountBox" style=" height: 8mm;border-right-width: 0px;border-bottom-width:1px;padding-top:4mm;">
+              <div class="styLNRightNumBox" style="height: 8mm;border-bottom-width:1px;padding-top:4mm; ">12</div>
+              <div class="styLNAmountBox" style=" height: 8mm;border-right-width: 0px;border-bottom-width:1px;padding-top:4mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/DivPaidAfterEndOfTaxYearAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--   END LINE 12   -->
@@ -558,16 +559,16 @@
               <span class="styLNDesc" style="width: 133mm;">
                 <span style="float:left;"><b>Undistributed PHC income. </b>Subtract line 12 from line 11. </span>
 			    <!--Dotted Line-->
-			    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">..............</span>
+			    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">............</span>
               </span>
             </span>
             <span style="float:right;clear:none;">
-              <span class="styLNRightNumBox" style="height: 4.5mm;border-bottom-width:0px;padding-top:1mm;">13</span>
-              <span class="styLNAmountBox" style="height: 4.5mm;border-bottom-width:0px;padding-top:1mm; ">
+              <div class="styLNRightNumBox" style="height: 4.5mm;border-bottom-width:0px;padding-top:1mm;">13</div>
+              <div class="styLNAmountBox" style="height: 4.5mm;border-bottom-width:0px;padding-top:1mm; ">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/UndistributedPHCIncomeAmt"/>
                 </xsl:call-template>
-              </span>
+              </div>
             </span>
           </div>
           <!--     END LINE 13   -->
@@ -602,7 +603,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;">Dividends </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">..............................</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">............................</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -623,7 +624,7 @@
             <div class="styLNDesc" style="width:99mm;">
               <span style="float:left;">Interest </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.....................</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">...................</span>
 		    </div>
 		  </div>
 		  <div style="float:right;clear:none;">
@@ -649,7 +650,7 @@
                 </xsl:call-template> 
               </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.........</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.........</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -676,7 +677,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;">Royalties (other than mineral, oil, gas, or copyright royalties) </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">..............</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">..............</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -696,7 +697,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;">Annuities </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">..............................</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">............................</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -717,7 +718,7 @@
             <div class="styLNDesc" style="width:99mm;">
               <span style="float:left;">Rents </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">......................</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">....................</span>
 		    </div>
 		  </div>
 		  <div style="float:right;clear:none;">
@@ -744,7 +745,7 @@
                 </xsl:call-template> 
               </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.........</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.........</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -772,7 +773,7 @@
             <div class="styLNDesc" style="width:99mm;">
               <span style="float:left;">Mineral, oil, and gas royalties </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">...............</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.............</span>
 		    </div>
 		  </div>
 		  <div style="float:right;clear:none;">
@@ -798,7 +799,7 @@
                 </xsl:call-template> 
               </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -825,7 +826,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;">Copyright royalties </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">...........................</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">...........................</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -845,7 +846,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;">Produced film rents </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">...........................</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.........................</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -865,7 +866,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;">Compensation received for use of corporation property by 25% or more shareholder </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.......</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.......</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -885,7 +886,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;">Amounts received under personal service contracts and from their sale </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">...........</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">...........</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -905,7 +906,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;">Amounts includible in taxable income from estates and trusts </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">...........</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">...........</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -925,7 +926,7 @@
             <div class="styLNDesc" style="width:139mm;">
               <span style="float:left;"><b>PHC income.</b>  Add lines 14 through 24 </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.....................</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.....................</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -956,7 +957,7 @@
               <b>PHC tax.</b>  Multiply the amount on line 13 by 20%. Enter the result here and on Schedule J (Form 1120), 
               <span style="float:left;">line 8, or on the proper line of the appropriate tax return. </span>
               <!--Dotted Line-->
-			  <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">................</span>
+			  <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">..............</span>
 			</div> 
           </div>
           <div style="float:right;clear:none;">
@@ -983,7 +984,7 @@
         <div class="pageEnd"/>
         <!--END FOOTER-->  
         <!--BEGIN HEADER-->
-        <div class="styBB" style="width:187mm;border-bottom:0px solid black;">
+        <div class="styBB" style="width:187mm;border-bottom:0px solid black;float:none;">
           <div style="float: left; clear: none">Schedule PH (Form 1120) (Rev. 12-2013)</div>        
           <div style="float:right">
             Page <span class="styBoldText" style="font-size: 8pt">2</span>
@@ -1047,7 +1048,7 @@
             <xsl:for-each select="$IRS1120SchedulePHData/StockOwnrRqrUndSect542a2Grp">
               <tr>
                 <td class="styIRS1120SchedulePHTableCellA" style="text-align: left">
-                  <span class="styIRS1120SchedulePHLN" style="padding-left:1.75mm;">
+                  <span class="styIRS1120SchedulePHLN" style="padding-right:2.5mm;">
                     <xsl:if test="position()=1">1</xsl:if>
                   </span>
                   <xsl:call-template name="PopulateText">
@@ -1124,20 +1125,20 @@
     <!--   END PART IV TABLE   -->
     <!--   BEGIN LINE 2   -->
   <div class="styIRS1120SchedulePHLineItem" style="float: none; clear: both;width:187mm">
-    <span class="styIRS1120SchedulePHLN" style="padding-top:4.5mm;padding-left: 1.75mm;">2</span>
+    <span class="styIRS1120SchedulePHLN" style="padding-top:6.5mm;padding-left: 1.75mm;">2</span>
     <span class="styIRS1120SchedulePHLNLtMargin"/>
-    <span class="styIRS1120SchedulePHLNDesc" style="width: 139.25mm;padding-top:4.5mm;">
-      <span style="float:left;">Add the amounts in columns (c) and (d) and enter the totals here </span>
+    <span class="styIRS1120SchedulePHLNDesc" style="width: 139.25mm;padding-top:6.5mm;height:12mm;">
+      <span style="float:left;padding-left: 2.5mm;height:6mm;">Add the amounts in columns (c) and (d) and enter the totals here </span>
       <!--Dotted Line-->
-      <span style="font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">............</span> 
+      <span style="font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">............</span> 
       <img src="{$ImagePath}/1120SchPH_Bullet.gif" alt="Bullet"/>
     </span>
-    <span class="styIRS1120SchedulePHPreferred" style="border-right-width: 0px;width:19.73mm;">
+    <span class="styIRS1120SchedulePHPreferred" style="border-right-width: 0px;width:23.5mm;height:12mm;padding-top:6.5mm;">
       <xsl:call-template name="PopulatePercent">
         <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/CommonStockOwnedPercentRt"/>
       </xsl:call-template>
     </span>
-    <span class="styIRS1120SchedulePHCommon" style="border-left-width: 1px;">
+    <span class="styIRS1120SchedulePHCommon" style="width:18.75mm;height:12mm;border-left: 1px solid black;padding-top:6.5mm;">
       <xsl:call-template name="PopulatePercent">
         <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/PreferredStockOwnedPercentRt"/>
       </xsl:call-template>
@@ -1257,7 +1258,7 @@
             </td>
             <td class="styIRS1120SchedulePHTableCellH" style="width:25mm; height:4mm;text-align:right">
               <xsl:choose>
-                <xsl:when test="$IRS1120SchedulePHData/ExcessExpensesDepreciationGrp/ExcessAmt= ''">
+                <xsl:when test="$IRS1120SchedulePHData/ExcessExpensesDepreciationGrp/ExcessAmt != ''">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="ExcessAmt"/>
                   </xsl:call-template>
@@ -1275,41 +1276,41 @@
       <!-- If the Print parameter is Separated and the number of elements exceeds the container height, display blank rows -->
       <!-- and a message in the first row directing users to the additional data table -->
       <xsl:if test="(($Print = $Separated) and (count($IRS1120SchedulePHData/ExcessExpensesDepreciationGrp) &gt; 5))">
-       <!-- <xsl:call-template name="AddRowsPartV">
+        <xsl:call-template name="AddRowsPartV">
           <xsl:with-param name="EECount" select="0"/>
           <xsl:with-param name="NumOfRows" select="5"/>
-        </xsl:call-template>-->
+        </xsl:call-template>
       </xsl:if>
     </tbody>
   </table>
 </div>
-<!--<xsl:call-template name="SetInitialDynamicTableHeight">
+<xsl:call-template name="SetInitialDynamicTableHeight">
   <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/ExcessExpensesDepreciationGrp"/>
   <xsl:with-param name="containerHeight" select="6"/>
   <xsl:with-param name="containerID" select=" 'EEctn' "/>
-</xsl:call-template>-->
+</xsl:call-template>
 <!--   END PART V TABLE   -->
 <!--   BEGIN LINE 2   -->
 <div class="styIRS1120SchedulePHLineItem" style="float:none">
   <span class="styIRS1120SchedulePHLN">2</span>
   <span class="styIRS1120SchedulePHLNLtMargin"/>
-  <span class="styIRS1120SchedulePHLNDesc" style="width: 156.50mm;">
+  <span class="styIRS1120SchedulePHLNDesc" style="width: 156mm;border-right: 1px solid black;">
     <b>Total excess of expenses and depreciation over rent or other compensation. </b>Add the amounts in column (h).
   </span>
-  <span class="styIRS1120SchedulePHCommon" style="height: 4mm; width: 24.3mm;padding-top: 0px; border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px"/>
+  <span class="styIRS1120SchedulePHCommon" style="height: 4mm; width: 29.3mm;padding-top: 0px; border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px"/>
 </div>
 <div class="styIRS1120SchedulePHLineItem">
   <span class="styIRS1120SchedulePHLNLtMargin" style="width: 6mm"/>
   <span class="styIRS1120SchedulePHLNDesc" style="width: 156.50mm;">
-    <span style="float:left;">Enter the total here and on Part I, line 3
+    <span style="float:left;padding-left:3.5mm;">Enter the total here and on Part I, line 3
       <xsl:call-template name="SetFormLinkInline">
         <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/TotalExcessExpensesDeprecAmt"/>
       </xsl:call-template>
     </span>
     <!--Dotted Line-->
-    <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">........................</span> 
+    <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">......................</span> 
   </span>
-  <span class="styIRS1120SchedulePHCommon" style="font-size: 6pt;height: 4mm; width: 24.3mm;padding-top: 0px; border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;">
+  <span class="styIRS1120SchedulePHCommon" style="font-size: 6pt;height: 4mm; width: 29.3mm;padding-top: 0px; border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;">
     <xsl:call-template name="PopulateAmount">
       <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/TotalExcessExpensesDeprecAmt"/>
     </xsl:call-template>
@@ -1317,8 +1318,8 @@
 </div>
 <div class="styIRS1120SchedulePHNoteHdr" style="border-top-width: 0px; border-bottom-width: 0px">
   <span class="styIRS1120SchedulePHNoteHdrTitle" style="margin-left: 6mm; width: 10mm; float: left; clear: none">Note:</span>
-  <span style="width: 143mm; float: left; clear: none">Attach a statement showing the names and addresses of persons from whom rent or other compensation was received for the use of, or the right to use, each property.</span>
-  <span class="styIRS1120SchedulePHCommon" style="height:8mm; width: 24.3mm; padding-top: 0mm; border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; background-color: lightgrey"/>
+  <span style="width: 141mm; float: left; clear: none">Attach a statement showing the names and addresses of persons from whom rent or other compensation was received for the use of, or the right to use, each property.</span>
+  <span class="styIRS1120SchedulePHCommon" style="height:8mm; width: 29.3mm; padding-top: 0mm; border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; background-color: lightgrey"/>
 </div>
 <!--   END LINE 2   -->
 <!--   END PART V   -->
@@ -1339,7 +1340,7 @@
       Taxable dividends paid. Do not include dividends considered as paid in the preceding tax year under 
       <span style="float:left;">section 563 or deficiency dividends as defined in section 547 </span>
       <!--Dotted Line-->
-      <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">..............</span>    
+      <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">..............</span>    
     </div>
   </div>
   <div style="float:right;clear:none;">
@@ -1359,14 +1360,14 @@
     <div class="styLNDesc" style="width:139mm;padding-top:4mm;">
       <span style="float:left;">Consent dividends.  Attach Forms 972 and 973 </span>
       <!--Dotted Line-->
-      <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">...................</span>    
+      <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">...................</span>    
     </div>
   </div>
   <div style="float:right;clear:none;">
     <div class="styLNRightNumBox" style="height: 8mm;padding-top:4mm;">2</div>
     <div class="styLNAmountBox" style="border-right-width: 0px; height: 8mm;padding-top:4mm;">
       <xsl:call-template name="PopulateAmount">
-        <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/DivCyov1stAnd2ndPrecTaxYrsAmt/ConsentDividendsAmt"/>
+        <xsl:with-param name="TargetNode" select="$IRS1120SchedulePHData/ConsentDividendsAmt"/>
       </xsl:call-template>
     </div>
   </div>
@@ -1379,7 +1380,7 @@
     <div class="styLNDesc" style="width:139mm;padding-top:4mm;">
       <span style="float:left;">Taxable distributions.  Add lines 1 and 2 </span>
       <!--Dotted Line-->
-      <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.....................</span>    
+      <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.....................</span>    
     </div>
   </div>
   <div style="float:right;clear:none;">
@@ -1403,7 +1404,7 @@
         </xsl:call-template>      
       </span>
       <!--Dotted Line-->
-      <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">......</span>    
+      <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">......</span>    
     </div>
   </div>
   <div style="float:right;clear:none;">
@@ -1424,7 +1425,7 @@
       <span style="float:left;"><b>Deduction for dividends paid.</b>  Add lines 3 and 4.  Enter the total here and on Part I, line 9
       </span>
       <!--Dotted Line-->
-      <span style="float:right;font-weight:bold;letter-spacing:3.3mm;padding-right:2mm;">.....</span>    
+      <span style="float:right;font-weight:bold;letter-spacing:3.1mm;padding-right:2mm;">.....</span>    
     </div>
   </div>
   <div style="float:right;clear:none;">
@@ -1507,23 +1508,23 @@
             <xsl:choose>
               <xsl:when test="USAddress">             
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="USAddress/AddressLine1"/>
+                  <xsl:with-param name="TargetNode" select="USAddress/AddressLine1Txt"/>
                 </xsl:call-template>
                 <br/>
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="USAddress/AddressLine2"/>
+                  <xsl:with-param name="TargetNode" select="USAddress/AddressLine2Txt"/>
                 </xsl:call-template>
                 <br/>
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="USAddress/City"/>
+                  <xsl:with-param name="TargetNode" select="USAddress/CityNm"/>
                 </xsl:call-template>
                 <span style="width=1mm"/>
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="USAddress/State"/>
+                  <xsl:with-param name="TargetNode" select="USAddress/StateAbbreviationCd"/>
                 </xsl:call-template>
                 <span style="width=1mm"/>
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="USAddress/ZIPCode"/>
+                  <xsl:with-param name="TargetNode" select="USAddress/ZIPCd"/>
                 </xsl:call-template>
               </xsl:when>
               <xsl:otherwise>
@@ -1552,7 +1553,7 @@
 <!-- Additional Data Table for Separated Data from Part V, Line 1 -->
 <xsl:if test="(($Print = $Separated) and (count($IRS1120SchedulePHData/ExcessExpensesDepreciationGrp) &gt; 6))">
   <span class="styRepeatingDataTitle">
-    <br/>Form 1120 Schedule PH, Part V, Line 1 - Excess of Expenses and Depreciation Over Income From Property 
+    <br/><br/>Form 1120 Schedule PH, Part V, Line 1 - Excess of Expenses and Depreciation Over Income From Property 
     Not Allowable Under Section 545(b)(6):
   </span>
   <table class="styDepTbl" style="font-size:6pt">
@@ -1585,7 +1586,7 @@
             <xsl:with-param name="TargetNode" select="PropertyDesc"/>
           </xsl:call-template>
         </td>
-        <td class="styDepTblCell" style="width:17mm;text-align:center">
+        <td class="styDepTblCell" style="width:17mm;text-align:center;padding-left:0px;">
           <xsl:call-template name="PopulateMonthDayYear">
             <xsl:with-param name="TargetNode" select="AcquiredDt"/>
           </xsl:call-template>

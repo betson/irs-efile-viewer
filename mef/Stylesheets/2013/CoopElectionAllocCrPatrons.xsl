@@ -6,17 +6,17 @@
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
-  <!-- Root Name of the Dependency -->
   <xsl:param name="DependencyData" select="$RtnDoc/CoopElectionAllocCrPatrons"/>
-  <!-- HINTS - Dependency Document Title - Coop Election Allocate Credit Patrons - 1120 Common-->
+  <!-- - Common forms displays as - Coop Election Allocate Credit Patrons - -->
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>  
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-  <!-- New -->
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+	<html>
       <head>
+		 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -37,7 +37,7 @@
          </style>
          <xsl:call-template name="GlobalStylesDep"/>
       </head>    
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm;">
         <xsl:call-template name="DocumentHeaderDependency"/>  
         <!-- Dependency title Bar -->
         <div class="styDepTitleLine">
@@ -49,7 +49,7 @@
        <!-- Explanation Line -->
         <div class="styTopSectionLine" style="width:187mm;">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
-          <div style="float:left;clear:none;">
+         <div class="styExplanationLine">  
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/ShortExplanationTxt"/>
             </xsl:call-template>

@@ -9,7 +9,7 @@
     }          
       
     .styIRS8621FNBox {  
-      border-right:1 solid black;
+      border-right:1px solid black;
       float: left; 
       width:100mm;
       height:8mm;      
@@ -20,7 +20,7 @@
       height:4.2mm;
       font-weight:bold;
       text-align:center;      
-      border-left:1 solid black;
+      border-left:1px solid black;
       float:left;
     }  
     
@@ -29,21 +29,18 @@
       height:4.2mm;        
       font-weight:bold;
       text-align:center;
-      border-bottom:1 solid black;
-      border-left:1 solid black;
+      border-bottom:1px solid black;
+      border-left:1px solid black;
       float:left; 
       vertical-align:bottom;
     }  
     
     .styIRS8621Part1 {            
-      width:7mm;
-      float:left;
-      clear:left;                
+      width:7mm;              
     }
       
     .styIRS8621Part2 {
-      width:7mm;      
-      float:left;        
+      width:7mm;     
       font-weight:bold;
       text-align:right;
       padding-right:2mm;
@@ -61,7 +58,7 @@
       width:32mm;
       height:4.2mm;      
       text-align:right;
-      border-left:1 solid black;
+      border-left:1px solid black;
       float:left;
       padding-right:1mm;
       font-size:8pt
@@ -71,20 +68,19 @@
       width:32mm;
       height:4.2mm;      
       text-align:right;
-      border-bottom:1 solid black;
-      border-left:1 solid black;
+      border-bottom:1px solid black;
+      border-left:1px solid black;
       float:left;
       padding-right:1mm;
       font-size:8pt
     }    
     
     .styIRS8621LNDesc {      
-      width:179mm;  
-      float:left;       
+      width:180mm;  
     }                   
             
     .styIRS8621FixedUnderline {
-      border-bottom:1 solid black;  
+      border-bottom:1px solid black;  
       text-align:center;
       width:20mm;            
     }  
@@ -94,7 +90,7 @@
        height:8mm;
        font-size:7pt;
       float:left; 
-      border-bottom:1 solid black;
+      border-bottom:1px solid black;
     }         
       
     .styIRS8621Item {    
@@ -103,15 +99,15 @@
     }
       
     .styIRS8621P5Td {
-      border-left:1 solid black;
-      border-bottom:1 solid black;        
+      border-left:1px solid black;
+      border-bottom:1px solid black;        
       text-align:right;      
       vertical-align:bottom;                
     }  
       
     .styIRS8621P5Th {
-      border-left:1 solid black;
-      border-bottom:1 solid black;      
+      border-left:1px solid black;
+      border-bottom:1px solid black;      
       text-align:center;
       width:23.3mm;      
       vertical-align:top;                  
@@ -134,8 +130,8 @@
     }
       
     .styIRS8621TblLB {
-      border-bottom:1 solid black;      
-      border-left:1 solid black;
+      border-bottom:1px solid black;      
+      border-left:1px solid black;
       text-align:right;    
       font-size:8pt  
     }
@@ -147,7 +143,7 @@
     }      
     
     .styIRS8621DotBB {
-		border-bottom:1 solid black;	
+		border-bottom:1px solid black;	
 		text-align:center;
 		width:20mm;						
 	}	  

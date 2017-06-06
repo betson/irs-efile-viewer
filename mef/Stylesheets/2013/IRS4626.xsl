@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS4626"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -84,9 +86,9 @@
 					</div>
 				</div>
 				<!-- Name and Address -->
-				<div class="STyBB" style="width:187mm;">
-					<div class="styNameBox" style="height:8mm;width:140mm;font-size:7pt;">
-            Name<br/>
+				<div class="STyBB" style="width:187mm;border-bottom-width:1px;border-bottom-style:solid;">
+					<div class="styNameBox" style="height:auto;width:140mm;font-size:7pt;">
+					Name<br/>
 						<xsl:call-template name="PopulateReturnHeaderFiler">
 							<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
 						</xsl:call-template>
@@ -95,7 +97,7 @@
 							<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
 						</xsl:call-template>
 					</div>
-					<div class="styEINBox" style="height:8mm;padding-left:2mm;text-align:left;font-size:7pt;width:46mm;">
+					<div class="styEINBox" style="height:auto;padding-left:2mm;text-align:left;font-size:7pt;width:46mm;">
 						<span style="font-weight:bold;">Employer identification number<br/>
 							<br/>
 						</span>
@@ -138,7 +140,7 @@
 					<div class="styLNLeftNumBoxSD">1</div>
 					<div class="styLNDesc" style="width:139mm;">
 						<span style="float:left;">Taxable income or (loss) before net operating loss deduction</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
 					</div>
 					<div class="styLNRightNumBox">1</div>
 					<div class="styLNAmountBox">
@@ -200,7 +202,7 @@ Amortization of certified pollution control facilities
 						<span style="float:left;">
 Amortization of mining exploration and development costs
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 					</div>
 					<div class="styLNRightNumBox">2c</div>
 					<div class="styLNAmountBox">
@@ -282,7 +284,7 @@ Merchant marine capital construction funds
 						<span style="float:left;">
 Section 833(b) deduction (Blue Cross, Blue Shield, and similar type organizations only)
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
 					</div>
 					<div class="styLNRightNumBox">2h</div>
 					<div class="styLNAmountBox">
@@ -298,7 +300,7 @@ Section 833(b) deduction (Blue Cross, Blue Shield, and similar type organization
 						<span style="float:left;">
 Tax shelter farm activities (personal service corporations only)
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.............</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
 					</div>
 					<div class="styLNRightNumBox">2i</div>
 					<div class="styLNAmountBox">
@@ -315,7 +317,7 @@ Tax shelter farm activities (personal service corporations only)
 						<span style="float:left;">
 Passive activities (closely held corporations and personal service corporations only)
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">........</span>
 					</div>
 					<div class="styLNRightNumBox">2j</div>
 					<div class="styLNAmountBox">
@@ -331,7 +333,7 @@ Passive activities (closely held corporations and personal service corporations 
 						<span style="float:left;">
 Loss limitations
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">............................</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.............................</span>
 					</div>
 					<div class="styLNRightNumBox">2k</div>
 					<div class="styLNAmountBox">
@@ -347,7 +349,7 @@ Loss limitations
 						<span style="float:left;">
 Depletion
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..............................</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">...............................</span>
 					</div>
 					<div class="styLNRightNumBox">2l</div>
 					<div class="styLNAmountBox">
@@ -395,7 +397,7 @@ Intangible drilling costs
 						<span style="float:left;">
 Other adjustments and preferences
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">......................</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.......................</span>
 					</div>
 					<div class="styLNRightNumBox">2o</div>
 					<div class="styLNAmountBox">
@@ -412,7 +414,7 @@ Other adjustments and preferences
 						<span style="float:left;">
 Pre-adjustment alternative minimum taxable income (AMTI). Combine lines 1 through 2o
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
 					</div>
 					<div class="styLNRightNumBox">3</div>
 					<div class="styLNAmountBox">
@@ -446,10 +448,10 @@ Adjusted current earnings (ACE) adjustment:</div>
 						<span style="float:left;">
 ACE from line 10 of the ACE worksheet in the instructions
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
 					</div>
-					<div class="styLNRightNumBox">4a</div>
-					<div class="styLNAmountBox">
+					<div class="styLNRightNumBox" style="height:auto;">4a</div>
+					<div class="styLNAmountBox" style="height:auto;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/AdjustedCurrentEarningsAmt"/>
 						</xsl:call-template>
@@ -476,8 +478,8 @@ as a negative amount (see instructions)
 </span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">...........</span>
 					</div>
-					<div class="styLNRightNumBox">4b</div>
-					<div class="styLNAmountBox">
+					<div class="styLNRightNumBox" style="height:auto;">4b</div>
+					<div class="styLNAmountBox" style="height:auto;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/ACELessPreadjustmentAMTIAmt"/>
 						</xsl:call-template>
@@ -493,10 +495,10 @@ as a negative amount (see instructions)
 						<span style="float:left;">
 Multiply line 4b by 75% (.75). Enter the result as a positive amount
 </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">...</span>
 					</div>
-					<div class="styLNRightNumBox">4c</div>
-					<div class="styLNAmountBox">
+					<div class="styLNRightNumBox" style="height:auto;">4c</div>
+					<div class="styLNAmountBox" style="height:auto;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/RedACELessPreadjustmentAMTIAmt"/>
 						</xsl:call-template>
@@ -544,8 +546,8 @@ Multiply line 4b by 75% (.75). Enter the result as a positive amount
 on line 4d (even if line 4b is positive)</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">............</span>
 					</div>
-					<div class="styLNRightNumBox">4d</div>
-					<div class="styLNAmountBox" style="border-right-width:0px;">
+					<div class="styLNRightNumBox" style="height:auto;">4d</div>
+					<div class="styLNAmountBox" style="border-right-width:0px;height:auto;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/ExcessAMTIAmt"/>
 						</xsl:call-template>
@@ -565,23 +567,24 @@ on line 4d (even if line 4b is positive)</span>
 					<div class="styLNLeftLtrBox"/>
 					<div class="styLNDesc" style="width:139mm;">
 						<span style="float:left;">
-							<span style="float:left;width:118mm;">
+							<span style="float:left;width:114mm;">
 								<img src="{$ImagePath}\4626_Bullet_Round.gif" alt="Arrow to right" border="0"/>
-		If line 4b is zero or more, enter the amount from line 4c 
-	<br/>
+									If line 4b is zero or more, enter the amount from line 4c
+								<br />
+								<span style="height:4mm" />
 								<img src="{$ImagePath}\4626_Bullet_Round.gif" alt="Arrow to right" border="0"/>
-		If line 4b is less than zero, enter the <b>smaller </b>of line 4c or line 4d as a negative amount 
-</span>
-							<span style="width:4mm;height:4mm;">
+									If line 4b is less than zero, enter the <b>smaller </b>of line 4c or line 4d as a negative amount 
+							</span>
+							<span style="width:auto;height:auto;">
 								<img src="{$ImagePath}\4626_SMBracket.gif" alt="Bracket"/>
 							</span>
 						</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;padding-top:3mm;">...</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;padding-top:2mm;">.....</span>
 					</div>
-					<div class="styLNRightNumBox" style="height:10mm;padding-top:5.5mm;">
+					<div class="styLNRightNumBox" style="height:7mm;padding-top:3mm;">
       4e
       </div>
-					<div class="styLNAmountBox" style="height:10mm;padding-top:5.5mm;">
+					<div class="styLNAmountBox" style="height:7mm;padding-top:3mm;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/ACEAdjustmentAmt"/>
 						</xsl:call-template>
@@ -590,15 +593,15 @@ on line 4d (even if line 4b is positive)</span>
 				<!-- line 5 -->
 				<!-- single lines -->
 				<div class="IRS4626_LineContainer">
-					<div class="styLNLeftNumBoxSD">5</div>
-					<div class="styLNDesc" style="width:139mm;">
+					<div class="styLNLeftNumBoxSD" style=" height:7mm; padding-top:3mm;">5</div>
+					<div class="styLNDesc" style="width:139mm; height:7mm; padding-top:3mm;">
 						<span style="float:left;">
          Combine lines 3 and 4e. If zero or less, stop here; the corporation does not owe any AMT
          </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">......</span>
 					</div>
-					<div class="styLNRightNumBox">5</div>
-					<div class="styLNAmountBox">
+					<div class="styLNRightNumBox" style="height:7mm; padding-top:3mm;">5</div>
+					<div class="styLNAmountBox"  style="height:7mm; padding-top:3mm;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/PreadjustmentAMTIPlusACEAdjAmt"/>
 						</xsl:call-template>
@@ -610,7 +613,7 @@ on line 4d (even if line 4b is positive)</span>
 					<div class="styLNLeftNumBoxSD">6</div>
 					<div class="styLNDesc" style="width:139mm;">
 						<span style="float:left;">Alternative tax net operating loss deduction (see instructions)</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
 					</div>
 					<div class="styLNRightNumBox">6</div>
 					<div class="styLNAmountBox">
@@ -699,8 +702,8 @@ on line 4d (even if line 4b is positive)</span>
 						<span style="float:left;">controlled group, see instructions). If zero or less, enter -0-</span>
 						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
 					</div>
-					<div class="styLNRightNumBox">8a</div>
-					<div class="styLNAmountBox">
+					<div class="styLNRightNumBox" style="height:auto;">8a</div>
+					<div class="styLNAmountBox" style="height:auto;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/QualifiedAMTIExemptionAmt"/>
 						</xsl:call-template>
@@ -713,11 +716,11 @@ on line 4d (even if line 4b is positive)</span>
 				<div class="IRS4626_LineContainer">
 					<div class="styLNLeftLtrBox" style="padding-left:4.3mm;">b</div>
 					<div class="styLNDesc" style="width:99mm;">
-						<span style="float:left;">Multiple line 8a by 25% (.25)</span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">..............</span>
+						<span style="float:left;">Multiply line 8a by 25% (.25)</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
 					</div>
-					<div class="styLNRightNumBox">8b</div>
-					<div class="styLNAmountBox">
+					<div class="styLNRightNumBox" style="height:auto;">8b</div>
+					<div class="styLNAmountBox" style="height:auto;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$FormData/ReducedAMTIExemptionAmt"/>
 						</xsl:call-template>
@@ -848,7 +851,7 @@ on line 4d (even if line 4b is positive)</span>
 						<span style="float:left;">
        Form 1120, Schedule J, line 3, or the appropriate line of the corporation's income tax return
        </span>
-						<span class="styDotLn" style="float:right;padding-right:2mm;">....</span>
+						<span class="styDotLn" style="float:right;padding-right:2mm;">.....</span>
 					</div>
 					<div class="styLNRightNumBoxNBB">14</div>
 					<div class="styLNAmountBoxNBB">
@@ -858,7 +861,7 @@ on line 4d (even if line 4b is positive)</span>
 					</div>
 				</div>
 				<!-- Page 1 Break and Footer-->
-				<div class="pageEnd" style="width:187mm;padding-top:1mm;border-top:1 solid black;">
+				<div class="pageEnd" style="width:187mm;padding-top:1mm;border-top-width:1px; border-top-style:solid;">
 					<div style="float:left;">
 						<span class="styBoldText">For Paperwork Reduction Act Notice, see the instructions. </span>
 						<span style="width:30mm;"/>                        

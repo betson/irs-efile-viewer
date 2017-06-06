@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 07/01/2013 - Created new version for 2014 per UWR 87746 - Jeremy Nichols -->
-<!-- 07/23/2013 - Modified per IBM defect #35925 - Jeremy Nichols -->
-<!-- 08/13/2013 - Made changes per defect #37222 - Jeremy Nichols -->
+<!-- 05/20/2014 - Modified per UWR #107611 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -47,17 +45,17 @@
           
           <!--Begin Form Header-->
           <div class="styBB" style="width:187mm;">
-            <div class="styFNBox" style="width:31mm;height:21mm;padding-top:2mm;">
+            <div class="styFNBox" style="width:31mm;height:22mm;padding-top:2mm;">
               <span class="styFormText" style="font-size:7pt;padding-top:5mm;">Form</span>      
               <span class="styFormText" style="font-size:7pt;width:1mm;"></span>      
               <span class="styFormNumber" style="font-size:20pt;font-weight:bold;">6627</span>      
               <br/>      
-              <span class="styAgency" style="font-weight:normal;padding-top:1.5mm;">(Rev. January 2014)</span><br/> 
-              <span class="styAgency" style="font-weight:normal;padding-top:1.5mm;">Department of the Treasury</span><br />
-              <span class="styAgency" style="font-weight:normal;padding-top:1.5mm;">Internal Revenue Service</span>
+              <span class="styAgency" style="font-weight:normal;">(Rev. January 2014)</span><br/> 
+              <span class="styAgency" style="font-weight:normal;">Department of the Treasury</span><br />
+              <span class="styAgency" style="font-weight:normal;">Internal Revenue Service</span>
             </div>
             
-            <div class="styFTBox" style="width:125mm;height:21mm;padding-top:3mm">
+            <div class="styFTBox" style="width:125mm;height:22mm;padding-top:3mm">
               <div class="styMainTitle" style="height:8mm;">Environmental Taxes</div>
               <div class="styFST" style="height:5mm;font-size:7pt;margin-left:2mm;text-align:center;">
                 <span style="text-align:center;font-weight:bold">
@@ -73,7 +71,7 @@
               </div>
             </div>
             
-            <div class="styTYBox" style="width:31mm;height:21mm;padding-top:8mm;text-align:center;">
+            <div class="styTYBox" style="width:31mm;height:22mm;padding-top:8mm;text-align:center;">
               OMB No. 1545-0245
             </div>
           </div>
@@ -95,7 +93,7 @@
               Quarter ending
               <span style="width:3mm;height:6mm;clear:none"></span>
               <xsl:call-template name="PopulateMonthDayYear">
-                <xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"></xsl:with-param>
+                <xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEnding"></xsl:with-param>
               </xsl:call-template>
             </div>
             <div class="styNameAddr" style="font-size:6.5pt;width:46mm;height:10mm;border-left-width:1px;border-bottom-width:1px black solid;padding-left:2mm;">
@@ -281,9 +279,7 @@
           <!--Part II Title-->
           <div class="styBB" style="width:187mm;border-top:1px black;height=8mm;">
             <div class="styLNDesc" style="width:187mm;height:8mm;font-size:8pt;font-weight:bold;padding-top:2mm;">
-              <span style="width=1px;color:black;background-color:black;">.</span>
-              <span style="width=12mm;color:white;background-color:black;text-align:right;float:inherit;margin:0;">Part II</span>
-              <span style="width=1px;color:black;background-color:black;">.</span>
+              <span style="height:4.5mm;width=14mm;color:white;background-color:black;padding-top:0.5mm;padding-left:1.5mm;">Part II</span>
               <span style="width=160mm ;text-align:center;font-size:8pt;padding-right:50mm;">Tax on Ozone-Depleting Chemicals (ODCs), IRS No. 98</span>
             </div>      
           </div>
@@ -317,7 +313,7 @@
             <span class="styBoldText" style="padding-left:2.8mm;"><img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/> 
             </span>     
             <span style="width:3mm;clear:none"></span>
-            <input type="checkbox" class="styCkbox" style="padding-left:4mm;">
+            <input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/Election1990Ind" />
                 <xsl:with-param name="BackupName">IRS6627Election1990Ind</xsl:with-param>
@@ -357,7 +353,7 @@
             <span class="styBoldText" style="padding-left:4.5mm;"><img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/> 
             </span>     
             <span style="width:3mm;clear:none"></span>
-            <input type="checkbox" class="styCkbox" style="padding-left:5.5mm;">
+            <input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/Election1991Ind" />
                 <xsl:with-param name="BackupName">IRS6627Election1991Ind</xsl:with-param>
@@ -480,7 +476,7 @@
                 </xsl:if>
                 <!--sum-->
                 <tr>
-                  <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid;padding-bottom:3.5mm;">
+                  <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:0px black solid;border-top:1px black solid;padding-bottom:3.5mm;">
                     <xsl:if test="(count($FormData/TxOnOzoneDepletingChemicalsGrp) &lt; 4) or ($Print = $Separated)" >
                       <xsl:value-of select="4">
                       </xsl:value-of>
@@ -490,7 +486,7 @@
                       </xsl:value-of>
                     </xsl:if>
                   </td>
-                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;">	
+                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:0px black solid;border-top:1px black solid;">	
                     <span style="font-weight:bold;">Total ozone-depleting chemicals tax.</span>
                     <span style="width:3px;clear:none;"></span>
                     <span style="clear:none;font-weight:normal;">Add all amounts in column (d), include amounts from any</span><br/>
@@ -505,7 +501,7 @@
                     <span class="styBoldText" style="padding-left:5.5mm;"><img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/> 
                     </span>     
                   </td>
-                  <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                  <td style="height:8mm;border-left:1px black solid;border-bottom:0px black solid;text-align:right;">
                     <span style="width:1mm;clear:none;"></span>
                     <span style="height:8mm;width:2mm;text-align:bottom;padding-top:4mm;padding-right:4mm;">$</span>
                     <span style="width:36mm;height:8mm;padding-top:5mm;">
@@ -596,7 +592,7 @@
             </div>
             Election. If you elect to report the tax on imported products at the time you import the products instead of when you sell or use<br />
             the products, check this box <span class="styDotLn" style="float:none;padding-left:2mm;padding-right:0.5mm">..................................</span>
-            <input type="checkbox" class="styCkbox">
+            <input type="checkbox" class="styCkbox" style="height:5mm;width:5mm;">
              <xsl:call-template name="PopulateCheckbox">
                <xsl:with-param name="TargetNode" select="$FormData/TaxOnImpProductsElectionInd" />
                <xsl:with-param name="BackupName">IRS6627TaxOnImpProductsElectionInd</xsl:with-param>
@@ -770,23 +766,11 @@
           <!--BEGIN PART IV-->
           
           <!--Part IV Header-->
-          <div class="styBB" style="width:187mm;border-top:1px black;height:8mm;">
-            <div class="styLNDesc" style="width:187mm;height:8mm;font-size:8pt;font-weight:bold;padding-top:2mm;">
-              <span style="width=1px;color:black;background-color:black;">.</span>
-              <span style="width=12mm;color:white;background-color:black;text-align:right;float:inherit;margin:0;">Part IV</span>
-              <span style="width=1px;color:black;background-color:black;">.</span>
-              <span style="width=155mm ;text-align:center;font-size:8pt;padding-right:68.5mm;">Tax on Floor Stocks of  ODCs, IRS No. 20</span>
-              <span style="width:13.4mm;clear:none;"></span>
-              <span style="padding-top:8mm;">
-                <!-- button display logic -->
-                <xsl:call-template name="SetDynamicTableToggleButton" >
-                <xsl:with-param name="TargetNode" select="$FormData/TaxOnFloorStocksOfODCGrp"/>
-                <xsl:with-param name="containerHeight" select="3"/>
-                <xsl:with-param name="containerID" select=" 'PSOctn3' "/>
-                </xsl:call-template>
-                <!-- end button display logic -->
-              </span>
-            </div>      
+          <div class="styBB" style="width:187mm;height:8mm">
+            <div class="styPartName" style="margin-top:2mm;margin-bottom:2mm">Part IV</div>
+            <div class="styPartDesc" style="padding-top:2mm">
+              Tax on Floor Stocks of  ODCs, IRS No. 20
+            </div>
           </div>
               
           <!--Part IV Table-->
@@ -795,12 +779,12 @@
             <table style="font-size:7pt;border-collapse:collapse;">
               <tbody>
                 <tr>							
-                  <th colspan= "2" style="width:64mm;height:12mm;font-size:8pt;border-top:1px black solid;">
+                  <th colspan= "2" style="width:64mm;height:12mm;font-size:8pt;border-top:0px black solid;">
                     (a)<br/>ODC<br/>
                   </th>
-                  <th style="width:33mm;height:12mm;border-left:1px black solid;border-bottom:1px black solid;border-top:1px black solid;" scope="col">(b) <br/>Number of pounds<br/></th>
-                  <th style="width:45mm;height:12mm;border-left:1px black solid;border-bottom:1px black solid;border-top:1px black solid;" scope="col">(c) <br/>Tax per pound<br/>(see Part IV instructions)<br/></th>
-                  <th style="width:45mm;height:12mm;border-left:1px black solid;border-bottom:1px black solid;border-top:1px black solid;" scope="col">(d) <br/>Tax (multiply column (b) <br/>by column (c))<br/></th>
+                  <th style="width:33mm;height:12mm;border-left:1px black solid;border-bottom:1px black solid;border-top:0px black solid;" scope="col">(b) <br/>Number of pounds<br/></th>
+                  <th style="width:45mm;height:12mm;border-left:1px black solid;border-bottom:1px black solid;border-top:0px black solid;" scope="col">(c) <br/>Tax per pound<br/>(see Part IV instructions)<br/></th>
+                  <th style="width:45mm;height:12mm;border-left:1px black solid;border-bottom:1px black solid;border-top:0px black solid;" scope="col">(d) <br/>Tax (multiply column (b) <br/>by column (c))<br/></th>
                 </tr>
                 <xsl:if test="($Print != $Separated) or (count($FormData/TaxOnFloorStocksOfODCGrp) &lt;= 3)"> 
                   <xsl:for-each select="$FormData/TaxOnFloorStocksOfODCGrp">
@@ -879,7 +863,7 @@
                 </xsl:if>
                 <!--END empty lines-->
                 <tr>
-                  <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid;padding-bottom:3.5mm;">
+                  <td style="height:8mm;width:6mm;text-align:center;font-weight:bold;border-bottom:0px black solid;border-top:1px black solid;padding-bottom:3.5mm;">
                     <xsl:if test="(count($FormData/TaxOnFloorStocksOfODCGrp) &lt; 4) or ($Print = $Separated)" >
                       <xsl:value-of select="4">
                       </xsl:value-of>
@@ -889,7 +873,7 @@
                       </xsl:value-of>
                     </xsl:if>
                   </td>
-                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;">	
+                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:0px black solid;border-top:1px black solid;">	
                     <span style="font-weight:bold;">Total floor stocks tax.</span>
                     <span style="width:3px;clear:none;"></span>
                     <span style="clear:none;font-weight:normal;">Add all amounts in column (d), include amounts from any additional</span><br/>
@@ -906,7 +890,7 @@
                     <span class="styBoldText" style="padding-left:5.5mm;"><img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/> 
                     </span>     
                   </td>
-                  <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                  <td style="height:8mm;border-left:1px black solid;border-bottom:0px black solid;text-align:right;">
                     <span style="width:1mm;clear:none;"></span>
                     <span style="height:8mm;width:2mm;text-align:bottom;padding-top:5mm;padding-right:4mm;">$</span>
                     <span style="width:36mm;height:8mm;padding-top:5mm;">
@@ -948,7 +932,7 @@
             Form</span> 
             <span style="text-align:center;width:7mm;font-weight:bold;font-size:7pt;">
             6627</span> 
-            <span style="text-align:right;width:18mm;font-weight:normal;font-size:6pt;padding-right:1mm;">
+            <span style="text-align:right;width:17mm;font-weight:normal;font-size:6pt;padding-right:1mm;">
             (Rev. 1-2014)</span>       
           </div>
           <br class="pageEnd"/>

@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8379Data" select="$RtnDoc/IRS8379"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8379Data)"/>
@@ -40,7 +42,7 @@
 					<!--  Begin Header section 1 -->
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
-						<div class="styFNBox" style="width:31mm;height:20mm;border-right-width:2px;padding-top:.5mm;">
+						<div class="styFNBox" style="width:31mm;height:19mm;border-right-width:2px;padding-top:.5mm;">
 							<div style="padding-top:1mm;">
 								Form<span class="styFormNumber">  8379</span>
 							</div>
@@ -48,7 +50,7 @@
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form8379Data"/>
 							</xsl:call-template>
-							<span class="styAgency">(Rev. December 2012)</span>
+							<span class="styAgency">(Rev. November 2012)</span>
 							<br/>
 							<span class="styAgency">Department of the Treasury</span>
 							<br/>
@@ -60,21 +62,21 @@
 								Injured Spouse Allocation<br/>
 								<br/>
 							</div>
-							<div class="styFST" style="height:5mm;font-size:7pt;margin-left:0mm;text-align:center;">
+							<div class="styFST" style="height:5mm;font-size:7pt;margin-left:2mm;text-align:center;">
 								<span style="text-align:center;font-weight:bold;">
 									<div style="width:100%;height:5mm;padding-left:0px;">
-										<div style="width:95%;height:5mm;padding-top:2mm;">
+										<div style="width:110mm;height:5mm;padding-top:2mm;">
 											<br/>
 											<img src="{$ImagePath}/8379_Bullet_Sm.gif" alt="Small Bullet"/> 
-											Information about Form 8379 and its separate instructions is at <i>www.irs.gov/form8379</i>.
+											Information about Form 8379 and its separate instructions is at <i>www.irs.gov/form8379.</i>
 										</div>
 									</div>
 								</span>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;border-left-width:2px;">
-							<div class="styOMB" style="height:9mm;font-size:7pt;padding-top:2mm;">OMB No. 1545-0074</div>
-							<div style="margin-left:3mm;text-align:left;font-size:7pt;height:12mm;padding-top:2mm;">
+						<div class="styTYBox" style="width:31mm;border-left-width:2px;">
+							<div class="styOMB" style="height:7mm;font-size:7pt;padding-top:0mm;">OMB No. 1545-0074</div>
+							<div style="margin-left:1mm;text-align:left;font-size:7pt;height:12mm;padding-top:4mm;">
 								Attachment<br/>Sequence No. 
 								<span class="styBoldText" style="font-size:9pt;">104</span>
 							</div>
@@ -85,24 +87,22 @@
 					<!-- Begin Part I																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;" class="styBB">
-						<!-- Content -->
-						<div class="styPartName" style="width:15mm;">Part I</div>
-						<div class="styPartDesc" style="padding-left:3mm;font-size:8.5pt;">
-							Should you file this form?<span class="styNormalText"> You must complete this part.</span>
-						</div>
-					</div>
+						<div class="styBB" style="width:187mm;border-top:0px solid black;">
+<div class="styPartName">Part I</div>
+<div class="styPartDesc">Should you file this form? <span class="styNormalText"> You must complete this part.</span></div>
+</div>
+
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (1) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:6mm;">
 							<div class="styIRS8379LNLeftNumBox">1</div>
 							<div class="styIRS8379LNDesc" style="width:75mm;">
 								Enter the tax year for which you are filing this form.
 								<span style="width:4px;"/>
 								<img src="{$ImagePath}/8379_Bullet_Sm.gif" alt="Small Bullet"/>
 							</div>
-							<div class="styIRS8379CleanDiv" style="height:100%;width:20mm;border-bottom-width:1px;text-align:center;">
+							<div class="styIRS8379CleanDiv" style="height:auto;width:20mm;border-bottom-width:1px;text-align:center;">
 								<xsl:call-template name="PopulateYear">
 									<xsl:with-param name="TargetNode" select="$Form8379Data/InjuredSpouseClaimTaxYear"/>
 								</xsl:call-template>
@@ -113,7 +113,7 @@
 						</div>
 						<br/>
 						<!-- (2) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:15mm;">
 							<div class="styIRS8379LNLeftNumBox">2</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;">
 								Did you (or will you) file a joint return?<br/>
@@ -162,7 +162,7 @@
 						</div>
 						<br/>
 						<!-- (3) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:32mm;">
 							<div class="styIRS8379LNLeftNumBox">3</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;">
 								Did (or will) the IRS use the joint overpayment to pay any of the following legally enforceable past-due debt(s) owed only by your<br/>
@@ -176,7 +176,8 @@
 								<img src="{$ImagePath}/8379_Bullet_Round.gif" alt="Round Bullet"/>
 								<span style="width:3px;"/>Child support<span style="width:3px;"/>
 								<img src="{$ImagePath}/8379_Bullet_Round.gif" alt="Round Bullet"/>
-								<span style="width:3px;"/>Spousal support<br/>
+								<span style="width:3px;"/>Spousal support<span style="width:3px;"/>
+								<br/>
 								<img src="{$ImagePath}/8379_Bullet_Round.gif" alt="Round Bullet"/>
 								<span style="width:3px;"/>Federal nontax debt (such as a student loan)<span style="width:3px;"/>
 								<br/>
@@ -220,15 +221,15 @@
 									</xsl:call-template>
 									<span class="styBoldText" style="width:8mm;">No.</span>
 									<b>Stop here.</b> Do not file this form. You are not an injured spouse.<br/>
-									<span style="width:5mm;"/>
+									<span style="width:7.7mm;"/>
 									<b>Note.</b> If the past-due amount is for a joint federal tax, you may qualify for innocent spouse relief for the year to which the<br/>
-									<span style="width:5mm;"/>overpayment was applied. See <span class="styItalicText">Innocent Spouse Relief</span>, in the instructions for more information.
+									<span style="width:7.7mm;"/>overpayment was applied. See <span class="styItalicText">Innocent Spouse Relief</span>, in the instructions for more information.
 								</label>
 							</div>
 						</div>
 						<br/>
 						<!-- (4) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:22mm;">
 							<div class="styIRS8379LNLeftNumBox">4</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;">
 								Are you legally obligated to pay this past-due amount?<br/>
@@ -252,9 +253,9 @@
 									</xsl:call-template>
 									<span class="styBoldText" style="width:8mm;">Yes.</span>
 									<b>Stop here.</b> Do not file this form. You are not an injured spouse.<br/>
-									<span style="width:5mm;"/>
+									<span style="width:7.7mm;"/>
 									<b>Note.</b> If the past-due amount is for a joint federal tax, you may qualify for innocent spouse relief for the year to which the<br/>
-									<span style="width:5mm;"/>overpayment was applied. See <span class="styItalicText">Innocent Spouse Relief</span>, in the instructions for more information.<br/>
+									<span style="width:7.7mm;"/>overpayment was applied. See <span class="styItalicText">Innocent Spouse Relief</span>, in the instructions for more information.<br/>
 								</label>
 								<!-- ++++++++++++++ No Checkbox +++++++++++++ -->
 								<span>
@@ -279,12 +280,11 @@
 							</div>
 						</div>
 						<br/>
-						<!-- (5) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+					<!-- (5) ////////////////////////////////////////////////////-->
+						<div class="styIRS8379LineItem" style="height:18mm;">
 							<div class="styIRS8379LNLeftNumBox">5</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;">
-								Were you a resident of a community property state (Arizona, California, Idaho, Louisiana, Nevada, New Mexico, Texas,<br/>
-								Washington, or Wisconsin) at any time during the tax year entered on line 1? (see instructions)<br/>
+								Were you a resident of a community property state at any time during the tax year entered on line 1? (see instructions)<br/>
 								<!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
 								<span>
 									<xsl:call-template name="PopulateSpan">
@@ -304,15 +304,15 @@
 										<xsl:with-param name="BackupName">IRS8379CommunityPropertyStateInd</xsl:with-param>
 									</xsl:call-template>
 									<span class="styBoldText" style="width:8mm;">Yes.</span>Enter the name(s) of the community property state(s)
-									<span style="width:93mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0x;text-align:center;">
+									<span style="width:90mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0x;text-align:center;">
 										<xsl:for-each select="$Form8379Data/CommunityPropertyStateCd">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="."/>
 											</xsl:call-template>
-											<span style="width:21px;"/>
+											<span style="width:15px;"/>
 										</xsl:for-each>
 									</span>.<br/>
-									<span style="width:5mm;"/>Skip lines 6 through 9 and <b>go to Part II</b> and complete the rest of this form.<br/>
+									<span style="width:7.7mm;"/>Skip lines 6 through 9 and <b>go to Part II</b> and complete the rest of this form.<br/>
 								</label>
 								<!-- ++++++++++++++ No Checkbox +++++++++++++ -->
 								<span>
@@ -338,7 +338,7 @@
 						</div>
 						<br/>
 						<!-- (6) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:14mm;">
 							<div class="styIRS8379LNLeftNumBox">6</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;">
 								Did you make and report payments, such as federal income tax withholding or estimated tax payments?<br/>
@@ -386,7 +386,7 @@
 						</div>
 						<br/>
 						<!-- (7) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:14mm;">
 							<div class="styIRS8379LNLeftNumBox">7</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;">
 								Did you have earned income, such as wages, salaries, or self-employment income?<br/>
@@ -434,7 +434,7 @@
 						</div>
 						<br/>
 						<!-- (8) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:14mm;">
 							<div class="styIRS8379LNLeftNumBox">8</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;">
 								Did (or will) you claim the earned income credit or additional child tax credit?<br/>
@@ -482,7 +482,7 @@
 						</div>
 						<br/>
 						<!-- (9) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:15mm;">
 							<div class="styIRS8379LNLeftNumBox">9</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;">
 								Did (or will) you claim a refundable tax credit (see instructions)?<br/>
@@ -536,29 +536,26 @@
 					<!-- Begin Part II																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;" class="styBB">
-						<!-- Content -->
-						<div class="styPartName" style="width:15mm;">Part II</div>
-						<div class="styPartDesc" style="padding-left:3mm;font-size:8.5pt;">
-							Information About the Joint Tax Return for Which This Form Is Filed
-						</div>
-					</div>
+					<div class="styBB" style="width:187mm;border-top:0px solid black;">
+<div class="styPartName">Part II</div>
+<div class="styPartDesc">Information About the Joint Tax Return for Which This Form Is Filed</div>
+</div>
 					<!-- Body -->
 					<div class="styTBB" style="width:187mm;">
 						<!-- (10) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:26mm;">
 							<div class="styIRS8379LNLeftNumBox">10</div>
 							<div class="styIRS8379LNDesc" style="width:181mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:100%;height:auto;border-bottom-width:1px;">
-									<div class="styIRS8379LNDesc" style="width:100%;padding-left:0px;padding-top:0px;">
+									<div class="styIRS8379LNDesc" style="width:100%;padding-left:0px;padding-top:0px;height:auto">
 										Enter the following information exactly as it is shown on the tax return for which you are filing this form.<br/>
 										The spouse’s name and social security number shown first on that tax return must also be shown first below.
 									</div>
 								</div>
-								<div class="styIRS8379CleanDiv" style="width:100%;border-bottom-width:1px;height:10mm;padding-top:0px;">
+								<div class="styIRS8379CleanDiv" style="width:100%;border-bottom-width:0px;height:9mm;padding-top:0px;">
 									<!-- Top Line -->
-									<div class="styIRS8379CleanDiv" style="width:100%;height:50%;border-bottom-width:1px;padding-top:0px;">
-										<div class="styIRS8379LNDesc" style="width:50%;height:100%;border-right-width:1px;border-color:black;font-size:7pt;">
+									<div class="styIRS8379CleanDiv" style="width:100%;height:auto;border-bottom-width:1px;padding-top:0px;">
+										<div class="styIRS8379LNDesc" style="width:50%;height:9mm;border-right-width:1px;border-color:black;font-size:7pt;">
 											First name, initial, and last name shown first on the return<br/>
 											<span style="width:100%">
 												<xsl:if test="$Form8379Data/InjuredSpouseInformationGrp">
@@ -568,7 +565,7 @@
 												</xsl:if>
 											</span>
 										</div>
-										<div class="styIRS8379LNDesc" style="width:30%;height:100%;border-right-width:1px;border-color:black;font-size:7pt;">
+										<div class="styIRS8379LNDesc" style="width:30%;height:9mm;border-right-width:1px;border-color:black;font-size:7pt;">
 											Social security number shown first<br/>
 											<span style="width:100%;text-align:center;">
 												<xsl:if test="$Form8379Data/InjuredSpouseInformationGrp">
@@ -592,7 +589,7 @@
 														<xsl:with-param name="BackupName">Form8379DataInjuredSpouseInformationGrp[1]InjuredSpouseInd</xsl:with-param>
 													</xsl:call-template>
 												</label>
-												<input type="checkbox">
+												<input class="styCkbox" type="checkbox" style="width:4mm;">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="$Form8379Data/InjuredSpouseInformationGrp[1]/InjuredSpouseInd"/>
 														<xsl:with-param name="BackupName">Form8379DataInjuredSpouseInformationGrp[1]InjuredSpouseInd</xsl:with-param>
@@ -602,8 +599,8 @@
 										</div>
 									</div>
 									<!-- Bottom Line -->
-									<div class="styIRS8379CleanDiv" style="width:100%;height:50%;padding-top:0px;">
-										<div class="styIRS8379LNDesc" style="width:50%;height:100%;border-right-width:1px;border-color:black;font-size:7pt;">
+									<div class="styIRS8379CleanDiv" style="width:100%;height:auto;border-bottom-width:1px;padding-top:0px;">
+										<div class="styIRS8379LNDesc" style="width:50%;height:9mm;border-right-width:1px;border-color:black;font-size:7pt;">
 											First name, initial, and last name shown second on the return<br/>
 											<span style="width:100%">
 												<xsl:if test="$Form8379Data/InjuredSpouseInformationGrp">
@@ -613,7 +610,7 @@
 												</xsl:if>
 											</span>
 										</div>
-										<div class="styIRS8379LNDesc" style="width:30%;height:100%;border-right-width:1px;border-color:black;font-size:7pt;">
+										<div class="styIRS8379LNDesc" style="width:30%;height:9mm;border-right-width:1px;border-color:black;font-size:7pt;">
 											Social security number shown second<br/>
 											<span style="width:100%;text-align:center;">
 												<xsl:if test="$Form8379Data/InjuredSpouseInformationGrp">
@@ -637,7 +634,7 @@
 														<xsl:with-param name="BackupName">Form8379DataInjuredSpouseInformationGrp[2]InjuredSpouseInd</xsl:with-param>
 													</xsl:call-template>
 												</label>
-												<input type="checkbox">
+												<input class="styCkbox" type="checkbox" style="width:4mm;">
 													<xsl:call-template name="PopulateCheckbox">
 														<xsl:with-param name="TargetNode" select="$Form8379Data/InjuredSpouseInformationGrp[2]/InjuredSpouseInd"/>
 														<xsl:with-param name="BackupName">Form8379DataInjuredSpouseInformationGrp[2]InjuredSpouseInd</xsl:with-param>
@@ -650,13 +647,14 @@
 							</div>
 						</div>
 						<!-- (11) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:10mm;padding-top:3px;">
 							<div class="styIRS8379LNLeftNumBox">11</div>
 							<div class="styIRS8379LNDesc" style="width:171mm;">
-								Check this box only if you are divorced or legally separated from the spouse with whom you filed the joint return and<br/>
-								you want your refund issued in your name only
+								Check this box only if you are divorced or legally separated from the spouse with whom you filed the joint return and you want your refund issued in your name only
 								<!--Dotted Line-->
 								<span class="styBoldText">
+									<span style="width:11px"/>.
+									<span style="width:11px"/>.
 									<span style="width:11px"/>.
 									<span style="width:11px"/>.
 									<span style="width:11px"/>.
@@ -689,7 +687,7 @@
 										<xsl:with-param name="BackupName">Form8379DataDivorcedOrSeparatedInd</xsl:with-param>
 									</xsl:call-template>
 								</label>
-								<input type="checkbox">
+								<input class="styCkbox" type="checkbox" style="width:4mm;">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form8379Data/DivorcedOrSeparatedInd"/>
 										<xsl:with-param name="BackupName">Form8379DataDivorcedOrSeparatedInd</xsl:with-param>
@@ -699,12 +697,12 @@
 						</div>
 						<br/>
 						<!-- (12) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:20mm;">
 							<div class="styIRS8379LNLeftNumBox">12</div>
-							<div class="styIRS8379LNDesc" style="width:181mm;">
+							<div class="styIRS8379LNDesc" style="width:181mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="padding-top:0px;width:100%; height:auto;font-size:8.5pt;">
 									Do you want any injured spouse refund mailed to an address different from the one on your joint return?
-									<span style="width:14mm;"/>
+									<span style="width:9mm;"/>
 									<!-- ++++++++++++++ Yes Checkbox +++++++++++++ -->
 									<span>
 										<xsl:call-template name="PopulateSpan">
@@ -747,85 +745,89 @@
 										<span class="styBoldText">No</span>
 									</label>
 								</div>
-								<div class="styIRS8379CleanDiv" style="padding-top:0px;width:100%; height:8mm;">
+								<div class="styIRS8379CleanDiv" style="padding-top:0px;width:100%; height:12mm;">
 									<div class="styIRS8379CleanDiv" style="padding-top:0px;width:100%; height:50%;">
 										<div class="styIRS8379CleanDiv" style="padding-top:0px;width:22%; height:100%;font-size:8.5pt;">
 											If “Yes,” enter the address.
 										</div>
-										<div class="styIRS8379CleanDiv" style="padding-top:0px;width:35%; height:100%;">
-											<xsl:choose>
-												<xsl:when test="$Form8379Data/USAddress">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/AddressLine1"/>
-													</xsl:call-template>
-													<xsl:if test="$Form8379Data/USAddress/AddressLine2">
-														<br/>
+										<div class="styIRS8379CleanDiv" style="padding-top:0px;width:78%; height:100%;border-bottom-width:1px;">
+											<div class="styIRS8379CleanDiv" style="padding-top:0px;width:45%; height:100%;">
+												<xsl:choose>
+													<xsl:when test="$Form8379Data/USAddress">
 														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/AddressLine2"/>
+															<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/AddressLine1"/>
 														</xsl:call-template>
-													</xsl:if>
-												</xsl:when>
-												<xsl:when test="$Form8379Data/ForeignAddress">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/AddressLine1"/>
-													</xsl:call-template>
-													<xsl:if test="$Form8379Data/ForeignAddress/AddressLine2">
-														<br/>
+														<xsl:if test="$Form8379Data/USAddress/AddressLine2">
+															<br/>
+															<xsl:call-template name="PopulateText">
+																<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/AddressLine2"/>
+															</xsl:call-template>
+														</xsl:if>
+													</xsl:when>
+													<xsl:when test="$Form8379Data/ForeignAddress">
 														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/AddressLine2"/>
+															<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/AddressLine1"/>
 														</xsl:call-template>
-													</xsl:if>
-												</xsl:when>
-											</xsl:choose>
-										</div>
-										<div class="styIRS8379CleanDiv" style="padding-top:0px;width:43%; height:100%;word-wrap:break-word;">
-											<xsl:choose>
-												<xsl:when test="$Form8379Data/USAddress">
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/City"/>
-													</xsl:call-template>
-													<span style="width:3mm;">,</span>
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/State"/>
-													</xsl:call-template>
-													<span style="width:3mm;">,</span>
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/ZIPCode"/>
-													</xsl:call-template>
-												</xsl:when>
-												<xsl:when test="$Form8379Data/ForeignAddress">
-													<xsl:if test="$Form8379Data/ForeignAddress/City">
+														<xsl:if test="$Form8379Data/ForeignAddress/AddressLine2">
+															<br/>
+															<xsl:call-template name="PopulateText">
+																<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/AddressLine2"/>
+															</xsl:call-template>
+														</xsl:if>
+													</xsl:when>
+												</xsl:choose>
+											</div>
+											<div class="styIRS8379CleanDiv" style="padding-top:0px;width:55%; height:100%;word-wrap:break-word;">
+												<xsl:choose>
+													<xsl:when test="$Form8379Data/USAddress">
 														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/City"/>
+															<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/City"/>
 														</xsl:call-template>
 														<span style="width:3mm;">,</span>
-													</xsl:if>
-													<xsl:if test="$Form8379Data/ForeignAddress/ProvinceOrState">
 														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/ProvinceOrState"/>
+															<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/State"/>
 														</xsl:call-template>
 														<span style="width:3mm;">,</span>
-													</xsl:if>
-													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/Country"/>
-													</xsl:call-template>
-													<span style="width:3mm;">,</span>
-													<xsl:if test="$Form8379Data/ForeignAddress/PostalCode">
 														<xsl:call-template name="PopulateText">
-															<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/PostalCode"/>
+															<xsl:with-param name="TargetNode" select="$Form8379Data/USAddress/ZIPCode"/>
 														</xsl:call-template>
-													</xsl:if>
-												</xsl:when>
-											</xsl:choose>
+													</xsl:when>
+													<xsl:when test="$Form8379Data/ForeignAddress">
+														<xsl:if test="$Form8379Data/ForeignAddress/City">
+															<xsl:call-template name="PopulateText">
+																<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/City"/>
+															</xsl:call-template>
+															<span style="width:3mm;">,</span>
+														</xsl:if>
+														<xsl:if test="$Form8379Data/ForeignAddress/ProvinceOrState">
+															<xsl:call-template name="PopulateText">
+																<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/ProvinceOrState"/>
+															</xsl:call-template>
+															<span style="width:3mm;">,</span>
+														</xsl:if>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/Country"/>
+														</xsl:call-template>
+														<span style="width:3mm;">,</span>
+														<xsl:if test="$Form8379Data/ForeignAddress/PostalCode">
+															<xsl:call-template name="PopulateText">
+																<xsl:with-param name="TargetNode" select="$Form8379Data/ForeignAddress/PostalCode"/>
+															</xsl:call-template>
+														</xsl:if>
+													</xsl:when>
+												</xsl:choose>
+											</div>
 										</div>
 									</div>
 									<div class="styIRS8379CleanDiv" style="padding-top:0px;width:100%; height:50%;">
 										<div class="styIRS8379CleanDiv" style="padding-top:0px;width:22%; height:100%;"/>
-										<div class="styIRS8379CleanDiv" style="padding-top:0px;width:35%; height:100%;font-size:8.5pt;border-top-width:1px;">
-											Number and street
-										</div>
-										<div class="styIRS8379CleanDiv" style="padding-top:0px;width:43%; height:100%;font-size:8.5pt;border-top-width:1px;">
-											City, town, or post office, state, and ZIP code
+										<div class="styIRS8379CleanDiv" style="padding-top:0px;width:78%; height:100%;font-size:8.5pt;">
+											<div class="styIRS8379CleanDiv" style="padding-top:0px;width:45%; height:100%;font-size:8.5pt;">
+												Number and street
+											</div>
+											<div class="styIRS8379CleanDiv" style="padding-top:0px;width:55%; height:100%;font-size:8.5pt;">
+												City, town, or post office, state, and ZIP code
+											</div>
 										</div>
 									</div>
 								</div>
@@ -843,17 +845,18 @@
 						<div style="float:right;">
 							<span style="width:50px;"/>  
 								Form 
-							<span class="styBoldText" style="font-size:8pt;">8379</span> (Rev. 12-2012)
+							<span class="styBoldText" style="font-size:8pt;">8379</span> (Rev. 11-2012)
 						</div>
 						<div style="float:right;text-align:center;width:26mm;font-size:7pt;">
 							Cat. No. 62474Q
 						</div>
 					</div>
+					<p style="page-break-before: always"/>
 					<!-- END Page Break and Footer-->
 					<!-- BEGIN Page Header -->
 					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
 						<div style="float:left;">
-							Form 8379 (Rev. 12-2012)<span style="width:148mm;"/>
+							Form 8379 (Rev. 11-2012)<span style="width:148mm;"/>
 						</div>
 						<div style="float:right;">
 							Page <span style="font-weight:bold;font-size:8pt;">2</span>
@@ -864,22 +867,19 @@
 					<!-- Begin Part III																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;" class="styBB">
-						<!-- Content -->
-						<div class="styPartName" style="width:15mm;">Part III</div>
-						<div class="styPartDesc" style="padding-left:3mm;font-size:8.5pt;">
-							Allocation Between Spouses of Items on the Joint Tax Return
-							<span class="styNormalText"> (see instructions)</span>
-						</div>
-					</div>
+					<div class="styBB" style="width:187mm;border-top:0px solid black;">
+<div class="styPartName">Part III</div>
+<div class="styPartDesc">Allocation Between Spouses of Items on the Joint Tax Return <span class="styNormalText"> (see instructions)</span></div>
+</div>
 					<!-- Body -->
-					<div class="styBB" style="width:187mm;">
+					<div  style="width:187mm;height:84.5mm">
 						<!-- (Header Line) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:10mm;padding-top:0px;">
-								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;">
+								<div class="styIRS8379CleanDiv" style="width:55%;height:auto;">
 									<span class="styBoldText" style="width:100%;text-align:center;font-size:8.5pt;padding-top:2mm;">
 										Allocated Items
+																	
 									</span>
 								</div>
 								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;">
@@ -900,7 +900,7 @@
 							</div>
 						</div>
 						<!-- (13a) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
 									<div class="styIRS8379CleanDiv" style="width:100%;height:3mm;padding-top:0px;"/>
@@ -910,7 +910,7 @@
 											Income:
 										</div>
 										<div class="styIRS8379LNLeftNumBox" style="height:auto;">a.</div>
-										<div class="styIRS8379LNDesc" style="width:60mm;height:auto;">
+										<div class="styIRS8379LNDesc" style="width:47mm;height:auto;">
 											Income reported on Form W-2
 										</div>
 									</div>
@@ -939,40 +939,27 @@
 							</div>
 						</div>
 						<!-- (13b) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
-									<div class="styIRS8379CleanDiv" style="width:100%;height:5mm;padding-top:2mm;">
+									<div class="styIRS8379CleanDiv" style="width:100%;height:5mm;padding-top:3mm;">
 										<div class="styIRS8379LNLeftNumBox"/>
-										<div class="styIRS8379LNDesc" style="width:13mm;height:auto;"/>
+										<div class="styIRS8379LNDesc" style="width:13.5mm;height:auto;"/>
 										<div class="styIRS8379LNLeftNumBox" style="height:auto;">b.</div>
-										<div class="styIRS8379LNDesc" style="width:auto;height:auto;">
+										<div class="styIRS8379LNDesc" style="width:47mm;height:auto;">
 											All other income
-											<span style="">
-												<xsl:call-template name="SetFormLinkInline">
-													<xsl:with-param name="TargetNode" select="$Form8379Data/JointReturnAmtGrp/TotalOtherIncomeAmt"/>
-												</xsl:call-template>
-											</span>
 										</div>
 									</div>
 								</div>
-								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:0px;border-color:black;">
-									<span>
-										<xsl:attribute name="style">
-											width:100%;text-align:right;font-size:7pt;padding-top:4.5mm;height:auto;
-											<xsl:if test="$Form8379Data/JointReturnAmtGrp/TotalOtherIncomeAmt/@referenceDocumentId">
-												padding-top:0.8mm;
-											</xsl:if></xsl:attribute>
-										<xsl:if test="$Form8379Data/JointReturnAmtGrp/TotalOtherIncomeAmt/@referenceDocumentId">
-											<xsl:call-template name="SetFormLinkInline">
-												<xsl:with-param name="TargetNode" select="$Form8379Data/JointReturnAmtGrp/WagesAmt"/>
+								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:0px;border-color:black;text-align:right;font-size:7pt;padding-top:4.5mm;">
+									
+										<xsl:call-template name="SetFormLinkInline">
+												<xsl:with-param name="TargetNode" select="$Form8379Data/JointReturnAmtGrp/TotalOtherIncomeAmt"/>
 											</xsl:call-template>
-											<br/>
-										</xsl:if>
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form8379Data/JointReturnAmtGrp/TotalOtherIncomeAmt"/>
 										</xsl:call-template>
-									</span>
+									
 								</div>
 								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:0px;">
 									<span style="width:100%;text-align:right;font-size:7pt;padding-top:4.5mm;height:auto;">
@@ -991,7 +978,7 @@
 							</div>
 						</div>
 						<!-- (14) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
 									<div class="styIRS8379CleanDiv" style="width:100%;height:3mm;padding-top:0px;"/>
@@ -1026,7 +1013,7 @@
 							</div>
 						</div>
 						<!-- (15) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
 									<div class="styIRS8379CleanDiv" style="width:100%;height:3mm;padding-top:0px;"/>
@@ -1061,7 +1048,7 @@
 							</div>
 						</div>
 						<!-- (16) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
 									<div class="styIRS8379CleanDiv" style="width:100%;height:3mm;padding-top:0px;"/>
@@ -1096,7 +1083,7 @@
 							</div>
 						</div>
 						<!-- (17) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
 									<div class="styIRS8379CleanDiv" style="width:100%;height:3mm;padding-top:0px;"/>
@@ -1131,7 +1118,7 @@
 							</div>
 						</div>
 						<!-- (18) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
 									<div class="styIRS8379CleanDiv" style="width:100%;height:3mm;padding-top:0px;"/>
@@ -1166,7 +1153,7 @@
 							</div>
 						</div>
 						<!-- (19) ////////////////////////////////////////////////////-->
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-color:black;height:auto;">
 							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
 									<div class="styIRS8379CleanDiv" style="width:100%;height:3mm;padding-top:0px;"/>
@@ -1202,36 +1189,35 @@
 						</div>
 						<!-- (20) ////////////////////////////////////////////////////-->
 						<div class="styIRS8379LineItem">
-							<div class="styIRS8379CleanDiv" style="width:100%;height:8mm;padding-top:0px;">
+							<div class="styIRS8379CleanDiv" style="width:100%;height:8.2mm;padding-top:0px;">
 								<div class="styIRS8379CleanDiv" style="width:55%;height:100%;padding-top:0px;">
-									<div class="styIRS8379CleanDiv" style="width:100%;height:3mm;padding-top:0px;"/>
-									<div class="styIRS8379CleanDiv" style="width:100%;height:5mm;padding-top:0px;">
-										<div class="styIRS8379LNLeftNumBox" style="height:auto;">20</div>
-										<div class="styIRS8379LNDesc" style="width:auto;height:auto;">
+									
+										<div class="styIRS8379LNLeftNumBox" style="height:auto;padding-top:4.5mm">20</div>
+										<div class="styIRS8379LNDesc" style="width:auto;height:auto;padding-top:4.5mm">
 											Payments
 										</div>
 									</div>
-								</div>
-								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:0px;border-color:black;">
-									<span style="width:100%;text-align:right;font-size:7pt;padding-top:4.5mm;height:auto;">
+								
+								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:4.5mm;border-color:black;text-align:right;">
+									
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form8379Data/JointReturnAmtGrp/EstimatedTaxPaymentAmt"/>
 										</xsl:call-template>
-									</span>
+									
 								</div>
-								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:0px;">
-									<span style="width:100%;text-align:right;font-size:7pt;padding-top:4.5mm;height:auto;">
+								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:4.5mm;text-align:right;">
+									
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form8379Data/InjuredSpouseAllocatedAmtGrp/EstimatedTaxPaymentAmt"/>
 										</xsl:call-template>
-									</span>
+									
 								</div>
-								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:0px;">
-									<span style="width:100%;text-align:right;font-size:7pt;padding-top:4.5mm;height:auto;">
+								<div class="styIRS8379CleanDiv" style="width:15%;height:100%;border-left-width:1px;padding-right:3px;padding-top:4.5mm;text-align:right;">
+									
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form8379Data/OtherSpouseAllocatedAmtGrp/EstimatedTaxPaymentAmt"/>
 										</xsl:call-template>
-									</span>
+									
 								</div>
 							</div>
 						</div>
@@ -1240,30 +1226,26 @@
 					<!-- Begin Part IV																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Header -->
-					<div style="width:187mm;" class="styBB">
-						<!-- Content -->
-						<div class="styPartName" style="width:15mm;">Part IV</div>
-						<div class="styPartDesc" style="padding-left:3mm;font-size:8.5pt;">
-							Signature.
-							<span class="styNormalText"> Complete this part only if you are filing Form 8379 by itself and not with your tax return.</span>
-						</div>
-					</div>
+					<div class="styBB" style="width:187mm;border-top:1px solid black;">
+<div class="styPartName">Part IV</div>
+<div class="styPartDesc">Signature. <span class="styNormalText"> Complete this part only if you are filing Form 8379 by itself and not with your tax return.</span></div>
+</div>
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS8379LineItem">
+						<div class="styIRS8379LineItem" style="height:11mm">
 							<div class="styIRS8379LNDesc" style="width:100%;padding-left:0px;font-size:7.5pt;">
 								Under penalties of perjury, I declare that I have examined this form and any accompanying schedules or statements and to the best of my knowledge<br/>
 								and belief, they are true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any<br/>
 								knowledge.
 							</div>
 						</div>
-						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-top-width:1px;border-color:black;height:7mm;">
-							<div class="styIRS8379CleanDiv" style="padding-top:0px;width:22.75mm;height:100%;">
+						<div class="styIRS8379LineItem" style="border-bottom-width:1px;border-top-width:1px;border-color:black;height:8mm;">
+							<div class="styIRS8379CleanDiv" style="padding-top:0px;width:23mm;height:100%;">
 								<span style="width:100%;text-align:center;font-size:6pt;">
 									Keep a copy of<br/>this form for<br/>your records
 								</span>
 							</div>
-							<div class="styIRS8379LNDesc" style="padding-top:0px;width:93.3mm;height:100%;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">
+							<div class="styIRS8379LNDesc" style="padding-top:0px;width:93mm;height:100%;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">
 								Injured spouse’s signature<br/>
 								<span style="width:100%;text-align:left;">
 									<xsl:call-template name="PopulatePin">
@@ -1272,7 +1254,7 @@
 									</xsl:call-template>
 								</span>
 							</div>
-							<div class="styIRS8379LNDesc" style="padding-top:0px;width:18mm;height:100%;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">
+							<div class="styIRS8379LNDesc" style="padding-top:0px;width:20mm;height:100%;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">
 								Date<br/>
 								<span style="width:100%;text-align:left;">
 									<xsl:call-template name="PopulateMonthDayYear">
@@ -1281,7 +1263,7 @@
 									</xsl:call-template>
 								</span>
 							</div>
-							<div class="styIRS8379LNDesc" style="padding-top:0px;width:51mm;height:100%;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">
+							<div class="styIRS8379LNDesc" style="padding-top:0px;width:25mm;height:100%;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">
 								Phone number (optional)<br/>
 							</div>
 						</div>
@@ -1298,23 +1280,23 @@
 							</div>
 							<div style="width:164mm;float:right;clear:none;border-width:0px 0px 0px 1px; border-color:black;border-style:solid;">
 								<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-									<div class="styLNDesc" style="height:6mm;width:46.8mm;padding-top:0mm;border-right:1 solid black;padding-left:3px;">
+									<div class="styLNDesc" style="height:8mm;width:56mm;padding-top:0mm;border-right:1 solid black;padding-left:3px;">
 										Print/Type preparer's name<br/>
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerPersonNm"/>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerPersonName</xsl:with-param>
 										</xsl:call-template>
 									</div>
-									<div class="styLNDesc" style="height:6mm;width:46.5mm;padding-top:0mm;border-right:1 solid black;padding-left:1mm;">
+																		<div class="styIRS8379LNDesc" style="padding-top:0px;width:36.7mm;height:8mm;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">
 										Preparer's signature
 									</div>
-									<div class="styLNDesc" style="height:6mm;width:15mm;border-right:1 solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
+																		<div class="styIRS8379LNDesc" style="padding-top:0px;width:26mm;height:8mm;;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">Date <br/>
 										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationDateSigned</xsl:with-param>
 										</xsl:call-template>
 									</div>
-									<div class="styLNDesc" style="height:6mm;width:18mm;border-right:1 solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">Check 
+									<div class="styIRS8379LNDesc" style="padding-top:0px;width:19mm;height:8mm;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">Check 
 										<label>
 										<xsl:call-template name="PopulateLabel">
 												<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
@@ -1329,7 +1311,7 @@
 											<span style="width:4px;"/>if<br/>self-employed
 									</label>
 									</div>
-									<div class="styLNDesc" style="height:6mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
+									<div class="styIRS8379LNDesc" style="padding-top:0px;width:26mm;height:8mm;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">PTIN
 										<br/>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerSSN">
 											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
@@ -1352,7 +1334,7 @@
 									</div>
 								</div>
 								<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-									<div class="styLNDesc" style="height:6mm;width:108.5mm;border-right:1 solid black;">
+									<div class="styLNDesc" style="height:auto;width:118.9mm;border-right:1 solid black;">
 										<span class="styGenericDiv" style="padding-left:3px;">Firm's name 
 									<span style="width:2.2mm;"/>
 											<img src="{$ImagePath}/8379_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
@@ -1361,16 +1343,16 @@
 										<div class="styGenericDiv" style="padding-right:.5mm;">
 											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
-												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName1</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName1Txt</xsl:with-param>
 											</xsl:call-template>
 											<br/>
 											<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 												<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
-												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName2</xsl:with-param>
+												<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerBusinessName2Txt</xsl:with-param>
 											</xsl:call-template>
 										</div>
 									</div>
-									<div class="styLNDesc" style="height:6mm;width:32mm;padding-left:1mm;">Firm's EIN
+									<div class="styIRS8379LNDesc" style="padding-top:0px;width:26mm;height:6mm;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;">Firm's EIN
 								<img src="{$ImagePath}/8379_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
 										<span style="width:4px;"/>
 										<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN">
@@ -1388,7 +1370,7 @@
 									</div>
 								</div>
 								<div style="width:164mm;float:left;clear:none;">
-									<div class="styLNDesc" style="width:108.5mm;border-right:1 solid black;">
+									<div class="styLNDesc" style="width:118.9mm;border-right:1 solid black;height:auto;">
 										<div class="styGenericDiv" style="padding-right:.5mm;padding-left:3px;">Firm's address 
 											<img src="{$ImagePath}/8379_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
 										</div>
@@ -1416,7 +1398,7 @@
 											<span style="width:2px;"/>
 												<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 													<xsl:with-param name="TargetNode">ZIPCode</xsl:with-param>
-													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationUSAddressZip</xsl:with-param>
+													<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationUSAddressZipCode</xsl:with-param>
 												</xsl:call-template>
 											</xsl:if>
 											<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerForeignAddress">
@@ -1442,7 +1424,7 @@
 											</xsl:if>
 										</div>
 									</div>
-									<div class="styLNDesc" style="width:32mm;padding-left:1mm;"> Phone no. 
+									<div class="styIRS8379LNDesc" style="padding-top:0px;width:26mm;height:11mm;border-left-width:1px;font-size:6pt;border-color:black;padding-left:3px;"> Phone no. 
 										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 											<xsl:with-param name="TargetNode">Phone</xsl:with-param>
 											<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPhone</xsl:with-param>
@@ -1457,12 +1439,13 @@
 						</div>
 					</div>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+
 					<!-- Page Break and Footer-->
 					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
 						<div style="float:right;">
 							<span style="width:50px;"/>  
 								Form 
-							<span class="styBoldText" style="font-size:8pt;">8379</span> (Rev. 12-2012)
+							<span class="styBoldText" style="font-size:8pt;">8379</span> (Rev. 11-2012)
 						</div>
 					</div>
 					<!-- Additonal Data Title Bar and Button -->

@@ -2,23 +2,20 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
-  
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
-  
   <xsl:param name="PCPISData" select="$RtnDoc/PrpsdChgPoolingInventoriesStmt"/>
-  <!-- Template to display Itemized Other Income Schedule -->
+  <!-- - 3115 Form displays as - Proposed Change in Pooling Inventories Statement -->
   <xsl:template name="ShowPCPIS">
-    <!-- Itemized Other Income Schedule Data -->
     <table id="PCPISTbl" class="styDepTblLandscape">
       <thead class="styDepTableThead">
         <tr class="styDepTblHdr">
-          <th class="styDepTblCell" scope="col" style="font-size: 9pt;">Present Use Description of the Contents of the Dollar-Value Pool Used</th>
-          <th class="styDepTblCell" scope="col" style="font-size: 9pt;">Present Use Base Year</th>
-          <th class="styDepTblCell" scope="col" style="font-size: 9pt;">Proposed Use Description of the Contents of the Dollar-Value Pool Used</th>
-          <th class="styDepTblCell" scope="col" style="font-size: 9pt;">Proposed Use Base Year</th>
+          <th class="styDepTblCell" scope="col" >Present Use Description of the Contents of the Dollar-Value Pool Used</th>
+          <th class="styDepTblCell" scope="col" >Present Use Base Year</th>
+          <th class="styDepTblCell" scope="col" >Proposed Use Description of the Contents of the Dollar-Value Pool Used</th>
+          <th class="styDepTblCell" scope="col" >Proposed Use Base Year</th>
         </tr>
       </thead>
       <tfoot/>
@@ -32,22 +29,22 @@
                 <xsl:otherwise>styDepTblRow2</xsl:otherwise>
               </xsl:choose>
             </xsl:attribute>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 9pt;">
-                        <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="PresentUseDollarVlPoolUsedDesc"/>
-                        </xsl:call-template>
+            <td class="styDepTblCell" scope="col" style="text-align:left;">
+                <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="PresentUseDollarVlPoolUsedDesc"/>
+                </xsl:call-template>
             </td>
-            <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 9pt;width:13mm;">
+            <td class="styDepTblCell" scope="col" style="text-align:center;width:13mm;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="PresentUseBaseYr"/>
               </xsl:call-template>
             </td>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 9pt;">
+            <td class="styDepTblCell" scope="col" style="text-align:left;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="ProposedUseDolVlPoolUsedDesc"/>
               </xsl:call-template>
             </td>
-            <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 9pt;width:13mm;">
+            <td class="styDepTblCell" scope="col" style="text-align:center;width:13mm;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="ProposedUseBaseYr"/>
               </xsl:call-template>
@@ -57,17 +54,17 @@
       </tbody>
     </table>
   </xsl:template>
-  
     <xsl:param name="depDocTitle">
       <xsl:call-template name="PopulateDisplayName">
         <xsl:with-param name="TargetNode" select="$PCPISData"/>
       </xsl:call-template>  
     </xsl:param>
-    
     <!-- Main template -->
     <xsl:template match="/">
-      <html>
+      <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
         <head>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title>
             <xsl:value-of select="$depDocTitle"/>
           </title>
@@ -90,11 +87,11 @@
           </style>
           <xsl:call-template name="GlobalStylesDep"/>
         </head>
-        <body class="styBodyClass">
+        <body class="styBodyClass" style="width:187mm;">
           <xsl:call-template name="DocumentHeaderDependencyLandscape"/>  
           <div class="styDepTitleLineLandscape">
             <span class="styDepTitle">
-              <span style="width:70mm;">
+              <span style="padding-right:2mm;">
                 <xsl:value-of select="$depDocTitle"/>
               </span>    
             </span>
@@ -103,7 +100,6 @@
             <xsl:with-param name="TargetNode" select="$PCPISData"/>
           </xsl:call-template>
           <span style="height:5px;"/>
-          <!-- Transform Itemized Other Income Schedule -->
           <xsl:call-template name="ShowPCPIS"/>
           <br/>
         </body>

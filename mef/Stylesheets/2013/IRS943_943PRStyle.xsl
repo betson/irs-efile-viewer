@@ -52,12 +52,11 @@
 	}
 	
 	.styIRS943MonthCAmt{
-	  width:29.9mm;
+	  width:29.5mm;
 	  height:4.5mm;
 	  border-left:1px solid black;
 	  border-right: 0px solid black;  
 	  border-bottom: 1px solid black;
-	  float:left;
 	  text-align:right;
 	  padding-top:1mm;
 	  font-size:6pt;	 

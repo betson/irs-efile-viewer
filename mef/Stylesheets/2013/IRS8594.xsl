@@ -10,8 +10,10 @@
   <!-- Defines the stage of the data, e.g. original or latest  -->
   <xsl:param name="Form8594Data" select="$RtnDoc/IRS8594"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8594Data)"/>
@@ -32,7 +34,7 @@
           <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="IRS8594Style"/>
             <xsl:call-template name="AddOnStyle"/>
-          </xsl:if>
+           </xsl:if>
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
@@ -42,14 +44,12 @@
           <!-- Begin Form Number and Name -->
           <div class="styTBB" style="width:187mm;height:20.5mm;">
             <div class="styFNBox" style="width:35mm;height:20.5mm;">
-              <div style="height:10mm;">
-                Form
-                <span class="styFormNumber"> 8594</span>
+                Form <span class="styFormNumber"> 8594</span>
                 <br/>
                 (Rev. December 2012)
-              </div>
-              <!-- Remove this later -->
-              <div style="height:7mm;font-size:7pt;font-family:arial;padding-top:1.5mm">
+                <br/>
+              <span style="height:7mm;"/>
+              <div style="height:7mm;font-size:7pt;font-family:arial;padding-top:1.5mm;">
                 <span class="styAgency">Department of the Treasury</span>
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form8594Data"/>
@@ -60,20 +60,23 @@
             </div>
             <div class="styFTBox" style="width:121mm;height:20.5mm;padding-top:1mm">
               <div class="styMainTitle">Asset Acquisition Statement </div>
+              <br/>
               <div class="styMainTitle" style="font-size:11pt;">Under Section 1060 </div>
+             <br/>
              <br/>
                 <img src="{$ImagePath}/8594_Bullet.gif" alt="bullet image"/>
                 Attach to your income tax return.
               <br/>
                 <img src="{$ImagePath}/8594_Bullet.gif" alt="bullet image"/>
-                Information about Form 8594 and its separate instructions
-is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
-                <i>www.IRS.gov/form8594.</i>
+                Information about Form 8594 and its separate instructions is at 
+                <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
+                <i>www.irs.gov/form8594.</i>
             </a>
             </div>
             <div class="styTYBox" style="width:30mm;height:20.5mm;">
-              <div class="styOMB" style="height:9mm;padding-top:2mm;padding-left:.3mm;">OMB No. 1545-1021</div>
-              <div style="height:9mm;text-align:left;padding-left:1mm;border-bottom-width:0px;" class="styOMB">
+              <div class="styOMB" style="height:9mm;padding-top:2mm;padding-left:3mm;">OMB No. 1545-1021</div>
+              <div style="height:9mm;text-align:left;padding-left:3mm;border-bottom-width:0px;" class="styOMB">
+                <span style="height:6mm;" />
                 Attachment
                 <br/>
                 Sequence No.
@@ -82,7 +85,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
             </div>
           </div>
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:120mm;height:8mm;font-size:7pt; padding-left:5mm;">
+            <div class="styNameBox" style="width:120mm;height:9mm;font-size:7pt; padding-left:9mm;">
               Name as shown on return
               <br/>
               <xsl:call-template name="PopulateText">
@@ -97,7 +100,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 </xsl:call-template>
               </xsl:if>
             </div>
-            <div style="width:65mm;height:8mm;float:left;padding-left:2mm;font-size:7pt;">
+            <div style="width:65mm;height:9mm;float:left;padding-left:2mm;font-size:7pt;">
               <span style="width:4px;"/>
               Identifying number as shown on return
               <br/>
@@ -127,41 +130,43 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
             </div>
           </div>
           <div class="styBB" style="width:187mm;">
-            <div style="width:182mm;padding-left:5mm;">
+            <div style="width:182mm;padding-left:9mm;">
               Check the box that identifies you:
               <br/>
+              <span>
+                  <xsl:call-template name="PopulateSpan">
+                    <xsl:with-param name="TargetNode" select="$Form8594Data/PurchaserInd"/>
+                  </xsl:call-template>
               <input type="checkbox" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form8594Data/PurchaserInd"/>
-                  <xsl:with-param name="BackupName">
-                    IRS8594Purchaser
-                  </xsl:with-param>
+                  <xsl:with-param name="BackupName">IRS8594PurchaserInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              </span>
               <label>
                 <xsl:call-template name="PopulateLabel">
                   <xsl:with-param name="TargetNode" select="$Form8594Data/PurchaserInd"/>
-                  <xsl:with-param name="BackupName">
-                    IRS8594Purchaser
-                  </xsl:with-param>
+                  <xsl:with-param name="BackupName">IRS8594Purchaser</xsl:with-param>
                 </xsl:call-template>
                 Purchaser
               </label>
               <span style="width:24px"/>
+              <span>
+                  <xsl:call-template name="PopulateSpan">
+                    <xsl:with-param name="TargetNode" select="$Form8594Data/SellerInd"/>
+                  </xsl:call-template>
               <input type="checkbox" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$Form8594Data/SellerInd"/>
-                  <xsl:with-param name="BackupName">
-                    IRS8594Seller
-                  </xsl:with-param>
+                  <xsl:with-param name="BackupName">IRS8594Seller</xsl:with-param>
                 </xsl:call-template>
               </input>
+              </span>
               <label>
                 <xsl:call-template name="PopulateLabel">
                   <xsl:with-param name="TargetNode" select="$Form8594Data/SellerInd"/>
-                  <xsl:with-param name="BackupName">
-                    IRS8594Seller
-                  </xsl:with-param>
+                  <xsl:with-param name="BackupName">IRS8594Seller</xsl:with-param>
                 </xsl:call-template>
                 Seller
               </label>
@@ -220,7 +225,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
             </div>
           </div>
           <div class="styBB" style="width:187mm;">
-            <div class="styNumberBox" style="height:8mm;font-size:7pt;padding-left:8mm;">
+            <div class="styNumberBox" style="height:9mm;font-size:7pt;padding-left:8mm;">
               Address (number, street, and room or suite no.)
               <br/>
               <xsl:if test="$Form8594Data/OtherPartyUSAddress">
@@ -252,7 +257,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
             </div>
           </div>
           <div class="styBB" style="width:187mm;">
-            <div class="styNumberBox" style="height:8mm;font-size:7pt;padding-left:8mm;">
+            <div class="styNumberBox" style="height:9mm;font-size:7pt;padding-left:8mm;">
               City or town,
               <span style="width:1px;"/>
               state,
@@ -260,6 +265,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
               and
               <span style="width:1px;"/>
               ZIP code
+              <br/>
               <br/>
               <xsl:if test="$Form8594Data/OtherPartyUSAddress">
                 <xsl:if test="$Form8594Data/OtherPartyUSAddress/City!=''">
@@ -291,26 +297,25 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form8594Data/OtherPartyForeignAddress/ProvinceOrState"/>
                   </xsl:call-template>
-                  <br/>
                 </xsl:if>
-                <xsl:if test="$Form8594Data/OtherPartyForeignAddress/Country!=''">
-                  <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$Form8594Data/OtherPartyForeignAddress/Country"/>
-                  </xsl:call-template>
-                </xsl:if>
-                <span style="width:1mm;"/>
                 <xsl:if test="$Form8594Data/OtherPartyForeignAddress/PostalCode!=''">
                   <span style="width:1mm;"/>
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form8594Data/OtherPartyForeignAddress/PostalCode"/>
                   </xsl:call-template>
                 </xsl:if>
+                <span style="width:1mm;"/>
+                <xsl:if test="$Form8594Data/OtherPartyForeignAddress/Country!=''">
+                  <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="$Form8594Data/OtherPartyForeignAddress/Country"/>
+                  </xsl:call-template>
+                </xsl:if>                
               </xsl:if>
             </div>
           </div>
           <div class="styBB" style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;">2</div>
-            <div class="styNameBox" style="width:100mm;height:8mm;font-size:7pt;">
+            <div class="styNameBox" style="width:100mm;height:9mm;font-size:7pt;">
               Date of sale
               <br/>
               <br/>
@@ -358,15 +363,15 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class I </td>
                   <td class="styTableCellText" style="width:80mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class1FairMarketValueAmt"/>
                     </xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:75mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:76mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class1SalesPriceAllocationAmt"/>
@@ -377,15 +382,15 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class II </td>
                   <td class="styTableCellText" style="width:80mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class2FairMarketValueAmt"/>
                     </xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:75mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:76mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class2SalesPriceAllocationAmt"/>
@@ -396,15 +401,15 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class III </td>
                   <td class="styTableCellText" style="width:80mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class3FairMarketValueAmt"/>
                     </xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:75mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:76mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class3SalesPriceAllocationAmt"/>
@@ -415,15 +420,15 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class IV </td>
                   <td class="styTableCellText" style="width:80mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class4FairMarketValueAmt"/>
                     </xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:75mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:76mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class4SalesPriceAllocationAmt"/>
@@ -434,15 +439,15 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class V </td>
                   <td class="styTableCellText" style="width:80mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class5FairMarketValueAmt"/>
                     </xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:75mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:76mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class5SalesPriceAllocationAmt"/>
@@ -453,15 +458,15 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class VI and VII </td>
                   <td class="styTableCellText" style="width:80mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class6And7FairMarketValueAmt"/>
                     </xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:75mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:76mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class6And7SalesPriceAllocnAmt"/>
@@ -470,17 +475,17 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                   </td>
                 </tr>
                 <tr>
-                  <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Total </td>
-                  <td class="styTableCellText" style="width:80mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;border-bottom-width: 0px;"> Total </td>
+                  <td class="styTableCellText" style="width:80mm;padding-top:5mm;text-align:right;border-bottom-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/TotalFairMarketValueAmt"/>
                     </xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:75mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:76mm;padding-top:5mm;text-align:right;border-right-width: 0px;border-bottom-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/TotalSalesPriceAllocationAmt"/>
@@ -698,7 +703,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
               the maximum amount of
             </div>
           </div>
-          <div class="styBB" style="width:187mm;">
+          <div class="styTBB" style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;"/>
             <div class="styLNDesc" style="width:145mm;"> consideration (not including interest) paid or to be paid under the agreement. See instructions. </div>
           </div>
@@ -717,9 +722,10 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
               (Rev. 12-2012)
             </div>
           </div>
+           <p style="page-break-before: always"/> 
           <!--Begin Page 2 -->
           <!-- Header -->
-          <div class="styBB" style="width:187mm;">
+          <div class="styTBB" style="width:187mm;">
             <div style="float:left;">
               Form 8594 (Rev. 12-2012)
               <span style="width:130mm;"/>
@@ -728,23 +734,19 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
               Page
               <span style="font-weight:bold;font-size:7pt;">2</span>
             </div>
-          </div>
+          </div>         
           <!-- BEGIN Part III Title -->
-          <div class="styBB" style="width:187mm;height:8mm;">
+          <div class="styBB" style="width:187mm; height:8mm;">
             <div class="styPartName">Part III </div>
-            <div class="styPartDesc">
-              Supplemental Statement—
-              <span class="styNormalText">
-                Complete only if amending an original statement or previously filed
-                <br/>
-                supplemental statement because of an increase or decrease in consideration. See instructions.
-              </span>
+            <div class="styPartDesc" style="width:173mm;font-weight:normal;"><b>Supplemental Statement &#8212; </b>
+                Complete only if amending an original statement or previously filed supplemental statement 
+                because of an increase or decrease in consideration. See instructions.			
             </div>
           </div>
           <!-- END Part III Title -->
           <div class="styBB" style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;">7</div>
-            <div class="styLNDesc" style="width:178mm;height:8mm;">
+            <div class="styLNDesc" style="width:178mm;height:9.5mm;">
               Tax year and tax return form number with which the original Form 8594 and any supplemental statements were filed.
               <br/>
               <br/>
@@ -766,19 +768,19 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 <tr>
                   <th class="styTableCellHeader" style="width:31mm;text-align:left;" scope="col">
                     <span class="styBoldText" style="width:24px;padding-left:1mm;">8</span>
-                    <span style="font-size:6pt;font-weight:normal;"> Assets </span>
+                    <span style="font-weight:normal;padding-left:6mm;"> Assets </span>
                   </th>
-                  <th class="styTableCellHeader" style="width:60mm;font-size:6pt;font-weight:normal;" scope="col">Allocation of sales price as previously reported</th>
-                  <th class="styTableCellHeader" style="width:37mm;font-size:6pt;font-weight:normal;" scope="col">Increase or (decrease)</th>
-                  <th class="styTableCellHeader" style="width:58mm;border-right-width: 0px;font-size:6pt;font-weight:normal;" scope="col">Redetermined allocation of sales price</th>
+                  <th class="styTableCellHeader" style="width:61mm;font-weight:normal;" scope="col">Allocation of sales price as previously reported</th>
+                  <th class="styTableCellHeader" style="width:37mm;font-weight:normal;" scope="col">Increase or (decrease)</th>
+                  <th class="styTableCellHeader" style="width:58mm;border-right-width: 0px;font-weight:normal;" scope="col">Redetermined allocation of sales price</th>
                 </tr>
               </thead>
               <tfoot/>
               <tbody>
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class I </td>
-                  <td class="styTableCellText" style="width:60mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:61mm;padding-top:5mm;text-align:right;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class1PrevPriceAllocationAmt"/>
@@ -786,7 +788,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:37mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/AggregateValuesListedIndAmt"/>
@@ -794,7 +796,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:58mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class1RedeterminedAllocnAmt"/>
@@ -804,8 +806,8 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 </tr>
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class II </td>
-                  <td class="styTableCellText" style="width:60mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:61mm;padding-top:5mm;text-align:right;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class2PrevPriceAllocationAmt"/>
@@ -813,7 +815,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:37mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class2IncreaseDecreaseAmt"/>
@@ -821,7 +823,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:58mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class2RedeterminedAllocnAmt"/>
@@ -831,8 +833,8 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 </tr>
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class III </td>
-                  <td class="styTableCellText" style="width:60mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:61mm;padding-top:5mm;text-align:right;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class3PrevPriceAllocationAmt"/>
@@ -840,7 +842,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:37mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class3IncreaseDecreaseAmt"/>
@@ -848,7 +850,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:58mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class3RedeterminedAllocnAmt"/>
@@ -858,8 +860,8 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 </tr>
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class IV </td>
-                  <td class="styTableCellText" style="width:60mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:61mm;padding-top:5mm;text-align:right;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class4PrevPriceAllocationAmt"/>
@@ -867,7 +869,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:37mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class4IncreaseDecreaseAmt"/>
@@ -875,7 +877,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:58mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class4RedeterminedAllocnAmt"/>
@@ -885,8 +887,8 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 </tr>
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class V </td>
-                  <td class="styTableCellText" style="width:60mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:61mm;padding-top:5mm;text-align:right;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class5PrevPriceAllocationAmt"/>
@@ -894,7 +896,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:37mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class5IncreaseDecreaseAmt"/>
@@ -902,7 +904,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:58mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class5RedeterminedAllocnAmt"/>
@@ -912,8 +914,8 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                 </tr>
                 <tr>
                   <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Class VI and VII </td>
-                  <td class="styTableCellText" style="width:60mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:61mm;padding-top:5mm;text-align:right;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class6And7PrevPriceAllocnAmt"/>
@@ -921,7 +923,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:37mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class6And7IncreaseDecreaseAmt"/>
@@ -929,7 +931,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                     <span style="width:4px;"/>
                   </td>
                   <td class="styTableCellText" style="width:58mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/Class6And7RedetermAllocnAmt"/>
@@ -938,20 +940,20 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
                   </td>
                 </tr>
                 <tr>
-                  <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;"> Total </td>
-                  <td class="styTableCellText" style="width:60mm;padding-top:5mm;text-align:right;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" scope="row" style="width:31mm;padding-top:5mm;border-bottom-width: 0px;"> Total </td>
+                  <td class="styTableCellText" style="width:61mm;padding-top:5mm;text-align:right;border-bottom-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/TotalOfPreviousPriceAllocnAmt"/>
                     </xsl:call-template>
                     <span style="width:4px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:37mm;background-color:lightgrey;">
+                  <td class="styTableCellText" style="width:37mm;background-color:lightgrey;border-bottom-width: 0px;">
                     <span style="width:1px;"/>
                   </td>
-                  <td class="styTableCellText" style="width:58mm;padding-top:5mm;text-align:right;border-right-width: 0px;">
-                    <span style="width:4px; float:left;">$</span>
+                  <td class="styTableCellText" style="width:58mm;padding-top:5mm;text-align:right;border-right-width: 0px;border-bottom-width: 0px;">
+                    <span style="width:4px; float:left;padding-left:.5mm;">$</span>
                     <span style="width:2px;"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form8594Data/TotalRedeterminedAllocationAmt"/>
@@ -964,7 +966,7 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
           </div>
           <div class="styBB" style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:4.5mm;">9</div>
-            <div class="styLNDesc" style="width:178mm;height:8mm;">
+            <div class="styLNDesc" style="width:178mm;height:auto;">
               Reason(s) for increase or decrease. Attach additional sheets if more space is needed.
               <span style="width:1px;"/>
               <xsl:call-template name="SetFormLinkInline">
@@ -1069,7 +1071,8 @@ is at <a href="http://www.irs.gov/form8594" title="Link to IRS.gov">
               (Rev. 12-2012)
             </div>
           </div>
-          <br class="pageEnd"/>
+           <p style="page-break-before: always"/> 
+          <!--<br class="pageEnd"/>-->
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

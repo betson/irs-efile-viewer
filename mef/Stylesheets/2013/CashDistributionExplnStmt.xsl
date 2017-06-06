@@ -18,8 +18,10 @@
     
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>
@@ -45,7 +47,7 @@
         <xsl:call-template name="DocumentHeaderDependency"/>
         <div class="styDepTitleLine">
           <span class="styDepTitle">
-            <span style="width:110mm;">
+            <span style="width:182.7mm;">
               <xsl:value-of select="$depDocTitle"/>
             </span>
           </span>
@@ -56,8 +58,9 @@
         <xsl:if test="$DependencyData/ExplanationTxt !=''">
           <div class="styTopSectionLine" style="width:187mm;">
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
-            <div style="float:left;clear:none;">
-              <div class="styExplanationLine">
+            <br/>
+            <div style="float:left; clear:none;">
+              <div class="styExplanationLine" style="width:187mm">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$DependencyData/ExplanationTxt"/>
                 </xsl:call-template>

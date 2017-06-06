@@ -4,7 +4,7 @@
 	<xsl:template name="IRSW2GStyle">
 	.styIRSW2GLeftTopFrame {
 		width:155mm;
-		height:71mm;
+		height:95mm;
 		border-top-width:1px;
 		border-bottom-width: 1px;
 		border-left-width:1px;
@@ -139,8 +139,7 @@
 		border-bottom-width: 0px;
 		border-left-width:0px;
 		border-right-width:0px;
-		width:100%mm;
-		height:4mm;
+		height:10mm;
 		padding:0px 0px 0px 0px;
 		text-align:left;
 		float:left; 

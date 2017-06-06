@@ -14,8 +14,10 @@
   <!-- Main template -->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -42,7 +44,7 @@
   
         <xsl:call-template name="DocumentHeaderDependency"/>  
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:70mm;">
+          <span class="styDepTitle" style="width:100mm;">
             <span><xsl:value-of select="$depDocTitle"/></span>
           </span>
         </div>
@@ -76,7 +78,7 @@
         </div><br/>
         <div class="styTopSectionLine" style="width:187mm;">
           <div class="styTopSectionLineLbl" style="float:left;clear:none;">Section 754 Declaration:</div>
-          <div style="float:left;clear:none;width:118mm;">
+          <div style="width:187mm;padding-top:2mm;float:left;clear:none;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$RtnDoc/Section754Election/Section754DeclarationTxt"/>
             </xsl:call-template>

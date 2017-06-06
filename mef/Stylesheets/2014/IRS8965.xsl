@@ -8,8 +8,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8965Data" select="$RtnDoc/IRS8965"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8965Data)"/>
@@ -62,7 +64,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:32mm;border-left:none;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0074</div>
+							<div class="styOMB">OMB No. 1545-0074</div>
 							<div class="styTaxYear" style="line-height:30px;">20<span class="styTYColor">14</span></div>
 							<div style="margin-left:3mm; text-align:left;">
 								Attachment<br/>Sequence No. <span class="styBoldText">75</span>
@@ -98,7 +100,7 @@
 						</div>
 					</div>
 						
-					<div class="styBB" style="width:187mm;float:none;clear:both;">
+					<div class="styBB" style="width:187mm;float:none;clear:both;height:8mm;">
 						<div style="padding-top:1.6mm;float:left;">
 							<div class="styPartName" style="width:13mm;text-align:center;height:4mm;padding-top:0mm;">Part I</div>
 						</div>
@@ -253,14 +255,14 @@
 					</div>
 						
 					<!--  Line 7a-->
-					<div style="width:187mm;padding-top:2mm;">
-						<div class="styLNLeftNumBox" style="height:4mm;width:10mm;text-align:center;padding-top:1mm;">7a</div>
-						<div class="styLNDesc" style="width:152mm;height:4mm;float:left;padding-top:1mm;padding-left:1mm;">
+					<div style="width:187mm;">
+						<div class="styLNLeftNumBox" style="height:8mm;width:10mm;text-align:center;padding-top:4mm;">7a</div>
+						<div class="styLNDesc" style="width:177mm;height:8mm;float:left;padding-top:4mm;padding-left:1mm;">
 							<span style="float:left;">Are you claiming an exemption because your household income is below the filing threshold?</span>
 							<!--Dotted Line-->
-							<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">......</span>
-						</div>
-						<div style="height:8mm;font-size:7pt;padding-top:1mm;float:right;">
+							<span style="padding-left:1mm;letter-spacing:3.5mm;font-weight:bold;">....</span>
+
+						<div style="height:8mm;font-size:7pt;float:right;">
 							<span>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form8965Data/HsldIncmBelowFlngThresholdInd"/>
@@ -301,18 +303,18 @@
 								</xsl:call-template>
 							</label><b>No</b>
 							<span style="width:4mm;"/>
+													</div>
 						</div>
 					</div>
 						
 					<!--  Line 7b-->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="padding-top:1mm;width:10mm;text-align:center;">b</div>
-						<div class="styLNDesc" style="width:152mm;float:left;padding-top:1mm;padding-left:1mm;">
+						<div class="styLNLeftNumBox" style="height:8mm;padding-top:3mm;width:10mm;text-align:center;">b</div>
+						<div class="styLNDesc" style="height:8mm;width:177mm;float:left;padding-top:3mm;padding-left:1mm;">
 							<span style="float:left;">Are you claiming a hardship exemption because your gross income is below the filing threshold?</span>
 							<!--Dotted Line-->
-							<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">.....</span>
-						</div>
-						<div style="font-size:7pt;padding-top:1mm;float:right;">
+							<span style="padding-left:1mm;letter-spacing:3.5mm;font-weight:bold;">...</span>
+						<div style="font-size:7pt;float:right;">
 							<span>
 								<xsl:call-template name="PopulateSpan">
 									<xsl:with-param name="TargetNode" select="$Form8965Data/GrossIncmBelowFlngThresholdInd"/>
@@ -355,8 +357,8 @@
 							<span style="width:4mm;"/>
 						</div>
 					</div>
-						
-					<div class="styBB" style="width:187mm;border-top:1px solid black;">
+						</div>
+					<div class="styBB" style="width:187mm;border-top:1px solid black;height:8mm;">
 						<div style="padding-top:1.6mm;float:left;">
 							<div class="styPartName" style="width:13mm;text-align:center;height:4mm;padding-top:0mm;">Part III</div>
 						</div>
@@ -376,7 +378,7 @@
 					
 					<!-- BEGIN Table -->
 					<!--Lines 8-13-->
-					<div class="styTableContainer" id="FirmDiv2" style="border-bottom-width:0px;height:0mm;width:187mm;">
+					<div class="styTableContainer" id="FirmDiv2" style="border-bottom-width:0px;width:187mm;">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" style="font-size:7pt;border-color:black;" cellspacing="0">
 							<thead class="styTableThead">
@@ -738,13 +740,13 @@
 								<tr>
 									<th scope="col" class="styTableCell" style="border-right:1px solid black;border-bottom:1px solid black;"><div style="width:10mm;"><br/></div></th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<div style="width:80mm">a<br/>Name of Individual</div>
+										<div style="width:80mm">(a)<br/>Name of Individual</div>
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<div style="width:37mm">b<br/>SSN</div>
+										<div style="width:37mm">(b)<br/>SSN</div>
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:none;border-bottom:1px solid black;">
-										<div style="width:52.6mm;">c<br/>Exemption Certificate Number</div>
+										<div style="width:52.6mm;">(c)<br/>Exemption Certificate Number</div>
 									</th>
 								</tr>
 							</thead>
@@ -794,52 +796,52 @@
 								<tr>
 									<th scope="col" class="styTableCell" style="border-right:1px solid black;border-bottom:1px solid black;"><div style="width:10mm;"><br/></div></th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;width:auto;">
-										<div style="width:42mm;text-align:center;"><b>a</b><br/>Name of Individual</div>
+										<div style="width:42mm;text-align:center;"><b>(a)</b><br/>Name of Individual</div>
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;width:auto;">
-										<div style="width:22mm;"><b>b</b><br/>SSN</div>
+										<div style="width:22mm;"><b>(b)</b><br/>SSN</div>
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<div style="width:15mm;"><b>c</b><br/>Exemption<br/>Type</div>
+										<div style="width:15mm;"><b>(c)</b><br/>Exemption<br/>Type</div>
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>d</b><br/>Full<br/>Year
+										<b>(d)</b><br/>Full<br/>Year
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>e</b><br/>Jan
+										<b>(e)</b><br/>Jan
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>f</b><br/>Feb
+										<b>(f)</b><br/>Feb
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>g</b><br/>Mar
+										<b>(g)</b><br/>Mar
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>h</b><br/>Apr
+										<b>(h)</b><br/>Apr
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>i</b><br/>May
+										<b>(i)</b><br/>May
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>j</b><br/>June
+										<b>(j)</b><br/>June
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>k</b><br/>July
+										<b>(k)</b><br/>July
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>l</b><br/>Aug
+										<b>(l)</b><br/>Aug
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>m</b><br/>Sept
+										<b>(m)</b><br/>Sept
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>n</b><br/>Oct
+										<b>(n)</b><br/>Oct
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:1px solid black;border-bottom:1px solid black;">
-										<b>o</b><br/>Nov
+										<b>(o)</b><br/>Nov
 									</th>
 									<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:bold;vertical-align:middle;border-right:none;border-bottom:1px solid black;">
-										<b>p</b><br/>Dec
+										<b>(p)</b><br/>Dec
 									</th>
 								</tr>
 							</thead>

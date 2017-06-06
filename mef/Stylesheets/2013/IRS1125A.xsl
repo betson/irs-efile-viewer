@@ -11,8 +11,10 @@
 	<!--	<xsl:param name="Form1125A" select="$RtnDoc/IRS1125A/IRS1125AScheduleA"/>
 -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1125AData)"/>
@@ -312,10 +314,10 @@
 					<!-- Schedule A, line 9a(iii) -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styGenericDiv" style="height:4mm; text-align:right; width:5mm; padding-top:1.8mm;">
+						<div class="styGenericDiv" style="height:7mm; text-align:right; width:5mm; padding-top:1.8mm;">
 							<i>(iii)</i>
 						</div>
-						<div class="styLNDesc" style="width:86mm;height:4.5mm;vertical-align:baseline;">
+						<div class="styLNDesc" style="width:86mm;height:7mm;vertical-align:baseline;">
 							<input type="checkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1125AData/OtherMethodUsedInd"/>
@@ -337,7 +339,7 @@
 								<xsl:with-param name="TargetNode" select="$Form1125AData/OtherMethodUsedInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styBB" style="width:87mm;height:4.5mm;clear:none">
+						<div class="styBB" style="width:87mm;height:6mm;clear:none">
 							<span style="width:3px;"/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1125AData/OtherMethodUsedInd/@otherMethodUsedDesc"/>
@@ -346,21 +348,20 @@
 					</div>
 					<!-- Schedule A, line 9b -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:1mm;padding-left:4mm;">b</div>
-						<div class="styLNDesc" style="width:172mm;height:4.5mm;padding-top:1mm;">
-							<span style="float:left;">Check if there was a writedown of subnormal goods </span>
-							<label for="SubnormalGoodsCheck">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:3mm;padding-left:4mm;">b</div>
+						<div class="styLNDesc" style="width:170mm;height:4.5mm;padding-top:3mm;">
+							<span style="float:left;"><label>
 								<xsl:call-template name="PopulateLabel">
 									<xsl:with-param name="TargetNode" select="$Form1125AData/SubnormalGoodsInd"/>
 									<xsl:with-param name="BackupName">IRS1125AScheduleASubnormalGoods</xsl:with-param>
-								</xsl:call-template>
-							</label>
+								</xsl:call-template>Check if there was a writedown of subnormal goods </label>
+							</span>
 							<!--Dotted Line-->
 							<div class="styDotLn" style="float:right;padding-right:1mm;">.........................</div>
 						</div>
 						<div style="float:right;padding-top:1.5mm;">
 								<img src="{$ImagePath}/8825_Bullet_Title.gif" width="4" height="7" alt="Bullet Image"/>
-							<span style="width:7px"/>
+							<span style="width:3px"/>
 							<input class="styCkBox" type="checkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1125AData/SubnormalGoodsInd"/>
@@ -371,8 +372,8 @@
 					</div>
 					<!-- Schedule A, line 9c -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:1mm;padding-left:4mm;">c</div>
-						<div class="styLNDesc" style="width:172mm;height:4.5mm;padding-top:1mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:2mm;padding-left:4mm;">c</div>
+						<div class="styLNDesc" style="width:170mm;height:4.5mm;padding-top:2mm;">
 							<span style="float:left;">Check if the LIFO inventory method was adopted this tax year for any goods (if checked, attach Form 970)
                 <label for="LIFOCheck">
 									<xsl:call-template name="PopulateLabel">
@@ -389,7 +390,7 @@
 						</div>
 						<div style="float:right;padding-top:1.5mm;">
 							<img src="{$ImagePath}/8825_Bullet_Title.gif" width="4" height="7" alt="Bullet Image"/>
-							<span style="width:7px"/>
+							<span style="width:3px"/>
 							<input class="styCkBox" type="checkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1125AData/LIFOAdoptedInd"/>
@@ -433,10 +434,10 @@
 						<div class="styLNDesc" style="width:153mm;height:4.5mm;padding-top:1.5mm;">
 							<span style="float:left;">If property is produced or acquired for resale, do the rules of section 263A apply to the entity (see instructions)? </span>
 							<!--Dotted Line-->
-							<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+							<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
 						</div>
 						<div style="float:right;">
-							<div class="styLNDesc" style="width:9mm;height:4.5mm;padding-top:1.5mm;text-align:right;">
+							<div class="styLNDesc" style="width:11mm;height:4.5mm;padding-top:1.5mm;text-align:right;">
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form1125AData/Section263ARulesApplyInd"/>
@@ -481,7 +482,7 @@
 					<!-- Schedule A, line 9f -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:7mm;padding-top:1.5mm;padding-left:4mm;">f</div>
-						<div class="styLNDesc" style="width:153mm;height:7mm;padding-top:1.5mm;">
+						<div class="styLNDesc" style="width:153mm;height:9mm;padding-top:1.5mm;">
 			  Was there any change in determining quantities, cost, or valuations between opening and closing inventory?
 			  <span style="float:left;">If "Yes," attach explanation
 			  <span style="width:2px;"/>
@@ -494,7 +495,7 @@
 							<div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
 						</div>
 						<div style="float:right;">
-							<div class="styLNDesc" style="width:9mm;height:7mm;padding-top:4.5mm;text-align:right;">
+							<div class="styLNDesc" style="width:11mm;height:7mm;padding-top:4.5mm;text-align:right;">
 								<span>
 									<xsl:call-template name="PopulateSpan">
 										<xsl:with-param name="TargetNode" select="$Form1125AData/InventoryDeterminationChgInd"/>

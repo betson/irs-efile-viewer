@@ -17,7 +17,7 @@
 			</thead>
 			<tfoot/>
 			<tbody>
-				<xsl:for-each select="$FINASData/Explanation">
+				<xsl:for-each select="$FINASData/ExplanationTxt">
 					<tr>
 						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 						<td class="styDepTblCell" style="text-align:left;">
@@ -37,8 +37,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -62,16 +64,18 @@
 			</head>
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
-				<div class="styDepTitleLine">
-					<span class="styDepTitle" style="width:92mm">
-						<xsl:value-of select="$depDocTitle"/>
-					</span>
-				</div>
+					<div class="styDepTitleLine" style="width: 187mm; clear: left; float: left;"> 
+					   <div class="styDepTitle" style="width:100mm"> 
+						 <xsl:value-of select="$depDocTitle"/>
+					   </div>
+					</div>
 				<!--Adding template for left over data  -->
 				<xsl:call-template name="PopulateDepCommonLeftover">
 					<xsl:with-param name="TargetNode" select="$FINASData"/>
 				</xsl:call-template>
-				<xsl:call-template name="ShowFINAS"/>
+				<div class="NBB" style="width:187mm; clear: left; float: left;">
+					<xsl:call-template name="ShowFINAS"/>
+				</div>
 				<br/>
 			</body>
 		</html>

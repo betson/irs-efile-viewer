@@ -28,25 +28,25 @@
 					<tr>
 						<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 						<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-						<td class="styDepTblCell" style="text-align:center;width:20mm;padding:0px 0px 0px 0px;font-size:6.5pt;font-family:arial;">
+						<td class="styDepTblCell" style="text-align:center;width:20mm;padding:5px 0px 0px 0px;font-size:6.5pt;font-family:arial;">
 							<xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="DateVehiclePlacedInService"/>
 							</xsl:call-template>
 						</td>
 						<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-						<td class="styDepTblCell" style="text-align:center;width:20mm;padding:0px 0px 0px 0px;font-size:6.5pt;font-family:arial;">
+						<td class="styDepTblCell" style="text-align:center;width:20mm;padding:5px 0px 0px 0px;font-size:6.5pt;font-family:arial;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="BusinessMilesCnt"/>
 							</xsl:call-template>
 						</td>
 						<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-						<td class="styDepTblCell" style="text-align:center;width:20mm;padding:0px 0px 0px 0px;font-size:6.5pt;font-family:arial;">
+						<td class="styDepTblCell" style="text-align:center;width:20mm;padding:5px 0px 0px 0px;font-size:6.5pt;font-family:arial;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="CommutingMilesCnt"/>
 							</xsl:call-template>
 						</td>
 						<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
-						<td class="styDepTblCell" style="text-align:center;width:20mm;padding:0px 0px 0px 0px;font-size:6.5pt;font-family:arial;">
+						<td class="styDepTblCell" style="text-align:center;width:20mm;padding:5px 0px 0px 0px;font-size:6.5pt;font-family:arial;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="OtherMilesCnt"/>
 							</xsl:call-template>
@@ -263,8 +263,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -289,7 +291,7 @@
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
 				<div class="styDepTitleLine">
-					<span class="styDepTitle" style="width:92mm">
+					<span class="styDepTitle" style="width:121mm">
 						<xsl:value-of select="$depDocTitle"/>
 					</span>
 				</div>

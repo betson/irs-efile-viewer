@@ -10,8 +10,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form2106Data" select="$RtnDoc/IRS2106"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<META http-equiv="Content-Type" content="text/html"/>
 				<title>
 					<xsl:call-template name="FormTitle">
@@ -40,8 +42,8 @@
 			<body class="styBodyClass">
 				<form name="Form2106">
 					<xsl:call-template name="DocumentHeader"/>
-					<div class="styBB" style="width:187mm;height:16mm;padding-bottom:0mm;">
-						<div class="styFNBox" style="width:31mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;height:auto;padding-bottom:0mm;">
+						<div class="styFNBox" style="width:31mm;padding-top:.5mm;height:21.4mm;">
 							<div style="padding-top:1mm;font-size:8pt;">
             		Form<span class="styFormNumber">  2106</span>
 							</div>
@@ -53,16 +55,16 @@
 								<span class="styAgency">(99)</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;">
-							<div style="height:8mm;" class="styMainTitle">Employee Business Expenses</div>
+						<div class="styFTBox" style="width:125mm;height:auto;">
+							<div style="height:8mm;display:block;" class="styMainTitle">Employee Business Expenses</div>
 							<div class="styFBT" style="height:2mm;padding-top:1mm;font-size:7pt;">
 								<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/> See separate instructions.<br/>
 								<br/>
 								<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/> Attach to Form 1040 or Form 1040NR.
           		</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+						<div class="styTYBox" style="width:30mm;height:auto;">
+							<div class="styOMB" style="height:4mm;font-size:7pt;">OMB No. 1545-0074</div>
 							<div class="styTY">20<span class="styTYColor">13</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -79,7 +81,7 @@
 								<xsl:with-param name="TargetNode" select="$Form2106Data/Name"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS2106LnDescOcc" style="width:60mm;padding-top:0mm;padding-bottom:0mm;">
+						<div class="styIRS2106LnDescOcc" style="width:60mm;padding-top:0mm;padding-bottom:0mm;height:auto;">
                  Occupation in which you incurred expenses<br/>
 							<br/>
 							<xsl:call-template name="PopulateText">
@@ -107,12 +109,12 @@
 					<!-- END PART I TITLE -->
 					<!-- BEGIN STEP I TITLE -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartDesc" style="width:110.8mm;font-size:9pt;padding-left:0mm;padding-bottom:4.6mm;padding-top:5mm;
+						<div class="styPartDesc" style="width:111mm;font-size:9pt;padding-left:0mm;padding-bottom:4.6mm;padding-top:5mm;
       border-right-	width:0px; border-left-width:0px;border-top-width:0px;border-bottom-width:0px;text-align:left;clear:none;">
     	Step 1  <span style="width:3mm"/>Enter Your Expenses</div>
 						<!-- END STEP I TITLE -->
 						<!-- BEGIN Column A  -->
-						<div class="styPartDesc" style="width:38mm;font-size:9pt;padding-top:1mm;padding-right:4mm;border-style:solid;border-right-width:1px;
+						<div class="styPartDesc" style="width:38mm;height:15mm;font-size:9pt;padding-top:1mm;padding-right:4mm;border-style:solid;border-right-width:1px;
       		border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;float:left;clear:none;">
 							<div style="height:5.5mm;font-weight:bold;text-align:center;">Column A</div>
 							<div style="text-align:center;font-size:8.5pt;font-weight:normal;">Other Than Meals<br/>
@@ -237,8 +239,8 @@
 								<xsl:with-param name="TargetNode" select="$Form2106Data/BusExpnssLessMealsEntrmtAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS2106ColBoxGrey" style="height:8.4mm;width:5.2mm;border-left-width:0px;"/>
-						<div class="styIRS2106ColBoxGrey" style="height:8.4mm;border-left-width:0px;border-right-width:0px;"/>
+						<div class="styIRS2106ColBoxGrey" style="height:8.7mm;width:5.2mm;border-left-width:0px;"/>
+						<div class="styIRS2106ColBoxGrey" style="height:8.7mm;border-left-width:0px;border-right-width:0px;"/>
 					</div>
 					<!-- End of Step 1.4 -->
 					<!-- Beginning of Step 1.5 -->
@@ -346,7 +348,7 @@
 								<span style="width:4px"/>.
 							</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:16mm;width:6mm;padding-top:12.5mm;text-align:center;border-style:solid;
+						<div class="styLNRightNumBox" style="height:16mm;width:6mm;padding-top:12.0mm;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;">7</div>
 						<div class="styIRS2106ColBox" style="height:16mm;padding-top:12.5mm;border-left-width:0px;border-bottom-width:0px;
 		border-right-width:1px;">
@@ -372,8 +374,8 @@
 					<!-- END STEP 3 TITLE -->
 					<!-- Beginning of Step 3. 8 -->
 					<div style="width:187mm;font-size:8pt;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:6mm;">8</div>
-						<div class="styLNDesc" style="width:103mm;height:2mm;padding-top:6mm;">Subtract<span style="width:1mm"/> line<span style="width:1mm"/> 7<span style="width:1mm"/> from<span style="width:1mm"/> line<span style="width:1mm"/> 6.  If 		zero or less, enter -0-.  However,  if line 7 is greater than line 6 in Column A, report the excess as<br/>income on Form 1040, line 7 
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:2mm;">8</div>
+						<div class="styLNDesc" style="width:103mm;height:13mm;padding-top:2mm;">Subtract<span style="width:1mm"/> line<span style="width:1mm"/> 7<span style="width:1mm"/> from<span style="width:1mm"/> line<span style="width:1mm"/> 6.  If 		zero or less, enter -0-.  However,  if line 7 is greater than line 6 in Column A, report the excess as<br/>income on Form 1040, line 7 
 		(or on Form 1040NR, line 8) 
 				
 		          <!--Dotted Line-->
@@ -384,15 +386,15 @@
 								<span style="width:4px"/>.
 							</span>
 						</div>
-						<div class="styLNRightNumBox" style="width:6mm;padding-top:12.8mm;text-align:center;border-style:solid;
+						<div class="styLNRightNumBox" style="width:6mm;height:auto;padding-top:8.8mm;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">8</div>
-						<div class="styIRS2106ColBox" style="padding-top:13.4mm;border-left-width:0px;border-bottom-width:1px;border-right-width:1px;">
+						<div class="styIRS2106ColBox" style="padding-top:9.5mm;height:auto;border-left-width:0px;border-bottom-width:1px;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2106Data/UnreimbursedBusinessExpenseAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS2106ColBoxGrey" style="width:5.2mm;padding-top:13.4mm;border-bottom-width:1px;border-left-width:0px;"/>
-						<div class="styIRS2106ColBox" style="padding-top:13.4mm;border-left-width:0px;border-right-width:0px;
+						<div class="styIRS2106ColBoxGrey" style="width:5.2mm;padding-top:12.9mm;height:auto;border-bottom-width:1px;border-left-width:0px;"/>
+						<div class="styIRS2106ColBox" style="padding-top:9.9mm;border-left-width:0px;border-right-width:0px;
 		border-bottom-width:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2106Data/UnreimbursedMealsExpenseAmt"/>
@@ -402,17 +404,17 @@
 					<!-- End of Step 3. 8 -->
 					<!-- Beginning of Step 3. 9 -->
 					<div style="width:187mm;height:12mm;font-size:8pt;">
-						<div class="styLNDesc" style="width:110.8mm;height:6mm;padding-top:2mm;padding-left:8mm;">
-							<b>Note:</b> If <span style="font-weight:bold;font-style:italic;"> both  columns </span>of line 8  are zero, you cannot deduct<br/>employee business expenses.  
+						<div class="styLNDesc" style="width:111.2mm;height:6mm;padding-top:2mm;padding-left:8mm;">
+							<b>Note:</b> If <span style="font-weight:bold;font-style:italic;"> both  columns </span> of line 8  are zero, you cannot deduct<br/>employee business expenses.  
 		Stop here and attach Form 2106 to<br/>your return.</div>
-						<div class="styIRS2106ColBoxGrey" style="width:6.2mm;padding-top:3mm;border-style:solid;border-right-width:1px;
+						<div class="styIRS2106ColBoxGrey" style="width:5.8mm;padding-top:3mm;border-style:solid;border-right-width:1px;
 		border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;background-color:lightgrey;"/>
 						<div class="styIRS2106ColBox" style="padding-top:3mm;border-left-width:0px;border-bottom-width:0px;border-right-width:1px;"/>
 						<div class="styIRS2106ColBoxGrey" style="width:5.2mm;padding-top:3mm;border-bottom-width:0px;border-left-width:0px;"/>
 						<div class="styIRS2106ColBox" style="padding-top:3mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
 					</div>
-					<div style="width:187mm;height:12mm;font-size:8pt;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:3mm;">9</div>
+					<div style="width:187mm;height:20mm;font-size:8pt;">
+						<div class="styLNLeftNumBox" style="height:5.8mm;padding-top:2mm;">9</div>
 						<div class="styLNDesc" style="width:103mm;padding-top:2mm;">In Column A, enter the amount from line 8.  In Column B, multiply<br/>line 
 		<span style="width:1mm"/>8 <span style="width:1mm"/>by<span style="width:1mm"/> 50%<span style="width:1mm"/>
 		(.50). <span style="width:1mm"/> (Employees <span style="width:1mm"/>subject<span style="width:1mm"/>to <span style="width:1mm"/>Department <span style="width:1mm"/>of Transportation<span style="width:1mm"/>  (DOT)<span style="width:1mm"/>  hours <span style="width:1mm"/> of<span style="width:1mm"/>service<span style="width:1mm"/>  		limits:<span style="width:1mm"/> Multiply meal expenses incurred while away from home on business by 80% (.80) instead of 50%.  For details, see instructions.) 
@@ -424,20 +426,20 @@
 								<span style="width:8px"/>.
 								<span style="width:8px"/>.
 								<span style="width:8px"/>.
-								 <span style="width:4px"/>.
+								<span style="width:8px"/>.
 						   </span>
 						</div>
-						<div class="styIRS2106ColBoxGrey" style="width:5.5mm;padding-top:16.1mm;text-align:center;border-style:solid;
-		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">
-							<span style="width:5.5mm;height:3.5mm;font-weight:bold;background-color: white">9</span>
+						<div class="styIRS2106ColBoxGrey" style="width:6.0mm;padding-top:14.1mm;text-align:center;border-style:solid;
+		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;background-color:white;height:auto">
+							<span style="width:6.00mm;height:5.70mm;font-weight:bold;border-top-width:0px;padding-top:1.6mm;border-right-width:1px;border-color:black;">9</span>
 						</div>
-						<div class="styIRS2106ColBox" style="padding-top:16.5mm;border-left-width:0px;border-bottom-width:1px;border-right-width:1px;">
+						<div class="styIRS2106ColBox" style="height:auto;padding-top:16.5mm;border-left-width:0px;border-bottom-width:1px;border-right-width:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2106Data/AllowableBusinessDeductionAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS2106ColBoxGrey" style="width:5.2mm;padding-top:16.5mm;border-bottom-width:1px;border-left-width:0px;"/>
-						<div class="styIRS2106ColBox" style="padding-top:16.5mm;border-left-width:0px;border-right-width:0px;
+						<div class="styIRS2106ColBoxGrey" style="width:5.2mm;height:20mm;padding-top:16.5mm;border-bottom-width:1px;border-left-width:0px;"/>
+						<div class="styIRS2106ColBox" style="height:auto;padding-top:16.5mm;border-left-width:0px;border-right-width:0px;
 		border-bottom-width:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2106Data/AllowableMealsDeductionAmt"/>
@@ -448,15 +450,26 @@
 					<!-- Beginning of Step 3. 10 -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;font-size:8pt;padding-top:5mm;">10</div>
-						<div class="styLNDesc" style="width:140.8mm;height:2mm;font-size:7.5pt;padding-top:4.5mm;">Add the amounts on line 9 of both columns and enter the total here. <b>Also, enter the total on<br/>
+						<div class="styLNDesc" style="width:140.6mm;height:auto;font-size:7.5pt;padding-top:4.5mm;">Add the amounts on line 9 of both columns and enter the total here. <b>Also, enter the total on<br/>
 																																									 Schedule A (Form 1040), line 21</b> (or on <b>Schedule A (Form 1040NR), line 7).</b> (Armed Forces<br/>
 																																									 reservists, qualified performing artists, fee-basis state or local government officials, and individuals
 																																									 with disabilities: See the instructions for special rules on where to enter the total.)
-				
+				  <!--Dotted Line-->
+							<span class="styBoldText">
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								<span style="width:8px"/>.
+							<span style="width:8px"/>
+					
+								</span>
 		          <!--Dotted Line-->
 							<img src="{$ImagePath}/2106_Bullet.gif" alt="Bullet"/>
 						</div>
-						<div class="styLNRightNumBox" style="width:5.5mm;padding-top:14.5mm;text-align:center;border-style:solid;
+						<div class="styLNRightNumBox" style="width:5.6mm;height:auto;padding-top:14.5mm;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;">10</div>
 						<div class="styIRS2106ColBox" style="padding-top:14.5mm;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;">
 							<xsl:call-template name="PopulateAmount">
@@ -473,12 +486,14 @@
 					</div>
 					<!-- END of Page 1 -->
 					<div class="pageEnd" style="width:187mm;"/>
+					<br></br>
 					<!-- Start of Page 2 -->
 					<div class="styBB" style="width:187mm;font-size:7pt;">
 						<div class="styLNDesc" style="width:90mm;padding-top:0mm;">Form 2106 (2013)</div>
 						<div class="styLNDesc" style="width:90mm;text-align:right;float:right;clear:none;">Page  <span style="font-size:8pt;font-weight:bold;">2 </span>
 						</div>
 					</div>
+					
 					<!-- BEGIN PART II TITLE -->
 					<div class="styNBB" style="width:187mm;padding-bottom:0mm;">
 						<div class="styPartName" style="height:4mm;font-size:9pt;">Part II</div>
@@ -493,7 +508,7 @@
 							<div class="styIRS2106TableContainer" id="Spcctn">
 								<xsl:call-template name="SetInitialState"/>
 								<th scope="col" style="width:187mm;">
-									<div class="styIRS2106TB" style="height:7.8mm;width:122.5mm;font-size:8.5pt;padding-left:0mm;
+									<div class="styIRS2106TB" style="height:auto;width:122.5mm;font-size:8.5pt;padding-left:0mm;
 										 border-bottom-width:1px;">
 										<span class="styBoldText">Section A&#151;General Information</span>
 										 (You must complete this section if you<br/>are claiming vehicle expenses.)
@@ -522,8 +537,8 @@
 							<!-- Beginning of SECTION A Data -->
 							<!-- Beginning of Part II 11 -->
 							<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-								<div class="styLNLeftNumBox" style="height:4mm;padding-top:1.4mm;">11</div>
-								<div class="styLNDesc" style="width:107.5mm;padding-top:1.4mm;">Enter the date the vehicle was placed in service 
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1.4mm;">11</div>
+								<div class="styLNDesc" style="width:107.5mm;padding-top:1.4mm;height:auto;">Enter the date the vehicle was placed in service 
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -536,14 +551,14 @@
 												 <span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1.3mm;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1.3mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">11</div>
-								<div class="styIRS2106ColBox" style="height:5.5mm;width:32.5mm;padding-top:2mm;text-align: center;padding-right:1mm;border-left-width:1px;border-bottom-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;padding-top:2mm;text-align: center;padding-right:1mm;border-left-width:1px;border-bottom-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateMonthDayYear">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/VehicleDate"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBox" style="height:5.5mm;width:31.5mm;padding-top:2mm;
+								<div class="styIRS2106ColBox" style="height:auto;width:31.5mm;padding-top:2mm;
 										border-left-width:1px;border-right-width:0px;text-align:center;border-bottom-width:1px;">
 									<xsl:call-template name="PopulateMonthDayYear">
 										<xsl:with-param name="TargetNode" select="$Form2106Data
@@ -554,8 +569,8 @@
 							<!-- End of Part II 11 -->
 							<!-- Beginning of Part II 12 -->
 							<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-								<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">12</div>
-								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Total miles the vehicle was driven during 2013 
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">12</div>
+								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;height:auto;">Total miles the vehicle was driven during 2013 
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -569,9 +584,9 @@
 												 <span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">12</div>
-								<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
+								<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
 		border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data
@@ -579,7 +594,7 @@
 									</xsl:call-template>
 									<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 								</div>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data
@@ -591,8 +606,8 @@
 							<!-- End of Part II 12 -->
 							<!-- Beginning of Part II 13 -->
 							<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-								<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">13</div>
-								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Business miles included on line 12 
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">13</div>
+								<div class="styLNDesc" style="width:107.5mm;height:auto;padding-top:1mm;">Business miles included on line 12 
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -611,16 +626,16 @@
 												 <span style="width:8px"/>.
 										   </span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">13</div>
-								<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
+								<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
 		border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/BusinessMilesCnt"/>
 									</xsl:call-template>
 									<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 								</div>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/BusinessMilesCnt"/>
@@ -631,8 +646,8 @@
 							<!-- End of Part ii 13 -->
 							<!-- Beginning of Part II 14 -->
 							<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-								<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">14</div>
-								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Percent of business use. Divide line 13 by line 12 
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">14</div>
+								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;height:auto;">Percent of business use. Divide line 13 by line 12 
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -645,15 +660,15 @@
 												<span style="width:8px"/>.
 										   </span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:.8mm;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:.8mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1.3px;border-top-width:0px;border-bottom-width:1px;border-color:black;">14</div>
-								<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;padding-top:1.5mm;padding-right:1mm;border-left-width:1.3px;border-bottom-width:1px;
+								<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;padding-top:1.5mm;padding-right:1mm;border-left-width:1.3px;border-bottom-width:1px;
 		border-right-width:0px;">
 									<xsl:call-template name="PopulatePercent">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/PercentageOfUse"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBox" style="height:2mm;width:31.5mm;padding-top:1.5mm;border-left-width:1.3px;border-right-width:0px;
+								<div class="styIRS2106ColBox" style="height:auto;width:31.5mm;padding-top:1.5mm;border-left-width:1.3px;border-right-width:0px;
 			border-bottom-width:1px;">
 									<xsl:call-template name="PopulatePercent">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/PercentageOfUse"/>
@@ -663,8 +678,8 @@
 							<!-- End of Part ii 14 -->
 							<!-- Beginning of Part II 15 -->
 							<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-								<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">15</div>
-								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Average daily roundtrip commuting distance 
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">15</div>
+								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;height:auto;">Average daily roundtrip commuting distance 
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -679,16 +694,16 @@
 												<span style="width:8px"/>.
 										   </span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">15</div>
-								<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-top-width:0px;border-left-width:1px;
+								<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-top-width:0px;border-left-width:1px;
 		border-bottom-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/AverageDistanceCnt"/>
 									</xsl:call-template>
 									<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 								</div>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/AverageDistanceCnt"/>
@@ -699,8 +714,8 @@
 							<!-- End of Part ii 15 -->
 							<!-- Beginning of Part II 16 -->
 							<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-								<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">16</div>
-								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Commuting miles included on line 12 
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">16</div>
+								<div class="styLNDesc" style="width:107.5mm;height:auto;padding-top:1mm;">Commuting miles included on line 12 
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -718,16 +733,16 @@
 												<span style="width:8px"/>.
 										   </span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">16</div>
-								<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
+								<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
 		border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/MilesCommutingCnt"/>
 									</xsl:call-template>
 									<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 								</div>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/MilesCommutingCnt"/>
@@ -738,7 +753,7 @@
 							<!-- End of Part II 16 -->
 							<!-- Beginning of Part II 17 -->
 							<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-								<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;border-style:solid;border-right-width:0px;border-left-width:0px;
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;border-style:solid;border-right-width:0px;border-left-width:0px;
 									border-top-width:0px;border-bottom-width:0px;border-color:black;">17</div>
 								<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;border-style:solid;border-right-width:0px;border-left-width:0px;
 									border-top-width:0px;border-bottom-width:0px;border-color:black;">Other miles. Add lines 13 and 16 and subtract the total from line 12 
@@ -749,16 +764,16 @@
 								</div>
 								<xsl:choose>
 									<xsl:when test="$pos = count($Form2106Data/VehicleExpensesGrp) or $pos = count($Form2106Data/VehicleExpensesGrp)-1">
-										<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+										<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 											border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom:1px solid black;border-color:black;">17</div>
-										<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom:1px solid black;
+										<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom:1px solid black;
 											border-right-width:0px;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/OtherPersonalMilesCnt"/>
 											</xsl:call-template>
 											<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 										</div>
-										<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+										<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 											border-bottom:1px solid black;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/OtherPersonalMilesCnt"/>
@@ -767,17 +782,17 @@
 										</div>
 									</xsl:when>
 									<xsl:otherwise>
-										<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+										<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 											border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom:0px;border-color:black;">17
 										</div>
-										<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom:0px;
+										<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom:0px;
 											border-right-width:0px;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/OtherPersonalMilesCnt"/>
 											</xsl:call-template>
 											<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 										</div>
-										<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+										<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 											border-bottom:0px;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/OtherPersonalMilesCnt"/>
@@ -825,8 +840,8 @@
 						<!-- Beginning of SECTION A Data -->
 						<!-- Beginning of Part II 11 -->
 						<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1.4mm;">11</div>
-							<div class="styLNDesc" style="width:107.5mm;padding-top:1.4mm;">Enter the date the vehicle was placed in service 
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1.4mm;">11</div>
+							<div class="styLNDesc" style="width:107.5mm;padding-top:1.4mm;height:auto;">Enter the date the vehicle was placed in service 
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -839,14 +854,14 @@
 												 <span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1.3mm;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1.3mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">11</div>
-							<div class="styIRS2106ColBox" style="height:5.5mm;width:32.5mm;padding-top:2mm;text-align: center;padding-right:1mm;border-left-width:1px;border-bottom-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;padding-top:2mm;text-align: center;padding-right:1mm;border-left-width:1px;border-bottom-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateMonthDayYear">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/VehicleDate"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBox" style="height:5.5mm;width:31.5mm;padding-top:2mm;
+							<div class="styIRS2106ColBox" style="height:auto;width:31.5mm;padding-top:2mm;
 										border-left-width:1px;border-right-width:0px;text-align:center;border-bottom-width:1px;">
 								<xsl:call-template name="PopulateMonthDayYear">
 									<xsl:with-param name="TargetNode" select="$Form2106Data
@@ -857,8 +872,8 @@
 						<!-- End of Part II 11 -->
 						<!-- Beginning of Part II 12 -->
 						<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">12</div>
-							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Total miles the vehicle was driven during 2013
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">12</div>
+							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;height:auto;">Total miles the vehicle was driven during 2013
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -872,9 +887,9 @@
 												 <span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">12</div>
-							<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
+							<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
 		border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data
@@ -882,7 +897,7 @@
 								</xsl:call-template>
 								<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 							</div>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data
@@ -894,8 +909,8 @@
 						<!-- End of Part II 12 -->
 						<!-- Beginning of Part II 13 -->
 						<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">13</div>
-							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Business miles included on line 12 
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">13</div>
+							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;height:auto;">Business miles included on line 12 
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -914,16 +929,16 @@
 												 <span style="width:8px"/>.
 										   </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">13</div>
-							<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
+							<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
 		border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/BusinessMilesCnt"/>
 								</xsl:call-template>
 								<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 							</div>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/BusinessMilesCnt"/>
@@ -934,8 +949,8 @@
 						<!-- End of Part ii 13 -->
 						<!-- Beginning of Part II 14 -->
 						<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">14</div>
-							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Percent of business use. Divide line 13 by line 12 
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">14</div>
+							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;height:auto;">Percent of business use. Divide line 13 by line 12 
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -948,15 +963,15 @@
 												<span style="width:8px"/>.
 										   </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:.8mm;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:.8mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1.3px;border-top-width:0px;border-bottom-width:1px;border-color:black;">14</div>
-							<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;padding-top:1.5mm;padding-right:1mm;border-left-width:1.3px;border-bottom-width:1px;
+							<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;padding-top:1.5mm;padding-right:1mm;border-left-width:1.3px;border-bottom-width:1px;
 		border-right-width:0px;">
 								<xsl:call-template name="PopulatePercent">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/PercentageOfUse"/>
 								</xsl:call-template>%
 										</div>
-							<div class="styIRS2106ColBox" style="height:2mm;width:31.5mm;padding-top:1.5mm;border-left-width:1.3px;border-right-width:0px;
+							<div class="styIRS2106ColBox" style="height:auto;width:31.5mm;padding-top:1.5mm;border-left-width:1.3px;border-right-width:0px;
 			border-bottom-width:1px;">
 								<xsl:call-template name="PopulatePercent">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/PercentageOfUse"/>
@@ -966,8 +981,8 @@
 						<!-- End of Part ii 14 -->
 						<!-- Beginning of Part II 15 -->
 						<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">15</div>
-							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Average daily roundtrip commuting distance 
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">15</div>
+							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;height:auto;">Average daily roundtrip commuting distance 
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -982,16 +997,16 @@
 												<span style="width:8px"/>.
 										   </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">15</div>
-							<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-top-width:0px;border-left-width:1px;
+							<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-top-width:0px;border-left-width:1px;
 		border-bottom-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/AverageDistanceCnt"/>
 								</xsl:call-template>
 								<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 							</div>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/AverageDistanceCnt"/>
@@ -1002,8 +1017,8 @@
 						<!-- End of Part ii 15 -->
 						<!-- Beginning of Part II 16 -->
 						<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">16</div>
-							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;">Commuting miles included on line 12 
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;">16</div>
+							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;height:auto;">Commuting miles included on line 12 
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -1021,16 +1036,16 @@
 												<span style="width:8px"/>.
 										   </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">16</div>
-							<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
+							<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:1px;
 		border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/MilesCommutingCnt"/>
 								</xsl:call-template>
 								<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 							</div>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/MilesCommutingCnt"/>
@@ -1041,9 +1056,9 @@
 						<!-- End of Part II 16 -->
 						<!-- Beginning of Part II 17 -->
 						<div style="width:187mm;font-size:8pt;padding-bottom:0mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;border-style:solid;border-right-width:0px;border-left-width:0px;
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;border-style:solid;border-right-width:0px;border-left-width:0px;
 					border-top-width:0px;border-bottom-width:0px;border-color:black;">17</div>
-							<div class="styLNDesc" style="width:107.5mm;padding-top:1mm;border-style:solid;border-right-width:0px;border-left-width:0px;
+							<div class="styLNDesc" style="height:auto;width:107.5mm;padding-top:1mm;border-style:solid;border-right-width:0px;border-left-width:0px;
 					border-top-width:0px;border-bottom-width:0px;border-color:black;">Other miles. Add lines 13 and 16 and subtract the total from line 12 
 				
 		          <!--Dotted Line-->
@@ -1051,16 +1066,16 @@
 									<span style="width:8px"/>.
        </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7.2mm;padding-top:1mm;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:.5px;border-color:black;">17</div>
-							<div class="styIRS2106ColBox" style="height:2mm;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:.5px;
+							<div class="styIRS2106ColBox" style="height:auto;width:32.5mm;font-size:6pt;padding-top:1.5mm;border-left-width:1px;border-bottom-width:.5px;
 		border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos]/OtherPersonalMilesCnt"/>
 								</xsl:call-template>
 								<span style="font-weight:normal;font-size:8pt;padding-left:1mm;padding-right:1mm;">miles</span>
 							</div>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBox" style="height:auto;padding-top:1.5mm;font-size:6pt;width:31.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:.5px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/VehicleExpensesGrp[$pos + 1]/OtherPersonalMilesCnt"/>
@@ -1266,7 +1281,7 @@
 					</div>
 					<!-- End of Part II 20 -->
 					<!-- Beginning of Part II 21 -->
-					<div class="styBB" style="width:187mm;font-size:8pt;padding-bottom:0mm;">
+					<div class="styBB" style="width:187mm;height:6mm;font-size:8pt;padding-bottom:0mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">21</div>
 						<div class="styLNDesc" style="width:150.5mm;padding-top:1mm;">If "Yes,"  is the evidence written? 
 						
@@ -1403,8 +1418,8 @@
 							<!-- END Vehicle 2 Tile-->
 							<!-- BEGIN Section C 23 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">23</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:1mm;">Gasoline, oil, repairs, vehicle insurance, etc.
+								<div class="styLNLeftNumBox" style="height:8mm;padding-top:1mm;font-size:8pt;">23</div>
+								<div class="styLNDesc" style="width:44mm;height:8mm;font-size:8pt;padding-top:1mm;">Gasoline, oil, repairs, vehicle insurance, etc.
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -1416,14 +1431,14 @@
 								</div>
 								<div class="styLNRightNumBox" style="height:8mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">23</div>
-								<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:5.3mm;border-left-width:0px;border-right-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:8mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:4.3mm;border-left-width:0px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:8mm;padding-top:4.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/VehicleGasRepairsInsAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:8mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:4.3mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:8mm;padding-top:4.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/VehicleGasRepairsInsAmt"/>
 									</xsl:call-template>
@@ -1432,8 +1447,8 @@
 							<!-- END Section C 23 -->
 							<!-- BEGIN Section C 24a -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:.5mm;font-size:7.5pt;">24a</div>
-								<div class="styLNDesc" style="width:44mm;height:.5mm;font-size:8pt;">Vehicle rentals
+								<div class="styLNLeftNumBox" style="height:.4mm;font-size:7.5pt;">24a</div>
+								<div class="styLNDesc" style="width:44mm;height:.4mm;font-size:8pt;">Vehicle rentals
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -1443,60 +1458,60 @@
 											<span style="width:8px"/>.
 										</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:1mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">24a</div>
-								<div class="styIRS2106ColBox" style="height:1mm;padding-top:1.3mm;border-left-width:0px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.3mm;border-left-width:0px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/VehicleRentalsAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:1mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/VehicleRentalsAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
 							</div>
 							<!-- END Section C 24a -->
 							<!-- BEGIN Section C 24b -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:.2mm;padding-right:1mm;padding-bottom:0mm;padding-top:.5mm;font-size:7.5pt;text-align:right;">b</div>
-								<div class="styLNDesc" style="padding-top:1mm;padding-bottom:0mm;width:44mm;height:.5mm;font-size:6.3pt;">Inclusion amount (see instructions)</div>
-								<div class="styLNRightNumBox" style="height:1mm;width:7mm;padding-top:.3mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNLeftNumBox" style="height:.4mm;padding-right:1mm;padding-bottom:0mm;padding-top:.5mm;font-size:7.5pt;text-align:right;">b</div>
+								<div class="styLNDesc" style="padding-top:1mm;padding-bottom:0mm;width:44mm;height:4mm;font-size:6.3pt;">Inclusion amount (see instructions)</div>
+								<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:.3mm;font-size:8pt;text-align:center;border-style:solid;
 			border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">24b</div>
-								<div class="styIRS2106ColBox" style="height:.5mm;padding-top:1mm;border-left-width:0px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.5mm;border-left-width:0px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/InclusionAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:.5mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:.5mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.5mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/InclusionAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:.5mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;"/>
 							</div>
 							<!-- END Section C 24b -->
 							<!-- BEGIN Section C 24c -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:1mm;padding-top:1mm;padding-right:1mm;font-size:7.5pt;text-align:right;">c</div>
-								<div class="styLNDesc" style="width:44mm;height:1mm;font-size:6.9pt;padding-top:1mm;">Subtract line 24b from line 24a</div>
-								<div class="styLNRightNumBox" style="height:1mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;padding-right:1mm;font-size:7.5pt;text-align:right;">c</div>
+								<div class="styLNDesc" style="width:44mm;height:4mm;font-size:6.9pt;padding-top:1mm;">Subtract line 24b from line 24a</div>
+								<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">24c</div>
-								<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:1mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/RentalMinusInclusionAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:1mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/RentalMinusInclusionAmt"/>
 									</xsl:call-template>
@@ -1505,21 +1520,21 @@
 							<!-- END Section C 24c -->
 							<!-- BEGIN Section C 25 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:3mm;font-size:8pt;">25</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:7pt;padding-top:3mm;">Value<span style="width:1mm"/>of<span style="width:1mm"/> employer-provided vehicle (applies only if 100% 	of annual lease value was included <br/>
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:3mm;font-size:8pt;">25</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:7pt;padding-top:3mm;">Value<span style="width:1mm"/>of<span style="width:1mm"/> employer-provided vehicle (applies only if 100% 	of annual lease value was included <br/>
 			on Form W-2&#151;see instructions)</div>
-								<div class="styLNRightNumBox" style="height:8.5mm;width:7mm;padding-top:12.5mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:17mm;width:7mm;padding-top:12.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">25</div>
-								<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:13.5mm;border-left-width:0px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:17mm;padding-top:13.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:8.5mm;padding-top:13.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:17mm;padding-top:13.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/ValueEmplrProvidedVehicleAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:13.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:17mm;padding-top:13.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:8.5mm;padding-top:13.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:17mm;padding-top:13.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/ValueEmplrProvidedVehicleAmt"/>
 									</xsl:call-template>
@@ -1528,25 +1543,25 @@
 							<!-- END Section C 25 -->
 							<!-- BEGIN Section C 26 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:.5mm;font-size:8pt;">26</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:.5mm;">Add lines 23, 24c, and 25
+								<div class="styLNLeftNumBox" style="height:6mm;padding-top:.5mm;font-size:8pt;">26</div>
+								<div class="styLNDesc" style="width:44mm;height:6mm;font-size:8pt;padding-top:.5mm;">Add lines 23, 24c, and 25
 				          <!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:8px"/>.
 										</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:6mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">26</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:6mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:6mm;padding-top:2.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/ActualVehicleExpenseAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:6mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:6mm;padding-top:2.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/ActualVehicleExpenseAmt"/>
 									</xsl:call-template>
@@ -1555,26 +1570,26 @@
 							<!-- END Section C 26 -->
 							<!-- BEGIN Section C 27 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">27</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:1mm;">Multiply<span style="width:2mm"/>line<span style="width:2mm"/>26<span style="width:2mm"/>by<span style="width:2mm"/> the percentage on line 14
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">27</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:1mm;">Multiply<span style="width:2mm"/>line<span style="width:2mm"/>26<span style="width:2mm"/>by<span style="width:2mm"/> the percentage on line 14
 				          <!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:8px"/>.
 											<span style="width:8px"/>.
 										</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:6mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:9mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">27</div>
-								<div class="styIRS2106ColBoxGrey" style="height:6mm;padding-top:5.5mm;border-left-width:0px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:9mm;padding-top:5.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:6mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:9mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/CalculatedBusinessExpenseAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:6mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:9mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:6mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:9mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/CalculatedBusinessExpenseAmt"/>
 									</xsl:call-template>
@@ -1583,21 +1598,21 @@
 							<!-- END Section C 27 -->
 							<!-- BEGIN Section C 28 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:1mm;padding-top:.5mm;font-size:8pt;">28</div>
-								<div class="styLNDesc" style="width:44mm;height:1mm;font-size:7pt;padding-top:.5mm;">Depreciation (see instructions)</div>
+								<div class="styLNLeftNumBox" style="height:4mm;padding-top:.5mm;font-size:8pt;">28</div>
+								<div class="styLNDesc" style="width:44mm;height:4mm;font-size:7pt;padding-top:.5mm;">Depreciation (see instructions)</div>
 								<!--Dotted Line-->
-								<div class="styLNRightNumBox" style="height:1mm;width:7mm;padding-top:.3mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:.3mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">28</div>
-								<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.3mm;border-left-width:0px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.3mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:1mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.5mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/DepreciationAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:1mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.5mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/DepreciationAmt"/>
 									</xsl:call-template>
@@ -1606,27 +1621,27 @@
 							<!-- END Section C 28 -->
 							<!-- BEGIN Section C 29 -->
 							<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:.5mm;padding-bottom:0mm;font-size:8pt;">29</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:.5mm;padding-bottom:0mm;">Add lines 27 and 28. <span style="width:2mm"/>Enter total here and on line 1
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:.5mm;padding-bottom:0mm;font-size:8pt;">29</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:.5mm;padding-bottom:0mm;">Add lines 27 and 28. <span style="width:2mm"/>Enter total here and on line 1
 				          <!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:8px"/>.
 											<span style="width:8px"/>.
 										</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:3.8mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:8mm;width:7mm;padding-top:3.8mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;">29</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:4.5mm;border-left-width:0px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:4.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBox" style="height:8mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/TotalActualExpenseAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBox" style="height:8mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/TotalActualExpenseAmt"/>
@@ -1663,8 +1678,8 @@
 						<!-- END Vehicle 2 Tile-->
 						<!-- BEGIN Section C 23 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">23</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:1mm;">Gasoline, oil, repairs, vehicle insurance, etc.
+							<div class="styLNLeftNumBox" style="height:8mm;padding-top:1mm;font-size:8pt;">23</div>
+							<div class="styLNDesc" style="width:44mm;height:8mm;font-size:8pt;padding-top:1mm;">Gasoline, oil, repairs, vehicle insurance, etc.
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -1677,13 +1692,13 @@
 							<div class="styLNRightNumBox" style="height:8mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">23</div>
 							<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:5.3mm;border-left-width:0px;border-right-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:8mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:8mm;padding-top:4.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/VehicleGasRepairsInsAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:8mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:4.3mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:8mm;padding-top:4.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/VehicleGasRepairsInsAmt"/>
 								</xsl:call-template>
@@ -1692,8 +1707,8 @@
 						<!-- END Section C 23 -->
 						<!-- BEGIN Section C 24a -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:.5mm;font-size:7.5pt;">24a</div>
-							<div class="styLNDesc" style="width:44mm;height:.5mm;font-size:8pt;">Vehicle rentals
+							<div class="styLNLeftNumBox" style="height:4mm;font-size:7.5pt;">24a</div>
+							<div class="styLNDesc" style="width:44mm;height:4mm;font-size:8pt;">Vehicle rentals
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -1703,60 +1718,60 @@
 											<span style="width:8px"/>.
 										</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:1mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">24a</div>
-							<div class="styIRS2106ColBox" style="height:1mm;padding-top:1.3mm;border-left-width:0px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.3mm;border-left-width:0px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/VehicleRentalsAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:1mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/VehicleRentalsAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
 						</div>
 						<!-- END Section C 24a -->
 						<!-- BEGIN Section C 24b -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:.2mm;padding-right:1mm;padding-bottom:0mm;padding-top:.5mm;font-size:7.5pt;text-align:right;">b</div>
-							<div class="styLNDesc" style="padding-top:1mm;padding-bottom:0mm;width:44mm;height:.5mm;font-size:6.3pt;">Inclusion amount (see instructions)</div>
-							<div class="styLNRightNumBox" style="height:1mm;width:7mm;padding-top:.3mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNLeftNumBox" style="height:4mm;padding-right:1mm;padding-bottom:0mm;padding-top:.5mm;font-size:7.5pt;text-align:right;">b</div>
+							<div class="styLNDesc" style="padding-top:1mm;padding-bottom:0mm;width:44mm;height:4mm;font-size:6.3pt;">Inclusion amount (see instructions)</div>
+							<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:.3mm;font-size:8pt;text-align:center;border-style:solid;
 			border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">24b</div>
-							<div class="styIRS2106ColBox" style="height:.5mm;padding-top:1mm;border-left-width:0px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.5mm;border-left-width:0px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/InclusionAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:.5mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:.5mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.5mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/InclusionAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:.5mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;"/>
 						</div>
 						<!-- END Section C 24b -->
 						<!-- BEGIN Section C 24c -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:1mm;padding-top:1mm;padding-right:1mm;font-size:7.5pt;text-align:right;">c</div>
-							<div class="styLNDesc" style="width:44mm;height:1mm;font-size:6.9pt;padding-top:1mm;">Subtract line 24b from line 24a</div>
-							<div class="styLNRightNumBox" style="height:1mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;padding-right:1mm;font-size:7.5pt;text-align:right;">c</div>
+							<div class="styLNDesc" style="width:44mm;height:4mm;font-size:6.9pt;padding-top:1mm;">Subtract line 24b from line 24a</div>
+							<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">24c</div>
-							<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:1mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/RentalMinusInclusionAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:1mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/RentalMinusInclusionAmt"/>
 								</xsl:call-template>
@@ -1765,21 +1780,21 @@
 						<!-- END Section C 24c -->
 						<!-- BEGIN Section C 25 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:3mm;font-size:8pt;">25</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:7pt;padding-top:3mm;">Value<span style="width:1mm"/>of<span style="width:1mm"/> employer-provided vehicle (applies only if 100% 	of annual lease value was included <br/>
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:3mm;font-size:8pt;">25</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:7pt;padding-top:3mm;">Value<span style="width:1mm"/>of<span style="width:1mm"/> employer-provided vehicle (applies only if 100% 	of annual lease value was included <br/>
 			on Form W-2&#151;see instructions)</div>
-							<div class="styLNRightNumBox" style="height:8.5mm;width:7mm;padding-top:12.5mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:17mm;width:7mm;padding-top:12.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">25</div>
-							<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:13.5mm;border-left-width:0px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:17mm;padding-top:13.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:8.5mm;padding-top:13.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:17mm;padding-top:13.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/ValueEmplrProvidedVehicleAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:13.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:17mm;padding-top:13.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:8.5mm;padding-top:13.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:17mm;padding-top:13.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/ValueEmplrProvidedVehicleAmt"/>
 								</xsl:call-template>
@@ -1788,25 +1803,25 @@
 						<!-- END Section C 25 -->
 						<!-- BEGIN Section C 26 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:.5mm;font-size:8pt;">26</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:.5mm;">Add lines 23, 24c, and 25
+							<div class="styLNLeftNumBox" style="height:6mm;padding-top:.5mm;font-size:8pt;">26</div>
+							<div class="styLNDesc" style="width:44mm;height:6mm;font-size:8pt;padding-top:.5mm;">Add lines 23, 24c, and 25
 				          <!--Dotted Line-->
 								<span class="styBoldText">
 									<span style="width:8px"/>.
 										</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:6mm;width:7mm;padding-top:.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">26</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:6mm;padding-top:1.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:6mm;padding-top:2.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/ActualVehicleExpenseAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:6mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:6mm;padding-top:2.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/ActualVehicleExpenseAmt"/>
 								</xsl:call-template>
@@ -1815,26 +1830,26 @@
 						<!-- END Section C 26 -->
 						<!-- BEGIN Section C 27 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">27</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:1mm;">Multiply<span style="width:2mm"/>line<span style="width:2mm"/>26<span style="width:2mm"/>by<span style="width:2mm"/> the percentage on line 14
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">27</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:1mm;">Multiply<span style="width:2mm"/>line<span style="width:2mm"/>26<span style="width:2mm"/>by<span style="width:2mm"/> the percentage on line 14
 				          <!--Dotted Line-->
 								<span class="styBoldText">
 									<span style="width:8px"/>.
 											<span style="width:8px"/>.
 										</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:6mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:9mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">27</div>
-							<div class="styIRS2106ColBoxGrey" style="height:6mm;padding-top:5.5mm;border-left-width:0px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:9mm;padding-top:5.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:6mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:9mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/CalculatedBusinessExpenseAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:6mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:9mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:6mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:9mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/CalculatedBusinessExpenseAmt"/>
 								</xsl:call-template>
@@ -1843,21 +1858,21 @@
 						<!-- END Section C 27 -->
 						<!-- BEGIN Section C 28 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:1mm;padding-top:.5mm;font-size:8pt;">28</div>
+							<div class="styLNLeftNumBox" style="height:4mm;padding-top:.5mm;font-size:8pt;">28</div>
 							<div class="styLNDesc" style="width:44mm;height:1mm;font-size:7pt;padding-top:.5mm;">Depreciation (see instructions)</div>
 							<!--Dotted Line-->
-							<div class="styLNRightNumBox" style="height:1mm;width:7mm;padding-top:.3mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:.3mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">28</div>
-							<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.3mm;border-left-width:0px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.3mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:1mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.5mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/DepreciationAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:1mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:1.3mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:1mm;padding-top:1mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:4mm;padding-top:0.5mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/DepreciationAmt"/>
 								</xsl:call-template>
@@ -1866,27 +1881,27 @@
 						<!-- END Section C 28 -->
 						<!-- BEGIN Section C 29 -->
 						<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:.5mm;padding-bottom:0mm;font-size:8pt;">29</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:.5mm;padding-bottom:0mm;">Add lines 27 and 28. <span style="width:2mm"/>Enter total here and on line 1
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:.5mm;padding-bottom:0mm;font-size:8pt;">29</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:.5mm;padding-bottom:0mm;">Add lines 27 and 28. <span style="width:2mm"/>Enter total here and on line 1
 				          <!--Dotted Line-->
 								<span class="styBoldText">
 									<span style="width:8px"/>.
 											<span style="width:8px"/>.
 										</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:3.8mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:8mm;width:7mm;padding-top:3.8mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;">29</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:4.5mm;border-left-width:0px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:4.5mm;border-left-width:0px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBox" style="height:8mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos]/TotalActualExpenseAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBox" style="height:8mm;padding-top:4.5mm;border-left-width:1px;border-right-width:0px;
 			border-bottom-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/ActualExpensesGrp[$pos + 1]/TotalActualExpenseAmt"/>
@@ -1932,8 +1947,8 @@
 							<!-- BEGIN Section D  -->
 							<!-- BEGIN Section D 30 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">30</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:1mm;">Enter cost or other basis (see instructions)
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">30</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:1mm;">Enter cost or other basis (see instructions)
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -1943,26 +1958,26 @@
 												<span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:4.3mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7mm;padding-top:4.3mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">30</div>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:5mm;border-left-width:0px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:auto;padding-top:5mm;border-left-width:0px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/VehicleBasisAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;	"/>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:8.4mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;	"/>
+								<div class="styIRS2106ColBox" style="height:auto;padding-top:5mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/VehicleBasisAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBoxGrey" style="height:8.4mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;"/>
 							</div>
 							<!-- END Section D 30 -->
 							<!-- BEGIN Section D 31 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="padding-top:1mm;font-size:8pt;">31</div>
-								<div class="styLNDesc" style="width:44mm;font-size:8pt;padding-top:1mm;">Enter section 179 deduction and special allowance (see instructions)
+								<div class="styLNLeftNumBox" style="padding-top:1mm;font-size:8pt;height:auto;">31</div>
+								<div class="styLNDesc" style="width:44mm;font-size:8pt;padding-top:1mm;height:auto;">Enter section 179 deduction and special allowance (see instructions)
 										<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:8px"/>.
@@ -1974,7 +1989,7 @@
 								<div class="styLNRightNumBox" style="width:7mm;height:12mm;padding-top:4.3mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">31</div>
 								<div class="styIRS2106ColBoxGrey" style="height:12mm;font-size:7.5pt;border-left-width:0px;border-right-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:12mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:12mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/Section179DeductionAmt"/>
 									</xsl:call-template>
@@ -1997,8 +2012,8 @@
 							<!-- END Section D 31 -->
 							<!-- BEGIN Section D 32 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:8mm;padding-top:1mm;font-size:8pt;">32</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:7pt;padding-top:1mm;">Multiply line 30 by line 14 (see instructions if you 
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">32</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:7pt;padding-top:1mm;">Multiply line 30 by line 14 (see instructions if you 
 		claimed the section 179 deduction or<br/>special allowance)
 				
 		          <!--Dotted Line-->
@@ -2009,27 +2024,27 @@
 												<span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:8mm;width:7mm;padding-top:10mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:14.5mm;width:7mm;padding-top:10mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">32</div>
-								<div class="styIRS2106ColBox" style="height:8mm;padding-top:10.8mm;border-left-width:0px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:14.5mm;padding-top:10.8mm;border-left-width:0px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/DepreciationRecoveryAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:14mm;padding-top:11mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:14mm;padding-top:10.8mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:14.5mm;padding-top:11mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:14.5mm;padding-top:10.8mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/DepreciationRecoveryAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:14mm;padding-top:11mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:14.5mm;padding-top:11mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;
 		background-color:lightgrey;"/>
 							</div>
 							<!-- END Section D 32 -->
 							<!-- BEGIN Section D 33 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:2mm;font-size:8pt;">33</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:7pt;padding-top:2mm;">Enter depreciation method and percentage
+								<div class="styLNLeftNumBox" style="height:9.9mm;padding-top:2mm;font-size:8pt;">33</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:7pt;padding-top:2mm;">Enter depreciation method and percentage
 		 (see instructions)
 				
 		          <!--Dotted Line-->
@@ -2037,7 +2052,7 @@
 										<span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:8.5mm;width:7mm;padding-top:5.5mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7mm;padding-top:5.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">33</div>
 								<div class="styIRS2106ColBox" style="height:9.8mm;font-size:6.5pt;padding-top:0mm;text-align:left;border-left-width:0px;border-right-width:0px;
 		color:darkblue;">
@@ -2049,7 +2064,7 @@
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/Percentage"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:6.3mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBoxGrey" style="height:9.8mm;padding-top:6.3mm;border-left-width:1px;border-right-width:0px;"/>
 								<div class="styIRS2106ColBox" style="height:9.8mm;font-size:6.5pt;padding-top:0mm;text-align:left;border-left-width:1px;border-right-width:0px;
 		color:darkblue;">
 									<xsl:call-template name="PopulateText">
@@ -2060,13 +2075,13 @@
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/Percentage"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:6.3mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBoxGrey" style="height:9.8mm;padding-top:6.3mm;border-left-width:1px;border-right-width:0px;"/>
 							</div>
 							<!-- END Section D 33 -->
 							<!-- BEGIN Section D 34 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:.5mm;font-size:8pt;">34</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:6.3pt;padding-top:.5mm;">Multiply line 32 by the percentage <br/>on line 33
+								<div class="styLNLeftNumBox" style="height:6.5mm;padding-top:.5mm;font-size:8pt;">34</div>
+								<div class="styLNDesc" style="width:44mm;height:6.5;font-size:6.3pt;padding-top:.5mm;">Multiply line 32 by the percentage <br/>on line 33
 		 (see instructions)
 				
 		          <!--Dotted Line-->
@@ -2075,16 +2090,16 @@
 												<span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:2mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:6.5mm;width:7mm;padding-top:2mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">34</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:3.3mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:2.8mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:6.5mm;padding-top:3.3mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:6.5mm;padding-top:2.8mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/CalculatedDepreciationAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:3.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:2.8mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:6.5mm;padding-top:3.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:6.5mm;padding-top:2.8mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/CalculatedDepreciationAmt"/>
 									</xsl:call-template>
@@ -2093,8 +2108,8 @@
 							<!-- END Section D 34 -->
 							<!-- BEGIN Section D 35 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:1mm;padding-top:1mm;font-size:8pt;">35</div>
-								<div class="styLNDesc" style="width:44mm;height:1mm;font-size:8pt;padding-top:1mm;">Add lines 31 and 34
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">35</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:1mm;">Add lines 31 and 34
 				
 		          <!--Dotted Line-->
 									<span class="styBoldText">
@@ -2103,16 +2118,16 @@
 												<span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:1.5mm;width:7mm;padding-top:.8mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7mm;padding-top:.8mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">35</div>
-								<div class="styIRS2106ColBoxGrey" style="height:1.5mm;padding-top:1.6mm;border-left-width:0px;border-right-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:1.5mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:5mm;padding-top:1.6mm;border-left-width:0px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:5mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/DepreciationSubtotalAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:1.5mm;padding-top:1.6mm;border-left-width:1px;border-right-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:1.5mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:5mm;padding-top:1.6mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:5mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/DepreciationSubtotalAmt"/>
 									</xsl:call-template>
@@ -2121,8 +2136,8 @@
 							<!-- END Section D 35 -->
 							<!-- BEGIN Section D 36 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">36</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:6.3pt;padding-top:1mm;">Enter the applicable limit explained
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">36</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:6.3pt;padding-top:1mm;">Enter the applicable limit explained
 				<br/>in the line 36 instructions
 				
 		          <!--Dotted Line-->
@@ -2131,26 +2146,26 @@
 												<span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:3mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:auto;width:7mm;padding-top:3mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">36</div>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:3.8mm;border-left-width:0px;border-right-width:0px;">
+								<div class="styIRS2106ColBox" style="height:7.2mm;padding-top:3.8mm;border-left-width:0px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/LimitationAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:2mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:7mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:7.2mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/LimitationAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;"/>
+								<div class="styIRS2106ColBoxGrey" style="height:7mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;"/>
 							</div>
 							<!-- END Section D 36 -->
 							<!-- BEGIN Section D 37 -->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">37</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:1mm;">Multiply<span style="width:1mm"/> line
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">37</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:1mm;">Multiply<span style="width:1mm"/> line
 		<span style="width:1mm"/> 36<span style="width:1mm"/> by<span style="width:1mm"/> the percentage on line 14
 				
 		          <!--Dotted Line-->
@@ -2159,16 +2174,16 @@
 												<span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:8.5mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">37</div>
-								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:5.5mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:4mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:5.5mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:8.5mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/LimitationMultipliedByUseAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:4mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+								<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
+								<div class="styIRS2106ColBox" style="height:8.5mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/LimitationMultipliedByUseAmt"/>
 									</xsl:call-template>
@@ -2177,8 +2192,8 @@
 							<!-- END Section D 37 -->
 							<!-- BEGIN Section D 38 -->
 							<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-								<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">38</div>
-								<div class="styLNDesc" style="width:44mm;height:2mm;font-size:7.1pt;padding-top:1mm;">Enter the <span class="styBoldText">smaller</span> of line 35 <br/>or line 37. 
+								<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">38</div>
+								<div class="styLNDesc" style="width:44mm;height:auto;font-size:7.1pt;padding-top:1mm;">Enter the <span class="styBoldText">smaller</span> of line 35 <br/>or line 37. 
 		<span style="width:1mm"/> If you skipped lines<br/> 36 and 37,  enter the amount <br/>from line 35.<span style="width:1mm"/>Also enter this amount on line	28 above
 				
 		          <!--Dotted Line-->
@@ -2186,18 +2201,18 @@
 										<span style="width:8px"/>.
 											</span>
 								</div>
-								<div class="styLNRightNumBox" style="height:8mm;width:6.6mm;padding-top:13.5mm;font-size:8pt;text-align:center;border-style:solid;
+								<div class="styLNRightNumBox" style="height:18mm;width:6.8mm;padding-top:13.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;">38</div>
-								<div class="styIRS2106ColBoxGrey" style="height:8mm;width:32.3mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:18mm;width:32.3mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;
 		border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:8mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
+								<div class="styIRS2106ColBox" style="height:18mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/DepreciationOfVehicleAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styIRS2106ColBoxGrey" style="height:8mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;
+								<div class="styIRS2106ColBoxGrey" style="height:18mm;width.31.9mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;
 		border-bottom-width:0px;"/>
-								<div class="styIRS2106ColBox" style="height:8mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
+								<div class="styIRS2106ColBox" style="height:18mm;width:31.7mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/DepreciationOfVehicleAmt"/>
 									</xsl:call-template>
@@ -2242,8 +2257,8 @@
 						<!-- BEGIN Section D  -->
 						<!-- BEGIN Section D 30 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">30</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:1mm;">Enter cost or other basis (see instructions)
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">30</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:1mm;">Enter cost or other basis (see instructions)
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -2253,26 +2268,26 @@
 												<span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:4.3mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7mm;padding-top:4.3mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">30</div>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:5mm;border-left-width:0px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:auto;padding-top:5mm;border-left-width:0px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/VehicleBasisAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;	"/>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:8.4mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;	"/>
+							<div class="styIRS2106ColBox" style="height:auto;padding-top:5mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/VehicleBasisAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBoxGrey" style="height:8.4mm;padding-top:5mm;border-left-width:1px;border-right-width:0px;"/>
 						</div>
 						<!-- END Section D 30 -->
 						<!-- BEGIN Section D 31 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="padding-top:1mm;font-size:8pt;">31</div>
-							<div class="styLNDesc" style="width:44mm;font-size:8pt;padding-top:1mm;">Enter section 179 deduction and special allowance (see instructions)
+							<div class="styLNLeftNumBox" style="padding-top:1mm;font-size:8pt;height:auto;">31</div>
+							<div class="styLNDesc" style="width:44mm;font-size:8pt;padding-top:1mm;height:auto">Enter section 179 deduction and special allowance (see instructions)
 										<!--Dotted Line-->
 								<span class="styBoldText">
 									<span style="width:8px"/>.
@@ -2284,7 +2299,7 @@
 							<div class="styLNRightNumBox" style="width:7mm;height:12mm;padding-top:4.3mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">31</div>
 							<div class="styIRS2106ColBoxGrey" style="height:12mm;font-size:7.5pt;border-left-width:0px;border-right-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:12mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:12mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/Section179DeductionAmt"/>
 								</xsl:call-template>
@@ -2307,8 +2322,8 @@
 						<!-- END Section D 31 -->
 						<!-- BEGIN Section D 32 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:8mm;padding-top:1mm;font-size:8pt;">32</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:7pt;padding-top:1mm;">Multiply line 30 by line 14 (see instructions if you 
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">32</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:7pt;padding-top:1mm;">Multiply line 30 by line 14 (see instructions if you 
 		claimed the section 179 deduction or<br/>special allowance)
 				
 		          <!--Dotted Line-->
@@ -2319,27 +2334,27 @@
 												<span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:8mm;width:7mm;padding-top:10mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:14.5mm;width:7mm;padding-top:10mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">32</div>
-							<div class="styIRS2106ColBox" style="height:8mm;padding-top:10.8mm;border-left-width:0px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:14.5mm;padding-top:10.8mm;border-left-width:0px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/DepreciationRecoveryAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:14mm;padding-top:11mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:14mm;padding-top:10.8mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:14.5mm;padding-top:11mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:14.5mm;padding-top:10.8mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/DepreciationRecoveryAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:14mm;padding-top:11mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:14.5mm;padding-top:11mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;
 		background-color:lightgrey;"/>
 						</div>
 						<!-- END Section D 32 -->
 						<!-- BEGIN Section D 33 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:2mm;font-size:8pt;">33</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:7pt;padding-top:2mm;">Enter depreciation method and percentage
+							<div class="styLNLeftNumBox" style="height:9.8mm;padding-top:2mm;font-size:8pt;">33</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:7pt;padding-top:2mm;">Enter depreciation method and percentage
 		 (see instructions)
 				
 		          <!--Dotted Line-->
@@ -2347,7 +2362,7 @@
 									<span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:8.5mm;width:7mm;padding-top:5.5mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7mm;padding-top:5.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">33</div>
 							<div class="styIRS2106ColBox" style="height:9.8mm;font-size:6.5pt;padding-top:0mm;text-align:left;border-left-width:0px;border-right-width:0px;
 		color:darkblue;">
@@ -2359,7 +2374,7 @@
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/Percentage"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:6.3mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBoxGrey" style="height:9.8mm;padding-top:6.3mm;border-left-width:1px;border-right-width:0px;"/>
 							<div class="styIRS2106ColBox" style="height:9.8mm;font-size:6.5pt;padding-top:0mm;text-align:left;border-left-width:1px;border-right-width:0px;
 		color:darkblue;">
 								<xsl:call-template name="PopulateText">
@@ -2370,13 +2385,13 @@
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/Percentage"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:6.3mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBoxGrey" style="height:9.8mm;padding-top:6.3mm;border-left-width:1px;border-right-width:0px;"/>
 						</div>
 						<!-- END Section D 33 -->
 						<!-- BEGIN Section D 34 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:.5mm;font-size:8pt;">34</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:6.3pt;padding-top:.5mm;">Multiply line 32 by the percentage <br/>on line 33
+							<div class="styLNLeftNumBox" style="height:6.5mm;padding-top:.5mm;font-size:8pt;">34</div>
+							<div class="styLNDesc" style="width:44mm;height:6.5mm;font-size:6.3pt;padding-top:.5mm;">Multiply line 32 by the percentage <br/>on line 33
 		 (see instructions)
 				
 		          <!--Dotted Line-->
@@ -2385,16 +2400,16 @@
 												<span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:2mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:6.5mm;width:7mm;padding-top:2mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">34</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:3.3mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:2.8mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:6.5mm;padding-top:3.3mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:6.5mm;padding-top:2.8mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/CalculatedDepreciationAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:3.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:2.8mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:6.5mm;padding-top:3.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:6.5mm;padding-top:2.8mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/CalculatedDepreciationAmt"/>
 								</xsl:call-template>
@@ -2403,8 +2418,8 @@
 						<!-- END Section D 34 -->
 						<!-- BEGIN Section D 35 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:1mm;padding-top:1mm;font-size:8pt;">35</div>
-							<div class="styLNDesc" style="width:44mm;height:1mm;font-size:8pt;padding-top:1mm;">Add lines 31 and 34
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">35</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:1mm;">Add lines 31 and 34
 				
 		          <!--Dotted Line-->
 								<span class="styBoldText">
@@ -2413,16 +2428,16 @@
 												<span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:1.5mm;width:7mm;padding-top:.8mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:auto;width:7mm;padding-top:.8mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">35</div>
-							<div class="styIRS2106ColBoxGrey" style="height:1.5mm;padding-top:1.6mm;border-left-width:0px;border-right-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:1.5mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:5mm;padding-top:1.6mm;border-left-width:0px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:5mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/DepreciationSubtotalAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:1.5mm;padding-top:1.6mm;border-left-width:1px;border-right-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:1.5mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:5mm;padding-top:1.6mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:5mm;padding-top:1.5mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/DepreciationSubtotalAmt"/>
 								</xsl:call-template>
@@ -2431,8 +2446,8 @@
 						<!-- END Section D 35 -->
 						<!-- BEGIN Section D 36 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">36</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:6.3pt;padding-top:1mm;">Enter the applicable limit explained
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">36</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:6.3pt;padding-top:1mm;">Enter the applicable limit explained
 				<br/>in the line 36 instructions
 				
 		          <!--Dotted Line-->
@@ -2441,26 +2456,26 @@
 												<span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:2mm;width:7mm;padding-top:3mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:7mm;width:7mm;padding-top:3mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">36</div>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:3.8mm;border-left-width:0px;border-right-width:0px;">
+							<div class="styIRS2106ColBox" style="height:7.2mm;padding-top:3.8mm;border-left-width:0px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/LimitationAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:2mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:7mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:7.2mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/LimitationAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:2mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;"/>
+							<div class="styIRS2106ColBoxGrey" style="height:7mm;padding-top:3.8mm;border-left-width:1px;border-right-width:0px;"/>
 						</div>
 						<!-- END Section D 36 -->
 						<!-- BEGIN Section D 37 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">37</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:8pt;padding-top:1mm;">Multiply<span style="width:1mm"/> line
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">37</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:8pt;padding-top:1mm;">Multiply<span style="width:1mm"/> line
 		<span style="width:1mm"/> 36<span style="width:1mm"/> by<span style="width:1mm"/> the percentage on line 14
 				
 		          <!--Dotted Line-->
@@ -2469,16 +2484,16 @@
 												<span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:4mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:8.5mm;width:7mm;padding-top:4.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:1px;border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;">37</div>
-							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:5.5mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:4mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:5.5mm;border-left-width:0px;border-right-width:0px;border-bottom-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:8.5mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/LimitationMultipliedByUseAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:4mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:4mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
+							<div class="styIRS2106ColBoxGrey" style="height:8.5mm;padding-top:5.5mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;"/>
+							<div class="styIRS2106ColBox" style="height:8.5mm;padding-top:5.3mm;border-left-width:1px;border-right-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/LimitationMultipliedByUseAmt"/>
 								</xsl:call-template>
@@ -2487,8 +2502,8 @@
 						<!-- END Section D 37 -->
 						<!-- BEGIN Section D 38 -->
 						<div style="width:187mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-							<div class="styLNLeftNumBox" style="height:2mm;padding-top:1mm;font-size:8pt;">38</div>
-							<div class="styLNDesc" style="width:44mm;height:2mm;font-size:7.1pt;padding-top:1mm;">Enter the <span class="styBoldText">smaller</span> of line 35 <br/>or line 37. 
+							<div class="styLNLeftNumBox" style="height:auto;padding-top:1mm;font-size:8pt;">38</div>
+							<div class="styLNDesc" style="width:44mm;height:auto;font-size:7.1pt;padding-top:1mm;">Enter the <span class="styBoldText">smaller</span> of line 35 <br/>or line 37. 
 		<span style="width:1mm"/> If you skipped lines<br/> 36 and 37,  enter the amount <br/>from line 35.<span style="width:1mm"/>Also enter this amount on line	28 above
 				
 		          <!--Dotted Line-->
@@ -2496,18 +2511,18 @@
 									<span style="width:8px"/>.
 											</span>
 							</div>
-							<div class="styLNRightNumBox" style="height:8.1mm;width:6.6mm;padding-top:13.5mm;font-size:8pt;text-align:center;border-style:solid;
+							<div class="styLNRightNumBox" style="height:18mm;width:6.8mm;padding-top:13.5mm;font-size:8pt;text-align:center;border-style:solid;
 		border-right-width:0px;border-left-width:1px;border-top-width:0px;border-bottom-width:0px;border-color:black;">38</div>
-							<div class="styIRS2106ColBoxGrey" style="height:8mm;width:32.3mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:18mm;width:32.3mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;
 		border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:8.1mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
+							<div class="styIRS2106ColBox" style="height:18mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos]/DepreciationOfVehicleAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styIRS2106ColBoxGrey" style="height:8.1mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;
+							<div class="styIRS2106ColBoxGrey" style="height:18mm;width:31.9mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;
 		border-bottom-width:0px;"/>
-							<div class="styIRS2106ColBox" style="height:8.1mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
+							<div class="styIRS2106ColBox" style="height:18mm;width:31.7mm;padding-top:14.3mm;border-left-width:1px;border-right-width:0px;border-bottom-width:0px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2106Data/DepreciationOfVehiclesGrp[$pos + 1]/DepreciationOfVehicleAmt"/>
 								</xsl:call-template>
@@ -2523,7 +2538,7 @@
 					<div style="width:187mm;padding-top:.5mm;padding-bottom:.5mm;text-align:right;">Form <span class="styBoldText" style="font-size:8pt;">
       2106  </span>(2013)</div>
 					<!-- END of Page 2 -->
-					<p class="pageend"/>
+					<p class="pageEnd"/>
 					<!-- Begininning of write-in data -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">Additional Data</div>

@@ -3,25 +3,26 @@
   <xsl:template name="IRS990ScheduleBStyle">  
 
     .styIRS990ScheduleBTblRB {
-      border-bottom:1 solid black;
-      border-right:1 solid black;
-      padding-left:2mm
+      border-bottom:1px solid black;
+      border-right:1px solid black;
+      padding-left:2mm;
+      padding-right:1mm;
     }
   
     .styIRS990ScheduleBTblRB2 {
-      border-bottom:1 solid black;
-      border-right:1 solid black;        
+      border-bottom:1px solid black;
+      border-right:1px solid black;        
     }      
           
     .styIRS990ScheduleBTable  {
-      font-size:8.5pt;
+      font-size:7pt;
       width:100%;  
       display:table-header-group;
       text-align:left;                    
     }
   
     .styIRS990ScheduleBTblCell {
-      border-bottom:1 solid black;
+      border-bottom:1px solid black;
       padding-left:2mm;
       height:8mm;
     }      
@@ -34,15 +35,15 @@
     }              
           
     .styIRS990ScheduleBDotBB {
-      border-bottom:1 solid black;            
-      width:86mm;  
+      border-bottom:1px solid black;            
+      width:90mm;  
       height:8mm;    
       font-size:7pt;
       font-family:verdana;        
     }  
   
     .styIRS990ScheduleBDotBB1 {
-      border-bottom:1 solid black;            
+      border-bottom:1px solid black;            
       width:70mm;  
       height:1mm;          
     }      
@@ -55,7 +56,6 @@
     .styIRS990ScheduleBCkbox { 
       height:3.3mm; 
       width:3.3mm;
-      float:left;
       margin-right:1mm;
     }              
       

@@ -12,6 +12,37 @@
   float:none;clear:none;
   overflow:hidden; 
   }
+.styIRS8936LNRightNumBox{ /* Right number box */
+	width:8mm;height:4mm;
+	padding-top:.5mm;
+	padding-bottom:.5mm;
+	font-weight:bold;
+	text-align:center;
+	vertical-align:bottom;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+	float:none; clear: none;
+}
+.styIRS8936LNRightNumBoxNBB{ /* Right number box with no bottom border*/
+	width:8mm;height:4mm;
+	padding-top:.5mm;
+	padding-bottom:.5mm;
+	font-weight:bold;
+	text-align:center;
+	vertical-align:bottom;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+	float:none; clear: none;
+}
+.styIRS8936LNAmountBox{ /* Box for storing line item amounts. */
+	width:48mm;height:4mm;
+	padding-top:.5mm;
+	padding-bottom:.5mm;
+	text-align:right;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+	float:left; clear: none;
+}
   </xsl:template>
 
 </xsl:stylesheet>

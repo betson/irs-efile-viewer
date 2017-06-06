@@ -51,11 +51,11 @@
             <xsl:choose>
                 <xsl:when test="ShareholderBusinessName">
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="ShareholderBusinessName/BusinessNameLine1"/>
+                    <xsl:with-param name="TargetNode" select="ShareholderBusinessName/BusinessNameLine1Txt"/>
                   </xsl:call-template>
-                  <xsl:if test="ShareholderBusinessName/BusinessNameLine2 != ''">
+                  <xsl:if test="ShareholderBusinessName/BusinessNameLine2Txt != ''">
                     <br/><xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="ShareholderBusinessName/BusinessNameLine2"/>
+                        <xsl:with-param name="TargetNode" select="ShareholderBusinessName/BusinessNameLine2Txt"/>
                       </xsl:call-template>
                   </xsl:if>                  
                 </xsl:when>
@@ -163,8 +163,10 @@
   <!-- Main template -->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
            <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>

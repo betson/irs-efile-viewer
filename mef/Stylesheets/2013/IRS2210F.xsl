@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form2210FData" select="$RtnDoc/IRS2210F"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form2210FData)"/>
@@ -46,7 +48,7 @@
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form2210FData"/>
 								</xsl:call-template>
-							<div class="styAgency" style="padding-top:4mm;height:0mm;padding:bottom:0mm;">Department of the Treasury<br/>
+							<div class="styAgency" style="padding-top:2mm;height:0mm;padding:bottom:0mm;">Department of the Treasury<br/>
 						Internal Revenue Service 
                             </div>
 						</div>
@@ -54,13 +56,14 @@
 			<div class="styMainTitle" style="padding:bottom:0mm;">
 				Underpayment of Estimated Tax by<br/>Farmers and Fishermen
 			</div>
-			<div class="styFBT" style="font-size:7pt;height:5mm;padding-top:0mm;margin-top:0mm;">
-				<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/>  Attach to Form 1040, Form 1040NR, or Form 1041.<br/>
-				<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> Information about Form 2210-F and its separate instructions is at <i>www.irs.gov/form2210.</i>
+			
+				<div class="styFBT" style="font-size:7pt;height:4mm;padding-top:1mm;margin-top:0mm;"> <img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040, Form 1040NR, or Form 1041.<br/></div>
+				<div class="styFBT" style="font-size:5pt;height:3mm;padding-top:1mm;margin-top:0mm;"> <img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"/> Information about Form 2210-F and its separate instructions is at <i>www.irs.gov/form2210.</i>
 			</div>
 		</div>
 	<div class="styTYBox" style="width:38mm; height:20mm">
-							<div style="padding-top:0mm;border-bottom:1 solid black;font:6pt;">OMB No. 1545-0140</div>
+														<div class="styOMB" >
+							OMB No. 1545-0140</div>
 							<div>
 								<span class="styTaxYear" style="font-size:21pt;">20<span class="styTYColor">13</span></span>
 							</div>
@@ -70,7 +73,7 @@
 					</div>
 					<!-- Name(s) shown on return -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styFNBox" style="width:140mm; height:8mm">
+						<div class="styFNBox" style="width:140mm; height:10mm">
                     Name(s) shown on tax return<br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
@@ -80,7 +83,7 @@
 							</xsl:call-template>
 						</div>
                             <b> Identifying number</b><br/>
-						<span style="width:100%;text-align:center;">
+						<span style="text-align:center;">
 							<xsl:call-template name="PopulateReturnHeaderFilerTIN"/>
 						</span>
 					</div>
@@ -90,17 +93,17 @@
 					</div>
 					<!-- Part I -->
 					<!-- Part I - Header -->
-					<div style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;">
-						<span class="styPartName" style="height:1mm;width:15mm;font-size:13;">Part l</span>
+						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part l</span>
 						<div class="styPartDesc" style="width:167mm;font-weight:normal;" >
-							<span style="width:3mm;font-size:10pt;height:0mm;vertical-align:top;"/>
+							<span style="width:4mm;font-size:10pt;height:0mm;vertical-align:top;"/>
 							<b>Reasons for Filing.</b>  Check applicable boxes.  If neither applies, <b>do not file Form 2210-F.</b>
 						</div>
 					</div>
 					<!-- End Part I Header -->
 					<!-- Part I body -->
-					<div  style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div  style="width:187mm;height:12mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;">
 						<!-- Line A -->
 						<div style="width:187mm;padding-top:1mm;height:7mm;">
@@ -140,11 +143,11 @@
 					</div>
 					<!-- Part lI -->
 					<!-- Part II - Header -->
-					<div style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div style="width:187mm;height:4mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;padding-top:0mm;font-family:arial;">
-						<span class="styPartName" style="height:1mm;width:15mm;font-size:13;">Part II</span>
+						<span class="styPartName" style="height:4mm;width:15mm;font-size:13;">Part II</span>
 						<span style="width:167mm;font-weight:normal;" class="styPartDesc">
-							<span style="width:3mm;font-size:10pt;height:0mm;vertical-align:top;"/>
+							<span style="width:3mm;font-size:10pt;height:4mm;vertical-align:top;"/>
 							<b>Figure Your Underpayment</b>
 						</span>
 					</div>
@@ -167,7 +170,8 @@
 								<span style="float:left">
 									 Schedule G, line 3
 								</span>
-								<span class="styIRS2210DotLn">............................</span>
+								
+								<span class="styIRS2210DotLn" style="float:right">...........................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm; border-bottom-width:1px;">1</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;border-bottom-width:1px;">
@@ -183,7 +187,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">Other taxes, including self-employment tax and, if applicable, Additional Medicare Tax and/or Net</span><br/>
 								<span style="float:left;">Investment Income Tax (see instructions)</span>
-								<span class="styIRS2210DotLn">....................</span>
+								<span class="styIRS2210DotLn" style="float:right">....................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:7mm;padding-bottom:0mm;bottom-border-width:1px;padding-top:3mm;">2</div>
 							<div class="styLNAmountBox" style="width:36mm;height:7mm;padding-bottom:0mm;bottom-border-width:1px;padding-top:3mm;">
@@ -198,7 +202,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">Add lines 1 and 2. If less than $1,000, you do not owe a penalty; <b>do not file Form 2210-F</b></span>
-								<span class="styIRS2210DotLn">.....</span>
+								<span class="styIRS2210DotLn" style="float:right">....</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">3</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;bottom-border-width:1px;">
@@ -224,7 +228,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:91.1mm;height:4mm;">
 								<span style="float:left">Earned income credit (EIC)</span>
 								<!--Dotted Line-->
-								<span class="styIRS2210DotLn">..............</span>
+								<span class="styIRS2210DotLn" style="float:right">..............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:4mm;">4a
                             </div>
@@ -233,8 +237,8 @@
 									<xsl:with-param name="TargetNode" select="$Form2210FData/EarnedIncomeCreditAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4.5mm;"/>
-							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4.5mm;"/>
+							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4mm;"/>
+							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4mm;"/>
 						</div>
 						<!-- Line4b -->
 						<div style="width:187mm;">
@@ -243,7 +247,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:91.1mm;height:4mm;">
 								<span style="float:left">Additional child tax credit</span>
 								<!--Dotted Line-->
-								<span class="styIRS2210DotLn">...............</span>
+								<span class="styIRS2210DotLn" style="float:right">............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:4mm;">4b
                             </div>
@@ -252,8 +256,8 @@
 									<xsl:with-param name="TargetNode" select="$Form2210FData/AdditionalChildTaxCreditAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4.5mm;"/>
-							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4.5mm;"/>
+							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4mm;"/>
+							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4mm;"/>
 						</div>
 						<!-- Line4c -->
 						<div style="width:187mm;">
@@ -262,7 +266,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:91.1mm;height:4mm;">
 								<span style="float:left">American opportunity credit (Form 8863, line 8)</span>
 								<!--Dotted Line-->
-								<span class="styIRS2210DotLn">.......</span>
+								<span class="styIRS2210DotLn" style="float:right">.......</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:4mm;">4c
                             </div>
@@ -271,8 +275,8 @@
 									<xsl:with-param name="TargetNode" select="$Form2210FData/RefundableAmerOppCreditAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4.5mm;"/>
-							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4.5mm;"/>
+							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4mm;"/>
+							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4mm;"/>
 						</div>
 						<!-- Line4d-->
 						<div style="width:187mm;">
@@ -281,7 +285,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:91.1mm;height:4mm;">
 								<span style="float:left">Credit for federal tax paid on fuels</span>
 								<!--Dotted Line-->
-								<span class="styIRS2210DotLn">............</span>
+								<span class="styIRS2210DotLn" style="float:right">..........</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:4mm;">4d
                             </div>
@@ -290,8 +294,8 @@
 									<xsl:with-param name="TargetNode" select="$Form2210FData/FuelTaxCreditAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4.5mm;"/>
-							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4.5mm;"/>
+							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4mm;"/>
+							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4mm;"/>
 						</div>
 						<!-- Line4e -->
 						<div style="width:187mm;">
@@ -300,7 +304,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:91.1mm;height:4mm;">
 								<span style="float:left">Health coverage tax credit</span>
 								<!--Dotted Line-->
-								<span class="styIRS2210DotLn">..............</span>
+								<span class="styIRS2210DotLn" style="float:right">..............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:4mm;">4e
                             </div>
@@ -309,8 +313,8 @@
 									<xsl:with-param name="TargetNode" select="$Form2210FData/HealthCoverageTaxCreditAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4.5mm;"/>
-							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4.5mm;"/>
+							<div class="styLNRightNumBox" style="font-size:7pt;background-color:lightgrey;border-bottom:none;height:4mm;"/>
+							<div style="float:left;clear;none;border-left:1px solid black;width:35.9mm;height:4mm;"/>
 						</div>
 						<!-- Line4f -->
 						<div style="width:187mm;">
@@ -319,7 +323,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:91.1mm;height:4mm;">
 								<span style="float:left">Credit determined under section 1341(a)(5)(B) (see instructions)</span>
 								<!--Dotted Line-->
-								<span class="styIRS2210DotLn">.</span>
+								<span class="styIRS2210DotLn" style="float:right">.</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:4mm;">4f
                             </div>
@@ -337,7 +341,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">Add lines 4a through 4f</span>
-								<span class="styIRS2210DotLn">..........................</span>
+								<span class="styIRS2210DotLn" style="float:right">......................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">5</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;bottom-border-width:1px;">
@@ -362,7 +366,7 @@
 								<span style="float:left">
 									 <b>not file Form 2210-F</b>
 								</span>
-								<span class="styIRS2210DotLn">..........................</span>
+								<span class="styIRS2210DotLn" style="float:right">..........................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm; border-bottom-width:1px;">6</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;border-bottom-width:1px;">
@@ -378,7 +382,7 @@
 							<div class="styLNDesc" style="font-size:7pt;width:91.1mm;height:4mm;">
 								<span style="float:left">Multiply line 6 by 66 2/3% (.667)</span>
 								<!--Dotted Line-->
-								<span class="styIRS2210DotLn">............</span>
+								<span class="styIRS2210DotLn" style="float:right">............</span>
 							</div>
 							<div class="styLNRightNumBox" style="font-size:7pt;height:4mm;">7
                             </div>
@@ -396,7 +400,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">Withholding taxes. <b>Do not</b> include any estimated tax payments on this line (see instructions)</span>
-								<span class="styIRS2210DotLn">....</span>
+								<span class="styIRS2210DotLn" style="float:right">....</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">8</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;bottom-border-width:1px;">
@@ -411,7 +415,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">Subtract line 8 from line 6. If less than $1,000, you do not owe a penalty; <b>do not file Form 2210-F</b></span>
-								<span class="styIRS2210DotLn">..</span>
+								<span class="styIRS2210DotLn" style="float:right">..</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">9</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;bottom-border-width:1px;">
@@ -436,7 +440,7 @@
 								<span style="float:left">
 									 or from married filing jointly)
 								</span>
-								<span class="styIRS2210DotLn">........................</span>
+								<span class="styIRS2210DotLn" style="float:right">........................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm; border-bottom-width:1px;">10</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;border-bottom-width:1px;">
@@ -451,7 +455,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left"><b>Required annual payment.</b> Enter the <b>smaller</b> of line 7 or line 10</span>
-								<span class="styIRS2210DotLn">.............</span>
+								<span class="styIRS2210DotLn" style="float:right">...........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm;bottom-border-width:1px;">11</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;bottom-border-width:1px;">
@@ -495,7 +499,7 @@
 								<span style="float:left">
 									and excess social security or tier 1 railroad retirement tax withheld during 2013
 								</span>
-								<span class="styIRS2210DotLn">........</span>
+								<span class="styIRS2210DotLn" style="float:right">........</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm; border-bottom-width:1px;">12</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;border-bottom-width:1px;">
@@ -520,7 +524,7 @@
 								<span style="float:left">
 									 owe the penalty. <b>Do not file Form 2210-F</b> unless you checked box <b>B</b> above
 								</span>
-								<span class="styIRS2210DotLn">..........</span>
+								<span class="styIRS2210DotLn" style="float:right">.......</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4mm;padding-bottom:0mm; border-bottom:none">13</div>
 							<div class="styLNAmountBox" style="width:36mm;height:4mm;padding-bottom:0mm;border-bottom:none;">
@@ -537,7 +541,7 @@
           border-right-width:0px;border-left-width:0px;float:left;">
 						<span class="styPartName" style="height:4mm;width:18mm;font-size:13;">Part lll</span>
 						<span style="width:167mm;font-weight:normal;" class="styPartDesc">
-							<span style="width:3mm;font-size:10pt;height:4mm;vertical-align:center;"/>
+							<span style="width:3mm;font-size:10pt;height:2mm;vertical-align:center;"/>
 							<b>Figure the Penalty</b>
 						</span>
 					</div>
@@ -554,9 +558,9 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-bottom:0mm;padding-left: 2.25mm">14
                             </div>
-							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
+							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:5mm;padding-bottom:0mm;">
 								<span style="float:left">Enter the date the amount on line 13 was paid or April 15, 2014, whichever is earlier</span>
-								<span class="styIRS2210DotLn">......</span>
+								<span class="styIRS2210DotLn" style="float:right">......</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:5mm;padding-bottom:0mm;bottom-border-width:1px;">14</div>
 							<div class="styLNAmountBox" style="width:36mm;height:5mm;padding-bottom:0mm;bottom-border-width:1px;">
@@ -582,7 +586,7 @@
                             </div>
 							<div class="styLNDesc" style="font-size:7pt;width:135mm;height:4mm;padding-bottom:0mm;">
 								<span style="float:left">Number of days <b>from</b> January 15, 2014, <b>to</b> the date on line 14</span>
-								<span class="styIRS2210DotLn">.............</span>
+								<span class="styIRS2210DotLn" style="float:right">.............</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:5mm;padding-bottom:0mm;bottom-border-width:1px;">15</div>
 							<div class="styLNAmountBox" style="width:36mm;height:5mm;padding-bottom:0mm;bottom-border-width:1px;">
@@ -615,6 +619,11 @@
 								</div>
 								<div style="height:4mm;float:left;">x </div>
 								<div style="height:4mm;float:left;margin-left:5mm">.03</div>
+																<span class="styIRS2210DotLn" >......</span>
+								<div style="padding-left:1.2mm;">
+									<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"></img>
+								</div>
+
 								<div style="height:4mm;float:left;margin-left:1mm">
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form2210FData/PenaltyAmt"/>
@@ -623,10 +632,6 @@
 										<xsl:with-param name="Desc">Penalty Waiver Amount</xsl:with-param>
 										<xsl:with-param name="TargetNode" select="$Form2210FData/PenaltyAmt/@requestedPenaltyWaiverAmt"/>
 									</xsl:call-template>
-								</div>
-								<div class="styIRS2210DotLn" style="margin-left:2mm;">......</div>
-								<div style="padding-left:1.2mm;float:right">
-									<img src="{$ImagePath}/2210_Bullet.gif" alt="MediumBullet"></img>
 								</div>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-bottom:0mm;bottom-border-width:1px;">16</div>

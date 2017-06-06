@@ -58,7 +58,6 @@
 			border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
 		}
 		.styIRS720TableCellTextType5 {   /* Table Cell that floats left for type of use 5 text */
-    			float:left;
     			clear:none;
     			vertical-align:bottom;
     			padding-bottom:1px;

@@ -18,8 +18,10 @@
 
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form1065SchCData)"/></xsl:call-template></title>
 
@@ -89,20 +91,20 @@
       
      <div style="width:187mm">
  
-      <div class="styPartDesc" style="height:2mm;width:175mm;font-size:9pt;padding-left:0mm;padding-bottom:0mm;padding-top: 1mm;       border-right- width:0px; border-left-width:0px;border-top-width:0px;border-bottom-width:0px;text-align:left;clear:none;">
+      <div class="styPartDesc" style="height:2mm;width:175mm;font-size:9pt;padding-left:0mm;padding-bottom:0mm;padding-top: 1mm;       border-right- width:0px; border-left-width:1px;border-top-width:0px;border-bottom-width:1px;text-align:left;clear:none;">
     	</div>
 
       
-      <div class="styPartDesc" style="width:2mm;font-size:8pt;padding-top:1mm;padding-right:0mm;padding-left:0mm;border-style:solid;border-right-width:1px;         border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;float:left;clear:none;">
-      		<div style="height:2mm;font-weight:bold;text-align:center;">Yes</div>
+      <div class="styPartDesc" style="width:6.2mm;font-size:8pt;padding-top:.5mm;padding-right:0mm;padding-left:0mm;border-style:solid;border-right-width:1px;         border-left-width:1px;border-top-width:0px;border-bottom-width:1px;border-color:black;float:left;clear:none;">
+      		<div style="height:4mm;font-weight:bold;text-align:center;">Yes</div>
       </div>
 	
 	<!-- END Yes Column -->
 
      <!-- BEGIN No Column  -->
       
-      <div class="styPartDesc" style="width:5.5 mm;padding-top:1mm;padding-right:0mm;padding-left:0mm;border-style:solid;border-right-width:0px;         border-left-width:0px;border-top-width:0px;border-bottom-width:1px;border-color:black;float:left;clear:none;">
-     		<div style="height:2mm;font-weight:bold;text-align:center;font-size:8pt;">No</div>
+      <div class="styPartDesc" style="width:5.8mm;padding-top:.5mm;padding-right:0mm;padding-left:0mm;border-style:solid;border-right-width:0px;         border-left-width:0px;border-top-width:0px;border-bottom-width:1px;border-color:black;float:left;clear:none;text-align:center;">
+     		<div style="height:4mm;font-weight:bold;text-align:center;font-size:8pt;">No</div>
       	</div>
  	</div>
 
@@ -119,7 +121,7 @@
  									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1065SchCData/TransfersSubjectToDisclRqrInd"/>
 									</xsl:call-template> 
-									<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.................</span>
+									<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...................</span>
 								                          
                         </div>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:3.5mm;background:lightgrey;border-bottom-width:0"/>
@@ -144,10 +146,17 @@
                         <div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:3.5mm">2</div>
                         <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:3.5mm;">Do the amounts reported on Schedule M-3, 
                         Part II, lines 7 or 8, column (d), reflect allocations to this<br/>partnership from another partnership of income, gain, loss, deduction, 
-                        or credit that are disproportionate to<br/>this partnership’s share of capital in such partnership or its ratio for sharing other items of such partnership?
+                        or credit that are disproportionate to 
                            </div>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:10mm;background:lightgrey;border-bottom-width:0"/>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:10mm;background:lightgrey;border-bottom-width:0"/>
+                    </div>
+                    <div style="width:187mm">
+						<div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:3.5mm"></div>
+						<div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:.5mm;">
+							this partnership’s share of capital in such partnership or its ratio for sharing other items of such partnership?
+							<span class="styDotLn" style="float:none;clear:none;padding-left:.5mm;letter-spacing:3mm;">..</span>
+						</div>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="">
                             <xsl:call-template name="PopulateYesBoxText">
                                 <xsl:with-param name="TargetNode" select="$Form1065SchCData/PartnershipCapitalContriInd"/>
@@ -167,11 +176,17 @@
                     <div style="width:187mm">
                         <div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:3.5mm">3</div>
                         <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:3.5mm;">At any time during the tax year, did the partnership sell, exchange, or 
-                        transfer any interest in an intangible<br/>asset to a related person as defined in sections 267(b) and 707(b)(1)?
-                            <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">..............</span>
+                        transfer any interest in an intangible 
                         </div>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
+                        </div>
+                    <div style="width:187mm">
+                        <div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:.5mm"></div>
+                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:.5mm;">
+							asset to a related person as defined in sections 267(b) and 707(b)(1)?
+						<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">...............</span>
+						</div>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="">
                             <xsl:call-template name="PopulateYesBoxText">
                                 <xsl:with-param name="TargetNode" select="$Form1065SchCData/SellExchangeTransferIntInd"/>
@@ -190,12 +205,17 @@
                    
                     <div style="width:187mm">
                         <div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:3.5mm">4</div>
-                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:3.5mm;">At any time during the tax year, did the partnership acquire any interest in an intangible asset from a related<br/> 
-				person as defined in sections 267(b) and 707(b)(1)?
+                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:3.5mm;">At any time during the tax year, did the partnership acquire any interest in an intangible asset from a related 
+						</div>
+                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
+                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
+                       </div>
+                       <div style="width:187mm">
+                       <div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:.5mm"></div>
+                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:.5mm;">
+                        	person as defined in sections 267(b) and 707(b)(1)?
                             <span class="styDotLn" style="float:none;clear:none;padding-left:.5mm;letter-spacing:3mm;">......................</span>
                          </div>
-                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
-                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="">
                             <xsl:call-template name="PopulateYesBoxText">
                                 <xsl:with-param name="TargetNode" select="$Form1065SchCData/InterestIntangibleAssetInd"/>
@@ -213,12 +233,17 @@
                    
                     <div style="width:187mm">
                         <div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:3.5mm">5</div>
-                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:3.5mm;">At any time during the tax year, did the partnership make any change in accounting principle for financial<br/> 
-				accounting purposes? See instructions for a definition of change in accounting principle
-                            <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">........</span>
+                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:3.5mm;">At any time during the tax year, did the partnership make any change in accounting principle for financial
+						</div>
+                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
+                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
+                    </div>
+                    <div style="width:187mm">	
+                    <div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:.5mm"></div>
+                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:.5mm;">					
+								accounting purposes? See instructions for a definition of change in accounting principle
+                            <span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">.........</span>
                         </div>
-                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
-                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="">
                             <xsl:call-template name="PopulateYesBoxText">
                                 <xsl:with-param name="TargetNode" select="$Form1065SchCData/ChangeInAccountingPrincipleInd"/>
@@ -235,17 +260,23 @@
 
  <!-- Start Line 6 -->
                    
-                    <div class="styBB" style="width:187mm">
+                    <div style="width:187mm">
                         <div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:3.5mm">6</div>
-                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:3.5mm;">At any time during the tax year, did the partnership make any change in a method of accounting for U.S.<br/> 
-				income tax purposes?
+                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:3.5mm;">At any time during the tax year, did the partnership make any change in a method of accounting for U.S.
+                        </div>
+                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
+                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>  
+					</div>
+					<div class="styBB" style="width:187mm">
+						<div class="styLNLeftNumBox" style="height:4mm;font-size:8pt;padding-top:.5mm"></div>
+                        <div class="styLNDesc" style="width:167mm;font-size:8pt;padding-top:.5mm;">
+                    				income tax purposes?
  									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1065SchCData/ChangeInMethodOfAccountingInd"/>
 									</xsl:call-template>                                                              
                                 <span class="styDotLn" style="float:none;clear:none;padding-left:1.5mm;letter-spacing:3mm;">................................</span>
                         </div>
-                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
-                        <div class="styIRS1065ScheduleCBLNYesNoBox" style="height:6.5mm;background:lightgrey;border-bottom-width:0"/>
+
                         <div class="styIRS1065ScheduleCBLNYesNoBox" style="border-bottom-width:0;">
                             <xsl:call-template name="PopulateYesBoxText">
                                 <xsl:with-param name="TargetNode" select="$Form1065SchCData/ChangeInMethodOfAccountingInd"/>

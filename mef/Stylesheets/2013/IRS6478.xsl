@@ -10,8 +10,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form6478Data" select="$RtnDoc/IRS6478"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form6478Data)"/>
@@ -38,7 +40,7 @@
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm">
         <form name="Form6478" id="Form6478">
           <!-- Standard Warning Lines -->
           <xsl:call-template name="DocumentHeader"/>
@@ -73,7 +75,7 @@
             </div>
             <!-- This can be taken out later -->
             <div class="styTYBox" style="width:30mm;height:21mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-0231</div>
+              <div class="styOMB" style="height:4mm;">OMB No. 1545-0231</div>
               <div class="styTY" style="height:7.5mm;font-size:24pt;">
                20<span class="styTYColor">13</span>
               </div>
@@ -84,7 +86,7 @@
           <!-- End Form Number and Name section -->
           <!-- Begin Name and Identifying number section -->
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:130mm;height:8mm;font-size:7pt;">
+            <div class="styNameBox" style="width:134mm;height:9mm;font-size:7pt;">
                 Name(s) shown on return
              <br/>
 					<xsl:choose>
@@ -144,17 +146,17 @@
               <span class="styBoldText">(a)</span>
               <br/>Number of Gallons <br/>Sold or Used
             </div>
-            <div class="styNameBox" align="center" style="width:21mm;height:11mm;font-size:7pt;text-align: center;padding-top:2mm;">
+            <div class="styNameBox" align="center" style="width:21mm;height:11mm;font-size:7pt;text-align: center;padding-top:1mm;">
               <span class="styBoldText">(b)</span>
               <br/>Rate      
             </div>
-            <div class="styNameBox" align="center" style="width:32mm;height:11mm;font-size:7pt;border-right-width:0px;text-align: center;padding-top:2mm;">
+            <div class="styNameBox" align="center" style="width:32mm;height:11mm;font-size:7pt;border-right-width:0px;text-align: center;padding-top:1mm;">
               <span class="styBoldText">(c)</span>
               <br/>Column(a) x Column(b)</div>
           </div>
           <!--  Start line 1a -->
           <div style="width:187mm">
-            <div class="styLNLeftNumBoxSD" style="height:4mm;">1a</div>
+            <div class="styLNLeftNumBox" style="height:4mm;">1a</div>
             <div class="styLNDesc" style="width:88.7mm;height:4mm;">
              Qualified cellulosic biofuel production for fuel sold or used before 
             </div>
@@ -174,7 +176,7 @@
                <div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
             </div>
             <div class="styLNAmountBox" style="width:5mm;padding-right:1mm;"><b>1a</b></div>
-            <div class="styLNAmountBox" style="width:32mm;padding-right:1mm;">
+            <div class="styLNAmountBox" style="width:32mm;padding-right:1mm;text-align:center">
               <xsl:call-template name="PopulateText">
                  <xsl:with-param name="TargetNode" select="$Form6478Data/QlfyCellBiofuelProdNoAlcGalQty"/>
               </xsl:call-template>
@@ -191,7 +193,7 @@
           <!-- End line 1a extention -->
           <!--  Start line 1b -->
           <div style="width:187mm">
-            <div class="styLNLeftNumBoxSD" style="height:4mm;">1b</div>
+            <div class="styLNLeftNumBox" style="height:4mm;">1b</div>
             <div class="styLNDesc" style="width:88.7mm;height:4mm;">
              Qualified second generation biofuel production for fuel sold or used
             </div>
@@ -211,7 +213,7 @@
                <div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
              </div>
             <div class="styLNAmountBox" style="width:5mm;padding-right:1mm;"><b>1b</b></div>
-            <div class="styLNAmountBox" style="width:32mm;padding-right:1mm;">
+            <div class="styLNAmountBox" style="width:32mm;padding-right:1mm;text-align:center">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form6478Data/Qlfy2ndBiofuelProdFuelGalsQty"/>
               </xsl:call-template>
@@ -228,7 +230,7 @@
           <!-- End line 1b extention -->
            <!-- start line 2 -->
           <div style="width:187mm">
-            <div class="styLNLeftNumBoxSD" style="height:4mm;">2</div>
+            <div class="styLNLeftNumBox" style="height:4mm;">2</div>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;font-size:2.5mm;">
               <span style="float:left">Add the amounts in column (c) on lines 1a and 1b.  Include this amount in your income for 2013, </span>
             </div>
@@ -238,10 +240,10 @@
           <!-- End line 2 -->
           <!-- start line 2 extention 1 -->
           <div style="width:187mm">
-            <div class="styLNLeftNumBoxSD" style="height:4mm;padding-bottom:.5mm;"/>
+            <div class="styLNLeftNumBox" style="height:4mm;padding-bottom:.5mm;"/>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;">
               <span style="float:left;padding-right:1mm;">and enter your IRS registration number (see instructions) </span>
-                <span class="styFixedUnderline" style="width:50mm;padding-top:.1mm;padding-bottom:0mm;">
+                <span class="styFixedUnderline" style="width:50mm;padding-top:.1mm;padding-bottom:0mm;text-align:center">
 		 	<xsl:call-template name="PopulateText">
 		 		<xsl:with-param name="TargetNode" select="$Form6478Data/FuelsCreditRegistrationNum"/>
 		 	</xsl:call-template>
@@ -283,7 +285,7 @@
           <!-- end line 7 extension 2 -->
           <!-- start line3 -->
           <div style="width:187mm">
-            <div class="styLNLeftNumBoxSD" style="height:4mm;">3</div>
+            <div class="styLNLeftNumBox" style="height:4mm;">3</div>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;font-size:2.5mm;">
               <span style="float:left">Biofuel producer credit from partnerships, S corporations, cooperatives, estates, and</span>
             </div>
@@ -294,7 +296,7 @@
           <!-- End line 3 -->
           <!-- start line 3 extention -->
           <div style="width:187mm">
-            <div class="styLNLeftNumBoxSD" style="height:4mm;padding-bottom:.5mm;"/>
+            <div class="styLNLeftNumBox" style="height:4mm;padding-bottom:.5mm;"/>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;">
               <span style="float:left">trusts (see instructions)</span>
               <!--Dotted Line-->
@@ -310,7 +312,7 @@
           <!-- end line 3 extension -->
            <!-- start line 4 -->
           <div style="width:187mm">
-            <div class="styLNLeftNumBoxSD" style="height:4mm;">4</div>
+            <div class="styLNLeftNumBox" style="height:4mm;">4</div>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;font-size:2.5mm;">
               <span style="float:left">Add lines 2 and 3. Cooperatives, estates, and trusts, go to line 5. Partnerships and S corporations,</span>
             </div>

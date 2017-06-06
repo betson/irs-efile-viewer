@@ -2,13 +2,13 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
-  <xsl:include href="PopulateTemplate.xsl"/>
+  <xsl:include href="PopulateTemplate_ETEC.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
   <xsl:param name="DependencyData" select="$RtnDoc/GeneralDependencyMedium"/>
   <xsl:param name="depDocTitle">
-    <!--1120 Common Dependency  - General Dependency Medium  -->
+    <!-- -  Common Form displays as - General Dependency Medium (attachment not identified on the form or instructions) -  -->
     <xsl:call-template name="PopulateDisplayName">
       <xsl:with-param name="TargetNode" select="$DependencyData"/>
     </xsl:call-template>
@@ -16,8 +16,10 @@
   <!-- Main template -->
   <xsl:template match="/">
     <!-- New -->
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -43,12 +45,10 @@
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:88mm;">
-            <span>
-              <xsl:value-of select="$depDocTitle"/>
-            </span>
-          </span>
-        </div>
+        <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+      </div>
         <xsl:call-template name="PopulateDepCommonLeftover">
           <xsl:with-param name="TargetNode" select="$DependencyData"/>
         </xsl:call-template>
@@ -67,6 +67,8 @@
             <span class="styTopSectionLineLbl">Business Name or Person Name:</span>
           </div>
           <div style="float:left;clear:none;width:118mm;">
+          <xsl:choose>
+				<xsl:when test="$Type = '2290' or $Type = '720' or $Type = '8849' and $Type = '941' or $Type = '941PR' or $Type = '941SS'">
             <xsl:choose>
               <xsl:when test="$DependencyData/BusinessName/BusinessNameLine1 !=''">
                 <xsl:call-template name="PopulateText">
@@ -84,6 +86,28 @@
                   <xsl:with-param name="TargetNode" select="$DependencyData/PersonNm"/>
                 </xsl:call-template>
               </xsl:otherwise>
+            </xsl:choose>
+            </xsl:when>
+            <xsl:otherwise>
+            <xsl:choose>
+              <xsl:when test="$DependencyData/BusinessName/BusinessNameLine1Txt !=''">
+                <xsl:call-template name="PopulateText">
+                  <xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine1Txt"/>
+                </xsl:call-template>
+                <xsl:if test="$DependencyData/BusinessName/BusinessNameLine2Txt !=''">
+                  <br/>
+                  <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine2Txt"/>
+                  </xsl:call-template>
+                </xsl:if>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:call-template name="PopulateText">
+                  <xsl:with-param name="TargetNode" select="$DependencyData/PersonNm"/>
+                </xsl:call-template>
+              </xsl:otherwise>
+            </xsl:choose>
+            </xsl:otherwise>
             </xsl:choose>
           </div>
         </div>
@@ -146,7 +170,7 @@
           <div style="float:left;clear:none;">
             <span class="styTopSectionLineLbl">Attachment Information:</span>
           </div>
-          <div style="float:left;clear:none;width:118mm;">
+          <div style="float:left;clear:none;width:187mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$DependencyData/AttachmentInformationMedDesc"/>
             </xsl:call-template>

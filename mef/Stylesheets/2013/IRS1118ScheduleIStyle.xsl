@@ -115,7 +115,7 @@
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
   padding-left:1mm;padding-right:1mm;
-  float: left; clear: none;
+  float: none; clear: none;
   width:32mm;height:6.6mm;
   text-align:right;
   font-weight:normal;

@@ -157,7 +157,6 @@
   letter-spacing:2mm;
 }
 .IRS8865_LineContainer {
-  clear:both;
   width:188mm;
 }
 
@@ -252,7 +251,6 @@
 .IRS8865_TableContainer3 {
 border-style: solid; border-color: black;
 border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-width: 187.75mm; height:4.5mm;
 float:none;clear:both;
 overflow-y: auto;
 }

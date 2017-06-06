@@ -19,8 +19,10 @@
   <xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS1120POL"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -53,23 +55,18 @@
         <!-- BEGIN FORM HEADER -->
         <div class="IRS1120POL_LineContainer">
           <!-- Form Name -->
-          <div class="IRS1120POL_FormNumBlock" style="padding-top:5px;">
+          <div class="IRS1120POL_FormNumBlock" style="padding-top:5px;height: 20mm;">
      Form <span class="styFormNumber">1120-POL</span>
     <xsl:call-template name="SetFormLinkInline">
       <xsl:with-param name="TargetNode" select="$FormData"/>
     </xsl:call-template>
-     <!--General DependencySmall Push Pin --> 
-     <!--<xsl:call-template name="SetFormLinkInline">
-       <xsl:with-param name="TargetNode" select="$FormData"/>
-     </xsl:call-template>-->
-
                 <br/>
 						<span style=" font-family:Arial Narrow; ">Department of the Treasury</span>
             <br/>
             <span style=" font-family:Arial Narrow; ">Internal Revenue Service</span>
           </div>
           <!-- Form Title Box -->
-          <div class="IRS1120POL_FormTitleBlock">
+          <div class="IRS1120POL_FormTitleBlock" style="height: 20mm;">
             <!-- Form Title -->
             <span class="styMainTitle">U.S. Income Tax Return for Certain Political Organizations</span><br/>
             <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
@@ -77,12 +74,10 @@
             <a href="http://www.irs.gov/form1120pol" title="Link to IRS.gov">
                 <i>www.irs.gov/form1120pol</i>
             </a>.
-
-
             <!-- Form Subtitle -->
           </div>
           <!-- Tax Year Box -->
-          <div class="IRS1120POL_FormYearBlock">
+          <div class="IRS1120POL_FormYearBlock" style="height: 20mm;">
             <!-- OMB No. -->
             <div class="IRS1120POL_OMB">OMB No. 1545-0129</div>
             <!-- Tax Year -->
@@ -96,13 +91,14 @@
         <div class="IRS1120POL_LineContainer">
           <div class="IRS1120POL_LineBottom">
             For calendar year 2013 or other tax year beginning
-             <span style="width: 18mm">
+             <span style="width: 35mm">
 							<xsl:call-template name="PopulateReturnHeaderTaxPeriodBeginDate"/>
-            </span>    
-          , 2013 , and ending 
-             <span style="width: 18mm">
+            </span>
+          , 2013, and ending 
+             <span style="width: 35mm">
 							<xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"/>
-            </span> .  
+            </span>
+            , 20
           </div>
         </div>
         <div class="IRS1120POL_LineContainer">
@@ -112,38 +108,15 @@
                 <xsl:with-param name="TargetNode" select="$FormData/Sect501cOrgOrSegregatedFundInd"/>
                 <xsl:with-param name="BackupName">IRS1120POLSect501cOrgOrSegregatedFundInd</xsl:with-param>
               </xsl:call-template>Check the box if this is a section 501(c) organization
-                          
-
             </label>
-           <!--Dotted Line-->
-           <span pclass="styBoldText">
-							<span style="width:15px"/>.
-           <span style="width:14px"/>.
-           <span style="width:15px"/>.
-           <span style="width:15px"/>.
-           <span style="width:15px"/>.
-           <span style="width:15px"/>. 
-           <span style="width:14px"/>.
-           <span style="width:15px"/>.
-           <span style="width:15px"/>.
-           <span style="width:15px"/>.
-           <span style="width:14px"/>.
-           <span style="width:14px"/>.
-           <span style="width:14px"/>.
-           <span style="width:15px"/>.
-           <span style="width:14px"/>.
-           <span style="width:15px"/>.
-           <span style="width:15px"/>.        
-           <span style="width:10px"/>.
-           <span style="width:15px"/>.
-           <span style="width:15px"/>.
-           <span style="width:6px"/>
-           </span>
-            <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
-          <!--span class="IRS1120POL_DotSpacing">..........</span-->
+            <span style="float:right;">
+				<!--Dotted Line-->
+				<span class="styDotLn">.............................</span>
+				<img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
+			</span>
           </div>
-          <div class="IRS1120POL_LineBottom" style="width:4mm;text-align:right;padding-top:2px;">
-            <input class="IRS1120POL_Checkbox" type="checkbox">
+          <div class="IRS1120POL_LineBottom" style="width:4mm;text-align:right;">
+            <input class="IRS1120POL_Checkbox" type="checkbox" style="margin-top: 1.5px;">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/Sect501cOrgOrSegregatedFundInd"/>
                 <xsl:with-param name="BackupName">IRS1120POLSect501cOrgOrSegregatedFundInd</xsl:with-param>
@@ -152,17 +125,15 @@
           </div>
         </div>
         <div class="styBB" style="width:187mm;float:none;">
-          <div class="styIRS1120POLRightLine" style="width:27.5mm;height:30mm;border-right-width:0px;">
-						<br/>
-            Check if:
-            <br/>
-						<input class="IRS1120POL_Checkbox" type="checkbox">
-							<xsl:call-template name="PopulateCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/FinalReturnInd"/>
-                  <xsl:with-param name="BackupName">IRS1120POLFinalReturnInd
-                </xsl:with-param>
-              </xsl:call-template>
-              <label>
+			<div class="styIRS1120POLRightLine" style="width:27.5mm;height:28mm;border-right-width:0px; padding-top:1mm;">
+				Check if:
+				<br/>
+				<input class="IRS1120POL_Checkbox" type="checkbox">
+					<xsl:call-template name="PopulateCheckbox">
+						<xsl:with-param name="TargetNode" select="$FormData/FinalReturnInd"/>
+						<xsl:with-param name="BackupName">IRS1120POLFinalReturnInd</xsl:with-param>
+					</xsl:call-template>
+					<label>
                 <xsl:call-template name="PopulateLabel">
                   <xsl:with-param name="TargetNode" select="$FormData/FinalReturnInd"/>
                   <xsl:with-param name="BackupName">IRS1120POLFinalReturnInd
@@ -218,11 +189,11 @@
 								</xsl:call-template>
                 Amended return
               </label>
-						</input>
-					</div>
+			</input>
+		</div>
             
-          <div class="styIRS1120POLRightLine" style="width:98mm;height:30mm;">
-            <div class="styNameBox" style="width:98mm;height:10mm;border-bottom-width:1px;border-right-width:0px;padding-left:4px;font-size:7pt;border-left-width:1px;">
+        <div class="styIRS1120POLRightLine" style="width:98mm;height:31mm;">
+            <div class="styNameBox" style="width:98mm;height:11mm;border-bottom-width:1px;border-right-width:0px;padding-left:4px;font-size:7pt;border-left-width:1px;">
               <span style="font-size:7pt;">Name of organization</span>
               <br/>
               <span style="font-size:6pt;">
@@ -268,7 +239,7 @@
 							</span>
 						</div>
           </div>
-          <div class="styIRS1120POLRightLine" style="width:61mm;height:30mm;border-right-width:0px;">
+          <div class="styIRS1120POLRightLine" style="width:61mm;height:28mm;border-right-width:0px;">
 						<div class="styGenericDiv" style="width:61mm;height:10mm;border:solid 0 black;border-bottom-width:1px;padding-left:4px;border-right-width:0px;">
               <span style="font-size:6pt;font-weight:bold;">Employer identification number</span>
               <br/>
@@ -278,7 +249,7 @@
 								<xsl:with-param name="TargetNode">EIN</xsl:with-param>
 							</xsl:call-template>
             </div>
-            <div class="" style="width:61mm;height:8mm;padding-left:4px;">
+            <div style="width:61mm;height:9mm;padding-left:4px;">
               <span style="font-size:6pt;font-weight:bold;">Candidates for U.S. Congress Only</span>
               <br/>
               <span style="font-size:5pt;"> 
@@ -287,69 +258,50 @@
                     <xsl:with-param name="TargetNode" select="$FormData/USCongressPltclCommitteeInd"/>
                     <xsl:with-param name="BackupName">IRS1120POLUSCongressPltclCommitteeInd</xsl:with-param>
                   </xsl:call-template>
-                  If this is a principal campaign committee, and it is the ONLY political committee, check here                            </label>            
+                  If this is a principal campaign committee, and it is the ONLY political committee, check here
+					<span style="float:right;">
+						 <span class="styDotLn" style="font-size: 6pt;">.......</span>
+						<input class="IRS1120POL_CheckBox" type="checkbox" style="width: 3mm; height: 3mm; margin-top: 0px; margin-left: 0px;">
+						  <xsl:call-template name="PopulateCheckbox">
+							<xsl:with-param name="TargetNode" select="$FormData/USCongressPltclCommitteeInd"/>
+							<xsl:with-param name="BackupName">IRS1120POLUSCongressPltclCommitteeInd</xsl:with-param>
+						  </xsl:call-template>
+						</input>
+					</span>
+                 </label>
               </span>
-              <!--Dotted Line-->
-              <span class="styBoldText">
-								<span style="width:8px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                
-              </span>
-              <!--span class="IRS1120POL_DotSpacing">.........</span-->
-							<span style="width:5px;"/>
-                <input class="IRS1120POL_CheckBox" type="checkbox">
-                  <xsl:call-template name="PopulateCheckbox">
-                    <xsl:with-param name="TargetNode" select="$FormData/USCongressPltclCommitteeInd"/>
-                    <xsl:with-param name="BackupName">IRS1120POLUSCongressPltclCommitteeInd</xsl:with-param>
-                  </xsl:call-template>
-                </input>
             </div>
-						<div class="IRS1120POL_GenericCell">
+			<div style="width:61mm;height:9mm;padding-left:4px;">
               <span style="font-size:5pt;">
                 <label>  
                   <xsl:call-template name="PopulateLabel">
                     <xsl:with-param name="TargetNode" select="$FormData/USCongressNotOnlyCommitteeInd"/>
                     <xsl:with-param name="BackupName">IRS1120POLUSCongressNotOnlyCommitteeInd</xsl:with-param>
-                  </xsl:call-template>If this is a principal campaign committee, but is NOT the only political committee, check here and attach a copy of designation (See instructions.)
+                  </xsl:call-template>
+                  If this is a principal campaign committee, but is NOT the only political committee, check here and attach a copy of designation (See instructions.)
                   <xsl:call-template name="SetFormLinkInline">
                     <xsl:with-param name="TargetNode" select="$FormData/USCongressNotOnlyCommitteeInd"/>
                   </xsl:call-template>
-</label>  
+                 <span style="float:right;">
+					<span class="styDotLn" style="font-size: 6pt;">.........</span>
+					<input class="IRS1120POL_CheckBox" type="checkbox" style="width: 3mm; height: 3mm; margin-top: 0px; margin-left: 0px;">
+						<xsl:call-template name="PopulateCheckbox">
+						  <xsl:with-param name="TargetNode" select="$FormData/USCongressNotOnlyCommitteeInd"/>
+						  <xsl:with-param name="BackupName">IRS1120POLUSCongressNotOnlyCommitteeInd</xsl:with-param>
+						</xsl:call-template>
+					</input>
+                </span>
+				</label>  
               </span>
-              <!--Dotted Line-->
-              <span class="styBoldText">
-								<span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-                <span style="width:7px"/>.
-
-              </span>
-              <!--span class="IRS1120POL_DotSpacing">...........</span-->
-							<span style="width:8px;"/>
-              <input class="IRS1120POL_CheckBox" type="checkbox">
-                <xsl:call-template name="PopulateCheckbox">
-                  <xsl:with-param name="TargetNode" select="$FormData/USCongressNotOnlyCommitteeInd"/>
-                  <xsl:with-param name="BackupName">IRS1120POLUSCongressNotOnlyCommitteeInd</xsl:with-param>
-                </xsl:call-template>
-              </input>
-						</div>
+              
+				</div>
             </div>
           </div>
         <!-- superimposed image title - Income -->
-        <div class="IRS1120POL_LineContainer">
-          <span style="z-index:1;position:absolute;padding-top:10mm;">
-            <img src="{$ImagePath}/1120POL_Income.gif" width="9" height="43" alt="Income Image" border="0"/>
-          </span>
+        <div class="IRS1120POL_LineContainer" style="display:inline;">
+			<span style="padding-right: 10mm; padding-bottom: 20mm; font-size: 10pt; font-weight: bold; position: absolute; transform: rotate(270deg);">
+				Income
+			</span>
         </div>
         <!-- line 1 -->
         <div class="IRS1120POL_LineContainer">
@@ -360,26 +312,7 @@
               <xsl:with-param name="TargetNode" select="$FormData/DividendAmt"/>
             </xsl:call-template>
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">..................................</span-->
+            <span class="styDotLn" style="float:right;">.........................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">1</div>
           <div class="IRS1120POL_MoneyField">
@@ -394,31 +327,7 @@
           <div class="IRS1120POL_LineIndex">2</div>
           <div class="IRS1120POL_LineDescLong">Interest
                     <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-             <!--span class="IRS1120POL_DotSpacing">...........................................</span-->
+            <span class="styDotLn" style="float:right;">................................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">2</div>
           <div class="IRS1120POL_MoneyField">
@@ -433,30 +342,7 @@
           <div class="IRS1120POL_LineIndex">3</div>
           <div class="IRS1120POL_LineDescLong">Gross rents
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">..........................................</span-->
+            <span class="styDotLn" style="float:right;">...............................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">3</div>
           <div class="IRS1120POL_MoneyField">
@@ -471,29 +357,7 @@
           <div class="IRS1120POL_LineIndex">4</div>
           <div class="IRS1120POL_LineDescLong">Gross royalties
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">........................................</span-->
+            <span class="styDotLn" style="float:right;">..............................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">4</div>
           <div class="IRS1120POL_MoneyField">
@@ -511,15 +375,7 @@
               <xsl:with-param name="TargetNode" select="$FormData/CapitalGainNetAmt"/>
             </xsl:call-template>
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                    <!--span class="IRS1120POL_DotSpacing">.....................</span-->
+            <span class="styDotLn" style="float:right;">...........</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">5</div>
           <div class="IRS1120POL_MoneyField">
@@ -537,16 +393,7 @@
               <xsl:with-param name="TargetNode" select="$FormData/TotalOrdinaryGainLossAmt"/>
             </xsl:call-template>
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:8px"/>
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">...............</span-->
+			<span class="styDotLn" style="float:right;">...........</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">6</div>
           <div class="IRS1120POL_MoneyField">
@@ -564,16 +411,7 @@
               <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeNonExemptExpendAmt"/>
             </xsl:call-template>
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:14px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">...............</span-->
+			<span class="styDotLn" style="float:right;">............</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">7</div>
           <div class="IRS1120POL_MoneyField">
@@ -590,25 +428,7 @@
             <span style="font-weight:bold;">Total income.</span>
               Add lines 1 through 7
             <!--Dotted Line-->
-            <span class="styBoldText">            
-							<span style="width:2px"/>
-							<span style="width:14px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-            </span>
-              <!--span class="IRS1120POL_DotSpacing">...............................</span-->
+			<span class="styDotLn" style="float:right;">.......................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid" style="border-bottom-width:1px;">8</div>
           <div class="IRS1120POL_MoneyField" style="border-bottom-width:1px;">
@@ -618,10 +438,10 @@
           </div>
         </div>
         <!-- superimposed image title - Deduction -->
-        <div class="IRS1120POL_LineContainer">
-          <span style="z-index:1;position:absolute;padding-top:16mm;">
-            <img src="{$ImagePath}/1120POL_Deductions.gif" width="9" height="67" alt="Deductions Image" border="0"/>
-          </span>
+        <div class="IRS1120POL_LineContainer" style="display:inline;">
+			<span style="padding-right: 13mm; padding-bottom: 30mm; font-size: 10pt; font-weight: bold; position: absolute; transform: rotate(270deg);">
+				Deductions
+			</span>
         </div>
         <!-- line 9 -->
         <div class="IRS1120POL_LineContainer">
@@ -629,27 +449,7 @@
           <div class="IRS1120POL_LineIndex">9</div>
           <div class="IRS1120POL_LineDescLong">Salaries and wages
               <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-            </span>
-                   <!--span class="IRS1120POL_DotSpacing">.......................................</span-->
+			<span class="styDotLn" style="float:right;">.............................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">9</div>
           <div class="IRS1120POL_MoneyField">
@@ -664,27 +464,7 @@
           <div class="IRS1120POL_LineIndex">10</div>
           <div class="IRS1120POL_LineDescLong">Repairs and maintenance
                   <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                 <!--span class="IRS1120POL_DotSpacing">...................................</span-->
+				<span class="styDotLn" style="float:right;">...........................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">10</div>
           <div class="IRS1120POL_MoneyField">
@@ -699,31 +479,7 @@
           <div class="IRS1120POL_LineIndex">11</div>
           <div class="IRS1120POL_LineDescLong">Rents
                  <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                  <!--span class="IRS1120POL_DotSpacing">............................................</span-->
+				<span class="styDotLn" style="float:right;">.................................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">11</div>
           <div class="IRS1120POL_MoneyField">
@@ -738,28 +494,7 @@
           <div class="IRS1120POL_LineIndex">12</div>
           <div class="IRS1120POL_LineDescLong">Taxes and licenses
                     <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-               <!--span class="IRS1120POL_DotSpacing">......................................</span-->
+				<span class="styDotLn" style="float:right;">.............................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">12</div>
           <div class="IRS1120POL_MoneyField">
@@ -774,30 +509,7 @@
           <div class="IRS1120POL_LineIndex">13</div>
           <div class="IRS1120POL_LineDescLong">Interest
                       <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-            </span>
-                 <!--span class="IRS1120POL_DotSpacing">...........................................</span-->
+				<span class="styDotLn" style="float:right;">................................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">13</div>
           <div class="IRS1120POL_MoneyField">
@@ -815,24 +527,7 @@
               <xsl:with-param name="TargetNode" select="$FormData/DepreciationAmt"/>
             </xsl:call-template>
                     <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                   <!--span class="IRS1120POL_DotSpacing">................................</span-->
+				<span class="styDotLn" style="float:right;">.......................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">14</div>
           <div class="IRS1120POL_MoneyField">
@@ -850,24 +545,7 @@
               <xsl:with-param name="TargetNode" select="$FormData/OtherDeductionsAmt"/>
             </xsl:call-template>
                     <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">...............................</span-->
+				<span class="styDotLn" style="float:right;">......................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">15</div>
           <div class="IRS1120POL_MoneyField">
@@ -884,23 +562,7 @@
             <span style="font-weight:bold;">Total deductions. </span>
             Add lines 9 through 15
                     <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">............................</span-->
+				<span class="styDotLn" style="float:right;">.....................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">16</div>
           <div class="IRS1120POL_MoneyField">
@@ -926,24 +588,12 @@
           <div class="IRS1120POL_LineDescLong" style="width:106mm;border-right-width:0px;">
             Amount of net investment income
                     <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                  <!--span class="IRS1120POL_DotSpacing">.....................</span-->
+				<span class="styDotLn" style="float:right;">...............</span>
           </div>
           <div class="IRS1120POL_LineDescLong" style="width:4mm;border-right-width:0px;">
             <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
           </div>
-          <div class="IRS1120POL_MoneyField" style="border-style:solid;">
+          <div class="IRS1120POL_MoneyField" style="border-style:dashed;height: 3.5mm; padding-top: 0px;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="$FormData/NetInvestmentIncomeAmt"/>
             </xsl:call-template>
@@ -962,16 +612,12 @@
               <xsl:with-param name="TargetNode" select="$FormData/ExpendedForExemptFunctionAmt"/>
             </xsl:call-template>
                     <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:14px"/>.
-              <span style="width:14px"/>.
-            </span>
-                  <!--span class="IRS1120POL_DotSpacing">.....</span-->
+					<span class="styDotLn" style="float:right;">...</span>
           </div>
           <div class="IRS1120POL_LineDescLong" style="width:4mm;border-right-width:0px;">
             <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
           </div>
-          <div class="IRS1120POL_MoneyField" style="border-style:solid;">
+          <div class="IRS1120POL_MoneyField" style="border-style:dashed; height: 3.5mm; padding-top: 0px;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="$FormData/ExpendedForExemptFunctionAmt"/>
             </xsl:call-template>
@@ -991,12 +637,7 @@
           <div class="IRS1120POL_LineDescLong" style="border-bottom-width:1px;">
               Specific  deduction of $100 (not allowed for newsletter funds defined under section 527(g))
                     <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-              <!--span class="IRS1120POL_DotSpacing">......</span-->
+				<span class="styDotLn" style="float:right;">......</span>
           </div>
           <div class="IRS1120POL_LineIndexMid" style="border-bottom-width:1px;">18</div>
           <div class="IRS1120POL_MoneyField" style="border-bottom-width:1px;">
@@ -1006,10 +647,10 @@
           </div>
         </div>
         <!-- superimposed image title - Tax -->
-        <div class="IRS1120POL_LineContainer">
-          <span style="z-index:1;position:absolute;padding-top:17mm;">
-            <img src="{$ImagePath}/1120POL_Tax.gif" width="9" height="20" alt="Tax Image" border="0"/>
-          </span>
+        <div class="IRS1120POL_LineContainer" style="display:inline;">
+			<span style="padding-right: 17mm; padding-bottom: 18mm; font-size: 10pt; font-weight: bold; position: absolute; transform: rotate(270deg);">
+				Tax
+			</span>
         </div>
         <!-- line 19 -->
         <div class="IRS1120POL_LineContainer">
@@ -1019,11 +660,7 @@
             <span style="font-weight:bold;">Taxable income. </span>
             Subtract line 18 from line 17c. (If line 19 is zero or less, see the instructions.)
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">....</span-->
+				<span class="styDotLn" style="float:right;">....</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">19</div>
           <div class="IRS1120POL_MoneyField">
@@ -1040,26 +677,7 @@
             <span style="font-weight:bold;">Income tax.</span>
             (see instructions)
                  <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-              <span style="width:15px"/>.
-              <span style="width:16px"/>.
-            </span>
-             <!--span class="IRS1120POL_DotSpacing">..................................</span-->
+				<span class="styDotLn" style="float:right;">.........................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">20</div>
           <div class="IRS1120POL_MoneyField">
@@ -1076,18 +694,7 @@
             <span style="font-weight:bold;">Tax credits. </span>
             (Attach the applicable credit  forms.) (see instructions) 
                  <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:6px"/>
-							<span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                       <!--span class="IRS1120POL_DotSpacing">.................</span-->
+				<span class="styDotLn" style="float:right;">.............</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">21</div>
           <div class="IRS1120POL_MoneyField">
@@ -1107,24 +714,7 @@
               <xsl:with-param name="Desc">Line 22 - Qualified Electric Vehicle Recapture</xsl:with-param>
             </xsl:call-template>
                  <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:2px"/>
-							<span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-              <span style="width:16px"/>.
-              <span style="width:17px"/>.
-            </span>
-                     <!--span class="IRS1120POL_DotSpacing">.............................</span-->
+				<span class="styDotLn" style="float:right;">.....................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">22</div>
           <div class="IRS1120POL_MoneyField">
@@ -1142,17 +732,7 @@
           <div class="IRS1120POL_LineDescLong" style="width:87mm;">
             Tax deposited with Form 7004
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-               <span style="width:15px"/>.
-<span style="width:16px"/>.
-            </span>
-                   <!--span class="IRS1120POL_DotSpacing">..............</span-->
+			<span class="styDotLn" style="float:right;">............</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">23a</div>
           <div class="IRS1120POL_MoneyFieldMid">
@@ -1174,13 +754,7 @@
               Credit for tax paid on undistributed capital gains (attach Form 2439)
             </span>
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-             	<span style="width:15px"/>.
-            </span>
-            <!--span class="IRS1120POL_DotSpacing">.......</span-->
+			<span class="styDotLn" style="float:right;">......</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">23b</div>
           <div class="IRS1120POL_MoneyFieldMid">
@@ -1200,13 +774,7 @@
           <div class="IRS1120POL_LineDescLong" style="width:87mm;">
             Credit for federal tax on fuels (attach Form 4136)
             <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:5px"/>
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-                 <!--span class="IRS1120POL_DotSpacing">.....</span-->
+			<span class="styDotLn" style="float:right;">......</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">23c</div>
           <div class="IRS1120POL_MoneyFieldMid">
@@ -1217,30 +785,6 @@
           <div class="IRS1120POL_LineIndexMidFiller"/>
           <div class="IRS1120POL_MoneyFieldFiller"/>
         </div>
-        <!-- line + -->
-     <!--<div class="IRS1120POL_LineContainer">
-          <div class="IRS1120POL_LabelSpace" style=""/>
-          <div class="IRS1120POL_LineIndex"/>
-          <div class="IRS1120POL_LineDescLong" style="width:15mm;border-right-width:0px;"/>
-          <div class="IRS1120POL_LineDescLong" style="width:4mm;border-right-width:0px;font-weight:bold;">d</div>-->
-         <!-- <div class="IRS1120POL_LineDescLong" style="width:87mm">
-            Credit for federal telephone excise tax paid (attach Form 8913)-->
-            <!--Dotted Line-->
-            <!--<span class="styBoldText">
-              
-             
-		   </span>-->
-                 <!--span class="IRS1120POL_DotSpacing">.....</span-->
-          <!--</div>-->
-          <!--<div class="IRS1120POL_LineIndexMid" style="">23d</div>-->
-          <!--<div class="IRS1120POL_MoneyFieldMid" style="">
-             <xsl:call-template name="PopulateAmount">
-              <xsl:with-param name="TargetNode" select="$FormData/TelephoneTaxCredit"/>
-            </xsl:call-template>
-          </div>-->
-          <!--<div class="IRS1120POL_LineIndexMidFiller" style=""/>-->
-          <!--<div class="IRS1120POL_MoneyFieldFiller"/>-->
-       <!-- </div>-->
         <!-- line 23d-->
         <div class="IRS1120POL_LineContainer">
           <div class="IRS1120POL_LabelSpace"/>
@@ -1250,19 +794,7 @@
           <div class="IRS1120POL_LineDescLong" style="width:121mm;">
            <span class="styBoldText">Total payments. </span> Add lines 23a through 23c
               <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-<span style="width:16px"/>.
-<span style="width:14px"/>.
-            </span>
-                   <!--span class="IRS1120POL_DotSpacing">........................</span-->
+				<span class="styDotLn" style="float:right;">................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">23d</div>
           <div class="IRS1120POL_MoneyField" style="">
@@ -1278,7 +810,7 @@
           <div class="IRS1120POL_LineDescLong">
             <span style="font-weight:bold;">Tax due. </span>
         Subtract line 23d from line 22. See instructions for depository method of payment
-                 <!--span class="IRS1120POL_DotSpacing">..</span-->
+				<span class="styDotLn" style="float:right;">......</span>
           </div>
           <div class="IRS1120POL_LineIndexMid">24</div>
           <div class="IRS1120POL_MoneyField">
@@ -1295,23 +827,7 @@
             <span style="font-weight:bold;">Overpayment.</span>
                 Subtract line 22 from line 23d
               <!--Dotted Line-->
-              <span class="styBoldText">
-							<span style="width:14px"/>.
-                <span style="width:16px"/>.
-                <span style="width:15px"/>.
-                <span style="width:15px"/>.
-                <span style="width:16px"/>.
-                <span style="width:15px"/>.
-                <span style="width:15px"/>.
-                <span style="width:16px"/>.
-                <span style="width:15px"/>.
-                <span style="width:15px"/>.
-                <span style="width:16px"/>.
-                <span style="width:15px"/>.
-                <span style="width:15px"/>.
-                <span style="width:16px"/>.
-              </span>
-              <!--span class="IRS1120POL_DotSpacing">...........................</span-->
+				<span class="styDotLn" style="float:right;">....................</span>
           </div>
           <div class="IRS1120POL_LineIndexMid" style="border-bottom-width:1px;">25</div>
           <div class="IRS1120POL_MoneyField" style="border-bottom-width:1px;">
@@ -1321,55 +837,37 @@
           </div>
         </div>
         <!-- superimposed image title - Additional info -->
-				<div class="IRS1120POL_LineContainer" >
-          <span style="z-index:1;position:absolute;padding-top:15mm;">
-            <img src="{$ImagePath}/1120POL_AdditionalInfo.gif" width="22" height="67" alt="Additional Info Image" border="0"/>
-          </span>
+		<div class="IRS1120POL_LineContainer"  style="display:inline;">
+			<span style="padding-right: 10mm; padding-bottom: 23mm; font-size: 10pt; font-weight: bold; position: absolute; transform: rotate(270deg); text-align: center;">
+			Addition<br/>
+			Information
+			</span>
         </div>
         <!-- additional info line 1 -->
-				
-				<div class="IRS1120POL_LineContainer" >
-					<div class="IRS1120POL_LabelSpaceWide" style="padding-top:1mm"/>
-					<div class="IRS1120POL_LineIndex" style="padding-top:1mm">1</div>
-					<div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;font-size:7pt;padding-top:1mm">
-              At any time during the 2013 calendar year, did the organization have an interest in or a signature or other 
-              </div>
- </div>
-
-              <div class="IRS1120POL_LineContainer">
-					<div class="IRS1120POL_LabelSpaceWide" />
-					<div class="IRS1120POL_LineIndex" />
-					<div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;font-size:7pt;">
-
-              authority over  a financial account (such as a bank account, securities account, or other financial account)
-         </div> 
-
-				<div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;"/>
+		<div style="margin-left:10.2mm; border-left: 1px solid black; border-bottom: 1px solid black; width: 176.8mm;">
+			<div class="IRS1120POL_LineContainer" >
+				<div class="IRS1120POL_LabelSpaceWide" style="padding-top:1mm;border-right-width:0px;width:0;"/>
+				<div class="IRS1120POL_LineIndex" style="padding-top:1mm">1</div>
+				<div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;font-size:7pt;padding-top:1mm">
+					At any time during the 2013 calendar year, did the organization have an interest in or a signature or other 
 				</div>
-				<!-- additional info line 1 -->
+			</div>
 			<div class="IRS1120POL_LineContainer">
-					<div class="IRS1120POL_LabelSpaceWide" />
+				<div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
+				<div class="IRS1120POL_LineIndex" />
+				<div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;font-size:7pt;">
+					authority over  a financial account (such as a bank account, securities account, or other financial account)
+				</div> 
+				<div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;"/>
+			</div>
+			<!-- additional info line 1 -->
+			<div class="IRS1120POL_LineContainer">
+					<div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
 					<div class="IRS1120POL_LineIndex" />
 					<div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;font-size:7pt;">
               in a foreign country? (see instructions)
-              <span class="styBoldText">
-							<span style="width:14px"/>.
-                <span style="width:16px"/>.
-                 <span style="width:16px"/>.
-			<span style="width:15px"/>.
-                <span style="width:15px"/>.
-                <span style="width:16px"/>.
-                <span style="width:15px"/>.
-                <span style="width:15px"/>.
-                <span style="width:16px"/>.
-                <span style="width:15px"/>.
-                <span style="width:15px"/>.
-                <span style="width:16px"/>.
-                <span style="width:15px"/>.
-                <span style="width:15px"/>.
-                <span style="width:16px"/>.
-              </span>
-</div>
+						  <span class="styDotLn" style="float:right;">.......................</span>
+					</div>
 					<div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;">
 						<span>
 							<xsl:call-template name="PopulateSpan">
@@ -1415,13 +913,13 @@
         </div>
         <!-- additional info line 1 -->
         <div class="IRS1120POL_LineContainer">
-          <div class="IRS1120POL_LabelSpaceWide"/>
+          <div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
           <div class="IRS1120POL_LineIndex"/>
-          <div class="IRS1120POL_LineDescLong" style="width:70mm;border-right-width:0px;">
+          <div class="IRS1120POL_LineDescLong" style="width:62mm;border-right-width:0px;">
               If "Yes," enter the name of the foreign country
               <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
           </div>
-          <div class="IRS1120POL_MoneyField" style="width:72mm;border-right-width:0px;border-style:solid;text-align:left;">
+          <div class="IRS1120POL_MoneyField" style="width:80mm;border-right-width:0px;border-style:dashed;text-align:left; padding-top:0; height:3.5mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$FormData/ForeignAccountsQuestionInd/@countryCd"/>
             </xsl:call-template>
@@ -1430,7 +928,7 @@
         </div>
         <!-- additional info line 2 -->
         <div class="IRS1120POL_LineContainer">
-          <div class="IRS1120POL_LabelSpaceWide"/>
+          <div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
           <div class="IRS1120POL_LineIndex">2</div>
           <div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;">
               During the tax year, did the organization receive a distribution from, or was it the grantor of, or transferor
@@ -1439,21 +937,12 @@
         </div>
         <!-- additional info line 2 -->
         <div class="IRS1120POL_LineContainer">
-          <div class="IRS1120POL_LabelSpaceWide"/>
+          <div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
           <div class="IRS1120POL_LineIndex"/>
           <div class="IRS1120POL_LineDescLong" style="width:142mm;border-right-width:0px;">
               to, a foreign trust? If "Yes," the organization may have to file Form 3520
               <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-						<!--span class="IRS1120POL_DotSpacing">...............</span-->
+				<span class="styDotLn" style="float:right;">............</span>
 					</div>
 					<div class="IRS1120POL_MoneyFieldFiller" style="border-right-width:0px;">
 						<span>
@@ -1500,22 +989,18 @@
         </div>
         <!-- additional info line 3 -->
         <div class="IRS1120POL_LineContainer">
-          <div class="IRS1120POL_LabelSpaceWide"/>
+          <div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
           <div class="IRS1120POL_LineIndex">3</div>
           <div class="IRS1120POL_LineDescLong" style="width:134mm;border-right-width:0px">
               Enter the amount of tax-exempt interest received or accrued during the tax year
                <!--Dotted Line-->
-            <span class="styBoldText">
-							<span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-              <span style="width:16px"/>.
-            </span>
-            <!--span class="IRS1120POL_DotSpacing">.......</span-->
-            <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
+            <span style="float:right; padding-right:1.75mm;">
+				<span class="styDotLn">.......</span>
+				<img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
+			</span>
           </div>
-          <div class="IRS1120POL_LineIndexMid" style="border-right-width:0px;">$</div>
-          <div class="IRS1120POL_MoneyField">
+          <div class="IRS1120POL_LineIndexMid" style="border-right-width:0px; border-left: 1px solid black; width: 6mm;">$</div>
+          <div class="IRS1120POL_MoneyField" style="width: 28mm;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="$FormData/TaxExemptInterest"/>
             </xsl:call-template>
@@ -1523,13 +1008,13 @@
         </div>
         <!-- add info line 4 -->
         <div class="IRS1120POL_LineContainer">
-          <div class="IRS1120POL_LabelSpaceWide"/>
+          <div class="IRS1120POL_LabelSpaceWide" style="border-right-width:0px;width:0;"/>
           <div class="IRS1120POL_LineIndex">4</div>
-          <div class="IRS1120POL_GenericDesc" style="width:36mm;">Date organization formed </div>
+          <div class="IRS1120POL_GenericDesc" style="width:34mm;">Date organization formed </div>
           <div class="IRS1120POL_GenericDesc" style="width:4mm;">
             <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
           </div>
-          <div class="IRS1120POL_GenericDesc" style="width:40mm;border-bottom-width:1px;border-style:solid;">
+          <div class="IRS1120POL_GenericDesc" style="width:42mm;border-bottom-width:1px;border-style:dashed; height:3.5mm; padding-top: 0;">
             <xsl:call-template name="PopulateMonthDayYear">
               <xsl:with-param name="TargetNode" select="$FormData/OrganizationFormedDt"/>
             </xsl:call-template>
@@ -1537,99 +1022,98 @@
           <div class="IRS1120POL_GenericDesc" style="width:88mm;"/>
         </div>
         <!-- add info line 5ab -->
-        <div class="IRS1120POL_LineContainer" style="border-left-width:1px">
-					<div class="IRS1120POL_LabelSpaceWide" style="padding-bottom:2mm;border-right-width:1px;height:4.5mm"/>
-					<div class="IRS1120POL_LineIndex" style="padding-bottom:2mm;padding-right:2mm;">5a</div>
-					<div class="IRS1120POL_GenericDesc" style="width:36mm;padding-bottom:2mm;">The books are in care of </div>
-					<div class="IRS1120POL_GenericDesc" style="width:4mm;padding-bottom:2mm;">
-            <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
-          </div>
-          <div class="IRS1120POL_GenericDesc" style="width:40mm;border-bottom-width:1px;border-style:solid;">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$FormData/BooksInCareOfTxt"/>
-            </xsl:call-template>
-          </div>
-          <div class="IRS1120POL_GenericDesc" style="width:8mm;font-weight:bold;padding-left:4mm;">b</div>
-          <div class="IRS1120POL_GenericDesc" style="width:36mm;">Enter name of candidate</div>
-          <div class="IRS1120POL_GenericDesc" style="width:4mm;">
-            <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
-          </div>
-          <div class="IRS1120POL_GenericDesc" style="width:40mm;border-bottom-width:1px;border-style:solid;">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$FormData/CandidateNm"/>
-            </xsl:call-template>
-          </div>
+        <div class="IRS1120POL_LineContainer" style="border-left-width:0;">
+			<!-- 5a -->
+			<div class="IRS1120POL_LabelSpaceWide" style="padding-bottom:0mm; border-right-width:0px; min-height:5mm;width:0;"/>
+			<div class="IRS1120POL_LineIndex" style="padding-bottom:0mm;padding-right:2.2mm;">5a</div>
+			<div class="IRS1120POL_GenericDesc" style="width:34mm;padding-bottom:0mm;">The books are in care of </div>
+			<div class="IRS1120POL_GenericDesc" style="width:4mm;padding-bottom:0mm;">
+				<img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
+			</div>
+			<div class="IRS1120POL_GenericDesc" style="width:42mm;border-bottom-width:1px;border-style:dashed; min-height: 4mm; height:auto; padding-top: 0;">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$FormData/BooksInCareOfTxt"/>
+				</xsl:call-template>
+			</div>
+			<!-- 5b -->
+			<div class="IRS1120POL_GenericDesc" style="width:8mm;font-weight:bold;padding-left:4mm;">b</div>
+			<div class="IRS1120POL_GenericDesc" style="width:34mm;">Enter name of candidate</div>
+			<div class="IRS1120POL_GenericDesc" style="width:4mm;">
+				<img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
+			</div>
+			<div class="IRS1120POL_GenericDesc" style="width:42mm;border-bottom-width:1px;border-style:dashed;min-height: 4mm; height:auto; padding-top: 0;">
+				<xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$FormData/CandidateNm"/>
+				</xsl:call-template>
+			</div>
         </div>
         <!-- add info line 5cd -->
-<div class="IRS1120POL_LineContainer" style="border-style: solid; border-color: black;
-border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
-					<div class="IRS1120POL_LabelSpaceWide" style="padding-bottom:2mm;height:10.5mm"/>
-					<div class="IRS1120POL_SubLineIndex" style="padding-bottom:2mm;padding-left:2mm;height:10.5mm">c</div>
-					<div class="IRS1120POL_GenericDesc" style="width:36mm;padding-bottom:2mm;height:10.5mm">The books are located at</div>
-					<div class="IRS1120POL_GenericDesc" style="width:4mm;height:10.5mm">
-    <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
-  </div>
-					<div class="IRS1120POL_GenericDesc" style="width:40mm;border-bottom-width:0px;">
-    <!-- not enough space here -->
-    <!-- us address type -->
-    <!-- replaced the code and called the populateUSaddress template -->
-    <xsl:if test="not($FormData/LocationOfBooksUSAddress/AddressLine1='' or not($FormData/LocationOfBooksUSAddress/AddressLine1))">
-      <xsl:call-template name="PopulateUSAddressTemplate">
-        <xsl:with-param name="TargetNode" select="$FormData/LocationOfBooksUSAddress"/>
-      </xsl:call-template>
-    </xsl:if>
-              <!-- foreign address type -->
-    <xsl:if test="not($FormData/LocationOfBooksForeignAddress/AddressLine1='' or not($FormData/LocationOfBooksForeignAddress/AddressLine1))">
-      <xsl:call-template name="PopulateForeignAddressTemplate">
-        <xsl:with-param name="TargetNode" select="$FormData/LocationOfBooksForeignAddress"/>
-      </xsl:call-template>
-    </xsl:if>
-    <!-- end address type -->
-  </div>
-					<div class="IRS1120POL_GenericDesc" style="width:8mm;font-weight:bold;padding-left:4mm;height:10.5mm">d</div>
-					<div class="IRS1120POL_GenericDesc" style="width:20mm;height:10.5mm">Telephone No.</div>
-					<div class="IRS1120POL_GenericDesc" style="width:4mm;height:10.5mm">
-    <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
-  </div>
-					<div class="IRS1120POL_GenericDesc" style="width:56mm;border-bottom-width:0px;">
-    <xsl:call-template name="PopulatePhoneNumber">
-      <xsl:with-param name="TargetNode" select="$FormData/PhoneNum"/>
-    </xsl:call-template>
-  </div>
-</div>
+		<div class="IRS1120POL_LineContainer" style="border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0; border-left-width: 0px; border-right-width: 0px; height:auto;">
+				<div class="IRS1120POL_LabelSpaceWide" style="padding-bottom:0mm; height:5mm; border-right-width:0px; width:0;"/>
+				<div class="IRS1120POL_SubLineIndex" style="padding-bottom:0mm;padding-left:1.5mm;">c</div>
+				<div class="IRS1120POL_GenericDesc" style="width:34mm;">The books are located at</div>
+				<div class="IRS1120POL_GenericDesc" style="width:4mm;">
+					<img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
+				</div>
+				<div class="IRS1120POL_GenericDesc" style="width:42mm; min-height: 4mm; height:auto; border-bottom:1px dashed black;">
+					<xsl:if test="not($FormData/LocationOfBooksUSAddress/AddressLine1='' or not($FormData/LocationOfBooksUSAddress/AddressLine1))">
+					  <xsl:call-template name="PopulateUSAddressTemplate">
+						<xsl:with-param name="TargetNode" select="$FormData/LocationOfBooksUSAddress"/>
+					  </xsl:call-template>
+					</xsl:if>
+					<xsl:if test="not($FormData/LocationOfBooksForeignAddress/AddressLine1='' or not($FormData/LocationOfBooksForeignAddress/AddressLine1))">
+					  <xsl:call-template name="PopulateForeignAddressTemplate">
+						<xsl:with-param name="TargetNode" select="$FormData/LocationOfBooksForeignAddress"/>
+					  </xsl:call-template>
+					</xsl:if>
+					<!-- end address type -->
+				</div>
+				<div class="IRS1120POL_GenericDesc" style="width:8mm;font-weight:bold;padding-left:4mm;">d</div>
+				<div class="IRS1120POL_GenericDesc" style="width:20mm;">Telephone No.</div>
+				<div class="IRS1120POL_GenericDesc" style="width:4mm;">
+					<img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
+				</div>
+				<div class="IRS1120POL_GenericDesc" style="width:56mm; min-height: 4mm; height:auto; border-bottom:1px dashed black;">
+					<xsl:call-template name="PopulatePhoneNumber">
+					  <xsl:with-param name="TargetNode" select="$FormData/PhoneNum"/>
+					</xsl:call-template>
+				</div>
+		</div>
+		</div>
       <!-- BEGIN SIGNATURE SECTION -->
   <!-- Implementing the signature section in tables -->
-<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;">
+  <div class="pageEnd"></div>
+<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;border-top: 1px solid black;">
 	<tr>
-		<td rowspan="3" style="width:10mm;font-size: 11pt;font-weight:bold;border-right:1 solid black;border-bottom:1 solid black;">Sign Here</td>
+		<td rowspan="3" style="width:10mm;font-size: 11pt;font-weight:bold;border-right:1px solid black;border-bottom:1px solid black;">Sign Here</td>
 		<td colspan="6" style="padding-left:1mm;padding-bottom:1mm;">Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true,
 correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge. </td>
 	</tr>
 	<tr>
-						<td rowspan="2" style="border-bottom:1 solid black;padding-left:1mm;">
-							<img src="{$ImagePath}/1120POL_Bullet_Lg.gif" alt="LargeBullet"/>
+						<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;">
+							<img src="{$ImagePath}/1120POL_Bullet_Lg.gif" alt="LargeBullet" style="padding-right:1mm;"/>
 						</td>
-		<td style="width:52mm;border-right:1 solid black;border-bottom:1 solid black;vertical-align:bottom;">
+		<td style="width:52mm;border-right:1px solid black;border-bottom:1px solid black;vertical-align:bottom;">
               <xsl:call-template name="PopulateReturnHeaderOfficer"> 
 	         <xsl:with-param name="TargetNode">Name</xsl:with-param> 
             </xsl:call-template>
      </td>
-		<td style="width:20mm;border-bottom:1 solid black;vertical-align:bottom;padding-left:.5mm;">
+		<td style="width:20mm;border-bottom:1px solid black;vertical-align:bottom;padding-left:.5mm;">
         <xsl:call-template name="PopulateReturnHeaderOfficer">
           <xsl:with-param name="TargetNode">DateSigned</xsl:with-param> 
         </xsl:call-template>
 		</td>
-						<td rowspan="2" style="border-bottom:1 solid black;padding-left:1mm;">
-							<img src="{$ImagePath}/1120POL_Bullet_Lg.gif" alt="LargeBullet"/>
+						<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;">
+							<img src="{$ImagePath}/1120POL_Bullet_Lg.gif" alt="LargeBullet" style="padding-right:1mm;"/>
 						</td>
-		<td style="width:60mm;border-bottom:1 solid black;vertical-align:bottom;">
+		<td style="width:60mm;border-bottom:1px solid black;vertical-align:bottom;">
       <xsl:call-template name="PopulateReturnHeaderOfficer">
         <xsl:with-param name="TargetNode">Title</xsl:with-param>
       </xsl:call-template>
 		</td>
-		<td rowspan="2" style="width:40mm;border-bottom:1 solid black;padding-bottom:1mm;">
+		<td rowspan="2" style="width:40mm;border-bottom:1px solid black;padding-bottom:1mm;">
 							<div class="styGenericDiv" style="width:2px;"/>
-		<div style="border-right:3 solid black;border-left:3 solid black;border-bottom:3 solid black;border-top:3 solid black;float:right;" class="styGenericDiv">		
+		<div style="border:3px solid black; float:right;" class="styGenericDiv">		
 		May the IRS discuss this return<br/>
 with the preparer shown below<br/>
 (see instructions)?
@@ -1667,9 +1151,9 @@ with the preparer shown below<br/>
 	 </td>
 	</tr>
 	<tr>
-		<td style="border-bottom:1 solid black;vertical-align:top;">Signature of officer      </td>
-		<td style="border-bottom:1 solid black;vertical-align:top;">Date</td>
-		<td style="border-bottom:1 solid black;vertical-align:top;">Title</td>
+		<td style="border-bottom:1px solid black;vertical-align:top;">Signature of officer</td>
+		<td style="border-bottom:1px solid black;vertical-align:top;">Date</td>
+		<td style="border-bottom:1px solid black;vertical-align:top;">Title</td>
 	</tr>
 </table>
 <!-- END Signature Section -->
@@ -1686,33 +1170,29 @@ with the preparer shown below<br/>
             </div>
             <div style="width:164mm;float:left;clear:none;">
               <div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-                <div class="styLNDesc" style="height:6mm;width:46.8mm;padding-top:0mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="height:8mm;width:46.8mm;padding-top:0mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
                 
                 Print/Type preparer's name<br/>
                <xsl:call-template name="PopulateReturnHeaderPreparer">
 														<xsl:with-param name="TargetNode">Name</xsl:with-param>
 													</xsl:call-template>
                 </div>
-                <div class="styLNDesc" style="height:6mm;width:46.5mm;padding-top:0mm;border-right:1 solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="height:8mm;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
                 Preparer's signature<br/>
-                <!--<xsl:call-template name="PopulateReturnHeaderPreparer">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>-->
               </div>
-                <div class="styLNDesc" style="height:6mm;width:15mm;border-right:1 solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
+                <div class="styLNDesc" style="height:8mm;width:15.25mm;border-right:1px solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
                   <xsl:call-template name="PopulateReturnHeaderPreparer">
                     <xsl:with-param name="TargetNode">DatePrepared</xsl:with-param>
-                   <!-- <xsl:with-param name="BackupName">PopulateReturnHeaderPreparer</xsl:with-param>-->
                   </xsl:call-template>
                 </div>
-                <div class="styLNDesc" style="height:6mm;width:18mm;border-right:1 solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
+                <div class="styLNDesc" style="height:8mm;width:18mm;border-right:1px solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
                   <label>
                     <xsl:call-template name="PopulateReturnHeaderPreparer">
 											<xsl:with-param name="TargetNode">SelfEmployedLabel</xsl:with-param>
 											<xsl:with-param name="BackupName">PreparerSelfEmployed</xsl:with-param>
 										</xsl:call-template>
                     Check 
-                    <input class="styCkbox" type="checkbox" style="width:4mm;">
+                    <input class="styCkbox" type="checkbox" style="width:3mm; height:3mm; margin-bottom: 0;margin-left: 0;margin-right: 0;">
                       <xsl:call-template name="PopulateReturnHeaderPreparer">
 										<xsl:with-param name="TargetNode">SelfEmployedCheckbox</xsl:with-param>
 										<xsl:with-param name="BackupName">PreparerSelfEmployed</xsl:with-param>
@@ -1721,7 +1201,7 @@ with the preparer shown below<br/>
                     <span style="width:4px;"/>if<br/>self-employed
                   </label>
                 </div>
-                <div class="styLNDesc" style="height:6mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
+                <div class="styLNDesc" style="height:8mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
                              <br/>
                              <xsl:call-template name="PopulateReturnHeaderPreparer">
 									<xsl:with-param name="TargetNode">SSN</xsl:with-param>
@@ -1733,7 +1213,7 @@ with the preparer shown below<br/>
                 </div>
               </div>
               <div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-                <div class="styLNDesc" style="height:6mm;width:108.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="height:6mm;width:108.5mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
                   <span class="styGenericDiv" style="">Firm's name 
                   <span style="width:2.2mm;"/>
                     <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
@@ -1759,12 +1239,11 @@ with the preparer shown below<br/>
                 </div>
               </div>
               <div style="width:164mm;float:left;clear:none;">
-                <div class="styLNDesc" style="width:108.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="width:108.5mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm; height: 9mm;">
                   <div class="styGenericDiv" style="padding-right:.5mm;">Firm's address 
                   <img src="{$ImagePath}/1120POL_Bullet_Sm.gif" alt="right arrow"/>
                   </div>
                   <div class="styGenericDiv" style="padding-right:.5mm;">
-                
                     <xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 											<xsl:with-param name="TargetNode">AddressLine1</xsl:with-param>
 										</xsl:call-template>
@@ -1780,11 +1259,9 @@ with the preparer shown below<br/>
 										<xsl:call-template name="PopulateReturnHeaderPreparerFirm">
 											<xsl:with-param name="TargetNode">Country</xsl:with-param>
 										</xsl:call-template>
-    
                   </div>
                 </div>
-                <div class="styLNDesc" style="width:32mm;padding-left:1mm;"> Phone no. 
-                
+                <div class="styLNDesc" style="width:32mm;padding-left:1mm;height: 9mm;"> Phone no. 
                   <xsl:call-template name="PopulateReturnHeaderPreparer">
 									<xsl:with-param name="TargetNode">Phone</xsl:with-param>
 								</xsl:call-template>
@@ -1829,56 +1306,37 @@ with the preparer shown below<br/>
   </xsl:call-template>
 </table>
 	<!--Special Condition Description -->
-<br />
- <span class="styRepeatingDataTitle">Form 1120-POL, Special Condition Description: </span>
-
-
-<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
-
-<thead class="styTableThead">
-
-<tr class="styDepTblHdr">
-
-<th class="styDepTblCell" scope="col" rowspan="2" style="width:179mm;font-size:8pt;">
-
-Special Condition Description</th>
-
-</tr>
-
-</thead>
-
-<tfoot/>
-
-<tbody>
-
-<xsl:for-each select="$FormData/SpecialConditionDescription">
-
-<tr style="border-color:black;height:6mm;">
-
-<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-
-<td class="styTableCellText" style="width:179mm;">
-
-<xsl:call-template name="PopulateText">
-
-<xsl:with-param name="TargetNode" select="."/>
-
-</xsl:call-template>
-
-<span class="styTableCellPad"/>
-
-</td>
-
-</tr>
-
-</xsl:for-each>
-
-</tbody>
-
-</table>
-
-
-</body>
+	<br />
+	<span class="styRepeatingDataTitle">Form 1120-POL, Special Condition Description: </span>
+	<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
+		<thead class="styTableThead">
+			<tr class="styDepTblHdr">
+				<th class="styDepTblCell" scope="col" rowspan="2" style="width:179mm;font-size:8pt;">
+					Special Condition Description
+				</th>
+			</tr>
+		</thead>
+		<tfoot/>
+		<tbody>
+			<xsl:for-each select="$FormData/SpecialConditionDesc">
+				<tr style="border-color:black;height:6mm;">
+					<xsl:attribute name="class">
+						<xsl:choose>
+							<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+							<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+						</xsl:choose>
+					</xsl:attribute>
+					<td class="styTableCellText" style="width:179mm;">
+						<xsl:call-template name="PopulateText">
+							<xsl:with-param name="TargetNode" select="."/>
+						</xsl:call-template>
+						<span class="styTableCellPad"/>
+					</td>
+				</tr>
+			</xsl:for-each>
+		</tbody>
+	</table>
+	</body>
     </html>
   </xsl:template>
 </xsl:stylesheet>

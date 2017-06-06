@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1120LScheduleM3" select="$RtnDoc/IRS1120LScheduleM3"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1120LScheduleM3)"/>
@@ -65,7 +67,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:19.5mm;border-left-width:2px;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0128</div>
+							<div class="styOMB" style="height:auto;">OMB No. 1545-0128</div>
 							<div class="styTY" style="height:11mm;padding-top:1.5mm;">20<span class="styTYColor">13</span>
 							</div>
 						</div>
@@ -633,7 +635,7 @@
 								<span style="width:1.5mm;"/>
 							</div>
 							<!--Check Box 1 -->
-							<div class="styLNDesc" style="width:130mm;padding-top:.5mm;">(1)
+							<div class="styLNDesc" style="width:135mm;padding-top:.5mm;">(1)
 							    <input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/GAAPInd"/>
@@ -1183,7 +1185,7 @@
 					</div>
 					<!-- Page 2 -->
 					<!-- Page 2 Header -->
-					<div class="styTBB" style="width:187mm;">
+					<div class="styTBB" style="width:187mm;float:none;">
 						<div style="float:left;">Schedule M-3 (Form 1120-L) 2013</div>
 						<div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">2</span>
 						</div>
@@ -1349,7 +1351,7 @@
 					<!-- Subsidiary Name and EIN Line -->
 					<div style="width:187mm;">
 						<!-- Name -->
-						<div style="width:138mm;height:8mm;border-right:solid 1px;float:left;clear:none;                            border-top:solid 1px">Name of subsidiary (if consolidated return)<br/>
+						<div style="width:138mm;height:auto;border-right:solid 1px;float:left;clear:none;                            border-top:solid 1px">Name of subsidiary (if consolidated return)<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/IncomeLossItemsGrp/SubsidiaryBusinessName/BusinessNameLine1"/>
 							</xsl:call-template>
@@ -1379,7 +1381,7 @@
 					</div>
 					<!-- Part 2 - Header -->
 					<div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;     border-right-width:0px;border-left-width:0px;padding-top:0;float:left;">
-						<span class="styPartName" style="height:1mm;width:14mm;padding: .25mm 1mm .25mm 1mm;">Part II</span>
+						<span class="styPartName" style="height:4mm;width:14mm;padding: .25mm 1mm .25mm 1mm;">Part II</span>
 						<span class="styPartDesc" style="width:170mm;">
 							<span style="width:2mm;"/>Reconciliation of Net Income (Loss) per Income Statement of Includible Corporations With<br/>
 							<span style="width:2mm;"/>Taxable Income per Return
@@ -1390,7 +1392,7 @@
 					<table class="styTable" id="IRS1120LScheduleM3PartIITable" summary="Reconciliation of Net Income (Loss) per Income Statement of Includible Corporations With Taxable Income per Return " cellspacing="0" cellpadding="0" style="font-size:7pt;width:187mm;">
 						<tr>
 							<th class="styTableThead" style="width:6mm" scope="col"/>
-							<th class="styTableThead" style="width:81mm;text-align:center;font-size:8pt;" scope="col">
+							<th class="styTableThead" style="width:81mm;text-align:center;font-size:8pt;display:table-cell;" scope="col">
                            Income (Loss) Items<br/>
 								<span style="font-size:7pt;font-weight:normal;">(Attach statements for lines 1 through 11)</span>
 							</th>
@@ -1777,7 +1779,7 @@
 						<tr>
 							<td class="styIRS1120LScheduleM3NumberCell">12</td>
 							<td class="styIRS1120LScheduleM3PartIICol1Cell">
-								    Items relating to reportable transactions (attach 
+								    Items relating to reportable transactions (attach <br/>
 							     <span style="float:left;">statement)
             <!-- Form Link -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -2551,7 +2553,7 @@
 					</div>
 					<!-- Page 3 -->
 					<!-- Page 3 Header -->
-					<div class="styTBB" style="width:187mm;">
+					<div class="styTBB" style="width:187mm;float:none;">
 						<div style="float:left;">Schedule M-3 (Form 1120-L) 2013</div>
 						<div style="float:right;">Page <span style="font-size:9pt;font-weight:bold;">3</span>
 						</div>
@@ -2718,7 +2720,7 @@
 					<!-- Subsidiary Name and EIN Line -->
 					<div style="width:187mm;">
 						<!-- Name -->
-						<div style="width:138mm;height:8mm;border-right:solid 1px;float:left;clear:none;border-top:solid 1px;">
+						<div style="width:138mm;height:auto;border-right:solid 1px;float:left;clear:none;border-top:solid 1px;">
 						  Name of subsidiary (if consolidated return)<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1120LScheduleM3/ExpenseDeductionItems/SubsidiaryBusinessName/BusinessNameLine1"/>
@@ -2751,7 +2753,7 @@
 					</div>
 					<!-- Part 3 - Header -->
 					<div style="width:187mm;height:8mm;border-style:solid; border-bottom-width:1px;                         border-top-width:1px; border-right-width:0px;border-left-width:0px;                         padding-top:0;float:left;">
-						<span class="styPartName" style="height:1mm;width:14mm;padding: .25mm .5mm .25mm .5mm;">Part III</span>
+						<span class="styPartName" style="height:4mm;width:14mm;padding: .25mm .5mm .25mm .5mm;">Part III</span>
 						<span class="styPartDesc" style="width:170mm;">
 							<span style="width:2mm;"/>Reconciliation of Net Income (Loss) per Income Statement of Includible Corporations With <br/>
 							<span style="width:2mm;"/>Taxable Income per Return—Expense/Deduction Items <span style="font-weight:normal">(see instructions)</span>
@@ -2761,7 +2763,7 @@
 					<table class="styTable" id="IRS1120LScheduleM3PartIII" summary="Reconciliation of Net Income (Loss) per Income Statement of Includible Corporations With Taxable Income per Return—Expense/Deduction Items " cellspacing="0" cellpadding="0" style="font-size:7pt;width:187mm;">
 						<tr>
 							<th class="styTableThead" style="width:6mm" scope="col"/>
-							<th class="styTableThead" style="width:81mm;text-align:center;font-size:8pt;" scope="col">Expense/Deduction Items</th>
+							<th class="styTableThead" style="width:81mm;text-align:center;font-size:8pt;display:table-cell;" scope="col">Expense/Deduction Items</th>
 							<th class="styIRS1120LScheduleM3TheadCell" scope="col">
 								<span class="styBoldText">(a)</span>
 								<br/> Expense per<br/> Income Statement<br/>
@@ -3452,7 +3454,7 @@
 						<!-- Part III - Line 25 -->
 						<tr>
 							<td class="styIRS1120LScheduleM3NumberCell">25</td>
-							<td>Section 807(f) adjustments for change in computing
+							<td>Section 807(f) adjustments for change in computing<br/>
 							 <span style="float:left;">reserves</span>
 								<span class="styDotLn" style="float:right;padding-right:2mm;">...............</span>
 							</td>
@@ -3537,7 +3539,7 @@
 						<!-- Part III - Line 28 -->
 						<tr>
 							<td class="styIRS1120LScheduleM3NumberCell">28</td>
-							<td>Amortization of acquisition, reorganization, and start-up 
+							<td>Amortization of acquisition, reorganization, and start-up <br/>
 							 <span style="float:left;">costs</span>
 								<span class="styDotLn" style="float:right;padding-right:2mm;">................</span>
 							</td>

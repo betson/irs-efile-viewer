@@ -56,8 +56,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title>
            <!--General Explanation Attachment-->
           <xsl:value-of select="$depDocTitle"/>  
@@ -86,7 +88,7 @@
         <xsl:call-template name="DocumentHeaderDependency"/>      
         
         <div class="styDepTitleLine">
-          <div class="styDepTitle" style="width:100mm">
+          <div class="styDepTitle" style="width:187mm">
             <!--TY 2003 General Explanation Attachment-->
             <xsl:value-of select="$depDocTitle"/>            
           </div>

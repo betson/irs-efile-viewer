@@ -12,7 +12,7 @@
   <!-- Template to display Itemized Other Income Schedule -->
   <xsl:template name="ShowAdjLTContractsSimplifiedSch">
     <!-- Itemized Other Income Schedule Data -->
-    <table id="AdjLTContractsSimplifiedSchTbl" class="styDepTblLandscape">
+    <table id="AdjLTContractsSimplifiedSchTbl"  class="styDepTblLandscape"  >
       <thead class="styDepTableThead">
         <tr class="styDepTblHdr">
            <th class="styDepTblCell" scope="col" style="font-size: 7pt;">a. Contract number</th>
@@ -26,7 +26,8 @@
       </thead>
       <tfoot/>
       <tbody>
-        <xsl:for-each select="$AdjLTContractsSimplifiedSchData/AdjLTCntrctsSmplfdScheduleGrp">  
+        <xsl:for-each select="$AdjLTContractsSimplifiedSchData/AdjLTCntrctsSmplfdScheduleGrp"> 
+       
           <tr>
             <!-- Set row background color -->
             <xsl:attribute name="class">
@@ -35,30 +36,43 @@
                  <xsl:otherwise>styDepTblRow2</xsl:otherwise>
               </xsl:choose>
             </xsl:attribute>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt; width: 35mm;">
-              <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermCntrctIncmGrp)"/>
-              </xsl:attribute>
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="ContractNum"/>
-              </xsl:call-template>
-            </td>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
-              <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermCntrctIncmGrp)"/>
-              </xsl:attribute>
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="JobNm"/>
-              </xsl:call-template>
-            </td>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
-              <xsl:attribute name="rowspan">
-              <xsl:value-of select="count(PYLongTermCntrctIncmGrp)"/>
-              </xsl:attribute>
-              <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="OtherIdentifyingInformationTxt"/>
-              </xsl:call-template>
-            </td>
+			<xsl:choose>
+				<xsl:when test="count (PYLongTermCntrctIncmGrp) &gt; 1">
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt; width: 35mm;border-bottom:0px;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="ContractNum"/>
+					  </xsl:call-template>
+					</td>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;border-bottom:0px;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="JobNm"/>
+					  </xsl:call-template>
+					</td>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;border-bottom:0px;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="OtherIdentifyingInformationTxt"/>
+					  </xsl:call-template>
+					</td>
+				</xsl:when>
+				<xsl:otherwise>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt; width: 35mm;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="ContractNum"/>
+					  </xsl:call-template>
+					</td>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="JobNm"/>
+					  </xsl:call-template>
+					</td>
+					<td class="styDepTblCell" scope="col" style="text-align:left;font-size: 7pt;">
+					  <xsl:call-template name="PopulateText">
+						<xsl:with-param name="TargetNode" select="OtherIdentifyingInformationTxt"/>
+					  </xsl:call-template>
+					</td>
+				</xsl:otherwise>
+			</xsl:choose>	
+			 
             <!-- Test for no data or only one instance of data - if, then fill the cell with the proper color -->
             <xsl:if test="count(PYLongTermCntrctIncmGrp)=0 or count (PYLongTermCntrctIncmGrp)=1">
               <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
@@ -117,6 +131,34 @@
                      <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                   </xsl:choose>
                 </xsl:attribute>
+					
+                <!--empty for first three columns, if there are more than one records-->
+
+				<td class="styDepTblCell" style="text-align:left;font-size: 7pt; width: 35mm;border-right:1px;border-color:black;border-right-style:solid;">
+				   <xsl:attribute name="class">
+					  <xsl:choose>
+						 <xsl:when test="(count(../preceding-sibling::*)+1) mod 2 = 1">styDepTblRow1</xsl:when>
+						 <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+					  </xsl:choose>
+					</xsl:attribute>
+				</td>
+				<td class="styDepTblCell"  style="text-align:left;font-size: 7pt;border-right:1px;border-color:black;border-right-style:solid;">
+				   <xsl:attribute name="class">
+					  <xsl:choose>
+						 <xsl:when test="(count(../preceding-sibling::*)+1) mod 2 = 1">styDepTblRow1</xsl:when>
+						 <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+					  </xsl:choose>
+					</xsl:attribute>
+				</td>
+				<td class="styDepTblCell"  style="text-align:left;font-size: 7pt;">
+				   <xsl:attribute name="class">
+					  <xsl:choose>
+						 <xsl:when test="(count(../preceding-sibling::*)+1) mod 2 = 1">styDepTblRow1</xsl:when>
+						 <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+					  </xsl:choose>
+					</xsl:attribute>
+				</td>
+                
                 <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt; width: 15mm;">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="Yr"/>
@@ -151,8 +193,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>
@@ -167,9 +211,9 @@
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js"/>
         <xsl:call-template name="InitJS"/>
         <style type="text/css">
-          <xsl:if test="not($Print) or $Print=''">
+        <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="AddOnStyle"/>    
-          </xsl:if>
+         </xsl:if>
         </style>
         <xsl:call-template name="GlobalStylesDep"/>
       </head>

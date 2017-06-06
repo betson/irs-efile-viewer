@@ -4,7 +4,9 @@
 <!-- Per Defect #37824 data not populating. Schema was not available as we did changes from PDF's -->
 <!-- Per Kisams 1375127 by Robert L Jones -->
 <!-- Per Defect #39688 data not populating when 1040 filer attached. ReturnTypeCd not updated during IBM's xml Standardization - Robert L Jones -->
-
+<!-- Per UWR 123023 IE11 changes by Robert L Jones -->
+<!--Updated per IBM Defect  43243 on 06/02/2015 misalignment issues - RLJ -->
+<!--Updated per IBM Defect  43243 on 10/14/2015 Put additional Data on same page as half form - RLJ -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -19,8 +21,10 @@
 <xsl:param name="FormData" select="$RtnDoc/IRS8881" />
 
 <xsl:template match="/">
-<html lang="EN-US">
-  <head>    
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
+  <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>    
     <title>
       <xsl:call-template name="FormTitle">
         <xsl:with-param name="RootElement" select="local-name($FormData)"></xsl:with-param>
@@ -55,7 +59,7 @@
         <!-- Begin Form number and Name -->
         <div class="styBB" style="width:187mm;">
 
-        <div class="styFNBox" style="width:31mm;height:21mm;">
+        <div class="styFNBox" style="width:30mm;height:21mm;">
             Form <span class="styFormNumber">8881</span>
             <br/><span style="font-size:6pt;">(Rev. December 2013)</span>
       <br/>
@@ -85,7 +89,7 @@
          
          <!-- Names and Identifying number Lines  -->
         <div class="styBB" style="width:187mm;">
-        <div class="styNameBox" style="width:156mm;height:8mm;font-weight:normal;font-size:7pt;">
+        <div class="styNameBox" style="width:155.3mm;height:auto;font-weight:normal;font-size:7pt;">
             Name(s) shown on return<br/>
             <!-- Added per UWR 31342 to allow 1040/ssn filer to use this form -->
               <xsl:choose>
@@ -102,7 +106,7 @@
               </xsl:otherwise>
 				  </xsl:choose>       
           </div>
-          <div class="styEINBox" style="width:30mm;height:4mm;padding-left:2mm;font-size:7pt;">
+          <div class="styEINBox" style="width:31mm;height:auto;padding-left:2mm;font-size:7pt;">
            Identifying number<br/><br/>
               <span style="font-weight:normal;">  
               <xsl:choose>
@@ -210,8 +214,8 @@
       <!-- line 5 -->
        <div style="width:187mm">
         <div style="float:left;">  
-        <div class="styLNLeftNumBoxSD" style="height:7.5mm;padding-top:2mm;">5</div>
-        <div class="styLNDesc" style="height:7.5mm;padding-top:2mm;">
+        <div class="styLNLeftNumBoxSD" style="height:9.5mm;padding-top:3mm;">5</div>
+        <div class="styLNDesc" style="height:9.5mm;padding-top:3mm;border-bottom-width:1px;">
          Enter the <b>smaller</b> of line 4 or <b>$500</b>. Partnerships and S corporations, report this amount on
     		Schedule K. All others, report this amount on Form 3800, line 1j   
           <!--Dotted Line-->
@@ -219,32 +223,32 @@
         </div>
          </div>
            <div style="float:right;"> 
-        <div class="styLNRightNumBoxNBB" style="height:7.5mm;padding-top:7mm;">5</div>
-        <div class="styLNAmountBoxNBB" style="height:7.5mm;padding-top:7mm;">
+        <div class="styLNRightNumBoxNBB" style="height:9.5mm;padding-top:5mm;">5</div>
+        <div class="styLNAmountBoxNBB" style="height:9.5mm;padding-top:5mm;">
           <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="$FormData/CurrentYearCreditAmt"/>
           </xsl:call-template>
           </div>  
         </div>
-        </div>         
+                 </div> 
   <!-- Page End -->
-      <div style="width:187mm; border-top:1 solid Black; font-size:8pt">    
-        <div style="font-weight:bold; float:left; padding-top:0.5mm">
+   <div style="width:187mm; border-top:1px solid Black; font-size:8pt">
+       <div style="font-weight:bold; float:left; padding-top:0.5mm">
          For Paperwork Reduction Act Notice, see instructions.
-        </div>    
+   
         <div style="float:right">
           <span style="margin-right:16mm; font-size:7pt">Cat. No. 33435N</span>          
           Form <b>8881</b> (Rev. 12-2013)
         </div>      
       </div>  
-      
-      <p style="page-break-before:always" />      
-
-      <div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif">
+             </div>  
+   <!--   <p style="page-break-before:always" />  Changed rules that half page forms should have additional data on same page    -->
+<br></br>
+      <div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif;">
         <div class="styLeftOverTitle">
           Additional Data        
         </div>
-        <div class="styLeftOverButtonContainer">
+        <div class="styLeftOverButtonContainer" style="height:auto;">
           <input class="styLeftoverTableBtn" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage()" tabindex="1"/>
         </div>      
       </div>
@@ -254,7 +258,8 @@
         <xsl:call-template name="PopulateCommonLeftover">
           <xsl:with-param name="TargetNode" select="$FormData" />        
         </xsl:call-template>
-      </table>      
+      </table>    
+      
     </form>
   </body>
 </html>

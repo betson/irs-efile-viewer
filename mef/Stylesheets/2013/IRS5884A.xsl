@@ -13,8 +13,10 @@
 
 <xsl:template match="/">
 
-<html lang="EN-US">
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form5884AData)"/></xsl:call-template></title>
     <!-- No Browser Caching -->
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -82,15 +84,26 @@ Area Employers</div>
     <!-- Begin Names and Identifying number section -->
 
     <div class="styBB" style="width:187mm;">
-      <div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+      <div class="styNameBox" style="height:auto;width:140mm;font-size:7pt;">
         Name(s) shown on return<br/><br/>
              <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template><br/>
           <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param></xsl:call-template><br/>
        </div>
-      <div class="styEINBox" style="width:35mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:normal;">
+      <div class="styEINBox" style="width:35mm;height:auto;padding-left:2mm;font-size:7pt;font-weight:normal;">
         <b>Identifying number</b><br/>
         <span style="width:34mm; text-align:left;font-weight:normal;"><br/>
-          <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">EIN</xsl:with-param></xsl:call-template>          
+          <xsl:choose>
+			<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				</xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+					<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				</xsl:call-template>
+			</xsl:otherwise>
+		  </xsl:choose>           
         </span>          
       </div>
     </div>
@@ -129,7 +142,7 @@ Area Employers</div>
            </span>
         </div>
 
-      <div class="styLNRightNumBox" style="height:8.2mm;padding-top:0mm;">
+      <div class="styLNRightNumBox" style="height:8mm;padding-top:0mm;">
       <span style="vertical-align:baseline;height:100%;"/><span> 1 </span>
         </div>
         <div class="styLNAmountBox" style="height:8mm;">
@@ -187,7 +200,7 @@ Area Employers</div>
         <span style="height:8mm;background-color:lightgrey;width:7.80mm;"/>
         2
         </div>
-        <div class="styLNAmountBox" style="height:12.2mm;">
+        <div class="styLNAmountBox" style="height:12mm;">
         <span style="vertical-align:baseline;height:100%;"/><span>
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5884AData/EmployeeSalariesAndWageAdjAmt"/>
@@ -242,7 +255,7 @@ Area Employers</div>
         <span style="height:8mm;background-color:lightgrey;width:7.80mm;"/>
         3
         </div>
-        <div class="styLNAmountBox" style="height:12.2mm;">
+        <div class="styLNAmountBox" style="height:12mm;">
         <span style="vertical-align:baseline;height:100%;"/><span>
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5884AData/EmployeeRetentionCreditAmt"/>
@@ -277,11 +290,11 @@ Area Employers</div>
           </span>
         </div>
         
-        <div class="styLNRightNumBox" style="height:18.3mm;padding-top:0mm;border-bottom:none;">
+        <div class="styLNRightNumBox" style="height:18mm;padding-top:0mm;border-bottom:none;">
         <span style="height:14mm;background-color:lightgrey;width:7.80mm;"/>
         4
         </div>
-        <div class="styLNAmountBox" style="height:18.3mm;border-bottom:none;">
+        <div class="styLNAmountBox" style="height:18mm;border-bottom:none;">
         <span style="vertical-align:baseline;height:100%;"/><span>
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5884AData/CurrentYearRetentionCreditAmt"/>
@@ -392,11 +405,11 @@ Area Employers</div>
             <span style="width:8px"/>.
           </span>
         </div>        
-       <div class="styLNRightNumBox" style="height:11.2mm;padding-top:0mm;">
+       <div class="styLNRightNumBox" style="height:11mm;padding-top:0mm;">
           <div style="height:7.5mm;width:7.80mm;border-left-width:0px;background-color:lightgrey;"/>
           6          
         </div>        
-        <div class="styLNAmountBox" style="height:11.6mm;">
+        <div class="styLNAmountBox" style="height:11mm;">
         <span style="vertical-align:baseline;height:100%;"/><span>
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5884AData/EmployerSalariesAndWageAdjAmt"/>
@@ -450,7 +463,7 @@ Area Employers</div>
         <span style="height:8mm;background-color:lightgrey;width:7.80mm;"/>
        7
         </div>
-        <div class="styLNAmountBox" style="height:12.2mm;">
+        <div class="styLNAmountBox" style="height:12mm;">
         <span style="vertical-align:baseline;height:100%;"/><span>
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5884AData/PrtshpEstTrHousingCreditAmt"/>
@@ -486,11 +499,11 @@ Area Employers</div>
           </span>
         </div>
         
-        <div class="styLNRightNumBox" style="height:18.2mm;padding-top:0mm;border-bottom:none;">
+        <div class="styLNRightNumBox" style="height:18mm;padding-top:0mm;border-bottom:none;">
         <span style="height:14mm;background-color:lightgrey;width:7.80mm;"/>
        8
         </div>
-        <div class="styLNAmountBox" style="height:18.2mm;border-bottom:none;">
+        <div class="styLNAmountBox" style="height:18mm;border-bottom:none;">
         <span style="vertical-align:baseline;height:100%;"/><span>
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5884AData/CurrentYearHousingCreditAmt"/>
@@ -507,29 +520,28 @@ Area Employers</div>
   <!--End of form-->
 
     <div style="width:187mm;">
-    <b>For Paperwork Reduction Act Notice, see instructions.</b> 
-      <span style="width:14px;"/>  
-      <span style="width:14px;"/>
-      <span style="width:14px;"/>  
-      <span style="width:14px;"/>
-      <span style="width:14px;"/>
-      <span style="width:14px;"/>
-      <span style="width:14px;"/>  
-      <span style="width:10px;"/>  
-       
-      Cat. No. 47425B
-      <span style="width:14px;"/>  
-      <span style="width:14px;"/>
-      <span style="width:14px;"/>
-      <span style="width:14px;"/>
-      <span style="width:14px;"/>
-      <span style="width:4px;"/>
-        
-      <span style="font-size:7pt;padding-right:1mm;">Form</span> <span class="styBoldText" style="font-size:8pt;">5884-A</span> <span style="font-size:7pt;padding-left:1mm;">(Rev. 12-2008)</span>
-  </div>
-
-        <br/>
-        <br class="pageEnd"/>
+		<div class="styLNDesc" style="width:93mm;">
+			<b>For Paperwork Reduction Act Notice, see instructions.</b> 
+			  <span style="width:14px;"/>  
+			  <span style="width:14px;"/>
+			  <span style="width:14px;"/>  
+			  <span style="width:14px;"/>
+			  <span style="width:14px;"/>
+			  <span style="width:14px;"/>
+			  <span style="width:10px;"/>  
+		</div>  
+		<div class="styLNDesc" style="width:93mm;text-align:right;">
+			  Cat. No. 47425B
+			  <span style="width:14px;"/>  
+			  <span style="width:14px;"/>
+			  <span style="width:14px;"/>
+			  <span style="width:14px;"/>
+			  <span style="width:4px;"/>
+				
+			  <span style="font-size:7pt;padding-right:1mm;'">Form</span> <span class="styBoldText" style="font-size:8pt;">5884-A</span> <span style="font-size:7pt;padding-left:1mm;">(Rev. 12-2008)</span>
+		</div>
+    </div>
+         <p style="page-break-before: always"/> 
         
         <!-- BEGIN Left Over Table -->  
         <!-- Additonal Data Title Bar and Button -->

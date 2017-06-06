@@ -83,6 +83,7 @@
   margin: 0px;
   padding: 0px;
   padding-bottom: 0mm;
+  height:8mm;
 }
 
 .IRS1041ScheduleK1_codeBox

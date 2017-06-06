@@ -11,9 +11,11 @@
   <xsl:include href="AddOnTable.xsl"/>
   <xsl:include href="IRS1040ScheduleDStyle.xsl"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS1040ScheduleD"/>
-  <xsl:template match="/">
-    <html>
+  <xsl:template match="/"> 
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <!-- Set Document Title -->
         <title>
           <xsl:call-template name="FormTitle">
@@ -49,7 +51,6 @@
           <xsl:call-template name="DocumentHeader"/>
           <!-- END WARNING LINE -->
           <!-- BEGIN FORM HEADER -->
-          <div style="width:187mm;">
           <div class="styBB" style="width: 187mm;">
             <!-- Form Name -->
             <div class="styFNBox" style="width:26mm;height:20mm;">
@@ -67,7 +68,7 @@
             <!-- Form Title Box -->
             <div class="styFTBox" style="width:130mm;height:20mm;">
               <!-- Form Title -->
-              <div class="styMainTitle" style="height:6.5mm;padding-top: 1.7mm;padding-bottom: 1.2mm;">Capital Gains and Losses</div>
+              <div class="styMainTitle" style="height: auto; width: 100%; padding-top: 1.7mm; padding-bottom: 1.2mm;">Capital Gains and Losses</div>
               <!-- Form Subtitle -->
               <div>
                 <span style="font-weight:bold; height:4mm;">
@@ -101,7 +102,7 @@
           <!-- BEGIN TAXPAYER INFO -->
           <div class="styBB" style="width:187mm;float:left;clear:none">
             <!-- Name -->
-            <div class="styNameBox" style="width:136mm;height:4mm;font-size:7pt;font-weight:normal;">
+            <div class="styNameBox" style="width:136mm;height:8mm;font-size:7pt;font-weight:normal;">
               Name(s) shown on return<br/>
               <span>
                 <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -110,7 +111,7 @@
               </span>
             </div>
             <!-- SSN -->
-            <div class="styEINBox" style="width:50mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
+            <div class="styEINBox" style="width:50mm;height:8mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
               Your social security number
               <br/>
               <span style="width:100%;text-align:center;font-weight:normal;">
@@ -122,10 +123,10 @@
           </div>
           <!-- END TAXPAYER INFO -->
           <!-- BEGIN PART I HEADER -->
-		  <div class="styBB" style="width:187mm;margin-top:2mm;">
-            <span class="styPartName" style="width:12mm;font-size:9pt;">Part l</span>
-			<div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:9pt;padding-bottom:2mm;">
-          Short-Term Capital Gains and Losses&#151;Assets Held One Year or Less 
+		  <div class="styBB" style="width:187mm;">
+            <span class="styPartName" style="width:12mm;font-size:9pt;margin-top:2mm;margin-bottom:2mm;">Part l</span>
+			<div class="styPartDesc" style="padding-left:4mm;width:168mm;font-size:9pt;margin-top:2mm;">
+				Short-Term Capital Gains and Losses&#151;Assets Held One Year or Less 
 			</div>
           </div>
           <!-- END PART I HEADER -->
@@ -154,7 +155,7 @@
               <tr>
 				<td class="IRS1040ScheduleD_styTableCellNote">
 					<span class="styLNLeftNumBoxSD">1a</span>
-					<span class="styLNDesc" style="width:48.7mm;padding-right:4px;">
+					<span class="styLNDesc" style="width:48.7mm; padding-right:4px; height:auto;">
 					Totals for all short-term transactions reported on Form 1099-B for which basis was reported to the IRS and for which you have no adjustments (see instructions).  However, if you choose to report all these transactions on Form 8949, leave this line blank and go to line 1b 
 				    </span>
 				</td>
@@ -329,6 +330,7 @@
 				<span style="float:right;font-weight:bold;padding-right:3mm;">
 					.
 					<span style="width:11px;"/>.
+					<span style="width:11px;"/>.
 				</span>
             </div>
             <div class="styLNRightNumBox">4</div>
@@ -425,9 +427,12 @@
 				<span class="styBoldText">
 					<span style="width:11px"/>.
 					<span style="width:11px"/>.
-					<span style="width:11px"/>.					
 					<span style="width:11px"/>.
-					<span style="width:11px"/>.										
+					<span style="width:11px"/>.
+					<span style="width:11px"/>.
+					<span style="width:11px"/>.
+					<span style="width:11px"/>.
+					<span style="width:11px"/>.
 				</span>
             </div>
             <div class="styLNRightNumBox" style="height:8mm;border-bottom-width:0px;padding-top:4mm;">7</div>
@@ -439,9 +444,9 @@
           </div>
           <!-- END LINE 7 -->
           <!-- BEGIN PART II HEADER -->
-           <div class="styBB" style="width:187mm;margin-top:2mm;">
-               <span class="styPartName" style="width:12mm;font-size:9pt;">Part ll</span>
-            <div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:9pt;padding-bottom:2mm;">
+           <div class="styBB" style="width:187mm;">
+               <span class="styPartName" style="width:12mm;font-size:9pt;margin-top:2mm;margin-bottom:2mm;">Part ll</span>
+            <div class="styPartDesc" style="padding-left:4mm;width:168mm;font-size:9pt;margin-top:2mm;">
           Long-Term Capital Gains and Losses&#151;Assets Held More Than One Year
 			</div>
           </div>
@@ -473,7 +478,7 @@
               <tr>
 				<td class="IRS1040ScheduleD_styTableCellNote">
 					<span class="styLNLeftNumBoxSD">8a</span>
-					<span class="styLNDesc" style="width:48.7mm;padding-right:4px;">
+					<span class="styLNDesc" style="width:48.7mm; padding-right:4px; height:auto">
 						Totals for all long-term transactions reported on Form 1099-B for which basis was reported to the IRS and for which you have no adjustments (see instructions).  However, if you choose to report all these transactions on Form 8949, leave this line blank and go to line 8b
 					</span>
 				</td>
@@ -673,16 +678,13 @@
           </div>
           <!-- END LINE 11 -->
           <!-- BEGIN LINE 12 -->
-          <!--<div class="styGenericDiv">
-			  <div class="styLNLeftNumBox"/>
-			  <div class="styLNDesc" style="width:138.8mm;"/>
-			  <div class="styLNRightNumBox" style="border-bottom-width:0px;"/>
-			  <div class="styLNAmountBox" style="border-bottom-width:0px;"/>
-          </div>-->
           <div class="styGenericDiv" style="width:187mm;height:8mm;">
 			  <div class="styLNLeftNumBox" style="padding-top:4mm">12</div>
 			  <div class="styLNDesc" style="width:138.8mm;height:8mm;padding-top:4mm">
 				  Net long-term gain or (loss) from partnerships, S corporations, estates, and trusts from Schedule(s) K-1
+					<span style="float:right;font-weight:bold;padding-right:3mm;">
+						<span style="width:11px;"/>.
+					</span>
 			  </div>
 			  <div class="styLNRightNumBox" style="height:8mm;"><br/>12</div>
 			  <div class="styLNAmountBox" style="height:8mm;padding-top:4mm">
@@ -693,12 +695,6 @@
           </div>
           <!-- END LINE 12 -->
           <!-- BEGIN LINE 13 -->
-         <!--<div class="styGenericDiv">
-			  <div class="styLNLeftNumBox"/>
-			  <div class="styLNDesc" style="width:138.8mm;"/>
-			  <div class="styLNRightNumBox" style="border-bottom-width:0px;"/>
-			  <div class="styLNAmountBox" style="border-bottom-width:0px;"/>
-          </div>-->
           <div class="styGenericDiv" style="width:187mm;height:8mm">
 			  <div class="styLNLeftNumBox" style="padding-top:4mm">13</div>
 			  <div class="styLNDesc" style="width:138.8mm;height:8mm;padding-top:4mm">
@@ -784,7 +780,7 @@
           </div>
           <!-- END LINE 14 -->
           <!-- BEGIN LINE 15 -->
-          <div style="width:187mm;height:8mm;">
+          <div style="width:187mm;height:8mm; float:none; clear:both;">
 			  <div class="styLNLeftNumBox">15</div>
 			  <div class="styLNDesc" style="width:138.8mm;height:8mm;">
 				  <b>Net long-term capital gain or (loss). </b>Combine lines 8a through 14 in column (h). Then go to Part lll <br/>
@@ -828,7 +824,7 @@
           </div>
           <!-- END LINE 15 -->
           <!-- page footer -->
-          <div class="pageEnd" style="width:187mm;padding-top:1mm;border-top:1 solid black;border-top-width:1px;">
+          <div class="pageEnd" style="width:187mm;padding-top:1mm;border-top:1px solid black;border-top-width:1px;">
           <div class="stySmallText" style="width:110mm;">
            <span class="styBoldText">For Paperwork Reduction Act Notice, see your tax return instructions.</span>
             </div>
@@ -837,45 +833,45 @@
           </div>
           
         <!--Begin Page 2 -->
-        <div class="styBB" style="width:187mm;border-bottom-width:1px;">
+        <div class="styBB" style="width:187mm;border-bottom-width:1px; float:none; clear:both;">
           <span style="width:65mm;font-size:7pt;" class="styGenericDiv">Schedule D (Form 1040) 2013</span>
           <span style="float:right;font-size:7pt;text-align:center;" class="styGenericDiv">Page <b>2</b></span>
         </div>
         <!--  PART III HEADER -->
-        <div class="styBB" style="width:187mm;margin-top:2mm;">
-            <span class="styPartName" style="width:17mm;font-size:9pt;">Part lll</span>
-			<div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:9pt;padding-bottom:2mm;">
-			<span style="width:3mm;"/>
-          Summary <span style="padding-left:20mm;font-size:8pt;font-weight:normal;"></span>
+        <div class="styBB" style="width:187mm;">
+            <span class="styPartName" style="width:17mm;font-size:9pt;margin-top:2mm;margin-bottom:2mm;">Part lll</span>
+			<div class="styPartDesc" style="padding-left:4mm;width:168mm;font-size:9pt;margin-top:2mm;">
+				Summary
 			</div>
-        	</div> 
+        </div> 
         <!-- END PART III HEADER -->
         <!-- BEGIN LINE 16 -->
        <div class="styBB" style="width:187mm;border-bottom-width:0px;">
             <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;">16</div>
             <div class="styLNDesc" style="width:135mm;padding-top:1mm;">Combine lines 7 and 15 and enter the result
-             <span class="styBoldText">
+				<span class="styBoldText">
+					<span style="width:16px"/>.
 					<span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                    <span style="width:16px"/>.
-                     <span style="width:16px"/>.
                     <span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                      <span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                   </span>
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+				</span>
             </div>
             <div class="styLNRightNumBox" style="height:6mm;padding-top:1mm;width:8.2mm;">16</div>
             <div class="styLNAmountBox" style="width:37mm;height:6mm;padding-top:1mm;">
-            <xsl:call-template name="PopulateAmount">
-             <xsl:with-param name="TargetNode" select="$FormData/NetSTAndLTCapitalGainOrLossAmt"/>
-              </xsl:call-template>
-            </div>
-          </div>
+				<xsl:call-template name="PopulateAmount">
+					<xsl:with-param name="TargetNode" select="$FormData/NetSTAndLTCapitalGainOrLossAmt"/>
+				</xsl:call-template>
+			</div>
+		</div>
         <!-- Line 16 - first bulleted item -->
         <div class="styGenericDiv " style="width:187mm;">
            <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;"></div>
@@ -925,6 +921,7 @@
         <div class="styGenericDiv " style="width:187mm;height:5mm;">
             <div class="styLNLeftNumBox" style="width:6mm;height:5mm;"></div>
           <div class="styLNDesc" style="width:135mm;height:5mm;">
+          <span><xsl:call-template name="PopulateSpan"><xsl:with-param name="TargetNode" select="$FormData/STAndLTGainInd"/></xsl:call-template>
             <input type="checkbox" class="styCkBox">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/STAndLTGainInd"/>
@@ -939,7 +936,7 @@
         <span style="font-weight:bold;padding-left:1mm;">Yes.</span>
     
       </label>
-             Go to line 18.</div>
+             Go to line 18.</span></div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:5mm;"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:5mm;"/>
         </div>
@@ -948,6 +945,7 @@
         <div class="styGenericDiv " style="width:187mm;">
            <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;"></div>
           <div class="styLNDesc" style="width:135mm;">
+            <span><xsl:call-template name="PopulateSpan"><xsl:with-param name="TargetNode" select="$FormData/STAndLTGainInd"/></xsl:call-template>
             <input type="checkbox" class="styCkBox">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/STAndLTGainInd"/>
@@ -962,7 +960,7 @@
         <span style="font-weight:bold;padding-left:1mm;">No.</span>
     
       </label>
-             Skip lines 18 through 21, and go to line 22.</div>
+             Skip lines 18 through 21, and go to line 22.</span></div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:6mm;"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:6mm;"/>
         </div>
@@ -975,9 +973,10 @@
                 <xsl:with-param name="TargetNode" select="$FormData/RateGainWrkshtAmt"/>
             </xsl:call-template>
             <span class="styBoldText">
+                    <span style="width:6px"/>.
                     <span style="width:11px"/>.
-                     <span style="width:16px"/>.
-                   </span>
+                    <span style="width:11px"/>.
+			</span>
             <img src="{$ImagePath}/1040SchD_Bullet.gif" alt="right pointing bullet image" border="0"/>
           </div>
           <div class="styLNRightNumBox" style="width:8.2mm;height:4.4mm;">18</div>
@@ -996,7 +995,7 @@
         </div>
         <!-- BEGIN LINE 19 -->
         <div class="styGenericDiv " style="width:187mm;">
-         <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;">19</div>
+         <div class="styLNLeftNumBox" style="width:6mm;padding-top:1mm;height:auto;">19</div>
           <div class="styLNDesc" style="width:135mm;">Enter the amount, if any, from line 18 of the 
             <span style="font-weight:bold">Unrecaptured Section 1250 Gain Worksheet</span> in the </div>
              <div class="styLNRightNumBox" style="width:8.2mm;height:4mm;background-color:lightgrey;border-bottom-width:0px"/>
@@ -1006,23 +1005,23 @@
 					<span style="width:6px"/>.
                     <span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                       <span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
+                    <span style="width:16px"/>.
                    </span>
              <img src="{$ImagePath}/1040SchD_Bullet.gif" alt="right pointing bullet image" border="0"/>
           </div>
@@ -1052,6 +1051,7 @@
         <div class="styGenericDiv " style="width:187mm;">
          <div class="styLNLeftNumBox" style="width:6mm;"></div>
           <div class="styLNDesc" style="width: 135mm;">
+            <span><xsl:call-template name="PopulateSpan"><xsl:with-param name="TargetNode" select="$FormData/ZeroOrBlankInd"/></xsl:call-template>
             <input type="checkbox" class="styCkBox">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/ZeroOrBlankInd"/>
@@ -1071,7 +1071,7 @@
 			<span style="padding-left:7mm;"/>  Form 1040, line 44 (or in the instructions for 
 			Form 1040NR, line 42). <b>Do not</b>  complete lines 21<br/>
 			<span style="padding-left:7mm;"/>  and 22 below.
-          </div>
+          </span></div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:10.5mm;"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:10.5mm;"/>
         </div>
@@ -1080,6 +1080,7 @@
         <div class="styGenericDiv " style="width:187mm;">
           <div class="styLNLeftNumBox" style="width:6mm;"></div>
           <div class="styLNDesc" style="width: 135mm;">
+            <span><xsl:call-template name="PopulateSpan"><xsl:with-param name="TargetNode" select="$FormData/ZeroOrBlankInd"/></xsl:call-template>
             <input type="checkbox" class="styCkBox">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/ZeroOrBlankInd"/>
@@ -1095,7 +1096,7 @@
     
       </label>
            Complete the <b>Schedule D Tax Worksheet</b> in the instructions. <b> Do not</b> complete lines 21 and 22<br/> 		   <span style="padding-left:7mm;"/>  below.
-          </div>
+          </span></div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:11mm;"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:11mm;"/>
           <br/>
@@ -1167,6 +1168,7 @@
         <div class="styGenericDiv " style="width:187mm;height:7.5mm">
            <div class="styLNLeftNumBox" style="width:6mm;"></div>
           <div class="styLNDesc" style="width:135mm;">
+            <span><xsl:call-template name="PopulateSpan"><xsl:with-param name="TargetNode" select="$FormData/QualifiedDividendsInd"/></xsl:call-template>
             <input type="checkbox" class="styCkBox">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/QualifiedDividendsInd"/>
@@ -1181,7 +1183,7 @@
         <span style="font-weight:bold;padding-left:1mm;">Yes.</span>
       </label>
           Complete the <b>Qualified Dividends and Capital Gain Tax Worksheet</b> in the Instructions for<br/>
-          <span style="padding-left:7mm;"/>  Form 1040, line 44 (or in the Instructions for Form 1040NR, line 42).</div>
+          <span style="padding-left:7mm;"/>  Form 1040, line 44 (or in the Instructions for Form 1040NR, line 42).</span></div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:7.5mm"/>
           <div class="styLNAmountBox" style="width:37mm;border-bottom-width:0px;height:7.5mm;border-left-width:0;background-color:lightgrey;"/>
         </div>
@@ -1190,6 +1192,7 @@
         <div class="styGenericDiv " style="width:187mm;height:8mm">
           <div class="styLNLeftNumBox" style="width:6mm;"></div>
           <div class="styLNDesc" style="width:135mm;">
+            <span><xsl:call-template name="PopulateSpan"><xsl:with-param name="TargetNode" select="$FormData/QualifiedDividendsInd"/></xsl:call-template>
             <input type="checkbox" class="styCkBox">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/QualifiedDividendsInd"/>
@@ -1204,7 +1207,7 @@
         <span style="font-weight:bold;padding-left:1mm;">No.</span>
       </label>
            Complete the rest of Form 1040 or Form 1040NR.			
-			</div>
+			</span></div>
           <div class="styLNRightNumBox" style="width:8.2mm;background-color:lightgrey;border-bottom-width:0px;height:8mm"/>
           <div class="styLNAmountBox" style="width: 37mm;border-bottom-width:0px;height:8mm;border-left-width:0;background-color:lightgrey;"/>
         </div>
@@ -1215,7 +1218,6 @@
         <!--  PART III HEADER -->
         <div class="pageEnd">
         </div>
-              </div>
         <div class="styLeftOverTitleLine" id="LeftoverData">
           <div class="styLeftOverTitle">
           Additional Data        

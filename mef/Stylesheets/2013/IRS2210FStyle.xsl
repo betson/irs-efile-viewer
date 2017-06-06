@@ -34,7 +34,7 @@
   .styIRS2210DotLn { 
       letter-spacing:3.2mm;
       font-weight:bold; 
-      float: left;clear:none;
+      float:none;clear:none;
   }                        
 
 </xsl:template>

@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
-<!-- 05/15/2014 - Modified per UWR #107675 - Jeremy Nichols -->
+<!-- 05/05/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 07/28/2015 - Changes made for defect 43239 - Jeremy Nichols -->
+<!-- 10/09/2015 - Additional changes made for defect 43239 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -10,9 +12,15 @@
 	<xsl:output method="html" indent="yes" encoding="iso-8859-1"/>
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8865SchedulePData" select="$RtnDoc/IRS8865ScheduleP"/>
+	<xsl:variable name="containerHeight" select="3"/>
+	<xsl:variable name="p1Count" select="count($Form8865SchedulePData/AcquisitionInfo)"/>
+	<xsl:variable name="p2Count" select="count($Form8865SchedulePData/DispositionInfo)"/>
+	<xsl:variable name="p3Count" select="count($Form8865SchedulePData/ChangeInPropInterestInfo)"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8865SchedulePData)"/>
@@ -39,6 +47,7 @@
 			<body class="styBodyClass">
 				<form style="font-size:7pt" name="Form8865ScheduleP">
 					<xsl:call-template name="DocumentHeader"/>
+					<div style="display:block;">
 					<div class="styTBB" style="width:187mm">
 						<div class="styFNBox" style="height:20mm; width:31mm; font-size:7pt">
 							<div>
@@ -58,7 +67,7 @@
           </div>
 						</div>
 						<div class="styTYBox" style="font-size:7pt; width:31mm; height:20mm">
-							<div class="styOMB" style="height:2mm">OMB No. 1545-1668</div>
+							<div class="styOMB" style="height:4mm">OMB No. 1545-1668</div>
 							<div class="styTY" style="height:11mm;padding-top:2mm;">
           20<span class="stytycolor">14</span>
 							</div>
@@ -68,7 +77,7 @@
 					<div class="styBB" style="width:187mm;">
 					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;">
 						<tr>
-						  <td style="width:90mm;font-size:6pt;vertical-align:top;border-right:1 solid black;border-bottom:1 solid black;">
+						  <td style="width:90mm;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:1px solid black;">
 							<b>Name of person filing Form 8865</b><br/>
 							<xsl:choose>
 								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -88,7 +97,7 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</td>
-						  <td colspan="2" style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1 solid black;">
+						  <td colspan="2" style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1px solid black;">
 							<b>Filer's identifying number</b><br/>
 							<br/>
 							<xsl:choose>
@@ -106,7 +115,7 @@
 						</td>
 					</tr>
 					<tr>
-					  <td style="width:90mm;font-size:6pt;vertical-align:top;border-right:1 solid black;border-bottom:1 solid black;">
+					  <td style="width:90mm;font-size:6pt;vertical-align:top;border-right:1px solid black;border-bottom:1px solid black;">
 							<b>Name of foreign partnership</b><br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/ForeignPartnershipName/BusinessNameLine1Txt"/>
@@ -118,7 +127,7 @@
 								</xsl:call-template>
 							</xsl:if>
 						</td>
-						<td style="width:26mm;font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:1 solid black;border-bottom:1 solid black;">
+						<td style="width:26mm;font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:1px solid black;border-bottom:1px solid black;">
 							<b>EIN (if any)</b><br/><br/>
 							<xsl:choose>
 								<xsl:when test="$Form8865SchedulePData/EIN">
@@ -133,7 +142,7 @@
 								</xsl:otherwise>	 
 							</xsl:choose>
 						</td>
-						<td style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1 solid black;">
+						<td style="font-size:6pt;vertical-align:top;padding-left:0.5mm;border-right:0 solid black;border-bottom:1px solid black;">
 							<b>Reference ID number (see instr.)</b>
 							<xsl:if test="(count($Form8865SchedulePData/ForeignEntityIdentificationGrp) &lt;=1)">
 								<br/>
@@ -148,10 +157,9 @@
 						</tr>
 					  </table>
  					</div>
-					<xsl:variable name="containerHeight" select="3"/>
 					<!-- BEGIN Part I -->
-					<xsl:variable name="p1Count" select="count($Form8865SchedulePData/AcquisitionInfo)"/>
-					<div class="styIRS8865SchedulePBB" style="height:4mm; border-top:1 solid black">
+					<div style="display:block;">
+					<div class="styIRS8865SchedulePBB" style="height:4.5mm; border-top:1px solid black;display:block;">
 						<div class="styPartName" style="font-size:9.5pt">Part I</div>
 						<div class="styPartDesc" style="width:50mm;font-size:9.5pt">Acquisitions</div>
 						<div style="float:right;padding-top:0.5mm; vertical-align:bottom">
@@ -165,7 +173,8 @@
 							<!-- End button display logic -->
 						</div>
 					</div>
-					<div class="styIRS8865SchedulePTableContainer" id="part1TPctn">
+					<div style="display:block;">
+					<div class="styIRS8865SchedulePTableContainer" id="part1TPctn" style="border-bottom:0px;display:block;">
 						<xsl:attribute name="style"><xsl:if test="$p1Count &gt; $containerHeight">
             height:35.8mm;  
           </xsl:if></xsl:attribute>
@@ -175,22 +184,22 @@
 						<table class="styIRS8865SchedulePTable" cellspacing="0" cellpadding="0" border="0">
 							<thead class="styTableThead">
 								<tr align="center" style="height:11.7mm">
-									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:61mm" scope="col">(a)<br/>
+									<th class="styIRS8865SchedulePTblRB" style="width:60mm" scope="col">(a)<br/>
 										<span style="font-weight:normal">Name, address, and identifying number of<br/>person from whom your interest was acquired</span>
 									</th>
-									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:20mm" scope="col">(b)<br/>
+									<th class="styIRS8865SchedulePTblRB" style="width:20mm" scope="col">(b)<br/>
 										<span style="font-weight:normal">Date of acquisition</span>
 									</th>
-									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:31mm" scope="col">(c)<br/>
+									<th class="styIRS8865SchedulePTblRB" style="width:33.5mm" scope="col">(c)<br/>
 										<span style="font-weight:normal">FMV of<br/>interest acquired</span>
 									</th>
-									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:31mm" scope="col">(d)<br/>
+									<th class="styIRS8865SchedulePTblRB" nstyle="width:33.5mm" scope="col">(d)<br/>
 										<span style="font-weight:normal">Basis in<br/>interest acquired</span>
 									</th>
-									<th class="styIRS8865SchedulePTblRB" nowrap="nowrap" style="width:19.5mm" scope="col">(e)<br/>
+									<th class="styIRS8865SchedulePTblRB" style="width:20mm" scope="col">(e)<br/>
 										<span style="font-weight:normal">% of interest<br/>before acquisition</span>
 									</th>
-									<th class="styIRS8865SchedulePTblCell" nowrap="nowrap" style="width:19.5mm">(f)<br/>
+									<th class="styIRS8865SchedulePTblCell" style="width:20mm">(f)<br/>
 										<span style="font-weight:normal">% of interest<br/>after acquisition</span>
 									</th>
 								</tr>
@@ -214,100 +223,101 @@
 								<!-- If the Print parameter is set to be Separated, and there are more elements than the container height (3), execute -->
 								<xsl:if test="($Print = $Separated) and (count($Form8865SchedulePData/AcquisitionInfo) &gt; $containerHeight)">
 									<tr align="right" height="30">
-										<td class="styIRS8865SchedulePTblRB" align="left" style="font-size:7pt;">
+										<td class="styIRS8865SchedulePTblRB" align="left" style="width:60mm;font-size:7pt;">
 											<span id="/..">
 												<xsl:call-template name="PopulateAdditionalDataTableMessage">
 													<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/AcquisitionInfo"/>
 												</xsl:call-template>
 											</span>
 										</td>
-										<td class="styIRS8865SchedulePTblRB" align="center">
+										<td class="styIRS8865SchedulePTblRB" align="center" style="width:20mm">
 											<span id="/.."/><br/>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:33.5mm">
 											<span style="color:darkblue;" id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:33.5mm">
 											<span style="color:darkblue;" id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:20mm">
 											<span id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblCell">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblCell" style="width:20mm">
 											<span id="/..">
-                    <br/>
-                  </span>
-                </td>
+											<br/>
+										  </span>
+										</td>
 									</tr>
 									<tr align="right" height="30">
-										<td class="styIRS8865SchedulePTblRB" align="left" style="font-size:7pt;">
+										<td class="styIRS8865SchedulePTblRB" align="left" style="width:60mm;font-size:7pt;">
 											<span id="/..">
-                    <br/>
-                  </span>
+											<br/>
+										  </span>
 										</td>
-										<td class="styIRS8865SchedulePTblRB" align="center">
+										<td class="styIRS8865SchedulePTblRB" align="center" style="width:20mm">
 											<span id="/.."/><br/>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:33.5mm">
 											<span style="color:darkblue;" id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:33.5mm">
 											<span style="color:darkblue;" id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:20mm">
 											<span id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblCell">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblCell" style="width:20mm">
 											<span id="/..">
-                    <br/>
-                  </span>
-                </td>
+											<br/>
+										  </span>
+										</td>
 									</tr>
 									<tr align="right" height="30">
-										<td class="styIRS8865SchedulePTblRB" align="left" style="font-size:7pt;">
+										<td class="styIRS8865SchedulePTblRB" align="left" style="width:60mm;font-size:7pt;">
 											<span id="/..">
-                    <br/>
-                  </span>
+											<br/>
+										  </span>
 										</td>
-										<td class="styIRS8865SchedulePTblRB" align="center">
+										<td class="styIRS8865SchedulePTblRB" align="center" style="width:20mm">
 											<span id="/.."/><br/>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:20mm">
 											<span style="color:darkblue;" id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:33.5mm">
 											<span style="color:darkblue;" id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblRB">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblRB" style="width:33.5mm">
 											<span id="/..">
-                    <br/>
-                  </span>
-                </td>
-										<td class="styIRS8865SchedulePTblCell">
+											<br/>
+										  </span>
+										</td>
+										<td class="styIRS8865SchedulePTblCell" style="width:20mm">
 											<span id="/..">
-                    <br/>
-                  </span>
-                </td>
+											<br/>
+										  </span>
+										</td>
 									</tr>
 								</xsl:if>
 							</tbody>
 						</table>
+					</div>
 					</div>
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/AcquisitionInfo"/>
@@ -316,8 +326,8 @@
 						<xsl:with-param name="containerID" select="'part1TPctn'"/>
 					</xsl:call-template>
 					<!-- END Part I -->
+					</div>
 					<!-- BEGIN Part II -->
-					<xsl:variable name="p2Count" select="count($Form8865SchedulePData/DispositionInfo)"/>
 					<div class="styIRS8865SchedulePBB" style="height:4mm">
 						<div class="styPartName" style="font-size:9.5pt">Part II</div>
 						<div class="styPartDesc" style="font-size:9.5pt;width:50mm;">Dispositions</div>
@@ -332,6 +342,7 @@
 							<!-- end button display logic -->
 						</div>
 					</div>
+					<div style="display:block;">
 					<div class="styIRS8865SchedulePTableContainer" id="part2TPctn">
 						<xsl:attribute name="style"><xsl:if test="$p2Count &gt; $containerHeight">
             height:35.8mm;  
@@ -476,6 +487,7 @@
 							</tbody>
 						</table>
 					</div>
+					</div>
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/DispositionInfo"/>
 						<xsl:with-param name="containerHeight" select="$containerHeight"/>
@@ -484,9 +496,8 @@
 					</xsl:call-template>
 					<!-- END Part II -->
 					<!-- BEGIN Part III -->
-					<xsl:variable name="p3Count" select="count($Form8865SchedulePData/ChangeInPropInterestInfo)"/>
-					<div class="styIRS8865SchedulePBB" style="height:3mm">
-						<div class="styPartName" style="width:17mm;font-size:9.5pt">Part III</div>
+					<div class="styIRS8865SchedulePBB" style="height:4.5mm">
+						<div class="styPartName" style="height:4.5mm;width:17mm;font-size:9.5pt">Part III</div>
 						<div class="styPartDesc" style="font-size:9.5pt;width:70mm;">Change in Proportional Interest</div>
 						<div style="float:right;padding-top:0.5mm;vertical-align:bottom">
 							<!-- button display logic -->
@@ -656,7 +667,7 @@
 					<table class="styIRS8865SchedulePTable" cellspacing="0" cellpadding="0" border="0" style="width:187mm">
 						<thead class="styTableThead">
 							<tr>
-								<th class="styIRS8865SchedulePBB" nowrap="nowrap" scope="col" style="height:4mm;border-top:1 solid black">
+								<th class="styIRS8865SchedulePBB" nowrap="nowrap" scope="col" style="height:4mm;border-top:1px solid black">
 									<div class="styPartName" style="font-size:9.5pt">Part IV</div>
 									<div class="styPartDesc" style="font-size:9.5pt;width:140mm;">Supplemental Information Required To Be Reported <span class="styNormalText">(see instructions)</span>
 									</div>
@@ -670,7 +681,7 @@
 									<xsl:if test="($Print != $Separated) or (count($Form8865SchedulePData/SupplementalInfo8865ScheduleP) &lt;= 1)">
 										<xsl:for-each select="$Form8865SchedulePData/SupplementalInfo8865ScheduleP">
 											<tr>
-												<td style="border-bottom:1 solid black;">
+												<td style="border-bottom:1px solid black;">
 													<xsl:if test="position =last()">
 														<xsl:attribute name="style">border-bottom:0 solid black;</xsl:attribute>
 													</xsl:if>
@@ -698,8 +709,9 @@
 							</xsl:choose>
 						</tbody>
 					</table>
+					</div>
 					<!-- END Part IV -->
-					<div style="width:187mm; font-size:7pt; border-top:1 solid black; padding-top:1mm">
+					<div style="width:187mm; font-size:7pt; border-top:1px solid black; padding-top:1mm">
 						<div style="float:left; font-size:7pt">
 							<b>For Paperwork Reduction Act Notice, see the Instructions for Form 8865.</b>
 						</div>
@@ -713,8 +725,8 @@
 					<p style="page-break-before:always"/>
 					<div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif">
 						<div class="styLeftOverTitle">
-          Additional Data    
-        </div>
+						  Additional Data    
+						</div>
 						<div class="styLeftOverButtonContainer">
 							<input class="styLeftoverTableBtn" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage()" tabindex="1"/>
 						</div>
@@ -728,17 +740,17 @@
 					<xsl:if test="($Print =$Separated) and (count($Form8865SchedulePData/AcquisitionInfo) &gt; $containerHeight)">
 						<br/>
 						<br/>
+						<div style="display:block;">
 						<span class="styRepeatingDataTitle">Form IRS 8865 Schedule P, Part I - Acquisitions:</span>
-						<div>
-							<table class="styDepTbl" style="font-size:7pt">
+							<table class="styDepTbl" style="width:187mm;font-size:7pt">
 								<thead class="styTableThead">
 									<tr class="styDepTblHdr" align="center" style="height:11.7mm">
-										<th class="styDepTblCell" nowrap="nowrap" style="width:61mm" scope="col">(a)<br/>Name, address, and identifying number of<br/>person from whom your interest was acquired</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:20mm" scope="col">(b)<br/>Date of acquisition</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:31mm" scope="col">(c)<br/>FMV of<br/>interest acquired</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:31mm" scope="col">(d)<br/>Basis in<br/>interest acquired</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:19.5mm" scope="col">(e)<br/>% of interest<br/>before acquisition</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:19.5mm">(f)<br/>% of interest<br/>after acquisition</th>
+										<th class="styDepTblCell" style="width:60mm" scope="col">(a)<br/>Name, address, and identifying <br/>number of person from whom <br/>your interest was acquired</th>
+										<th class="styDepTblCell" style="width:20mm" scope="col">(b)<br/>Date of acquisition</th>
+										<th class="styDepTblCell" style="width:33.5mm" scope="col">(c)<br/>FMV of<br/>interest acquired</th>
+										<th class="styDepTblCell" style="width:33.5mm" scope="col">(d)<br/>Basis in<br/>interest acquired</th>
+										<th class="styDepTblCell" style="width:20mm" scope="col">(e)<br/>% of interest<br/>before acquisition</th>
+										<th class="styDepTblCell" style="width:20mm">(f)<br/>% of interest<br/>after acquisition</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -762,17 +774,17 @@
 					<xsl:if test="($Print =$Separated) and (count($Form8865SchedulePData/DispositionInfo) &gt; $containerHeight)">
 						<br/>
 						<br/>
+						<div style="display:block;">
 						<span class="styRepeatingDataTitle">Form IRS 8865 Schedule P, Part II - Dispositions:</span>
-						<div>
 							<table class="styDepTbl" style="font-size:7pt">
 								<thead class="styTableThead;">
 									<tr class="styDepTblHdr" align="center" style="height:11.7mm">
-										<th class="styDepTblCell" nowrap="nowrap" style="width:61mm" scope="col">(a)<br/>Name, address, and identifying number of<br/>person who acquired your interest</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:20mm" scope="col">(b)<br/>Date of disposition</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:31mm" scope="col">(c)<br/>FMV of<br/>interest disposed</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:31mm" scope="col">(d)<br/>Basis in<br/>interest disposed</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:19.5mm" scope="col">(e)<br/>% of interest<br/>before disposition</th>
-										<th class="styDepTblCell" nowrap="nowrap" style="width:19.5mm">(f)<br/>% of interest<br/>after disposition</th>
+										<th class="styDepTblCell" style="width:61mm" scope="col">(a)<br/>Name, address, and identifying number <br/>of person who acquired your interest</th>
+										<th class="styDepTblCell" style="width:20mm" scope="col">(b)<br/>Date of disposition</th>
+										<th class="styDepTblCell" style="width:31mm" scope="col">(c)<br/>FMV of<br/>interest disposed</th>
+										<th class="styDepTblCell" style="width:31mm" scope="col">(d)<br/>Basis in<br/>interest disposed</th>
+										<th class="styDepTblCell" style="width:19.5mm" scope="col">(e)<br/>% of interest<br/>before disposition</th>
+										<th class="styDepTblCell" style="width:19.5mm">(f)<br/>% of interest<br/>after disposition</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -832,12 +844,12 @@
 					<xsl:if test="($Print = $Separated) and (count($Form8865SchedulePData/SupplementalInfo8865ScheduleP) &gt; 1)">
 						<br/>
 						<br/>
+						<div style="display:block;">
 						<span class="styRepeatingDataTitle">Form IRS 8865 Schedule P, Part IV - Supplemental Information Required To Be Reported:</span>
-						<div>
 							<table class="styDepTbl" cellspacing="0" cellpadding="0" border="0" style="width:187mm">
 								<thead class="styTableThead">
 									<tr class="styDepTblHdr" style="height:10mm; ">
-										<th nowrap="nowrap" style="width:180mm; text-align:center; font-size:7pt; border-bottom:1 solid black" scope="col">
+										<th nowrap="nowrap" style="width:180mm; text-align:center; font-size:7pt; border-bottom:1px solid black" scope="col">
 											<b>Supplemental Information Required To Be Reported</b>
 										</th>
 									</tr>
@@ -850,7 +862,7 @@
 			            </xsl:when><xsl:otherwise>
 			              styDepTblRow2
 			            </xsl:otherwise></xsl:choose></xsl:attribute>
-											<td style="padding-top: 1mm; padding-bottom: 1mm; border-bottom:1 solid black;text-align: left; font-size: 7pt">
+											<td style="padding-top: 1mm; padding-bottom: 1mm; border-bottom:1px solid black;text-align: left; font-size: 7pt">
 												<xsl:if test="position = last()">
 													<xsl:attribute name="style">border-bottom:0 solid black;</xsl:attribute>
 												</xsl:if>
@@ -885,7 +897,7 @@
               styDepTblRow2
             </xsl:otherwise></xsl:choose></xsl:attribute>
 				</xsl:if>
-				<td class="styIRS8865SchedulePTblRB" align="left" style="font-size:7pt;">
+				<td class="styDepTblCell" align="left" style="width:60mm;font-size:7pt;">
 					<span style="font-family:verdana;font-size:6pt">
 						<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/AcquisitionInfo[$index]/AcquisitionsName/BusinessNameLine1Txt"/>
@@ -972,27 +984,27 @@
 					</xsl:choose>
           <br/>
         </td>
-				<td class="styIRS8865SchedulePTblRB" align="center">
+				<td class="styDepTblCell" align="center" style="width:20mm;">
 					<xsl:call-template name="PopulateMonthDayYear">
 						<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/AcquisitionInfo[$index]/AcquisitionDt"/>
 					</xsl:call-template><br/>
       </td>
-				<td class="styIRS8865SchedulePTblRB">
+				<td class="styDepTblCell" style="width:33.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/AcquisitionInfo[$index]/FMVOfInterestAcquiredAmt"/>
 					</xsl:call-template><br/>
       </td>
-				<td class="styIRS8865SchedulePTblRB">
+				<td class="styDepTblCell" style="width:33.5mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/AcquisitionInfo[$index]/BasisInInterestAcquiredAmt"/>
 					</xsl:call-template><br/>
       </td>
-				<td class="styIRS8865SchedulePTblRB">
+				<td class="styDepTblCell" style="width:20mm;">
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/AcquisitionInfo[$index]/InterestBeforeAcquisitionPct"/>
 					</xsl:call-template><br/>
       </td>
-				<td class="styIRS8865SchedulePTblCell">
+				<td class="styDepTblCell" style="width:20mm;">
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/AcquisitionInfo[$index]/InterestAfterAcquisitionPct"/>
 					</xsl:call-template><br/>
@@ -1216,7 +1228,7 @@
 	<xsl:template name="populateemptyrowsforpartiv">
 		<xsl:param name="IsSeparated" select="'no'"/>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<xsl:if test="$IsSeparated = 'yes' ">
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
 						<xsl:with-param name="TargetNode" select="$Form8865SchedulePData/SupplementalInfo8865ScheduleP"/>
@@ -1226,47 +1238,47 @@
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
 		<tr style="height:6mm;">
-			<td style="border-bottom:1 solid black;">
+			<td style="border-bottom:1px solid black;">
 				<span style="width:4px;"/>
 			</td>
 		</tr>
@@ -1303,13 +1315,13 @@
 			</xsl:if>
 			<xsl:if test="string(Desc)">
 				<tr>
-					<td style="text-align:justify; border-bottom:1 solid black" valign="top">
+					<td style="text-align:justify; border-bottom:1px solid black" valign="top">
 						<xsl:if test="(position() = last()) and ($showButLine = 0)">
 							<xsl:attribute name="style">
               text-align:justify; border-bottom:0
             </xsl:attribute>
 						</xsl:if>
-						<span style="line-height:300%; border-bottom:1 solid black;padding-bottom:2.5mm; ">
+						<span style="line-height:300%; border-bottom:1px solid black;padding-bottom:2.5mm; ">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="Desc"/>
 							</xsl:call-template>

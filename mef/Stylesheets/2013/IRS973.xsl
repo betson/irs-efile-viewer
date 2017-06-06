@@ -11,8 +11,10 @@
 	<xsl:variable name="StockInformationSize" select="count($Form973Data/StockInformation)"/>
 	<xsl:variable name="RowsToShow" select="9"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html xmlns="http://www.irs.gov/efile" xmlns:efile="http://www.irs.gov/efile">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form973Data)"/>
@@ -113,7 +115,7 @@ For tax year beginning
 					<!-- BEGIN Table expand/collapse toggle button end -->
 					<!-- Test for size of StockInformation collection, don't display table expand / colapse toggle button if not needed -->
 					<xsl:if test="$StockInformationSize &gt; $RowsToShow">
-						<div class="styBB" style="width:187mm;border-top-width:0px">
+						<div class="styBB" style="width:187mm;border-top-width:0px;">
 							<!-- Table expand/collapse toggle button-->
 							<span class="styGenericDiv" style="float:right;clear:none;width:7mm;text-align:right;">
 								<xsl:call-template name="SetDynamicTableToggleButton">
@@ -126,7 +128,7 @@ For tax year beginning
 						</div>
 					</xsl:if>
 					<!-- END Table expand/collapse toggle button end-->
-					<div class="styIRS973TableContainer" id="SIctn">
+					<div class="styIRS973TableContainer" style="height:72mm;"  id="SIctn">
 						<xsl:call-template name="SetInitialState"/>
 						<table cellspacing="0" class="styTable" cellpadding="0">
 							<thead class="styTableThead">

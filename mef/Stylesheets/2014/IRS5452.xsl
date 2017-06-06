@@ -13,8 +13,10 @@
 <xsl:param name="FormData" select="$RtnDoc/IRS5452"/>
             
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"/></xsl:call-template></title>    
     <!-- No Browser Caching -->
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -77,16 +79,16 @@
       </div>
       <!-- name and ein -->
       <div class="styIRS5452BB">
-        <div class="styFNBox" style="width:135mm; height:10mm">
-          Name          
+        <div class="styFNBox" style="width:125mm; height:10mm">
+          Name  <br/>        
             <div style="line-height:100%;">
       <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template><br/>
       <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param></xsl:call-template>
             </div>        
         </div>
-        <div style="float:left">
+        <div style="float:left; width:61mm;">
             <span style="width:2mm;"/><b>Employer identification number</b>
-            <div style="text-align:left;width:100%;padding-top:0.5mm;padding-left:2mm;">
+            <div style="text-align:left;width:100%;padding-top:3mm;padding-left:3mm;">
       <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">EIN</xsl:with-param></xsl:call-template>          
             </div>            
         </div>
@@ -152,7 +154,7 @@
         <div style="float:left;">
           If "Yes," enter the applicable year(s)<span style="width:2mm;"/>
         </div>
-        <div style="float:left;width:105mm;border-bottom:1 solid black;">
+        <div style="float:left;width:105mm;border-bottom:1px solid black;">
         <xsl:choose>
           <xsl:when test="($Print != $Separated) or (($Print = $Separated) and (count($FormData/ApplicableYr) &lt;13))">
           <xsl:for-each select="$FormData/ApplicableYr">
@@ -224,7 +226,7 @@
       </div>
       <!-- line B -->
       <div style="height:4mm;"/>
-      <div style="width:187mm; padding-top:1mm;border-bottom:1 solid black;">
+      <div style="width:187mm; padding-top:1mm;border-bottom:1px solid black;">
         <div class="styIRS5452Idx"/>        
         <div style="float:left;">
           If "Yes," attach explanation.
@@ -234,13 +236,13 @@
           </xsl:call-template>
       </div>
       <!-- line C -->
-      <div style="width:187mm; border-bottom:1 solid black;">
-        <div style="width:93mm;height:40mm;border-right:1 solid black;float:left;">
+      <div style="width:187mm; border-bottom:1px solid black;">
+        <div style="width:93mm;height:40mm;border-right:1px solid black;float:left;">
           <div style="height:2mm;font-size:1pt;"/>
           <div style="width:93mm;">
             <div class="styIRS5452Idx" style="height:8mm;">C</div>
             <div style="float:left;">
-              <span style="font-weight:bold;">  Earnings and Profits </span>(See <span style="font-weight:bold;">Supporting<br/>
+              <span style="font-weight:bold;display:inline;">  Earnings and Profits </span>(See <span style="font-weight:bold;display:inline;">Supporting<br/>
               Information </span>in instructions.)
             </div>
           </div>
@@ -293,7 +295,7 @@
           <div style="width:93mm;">
             <div class="styIRS5452Idx" style="height:8mm;">D</div>
             <div style="float:left;">
-              <span style="font-weight:bold;">  Shareholders at Date of Last Dividend <br/>Payment</span>
+              <span style="font-weight:bold;display:inline;">  Shareholders at Date of Last Dividend <br/>Payment</span>
             </div>
           </div>
           <div style="width:93mm;">
@@ -344,14 +346,14 @@
         </div>
       </div>
       <!-- table E -->
-      <div style="width:187mm; height:8mm; border-bottom:1 solid black;padding-top:2mm;">
+      <div style="width:187mm; height:8mm; border-bottom:1px solid black;padding-top:2mm;">
         <div class="styIRS5452Idx">E</div>        
         <div style="float:left;">
-          <span style="font-weight:bold;">Corporate Distributions </span>(see instructions) 
+          <span style="font-weight:bold;display:inline;">Corporate Distributions </span>(see instructions) 
         </div>
         <div style="float:right; vertical-align:middle;">              
           <!-- button display logic -->          
-          <xsl:call-template name="SetTableToggleButton">
+          <xsl:call-template name="SetDynamicTableToggleButton">
             <xsl:with-param name="TargetNode" select="$FormData/CorporateDistributions"/>
             <xsl:with-param name="containerHeight" select="11"/>
             <xsl:with-param name="containerID" select=" 'LineETable' "/>
@@ -359,7 +361,7 @@
            <!-- end button display logic -->  
         </div>      
       </div>
-      <div style="width:187mm;height:117mm;overflow-y:auto;" name="LineETable" id="LineETable">
+      <div style="width:187mm;height:auto;overflow-y:auto;display:block;" name="LineETable" id="LineETable">
       <!-- print logic -->
         <xsl:call-template name="SetInitialState"/>
       <!-- end -->
@@ -636,12 +638,9 @@
                   <td class="styIRS5452TabCell" style="text-align:right;padding-right:.4mm;border-right:0;">%</td>            
                 </tr>  
               </xsl:if>
-
-          </tbody>
-          <tfoot style="height:12mm;text-align:right;vertical-align:bottom;">
             <tr>
               <td class="styIRS5452TabCell" style="height:12mm;text-align:center;font-weight:bold;font-size:8pt;">Totals</td>
-              <td class="styIRS5452TabCell" style="height:12mm;border-right:1 solid black;" colspan="2">
+              <td class="styIRS5452TabCell" style="height:12mm;border-right:1px solid black;" colspan="2">
                 <span style="float:left;padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">
@@ -686,9 +685,19 @@
               </td>            
               <td class="styIRS5452TabCell" style="height:12mm;border-right:0;background-color:lightgrey;">&#160;</td>      
             </tr>
+          </tbody>
+          <tfoot style="height:12mm;text-align:right;vertical-align:bottom;">
+
           </tfoot>
          </table>
       </div>
+      	<!-- Set Initial Height of Above Table -->
+		<xsl:call-template name="SetInitialDynamicTableHeight">
+			<xsl:with-param name="TargetNode" select="$FormData/CorporateDistributions"/>
+			<xsl:with-param name="containerHeight" select="11"/>
+			<xsl:with-param name="containerID" select=" 'LineETable' "/>
+		</xsl:call-template>
+		<!-- End Set Initial Height of Above Table -->
       <!-- footer line -->
       <div style="width:187mm;">
       <span class="styBoldText" style="font-size:8pt;">For Paperwork Reduction Act Notice, see the instructions.</span> 
@@ -696,7 +705,7 @@
         Cat. No. 11881T
         <span style="width:86px;"/>  
         Form <span class="styBoldText">5452</span>(Rev. 12-2006)
-             </div><br class="pageEnd"/>
+             </div><div class="pageEnd"/>
       <!--Note because the E table is a few mm off on the right hand side that is why the page end look misaligned -->
 
       <!-- leftover data -->        
@@ -853,7 +862,7 @@
           <tfoot style="height:8mm;text-align:right;vertical-align:bottom;">
             <tr class="styDepTblHdr">
               <td class="styIRS5452TabCell" style="height:8mm;text-align:center;font-weight:bold;font-size:8pt;">Totals</td>
-              <td class="styIRS5452TabCell" style="height:8mm;border-right:1 solid black;" colspan="2">
+              <td class="styIRS5452TabCell" style="height:8mm;border-right:1px solid black;" colspan="2">
                 <span style="float:left;padding-left:.4mm;">$</span>
                 <span style="float:right;">
                   <xsl:call-template name="PopulateAmount">

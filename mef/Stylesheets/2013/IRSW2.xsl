@@ -10,8 +10,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormW2Data" select="$RtnDoc/IRSW2"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormW2Data)"/>
@@ -34,14 +36,14 @@
             <xsl:call-template name="AddOnStyle"/>
           </xsl:if>
         </style>
-        <xsl:call-template name="GlobalStylesForm"/>
+        <xsl:call-template name="GlobalStylesForm"/>	
       </head>
       <body class="styBodyClass">
         <form name="FormW2">
           <!-- WARNING LINE -->
           <xsl:call-template name="DocumentHeader"/>
           <!-- Big box covers entire form -->
-          <div style="width:187mm;height:109mm;border-top:1px solid black;
+          <div style="width:187mm;height:auto;border-top:1px solid black;
             border-bottom:0px solid black;border-left:1px solid black;border-right:1px solid black">
             <!-- Box covers Blank box, Employee's ssn and OMB no.... -->
             <div class="styIRSW2leftBox" style="width:187mm;height:8.47mm;border-left:0px; 
@@ -131,7 +133,7 @@
                   <span style="width:.5mm"/>
                 </span>
                 <span style="font-size: 6pt">Wages, tips, other compensation</span>
-                <span style="padding-top:1mm;width:39.5mm;float:bottom;text-align:right">
+                <span style="padding-top:1mm;width:38mm;float:bottom;text-align:right">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormW2Data/WagesAmt"/>
                   </xsl:call-template>
@@ -153,10 +155,10 @@
               </div><!-- Closes Box 2-->
             </div><!-- Closes Box for Employer Id num, Box 1 and Box 2 -->
             <!-- Box covers Employer's name, addr, zip and Boxes 3-8 -->
-            <div class="styIRSW2leftBox" style="width:187mm;height:25.3mm;border-left:0px; 
+            <div class="styIRSW2leftBox" style="width:187mm;height:25.41mm;border-left:0px; 
               border-bottom:1px solid black;">
               <!-- Employer's name, address, and ZIP code -->
-              <div class="styIRSW2leftBox" style="width:105mm;height:25.3mm; 
+              <div class="styIRSW2leftBox" style="width:105mm;height:25.41mm; 
                 border-left:0px solid black;border-right:1px solid black">
                 <span style="width:1.5mm"/>
                 <span style="font-size: 6.5pt;font-weight:bold;">c 
@@ -239,14 +241,14 @@
                 </xsl:if>
               </div><!-- Closes Employer's name, addr and ZIP code -->
               <!-- Box covers Boxes 3-8 -->
-              <div class="styIRSW2leftBox" style="width:81.8mm;height:24.5mm;border-left:0px; 
+              <div class="styIRSW2leftBox" style="width:82mm;height:25.41mm;border-left:0px; 
                 border-right:0px solid black;">
                 <!-- Boxes 3 and 4 -->
-                <div class="styIRSW2leftBox" style="width:81.8mm;height:8.33mm;
+                <div class="styIRSW2leftBox" style="width:82mm;height:8.47mm;
                   border-left:0px solid black;border-right:0px solid black;
                   border-bottom:1px solid black;">
                   <!-- Box 3 -->
-                  <div class="styIRSW2leftBox" style="width:41mm;height:8.33mm;
+                  <div class="styIRSW2leftBox" style="width:41mm;height:8.47mm;
                     border-left:0px solid black;border-right:1px solid black;
                     border-top:0px solid black;border-bottom:0px solid black">
                     <span style="width:1.5mm"/>
@@ -254,14 +256,14 @@
                       <span style="width:.5mm"/>
                     </span>
                     <span style="font-size: 6.5pt">Social security wages</span>
-                    <span style="padding-top:1mm;width:40mm;float:bottom;text-align:right">
+                    <span style="padding-top:1mm;width:38mm;float:bottom;text-align:right">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormW2Data/SocialSecurityWagesAmt"/>
                       </xsl:call-template>
                     </span>
                   </div><!-- Closes Box 3-->
                   <!-- Box 4 -->
-                  <div class="styIRSW2leftBox" style="width:40mm;height:8.33mm;
+                  <div class="styIRSW2leftBox" style="width:41mm;height:8.47mm;
                     border-left:0px solid black;border-right:0px solid black;
                     border-top:0px solid black;border-bottom:0px solid black">
                     <span style="width:2.3mm"/>
@@ -277,11 +279,11 @@
                   </div><!-- Closes Box 4 -->
                 </div><!-- Closes Boxes 3 and 4 -->
                 <!-- Boxes 5 and 6 -->
-                <div class="styIRSW2leftBox" style="width:81.8mm;height:8.33mm;
+                <div class="styIRSW2leftBox" style="width:82mm;height:8.47mm;
                   border-left:0px solid black;border-right:0px solid black;
                   border-bottom:1px solid black;">
                   <!-- Box 5 -->
-                  <div class="styIRSW2leftBox" style="width:41mm;height:8.33mm;
+                  <div class="styIRSW2leftBox" style="width:41mm;height:8.47mm;
                     border-left:0px solid black;border-right:1px solid black;
                     border-top:0px solid black;border-bottom:0px solid black">
                     <span style="width:1.5mm"/>
@@ -289,14 +291,14 @@
                       <span style="width:.5mm"/>
                     </span>
                     <span style="font-size: 6.5pt">Medicare wages and tips</span>
-                    <span style="padding-top:1mm;width:40mm;float:bottom;text-align:right">
+                    <span style="padding-top:1mm;width:38mm;float:bottom;text-align:right">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormW2Data/MedicareWagesAndTipsAmt"/>
                       </xsl:call-template>
                     </span>
                   </div><!-- Closes Box 5-->
                   <!-- Box 6 -->
-                  <div class="styIRSW2leftBox" style="width:40mm;height:8.33mm;
+                  <div class="styIRSW2leftBox" style="width:41mm;height:8.47mm;
                     border-left:0px solid black;border-right:0px solid black;
                     border-top:0px solid black;border-bottom:0px solid black">
                     <span style="width:2.3mm"/>
@@ -312,11 +314,11 @@
                   </div><!-- Closes Box 6 -->
                 </div><!-- Closes Boxes 5 and 6 -->
                 <!-- Boxes 7 and 8 -->
-                <div class="styIRSW2leftBox" style="width:81mm;height:8.36mm; 
+                <div class="styIRSW2leftBox" style="width:82mm;height:8.47mm; 
                   border-left:0px solid black;border-right:0px solid black;
                   border-bottom:0px solid black;">
                   <!-- Box 7 -->
-                  <div class="styIRSW2leftBox" style="width:41mm;height:8.6mm;
+                  <div class="styIRSW2leftBox" style="width:41mm;height:8.47mm;
                     border-left:0px solid black;border-right:1px solid black;
                     border-top:0px solid black;border-bottom:0px solid black">
                     <span style="width:1.5mm"/>
@@ -324,14 +326,14 @@
                       <span style="width:.5mm"/>
                     </span>
                     <span style="font-size: 6.5pt">Social security tips</span>
-                    <span style="padding-top:1mm;width:40mm;float:bottom;text-align:right">
+                    <span style="padding-top:1mm;width:38mm;float:bottom;text-align:right">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormW2Data/SocialSecurityTipsAmt"/>
                       </xsl:call-template>
                     </span>
                   </div><!-- Closes Box 7-->
                   <!-- Box 8 -->
-                  <div class="styIRSW2leftBox" style="width:40mm;height:8.36mm;
+                  <div class="styIRSW2leftBox" style="width:41mm;height:8.47mm;
                     border-left:0px solid black;border-right:0px solid black;
                     border-top:0px solid black;border-bottom:0px solid black">
                     <span style="width:2.3mm"/>
@@ -366,7 +368,7 @@
                 </xsl:call-template>
               </div><!-- Closes Control number -->
               <!-- Box 9 -->
-              <div class="styIRSW2leftBox" style="width:41mm;height:8.47mm;border-left:0px solid black;background-color:lightgrey;">
+              <div class="styIRSW2leftBox" style="width:40.8mm;height:8.3mm;border-left:0px solid black;background-color:lightgrey;">
                 <span style="font-size: 6.5pt;font-weight:bold;background-color:white;">
                   <span style="width:1.5mm"/>
                   9
@@ -394,11 +396,11 @@
             </div><!-- Closes Box for Control num, Box 9 and Box 10 -->
             <!-- Box covers Boxes e and f (Employee's first name and initial, last name, suff and Employee's 
                   addr and zip) and Boxes 11-14 -->
-            <div style="width:187mm;height:47mm;border-left:0px;
+            <div style="width:187mm;height:auto;border-left:0px;
               border-bottom:1px solid black;">
               <!-- Big Box covers Boxes e and f (Employee's first name and initial, last name, suff. and 
                     Employee's addr and zip) -->
-              <div class="styIRSW2leftBox" style="width:105mm;height:47.3mm;border-left:0px solid black;
+              <div class="styIRSW2leftBox" style="width:105mm;height:47mm;border-left:0px solid black;
                 border-right:0px solid black">
                 <!-- Box e (Employee's first name and initial, last name, suff.) -->
                 <div class="styIRSW2leftBox" style="width:105mm;height:22.2mm;
@@ -424,10 +426,10 @@
                     <span style="width:.5mm"/>
                   </span>
                   <span style="font-size: 6.5pt">Employee's address and ZIP code</span>
-                  <br/>
+                  <br/>				  
                   <xsl:if test="$FormW2Data/EmployeeUSAddress">
-                    <span style="width:4mm;float:left;"/>
-                    <span style="float:left;">
+                    <span style="width:4mm;"/>
+                    <span>
 						<xsl:call-template name="PopulateText">
 						  <xsl:with-param name="TargetNode" select="$FormW2Data/EmployeeUSAddress/AddressLine1"/>
 						</xsl:call-template>
@@ -473,29 +475,29 @@
               </div><!-- Closes Boxes e and f (Employee's first name and initial, last name, suff and 
                             Employee's addr and zip). -->
               <!-- Box covers Boxes 11, 12a, 12b, 12c, 12d, 13 and 14 -->
-              <div class="styIRSW2leftBox" style="width:81.5mm;height:47mm;border-left:0px;
+              <div class="styIRSW2leftBox" style="width:82mm;height:auto;border-left:0px;
                 border-right:0px solid black;float:left;clear:none">
                 <!-- Box covers Boxes 11, 13, 14 -->
-                <div class="styIRSW2leftBox" style="width:40.5mm;height:47mm;border-left:0px;
+                <div class="styIRSW2leftBox" style="width:41mm;height:auto;border-left:0px;
                   border-right:1px solid black;">
                   <!-- Boxes 11-->
-                  <div class="styIRSW2leftBox" style="width:40.5mm;height:10.7mm;border-left:0px;
+                  <div class="styIRSW2leftBox" style="width:41mm;height:10.5mm;border-left:0px;
                     border-left:1px solid black;border-right:0px;border-top:0px;border-bottom:1px solid black">
                     <span style="width:.5mm"/>
                     <span style="font-size: 6.5pt;font-weight:bold;">11 
                       <span style="width:.5mm"/>
                     </span>
                     <span style="font-size: 6.5pt">Nonqualified plans</span>
-                    <span style="padding-top:1mm;width:39.5mm;float:bottom;text-align:right">
+                    <span style="padding-top:1mm;width:38mm;float:bottom;text-align:right">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$FormW2Data/NonqualifiedPlansAmt"/>
                       </xsl:call-template>
                     </span>
                   </div><!-- Closes Box 11-->
                   <!-- Box 13 -->
-                  <div class="styIRSW2leftBox" style="width:40.5mm;height:10.7mm;border-left:0px;
+                  <div class="styIRSW2leftBox" style="width:41mm;height:10.5mm;border-left:0px;
                     border-right:0px;border-top:0px;border-bottom:1px solid black">
-                     <div class="styIRSW2leftBox" style="width:14.5mm;height:10.7mm;border-left:1px solid black;
+                     <div class="styIRSW2leftBox" style="width:14.5mm;height:10.5mm;border-left:1px solid black;
                        border-right:0px;border-top:0px;border-bottom:0px">                     
                         <span style="width:.3mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">13</span>
@@ -504,21 +506,21 @@
                               <xsl:with-param name="TargetNode" select="$FormW2Data/StatutoryEmployeeInd"/>
                               <xsl:with-param name="BackupName">FormW2DataStatutoryEmployeeInd</xsl:with-param>
                            </xsl:call-template>
-                           <span style="font-size: 6pt">Statutory</span>
+                           <span style="font-size: 5pt">Statutory</span>
                            <br/>
                            <span style="width:3.7mm"/>
-                           <span style="font-size: 6pt">employee</span>
+                           <span style="font-size: 5pt">employee</span>
                         </label>
                         <br/>
                         <span style="width:3.5mm"/>
-                        <input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+                        <input type="checkbox" class="styCkbox" style="height:3mm;width:3mm;">
                            <xsl:call-template name="PopulateCheckbox">
                               <xsl:with-param name="TargetNode" select="$FormW2Data/StatutoryEmployeeInd"/>
                               <xsl:with-param name="BackupName">FormW2DataStatutoryEmployeeInd</xsl:with-param>
                            </xsl:call-template>
                         </input>
                     </div>
-                    <div class="styIRSW2leftBox" style="width:12.7mm;height:10.7mm;border-left:0px;
+                    <div class="styIRSW2leftBox" style="width:12.7mm;height:10.5mm;border-left:0px;
                        border-right:0px solid black;border-top:0px;border-bottom:0px solid black">                     
                        <span style="width:.5mm"/>
                        <label>
@@ -526,21 +528,21 @@
                              <xsl:with-param name="TargetNode" select="$FormW2Data/RetirementPlanInd"/>
                              <xsl:with-param name="BackupName">FormW2DataRetirementPlanInd</xsl:with-param>
                           </xsl:call-template>
-                          <span style="font-size: 6pt">Retirement</span>
+                          <span style="font-size: 5pt">Retirement</span>
                           <br/>
                           <span style="width:.5mm"/>
-                          <span style="font-size: 6pt">plan</span>
+                          <span style="font-size: 5pt">plan</span>
                        </label>
                        <br/>
                        <span style="width:.5mm;"/>
-                       <input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+                       <input type="checkbox" class="styCkbox" style="height:3mm;width:3mm;">
                           <xsl:call-template name="PopulateCheckbox">
                              <xsl:with-param name="TargetNode" select="$FormW2Data/RetirementPlanInd"/>
                              <xsl:with-param name="BackupName">FormW2DataRetirementPlanInd</xsl:with-param>
                           </xsl:call-template>
                        </input>
                     </div>
-                    <div class="styIRSW2leftBox" style="width:13.3mm;height:10.7mm;border-left:0px;
+                    <div class="styIRSW2leftBox" style="width:13.3mm;height:10.5mm;border-left:0px;
                        border-right:0px solid black;border-top:0px;border-bottom:0px solid black">                     
                        <span style="width:.5mm"/>
                        <label>
@@ -548,14 +550,14 @@
                              <xsl:with-param name="TargetNode" select="$FormW2Data/ThirdPartySickPayInd"/>
                              <xsl:with-param name="BackupName">FormW2DataThirdPartySickPayInd</xsl:with-param>
                           </xsl:call-template>
-                          <span style="font-size: 6pt">Third-party</span>
+                          <span style="font-size: 5pt">Third-party</span>
                           <br/>
                           <span style="width:.5mm"/>
-                          <span style="font-size: 6pt">sick pay</span>
+                          <span style="font-size: 5pt">sick pay</span>
                        </label>
                        <br/>
                        <span style="width:.5mm;"/>
-                       <input type="checkbox" class="styCkbox" style="height:4mm;width:4mm;">
+                       <input type="checkbox" class="styCkbox" style="height:3mm;width:3mm;">
                           <xsl:call-template name="PopulateCheckbox">
                              <xsl:with-param name="TargetNode" select="$FormW2Data/ThirdPartySickPayInd"/>
                              <xsl:with-param name="BackupName">FormW2DataThirdPartySickPayInd</xsl:with-param>
@@ -564,7 +566,7 @@
                     </div>
                   </div><!-- Closes Box 13-->
                   <!-- Box 14 -->
-                  <div class="styGenericDiv" style="width:35.5mm;height:4mm;font:size:6.5pt;border-left:1px solid black">
+                  <div class="styGenericDiv" style="width:35.5mm;height:4mm;font-size:6.5pt;border-left:1px solid black">
                     <span style="width:35.5mm;height:4mm;">                              
                       <span style="font-weight:bold;">14</span>      
                       <span style="width:.5mm"/>Other
@@ -582,16 +584,16 @@
                   </div>
                   <!-- Line 14 inline print for when data is blank-->
                   <xsl:if test="($Print = 'inline') and (count($FormW2Data/OtherDeductsBenefits) &lt;1)">
-                    <div class="styGenericDiv" style="width:40mm;height:22mm;font-size:7pt;
+                    <div class="styGenericDiv" style="width:41mm;height:22mm;font-size:7pt;
                       border-left:1px solid black">
                     </div>
                   </xsl:if> 
                   <!-- Line 14 inline print for all data except when blank-->
                   <xsl:if test="($Print = 'inline') and (count($FormW2Data/OtherDeductsBenefits) &gt;= 1)">
-                    <div class="styGenericDiv" style="width:40mm;height:22mm;font-size:7pt;
+                    <div class="styGenericDiv" style="width:41mm;height:auto;font-size:7pt;
                       border-left:1px solid black">
                     <!--This next section was commented out due to display problems with inline printing.-->
-                    <!--<div class="styTableContainer" style="width:40.5mm;height:22.5mm;border-right:0px;
+                    <!--<div class="styTableContainer" style="width:41mm;height:22.5mm;border-right:0px;
                            border-bottom:0px solid black;border-left:1px solid black" id="othDedBen">-->
                       <!--print logic -->
                       <!--<xsl:call-template name="SetInitialState"/>-->
@@ -600,7 +602,7 @@
                         <!--<thead class="styTableThead">
                           <tr>
                             <th class="styTableCellHeader" scope="col" style="vertical-align:top;padding-top:0mm;
-                              font-size:7pt;width:40.5mm;border-bottom-width:0px;border-right:0px;">
+                              font-size:7pt;width:41mm;border-bottom-width:0px;border-right:0px;">
                             </th>
                           </tr>
                         </thead>-->
@@ -642,7 +644,7 @@
                   </xsl:if>
                   <!-- Line 14 for all data that is not inline print and not separated print-->
                   <xsl:if test="($Print != 'inline') and ($Print !=$Separated)">
-                    <div class="styTableContainer" style="width:40.5mm;height:22.5mm;border-right:0px;
+                    <div class="styTableContainer" style="width:41mm;height:auto;min-height:24mm;border-right:0px;
                       border-bottom:0px solid black;border-left:1px solid black" id="othDedBen">
                       <!-- print logic -->
                       <xsl:call-template name="SetInitialState"/>
@@ -651,7 +653,7 @@
                         <!--<thead class="styTableThead">
                           <tr>
                             <th class="styTableCellHeader" scope="col" style="vertical-align:top;padding-top:0mm;
-                              font-size:7pt;width:40.5mm;border-bottom-width:0px;border-right:0px;">
+                              font-size:7pt;width:41mm;border-bottom-width:0px;border-right:0px;">
                             </th>
                           </tr>
                         </thead>-->
@@ -700,11 +702,11 @@
                   </xsl:if>
                   <!-- Line 14 Code to See Additional Data Table for Separated Print and data > 2-->
                   <xsl:if test="($Print = $Separated) and (count($FormW2Data/OtherDeductsBenefits) &gt;2)">
-                    <div class="styGenericDiv" style="width:40mm;height:22.7mm;font-size:7pt;
+                    <div class="styGenericDiv" style="width:41mm;height:22.7mm;font-size:7pt;
                       border-left:1px solid black">
                       <tbody>
                         <tr>
-                          <td class="styTableCellText" style="width:40mm;height:22.7mm;font-size:7pt;
+                          <td class="styTableCellText" style="width:41mm;height:22.7mm;font-size:7pt;
                             border-left:0px solid black">
                             <span style="width:2px"/>
                             <xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -717,7 +719,7 @@
                   </xsl:if>
                   <!-- Line 14 Code for Separated Print and data less than =2 -->
                   <xsl:if test="($Print = $Separated) and (count($FormW2Data/OtherDeductsBenefits) &lt;=2)">
-                    <!--<div class="styTableContainer" style="width:40.5mm;height:22.1mm;border-right:0px;
+                    <!--<div class="styTableContainer" style="width:41mm;height:22.1mm;border-right:0px;
                       border-bottom:0px solid black;border-left:1px solid black" id="othDedBen">-->
                       <!-- print logic -->
                       <!--<xsl:call-template name="SetInitialState"/>-->
@@ -725,11 +727,11 @@
                       <!--<thead class="styTableThead">
                           <tr>
                             <th class="styTableCellHeader" scope="col" style="vertical-align:top;padding-top:0mm;
-                              font-size:7pt;width:40.5mm;border-bottom-width:0px;border-right:0px;">
+                              font-size:7pt;width:41mm;border-bottom-width:0px;border-right:0px;">
                             </th>
                           </tr>
                         </thead>-->
-                    <div class="styGenericDiv" style="width:40mm;height:22.1mm;font-size:7pt;
+                    <div class="styGenericDiv" style="width:41mm;height:22.1mm;font-size:7pt;
                       border-left:1px solid black">
                       <table class="styTable" cellspacing="0">
                         <tfoot/>
@@ -769,23 +771,23 @@
                 <!-- Big Box 12 and Grey box  -->
                 <!-- Code for No Data in Boxes 12a, 12b, 12c and 12d or less than 4 data items-->
                 <xsl:if test="(count($FormW2Data/EmployersUseGrp) &lt;=4)">
-                  <div class="styIRSW2leftBox" style="width:40.5mm;height:46.5mm; 
+                  <div class="styIRSW2leftBox" style="width:41mm;height:auto; 
                     border-left:0px;border-right:0px;border-top:0px;border-bottom:0px">
                     <!--<xsl:if test="($Print != $Separated) or (count($FormW2Data/EmployersUseGrp)&lt;= 4)">-->
                     <!-- Boxes 12a, 12b, 12c and 12d -->
-                    <div class="styIRSW2leftBox" style="width:40.5mm;height:9.5mm;
+                    <div class="styIRSW2leftBox" style="width:41mm;
                       border-left:0px;border-right:0px;border-top:0px;border-bottom:0px">
                       <!-- Left Box 12a -->
-                      <div class="styIRSW2leftBox" style="width:40.5mm;height:2mm;
+                      <div class="styIRSW2leftBox" style="width:41mm;height:3mm;
                         border-left:0px;border-right:0px;border-top:0px;border-bottom:0px">
                         <span style="width:1mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">12a</span>
                         <span style="width:.8mm;"/>
-                        <span style="font-size:7.5">See instructions for box 12</span>
+                        <span style="font-size:6pt;">See instructions for box 12</span>
                       </div>
                       <div class="styIRSW2leftBox" style="width:12mm;height:7.5mm;border-top:0px;
                         border-left:0px;border-right:1px solid black;border-bottom:1px solid black">
-                        <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                        <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                           border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                         <span style="font-size:6pt;padding-top:1mm;width:7mm;float:bottom;">
                           <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -824,7 +826,7 @@
                         </span>
                       </div><!-- Closes Right Box 12a-->
                       <!-- Left Box 12b -->
-                      <div class="styIRSW2leftBox" style="width:40.5mm;height:2mm;border-top:0px;
+                      <div class="styIRSW2leftBox" style="width:41mm;height:3mm;border-top:0px;
                         border-left:0px;border-right:0px;border-bottom:0px">
                         <span style="width:1.5mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">12b
@@ -833,7 +835,7 @@
                       </div>
                       <div class="styIRSW2leftBox" style="width:12mm;height:7.5mm;border-top:0px; 
                         border-left:0px;border-right:1px solid black;border-bottom:1px solid black">
-                        <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                        <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                           border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                         <span style="font-size:6pt;padding-top:1mm;width:7mm;float:bottom;">
                           <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -872,7 +874,7 @@
                         </span>
                       </div><!-- Closes Right Box 12b-->
                       <!-- Left Box 12c -->
-                      <div class="styIRSW2leftBox" style="width:40.5mm;height:2mm;border-top:0px;
+                      <div class="styIRSW2leftBox" style="width:41mm;height:3mm;border-top:0px;
                         border-left:0px;border-right:0px;border-bottom:0px">
                         <span style="width:1.5mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">12c
@@ -881,7 +883,7 @@
                       </div>
                       <div class="styIRSW2leftBox" style="width:12mm;height:7.5mm;border-top:0px;
                         border-left:0px;border-right:1px solid black;border-bottom:1px solid black">
-                        <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                        <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                           border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                         <span style="font-size:6pt;padding-top:1mm;width:7mm;float:bottom;">
                           <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -920,7 +922,7 @@
                         </span>
                       </div><!-- Closes Right Box 12c-->
                       <!-- Left Box 12d -->
-                      <div class="styIRSW2leftBox" style="width:40.5mm;height:2mm;border-top:0px;
+                      <div class="styIRSW2leftBox" style="width:41mm;height:3mm;border-top:0px;
                         border-left:0px solid black;border-right:0px;border-bottom:0px">
                         <span style="width:1.5mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">12d
@@ -929,7 +931,7 @@
                       </div>
                       <div class="styIRSW2leftBox" style="width:12mm;height:7.5mm;border-top:0px; 
                         border-left:0px;border-right:0px;border-bottom:1px solid black">
-                        <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                        <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                           border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                         <span style="font-size:6pt;padding-top:1mm;width:7mm;float:bottom;">
                           <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -969,7 +971,7 @@
                       </div><!-- Closes Right Box 12d-->
                     </div><!-- Closes Boxes 12a, 12b, 12c and 12d-->
                     <!-- Grey box -->
-                    <div class="styIRSW2leftBox" style="width:40.5mm;height:5.2mm;border-top:0px; 
+                    <div class="styIRSW2leftBox" style="width:40.5mm;height:7mm;border-top:0px; 
                       background-color:lightgrey;border-left:0px;border-right:0px;border-bottom:0px">
                     </div><!-- Closes Grey Box-->
                   </div><!-- Closes Boxes 12a, 12b, 12c, 12d and Grey box when No data or data less than 4 items-->
@@ -979,22 +981,22 @@
                       for No Data in Boxes 12a, 12b, 12c and 12d or less than 4 data items-->
                 <xsl:if test="($Print = $Separated) and (count($FormW2Data/EmployersUseGrp)>4)">
                   <!-- Big Box covers boxes 12a, 12b, 12c, 12d and Grey box -->                
-                  <div class="styIRSW2leftBox" style="width:40.5mm;height:46.5mm; 
+                  <div class="styIRSW2leftBox" style="width:41mm;height:46.5mm; 
                     border-left:0px;border-right:0px;border-top:0px;border-bottom:0px">
                     <!-- Boxes 12a, 12b, 12c and 12d -->
-                    <div class="styIRSW2leftBox" style="width:40.5mm;height:9.55mm;
+                    <div class="styIRSW2leftBox" style="width:41mm;height:9.55mm;
                       border-left:0px;border-right:0px;border-top:0px;border-bottom:0px">
                       <!-- Left Box 12a -->
-                      <div class="styIRSW2leftBox" style="width:40.5mm;height:2mm;
+                      <div class="styIRSW2leftBox" style="width:41mm;height:3mm;
                         border-left:0px;border-right:0px;border-top:0px;border-bottom:0px">
                         <span style="width:1mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">12a</span>
                         <span style="width:.8mm;"/>
-                        <span style="font-size:7.5">See instructions for box 12</span>
+                        <span style="font-size:6pt">See instructions for box 12</span>
                       </div>
                       <div class="styIRSW2leftBox" style="width:11mm;height:7.55mm;border-top:0px;
                         border-left:0px;border-right:1px solid black;border-bottom:1px solid black">
-                        <div class="styUseLbl" style="font-size:5;width:2mm;padding-left:.5mm;padding-top:.1mm;
+                        <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-left:.5mm;padding-top:.5mm;
                           border-right-width:0px;padding-bottom:.1mm">c<br/>o<br/>d<br/>e</div>
                       </div><!-- Closes left box 12a-->
                       <!-- Right Box 12a -->
@@ -1007,7 +1009,7 @@
                          </xsl:call-template>
                       </div><!-- Closes Right Box 12a-->
                       <!-- Left Box 12b -->
-                      <div class="styIRSW2leftBox" style="width:40.5mm;height:2mm;border-top:0px;
+                      <div class="styIRSW2leftBox" style="width:41mm;height:3mm;border-top:0px;
                         border-left:0px;border-right:0px;border-bottom:0px">
                         <span style="width:1.5mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">12b
@@ -1016,7 +1018,7 @@
                       </div>
                       <div class="styIRSW2leftBox" style="width:11mm;height:7.6mm;border-top:0px; 
                         border-left:0px;border-right:1px solid black;border-bottom:1px solid black">
-                        <div class="styUseLbl" style="font-size:5;width:2mm;padding-left:.5mm;padding-top:.1mm;
+                        <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-left:.5mm;padding-top:.5mm;
                           border-right-width:0px;padding-bottom:.1mm">c<br/>o<br/>d<br/>e</div>
                       </div><!-- Closes Left Box 12b-->
                       <!-- Right Box 12b -->
@@ -1025,7 +1027,7 @@
                         <br/>
                       </div><!-- Closes Right Box 12b-->
                       <!-- Left Box 12c -->
-                      <div class="styIRSW2leftBox" style="width:40.5mm;height:2mm;border-top:0px;
+                      <div class="styIRSW2leftBox" style="width:41mm;height:3mm;border-top:0px;
                         border-left:0px;border-right:0px;border-bottom:0px">
                         <span style="width:1.5mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">12c
@@ -1034,7 +1036,7 @@
                       </div>
                       <div class="styIRSW2leftBox" style="width:11mm;height:7.5mm;border-top:0px;
                         border-left:0px;border-right:1px solid black;border-bottom:1px solid black">
-                        <div class="styUseLbl" style="font-size:5;width:2mm;padding-left:.5mm;padding-top:.1mm;
+                        <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-left:.5mm;padding-top:.5mm;
                           border-right-width:0px;padding-bottom:.1mm">c<br/>o<br/>d<br/>e</div>
                       </div><!-- Closes Left Box 12c-->
                       <!-- Right Box 12c -->
@@ -1043,7 +1045,7 @@
                         <br/>
                       </div><!-- Closes Right Box 12c-->
                       <!-- Left Box 12d -->
-                      <div class="styIRSW2leftBox" style="width:40.5mm;height:2mm;border-top:0px;
+                      <div class="styIRSW2leftBox" style="width:41mm;height:3mm;border-top:0px;
                         border-left:0px solid black;border-right:0px;border-bottom:0px">
                         <span style="width:1.5mm"/>
                         <span style="font-size: 6.5pt;font-weight:bold;">12d
@@ -1052,7 +1054,7 @@
                       </div>
                       <div class="styIRSW2leftBox" style="width:11mm;height:7.5mm;border-top:0px; 
                         border-left:0px;border-right:0px;border-bottom:1px solid black">
-                        <div class="styUseLbl" style="font-size:5;width:2mm;padding-left:.5mm;padding-top:.1mm;
+                        <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-left:.5mm;padding-top:.5mm;
                           border-right-width:0px;padding-bottom:.1mm">c<br/>o<br/>d<br/>e</div>
                       </div><!-- Closes Left Box 12d-->
                       <!-- Right Box 12d -->
@@ -1062,7 +1064,7 @@
                       </div><!-- Closes Right Box 12d-->
                     </div><!-- Closes Boxes 12a, 12b, 12c and 12d-->
                     <!-- Grey box -->
-                    <div class="styIRSW2leftBox" style="width:40.5mm;height:5.2mm;border-top:0px; 
+                    <div class="styIRSW2leftBox" style="width:41mm;height:7mm;border-top:0px; 
                       background-color:lightgrey;border-left:0px;border-right:0px;border-bottom:0px">
                     </div><!-- Closes Grey Box-->
                   </div><!-- Closes Big box that covers boxes 12a, 12b, 12c, 12d and grey box -->
@@ -1072,16 +1074,16 @@
                 <!-- Code for inline print for boxes 12a, 12b, 12c and 12d when data is greater than 4 items -->
                 <xsl:if test="(($Print = 'inline') and (count($FormW2Data/EmployersUseGrp)>4))">
                   <!-- Boxes 12a, 12b, 12c and 12d and Grey Box-->
-                  <div class="styGenericDiv">
-                    <div style="width:36.55mm;height:4mm;border-top:0px;
+                    <div class="styGenericDiv"
+                      style="width:36.55mm;height:3mm;border-top:0px;
                       border-left:0px;border-right:0px;border-bottom:0px;clear:none;">
                       <!-- Header Box 12a -->
-                      <!--<div class="styTableCellText" style="width:37mm;height:2mm;border-top:0px; 
+                      <!--<div class="styTableCellText" style="width:37mm;height:3mm;border-top:0px; 
                              border-left:0px;border-right:0px;border-bottom:0px;background-color:yellow">-->
                       <span style="width:1mm"/>
                       <span style="font-size: 6.5pt;font-weight:bold;">12a</span>
                       <span style="width:.8mm"/>
-                      <span style="font-size: 7">See instructions for box 12</span>
+                      <span style="font-size: 6pt">See instructions for box 12</span>
                       <span style="width:3.5mm;"/>
                     </div>
                     <!-- Code for Button display logic, div class="styTableContainer" and print logic to call SetInitialState
@@ -1096,9 +1098,9 @@
                             <td class="styTableCellText" style="width:36mm;border-top:0px;
                               border-left:0px;border-right:0px;border-bottom:1px solid black">              
                               <!-- Left Box 12a -->
-                              <div style="width:11mm;height:8.3mm;border-top:0px; 
+                              <div style="width:11mm;height:8.47mm;border-top:0px; 
                                 border-left:0px;border-right:1px solid black;border-bottom:0px solid black">
-                                <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                                <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                                   border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                 <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -1121,10 +1123,10 @@
                                 </span>
                               </div><!-- Closes left box 12a-->
                               <!-- Right Box 12a -->
-                              <td class="styTableCellText" style="width:26mm;height:8.3mm;border-top:0px;
+                              <td class="styTableCellText" style="width:26mm;height:7.5mm;border-top:0px;
                                 border-left:0px;border-right:0px;border-bottom:1px solid black">
                                 <br/>
-                                <span style="padding-top:.1mm;width:22mm;float:bottom;font-size:6pt;
+                                <span style="padding-top:.5mm;width:22mm;float:bottom;font-size:6pt;
                                   text-align:right;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
                                     <xsl:choose>
@@ -1149,9 +1151,9 @@
                                 <span style="width:.5mm"/>
                               </span>
                               <!--Left Box 12b-->
-                              <div style="width:11mm;height:8.3mm;border-top:0px;
+                              <div style="width:11mm;height:7.5mm;border-top:0px;
                                 border-left:0px;border-right:1px solid black;border-bottom:0px solid black">
-                                <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                                <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                                   border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                 <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -1175,7 +1177,7 @@
                               </div><!-- Closes Left Box 12b -->
                             </td><!-- Closes Header 12b -->
                             <!-- Right Box 12b -->
-                            <td class="styTableCellText" style="width:26mm;height:8.3mm;border-top:0px;
+                            <td class="styTableCellText" style="width:26mm;height:7.5mm;border-top:0px;
                               border-left:0px;border-right:0px;border-bottom:1px solid black">
                               <br/><br/>
                               <span style="padding-top:.2mm;width:22mm;float:bottom;font-size:6pt;
@@ -1202,9 +1204,9 @@
                                 <span style="width:.5mm"/>
                               </span>
                               <!-- Left Box 12c -->
-                              <div style="width:11mm;height:8.35mm;border-top:0px; 
+                              <div style="width:11mm;height:7.475mm;border-top:0px; 
                                 border-left:0px;border-right:1px solid black;border-bottom:0px solid black">
-                                <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                                <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                                   border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                 <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -1227,7 +1229,7 @@
                                 </span>
                               </div><!-- Closes Left Box 12c-->
                               <!-- Right Box 12c -->
-                              <td class="styTableCellText" style="width:26mm;height:8.35mm;border-top:0px;
+                              <td class="styTableCellText" style="width:26mm;height:7.475mm;border-top:0px;
                                 border-left:0px;border-right:0px;border-bottom:1px solid black">
                                 <br/><br/>
                                 <span style="padding-top:.2mm;width:22mm;float:bottom;
@@ -1257,7 +1259,7 @@
                               <!-- Left Box 12d -->
                               <div style="width:11mm;height:8.4mm;border-top:0px; 
                                 border-left:0px;border-right:1px solid black;border-bottom:0px solid black">
-                                <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                                <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                                   border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                 <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -1300,13 +1302,12 @@
                           </tr><!-- Closes Box 12d -->
                           <xsl:for-each select="$FormW2Data/EmployersUseGrp">
                             <xsl:choose>
-                              <xsl:when test="position()=5">
-                                <span class="styBoldText"/>
+                              <xsl:when test="position()=5">                                
                                 <!-- Box 12e -->
                                 <tr>
                                   <!-- Header Box 12e -->
                                   <td class="styTableCellText" style="width:36mm;border-top:0px;
-                                    height:2mm;border-left:0px;border-right:0px;border-bottom:1px solid black">
+                                    height:3mm;border-left:0px;border-right:0px;border-bottom:1px solid black">
                                     <span style="width:1.5mm"/>
                                     <span style="font-size: 6.5pt;font-weight:bold;">
                                       12<xsl:call-template name="AlphaPosition">
@@ -1318,8 +1319,8 @@
                                     <div style="width:11mm;height:8.4mm;
                                       border-left:0px;border-right:1px solid black;border-top:0px;
                                       border-bottom:0px solid black">
-                                      <div class="styUseLbl" style="font-size:5;width:2mm;
-                                        border-right-width:0px;padding-top:.1mm;padding-bottom:.1mm">c o d e</div>
+                                      <div class="styUseLbl" style="font-size:4pt;width:2mm;
+                                        border-right-width:0px;padding-top:.5mm;padding-bottom:.1mm">c o d e</div>
                                       <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                         <span style="float:left">
                                           <xsl:call-template name="PopulateText">
@@ -1354,7 +1355,7 @@
                                     <!-- Boxes 12f and above -->                                  
                                     <tr>
                                       <!-- Header Boxes 12f and above -->
-                                      <td class="styTableCellText" style="width:36mm;height:2mm;
+                                      <td class="styTableCellText" style="width:36mm;height:3mm;
                                         border-left:0px;border-right:0px;border-top:0px;border-bottom:1px solid black">
                                         <span style="width:1.5mm"/>
                                         <span style="font-size: 6.5pt;font-weight:bold;">
@@ -1367,7 +1368,7 @@
                                         <div style="width:11mm;height:8.4mm;
                                           border-left:0px;border-top:0px;border-right:1px solid black;
                                           border-bottom:0px solid black">
-                                          <div class="styUseLbl" style="font-size:5;padding-top:.1mm;
+                                          <div class="styUseLbl" style="font-size:4pt;padding-top:.5mm;
                                             width:2mm;border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                           <span style="font-size:6pt;padding-top:1mm; width:5mm;float:bottom;">
                                             <span style="float:left">
@@ -1413,21 +1414,21 @@
                         </td><!--Closes Grey box-->
                       </tbody>
                     </table>
-                  </div><!-- Closes Big Box 12 and Grey Box -->  
+                  <!--/div--><!-- Closes Big Box 12 and Grey Box -->  
                 </xsl:if>             
                 
                 <!-- Code for boxes 12a, 12b, 12c and 12d when data is greater than 4 items -->
                 <xsl:if test="(($Print != $Separated) and ($Print !='inline') and (count($FormW2Data/EmployersUseGrp)>4))">
                   <!-- Boxes 12a, 12b, 12c and 12d -->
-                  <div class="styGenericDiv" style="width:36.55mm;height:4mm;border-top:0px;
+                  <div class="styGenericDiv" style="width:36.55mm;height:3mm;border-top:0px;
                     border-left:0px;border-right:0px;border-bottom:0px;">
                     <!-- Header Box 12a -->
-                    <!--<div class="styTableCellText" style="width:37mm;height:2mm;border-top:0px; 
+                    <!--<div class="styTableCellText" style="width:37mm;height:3mm;border-top:0px; 
                            border-left:0px;border-right:0px;border-bottom:0px;background-color:yellow">-->
                     <span style="width:1mm"/>
                     <span style="font-size: 6.5pt;font-weight:bold;">12a</span>
                     <span style="width:.8mm"/>
-                    <span style="font-size: 7">See instructions for box 12</span>
+                    <span style="font-size: 6pt">See instructions for box 12</span>
                     <span style="width:3.5mm;"/>
                   </div>
                   <div style="float:right;width:3.2mm">
@@ -1442,7 +1443,7 @@
                   </div>
                   <!-- Big box for Box 12 and Grey Box-->
                   
-                  <div class="styTableContainer" style="width:40.50mm;height:47mm;float:left;
+                  <div class="styTableContainer" style="width:41mm;height:47mm;float:left;
                     clear:none;border-right:0px;border-bottom:0px;border-left:0px;border-top:0px" id="empUseGrptbl">
                     <!-- print logic -->
                     <!--<xsl:call-template name="SetInitialState"/>-->
@@ -1456,9 +1457,9 @@
                             <td class="styTableCellText" style="width:36mm;border-top:0px;
                               border-left:0px;border-right:0px;border-bottom:1px solid black">              
                               <!-- Left Box 12a -->
-                              <div class="styGenericDiv" style="width:11mm;height:8.3mm;border-top:0px; 
+                              <div class="styGenericDiv" style="width:11mm;height:7.5mm;border-top:0px; 
                                 border-left:0px;border-right:1px solid black;border-bottom:0px solid black">
-                                <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                                <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                                   border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                 <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -1481,10 +1482,10 @@
                                 </span>
                               </div><!-- Closes left box 12a-->
                               <!-- Right Box 12a -->
-                              <td class="styTableCellText" style="width:26mm;height:8.3mm;border-top:0px;
+                              <td class="styTableCellText" style="width:26mm;height:7.5mm;border-top:0px;
                                 border-left:0px;border-right:0px;border-bottom:1px solid black">
                                 <br/>
-                                <span style="padding-top:.1mm;width:22mm;float:bottom;font-size:6pt;
+                                <span style="padding-top:.5mm;width:22mm;float:bottom;font-size:6pt;
                                   text-align:right;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
                                     <xsl:choose>
@@ -1509,9 +1510,9 @@
                                 <span style="width:.5mm"/>
                               </span>
                               <!--Left Box 12b-->
-                              <div class="styGenericDiv" style="width:11mm;height:8.3mm;border-top:0px;
+                              <div class="styGenericDiv" style="width:11mm;height:7.5mm;border-top:0px;
                                 border-left:0px;border-right:1px solid black;border-bottom:0px solid black">
-                                <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                                <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                                   border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                 <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -1535,7 +1536,7 @@
                               </div><!-- Closes Left Box 12b -->
                             </td><!-- Closes Header 12b -->
                             <!-- Right Box 12b -->
-                            <td class="styTableCellText" style="width:26mm;height:8.3mm;border-top:0px;
+                            <td class="styTableCellText" style="width:26mm;height:7.5mm;border-top:0px;
                               border-left:0px;border-right:0px;border-bottom:1px solid black">
                               <br/><br/>
                               <span style="padding-top:.2mm;width:22mm;float:bottom;font-size:6pt;
@@ -1562,9 +1563,9 @@
                                 <span style="width:.5mm"/>
                               </span>
                               <!-- Left Box 12c -->
-                              <div class="styGenericDiv" style="width:11mm;height:8.35mm;border-top:0px; 
+                              <div class="styGenericDiv" style="width:11mm;height:7.475mm;border-top:0px; 
                                 border-left:0px;border-right:1px solid black;border-bottom:0px solid black">
-                                <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                                <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                                   border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                 <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -1587,7 +1588,7 @@
                                 </span>
                               </div><!-- Closes Left Box 12c-->
                               <!-- Right Box 12c -->
-                              <td class="styTableCellText" style="width:26mm;height:8.35mm;border-top:0px;
+                              <td class="styTableCellText" style="width:26mm;height:7.475mm;border-top:0px;
                                 border-left:0px;border-right:0px;border-bottom:1px solid black">
                                 <br/><br/>
                                 <span style="padding-top:.2mm;width:22mm;float:bottom;
@@ -1617,7 +1618,7 @@
                               <!-- Left Box 12d -->
                               <div class="styGenericDiv" style="width:11mm;height:8.4mm;border-top:0px; 
                                 border-left:0px;border-right:1px solid black;border-bottom:0px solid black">
-                                <div class="styUseLbl" style="font-size:5;width:2mm;padding-top:.1mm;
+                                <div class="styUseLbl" style="font-size:4pt;width:2mm;padding-top:.5mm;
                                   border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                 <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                   <xsl:for-each select="$FormW2Data/EmployersUseGrp">
@@ -1661,12 +1662,11 @@
                           <xsl:for-each select="$FormW2Data/EmployersUseGrp">
                             <xsl:choose>
                               <xsl:when test="position()=5">
-                                <span class="styBoldText"/>
                                 <!-- Box 12e -->
                                 <tr>
                                   <!-- Header Box 12e -->
                                   <td class="styTableCellText" style="width:36mm;border-top:0px;
-                                    height:2mm;border-left:0px;border-right:0px;border-bottom:1px solid black">
+                                    height:3mm;border-left:0px;border-right:0px;border-bottom:1px solid black">
                                     <span style="width:1.5mm"/>
                                     <span style="font-size: 6.5pt;font-weight:bold;">
                                       12<xsl:call-template name="AlphaPosition">
@@ -1678,8 +1678,8 @@
                                     <div class="styGenericDiv" style="width:11mm;height:8.4mm;
                                       border-left:0px;border-right:1px solid black;border-top:0px;
                                       border-bottom:0px solid black">
-                                      <div class="styUseLbl" style="font-size:5;width:2mm;
-                                        border-right-width:0px;padding-top:.1mm;padding-bottom:.1mm">c o d e</div>
+                                      <div class="styUseLbl" style="font-size:4pt;width:2mm;
+                                        border-right-width:0px;padding-top:.5mm;padding-bottom:.1mm">c o d e</div>
                                       <span style="font-size:6pt;padding-top:1mm;width:5mm;float:bottom;">
                                         <span style="float:left">
                                           <xsl:call-template name="PopulateText">
@@ -1727,7 +1727,7 @@
                                         <div class="styGenericDiv" style="width:11mm;height:8.4mm;
                                           border-left:0px;border-top:0px;border-right:1px solid black;
                                           border-bottom:0px solid black">
-                                          <div class="styUseLbl" style="font-size:5;padding-top:.1mm;
+                                          <div class="styUseLbl" style="font-size:4pt;padding-top:.5mm;
                                             width:2mm;border-right-width:0px;padding-bottom:.1mm">c o d e</div>
                                           <span style="font-size:6pt;padding-top:1mm; width:5mm;float:bottom;">
                                             <span style="float:left">
@@ -1803,23 +1803,23 @@
 								<th class="styTableCellHeader" scope="col" style="width:40mm;font-weight:normal;border-bottom-width:0px;">
 									Employer's state ID number
 								</th>
-								<th class="styTableCellHeader" scope="col" style="width:25mm;font-weight:normal;border-bottom-width:0px;">
+								<th class="styTableCellHeader" scope="col" style="width:26mm;font-weight:normal;border-bottom-width:0px;">
 									<span style="font-weight:bold;padding:1px 3px;">16</span>
 									<span style="font-family:Arial Narrow;">State wages, tips, etc.</span>
 								</th>
-								<th class="styTableCellHeader" scope="col" style="width:25mm;font-weight:normal;border-bottom-width:0px;">
+								<th class="styTableCellHeader" scope="col" style="width:26mm;font-weight:normal;border-bottom-width:0px;">
 									<span style="font-weight:bold;padding:1px 3px;">17</span>
 									State income tax
 								</th>
-								<th class="styTableCellHeader" scope="col" style="width:25mm;font-weight:normal;border-bottom-width:0px;">
+								<th class="styTableCellHeader" scope="col" style="width:26mm;font-weight:normal;border-bottom-width:0px;">
 									<span style="font-weight:bold;padding:1px 3px;">18</span>
 									<span style="font-family:Arial Narrow;">Local wages, tips, etc.</span>
 								</th>
-								<th class="styTableCellHeader" scope="col" style="width:25mm;font-weight:normal;border-bottom-width:0px;">
+								<th class="styTableCellHeader" scope="col" style="width:26mm;font-weight:normal;border-bottom-width:0px;">
 									<span style="font-weight:bold;padding:1px 3px;">19</span>
 									Local income tax
 								</th>
-								<th class="styTableCellHeader" scope="col" style="width:32mm;font-weight:normal;border-right-width:0px;border-bottom-width:0px;text-align:left;">
+								<th class="styTableCellHeader" scope="col" style="width:33mm;font-weight:normal;border-right-width:0px;border-bottom-width:0px;text-align:left;">
 									<span style="float:left;padding:1px 3px;">
 										<span style="font-weight:bold;padding-right:3px;">20</span>
 										Locality name
@@ -1948,30 +1948,30 @@
 			</div>
           </div><!-- Closes Big box for entire form -->
           <!-- Last lines under form -->
-          <div class="styBB" style="width:187mm;border-bottom:0px solid black;">
-            <div class="styFNBox" style="width:28mm;height:6mm;border-right:0px solid black;">Form 
+          <div class="styBB" style="width:187mm;border-bottom:0px solid black;">		  
+            <div class="styFNBox" style="width:28mm;height:12mm;border-right:0px solid black;">Form 
                           <span class="styFormNumber">W-2</span>
             </div>
-            <div class="styIRSW2leftBox" style="width:26mm;height:6mm;border-left:0px solid black;
+            <div class="styIRSW2leftBox" style="width:26mm;height:12mm;border-left:0px solid black;
               border-right:0px solid black;padding:top:5mm">
               <span style="font-size: 9pt;font-weight:bold;">Wage and Tax</span>
               <br/>
               <span style="font-size: 9pt;font-weight:bold;">Statement</span>
               <br/>
             </div>
-            <div class="styIRSW2leftBox" style="width:50mm;height:6mm;border-left:0px solid black;
+            <div class="styIRSW2leftBox" style="width:50mm;height:12mm;border-left:0px solid black;
                border-right:0px solid black">
               <span style="width:30mm;"/>
-              <span class="styTY" style="height:8mm;">2013</span>
+              <span class="styTY" style="height:12mm;">2013</span>
             </div>
-            <div class="styIRSW2leftBox" style="width:82.2mm;height:6mm;border-left:0px solid black;
+            <div class="styIRSW2leftBox" style="width:82.2mm;height:12mm;border-left:0px solid black;
                border-right:0px solid black">
               <span style="width:22mm;"/>
               <span style="font-size: 6pt;">
                              Department of the Treasury<img src="{$ImagePath}/W2_Longdash.gif" alt="longdash"/>Internal Revenue Service</span>
             </div>
             <br/>
-            <div class="styIRSW2leftBox" style="width:105mm;height:6mm;border-left:0px;
+            <div class="styIRSW2leftBox" style="width:105mm;height:8mm;border-left:0px;
                border-right:0px solid black">
               <span style="font-size: 7pt;">
                 <b>Copy B</b>
@@ -1983,55 +1983,11 @@
                             This information is being furnished to the Internal Revenue Service.</span>
             </div>
             <br/>
-            <div class="pageEnd" style="width:187mm;"/>
-            <!-- BEGIN Left Over Table -->
-            <div class="styLeftOverTitleLine" id="LeftoverData">
-              <div class="styLeftOverTitle">
-                            Additional Data</div>
-              <div class="styLeftOverButtonContainer">
-                <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
-              </div>
-            </div>
-            <table class="styLeftOverTbl">
-              <xsl:call-template name="PopulateCommonLeftover">
-                <xsl:with-param name="TargetNode" select="$FormW2Data"/>
-                <xsl:with-param name="DescWidth" select="100"/>
-              </xsl:call-template>
-              <!-- Had to hardcode the table as a checkbox has to be represented.  There is no predefined template to represent the checkbox -->
-              <xsl:if test="$FormW2Data/CorrectedW2Ind">
-                <tr>
-                  <td class="styLeftOverTableRowDesc" style="width:100mm;" scope="row">
-                    <label>
-                      <xsl:call-template name="PopulateLabel">
-                        <xsl:with-param name="TargetNode" select="$FormW2Data/CorrectedW2Ind"/>
-                        <xsl:with-param name="BackupName">CorrectedW2Ind</xsl:with-param>
-                      </xsl:call-template>
-                      Corrected W2 Indicator:
-                    </label>
-                  </td>
-                  <td class="styLeftOverTableRowAmount" style="width:87mm;">
-                    <input type="checkbox" class="styCkbox">
-                      <xsl:call-template name="PopulateCheckbox">
-                        <xsl:with-param name="TargetNode" select="$FormW2Data/CorrectedW2Ind"/>
-                        <xsl:with-param name="BackupName">CorrectedW2Ind</xsl:with-param>
-                      </xsl:call-template>
-                    </input>
-                  </td>
-                </tr>
-              </xsl:if>
-              <xsl:call-template name="PopulateLeftoverRow">
-                <xsl:with-param name="Desc">Standard or NonStandard Cd</xsl:with-param>
-                <xsl:with-param name="TargetNode" select="$FormW2Data/StandardOrNonStandardCd"/>
-                <xsl:with-param name="DescWidth" select="100"/>
-              </xsl:call-template>
-              <xsl:call-template name="PopulateLeftoverRow">
-                <xsl:with-param name="Desc">Line C - Employer Name Control</xsl:with-param>
-                <xsl:with-param name="TargetNode" select="$FormW2Data/EmployerNameControl"/>
-                <xsl:with-param name="DescWidth" select="100"/>
-              </xsl:call-template>
-            </table>
-            <br/>
-            
+			<div class="pageEnd" style="display:inline-block;"></div>
+		</div>
+		
+		<div>
+			<div class="pageEnd" style="display:block;"></div>
             <!-- Separated Data for Line 12 -->
 					<xsl:if test="($Print = $Separated) and  (count($FormW2Data/EmployersUseGrp) &gt; 4)">
 						<span class="styRepeatingDataTitle">
@@ -2090,7 +2046,7 @@
             
             <!-- Optional Separated Print for Repeating Data Table for Lines 15, 16, 17, 18, 19 and 20 -->
             <br/>
-            <div>
+            
               <xsl:if test="($Print = $Separated) and (count($FormW2Data/W2StateLocalTaxGrp/W2StateTaxGrp) &gt;2)">
                 <div style="float:left">
                   <span class="styRepeatingDataTitle" style="width:80mm"> Form W2, Lines 15, 16, 17</span>
@@ -2224,7 +2180,58 @@
               </xsl:if>
             </div>
             <!-- Closes Separated Print for Lines 15-20 -->
-          </div>
+			
+			<div class="pageEnd" style="display:block;"></div>
+			
+            <!-- BEGIN Left Over Table -->
+            <div class="styLeftOverTitleLine" id="LeftoverData">
+              <div class="styLeftOverTitle">
+                            Additional Data</div>
+              <div class="styLeftOverButtonContainer">
+                <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+              </div>
+            </div>
+            <table class="styLeftOverTbl">
+              <xsl:call-template name="PopulateCommonLeftover">
+                <xsl:with-param name="TargetNode" select="$FormW2Data"/>
+                <xsl:with-param name="DescWidth" select="100"/>
+              </xsl:call-template>
+              <!-- Had to hardcode the table as a checkbox has to be represented.  There is no predefined template to represent the checkbox -->
+              <xsl:if test="$FormW2Data/CorrectedW2Ind">
+                <tr>
+                  <td class="styLeftOverTableRowDesc" style="width:100mm;" scope="row">
+                    <label>
+                      <xsl:call-template name="PopulateLabel">
+                        <xsl:with-param name="TargetNode" select="$FormW2Data/CorrectedW2Ind"/>
+                        <xsl:with-param name="BackupName">CorrectedW2Ind</xsl:with-param>
+                      </xsl:call-template>
+                      Corrected W2 Indicator:
+                    </label>
+                  </td>
+                  <td class="styLeftOverTableRowAmount" style="width:87mm;">
+                    <input type="checkbox" class="styCkbox">
+                      <xsl:call-template name="PopulateCheckbox">
+                        <xsl:with-param name="TargetNode" select="$FormW2Data/CorrectedW2Ind"/>
+                        <xsl:with-param name="BackupName">CorrectedW2Ind</xsl:with-param>
+                      </xsl:call-template>
+                    </input>
+                  </td>
+                </tr>
+              </xsl:if>
+			  
+			  
+              <xsl:call-template name="PopulateLeftoverRow">
+                <xsl:with-param name="Desc">Standard or NonStandard Cd</xsl:with-param>
+                <xsl:with-param name="TargetNode" select="$FormW2Data/StandardOrNonStandardCd"/>
+                <xsl:with-param name="DescWidth" select="100"/>
+              </xsl:call-template>
+              <xsl:call-template name="PopulateLeftoverRow">
+                <xsl:with-param name="Desc">Line C - Employer Name Control</xsl:with-param>
+                <xsl:with-param name="TargetNode" select="$FormW2Data/EmployerNameControl"/>
+                <xsl:with-param name="DescWidth" select="100"/>
+              </xsl:call-template>
+            </table>		
+			<br/>
         </form>
       </body>
     </html>

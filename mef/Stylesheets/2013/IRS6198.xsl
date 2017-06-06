@@ -10,8 +10,10 @@
   <!-- Defines the stage of the data, e.g. original or latest -->
   <xsl:param name="Form6198Data" select="$RtnDoc/IRS6198"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form6198Data)"/>
@@ -78,7 +80,7 @@
           </div>
           <!-- Name and EIN/SSN  -->
           <div style="width:187mm;" class="styBB">
-            <div style="width:138mm;height:8mm;font-weight:normal;font-size:7pt;" class="styNameBox">
+            <div style="width:138mm;height:auto;font-weight:normal;font-size:7pt;" class="styNameBox">
     Name(s) shown on return<br/>
    <span style="font-size: 7pt; font-weight: normal">
 								  <xsl:choose>
@@ -99,7 +101,7 @@
 				                  </xsl:choose>
 								</span>
             </div>
-            <div style="width:49mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;" class="styEINBox">
+            <div style="width:49mm;padding-left:2mm;font-size:7pt;font-weight:bold;" class="styEINBox">
     Identifying number<br/>
               <br/><span style="font-weight:normal">
       						<xsl:choose>
@@ -117,14 +119,14 @@
 								</span>
             </div>
           </div>
-          <div style="width:187mm;height:4mm;" class="styBB">
+          <div style="width:187mm;height:9mm;" class="styBB">
   Description of activity (see page 2 of the instructions)<br/>
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form6198Data/ActivityDescriptionTxt"/>
             </xsl:call-template>
           </div>
           <!-- Begin Part I -->
-          <div style="width:187mm;" class="styBB">
+          <div style="width:187mm;height:8mm" class="styBB">
             <div class="styPartName" style="width:15mm;">Part I</div>
             <div class="styPartDesc" style="padding-left:3mm;">
     Current Year Profit (Loss) From the Activity, Including Prior Year Nondeductible Amounts. 
@@ -462,11 +464,11 @@ the  </div>
             </div>
           </div>
           <!-- Begin Part III -->
-          <div style="width:187mm;" class="styBB">
+          <div style="width:187mm;height:8mm" class="styBB">
             <div class="styPartName" style="width:15mm;">Part III</div>
             <div class="styPartDesc" style="padding-left:3mm;">
-    Detailed Computation of Amount At Risk.<span class="styNormalText"> 
-    If you completed Part III of Form 6198 for the prior year, see page 4 of the instructions.</span>
+    Detailed Computation of Amount At Risk.<span class="styNormalText">If you completed Part III of Form 6198 for the prior year, </span>
+    <span class="styNormalText">see page 4 of the instructions.</span>
             </div>
           </div>
           <div style="width:187mm;" class="styBB">
@@ -559,7 +561,7 @@ the  </div>
               </div>
             </div>
             <div style="width:187mm">
-              <div style="float:left;">
+               <div style="float:left;">
                 <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;border:0 solid pink;width:134mm;" class="styLnDesc">
                   <span style="border:0 solid yellow;" class="">
                     <span class="" style="border:0 solid violet;width:8mm;height:4mm;padding-left:3.3mm;                     padding-top:.5mm;padding-bottom:.5mm;font-weight:bold;padding-left:4.5mm">a</span>
@@ -605,19 +607,22 @@ the  </div>
                 <div style="border:0 solid green;width:2mm;" class="styLnDesc">
                   <img src="{$ImagePath}/6198_Bracket.gif" alt="bracket image"/>
                 </div>
-              </div>
-              <div style="border:0 solid red;float:right;">
-                <div class="styDotLn" style="padding-top:2.5mm;height:8mm;letter-spacing:3mm;                 padding-right:1.1mm;">
+               </div>
+              <div style="border:0 solid red;float:right">            
+                <div class="styDotLn" style="padding-top:2.5mm;height:8mm;letter-spacing:3mm; padding-right:1.1mm;">
         ..
-      </div>
-                <div style="height:5mm;padding-top:1mm;" class="styLNRightNumBox">15</div>
-                <div style="width:34mm;height:5mm;padding-top:1mm;" class="styLNAmountBox">
+      			</div>               
+				<div style="height:14mm;padding-top:10mm;" class="styLNRightNumBox">15</div>
+                <div style="width:34mm;height:14mm;padding-top:10mm;" class="styLNAmountBox">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form6198Data/DetailedComputationRisk1Amt"/>
                   </xsl:call-template>
                 </div>
+<!--          
                 <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:8mm;"/>
                 <div class="styLNAmountBoxNBB" style="width:34mm;height:8mm;"/>
+-->                
+                
               </div>
             </div>
             <div style="width:187mm">
@@ -665,17 +670,17 @@ the  </div>
               </div>
               <div style="float:right;">
                 <span class="styIRS6198DotLn">      
-      ................
+      ...............
       </span>
-                <div class="styLNRightNumBox" style="">16</div>
-                <div class="styLNAmountBox" style="width:34mm;">
+                <div class="styLNRightNumBox" style="height:5mm;">16</div>
+                <div class="styLNAmountBox" style="width:34mm;height:5mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form6198Data/IncreasesAmt"/>
                   </xsl:call-template>
                 </div>
               </div>
             </div>
-            <div style="width:187mm">
+            <div style="width:187mm;">
               <div class="styLNLeftNumBox">17</div>
               <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
       Add lines 15 and 16              
@@ -684,7 +689,7 @@ the  </div>
                 <span class="styIRS6198DotLn">      
       ..........................
       </span>
-                <div class="styLNRightNumBox">17</div>
+                <div class="styLNRightNumBox" style="">17</div>
                 <div class="styLNAmountBox" style="width:34mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form6198Data/SumAmountAtRiskAndIncreaseAmt"/>
@@ -737,10 +742,10 @@ the  </div>
               </div>
               <div style="float:right;">
                 <span class="styIRS6198DotLn">      
-      ................
+      ...............
       </span>
-                <div class="styLNRightNumBox" style="">18</div>
-                <div class="styLNAmountBox" style="width:34mm;">
+                <div class="styLNRightNumBox" style="height:5mm;">18</div>
+                <div class="styLNAmountBox" style="width:34mm;height:5mm;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form6198Data/DecreasesAmt"/>
                   </xsl:call-template>

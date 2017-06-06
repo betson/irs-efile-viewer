@@ -14,7 +14,7 @@
 						<div class="styPartDesc" style="width:187mm;padding-left:0mm;">Shared Policy Allocation <xsl:value-of select="$shrdCnt" /></div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:24.4mm"><xsl:value-of select="$shrdCnt+29"/></div>
+						<div class="styLNLeftNumBox" style="height:22.4mm"><xsl:value-of select="$shrdCnt+29"/></div>
 						<div style="height:100%;float:left;">
 						<div class="styPart4A"><b>a</b> Policy Number (Form 1095-A, line 2)<br />						
 							<xsl:call-template name="PopulateText">
@@ -67,8 +67,10 @@
 	</xsl:template>
 	
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -124,8 +126,8 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:32mm;border-left:none;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0074</div>
-							<div class="styTaxYear" style="line-height:30px;">20<span class="styTYColor">14</span></div>
+							<div class="styOMB" style="">OMB No. 1545-0074</div>
+							<div class="styTaxYear" style="line-height:30px;">20<span class="styTYColor" style="display:inline;">14</span></div>
 							<div style="margin-left:3mm; text-align:left;">
 								Attachment<br/>Sequence No. <span class="styBoldText">73</span>
 							</div>
@@ -152,62 +154,31 @@
 							</span>
 						</div>
 						<div class="styNameBox" style="width:32mm;height:8mm;font-size:6pt;border-right:0px solid black;">
-							Relief<br/><span style="float:left;">(see instructions)</span><span style="float:right;">						
-								<input type="checkbox" class="styCkbox">
-							<xsl:call-template name="PopulateCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/ReliefInd"/>								
-								<xsl:with-param name="BackupName">IRS8962ReliefInd</xsl:with-param>
-							</xsl:call-template>
-						</input>
-						<label>
+							<label>
 							<xsl:call-template name="PopulateLabel">
 								<xsl:with-param name="TargetNode" select="$FormData/ReliefInd"/>
 								<xsl:with-param name="BackupName">IRS8962ReliefInd</xsl:with-param>
-							</xsl:call-template>							
-						</label></span>					
+							</xsl:call-template>
+							Relief<br/><span style="float:left;">(see instructions)</span></label><span style="float:right;">						
+							<input type="checkbox" class="styCkbox">
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/ReliefInd"/>								
+									<xsl:with-param name="BackupName">IRS8962ReliefInd</xsl:with-param>
+								</xsl:call-template>
+							</input></span>					
 						</div>
 					</div>					
 					<div class="styBB" style="width:187mm;float:none;clear:both;">		
-						<div class="styPartDesc" style="width:187mm;padding-left:0mm;">Part 1: Annual and Monthly Contribution Amount</div>											
+						<div class="styPartDesc" style="width:187mm;padding-left:0mm;height:4mm;">Part 1: Annual and Monthly Contribution Amount</div>											
 					</div>
 					<!-- BEGIN LINE 1 -->
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
 						<div class="styLNLeftNumBoxSD">1</div>
 						<div class="styLNDesc" style="width:142mm;">
-							Family Size: Enter the number of exemptions from Form 1040 or Form 1040A, line 6d, or Form 1040NR,<span style="float:left;font-size:7pt;">line 7d</span>
-							<span style="float:right;font-weight:bold;padding-right:3mm;">
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							</span>
+							Family Size: Enter the number of exemptions from Form 1040 or Form 1040A, line 6d, or Form 1040NR, line 7d
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">1</div>
-						<div class="styLNAmountBox" style="font-size:6pt;height:8mm;width:29mm;padding-top:4mm;">
+						<div class="styLNRightNumBox">1</div>
+						<div class="styLNAmountBox" style="font-size:6pt;width:29mm;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/TotalExemptionsCnt"/>
 							</xsl:call-template>
@@ -387,33 +358,32 @@ percentage. (For example, for 1.542 enter the result as 154, for 1.549 enter as 
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
 						<div class="styLNLeftNumBoxSD">6</div>
 						<div class="styLNDesc" style="width:142mm;">
-							Is the result entered on line 5 less than or equal to 400%? (See instructions if the result is less than<br/>100%.)<br />
-							<input type="checkbox" class="styCkbox">
-							<xsl:call-template name="PopulateYesCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/HshldIncmBelowPTCThresholdInd"/>								
-								<xsl:with-param name="BackupName">IR8962HshldIncmBelowPTCThresholdInd</xsl:with-param>
-							</xsl:call-template>
-						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelYes">
-								<xsl:with-param name="TargetNode" select="$FormData/HshldIncmBelowPTCThresholdInd"/>
-								<xsl:with-param name="BackupName">IRS8962HshldIncmBelowPTCThresholdInd</xsl:with-param>
-							</xsl:call-template>							
-						</label><span style="font-weight:bold;padding-left:2mm;">Yes. Continue to line 7.</span><br />
-						<input type="checkbox" class="styCkbox">
-							<xsl:call-template name="PopulateNoCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/HshldIncmBelowPTCThresholdInd"/>								
-								<xsl:with-param name="BackupName">IRS8962HshldIncmBelowPTCThresholdInd</xsl:with-param>
-							</xsl:call-template>
-						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelNo">
-								<xsl:with-param name="TargetNode" select="$FormData/HshldIncmBelowPTCThresholdInd"/>
-								<xsl:with-param name="BackupName">IRS8962HshldIncmBelowPTCThresholdInd</xsl:with-param>
-							</xsl:call-template>							
-						</label><span style="padding-left:2mm;"><b>No.</b> You are not eligible to receive PTC. If you received advance payment of PTC, see the instructions for how
-to report your Excess Advance PTC Repayment amount.</span>
-												
+							Is the result entered on line 5 less than or equal to 400%? (See instructions if the result is less than 100%.)<br />
+							<input type="checkbox" class="styCkbox" style="margin-left:0px;">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/HshldIncmBelowPTCThresholdInd"/>								
+									<xsl:with-param name="BackupName">IR8962HshldIncmBelowPTCThresholdInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$FormData/HshldIncmBelowPTCThresholdInd"/>
+									<xsl:with-param name="BackupName">IRS8962HshldIncmBelowPTCThresholdInd</xsl:with-param>
+								</xsl:call-template>							
+							</label><span style="font-weight:bold;padding-left:1mm;">Yes. Continue to line 7.</span><br />
+							<input type="checkbox" class="styCkbox" style="margin-left:0px;vertical-align:top;">
+								<xsl:call-template name="PopulateNoCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/HshldIncmBelowPTCThresholdInd"/>								
+									<xsl:with-param name="BackupName">IRS8962HshldIncmBelowPTCThresholdInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$FormData/HshldIncmBelowPTCThresholdInd"/>
+									<xsl:with-param name="BackupName">IRS8962HshldIncmBelowPTCThresholdInd</xsl:with-param>
+								</xsl:call-template>							
+							</label><span style="padding-top:4px;padding-left:1mm;"><b>No. </b>You are not eligible to receive PTC. If you received advance payment of PTC, see the instructions for how</span><br />
+							to report your Excess Advance PTC Repayment amount.
 						</div>
 						<div class="styLNRightNumBox" style="height:17.2mm;padding-top:4mm;background-color:lightgray;"><span style="width:1px;" /></div>
 						<div class="styLNAmountBox" style="font-size:6pt;height:17.2mm;width:29mm;padding-top:4mm;background-color:lightgray;">
@@ -425,39 +395,10 @@ to report your Excess Advance PTC Repayment amount.</span>
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
 						<div class="styLNLeftNumBoxSD">7</div>
 						<div class="styLNDesc" style="width:142mm;">
-							Applicable Figure: Using your line 5 percentage, locate your “applicable figure” on the table in the<br /><span style="float:left;font-size:7pt;">instructions</span>
-							<span style="float:right;font-weight:bold;padding-right:3mm;">
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							</span>							
+							Applicable Figure: Using your line 5 percentage, locate your “applicable figure” on the table in the instructions
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">7</div>
-						<div class="styLNAmountBox" style="font-size:6pt;height:8mm;width:29mm;padding-top:4mm;">
+						<div class="styLNRightNumBox">7</div>
+						<div class="styLNAmountBox" style="font-size:6pt;width:29mm;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/ApplicableFigureRt"/>
 							</xsl:call-template>
@@ -476,18 +417,18 @@ to report your Excess Advance PTC Repayment amount.</span>
 							<span style="width:11px;"/>.														
 							</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:10.8mm;padding-top:6.8mm;border-bottom:0px solid black;">8a</div>
-						<div class="styLNAmountBox" style="font-size:6pt;height:10.8mm;width:29mm;padding-top:6.8mm;border-right:1px solid black;border-bottom:0px solid black;">
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.8mm;border-bottom:0px solid black;">8a</div>
+						<div class="styLNAmountBox" style="font-size:6pt;height:7mm;width:29mm;padding-top:3.8mm;border-right:1px solid black;border-bottom:0px solid black;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/AnnualContributionAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNLeftNumBoxSD" style="padding-left:1.5mm;width:5mm;">b</div>
-						<div class="styLNDesc" style="width:53.5mm;">
+						<div class="styLNLeftNumBoxSD" style="padding-left:2.5mm;width:6mm;">b</div>
+						<div class="styLNDesc" style="width:52.5mm;font-family:Arial;">
 							Monthly Contribution for Health Care: Divide line 8a by 12. Round to whole dollar amount						
 						</div>
-						<div class="styLNRightNumBox" style="height:10.8mm;padding-top:6.8mm;border-bottom:0px solid black;">8b</div>
-						<div class="styLNAmountBox" style="font-size:6pt;height:10.8mm;width:29mm;padding-top:6.8mm;border-bottom:0px solid black;">
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:3.8mm;border-bottom:0px solid black;">8b</div>
+						<div class="styLNAmountBox" style="font-size:6pt;height:7mm;width:29mm;padding-top:3.8mm;border-bottom:0px solid black;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/MonthlyContriHealthCareCvrAmt"/>
 							</xsl:call-template>
@@ -495,54 +436,53 @@ to report your Excess Advance PTC Repayment amount.</span>
 					</div>
 					<!-- END LINE 8 -->
 					<div class="styBB" style="width:187mm;float:none;clear:both;">		
-						<div class="styPartDesc" style="width:187mm;padding-left:0mm;">Part 2: Premium Tax Credit Claim and Reconciliation of Advance Payment of Premium Tax Credit</div>
+						<div class="styPartDesc" style="width:187mm;padding-left:0mm;height:4mm;">Part 2: Premium Tax Credit Claim and Reconciliation of Advance Payment of Premium Tax Credit</div>
 					</div>
 					<!-- BEGIN LINE 9 -->
-					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
+					<div class="styBB" style="width:187mm;height:10mm;border-bottom-width:0px;">
 						<div class="styLNLeftNumBoxSD">9</div>
 						<div class="styLNDesc" style="width:179mm;">
-							Did you share a policy with another taxpayer or get married during the year and want to use the alternative calculation? (see<br/>instructions)												
+							Did you share a policy with another taxpayer or get married during the year and want to use the alternative calculation? (see instructions)												
 						</div>
 						<div class="styLNLeftNumBoxSD"><span style="width:1px;" /></div>
-						<div class="styLNDesc" style="width:129mm;">
-						<input type="checkbox" class="styCkbox">
-							<xsl:call-template name="PopulateYesCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/SharePolicyMarriedAltCalcInd"/>								
-								<xsl:with-param name="BackupName">IRS8962SharePolicyMarriedAltCalcInd</xsl:with-param>
-							</xsl:call-template>
-						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelYes">
-								<xsl:with-param name="TargetNode" select="$FormData/SharePolicyMarriedAltCalcInd"/>
-								<xsl:with-param name="BackupName">IRS8962SharePolicyMarriedAltCalcInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>
-						<b><span style="width:5px;" />Yes.</b> Skip to Part 4, Shared Policy Allocation, or Part 5, Alternative Calculation for Year of Marriage.</div>
-						<div class="styLNDesc" style="width:50mm;">
-						<input type="checkbox" class="styCkbox">
-							<xsl:call-template name="PopulateNoCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/SharePolicyMarriedAltCalcInd"/>								
-								<xsl:with-param name="BackupName">IRS8962SharePolicyMarriedAltCalcInd</xsl:with-param>
-							</xsl:call-template>
-						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelNo">
-								<xsl:with-param name="TargetNode" select="$FormData/SharePolicyMarriedAltCalcInd"/>
-								<xsl:with-param name="BackupName">IRS8962SharePolicyMarriedAltCalcInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>
-						<b><span style="width:5px;" />No. Continue to line 10.</b></div>					
+						<div class="styLNDesc" style="width:120mm;">
+							<input type="checkbox" class="styCkbox" style="margin-left:0px;">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/SharePolicyMarriedAltCalcInd"/>								
+									<xsl:with-param name="BackupName">IRS8962SharePolicyMarriedAltCalcInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$FormData/SharePolicyMarriedAltCalcInd"/>
+									<xsl:with-param name="BackupName">IRS8962SharePolicyMarriedAltCalcInd</xsl:with-param>
+								</xsl:call-template>
+							<span style="width:5px;" /><b>Yes. </b></label><span style="font-family:Arial;display:inline;">Skip to Part 4, Shared Policy Allocation, or Part 5, Alternative Calculation for Year of Marriage.</span></div>
+						<div class="styLNDesc" style="width:58mm;">
+							<input type="checkbox" class="styCkbox">
+								<xsl:call-template name="PopulateNoCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/SharePolicyMarriedAltCalcInd"/>								
+									<xsl:with-param name="BackupName">IRS8962SharePolicyMarriedAltCalcInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabelNo">
+									<xsl:with-param name="TargetNode" select="$FormData/SharePolicyMarriedAltCalcInd"/>
+									<xsl:with-param name="BackupName">IRS8962SharePolicyMarriedAltCalcInd</xsl:with-param>
+								</xsl:call-template>
+							<span style="width:5px;" /><b>No. Continue to line 10.</b></label>
+						</div>					
 					</div>
 					<!-- END LINE 9 -->
 					<!-- BEGIN LINE 10 -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;height:13mm;">
 						<div class="styLNLeftNumBox">10</div>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;font-family:Arial Narrow,Arial;font-size:8pt;">
 							Do all Forms 1095-A for your tax household include coverage for January through December with no changes in monthly amounts shown on lines 21–32, columns A and B?												
 						</div>
 						<div class="styLNLeftNumBoxSD"><span style="width:1px;" /></div>
-						<div class="styLNDesc" style="width:129mm;">
-						<input type="checkbox" class="styCkbox">
+						<div class="styLNDesc" style="width:120mm;">
+						<input type="checkbox" class="styCkbox" style="margin-left:0px;">
 							<xsl:call-template name="PopulateYesCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/Form1095ASameMonthlyAmtInd"/>								
 								<xsl:with-param name="BackupName">IRS8962Form1095ASameMonthlyAmtInd</xsl:with-param>
@@ -552,10 +492,9 @@ to report your Excess Advance PTC Repayment amount.</span>
 							<xsl:call-template name="PopulateLabelYes">
 								<xsl:with-param name="TargetNode" select="$FormData/Form1095ASameMonthlyAmtInd"/>
 								<xsl:with-param name="BackupName">IRS8962Form1095ASameMonthlyAmtInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>
-						<b><span style="width:5px;" />Yes. Continue to line 11.</b> Compute your annual PTC. Skip lines 12–23<br />and continue to line 24.</div>
-						<div class="styLNDesc" style="width:50mm;">
+							</xsl:call-template>
+						<span style="width:5px;" /><b>Yes. Continue to line 11.</b></label> Compute your annual PTC. Skip lines 12–23<br />and continue to line 24.</div>
+						<div class="styLNDesc" style="width:59mm;">
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/Form1095ASameMonthlyAmtInd"/>								
@@ -566,19 +505,18 @@ to report your Excess Advance PTC Repayment amount.</span>
 							<xsl:call-template name="PopulateLabelNo">
 								<xsl:with-param name="TargetNode" select="$FormData/Form1095ASameMonthlyAmtInd"/>
 								<xsl:with-param name="BackupName">IRS8962Form1095ASameMonthlyAmtInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>
-						<b><span style="width:5px;" />No. Continue to lines 12–23.</b> Compute your monthly PTC and continue to line 24.</div>					
+							</xsl:call-template>
+						<span style="width:5px;" /><b>No. Continue to lines 12–23.</b></label> Compute your monthly PTC and continue to line 24.</div>					
 					</div>
 					<!-- END LINE 10 -->
 					<!-- BEGIN ANNUAL CALCULATION -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styAnnMonTblTitlesA1" style="padding-top:3.5mm;">Annual<br />Calculation</div>
-						<div class="styAnnMonTblTitlesB1" style="padding-top:2mm;"><b>A.</b> Premium<br />Amount (Form(s)<br />1095-A, line 33A)</div>
+						<div class="styAnnMonTblTitlesB1" style="padding-top:1mm;"><b>A.</b> Premium<br />Amount (Form(s)<br />1095-A, line 33A)</div>
 						<div class="styAnnMonTblTitlesC1"><b>B.</b> Annual Premium<br />Amount of SLCSP<br />(Form(s) 1095-A,<br />line 33B)</div>
-						<div class="styAnnMonTblTitlesC1" style="padding-top:2mm;"><b>C.</b> Annual Contribution Amount (Line 8a)</div>
-						<div class="styAnnMonTblTitlesC1"><b>D.</b> Annual Maximum Premium Assistance (Subtract C from B)</div>
-						<div class="styAnnMonTblTitlesC1" style="padding-top:2mm;"><b>E.</b> Annual Premium Tax Credit Allowed (Smaller of A or D)</div>
+						<div class="styAnnMonTblTitlesC1" style="padding-top:1mm;"><b>C.</b> Annual Contribution Amount (Line 8a)</div>
+						<div class="styAnnMonTblTitlesC1" style="padding-top:1mm;"><b>D.</b> Annual Maximum Premium Assistance (Subtract C from B)</div>
+						<div class="styAnnMonTblTitlesC1" style="padding-top:1mm;"><b>E.</b> Annual Premium Tax Credit Allowed (Smaller of A or D)</div>
 						<div class="styAnnMonTblTitlesC1"><b>F.</b> Annual Advance Payment of PTC (Form(s) 1095-A, line 33C)</div>
 					</div>
 					<!-- BEGIN LINE 11 -->					
@@ -626,7 +564,7 @@ to report your Excess Advance PTC Repayment amount.</span>
 						<div class="styAnnMonTblTitlesB2" style="padding-top:3mm;"><b>A.</b> Monthly Premium Amount (Form(s) 1095-A, lines 21–32, column A)</div>
 						<div class="styAnnMonTblTitlesC2" style="padding-top:3mm;"><b>B.</b> Monthly Premium Amount of SLCSP (Form(s) 1095-A, lines 21–32, column B)</div>
 						<div class="styAnnMonTblTitlesC2"><b>C.</b> Monthly Contribution Amount (Amount from line 8b or alternative marriage monthly contribution)</div>
-						<div class="styAnnMonTblTitlesC2" style="padding-top:3.5mm;"><b>D.</b> Monthly Maximum Premium Assistance (Subtract C from B)</div>
+						<div class="styAnnMonTblTitlesC2" style="padding-top:5mm;"><b>D.</b> Monthly Maximum Premium Assistance (Subtract C from B)</div>
 						<div class="styAnnMonTblTitlesC2" style="padding-top:5mm;"><b>E.</b> Monthly Premium Tax Credit Allowed (Smaller of A or D)</div>
 						<div class="styAnnMonTblTitlesC2" style="padding-top:3mm;"><b>F.</b> Monthly Advance Payment of PTC (Form(s) 1095-A, lines 21–32, column C)</div>
 					</div>
@@ -1235,40 +1173,10 @@ to report your Excess Advance PTC Repayment amount.</span>
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
 						<div class="styLNLeftNumBox">24</div>
 						<div class="styLNDesc" style="width:142mm;">
-							Total Premium Tax Credit: Enter the amount from line 11E or add lines 12E through 23E and enter the
-							<span style="float:left;font-size:7pt;">total here</span>
-							<span style="float:right;font-weight:bold;padding-right:3mm;">
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.							
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.														
-							</span>
+							Total Premium Tax Credit: Enter the amount from line 11E or add lines 12E through 23E and enter the total here
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">24</div>
-						<div class="styLNAmountBox" style="font-size:6pt;height:8mm;width:29mm;padding-top:4mm;">
+						<div class="styLNRightNumBox">24</div>
+						<div class="styLNAmountBox" style="font-size:6pt;width:29mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotalPremiumTaxCreditAmt"/>
 							</xsl:call-template>
@@ -1282,40 +1190,10 @@ to report your Excess Advance PTC Repayment amount.</span>
 					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
 						<div class="styLNLeftNumBox">25</div>
 						<div class="styLNDesc" style="width:142mm;">
-							Advance Payment of PTC: Enter the amount from line 11F or add lines 12F through 23F and enter the
-							<span style="float:left;font-size:7pt;">total here</span>
-							<span style="float:right;font-weight:bold;padding-right:3mm;">
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.							
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.																	
-							</span>
+							Advance Payment of PTC: Enter the amount from line 11F or add lines 12F through 23F and enter the total here
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">25</div>
-						<div class="styLNAmountBox" style="font-size:6pt;height:8mm;width:29mm;padding-top:4mm;">
+						<div class="styLNRightNumBox">25</div>
+						<div class="styLNAmountBox" style="font-size:6pt;width:29mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotalAdvancedPTCAmt"/>
 							</xsl:call-template>
@@ -1325,24 +1203,11 @@ to report your Excess Advance PTC Repayment amount.</span>
 					<!-- BEGIN LINE 26 -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styLNLeftNumBox">26</div>
-						<div class="styLNDesc" style="width:142mm;">
-						Net Premium Tax Credit: If line 24 is greater than line 25, subtract line 25 from line 24. Enter the<br />difference here and on Form 1040, line 69; Form 1040A, line 45; or Form 1040NR, line 65. If you elected<br />the alternative calculation for marriage, enter zero. If line 24 equals line 25, enter zero. Stop here. If line<br />
-							<span style="float:left;">25 is greater than line 24, leave this line blank and continue to line 27</span>
-							<span style="float:right;font-weight:bold;padding-right:3mm;">
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.							
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.			
-							<span style="width:11px;"/>.											
-							</span>
+						<div class="styLNDesc" style="width:142mm;font-family:Arial;">
+						Net Premium Tax Credit: If line 24 is greater than line 25, subtract line 25 from line 24. Enter the difference here and on Form 1040, line 69; Form 1040A, line 45; or Form 1040NR, line 65. If you elected the alternative calculation for marriage, enter zero. <br />If line 24 equals line 25, enter zero. Stop here. If line 25 is greater than line 24, leave this line blank and continue to line 27
 						</div>
-						<div class="styLNRightNumBox" style="height:13.8mm;border-bottom:0px solid black;padding-top:9.8mm;">26</div>
-						<div class="styLNAmountBox" style="font-size:6pt;height:13.8mm;width:29mm;border-bottom:0px solid black;padding-top:9.8mm;">
+						<div class="styLNRightNumBox" style="height:10mm;border-bottom:0px solid black;padding-top:6mm;">26</div>
+						<div class="styLNAmountBox" style="font-size:6pt;height:10mm;width:29mm;border-bottom:0px solid black;padding-top:6mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/ReconciledPremiumTaxCreditAmt"/>
 							</xsl:call-template>
@@ -1353,42 +1218,13 @@ to report your Excess Advance PTC Repayment amount.</span>
 						<div class="styPartDesc" style="width:187mm;padding-left:0mm;">Part 3: Repayment of Excess Advance Payment of the Premium Tax Credit</div>											
 					</div>
 					<!-- BEGIN LINE 27 -->
-					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
+					<div class="styBB" style="width:187mm;border-bottom-width:0px;float:none;">
 						<div class="styLNLeftNumBox">27</div>
-						<div class="styLNDesc" style="width:142mm;">
-							Excess Advance Payment of PTC: If line 25 is greater than line 24, subtract line 24 from line 25. Enter the
-							<span style="float:left;font-size:7pt;">difference here</span>
-							<span style="float:right;font-weight:bold;padding-right:3mm;">
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.							
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.
-							<span style="width:11px;"/>.							
-							<span style="width:11px;"/>.							
-							</span>
+						<div class="styLNDesc" style="width:142mm;font-family:Arial;">
+							Excess Advance Payment of PTC: If line 25 is greater than line 24, subtract line 24 from line 25. Enter the difference here
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">27</div>
-						<div class="styLNAmountBox" style="font-size:6pt;height:8mm;width:29mm;padding-top:4mm;">
+						<div class="styLNRightNumBox">27</div>
+						<div class="styLNAmountBox" style="font-size:6pt;width:29mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/ExcessAdvncPaymentAmt"/>
 							</xsl:call-template>
@@ -1396,10 +1232,10 @@ to report your Excess Advance PTC Repayment amount.</span>
 					</div>
 					<!-- END LINE 27 -->
 					<!-- BEGIN LINE 28 -->
-					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
+					<div class="styBB" style="width:187mm;border-bottom-width:0px;float:none;">
 						<div class="styLNLeftNumBox">28</div>
 						<div class="styLNDesc" style="width:142mm;">
-							Repayment Limitation: Using the percentage on line 5 and your filing status, locate the repayment
+							Repayment Limitation: Using the percentage on line 5 and your filing status, locate the repayment <br/>
 							<span style="float:left;font-size:7pt;">limitation amount in the instructions. Enter the amount here</span>
 							<span style="float:right;font-weight:bold;padding-right:3mm;">
 							<span style="width:11px;"/>.
@@ -1426,10 +1262,10 @@ to report your Excess Advance PTC Repayment amount.</span>
 					</div>
 					<!-- END LINE 28 -->
 					<!-- BEGIN LINE 29 -->
-					<div class="styBB" style="width:187mm;border-bottom-width:0px;">
+					<div class="styBB" style="width:187mm;border-bottom-width:0px;float:none;">
 						<div class="styLNLeftNumBox">29</div>
 						<div class="styLNDesc" style="width:142mm;">
-							Excess Advance Premium Tax Credit Repayment: Enter the smaller of line 27 or line 28 here and on Form
+							Excess Advance Premium Tax Credit Repayment: Enter the smaller of line 27 or line 28 here and on Form <br/>
 							<span style="float:left;font-size:7pt;">1040, line 46; Form 1040A, line 29; or Form 1040NR, line 44</span>
 							<span style="float:right;font-weight:bold;padding-right:3mm;">
 							<span style="width:11px;"/>.
@@ -1468,7 +1304,7 @@ to report your Excess Advance PTC Repayment amount.</span>
 						<span style="float:right;clear:none;">Page <span style="font-weight:bold;font-size:9pt;">2</span></span>
 					</div>
 					<div class="styBB" style="width:187mm;float:none;clear:both;">		
-						<div class="styPartDesc" style="width:187mm;padding-left:0mm;">Part 4: Shared Policy Allocation</div>
+						<div class="styPartDesc" style="width:187mm;padding-left:0mm;height:4mm;">Part 4: Shared Policy Allocation</div>
 					</div>
 					<div class="styBB" style="width:187mm;float:none;clear:both;">		
 						<div class="styDesc" style="width:187mm;padding-left:0mm;">Complete the following information for up to four shared policy allocations. See instructions for allocation details.</div>
@@ -1480,7 +1316,7 @@ to report your Excess Advance PTC Repayment amount.</span>
 						<div class="styPartDesc" style="width:187mm;padding-left:0mm;">Shared Policy Allocation <xsl:value-of select="position()" /></div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:24.4mm"><xsl:value-of select="position()+29"/></div>
+						<div class="styLNLeftNumBox" style="height:22.4mm"><xsl:value-of select="position()+29"/></div>
 						<div style="height:100%;float:left;">
 						<div class="styPart4A"><b>a</b> Policy Number (Form 1095-A, line 2)<br />						
 							<xsl:call-template name="PopulateText">
@@ -1544,24 +1380,24 @@ to report your Excess Advance PTC Repayment amount.</span>
 							Have you completed shared policy allocation information for all allocated Forms 1095-A?
 						</div>
 						<div class="styLNLeftNumBox"><span style="width:1px;" /></div>
-						<div class="styLNDesc" style="width:179mm;">
-						<input type="checkbox" class="styCkbox">
-							<xsl:call-template name="PopulateYesCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/SharedPolicyAllocationInfoInd"/>								
-								<xsl:with-param name="BackupName">IRS8962SharedPolicyAllocationInfoInd</xsl:with-param>
-							</xsl:call-template>
-						</input>
-						<label>
-							<xsl:call-template name="PopulateLabelYes">
-								<xsl:with-param name="TargetNode" select="$FormData/SharedPolicyAllocationInfoInd"/>
-								<xsl:with-param name="BackupName">IRS8962SharedPolicyAllocationInfoInd</xsl:with-param>
-							</xsl:call-template>							
-						</label>
-						<b><span style="width:5px;" />Yes.</b> Multiply the amounts on Form 1095-A by the allocation percentages entered by policy. Add allocated amounts across all allocated policies with amounts for non-allocated policies from Forms 1095-A, if any, to compute a combined total for each month. Enter the combined total for each month on lines 12–23, columns A, B, and F. Compute the amounts for lines 12–23, columns C–E, and continue to line 24.</div>
+						<div class="styLNDesc" style="width:179mm;height:auto;padding-top:0px;">
+							<input type="checkbox" class="styCkbox" style="margin-left:0px;margin-top:0px;">
+								<xsl:call-template name="PopulateYesCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/SharedPolicyAllocationInfoInd"/>								
+									<xsl:with-param name="BackupName">IRS8962SharedPolicyAllocationInfoInd</xsl:with-param>
+								</xsl:call-template>
+							</input>
+							<label>
+								<xsl:call-template name="PopulateLabelYes">
+									<xsl:with-param name="TargetNode" select="$FormData/SharedPolicyAllocationInfoInd"/>
+									<xsl:with-param name="BackupName">IRS8962SharedPolicyAllocationInfoInd</xsl:with-param>
+								</xsl:call-template>							
+							<span style="width:5px;" /><b>Yes. </b></label> Multiply the amounts on Form 1095-A by the allocation percentages entered by policy. Add allocated amounts across all allocated <br />policies with amounts for non-allocated policies from Forms 1095-A, if any, to compute a combined total for each month. Enter the combined total for each month on lines 12–23, columns A, B, and F. Compute the amounts for lines 12–23, columns C–E, and continue to line 24.
+						</div>
 						<div class="styLNDesc" style="width:187mm;"></div>
 						<div class="styLNLeftNumBox"><span style="width:1px;" /></div>						
-						<div class="styLNDesc" style="width:179mm;">
-						<input type="checkbox" class="styCkbox">
+						<div class="styLNDesc" style="width:179mm;height:5.4mm;">
+						<input type="checkbox" class="styCkbox" style="margin-left:0px;">
 							<xsl:call-template name="PopulateNoCheckbox">
 								<xsl:with-param name="TargetNode" select="$FormData/SharedPolicyAllocationInfoInd"/>								
 								<xsl:with-param name="BackupName">IRS8962SharedPolicyAllocationInfoInd</xsl:with-param>
@@ -1572,8 +1408,7 @@ to report your Excess Advance PTC Repayment amount.</span>
 								<xsl:with-param name="TargetNode" select="$FormData/SharedPolicyAllocationInfoInd"/>
 								<xsl:with-param name="BackupName">IRS8962SharedPolicyAllocationInfoInd</xsl:with-param>
 							</xsl:call-template>							
-						</label>
-						<b><span style="width:5px;" />No.</b> See the instructions to report additional shared policy allocations.</div>					
+						<span style="width:5px;" /><b>No. </b></label> See the instructions to report additional shared policy allocations.</div>					
 					</div>
 					<!-- END LINE 34 -->
 					<div class="styBB" style="width:187mm;float:none;clear:both;">		

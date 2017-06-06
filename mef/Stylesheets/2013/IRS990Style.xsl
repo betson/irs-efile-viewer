@@ -20,7 +20,7 @@
       width:5mm;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-      float:left;clear:none;
+      
     }
     .styIRS990LNYesNoBox{ /* Box for storing Yes/No Values */
       width:10mm;
@@ -96,6 +96,10 @@
       font-weight:bold;
       float:left; clear: none;
     }
+    .styIRS990CkBox{
+    height: 2mm;
+    width: 2mm;
+     }
 </xsl:template>
 
 </xsl:stylesheet>

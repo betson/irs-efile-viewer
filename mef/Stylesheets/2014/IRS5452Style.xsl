@@ -2,7 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:template name="IRS5452Style">  
     .styIRS5452BB {    
-      border-bottom:1 solid black;border-color: black;        
+      border-bottom:1px solid black;border-color: black;        
       width:187mm;      
     }  
     .styIRS5452Idx {
@@ -13,19 +13,19 @@
       text-align:right;      
     }  
     .styIRS5452Num {
-      width:28mm;border-bottom:1 solid black;text-align:right;
+      width:28mm;border-bottom:1px solid black;text-align:right;
     }    
     .styIRS5452TabCell {
       height:8mm;
       padding-right:1px;
-      border-bottom:1 solid black;
-      border-right:1 solid black;
+      border-bottom:1px solid black;
+      border-right:1px solid black;
     }
 
     .styIRS5452TabCellThick {
       height:8mm;
       padding-right:1px;
-      border-bottom:1 solid black;
+      border-bottom:1px solid black;
       border-right:2px solid black;
     }
 

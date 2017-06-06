@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1065SchB1Data" select="$RtnDoc/IRS1065ScheduleB1"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1065SchB1Data)"/>
@@ -40,7 +42,7 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- Header - Form1065SchB-1 Number, Title, and Year -->
 					<div class="styTBB" style="width:187mm;">
-						<div class="styFNBox" style="width:31mm;height:14.5mm;border-right-width:2px;">
+						<div class="styFNBox" style="width:31mm;height:18mm;border-right-width:2px;">
 							<span class="styFormNumber" style="font-size:10pt;">SCHEDULE B-1
 							   <span style="font-size:9pt;">(Form 1065)</span>
 							   <br/>
@@ -71,7 +73,7 @@
 					<!-- End Header - Form Number, Title, and Year -->
 					<!--  Name and Employer identification number  -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:130mm;height:6mm;font-size:7pt;">
+						<div class="styNameBox" style="width:130mm;height:10mm;font-size:7pt;">
                                           Name of partnership<br/>
 							<div style="font-family:verdana;font-size:7pt;height:4mm;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -95,14 +97,14 @@
 					</div>
 					<!--  End Name and Employer indentification number  -->
 					<!-- Part I - Header -->
-					<div style="width:187mm;height:3mm;border-style:solid; border-bottom-width:1px;        border-top-width:0px;border-right-width:0px;border-left-width:0px;padding-top:1.5mm;        padding-bottom:1.5mm;float:left;">
+					<div style="width:187mm;height:6mm;border-style:solid; border-bottom-width:1px;        border-top-width:0px;border-right-width:0px;border-left-width:0px;padding-top:1.5mm;        padding-bottom:1.5mm;float:left;">
                         <span class="styPartName" style="height:4mm;width:12mm;font-size:9pt;">Part I</span>
 						<span style="width:175mm;font-size:9pt;height:4mm" class="styPartDesc">
 					         Entities Owning 50% or More of the Partnership <span style="font-weight:normal">
 					         (Form 1065, Schedule B, Question 3a)</span><br/>
 						</span>
 					</div>
-					<div class="styLNDesc" style="width:187mm;height:5mm;font-size:8pt">
+					<div class="styLNDesc" style="width:187mm;height:12mm;font-size:8pt">
 					  Complete columns (i) through (v) below for any foreign or domestic corporation, 
 					  partnership (including any entity treated as a partnership), trust, tax-exempt organization, or 
 					  any foreign government that owns, directly or indirectly, an interest of 50% or more in the profit,
@@ -133,9 +135,8 @@
 										</span>
 									</th>
 									<th class="styTableCellHeader" style="width:34mm;vertical-align:top;font-size:6.5pt;" scope="col">
-										<span class="styNormalText"><br/>(ii) 
-                                                      <span class="styNormalText"> Employer <br/>Identification Number<br/>
-                                                       (if any)</span>
+										<span class="styNormalText"><br/>(ii) Employer <br/>Identification Number<br/>
+                                                       (if any)
 										</span>
 									</th>
 									<th class="styTableCellHeader" style="width:30mm;vertical-align:top;font-size:6.5pt;" scope="col">
@@ -149,9 +150,8 @@
 										</span>
 									</th>
 									<th class="styTableCellHeader" style="width:30mm;vertical-align:top;font-size:6.5pt;" scope="col">
-										<span class="styNormalText">(v) 
-                                                      <span class="styNormalText"> Maximum <br/>Percentage Owned<br/>
-                                                                in Profit, Loss, or<br/> Capital</span>
+										<span class="styNormalText">(v) Maximum <br/>Percentage Owned<br/>
+                                                                in Profit, Loss, or<br/> Capital
 										</span>
 									</th>
 								</tr>
@@ -350,14 +350,14 @@
 					</xsl:call-template>
 					<!-- End Set Initial Height of Above Table -->
 					<!-- Part II - Header -->
-					<div style="width:187.3mm;height:3mm;border-style:solid; border-bottom-width:1px;        border-top-width:0px;border-right-width:0px;border-left-width:0px;padding-top:1.5mm;        padding-bottom:1.5mm;float:left;">
+					<div style="width:187.3mm;height:5.5mm;border-style:solid; border-bottom-width:1px;        border-top-width:0px;border-right-width:0px;border-left-width:0px;padding-top:1.5mm;        padding-bottom:1.5mm;float:left;">
 						<span class="styPartName" style="height:4mm;width:11.3mm;font-size:8pt">Part II</span>
 						<span style="width:176mm;font-size:8pt;height:4mm" class="styPartDesc">
 							Individuals or Estates Owning 50% or More of the Partnership <span style="font-weight:normal">
 							(Form 1065, Schedule B, Question 3b)</span><br/>
 						</span>
 					</div>
-					<div class="styLNDesc" style="width:187mm;height:5mm;font-size:8pt">
+					<div class="styLNDesc" style="width:187mm;height:9mm;font-size:8pt">
 					  Complete columns (i) through (iv) below for any individual or estate that owns, directly or indirectly,
 					  an interest of 50% or more in the profit, loss, or capital of the partnership (see instructions). <br/><br/>
 					</div>
@@ -386,8 +386,7 @@
 										</span>
 									</th>
 									<th class="styTableCellHeader" style="width:34mm;vertical-align:top;font-size:6.5pt;" scope="col">
-										<span class="styNormalText"><br/><br/>(ii) 
-                                          <span class="styNormalText"> Identifying Number<br/>(if any)</span>
+										<span class="styNormalText"><br/><br/>(ii) Identifying Number<br/>(if any)
 										</span>
 									</th>
 									<th class="styTableCellHeader" style="width:65mm;vertical-align:top;font-size:6.5pt;" scope="col">
@@ -396,9 +395,8 @@
 										</span>
 									</th>
 									<th class="styTableCellHeader" style="width:30mm;vertical-align:top;font-size:6.5pt;" scope="col">
-										<span class="styNormalText">(iv) 
-                                          <span class="styNormalText"> Maximum<br/>Percentage Owned in
-                                            <br/>Profit, Loss, <br/>or Capital</span>
+										<span class="styNormalText">(iv) Maximum<br/>Percentage Owned in
+                                            <br/>Profit, Loss, <br/>or Capital
 										</span>
 									</th>
 								</tr>
@@ -628,7 +626,7 @@
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
 										<!-- First Column -->
 										<td class="styDepTblCell" style="text-align:left;vertical-align:top">
-											<div style="width:50mm;">
+											<div style="width:48mm;">
 												<span style="float:left;">
 													<xsl:if test="EntityNm">
 														<xsl:call-template name="PopulateText">
@@ -640,7 +638,7 @@
 										</td>
 										<!-- Second Column -->
 										<td class="styDepTblCell" style="text-align:center;vertical-align:top">
-											<div style="width:32mm;">
+											<div style="width:30mm;">
 												<span style="">
 													<xsl:choose>
 														<xsl:when test="EIN">
@@ -672,14 +670,14 @@
 											<div style="width:33mm;">
 												<span style="">
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="OrganizationCountryNm"/>
+														<xsl:with-param name="TargetNode" select="OrganizationCountryCd"/>
 													</xsl:call-template>
 												</span>
 											</div>
 										</td>
 										<!-- Fifth Column -->
 										<td class="styDepTblCell" style="text-align:right;vertical-align:top">
-											<div style="width:29mm;">
+											<div style="width:32mm;">
 												<span style="">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="MaximumProfitLossOrCapOwnPct"/>
@@ -756,17 +754,17 @@
 										</td>
 										<!-- Third Column -->
 										<td class="styDepTblCell" style="text-align:center;vertical-align:top">
-											<div style="width:65mm;">
+											<div style="width:60mm;">
 												<span style="">
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="CitizenCountryNm"/>
+														<xsl:with-param name="TargetNode" select="CitizenCountryCd"/>
 													</xsl:call-template>
 												</span>
 											</div>
 										</td>
 										<!-- Fourth Column -->
 										<td class="styDepTblCell" style="text-align:right;vertical-align:top">
-											<div style="width:29mm;">
+											<div style="width:34mm;">
 												<span style="">
 													<xsl:call-template name="PopulateAmount">
 														<xsl:with-param name="TargetNode" select="MaximumProfitLossOrCapOwnPct"/>

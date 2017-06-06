@@ -9,9 +9,10 @@
     font-weight:bold;
     text-align:center;
     margin-top:2mm;
+	width:187mm;
   }
   .styIRS1120ScheduleNLNYesNoBox{ /* Box for storing Yes/No Values */
-    width:10mm;
+    width:10.5mm;
     padding-top:.5mm;
     padding-bottom:.5mm;
     text-align:center;

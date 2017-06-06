@@ -2,67 +2,6 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
 <xsl:template name="IRS1120ScheduleDStyle">
 
-.IRS1120ScheduleD_styFN {   /* Form Name */
-  border-style: solid; border-color: black;
-  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
-  float: left; clear: none;
-}
-.IRS1120ScheduleD_styFNum {   /* Form Number */
-  font-family: verdana, arial, sans-serif;
-  font-size: 10pt; font-weight: bold;
-}
-.IRS1120ScheduleD_styFNum2 {   /* Form Number 2nd Line */
-  font-family: verdana, arial, sans-serif;
-  font-size: 8pt; font-weight: bold;
-}
-.IRS1120ScheduleD_styAgency {   /* Agency */  
-  font-family: "Arial Narrow";
-  font-size: 7pt;
-  font-weight:normal;
-  line-height:100%
-}
-
-.IRS1120ScheduleD_styFTBox {   /* Form Title Box*/
-  text-align: center;
-  float: left; clear: none;
-}
-.IRS1120ScheduleD_styFMT {   /* Form Main Title */
-  font-family: verdana, arial, sans-serif;
-  font-size: 12pt; font-weight: bold;
-}
-.IRS1120ScheduleD_styFST {   /* Form Subtitle */
-  font-family: verdana, arial, sans-serif;
-  font-size: 7pt; font-weight: bold;
-}
-.IRS1120ScheduleD_styTYBox {   /* Tax Year Box*/
-  text-align: center;
-  border-style: solid; border-color: black;
-  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
-  float: left; clear: none;
-}
-.IRS1120ScheduleD_styOMB {   /* OMB No. */
-  border-bottom:1 solid black;
-  font-size:7pt
-}
-.IRS1120ScheduleD_styTY {   /* Tax Year */
-  vertical-align: middle;
-  font-family: "Arial Narrow", arial, verdana;
-  font-size: 26pt; font-weight: bold;
-}
-.IRS1120ScheduleD_styInputFld {   /* Input Text Field */
-  color: black;
-  font-family: verdana, arial, sans-serif;
-  font-size: 8pt; font-weight: bold;
-  border-style: none; border-color: black;
-  border-top-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;
-}
-.IRS1120ScheduleD_styBusinessName {   /* Business Name */
-  font-size: 7pt;
-  padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
-  border-style: solid; border-color: black;
-  border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
-  float: left; clear: none;
-}
 .IRS1120ScheduleD_styBusinessNameInputFld {   /* Business Name Input Field */
   width: 517px;
   color: black;
@@ -90,6 +29,7 @@
 }
 
 .IRS1120ScheduleD_styPartHdr {   /* Part Header */
+  width:187mm;
   font-size: 8pt; font-weight: bold;
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
   border-style: solid; border-color: black;
@@ -146,7 +86,8 @@
   }
 
 .IRS1120ScheduleD_styFormFooter {   /* Form Footer */
-  font-size: 7pt;
+  width:187mm;
+  font-size: 7pt;font-weight:bold;
   text-align: left;
   border-style: solid;
   border-top-width: 2px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
@@ -174,12 +115,14 @@
   text-align: left;
 }
 .IRS1120ScheduleD_DescCol {   /* description column */
-  width: 46mm;   /* ; */
-  border-style: solid;
-  border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
+  width: 48mm;   
+  font-weight:normal; text-align:left;
+  border-style: solid; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
 }
 .IRS1120ScheduleD_DescColBody {   /* description column for table body */
-  width: 32mm;   /* ; */
+  width: 33mm;  
+  font-weight:normal;
+  border-style: solid; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
 }
 .IRS1120ScheduleD_IndexCol {   /* index column */
   width: 4mm;   /* ; */
@@ -197,13 +140,40 @@
   width: 33mm;   /* 86px; */
   border-style: solid;
   border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-  text-align:right;
-  padding-top:6.5mm;
+  text-align:right; vertical-align:bottom;
+  padding-top:5mm;
 }
 .IRS1120ScheduleD_styTableCellPad {   /* Table Cell Padding */
   width: 4px;
   text-align:right;
 }
 
+.IRS1120ScheduleD_styLNCtrNumNBox {   /* No left right border */
+	width:8mm;height:8mm;
+	font-size:7pt;
+	padding-bottom:.5mm;padding-left:4.5mm;
+	font-weight:bold;
+	float:left; clear: none;
+	text-align:left;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+}
+
+.IRS1120ScheduleD_styLNAmountBox{ /* Box for storing line item amounts. */
+	width:33.15mm;height:4mm;
+	padding-top:.5mm;
+	padding-bottom:.5mm;
+	text-align:right;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
+	float:left; clear: none;
+}
+.IRS1120ScheduleD_styDotLn { 
+	letter-spacing:3.1mm;
+	font-weight:bold; 	
+	float:right;
+	padding-right:2mm		
+	skiplink:display:none;
+}	
 </xsl:template>
 </xsl:stylesheet>

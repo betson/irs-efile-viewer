@@ -20,8 +20,10 @@
 	<xsl:param name="Form1120PCScheduleM1" select="$RtnDoc/IRS1120PCEliminationsOrAdj/IRS1120PCScheduleM1"/>
 	<xsl:param name="Form1120PCScheduleM2" select="$RtnDoc/IRS1120PCEliminationsOrAdj/IRS1120PCScheduleM2"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1120PCData)"/>
@@ -74,17 +76,17 @@
 						</div>
 						<!--Form box end -->
 <div class="styFTBox" style="width:120mm;height:18mm;">
-							<div class="styMainTitle" style="height:8mm;">U.S. Property and Casualty Insurance Company Income Tax Return</div>
+							<div class="styMainTitle" style="height:11mm;">U.S. Property and Casualty Insurance Company Income Tax Return</div>
 							<div class="styFST" style="height:5mm;font-size:6pt;margin-left:2mm;text-align:center;font-weight:normal">
                     For calendar year 2013, or tax year beginning   
-                    <span style="width: 18mm;border-bottom:1 solid black;">
+                    <span style="width: 18mm;border-bottom:1px solid black;">
 									<!-- No need to send the parameters -->
 									<xsl:call-template name="PopulateMonthDayYear">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/TaxYearBeginDt"/>
 									</xsl:call-template>
 								</span>,2013
                      and ending 
-                      <span style="width: 18mm;border-bottom:1 solid black;">
+                      <span style="width: 18mm;border-bottom:1px solid black;">
 									<!-- No need to send the parameters -->
 									<xsl:call-template name="PopulateMonthDayYear">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/TaxYearEndDt"/>
@@ -102,22 +104,22 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:18mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-1027</div>
+							<div class="styOMB" style="height:4mm;">OMB No. 1545-1027</div>
 							<div class="styTY" style="height:11mm;">20<span class="styTYColor">13</span>
 							</div>
 						</div>
 					</div>
 					<!--Return Header End -->
 					<!-- Header Line A 1 -->
-					<div style="width:187mm;float:left;clear:left;">
-						<div style="width:31mm;height:29mm;float:left;clear:left;">
-							<div class="styComType" style="width:33mm;border-bottom-width: 0px;">
-								<div class="styBoldText" style="height:3mm;width:4mm;float:left;clear:none;">A</div>
-								<div class="styGenericDiv" style="height:3mm;width:26mm;">Check if:</div>
+<div style="width:187mm;float:left;clear:left;height:auto;">
+<div style="width:33.3mm;height:2mm;float:left;clear:left">
+<div class="styComType" style="width:33.3mm;border-bottom-width: 0px;padding-top:2mm;border-right-width: 1px;">
+								<div class="styBoldText" style="height:3mm;width:3mm;float:left;clear:none;">A</div>
+<div class="styGenericDiv" style="height:3mm;width:26mm">Check if:</div>
 							</div>
-							<div class="styComType" style="width:33mm;border-bottom:0px;">
-								<div class="styBoldText" style="height:5mm;width:4mm;float:left;clear:none;">1</div>
-								<div class="styGenericDiv" style="height:5mm;width:26mm;">
+<div class="styComType" style="width:33.3mm;border-bottom:0px;border-right-width: 1px;">
+<div class="styBoldText" style="height:7mm;width:3mm;float:left;clear:none;padding-top:2mm;">1</div>
+<div class="styGenericDiv" style="height:7mm;width:25mm;padding-top:2mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120PCData/ConsolidatedReturnInd"/>
@@ -130,7 +132,7 @@
 										</xsl:call-template>
 									</label>
 								</div>
-								<div class="styGenericDiv">
+<div class="styGenericDiv" style="height:7mm;padding-top:2mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120PCData/ConsolidatedReturnInd"/>
@@ -142,9 +144,9 @@
 							<br/>
 							<br/>
 							<!-- Header Line A 2 -->
-							<div class="styComType" style="width:33mm;border-bottom:0px;">
-								<div class="styBoldText" style="height:5mm;width:4mm;float:left;clear:none;">2</div>
-								<div class="styGenericDiv" style="height:5mm;width:26mm;">
+<div class="styComType" style="width:33.3mm;border-bottom:0px;border-right-width: 1px;">
+<div class="styBoldText" style="height:7mm;width:3mm;float:left;clear:none;padding-top:2mm;">2</div>
+<div class="styGenericDiv" style="height:7mm;width:25mm;padding-top:2mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120PCData/LifeNonlifeConsolidatedRetInd"/>
@@ -153,7 +155,7 @@
             							Life-nonlife consolidated return
               					</label>
 								</div>
-								<div class="styGenericDiv">
+<div class="styGenericDiv" style="height:7mm;padding-top:2mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120PCData/LifeNonlifeConsolidatedRetInd"/>
@@ -165,9 +167,9 @@
 							<br/>
 							<br/>
 							<!-- Header Line A 3 -->
-							<div class="styComType" style="width:33mm;border-bottom:1 solid black;">
-								<div class="styBoldText" style="height:8.7mm;width:4mm;float:left;clear:none;">3</div>
-								<div class="styGenericDiv" style="height:8.7mm;width:26mm;">
+<div class="styComType" style="width:33.3mm;border-bottom:1px solid black;border-right-width: 1px;height:9mm;">
+<div class="styBoldText" style="height:9mm;width:3mm;float:left;clear:none;padding-top:2mm;">3</div>
+<div class="styGenericDiv" style="height:9mm;width:25mm;padding-top:2mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form1120PCData/ScheduleM3Form1120PCInd"/>
@@ -179,7 +181,7 @@
 										</xsl:call-template>
 									</label>
 								</div>
-								<div class="styGenericDiv">
+<div class="styGenericDiv" style="height:9mm;padding-top:2mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$Form1120PCData/ScheduleM3Form1120PCInd"/>
@@ -191,10 +193,10 @@
 						</div>
 						<!--Close Line A1 Second Line -->
 						<!-- return header Name box -->
-						<div class="styLblNameAddr" style="width:106mm;height:28mm; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;">
-							<div class="styUseLbl" style="width:11.5mm;height:29.5mm;border-right-width:0px;padding-top:5mm;">
+<div class="styLblNameAddr" style="width:105mm;height:auto;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;">
+<div class="styUseLbl" style="width:10mm;height:27mm;border-right-width:0px;padding-top:12mm;padding-left:1mm">
       						Please<br/> print<br/> or<br/> type</div>
-							<div class="styNameAddr" style="width:93.5mm;height:8.5mm;border-left-width:1px;padding-left:3mm;">
+<div class="styNameAddr" style="width:94.5mm;height:9mm;border-left-width:1px;padding-left:2mm;">
        					 Name<br/>
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form1120PCData/BusinessName/BusinessNameLine1"/>
@@ -205,7 +207,7 @@
 								</xsl:call-template>
 							</div>
 							<!-- return header Adress box -->
-							<div class="styNameAddr" style="width:93.5mm;height:9.5mm;border-left-width:1px;padding-left:3mm">
+<div class="styNameAddr" style="width:94.5mm;height:9mm;border-left-width:1px;padding-left:2mm;">
       					Number, street, and room or suite no. If a P.O. box, see instructions.
             				<!-- Address -->
 								<!-- USA Address -->
@@ -238,7 +240,7 @@
 									<span class="styTableCellPad"/>
 								</xsl:if>
 							</div>
-							<div class="styNameAddr" style="border-bottom-width:0px;width:91mm;height:11mm;border-left-width:1px;padding-left:3mm">
+<div class="styNameAddr" style="border-bottom-width:0px;width:90mm;border-left-width:1px;padding-left:2mm;height:10mm;">
         				City or town, state or province, country, and ZIP or foreign postal code
         				<!-- USA Address -->
 								<xsl:if test="$Form1120PCData/USAddress/City!=''">
@@ -293,8 +295,8 @@
 						<!-- EIN B Line -->
 						<!-- Since this is a main form, we must check for and display an updated EIN.  
     			To do this, we use the EINChanged parameter PopulateReturnHeaderFiler.-->
-						<div class="styEINDateAssets" style="width:48mm;height:8.5mm;">
-							<span class="styBoldText">B Employer identification number</span>
+<div class="styEINDateAssets" style="width:48mm;height:9mm;">
+<span class="styBoldText" style="padding-right:1.5mm">B</span> <b> Employer identification number</b>
 							<br/>
 							<br/>
 							<span style="padding-left:15mm">
@@ -314,8 +316,8 @@
 							</span>
 						</div>
 						<!-- Header C Date incorparated -->
-						<div class="styEINDateAssets" style="width:48mm;height:9.5mm;">
-							<span class="styBoldText">C </span>Date incorporated<br/>
+<div class="styEINDateAssets" style="width:48mm;height:9mm;">
+<span class="styBoldText" style="padding-right:2mm">C </span>Date incorporated<br/>
 							<br/>
 							<span class="styEINFld" style="padding-left:15mm;">
 								<xsl:call-template name="PopulateMonthDayYear">
@@ -324,20 +326,20 @@
 							</span>
 						</div>
 						<!-- Header D Date incorparated -->
-						<div class="styEINDateAssets" style="width:48mm;height:8.75mm;border-bottom-width:0px;">
-							<span class="styBoldText">D </span>Check applicable box if an election <br/>
-							<span style="padding-left:2.5mm">  has been made under section(s):</span>
+<div class="styEINDateAssets" style="width:48mm;height:10mm;border-bottom-width:0px;">
+<span class="styBoldText" style="padding-right:1mm">D </span>Check applicable box if an election <br/>
+<span style="padding-left:1mm">  has been made under section(s):</span>
 							<br/>
 						</div>
 					</div>
 					<!--close what area?-->
 					<!-- Header E -->
-					<div class="styBB" style="width:187mm;border-right-width:0px">
+<div class="styBB" style="width:187mm;border-right-width:0px;">
 						<div class="styBB" style="border-right-width:1px;border-bottom-width:0px;">
 							<!-- E 1 -->
-							<div class="styGenericDiv" style="width:139mm;">
-								<div class="styBoldText" style="float:left;clear:none">E</div>
-      					Check if: <span style="width:3mm;"/>
+<div class="styGenericDiv" style="width:138mm;height:5mm;">
+<div class="styBoldText" style="float:left;clear:none;padding-right:2mm;padding-top:1.5mm;">E</div>
+      Check if: <span style="width:1mm;"/>
 								<span class="styBoldText">(1)</span>
 								<span style="width:3px;"/>
 								<input type="checkbox" class="styCkbox">
@@ -359,7 +361,7 @@
 									</xsl:call-template>
 								</xsl:variable>
 								<!-- E 2 -->
-								<span style="width:8px"/>
+<span style="width:4px"/>
 								<span class="styBoldText">(2)</span>
 								<span style="width:3px;"/>
 								<input type="checkbox" class="styCkbox">
@@ -382,7 +384,7 @@
       					Name change
       					</label>
 								<!-- E 3 -->
-								<span style="width:8px"/>
+<span style="width:4px"/>
 								<span class="styBoldText">(3)</span>
 								<span style="width:3px;"/>
 								<input type="checkbox" class="styCkbox">
@@ -399,7 +401,7 @@
       						Address change
 					</label>
 								<!--E 4 -->
-								<span style="width:8px"/>
+<span style="width:4px"/>
 								<span class="styBoldText">(4)</span>
 								<span style="width:3px;"/>
 								<input type="checkbox" class="styCkbox">
@@ -413,12 +415,12 @@
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/AmendedReturn"/>
 										<xsl:with-param name="BackupName">IRS1120AmendedReturn</xsl:with-param>
 									</xsl:call-template>
-       					Amended return  <span style="width:2px;hight:1mm"/>
+                Amended return  <span style="width:2px;height:1mm"/>
 								</label>
 							</div>
 						</div>
 						<!--Check box for Box D -->
-						<span style="padding-left:3px;"/>
+<span style="padding-left:.5mm"/>
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1120PCData/Section953c3CElectionInd"/>
@@ -432,7 +434,7 @@
 							</xsl:call-template>
         			953(c)(3)(C)
     			</label>
-						<span style="padding-left:3px;"/>
+<span style="padding-left:0.75mm"/>
 						<input type="checkbox" class="styCkbox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$Form1120PCData/Section953dElectionInd"/>
@@ -463,13 +465,13 @@
 					<!--close what line ? -->
 					<!--BEGIN Main Form Tax Computation and Payments Section-->
 					<div class="styBB" style="width:187mm;border-bottom:2px solid black;">
-						<div class="styIRS1120PCVTImageBox" style="height:150.5mm;padding-top:14mm;">
+						<div class="styIRS1120PCVTImageBox" style="height:153mm;padding-top:14mm;">
 							<div style="width:2mm;height:35mm;"/>
-							<img src="{$ImagePath}/1120PC_TaxComputation.gif" alt="VerticalIncome"/>
+							<img src="{$ImagePath}/1120PC_TaxComputation.gif" alt="Tax Computation and Payments section" style="width:4.8mm;"/>
 						</div>
 						<div style="width:000mm;float:right;clear:none;"/>
 					<!--line 1 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 						    <div class="styLNLeftNumBoxSD">1</div>
 						    <div class="styLNDesc" style="width:133mm;">
                                      <span style="float:left;">Taxable income (Schedule A, line 37)</span>
@@ -484,7 +486,7 @@
                             </div>
 						</div>
 						<!-- line 2 -->
-					<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">2</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
                                     <span style="float:left;">Taxable investment income for electing small companies (Schedule B, line 21)</span>
@@ -501,21 +503,18 @@
 							</div>
 						</div>
 						<!-- line3 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm;">3</div>
 								<div class="styLNDesc" style="width:132mm;height:4mm;">
-            Check if a member of a controlled group (attach Schedule O (Form 1120))
+                                  <span style="float:left">Check if a member of a controlled group (attach Schedule O (Form 1120))
             <!--Need to add a pushpin here for Schedule O -->
 									<!-- Form to Form Link (Push Pin)-->
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/MemberOfControlledGroupInd"/>
 									</xsl:call-template>
 									<!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:16px"/>.
-	          	<span style="width:16px"/>.
-	          	<span style="width:16px"/>.
+				<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div><span style="width:2mm" />
           		<img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/>
 									</span>
 									<span style="width:3.5mm;"/>
@@ -539,7 +538,7 @@
 							</div>
 						</div>
 						<!-- line 4 -->
-				<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">4</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -578,7 +577,7 @@
 							</div>
 						</div>
 						<!-- line 5 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">5</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
                                     <span style="float:left;">Enter amount of tax that a reciprocal must include
@@ -600,7 +599,7 @@
 							</div>
 						</div>
 						<!-- line 6 -->
-					<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">6</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
                                     <span style="float:left;"> Alternative minimum tax (attach Form 4626)
@@ -622,7 +621,7 @@
 							</div>
 						</div>
 						<!-- line 7 -->
-					<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm;">7</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -641,7 +640,7 @@
 							</div>
 						</div>
 						<!-- line 8a -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftLtrBox" style="height:4mm;padding-left: 2.25mm;">8a</div>
 								<div class="styLNDesc" style="width:92mm;height:4mm;">
@@ -666,7 +665,7 @@
 							</div>
 						</div>
 						<!-- line 8b -->
-					<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftLtrBox" style="height:4mm;padding-left: 4.25mm;"> b</div>
 								<div class="styLNDesc" style="width:92mm;height:4mm;">
@@ -691,7 +690,7 @@
 							</div>
 						</div>
 						<!-- line 8c -->
-							<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftLtrBox" style="height:4mm;padding-left: 4.25mm;"> c</div>
 								<div class="styLNDesc" style="width:92mm;height:4mm;">
@@ -716,7 +715,7 @@
 							</div>
 						</div>
 						<!-- line 8d -->
-					<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none">
 								<div class="styLNLeftLtrBox" style="height:4mm;padding-left: 4.25mm;">d</div>
 								<div class="styLNDesc" style="width:92mm;height:4mm;">
@@ -739,7 +738,7 @@
 							<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
 						</div>
 						<!-- line 8e -->
-					<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftLtrBox" style="height:4mm;padding-left: 4.25mm;">e</div>
 								<div class="styLNDesc" style="width:92mm;height:4mm;">
@@ -765,14 +764,15 @@
 							</div>
 						</div>
 						<!-- line 8f -->
-								<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm">f</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
+								<span style="float:left">
 									<span style="float:left"> <b>Total credits.</b> Add lines 8a through 8e</span>
       <!--Dotted Line-->
 		<div class="styDotLn" style="float:right;padding-right:1mm;">....................</div>
-							
+							</span>
 							</div>
 							
 							<div style="width:40mm;float:right;clear:none;">
@@ -785,7 +785,7 @@
 							</div>
 						</div>
 						<!-- line 9 -->
-				<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">9</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -805,7 +805,7 @@
 							</div>
 						</div>
 						<!-- line 10 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;">10</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -828,7 +828,7 @@
 							</div>
 						</div>
 						<!-- line 11 -->
-							<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;">11</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -850,7 +850,7 @@
 							</div>
 						</div>
 						<!-- line 12 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">12</div>
 								<div class="styLNDesc" style="width:132mm;height:4mm;">
@@ -926,7 +926,7 @@
 							</div>
 						</div>
 						<!-- line 13 -->
-							<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;">13</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -951,10 +951,10 @@
 						<div style="width:181mm;">
 							<div style="float:left;clear:none">
 								<div class="styLNLeftNumBox" style="height:4mm;">14a</div>
-								<div class="styLNDesc" style="width:53mm;height:4mm;;">
+								<div class="styLNDesc" style="width:53.5mm;height:4mm;">
        	  2012 overpayment credited to 2013
       	</div>
-								<div class="styLNRightNumBox" style="height:4mm;">14a</div>
+								<div class="styLNRightNumBox" style="height:4.5mm;">14a</div>
 								<div class="styLNAmountBox" style="height:4.5mm;width:32mm;border-right-width:1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/PriorYearOverpaymentCreditAmt"/>
@@ -962,7 +962,7 @@
 								</div>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styShadingCell" style="width:40mm;height:4.5mm;border-left-width:0px;"/>
+								<div class="styShadingCell" style="width:39.5mm;height:4.5mm;border-left-width:0px;"/>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
 								<div class="styLNAmountBoxNBB" style="height:4.5mm;width:32mm;"/>
 							</div>
@@ -971,7 +971,7 @@
 						<div style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftLtrBox" style="height:8.5mm;padding-left: 4.25mm;">b</div>
-								<div class="styLNDesc" style="width:53mm;height:8.5mm;font-size:7pt;">
+								<div class="styLNDesc" style="width:53.5mm;height:8.5mm;font-size:7pt;">
         	  Prior year(s) special estimated tax payments to be applied
         	  <!-- Form to Form Link (Push Pin)-->
 									<xsl:call-template name="SetFormLinkInline">
@@ -992,17 +992,17 @@
 								</div>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styShadingCell" style="width:40mm;height:8.5mm;border-left-width:0px;"/>
+								<div class="styShadingCell" style="width:39.5mm;height:8.5mm;border-left-width:0px;"/>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:8.5mm;"/>
-								<div class="styLNAmountBoxNBB" style="height:8.5mm;"/>
+								<div class="styLNAmountBoxNBB" style="height:8.5mm;width:32mm;"/>
 							</div>
 						</div>
 						<!-- line 14c -->
 						<div style="width:181mm;">
 							<div style="float:left; clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm;">c</div>
-								<div class="styLNDesc" style="width:53mm;height:4mm;font-size:6pt;"> 2013 estimated tax payments (see instructions)</div>
-								<div class="styLNRightNumBox" style="height:4mm;">14c</div>
+								<div class="styLNDesc" style="width:53.5mm;height:4mm;font-size:6pt;"> 2013 estimated tax payments (see instructions)</div>
+								<div class="styLNRightNumBox" style="height:4.5mm;">14c</div>
 								<div class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/EstimatedTaxPaymentsAmt"/>
@@ -1010,44 +1010,42 @@
 								</div>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;border-left-width: 0px;"/>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;background-color:lightgrey;border-left-width: 0px;"/>
-								<!--<div class="styShadingCell" style="width:40mm;height:4.5mm;border-left-width:0px;"></div>-->
+								<div class="styShadingCell" style="width:39.5mm;height:4.5mm;border-left-width:0px;"/>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+								<div class="styLNAmountBoxNBB" style="height:4.5mm;width:32mm;"/>
 							</div>
 						</div>
 						<!-- line 14d -->
 						<div style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftLtrBox" style="height:4mm;padding-left: 4.25mm;">d</div>
-								<div class="styLNDesc" style="width:92.5mm;height:4mm;">
+								<div class="styLNDesc" style="width:91.5mm;height:4mm;">
 								<span style="float:left"> 2013 special estimated tax payments (Do not include on line 14f)</span>
 								 </div>
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;width:8.5mm;">14d</div>
-								<div class="styLNAmountBox" style="height:4.5mm;width:32mm;">
+								<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/SpecialEstimatedTaxPaymentsAmt"/>
 									</xsl:call-template>
 								</div>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+								<div class="styLNAmountBoxNBB" style="width:32mm;height:4.5mm;"/>
 							</div>
 						</div>
 						<!-- line 14e -->
 						<div style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm;">e</div>
-								<div class="styLNDesc" style="width:53mm;height:4mm;font-size:6pt;">2013 refund applied for on Form 4466
+								<div class="styLNDesc" style="width:53.5mm;height:4mm;font-size:6pt;">2013 refund applied for on Form 4466
 								   	  <!-- Form to Form Link (Push Pin) -->
 									<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/OverpaymentOfEstimatedTaxAmt"/>
 									</xsl:call-template>
 									<!--Dotted Line-->
 								</div>
-								<div class="styLNRightNumBox" style="height:4mm;">14e</div>
+								<div class="styLNRightNumBox" style="height:4.5mm;">14e</div>
 								<div class="styLNAmountBox" style="height:4.5mm;border-right-width:1px;">
 									<xsl:call-template name="PopulateNegativeNumber">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/OverpaymentOfEstimatedTaxAmt"/>
@@ -1055,9 +1053,9 @@
 								</div>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styShadingCell" style="width:40mm;height:4.5mm;border-left-width:0px;"/>
+								<div class="styShadingCell" style="width:39.5mm;height:4.5mm;border-left-width:0px;"/>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+								<div class="styLNAmountBoxNBB" style="height:4.5mm;width:32mm;"/>
 							</div>
 						</div>
 						<!-- line 14f -->
@@ -1072,13 +1070,13 @@
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;width:8.5mm;">14f</div>
-								<div class="styLNAmountBox" style="height:4.5mm;width:32mm;">
+								<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/TotOvpmtCrAndEstTxPaymentsAmt"/>
 									</xsl:call-template>
 								</div>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+								<div class="styLNAmountBoxNBB" style="width:32mm;height:4.5mm;"/>
 							</div>
 						</div>
 						<!-- line 14g -->
@@ -1092,32 +1090,32 @@
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;width:8.5mm;">14g</div>
-								<div class="styLNAmountBox" style="height:4.5mm;width:32mm;">
+								<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/TaxPaidForm7004Amt"/>
 									</xsl:call-template>
 								</div>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+								<div class="styLNAmountBoxNBB" style="height:4.5mm;width:32mm;"/>
 							</div>
 						</div>
 						<!-- line 14h -->
 						<div style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftLtrBox" style="height:4mm;padding-left: 4.25mm;">h</div>
-								<div class="styLNDesc" style="width:92.5mm;height:4mm;font-size:6pt;">
+								<div class="styLNDesc" style="width:91.5mm;height:4mm;font-size:6pt;">
          	  Credit by reciprocal for tax paid by attorney-in-fact under section 835(d)
       	</div>
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;width:8.5mm;">14h</div>
-								<div class="styLNAmountBox" style="height:4.5mm;width:32mm;">
+								<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/ReciprocalTaxPaidSect835dAmt"/>
 									</xsl:call-template>
 								</div>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+								<div class="styLNAmountBoxNBB" style="height:4.5mm;width:32mm;"/>
 							</div>
 						</div>
 						<!-- line 14i  -->
@@ -1143,13 +1141,13 @@
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;width:8.5mm;">14i</div>
-								<div class="styLNAmountBox" style="height:4.5mm;width:32mm;">
+								<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/OtherCreditsPaymentsAmt"/>
 									</xsl:call-template>
 								</div>
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.5mm;"/>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
+								<div class="styLNAmountBoxNBB" style="height:4.5mm;width:32mm;"/>
 							</div>
 						</div>
 						<!-- line 14j  -->
@@ -1170,13 +1168,13 @@
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:7.5mm;width:8.5mm;padding-top:3.5mm;">14j</div>
-								<div class="styLNAmountBox" style="height:7.5mm;width:32mm;padding-top:3.5mm;">
+								<div class="styLNAmountBox" style="height:7.5mm;width:31.5mm;padding-top:3.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/RefundableCreditsAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styLNRightNumBox" style="height:7.5mm;padding-top:3.5mm;;">14k</div>
-								<div class="styLNAmountBox" style="height:7.5mm;padding-top:3.5mm;">
+								<div class="styLNRightNumBox" style="height:7.5mm;padding-top:3.5mm;width:8mm;">14k</div>
+								<div class="styLNAmountBox" style="height:7.5mm;padding-top:3.5mm;width:32mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/TotalPaymentsAmt"/>
 									</xsl:call-template>
@@ -1184,7 +1182,7 @@
 							</div>
 						</div>
 						<!-- line15 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">15</div>
 								<div class="styLNDesc" style="width:132mm;height:4mm;">
@@ -1220,7 +1218,7 @@
 							</div>
 						</div>
 						<!-- line16 -->
-							<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;">16</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -1239,7 +1237,7 @@
 							</div>
 						</div>
 						<!-- line17 -->
-							<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							
 								<div class="styLNLeftNumBox" style="height:4mm;">17</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -1257,10 +1255,10 @@
 							</div>
 						</div>
 						<!-- line 18 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none">
 								<div class="styLNLeftNumBox" style="height:4mm;">18</div>
-								<div class="styLNDesc" style="width:84mm;height:4mm;">
+								<div class="styLNDesc" style="width:86mm;height:4mm;">
 									<span style="font-size:6pt;">
          		  Enter amount from line 17: 
           		<!--span style="width:17px;vertical-align:top;"-->
@@ -1271,7 +1269,7 @@
 									<!--/span-->
 									<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 								</div>
-								<div class="styGenericDiv" style="width:30mm;height:4mm;">
+								<div class="styGenericDiv" style="width:28mm;height:4mm;font-size:6pt; padding-top:1mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/OverpaymentSection/AppliedToEsTaxAmt"/>
 									</xsl:call-template>
@@ -1287,8 +1285,8 @@
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;">18</div>
-								<div class="styLNAmountBoxNBB" style="height:4.5mm;">
+								<div class="styLNRightNumBoxNBB" style="height:7mm;">18</div>
+								<div class="styLNAmountBoxNBB" style="height:7mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/OverpaymentSection/RefundAmt"/>
 									</xsl:call-template>
@@ -1297,40 +1295,40 @@
 						</div>
 					</div>
 					<!--END of Tax Computation and Payments Section-->
-					<br class="pageEnd"/>
+					<br class="pageEnd" style="float:none;"/>
 					<!-- BEGIN Signature Section -->
 					<!-- Implementing the signature section as a table -->
-					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;">
+					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;float:none;">
 						<tr>
-							<td rowspan="3" style="width:10mm;font-size: 11pt;font-weight:bold;border-right:1 solid black;border-bottom:1 solid black;">Sign Here</td>
+							<td rowspan="3" style="width:10mm;font-size: 11pt;font-weight:bold;border-right:1px solid black;border-bottom:1px solid black;">Sign Here</td>
 							<td colspan="6" style="padding-left:1mm;padding-bottom:1mm;">Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than taxpayer) is based on all information of which preparer has any knowledge. </td>
 						</tr>
 						<tr>
-							<td rowspan="2" style="border-bottom:1 solid black;padding-left:1mm;">
+							<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;">
 								<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="LargeBullet"/>
 							</td>
-							<td style="width:52mm;border-right:1 solid black;border-bottom:1 solid black;vertical-align:bottom;">
+							<td style="width:52mm;border-right:1px solid black;border-bottom:1px solid black;vertical-align:bottom;">
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1px;"/>
 							</td>
-							<td style="width:20mm;border-bottom:1 solid black;vertical-align:bottom;padding-left:.5mm;">
+							<td style="width:20mm;border-bottom:1px solid black;vertical-align:bottom;padding-left:.5mm;">
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
 								</xsl:call-template>
 							</td>
-							<td rowspan="2" style="border-bottom:1 solid black;padding-left:1mm;">
+							<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;">
 								<img src="{$ImagePath}/1120_Bullet_Lg.gif" alt="LargeBullet"/>
 							</td>
-							<td style="width:60mm;border-bottom:1 solid black;vertical-align:bottom;">
+							<td style="width:60mm;border-bottom:1px solid black;vertical-align:bottom;">
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">Title</xsl:with-param>
 								</xsl:call-template>
 							</td>
-							<td rowspan="2" style="width:40mm;border-bottom:1 solid black;padding-bottom:1mm;">
+							<td rowspan="2" style="width:40mm;border-bottom:1px solid black;padding-bottom:1mm;">
 								<div class="styGenericDiv" style="width:2px;"/>
-								<div style="border-right:3 solid black;border-left:3 solid black;border-bottom:3 solid black;border-top:3 solid black;float:right;" class="styGenericDiv">		
+								<div style="border-right:3px solid black;border-left:3px solid black;border-bottom:3px solid black;border-top:3px solid black;float:right;" class="styGenericDiv">    
 			  	  May the IRS discuss this return<br/> with the preparer shown below <br/>(see instructions)?
       				<input class="styCkbox" type="checkbox" name="Checkbox" id="dummyidyes" style="width:3mm;">
 										<xsl:call-template name="PopulateReturnHeaderOfficer">
@@ -1366,9 +1364,9 @@
 							</td>
 						</tr>
 						<tr>
-							<td style="border-bottom:1 solid black;vertical-align:top;">Signature of officer      </td>
-							<td style="border-bottom:1 solid black;vertical-align:top;">Date</td>
-							<td style="border-bottom:1 solid black;vertical-align:top;">Title</td>
+							<td style="border-bottom:1px solid black;vertical-align:top;">Signature of officer      </td>
+							<td style="border-bottom:1px solid black;vertical-align:top;">Date</td>
+							<td style="border-bottom:1px solid black;vertical-align:top;">Title</td>
 						</tr>
 					</table>
 					<!-- END Signature Section -->
@@ -1384,23 +1382,23 @@
 						</div>
 						<div style="width:164mm;float:left;clear:none;">
 							<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;border-leftright:1px;">
-								<div class="styLNDesc" style="height:6mm;width:46.8mm;padding-top:0mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+								<div class="styLNDesc" style="height:7.5mm;width:46.8mm;padding-top:0mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
 								  Print/Type preparer's name<br/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp/BusinessName"/>
 										<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpPreparerPersonName</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:6mm;width:46.5mm;padding-top:0mm;border-right:1 solid black;padding-left:1mm;">
+								<div class="styLNDesc" style="height:7.5mm;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
 								Preparer's signature
 							</div>
-								<div class="styLNDesc" style="height:6mm;width:15mm;border-right:1 solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
+								<div class="styLNDesc" style="height:7.5mm;width:15mm;border-right:1px solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
 									<xsl:call-template name="PopulateReturnHeaderPreparer">
 										<xsl:with-param name="TargetNode">DatePrepared</xsl:with-param>
 										<xsl:with-param name="BackupName">$RtnHdrDataPreparerPersonGrpDatePrepared</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:6mm;width:18mm;border-right:1 solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
+								<div class="styLNDesc" style="height:7.5mm;width:18mm;border-right:1px solid black;padding-top:0mm;padding-bottom:0mm;padding-left:1mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp/SelfEmployedInd"/>
@@ -1416,7 +1414,7 @@
 										<span style="width:4px;"/>if<br/>self-employed
 									</label>
 								</div>
-								<div class="styLNDesc" style="height:6mm;width:26mm;padding-top:0mm;padding-left:1mm;">PTIN
+								<div class="styLNDesc" style="height:7.5mm;width:26mm;padding-top:0mm;padding-left:1mm;">PTIN
                   <br/>
                   <span style="width:6mm;"/>
 									<xsl:if test="$RtnHdrData/PreparerPersonGrp/SSN">
@@ -1440,7 +1438,7 @@
 								</div>
 							</div>
 							<div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-								<div class="styLNDesc" style="height:6mm;width:126.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+								<div class="styLNDesc" style="height:6mm;width:126.5mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
 									<span class="styGenericDiv" style="">Firm's name 
 									<span style="width:2.2mm;"/>
 										<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
@@ -1476,7 +1474,7 @@
 								</div>
 							</div>
 							<div style="width:164mm;float:left;clear:none;">
-								<div class="styLNDesc" style="width:126.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+								<div class="styLNDesc" style="width:126.5mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;height:auto;">
 									<div class="styGenericDiv" style="padding-right:.5mm;">Firm's address 
 									<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 									</div>
@@ -1547,7 +1545,7 @@
 		  
 		  <!-- END PREPARER SIGNATURE SECTION -->
 					<!-- Page 1 Break and Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;float:none;">
 						<div style="float:left;">
 							<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions.</span>
 							<span style="width:13mm;"/>                        
@@ -1561,7 +1559,7 @@
 					<!-- END Page 1 Break and Footer-->
 					<!--Begin Page 2 -->
 					<!-- Page 2 Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
 						<div style="float:left;">Form 1120-PC (2013)<span style="width:146mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
@@ -1577,22 +1575,21 @@
 					</div>
 					<!-- END Schedule A Title -->
 					<!--BEGIN Main Form Income Section-->
-					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120PCVTImageBox" style="height:97mm;text-align:center;padding-top:24mm;">
-							<div style="width:2mm;height:16mm;"/>
-							<img src="{$ImagePath}/1120PC_Income.gif" alt="VerticalIncome"/>
-						</div>
-						<div style="width:000mm;float:right;clear:none;"/>
+					<div class="styBB" style="width:187mm;float:none;clear:none;">
+						<span class="styIRS1120PCVTImageBox" style="width:6mm;height:97mm;text-align:center;padding-top:38mm;">
+							<img src="{$ImagePath}/1120PC_Income.gif" alt="Income section" valign="center" height="40mm;"/>
+						</span>					
 						<!--Sch A line 1 -->
-						<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">1</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox" style="padding-left: 2.25mm">1</div>
+								<div class="styLNDesc" style="width:133mm;">
       	              <span style="float:left">Premiums earned (Schedule E, line 7)</span>  
         		<!--Dotted Line-->
-				<div class="styDotLn" style="float:right;padding-right:1mm;">....................</div>
+									<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>
+								</div>
 							</div>
-							<div style="width:40mm;float:right;clear:none;">
+							<div style="float:right;clear:none">
 								<div class="styLNRightNumBox" style="height:4.5mm;">1</div>
 								<div class="styLNAmountBox" style="height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
@@ -1602,17 +1599,18 @@
 							</div>
 						</div>
 						<!--Sch A line 2 -->
-						<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">2</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox" style="padding-left: 2.25mm">2</div>
+								<div class="styLNDesc" style="width:133mm;">
       	<span style="float:left">Dividends (Schedule C, line 14)</span>
       	  	<!--Dotted Line-->
 					<div class="styDotLn" style="float:right;padding-right:1mm;">......................</div>
+								</div>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styLNRightNumBox" style="height:5mm;">2</div>
-								<div class="styLNAmountBox" style="height:5mm;">
+								<div class="styLNRightNumBox" style="height:4.5mm;">2</div>
+								<div class="styLNAmountBox" style="height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/TotalDividendAmt"/>
 									</xsl:call-template>
@@ -1620,61 +1618,62 @@
 							</div>
 						</div>
 						<!--Sch A line a and b  -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left: 2.25mm"/>
 								<div class="styLNDesc" style="width:68mm;height:8mm;"/>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styLNAmountBox" style="height:8.5mm;width:32mm;border-top:1px solid black;text-align:center;padding-top:2mm;">
+								<div class="styLNAmountBox" style="width:32mm;height:8.5mm;border-top:1px solid black;text-align:center;padding-top:2mm;">
 									<b>(a)</b> Interest received </div>
-								<div class="styLNAmountBox" style="height:8.5mm;width:32mm;border-top:1px solid black;text-align:center;">
+								<div class="styLNAmountBox" style="width:32mm;height:8.5mm;border-top:1px solid black;text-align:center;">
 									<b>(b)</b> Amortization of premium </div>
 								<div class="styLNRightNumBoxNBB" style="height:8.5mm;background-color:lightgrey;"/>
 								<div class="styLNAmountBoxNBB" style="height:8.5mm;background-color:lightgrey;border-left-width: 0px;"/>
 							</div>
 						</div>
 						<!--Sch A line 3a  -->
-						<div style="width:181mm;">
-							
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left: 2.25mm;padding-top:4mm;">3a</div>
 								<div class="styLNDesc" style="width:68mm;height:8mm;padding-top:4mm;">
      	  <span style="float:left">Gross interest</span>
      		<!--Dotted Line-->
 			<div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 							</div>
+						</div>
 							<div style="float:right;clear:none;">
-								<div class="styLNAmountBox" style="height:8.5mm;width:32mm;text-align:right;padding-top:4mm;">
+							<div class="styLNAmountBox" style="width:32mm;height:8.5mm;text-align:right;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/GrossInterestReceivedAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styLNAmountBox" style="height:8.5mm;width:32mm;text-align:right;padding-top:4mm;">
+							<div class="styLNAmountBox" style="width:32mm;height:8.5mm;text-align:right;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/GrossInterestAmortzPremAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styLNRightNumBoxNBB" style="height:8.5mm;width:8mm;background-color:lightgrey;"/>
-								<div class="styLNAmountBoxNBB" style="height:8.5mm;width:32mm;background-color:lightgrey;border-left-width: 0px;"/>
+							<div class="styLNRightNumBoxNBB" style="height:8.5mm;background-color:lightgrey;"/>
+							<div class="styLNAmountBoxNBB" style="height:8.5mm;background-color:lightgrey;border-left-width: 0px;"/>
 							</div>
 						</div>
 						<!--Sch A line 3b  -->
-						<div style="width:181mm;">
-							
+					<div class="styGenericDiv" style="width:181mm;">
+						<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left: 4.25mm;padding-top:4mm;">b</div>
 								<div class="styLNDesc" style="width:68mm;height:8mm;padding-top:4mm;">
      	<span style="float:left">Interest exempt under section 103</span>  
      	  	<!--Dotted Line-->
 			<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
-								
+							</div>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styLNAmountBox" style="height:8.5mm;width:32mm;text-align:right;padding-top:4mm;">
+							<div class="styLNAmountBox" style="width:32mm;height:8.5mm;text-align:right;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/IntExemptUnderSect103RcvdAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styLNAmountBox" style="height:8.5mm;width:32mm;text-align:right;padding-top:4mm;">
+							<div class="styLNAmountBox" style="width:32mm;height:8.5mm;text-align:right;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/IntExemptUnderSect103AmortzAmt"/>
 									</xsl:call-template>
@@ -1684,21 +1683,22 @@
 							</div>
 						</div>
 						<!--Sch A line 3c  -->
-						<div style="width:181mm;">
-							
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left: 4.25mm;padding-top:4mm;">c</div>
 								<div class="styLNDesc" style="width:68mm;height:8mm;padding-top:4mm;">
      	<span style="float:left">Subtract line 3b from line 3a</span>  
      		<!--Dotted Line-->
 				<div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
+								</div>
 							</div>
 							<div style="float:right;clear:none;">
-								<div class="styLNAmountBox" style="height:8.5mm;width:32mm;text-align:right;padding-top:4mm;">
+								<div class="styLNAmountBox" style="height:8.5mm;text-align:right;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/GroIntRcvdLessIntExmptRcvdAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styLNAmountBox" style="height:8.5mm;width:32mm;text-align:right;padding-top:4mm;">
+								<div class="styLNAmountBox" style="height:8.5mm;text-align:right;padding-top:4mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/GrossIntAmortzLessIntExmptAmt"/>
 									</xsl:call-template>
@@ -1708,15 +1708,15 @@
 							</div>
 						</div>
 						<!--Sch A line 3d -->
-							<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm">d</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox" style="padding-left: 4.25mm">d</div>
+								<div class="styLNDesc" style="width:133mm;">
                                     <span style="float:left">Taxable interest. Subtract line 3c, column (b) from line 3c, column (a)</span>
             <!--Dotted Line-->
 			        <div class="styDotLn" style="float:right;padding-right:1mm;">..........</div>
 								
-							
+								</div>
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">3d</div>
@@ -1728,13 +1728,14 @@
 							</div>
 						</div>
 						<!--Sch A line 4 -->
-						<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">4</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox" style="padding-left: 2.25mm">4</div>
+								<div class="styLNDesc" style="width:133mm;">
                                                <span style="float:left">Gross rents</span>
             <!--Dotted Line-->
 			<div class="styDotLn" style="float:right;padding-right:1mm;">............................</div>
+								</div>
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">4</div>
@@ -1746,14 +1747,14 @@
 							</div>
 						</div>
 						<!--Sch A line 5 -->
-					<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">5</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox" style="padding-left: 2.25mm">5</div>
+								<div class="styLNDesc" style="width:133mm;">
                            <span style="float:left">Gross royalties</span>
             <!--Dotted Line-->
-			<div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
-								
+									<div class="styDotLn" style="float:right;padding-right:1mm;">..........................</div>
+								</div>
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">5</div>
@@ -1765,8 +1766,8 @@
 							</div>
 						</div>
 						<!--Sch A line 6 -->
-					<div style="width:181mm;">
-							
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">6</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
                        <span style="float:left">Capital gain net income (attach Schedule D (Form 1120))
@@ -1776,7 +1777,7 @@
 									</xsl:call-template></span>
 									<!--Dotted Line-->
 				<div class="styDotLn" style="float:right;padding-right:1mm;">.............</div>
-								
+								</div>
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">6</div>
@@ -1788,10 +1789,10 @@
 							</div>
 						</div>
 						<!--Sch A line 7 -->
-											<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">7</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" tyle="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox" style="padding-left: 2.25mm">7</div>
+								<div class="styLNDesc" style="width:133mm;">
           <span style="float:left">Net gain or (loss) from Form 4797, Part II, line 17 (attach Form 4797)
           <!-- Form to Form Link (Push Pin)-->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1799,7 +1800,7 @@
 									</xsl:call-template></span>
 									<!--Dotted Line-->
 					<div class="styDotLn" style="float:right;padding-right:1mm;">........</div>
-
+								</div>
 							</div>
 							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">7</div>
@@ -1811,13 +1812,14 @@
 							</div>
 						</div>
 						<!--Sch A line 8 -->
-						<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">8</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox" style="padding-left: 2.25mm">8</div>
+								<div class="styLNDesc" style="width:133mm;">
                                     <span style="float:left"> Certain mutual fire or flood insurance company premiums (section 832(b)(1)(D))</span>
               <!--Dotted Line-->
 				<div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
+								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">8</div>
@@ -1829,15 +1831,16 @@
 							</div>
 						</div>
 						<!--Sch A line 9 -->
-							<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">9</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox" style="padding-left: 2.25mm">9</div>
+								<div class="styLNDesc" style="width:133mm;">
                                 <span style="float:left">Income on account of special income and deduction accounts</span> 
               <!--Dotted Line-->
 				<div class="styDotLn" style="float:right;padding-right:1mm;">...........</div>
+								</div>
 							</div>
-							<div style="width:40mm;float:right;clear:none;">
+							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">9</div>
 								<div class="styLNAmountBox" style="height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
@@ -1847,10 +1850,10 @@
 							</div>
 						</div>
 						<!--Sch A line 10 -->
-						<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;">10</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox">10</div>
+								<div class="styLNDesc" style="width:133mm;">
          <span style="float:left">Income from protection against loss account (see instructions)
           <!-- Form to Form Link (Push Pin)-->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1858,6 +1861,7 @@
 									</xsl:call-template></span>
 									<!--Dotted Line-->
 						<div class="styDotLn" style="float:right;padding-right:1mm;">..........</div>
+								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">10</div>
@@ -1869,15 +1873,16 @@
 							</div>
 						</div>
 						<!--Sch A line 11 -->
-						<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;">11</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox">11</div>
+								<div class="styLNDesc" style="width:133mm;">
                 <span style="float:left">Mutual interinsurers or reciprocal underwriters&#8212;decrease in subscriber accounts</span>
               <!--Dotted Line-->
 				<div class="styDotLn" style="float:right;padding-right:1mm;">.. ....</div>
+								</div>
 							</div>
-							<div style="width:40mm;float:right;clear:none;">
+							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">11</div>
 								<div class="styLNAmountBox" style="height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
@@ -1887,10 +1892,10 @@
 							</div>
 						</div>
 						<!--Sch A line 12 -->
-					<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;">12</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox">12</div>
+								<div class="styLNDesc" style="width:133mm;">
           <span style="float:left">Income from a special loss discount account (attach Form 8816)
           <!-- Form to Form Link (Push Pin)-->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1898,8 +1903,9 @@
 									</xsl:call-template></span>
 									<!--Dotted Line-->
 						<div class="styDotLn" style="float:right;padding-right:1mm;">.........</div>
+								</div>
 							</div>
-							<div style="width:40mm;float:right;clear:none;">
+							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">12</div>
 								<div class="styLNAmountBox" style="height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
@@ -1909,10 +1915,10 @@
 							</div>
 						</div>
 						<!--Sch A line 13 -->
-							<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;">13</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox">13</div>
+								<div class="styLNDesc" style="width:133mm;">
         <span style="float:left">Other income (attach statement)
          <!-- Form to Form Link (Push Pin)-->
 									<xsl:call-template name="SetFormLinkInline">
@@ -1925,8 +1931,9 @@
 									</xsl:call-template></span> 
 									<!--Dotted Line-->
 							<div class="styDotLn" style="float:right;padding-right:1mm;">...................</div>
+								</div>
 							</div>
-							<div style="width:40mm;float:right;clear:none;">
+							<div style="float:right;clear:none;">
 								<div class="styLNRightNumBox" style="height:4.5mm;">13</div>
 								<div class="styLNAmountBox" style="height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
@@ -1936,17 +1943,18 @@
 							</div>
 						</div>
 						<!--Sch A line 14 -->
-						<div style="width:181mm;">
-							
-								<div class="styLNLeftNumBox" style="height:4mm;">14</div>
-								<div class="styLNDesc" style="width:133mm;height:4mm;">
+						<div class="styGenericDiv" style="width:181mm;">
+							<div style="float:left;clear:none;">
+								<div class="styLNLeftNumBox">14</div>
+								<div class="styLNDesc" style="width:133mm;">
                                 <span style="float:left">Gross income. Add lines 1 through 13</span> 
             <!--Dotted Line-->
 				<div class="styDotLn" style="float:right;padding-right:1mm;">.....................</div>
+								</div>
 							</div>
-							<div style="width:40mm;float:right;clear:none;">
-								<div class="styLNRightNumBoxNBB" style="height:4mm;">14</div>
-								<div class="styLNAmountBoxNBB" style="height:4mm;">
+							<div style="float:right;clear:none;">
+								<div class="styLNRightNumBoxNBB" style="height:4.5mm;">14</div>
+								<div class="styLNAmountBoxNBB" style="height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/GrossIncomeAmt"/>
 									</xsl:call-template>
@@ -1957,12 +1965,11 @@
 					<!--END Schedule A Income Section-->
 					<!--BEGIN Schedule A Deduction Section-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120PCVTImageBox" style="height:129.5mm;padding-top:13mm;">
-							<div style="width:2mm;"/>
-							<img src="{$ImagePath}/1120PC_Deductions_limitations.gif" alt="VertDeductions"/>
+						<div class="styIRS1120PCVTImageBox" style="width:6mm;height:129.5mm;padding-top:13mm;">
+							<img src="{$ImagePath}/1120PC_Deductions_limitations.gif" alt="Deductions section (See instructions for limitations on deductions)"/>
 						</div>
 						<!--Sch A line 15 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">15</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -1985,7 +1992,7 @@
 							</div>
 						</div>
 						<!--Sch A line 16 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">16</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2004,7 +2011,7 @@
 							</div>
 						</div>
 						<!--Sch A line 17 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">17</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2023,7 +2030,7 @@
 							</div>
 						</div>
 						<!--Sch A line 18 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">18</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2033,7 +2040,7 @@
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/TotalRentOrLeaseExpenseAmt"/>
 									</xsl:call-template></span>
 									<!--Dotted Line-->
-					<div class="styDotLn" style="float:right;padding-right:1mm;">..............................</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">.............................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2046,7 +2053,7 @@
 							</div>
 						</div>
 						<!--Sch A line 19 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">19</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2065,7 +2072,7 @@
 							</div>
 						</div>
 						<!-- Schedule A line 20  -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">20a</div>
 								<div class="styLNDesc" style="width:20mm;height:4mm;">Interest
@@ -2081,9 +2088,9 @@
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/InterestDeductionAmt"/>
 									</xsl:call-template>
 								</div>
-								<div class="styLNLeftNumBox" style="height:4mm;padding-left:2mm;width:4mm">b</div>
-								<div class="styLNDesc" style="width:46mm;height:4mm;">Less tax-exempt interest expense</div>
-								<div class="styLNAmountBox" style="width:24mm;height:4.5mm;border-top-width:0px; border-bottom-width:1px;border-left-width:0px; border-right-width: 0px;font-size:6pt;">
+								<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;width:4mm">b</div>
+								<div class="styLNDesc" style="width:44mm;height:4mm;padding-left:2.5mm;"> Less tax-exempt interest exp.</div>
+								<div class="styLNAmountBox" style="width:26mm;height:4.5mm;border-top-width:0px; border-bottom-width:1px;border-left-width:0px; border-right-width: 0px;font-size:6pt;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/TaxExemptInterestExpenseAmt"/>
 									</xsl:call-template>
@@ -2104,7 +2111,7 @@
 							</div>
 						</div>
 						<!--Sch A line 21 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">21</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2127,7 +2134,7 @@
 							</div>
 						</div>
 						<!--Sch A line 22 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">22</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2150,7 +2157,7 @@
 							</div>
 						</div>
 						<!--Sch A line 23 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">23</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2160,7 +2167,7 @@
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/DepletionAmt"/>
 									</xsl:call-template></span>
 									<!--Dotted Line-->
-			<div class="styDotLn" style="float:right;padding-right:1mm;">..........................</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2173,7 +2180,7 @@
 							</div>
 						</div>
 						<!--Sch A line 24 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">24</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2192,7 +2199,7 @@
 							</div>
 						</div>
 						<!--Sch A line 25 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">25</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2211,13 +2218,13 @@
 							</div>
 						</div>
 						<!--Sch A line 26 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">26</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
       		<span style="float:left">Losses incurred (Schedule F, line 14)</span>
 									<!--Dotted Line-->
-									<div class="styDotLn" style="float:right;padding-right:1mm;">....................</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">.....................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2230,7 +2237,7 @@
 							</div>
 						</div>
 						<!--Sch A line 27 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">27</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2254,7 +2261,7 @@
 							</div>
 						</div>
 						<!--Sch A line 28 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">28</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2273,13 +2280,13 @@
 							</div>
 						</div>
 						<!--Sch A line 29 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">29</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
       		<span style="float:left">Dividends to policyholders</span>
 									<!--Dotted Line-->
-									<div class="styDotLn" style="float:right;padding-right:1mm;">......................</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">........................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2292,7 +2299,7 @@
 							</div>
 						</div>
 						<!--Sch A line 30 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">30</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2311,7 +2318,7 @@
 							</div>
 						</div>
 						<!--Sch A line 31 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">31</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2322,7 +2329,7 @@
 										</xsl:call-template>
 									</span>
 									<!--Dotted Line-->
-									<div class="styDotLn" style="float:right;padding-right:1mm;">...........</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">..............</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2335,7 +2342,7 @@
 							</div>
 						</div>
 						<!--Sch A line 32 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">32</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2359,7 +2366,7 @@
 							</div>
 						</div>
 						<!--Sch A line 33 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">33</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2378,7 +2385,7 @@
 							</div>
 						</div>
 						<!--Sch A line 34a line 1 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">34a</div>
 								<div class="styLNDesc" style="height:4mm;width:133mm;">
@@ -2391,7 +2398,7 @@
 							</div>
 						</div>
 						<!-- Schedule A line 34a line2 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm;"/>
 								<div class="styLNDesc" style="width:93mm;height:4mm;">
@@ -2412,7 +2419,7 @@
 							</div>
 						</div>
 						<!-- Schedule A line 34b -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm;">b</div>
 								<div class="styLNDesc" style="width:93mm;height:4mm;">
@@ -2433,13 +2440,13 @@
 							</div>
 						</div>
 						<!--Sch A line 34c -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm">c</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
       	    <span style="float:left">Total. Add lines 34a and 34b</span>
         <!--Dotted Line-->
-		<div class="styDotLn" style="float:right;padding-right:1mm;">......................</div>
+		                         <div class="styDotLn" style="float:right;padding-right:1mm;">.......................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2452,7 +2459,7 @@
 							</div>
 						</div>
 						<!--Sch A line 35 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">35</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2471,7 +2478,7 @@
 							</div>
 						</div>
 						<!-- Schedule A line 36a -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">36a</div>
 								<div class="styLNDesc" style="width:93mm;height:4mm;">
@@ -2492,7 +2499,7 @@
 							</div>
 						</div>
 						<!-- Schedule A line 36b -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm;">b</div>
 								<div class="styLNDesc" style="width:93mm;height:4mm;">
@@ -2502,7 +2509,7 @@
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleA/NetOperatingLossDeductionAmt"/>
 									</xsl:call-template></span>
 									<!--Dotted Line-->
-							<div class="styDotLn" style="float:right;padding-right:1mm;">...........</div>
+							<div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 								</div>
 							</div>
 							<div style="float:right;clear:none;">
@@ -2517,13 +2524,13 @@
 							</div>
 						</div>
 						<!--Sch A line 36c -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm">c</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
       	   <span style="float:left"> Total. Add lines 36a and 36b</span>
             <!--Dotted Line-->
-				<div class="styDotLn" style="float:right;padding-right:1mm;">......................</div>
+				             <div class="styDotLn" style="float:right;padding-right:1mm;">.......................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2536,7 +2543,7 @@
 							</div>
 						</div>
 						<!--Sch A line 37 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-top:4mm;">37</div>
 								<div class="styLNDesc" style="width:133mm;height:8mm;padding-top:4mm;">
@@ -2557,7 +2564,7 @@
 					</div>
 					<!--END Main Form Deductions Section-->
 					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
@@ -2567,7 +2574,7 @@
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 3 -->
 					<!-- Page 3 Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
 						<div style="float:left;">Form 1120-PC (2013)<span style="width:146mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span>
@@ -2577,20 +2584,20 @@
 					<!-- BEGIN Schedule B Title -->
 					<div class="styBB" style="width:187mm;border-top:1px solid black;">
 						<div class="styPartName" style="width:23mm;">Schedule B</div>
-						<div class="styPartDesc" style="width:164mm;">Part I?Taxable Investment Income of Electing Small Companies?Section 834  
+		<div class="styPartDesc" style="width:164mm;">Part I &#8212; Taxable Investment Income of Electing Small Companies Section 834
     	<span class="styNormalText" style="font-size:6.5pt;">(see instructions)</span>
 						</div>
 					</div>
 					<!-- END Schedule B Title -->
 					<!--BEGIN Main Schedule B Income Section-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120PCVTImageBox" style="height:70.5mm;padding-top:14mm;">
-							<div style="width:2mm;height:14mm;"/>
-							<img src="{$ImagePath}/1120PC_Income.gif" alt="VerticalIncome"/>
+						<div class="styIRS1120PCVTImageBox" style="width:6mm;text-align:center;height:70.5mm;padding-top:30mm;">
+							
+							<img src="{$ImagePath}/1120PC_Income.gif" alt="Income section" valign="center" height="40mm;"/>
 						</div>
 						<div style="width:000mm;float:right;clear:none;"/>
 						<!--Sch B line a and b  -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left: 2.25mm"/>
 								<div class="styLNDesc" style="width:68mm;height:8mm;"/>
@@ -2605,7 +2612,7 @@
 							</div>
 						</div>
 						<!--Sch B line 1a  -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left: 2.25mm;padding-top:4mm;">1a</div>
 								<div class="styLNDesc" style="width:68mm;height:8mm;padding-top:4mm;">
@@ -2630,7 +2637,7 @@
 							</div>
 						</div>
 						<!--Sch B line 1b  -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left: 4.25mm;padding-top:4mm;">b</div>
 								<div class="styLNDesc" style="width:68mm;height:8mm;padding-top:4mm;">
@@ -2655,7 +2662,7 @@
 							</div>
 						</div>
 						<!--Sch B line 1c  -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-left: 4.25mm;padding-top:4mm;">c</div>
 								<div class="styLNDesc" style="width:68mm;height:8mm;padding-top:4mm;">
@@ -2680,7 +2687,7 @@
 							</div>
 						</div>
 						<!--Sch B line 1d -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 4.25mm">d</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2699,7 +2706,7 @@
 							</div>
 						</div>
 						<!--Sch B line 2 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">2</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2718,13 +2725,13 @@
 							</div>
 						</div>
 						<!--Sch B line 3 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">3</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
       	    <span style="float:left"> Gross rents</span>
             <!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
+	                             <div class="styDotLn" style="float:right;padding-right:1mm;">............................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2737,13 +2744,13 @@
 							</div>
 						</div>
 						<!--Sch B line 4 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">4</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
       	    <span style="float:left"> Gross royalties</span>
             <!--Dotted Line-->
-		<div class="styDotLn" style="float:right;padding-right:1mm;">..........................</div>
+		                         <div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2756,7 +2763,7 @@
 							</div>
 						</div>
 						<!--Sch B line 5 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">5</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2775,13 +2782,13 @@
 							</div>
 						</div>
 						<!--Sch B line 6 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm">6</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
       	    <span style="float:left">Income from leases described in sections 834(b)(1)(B) and 834(b)(1)(C)</span>
               <!--Dotted Line-->
-		<div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
+		                             <div class="styDotLn" style="float:right;padding-right:1mm;">.........</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2794,7 +2801,7 @@
 							</div>
 						</div>
 						<!--Sch B line 7 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm;">7</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2813,7 +2820,7 @@
 							</div>
 						</div>
 						<!--Sch B line 8 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left: 2.25mm;">8</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2832,7 +2839,7 @@
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleB/GrossInvestmentIncomeAmt/@protectionAgainstLossIncmAmt"/>
 									</xsl:call-template></span>
 									<!--Dotted Line-->
-						<div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
+						<div class="styDotLn" style="float:right;padding-right:1mm;">..............</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2848,12 +2855,12 @@
 					<!--END Schedule B Income Section-->
 					<!--BEGIN Schedule B Deduction Section-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1120PCVTImageBox" style="height:62.5mm;padding-top:5mm;">
+						<div class="styIRS1120PCVTImageBox" style="width:6mm;height:62.5mm;padding-top:5mm;">
 							<div style="width:2mm;height:17mm;"/>
-							<img src="{$ImagePath}/1120PC_Deductions.gif" alt="VertDeductions"/>
+							<img src="{$ImagePath}/1120PC_Deductions.gif" alt="Deductions section"/>
 						</div>
 						<!--Sch B line 9 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.25mm;">9</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2872,7 +2879,7 @@
 							</div>
 						</div>
 						<!--Sch B line 10 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">10</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2891,7 +2898,7 @@
 							</div>
 						</div>
 						<!--Sch B line 11 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">11</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2901,7 +2908,7 @@
 										<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleB/DepreciationAmt"/>
 									</xsl:call-template></span>
 									<!--Dotted Line-->
-			<div class="styDotLn" style="float:right;padding-right:1mm;">....................</div>
+			                        <div class="styDotLn" style="float:right;padding-right:1mm;">.....................</div>
 								</div>
 							</div>
 							<div style="width:40mm;float:right;clear:none;">
@@ -2914,7 +2921,7 @@
 							</div>
 						</div>
 						<!--Sch B line 12 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">12</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2933,7 +2940,7 @@
 							</div>
 						</div>
 						<!--Sch B line 13 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">13</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2956,7 +2963,7 @@
 							</div>
 						</div>
 						<!--Sch B line 14 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">14</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2975,7 +2982,7 @@
 							</div>
 						</div>
 						<!--Sch B line 15 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">15</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -2994,7 +3001,7 @@
 							</div>
 						</div>
 						<!--Sch B line 16 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">16</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -3013,7 +3020,7 @@
 							</div>
 						</div>
 						<!--Sch B line 17 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">17</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -3036,7 +3043,7 @@
 							</div>
 						</div>
 						<!--Sch B line 18 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">18</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -3059,7 +3066,7 @@
 							</div>
 						</div>
 						<!--Sch B line 19 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">19</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -3078,7 +3085,7 @@
 							</div>
 						</div>
 						<!--Sch B line 20 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:4mm;">20</div>
 								<div class="styLNDesc" style="width:133mm;height:4mm;">
@@ -3097,7 +3104,7 @@
 							</div>
 						</div>
 						<!--Sch B line 21 -->
-						<div style="width:181mm;">
+						<div class="styGenericDiv" style="width:181mm;">
 							<div style="width:141mm;float:left;clear:none;">
 								<div class="styLNLeftNumBox" style="height:8mm;padding-top:4mm;">21</div>
 								<div class="styLNDesc" style="width:133mm;height:8mm;padding-top:4mm;">
@@ -3119,7 +3126,7 @@
 					<!--END Main Form Deductions Section-->
 					<!-- BEGIN Part II -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styPartDesc" style="width:164mm;padding-left:0mm;">Part II - Invested Assets Book Values<br/>
+						<div class="styPartDesc" style="width:164mm;padding-left:0mm;height:auto;">Part II - Invested Assets Book Values<br/>
       (Complete only if claiming a deduction for general expenses allocated to investment income.) 
     	</div>
 					</div>
@@ -3529,7 +3536,7 @@
 							<div class="styLNDesc" style="height:4mm;">
 						<span style="float:left">Multiply line 37 by .25</span>
           <!--Dotted Line-->
-			<div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
+			<div class="styDotLn" style="float:right;padding-right:1mm;">..........................</div>
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
@@ -3561,7 +3568,7 @@
 						</div>
 					</div>
 					<!-- Page Break and Footer for Page 3-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
@@ -3571,7 +3578,7 @@
 					<!-- END Page Break and Footer for Page 3-->
 					<!--Begin Page 4 -->
 					<!-- Page 4 Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
 						<div style="float:left;">Form 1120-PC (2013)<span style="width:146mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">4</span>
@@ -3579,23 +3586,21 @@
 					</div>
 					<!-- END Page 4 Header -->
 					<!-- BEGIN Schedule C Title Income Section -->
-					<div style="width:187mm;">
-						<div style="float:left;clear:none;border-top:1px solid black;">
+					
+						<div style="float:left;clear:none;border-top:1px solid black;border:0px solid red;width:123mm;border-bottom:1px solid black;">
 							<div class="styPartName" style="width:23mm;">Schedule C</div>
-							<div class="styPartDesc" style="width:100mm;">Dividends and Special Deductions</div>
-							<div class="styPartDesc" style="width:123mm;height:4mm;font-weight:normal;padding-left:26mm;border-bottom:1px solid black;">(see instructions)</div>
-							<div class="styPartDesc" style="width:123mm;height:4mm;font-weight:bold;text-align:center;">Income</div>
+							<div class="styPartDesc" style="width:70mm; height:8mm;">Dividends and Special Deductions ><br /> (see instructions)</div>	
 						</div>
-						<div style="float:right;clear:none;">
-							<div class="styLNAmountBox" style="heigh:4.5mm;width:64mm;text-align:center;border-top:1px solid black;">Dividends-Received</div>
-							<div>
-								<div class="styLNAmountBox" style="heigh:8.5mm;text-align:center;float:left;width:120px;border-right:none;border-top:none;border-bottom:none;border-left:1px solid black;">
-									<b>(a)</b> Subject to section <br/>832(b)(5)(B)</div>
-								<div class="styLNAmountBox" style="heigh:8.5mm;text-align:center;float:right;width120pxborder-right:none;border-top:none;border-bottom:none;border-left:1px solid black;">
-									<b>(b)</b> Total dividends-<br/>received</div>
-							</div>
+						<div style="float:right;clear:none;width:65mm;border:0px solid green;" >
+								<div class="styLNAmountBox" style="heigh:4.5mm;width:65mm;text-align:center;border-top:1px solid black;">Dividends-Received</div>
+													   									<div class="styLNAmountBox" style="height:8mm;text-align:center;float:left;width:32mm;border-right:none;border-top:none;border-bottom:none;border-left:1px solid black;">
+									<b>(a)</b> Subject to section <br/>832(b)(5)(B)</div>	
+									<div class="styLNAmountBox" style="height:8mm;text-align:center;float:right;width:32.5mm;border-right:none;border-top:none;border-bottom:none;border-left:1px solid black;">
+									<b>(b)</b> Total dividends-<br/>received</div>	
 						</div>
-					</div>
+						<div class="styGenericDiv">
+					   	<div class="styPartDesc" style="width:123mm;height:4mm;font-weight:bold;text-align:center;">Income</div>
+						</div>
 					<!-- END Schedule C Title Income Section -->
 					<!-- Schedule C Line 1-->
 					<div style="width:187mm;">
@@ -3849,7 +3854,7 @@
       	    Income from controlled foreign corporations under subpart F 
           <span style="float:left">(attach Forms 5471)</span>
           <!--Dotted Line -->
-				<div class="styDotLn" style="float:right;padding-right:1mm;">...................</div>
+				<div class="styDotLn" style="float:right;padding-right:1mm;"></div>
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
@@ -3943,12 +3948,12 @@
 							<br/>
 							<div class="styPartDesc" style="width:123mm;height:4mm;font-weight:bold;text-align:center;background-color:none;">Deduction</div>
 						</div>
-						<div style="float:right;clear:none;">
+						<div style="float:right;clear:none;width:64mm;">
 							<div class="styLNAmountBox" style="heigh:4.5mm;width:64mm;text-align:center;">Dividends-Received Deduction</div>
 							<div>
-								<div class="styLNAmountBox" style="heigh:8.5mm;text-align:center;float:left;width:120px;border-right:none;border-top:none;border-bottom:1px solid black;border-left:1px solid black;">
+								<div class="styLNAmountBox" style="height:8.5mm;text-align:center;float:left;width:120px;border-right:none;border-top:none;border-bottom:1px solid black;border-left:1px solid black;">
 									<b>(a)</b>Subject to section <br/>832(b)(5)(B)</div>
-								<div class="styLNAmountBox" style="heigh:8.5mm;text-align:center;float:right;width120pxborder-right:none;border-top:none;border-bottom:1px solid black;border-left:1px solid black;">
+								<div class="styLNAmountBox" style="height:8.5mm;text-align:center;float:right;width:120px;border-right:none;border-top:none;border-bottom:1px solid black;border-left:1px solid black;">
 									<b>(b)</b>Total dividends-<br/>received deduction</div>
 							</div>
 						</div>
@@ -4005,16 +4010,16 @@
 					<!-- Schedule C Line 17-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-top:4mm;">17</div>
-							<div class="styLNDesc" style="height:4mm;width:107mm;padding-top:4mm;">
+							<div class="styLNLeftNumBox" style="height:4mm;">17</div>
+							<div class="styLNDesc" style="height:4mm;width:107mm;">
       	  <span style="float:left"> Deduction for line 3 (see instructions)</span>
           <!--Dotted Line -->
 		<div class="styDotLn" style="float:right;padding-right:1mm;">.............</div>
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:4.5mm;padding-top:4mm;">17</div>
-							<div class="styLNAmountBox" style="width:32mm;border-bottom-width:1px;height:4.5mm;">
+							<div class="styLNRightNumBox" style="height:8mm;">17</div>
+							<div class="styLNAmountBox" style="width:32mm;border-bottom-width:1px;height:8mm;">
 								<span style="width:31mm;float:left;">
 									<!-- Form to Form Link (Push Pin) -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -4025,7 +4030,7 @@
 									<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleC/DebtFincdStockCorpDeductionAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNAmountBox" style="width:32mm;height:4.5mm;">
+							<div class="styLNAmountBox" style="width:32mm;height:8mm;">
 								<span style="width:31mm;float:left;">
 									<!-- Form to Form Link (Push Pin) -->
 									<xsl:call-template name="SetFormLinkInline">
@@ -4224,7 +4229,7 @@
 						</div>
 					</div>
 					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;border-top:1px solid black;">
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
@@ -4234,7 +4239,7 @@
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 5 -->
 					<!-- Page Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
 						<div style="float:left;">Form 1120-PC (2013)<span style="width:146mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">5</span>
@@ -4405,7 +4410,7 @@
 							<div class="styLNDesc" style="height:4mm;">
 							<span style="float:left"> <b>Total.</b> Add lines 1 and 2e</span>
           <!--Dotted Line -->
-			<div class="styDotLn" style="float:right;padding-right:1mm;">........................</div>
+			<div class="styDotLn" style="float:right;padding-right:1mm;">.......................</div>
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
@@ -5002,7 +5007,7 @@
 						</div>
 					</div>
 					<!-- Page Break and Footer for Page 5-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
@@ -5012,7 +5017,7 @@
 					<!-- END Page Break and Footer for Page 5-->
 					<!--Begin Page 6 -->
 					<!-- Page 6 Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
 						<div style="float:left;">Form 1120-PC (2013)<span style="width:146mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">6</span>
@@ -5020,12 +5025,12 @@
 					</div>
 					<!-- END Page 6 Header -->
 					<!-- BEGIN Schedule G Title  -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;height:auto;">
 						<div class="styPartName" style="width:23mm;border-bottom:1px solid black;">Schedule G</div>
 						<div class="styPartDesc" style="width:164mm;border-top:1px solid black;">Other Capital Losses 
     	<span class="styNormalText">(see instructions)</span>
 						</div>
-						<div class="styPartDesc" style="height:4mm;font-weight:bold;padding-left:26mm;">
+						<div class="styPartDesc" style="height:4mm;font-weight:bold;padding-left:26mm;height:auto;">
       (Capital assets sold or exchanged to meet abnormal insurance losses and to pay dividends and similar
 		distributions to policyholders.)
     </div>
@@ -5552,24 +5557,23 @@
 					<!-- Schedule G Line 12-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:17mm;">12</div>
-							<div class="styLNDesc" style="width:50.5mm;height:17mm;">
+							<div class="styLNLeftNumBox" style="height:15mm;padding-top:2mm;">12</div>
+							<div class="styLNDesc" style="width:50.5mm;height:15mm;padding-top:2mm;">
       	  Totals&#8212;column (c) must not be more than line 10. (Enter amount from
 		  column (g) in Schedule A, line 28, or Schedule B, line 15,
 		  <span style="float:left"> whichever applies)</span>
 		  	<!--Dotted Line -->
-				<div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNAmountBoxNBB" style="width:24.5mm;height:17mm;font-size:6pt;padding-top:14mm;">
+							<div class="styLNAmountBoxNBB" style="width:24.5mm;height:15mm;font-size:6pt;padding-top:10mm;padding-right:1mm">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleG/TotalGrossSalesPriceAmt"/>
 								</xsl:call-template>
 							</div>
 							<!--<div style="float:right;clear:none;">-->
-							<div class="styLNAmountBoxNBB" style="width:75mm;height:17mm;background-color:lightgrey;"/>
-							<div class="styLNAmountBoxNBB" style="width:29mm;height:17mm;font-size:6pt;padding-top:14mm;">
+							<div class="styLNAmountBoxNBB" style="width:75mm;height:15mm;background-color:lightgrey;"/>
+							<div class="styLNAmountBoxNBB" style="width:26.5mm;height:15mm;font-size:6pt;padding-top:10mm;padding-right:1mm">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleG/TotalLossAmt"/>
 								</xsl:call-template>
@@ -5591,7 +5595,7 @@
 					<!--  Line 1 -->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:8mm;padding-left:2.25mm;">1</div>
+							<div class="styLNLeftNumBox" style="height:8mm;padding-left:4mm;">1</div>
 							<div class="styLNDesc" style="height:8mm;">
        Health care claims incurred during the tax year and liabilities incurred during the tax year under cost
              <span style="float:left"> -plus contracts</span>
@@ -5611,7 +5615,7 @@
 					<!-- Schedule H Line 2-->
 					<div style="width:187mm;">
 						<div style=" float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:8mm;padding-left:2.25mm;">2</div>
+							<div class="styLNLeftNumBox" style="height:8mm;padding-left:4mm;">2</div>
 							<div class="styLNDesc" style="height:8mm;">
     Expenses incurred during the tax year in connection with the administration, adjustment, or 
            <span style="float:left">settlement of health care claims or in connection with the administration of cost-plus contracts</span>
@@ -5631,7 +5635,7 @@
 					<!-- Schedule H Line 3-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.25mm;">3</div>
+							<div class="styLNLeftNumBox" style="height:4mm;padding-left:4mm;">3</div>
 							<div class="styLNDesc" style="height:4mm;">
 					<span style="float:left"><b>Total.</b> Add lines 1 and 2</span>
           <!--Dotted Line -->
@@ -5650,7 +5654,7 @@
 					<!-- Schedule H Line 4-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.25mm;">4</div>
+							<div class="styLNLeftNumBox" style="height:4mm;padding-left:4mm;">4</div>
 							<div class="styLNDesc" style="height:4mm;">
             <span style="float:left">Multiply line 3 by .25</span>
           <!--Dotted Line -->
@@ -5658,7 +5662,7 @@
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="height:4.5mm;">4</div>
+							<div class="styLNRightNumBox" style="height:4mm;">4</div>
 							<div class="styLNAmountBox" style="width:32mm;height:4.5mm;;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form1120PCData/IRS1120PCScheduleH/TotalClaimsLiabExpensesPctAmt"/>
@@ -5669,7 +5673,7 @@
 					<!-- Schedule H Line 5-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.25mm;">5</div>
+							<div class="styLNLeftNumBox" style="height:4mm;padding-left:4mm;">5</div>
 							<div class="styLNDesc" style="height:4mm;">
          <span style="float:left">Beginning adjusted surplus</span>
           <!--Dotted Line -->
@@ -5688,7 +5692,7 @@
 					<!-- Schedule H Line 6-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.25mm;">6</div>
+							<div class="styLNLeftNumBox" style="height:8mm;padding-left:4mm;">6</div>
 							<div class="styLNDesc" style="height:8mm;">
 								<b>Special deduction.</b> If you checked "No" on line 14 of Schedule I, enter -0- here, you cannot take the special deduction.  All others subtract line 5 from line 4. If zero or less, enter -0-. Enter amount here and 
 								<span style="float:left">on Schedule A, line 34a. (See instructions for limitation.)</span>
@@ -5708,7 +5712,7 @@
 					<!-- Schedule H Line 7-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:2.25mm;">7</div>
+							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:4mm;">7</div>
 							<div class="styLNDesc" style="height:4mm;">
            <span style="float:left">Net operating loss deduction (Schedule A, line 36b)</span>
           <!--Dotted Line -->
@@ -5727,7 +5731,7 @@
 					<!-- Schedule H Line 8-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:2.25mm;">8</div>
+							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:4mm;">8</div>
 							<div class="styLNDesc" style="height:4mm;">
           Net exempt income:
         </div>
@@ -5740,7 +5744,7 @@
 					<!-- Schedule H Line 11a-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-left:4.25mm;">a</div>
+							<div class="styLNLeftNumBox" style="height:4mm;padding-left:5mm;">a</div>
 							<div class="styLNDesc" style="height:4mm;">
             <span style="float:left">Adjusted tax-exempt income</span>
           <!--Dotted Line -->
@@ -5759,7 +5763,7 @@
 					<!-- Schedule H Line 11b-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBox" style="height:4mm;padding-left:4.25mm;">b</div>
+							<div class="styLNLeftNumBox" style="height:4mm;padding-left:5mm;">b</div>
 							<div class="styLNDesc" style="height:4mm;">
          <span style="float:left">Adjusted dividends-received deduction</span>
           <!--Dotted Line -->
@@ -5778,7 +5782,7 @@
 					<!-- Schedule H Line 12-->
 					<div style="width:187mm;">
 						<div style="float:left;clear:none:">
-							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:2.25mm;">9</div>
+							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:4mm;">9</div>
 							<div class="styLNDesc" style="height:4mm;">
            <span style="float:left"> Taxable income (Schedule A, line 37)</span>
           <!--Dotted Line -->
@@ -5814,7 +5818,7 @@
 						</div>
 					</div>
 					<!-- Page Break and Footer for Page 6-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
@@ -5824,7 +5828,7 @@
 					<!-- END Page Break and Footer for Page 6-->
 					<!--Begin Page 7 -->
 					<!-- Page 7 Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
 						<div style="float:left;">Form 1120-PC (2013)<span style="width:146mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">7</span>
@@ -5871,7 +5875,7 @@
           </label>
 										<span style="width:6px;"/>
 									</div>
-									<div class="styIRS1120PCBBText" style="width:29.3mm;border-bottom:none;"/>
+									<div class="styIRS1120PCBBText" style="width:30mm;border-bottom:none;"/>
 									<div class="styGenericDiv" style="width:.4mm;"/>
 									<div class="styShadingCell" style="width:6mm;height:4.5mm;"/>
 									<div class="styShadingCellRB" style="width:6mm;height:4.5mm;"/>
@@ -5896,14 +5900,14 @@
           </label>
 										<span style="width:6px;"/>
 									</div>
-									<div class="styIRS1120PCBBText" style="width:29.3mm;border-bottom:none;"/>
+									<div class="styIRS1120PCBBText" style="width:30mm;border-bottom:none;"/>
 									<div class="styGenericDiv" style="width:.4mm;"/>
 									<div class="styShadingCell" style="width:6mm;height:4.5mm;"/>
 									<div class="styShadingCellRB" style="width:6mm;height:4.5mm;"/>
 								</div>
 								<div class="styGenericDiv" style="width:93mm;">
 									<div class="styLNLeftLtrBox" style="height:4.5mm;"/>
-									<div class="styLNDesc" style="width:270px;height:4.5mm;background-color:none;">
+									<div class="styLNDesc" style="width:272px;height:4.5mm;background-color:none;">
 										<span class="styBoldText">c</span>
 										<span style="width:3px;"/>
 										<input type="checkbox" class="styCkbox">
@@ -5922,7 +5926,7 @@
 										<span style="width:40mm;background-color:none;">
 											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 											<span style="width:3px;"/>
-											<span style="width:30mm;font-size:6pt;border-bottom:1 solid black;background-color:none;">
+											<span style="width:30mm;font-size:6pt;border-bottom:1px solid black;background-color:none;">
 												<span style="width:1mm;"/>
 												<!--EXCEPTION: the value of this pen and ink image will not be display at the Additional data section becz the text is being display on the line inside the form -->
 												<xsl:call-template name="PopulateText">
@@ -5964,7 +5968,7 @@
           </label>
 										<span style="width:6px;"/>
 									</div>
-									<div class="styIRS1120PCBBText" style="width:29.3mm;border-bottom:none;"/>
+									<div class="styIRS1120PCBBText" style="width:30mm;border-bottom:none;"/>
 									<div class="styGenericDiv" style="width:.4mm;"/>
 									<div class="styShadingCell" style="width:6mm;height:4.5mm;"/>
 									<div class="styShadingCellRB" style="width:6mm;height:4.5mm;"/>
@@ -5989,7 +5993,7 @@
           </label>
 										<span style="width:6px;"/>
 									</div>
-									<div class="styIRS1120PCBBText" style="width:29.3mm;border-bottom:none;"/>
+									<div class="styIRS1120PCBBText" style="width:30mm;border-bottom:none;"/>
 									<div class="styGenericDiv" style="width:.4mm;"/>
 									<div class="styShadingCell" style="width:6mm;height:4.5mm;"/>
 									<div class="styShadingCellRB" style="width:6mm;height:4.5mm;"/>
@@ -5998,7 +6002,7 @@
 								
 																<div class="styGenericDiv" style="width:93mm;">
 									<div class="styLNLeftNumBox" style="height:4.5mm;">3</div>
-									<div class="styLNDesc" style="width:72mm;height:4.5mm;">
+									<div class="styLNDesc" style="width:72mm;height:15mm;">
 										<span class="stySmallText">At the end of the tax year, did the corporation own,
 directly or indirectly, 50% or more of the voting stock of a domestic corporation? (For rules of attribution, see section 267(c).)
           <span class="styBoldText">
@@ -6083,7 +6087,7 @@ directly or indirectly, 50% or more of the voting stock of a domestic corporatio
 -->								<!-- Line 4 -->
 								<div class="styGenericDiv" style="width:93mm;">
 									<div class="styLNLeftNumBox" style="height:4.5mm;">4</div>
-									<div class="styLNDesc" style="width:72mm;height:4.5mm;padding-bottom:0px;padding-top:0px;">
+									<div class="styLNDesc" style="width:72mm;height:9mm;padding-bottom:0px;padding-top:0px;">
         Is the corporation a subsidiary in an affiliated group or a parent-subsidiary controlled group?
           <span class="styBoldText">
 											<span style="width:16px"/>.
@@ -6099,19 +6103,19 @@ directly or indirectly, 50% or more of the voting stock of a domestic corporatio
           <span style="width:70mm;background-color:none;">
 											<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 											<span style="width:3px;"/>
-											<span style="width:67mm;font-size:6pt;border-bottom:1 solid black;background-color:none;height:4mm;">
+											<span style="width:67mm;font-size:6pt;border-bottom:1px solid black;background-color:none;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/ParentCorporationName/BusinessNameLine1"/>
 												</xsl:call-template>
 											</span>
 											
-											<span style="width:70mm;font-size:6pt;border-bottom:1 solid black;background-color:none;height:4mm;">
+											<span style="width:70mm;font-size:6pt;border-bottom:1px solid black;background-color:none;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/ParentCorporationName/BusinessNameLine2"/>
 												</xsl:call-template>
 											</span>
-											
-											<span style="width:70mm;font-size:6pt;border-bottom:1 solid black;background-color:none;height:4mm;padding-top:1.5mm;">
+											<span style="width:70mm;font-size:6pt;border-bottom:1px solid black;background-color:none;">
+											<span style="width:70mm;font-size:6pt;border-bottom:1 solid black;background-color:none;height:auto;padding-top:1.0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/PrntCorporationNameControlTxt"/>
 												</xsl:call-template>
@@ -6136,10 +6140,11 @@ directly or indirectly, 50% or more of the voting stock of a domestic corporatio
 											<!-- <span style="width:70mm;font-size:6pt;border-bottom:1 solid black;background-color:none;"></span><br/>
                 <span style="width:70mm;font-size:6pt;border-bottom:1 solid black;background-color:none;"></span>-->
 										</span>
+										</span>
 									</div>
-									<div class="styGenericDiv">
-										<div class="styShadingCell" style="width:6mm;height:11.5mm;"/>
-										<div class="styShadingCellRB" style="width:6mm;height:11.5mm;"/>
+									<!--div class="styGenericDiv"-->
+										<div class="styShadingCell" style="width:6mm;height:3.5mm;"/>
+										<div class="styShadingCellRB" style="width:6mm;height:3.5mm;"/>
 										<div class="styIRS1120PCLNYesNoBox" style="height:3mm;">
 											<span style="font-weight:normal;">
 												<xsl:call-template name="PopulateYesBoxText">
@@ -6154,14 +6159,14 @@ directly or indirectly, 50% or more of the voting stock of a domestic corporatio
 												</xsl:call-template>
 											</span>
 										</div>
-										<div class="styShadingCell" style="width:6mm;height:10mm;"/>
-										<div class="styShadingCellRB" style="width:6mm;height:10mm;"/>
-									</div>
+										<div class="styShadingCell" style="width:6mm;height:16mm;"/>
+										<div class="styShadingCellRB" style="width:6mm;height:16mm;"/>
+									<!--/div-->
 								</div>
 								<!-- Line 5 -->
 								<div class="styGenericDiv" style="width:93mm;">
 									<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;">5</div>
-									<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
+									<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;height:10mm;">
 										<span class="stySmallText">
        At the end of the tax year, did any individual,
 partnership, corporation, estate, or trust own, directly
@@ -6170,19 +6175,10 @@ stock? (For rules of attribution, see section 267(c).)
           <xsl:call-template name="SetFormLinkInline">
 												<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/Own50PercentOrMoreVotingStkInd"/>
 											</xsl:call-template>
-											<span class="styBoldText">
-												<span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.           
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.           
-          </span>
+							<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
 										</span>
 									</div>
-									<div class="styGenericDiv">
+									<!--div class="styLNDesc" style="width:24mm;"-->
 										<div class="styShadingCell" style="width:6mm;height:8mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:8mm;"/>
 										<div class="styIRS1120PCLNYesNoBox">
@@ -6199,7 +6195,7 @@ stock? (For rules of attribution, see section 267(c).)
 												</xsl:call-template>
 											</span>
 										</div>
-									</div>
+									<!--/div-->
 								</div>
 								<!-- line 5 sub -->
 								<div class="styGenericDiv" style="width:93mm;">
@@ -6230,25 +6226,13 @@ stock? (For rules of attribution, see section 267(c).)
 								<!-- Line 6 -->
 								<div class="styGenericDiv" style="width:93mm;">
 									<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;">6</div>
-									<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
+									<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;height:12mm;">
            At any time during the tax year, did one foreign person own, directly or indirectly, at least 25% of: 
            <b>(a)</b> the total voting power of all classes of stock of	the corporation entitled to vote, or 
            <b>(b)</b> the total value of all classes of stock of the corporation? If "Yes,"	enter:
-            <span class="styBoldText">
-			<span style="width:16px"/>.
-            <span style="width:16px"/>.
-             <span style="width:16px"/>.
-             <span style="width:16px"/>.
-             <span style="width:16px"/>.
-             <span style="width:16px"/>.
-             <span style="width:16px"/>.
-            <span style="width:16px"/>.
-             <span style="width:16px"/>.
-             <span style="width:16px"/>.
-             <span style="width:16px"/>.
-         </span>
+                            <div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 									</div>
-									<div class="styGenericDiv">
+									<!--div class="styGenericDiv"-->
 										<div class="styShadingCell" style="width:6mm;height:10.5mm;"/>
 										<div class="styShadingCellRB" style="width:6mm;height:10.5mm;"/>
 										<div class="styIRS1120PCLNYesNoBox">
@@ -6265,7 +6249,7 @@ stock? (For rules of attribution, see section 267(c).)
 												</xsl:call-template>
 											</span>
 										</div>
-									</div>
+									<!--/div-->
 								</div>
 								<!-- Line 6 sub 1 -->
 								<div class="styGenericDiv" style="width:93mm;">
@@ -6275,7 +6259,7 @@ stock? (For rules of attribution, see section 267(c).)
           <span style="width:3px;"/>
 										<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 										<span style="width:6px;"/>
-										<span style="width:15mm;border-bottom:1 solid black;">
+										<span style="width:15mm;border-bottom:1px solid black;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/VotingStockForeignOwnedPct"/>
 											</xsl:call-template>
@@ -6284,7 +6268,7 @@ stock? (For rules of attribution, see section 267(c).)
        	<span style="width:3px;"/>
 										<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 										<span style="width:6px;"/>
-										<span style="width:50mm;border-bottom:1 solid black;">
+										<span style="width:50mm;border-bottom:1px solid black;">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/ForeignOwnStockCountryCd"/>
 											</xsl:call-template>
@@ -6297,10 +6281,10 @@ stock? (For rules of attribution, see section 267(c).)
 							<!--END Schedule M Left Side-->
 							<!--BEGIN Schedule M Right Side-->
 							<!--Line 6c -->
-							<td class="styGenericDiv" style="width:93mm;vertical-align:top;">
+							<td class="styGenericDiv" style="width:93mm;vertical-align:top;float:none;">
 								<div class="styGenericDiv" style="width:93mm;">
 									<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-									<div class="styLNDesc" style="width:72mm;height:4.5mm;">
+									<div class="styLNDesc" style="width:72mm;height:4.5mm;height:16mm;">
 										<br/>
 										<br/>
 										<b>(c)</b> The corporation may have to file <b>Form 5472,</b>
@@ -6312,7 +6296,7 @@ stock? (For rules of attribution, see section 267(c).)
 										<span style="width:3px;"/>
 										<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/>
 										<span style="width:6px;"/>
-										<span style="width:40mm;border-bottom:1 solid black;">
+										<span style="width:40mm;border-bottom:1px solid black;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/TotalForm5472FiledCnt"/>
 											</xsl:call-template>
@@ -6321,24 +6305,24 @@ stock? (For rules of attribution, see section 267(c).)
 											<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/TotalForm5472FiledCnt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styGenericDiv">
+									<!--div class="styGenericDiv"-->
 										<div class="styIRS1120PCLNYesNoBox">Yes</div>
 										<div class="styIRS1120PCLNYesNoBox">No</div>
 										<div class="styShadingCell" style="width:6mm;height:14mm;"/>
 										<div class="styShadingCell" style="width:6mm;height:14mm;"/>
-									</div>
+									<!--/div-->
 								</div>
 								<!-- line 7 -->
-								<div class="styGenericDiv" style="width:93mm;">
-									<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0mm;padding-bottom:0mm;">7</div>
-									<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
+								<div class="styGenericDiv" style="width:93mm;float:right;clear:none;">
+									<div class="styLNLeftNumBoxSD" style="height:4.5mm;padding-top:2mm;padding-bottom:0mm;">7</div>
+									<div class="styLNDesc" style="width:72mm;padding-top:2mm;padding-bottom:0mm;height:8mm;">
          	Has the corporation elected to use its own payout
 		pattern for discounting unpaid losses and unpaid
 		loss adjustment expenses?<br/>
 									</div>
-									<div class="styGenericDiv">
-										<div class="styShadingCell" style="width:6mm;height:2.5mm;"/>
-										<div class="styShadingCell" style="width:6mm;height:2.5mm;"/>
+									<!--div class="styGenericDiv"-->
+										<div class="styShadingCell" style="width:6mm;height:3.5mm;"/>
+										<div class="styShadingCell" style="width:6mm;height:3.5mm;"/>
 										<div class="styIRS1120PCLNYesNoBox">
 											<span style="font-weight:normal;">
 												<xsl:call-template name="PopulateYesBoxText">
@@ -6353,11 +6337,11 @@ stock? (For rules of attribution, see section 267(c).)
 												</xsl:call-template>
 											</span>
 										</div>
-									</div>
+									<!--/div-->
 								</div>
 								<!-- Line 8a -->
 								<div class="styGenericDiv" style="width:93mm;">
-									<div class="styLNLeftNumBox" style="height:4.5mm;">8a</div>
+									<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm">8a</div>
 									<div class="styLNDesc" style="width:72mm;height:4.5mm;">Enter the total unpaid losses shown on the
           corporation's annual statement:</div>
 									<div class="styShadingCell" style="width:6mm;height:6.5mm;"/>
@@ -6365,11 +6349,11 @@ stock? (For rules of attribution, see section 267(c).)
 								</div>
 								<!-- Line 8a (1)-->
 								<div class="styGenericDiv" style="width:93mm;height:4.5mm;">
-									<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:8mm">(1)</div>
+									<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm">(1)</div>
 									<div class="styLNDesc" style="width:31mm;height:4.5mm;padding-left:1mm">
           for the current tax year: $ 
         </div>
-									<div class="styIRS1120PCBBText" style="width:36.3mm">
+									<div class="styIRS1120PCBBText" style="width:41mm">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/UnpaidLossesForCurrentYearAmt"/>
 										</xsl:call-template>
@@ -6379,11 +6363,11 @@ stock? (For rules of attribution, see section 267(c).)
 									<div class="styShadingCellRB" style="width:6mm;height:4.5mm;border-right-width:0px"/>
 								</div>
 								<div class="styGenericDiv" style="width:93mm;height:4.5mm;">
-									<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:8mm">(2)</div>
+									<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm">(2)</div>
 									<div class="styLNDesc" style="width:31mm;height:4.5mm;padding-left:1mm">
           for the previous tax year: $ 
         </div>
-									<div class="styIRS1120PCBBText" style="width:36.3mm">
+									<div class="styIRS1120PCBBText" style="width:41mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/UnpaidLossesForPreviousYearAmt"/>
 										</xsl:call-template>
@@ -6394,7 +6378,7 @@ stock? (For rules of attribution, see section 267(c).)
 								</div>
 								<!-- Line 8b -->
 								<div class="styGenericDiv" style="width:93mm;">
-									<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:4.5mm">  b</div>
+									<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:4mm">b</div>
 									<div class="styLNDesc" style="width:72mm;height:4.5mm;">Enter the total unpaid loss adjustment expenses
                           shown on the corporation's annual statement:
          </div>
@@ -6403,11 +6387,11 @@ stock? (For rules of attribution, see section 267(c).)
 								</div>
 								<!-- Line 8b(1)-->
 								<div class="styGenericDiv" style="width:93mm;height:4.5mm;">
-									<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:8mm">(1)</div>
+									<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm">(1)</div>
 									<div class="styLNDesc" style="width:31mm;height:4.5mm;padding-left:1mm">
           for the current tax year: $ 
         </div>
-									<div class="styIRS1120PCBBText" style="width:36.3mm">
+									<div class="styIRS1120PCBBText" style="width:41mm">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/TotalUnpaidLossForCurrentYrAmt"/>
 										</xsl:call-template>
@@ -6417,11 +6401,11 @@ stock? (For rules of attribution, see section 267(c).)
 									<div class="styShadingCellRB" style="width:6mm;height:4.5mm;border-right-width:0px"/>
 								</div>
 								<div class="styGenericDiv" style="width:93mm;height:4.5mm;">
-									<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:8mm">(2)</div>
+									<div class="styLNLeftLtrBox" style="height:4.5mm;padding-left:4mm">(2)</div>
 									<div class="styLNDesc" style="width:31mm;height:4.5mm;padding-left:1mm">
           for the previous tax year: $ 
         </div>
-									<div class="styIRS1120PCBBText" style="width:36.3mm">
+									<div class="styIRS1120PCBBText" style="width:41mm">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/TotalUnpaidLossForPrevYrAmt"/>
 										</xsl:call-template>
@@ -6436,19 +6420,10 @@ stock? (For rules of attribution, see section 267(c).)
 									<div class="styLNDesc" style="width:72mm;padding-top:0mm;padding-bottom:0mm;">
          Does the corporation discount any of the loss
 		reserves shown on its annual statement?
-            <span class="styBoldText">
-											<span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-         </span>
+                                   <div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 										<br/>
 									</div>
-									<div class="styGenericDiv">
+									<!--div class="styGenericDiv" style="float:none;"-->
 										<div class="styShadingCell" style="width:6mm;height:2.5mm;"/>
 										<div class="styShadingCell" style="width:6mm;height:2.5mm;"/>
 										<div class="styIRS1120PCLNYesNoBox">
@@ -6465,7 +6440,7 @@ stock? (For rules of attribution, see section 267(c).)
 												</xsl:call-template>
 											</span>
 										</div>
-									</div>
+									<!--/div-->
 								</div>
 								<!-- line 10 -->
 								<div class="styGenericDiv" style="width:93mm;">
@@ -6474,7 +6449,7 @@ stock? (For rules of attribution, see section 267(c).)
        Enter the amount of tax-exempt interest received or
 	  accrued during the tax year
         <img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/> $
-        <span style="width:30mm;border-bottom:1 solid black;">
+                                                            <span style="width:30mm;border-bottom:1px solid black;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/TaxExemptInterestAmt"/>
 											</xsl:call-template>
@@ -6536,22 +6511,21 @@ stock? (For rules of attribution, see section 267(c).)
 		years. (Do not reduce it by any deduction on
 		line 36b, Schedule A.)   <br/>
 										<img src="{$ImagePath}/1120_Bullet_Sm.gif" alt="SmallBullet"/> $
-        <span style="width:25mm;border-bottom:1 solid black;">
+        <span style="width:25mm;border-bottom:1px solid black;">
 											<xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$Form1120PCScheduleI/NOLCarryoverFromPriorYearAmt"/>
 											</xsl:call-template>
 										</span>
 									</div>
-									<div class="styShadingCell" style="width:6mm;height:11.25mm;border-bottom-width:1px;"/>
-									<div class="styShadingCell" style="width:6mm;height:11.25mm;border-bottom-width:1px;"/>
+									<div class="styShadingCell" style="width:6mm;height:9.25mm;border-bottom-width:1px;"/>
+									<div class="styShadingCell" style="width:6mm;height:9.25mm;border-bottom-width:1px;"/>
 								</div>
  								<!-- Line 13 -->
 								<div class="styGenericDiv" style="width:93mm;">
 									<div class="styLNLeftNumBox" style="height:4.5mm;">13</div>
-									<div class="styLNDesc" style="width:72mm;height:4.5mm;">
+									<div class="styLNDesc" style="width:72mm;height:10mm;">
                               Is the corporation required to file Schedule UTP (Form 1120), Uncertain Tax Position Statement (see instructions)? If "Yes," complete and attach Schedule UTP
-                                    <span style="width:20mm;font-weight:bold;letter-spacing:3.3mm;padding-right:1mm;">.....</span>
-                           
+                                    <div class="styDotLn" style="float:right;padding-right:1mm;">........</div>
 									</div>
 										<div class="styIRS1120PCLNYesNoBox">
 											<span style="font-weight:normal;">
@@ -6567,17 +6541,16 @@ stock? (For rules of attribution, see section 267(c).)
 												</xsl:call-template>
 											</span>
 										</div>
-						            <div class="styShadingCell" style="width:6mm;height:7.25mm;border-bottom-width:1px;"/>
-									<div class="styShadingCell" style="width:6mm;height:7.25mm;border-bottom-width:1px;"/>
+									<div class="styShadingCell" style="width:6mm;height:6.25mm;border-bottom-width:1px;"/>
+									<div class="styShadingCell" style="width:6mm;height:6.25mm;border-bottom-width:1px;"/>
 									
 								</div>
 																<div class="styGenericDiv" style="width:93mm;">
 									<div class="styLNLeftNumBox" style="height:4.5mm;">14</div>
-									<div class="styLNDesc" style="width:72mm;height:4.5mm;">
+									<div class="styLNDesc" style="width:72mm;height:4.5mm;height:10mm;">
 If the corporation is a Blue Cross or Blue Shield organization described in section 833(c)(2), or other organization described in
 	                                  section 833(c)(3), did it meet the medical loss ratio (MLR) requirements of Section 833(c)(5)?
-	                                                                      <span style="width:20mm;font-weight:bold;letter-spacing:3.3mm;padding-right:1mm;">.....</span>
-                           
+	                                 <div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 									</div>
 										<div class="styIRS1120PCLNYesNoBox">
 											<span style="font-weight:normal;">
@@ -6593,8 +6566,8 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 												</xsl:call-template>
 											</span>
 										</div>
-						            <div class="styShadingCell" style="width:6mm;height:12.25mm;border-bottom-width:1px;"/>
-									<div class="styShadingCell" style="width:6mm;height:12.25mm;border-bottom-width:1px;"/>
+									<div class="styShadingCell" style="width:6mm;height:6.25mm;border-bottom-width:1px;"/>
+									<div class="styShadingCell" style="width:6mm;height:6.25mm;border-bottom-width:1px;"/>
 									
 								</div>
 							</td>
@@ -6612,7 +6585,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
     See Schedule N for details.</span>
   </div> -->
 					<!-- Page Break and Footer for Page 7-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;border-top: 2px solid black;">
+					<div class="pageEnd" style="width:187mm;border-top: 2px solid black;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
 							<span style="width:40px;"/>  
@@ -6622,7 +6595,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 					<!-- END Page Break and Footer for Page 7-->
 					<!--Begin Page 8 -->
 					<!-- Page 8 Header -->
-					<div class="styBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
 						<div style="float:left;">Form 1120-PC (2013)<span style="width:146mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">8</span>
@@ -6630,7 +6603,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 					</div>
 					<!-- END Page 8 Header -->
 					<!-- BEGIN Schedule L Title -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;float:none;">
 						<div class="styPartName" style="width:28mm;">Schedule L</div>
 						<div class="styPartDesc" style="width:158mm;height:">
       Balance Sheets per Books <span class="styNormalText">(All filers are required to complete this schedule.)</span>
@@ -7440,7 +7413,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 						<div class="styLNLeftNumBox" style="height:4.5mm;">28</div>
 				<div class="styLNDesc" style="width:50mm;height:4.5mm;"><span style="float:left">Less cost of treasury stock</span>
         <!--Dotted Line-->
-					<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
+					<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 						</div>
 						<div class="styShadingCell" style="height:5mm;"/>
 						<div class="styLNAmountBox" style="height:5mm;font-family:arial;font-size:8pt;">
@@ -7475,9 +7448,10 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 						</div>
 					</div>
 					<!-- END Schedule L Line Items -->
-					<br style="page-break-after:always;"/>
+					<br style="page-break-after:always;float:none;" class="pageEnd"/>
+					<div class="pageEnd" style="float:none;clear:none;" />
 					<!-- BEGIN Schedule M-1 Title -->
-					<div class="styBB" style="width:187mm;border-top:1px solid black;">
+					<div class="styBB" style="width:187mm;border-top:1px solid black;float:none;">
 						<div class="styPartName" style="width:28mm;">Schedule M-1</div>
 						<div class="styPartDesc" style="width:158mm;">Reconciliation of Income (Loss) per Books with Income (Loss) per Return</div>
 						<div class="styPartDesc" style="width:158mm;padding-left:31mm;font-size:6pt;">Note: <span class="styNormalText">Schedule M-3 required instead of Schedule M-1 if total assets are $10 million or more—see instructions.</span>
@@ -7485,9 +7459,9 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 					</div>
 					<!-- END Schedule M-1 Title -->
 					<!-- BEGIN Schedule M-1 Line Items -->
-					<div style="width:187mm;clear:both;" class="styBB">
+					<div style="width:187mm;clear:both;height:auto;float:none;" class="styBB">
 						<!-- BEGIN Left Side Table of Schedule M-1-->
-						<table class="styTable" style="width:93mm;float:left;clear:none;font-size:7pt;" cellspacing="0">
+						<table class="styTable" style="width:93mm;float:left;clear:none;font-size:7pt;height:auto;" cellspacing="0">
 							<tr style="width:93mm;">
 								<td class="styLNLeftNumBox" style="height:4.5mm;">1</td>
 							<td class="styGenericDiv" style="width:52mm;height:4.5mm;" colspan="2"><span style="float:left">Net income (loss) per books</span>
@@ -7531,7 +7505,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 							<tr>
 								<td class="styLNLeftNumBox" style="height:4.5mm;">4</td>
 								<td class="styGenericDiv" style="width:52mm;height:4.5mm;" colspan="2">Income subject to tax not recorded </td>
-								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom:0px;width:31.5mm;">
+								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom:0px;width:31.5mm;height:4.5mm;">
 									<span style="width:1px;"/>
 								</td>
 							</tr>
@@ -7546,7 +7520,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 									</xsl:call-template>
 									<!--<div class="styIRS1120BBText" style="width:14mm;float:left;"></div>-->
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:1px;width:31.5mm;">
+								<td class="styLNAmountBox" style="border-right-width:1px;width:31.5mm;height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCScheduleM1/TotalTaxableIncmNotRecOnBksAmt"/>
 									</xsl:call-template>
@@ -7572,7 +7546,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 										<xsl:with-param name="TargetNode" select="$Form1120PCScheduleM1/TotalExpensesNotDeductedAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom:0px;width:31.5mm;">
+								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom:0px;width:31.5mm;height:4.5mm;">
 									<span style="width:1px;"/>
 								</td>
 								<!--<td class="styShadingCell" style="height:4.5mm;border-right-width:1px;"><span style="width:1px;"></span></td>-->
@@ -7580,7 +7554,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 							<tr>
 								<td class="styLNLeftNumBox" style="height:4.5mm;"/>
 								<td class="styGenericDiv" style="width:52mm;height:4.5mm;font-size:6pt;" colspan="2">not deducted on this return (itemize)</td>
-								<td class="styLNAmountBox" style=";border-right-width:1px;width:31.5mm;border-bottom:0px;">
+								<td class="styLNAmountBox" style=";border-right-width:1px;width:31.5mm;border-bottom:0px;height:4.5mm;">
 									<span style="width:1px;"/>
 								</td>
 								<!--<td class="styShadingCell" style="height:4.5mm;border-right-width:1px;width:31.5mm;"><span style="width:1px;"></span></td>-->
@@ -7600,7 +7574,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 									<span style="width:1px;"/>
 									<!-- </div>-->
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom:0px;width:31.5mm;">
+								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom:0px;width:31.5mm;height:4.5mm;">
 									<span style="width:1px;"/>
 								</td>
 								<!--<td class="styShadingCell" style="height:4.5mm;border-right-width:1px;"><span style="width:1px;"></span></td>-->
@@ -7609,7 +7583,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 								<td class="styLNLeftNumBox" style="height:4.5mm;vertical-align:top;">
 									<span style="width:3mm;"/>b</td>
 								<td class="styGenericDiv" style="width:52mm;height:4.5mm;" colspan="2">
-									<div class="styGenericDiv" style="width:27.5mm;font-size:6pt;">Charitable contributions $<span style="width:.5mm;"/>
+									<div class="styGenericDiv" style="width:28mm;font-size:6pt;">Charitable contributions $<span style="width:.5mm;"/>
 									</div>
 									<span style="width:22mm;border-bottom:solid 1px;text-align:right;font-size:6pt;">
 										<!--<div class="styIRS1120BBText" style="width:23mm;float:left;text-align:right;font-size:6pt;padding-top:3mm;">-->
@@ -7620,7 +7594,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 									<span style="width:1px;"/>
 									<!--</div>-->
 								</td>
-								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom:0px;width:31.5mm;">
+								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom:0px;width:31.5mm;height:4.5mm;">
 									<span style="width:1px;"/>
 								</td>
 								<!--<td class="styShadingCell" style="height:4.5mm;border-right-width:1px;"><span style="width:1px;"></span></td>-->
@@ -7636,7 +7610,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 									<span style="width:1px;"/>
 								</td>
 								<!--<td class="styShadingCell" style="height:4.5mm;border-right-width:1px;"><span style="width:1px;"></span>-->
-								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom-width: 0px;width:31.5mm;">
+								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom-width: 0px;width:31.5mm;height:4.5mm;">
 									<span style="width:1px;"/>
 								</td>
 							</tr>
@@ -7654,7 +7628,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 									</div>
 								</td>
 								<!--<td class="styShadingCell" style="height:4.5mm;border-right-width:1px;"><span style="width:1px;"></span>-->
-								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom-width: 2px;width:31.5mm;">
+								<td class="styLNAmountBox" style="border-right-width:1px;border-bottom-width: 2px;width:31.5mm;height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCScheduleM1/TotalExpensesNotDeductedAmt"/>
 									</xsl:call-template>
@@ -7667,7 +7641,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
                        <!--Dotted Line-->
 						<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
 								</td>
-								<td class="styLNAmountBoxNBB" style="height:4.5mm;width:31.5mm;border-right-width:1px;">
+								<td class="styLNAmountBoxNBB" style="height:4.5mm;width:31.5mm;border-right-width:1px;height:4.5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form1120PCScheduleM1/IncomeExpensesSubtotalAmt"/>
 									</xsl:call-template>
@@ -7749,7 +7723,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 								<td class="styLNLeftNumBox" style="height:4.5mm;"/>
 								<td class="styGenericDiv" style="width:53mm;height:4.5mm;" colspan="2">charged against book income this year (itemize)</td>
 								<!--<td class="styShadingCell" style="height:4.5mm;width:30.5mm;"><span style="width:1px;"></span></td>-->
-								<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;border-bottom:0px;">
+								<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;border-bottom:0px;height:6mm;">
 									<span style="width:1px;"/>
 								</td>
 							</tr>
@@ -7777,18 +7751,17 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 								<td class="styLNLeftNumBox" style="height:4.5mm;">
 									<span style="width:3mm;"/>b</td>
 								<td class="styGenericDiv" style="width:53mm;height:4.5mm;" colspan="2">
-									<div class="styGenericDiv" style="width:27.5mm;font-size:6pt;">Charitable contributions $<span style="width:.5mm;"/>
+									<div class="styGenericDiv" style="width:28mm;font-size:6pt;">Charitable contributions $<span style="width:.5mm;"/>
 									</div>
-									<span style="width:23mm;border-bottom:solid 1px;text-align:right;font-size:6pt;">
+									<span style="width:23mm;border-bottom:solid 1px;text-align:right;font-size:6pt;"/>
 										<!--<div class="styIRS1120BBText" style="width:23mm;float:left;text-align:right;font-size:6pt;padding-top:3mm;">
                 <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$Form1120PCScheduleM1/CharitableContributionsExpense" />
                 </xsl:call-template>-->
-									</span>
 									<span style="width:1px;"/>
 									<!--</div>-->
 								</td>
-								<td class="styLNAmountBox" style="width:31.5mm;border-bottom:0px;">
+								<td class="styLNAmountBox" style="width:31.5mm;border-bottom:0px;height:4.5mm;">
 									<span style="width:1px;"/>
 								</td>
 								<!--<td class="styShadingCell" style="height:4.5mm;border-right-width:1px;"><span style="width:1px;"></span></td>-->
@@ -7819,13 +7792,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 								<td class="styLNLeftNumBox" style="height:4.5mm;">9</td>
 								<td class="styGenericDiv" style="width:53mm;height:4.5mm;" colspan="2">Add lines 7 and 8
             <!--Dotted Line-->
-									<span class="styBoldText">
-										<span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-              <span style="width:15px"/>.
-            </span>
+			<div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
 								</td>
 								<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;border-bottom-width: 2px;">
 									<xsl:call-template name="PopulateAmount">
@@ -7849,7 +7816,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 					</div>
 					<!--br style="page-break-after:always;"/-->
 					<!-- BEGIN Schedule M-2 Title -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm;float:none;">
 						<div class="styPartName" style="width:28mm;">Schedule M-2</div>
 						<div class="styPartDesc" style="width:158mm;height:">
       Analysis of Unappropriated Retained Earnings per Books
@@ -7858,7 +7825,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 					</div>
 					<!-- END Schedule M-2 Title -->
 					<!-- BEGIN Schedule M-2 Line Items -->
-					<div style="width:187mm;clear:both;" class="styBB">
+					<div style="width:187mm;clear:both;height:auto;float:none;" class="styBB">
 						<!-- BEGIN Left Side Table of Schedule M-2-->
 						<table class="styTable" style="width:93mm;float:left;clear:none;font-size:7pt;" cellspacing="0">
 							<tr>
@@ -8010,11 +7977,12 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 							<tr>
 								<td class="styLNLeftNumBox" style="height:4.5mm;">6</td>
 								<td class="styGenericDiv" style="width:53mm;height:4.5mm;" colspan="2">
-									<div class="styGenericDiv" style="width:36mm;">Other decreases (itemize)</div>
+									<div class="styGenericDiv" style="width:40mm;padding-bottom:.5mm">Other decreases (itemize)
 									<div class="styIRS1120BBText" style="width:17mm;float:left;height:4.5mm;">
 										<xsl:call-template name="SetFormLinkInline">
 											<xsl:with-param name="TargetNode" select="$Form1120PCScheduleM2/TotalOtherDecreasesAmt"/>
 										</xsl:call-template>
+									</div>
 									</div>
 								</td>
 								<td class="styLNAmountBox" style="height:4.5mm;width:31.5mm;">
@@ -8065,7 +8033,7 @@ If the corporation is a Blue Cross or Blue Shield organization described in sect
 					</div>
 					<!-- END Schedule M-2 Line Items -->
 					<!-- Page Break and Footer for Page 8-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
+					<div class="pageEnd" style="width:187mm;padding-top:1mm;float:none;">
 						<div style="float:left;"/>
 						<div style="float:right;">
 							<span style="width:40px;"/>  

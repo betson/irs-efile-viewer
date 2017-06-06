@@ -38,7 +38,7 @@ body {   /* Global Styles */
 	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
 	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
 	vertical-align: middle;
-	cursor: hand;
+	cursor: pointer;
 }
 .styRtnStatALbl {   /* Return Status Accepted Label */
 	background-color: #97d5b1;

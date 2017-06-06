@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 04/22/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 07/20/2015 - Modified per defect 43177 - Jeremy Nichols-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 <xsl:include href="PopulateTemplate_ETEC.xsl"/>
 <xsl:include href="CommonPathRef.xsl"/>
@@ -13,8 +15,10 @@
 <xsl:param name="FormData" select="$RtnDoc/IRS6197"/>
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"/></xsl:call-template></title>
     <!-- No Browser Caching -->
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -42,37 +46,33 @@
       <!-- END WARNING LINE -->
       
 	<!--Begin Header-->
-	<div class="styTBB" style="width:187mm;">
-	<table cellspacing="0">
+	<div class="styTBB" style="height:auto;width:187mm;border-bottom-width:1px;">
+	<table cellspacing="0" style="height:auto;width:187mm;">
 		<tbody>
 			<tr>
-				<th class="styFNBox" style="border-right-width: 2px;text-align: left;font-size: 8pt;font-weight:normal;width:35mm;height:9.5mm;">
+				<th class="styFNBox" style="border-right-width: 1px;border-bottom-width:0px;text-align: left;font-size: 8pt;font-weight:normal;width:35mm;height:19mm;">
 					Form<span class="styFormNumber">  6197</span>
 					<br/><span style="font-size: 7pt;font-weight:normal">(Rev. October 2005)</span>
+					<span class="styAgency" style="font-family: arial">Department of the Treasury</span>
+	      				<br/>
+	      				<span class="styAgency" style="font-family: arial">Internal Revenue Service</span>
 				</th>
-				<th rowspan="2" style="border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 2px;width:111.5mm;height:18mm;">
-					<div class="styMainTitle" style="height:10mm;font-size:14pt;padding-top:1mm;">
+				<th style="border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;width:111.5mm;height:19mm;text-align:center;">
+					<div class="styMainTitle" style="height:9mm;width:111.5mm;font-size:14pt;padding-top:1mm;">
 					      Gas Guzzler Tax
 					</div>
-					<div class="styFST" style="height:4mm;font-size:7pt;">
+					<div class="styFST" style="width:111.5mm;font-size:7pt;">
 						<img src="{$ImagePath}/6197_Bullet.gif" alt="Bullet Image"/>
 						See Instructions on back.
 					</div>
-					<div class="styFST" style="height:4mm;font-size:7pt;">
+					<div class="styFST" style="width:111.5mm;font-size:7pt;">
 						<br/><img src="{$ImagePath}/6197_Bullet.gif" alt="Bullet Image"/>
 						Attach to Form 720.
 					</div>
 				</th>
-				<th rowspan="2" style="width:40.5mm;height:18mm;font-size: 7pt;font-weight:normal">	
+				<th rstyle="width:40.5mm;height:19mm;font-size: 7pt;font-weight:normal">	
      					OMB No. 1545-0242
 				</th>
-			</tr>
-			<tr>
-				<td class="styFNBox" style="width:35mm;border-right-width: 2px;height:6mm;padding-top:1.5mm">
-					<span class="styAgency" style="font-family: arial">Department of the Treasury</span>
-	      				<br/>
-	      				<span class="styAgency" style="font-family: arial">Internal Revenue Service</span>
-	      			</td>
 			</tr>
 		</tbody>
 	</table>
@@ -84,11 +84,11 @@
 <table cellspacing="0">
 	<tbody>
 		<tr style="height:5mm">
-			<th class="styIRS6197NameTableCell" style="width:110mm;font-size:7pt">Name (as shown on Form 720)<br/>
+			<th class="styIRS6197NameTableCell" style="width:110mm;font-size:7pt;border-top-width:0px;">Name (as shown on Form 720)<br/>
 				<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template><br/>  
           			<xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param></xsl:call-template> 
 			</th>
-			<th class="styIRS6197NameTableCell" style="width:37mm;  font-size:7pt; padding-left:1mm">Quarter Ending<br/>
+			<th class="styIRS6197NameTableCell" style="width:37mm;  font-size:7pt; padding-left:1mm;border-top-width:0px;">Quarter Ending<br/>
 			<div style="padding-top:3.2mm">
 				<xsl:call-template name="PopulateMonthDayYear">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt">
@@ -96,7 +96,7 @@
 				</xsl:call-template>
 			</div>
 			</th>
-			<th class="styIRS6197NameTableCell" style="width:40mm;  font-size:8pt; padding-left:1mm; border-right-width:0px"><span style="font-family:arial narrow;font-weight:bold">Employer identification number</span><br/>
+			<th class="styIRS6197NameTableCell" style="width:40mm;  font-size:8pt; padding-left:1mm; border-right-width:0px;border-top-width:0px;"><span style="font-family:arial narrow;font-weight:bold">Employer identification number</span><br/>
 			<div style="padding-top:2mm"><xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">EIN</xsl:with-param></xsl:call-template></div>
 			</th>
 		</tr>
@@ -578,7 +578,7 @@
 
 
 <!--Begin Part 2 Table-->
-<div class="styTableContainer" id="IOMctn">
+<div class="styTableContainer" id="IOMctn" style="display:block;">
 <!-- print logic -->
 <xsl:call-template name="SetInitialState"/>
 <table class="styTable" cellspacing="0">
@@ -610,7 +610,6 @@
 					</xsl:call-template>
 				</td>
 				<td class="styIRS6197TableCellText" style="width:120mm;border-right-width:0px;text-align:left;padding-left:1mm;font-size:7pt">
-				<span style="width:1px"/>
 				<xsl:if test="VehicleMakeNameTxt">
 					<xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="VehicleMakeNameTxt"/>

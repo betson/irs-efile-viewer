@@ -45,11 +45,16 @@ edited 4/21/2004 by Ravi Venigalla. Added styFixedUnderline
 .styCkbox {   /* Checkbox */
 	height: 3mm; width: 3mm;
 }
+.styCkboxNM {   /* Checkbox */
+	height: 3mm; width: 3mm;
+	margin:0px;
+}
 .styGenericDiv { /* definition of a generic placeholder div */
 	float:left; clear:none;
 }
 .pageEnd { /*Page break for printer*/
 	page-break-after:always;
+	display:block;
 }
 
 .styFixedUnderline { /* Text that must be put on a fixed width underline */

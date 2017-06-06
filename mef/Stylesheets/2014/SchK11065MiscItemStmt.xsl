@@ -15,20 +15,20 @@
   
   <xsl:template name="ShowDependencyData">
     <!--Miscellaneous Item Statement Data -->
-    <table class="styDepTbl">
+    <table class="styDepTblLandscape">
       <thead class="styTableThead">
         <tr class="styDepTblHdr">
            <th class="styDepTblCell" scope="col" style="width:10mm">Box number on form</th>        
            <th class="styDepTblCell" scope="col" style="width:10mm"><br/><br/>Letter code</th>
            <th class="styDepTblCell" scope="col" style="width:36mm"><br/><br/><br/>Name of code</th>        
-           <th class="styDepTblCell" scope="col" style="width:48mm"><br/><br/><br/>Type of activity</th>        
-           <th class="styDepTblCell" scope="col" style="width:48mm"><br/><br/>Additional Information</th>            
-           <th class="styDepTblCell" scope="col" style="width:35mm"><br/><br/><br/>Amount</th>            
+           <th class="styDepTblCell" scope="col" style="width:50mm"><br/><br/><br/>Type of activity</th>        
+           <th class="styDepTblCell" scope="col" style="width:50mm"><br/><br/>Additional Information</th>            
+           <th class="styDepTblCell" scope="col" style="width:30mm"><br/><br/><br/>Amount</th>            
         </tr>
       </thead>
         <tfoot/>
        <tbody>
-        <xsl:for-each select="$DependencyData/SchK11065MiscItem">
+        <xsl:for-each select="$DependencyData/SchK11065MiscItemGrp">
           <tr>
             <xsl:attribute name="class">
             <xsl:choose>
@@ -51,17 +51,17 @@
                 <xsl:with-param name="TargetNode" select="CodeNmTxt"/>
               </xsl:call-template>
             </td>    
-            <td class="styDepTblCell" style="width:48mm;text-align:left">
+            <td class="styDepTblCell" style="width:50mm;text-align:left">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="ActivityExplanationTxt"/>
               </xsl:call-template>
             </td>    
-            <td class="styDepTblCell" style="width:48mm;text-align:left">
+            <td class="styDepTblCell" style="width:50mm;text-align:left">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="AdditionalInformationTxt"/>
               </xsl:call-template>
             </td>            
-            <td class="styDepTblCell" style="width:35mm;text-align:right">
+            <td class="styDepTblCell" style="width:30mm;text-align:right">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="Amt"/>
               </xsl:call-template>
@@ -78,8 +78,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -103,14 +105,16 @@
       <xsl:call-template name="GlobalStylesDep"/>
 </head>    
       <body class="styBodyClass">      
-        <xsl:call-template name="DocumentHeaderDependency"/>          
-        <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:72mm">
+				<xsl:call-template name="DocumentHeaderDependencyLandscape"/>
+				<div class="styDepTitleLineLandscape">
+          <span class="styDepTitle" style="width:120mm">
             <xsl:value-of select="$depDocTitle"/>
           </span>
         </div>
         <!--Adding template for left over data  -->
-        <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>                
+        <xsl:call-template name="PopulateDepCommonLeftoverLandscape">
+			<xsl:with-param name="TargetNode" select="$DependencyData"/>
+		</xsl:call-template>                
         <xsl:call-template name="ShowDependencyData"/>          
         <br/>                      
       </body>

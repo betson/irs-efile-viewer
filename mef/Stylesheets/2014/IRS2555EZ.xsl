@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE stylesheet [
   <!ENTITY nbsp "&#160;">
-]><!-- Last Modified by Eugenia McDonald on 08/11/2014 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+]><!-- Last Modified by Eugenia McDonald on 09/17/2015 -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -11,8 +12,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS2555EZ"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <META http-equiv="Content-Type" content="text/html"/>
         <title>
           <xsl:call-template name="FormTitle">
@@ -41,8 +44,8 @@
       <body class="styBodyClass">
         <form name="Form2555EZ">
           <xsl:call-template name="DocumentHeader"/>
-          <div class="styTBB" style="width:187mm;height:22mm;">
-            <div class="styFNBox" style="width:40mm;height:22mm;">
+          <div class="styTBB" style="width:187mm;height:20mm;">
+            <div class="styFNBox" style="width:33mm;height:20mm;">
               <div style="padding-top:1mm;">
                 Form <span class="styFormNumber" style="font-size:18pt;">2555-EZ</span><br/>
                 <xsl:call-template name="SetFormLinkInline">
@@ -59,19 +62,19 @@
                 <span class="styAgency" style="font-size:8pt;">Internal Revenue Service(99)</span>
               </div>
             </div>
-            <div class="styFTBox" style="width:103mm;height:22mm;">
+            <div class="styFTBox" style="width:118mm;height:20mm;">
               <div style="padding-top:2mm;" class="styMainTitle">
               Foreign Earned Income Exclusion
               </div>
-              <div class="styFBT" style="height:4mm;width:90mm">
+              <div class="styFBT" style="height:4mm;width:118mm">
                 <img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin-left:5mm;"/> Attach to Form 1040.
                 <br/>
-                <img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet"/> Information about Form 2555-EZ and its separate instructions
-                 is at <i>www.irs.gov/form2555ez.</i>
+                <img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet"/> Information about Form 2555-EZ and its separate
+                   instructions is at <i>www.irs.gov/form2555ez.</i>
               </div>
             </div>
-            <div class="styTYBox" style="width:36mm;height:22mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-0074</div>
+            <div class="styTYBox" style="width:36mm;height:20mm;">
+              <div class="styOMB" style="height:auto;">OMB No. 1545-0074</div>
               <div class="styTY" style="height:7mm;font-size:22pt;">2014</div>
               <div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;">
                 Attachment<br/>
@@ -97,8 +100,8 @@
             </div>
           </div>
           <!-- You may use this form line -->
-          <div style="width:187mm;clear:none;height:20mm;padding-top:3mm;border-bottom:1px solid black">
-			  <div style="float:left;clear:none;width:30mm;height:20mm;font-size:9pt;text-align:center;padding-top:4mm">
+          <div style="width:187mm;clear:none;height:25mm;padding-top:2mm;border-bottom:1px solid black">
+			  <div style="float:left;clear:none;width:30mm;height:20mm;font-size:9pt;text-align:center;padding-top:4mm;padding-right:4mm;">
 				  <b>You May Use This Form If You:</b>
 			   </div>
 			   <div style="float:left;clear:none;width:60mm;height:20mm;">
@@ -114,7 +117,7 @@
 						<div style="float:left;clear:none;width:3mm;"><li/></div><div style="width:50mm;float:left;clear:none;">
 						  Had total foreign earned income of $99,200 or less.  See line 17.</div>
 					</div>
-					<div style="width:60mm;padding-top:1px">
+					<div style="width:60mm;padding-top:1px;">
 						<div style="float:left;clear:none;width:3mm;"><li/></div><div style="width:50mm;float:left;clear:none;">
 						  Are filing a calendar year return that covers a 12-month period.</div>
 					</div>
@@ -132,7 +135,7 @@
 						<div style="float:left;clear:none;width:3mm;"><li/></div><div style="width:50mm;float:left;clear:none;">
 						  Do not have business/moving expenses.</div>
 					</div>
-					<div style="width:60mm;padding-top:5px">
+					<div style="width:60mm;padding-top:5px;padding-bottom:10mm;">
 						<div style="float:left;clear:none;width:3mm;"><li/></div><div style="width:50mm;float:left;clear:none;">
 						  Do not claim the foreign housing exclusion or deduction.</div>
 				   </div>
@@ -141,35 +144,38 @@
           <!-- BEGIN PART I TITLE -->
           <div class="styBB" style="width:187mm;padding:1mm 0mm;">
             <div class="styPartName" style="font-family:sans-serif;">Part I</div>
-            <div class="styPartDesc">Tests To See If You Can Take the Foreign Earned Income Exclusion</div>
+            <div class="styPartDesc" style="font-size:10pt">Tests To See If You Can Take the Foreign Earned Income Exclusion</div>
           </div>
           <!-- END PART I TITLE -->
           <!-- Line 1 -->
           <div style="width:187mm;margin-top:1mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;">1</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;">
+            <div style="float:left;width:176mm;padding-left:4mm;">
               <b>Bona Fide Residence Test</b>
             </div>
           </div>
           <!-- Line 1a -->
           <div style="width:187mm;margin-top:1mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">a</div>
-            <div style="float:left;width:156mm;height:8mm;padding-right:1mm;">
-              Were you a bona fide resident of a foreign country or countries for a period that includes an entire tax year (see instructions)?
-              <span style="font-weight:bold;letter-spacing:3mm;">....................................</span>
+            <div style="float:left;width:5mm;font-weight:bold;padding-left:5mm;">a</div>
+            <div style="float:left;width:163mm;height:8mm;padding-right:4mm;padding-left:4mm;">
+              Were you a bona fide resident of a foreign country or countries for a period that includes an entire tax year <br/> (see instructions)?
+              <span style="font-weight:bold;letter-spacing:3mm;">.................................</span>
             </div>
-            <div style="float:left;width:20mm;">
-              <div style="height:4mm;"/>
-              <div style="height:5mm;text-align:right;">
-                <input type="checkbox" style="padding:0;margin:0;height:15px;width:15px;">
+            <div style="float:left;width:19mm;padding-top:3mm;">
+              <div style="height:auto;text-align:right;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
+				 </xsl:call-template>
+                <input type="checkbox" style="margin:0;height:10px;width:10px;">
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
                     <xsl:with-param name="BackupName">IRS2555BonaFideResidentInd</xsl:with-param>
                   </xsl:call-template>
                 </input>
-                <span style="height:3mm;padding-bottom:1.15mm;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
+				 </xsl:call-template>
                 <label>
                   <xsl:call-template name="PopulateLabelYes">
                     <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
@@ -177,14 +183,18 @@
                   </xsl:call-template>
                   <b>Yes</b>
                 </label>
-                </span>
-                <input type="checkbox" style="padding:0;margin:0;height:15px;width:15px;">
+                <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
+				 </xsl:call-template>
+                <input type="checkbox" style="margin:5;height:10px;width:10px;">
                   <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
                     <xsl:with-param name="BackupName">IRS2555BonaFideResidentInd</xsl:with-param>
                   </xsl:call-template>
                 </input>
-                <span style="height:3mm;padding-bottom:1.15mm;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
+				 </xsl:call-template>
                 <label>
                   <xsl:call-template name="PopulateLabelNo">
                     <xsl:with-param name="TargetNode" select="$FormData/BonaFideResidentInd"/>
@@ -192,30 +202,28 @@
                   </xsl:call-template>
                   <b>No</b>
                 </label>
-                </span>
               </div>
             </div>
           </div>
-          <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
+          <div style="float:left;width:auto;font-weight:bold;text-align:right;"/>
+           <div style="float:left;width:auto;height:auto;padding-right:4mm;padding-left:12mm;padding-top:0mm;">
               <li>If you answered "Yes," you meet this test. Fill in line 1b and then go to line 3.</li>
               <li>If you answered "No," you <b>do not</b> meet this test. Go to line 2 to see if you meet the Physical Presence Test.</li>
-            </div>
-          </div>
+           </div>
           <!-- Line 1b -->
           <div style="width:187mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">b</div>
-            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
-              Enter the date your bona fide residence began <img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
+            <div style="float:left;width:5mm;font-weight:bold;padding-left:5mm;">b</div>
+            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;padding-left:4mm;">
+              Enter the date your bona fide residence began <img src="{$ImagePath}/2555EZ_Bullet.gif" 
+              width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
               <span style="width:25mm;border-bottom:1px solid black">
               <xsl:call-template name="PopulateMonthDayYear">
 				  <xsl:with-param name="TargetNode" select="$FormData/TaxpayerBonaFideResGrp/BonaFideResidenceBeginDt"/>
               </xsl:call-template>
               </span>
-              , and ended (see instructions) <img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
+              , and ended (see instructions) <img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9"
+               alt="Bullet" style="margin:0mm 1mm;"/>
               <span style="width:25mm;border-bottom:1px solid black">
                 <xsl:choose>
                   <xsl:when test="$FormData/TaxpayerBonaFideResGrp/BonaFideResidenceEndDt">
@@ -238,15 +246,14 @@
           <div style="width:187mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;">2</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;">
+            <div style="float:left;width:176mm;padding-left:4mm;">
               <b>Physical Presence Test</b>
             </div>
           </div>
           <!-- Line 2a -->
-          <div style="width:187mm;margin-top:1mm;height:5mm">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">a</div>
-            <div style="float:left;width:156mm;height:8mm;padding-right:1mm;">
+          <div style="width:187mm;margin-top:1mm;height:auto">
+            <div style="float:left;width:5mm;font-weight:bold;padding-left:5mm;">a</div>
+            <div style="float:left;width:163mm;height:8mm;padding-right:1mm;padding-left:4mm">
               Were you physically present in a foreign country or countries for at least 330 full days during -
               <div style="width:100mm;float:left;">
                 <img src="{$ImagePath}/2555EZ_sm_lft_bracket.gif" alt="left bracket" style="float:right;"/>
@@ -255,19 +262,24 @@
                 any other period of 12 months in a row starting or ending in 2014?
               </div>
               <div style="float:left;letter-spacing:3mm;font-weight:bold;line-height:4mm;">
-                ..............
+                .............
               </div>
             </div>
-            <div style="float:left;width:20mm;">
-              <div style="height:4mm;"/>
-              <div style="height:5mm;text-align:right;">
-                <input type="checkbox">
+            <div style="float:left;width:19mm;padding-top:3mm;">
+              <div style="height:4mm;text-align:right;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
+				 </xsl:call-template>
+                <input type="checkbox" style="margin:0;height:10px;width:10px;">
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
                     <xsl:with-param name="BackupName">IRS2555PhysicalPresenceInd</xsl:with-param>
                   </xsl:call-template>
                 </input>
                 <span style="height:3mm;padding-bottom:1.15mm;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
+				 </xsl:call-template>
                 <label>
                   <xsl:call-template name="PopulateLabelYes">
                     <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
@@ -276,13 +288,19 @@
                   <b>Yes</b>
                 </label>
                 </span>
-                <input type="checkbox">
+                <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
+				 </xsl:call-template>
+                <input type="checkbox" style="margin:5;height:10px;width:10px;">
                   <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
                     <xsl:with-param name="BackupName">IRS2555PhysicalPresenceInd</xsl:with-param>
                   </xsl:call-template>
                 </input>
                 <span style="height:3mm;padding-bottom:1.15mm;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
+				 </xsl:call-template>
                 <label>
                   <xsl:call-template name="PopulateLabelNo">
                     <xsl:with-param name="TargetNode" select="$FormData/PhysicalPresenceInd"/>
@@ -297,17 +315,19 @@
           <div style="width:187mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
+            <div style="float:left;width:176mm;height:8mm;padding-right:1mm; padding-left:12mm;padding-top:3mm;padding-bottom:9mm;" >
               <li>If you answered "Yes," you meet this test. Fill in line 2b and then go to line 3.</li>
-              <li>If you answered "No," you <b>do not</b> meet this test. You <b>cannot</b> take the exclusion unless you meet the Bona Fide Residence Test above.</li>
+              <li>If you answered "No," you <b>do not</b> meet this test. You <b>cannot</b> take the exclusion unless you meet the
+              <br/> Bona Fide Residence Test above.</li>
             </div>
           </div>
           <!-- Line 2b -->
           <div style="width:187mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">b</div>
-            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
-              The physical presence test is based on the 12-month period from <img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
+            <div style="float:left;width:5mm;font-weight:bold;padding-left:5mm;">b</div>
+            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;padding-left:5mm;">
+              The physical presence test is based on the 12-month period from <img src="{$ImagePath}/2555EZ_Bullet.gif" 
+              width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
               <span style="width:25mm;border-bottom:1px solid black">
                 <xsl:call-template name="PopulateMonthDayYear">
                   <xsl:with-param name="TargetNode" select="$FormData/TaxpayerPhysicalPresenceGrp/PhysicalPresenceBeginDt"/>
@@ -334,22 +354,27 @@
           </div>
           <!-- Line 3 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">3</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:156mm;height:8mm;padding-right:1mm;">
-              <b>Tax Home Test.</b> Was your tax home in a foreign country or countries throughout your period of bona fide residence or physical presence, whichever applies?
-              <span style="font-weight:bold;letter-spacing:3mm;">............................</span>
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-left:5mm;">3</div>
+            <div style="float:left;width:163mm;height:8mm;padding-right:1mm;padding-left:5mm;">
+              <b>Tax Home Test.</b> Was your tax home in a foreign country or countries throughout your period of bona fide residence or 
+                    physical presence, whichever applies?
+              <span style="font-weight:bold;letter-spacing:3mm;">..........................</span>
             </div>
-            <div style="float:left;width:20mm;">
-              <div style="height:4mm;"/>
-              <div style="height:5mm;text-align:right;">
-                <input type="checkbox">
+            <div style="float:left;width:19mm;padding-top:3mm;">
+              <div style="height:4mm;text-align:right;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
+				 </xsl:call-template>
+                <input type="checkbox" style="margin:0;height:10px;width:10px;" >
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
                     <xsl:with-param name="BackupName">IRS2555TaxHomeTestInd</xsl:with-param>
                   </xsl:call-template>
                 </input>
                 <span style="height:3mm;padding-bottom:1.15mm;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
+				 </xsl:call-template>
                 <label>
                   <xsl:call-template name="PopulateLabelYes">
                     <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
@@ -358,13 +383,19 @@
                   <b>Yes</b>
                 </label>
                 </span>
-                <input type="checkbox">
+             <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
+			 </xsl:call-template>
+                <input type="checkbox" style="margin:5;height:10px;width:10px;">
                   <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
                     <xsl:with-param name="BackupName">IRS2555TaxHomeTestInd</xsl:with-param>
                   </xsl:call-template>
                 </input>
                 <span style="height:3mm;padding-bottom:1.15mm;">
+                 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
+				 </xsl:call-template>
                 <label>
                   <xsl:call-template name="PopulateLabelNo">
                     <xsl:with-param name="TargetNode" select="$FormData/TaxHomeTestInd"/>
@@ -379,7 +410,7 @@
           <div style="width:187mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;">
+            <div style="float:left;width:176mm;height:8mm;padding-right:1mm;padding-left:12mm;">
               <li>If you answered "Yes," you can take the exclusion. Complete Part II below and then go to page 2.</li>
               <li>If you answered "No," you <b>cannot</b> take the exclusion. <b>Do not</b> file this form.</li>
             </div>
@@ -387,7 +418,7 @@
           <!-- BEGIN PART II TITLE -->
           <div class="styBB" style="width:187mm;padding:1mm 0mm;border-top:1px solid black;">
             <div class="styPartName" style="font-family:sans-serif;">Part II</div>
-            <div class="styPartDesc">General Information</div>
+            <div class="styPartDesc" style="font-size:10pt">General Information</div>
           </div>
           <!-- END PART II TITLE -->
           <!-- Line 4,5 container -->
@@ -395,7 +426,7 @@
             <!-- Line 4 -->
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;">4</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:137mm;border-right:1px solid black;">
+            <div style="float:left;width:137mm;border-right:1px solid black;padding-left:3mm;">
               Your foreign address (including country)<br/>
               <xsl:call-template name="PopulateForeignAddressTemplate">
                 <xsl:with-param name="TargetNode" select="$FormData/ForeignAddress"/>
@@ -411,13 +442,12 @@
 				</div>
             </div>
           </div>
-          <!-- Line 6,7,8 container -->
-          <div style="height:18mm;width:187mm;border-bottom:1px solid black;">
+           <!-- Line 6,7,8 container -->
+          <div style="height:100%;width:187mm;border-bottom:1px solid black;">
             <!-- Line 6 -->
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">6</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:35mm;">
-              Employer's name<br/>
+            <div style="height:23mm;float:left;width:47mm;padding-left:1mm;border-right:1px solid black;">
+              <b style="margin-right:2.4mm;">6</b>Employer's name<br/>
+              <div style="padding-left:4mm;">            
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$FormData/EmployerName/BusinessNameLine1Txt"/>
               </xsl:call-template>
@@ -427,42 +457,43 @@
                   <xsl:with-param name="TargetNode" select="$FormData/EmployerName/BusinessNameLine2Txt"/>
                 </xsl:call-template>
               </xsl:if>
+             </div>
             </div>
             <!-- Line 7 -->
-            <div style="height:100%;float:left;width:71mm;padding-left:1mm;border-left:1px solid black;">
+            <div style="height:23mm;float:left;width:70mm;padding-left:1mm;border-right:1px solid black;">
               <b style="margin-right:3mm;">7</b>Employer's U.S. address (including ZIP code)<br/>
-              <div style="padding-left:5mm;">
+              <div style="padding-left:4mm;">
 				  <xsl:call-template name="PopulateUSAddressTemplate">
 					<xsl:with-param name="TargetNode" select="$FormData/EmployerUSAddress"/>
 				  </xsl:call-template>
 			   </div>
             </div>
             <!-- Line 8 -->
-            <div style="height:100%;float:left;width:71mm;padding-left:1mm;border-left:1px solid black;">
+            <div style="height:23mm;float:left;width:70mm;padding-left:1mm;border-left:0px solid black;">
               <b style="margin-right:3mm;">8</b>Employer's foreign address<br/>
-               <div style="margin-left:5mm">
+               <div style="padding-left:4mm;">
 				  <xsl:call-template name="PopulateForeignAddressTemplate">
 					<xsl:with-param name="TargetNode" select="$FormData/EmployerForeignAddress"/>
 				  </xsl:call-template>
 				</div>
-            </div>
+			 </div>
           </div>
           <!-- Line 9 -->
           <div style="width:187mm;margin-top:1mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;">9</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div style="float:left;width:176mm;">
+            <div style="float:left;width:176mm;padding-left:5mm;">
               Employer is (check any that apply):
             </div>
           </div>
           <!-- Line 9a -->
           <div style="width:187mm;">
-            <div style="float:left;width:7mm;padding-left:5mm;padding-top:1mm;font-weight:bold;">a</div>
+            <div style="float:left;width:7mm;padding-left:5mm;padding-top:1mm;font-weight:bold;padding-left:5mm;">a</div>
             <div style="float:left;width:173.5mm;height:4mm;padding-top:1mm;padding-left:3.5mm">A U.S. business
-				<span style="font-weight:bold;letter-spacing:3mm;">.......................................</span>
+				<span style="font-weight:bold;letter-spacing:3mm;">.....................................</span>
 				</div>
 			<div class="styGenericDiv" style="">
-              <input type="checkbox" style="height:4mm;width:4mm">
+              <input type="checkbox" style="height:3mm;width:3mm">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/EmployerUnitedStatesCompanyInd"/>
                   <xsl:with-param name="BackupName">IRS2555EZEmployerUnitedStatesCompanyInd</xsl:with-param>
@@ -479,13 +510,13 @@
           </div>
           <!-- Line 9b -->
           <div style="width:187mm;">
-            <div style="float:left;width:7mm;padding-top:1mm;padding-left:5mm;font-weight:bold;">b</div>
-            <div style="float:left;width:173.5mm;padding-top:1mm;padding-left:3.5mm">
+            <div style="float:left;width:7mm;padding-top:1mm;padding-left:5mm;font-weight:bold;padding-left:5mm;">b</div>
+            <div style="float:left;width:173.5mm;padding-top:1mm;padding-left:3.5mm;padding-bottom:2mm;">
 				A foreign business
-				<span style="font-weight:bold;letter-spacing:3mm;">......................................</span>
+				<span style="font-weight:bold;letter-spacing:3mm;">....................................</span>
 			</div>
-			<div class="styGenericDiv" style="width:4mm;height:4mm">
-              <input type="checkbox" style="height:4mm;width:4mm">
+			<div class="styGenericDiv" style="width:3mm;height:3mm">
+              <input type="checkbox" style="height:3mm;width:3mm">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/EmployerForeignEntityInd"/>
                   <xsl:with-param name="BackupName">IRS2555EZEmployerForeignEntityInd</xsl:with-param>
@@ -512,8 +543,8 @@
               </xsl:call-template>
               </span>
             </div>
-            <div class="styGenericDiv" style="height:4mm;width:4mm">
-              <input type="checkbox" style="height:4mm;width:4mm">
+            <div class="styGenericDiv" style="height:3mm;width:3mm">
+              <input type="checkbox" style="height:3mm;width:3mm">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/OtherEmployerTypeGroup/OtherEmployerTypeInd"/>
                   <xsl:with-param name="BackupName">IRS2555EZOtherEmployerTypeInd</xsl:with-param>
@@ -543,19 +574,18 @@
           <!-- Line 10b -->
           <div style="width:187mm">
             <div style="float:left;width:7mm;padding-left:5mm;font-weight:bold;height:3.5mm;padding-top:1mm;">b</div>
-            <div style="float:left;width:95.5mm;padding-left:3.5mm;padding-top:1mm">
+            <div style="float:left;width:87mm;padding-left:3.5mm;padding-top:1mm;">
 				<label>
 					<xsl:call-template name="PopulateLabel">
 						<xsl:with-param name="TargetNode" select="$FormData/NoFrgnEarnIncExclPrevFiledInd"/>
 						<xsl:with-param name="BackupName">IRS2555NoFrgnEarnIncExclPrevFiledInd</xsl:with-param>
 					</xsl:call-template>
 					If you did not previously file Form 2555 or 2555-EZ, check here
-					<span style="width:5px"/>
 					<img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet"/>
 				</label>
             </div>
             <div class="styGenericDiv" style="padding-top:0.5mm;padding-left:0.5mm">
-              <input type="checkbox" style="height:4mm;width:4mm">
+              <input type="checkbox" style="height:3mm;width:3mm">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/NoFrgnEarnIncExclPrevFiledInd"/>
                   <xsl:with-param name="BackupName">IRS2555NoFrgnEarnIncExclPrevFiledInd</xsl:with-param>
@@ -567,17 +597,23 @@
           <!-- Line 10c -->
           <div style="width:187mm;height:3mm;">
             <div class="styLNLeftNumBox" style="width:10mm;padding-left:5mm">c</div>
-            <div class="styGenericDiv" style="width:156mm;height:3mm;padding-top:1mm;">
-              Have you ever revoked the foreign earned income exclusion?<span style="letter-spacing:3mm;">.....................</span>
+            <div class="styGenericDiv" style="width:158mm;height:3mm;padding-top:1mm;">
+              Have you ever revoked the foreign earned income exclusion?<span style="letter-spacing:3mm;">....................</span>
               </div>
-              <div class="styGenericDiv" style="width:20mm;margin-bottom:0.5mm;height:3mm">
-              <input type="checkbox">
+              <div class="styGenericDiv" style="width:19mm;margin-bottom:0.5mm;height:3mm;padding-top:1mm;">
+              <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
+			 </xsl:call-template>
+              <input type="checkbox" style="margin:0;height:10px;width:10px;" >
                 <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
                   <xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
                 </xsl:call-template>
               </input>
               <span style="height:3mm;padding-bottom:1.15mm;">
+              <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
+			 </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
@@ -586,13 +622,19 @@
                 <b>Yes</b>
               </label>
               </span>
-              <input type="checkbox">
+              <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
+			 </xsl:call-template>
+              <input type="checkbox" style="margin:5;height:10px;width:10px;">
                 <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
                   <xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
                 </xsl:call-template>
               </input>
               <span style="height:3mm;padding-bottom:1.15mm;">
+              <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
+			 </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
@@ -606,9 +648,10 @@
           <!-- Line 10d -->
           <div style="width:187mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">d</div>
-            <div style="float:left;width:176mm;">
-              If you answered "Yes," enter the tax year for which the revocation was effective.<img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
+            <div style="float:left;width:5mm;font-weight:bold;padding-left:5mm;padding-top:2mm;">d</div>
+            <div style="float:left;width:176mm;padding-left:5mm;padding-top:2mm;">
+              If you answered "Yes," enter the tax year for which the revocation was effective.<img src="{$ImagePath}/2555EZ_Bullet.gif"
+               width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
               <span style="border-bottom:1px solid black;width:57mm">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokeTaxYr"/>
@@ -647,10 +690,10 @@
           <!-- Line 11b -->
           <div class="styTBB" style="width:187mm;margin-top:1mm;">
             <div style="float:left;width:5mm;font-weight:bold;text-align:right;"/>
-            <div style="float:left;width:5mm;font-weight:bold;">b</div>
-            <div style="float:left;width:176mm;">
+            <div style="float:left;width:5mm;font-weight:bold;padding-left:5mm;">b</div>
+            <div style="float:left;width:176mm;padding-left:5mm;">
               Of what country are you a citizen/national?<img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
-              <span style="border-bottom:1px solid black;">
+              <span>
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$FormData/CitizenCountryNm"/>
               </xsl:call-template>
@@ -664,21 +707,21 @@
               <span style="width:13mm;"/>                        
                 Cat. No. 13272W
             </div>
-            <div style="float:right;">  
-              <span style="width:40px;"/>  
-              Form <span class="styBoldText" style="font-size:8pt;">2555-EZ</span> (2014)
-            </div>
+			<span style="width:90px;"/>
+                Form <span class="styBoldText" style="font-size:8pt;">2555-EZ</span> (2014)
           </div>
           <!-- Page 2 Header -->
+        <div class="pageEnd">
           <div class="styTBB" style="width:187mm;padding-top:.5mm;">
-            <div style="float:left;">Form 2555-EZ (2014)</div>
-            <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></div>
+              <div style="float:left;">Form 2555-EZ (2014)</div>
+              <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></div>
           </div>
           <!-- BEGIN PART III TITLE -->
           <div style="width:187mm;padding:1mm 0mm;">
             <div class="styPartName" style="font-family:sans-serif;">Part III</div>
-            <div class="styPartDesc">Days Present in the United States - <span style="font-weight:normal;">
-              Complete this part if you were in the United States or its possessions during 2014.</span></div>
+              <div class="styPartDesc" style="font-size:10pt; font-weight:normal">
+                  <b>Days Present in the United States - </b> Complete this part if you were in the United States or its possessions during 2014.
+            </div>
           </div>
           <!-- END PART III TITLE -->
           <!-- Line 12 -->
@@ -694,17 +737,17 @@
             <table style="border-collapse:collapse;font-size:7pt;">
               <thead style="vertical-align:top;">
                 <tr>
-                <th scope="col" style="border:1px solid black;border-left:none;font-weight:normal;width:46mm;"><b style="margin-left:3mm;">12</b> 
-                   <b style="margin-left:5mm;">(a)</b> Date arrived in U.S.</th>
+                <th scope="col" style="border:1px solid black;border-left:none;font-weight:normal;text-align:left;width:46mm;"><b style="margin-left:0mm;">12</b> 
+                   <b style="margin-left:3mm;">(a)</b> Date arrived in U.S.</th>
                 <th scope="col" style="border:1px solid black;font-weight:normal;width:46mm;"><b>(b)</b> Date left U.S.</th>
                 <th scope="col" style="border:1px solid black;font-weight:normal;width:46mm;"><b>(c)</b> Number of days in U.S. on business</th>
                 <th scope="col" style="border:1px solid black;border-right:none;font-weight:normal;width:49mm;"><b>(d)</b>
                    Income earned in U.S. on business (attach computation)</th>
                 </tr>
               </thead>
-              <tbody style="text-align:center;">
+              <tbody style="text-align:center;height:auto;">
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:choose>
                       <xsl:when test="$Print = $Separated and count($FormData/PresenceInTheUSGroup) &gt; 9">
                         <xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -724,7 +767,7 @@
                       </xsl:otherwise>
                     </xsl:choose>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[1]">
                     <xsl:call-template name="PopulateMonth">
@@ -735,13 +778,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[1]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[1]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[1]/BusinessIncomeEarnedAmt"/>
@@ -753,7 +796,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[2]">
                     <xsl:call-template name="PopulateMonth">
@@ -764,7 +807,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[2]/ArrivedInUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[2]">
                     <xsl:call-template name="PopulateMonth">
@@ -775,13 +818,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[2]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[2]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[2]/BusinessIncomeEarnedAmt"/>
@@ -792,7 +835,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[3]">
                     <xsl:call-template name="PopulateMonth">
@@ -803,7 +846,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[3]/ArrivedInUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[3]">
                     <xsl:call-template name="PopulateMonth">
@@ -814,13 +857,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[3]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[3]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[3]/BusinessIncomeEarnedAmt"/>
@@ -831,7 +874,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[4]">
                     <xsl:call-template name="PopulateMonth">
@@ -842,7 +885,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[4]/ArrivedInUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[4]">
                     <xsl:call-template name="PopulateMonth">
@@ -853,13 +896,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[4]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[4]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[4]/BusinessIncomeEarnedAmt"/>
@@ -870,7 +913,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[5]">
                     <xsl:call-template name="PopulateMonth">
@@ -881,7 +924,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[5]/ArrivedInUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[5]">
                     <xsl:call-template name="PopulateMonth">
@@ -892,13 +935,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[5]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[5]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[5]/BusinessIncomeEarnedAmt"/>
@@ -909,7 +952,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[6]">
                     <xsl:call-template name="PopulateMonth">
@@ -920,7 +963,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[6]/ArrivedInUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[6]">
                     <xsl:call-template name="PopulateMonth">                    
@@ -931,13 +974,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[6]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[6]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[6]/BusinessIncomeEarnedAmt"/>
@@ -948,7 +991,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[7]">
                     <xsl:call-template name="PopulateMonth">
@@ -959,7 +1002,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[7]/ArrivedInUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[7]">
                     <xsl:call-template name="PopulateMonth">
@@ -970,13 +1013,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[7]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[7]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[7]/BusinessIncomeEarnedAmt"/>
@@ -987,7 +1030,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[8]">
                     <xsl:call-template name="PopulateMonth">
@@ -998,7 +1041,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[8]/ArrivedInUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[8]">
                     <xsl:call-template name="PopulateMonth">
@@ -1009,13 +1052,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[8]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[8]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[8]/BusinessIncomeEarnedAmt"/>
@@ -1026,7 +1069,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="border:1px solid black;border-left:none;">&#160;
+                  <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[9]">
                     <xsl:call-template name="PopulateMonth">
@@ -1037,7 +1080,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[9]/ArrivedInUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:if test="$FormData/PresenceInTheUSGroup[9]">
                     <xsl:call-template name="PopulateMonth">
@@ -1048,13 +1091,13 @@
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[9]/DepartedUSDt"/>
                     </xsl:call-template></xsl:if></xsl:if>
                   </td>
-                  <td style="border:1px solid black;">
+                  <td style="border:1px solid black;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[9]/BusinessDaysCnt"/>
                     </xsl:call-template></xsl:if>
                   </td>
-                  <td style="border:1px solid black;border-right:none;">
+                  <td style="border:1px solid black;border-right:none;height:auto;">
                   <xsl:if test="$Print != $Separated or ($Print = $Separated and count($FormData/PresenceInTheUSGroup) &lt; 10)">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PresenceInTheUSGroup[9]/BusinessIncomeEarnedAmt"/>
@@ -1067,7 +1110,7 @@
                 <xsl:if test="$Print != $Separated">
                   <xsl:for-each select="$FormData/PresenceInTheUSGroup[position() &gt; 9]">
                     <tr>
-                      <td style="border:1px solid black;border-left:none;">&#160;
+                      <td style="border:1px solid black;border-left:none;height:auto;">&#160;
                         <xsl:call-template name="PopulateMonth">
                           <xsl:with-param name="TargetNode" select="ArrivedInUSDt"/>
                         </xsl:call-template>-<xsl:call-template name="PopulateDay">
@@ -1076,7 +1119,7 @@
                           <xsl:with-param name="TargetNode" select="ArrivedInUSDt"/>
                         </xsl:call-template>
                       </td>
-                      <td style="border:1px solid black;">
+                      <td style="border:1px solid black;height:auto;">
                         <xsl:call-template name="PopulateMonth">
                           <xsl:with-param name="TargetNode" select="DepartedUSDt"/>
                         </xsl:call-template>-<xsl:call-template name="PopulateDay">
@@ -1085,12 +1128,12 @@
                           <xsl:with-param name="TargetNode" select="DepartedUSDt"/>
                         </xsl:call-template>
                       </td>
-                      <td style="border:1px solid black;">
+                      <td style="border:1px solid black;height:auto;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="BusinessDaysCnt"/>
                         </xsl:call-template>
                       </td>
-                      <td style="border:1px solid black;border-right:none;">
+                      <td style="border:1px solid black;border-right:none;height:auto;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="BusinessIncomeEarnedAmt"/>
                         </xsl:call-template>
@@ -1112,55 +1155,75 @@
           <!-- BEGIN PART IV TITLE -->
           <div class="styBB" style="width:187mm;padding:1mm 0mm;">
             <div class="styPartName" style="font-family:sans-serif;">Part IV</div>
-            <div class="styPartDesc">Figure Your Foreign Earned Income Exclusion</div>
+            <div class="styPartDesc" style="font-size:10pt">Figure Your Foreign Earned Income Exclusion</div>
           </div>
           <!-- END PART IV TITLE -->
           <!-- Line 13 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">13</div>
+			<div style="float:left;padding-left:135.2mm;">
+                <div style="height:5mm;width:8mm;border-left:1px solid black"></div>
+            </div>
+            <div style="float:left;">
+              <div class="styLNAmountBox" style="height:5mm;width:42mm;border-bottom:0px solid black;
+                padding-left:10mm;"></div>
+            </div>
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:2mm;">13</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div class="styLNDesc" style="width:126mm;">
+            <div class="styLNDesc" style="width:auto;padding-top:2mm;padding-left:2mm;">
               Maximum foreign earned income exclusion
-              <span style="letter-spacing:3mm;font-weight:bold;">..................</span>
+              <span style="letter-spacing:3mm;font-weight:bold;">................</span>
+            </div>
+            <div style="float:left;padding-left:11.95mm;">
+              <div style="height:5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
+                border-left:1px solid black;padding-left:0mm;">13</div>
             </div>
             <div style="float:left;">
-              <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">13</div>
-            </div>
-            <div style="float:left;">
-              <div class="styLNAmountBox" style="height:4.5mm;width:42mm;border-bottom:1px solid black;">$99,200.00</div>
+              <div class="styLNAmountBox" style="height:5mm;width:42mm;border-bottom:1px solid black;
+                padding-left:10mm;">$99,200.00</div>
             </div>
           </div>
           <!-- Line 14 -->
           <div style="width:187mm;">
-            <div style="float:left;width:10mm;padding-top:5mm;">
-              <div style="float:left;width:5mm;font-weight:bold;text-align:right;">14</div>
+            <div style="float:left;padding-left:135.2mm;">
+                <div style="height:5mm;width:8mm;border-left:1px solid black;background-color:lightgrey;"></div>
             </div>
-            <div style="float:left;height:9mm;width:101mm;">
+            <div style="float:left;">
+              <div class="styLNAmountBox" style="height:5mm;width:42mm;border-bottom:0px solid black;
+                padding-left:10mm;"></div>
+            </div>
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:5mm">14</div>
+            <div style="float:left;height:9mm;width:100mm;">
               <div style="height:4.5mm;"/>
-              <div class="styLNDesc" style="width:100mm;">
-                Enter the number of days in your qualifying period that fall within 2014<span style="letter-spacing:3mm;font-weight:bold;">..</span>
+              <div class="styLNDesc" style="width:auto;padding-top:5mm;padding-left:2mm">
+                Enter the number of days in your qualifying period that fall within 2014
+                <span style="letter-spacing:3mm;font-weight:bold;">.</span>
               </div>
             </div>
             <div style="float:left;">
-              <div style="height:4.5mm;width:8.2mm;border-left:1px solid black;"/>
-              <div style="height:4.5mm;width:8.2mm;text-align:center;font-weight:bold;border-bottom:1px solid black;border-left:1px solid black;">14</div>
+              <div style="height:9mm;width:8.2mm;text-align:center;font-weight:bold;border-bottom:1px solid black;
+                border-left:1px solid black;;padding-top:5mm;">14</div>
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="float:none;height:4.5mm;width:17mm;border-bottom:none;"/>
-              <div class="styLNAmountBox" style="float:none;height:4.5mm;width:17mm;position:relative;">
-                <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncmExclQlfyDaysCnt"/>
-                </xsl:call-template><b style="margin-right:1mm;"> days</b>
-              </div>
+               <div class="styLNAmountBox" style="float:none;height:9mm;width:22mm;position:relative;padding-top:5mm">
+                   <xsl:call-template name="PopulateText">
+                    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncmExclQlfyDaysCnt"/>
+                   </xsl:call-template><b style="margin-right:1mm;"> days</b>
+               </div>
             </div>
-            <div style="float:left;width:8mm;height:9mm;background-color:lightgrey;border-left:1px solid black;"/>
-            <div style="float:left;width:42mm;height:9mm;border-left:1px solid black;"/>
+            <div style="float:left;width:8mm;height:9mm;background-color:lightgrey;border-left:1px solid black;padding-top:5mm"/>
+            <div style="float:left;width:42mm;height:9mm;border-left:1px solid black;padding-top:5mm"/>
           </div>
           <!-- Line 15 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">15</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div class="styLNDesc" style="width:126mm;">
+            <div style="float:left;padding-left:135.2mm;">
+                <div style="height:5mm;width:8mm;border-left:1px solid black;"></div>
+            </div>
+            <div style="float:left;">
+              <div class="styLNAmountBox" style="height:5mm;width:42mm;border-bottom:0px solid black;
+                padding-left:10mm;"></div>
+            </div>
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">15</div>
+              <div class="styLNDesc" style="width:130.2mm;padding-left:2mm">
               Did you enter 365 on line 14?
             </div>
             <div style="float:left;">
@@ -1171,74 +1234,93 @@
             </div>
           </div>
           <div class="styGenericDiv" style="width:187mm;">
-			  <div class="styGenericDiv" style="height:10mm;width:9mm;"/>
-			  <div class="styGenericDiv" style="height:10mm;width 90mm">
-				  <div class="styGenericDiv" style="height:5mm;width:90mm">
-					  <div class="styGenericDiv" style="height:5mm;width:5mm;">
-						   <input type="checkbox">
-							  <xsl:call-template name="PopulateYesCheckbox">
-								<xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
-								<xsl:with-param name="BackupName">IRS2555EZFrgnEarnIncExclQlfy366DaysInd</xsl:with-param>
-							  </xsl:call-template>
-							</input>
-						</div>
-						<div class="styGenericDiv" style="width:83mm;padding-top:1mm;height:5mm;">
-							<label>
-							  <xsl:call-template name="PopulateLabelYes">
-								<xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
-							  </xsl:call-template>
-							  <b>Yes.</b>
-							  </label> 
-							  <span style="width:8px"/>Enter "1.000."
-						</div>
-				   </div>
-				   <div class="styGenericDiv" style="height:5mm;width:90mm;">
-					   <div class="styGenericDiv" style="height:5mm;width:5mm">
-						   <input type="checkbox">
-								<xsl:call-template name="PopulateNoCheckbox">
-								  <xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
-								  <xsl:with-param name="BackupName">IRS2555EZFrgnEarnIncExclQlfy366DaysInd</xsl:with-param>
-								</xsl:call-template>
-							  </input>
-						  </div>
-						  <div class="styGenericDiv" style="width:5mm;padding-top:1mm;height:5mm;">
-							  <label>
-								<xsl:call-template name="PopulateLabelNo">
-								  <xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
-								</xsl:call-template>
-								<b>No.</b> 
-							  </label>
-						  </div>
-						  <div class="styGenericDiv" style="width:78mm;padding-top:1mm;padding-left:8px;height:5mm;">
-							  Divide line 14 by 365 and enter the result as a decimal (rounded to at least three places).
-						  </div>
-				   </div>
+			<div class="styGenericDiv" style="height:5mm;width:90mm;padding-left:6mm;">
+			  <div class="styGenericDiv" style="height:5mm;width:5mm;">
+              <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
+			 </xsl:call-template>
+			    <input type="checkbox">
+				    <xsl:call-template name="PopulateYesCheckbox">
+						<xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
+						<xsl:with-param name="BackupName">IRS2555EZFrgnEarnIncExclQlfy366DaysInd</xsl:with-param>
+					 </xsl:call-template>
+				</input>
 			  </div>
-			   <div class="styGenericDiv" style="heigth:10mm;width:10mm">
-					  <img src="{$ImagePath}/2555EZ_lg_rt_bracket.gif" alt="left bracket"/>
-			   </div>
-			   <div class="styGenericDiv" style="height:10mm;padding-top:3.5mm;width:27mm;letter-spacing:3mm;font-weight:bold">......
-			   </div>
-			   <div class="styGenericDiv" style="height:13.3mm;width:50mm">
-				  <div class="styGenericDiv" style="height:13.3mm;width:8mm;font-weight:bold;text-align:center;padding-top:9mm;border-bottom:1px solid black;border-left:1px solid black;">15</div>
-				  <div class="styLNAmountBox" style="height:13.3mm;padding-top:9mm;width:42mm;border-bottom:1px solid black;">
-					<xsl:call-template name="PopulateText">
-					  <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnedIncExclusionPct"/>
+			  <div class="styGenericDiv" style="width:35mm;padding-top:1mm;height:5mm;">
+			   <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
+			 </xsl:call-template>
+				<label>
+				  <xsl:call-template name="PopulateLabelYes">
+					<xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
+				  </xsl:call-template>
+				  <b>Yes.</b>
+				</label> 
+				<span style="width:8px"/>Enter "1.000."
+			  </div>
+			  <div class="styGenericDiv" style="height:5mm;width:90mm;">
+				<div class="styGenericDiv" style="height:5mm;width:5mm">
+             <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
+			 </xsl:call-template>
+				   <input type="checkbox">
+						<xsl:call-template name="PopulateNoCheckbox">
+						  <xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
+				          <xsl:with-param name="BackupName">IRS2555EZFrgnEarnIncExclQlfy366DaysInd</xsl:with-param>
+						</xsl:call-template>
+				   </input>
+				</div>
+				<div class="styGenericDiv" style="width:5mm;padding-top:1mm;height:5mm;">
+				 <xsl:call-template name="PopulateSpan">
+							    <xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
+			 </xsl:call-template>
+				  <label>
+					<xsl:call-template name="PopulateLabelNo">
+					  <xsl:with-param name="TargetNode" select="$FormData/FrgnEarnIncExclQlfy366DaysInd"/>
 					</xsl:call-template>
-				  </div>
+					<b>No.</b> 
+				  </label>
+				</div>
+				<div class="styGenericDiv" style="width:78mm;padding-top:1mm;padding-left:8px;height:5mm;">
+				  Divide line 14 by 365 and enter the result as a decimal (rounded to at least three places).
+				</div>
+			  </div>				   
+			</div>
+			<div class="styGenericDiv" style="heigth:10mm;width:10mm">
+			  <img src="{$ImagePath}/2555EZ_lg_rt_bracket.gif" alt="left bracket"/>
+			</div>
+			<div class="styGenericDiv" style="height:10mm;padding-top:3.5mm;width:35.2mm;letter-spacing:3mm;
+			  font-weight:bold">.....
+			</div>
+			<div class="styGenericDiv" style="height:13.3mm;width:50mm">
+			  <div class="styGenericDiv" style="height:13.3mm;width:8mm;font-weight:bold;text-align:center;padding-top:9mm;
+			    border-bottom:1px solid black;border-left:1px solid black;">15</div>
+			  <div class="styLNAmountBox" style="height:13.3mm;padding-top:9mm;width:42mm;border-bottom:1px solid black;">
+			     <span style="font-size:8pt;padding-right:10mm;">x</span>
+				<xsl:call-template name="PopulateText">
+				  <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnedIncExclusionPct"/>
+				</xsl:call-template>
+			  </div>
             </div>
-		   </div>
-            
+		  </div>
           <!-- Line 16 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">16</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div class="styLNDesc" style="width:126mm;">
-              Multiply line 13 by line 15
-              <span style="letter-spacing:3mm;font-weight:bold;">........................</span>
+            <div style="float:left;padding-left:135.2mm;">
+                <div style="height:5mm;width:8mm;border-left:1px solid black;"></div>
             </div>
             <div style="float:left;">
-              <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;border-left:1px solid black;">16</div>
+              <div class="styLNAmountBox" style="height:5mm;width:42mm;border-bottom:0px solid black;
+                padding-left:10mm;"></div>
+            </div>
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">16</div>
+            <div style="float:left;width:5mm;font-weight:bold;"/>
+            <div class="styLNDesc" style="width:130.2mm;padding-left:2mm">
+              Multiply line 13 by line 15
+              <span style="letter-spacing:3mm;font-weight:bold;">....................</span>
+            </div>
+            <div style="float:left;">
+              <div style="height:4.5mm;width:8mm;font-weight:bold;text-align:center;border-bottom:1px solid black;
+                border-left:1px solid black;">16</div>
             </div>
             <div style="float:left;">
               <div class="styLNAmountBox" style="height:4.5mm;width:42mm;border-bottom:1px solid black;">
@@ -1250,32 +1332,47 @@
           </div>
           <!-- Line 17 -->
           <div style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">17</div>
-            <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div class="styLNDesc" style="width:126mm;">
-              Enter, in U.S. dollars, the total foreign earned income you earned and received in 2014 (see instructions). Be sure to include this amount on Form 1040, line 7
-              <span style="font-weight:bold;letter-spacing:3mm;">..........</span>
-              <img src="{$ImagePath}/2555EZ_Caution.gif" width="18" height="18" alt="Bullet" style="margin:0mm 5mm;"/>
-				If the amount on line 17 is more than $99,200, <b>do not</b> file this form.  You must<br/><span style="width:15mm"/> file Form 2555 instead.
+            <div style="float:left;padding-left:135.2mm;">
+                <div style="height:5mm;width:8mm;border-left:1px solid black;"></div>
             </div>
             <div style="float:left;">
-              <div style="height:7.5mm;width:8mm;border-left:1px solid black;"/>
-              <div style="height:7.5mm;width:8mm;text-align:center;font-weight:bold;border-bottom:1px solid black;border-left:1px solid black;">17</div>
+              <div class="styLNAmountBox" style="height:5mm;width:42mm;border-bottom:0px solid black;
+                padding-left:10mm;"></div>
+            </div>
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">17</div>
+              <div class="styLNDesc" style="width:121.3mm;height:auto;padding-left:2mm;">
+              Enter, in U.S. dollars, the total foreign earned income you earned and received in 2014 (see instructions). 
+              Be sure to include this amount on Form 1040, line 7
+              <span style="font-weight:bold;letter-spacing:3mm;">.......</span>
+              <br/><br/>
+              <!--<img src="{$ImagePath}/2555EZ_Caution.gif" width="18" height="18" alt="Bullet" style="margin:0mm 3mm;"/>-->
+				<b>Caution. </b> If the amount on line 17 is more than $99,200, <b>do not</b> file this form.  You must<br/>
+				<span style="width:15mm;"/> file Form 2555 instead.
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="height:7.5mm;width:42mm;border-bottom:none;"/>
-              <div class="styLNAmountBox" style="height:7.5mm;width:42mm;position:relative;">
+              <div style="height:7mm;width:8mm;"/>
+              <div style="height:7mm;width:8.10mm;text-align:center;font-weight:bold;border-bottom:1px solid black;
+                border-left:1px solid black;padding-top:2mm">17</div>
+            </div>
+            <div style="float:left;">
+              <div class="styLNAmountBox" style="height:7mm;width:42mm;position:relative;padding-top:2mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/TotalForeignEarnedIncomeAmt"/>
                 </xsl:call-template>
               </div>
+            </div> <div style="float:left;padding-left:8.9mm;">
+                <div style="height:9.7mm;width:8mm;border-left:1px solid black;"></div>
+            </div>
+            <div style="float:left;">
+              <div class="styLNAmountBox" style="height:9.7mm;width:42mm;border-bottom:0px solid black;
+                padding-left:10mm;"></div>
             </div>
           </div>
           <!-- Line 18 -->
-          <div class="styTBB" style="width:187mm;">
-            <div style="float:left;width:5mm;font-weight:bold;text-align:right;">18</div>
+          <div class="styBB" style="width:187mm;">
+            <div style="float:left;width:5mm;font-weight:bold;text-align:right;padding-top:.5mm">18</div>
             <div style="float:left;width:5mm;font-weight:bold;"/>
-            <div class="styLNDesc" style="width:126mm;">
+            <div class="styLNDesc" style="width:130.2mm;padding-left:2mm;height:auto">
               <b>Foreign earned income exclusion.</b> Enter the <b>smaller</b> of line 16 or line 17 here and in <br/>
                    parentheses on <b>Form 1040, line 21.</b> Next to the amount enter "2555-EZ." On Form 1040, <br/>
                    subtract this amount from your income to arrive at total income on Form 1040, line 22
@@ -1284,12 +1381,11 @@
               <img src="{$ImagePath}/2555EZ_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
             </div>
             <div style="float:left;">
-              <div style="height:7mm;width:8mm;border-left:1px solid black;"/>
-              <div style="height:4.5mm;width:8mm;text-align:center;font-weight:bold;border-left:1px solid black;">18</div>
+              <div style="height:10mm;width:8mm;text-align:center;font-weight:bold;border-left:1px solid black;
+                padding-top:6mm">18</div>
             </div>
             <div style="float:left;">
-              <div class="styLNAmountBox" style="height:7mm;width:42mm;border-bottom:none;"/>
-              <div class="styLNAmountBox" style="height:4.5mm;width:42mm;border-bottom:none;">
+              <div class="styLNAmountBox" style="height:10mm;width:42mm;border-bottom:none;padding-top:6mm">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnedIncExclusionAmt"/>
                 </xsl:call-template>
@@ -1301,16 +1397,17 @@
             Form <span class="styBoldText" style="font-size:8pt;">2555-EZ</span> (2014)
           </div>
           <!--END Page Footer-->
-          <!-- Additonal Data Title Bar and Button -->
-          <div class="styLeftOverTitleLine" id="LeftoverData">
+        </div>
+        <!-- Additonal Data Title Bar and Button -->
+        <div class="styLeftOverTitleLine" id="LeftoverData">
             <div class="styLeftOverTitle">
               Additional Data        
             </div>
             <div class="styLeftOverButtonContainer">
               <input class="styLeftoverTableBtn" type="button" TabIndex="-1" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
             </div>
-          </div>
-          <table class="styLeftOverTbl">
+        </div>
+        <table class="styLeftOverTbl">
             <xsl:call-template name="PopulateCommonLeftover">
               <xsl:with-param name="TargetNode" select="$FormData"/>
               <xsl:with-param name="DescWidth" select="100"/>
@@ -1320,23 +1417,27 @@
               <xsl:with-param name="TargetNode" select="$FormData/@claimFrgnEarnIncWaiverCd"/>
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
-          </table>
+        </table>
           
-          <xsl:if test="$Print = $Separated and  count($FormData/PresenceInTheUSGroup) &gt; 9">
-            <br/>
-            <span class="styRepeatingDataTitle">Form 2555-EZ - Part 3, Lines 12a-12d</span>
-            <table class="styDepTbl" style="font-size:7pt;border-collapse:collapse;">
-              <thead class="styTableThead">
-                <tr class="styDepTblHdr">
-                  <th scope="col" style="border:1px solid black;border-left:none;font-weight:normal;width:46mm;"><b style="margin-left:3mm;">12</b>
+        <xsl:if test="$Print = $Separated and  count($FormData/PresenceInTheUSGroup) &gt; 9">
+           <br/>
+           <span class="styRepeatingDataTitle">Form 2555-EZ - Part III, Lines 12a-12d</span>
+           <table class="styDepTbl" style="font-size:7pt;border-collapse:collapse;">
+             <thead class="styTableThead">
+               <tr class="styDepTblHdr">
+                 <th scope="col" style="border:1px solid black;border-left:none;font-weight:normal;width:46mm;">
+                   <b style="margin-left:3mm;">12</b>
                    <b style="margin-left:5mm;">(a)</b> Date arrived in U.S.</th>
-                  <th scope="col" style="border:1px solid black;font-weight:normal;width:46mm;"><b>(b)</b> Date left U.S.</th>
-                  <th scope="col" style="border:1px solid black;font-weight:normal;width:46mm;"><b>(c)</b> Number of days in U.S. on business</th>
-                  <th scope="col" style="border:1px solid black;border-right:none;font-weight:normal;width:49mm;"><b>(d)</b> Income earned in U.S. on business (attach computation)</th>
-                </tr>
-              </thead>
-              <tfoot/>
-              <tbody>
+                 <th scope="col" style="border:1px solid black;font-weight:normal;width:46mm;"><b>(b)</b>
+                   Date left U.S.</th>
+                 <th scope="col" style="border:1px solid black;font-weight:normal;width:46mm;"><b>(c)</b> 
+                   Number of days in U.S. on business</th>
+                 <th scope="col" style="border:1px solid black;border-right:none;font-weight:normal;width:49mm;"><b>(d)</b>
+                   Income earned in U.S. on business (attach computation)</th>
+               </tr>
+             </thead>
+             <tfoot/>
+             <tbody>
                 <xsl:for-each select="$FormData/PresenceInTheUSGroup">
                   <tr>
                     <xsl:attribute name="class">

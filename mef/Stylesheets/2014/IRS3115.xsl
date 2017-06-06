@@ -9,8 +9,10 @@
 <xsl:strip-space elements="*"/>
 <xsl:param name="Form3115Data" select="$RtnDoc/IRS3115"/>
 <xsl:template match="/">
-<html>
-  <head>    
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
+  <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>    
     <title>
       <xsl:call-template name="FormTitle">
         <xsl:with-param name="RootElement" select="local-name($Form3115Data)">
@@ -53,7 +55,7 @@
             Department of the Treasury<br/>Internal Revenue Service
           </div>            
         </div>
-        <div class="styMainTitle" style="float:left; border-left:1 solid black; border-right:1 solid black; width:125mm; height:17.5mm; text-align:center; padding-top:7mm;">
+        <div class="styMainTitle" style="float:left; border-left:1px solid black; border-right:1px solid black; width:125mm; height:17.5mm; text-align:center; padding-top:7mm;">
           Application for Change in Accounting Method          
         </div>
         <div style="float:left; font-size:7pt; width:31mm; padding-top:8mm; text-align:center">
@@ -61,14 +63,31 @@
         </div>
       </div>      
        <div class="styBB" style="width:187mm; font-size:8pt">
-        <div style="float:left; width:108mm; height:16mm; border-right:1 solid black">
+        <div style="float:left; width:108mm; height:16mm; border-right:1px solid black">
           Name of filer (name of parent corporation if a consolidated group) (see instructions)
-          <div style="padding-left:1mm; padding-top:1mm">          
-            <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template><br/>
-            <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param></xsl:call-template>
-          </div>    
+          <div style="padding-left:1mm; padding-top:6mm">          
+			  <xsl:choose>
+			  <!-- Name from 1120/990/1065 Return Header -->
+				<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+				  </xsl:call-template>
+				  <br/>
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
+				  </xsl:call-template>
+				</xsl:when>
+				<!-- Name from 1040 Return Header -->
+				<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
+				  <br/>
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+				  </xsl:call-template>
+				</xsl:when>
+			  </xsl:choose>
+			</div>    
         </div>
-        <div style="float:left; padding-left:2mm; height:8mm">
+        <div style="float:left; padding-left:2mm; height:8mm;width:79mm;">
           <b>Identification number (see instructions)</b>
           <div style="text-align:left; width:100%; font-size: 8pt">
             <!-- If SSN exists -->
@@ -99,7 +118,7 @@
             -->
           </div>
         </div>
-        <div style="float:left; padding-left:2mm; border-top:1 solid black">
+        <div style="float:left; padding-left:2mm; border-top:1px solid black;width:79mm;">
           Principal business activity code number (see instructions)
           <div style="text-align:left; width:100%; font-size: 8pt">
           
@@ -113,14 +132,15 @@
         </div>
       </div>          
        <div class="styBB" style="width:187mm">
-        <div style="float:left; font-size:8pt; width:108mm; height:10mm; border-right:1 solid black">
+        <div style="float:left; font-size:8pt; width:108mm; height:10mm; border-right:1px solid black">
           Number, street, and room or suite no. If a P.O. box, see the instructions.
+          <br />
           <div style="padding-left:1mm; line-height:100%; font-size: 8pt">          
               <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">AddressLine1Txt</xsl:with-param></xsl:call-template><br/>
               <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">AddressLine2Txt</xsl:with-param></xsl:call-template>
           </div>    
         </div>
-        <div style="float:left; font-size:8pt; padding-left:2mm; height:5mm">
+        <div style="float:left; font-size:8pt; padding-left:2mm; height:5mm;width:79mm;">
           <span style="float:left">
             Tax year of change begins (MM/DD/YYYY)
           </span>
@@ -130,7 +150,7 @@
             </xsl:call-template>                            
           </span>
         </div>
-        <div style="float:left; font-size:8pt; padding-left:2mm; border-top:1 solid black; width:79mm; height: 5mm">
+        <div style="float:left; font-size:8pt; padding-left:2mm; border-top:1px solid black; width:79mm; height: 5mm">
           <span style="float:left">
             Tax year of change ends (MM/DD/YYYY)
           </span>
@@ -142,8 +162,9 @@
         </div>
       </div>        
        <div class="styBB" style="width:187mm">
-        <div style="float:left; font-size:8pt; width:108mm; height:10mm; border-right:1 solid black">
+        <div style="float:left; font-size:8pt; width:108mm; height:10mm; border-right:1px solid black">
           City or town, state, and ZIP code
+          <br />
           <div style="padding-left:1mm; line-height:100%">                                
               <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param></xsl:call-template>
               <br/>
@@ -152,6 +173,7 @@
         </div>
         <div style="float:left; font-size:8pt; padding-left:2mm; height:10mm">
           Name of contact person (see instructions)
+          <br />
           <div style=" padding-top:1mm">                            
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/ContactPersonNm"/>
@@ -160,12 +182,13 @@
         </div>        
       </div>  
        <div class="styBB" style="width:187mm">
-        <div style="float:left; font-size:8pt; width:139mm; height:10mm; border-right:1 solid black;">
-          Name of applicant(s) (if different than filer) and identification number(s) <span style="font-size:7pt">(see instructions)</span>
-          <div style="padding-left:1mm; line-height:100%; float:left;">    
+        <!--div style="float:left; font-size:8pt; width:139mm; height:10mm; border-right:1px solid black;"-->
+   
+          <div style="padding-left:1mm; line-height:100%; float:left;width:112mm;font-size:8pt; ">    
+               Name of applicant(s) (if different than filer) and identification number(s) <span style="font-size:6pt">(see instructions)</span>
             <xsl:choose>                        
               <xsl:when test="normalize-space($Form3115Data/BusinessName) != ''">
-                <xsl:call-template name="PopulateText">
+                       <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form3115Data/BusinessName/BusinessNameLine1Txt"/>
                 </xsl:call-template>
                 <xsl:if test="normalize-space($Form3115Data/BusinessName/BusinessNameLine2Txt) != ''">
@@ -182,7 +205,7 @@
               </xsl:otherwise>    
             </xsl:choose>      
           </div>
-          <div style="float:right; padding-right:1mm;padding-left:1mm;width:28mm;text-align:right;font-size:7pt;">
+          <div style=" padding-right:1mm;padding-left:1mm;width:27mm;text-align:right;font-size:7pt;border-right:1px solid black;height:10mm;">
             <xsl:if test="($Form3115Data/SSN) or ($Form3115Data/EIN)">
               I.D. No.:
             </xsl:if> 
@@ -196,8 +219,8 @@
               <xsl:with-param name="TargetNode" select="$Form3115Data/EIN"/>                
             </xsl:call-template>    
           </div>
-        </div>  
-        <div style="float:left; font-size:8pt; padding-left:2mm; height:10mm">
+        <!--/div-->  
+        <div style="float:left; font-size:8pt; padding-left:2mm; height:10mm;width:48mm;float:right;">
           Contact person's telephone number
           <div style="padding-top:1mm">    
             <xsl:call-template name="PopulatePhoneNumber">
@@ -206,7 +229,7 @@
           </div>    
         </div>        
       </div>  
-       <div class="styBB" style="width:187mm; height:4mm">        
+       <div class="styBB" style="width:187mm; height:5mm">        
         <span style="float:left">
           <label>
             <xsl:call-template name="PopulateLabelYes">
@@ -218,7 +241,7 @@
         </span>
         <span style="float:right; margin-right:15mm">
           <span class="styDotLn" style="padding-right:5mm">      
-            ............
+            ..............
             <xsl:call-template name="SetFormLinkInline">
             <xsl:with-param name="TargetNode" select="$Form3115Data/IsMemberOfConsolidatedGroupInd"/>
           </xsl:call-template><span style="width:3px;" />     
@@ -240,7 +263,7 @@
       <!-- ************************************************************************************  -->
         <div style="width:187mm">If <b>Form 2848</b>, Power of Attorney and Declaration of Representative, is attached (see instructions for when Form 2848 is required), </div>
       <!-- ************************************************************************************  -->
-         <div class="styBB" style="width:187mm; height:4mm">        
+         <div class="styBB" style="width:187mm; height:5mm">        
         <span style="float:left">
           <label>
             <xsl:call-template name="PopulateLabelYes">
@@ -269,7 +292,7 @@
       </div>
       <!-- ************************************************************************************  -->
        <div class="styBB" style="width:187mm">
-        <div style="float:left; width:108mm; border-right:1 solid black; padding-bottom:0.5mm">
+        <div style="float:left; width:108mm; border-right:1px solid black; padding-bottom:0.5mm">
           <b>Check the box to indicate the applicant.</b>          
           <div style="float:left; width:59mm; margin-top:2mm">    
             <div style="width:100%">      
@@ -367,7 +390,7 @@
               </div>                        
             </div>
           </div>
-           <div style="float:left; margin-top:2mm">  
+           <div style="float:left; margin-top:2mm;width:48mm;">  
             <div style="width:100%">
               <div class="styIRS3115ChxBoxDiv">
                 <input type="Checkbox" class="styCkbox">
@@ -478,7 +501,7 @@
                   </xsl:call-template>   
                   Other (specify) <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>                                     
                 </label>  
-                <span style="border-bottom:1 solid black; width:18mm;font-size:8pt;">
+                <span style="border-bottom:1px solid black; width:18mm;font-size:8pt;">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form3115Data/WhoIsFilingForm/OtherApplicantTypeInd/@desc"/>
                   </xsl:call-template>  
@@ -510,7 +533,7 @@
             </xsl:call-template>  
           </div>                  
         </div>
-        <div style="float:left; padding-left:2mm">          
+        <div style="float:left; padding-left:2mm;width:79mm;">          
           <b>Check the appropriate box to indicate the type<br/>of accounting method change being requested.</b><br/>(see instructions)                    
           <div style="margin-top:3.5mm">
             <div style="width:100%">
@@ -569,7 +592,7 @@
                   Other (specify) <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>                                 
                 </label>  
               </div>                
-              <div style="border-bottom:1 solid black; width:47mm; float:right">
+              <div style="border-bottom:1px solid black; width:47mm; float:right">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form3115Data/TypeOfAccountingMethod/OtherApplicantTypeInd/@desc"/>
                 </xsl:call-template>    
@@ -606,7 +629,7 @@ well as any other information that is not specifically requested.</i><br/>
           <div style="padding-top:1mm">
             <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
             <span style="font-size:8pt">(a) Change No.</span>
-            <span style="border-bottom:1 solid black; width:4mm; text-align:center">
+            <span style="border-bottom:1px solid black; width:10mm; text-align:center">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form3115Data/DesignatedAccountingMthdChgNum"/>
               </xsl:call-template>   
@@ -625,7 +648,7 @@ well as any other information that is not specifically requested.</i><br/>
               </xsl:call-template>   
              <span style="font-size:8pt"> Description </span><img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>                  
             </label>
-            <span style="border-bottom:1 solid black; width:102mm; font-size:7pt">
+            <span style="border-bottom:1px solid black; width:102mm; font-size:7pt">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form3115Data/MethodOfAccountingOtherInd/@methodOfAccountingOtherDesc"/>
               </xsl:call-template>   
@@ -648,14 +671,20 @@ well as any other information that is not specifically requested.</i><br/>
         </div>
       </div>          
        <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="text-align:center;height:4mm;"></div>
         <div style="float:left">
-       unavailable for the applicant's requested change? If   Yes, attach an explanation
+       unavailable for the applicant's requested change? If   Yes, attach an explanation.
+          <xsl:call-template name="SetFormLinkInline">
+            <xsl:with-param name="TargetNode" select="$Form3115Data/RequestRequireConsentInd"/>
+          </xsl:call-template>
         </div>
         <div style="float:right">          
-          <span class="styDotLn" style="padding-right:0mm">      
+          <!--<span class="styDotLn" style="padding-right:4mm">      
             ...........
-          </span>
+          </span>-->
+          <!--<xsl:call-template name="SetFormLinkInline">
+            <xsl:with-param name="TargetNode" select="$Form3115Data/RequestRequireConsentInd"/>
+          </xsl:call-template>-->
           <div class="styIRS3115YesBox">
             <xsl:call-template name="PopulateYesBox">
               <xsl:with-param name="TargetNode" select="$Form3115Data/ScopeLmtAutoCnsntUnAvlblInd"/>
@@ -681,7 +710,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>  
       </div> 
          <!-- BEGIN Part II Title -->
-      <div class="styBB" style="width:187mm; border-top:1 solid black">
+      <div class="styBB" style="width:187mm; border-top:1px solid black">
         <div class="styPartName" style="width:12mm; height:4.2mm; font-size:9.5pt">Part II</div>
         <div class="styPartDesc" style="width:150mm; font-size:9.5pt">
           Information For All Requests          
@@ -704,7 +733,7 @@ well as any other information that is not specifically requested.</i><br/>
       </div> 
       <!-- *******************************************************************************  -->
       <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"></div>
         <div style="float:left">
            terminate its existence, in the tax year of change (see instructions)?
         </div>
@@ -727,7 +756,7 @@ well as any other information that is not specifically requested.</i><br/>
       <!--  ******************************************************************************* -->         
      
        <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           If  Yes, the applicant is not eligible to make the change under automatic change request procedures.      
         </div>
@@ -752,12 +781,12 @@ well as any other information that is not specifically requested.</i><br/>
           Does the applicant (or any present or former consolidated group in which the applicant was a member during
         </div>
         <div style="float:right">  
-          <div class="styIRS3115DimYesBox" style="border-bottom:1 solid black"/>  
-          <div class="styIRS3115DimNoBox" style="border-bottom:1 solid black"/>        
+          <div class="styIRS3115DimYesBox" style="border-bottom:1px solid black"/>  
+          <div class="styIRS3115DimNoBox" style="border-bottom:1px solid black"/>        
         </div>
       </div>
        <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           the applicable tax year(s)) have any Federal income tax return(s) under examination (see instructions)?
         </div>
@@ -784,7 +813,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>
       </div>
       <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
            If   No,  go to line 5.             
         </div>
@@ -803,8 +832,8 @@ well as any other information that is not specifically requested.</i><br/>
           <div class="styIRS3115DimNoBox" style="height:8mm"/>          
         </div>
       </div>
-       <div style="width:187mm; border-bottom:1 solid black">
-        <div class="styIRS3115LNLeftNumBox"/>
+       <div style="width:187mm; border-bottom:1px solid black">
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           year(s)) either (i) under consideration or (ii) placed in suspense (see instructions)?      
         </div>
@@ -838,7 +867,7 @@ well as any other information that is not specifically requested.</i><br/>
         <div style="width:187mm">
           <div style="float:left; width:90mm; text-align:center">
             <b style="font-size:9pt">Filer</b>
-            <div style="border-bottom:1 solid black; width:100%; height:7mm">
+            <div style="border-bottom:1px solid black; width:100%; height:7mm">
          <xsl:call-template name="PopulateReturnHeaderOfficer"> 
 	            <xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param> 
                </xsl:call-template>
@@ -848,7 +877,7 @@ well as any other information that is not specifically requested.</i><br/>
                </xsl:call-template>
             </div>
             <b>Signature and date</b>
-            <div style="border-bottom:1 solid black; width:100%; height:8mm; line-height:105%; text-align:left">                
+            <div style="border-bottom:1px solid black; width:100%; height:8mm; line-height:105%; text-align:left;height:auto;">                
           <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template><br/>
           <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param></xsl:call-template>
             </div>
@@ -856,7 +885,7 @@ well as any other information that is not specifically requested.</i><br/>
           </div>        
           <div style="float:right; width:90mm; text-align:center">
             <b style="font-size:9pt">Preparer (other than filer/applicant)</b>
-            <div style="border-bottom:1 solid black; width:100%; height:7mm">
+            <div style="border-bottom:1px solid black; width:100%; height:7mm">
                 <xsl:call-template name="PopulateReturnHeaderPreparer"> 
 		   <xsl:with-param name="TargetNode">SSN</xsl:with-param> 
 		</xsl:call-template> 
@@ -865,13 +894,14 @@ well as any other information that is not specifically requested.</i><br/>
                 </xsl:call-template>
             </div>
             <b>Signature of individual preparing the application and date</b>
-            <div style="border-bottom:1 solid black; width:100%; height:8mm;text-align:left;">
+            <div style="border-bottom:1px solid black; width:100%; height:8mm;text-align:left;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form3115Data/PreparerOtherThanFilerNm"/>
               </xsl:call-template>
             </div>
             <b>Name of individual preparing the application (print or type)</b>
-            <div style="border-bottom:1 solid black; width:100%; text-align:left; height:8mm">
+            <!--<div style="border-bottom:1px solid black; width:100%; text-align:left; height:8mm">-->
+            <div style="border-bottom:1px solid black; width:100%; text-align:left; height:12mm">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$Form3115Data/PreparerFirmName/BusinessNameLine1Txt"/>
               </xsl:call-template>
@@ -890,7 +920,7 @@ well as any other information that is not specifically requested.</i><br/>
        <xsl:call-template name="IRS3115Footer">
         <xsl:with-param name="thisPage" select="2"/>
       </xsl:call-template>
-       <div class="styBB" style="width:187mm; border-top:1 solid black">
+       <div class="styBB" style="width:187mm; border-top:1px solid black">
         <div class="styPartName" style="width:12mm; height:4.2mm; font-size:9.5pt">Part II</div>
         <div class="styPartDesc" style="width:150mm; font-size:9.5pt">
           Information For All Requests <span style="font-weight:normal">(continued)</span>
@@ -920,7 +950,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
        <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"></div>
         <div style="float:left">
           tax year(s)) for any tax year under examination (see instructions)?
         </div>
@@ -951,7 +981,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
        <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           division director consent to the filing of the request (see instructions)?
         </div>
@@ -972,7 +1002,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
        <div style="width:187mm">
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
           If   Yes, attach the consent statement from the director.  
           <xsl:call-template name="SetFormLinkInline">
@@ -1005,7 +1035,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
             <div style="width:187mm">
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
           If   Yes, check the box for the applicable window period and attach the required statement (see instructions).<br/>
           <input type="Checkbox" class="styCkbox">
@@ -1037,7 +1067,7 @@ well as any other information that is not specifically requested.</i><br/>
             <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
           </label>
           <!--KEVINCHANG-->
-           <span style="border-bottom:1 solid black; width:60mm; text-align:center">
+           <span style="border-bottom:1px solid black; width:60mm; text-align:center">
         <xsl:call-template name="PopulateMonthDayYear">
           <xsl:with-param name="TargetNode" select="$Form3115Data/ExaminationEndDt"/>
         </xsl:call-template>
@@ -1071,7 +1101,7 @@ well as any other information that is not specifically requested.</i><br/>
         Name
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:62mm">
+      <span style="border-bottom:1px solid black; width:62mm">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="PersonNm"/>
         </xsl:call-template>
@@ -1080,7 +1110,7 @@ well as any other information that is not specifically requested.</i><br/>
         Telephone number
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:23mm; text-align:center">
+      <span style="border-bottom:1px solid black; width:23mm; text-align:center">
         <xsl:call-template name="PopulatePhoneNumber">
           <xsl:with-param name="TargetNode" select="PhoneNum"/>
         </xsl:call-template>
@@ -1089,7 +1119,7 @@ well as any other information that is not specifically requested.</i><br/>
         Tax year(s)
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:12mm; text-align:center">
+      <span style="border-bottom:1px solid black; width:12mm; text-align:center">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="TaxYr"/>
         </xsl:call-template>
@@ -1109,7 +1139,7 @@ well as any other information that is not specifically requested.</i><br/>
         Name
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:62mm">
+      <span style="border-bottom:1px solid black; width:62mm">
         <xsl:call-template name="PopulateAdditionalDataTableMessage">
           <xsl:with-param name="TargetNode" select="$Form3115Data/CntctInfoOfExaminingAgentsTxt"/>                      
         </xsl:call-template>
@@ -1121,7 +1151,7 @@ well as any other information that is not specifically requested.</i><br/>
         Telephone number
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:23mm; text-align:center">
+      <span style="border-bottom:1px solid black; width:23mm; text-align:center">
         <xsl:call-template name="PopulatePhoneNumber">
           <xsl:with-param name="TargetNode" select="PhoneNum"/>
         </xsl:call-template>
@@ -1130,7 +1160,7 @@ well as any other information that is not specifically requested.</i><br/>
         Tax year(s)
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:12mm; text-align:center">
+      <span style="border-bottom:1px solid black; width:12mm; text-align:center">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="TaxYr"/>
         </xsl:call-template>
@@ -1175,7 +1205,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
       <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           the applicable tax year(s)) have any Federal income tax return(s) before Appeals and/or a Federal court?  
         </div>
@@ -1195,7 +1225,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
        <div style="width:187mm">
-      <div class="styIRS3115LNLeftLtrBox"/>
+      <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
           If   Yes, enter the name of the (check the box)<span style="width:5mm"/>          
           <input type="Checkbox" class="styCkbox">
@@ -1240,7 +1270,7 @@ well as any other information that is not specifically requested.</i><br/>
         Name
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:62mm">
+      <span style="border-bottom:1px solid black; width:62mm">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="PersonNm"/>
         </xsl:call-template>
@@ -1249,7 +1279,7 @@ well as any other information that is not specifically requested.</i><br/>
         Telephone number
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:23mm; text-align:center">
+      <span style="border-bottom:1px solid black; width:23mm; text-align:center">
         <xsl:call-template name="PopulatePhoneNumber">
           <xsl:with-param name="TargetNode" select="PhoneNum"/>
         </xsl:call-template>
@@ -1258,7 +1288,7 @@ well as any other information that is not specifically requested.</i><br/>
         Tax year(s)
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:12mm; text-align:center">
+      <span style="border-bottom:1px solid black; width:12mm; text-align:center">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="TaxYr"/>
         </xsl:call-template>
@@ -1278,7 +1308,7 @@ well as any other information that is not specifically requested.</i><br/>
         Name
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:62mm">
+      <span style="border-bottom:1px solid black; width:62mm">
         <xsl:call-template name="PopulateAdditionalDataTableMessage">
           <xsl:with-param name="TargetNode" select="$Form3115Data/GovernmentCouncilCntctInfoTxt"/>                      
         </xsl:call-template>
@@ -1290,7 +1320,7 @@ well as any other information that is not specifically requested.</i><br/>
         Telephone number
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:23mm; text-align:center">
+      <span style="border-bottom:1px solid black; width:23mm; text-align:center">
         <xsl:call-template name="PopulatePhoneNumber">
           <xsl:with-param name="TargetNode" select="PhoneNum"/>
         </xsl:call-template>
@@ -1299,7 +1329,7 @@ well as any other information that is not specifically requested.</i><br/>
         Tax year(s)
       </span>  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
-      <span style="border-bottom:1 solid black; width:12mm; text-align:center">
+      <span style="border-bottom:1px solid black; width:12mm; text-align:center">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="TaxYr"/>
         </xsl:call-template>
@@ -1323,7 +1353,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
       <div style="width:187mm">
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
           on line 5a?
         </div>
@@ -1353,7 +1383,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
             <div style="width:187mm">
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
       was a member for the tax year(s) the applicant was a member) (see instructions)?
         </div>
@@ -1374,7 +1404,7 @@ well as any other information that is not specifically requested.</i><br/>
         </div>    
       </div>    
             <div style="width:187mm">
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
           If   Yes, attach an explanation.
           <xsl:call-template name="SetFormLinkInline">
@@ -1412,7 +1442,7 @@ consideration in an examination, before Appeals, or before a Federal court, with
         </div>    
       </div>    
             <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           return of a partner, member, or shareholder of that entity?
         </div>
@@ -1435,7 +1465,7 @@ consideration in an examination, before Appeals, or before a Federal court, with
         </div>    
       </div>    
        <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           If   Yes, the applicant is <b>not</b> eligible to make the change.          
         </div>
@@ -1465,7 +1495,7 @@ consideration in an examination, before Appeals, or before a Federal court, with
       </div> 
       <!-- ************************************************************************* -->
              <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
         not receive audit protection for the requested change (see instructions)?
         </div>
@@ -1517,7 +1547,7 @@ consideration in an examination, before Appeals, or before a Federal court, with
         </div>    
       </div>    
       <div style="width:187mm">
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           (including the year of the requested change)?  
         </div>
@@ -1582,7 +1612,7 @@ an explanation.
         </div>    
       </div>    
        <div style="width:187mm">
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
           concurrently filed request) for a private letter ruling, change in method of accounting, or technical advice?  
         </div>
@@ -1641,8 +1671,8 @@ an explanation.
       </div>    
       
       <div style="width:187mm">    
-        <div class="styIRS3115LNLeftNumBox"/>
-        <div style="float:left">
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
+        <div style="float:left;width:156mm;">
           If   Yes, check the appropriate boxes below to indicate the applicant's present and proposed methods of<br/>accounting. Also, complete Schedule A on page 4 of this form.<br/>          
           <div style="width:40mm; font-weight:bold; float:left">Present method:</div>  
           <div style="float:left">
@@ -1739,7 +1769,7 @@ an explanation.
             </xsl:call-template>
           </div>        
         </div>  
-        <div style="float:right">  
+        <div style="float:right;">  
           <div class="styIRS3115DimYesBox" style="height:17mm"/>  
           <div class="styIRS3115DimNoBox" style="height:17mm"/>      
         </div>    
@@ -1748,7 +1778,7 @@ an explanation.
         <xsl:with-param name="thisPage" select="3"/>
       </xsl:call-template>
       
-      <div class="styBB" style="width:187mm; border-top:2 solid black">
+      <div class="styBB" style="width:187mm; border-top:2px solid black">
         <div class="styPartName" style="width:12mm; height:4.2mm; font-size:9.5pt">Part II</div>
         <div class="styPartDesc" style="width:150mm; font-size:9.5pt">
           Information For All Requests <span style="font-weight:normal">(continued)</span>
@@ -1840,7 +1870,7 @@ complete description for each of the following:
       </div>  
       
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           For insurance companies, see the instructions
         </div>    
@@ -1864,7 +1894,7 @@ complete description for each of the following:
       </div>  
       
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
            If  No, attach an explanation.   
           <xsl:call-template name="SetFormLinkInline">
@@ -1889,7 +1919,7 @@ complete description for each of the following:
       </div>  
       
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           of the year under section 381(b)(1)?
         </div>
@@ -1953,8 +1983,8 @@ complete description for each of the following:
         <div class="styIRS3115LNLeftNumBox">17</div>
         <div style="float:left">
         If the applicant is changing to either the overall cash method, an overall accrual method, or is changing its method <br/>of accounting for any property subject to section 263A, any long-term contract subject to section 460, or inventories <br/>subject to section 474, enter the applicant's gross receipts for the 3 tax years preceding the tax year of change.    
-        </div>        
-        <div style="float:right">  
+        </div>
+          <div style="float:right">
           <div class="styIRS3115DimYesBox" style="height:12mm"/>  
           <div class="styIRS3115DimNoBox" style="height:12mm">
             <!--div style="float:right; padding-top:4mm">                      
@@ -1969,7 +1999,7 @@ complete description for each of the following:
       </div>  
       
       <xsl:variable name="line17Count" select="count($Form3115Data/GrossReceipts3YrsPreceding)"/>    
-      <div style="width:187mm; border-bottom:1 solid black">                
+      <div style="width:187mm; border-bottom:1px solid black">                
         <div class="styIRS3115TableContainer" id="line17TPctn">  
           <!--xsl:attribute name="style">  
             <xsl:if test="$line17Count &gt; 1">
@@ -1980,13 +2010,13 @@ complete description for each of the following:
           <table class="styTable" style="font-size:7pt;font-weight:normal; width:100%; border-bottom:0" cellspacing="0" cellpadding="0" border="0">  
             <thead class="styTableThead">
               <tr align="left" style="height:8mm">
-                <th nowrap="nowrap" scope="col" align="left" valign="bottom" style="width:30.6mm; border-bottom:1 solid black;font-weight:normal;"> 
+                <th nowrap="nowrap" scope="col" align="left" valign="bottom" style="width:30.6mm; border-bottom:1px solid black;font-weight:normal;"> 
                   1st preceding<br/>year ended: mo.                   
                 </th>  
                 <th class="styIRS3115TblRB" scope="col" align="left" valign="bottom" style="width:25mm;font-weight:normal;">
                   yr.                  
                 </th>
-                <th nowrap="nowrap" scope="col" valign="bottom" style="width:30.6mm; border-bottom:1 solid black;font-weight:normal;">
+                <th nowrap="nowrap" scope="col" valign="bottom" style="width:30.6mm; border-bottom:1px solid black;font-weight:normal;">
                   <div style="padding-left:1mm">
                     2nd preceding<br/>year ended: mo.   
                   </div>                        
@@ -1994,7 +2024,7 @@ complete description for each of the following:
                 <th class="styIRS3115TblRB" scope="col" align="left" valign="bottom" style="width:25mm;font-weight:normal;">  
                   yr.                    
                 </th>  
-                <th nowrap="nowrap" scope="col" valign="bottom" style="width:30.6mm; border-bottom:1 solid black;font-weight:normal;">
+                <th nowrap="nowrap" scope="col" valign="bottom" style="width:31mm; border-bottom:1px solid black;font-weight:normal;">
                   <div style="padding-left:1mm">
                     3rd preceding<br/>year ended: mo.   
                   </div>                    
@@ -2002,8 +2032,8 @@ complete description for each of the following:
                 <th class="styIRS3115TblRB" align="left" scope="col" valign="bottom" style="width:25mm;font-weight:normal;">
                   yr.                  
                 </th>  
-                <th class="styIRS3115TblRB" style="width:6.3mm; border-bottom:0; background-color:lightgrey" scope="col"> </th>                
-                <th style="border-bottom:0; background-color:lightgrey" scope="col"> </th>
+                <th class="styIRS3115TblRB" align="left" style="width:6.7mm; border-bottom:0; background-color:lightgrey" scope="col"> </th>                
+                <th style="border-bottom:0; background-color:lightgrey;width:7.0mm;" scope="col"> </th>
               </tr>  
             </thead>  
             <tfoot/>
@@ -2063,7 +2093,7 @@ complete description for each of the following:
       </div>
       
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           other published guidance as an automatic change request?
         </div>
@@ -2087,7 +2117,7 @@ complete description for each of the following:
       </div>
       
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           If   Yes, attach an explanation describing why the applicant is submitting its request under advance consent<br/>request procedures.
           <xsl:call-template name="SetFormLinkInline">
@@ -2145,7 +2175,7 @@ complete description for each of the following:
       </div>
       
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           consolidated group use the proposed method of accounting for the item being changed?
         </div>
@@ -2169,7 +2199,7 @@ complete description for each of the following:
       </div>
       
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
        If  No, attach an explanation.
           <xsl:call-template name="SetFormLinkInline">
@@ -2188,7 +2218,7 @@ complete description for each of the following:
           Enter the amount of <b>user fee</b> attached to this application (see instructions).
           <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>    
           $
-          <span style="width:45mm; border-bottom:1 solid black; text-align:center">
+          <span style="width:45mm; border-bottom:1px solid black; text-align:center">
             <span style="width:1px;"/>    
           </span>
         </div>
@@ -2216,7 +2246,7 @@ complete description for each of the following:
         </div>
       </div>        
       
-      <div class="styBB" style="width:187mm; border-top:1 solid black">
+      <div class="styBB" style="width:187mm; border-top:1px solid black">
         <div class="styPartName" style="width:13mm; height:4.2mm; font-size:9.5pt">Part IV</div>
         <div class="styPartDesc" style="width:150mm; font-size:9.5pt">
           Section 481(a) Adjustment
@@ -2238,7 +2268,7 @@ complete description for each of the following:
         </div>
           </div> 
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
       481(a) adjustment?
         </div>
@@ -2265,7 +2295,7 @@ complete description for each of the following:
           Enter the section 481(a) adjustment. Indicate whether the adjustment is an increase (+) or a decrease (-) in<br/>income.
           <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>    
           $
-          <span style="width:40mm; border-bottom:1 solid black; text-align:center">
+          <span style="width:40mm; border-bottom:1px solid black; text-align:center">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/NetSectionAdjustmentAmt/@increaseOrDecreaseCd"/>
             </xsl:call-template>  
@@ -2287,7 +2317,7 @@ complete description for each of the following:
                <xsl:call-template name="IRS3115Footer">
         <xsl:with-param name="thisPage" select="4"/>
       </xsl:call-template>
-      <div class="styBB" style="width:187mm; border-top:1 solid black">
+      <div class="styBB" style="width:187mm; border-top:1px solid black">
         <div class="styPartName" style="width:13mm; height:4.2mm; font-size:9.5pt">Part IV</div>
         <div class="styPartDesc" style="width:150mm; font-size:9.5pt">
           Section 481(a) Adjustment
@@ -2378,7 +2408,7 @@ complete description for each of the following:
           <div class="styIRS3115DimNoBox" style="height:4.5mm"/>  
         </div>            
       </div>  
-      <div class="styBB" style="border-top:1 solid black; width:187mm; font-size:9.5pt">        
+      <div class="styBB" style="border-top:1px solid black; width:187mm; font-size:9.5pt;height:8mm;padding-top:2mm;">        
         <b>Schedule A-Change in Overall Method of Accounting</b> (If Schedule A applies, Part I below must be completed.)
       </div>          
       <div class="styBB" style="width:187mm">
@@ -2395,7 +2425,7 @@ complete description for each of the following:
         </div>            
       </div>    
       <div style="width:187mm">        
-        <div class="styIRS3115SchAP1" style="float:right; text-align:center; border-top:1 solid black; font-weight:bold; font-size:7pt">
+        <div class="styIRS3115SchAP1" style="float:right; text-align:center; border-top:1px solid black; font-weight:bold; font-size:7pt">
           Amount
         </div>          
       </div>    
@@ -2428,7 +2458,7 @@ complete description for each of the following:
       <div style="width:187mm">  
         <div class="styIRS3115LNLeftLtrBox">b</div>
         <div style="float:left">
-        Income received or reported before it was earned (such as advanced payments). Attach
+        Income received or reported before it was earned (such as advanced payments). Attach a description
           <xsl:call-template name="SetFormLinkInline">
             <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleA/IncomeReceivedOrRptBfrEarnAmt"/>              
           </xsl:call-template>  
@@ -2436,9 +2466,9 @@ complete description for each of the following:
         <div class="styIRS3115SchAP1" style="float:right; border-bottom:0"/>      
       </div>    
       <div style="width:187mm">  
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
-          a description of the income and the legal basis for the proposed method
+         of the income and the legal basis for the proposed method
         </div>    
         <div style="float:right">  
           <span class="styDotLn" style="padding-right:1mm">      
@@ -2572,7 +2602,7 @@ complete description for each of the following:
         Other amounts (specify). Attach a description of the item and the legal basis for its inclusion in the<br/>
 calculation of the section 481(a) adjustment. 
           <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>  
-          <span style="border-bottom:1 solid black; width:70mm"> 
+          <span style="border-bottom:1px solid black; width:70mm"> 
             <xsl:call-template name="SetFormLinkInline">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleA/OtherAmt"/>              
             </xsl:call-template>  
@@ -2612,7 +2642,7 @@ calculation of the section 481(a) adjustment. 
       </div>    
      <!--  *********************************************************************  --> 
       <div style="width:187mm">    
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
         increase (+) or decrease (-) in income. Also enter the net amount of this section 481(a) adjustment
         </div>            
@@ -2625,7 +2655,7 @@ calculation of the section 481(a) adjustment. 
       </div>    
      <!--  ********************************************************************** -->
       <div style="width:187mm">    
-        <div class="styIRS3115LNLeftLtrBox"/>
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>
         <div style="float:left">
          amount on Part IV, line 25.
         </div>            
@@ -2633,7 +2663,7 @@ calculation of the section 481(a) adjustment. 
           <span class="styDotLn" style="padding-right:1mm">      
             ........................
           </span>
-          <div class="styIRS3115SchAP1" style="border-bottom:1 solid black">
+          <div class="styIRS3115SchAP1" style="border-bottom:1px solid black">
             <div style="text-align:left; float:left; padding-left:1mm">$</div>
             <xsl:choose>
               <xsl:when test="$Form3115Data/IRS3115ScheduleA/NetSectionAdjustmentAmt">              
@@ -2652,12 +2682,12 @@ calculation of the section 481(a) adjustment. 
       </div>    
      <!-- ********************************************************************** -->
       <div style="width:187mm; margin-top:2mm">            
-        <div class="styIRS3115LNLeftNumBox" style="text-align:center">2</div>
-        <div style="float:left">
+        <div class="styIRS3115LNLeftNumBox" style="text-align:center;padding-top:1mm">2</div>
+        <div style="float:left;padding-top:1mm">
           Is the applicant also requesting the recurring item exception under section 461(h)(3)?          
         </div>    
         <div class="styIRS3115YNChxBoxDiv">    
-          <span class="styDotLn" style="padding-right:0">      
+          <span class="styDotLn" style="padding-right:0;padding-top:1mm">      
             .......
           </span>     
       <span>
@@ -2698,9 +2728,9 @@ calculation of the section 481(a) adjustment. 
             </label>  
            </div>              
       </div>    
-      <div style="width:187mm; padding-bottom:1mm; border-bottom:1 solid black">  
+      <div style="width:187mm; padding-bottom:1mm; border-bottom:1px solid black">  
         <div class="styIRS3115LNLeftNumBox" style="text-align:center">3</div>
-        <div style="float:left">
+        <div style="float:left;width:181mm;">
        Attach copies of the profit and loss statement (Schedule F (Form 1040) for farmers) and the balance sheet, if applicable, as of the close of the tax year preceding the year of change. Also attach a statement specifying the accounting method used when preparing the balance sheet. If books of account are not kept, attach a copy of the business schedules submitted with the Federal income tax return or other return (e.g., tax-exempt organization returns) for that period. If the amounts in Part I, lines 1a through 1g, do not agree with those shown on both the profit and loss statement and the balance sheet, attach a statement explaining the differences.
         </div>          
       </div>    
@@ -2710,12 +2740,12 @@ calculation of the section 481(a) adjustment. 
           Change to the Cash Method For Advance Consent Request <span style="font-weight:normal">(see instructions)</span>
         </div>        
       </div>  
-      <div style="width:187mm; border-bottom:1 solid black; padding-bottom:0.5mm">
-        <div style="padding-top:1mm">
+      <div style="width:187mm; border-bottom:1px solid black; padding-bottom:0.5mm">
+        <div style="padding-top:1mm;width:187mm;padding-bottom:1mm;">
           Applicants requesting a change to the cash method must attach the following information:  
         </div>      
         <div class="styIRS3115LNLeftNumBox" style="text-align:center">1</div>
-        <div style="float:left">
+        <div style="float:left;width:181mm;">
           A description of inventory items (items whose production, purchase, or sale is an income-producing factor) and materials<br/>and supplies used in carrying out the business.      
         </div>  
         <div class="styIRS3115LNLeftNumBox" style="text-align:center">2</div>
@@ -2724,16 +2754,16 @@ calculation of the section 481(a) adjustment. 
         </div>            
       </div>
        <!-- Page Break and Footer-->
-		  <div class="pageEnd" style="width:187mm;padding-top:1mm;"/>
+		  <div style="width:187mm;padding-top:1mm;float:none;"/>
 	
 		  <!-- END Page Break and Footer-->
-      <div class="styBB" style="width:187mm; font-size:9.5pt">        
+      <div class="styBB" style="width:187mm; font-size:9.5pt;height:8mm;padding-top:2mm;">        
         <b>Schedule BChange to the Deferral Method for Advance Payments</b> (see instructions)
       </div>      
       
       <div style="width:187mm; padding-bottom:3mm; padding-top:1mm">                
         <div class="styIRS3115LNLeftNumBox" style="text-align:center">1</div>
-        <div style="float:left">
+        <div style="float:left;width:181mm;">
          If the applicant is requesting to change to the Deferral Method for advance payments described in section 5.02 of Rev. Proc.
 2004-34, 2004-1 C.B. 991, attach the following information: 
         </div>          
@@ -2744,17 +2774,17 @@ calculation of the section 481(a) adjustment. 
         </div>            
         <br/>
         <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">b</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
           If the applicant is filing under the automatic change procedures of Rev. Proc. 2008-52, the information required by section 8.02(3)(a)-(c) of Rev. Proc. 2004-34.
         </div>    
         <br/>
         <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">c</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
          If the applicant is filing under the advance consent provisions of Rev. Proc. 97-27, the information required by section 8.03(2)(a)-(f) of Rev. Proc. 2004-34.
         </div>  
         <br/>
        <div class="styIRS3115LNLeftNumBox" style="text-align:center; padding-top:1mm">2</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
           If the applicant is requesting to change to the deferral method for advance payments described in  Regulations section 1.451-5, attach the following. 
         </div>  
         <br/>
@@ -2764,18 +2794,18 @@ calculation of the section 481(a) adjustment. 
         </div>    
         <br/>
         <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">b</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
         A statement explaining what portions of the advance payments, if any, are attributable to services, whether such services are integral to the provisions of goods or items, and whether any portions of the advance payments that are attributable to non-integral services are less than five percent of the total contract prices. See Regulations sections 1.451-5(a)(2)(i) and (3).
         </div>    
         <br/>
         <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">c</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
          A statement explaining that the advance payments will be included in income no later than when included in gross receipts for
 purposes of the applicant's financial reports. See Regulations section 1.451-5(b)(1)(ii).
         </div>    
         
           <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">d</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
         A statement explaining whether the inventoriable goods exception of Regulations section 1.451-5(c) applies and if so, when substantial advance payments will be received under the contracts, and how the exception will limit the deferral of income.
         </div>    
       </div> 
@@ -2783,7 +2813,7 @@ purposes of the applicant's financial reports. See Regulations section 1.451-5(b
         <xsl:with-param name="thisPage" select="5"/>
       </xsl:call-template>
       
-      <div class="styBB" style="border-top:2 solid black; width:187mm; font-size:9.5pt">        
+      <div class="styBB" style="border-top:2px solid black; width:187mm; font-size:9.5pt;height:8mm;padding-top:2mm;">        
         <b>Schedule C-Changes Within the LIFO Inventory Method</b> (see instructions)
       </div>          
       
@@ -2798,7 +2828,7 @@ purposes of the applicant's financial reports. See Regulations section 1.451-5(b
         Complete this section if the requested change involves changes within the LIFO inventory method. Also, attach a copy of all<br/><b>Forms 970,</b> Application To Use LIFO Inventory Method, filed to adopt or expand the use of the LIFO method.      
       </div>          
       
-      <div style="width:187mm; padding-top:1mm; border-bottom:1 solid black">                
+      <div style="width:187mm; padding-top:1mm; border-bottom:1px solid black">                
         <div class="styIRS3115LNLeftNumBox" style="text-align:center">1</div>
         <div style="float:left">
           Attach a description of the applicant's present and proposed LIFO methods and submethods for each of the following<br/>items:  
@@ -2810,7 +2840,7 @@ purposes of the applicant's financial reports. See Regulations section 1.451-5(b
         </div>            
         <br/>
         <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">b</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
           Pooling (e.g., by line or type or class of goods, natural business unit, multiple pools, raw material content, simplified dollar-value method, inventory price index computation (IPIC) pools, vehicle-pool method, etc.).
         </div>    
         <br/>
@@ -2820,32 +2850,32 @@ purposes of the applicant's financial reports. See Regulations section 1.451-5(b
         </div>  
         <br/>
         <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">d</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
         Determining the current-year cost of goods in the ending inventory (i.e., most recent acquisitions, earliest acquisitions during the current year, average cost of current-year acquisitions, or other permitted method).
         </div>        
         <br/>
         <div class="styIRS3115LNLeftNumBox" style="padding-top:1mm; text-align:center">2</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
           If any present method or submethod used by the applicant is not the same as indicated on Form(s) 970 filed to adopt or<br/>expand the use of the method, attach an explanation.  
         </div>
         <br/>
         <div class="styIRS3115LNLeftNumBox" style="padding-top:1mm; text-align:center">3</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
        If the proposed change is not requested for all the LIFO inventory, attach a statement specifying the inventory to which the change is and is not applicable.
         </div>
         <br/>
         <div class="styIRS3115LNLeftNumBox" style="padding-top:1mm; text-align:center">4</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
       If the proposed change is not requested for all of the LIFO pools, attach a statement specifying the LIFO pool(s) to which the change is applicable.
         </div>
         <br/>
         <div class="styIRS3115LNLeftNumBox" style="padding-top:1mm; text-align:center">5</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
          Attach a statement addressing whether the applicant values any of its LIFO inventory on a method other than cost. For example, if the applicant values some of its LIFO inventory at retail and the remainder at cost, identify which inventory items are valued under each method.
         </div>        
         <br/>
         <div class="styIRS3115LNLeftNumBox" style="padding-top:1mm; text-align:center">6</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
         If changing to the IPIC method, attach a completed Form 970.
         </div>
       </div>    
@@ -2879,7 +2909,7 @@ purposes of the applicant's financial reports. See Regulations section 1.451-5(b
         </div>    
         <br/>
         <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">c</div>
-        <div style="float:left; padding-top:1mm">
+        <div style="float:left; padding-top:1mm;width:181mm;">
 If all of the products to be included in the proposed NBU pool(s) are not produced at one facility, state the reasons for the separate facilities, the location of each facility, and a description of the products each facility produces.
         </div>  
         <br/>
@@ -2918,7 +2948,7 @@ If all of the products to be included in the proposed NBU pool(s) are not produc
         <xsl:with-param name="thisPage" select="6"/>
       </xsl:call-template>
       
-      <div class="styBB" style="padding-bottom:0.5mm; border-top:1 solid black; width:187mm; font-size:9.5pt">        
+      <div class="styBB" style="padding-bottom:0.5mm; border-top:1px solid black; width:187mm; font-size:9.5pt">        
         <b>Schedule D-Change in the Treatment of Long-Term Contracts Under Section 460, Inventories, or Other<br/>Section 263A Assets</b> (see instructions)
       </div>          
       
@@ -2931,7 +2961,7 @@ If all of the products to be included in the proposed NBU pool(s) are not produc
             
       <div style="width:187mm; padding-top:1mm">                
         <div class="styIRS3115LNLeftNumBox" style="padding-left:1.5mm">1</div>
-        <div style="float:left">
+        <div style="float:left;width:181mm;">
 To the extent not already provided, attach a description of the applicant’s present and proposed methods for reporting income
 and expenses from long-term contracts. Also, attach a representative actual contract (without any deletion) for the requested
 change. If the applicant is a construction contractor, attach a detailed description of its construction activities.
@@ -3037,7 +3067,7 @@ change. If the applicant is a construction contractor, attach a detailed descrip
       </div>    
       
       <div style="width:187mm">      
-        <div class="styIRS3115LNLeftNumBox"/>        
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>        
         <div style="float:left">
         If line 2b is No, attach an explanation.      
         </div>
@@ -3055,7 +3085,7 @@ change. If the applicant is a construction contractor, attach a detailed descrip
       </div>    
       
       <div style="width:187mm">    
-        <div class="styIRS3115LNLeftLtrBox"/>        
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>        
         <div style="float:left">
           under Regulations section 1.460-4(b)?          
         </div>
@@ -3111,7 +3141,7 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
       </div>    
       
       <div style="width:187mm">    
-        <div class="styIRS3115LNLeftLtrBox"/>        
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>        
         <div style="float:left">
           method under Regulations section 1.460-4(c)(2)?    
         </div>
@@ -3160,7 +3190,7 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
         </div>              
       </div>      
       <div style="width:187mm">      
-        <div class="styIRS3115LNLeftLtrBox"/>        
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>        
         <div style="float:left">
           If line 2d is  Yes, attach an explanation of what cost comparison the applicant will use to determine a<br/>contract's completion factor.
           <xsl:call-template name="SetFormLinkInline">
@@ -3296,7 +3326,7 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
         </div>
       </div>            
       <div style="width:187mm">      
-        <div class="styIRS3115LNLeftLtrBox"/>        
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>        
         <div style="float:left">
           Regulations section 1.460-5(c))?  
         </div>
@@ -3344,7 +3374,7 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
         </div>          
       </div>      
               
-      <div style="width:187mm; padding-bottom:0.5mm; border-bottom:1 solid black; margin-top:1mm">      
+      <div style="width:187mm; padding-bottom:0.5mm; border-bottom:1px solid black; margin-top:1mm">      
         <div class="styIRS3115LNLeftNumBox" style="padding-left:1.5mm">5</div>        
         <div style="float:left">
           Attach a statement indicating whether any of the applicant's contracts are either cost-plus long-term<br/>contracts or Federal long-term contracts.
@@ -3427,16 +3457,17 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
         </div>  
       </div>        
       <div style="width:187mm">      
-        <div class="styIRS3115LNLeftLtrBox"/>        
+        <div class="styIRS3115LNLeftLtrBox" style="height:4mm;"/>        
+        <!--<div style="float:left">-->
         <div style="float:left">
-          If    No, attach a detailed explanation
+          If   No, attach a detailed explanation
         </div>
         <div class="styIRS3115YNChxBoxDiv">  
 			<span class="styDotLn" style="padding-right:0">
 				<xsl:call-template name="SetFormLinkInline">
 					<xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/PresInvntryVltnMethodCmplncInd"/>              
 				</xsl:call-template>  
-			   .....................
+           ......................
             </span>    
 			<span>
                 <xsl:call-template name="PopulateSpan">
@@ -3479,39 +3510,95 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
       <br/>
       <table style="width:187mm; font-size:9pt" border="0" cellpadding="0" cellspacing="0">
         <tr>
-          <th class="styIRS3115LNLeftNumBox" style="padding-left:1.5mm; text-align:left; width:4.5mm" nowrap="nowrap" valign="bottom" scope="col">
+          <th style="padding-left:1.5mm; text-align:left; width:8mm;height:4.5mm;" valign="center" nowrap="nowrap" scope="col">
             4a
           </th>
-          <th scope="col" align="left" style="font-weight:normal" nowrap="nowrap" valign="bottom">
+          <th  scope="col"  style="font-weight:normal;width:100mm;text-align:left;height:4.5mm;padding-left:3mm;" nowrap="nowrap" valign="center">
             Check the appropriate boxes below.
           </th>
-          <th class="styIRS3115TblRB2" style="border-top:1 solid black; font-weight:normal" nowrap="nowrap" colspan="2" scope="col">
+          <th class="styIRS3115TblRB2" style="border-top:1px solid black; font-weight:normal:width:50mm;" nowrap="nowrap" colspan="2" scope="col">
             Inventory Being Changed
           </th>
-          <th class="styIRS3115TblRB2" style="border-top:1 solid black; font-weight:normal; padding-bottom:1mm; padding-top:1mm" nowrap="nowrap" scope="col">
+          <th class="styIRS3115TblRB2" style="border-top:1px solid black; font-weight:normal; padding-bottom:1mm; padding-top:1mm;width:25mm" nowrap="nowrap" scope="col">
             Inventory Not<br/>Being Changed
           </th>          
         </tr>
         <tr>
-          <td/>
-          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal">
+          <td style=" width:8mm;height:4.5mm;"></td>
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
             Identification methods:  
           </th>
-          <th class="styIRS3115TblRB2" style="font-weight:normal; width:22mm" nowrap="nowrap" scope="row">
+          <th class="styIRS3115TblRB2" style="font-weight:normal; width:25mm" nowrap="nowrap" scope="row">
             Present method
           </th>
-          <th class="styIRS3115TblRB2" style="font-weight:normal; width:22mm" nowrap="nowrap" scope="row">
+          <th class="styIRS3115TblRB2" style="font-weight:normal; width:25mm" nowrap="nowrap" scope="row">
             Proposed method
           </th>  
-          <th class="styIRS3115TblRB2" style="font-weight:normal; width:22mm" nowrap="nowrap" scope="row">
+          <th class="styIRS3115TblRB2" style="font-weight:normal; width:25mm" nowrap="nowrap" scope="row">
             Present method
           </th>          
         </tr>
         <tr align="center">
-          <td/>
-          <th scope="row" nowrap="nowrap">
-            <div style="float:left; font-weight:normal; padding-left:2mm">
+          <td style=" width:8mm;height:4.5mm;"></td>
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
+            <div style="float:left; font-weight:normal; padding-left:4mm">
               Specific identification
+            </div>
+            <div style="float:right">
+              <span style="letter-spacing:3.3mm">      
+                ...............
+              </span>
+            </div>    
+          </th>
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
+            <xsl:call-template name="PopulateText">
+              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/PresentMethodTxt/Methods/SpecificIdentificationInd"/>              
+            </xsl:call-template>  
+          </td>
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
+            <xsl:call-template name="PopulateText">
+              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/ProposedMethodTxt/Methods/SpecificIdentificationInd"/>              
+            </xsl:call-template>
+          </td>  
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
+            <xsl:call-template name="PopulateText">
+              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryNotBeingChanged/PresentMethodTxt/Methods/SpecificIdentificationInd"/>              
+            </xsl:call-template>
+          </td>          
+        </tr>
+        <tr align="center">
+          <td style=" width:8mm;height:4.5mm;" />
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
+            <div style="float:left; font-weight:normal; padding-left:4mm">
+              FIFO
+            </div>
+            <div style="float:right">
+              <span style="letter-spacing:3.3mm">      
+                .....................
+              </span>
+            </div>    
+          </th>
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
+            <xsl:call-template name="PopulateText">
+              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/PresentMethodTxt/Methods/FIFOInd"/>              
+            </xsl:call-template>  
+          </td>
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
+            <xsl:call-template name="PopulateText">
+              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/ProposedMethodTxt/Methods/FIFOInd"/>              
+            </xsl:call-template>
+          </td>  
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
+            <xsl:call-template name="PopulateText">
+              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryNotBeingChanged/PresentMethodTxt/Methods/FIFOInd"/>              
+            </xsl:call-template>
+          </td>            
+        </tr>
+        <tr align="center">
+          <td style=" width:8mm;height:4.5mm;" />
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
+            <div style="float:left; font-weight:normal; padding-left:4mm">
+              LIFO
             </div>
             <div style="float:right">
               <span style="letter-spacing:3.3mm">      
@@ -3519,92 +3606,36 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
               </span>
             </div>    
           </th>
-          <td class="styIRS3115TblRB2">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/PresentMethodTxt/Methods/SpecificIdentificationInd"/>              
-            </xsl:call-template>  
-          </td>
-          <td class="styIRS3115TblRB2">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/ProposedMethodTxt/Methods/SpecificIdentificationInd"/>              
-            </xsl:call-template>
-          </td>  
-          <td class="styIRS3115TblRB2">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryNotBeingChanged/PresentMethodTxt/Methods/SpecificIdentificationInd"/>              
-            </xsl:call-template>
-          </td>          
-        </tr>
-        <tr align="center">
-          <td/>
-          <th scope="row" nowrap="nowrap">
-            <div style="float:left; font-weight:normal; padding-left:2mm">
-              FIFO
-            </div>
-            <div style="float:right">
-              <span style="letter-spacing:3.3mm">      
-                .........................
-              </span>
-            </div>    
-          </th>
-          <td class="styIRS3115TblRB2">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/PresentMethodTxt/Methods/FIFOInd"/>              
-            </xsl:call-template>  
-          </td>
-          <td class="styIRS3115TblRB2">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/ProposedMethodTxt/Methods/FIFOInd"/>              
-            </xsl:call-template>
-          </td>  
-          <td class="styIRS3115TblRB2">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryNotBeingChanged/PresentMethodTxt/Methods/FIFOInd"/>              
-            </xsl:call-template>
-          </td>            
-        </tr>
-        <tr align="center">
-          <td/>
-          <th scope="row" nowrap="nowrap">
-            <div style="float:left; font-weight:normal; padding-left:2mm">
-              LIFO
-            </div>
-            <div style="float:right">
-              <span style="letter-spacing:3.3mm">      
-                .........................
-              </span>
-            </div>    
-          </th>
-          <td class="styIRS3115TblRB2">
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/PresentMethodTxt/Methods/LIFOInd"/>              
             </xsl:call-template>  
           </td>
-          <td class="styIRS3115TblRB2">
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/ProposedMethodTxt/Methods/LIFOInd"/>              
             </xsl:call-template>
           </td>  
-          <td class="styIRS3115TblRB2">
+          <td class="styIRS3115TblRB2" style="font-weight:normal; width:25mm">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryNotBeingChanged/PresentMethodTxt/Methods/LIFOInd"/>              
             </xsl:call-template>
           </td>          
         </tr>
-        <tr>
-          <td/>
-          <th scope="row" nowrap="nowrap">
-            <div style="float:left; font-weight:normal; padding-left:2mm">
+              <tr  align="center">
+          <td style=" width:8mm;height:4.5mm;" />
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
+            <div style="float:left; font-weight:normal; padding-left:4mm">
               Other (attach explanation)
             </div>
             <div style="float:right">
               <span style="letter-spacing:3.3mm">      
-                .................
+                ..............
               </span>
             </div>    
           </th>
-          <td class="styIRS3115TblRB2" align="center">
-            <span style="width:15px"/>
+          <td class="styIRS3115TblRB2" align="center" style="font-weight:normal; width:25mm">
+   
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/PresentMethodTxt/Methods/OtherIdentificationMethodInd"/>              
             </xsl:call-template>
@@ -3613,8 +3644,8 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/PresentMethodTxt/Methods/OtherIdentificationMethodInd"/>
             </xsl:call-template>  
           </td>
-          <td class="styIRS3115TblRB2" align="center">
-            <span style="width:15px"/>
+          <td class="styIRS3115TblRB2" align="center" style="font-weight:normal; width:25mm">
+   
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/ProposedMethodTxt/Methods/OtherIdentificationMethodInd"/>              
             </xsl:call-template>
@@ -3623,8 +3654,7 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/ProposedMethodTxt/Methods/OtherIdentificationMethodInd"/>
             </xsl:call-template>  
           </td>  
-          <td class="styIRS3115TblRB2" align="center">
-            <span style="width:15px"/>
+          <td class="styIRS3115TblRB2" align="center" style="font-weight:normal; width:25mm">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryNotBeingChanged/PresentMethodTxt/Methods/OtherIdentificationMethodInd"/>              
             </xsl:call-template>
@@ -3635,15 +3665,16 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
           </td>          
         </tr>
         <tr align="center" valign="bottom" title=".">
-          <td/>
-          <th scope="row" nowrap="nowrap" style="text-align:left">
+          <td style=" width:8mm;height:4.5mm;" />
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
             <div style="font-weight:normal">Valuation methods:</div>
-            <div style="float:left; font-weight:normal; padding-left:2mm">
+            <br />
+            <div style=" font-weight:normal; padding-left:4mm">
               Cost
             </div>
             <div style="float:right">
               <span style="letter-spacing:3.3mm">      
-                .........................
+                ...................
               </span>
             </div>    
           </th>
@@ -3664,14 +3695,14 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
           </td>              
         </tr>
         <tr align="center">
-          <td/>
-          <th scope="row" nowrap="nowrap">
-            <div style="float:left; font-weight:normal; padding-left:2mm">
+          <td tyle=" width:8mm;height:4.5mm;" />
+          <th scope="row" nowrap="nowrap"  style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
+            <div style="float:left; font-weight:normal; padding-left:4mm">
               Cost or market, whichever is lower
             </div>
             <div style="float:right">
               <span style="letter-spacing:3.3mm">      
-                ...............
+                .........
               </span>
             </div>    
           </th>
@@ -3692,14 +3723,14 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
           </td>            
         </tr>
         <tr align="center">
-          <td/>
-          <th scope="row" nowrap="nowrap">
-            <div style="float:left; font-weight:normal; padding-left:2mm">
+          <td style=" width:8mm;height:4.5mm;" />
+          <th scope="row" nowrap="nowrap"  style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
+            <div style="float:left; font-weight:normal; padding-left:4mm">
               Retail cost
             </div>
             <div style="float:right">
               <span style="letter-spacing:3.3mm">      
-                .......................
+                .................
               </span>
             </div>    
           </th>
@@ -3720,14 +3751,14 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
           </td>      
         </tr>
         <tr align="center">
-          <td/>
-          <th scope="row" nowrap="nowrap">
+          <td style=" width:8mm;height:4.5mm;" />
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
             <div style="float:left; font-weight:normal; padding-left:2mm">
               Retail, lower of cost or market
             </div>
             <div style="float:right">
               <span style="letter-spacing:3.3mm">      
-                ................
+                ...........
               </span>
             </div>    
           </th>
@@ -3748,19 +3779,19 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
           </td>            
         </tr>
         <tr align="center">
-          <td/>
-          <th scope="row" nowrap="nowrap">
+          <td style=" width:8mm;height:4.5mm;" />
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
             <div style="float:left; font-weight:normal; padding-left:2mm">
               Other (attach explanation)
             </div>
             <div style="float:right">
               <span style="letter-spacing:3.3mm">      
-                ..................
+                ..............
               </span>
             </div>    
           </th>
           <td class="styIRS3115TblRB2">
-            <span style="width:15px"/>
+          
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/PresentMethodTxt/Methods/OtherValutionMethodInd"/>              
             </xsl:call-template>  
@@ -3770,7 +3801,7 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
             </xsl:call-template>  
           </td>
           <td class="styIRS3115TblRB2">
-            <span style="width:15px"/>
+           
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryBeingChanged/ProposedMethodTxt/Methods/OtherValutionMethodInd"/>              
             </xsl:call-template>
@@ -3780,7 +3811,6 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
             </xsl:call-template>  
           </td>  
           <td class="styIRS3115TblRB2">
-            <span style="width:15px"/>
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleD/InventoryNotBeingChanged/PresentMethodTxt/Methods/OtherValutionMethodInd"/>              
             </xsl:call-template>
@@ -3791,14 +3821,14 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
           </td>          
         </tr>
         <tr align="center">
-          <th scope="row" align="right">b </th>
-          <th scope="row" nowrap="nowrap">
+          <th scope="row" align="right" style=" width:8mm;height:4.5mm;">b </th>
+          <th scope="row" nowrap="nowrap" style="text-align:left; font-weight:normal;width:100mm;padding-left:3mm;">
             <div style="float:left; font-weight:normal">
               Enter the value at the end of the tax year preceding the year of change
             </div>
             <div style="float:right">
               <span style="letter-spacing:3.3mm">      
-                ...
+               
               </span>
             </div>    
           </th>
@@ -3838,7 +3868,7 @@ If line 2c is No, is the applicant requesting to use the exempt-contract per
       </div>
       <div style="width:187mm">      
         <div class="styIRS3115LNLeftLtrBox">c</div>        
-        <div style="float:left">
+        <div style="float:left;width:181mm;">
           <b>Only for applicants requesting an automatic change.</b> The statement required by section 22.01(5) of the Appendix of Rev.
 Proc. 2008-52 (or its successor).
         </div>
@@ -3847,10 +3877,10 @@ Proc. 2008-52 (or its successor).
         <xsl:with-param name="thisPage" select="7"/>
       </xsl:call-template>
             
-      <div class="styBB" style="width:187mm; border-top:2 solid black">
+      <div class="styBB" style="width:187mm; border-top:2px solid black">
         <div class="styPartName" style="width:13mm; font-size:9.5pt">Part III</div>
-        <div class="styPartDesc" style="width:170mm; font-size:9.5pt; padding-bottom:0.5mm">
-          Method of Cost Allocation <span style="font-weight:normal">(Complete this part if the requested change involves either property subject<br/>to section 263A or long-term contracts as described in section 460 (see instructions)).</span>
+        <div class="styPartDesc" style="width:170mm;  padding-bottom:0.5mm;height:auto;font-weight:normal;">
+         <span style="font-size:9.5pt;font-weight:bold;"> Method of Cost Allocation </span> (Complete this part if the requested change involves either property subject<br/>to section 263A or long-term contracts as described in section 460 (see instructions)). 
         </div>        
       </div>    
       
@@ -3883,7 +3913,7 @@ Proc. 2008-52 (or its successor).
         </div>  
       </div>      
       
-      <div class="styBB" style="border-top:1 solid black; width:187mm; padding-top:1mm; padding-bottom:1.5mm"><b>Section B-Direct and Indirect Costs Required To Be Allocated</b><br/>Check the appropriate boxes showing the costs that are or will be fully included, to the extent required, in the cost of real or tangible personal property produced or property acquired for resale under section 263A or allocated to long-term contracts under section 460. Mark N/A in a box if those costs are not incurred by the applicant. If a box is not checked, it is assumed that those costs are not fully included to the extent required. Attach an explanation for boxes that are not checked.
+      <div class="styBB" style="border-top:1px solid black; width:187mm; padding-top:1mm; padding-bottom:1.5mm"><b>Section B-Direct and Indirect Costs Required To Be Allocated</b><br/>Check the appropriate boxes showing the costs that are or will be fully included, to the extent required, in the cost of real or tangible personal property produced or property acquired for resale under section 263A or allocated to long-term contracts under section 460. Mark N/A in a box if those costs are not incurred by the applicant. If a box is not checked, it is assumed that those costs are not fully included to the extent required. Attach an explanation for boxes that are not checked.
       </div>  
       <div style="width:187mm">
         <div style="float:right">
@@ -4124,7 +4154,7 @@ Proc. 2008-52 (or its successor).
       </div>  
       
       <div style="width:187mm">                
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           service and not temporarily idle
         </div>  
@@ -4291,7 +4321,7 @@ Proc. 2008-52 (or its successor).
       </div>  
       
       <div style="width:187mm;">                
-        <div class="styIRS3115LNLeftNumBox"/>
+        <div class="styIRS3115LNLeftNumBox" style="height:4mm;"/>
         <div style="float:left">
           expenses)
         </div>  
@@ -4543,7 +4573,7 @@ Proc. 2008-52 (or its successor).
         <xsl:with-param name="thisPage" select="8"/>
       </xsl:call-template>
             
-      <div class="styBB" style="width:187mm; border-top:2 solid black">
+      <div class="styBB" style="width:187mm; border-top:2px solid black">
         <div class="styPartName" style="width:13mm; font-size:9.5pt">Part III</div>
         <div class="styPartDesc" style="width:170mm; font-size:9.5pt">
           Method of Cost Allocation <span style="font-weight:normal">(see instructions) (continued)</span>
@@ -4779,7 +4809,7 @@ line 11
         </div>  
       </div>  
             
-      <div style="width:187mm; border-bottom:1 solid black;">                
+      <div style="width:187mm; border-bottom:1px solid black;">                
         <div class="styIRS3115LNLeftNumBox">11</div>
         <div style="float:left">
          Other costs (Attach a list of these costs.)     
@@ -4804,12 +4834,14 @@ line 11
         </div>  
       </div>  
       
-      <div class="styBB" style="width:187mm;font-size:9.5pt">
+      <div class="styBB" style="width:187mm;font-size:9.5pt;height:8mm;padding-top:2mm;">
         <b>Schedule E-Change in Depreciation or Amortization</b> (see instructions)
       </div>  
       
       <div style="width:187mm; padding-top:1mm;">
-        Applicants requesting approval to change their method of accounting for depreciation or amortization complete this section.<br/>Applicants <b>must</b> provide this information for each item or class of property for which a change is requested.<br/><span><b>Note:</b> <i> See the <b>List of Automatic Accounting Method Changes</b> in the instructions for information regarding automatic changes<br/>under sections 56, 167, 168, 197, 1400I, 1400L, or former section 168.<b> do not</b> file Form 3115 with respect to certain late elections</i></span>        
+        <div style="padding-bottom:1mm;">Applicants requesting approval to change their method of accounting for depreciation or amortization complete this section.<br/>Applicants <b>must</b> provide this information for each item or class of property for which a change is requested.<br/>
+        </div>
+        <span><b>Note:</b> <i> See the <b>List of Automatic Accounting Method Changes</b> in the instructions for information regarding automatic changes<br/>under sections 56, 167, 168, 197, 1400I, 1400L, or former section 168.<b> do not</b> file Form 3115 with respect to certain late elections</i></span>        
       </div>  
       
       <xsl:variable name="schECount" select="count($Form3115Data/IRS3115ScheduleE/ChangeInDeprecOrAmortization)"/>  
@@ -4828,7 +4860,7 @@ line 11
               <xsl:with-param name="containerHeight" select="1"/>
               <xsl:with-param name="containerID" select="'schETPctn'"/>
           </xsl:call-template>               
-        </div>    
+        </div>  
       </div>        
               
       <div class="styIRS3115TableContainer2" id="schETPctn">  
@@ -4838,7 +4870,7 @@ line 11
           </xsl:if>          
         </xsl:attribute>   
         <xsl:call-template name="SetInitialState"/>          
-        <table class="styTable" style="width:100%; border-bottom:0; font-size:9pt" cellspacing="0" cellpadding="0" border="0">
+        <table class="styTable" style="width:100%; border-bottom:0; font-size:9pt;" cellspacing="0" cellpadding="0" border="0" id="schETPctn">
           <xsl:if test="($Print != $Separated and $Form3115Data/IRS3115ScheduleE/ChangeInDeprecOrAmortization) or (count($Form3115Data/IRS3115ScheduleE/ChangeInDeprecOrAmortization) = 1)">          
             <xsl:call-template name="SchETemplate">
               <xsl:with-param name="max">
@@ -4886,10 +4918,10 @@ line 11
     <div style="float:left; padding-top:1mm">
       The Code section under which the property is or will be depreciated or amortized (e.g., section 168(g)).
     </div>     
-    <br/>   
+    <br/>
     <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">b</div>
-    <div style="float:left; padding-top:1mm">
-      The applicable asset class from Rev. Proc. 87-56, 1987-2 C.B. 674, for each asset depreciated under section 168 (MACRS)<br/>or under section 1400L; the applicable asset class from Rev. Proc. 83-35, 1983-1 C.B. 745, for each asset depreciated under<br/>former section 168 (ACRS); an explanation why no asset class is identified for each asset for which an asset class has not<br/>been identified by the applicant.
+    <div style="float:none; padding-top:1mm"> The applicable asset class from Rev. Proc. 87-56, 1987-2 C.B. 674, for each asset depreciated under section 168 (MACRS)<br/>or under section 1400L; the applicable asset class from Rev. Proc. 83-35, 1983-1 C.B. 745, for each asset depreciated under<br/>former section 168 (ACRS); an explanation why no asset class is identified for each asset for which an asset class has not<br/>been identified by the applicant.
+      <!--The applicable asset class from Rev. Proc. 87-56, 1987-2 C.B. 674, for each asset depreciated under section 168 (MACRS)<br/>or under section 1400L; the applicable asset class from Rev. Proc. 83-35, 1983-1 C.B. 745, for each asset depreciated under<br/>former section 168 (ACRS); an explanation why no asset class is identified for each asset for which an asset class has not<br/>been identified by the applicant.-->
     </div>  
     <br/>   
     <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">c</div>
@@ -4913,7 +4945,7 @@ line 11
     </div>  
     <br/>
       <div class="styIRS3115LNLeftLtrBox" style="padding-top:1mm">g</div>
-    <div style="float:left; padding-top:1mm">A statement of whether or not the additional first-year special depreciation allowance (for example, as provided by section
+    <div style="float:none; padding-top:1mm">A statement of whether or not the additional first-year special depreciation allowance (for example, as provided by section
 <br/>168(k), 168(l), 168(m), 168(n), 1400L(b), or 1400N(d)) was or will be claimed for the property. If not, also provide an explanation<br/>as to why no special depreciation allowance was or will be claimed.
     </div>  
     <br/>   
@@ -5005,7 +5037,7 @@ year(s) under examination:</span>
                    <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                 </xsl:choose>
               </xsl:attribute>
-                <td class="styDepTblCell" style="height:4.5mm;text-align:left;border-left:1 solid 0px;">      
+                <td class="styDepTblCell" style="height:4.5mm;text-align:left;border-left:1px solid 0px;">      
                   <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PersonNm"/></xsl:call-template>
                 </td>
                 <td class="styDepTblCell" style="height:4.5mm;text-align:center;"><xsl:call-template name="PopulatePhoneNumber"><xsl:with-param name="TargetNode" select="PhoneNum"/></xsl:call-template><span style="width:1px;"/></td>
@@ -5037,7 +5069,7 @@ year(s) under examination:</span>
                    <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                 </xsl:choose>
               </xsl:attribute>
-                <td class="styDepTblCell" style="height:4.5mm;text-align:left;border-left:1 solid 0px;">      
+                <td class="styDepTblCell" style="height:4.5mm;text-align:left;border-left:1px solid 0px;">      
                   <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PersonNm"/></xsl:call-template>
                 </td>
                 <td class="styDepTblCell" style="height:4.5mm;text-align:center;"><xsl:call-template name="PopulatePhoneNumber"><xsl:with-param name="TargetNode" select="PhoneNum"/></xsl:call-template><span style="width:1px;"/></td>
@@ -5164,8 +5196,8 @@ year(s) under examination:</span>
             Is depreciation for the property determined under Regulations section 1.167(a)-11 (CLADR)?
           </div>  
           <div class="styIRS3115YNChxBoxDiv">  
-            <span class="styDotLn" style="padding-right:0">      
-              .......
+            <span class="styDotLn" style="padding-right:1mm">      
+              .........
             </span>    
             <span>
               <xsl:call-template name="PopulateSpan">
@@ -5216,7 +5248,7 @@ year(s) under examination:</span>
           </xsl:choose>
         </xsl:attribute>
         <td>
-            <div class="styGenericDiv" style="border-bottom:1 solid black;width:187mm;">
+            <div class="styGenericDiv" style="border-bottom:1px solid black;width:187mm;">
             <div style="padding-left:.5mm;padding-right:1mm;font-weight:bold;width:6mm;text-align:left;" class="styGenericDiv"/>
             <div style="float:left">
                 If   Yes, the only changes permitted are under Regulations section 1.167(a)-11(c)(1)(iii).
@@ -5239,8 +5271,8 @@ year(s) under examination:</span>
                    Is any of the depreciation or amortization required to be capitalized under any Code section (e.g., section  263A)?
           </div>  
           <div class="styIRS3115YNChxBoxDiv">  
-            <span class="styDotLn" style="padding-right:0;background-color:yellow;">
-            .      
+            <span class="styDotLn" style="padding-left:4mm;">
+            .         
             </span>  
             <span>
               <xsl:call-template name="PopulateSpan">
@@ -5291,12 +5323,12 @@ year(s) under examination:</span>
         </xsl:choose>
       </xsl:attribute>
       <td>
-        <div class="styGenericDiv" style="border-bottom:1 solid black;width:187mm;">
+        <div class="styGenericDiv" style="border-bottom:1px solid black;width:187mm;">
           <div style="padding-left:.5mm;padding-right:1mm;font-weight:bold;text-align:left;width:6mm;" class="styGenericDiv"/>
           <div style="float:left">
             If   Yes, enter the applicable section  
             <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>  
-            <span style="border-bottom:1 solid black; width:100mm; padding-left:1mm;text-align:left;">          
+            <span style="border-bottom:1px solid black; width:100mm; padding-left:1mm;text-align:left;">          
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="ApplicableSectionTxt"/>
               </xsl:call-template>
@@ -5320,8 +5352,8 @@ year(s) under examination:</span>
           Has a depreciation or amortization election been made for the property (e.g., the election under section 168(f)(1))?
         </div>  
         <div class="styIRS3115YNChxBoxDiv">  
-          <span class="styDotLn" style="padding-right:0">     
-          . 
+          <span class="styDotLn" style="padding-left:1mm">     
+          .
           </span>    
           <span>
             <xsl:call-template name="PopulateSpan">
@@ -5372,12 +5404,12 @@ year(s) under examination:</span>
           </xsl:choose>
         </xsl:attribute>
         <td>
-          <div class="styGenericDiv" style="border-bottom:1 solid black;width:187mm;">
+          <div class="styGenericDiv" style="border-bottom:1px solid black;width:187mm;">
         <div style="padding-left:.5mm;padding-right:1mm;font-weight:bold;width:6mm;" class="styGenericDiv"/>
         <div style="float:left">
           If   Yes, state the election made  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>  
-        <span style="border-bottom:1 solid black; width:106mm; padding-left:1mm;text-align:left;"> 
+        <span style="border-bottom:1px solid black; width:106mm; padding-left:1mm;text-align:left;"> 
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="ElectionMadeTxt"/>
           </xsl:call-template>
@@ -5395,7 +5427,7 @@ year(s) under examination:</span>
         </xsl:attribute>
         <td>
       <!-- Begin line 4a -->
-          <div class="styGenericDiv" style="border-bottom:1 solid black;width:187mm;">
+          <div class="styGenericDiv" style="border-bottom:1px solid black;width:187mm;">
             <div style="padding-left:.5mm;padding-right:1mm;font-weight:bold;width:6mm;text-align:left;" class="styGenericDiv">4a</div>
             <div style="float:left;text-align:left;">
             To the extent not already provided, attach a statement describing the property being changed. Include in the description the<br/>type of property, the year the property was placed in                       service, and the property's use in the applicant's trade or business or<br/>income-producing activity.
@@ -5413,7 +5445,7 @@ year(s) under examination:</span>
           </xsl:choose>
         </xsl:attribute>
         <td>
-      <div class="styGenericDiv" style="border-bottom:1 solid black;width:187mm;">
+      <div class="styGenericDiv" style="border-bottom:1px solid black;width:187mm;">
         <div style="padding-left:2.5mm;padding-right:1mm;font-weight:bold;width:6mm;text-align:left;" class="styGenericDiv">b</div>
         <div style="float:left;text-align:left;">
             If the property is residential rental property, did the applicant live in the property before renting it?        
@@ -5471,7 +5503,7 @@ year(s) under examination:</span>
           </xsl:choose>
         </xsl:attribute>
         <td>
-    <div class="styGenericDiv" style="border-bottom:1 solid black;width:187mm;">
+    <div class="styGenericDiv" style="border-bottom:1px solid black;width:187mm;">
         <xsl:if test="position() = last()">
           <xsl:attribute name="style">width:187mm;</xsl:attribute>
         </xsl:if>
@@ -5623,7 +5655,7 @@ year(s) under examination:</span>
       <td style="width:3mm" align="center">
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
       </td>
-      <td style="border-bottom:1 solid black; width:62mm" class="stySmallText">
+      <td style="border-bottom:1px solid black; width:62mm" class="stySmallText">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="$thisElement[$index]/PersonNm"/>
         </xsl:call-template>
@@ -5634,7 +5666,7 @@ year(s) under examination:</span>
       <td style="width:3mm;" align="center">
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
       </td>
-      <td style="border-bottom:1 solid black; width:21mm" align="center">
+      <td style="border-bottom:1px solid black; width:21mm" align="center">
         <xsl:call-template name="PopulatePhoneNumber">
           <xsl:with-param name="TargetNode" select="$thisElement[$index]/PhoneNum"/>
         </xsl:call-template>
@@ -5645,7 +5677,7 @@ year(s) under examination:</span>
       <td style="width:3mm" align="center">
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>
       </td>
-      <td style="border-bottom:1 solid black; width:14mm" align="center">
+      <td style="border-bottom:1px solid black; width:14mm" align="center">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="$thisElement[$index]/TaxYr"/>
         </xsl:call-template>
@@ -5674,22 +5706,25 @@ year(s) under examination:</span>
             <xsl:when test="$index = $max">
               border-bottom:0
             </xsl:when>
+            <!--<xsl:when test="$IsSeparated != 'yes' ">
+				border-bottom:0;width:25mm
+            </xsl:when>-->
             <xsl:otherwise>
-              border-bottom:1 solid black
+              border-bottom:1px solid black
             </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>     
         $
         <xsl:if test="$IsSeparated != 'yes' ">
-			<xsl:attribute name="style">  
-				  border-bottom:0;width:25mm
-			</xsl:attribute>     
-			<xsl:call-template name="PopulateAdditionalDataTableMessage">
-				<xsl:with-param name="TargetNode" select="$Form3115Data/GrossReceipts3YrsPreceding"/>                      
-          </xsl:call-template>
-          <xsl:call-template name="PopulateAmount">
+			<xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form3115Data/GrossReceipts3YrsPreceding[$index]/GrossReceiptsForFirstPrecYrAmt"/>
           </xsl:call-template><span style="width:1px;"/>
+        </xsl:if>
+        <xsl:if test="$IsSeparated = 'yes' ">
+			<xsl:call-template name="PopulateAdditionalDataTableMessage">
+				<xsl:with-param name="TargetNode" select="$Form3115Data/GrossReceipts3YrsPreceding"/>
+				<xsl:with-param name="ShortMessage" select="true()"/>
+          </xsl:call-template>
         </xsl:if>
       </td>
       <td class="styIRS3115TblRB">
@@ -5715,15 +5750,13 @@ year(s) under examination:</span>
           </xsl:call-template><span style="width:2mm"/>   
         </xsl:if>
 -->        <xsl:if test="$IsSeparated != 'yes' ">
+          <xsl:call-template name="PopulateMonth">
+            <xsl:with-param name="TargetNode" select="$Form3115Data/GrossReceipts3YrsPreceding[$index]/FirstPrecedingYearEndDt"/>
+          </xsl:call-template><span style="width: 2mm"/>
           <xsl:call-template name="PopulateYear">
             <xsl:with-param name="TargetNode" select="$Form3115Data/GrossReceipts3YrsPreceding[$index]/FirstPrecedingYearEndDt"/>
           </xsl:call-template>
         </xsl:if> <span style="width:1px;"/>
-        <xsl:if test="$IsSeparated = 'yes' ">
-			<xsl:attribute name="style">  
-				  border-bottom:0;width:25mm
-			</xsl:attribute>     
-        </xsl:if>
       </td>
       <td style="border-bottom:1">                  
         <xsl:attribute name="style">  
@@ -5732,7 +5765,7 @@ year(s) under examination:</span>
               border-bottom:0
             </xsl:when>
             <xsl:otherwise>
-              border-bottom:1 solid black
+              border-bottom:1px solid black
             </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>   
@@ -5751,7 +5784,7 @@ year(s) under examination:</span>
               border-bottom:0
             </xsl:when>
             <xsl:otherwise>
-              border-bottom:1 solid black
+              border-bottom:1px solid black
             </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>   
@@ -5771,7 +5804,7 @@ year(s) under examination:</span>
               border-bottom:0
             </xsl:when>
             <xsl:otherwise>
-              border-bottom:1 solid black
+              border-bottom:1px solid black
             </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>   
@@ -5790,7 +5823,7 @@ year(s) under examination:</span>
               border-bottom:0
             </xsl:when>
             <xsl:otherwise>
-              border-bottom:1 solid black
+              border-bottom:1px solid black
             </xsl:otherwise>
           </xsl:choose>
         </xsl:attribute>       
@@ -5982,7 +6015,7 @@ year(s) under examination:</span>
       <td>
         If   Yes, enter the applicable section  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>  
-        <span style="border-bottom:1 solid black; width:100mm; padding-left:1mm">
+        <span style="border-bottom:1px solid black; width:100mm; padding-left:1mm">
          <xsl:if test="$IsSeparated = 'no' ">          
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleE/ChangeInDeprecOrAmortization[$index]/ApplicableSectionTxt"/>
@@ -6012,7 +6045,7 @@ year(s) under examination:</span>
         </div>  
         <div class="styIRS3115YNChxBoxDiv">  
           <span class="styDotLn" style="padding-right:0">      
-            .......................
+            .........................
           </span>    
       <span>
          <xsl:if test="$IsSeparated = 'no' ">          
@@ -6073,7 +6106,7 @@ year(s) under examination:</span>
       <td>
         If   Yes, state the election made  
         <img src="{$ImagePath}/3115_Bullet.gif" alt="Right Arrow Bullet"/>  
-        <span style="border-bottom:1 solid black; width:106mm; padding-left:1mm"> 
+        <span style="border-bottom:1px solid black; width:106mm; padding-left:1mm"> 
          <xsl:if test="$IsSeparated = 'no' ">          
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$Form3115Data/IRS3115ScheduleE/ChangeInDeprecOrAmortization[$index]/ElectionMadeTxt"/>
@@ -6228,7 +6261,7 @@ year(s) under examination:</span>
 
 <xsl:template name="IRS3115Footer">  
   <xsl:param name="thisPage"/>    
-  <div style="width:187mm; border-top:2 solid black; page-break-after:always">  
+  <div style="width:187mm; border-top:2px solid black; page-break-after:always" class="pageEnd">  
     <xsl:if test="$thisPage = 2">
       <div style="font-weight:bold; float:left; font-size:8pt; ">
         For Privacy Act and Paperwork Reduction Act Notice, see the instructions.

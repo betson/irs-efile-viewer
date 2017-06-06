@@ -90,9 +90,9 @@
 					test="$NeedEngSpanButton ='true' and $Language='SPANISH'">
 					<span>
 						<span style="width:40px;" />
-						<button tabIndex="1" class="styEnglishBtn" name="English Button" id="EnglishBtn" 
+						<button type="button" tabIndex="1" class="styEnglishBtn" name="English Button" id="EnglishBtn" 
 							onclick="top.ReturnTree.EngSpanBtnClick( '{$DocId}', '{$DocumentName}'+'ENGLISH');" 
-							style="vertical-align:top;cursor:hand;">
+							style="vertical-align:top;cursor:pointer;">
 						</button>
 					</span>
 				</xsl:when>
@@ -100,9 +100,9 @@
 					test="$NeedEngSpanButton ='true' and $Language='ENGLISH'">
 					<span>
 						<span style="width:40px;" />
-						<button tabIndex="1" class="stySpanishBtn" name="Spanish Button" id="SpanishBtn" 
+						<button type="button" tabIndex="1" class="stySpanishBtn" name="Spanish Button" id="SpanishBtn" 
 							onclick="top.ReturnTree.EngSpanBtnClick( '{$DocId}', '{$DocumentName}'+'SPANISH');" 
-							style="vertical-align:top;cursor:hand;">
+							style="vertical-align:top;cursor:pointer;">
 						</button>						
 					</span>
 				</xsl:when>

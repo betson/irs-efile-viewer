@@ -27,8 +27,10 @@
 
 
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>Schedule B (Form 990, 990-EZ, or 990-PF) (2013)</title>      
     <!-- No Browser Caching -->
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -78,7 +80,7 @@
           </div>
         </div>
         <div class="styTYBox" style="font-size:7pt; width:31mm; height:18mm">
-          <div class="styOMB" style="height:2mm;">OMB No. 1545-0047</div>
+          <div class="styOMB" style="height:auto;">OMB No. 1545-0047</div>
           <div class="styFN" style="padding-top:3mm">
             20<span class="styTYColor">13</span>
           </div>              
@@ -87,7 +89,7 @@
       
       <!-- Begin Name and Identifying Number Section-->      
       <div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-        <div class="styFNBox" style="width:139mm;height:8mm;">
+        <div class="styFNBox" style="width:139mm;height:auto;">
           <span class="styBoldText">Name of the organization</span><br/>
            <div style="font-family:verdana;font-size:6pt;">
             <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -101,7 +103,7 @@
         </div>
         <div class="styGenericDiv" style="width:47mm;height:4mm;padding-left:1mm;">
           <span class="styBoldText">Employer identification number</span>
-          <br/><br/>
+          <br/>
           <xsl:call-template name="PopulateReturnHeaderFiler">
             <xsl:with-param name="TargetNode">EIN</xsl:with-param>
           </xsl:call-template>
@@ -109,7 +111,7 @@
       </div>
       <!-- End Name and Identifying Number Section-->      
       
-      <div class="styBB" style="padding-bottom:6mm; width:187mm; height:8mm; clear:both; padding-top:1mm">
+      <div class="styBB" style="padding-bottom:6mm; width:187mm; height:8mm; clear:both; padding-top:1mm;display:inline-table;">
         <div style="width:187mm">
           <b>Organization type</b> (check one):
         </div>
@@ -123,7 +125,7 @@
         </div>
         <div class="styGenericDiv" style="height:15mm; width:40mm">Form 990 or 990-EZ</div>
                             <!-- Is it a 501(c)(      ) checkbox -->
-        <div style="margin-left:40mm">
+        <div>
           <input type="Checkbox" class="styIRS990ScheduleBCkbox">
             <xsl:call-template name="PopulateCheckbox">
               <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/Organization501cInd"/>
@@ -181,7 +183,7 @@
         </div>        
         <br/>        
         <div class="styGenericDiv" style="clear:left; height:15mm; width:40mm">Form 990-PF</div>
-        <div style="margin-left:40mm">
+        <div>
         
         <!--Organization 501(c)(3) Exempt PF Checkbox-->
           <input type="Checkbox" class="styIRS990ScheduleBCkbox">
@@ -247,7 +249,7 @@
           </xsl:call-template>
           </input>
         </div>
-        <div style="float:right; width:177mm">
+        <div style="float:right; width:176mm">
           <label>
           <xsl:call-template name="PopulateLabel">
           <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/GeneralRuleInd"/>
@@ -325,28 +327,28 @@
             .........................
           </span>          
           <img src="{$ImagePath}/990SchB_Bullet.gif" alt="Arrow Bullet"/> <span style="width:1px;" /> $ <span style="width:1px;" />
-          <span style="border-bottom:1 solid black; width:32mm; text-align:center; color:blue">
+          <span style="border-bottom:1px solid black; width:32mm; text-align:center; color:blue">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/TotContriRcvdUpTo1000Ind/@totalContributionsAmt"/></xsl:call-template>
           </span>    
         </div>
       </div>
       
-      <div style="border-bottom:1 solid black; width:187mm; margin-top:5mm; padding-bottom:3mm">      
+      <div style="border-bottom:1px solid black; width:187mm; margin-top:5mm; padding-bottom:3mm">      
         <b>Caution.</b>&#160;An organization that is not covered by the General Rule and/or the Special Rules does not file Schedule B (Form 990,<br />990-EZ, or 990-PF), but it <b>must</b> answer “No” on Part IV, line 2, of its Form 990; or check the box on line H of its<br />Form 990-EZ or on its Form 990PF, Part I, line 2, to certify that it does not meet the filing requirements of Schedule B (Form 990,<br/>990-EZ, or 990-PF).
       </div>      
       
-      <div style="width:187mm; font-size:7pt; border-top:1 solid black">
+      <div style="width:187mm; font-size:7pt; border-top:1px solid black">
         <xsl:call-template name="IRS990BFooter">
           <xsl:with-param name="showAll" select="0"/>
         </xsl:call-template>
       </div>
-      <br class="pageEnd"/>
+      <div class="pageEnd"/>
       <div style="width:187mm;padding-top:2mm;">
 						<div style="float:left">      
         Schedule B (Form 990, 990-EZ, or 990-PF) (2013)
       </div>  
 						<div style="float:right">
-    Page <span class="styBoldText" style="font-size: 8pt; padding-top:5mm;">2</span>
+    Page <span class="styBoldText" style="font-size: 8pt; padding-top:5mm;display:inline;">2</span>
 						</div>
 					</div>
 
@@ -394,14 +396,14 @@
     <!-- BEGIN Part II -->  
       <xsl:variable name="totalRowCount2" select="count($Form990ScheduleBData/NonCashPropertyContributionGrp)"/>                  
       
-      <br class="pageEnd"/>
+      <div class="pageEnd"/>
       <!-- Begin Page 3 -->
       <div style="width:187mm;padding-top:3mm;">
 						<div style="float:left">      
         Schedule B (Form 990, 990-EZ, or 990-PF) (2013)
       </div>  
 						<div style="float:right">
-    Page <span class="styBoldText" style="font-size: 8pt; ">3</span>
+    Page <span class="styBoldText" style="font-size: 8pt;display:inline; ">3</span>
 						</div>
 					</div>
       
@@ -442,19 +444,19 @@
     <!-- END Part II -->      
       
     <!-- BEGIN Part III -->  
-    
-    <br class="pageEnd"/>
+      <xsl:variable name="totalRowCount3" select="count($Form990ScheduleBData/CharitableContributionsDetail)"/>                
+      <xsl:variable name="containerHeight3" select="4"/>    
+    <div class="pageEnd"/>
      <div style="width:187mm;padding-top:3mm;">
 						<div style="float:left">      
         Schedule B (Form 990, 990-EZ, or 990-PF) (2013)
       </div>  
 						<div style="float:right">
-    Page <span class="styBoldText" style="font-size: 8pt; ">4</span>
+    Page <span class="styBoldText" style="font-size: 8pt;display:inline; ">4</span>
 						</div>
 					</div>
     
-      <xsl:variable name="totalRowCount3" select="count($Form990ScheduleBData/CharitableContributionsDetail)"/>                
-      <xsl:variable name="containerHeight3" select="4"/>    
+ 
       
         <table class="styIRS990ScheduleBTable" cellspacing="0" cellpadding="0" border="0" style="width:187mm;">   
                 
@@ -492,6 +494,7 @@
         </table>                          
               
     <!-- END Part III -->              
+      <div class="pageEnd" />
       
       <p style="page-break-before:always"/>
       
@@ -549,8 +552,8 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <xsl:with-param name="thisPart" select="'I'"/>
       </xsl:call-template>
       <tr style="font-size:7.5pt; height:9mm" valign="top">
-        <!--<th class="styFNBox" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" nowrap="nowrap" colspan="3">-->
-        <th class="styFNBox" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="3">
+        <!--<th class="styFNBox" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;" nowrap="nowrap" colspan="3">-->
+        <th class="styFNBox" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;float:none;text-align:left; " scope="col" colspan="3">
           <span class="styBoldText">Name of organization</span>
           <br/>
           <span style="font-weight:normal;font-family:verdana;font-size:6pt">
@@ -563,7 +566,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>        
            </span>
         </th>
-        <th class="styIRS990ScheduleBTblCell" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
+        <th class="styIRS990ScheduleBTblCell" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
           <span class="styBoldText">Employer identification number</span>
           <br/><br/>
           <span style="font-weight:normal">
@@ -574,26 +577,26 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         </th>
       </tr>  
       <tr>
-        <th style="width:10mm; border-bottom:1 solid black">
+        <th style="width:10mm; border-bottom:1px solid black">
           <div class="styPartName" style="width:10mm">Part I</div>    
         </th>  
-        <th style="width:83mm; border-bottom:1 solid black">            
-      <div class="styPartDesc" style="width:98mm">Contributors <span style="font-size:6pt;">(see instructions). Use duplicate copies of Part I if additional space is needed.</span></div>              
+        <th style="width:83mm; border-bottom:1px solid black">            
+      <div class="styPartDesc" style="width:98mm;padding-left:0mm;">Contributors <span style="font-size:6pt;display:inline;">(see instructions). Use duplicate copies of Part I if additional space is needed.</span></div>              
         </th>  
-        <td style="width:34mm; border-bottom:1 solid black"> <span style="width:1px;" /> </td>              
-        <td style="width:8mm; border-bottom:1 solid black"> <span style="width:1px;" /> </td>
-        <td style="border-bottom:1 solid black"> <span style="width:1px;" /> </td>                
+        <td style="width:34mm; border-bottom:1px solid black"> <span style="width:1px;" /> </td>              
+        <td style="width:8mm; border-bottom:1px solid black"> <span style="width:1px;" /> </td>
+        <td style="border-bottom:1px solid black"> <span style="width:1px;" /> </td>                
       </tr>    
     </xsl:if>    
     <tr align="center">                            
       <th class="styIRS990ScheduleBTblRB2" scope="col">(a)<br/>No.</th>
       <th class="styIRS990ScheduleBTblRB2" scope="col">(b)<br/>Name, address, and ZIP + 4</th>  
       <th class="styIRS990ScheduleBTblRB2" scope="col" colspan="2">(c)<br/>Total contributions</th>
-      <th class="styTblCell2" scope="col" style="border-bottom:1 solid black; height:8mm">(d)<br/>Type of contribution</th>                  
+      <th class="styTblCell2" scope="col" style="border-bottom:1px solid black; height:8mm">(d)<br/>Type of contribution</th>                  
     </tr>            
     <tr>          
       <td valign="top" class="styIRS990ScheduleBTblRB">                        
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center">          
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center;font-size:7pt;">          
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/ContributorNum"/></xsl:call-template>
         </div>
       </td>  
@@ -639,8 +642,8 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <br/>      
       </td>    
       <td class="styIRS990ScheduleBTblRB" colspan="2">                          
-        <span style="float:left; padding-right:1mm; padding-left:2mm">$</span>
-        <span style="border-bottom:1 solid black; float:left; width:30mm; text-align:right; font-size:8pt">
+        <span style="padding-right:1mm; padding-left:2mm">$</span>
+        <span style="border-bottom:1px solid black; width:30mm; text-align:right; font-size:7pt">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/TotalContributionsAmt"/>
           </xsl:call-template>          
@@ -648,7 +651,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
       </td>    
       <!-- Person, Payroll and Noncash Section fixed for 508 Compliance -->
       <td class="styIRS990ScheduleBTblCell">                        
-        <div style="float:left; padding-left:10mm; font-weight:bold;">
+        <div style="font-weight:bold;">
       <label>
         <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/PersonContributionInd"/>
@@ -657,7 +660,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>
             Person
           </label>  
-          <span style="width: 8mm"/>    
+          <span style="width: 8mm;display:inline;"/>    
       </div>      
       <div style="padding-top:0.5mm;  padding-left:4mm;">
           <input alt="styIRS990ScheduleBCkbox" type="Checkbox" class="styIRS990ScheduleBCkbox">                      
@@ -669,7 +672,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
           </input>
       </div>
       <br/>
-      <div style="float:left; padding-left:10mm; font-weight:bold;">
+      <div style="font-weight:bold;">
       <label>
       <xsl:call-template name="PopulateLabel">
       <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/PayrollContributionInd"/>
@@ -677,9 +680,9 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>
             Payroll
           </label>
-          <span style="width:9mm"/>
+          <span style="width:9mm;display:inline;"/>
       </div>
-      <div style="padding-top:0.5mm; padding-left:2mm;">
+      <div style="padding-top:0.5mm; padding-left:4.2mm;">
           <input type="Checkbox" class="styIRS990ScheduleBCkbox">                      
           <xsl:call-template name="PopulateCheckbox">
          <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/PayrollContributionInd"/>
@@ -688,7 +691,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
           </input>
       </div>
       <br/>
-      <div style="float:left; padding-left:10mm; font-weight:bold;">
+      <div style="font-weight:bold;">
       <label>
             <xsl:call-template name="PopulateLabel">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/NoncashContributionInd"/>
@@ -696,10 +699,10 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>
             Noncash
           </label>
-          <span style="width:6mm"/>
+          <span style="width:6mm;display:inline;"/>
       </div>
      
-      <div style="padding-top:0.5mm; ">
+      <div style="padding-top:0.5mm; padding-left:2mm;">
       <input type="Checkbox" class="styIRS990ScheduleBCkbox">                      
             <xsl:call-template name="PopulateCheckbox">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/NoncashContributionInd"/>
@@ -713,7 +716,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
     </tr>  
     <xsl:if test="$index mod 6 = 0">
       <tr style="page-break-after:always">
-        <td colspan="5" style="font-size:7pt; border-top:1 solid black">
+        <td colspan="5" style="font-size:7pt; border-top:1px solid black">
           <xsl:call-template name="IRS990BFooter">
             <xsl:with-param name="showAll" select="1"/>
           </xsl:call-template>        
@@ -740,7 +743,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
       </xsl:call-template>
       
       <tr style="font-size:7.5pt; height:9mm" valign="top">
-        <th class="styFNBox" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="3">
+        <th class="styFNBox" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;float:none;text-align:left; " scope="col" colspan="3">
           <span class="styBoldText">Name of organization</span>
           <br/>
           <span style="font-weight:normal;font-family:verdana;font-size:6pt">
@@ -753,7 +756,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>        
            </span>
         </th>
-        <th class="styIRS990ScheduleBTblCell" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
+        <th class="styIRS990ScheduleBTblCell" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
           <span class="styBoldText">Employer identification number</span>
           <br/><br/>
           <span style="font-weight:normal">
@@ -764,26 +767,26 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         </th>
       </tr>  
       <tr>
-        <th style="width:10mm; border-bottom:1 solid black">
+        <th style="width:10mm; border-bottom:1px solid black">
           <div class="styPartName" style="width:10mm">Part I</div>    
         </th>  
-        <th style="width:83mm; border-bottom:1 solid black">            
-          <div class="styPartDesc" style="width:98mm">Contributors <span style="font-size:6pt;">(see Instructions) Use duplicate copies of Part I if additional space is needed.</span></div>              
+        <th style="width:83mm; border-bottom:1px solid black">            
+          <div class="styPartDesc" style="width:98mm;padding-left:0mm;">Contributors <span style="font-size:6pt;display:inline;">(see Instructions) Use duplicate copies of Part I if additional space is needed.</span></div>              
         </th>  
-        <td style="width:34mm; border-bottom:1 solid black"> <span style="width:1px;" /> </td>              
-        <td style="width:8mm; border-bottom:1 solid black"> <span style="width:1px;" /> </td>
-        <td style="border-bottom:1 solid black"> <span style="width:1px;" /> </td>                
+        <td style="width:34mm; border-bottom:1px solid black"> <span style="width:1px;" /> </td>              
+        <td style="width:8mm; border-bottom:1px solid black"> <span style="width:1px;" /> </td>
+        <td style="border-bottom:1px solid black"> <span style="width:1px;" /> </td>                
       </tr>    
     </xsl:if>    
     <tr align="center">                            
       <th class="styIRS990ScheduleBTblRB2" scope="col">(a)<br/>No.</th>
       <th class="styIRS990ScheduleBTblRB2" scope="col">(b)<br/>Name, address, and ZIP + 4</th>  
       <th class="styIRS990ScheduleBTblRB2" scope="col" colspan="2">(c)<br/>Total contributions</th>
-      <th class="styTblCell2" scope="col" style="border-bottom:1 solid black; height:8mm">(d)<br/>Type of contribution</th>                  
+      <th class="styTblCell2" scope="col" style="border-bottom:1px solid black; height:8mm">(d)<br/>Type of contribution</th>                  
     </tr>            
     <tr>          
       <td valign="top" class="styIRS990ScheduleBTblRB">                        
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center">          
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center">          
         </div>
       </td>  
       <td class="styIRS990ScheduleBTblRB">        
@@ -799,11 +802,11 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <br/>      
       </td>    
       <td class="styIRS990ScheduleBTblRB" colspan="2">                          
-        <span style="float:left; padding-right:1mm; padding-left:2mm">$</span>
-        <span style="border-bottom:1 solid black; float:left; width:30mm; text-align:right; font-size:8pt"/>  
+        <span style="padding-right:1mm; padding-left:2mm">$</span>
+        <span style="border-bottom:1px solid black; width:30mm; text-align:right; font-size:8pt"/>  
       </td>    
       <td class="styIRS990ScheduleBTblCell">                        
-        <div style="float:left; padding-left:10mm; font-weight:bold">
+        <div style="padding-left:10mm; font-weight:bold;height:12mm;font-size:8pt;">
           <label>
             Person
           </label><br/>
@@ -814,7 +817,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             Noncash
           </label>
         </div>                  
-        <div style="padding-top:0.5mm; float:left; padding-left:2mm">
+        <div style="padding-top:0.5mm; padding-left:2mm">
           <input type="Checkbox" class="styIRS990ScheduleBCkbox"> </input><br/>
           <input type="Checkbox" class="styIRS990ScheduleBCkbox"> </input><br/>
           <input type="Checkbox" class="styIRS990ScheduleBCkbox"> </input>
@@ -824,7 +827,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
     </tr>  
     <xsl:if test="$index mod 6 = 0">
       <tr style="page-break-after:always">
-        <td colspan="5" style="font-size:7pt; border-top:1 solid black">
+        <td colspan="5" style="font-size:7pt; border-top:1px solid black">
           <xsl:call-template name="IRS990BFooter">
             <xsl:with-param name="showAll" select="1"/>
           </xsl:call-template>        
@@ -852,7 +855,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <xsl:with-param name="thisPart" select="'II'"/>
       </xsl:call-template>  
       <tr style="font-size:7.5pt; height:9mm" valign="top">
-        <th class="styFNBox" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="3">
+        <th class="styFNBox" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;float:none;text-align:left; " scope="col" colspan="3">
           <span class="styBoldText">Name of organization</span>
           <br/>
           <span style="font-weight:normal;font-size:6pt;font-family:verdana;">
@@ -865,7 +868,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>        
            </span>
         </th>
-        <th class="styIRS990ScheduleBTblCell" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
+        <th class="styIRS990ScheduleBTblCell" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
           <span class="styBoldText">Employer identification number</span>
           <br/><br/>
           <span style="font-weight:normal">
@@ -876,26 +879,26 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         </th>
       </tr>                    
       <tr>
-        <th style="width:10mm; border-bottom:1 solid black">
+        <th style="width:10mm; border-bottom:1px solid black">
           <div class="styPartName" style="width:10mm">Part II</div>    
         </th>  
-        <th style="width:83mm; border-bottom:1 solid black">            
+        <th style="width:83mm; border-bottom:1px solid black">            
           <div class="styPartDesc" style="width:102mm">Noncash Property <span style="font-size:5pt;">(see instructions). Use duplicate copies of Part II if additional space is needed.</span></div>                
         </th>  
-        <td style="width:30mm; border-bottom:1 solid black"> <span style="width:1px;" /> </td>              
-        <td style="width:8mm; border-bottom:1 solid black"> <span style="width:1px;" /> </td>
-        <td style="border-bottom:1 solid black"> <span style="width:1px;" /> </td>                
+        <td style="width:30mm; border-bottom:1px solid black"> <span style="width:1px;" /> </td>              
+        <td style="width:8mm; border-bottom:1px solid black"> <span style="width:1px;" /> </td>
+        <td style="border-bottom:1px solid black"> <span style="width:1px;" /> </td>                
       </tr>      
     </xsl:if>              
     <tr align="center" style="height:15mm">      
       <th class="styIRS990ScheduleBTblRB2" scope="col">(a) No.<br/>from<br/>Part I</th>
       <th class="styIRS990ScheduleBTblRB2" scope="col">(b)<br/>Description of noncash property given</th>  
       <th class="styIRS990ScheduleBTblRB2" scope="col" colspan="2">(c)<br/>FMV (or estimate)<br/><span style="font-size:7pt">(see instructions)</span></th>
-      <th class="styTblCell2" scope="col" style="border-bottom:1 solid black; height:8mm">(d)<br/>Date received</th>                  
+      <th class="styTblCell2" scope="col" style="border-bottom:1px solid black; height:8mm">(d)<br/>Date received</th>                  
     </tr>            
     <tr style="height:21mm">                                    
       <td class="styIRS990ScheduleBTblRB" valign="top">                    
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center">
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center">
           <!--xsl:value-of select="$index"/-->
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/NonCashPropertyContributionGrp[$index]/ContributorNum"/></xsl:call-template>
         </div>
@@ -916,22 +919,22 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         </xsl:choose>               
       </td>    
       <td class="styIRS990ScheduleBTblRB" colspan="2" style="padding-top:8mm; font-size:7pt">                            
-        <span style="float:left; padding-right:1mm; padding-left:1mm">$</span>
-        <span style="border-bottom:1 solid black; float:left; width:30mm; text-align:right">
+        <span style="padding-right:1mm; padding-left:1mm">$</span>
+        <span style="border-bottom:1px solid black; width:30mm; text-align:right">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/NonCashPropertyContributionGrp[$index]/FairMarketValueAmt"/>
           </xsl:call-template>          
         </span>  
       </td>    
       <td class="styIRS990ScheduleBTblCell" style="padding-top:8mm; padding-left:4mm">                          
-        <span style="border-bottom:1 solid black; float:left; width:33mm; text-align:center; margin-right:1mm">
+        <span style="border-bottom:1px solid black; width:33mm; text-align:center; margin-right:1mm">
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/NonCashPropertyContributionGrp[$index]/ReceivedDt"/></xsl:call-template>
         </span>  
       </td>                  
     </tr>  
     <xsl:if test="$index mod 6 = 0">
       <tr style="page-break-after:always">
-        <td colspan="5" style="font-size:7pt; border-top:1 solid black">
+        <td colspan="5" style="font-size:7pt; border-top:1px solid black">
           <xsl:call-template name="IRS990BFooter">
             <xsl:with-param name="showAll" select="1"/>
           </xsl:call-template>        
@@ -958,7 +961,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <xsl:with-param name="thisPart" select="'II'"/>
       </xsl:call-template>  
       <tr style="font-size:7.5pt; height:9mm" valign="top">
-        <th class="styFNBox" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="3">
+        <th class="styFNBox" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;float:none;text-align:left; " scope="col" colspan="3">
           <span class="styBoldText">Name of organization</span>
           <br/>
           <span style="font-weight:normal;font-family:verdana;font-size:6pt;">
@@ -971,7 +974,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>        
            </span>
         </th>
-        <th class="styIRS990ScheduleBTblCell" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
+        <th class="styIRS990ScheduleBTblCell" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
           <span class="styBoldText">Employer identification number</span>
           <br/><br/>
           <span style="font-weight:normal">
@@ -982,26 +985,26 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         </th>
       </tr>                    
       <tr>
-        <th style="width:10mm; border-bottom:1 solid black">
+        <th style="width:10mm; border-bottom:1px solid black">
           <div class="styPartName" style="width:10mm">Part II</div>    
         </th>  
-        <th style="width:83mm; border-bottom:1 solid black">            
+        <th style="width:83mm; border-bottom:1px solid black">            
           <div class="styPartDesc" style="width:98mm">Noncash Property <span style="font-size:5pt">(see Instructions) Use duplicate copies of Part II if additional space is needed.</span></div>                
         </th>  
-        <td style="width:30mm; border-bottom:1 solid black"> <span style="width:1px;" /> </td>              
-        <td style="width:8mm; border-bottom:1 solid black"> <span style="width:1px;" /> </td>
-        <td style="border-bottom:1 solid black"> <span style="width:1px;" /> </td>                
+        <td style="width:30mm; border-bottom:1px solid black"> <span style="width:1px;" /> </td>              
+        <td style="width:8mm; border-bottom:1px solid black"> <span style="width:1px;" /> </td>
+        <td style="border-bottom:1px solid black"> <span style="width:1px;" /> </td>                
       </tr>      
     </xsl:if>              
     <tr align="center" style="height:15mm">      
       <th class="styIRS990ScheduleBTblRB2" scope="col">(a) No.<br/>from<br/>Part I</th>
       <th class="styIRS990ScheduleBTblRB2" scope="col">(b)<br/>Description of noncash property given</th>  
       <th class="styIRS990ScheduleBTblRB2" scope="col" colspan="2">(c)<br/>FMV (or estimate)<br/><span style="font-size:7pt">(see instructions)</span></th>
-      <th class="styTblCell2" scope="col" style="border-bottom:1 solid black; height:8mm">(d)<br/>Date received</th>                  
+      <th class="styTblCell2" scope="col" style="border-bottom:1px solid black; height:8mm">(d)<br/>Date received</th>                  
     </tr>            
     <tr style="height:21mm">                                    
       <td class="styIRS990ScheduleBTblRB" valign="top">                    
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center"/>
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center"/>
       </td>  
       <td class="styIRS990ScheduleBTblRB" style="font-size:7pt;font-family:verdana;">            
         <xsl:if test="$index =1">
@@ -1012,16 +1015,16 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <span style="width:1px;" />                        
       </td>    
       <td class="styIRS990ScheduleBTblRB" colspan="2" style="padding-top:8mm; font-size:7pt">                            
-        <span style="float:left; padding-right:1mm; padding-left:1mm">$</span>
-        <span style="border-bottom:1 solid black; float:left; width:28mm; text-align:right"/>  
+        <span style="padding-right:1mm; padding-left:1mm">$</span>
+        <span style="border-bottom:1px solid black;width:28mm; text-align:right"/>  
       </td>    
       <td class="styIRS990ScheduleBTblCell" style="padding-top:8mm; padding-left:4mm">                          
-        <span style="border-bottom:1 solid black; float:left; width:33mm; text-align:center; margin-right:1mm"/>  
+        <span style="border-bottom:1px solid black; width:33mm; text-align:center; margin-right:1mm"/>  
       </td>                  
     </tr>  
     <xsl:if test="$index mod 6 = 0">
       <tr style="page-break-after:always">
-        <td colspan="5" style="font-size:7pt; border-top:1 solid black">
+        <td colspan="5" style="font-size:7pt; border-top:1px solid black">
           <xsl:call-template name="IRS990BFooter">
             <xsl:with-param name="showAll" select="1"/>
           </xsl:call-template>        
@@ -1039,7 +1042,8 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
   <xsl:param name="index" select="1"/>    
   <xsl:param name="max"/>  
   <xsl:if test="$index &lt;= $max">    
-    <xsl:if test="$index mod 4 = 1">      
+    <xsl:if test="$index mod 4 = 1">
+      <table class="styIRS990ScheduleBTable" cellspacing="0" cellpadding="0" border="0" style="width:187mm;">        
       <xsl:call-template name="IRS990BHeader">
         <xsl:with-param name="colSpan" select="4"/>
         <xsl:with-param name="thisPage" select="ceiling($index div 4)"/>
@@ -1047,7 +1051,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <xsl:with-param name="thisPart" select="'III'"/>
       </xsl:call-template>
       <tr style="font-size:7.5pt; height:9mm" valign="top">
-        <th class="styFNBox" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="3">
+        <th class="styFNBox" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;float:none;text-align:left;" scope="col" colspan="3">
           <span class="styBoldText">Name of organization</span>
           <br/>
           <span style="font-weight:normal;font-family:verdana;font-size:6pt;">
@@ -1060,7 +1064,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>        
            </span>
         </th>
-        <th class="styIRS990ScheduleBTblCell" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
+        <th class="styIRS990ScheduleBTblCell" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
           <span class="styBoldText">Employer identification number</span>
           <br/><br/>
           <span style="font-weight:normal">
@@ -1071,19 +1075,21 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         </th>                                      
       </tr>  
       <tr style="height:8mm">
-        <th style="border-bottom:1 solid black" scope="col" colspan="4">
+        <th style="border-bottom:1px solid black" scope="col" colspan="4">
           <div class="styPartName" style="width:12mm">Part III</div>                
-          <div class="styPartDesc" style="padding-top:0.5mm; padding-bottom:0.5mm">
+          <div class="styPartDesc" style="padding-top:0.5mm; padding-bottom:0.5mm;float:none;text-align:left;height:auto;">
             <i>Exclusively</i> religious, charitable, etc., individual contributions to section 501(c)(7), (8), or (10) organizations<br/>that total more than $1,000 for the year.
-            <span style="font-weight:normal">Complete columns <b>(a)</b> through <b>(e) and</b> the following line entry.<br/>For organizations completing Part III, enter the total of <i>exclusively</i> religious, charitable, etc.,<br/>contributions of <b>$1,000 or less</b> for the year. (Enter this information once. See instructions.) 
+            <span style="font-weight:normal;display:inline;">Complete columns <b>(a)</b> through <b>(e) and</b> the following line entry.<br/>For organizations completing Part III, enter the total of <i>exclusively</i> religious, charitable, etc.,<br/>contributions of <b>$1,000 or less</b> for the year. (Enter this information once. See instructions.) 
                 <img src="{$ImagePath}/990SchB_Bullet.gif" alt="Arrow Bullet"/><span style="width:20mm;"/>$ 
                            <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/TotalUnder1000ContributionsAmt"/></xsl:call-template>
             </span>  <br/>
             <span style="font-weight:normal">Use duplicate copies of Part III if additional space is needed.</span>
           </div>                  
         </th>                
-      </tr>  
-    </xsl:if>      
+      </tr>
+      </table>  
+    </xsl:if>
+      <table class="styIRS990ScheduleBTable" cellspacing="0" cellpadding="0" border="0" style="width:187mm;">           
     <tr align="center">      
       <th class="styIRS990ScheduleBTblRB" scope="col" width="7%" style="line-height:100%;">(a) No.<br/>from<br/>Part I</th>
       <th class="styIRS990ScheduleBTblRB" scope="col" width="31%">(b) Purpose of gift</th>  
@@ -1092,7 +1098,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
     </tr>            
     <tr style="height:16mm">                  
       <td class="styIRS990ScheduleBTblRB" valign="top" rowspan="2">                                                    
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center">
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center">
           <!--xsl:value-of select="$index"/-->
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/ContributorNum"/>
@@ -1151,13 +1157,13 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </th>
           </tr>      
           <tr align="center">
-            <th width="45%" style="border-bottom:1 solid black">Transferee's name, address, and ZIP  4</th>
-            <th style="border-bottom:1 solid black">Relationship of transferor to transferee</th>
+            <th width="45%" style="border-bottom:1px solid black">Transferee's name, address, and ZIP  4</th>
+            <th style="border-bottom:1px solid black">Relationship of transferor to transferee</th>
           </tr>
         
-          <tr style="height:16mm">
+          <tr style="height:auto">
             <td class="styIRS990ScheduleBTblRB" style="font-size:7pt;font-family:verdana;">                            
-              <div class="styIRS990ScheduleBDotBB1" style="height:3mm">    
+              <div class="styIRS990ScheduleBDotBB1" style="height:auto">    
                 <xsl:if test="normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeNameIndividual)!=''">
                   <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeNameIndividual"/></xsl:call-template>  
                 </xsl:if>
@@ -1173,26 +1179,26 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
                  
               <xsl:choose>
                 <xsl:when test="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress">                  
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm">  
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto">  
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/AddressLine1"/></xsl:call-template>  
                     <xsl:if test="normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/AddressLine2)!=''">
                       <br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/AddressLine2"/></xsl:call-template><br/>
                     </xsl:if>                          
                   </div>     
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm;border-bottom:0;">                              
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto;border-bottom:0;">                              
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/City"/></xsl:call-template>, 
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/State"/></xsl:call-template> <span style="width:1px;" />
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/ZIPCode"/></xsl:call-template>                                            
                   </div>                                  
                 </xsl:when>
                 <xsl:otherwise>                  
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm">  
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto">  
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/AddressLine1"/></xsl:call-template>  
                     <xsl:if test="normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/AddressLine2)!=''"><br/>
                       <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/AddressLine2"/></xsl:call-template>                            
                     </xsl:if>
                   </div>     
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm;border-bottom:0;">                          
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto;border-bottom:0;">                          
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/City"/></xsl:call-template>
                     <xsl:if test="normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/ProvinceOrState)!='' or normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/PostalCode)!=''">, </xsl:if>
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/ProvinceOrState"/></xsl:call-template> <span style="width:1px;" />
@@ -1219,10 +1225,10 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
           </tr>              
         </table>
       </td>
-    </tr>
+    </tr></table>
     <xsl:if test="$index mod 4 = 0">
       <tr style="page-break-after:always">
-        <td colspan="4" style="font-size:7pt; border-top:1 solid black">
+        <td colspan="4" style="font-size:7pt; border-top:1px solid black">
           <xsl:call-template name="IRS990BFooter">
             <xsl:with-param name="showAll" select="1"/>
           </xsl:call-template>        
@@ -1248,7 +1254,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <xsl:with-param name="thisPart" select="'III'"/>
       </xsl:call-template>
       <tr style="font-size:7.5pt; height:9mm" valign="top">
-        <th class="styFNBox" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="3">
+        <th class="styFNBox" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;float:none;text-align:left;" scope="col" colspan="3">
           <span class="styBoldText">Name of organization</span>
           <br/>
           <span style="font-weight:normal;font-family:verdana;font-size:6pt;">
@@ -1261,7 +1267,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </xsl:call-template>        
            </span>
         </th>
-        <th class="styIRS990ScheduleBTblCell" style="border-top:2 solid black; border-bottom:2 solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
+        <th class="styIRS990ScheduleBTblCell" style="border-top:2px solid black; border-bottom:2px solid black;font-family:verdana;font-size:7pt;" scope="col" colspan="2">
           <span class="styBoldText">Employer identification number</span>
           <br/><br/>
           <span style="font-weight:normal">
@@ -1273,9 +1279,9 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
       </tr>  
       
       <tr style="height:8mm">
-        <th style="border-bottom:1 solid black" scope="col" colspan="4">
+        <th style="border-bottom:1px solid black" scope="col" colspan="4">
           <div class="styPartName" style="width:12mm">Part III</div>                
-          <div class="styPartDesc" style="padding-top:0.5mm; padding-bottom:0.5mm">
+          <div class="styPartDesc" style="padding-top:0.5mm; padding-bottom:0.5mm;height:auto;text-align:left">
             <i>Exclusively</i> religious, charitable, etc., individual contributions to section 501(c)(7), (8), or (10) organizations<br/>aggregating more than $1,000 for the year.
             <span style="font-weight:normal">(Complete columns <b>(a)</b> through <b>(e) and</b> the following line entry.)<br/>For organizations completing Part III, enter the total of <i>exclusively</i> religious, charitable, etc.,<br/>contributions of <b>$1,000 or less</b> for the year. (Enter this information once.<!--&#151;--> See instructions.)<img src="{$ImagePath}/990SchB_Bullet.gif" alt="Arrow Bullet"/> $<xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/TotalUnder1000ContributionsAmt"/></xsl:call-template>
             </span>  
@@ -1293,7 +1299,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
     </tr>            
     <tr style="height:16mm">                  
       <td class="styIRS990ScheduleBTblRB" valign="top" rowspan="2">                                                    
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center"/>
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center"/>
       </td>  
       <td class="styIRS990ScheduleBTblRB" style="font-size:7pt;font-family:verdana;">
         <xsl:if test="$index = 1">
@@ -1314,15 +1320,15 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             </th>
           </tr>      
           <tr align="center">
-            <th width="45%" style="border-bottom:1 solid black">Transferee's name, address, and ZIP <span style="font-weight:normal">+</span> 4</th>
-            <th style="border-bottom:1 solid black">Relationship of transferor to transferee</th>
+            <th width="45%" style="border-bottom:1px solid black">Transferee's name, address, and ZIP <span style="font-weight:normal">+</span> 4</th>
+            <th style="border-bottom:1px solid black">Relationship of transferor to transferee</th>
           </tr>
         
-          <tr style="height:16mm">
+          <tr style="height:auto">
             <td class="styIRS990ScheduleBTblRB" style="font-size:7pt;font-family:verdana;">                            
-              <div class="styIRS990ScheduleBDotBB1" style="height:3mm">    </div>    
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm">  </div>     
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm;border-bottom:0;">                          </div>
+              <div class="styIRS990ScheduleBDotBB1" style="height:auto">    </div>    
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto">  </div>     
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto;border-bottom:0;">                          </div>
                   <div/>
             </td>
             <td class="styIRS990ScheduleBTblCell"><span style="width:1px"/>             </td>
@@ -1333,7 +1339,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
   
     <xsl:if test="$index mod 4 = 0">
       <tr style="page-break-after:always">
-        <td colspan="4" style="font-size:7pt; border-top:1 solid black">
+        <td colspan="4" style="font-size:7pt; border-top:1px solid black">
           <xsl:call-template name="IRS990BFooter">
             <xsl:with-param name="showAll" select="1"/>
           </xsl:call-template>        
@@ -1350,7 +1356,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
 
 <xsl:template name="IRS990BFooter">  
   <xsl:param name="showAll"/>    
-  <!--div style="width:187mm; font-size:7pt; border-top:1 solid black; page-break-after:always"-->   
+  <!--div style="width:187mm; font-size:7pt; border-top:1px solid black; page-break-after:always"-->   
     <xsl:if test="$showAll = 0">
       <div style="float:left; font-size:7pt; padding-top:0.5mm">
         <b>For Paperwork Reduction Act Notice, see the Instructions<br/>for Form 990, 990-EZ, or 990-PF. </b>
@@ -1381,11 +1387,11 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
       </div>  
       <div style="float:right">   
        Page
-      <span style="width:5mm; border-bottom:1 solid black; text-align:center">
+      <span style="width:5mm; border-bottom:1px solid black; text-align:center">
           <xsl:value-of select="$thisPage"/>
        </span>-->
         <!--of-->
-      <!--  <span style="width:5mm; border-bottom:1 solid black; text-align:center">-->
+      <!--  <span style="width:5mm; border-bottom:1px solid black; text-align:center">-->
           <!--<xsl:value-of select="$pageTotal"/>-->
        <!-- </span>-->
         <!--of-->
@@ -1405,7 +1411,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
           <th class="styDepTblCell" scope="col">(a)<br/>No.</th>
           <th class="styDepTblCell" scope="col">(b)<br/>Name, address, and ZIP + 4</th>  
           <th class="styDepTblCell" scope="col" colspan="2">(c)<br/>Total contributions</th>
-          <th class="styDepTblCell" scope="col" style="border-bottom:1 solid black; height:8mm">(d)<br/>Type of contribution</th>                  
+          <th class="styDepTblCell" scope="col" style="border-bottom:1px solid black; height:8mm">(d)<br/>Type of contribution</th>                  
         </tr>  
       </thead>
     </xsl:if>          
@@ -1419,7 +1425,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
       </xsl:attribute>
 
      <td valign="top" class="styIRS990ScheduleBTblRB">                        
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center">          
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center">          
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/ContributorNum"/></xsl:call-template>
         </div>
       </td>  
@@ -1465,15 +1471,15 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <br/>      
       </td>    
       <td class="styIRS990ScheduleBTblRB" colspan="2">                          
-        <span style="float:left; padding-right:1mm; padding-left:2mm">$</span>
-        <span style="border-bottom:1 solid black; float:left; width:30mm; text-align:right; font-size:8pt">
+        <span style="padding-right:1mm; padding-left:2mm">$</span>
+        <span style="border-bottom:1px solid black; width:30mm; text-align:right; font-size:8pt">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/TotalContributionsAmt"/>
           </xsl:call-template>          
         </span>  
       </td>    
       <td class="styIRS990ScheduleBTblCell">                        
-        <div style="float:left; padding-left:11mm; ">
+        <div>
          <table>
           <td>
 
@@ -1481,26 +1487,26 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
             <xsl:call-template name="PopulateLabel"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/PersonContributionInd"/>
             <xsl:with-param name="BackupName">IRS990SchBContributorInfoPersonContributionType</xsl:with-param>
             </xsl:call-template>
-            <span style="height:3mm;font-weight:bold;font-family:verdana; font-size:8pt;padding-top:0.5mm; padding-bottom:1mm;">Person</span>
+            <span style="height:5mm;font-weight:bold;font-family:verdana; font-size:8pt;padding-top:0.5mm; padding-bottom:1mm;">Person</span>
           </label><br/>
           <label>
             <xsl:call-template name="PopulateLabel"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/PayrollContributionInd"/>
             <xsl:with-param name="BackupName">IRS990SchBContributorInfoPayrollContributionType</xsl:with-param>
             </xsl:call-template>
-           <span style="height:3mm;font-weight:bold;font-family:verdana; font-size:8pt;padding-top:0.5mm;padding-bottom:1mm; "> Payroll </span>
+           <span style="height:5mm;font-weight:bold;font-family:verdana; font-size:8pt;padding-top:0.5mm;padding-bottom:1mm; "> Payroll </span>
           </label><br/>
           <label>
             <xsl:call-template name="PopulateLabel"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/ContributorInformationGrp[$index]/NoncashContributionInd"/>
             <xsl:with-param name="BackupName">IRS990SchBContributorInfoNoncashContributionType</xsl:with-param>
             </xsl:call-template>
-            <span style="height:3mm;font-weight:bold;font-family:verdana;font-size:8pt;padding-top:0.5mm; padding-bottom:1mm; ">Noncash</span>
+            <span style="height:5mm;font-weight:bold;font-family:verdana;font-size:8pt;padding-top:0.5mm; padding-bottom:1mm; ">Noncash</span>
           </label>
           </td>
           </table>
           
         </div>   
                        
-        <div style="padding-top:0.75mm;float:left;">
+        <div style="padding-top:0.75mm;">
         
         <table>
           <td>
@@ -1550,7 +1556,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
           <th class="styDepTblCell" scope="col">(a) No.<br/>from<br/>Part I</th>
           <th class="styIRS990ScheduleBTblRB2" scope="col">(b)<br/>Description of noncash property given</th>  
           <th class="styIRS990ScheduleBTblRB2" scope="col" colspan="2">(c)<br/>FMV (or estimate)<br/><span style="font-size:7pt">(see instructions)</span></th>
-          <th class="styTblCell2" scope="col" style="border-bottom:1 solid black; height:8mm">(d)<br/>Date received</th>                  
+          <th class="styTblCell2" scope="col" style="border-bottom:1px solid black; height:8mm">(d)<br/>Date received</th>                  
         </tr>            
       </thead>
     </xsl:if>              
@@ -1564,7 +1570,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
       </xsl:attribute>
 
       <td class="styIRS990ScheduleBTblRB" valign="top">                    
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center">
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center">
           <!--xsl:value-of select="$index"/-->
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/NonCashPropertyContributionGrp[$index]/ContributorNum"/></xsl:call-template>
         </div>
@@ -1575,15 +1581,15 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         </xsl:call-template> <span style="width:1px;" />                        
       </td>    
       <td class="styIRS990ScheduleBTblRB" colspan="2" style="padding-top:8mm; font-size:7pt">                            
-        <span style="float:left; padding-right:1mm; padding-left:1mm">$</span>
-        <span style="border-bottom:1 solid black; float:left; width:30mm; text-align:right">
+        <span style="padding-right:1mm; padding-left:1mm">$</span>
+        <span style="border-bottom:1px solid black; width:30mm; text-align:right">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/NonCashPropertyContributionGrp[$index]/FairMarketValueAmt"/>
           </xsl:call-template>          
         </span>  
       </td>    
       <td class="styIRS990ScheduleBTblCell" style="padding-top:8mm; padding-left:4mm">                          
-        <span style="border-bottom:1 solid black; float:left; width:33mm; text-align:center; margin-right:1mm">
+        <span style="border-bottom:1px solid black; width:33mm; text-align:center; margin-right:1mm">
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/NonCashPropertyContributionGrp[$index]/ReceivedDt"/></xsl:call-template>
         </span>  
       </td>                  
@@ -1617,7 +1623,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
       </xsl:attribute>
 
       <td class="styIRS990ScheduleBTblRB" valign="top" rowspan="2">                                                    
-        <div style="margin-top:4mm; border-bottom:1 solid black; width:7mm; text-align:center">
+        <div style="margin-top:4mm; border-bottom:1px solid black; width:auto; text-align:center">
           <!--xsl:value-of select="$index"/-->
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/ContributorNum"/>
@@ -1645,16 +1651,16 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
         <table style="font-size:7pt;" cellpadding="0" cellspacing="0" border="0">      
       <thead class="styTableThead">
           <tr class="styDepTblHdr" align="center">
-            <th class="styTableThead" scope="col" colspan="2">                
+            <th class="styDepTblCell" scope="col" colspan="2">                
               (e)<br/>Transfer of gift
             </th>
           </tr>      
           <tr class="styDepTblHdr" align="center">
-            <th class="styTableThead" scope="col" width="45%" style="border-bottom:1 solid black">Transferee's name, address, and ZIP  4</th>
-            <th class="styTableThead" scope="col" style="border-bottom:1 solid black">Relationship of transferor to transferee</th>
+            <th class="styDepTblCell" scope="col" width="45%" style="border-bottom:1px solid black">Transferee's name, address, and ZIP  4</th>
+            <th class="styDepTblCell" scope="col" style="border-bottom:1px solid black">Relationship of transferor to transferee</th>
           </tr>
 </thead>        
-          <tr style="height:16mm">
+          <tr style="height:auto">
       <!-- Define background colors to the rows -->
       <xsl:attribute name="class">
         <xsl:choose>
@@ -1664,7 +1670,7 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
       </xsl:attribute>
 
             <td class="styIRS990ScheduleBTblRB" style="font-size:7pt;font-family:verdana;">                            
-              <div class="styIRS990ScheduleBDotBB1" style="height:3mm">    
+              <div class="styIRS990ScheduleBDotBB1" style="height:auto">    
                 <xsl:if test="normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeNameIndividual)!=''">
                   <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeNameIndividual"/></xsl:call-template>  
                 </xsl:if> 
@@ -1677,26 +1683,26 @@ aggregating more than $1,000 for the year. (Complete columns (a) through (e) and
               </div>    
               <xsl:choose>
                 <xsl:when test="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress">                  
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm">  
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto">  
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/AddressLine1"/></xsl:call-template>  
                     <xsl:if test="normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/AddressLine2)!=''">
                       <br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/AddressLine2"/></xsl:call-template><br/>
                     </xsl:if>                          
                   </div>     
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm;border-bottom:0;">                              
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto;border-bottom:0;">                              
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/City"/></xsl:call-template>, 
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/State"/></xsl:call-template> <span style="width:1px;" />
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeUSAddress/ZIPCode"/></xsl:call-template>                                            
                   </div>                                  
                 </xsl:when>
                 <xsl:otherwise>                  
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm">  
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto">  
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/AddressLine1"/></xsl:call-template>  
                     <xsl:if test="normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/AddressLine2)!=''"><br/>
                       <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/AddressLine2"/></xsl:call-template>                            
                     </xsl:if>
                   </div>     
-                  <div class="styIRS990ScheduleBDotBB1" style="height:4mm;border-bottom:0;">                          
+                  <div class="styIRS990ScheduleBDotBB1" style="height:auto;border-bottom:0;">                          
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/City"/></xsl:call-template>
                     <xsl:if test="normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/ProvinceOrState)!='' or normalize-space($Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/PostalCode)!=''">, </xsl:if>
                     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form990ScheduleBData/CharitableContributionsDetail[$index]/TransfereeForeignAddress/ProvinceOrState"/></xsl:call-template> <span style="width:1px;" />

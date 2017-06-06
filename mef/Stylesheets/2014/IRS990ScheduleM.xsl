@@ -12,6 +12,10 @@
 <!-- Last modified on 1/07/2014 by Robert Jones IBM Defect 38584 NO data diff font -->
 <!-- Updated 5/29/2014 per UWR 107551 and pdf dated 3/27/14 by Robert L Jones -->
 <!-- Last modified on 7/31/2014 by Robert Jones IBM Defect 41083 HEADER ALIGNMENT -->
+<!-- Updated 4/23/2015 per UWR 123023 IE11 changes by Robert L Jones -->
+<!-- Last modified on 6/3/2015 by Robert Jones IBM Defect 43119 IE11 Fixes -->
+<!-- Last modified on 9/2/2015 by Robert Jones IBM Defect 43119 IE11 Fixes Ibm sent back without explanation-->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -25,8 +29,10 @@
 
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form990ScheduleMData)"/></xsl:call-template></title>
 
    <!-- No Browser Caching -->
@@ -54,9 +60,9 @@
   <form name="Form990ScheduleM">
     
       <xsl:call-template name="DocumentHeader"/>
-      <div class="styTBB" style="width:187mm;height:20mm;">
-        <div class="styFNBox" style="width:28mm;"> 
-          <div style="height:9.5mm;">
+      <div class="styTBB" style="width:187mm;height:auto;">
+        <div class="styFNBox" style="width:28mm;height:auto;"> 
+          <div style="height:auto;">
             <span class="styFormNumber" style="font-size:9pt;">SCHEDULE M<br/>(Form 990)
             </span>
           <br/>
@@ -65,37 +71,38 @@
               <xsl:with-param name="TargetNode" select="$Form990ScheduleMData"/>
             </xsl:call-template>  -->          
           </div>
-          <div style="padding-top:1mm;"><br/>
-            <div class="styAgency" style="padding-top:1.5mm;">Department of the Treasury</div>
+          <div style="padding-top:7mm;"><br/>
+            <div class="styAgency" style="padding-top:1.5mm;height:auto;">Department of the Treasury</div>
             <div class="styAgency">Internal Revenue Service</div>
           </div>
         </div>
         
-        <div class="styFTBox" style="width:128mm;">
+        <div class="styFTBox" style="width:128mm;height:auto;">
           <div class="styMainTitle" style="padding-top:1mm;font-size:14pt;">Noncash Contributions</div>
-          <div class="styFBT" style="padding-top:1mm;margin-top:.5mm;font-weight:bold;text-align:left;">
-          <span style="font-size:7pt;font-weight:bold;width:127mm;padding-left:3mm;padding-top:1mm;text-align:left;">
+          <div class="styFBT" style="padding-top:1mm;margin-top:.5mm;font-weight:bold;text-align:left;height:auto;">
+          <span style="font-size:6pt;font-weight:bold;width:85mm;padding-left:3mm;padding-top:1mm;text-align:left;">
          <img src="{$ImagePath}/990SchM_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/>Complete if the organizations answered "Yes" on Form 990, Part IV, lines 29 or 30. 
-             <br/> <img src="{$ImagePath}/990SchM_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Attach to Form 990.</span><br/>
-             <span style="padding-left:3mm;padding-top:1mm"/><img src="{$ImagePath}/990SchM_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/>Information about Schedule M (Form 990) and its instructions is at <!--www.irs.gov/form990.-->
-             <a href="http://www.irs.gov/form990" title="Link to IRS.gov">
+             <br/>
+              <img src="{$ImagePath}/990SchM_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> Attach to Form 990.</span><br/>
+            <img src="{$ImagePath}/990SchM_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/>Information about Schedule M (Form 990) and its instructions is at <!--www.irs.gov/form990.-->
+          <a href="http://www.irs.gov/form990" title="Link to IRS.gov">
                 <i>www.irs.gov/form990</i>
-            </a>.
+            </a>
          </div>
           <div>
          </div>
         </div>
-        <div class="styTYBox" style="width:30mm;">
-          <div class="styOMB">OMB No. 1545-0047</div>
+        <div class="styTYBox" style="width:30mm;height:auto;">
+          <div class="styOMB" style="height:auto;">OMB No. 1545-0047</div>
           <div class="styTY">20<span class="styTYColor">14</span></div>
-          <div class="styPartName" style=" width:30.5mm;">Open to Public Inspection</div>
+          <div class="styPartName" style="padding-top:3mm; width:30.5mm;height:auto;">Open to Public Inspection</div>
         </div>
       </div>
 
    
          <!-- Begin Name and Identifying Number Section-->      
-<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-  <div class="styFNBox" style="width:135mm;height:8mm;">
+<div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;height:auto;">
+  <div class="styFNBox" style="width:135mm;height:auto;">
      Name of the organization<br/>
     <div style="font-family:verdana;font-size:6pt;height:6.25mm">
      <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -108,7 +115,7 @@
    </div> 
   </div>
   
-  <div class="styGenericDiv" style="width:50mm;height:4mm;padding-left:1mm;">
+  <div class="styGenericDiv" style="width:50mm;height:auto;padding-left:1mm;">
     <span class="styBoldText">Employer identification number</span>
     <br/><br/>
     <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -132,7 +139,7 @@
     <!-- END Part I Title -->
     <!-- Begin Part I Table-->
       
-<div class="styTable" style="border-top-width: 1px; width:187mm;border-bottom-width:1px;height:100%; ">
+<div class="styTable" style="border-top-width: 1px; width:187mm;border-bottom-width:1px;height:100%;display:table; ">
 <table class="styTable" style="font-size: 7pt;border-color:black;" cellspacing="0">
 <thead>
     <tr scope="col">
@@ -849,7 +856,7 @@
             
             <span style="width:2mm"/>
             Other  <img src="{$ImagePath}/990SchM_Bullet_Line.gif" alt="Right pointing arrow large image" width="6"/> (
-            <span style="width:57mm;border-style:solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+            <span style="width:35mm;border-style:solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="Desc"/>
                 </xsl:call-template> )
@@ -995,17 +1002,17 @@
  <!--<div class="styGenericDiv" style="width:187mm;height:1mm;padding-left:1mm;" />-->
  
     <div class="styLNLeftNumBox" style="height:7.5mm;width:7mm;font-size:7pt;padding-left:.7mm">29</div>
-      <div class="styLNDesc" style="width:128.25mm;height:7.5mm;font-size:7pt;">
+      <div class="styLNDesc" style="width:129.8mm;height:7.5mm;font-size:7pt;">
         <span class="styNormalText">
            Number of Forms 8283 received by the organization during the tax year for contributions <br/>for 
            which the organization completed Form 8283, Part IV, Donee Acknowledgement
 </span>
  <!--Dotted Line -->
-<span style="letter-spacing:4mm; font-weight:bold; font-size:7pt;padding-top:3mm; margin-left:2mm;">...</span>
+<span style="letter-spacing:4mm; font-weight:bold; font-size:7pt;padding-top:3mm; margin-left:2mm;"></span>
           </div>
 
             <div class="styLNRightNumBox" style="height:7.5mm;width:7.5mm;font-size:7pt;padding-top:3mm;">29</div>
-      <div class="styLNAmountBox" style="height:7.5mm;font-size:7pt;width:43mm;padding-top:3mm;"> 
+      <div class="styLNAmountBox" style="height:7.5mm;font-size:7pt;width:42mm;padding-top:3mm;"> 
          <xsl:call-template name="PopulateAmount">
           <!--<xsl:with-param name="MaxSize" select="6" />-->
           <xsl:with-param name="TargetNode" select="$Form990ScheduleMData/Form8283ReceivedCnt"/>
@@ -1028,30 +1035,30 @@
   <!-- line 30a -->
 
  <div style="width:187mm;">
-      <div class="styLNLeftNumBox" style="height:3mm;padding-top:0;font-size:7pt;">30a</div>
-      <div class="styLNDesc" style="width:155mm;height:3mm;padding-top:0mm;padding-bottom:0mm;font-size:7pt;">
+      <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:0;font-size:7pt;">30a</div>
+      <div class="styLNDesc" style="width:155mm;height:auto;padding-top:0mm;padding-bottom:0mm;font-size:7pt;">
         <span class="styNormalText">
           During the year, did the organization receive by contribution any property reported in Part I, lines 1 through 28, that 
         </span>
       </div>
-      <div class="styShadingCell" style="width:8mm;height:3mm;padding-bottom:1mm;border-top-width:1px;padding-top:0mm;"/>
-      <div class="styShadingCell" style="width:8mm;height:3mm;padding-bottom:1mm;border-top-width:1px;padding-top:0mm;"/>
-      <div class="styShadingCell" style="width:8mm;height:3mm;padding-bottom:1mm;border-top-width:1px;padding-top:0mm;"/>
+      <div class="styShadingCell" style="width:8mm;height:4.5mm;padding-bottom:1mm;border-top-width:1px;padding-top:0mm;"/>
+      <div class="styShadingCell" style="width:8mm;height:4.5mm;padding-bottom:1mm;border-top-width:1px;padding-top:0mm;"/>
+      <div class="styShadingCell" style="width:8mm;height:4.5mm;padding-bottom:1mm;border-top-width:1px;padding-top:0mm;"/>
     </div>
     <div style="width:187mm">
-      <div class="styLNLeftNumBox" style="height:3mm;"/>
-      <div class="styLNDesc" style="width:155mm;height:3mm;padding-top:.25mm;padding-bottom:0mm;font-size:7pt;">
+      <div class="styLNLeftNumBox" style="height:4.5mm;"/>
+      <div class="styLNDesc" style="width:155mm;height:4.5mm;padding-top:.25mm;padding-bottom:0mm;font-size:7pt;">
         <span class="styNormalText">
           it must hold for at least three years from the date of the initial contribution, and which is not required to be used
         </span></div>
-         <div class="styShadingCell" style="width:8mm;height:3mm;padding-bottom:0mm;border-left-width:1px;padding-top:1mm;border-top-width:0px;"/>
-      <div class="styShadingCell" style="width:8mm;height:3mm;padding-bottom:0mm;padding-top:1mm;border-top-width:0px;"/>
-      <div class="styShadingCell" style="width:8mm;height:3mm;padding-bottom:0mm;padding-top:1mm;border-top-width:0px;"/>
+         <div class="styShadingCell" style="width:8mm;height:4.5mm;padding-bottom:0mm;border-left-width:1px;padding-top:1mm;border-top-width:0px;"/>
+      <div class="styShadingCell" style="width:8mm;height:4.5mm;padding-bottom:0mm;padding-top:1mm;border-top-width:0px;"/>
+      <div class="styShadingCell" style="width:8mm;height:4.5mm;padding-bottom:0mm;padding-top:1mm;border-top-width:0px;"/>
     </div>
 
    <div style="width:187mm">
-      <div class="styLNLeftNumBox" style="height:3mm;"/>
-      <div class="styLNDesc" style="width:155mm;height:4mm;padding-top:.5mm;padding-bottom:0mm;font-size:7pt;">
+      <div class="styLNLeftNumBox" style="height:4.5mm;"/>
+      <div class="styLNDesc" style="width:155mm;height:4.5mm;padding-top:.5mm;padding-bottom:0mm;font-size:7pt;">
         <span class="styNormalText">
             for exempt purposes for the entire holding period?
         </span>
@@ -1059,8 +1066,8 @@
          <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">..................</span>
       </div>
       
-       <div class="IRS990ScheduleM_LineIndexMid" style="height:4.5mm;width:8.25mm;border-left-width:1px;border-right-width:1px;padding-top:1mm;font-size:7pt;"><b>30a</b></div>
-  <div class="IRS990ScheduleM_LineIndexMid" style="height:4.5mm;padding-top:1mm;font-size:7pt;">
+    <div class="IRS990ScheduleM_LineIndexMid" style="height:4.5mm;width:8.25mm;border-left-width:1px;border-right-width:1px;padding-top:1mm;font-size:7pt;"><b>30a</b></div>
+  <div class="IRS990ScheduleM_LineIndexMid" style="height:4.5mm;padding-top:1mm;font-size:7pt;width:8.25mm;">
     <span style="font-weight: normal;">
          <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$Form990ScheduleMData/AnyPropertyThatMustBeHeldInd"/>
@@ -1092,22 +1099,22 @@
   <!-- Line 31 -->    
   
    <div style="width:187mm;">
-      <div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;font-size:7pt;">31</div>
-      <div class="styLNDesc" style="width:155mm;height:4mm;padding-top:1.25mm;padding-bottom:0mm;font-size:7pt;">
+      <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:1mm;font-size:7pt;">31</div>
+      <div class="styLNDesc" style="width:155mm;height:4.5mm;padding-top:1.25mm;padding-bottom:0mm;font-size:7pt;">
         <span class="styNormalText">
         Does the organization have a gift acceptance policy that requires the review of any non-standard contributions?
         </span>
      </div>
       
-       <div class="IRS990ScheduleM_LineIndexMid" style="height:4.5mm;width:8.25mm;border-left-width:1px;font-size:7pt;padding-top:1mm;">31</div>
-  <div class="IRS990ScheduleM_LineIndexMid" style="height:4.5mm;padding-top:1mm;width:8mm;font-size:7pt;">
+       <div class="IRS990ScheduleM_LineIndexMid" style="height:4.5mm;width:8.25mm;border-left-width:1px;font-size:7pt;padding-top:1mm;border-right-width:1px;">31</div>
+  <div class="IRS990ScheduleM_LineIndexMid" style="height:4.5mm;padding-top:1mm;font-size:7pt;width:8.25mm;border-right-width:1px;">
     <span style="font-weight: normal;">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$Form990ScheduleMData/ReviewProcessUnusualNCGiftsInd"/>
       </xsl:call-template>
       </span>
   </div>
-  <div class="IRS990ScheduleM_LineIndexMid" style="padding-top:1mm;font-size:7pt;border-right-width:0px;border-bottom-width:1px;width:7.75mm;height:4.5mm;">
+  <div class="IRS990ScheduleM_LineIndexMid" style="padding-top:1mm;font-size:7pt;border-right-width:0px;border-bottom-width:1px;width:7.5mm;height:4.5mm;">
    <span style="font-weight: normal;">
        <xsl:call-template name="PopulateNoBoxText">
         <xsl:with-param name="TargetNode" select="$Form990ScheduleMData/ReviewProcessUnusualNCGiftsInd"/>
@@ -1140,8 +1147,8 @@
        <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">..........................</span>
       </div>
       
-       <div class="IRS990ScheduleM_LineIndexMid" style="height:4mm;width:8.25mm;border-left-width:1px;font-size:7pt;padding-top:1mm;">32a</div>
-  <div class="IRS990ScheduleM_LineIndexMid" style="height:4mm;padding-top:1mm;font-size:7pt;">
+       <div class="IRS990ScheduleM_LineIndexMid" style="height:4mm;width:8.25mm;border-left-width:1px;font-size:7pt;padding-top:1mm;border-right-width:1px;">32a</div>
+  <div class="IRS990ScheduleM_LineIndexMid" style="height:4mm;padding-top:1mm;font-size:7pt;width:8.25mm;border-right-width:1px;">
    <span style="font-weight: normal;">
        <xsl:call-template name="PopulateYesBoxText">
         <xsl:with-param name="TargetNode" select="$Form990ScheduleMData/ThirdPartiesUsedInd"/>
@@ -1174,7 +1181,7 @@
 
   <div style="width:187mm;" class="styBB">
       <div class="styLNLeftNumBox" style="height:4mm;padding-top:0;font-size:7pt;">33</div>
-      <div class="styLNDesc" style="width:155mm;height:3mm;padding-top:0mm;padding-bottom:0mm;font-size:7pt;">
+      <div class="styLNDesc" style="width:155mm;height:4mm;padding-top:0mm;padding-bottom:0mm;font-size:7pt;">
         <span class="styNormalText">
        If the organization did not report an amount in column (c) for a type of property for which column (a) is checked,
         </span>
@@ -1199,7 +1206,7 @@
   
  
    <!-- Page Footer -->
-    <div style="width:187mm;float:none;clear:both;padding-top:.5mm;" class="pageend">
+    <div style="width:187mm;float:none;clear:both;padding-top:.5mm;" class="pageEnd">
       <div class="styGenericDiv" style="width:112mm;font-size:6pt;font-weight:bold;">For Paperwork Reduction Act Notice, see the Instructions for Form 990.</div>
       <div class="styGenericDiv" style="padding-left:6mm;width:35mm;font-size:6pt;"><span class="styNormalText">Cat. No. 51227J</span></div>
       <div class="styGenericDiv" style="float:right;font-size:6pt;"><span class="styBoldText">Schedule M (Form 990) (2014)</span> 
@@ -1219,7 +1226,7 @@
 
  <div class="styGenericDiv" style="width: 187mm;">
   <div class="styPartName" style="width:18mm;">Part II</div>
-    <div class="styPartDesc" style="width:169mm;border-bottom-width:1px;border-color: black;"><b>Supplemental Information. </b> <span class="styNormalText">Provide the information required by Part I, lines 30b, <br/>32b, and 33, and whether the organization is reporting in Part I, column (b), the number of contributions, the number of items received, or a combination of both. Also complete this part for any additional information. </span></div>
+    <div class="styPartDesc" style="width:169mm;border-bottom-width:1px;border-color: black;height:auto;"><b>Supplemental Information. </b> <span class="styNormalText">Provide the information required by Part I, lines 30b, <br/>32b, and 33, and whether the organization is reporting in Part I, column (b), the number of contributions, the number of items received, or a combination of both. Also complete this part for any additional information. </span></div>
     
         <span style="float:right">  
           <xsl:call-template name="SetDynamicTableToggleButton">
@@ -1230,7 +1237,7 @@
         </span>
      </div> 
 
-<div class="styTableContainer" style="width: 187mm; border-bottom-width: 2px" id="SUPctn">
+<div class="styTableContainer" style="width: 187mm; border-bottom-width: 1px;display:table;" id="SUPctn">
 <xsl:call-template name="SetInitialState"/>
 <table class="styTable" style="font-size: 7pt; border-color:black" cellspacing="0">
   <thead class="styTableThead">
@@ -1238,8 +1245,8 @@
     <tr class="styDepTblHdr">
           
           <!--<th class="styDepTblCell" scope="col" style="width:50mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;">Identifier </th>-->
-          <th class="styDepTblCell" scope="col" style="width:50mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;">Return Reference</th>  
-          <th class="styDepTblCell" scope="col" style="width:137mm;text-align:center;font-size:7pt;font-weight:normal;border-color:black;">Explanation</th>                
+          <th class="styDepTblCell" scope="col" style="height:auto;width:50mm;text-align:center;font-size:7pt;font-weight:normal;border-right-width:0px;">Return Reference</th>  
+          <th class="styDepTblCell" scope="col" style="height:auto;width:137mm;text-align:center;font-size:7pt;font-weight:normal;">Explanation</th>                
           
 
     </tr>
@@ -1254,12 +1261,12 @@
             <xsl:with-param name="TargetNode" select="IdentifierTxt"/>
             </xsl:call-template>
       </td>-->
-      <td class="styTableCell" style="text-align:left; border-right-width: 1px; width: 50mm;">
+      <td class="styTableCell" style="text-align:left; border-right-width: 1px; width:50mm;height:auto;">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="FormAndLineReferenceDesc"/>
               </xsl:call-template>
            </td>      
-      <td class="styTableCell" style="text-align:left; border-right-width: 0px; width: 137mm">
+      <td class="styTableCell" style="text-align:left; border-right-width: 0px; width:137mm;height:auto;">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="ExplanationTxt"/>
               </xsl:call-template>
@@ -1288,7 +1295,7 @@
 
  
    <!-- Footer -->
-    <div style="width:187mm;float:none;clear:both;padding-top:.5mm;" class="pageend">
+    <div style="width:187mm;float:none;clear:both;padding-top:.5mm;" class="pageEnd">
    
       <div class="styGenericDiv" style="float:right;"> <span class="styBoldText">Schedule M (Form 990) (2014)</span></div>
     </div>
@@ -1299,7 +1306,7 @@
 
 
 <!-- Recycle Image -->
-
+ <p style="page-break-before: always"/> 
      <div class="styLeftOverTitleLine" id="LeftoverData">
         <div class="styLeftOverTitle">
           Additional Data        

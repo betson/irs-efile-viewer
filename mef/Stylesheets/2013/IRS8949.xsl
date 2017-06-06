@@ -193,13 +193,13 @@
 	<xsl:param name="NodeData" select="/.."/>
 	<xsl:variable name="containerPos">ShortTermCapitalGainAndLossGrpDiv<xsl:number value="position()"/></xsl:variable>
 	<!-- BEGIN: Part I (Header)-->
-	<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;">
+	<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;height:18mm;">
 		<div class="styPartName" style="width:13mm;">Part I</div>
 		<div class="styPartDesc" style="width:173.7mm;font-size:8pt;padding-left:2px;">
 			Short-Term. <span style="font-weight:normal">Transactions involving capital assets you held one year or less are short term. For long-term transactions, see page 2. NOTE: You may aggregate all short-term transactions with basis reported on Form(s) 1099-B and for which NO adjustments or codes are required. Enter the total directly on Schedule D, line 1a; you are not required to report these transactions on Form 8949 (see instructions).</span>
 		</div>
 	</div>
-	<div class="styIRS8949LineItem" style="padding-bottom:2mm;">
+	<div class="styIRS8949LineItem" style="padding-bottom:2mm;height:auto;">
 		<b>You <i>must</i> check Box A, B, <i>or</i> C below. Check only one box.</b> If more than one box applies for your short-term transactions, complete a separate Form 8949, page 1, for each applicable box. If you have more short-term transactions than will fit on this page for one or more of the boxes, complete as many forms with the same box checked as you need.
 	</div>
 	<!-- END: Part I (Header)-->
@@ -208,7 +208,7 @@
 	<!-- Begin (Line) 1 -->
 	<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
 	<!-- Begin Checkboxes (a),(b),(c) -->
-	<div class="styBB" style="width:187mm;">
+	<div class="styBB" style="width:187mm;height:13mm;">
 		<div class="styIRS8949LNDesc"  style="width:187mm;">
 			<div style="width:3mm;float:left;">
 				<input type="Checkbox" class="styCkbox">
@@ -224,7 +224,7 @@
 						<xsl:with-param name="TargetNode" select="$NodeData/TransRptOn1099BThatShowBssInd"/>
 						<xsl:with-param name="BackupName">ShortTerm<xsl:number value="position()"/>TransRptOn1099BThatShowBssInd</xsl:with-param>
 					</xsl:call-template>
-					<b><span style="font-size:8pt;width:6mm;">(A)</span></b> Short-term transactions reported on Form(s) 1099-B showing basis <b>was</b> reported to the IRS (see Note above)
+					<b><span style="font-size:8pt;width:8mm;padding-left:2mm;">(A)</span></b> Short-term transactions reported on Form(s) 1099-B showing basis <b>was</b> reported to the IRS (see Note above)
 				</label>
 			</div>
 		</div>
@@ -243,7 +243,7 @@
 						<xsl:with-param name="TargetNode" select="$NodeData/TransRptOn1099BNotShowBasisInd"/>
 						<xsl:with-param name="BackupName">ShortTerm<xsl:number value="position()"/>TransRptOn1099BNotShowBasisInd</xsl:with-param>
 					</xsl:call-template>
-					<b><span style="font-size:8pt;width:6mm;">(B)</span></b> Short-term transactions reported on Form(s) 1099-B showing basis was <b>not</b> reported to the IRS
+					<b><span style="font-size:8pt;width:8mm;padding-left:2mm;">(B)</span></b> Short-term transactions reported on Form(s) 1099-B showing basis was <b>not</b> reported to the IRS
 				</label>
 			</div>
 		</div>
@@ -262,7 +262,7 @@
 						<xsl:with-param name="TargetNode" select="$NodeData/TransactionsNotRptedOn1099BInd"/>
 						<xsl:with-param name="BackupName">ShortTerm<xsl:number value="position()"/>TransactionsNotRptedOn1099BInd</xsl:with-param>
 					</xsl:call-template>
-					<b><span style="font-size:8pt;width:6mm;">(C)</span></b> Short-term transactions not reported to you on Form 1099-B
+					<b><span style="font-size:8pt;width:8mm;padding-left:2mm;">(C)</span></b> Short-term transactions not reported to you on Form 1099-B
 				</label>
 			</div>
 		</div>
@@ -280,7 +280,7 @@
 		</div>
 		<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 	</div>
-	<div class="styIRS8949LineItem" style="clear:both;">
+	<div class="styIRS8949LineItem" style="clear:both;height:auto;">
 		<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 		<div class="styTableContainerNBB">
 			<xsl:attribute name="id"><xsl:value-of select="$containerPos"/></xsl:attribute>
@@ -296,7 +296,7 @@
 				<tfoot>
 					<tr style="border-top:1px solid;border-color:black;">
 						<td colspan="3" style="border-bottom:1px solid black;border-right:1px solid black;">
-							<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;">
+							<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;height:auto;">
 								<span class="styBoldText">2 Totals</span>. Add the amounts in columns (d), (e), (g), and (h) (subtract negative amounts). Enter each total here and include on your Schedule D, <b>line 1b</b> (if <b>Box A</b> above is checked), <b>line 2</b> (if <b>Box B</b> above is checked), or <b>line 3</b> (if <b>Box C</b> above is checked).
 									<!--Dotted Line-->
 								<span style="font-weight:bold;letter-spacing:3mm;text-align:right;padding-left:3mm;padding-right:2px;">...........</span>
@@ -416,13 +416,13 @@
 	<xsl:param name="NodeData" select="/.."/>
 	<xsl:variable name="containerPos">LongTermCapitalGainAndLossGrpDiv<xsl:number value="position()"/></xsl:variable>
 	<!-- BEGIN: Part II (Header)-->
-	<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;">
+	<div class="styIRS8949LineItem" style="padding-top:0mm;padding-bottom:1.5mm;border-bottom:1px solid;border-top:1px solid;height:18mm;">
 		<div class="styPartName" style="width:13mm;">Part II</div>
 		<div class="styPartDesc" style="width:173.7mm;font-size:8pt;padding-left:2px;">
 			Long-Term. <span style="font-weight:normal">Transactions involving capital assets you held more than one year are long term. For short-term transactions, see page 1. NOTE: You may aggregate all long-term transactions with basis reported on Form(s) 1099-B and for which NO adjustments or codes are required. Enter the total directly on Schedule D, line 8a; you are not required to report these transactions on Form 8949 (see instructions).</span>
 		</div>
 	</div>
-	<div class="styIRS8949LineItem" style="padding-bottom:2mm;">
+	<div class="styIRS8949LineItem" style="padding-bottom:2mm;height:auto;">
 		<b>You <i>must</i> check Box D, E, <i>or</i> F below. Check only one box.</b> If more than one box applies for your long-term transactions, complete a separate Form 8949, page 2, for each applicable box. If you have more long-term transactions than will fit on this page for one or more of the boxes, complete as many forms with the same box checked as you need.
 	</div>
 	<!-- END: Part I (Header)-->
@@ -430,8 +430,8 @@
 	<!-- ################################################################################# -->
 	<!-- Begin (Line) 1 -->
 	<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
-	<!-- Begin Checkboxes (a),(b),(c) -->
-	<div class="styBB" style="width:187mm;">
+	<!-- Begin Checkboxes (d),(e),(f) -->
+	<div class="styBB" style="width:187mm;height:13mm;">
 		<div class="styIRS8949LNDesc"  style="width:187mm;">
 			<div style="width:3mm;float:left;">
 				<input type="Checkbox" class="styCkbox">
@@ -447,7 +447,7 @@
 						<xsl:with-param name="TargetNode" select="$NodeData/TransRptOn1099BThatShowBssInd"/>
 						<xsl:with-param name="BackupName">LongTerm<xsl:number value="position()"/>TransRptOn1099BThatShowBssInd</xsl:with-param>
 					</xsl:call-template>
-					<b><span style="font-size:8pt;width:6mm;">(D)</span></b> Long-term transactions reported on Form(s) 1099-B showing basis <b>was</b> reported to the IRS (see Note above)
+					<b><span style="font-size:8pt;width:8mm;padding-left:2mm;">(D)</span></b> Long-term transactions reported on Form(s) 1099-B showing basis <b>was</b> reported to the IRS (see Note above)
 				</label>
 			</div>
 		</div>
@@ -466,7 +466,7 @@
 						<xsl:with-param name="TargetNode" select="$NodeData/TransRptOn1099BNotShowBasisInd"/>
 						<xsl:with-param name="BackupName">LongTerm<xsl:number value="position()"/>TransRptOn1099BNotShowBasisInd</xsl:with-param>
 					</xsl:call-template>
-					<b><span style="font-size:8pt;width:6mm;">(E)</span></b> Long-term transactions reported on Form(s) 1099-B showing basis was <b>not</b> reported to the IRS
+					<b><span style="font-size:8pt;width:8mm;padding-left:2mm;">(E)</span></b> Long-term transactions reported on Form(s) 1099-B showing basis was <b>not</b> reported to the IRS
 				</label>
 			</div>
 		</div>
@@ -485,7 +485,7 @@
 						<xsl:with-param name="TargetNode" select="$NodeData/TransactionsNotRptedOn1099BInd"/>
 						<xsl:with-param name="BackupName">LongTerm<xsl:number value="position()"/>TransactionsNotRptedOn1099BInd</xsl:with-param>
 					</xsl:call-template>
-					<b><span style="font-size:8pt;width:6mm;">(F)</span></b> Long-term transactions not reported to you on Form 1099-B
+					<b><span style="font-size:8pt;width:8mm;padding-left:2mm;">(F)</span></b> Long-term transactions not reported to you on Form 1099-B
 				</label>
 			</div>
 		</div>
@@ -503,7 +503,7 @@
 		</div>
 		<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 	</div>
-	<div class="styIRS8949LineItem" style="clear:both;">
+	<div class="styIRS8949LineItem" style="clear:both;height:auto;">
 		<!-- |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
 		<div class="styTableContainerNBB">
 			<xsl:attribute name="id"><xsl:value-of select="$containerPos"/></xsl:attribute>
@@ -521,7 +521,7 @@
 				<tfoot>
 					<tr style="border-top:1px solid;border-color:black;">
 						<td colspan="3" style="border-bottom:1px solid black;border-right:1px solid black;">
-							<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;">
+							<div class="styIRS8949LNDesc" style="width:80mm;padding-left:0mm;height:auto;">
 								<span class="styBoldText">2 Totals</span>. Add the amounts in columns (d), (e), (g), and (h) (subtract negative amounts). Enter each total here and include on your Schedule D, <b>line 8b</b> (if <b>Box D</b> above is checked), <b>line 9</b> (if <b>Box E</b> above is checked), or <b>line 10</b> (if <b>Box F</b> above is checked)
 								<!--Dotted Line-->
 								<span style="font-weight:bold;letter-spacing:3mm;text-align:right;padding-left:3mm;padding-right:2px;">..........</span>
@@ -769,8 +769,10 @@
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8949Data)"/>
@@ -835,7 +837,7 @@
 						<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 						<!-- END:	Header Title-->
 						<div class="styTYBox" style="width:30mm;height:22.2mm;border-left-width:2px;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+							<div class="styOMB" style="height:auto;font-size:7pt;">OMB No. 1545-0074</div>
 							<div class="styTY">20<span class="styTYColor">13</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -851,7 +853,7 @@
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
 							</xsl:call-template>
-							<xsl:if test="$RtnHdrData/Filer/Name/BusinessNameLine2">
+							<xsl:if test="$RtnHdrData/Filer//BusinessNameLine2">
 								<br/>
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
@@ -907,7 +909,7 @@
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
 							</xsl:call-template>
-							<xsl:if test="$RtnHdrData/Filer/Name/BusinessNameLine2">
+							<xsl:if test="$RtnHdrData/Filer//BusinessNameLine2">
 								<br/>
 								<xsl:call-template name="PopulateReturnHeaderFiler">
 									<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>

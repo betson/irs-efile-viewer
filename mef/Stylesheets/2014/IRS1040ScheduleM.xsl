@@ -10,8 +10,10 @@
 <xsl:strip-space elements="*" />
 <xsl:param name="Form1040ScheduleMData" select="$RtnDoc/IRS1040ScheduleM" />
 <xsl:template match="/">
-<html >
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html >
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title>
   <xsl:call-template name="FormTitle">
   <xsl:with-param name="RootElement" select="local-name($Form1040ScheduleMData)">

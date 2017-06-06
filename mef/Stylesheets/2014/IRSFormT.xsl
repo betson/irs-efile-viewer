@@ -10,6 +10,10 @@
  <!-- Last modified on 12/10/2013 by Robert Jones for IBM Defect 39361-->
  <!-- Last modified on 12/13/2013 by Robert Jones for IBM Defect 39363-->
  <!-- Last modified on 06/23/2014 by Robert Jones for IBM Defect 40595-->
+ <!-- Last modified on 07/30/2015 by Robert Jones for IBM Defect 43870 IE11 issues-->
+ <!-- Last modified on 07/31/2015 by Robert Jones for IBM Defect 43870 IE11 issues-->
+ <!-- Last modified on 08/14/2015 by Robert Jones for IBM Defect 43872 IE11 issues-->
+ <!-- Last modified on 10/27/2015 by Robert Jones for IBM Defect 44976 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -25,8 +29,10 @@
   <xsl:param name="FormTADataIV" select="$RtnDoc/IRSFormT/ForestActyReforestationTmbrGrp" />
   <xsl:param name="FormTADataV" select="$RtnDoc/IRSFormT/ForestActyLandOwnershipGrp" />
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormTData)"></xsl:with-param></xsl:call-template></title>
         <meta http-equiv="Pragma" content="no-cache"/>
         <meta http-equiv="Cache-Control" content="no-cache"/>
@@ -42,7 +48,7 @@
            <!-- Form FormT CSS Styles are located in the template called below -->
             <xsl:call-template name="IRSFormTStyle"></xsl:call-template>
             <xsl:call-template name="AddOnStyle"></xsl:call-template>
-    </xsl:if>
+  </xsl:if>
         </style>      
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
@@ -50,8 +56,8 @@
         <form name="IRSFormT">
           <xsl:call-template name="DocumentHeader"></xsl:call-template>
           <div class="styTBB" style="width:187mm;float:none;">
-            <div class="styFNBox" style="width:39mm;height:19mm;">        
-              <div style="height:10mm;">
+            <div class="styFNBox" style="width:39mm;height:auto;">        
+              <div style="height:auto;">
                 Form<span class="styFormNumber" style="font-size:19"> T (Timber)</span>
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$FormTData" />
@@ -59,24 +65,24 @@
                 </xsl:call-template>
                 (Rev. December 2013)<br /><br />
               </div>
-              <div style="height:7mm;font-size:7pt;font-family:arial;" >
+              <div style="height:auto;font-size:7pt;font-family:arial;" >
                 <span>Department of the Treasury</span><br/>
                 <span>Internal Revenue Service</span>
               </div>        
             </div>    
             <div class="styFTBox" style="width:112mm;height:17mm;">
               <div class="styFTBox" style="width:114mm;height:17mm;">
-                <div class="styMainTitle" style="height:12">
+                <div class="styMainTitle" style="height:12mm;">
                   Forest Activities Schedule
                 </div>
                 <div class="styFBT" style="padding-bottom:1.75mm;">
-                  <img src="{$ImagePath}/T_Bullet.gif" alt="Bullet Image" /> Attach to your tax return. <span style="width:10mm;" />
+                  <img src="{$ImagePath}/T_Bullet.gif" alt="Bullet Image" /> Attach to your tax return. <span style="width:7mm;" />
                   <img src="{$ImagePath}/T_Bullet.gif" alt="Bullet Image" /> Information about Form T (Timber) and its separate instructions is at 
                   <a href="http://www.irs.gov/timber" title="Link to IRS.gov">
                 <i>www.IRS.gov/timber</i>
             </a>.
                 </div>
-                <div class="styFBT" style="padding-top:1mm;">
+                <div class="styFBT" style="padding-top:1mm;height:auto;">
                   For tax year ending
                   <span class="styBB" style="width:18mm;float:none;text-align:center;font-weight: normal">
                     <xsl:call-template name="PopulateReturnHeaderTaxPeriodEndDate"></xsl:call-template>
@@ -84,7 +90,7 @@
                 </div>
               </div>
             </div>
-            <div class="styTYBox" style="width:34mm;height:19mm;">    
+            <div class="styTYBox" style="width:34mm;height:24mm;">    
               <div class="styOMB" style="height:8mm;padding-top:3mm;"><span style="width:10px;"></span>OMB No. 1545-0007</div>    
               <div style="padding-top:3mm;"><span style="padding-right:30px;">Attachment </span><br/>Sequence No.<span class="styBoldText">
                 <span style="width:4px;"></span>117</span>  
@@ -94,7 +100,7 @@
           <!--   END FORM HEADER   -->
           <!--   BEGIN NAME   -->  
           <div class="styGenericDiv" style="width:187mm;">
-            <div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+            <div class="styNameBox" style="width:140mm;height:auto;font-size:7pt;">
               Name(s) as shown on return<br/>
                <!-- Added per UWR 31342 to allow 1040/ssn filer to use this form -->
               <xsl:choose>
@@ -111,7 +117,7 @@
               </xsl:otherwise>
 			 </xsl:choose>
             </div>
-            <div class="styEINBox" style="width:45mm;height:8mm;font-size:7pt;padding-left:2mm;font-weight:bold;">
+            <div class="styEINBox" style="width:45mm;height:auto;font-size:7pt;padding-left:2mm;font-weight:bold;">
               <span style="width:4px;"></span>
               Identifying number<br/><br />
               <span style="font-weight:normal;">
@@ -225,6 +231,7 @@
 
           <!-- Start Part IV and V -->
           <!-- Header -->
+          <p style="page-break-before: always"/>
           <div class="styBB" style="width:187mm;padding-bottom:.5mm;">
             <div style="float:left;">Form T (Timber) (Rev. 12-2013)<span style="width:128mm;"></span></div>
             <div style="float:right;">Page <span style="font-weight:bold;font-size:7pt;">4</span></div>
@@ -304,9 +311,10 @@
             <span style="width:19mm;font-weight:normal;" class="styGenericDiv"></span>
             <span style="float:right;" class="styGenericDiv">Form <span class="styBoldText">T (Timber)</span> (Rev. 12-2013)</span>
           </div>
-          <p  class="pageend"></p>
           
+          <div class="pageEnd"/>
           <!-- Begininning of write-in data -->
+             <p style="page-break-before: always"/>
           <div class="styLeftOverTitleLine" id="LeftoverData">
             <div class="styLeftOverTitle">
               Additional Data        
@@ -315,7 +323,7 @@
               <input class="styLeftoverTableBtn" tabindex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
             </div>      
           </div>
-          <table class="styLeftOverTbl">
+          <table class="styLeftOverTbl" style="display:table">
             <xsl:call-template name="PopulateCommonLeftover">
               <xsl:with-param name="TargetNode" select="$FormTData" />
               <xsl:with-param name="DescWidth" select="100"/>
@@ -328,7 +336,7 @@
               <br/>Part I - Acquisitions:
             </span>
             <xsl:for-each select="$FormTAData">
-              <table class="styDepTbl" style="font-size:7pt">
+              <table class="styDepTbl" style="font-size:7pt;display:table;">
                 <tr class="styDepTblHdr">
                   <th class="styDepTblCell" colspan="5" style="text-align:left;">Part I - Acquisitions
                     
@@ -337,9 +345,9 @@
 
                 <!-- Line 1 -->
                 <tr class="styDepTblRow1">
-                  <td class="styDepTblCell" colspan="5" style="text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:4mm;">1</div>
-                   <div  class="styLNDesc" style="width:130mm;">Name of block and title of account<br/>
+                  <td class="styDepTblCell" colspan="5" style="text-align:left;">
+                    <div class="styLNLeftNumBoxSD" style="height:auto;">1</div>
+                   <div  class="styLNDesc" style="height:auto;width:130mm;">Name of block and title of account<br/>
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="NameOfBlockAndTitleOfAcctTxt" />
                     </xsl:call-template>
@@ -349,8 +357,8 @@
                 <!-- Line 2 -->
                 <tr class="styDepTblRow2">
                   <td class="styDepTblCell" colspan="5" style="text-align:left">
-                    <div class="styLNLeftNumBoxSD" style="height:4mm;">2</div>
-                     <div  class="styLNDesc" style="width:130mm;">Location of property (by legal subdivisions or map surveys)<br/>
+                    <div class="styLNLeftNumBoxSD" style="height:auto;">2</div>
+                     <div  class="styLNDesc" style="height:auto;width:130mm;">Location of property (by legal subdivisions or map surveys)<br/>
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="PropertyLocationTxt" />
                     </xsl:call-template>
@@ -359,34 +367,36 @@
                 </tr>
                 <!-- Line 3 -->
                 <tr class="styDepTblRow1">
-                  <td class="styDepTblCell" colspan="4" style="text-align:left;">
-                    <div class="styLNLeftNumBoxSD" style="height:5mm;">3a</div>
-                    <div  class="styLNDesc" style="width:130mm;"> Name and address of seller or person from whom property was acquired</div> <br></br>
+                  <td class="styDepTblCell" colspan="4" style="text-align:left;height:auto;">
+                    <div class="styLNLeftNumBoxSD" style="height:auto;">3a</div>
+                    <div  class="styLNDesc" style="width:130mm;height:auto;"> Name and address of seller or person from whom property was acquired</div> <br></br>
                     <br></br>
-                    <xsl:call-template name="PopulateText">
+                     <span style="padding-left:.3mm;"/>
+                      <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="SellerName/BusinessNameLine1Txt" />
                     </xsl:call-template>    
                     <xsl:if test="SellerName/BusinessNameLine2Txt">
-                      <br/>
-                      <xsl:call-template name="PopulateText">
+                      <br></br>
+                      <span style="padding-left:.3mm;"/>
+                        <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="SellerName/BusinessNameLine2Txt" />
                       </xsl:call-template>
                     </xsl:if>  
-                    <br />  
+                    <br/>  
                     <xsl:choose>
         	<xsl:when test="SellerUSAddress"> 
-        		<xsl:call-template name="PopulateUSAddressTemplate">
+        	   		<xsl:call-template name="PopulateUSAddressTemplate">
           			<xsl:with-param name="TargetNode" select="SellerUSAddress" />
        		 </xsl:call-template>
        	 </xsl:when>
        	 <xsl:otherwise>
-       	 	<xsl:call-template name="PopulateForeignAddressTemplate">
+       	  	<xsl:call-template name="PopulateForeignAddressTemplate">
          			 <xsl:with-param name="TargetNode" select="SellerForeignAddress" />
       		      </xsl:call-template>
        	 </xsl:otherwise>
         </xsl:choose>  
-                  </td>  
-                  <td class="styDepTblCell" style="height:20mm;text-align:center;" >
+                   </td>  
+                  <td class="styDepTblCell" style="height:22mm;text-align:center;" >
                     <b>b </b><span style=" width:10px;"> </span> Date acquired <br/><br/>
                     <xsl:call-template name="PopulateMonthDayYear">
                       <xsl:with-param name="TargetNode" select="AcquiredDt"/>
@@ -397,7 +407,7 @@
                 <tr class="styDepTblRow2">
                   <td class="styDepTblCell" colspan="4" style="text-align:left;border-bottom-width:0px">
                     <div class="styLNLeftNumBoxSD" style="height:4mm;">4</div>
-                    <div  class="styLNDesc" style="width:130mm;">Amount paid:<span style="width:4mm" />
+                    <div  class="styLNDesc" style="width:130mm;">Amount paid:<span style="width:4.5mm" />
                     <span class="styBoldText">a </span><span style="width:3px;"></span>In cash
                     <span style="letter-spacing:4mm;font-weight:bold">.........</span></div>
                   </td>
@@ -438,8 +448,8 @@
                 <!-- Line 5a -->
                 <tr class="styDepTblRow1">
                   <td class="styDepTblCell" colspan="4" style="text-align:left;border-bottom-width:0px">
-                    <div class="styLNLeftNumBoxSD" style="height:4mm;">5a</div>  
-                   <div  class="styLNDesc" style="width:130mm;"> Amount of other consideration
+                    <div class="styLNLeftNumBoxSD" style="height:auto;">5a</div>  
+                   <div  class="styLNDesc" style="width:130mm;height:auto;"> Amount of other consideration
                     <span style="letter-spacing:4mm;font-weight:bold">...............</span></div>
                   </td>
                   <td class="styDepTblCell" style="text-align:right" >    
@@ -452,8 +462,8 @@
                 <!-- Line 5b -->
                 <tr class="styDepTblRow2">
                   <td class="styDepTblCell" colspan="4" style="text-align:left;border-bottom-width:0px;border-top-width:0px">
-                    <div class="styLNLeftLtrBox" style="height:4mm;padding-left:2.3mm;">b</div> 
-                   <div  class="styLNDesc" style="width:130mm;">  Explain the nature of other consideration and how you determined the amount shown on line 5a.</div> 
+                    <div class="styLNLeftLtrBox" style="height:auto;padding-left:2.3mm;">b</div> 
+                   <div  class="styLNDesc" style="width:130mm;height:auto;">  Explain the nature of other consideration and how you determined the amount shown on line 5a.</div> 
                   </td>
                   <td class="styDepTblCell" style="border-bottom-width:0px;background-color:lightgrey">
                   </td>
@@ -473,7 +483,7 @@
                   <td class="styDepTblCell" colspan="4" style="text-align:left;vertical-align:top;">
                     <div class="styLNLeftNumBoxSD" style="height:4mm;">6</div>
                    <div  class="styLNDesc" style="width:130mm;"> Legal expenses
-                    <span style="letter-spacing:4mm;font-weight:bold">.......................</span></div>
+                    <span style="letter-spacing:4mm;font-weight:bold">.................</span></div>
                   </td>    
                   <td class="styDepTblCell" style="text-align:right" >    
                     <xsl:call-template name="PopulateAmount">
@@ -524,7 +534,7 @@
                 <!-- Line 9a -->
                 <tr class="styDepTblRow1">
                   <td style="width: 80mm;text-align: left;vertical-align:center;" scope="row" class="styFormTTablesCells ">
-                    <div style="float:left;font-size:7pt;text-align:left;vertical-align:center;">
+                    <div style="float:left;font-size:7pt;text-align:left;vertical-align:center;padding-left:1.5mm;">
                       <div style="height:4mm;" class="styLNLeftLtrBox">a </div>
                       <div  class="styLNDesc" style="width:65mm;"> Forested land<span style="letter-spacing:4mm;font-weight:bold">.........</span>
                    
@@ -565,7 +575,7 @@
                 <!-- Line 9b -->
                 <tr class="styDepTblRow2">
                   <td style="width: 80mm;text-align: left;" scope="row" class="styFormTTablesCells ">
-                    <div style="float:left;font-size:7pt;">
+                    <div style="float:left;font-size:7pt;padding-left:1.5mm;">
                       <div style="height:4mm;" class="styLNLeftLtrBox">b</div>
                       <div  class="styLNDesc" style="width:65mm;">Other unimproved land
                       <span style="letter-spacing:4mm;font-weight:bold">....</span>
@@ -606,9 +616,9 @@
                 <!-- Line 9c -->
                 <tr class="styDepTblRow1">
                   <td style="width: 80mm;text-align: left;" scope="row" class="styFormTTablesCells ">
-                    <div style="float:left;font-size:7pt;">
+                    <div style="float:left;font-size:7pt;padding-left:1.5mm;">
                       <div style="height:4mm;" class="styLNLeftLtrBox">c</div>
-                     <div  class="styLNDesc" style="width:65mm;"> Improved land (describe)
+                     <div  class="styLNDesc" style="width:65mm;height:auto;"> Improved land (describe)
                         <img src="{$ImagePath}/T_Bullet.gif" alt="Bullet Image" />
                         <span style="width:4px;"></span>
                        <xsl:call-template name="PopulateText">
@@ -651,24 +661,28 @@
                     </xsl:call-template><span style="width:1px;"></span></nobr>
                   </td>
                 </tr>
+                
+              
+                
                 <!-- Part I - Line 9d -->
                 <tr class="styDepTblRow2">
-                  <td style="width: 80mm;text-align: left;vertical-align:top;" scope="row" class="styFormTTablesCells ">
+                  <td style="width: 80mm;text-align: left;vertical-align:top;height:auto;" scope="row" class="styFormTTablesCells ">
                     <xsl:attribute name="rowspan">
                       <xsl:value-of select="count(MerchantableTimber)" />
                     </xsl:attribute>
-                    <div style="float:left;font-size:7pt;width:76mm;">
-                      <div style="height:20mm;" class="styLNLeftLtrBox">d</div>
-                       <div  class="styLNDesc" style="width:65mm;"> Merchantable timber. Estimate the quantity of merchantable timber present on the acquisition date 
+                    <div style="float:left;font-size:7pt;width:76mm;padding-left:1.5mm;">
+                      <div style="height:5mm;" class="styLNLeftLtrBox">d</div> 
+                       <div  class="styLNDesc" style="width:65mm;">  Merchantable timber. Estimate the quantity of merchantable timber present on the acquisition date 
                         (see Regulations section 1.611-3(e)). Details of the timber estimate, made for purposes of the 
                         acquisition, should be available if your return is examined.
+                      </div>
                       </div>
                       <div style="float:left;">
                       <img src="{$ImagePath}/T_Bracket_Lg.gif" alt="Bullet Image" height="85" width="6" />
                     </div>
-                    </div>
+                    
                   </td>
-                  <td style="width: 18mm; text-align: left;vertical-align:top;" class="styFormTTablesCells ">
+                  <td style="width: 18mm; text-align: left;vertical-align:top;height:auto;" class="styFormTTablesCells ">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="MerchantableTimber[1]/UnitTxt" />
                     </xsl:call-template><span style="width:1px;"></span>
@@ -745,17 +759,39 @@
                       </td>
                     </tr>
                   </xsl:if>
-                </xsl:for-each>                
+                </xsl:for-each>        
+                
+                <!--  <tr class="styDepTblRow1">
+               <td style="width: 80mm;text-align: left;vertical-align:center;" scope="row" class="styFormTTablesCells ">
+                 <xsl:attribute name="rowspan">
+                   <xsl:value-of select="count(PremerchantableTimber)" />
+                 </xsl:attribute>
+                 <div style="float:left;font-size:7pt;width:76mm;vertical-align:center;">
+                   <div style="height:12mm;" class="styLNLeftLtrBox">e</div> 
+                   <div  class="styLNDesc" style="width:65mm;"> Premerchantable timber
+                     <span style="letter-spacing:4mm; font-weight:bold;">.....</span>
+                   </div>
+                 </div>
+                 <div style="float:left;">
+                   <img alt="Bullet Image" src="{$ImagePath}/T_Bracket_Sm.gif" height="56" width="6"  />
+                 </div>       -->
+                
+                
+                
+                
+                
+                
+                        
                 <!-- Line 9e************************************************************************************************************************************************************************ -->
                 <tr class="styDepTblRow1">
                   <td style="width: 80mm;text-align: left;vertical-align:top" scope="row" class="styFormTTablesCells ">
                     <xsl:attribute name="rowspan">
                       <xsl:value-of select="count(PremerchantableTimber)" />
                     </xsl:attribute>
-                    <div style="float:left;font-size:7pt;width:76mm;">
-                      <div style="height:12mm;" class="styLNLeftLtrBox">e</div>
+                    <div style="float:left;font-size:7pt;width:76mm;padding-left:1.5mm;">
+                      <div style="height:12mm;" class="styLNLeftLtrBox">e</div> 
                       
-                      <div  class="styLNDesc" style="width:65mm;">  Premerchantable timber. Make an allocation
+                      <div  class="styLNDesc" style="width:65mm;"> Premerchantable timber. Make an allocation
                         here only if it is a factor in the total cost or
                         value of the land.
                       </div>
@@ -845,7 +881,7 @@
                 <!-- Line 9f -->
                 <tr class="styDepTblRow2">
                   <td style="width: 80mm;text-align: left;border-bottom-width:0px;vertical-align:center;" scope="row" class="styFormTTablesCells " >
-                    <div style="float:left;font-size:7pt;width:77mm;">
+                    <div style="float:left;font-size:7pt;width:77mm;padding-left:1.5mm;">
                       <div style="height:4mm;" class="styLNLeftLtrBox">f</div>
                      <div  class="styLNDesc" style="width:65mm;"> Improvements (list separately)</div>
                     </div>
@@ -872,10 +908,10 @@
                           <xsl:otherwise>styDepTblRow1</xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>
-                    <td style="width:80mm;text-align: left;border-bottom-width:0px;" scope="row" class="styFormTTablesCells ">         
-                      <div style="float:left;font-size:7pt;height:4mm;">
+                    <td style="width:80mm;text-align: left;border-bottom-width:0px;height:auto;" scope="row" class="styFormTTablesCells ">         
+                      <div style="float:left;font-size:7pt;height:auto;">
                         <div style="height:4mm;" class="styLNLeftLtrBox"></div>
-                        <div style="width:70mm;height:4mm;float:left;clear:none;" class="styBB">
+                        <div style="width:70mm;height:auto;float:left;clear:none;" class="styBB">
                           <xsl:call-template name="PopulateText">
                             <xsl:with-param name="TargetNode" select="Desc" />
                           </xsl:call-template>
@@ -919,7 +955,7 @@
                 <!-- Line 9g -->
                 <tr class="styDepTblRow1">
                   <td style="width: 80mm;text-align: left;" scope="row" class="styFormTTablesCells ">
-                    <div style="float:left;font-size:7pt;">
+                    <div style="float:left;font-size:7pt;padding-left:1.5mm;">
                       <div style="height:4mm;" class="styLNLeftLtrBox">g </div>
                      <div  class="styLNDesc" style="width:65mm;">  Mineral rights
                     
@@ -963,7 +999,7 @@
                 <!-- Line 9h -->
                 <tr class="styDepTblRow2">
                   <td style="width: 155mm;text-align: left;vertical-align:center;" scope="row" class="styFormTTablesCells " colspan="4">
-                    <div style="float:left;font-size:7pt;">
+                    <div style="float:left;font-size:7pt;padding-left:1.5mm;">
                       <div style="height:4mm;vertical-align:center;" class="styLNLeftLtrBox">h</div>
                      <div  class="styLNDesc" style="width:140mm;"> Total cost or other basis (same amount as line 8). Add lines 9a through 9g
                       
@@ -989,7 +1025,7 @@
               <br/>Part II - Timber Depletion:
             </span>
             <xsl:for-each select="$FormTADataII">
-              <table class="styDepTbl" style="font-size:7pt">
+              <table class="styDepTbl" style="font-size:7pt;display:table;">
                 <tr class="styDepTblHdr">
                   <td class="styDepTblCell" colspan="4" style="text-align:left;font-weight:bold;">Part II - Timber Depletion (see instructions)
                     
@@ -1002,7 +1038,7 @@
                       Name of block and title of account <img alt="Bullet Image" src="{$ImagePath}/T_Bullet.gif"  />
                       <span style="width:4px;"></span>
                     </div>
-                    <div class="styBB" style="width:120mm;float:left;clear:none;height:4mm;">
+                    <div class="styBB" style="width:120mm;float:left;clear:none;height:auto;">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="NameOfBlockAndTitleOfAcctTxt" />
                       </xsl:call-template>
@@ -1024,8 +1060,8 @@
                 </tr>
                 <!-- Line 2 -->
                 <tr class="styDepTblRow1">
-                  <td class="styDepTblCell" style="text-align:left;font-weight:bold;border-right-width:0px;padding-left:2.5mm;">2</td>
-                  <td class="styDepTblCell" style="text-align:left;border-left-width:0px">
+                  <td class="styDepTblCell" style="height:auto;text-align:left;font-weight:bold;border-right-width:0px;padding-left:2.5mm;">2</td>
+                  <td class="styDepTblCell" style="height:auto;text-align:left;border-left-width:0px">
                     Estimated quantity of timber and cost or other basis returnable through depletion
                     at end of the preceding tax year<span style="letter-spacing:4mm;font-weight:bold">........</span>
                   </td>
@@ -1360,16 +1396,16 @@
                 <!-- Line 18 -->
                 <tr class="styDepTblRow2">
                   <td class="styDepTblCell" style="text-align:left;font-weight:bold;border-right-width:0px;border-bottom-width:0px;">18</td>
-                  <td class="styDepTblCell" colspan="3" style="text-align:left;border-left-width:0px;border-bottom-width:0px;"><b>Section 631(a):</b></td>
+                  <td class="styDepTblCell" colspan="3" style="height:auto;text-align:left;border-left-width:0px;border-bottom-width:0px;"><b>Section 631(a):</b></td>
                 </tr>
                 <tr class="styDepTblRow2">
-                  <td class="styDepTblCell" style="text-align:left;font-weight:bold;border-right-width:0px;padding-left:4.3mm;border-bottom-width:0px;border-top-width:0px;">a</td>
-                  <td class="styDepTblCell" colspan="2" style="text-align:left;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;">
+                  <td class="styDepTblCell" style="height:auto;text-align:left;font-weight:bold;border-right-width:0px;padding-left:4.3mm;border-bottom-width:0px;border-top-width:0px;">a</td>
+                  <td class="styDepTblCell" colspan="2" style="height:auto;text-align:left;border-left-width:0px;border-bottom-width:0px;border-right-width:0px;border-top-width:0px;">
             Are you electing, or have you made an election in a prior tax year that is in effect, to report gains or losses from the cutting of timber under section 631(a)? (see instructions)
                     <span style="letter-spacing:4mm;font-weight:bold">.....</span>
                   </td>
                 
-          <td  class="styDepTblCell" style="border-left-width:0px;border-bottom-width:0px;border-top-width:0px;">
+          <td  class="styDepTblCell" style="height:auto;border-left-width:0px;border-bottom-width:0px;border-top-width:0px;">
               <span>
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="Section631aElectionInd" />
@@ -1405,8 +1441,8 @@
             </td>       
            </tr>
                 <tr class="styDepTblRow2" >
-                  <td class="styDepTblCell" style="text-align:left;font-weight:bold;border-right-width:0px;padding-left:4.3mm;border-top-width:0px;border-bottom-width:0px;">b</td>
-                  <td class="styDepTblCell" colspan="2" style="text-align:left;border-left-width:0px;border-top-width:0px;border-bottom-width:0px;border-right-width:0px;">Are you revoking your section 631(a) election (see instructions)?</td>
+                  <td class="styDepTblCell" style="height:auto;text-align:left;font-weight:bold;border-right-width:0px;padding-left:4.3mm;border-top-width:0px;border-bottom-width:0px;">b</td>
+                  <td class="styDepTblCell" colspan="2" style="height:auto;text-align:left;border-left-width:0px;border-top-width:0px;border-bottom-width:0px;border-right-width:0px;">Are you revoking your section 631(a) election (see instructions)?</td>
                   <td class="styDepTblCell" style="border-left-width:0px;border-bottom-width:0px;border-top-width:0px;">
                     <span>
                       <xsl:call-template name="PopulateSpan">
@@ -1443,7 +1479,7 @@
                   </td>
                 </tr>
                 <tr class="styDepTblRow2" style="border-top-width:0px;border-top-width:0px;">
-                  <td class="styDepTblCell"  colspan="4" style="text-align:right;padding-right:20mm;border-top-width:0px;border-bottom-width:0px;">Effective date <img src="{$ImagePath}/T_Bullet.gif" alt="Bullet Image" />
+                  <td class="styDepTblCell"  colspan="4" style="height:auto;text-align:right;padding-right:20mm;border-top-width:0px;border-bottom-width:0px;">Effective date <img src="{$ImagePath}/T_Bullet.gif" alt="Bullet Image" />
                     <xsl:call-template name="PopulateMonthDayYear">
                       <xsl:with-param name="TargetNode" select="EffectiveDt"/>
                     </xsl:call-template>
@@ -1461,7 +1497,7 @@
               <br/>Part III - Profit or Loss From Land and Timber Sales:
             </span>
             <xsl:for-each select="$FormTADataIII">
-            <table class="styDepTbl" style="font-size:7pt">
+            <table class="styDepTbl" style="font-size:7pt;display:table;">
               <tr class="styDepTblHdr">
                 <td class="styDepTblCell" colspan="5" style="text-align:left;">Part III - Profit or Loss From Land and Timber Sales
                   
@@ -1470,8 +1506,8 @@
               <!-- Line 1 -->
               <tr class="styDepTblRow1">
                 <td class="styDepTblCell" colspan="5" style="text-align:left">
-                  <div class="styLNLeftNumBox" style="height:4mm;text-align:left;">1</div>
-                  <div  class="styLNDesc" style="width:130mm;"> Name of block and title of account<br></br>
+                  <div class="styLNLeftNumBox" style="height:auto;text-align:left;">1</div>
+                  <div  class="styLNDesc" style="width:130mm;height:auto;"> Name of block and title of account<br></br>
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="NameOfBlockAndTitleOfAcctTxt" />
                   </xsl:call-template>   </div>
@@ -1480,8 +1516,8 @@
               <!-- Line 2 -->
               <tr class="styDepTblRow2">
                 <td class="styDepTblCell" colspan="5" style="text-align:left">
-                  <div class="styLNLeftNumBox" style="height:4mm;text-align:left;">2</div>
-                  <div  class="styLNDesc" style="width:130mm;">Location of property (by legal subdivisions or map surveys)<br/>
+                  <div class="styLNLeftNumBox" style="height:auto;text-align:left;">2</div>
+                  <div  class="styLNDesc" style="height:auto;width:130mm;">Location of property (by legal subdivisions or map surveys)<br/>
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="PropertyLocationTxt" />
                   </xsl:call-template></div>
@@ -1489,26 +1525,30 @@
               </tr>
               <!-- Line 3 -->
               <tr class="styDepTblRow1">
-                <td class="styDepTblCell" colspan="4" style="text-align:left">
-                  <div class="styLNLeftNumBox" style="height:5mm;text-align:left;">3a</div>
-                  <div  class="styLNDesc" style="width:130mm;">Purchaser’s name and address</div><br/>  <br/>
+                <td class="styDepTblCell" colspan="4" style="text-align:left;height:auto;">
+                  <div class="styLNLeftNumBox" style="height:auto;text-align:left;">3a</div>
+                  <div  class="styLNDesc" style="width:130mm;height:auto;">Purchaser’s name and address</div><br/>  <br/>
+                <span style="padding-left:.3mm;"/>
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="PurchaserName/BusinessNameLine1Txt" />
                   </xsl:call-template>    
                   <xsl:if test="PurchaserName/BusinessNameLine2Txt">
                     <br/>
+                  <span style="padding-left:.3mm;"/>
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="PurchaserName/BusinessNameLine2Txt" />
                     </xsl:call-template>
                   </xsl:if>  
-                  <br />  
+                  <br/>  
                    <xsl:choose>
         	<xsl:when test="PurchaserUSAddress"> 
+        	
         		<xsl:call-template name="PopulateUSAddressTemplate">
           			<xsl:with-param name="TargetNode" select="PurchaserUSAddress" />
        		 </xsl:call-template>
        	 </xsl:when>
        	 <xsl:otherwise>
+       	 
        	 	<xsl:call-template name="PopulateForeignAddressTemplate">
          			 <xsl:with-param name="TargetNode" select="PurchaserForeignAddress" />
       		      </xsl:call-template>
@@ -1567,8 +1607,8 @@
               <!-- Line 5a -->
               <tr class="styDepTblRow1">
                 <td class="styDepTblCell" colspan="4" style="text-align:left;border-bottom-width:0px">
-                  <div class="styLNLeftNumBox" style="height:4mm;text-align:left;">5a</div>
-                  <div  class="styLNDesc" style="width:130mm;">Amount of other consideration
+                  <div class="styLNLeftNumBox" style="height:auto;text-align:left;">5a</div>
+                  <div  class="styLNDesc" style="height:auto;width:130mm;">Amount of other consideration
                   <span style="letter-spacing:4mm;font-weight:bold">............</span></div>
                 </td>       
                 <td class="styDepTblCell" style="text-align:right;font-size:6pt;" >    
@@ -1580,10 +1620,10 @@
               <!-- Line 5b -->
               <tr class="styDepTblRow2">
                 <td class="styDepTblCell" colspan="4" style="text-align:left;border-top-width:0px;border-bottom-width:0px">
-                  <div class="styLNLeftLtrBox" style="height:4mm;padding-left:2.2mm;">b</div>
-                  <div  class="styLNDesc" style="width:130mm;">Explain the nature of other consideration and how you determined the amount shown on line 5a:</div>
+                  <div class="styLNLeftLtrBox" style="height:auto;padding-left:2.2mm;">b</div>
+                  <div  class="styLNDesc" style="height:auto;width:130mm;">Explain the nature of other consideration and how you determined the amount shown on line 5a:</div>
                 </td>
-                <td class="styDepTblCell" style="background-color:lightgrey;border-bottom-width:0px">
+                <td class="styDepTblCell" style="height:auto;background-color:lightgrey;border-bottom-width:0px">
                 </td>
               </tr>
               <tr class="styDepTblRow2">
@@ -1593,7 +1633,7 @@
                     <xsl:with-param name="TargetNode" select="OtherConsiderationNatureTxt"/>
                   </xsl:call-template>
                 </td>
-                <td class="styDepTblCell" style="background-color:lightgrey;border-top-width:0px">
+                <td class="styDepTblCell" style="height:auto;background-color:lightgrey;border-top-width:0px">
                 </td>
               </tr>
               <!-- Line 6 -->
@@ -1601,7 +1641,7 @@
                 <td class="styDepTblCell" colspan="4" style="text-align:left;">
                   <div class="styLNLeftNumBox" style="height:4mm;">6</div>  
                  <div  class="styLNDesc" style="width:130mm;"> Total amount received for property. Add lines 4a, 4b, 4c, and 5a
-                  <span style="letter-spacing:4mm;font-weight:bold">..........</span></div>
+                  <span style="letter-spacing:4mm;font-weight:bold">.......</span></div>
                 </td>
                 <td class="styDepTblCell" style="text-align:right;font-size:6pt;">
                   <xsl:call-template name="PopulateAmount">
@@ -1708,7 +1748,7 @@
                 <td style="width: 80mm;text-align: left;" scope="row" class="styFormTTablesCells ">
                   <div style="float:left;font-size:7pt;">
                     <div style="height:4mm;" class="styLNLeftLtrBox">c</div>
-                   <div  class="styLNDesc" style="width:65mm;">  Improved land (describe)
+                   <div  class="styLNDesc" style="width:65mm;height:auto;">  Improved land (describe)
                       <img alt="Bullet Image" src="{$ImagePath}/T_Bullet.gif" /><span style="width:4px;"></span></div>
                     
                     <div class="styBB" style="width:70mm;float:left;clear:none;">
@@ -1770,7 +1810,7 @@
                   </div>
                    <xsl:for-each select="LogRuleUsedTxt">
               <div style="height:4.5mm;" class="styLNLeftLtrBox"></div>
-              <div class="styBB" style="height:4.5mm;width:66mm;float:left;clear:none;padding-top:.5mm;">
+              <div class="styBB" style="height:auto;width:66mm;float:left;clear:none;padding-top:.5mm;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="." />
                 </xsl:call-template>
@@ -1867,7 +1907,7 @@
                  <div style="float:left;font-size:7pt;width:76mm;vertical-align:center;">
                    <div style="height:12mm;" class="styLNLeftLtrBox">e</div> 
                    <div  class="styLNDesc" style="width:65mm;"> Premerchantable timber
-                     <span style="letter-spacing:4mm; font-weight:bold;">.......</span>
+                     <span style="letter-spacing:4mm; font-weight:bold;">.....</span>
                    </div>
                  </div>
                  <div style="float:left;">
@@ -1980,10 +2020,10 @@
                      <xsl:otherwise>styDepTblRow1</xsl:otherwise>
                    </xsl:choose>
                  </xsl:attribute>
-                 <td style="width:80mm;text-align: left;border-bottom-width:0px;" scope="row" class="styFormTTablesCells " >
-                   <div style="float:left;font-size:7pt;height:4mm;">
+                 <td style="width:80mm;text-align: left;border-bottom-width:0px;height:auto;" scope="row" class="styFormTTablesCells " >
+                   <div style="float:left;font-size:7pt;height:auto;">
                      <div style="height:4mm;" class="styLNLeftLtrBox"></div>
-                     <div style="width:70mm;height:4mm;float:left;clear:none;" class="styBB">
+                     <div style="width:70mm;height:auto;float:left;clear:none;" class="styBB">
                        <xsl:call-template name="PopulateText">
                          <xsl:with-param name="TargetNode" select="Desc" />
                        </xsl:call-template>
@@ -2103,7 +2143,7 @@
                    <div style="height:4mm;" class="styLNLeftNumBox">8</div>
                   <div  class="styLNDesc" style="width:130mm;"> Profit or loss. Subtract the sum of lines 7h and 7i from line 6
                  
-                 <span style="letter-spacing:4mm; font-weight:bold;">...........</span></div></div>
+                 <span style="letter-spacing:4mm; font-weight:bold;">........</span></div></div>
                </td>
                <td style="width: 32.5mm; height: 4mm; border-right:0;vertical-align:bottom;" class="styFormTTablesCells ">
                  <xsl:call-template name="PopulateAmount">
@@ -2123,7 +2163,7 @@
             <br/>Part IV - Reforestation and Timber Stand Activities (see instructions)
           </span>
           <xsl:for-each select="$FormTADataIV">
-          <table class="styDepTbl" style="font-size:7pt">
+          <table class="styDepTbl" style="font-size:7pt;display:table;">
             <thead class="styTableHead">
               <tr class="styDepTblHdr">
                 <th class="styDepTblCell" style="width:65mm"><b>Account, block, tract, area, or stand ID for each Qualified Timber Property (QTP)</b></th>
@@ -2242,7 +2282,7 @@
           
           </div></span>
           <xsl:for-each select="$FormTADataV">
-            <table cellpadding="0" cellspacing="0" class="styDepTbl" style="font-size:7pt">
+            <table cellpadding="0" cellspacing="0" class="styDepTbl" style="font-size:7pt;display:table;">
               <thead class="styTableThead">
                 <!-- Line 1 -->
                 <tr class="styDepTblHdr">
@@ -2251,7 +2291,7 @@
                     <div  class="styLNDesc" style="width:65mm;text-align:left;"> Name of block and title of account <img alt="Bullet Image" src="{$ImagePath}/T_Bullet.gif"  />
                      </div>
                     
-                    <div class="styBB" style="width:80mm;float:left;clear:none;height:4mm;padding-left:3mm;">
+                    <div class="styBB" style="width:80mm;float:left;clear:none;height:auto;padding-left:3mm;">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="NameOfBlockAndTitleOfAcctTxt" />
                       </xsl:call-template> 
@@ -2273,7 +2313,7 @@
                   <td style="width: 90mm;text-align:left;font-weight:normal;" scope="col" class="styFormTTablesCells ">
                     <span style="float:left;font-size:7pt;">
                     <div style="height:4mm;" class="styLNLeftNumBox">2</div>
-                      <div  class="styLNDesc" style="width:65mm;text-align:left;text-align:left;"> Balance at beginning of year</div>
+                      <div  class="styLNDesc" style="height:auto;width:65mm;text-align:left;text-align:left;"> Balance at beginning of year</div>
                    
                       <span class="styBoldText">
                         <span style="width:16px;"></span>.
@@ -2346,7 +2386,7 @@
                     <span class="styBoldText">
                         <span style="width:16px;"></span>.
                         <span style="width:15px;"></span>.
-                        <span style="width:16px;"></span>.
+                     
                        
                       </span></div>
                   </td>
@@ -2404,10 +2444,10 @@
                 </tr>
                 <!-- Line 6 -->
                 <tr class="styDepTblRow1">
-                  <td style="width: 90mm;text-align:left;font-weight:normal;" scope="col" class="styFormTTablesCells ">
+                  <td style="width: 90mm;text-align:left;font-weight:normal;height:auto;" scope="col" class="styFormTTablesCells ">
                     <div style="float:left;font-size:7pt;">
                       <div style="height:4mm;" class="styLNLeftNumBox">6</div>
-                     <div  class="styLNDesc" style="width:75mm;text-align:left;text-align:left;">Balance at end of year. Add lines 2 and 3, subtract line 4 and add or subtract line 5
+                     <div  class="styLNDesc" style="width:75mm;text-align:left;text-align:left;height:auto;">Balance at end of year. Add lines 2 and 3, subtract line 4 and add or subtract line 5
                       <!--Dotted Line-->
                       <span class="styBoldText">
                         
@@ -2467,8 +2507,8 @@
       </div>
     </div>
     <div class="styBB" style="width:187mm;">
-      <div class="styLNLeftNumBoxSD" style="height:4mm;">1</div>
-      <div  class="styLNDesc" style="width:178mm;">
+      <div class="styLNLeftNumBoxSD" style="height:auto;">1</div>
+      <div  class="styLNDesc" style="height:auto;width:178mm;">
         Name of block and title of account<br />
         <span style="width:2px"></span>
         <xsl:if test="$AdditionalDataMsg= 'true' ">
@@ -2482,35 +2522,39 @@
       </div>
     </div>  
     <div class="styBB" style="width:187mm;">
-      <div class="styLNLeftNumBoxSD" style="height:4mm;">2</div>
-      <div  class="styLNDesc" style="width:178mm;">
+      <div class="styLNLeftNumBoxSD" style="height:auto;">2</div>
+      <div  class="styLNDesc" style="height:auto;width:178mm;">
         Location of property (by legal subdivisions or map surveys)
         <br/>
         <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PropertyLocationTxt" /></xsl:call-template>          
       </div>
     </div>  
-    <div class="styBB" style="width:187mm;height:20mm;">
-      <div class="styLNLeftNumBoxSD" style="height:20mm;">3a</div>
-      <div class="styLNDesc" style="width:145mm;height:20mm;">
+    <div class="styBB" style="width:187mm;height:auto;">
+      <div class="styLNLeftNumBoxSD" style="height:auto;">3a</div>
+      <div class="styLNDesc" style="width:145mm;height:auto;">
         Name and address of seller or person from whom property was acquired  
         <br/>  
+        <span style="padding-left:.3mm;"/>
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="SellerName/BusinessNameLine1Txt" />
         </xsl:call-template>    
         <xsl:if test="SellerName/BusinessNameLine2Txt">
           <br/>
+        <span style="padding-left:.3mm;"/>
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="SellerName/BusinessNameLine2Txt" />
           </xsl:call-template>
         </xsl:if>  
-        <br />
+        <br/>
         <xsl:choose>
         	<xsl:when test="SellerUSAddress"> 
+        	
         		<xsl:call-template name="PopulateUSAddressTemplate">
           			<xsl:with-param name="TargetNode" select="SellerUSAddress" />
        		 </xsl:call-template>
        	 </xsl:when>
        	 <xsl:otherwise>
+       
        	 	<xsl:call-template name="PopulateForeignAddressTemplate">
          			 <xsl:with-param name="TargetNode" select="SellerForeignAddress" />
       		      </xsl:call-template>
@@ -2518,7 +2562,7 @@
         </xsl:choose>  
        
       </div>  
-      <div class="styLNAmountBox" style="height:20mm;border-bottom-width:0px;text-align:center;float:right;" >
+      <div class="styLNAmountBox" style="height:22mm;border-bottom-width:0px;text-align:center;float:right;" >
         <b>b </b><span style=" width:10px;"> </span> Date acquired
         <br/><br/>
         <xsl:call-template name="PopulateMonthDayYear">
@@ -2596,8 +2640,8 @@
     <div class="styBB" style="width:187mm;">
       <div style="width:187mm;">
         <div style="float:left">
-          <div class="styLNLeftNumBoxSD" style="height:4mm;">5a</div>  
-          <div class="styFormTLnDesc">
+          <div class="styLNLeftNumBoxSD" style="height:auto;">5a</div>  
+          <div class="styFormTLnDesc" style="height:auto;">
              Amount of other consideration
           </div>              
         </div>
@@ -2615,8 +2659,8 @@
       </div>  
       <div style="width:187mm;">
         <div style="float:left">
-          <div class="styLNLeftLtrBox" style="height:4mm;padding-left:4.3mm;">b</div>  
-          <div class="styFormTLnDesc">
+          <div class="styLNLeftLtrBox" style="height:auto;padding-left:4.3mm;">b</div>  
+          <div class="styFormTLnDesc" style="height:auto;">
               Explain the nature of other consideration and how you determined the amount shown on line 5a.
           </div>              
         </div>
@@ -2625,11 +2669,11 @@
           </div>
         </div>
       </div>
-      <div style="width:187mm;height:100%;border:0 solid red;">
-        <div style="float:left;">
+      <div style="width:187mm;height:100%;border:0 solid red;background-color:lightgrey;">
+        <div style="float:left;background-color:white;border-right-width:1px;border-right-style:solid;">
           <div class="styLNLeftLtrBox" style=""></div>  
-          <div class="styGenericDiv" style="width:146mm;">
-            <span class="styBB" style="width:146mm;">
+          <div class="styGenericDiv" style="width:147mm;">
+            <span class="styBB" style="width:147mm;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="OtherConsiderationNatureTxt"/>
               </xsl:call-template>
@@ -2649,7 +2693,7 @@
       <div style="float:right">  
         <!--Dotted Line-->
         <span class="styFormTDotLnDesc">  
-          .........................  
+          .....................  
         </span>    
         <div class="styLNAmountBox" style="height:10mm;border-bottom-width: 0px;" >    
           <xsl:call-template name="PopulateAmount">
@@ -2696,7 +2740,7 @@
         </div>
       </div>
     </div>
-    <table summary="Allocation of total cost or other basis on books" cellpadding="0" cellspacing="0"  class="styFormTTable">
+    <table summary="Allocation of total cost or other basis on books" cellpadding="0" cellspacing="0"  class="styFormTTable" style="display:table;">
       <thead class="styTableThead">
         <tr>
           <th style="width: 80mm;font-size:7pt;text-align:left;font-weight:normal;" scope="col" class="styFormTTablesHeaders ">
@@ -2807,7 +2851,7 @@
           <td style="width: 80mm;text-align: left;" scope="row" class="styFormTTablesCells ">
             <div style="float:left;font-size:7pt;">
               <div style="height:4mm;" class="styLNLeftLtrBox">c</div>
-              <div class="styFormTLnDesc">
+              <div class="styFormTLnDesc" style="height:auto;">
                 Improved land (describe)
                 <img src="{$ImagePath}/T_Bullet.gif" alt="Bullet Image" />
                 <span style="width:4px;"></span>
@@ -2863,9 +2907,10 @@
               <xsl:attribute name="style">width: 80mm;text-align: left;vertical-align:top;</xsl:attribute>
             </xsl:if>
             <div style="float:left;font-size:7pt;width:76mm;">
-              <div style="height:20mm;" class="styLNLeftLtrBox">d</div>
-              <div class="styFormTLnDesc">
-                Merchantable timber. Estimate the quantity of merchantable timber present on the acquisition date (see Regulations section
+              <div style="" class="styLNLeftLtrBox"></div>
+              <div class="styFormTLnDesc" style="padding-left:3mm;">
+               <b>d</b> Merchantable timber. Estimate the quantity of 
+               merchantable timber present on the acquisition date <br></br>(see Regulations section
                 1.611-3(e)). Details of the timber estimate, made for purposes of the acquisition, should be available if your return is examined.
               </div>
             </div>
@@ -2975,11 +3020,11 @@
               <xsl:attribute name="style">width: 80mm;text-align: left;vertical-align:top;</xsl:attribute>
             </xsl:if>
             <div style="float:left;font-size:7pt;width:76mm;">
-              <div style="height:12mm;" class="styLNLeftLtrBox">e</div>
-              <div class="styFormTLnDesc">
-                Premerchantable timber. Make an allocation
-                here only if it is a factor in the total cost or
-                value of the land.
+              <div style="height:4mm;" class="styLNLeftLtrBox"></div>
+              <div class="styFormTLnDesc" style="padding-left:3mm;">
+               <b>e</b> Premerchantable timber. Make an allocation
+                here only<br></br>
+                <div class="styFormTLnDesc" style="padding-left:3mm;"> if it is a factor in the total cost or value of the land.</div>
               </div>
             </div>
             <div style="float:left;">
@@ -3098,22 +3143,22 @@
         </tr>
         <xsl:for-each select="Improvement">
           <tr>
-            <td style="width:80mm;text-align: left;border-bottom-width:0px;" scope="row" class="styFormTTablesCells " >
+            <td style="width:80mm;text-align: left;border-bottom-width:0px;height:auto;" scope="row" class="styFormTTablesCells " >
               <xsl:if test="position() = last() and position() &gt;= 6">
-                <xsl:attribute name="style">width:80mm;text-align: left;</xsl:attribute>
+                <xsl:attribute name="style">width:80mm;text-align: left;height:auto;</xsl:attribute>
               </xsl:if>
               <div style="float:left;font-size:7pt;height:4mm;">
                 <div style="height:4mm;" class="styLNLeftLtrBox"></div>
                 <xsl:choose>
                   <xsl:when test="position() = last() and position() &gt;= 6">
-                    <div style="height:4mm;float:left;clear:none;" class="styGenericDiv">
+                    <div style="width:70mm;height:auto;float:left;clear:none;" class="styGenericDiv">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="Desc" />
                       </xsl:call-template>
                     </div>
                   </xsl:when>
                   <xsl:otherwise>
-                    <div style="width:70mm;height:4mm;float:left;clear:none;" class="styBB">
+                    <div style="width:70mm;height:auto;float:left;clear:none;" class="styBB">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="Desc" />
                       </xsl:call-template>
@@ -3240,19 +3285,25 @@
     </table>
     <xsl:choose>
       <xsl:when test="(position() = count($FormTAData)) or (count($FormTAData)=0)">
-          <div style="width:187mm;clear:both;padding-top:1mm;" class="pageend">
+          <div style="width:187mm;clear:both;padding-top:1mm;" class="pageEnd">
             <span style="width:100mm;font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see separate instructions.</span>
             <span style="width:33mm;font-weight:normal;" class="styGenericDiv">Cat. No. 16717G</span>
             <span style="float:right;" class="styGenericDiv">Form <span class="styBoldText">T (Timber)</span> (Rev. 12-2013)</span>
           </div>
+          
       </xsl:when>
-      <xsl:otherwise><div style="width:187mm;clear:both;padding-top:1mm;" class="pageend"></div></xsl:otherwise>
+      <xsl:otherwise>
+      <div style="width:187mm;clear:both;padding-top:1mm;" class="pageEnd">
+      </div>
+      <p style="page-break-before: always"/>
+      </xsl:otherwise>
     </xsl:choose>
 
   </xsl:template>
-  
+    
   <xsl:template name="populatepartii">
     <xsl:param name="AdditionalDataMsg">false</xsl:param>
+  <p style="page-break-before: always"/>
     <div class="styBB" style="width:187mm;padding-bottom:.5mm;">
       <div style="float:left;">Form T (Timber) (Rev. 12-2013)<span style="width:128mm;"></span></div>
       <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></div>
@@ -3267,7 +3318,7 @@
       <div style="width:187mm;height:6mm;">
         <div style="float:left">
           <div class="styLNLeftNumBoxSD" style="height:6mm;">1</div>
-          <div class="styGenericDiv" style="width:50mm;padding-top:.5mm;">
+          <div class="styGenericDiv" style="width:50mm;padding-top:.5mm;height:auto;">
              Name of block and title of account <span style="width:4px;"></span>
              <img alt="Bullet Image" src="{$ImagePath}/T_Bullet.gif" />
              <span style="width:4px;"></span>
@@ -3297,15 +3348,15 @@
             used, provide details 
             <img alt="Bullet Image" src="{$ImagePath}/T_Bullet.gif" />
             <span style="width:4px;"></span>
-            <span style="width:81mm;border-bottom:1 solid black;">
+            <span style="width:83mm;border-bottom:1px solid black;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="LogRuleUsedTxt"/>
               </xsl:call-template>
             </span>
           </div>
         </div>
-        <div style="float:right;font-weight:bold;height:12mm;">
-          <div class="styLNAmountBoxNBB" style="height:4mm;text-align:center;background-color:lightgrey;border-bottom-width:1px;" >
+      
+      <div class="styLNAmountBoxNBB" style="height:4mm;text-align:center;background-color:lightgrey;border-bottom-width:1px;" >
           </div>
           <div class="styLNAmountBoxNBB" style="height:4mm;text-align:center;background-color:lightgrey;border-bottom-width:1px;" >
           </div>
@@ -3314,15 +3365,15 @@
           </div>
           <div class="styLNAmountBoxNBB" style="height:8mm;text-align:center;" >
             (b) <br />Cost or other basis
-          </div>
+          
         </div>
       </div>
     </div>
     <div class="styBB" style="width:187mm;">
       <div style="width:187mm;">
         <div style="float:left">
-          <div class="styLNLeftNumBoxSD" style="height:4mm;">2</div>
-          <div class="styFormTLnDesc">
+          <div class="styLNLeftNumBoxSD" style="height:auto;">2</div>
+          <div class="styFormTLnDesc" style="height:auto;">
              Estimated quantity of timber and cost or other basis returnable through depletion
            </div>
         </div>
@@ -3342,7 +3393,7 @@
         </div>
         <div style="float:right">
           <span style="float:left" class="styFormTDotLn">
-              .................
+              ................
           </span>
           <div class="styLNAmountBox" style="height:4.5mm;padding-right:.5mm;" >
             <xsl:call-template name="PopulateAmount">
@@ -3833,19 +3884,19 @@
       <div style="width:187mm;">
         <div style="float:left">
           <div class="styLNLeftNumBox" style="height:4mm;">18</div>
-          <div class="styFormTLnDesc" style="height:4mm;font-weight:bold;">Section 631(a):</div>
+          <div class="styFormTLnDesc" style="height:auto;font-weight:bold;">Section 631(a):</div>
         </div>
       </div>
       <div style="width:187mm;">
         <div style="float:left">
-          <div class="styLNLeftLtrBox" style="height:7mm;padding-left:4.3mm;">a</div>
-          <div class="styGenericDiv" style="width:157mm;height:7mm;padding-top:.5mm;padding-bottom:.5mm;">
+          <div class="styLNLeftLtrBox" style="height:auto;padding-left:4.3mm;">a</div>
+          <div class="styGenericDiv" style="width:157mm;height:auto;padding-top:.5mm;padding-bottom:.5mm;">
             Are you electing, or have you made an election in a prior tax year that is in effect, to report gains or losses from the cutting of timber under section 631(a)? (see instructions)
             <span class="styDotLn" style="float:none;clear:none;">....................</span>
           </div>
         </div>
         <div style="float:right;padding-top:3.5mm;">
-         <div class="styLNDesc" style="width:10mm;text-align:right;">
+         <div class="styLNDesc" style="height:auto;width:12mm;text-align:right;">
             <span>
               <xsl:call-template name="PopulateSpan">
                 <xsl:with-param name="TargetNode" select="Section631aElectionInd" />
@@ -3863,7 +3914,7 @@
               Yes
             </label>
           </div>
-           <div class="styLNDesc" style="width:10mm;text-align:right;">
+           <div class="styLNDesc" style="height:auto;width:10mm;text-align:right;">
                <span>
               <xsl:call-template name="PopulateSpan">
                 <xsl:with-param name="TargetNode" select="Section631aElectionInd" />
@@ -3886,13 +3937,13 @@
       <div style="width:187mm;">
         <div style="float:left">
           <div class="styLNLeftLtrBox" style="height:4mm;padding-left:4.3mm;">b</div>
-          <div class="styFormTLnDescPartII " style="padding-top:.5mm;height:4mm;">
+          <div class="styFormTLnDescPartII " style="padding-top:.5mm;height:auto;">
              Are you revoking your section 631(a) election (see instructions)?
-            <span class="styDotLn" style="float:none;clear:none;">..................</span>             
+            <span class="styDotLn" style="float:none;clear:none;">................</span>             
           </div>
         </div>
           <div style="float:right;">
-           <div class="styLNDesc" style="width:10mm;text-align:right;">
+           <div class="styLNDesc" style="height:auto;width:12mm;text-align:right;">
               <span>
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="Section631aRevocationInd" />
@@ -3910,7 +3961,7 @@
                 Yes
               </label>
             </div>
-           <div class="styLNDesc" style="width:10mm;text-align:right;">
+           <div class="styLNDesc" style="height:auto;width:10mm;text-align:right;">
                <span>
               <xsl:call-template name="PopulateSpan">
                 <xsl:with-param name="TargetNode" select="Section631aRevocationInd" />
@@ -3942,6 +3993,7 @@
 
   <xsl:template name="populatepartiii">
     <xsl:param name="AdditionalDataMsg">false</xsl:param>
+    <p style="page-break-before: always"/>
     <div class="styBB" style="width:187mm;padding-bottom:.5mm;">  
       <div style="float:left;">Form T (Timber) (Rev. 12-2013)<span style="width:128mm;"></span></div>
       <div style="float:right;">Page <span style="font-weight:bold;font-size:7pt;">3</span></div>  
@@ -3969,42 +4021,46 @@
       </div>
     </div>
     <div class="styBB" style="width:187mm;">
-      <div class="styLNLeftNumBoxSD" style="height:4mm;">2</div>
-      <div  class="styLNDesc" style="width:178mm;">
+      <div class="styLNLeftNumBoxSD" style="height:auto;">2</div>
+      <div  class="styLNDesc" style="height:auto;width:178mm;">
         Location of property (by legal subdivisions or map surveys)
         <br/>
         <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="PropertyLocationTxt" /></xsl:call-template>          
       </div>
     </div>  
-    <div class="styBB" style="width:187mm;height:20mm;">
-      <div class="styLNLeftNumBoxSD" style="height:20mm;">3a</div>
-      <div class="styLNDesc" style="width:145mm;height:20mm;">
+    <div class="styBB" style="width:187mm;height:auto;">
+      <div class="styLNLeftNumBoxSD" style="height:auto;">3a</div>
+      <div class="styLNDesc" style="width:145mm;height:auto;">
         Purchaser’s name and address  
         <br/>  
+        <span style="padding-left:.3mm;"/>
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="PurchaserName/BusinessNameLine1Txt" />
         </xsl:call-template>    
         <xsl:if test="PurchaserName/BusinessNameLine2Txt">
           <br/>
+           <span style="padding-left:.3mm;"/>
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="PurchaserName/BusinessNameLine2Txt" />
           </xsl:call-template>
         </xsl:if>  
-        <br />  
+        <br/>  
          <xsl:choose>
         	<xsl:when test="PurchaserUSAddress"> 
+        	
         		<xsl:call-template name="PopulateUSAddressTemplate">
           			<xsl:with-param name="TargetNode" select="PurchaserUSAddress" />
        		 </xsl:call-template>
        	 </xsl:when>
        	 <xsl:otherwise>
+       	 
        	 	<xsl:call-template name="PopulateForeignAddressTemplate">
          			 <xsl:with-param name="TargetNode" select="PurchaserForeignAddress" />
       		      </xsl:call-template>
        	 </xsl:otherwise>
         </xsl:choose>  
       </div>  
-      <div class="styLNAmountBox" style="height:20mm;border-bottom-width:0px;text-align:center;float:right;" >
+      <div class="styLNAmountBox" style="height:22mm;border-bottom-width:0px;text-align:center;float:right;" >
         <b>b </b><span style=" width:10px;"> </span> Date of sale
               <br/><br/>
         <xsl:call-template name="PopulateMonthDayYear">
@@ -4083,8 +4139,8 @@
     <div class="styBB" style="width:187mm;">
       <div style="width:187mm;">
         <div style="float:left">
-          <div class="styLNLeftNumBoxSD" style="height:4mm;">5a</div>  
-          <div class="styFormTLnDesc" >
+          <div class="styLNLeftNumBoxSD" style="height:auto;">5a</div>  
+          <div class="styFormTLnDesc" style="height:auto;">
              Amount of other consideration
            </div>              
         </div>
@@ -4102,8 +4158,8 @@
       </div>  
       <div style="width:187mm;">
         <div style="float:left">
-          <div class="styLNLeftLtrBox" style="height:4mm;padding-left:4.2mm;">b</div>  
-          <div class="styFormTLnDesc">
+          <div class="styLNLeftLtrBox" style="height:auto;padding-left:4.2mm;">b</div>  
+          <div class="styFormTLnDesc" style="height:auto;">
               Explain the nature of other consideration and how you determined the amount shown on line 5a:  
            </div>                
         </div>
@@ -4112,11 +4168,12 @@
           </div>
         </div>
       </div>
-      <div style="width:187mm;height:100%;">
-        <div style="float:left;height:100%;">
+      <div style="width:187mm;height:100%;border:0 solid red;background-color:lightgrey;">
+        <div style="float:left;background-color:white;border-right-width:1px;border-right-style:solid;">
+
           <div class="styLNLeftLtrBox"></div>  
-          <div class="styGenericDiv" style="width:146mm;">
-            <span class="styBB" style="width:146mm;">
+          <div class="styGenericDiv" style="width:147mm;">
+            <span class="styBB" style="width:147mm;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="OtherConsiderationNatureTxt"/>
               </xsl:call-template>
@@ -4136,7 +4193,7 @@
       <div style="float:right">  
         <!--Dotted Line-->
         <span class="styFormTDotLnDesc">  
-          ..........
+          .......
         </span>    
         <div class="styLNAmountBox" style="height:4mm;border-bottom-width: 0px;" >    
           <xsl:call-template name="PopulateAmount">
@@ -4146,7 +4203,7 @@
       </div>
     </div>
         <!--Part III line 7 -->
-    <table summary="Allocation of total cost or other basis on books" cellpadding="0" cellspacing="0" class="styFormTTable">
+    <table summary="Allocation of total cost or other basis on books" cellpadding="0" cellspacing="0" class="styFormTTable" style="display:table;">
       <thead class="styTableThead">
         <tr>
           <th style="width: 80mm;font-size:7pt;text-align:left;font-weight:normal;" scope="col" class="styFormTTablesHeaders ">
@@ -4260,7 +4317,7 @@
           <td style="width: 80mm;text-align: left;" scope="row" class="styFormTTablesCells ">
             <div style="float:left;font-size:7pt;">
               <div style="height:4mm;" class="styLNLeftLtrBox">c</div>
-              <div class="styFormTLnDesc">
+              <div class="styFormTLnDesc" style="height:auto;">
                 Improved land (describe)
                 <img alt="Bullet Image" src="{$ImagePath}/T_Bullet.gif" />
                 <span style="width:4px;"></span>
@@ -4317,9 +4374,9 @@
               <xsl:attribute name="style">width: 80mm;text-align: left;vertical-align:top;</xsl:attribute>
             </xsl:if>
             <div style="float:left;font-size:7pt;width:76mm;">
-              <div style="height:20mm;" class="styLNLeftLtrBox">d</div>
-              <div class="styFormTLnDesc">
-            Merchantable timber. Estimate in detail the quantity of merchantable timber on the date of sale or exchange. Include the quantity of
+              <div style="height:4.5mm;" class="styLNLeftLtrBox"></div>
+              <div class="styFormTLnDesc" style="padding-left:3mm;">
+           <b>d</b> Merchantable timber. Estimate in detail the quantity of merchantable timber on the date of sale or exchange. Include the quantity of
             timber in each species of timber by diameter at breast height (DBH) classes. State the log rule used if the unit of measure is thousand 
             board feet (MBF), log scale. If another unit of measure is used, provide details. <img alt="Bullet Image" src="{$ImagePath}/T_Bullet.gif" /><br />
               </div>
@@ -4328,8 +4385,8 @@
               <img alt="Bullet Image" src="{$ImagePath}/T_Bracket_Lg.gif" height="85" width="6"  />
             </div>
             <xsl:for-each select="LogRuleUsedTxt">
-              <div style="height:4.5mm;" class="styLNLeftLtrBox"></div>
-              <div class="styBB" style="height:4.5mm;width:66mm;float:left;clear:none;padding-top:.5mm;">
+              <div style="height:auto;" class="styLNLeftLtrBox"></div>
+              <div class="styBB" style="height:auto;width:66mm;float:left;clear:none;padding-top:.5mm;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="." />
                 </xsl:call-template>
@@ -4482,7 +4539,7 @@
                 Premerchantable timber
                 <!--Dotted Line-->
                 <span style="letter-spacing:4mm; font-weight:bold;">  
-                    .......
+                    .....
                   </span>
               </div>
             </div>
@@ -4602,22 +4659,22 @@
         </tr>
         <xsl:for-each select="Improvement">
           <tr>
-            <td style="width:80mm;text-align: left;border-bottom-width:0px;" scope="row" class="styFormTTablesCells " >
+            <td style="width:80mm;text-align: left;border-bottom-width:0px;height:auto;" scope="row" class="styFormTTablesCells " >
               <xsl:if test="position() = last() and position() &gt;=6">
-                <xsl:attribute name="style">width:80mm;text-align:left;</xsl:attribute>
+                <xsl:attribute name="style">width:80mm;text-align:left;height:auto;</xsl:attribute>
               </xsl:if>
-              <div style="float:left;font-size:7pt;height:4mm;">
+              <div style="float:left;font-size:7pt;height:auto;">
                 <div style="height:4mm;" class="styLNLeftLtrBox"></div>
                 <xsl:choose>
                   <xsl:when test="position() = last() and position() &gt;= 6">
-                    <div style="height:4mm;float:left;clear:none;" class="styGenericDiv">
+                    <div style="width:70mm;height:auto;float:left;clear:none;" class="styGenericDiv">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="Desc" />
                       </xsl:call-template>
                     </div>
                   </xsl:when>
                   <xsl:otherwise>
-                    <div style="width:70mm;height:4mm;float:left;clear:none;" class="styBB">
+                    <div style="width:70mm;height:auto;float:left;clear:none;" class="styBB">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="Desc" />
                       </xsl:call-template>
@@ -4768,7 +4825,7 @@
               </div>
             </div>
             <div class="styFormTDotLn">
-              ..............
+              ...........
             </div>
           </td>
           <td style="width: 32.5mm; height: 4mm; border-right:0;vertical-align:bottom;" class="styFormTTablesCells ">
@@ -4786,24 +4843,24 @@
     <xsl:param name="AdditionalDataMsg">false</xsl:param>
     <xsl:variable name="pos" select="position()"/>
     <xsl:if test="count($FormTADataIV[$pos]/ReforestationExpensesInfoGrp) &gt;4">
-      <div style="width:187mm;height:3mm;" class="styBB">
+      <div style="width:187mm;height:auto;" class="styBB">
         <div class="styGenericDiv" style="float:right;">
-         <xsl:call-template name="SetDynamicTableToggleButton">
+        <!-- <xsl:call-template name="SetDynamicTableToggleButton">
               <xsl:with-param name="TargetNode" select="$FormTADataIV[$pos]/ReforestationExpensesInfoGrp"/>
             <xsl:with-param name="containerHeight" select="4"/>
             <xsl:with-param name="headerHeight" select="1"/>
               <xsl:with-param name="containerID" select=" concat('Actn',position())" />
-           </xsl:call-template> 
+           </xsl:call-template> -->
        </div>
       </div>
     </xsl:if>
   <!-- Start the table -->
-    <div style="height:32.75mm;" class="styTableContainer">
+    <div style="height:32.75mm;display:table;" class="styTableContainer">
       <xsl:attribute name="id">
       <xsl:value-of select = "concat('Actn',position())" />
       </xsl:attribute>
       <xsl:call-template name="SetInitialState" />
-      <table cellpadding="0" cellspacing="0" style="float:none;" class="styTable">
+      <table cellpadding="0" cellspacing="0" style="float:none;display:table;" class="styTable">
         <thead class="styTableThead">
           <tr style="font-weight:bold;">
             <th style="width: 65mm;" scope="col" class="styFormTTablesHeaders ">
@@ -4825,25 +4882,26 @@
         <tfoot></tfoot>
         <tbody>
               <xsl:for-each select="ReforestationExpensesInfoGrp">
-                <tr style="height:6mm;">
-                  <td style="width: 65mm;text-align:left;" class="styFormTTablesCells ">
+                <tr style="height:auto;">
+                  <td style="width: 65mm;text-align:left;height:auto;" class="styFormTTablesCells ">
                     <xsl:if test="position() = last() and position() &gt;= 4">
                       <xsl:attribute name="style">width: 65mm;text-align:left;border-bottom-width:0px;</xsl:attribute>
                     </xsl:if>
-                    <xsl:if test="position() = 1"><span style="font-weight:bold;padding-right:2mm;">1</span>
+                    <xsl:if test="position() = 1"><span style="font-weight:bold;">1</span>
+                    <span style="padding-left:3mm;;"></span>
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="AccountBlockTractOrAreaTxt"/>
                       </xsl:call-template>
                     </xsl:if>
                     <xsl:if test="position() != 1">
-                    <span style="padding-left:4mm;">
+                   <span style="padding-left:3mm;;"></span>
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="AccountBlockTractOrAreaTxt"/>
                     </xsl:call-template>
-                    </span>
+                   
                     </xsl:if>
                   </td>
-                  <td style="width: 58mm; text-align: left;"  class="styFormTTablesCells">
+                  <td style="width: 58mm; text-align: left;height:auto;"  class="styFormTTablesCells">
                     <xsl:if test="position() = last() and position() &gt;= 4">
                       <xsl:attribute name="style">width: 58mm;text-align:left;border-bottom-width:0px;</xsl:attribute>
                     </xsl:if>
@@ -4851,7 +4909,7 @@
                       <xsl:with-param name="TargetNode" select="KindOfActivityTxt"/>
                     </xsl:call-template>
                   </td>
-                  <td style="width: 32mm; text-align: right;" class="styFormTTablesCells ">
+                  <td style="width: 32mm; text-align: right;height:auto;" class="styFormTTablesCells ">
                     <xsl:if test="position() = last() and position() &gt;= 4">
                       <xsl:attribute name="style">width:32mm;text-align:right;border-bottom-width:0px;</xsl:attribute>
                     </xsl:if>
@@ -4860,7 +4918,7 @@
                       <xsl:with-param name="TargetNode" select="AcresTreatedQty"/>
                     </xsl:call-template>
                   </td>
-                  <td style="width: 32mm; text-align: right;border-right-width:0px;" class="styFormTTablesCells ">
+                  <td style="width: 32mm; text-align: right;border-right-width:0px;height:auto;" class="styFormTTablesCells ">
                     <xsl:if test="position() = last() and position() &gt;= 4">
                       <xsl:attribute name="style">width:32mm;text-align:right;border-bottom-width:0px;border-right-width:0px;</xsl:attribute>
                     </xsl:if>
@@ -4908,10 +4966,10 @@
       </xsl:call-template>
       <!-- Part IV line 2 -->
     <div class="styBB" style="width:187mm;">
-      <div style="width:185mm;">
+      <div style="width:187mm;">
         <div style="float:left">
           <div class="styLNLeftNumBox" style="height:4mm;">2</div>
-          <span style="padding-top:.5mm;height:4mm;">Total</span>
+          <span style="padding-top:.5mm;height:auto;">Total</span>
         </div>
         <!--Dotted Line-->
         <div style="float:right">
@@ -4934,7 +4992,7 @@
     </div>
     <!-- Part IV line 3 -->
     <div class="styBB" style="width:187mm;">
-      <div style="width:185mm;">
+      <div style="width:187mm;">
         <div style="float:left">
           <div class="styLNLeftNumBox" style="height:4mm;">3</div>
           <span style="padding-top:.5mm;height:4mm;">Total reforestation expenses</span>
@@ -4959,7 +5017,7 @@
       </div>
     </div>
     <div class="styNBB" style="width:187mm;">
-      <div style="width:185mm;">
+      <div style="width:187mm;">
         <div style="float:left">
           <div class="styLNLeftNumBox" style="height:4mm;">4a</div>
           <span style="padding-top:.5mm;height:4mm;">Amount to be expensed under section 194(b).</span>
@@ -4972,7 +5030,7 @@
       </div>
     </div>  
     <div class="styBB" style="width:187mm;">
-      <div style="width:185mm;">
+      <div style="width:187mm;">
         <div style="float:left">
           <div class="styLNLeftNumBox" style="height:4mm;"></div>
           <span style="padding-top:.5mm;height:4mm;">(See instructions for limitations)</span>
@@ -4991,7 +5049,7 @@
       </div>
     </div>          
     <div class="styNBB" style="width:187mm;">
-      <div style="width:185mm;">
+      <div style="width:187mm;">
         <div style="float:left">
           <div class="styLNLeftLtrBox" style="height:4mm;">b</div>
           <span style="padding-top:.5mm;height:4mm;">Amount to be amortized under IRC 194(a), including remaining reforestation</span>
@@ -5010,14 +5068,14 @@
       </div>
     </div>  
     <div class="styBB" style="width:187mm;">
-      <div style="width:185mm;">
+      <div style="width:187mm;">
         <div style="float:left">
           <div class="styLNLeftNumBox" style="height:4mm;"></div>
           <span style="padding-top:.5mm;height:4mm;">expenditures not expensed under section 194(b)</span>
         </div>
         <div style="float:right">
           <span style="letter-spacing:4mm; font-weight:bold; float:left;padding-top:.5mm;height:4mm;">
-              .........
+              ....
           </span>        
           <div class="styLNAmountBoxNBB" style="height:4.5mm;width:32mm;padding-right:0.5mm;border-right-width:1px;background-color:lightgrey;" ></div>
           <div class="styLNAmountBoxNBB" style="height:4.5mm;width:32mm;padding-right:0.5mm;border-left-width:0px;" >
@@ -5035,7 +5093,8 @@
 
   <xsl:template name="populatepartv">
     <xsl:param name="AdditionalDataMsg">false</xsl:param>
-    <table cellpadding="0" cellspacing="0" class="styFormTTable">
+    <div class="styBB" style="width:187mm;float:left;">
+    <table cellpadding="0" cellspacing="0" class="styFormTTable" style="display:table;">
       <thead class="styTableThead">
         <tr>
           <th style="width: 90mm;font-size:7pt;text-align:left;font-weight:normal;" scope="col" class="styFormTTablesHeaders">
@@ -5043,7 +5102,7 @@
              <div class="styFormTLnDesc">Name of block and title of account <img alt="Bullet Image" src="{$ImagePath}/T_Bullet.gif"  />
              
              </div>
-            <div class="styBB" style="width:70mm;float:left;clear:none;height:4mm;padding-left:8mm;">
+            <div class="styBB" style="width:70mm;float:left;clear:none;height:auto;padding-left:8mm;border-bottom-width:0px;">
               <xsl:if test="$AdditionalDataMsg= 'true' ">
                 <xsl:call-template name="PopulateAdditionalDataTableMessage">
                   <xsl:with-param name="TargetNode" select="$FormTADataV" />
@@ -5191,9 +5250,9 @@
           </td>
         </tr>
         <tr>
-          <td style="width: 90mm;font-size:7pt;text-align:left;font-weight:normal;" scope="col" class="styFormTTablesCells ">
+          <td style="width: 90mm;font-size:7pt;text-align:left;font-weight:normal;height:auto;" scope="col" class="styFormTTablesCells ">
             <div style="float:left;font-size:7pt;">
-              <div style="height:4mm;" class="styLNLeftNumBox">6</div>
+              <div style="height:auto;" class="styLNLeftNumBox">6</div>
               Balance at end of year. Add lines 2 and 3, subtract line 4 and add or subtract line 5
             <!--Dotted Line-->
               <span class="styBoldText">
@@ -5229,6 +5288,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
           <!-- Additional Info -->
           <div class="styNBB" style="width:187mm;">
             <div style="padding-left:9mm;font-weight:bold;">Additional Information.</div>
@@ -5354,7 +5414,7 @@
   </xsl:template>
   
   <xsl:template name="populatefooter">
-    <div style="width:187mm;clear:both;padding-top:1mm;" class="pageend">
+    <div style="width:187mm;clear:both;padding-top:1mm;" class="pageEnd">
       <span style="width:114mm;font-weight:bold;" class="styGenericDiv"></span>
       <span style="width:19mm;font-weight:normal;" class="styGenericDiv"></span>
       <span style="float:right;" class="styGenericDiv">Form <span class="styBoldText">T (Timber)</span> (Rev. 12-2013)</span>

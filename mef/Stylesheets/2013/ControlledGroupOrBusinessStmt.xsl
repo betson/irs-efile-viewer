@@ -15,8 +15,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -42,7 +44,7 @@
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
 				<div class="styDepTitleLine">
-					<span class="styDepTitle" style="width:115mm">
+					<span class="styDepTitle" style="width:187mm">
 						<xsl:value-of select="$depDocTitle"/>
 					</span>
 				</div>
@@ -52,7 +54,8 @@
 				</xsl:call-template>
 				<div class="styTopSectionLine">
 					<div style="float:left;clear:none;" class="styTopSectionLineLbl">Explanation</div>
-					<div class="styExplanationLine">
+					<br/>
+					<div class="styExplanationLine" style="width:187mm;">
 						<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="$CPSData/ExplanationTxt"/>
 						</xsl:call-template>

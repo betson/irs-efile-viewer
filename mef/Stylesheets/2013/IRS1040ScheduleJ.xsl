@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1040SJData" select="$RtnDoc/IRS1040ScheduleJ"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1040SJData)"/>
@@ -40,7 +42,7 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styTBB" style="width:187mm;height:22mm;">
 						<div class="styFNBox" style="width:31mm;height:100%;">
-							<div class="styFN" style="font-size:14;">SCHEDULE J <br/><span style="font-size:12;">(Form 1040)</span></div>
+							<div class="styFN" style="font-size:10pt;">SCHEDULE J <br/><span style="font-size:10pt;">(Form 1040)</span></div>
 							<!--General Dependency Push Pin-->
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$Form1040SJData"/>
@@ -50,11 +52,11 @@
 						</div>
 						<div class="styFTBox" style="width:125mm;height:100%;">
 							<div class="styFMT">Income Averaging for <br/>Farmers and Fishermen</div>
-							<div class="styFBT">
+							<div class="styFBT" style="margin-top:0.4mm;">
 								<img src="{$ImagePath}/1040ScheduleJ_Bullet.gif" alt="Bullet Point"/>
 								Attach to Form 1040 or Form 1040NR.<br/>
 								<img src="{$ImagePath}/1040ScheduleJ_Bullet.gif" alt="Bullet Point"/>
-								See separate Instructions. Also see <i>www.irs.gov/schedulej</i>.
+								Information about Schedule J and its separate instructions is at <i>www.irs.gov/form1040</i>.
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:100%;">
@@ -79,7 +81,7 @@
 							</span>
 						</div>
 					</div>
-					<div class="styTBB">
+					<div class="styTBB" style="float:none;clear:both;">
 						<!-- Line 1 -->
 						<div class="styGenericDiv" style="width:187mm;">
 							<div class="styLNLeftNumBoxSD">1</div>
@@ -142,7 +144,7 @@
 							<div class="styLNDesc" style="width:97.8mm;padding-right:2mm;">
 								Excess, if any, of net long-term capital gain over net short-term <br/>
 								<span style="float:left;">capital loss</span>
-								<span class="styIRS1040SJDots">................</span>
+								<span class="styIRS1040SJDots">...............</span>
 							</div>
 							<div class="styGenericDiv" style="width:8mm;">
 								<div class="styLNRightNumBox" style="border-width:0px;"/>
@@ -194,7 +196,7 @@
 							<div class="styLNLeftNumBoxSD">3</div>
 							<div class="styLNDesc">
 								<span style="float:left;">Subtract line 2a from line 1</span>
-								<span class="styIRS1040SJDots">.....................</span>
+								<span class="styIRS1040SJDots">....................</span>
 							</div>
 							<div class="styLNRightNumBox">3</div>
 							<div class="styLNAmountBox">
@@ -237,7 +239,8 @@
 							<div class="styLNDesc" style="width:93.8mm;">
 								If you used Schedule J to figure your tax for:<br/>
 								&#8226; 2012, enter the amount from your 2012 Schedule J, line 11.<br/>
-								&#8226; <span style="">2011 but not 2012, enter the amount from your 2011 Schedule J, line 15.</span><br/>
+								&#8226; 2011 but not 2012, enter the amount from your 2011 Schedule J, <br/>
+								<span style="width:2mm;"/>line 15.<br/>
 								&#8226; 2010 but not 2011 or 2012, enter the amount from your 2010 <br/> 
 								<span style="width:2mm;"/>Schedule J, line 3.<br/>
 								Otherwise, enter the taxable income from your <b>2010</b> Form 1040,<br/>
@@ -277,7 +280,7 @@
 							<div class="styLNLeftNumBoxSD">6</div>
 							<div class="styLNDesc" style="width:97.8mm;padding-right:2mm;">
 								<span style="float:left;">Divide the amount on <b>line 2a</b> by 3.0</span>
-								<span class="styIRS1040SJDots">..........</span>
+								<span class="styIRS1040SJDots">.........</span>
 							</div>
 							<div class="styLNRightNumBox">6</div>
 							<div class="styLNAmountBox" style="padding-right:1px;width:32.2mm">
@@ -379,7 +382,7 @@
 							<div class="styLNLeftNumBox">10</div>
 							<div class="styLNDesc" style="width:97.8mm;padding-right:2mm;">
 								<span style="float:left;">Enter the amount from line 6</span>
-								<span class="styIRS1040SJDots">............</span>
+								<span class="styIRS1040SJDots">...........</span>
 							</div>
 							<div class="styLNRightNumBox">10</div>
 							<div class="styLNAmountBox" style="padding-right:1px;width:32.2mm">
@@ -449,7 +452,7 @@
 								from your <b>2012</b> Form 1040, line 43; Form 1040A, line 27; Form<br/>
 								1040EZ, line 6; Form 1040NR, line 41; or Form 1040NR-EZ, line 14.<br/>
 								<span style="float:left;">If zero or less, see instructions</span>
-								<span class="styIRS1040SJDots">...........</span>
+								<span class="styIRS1040SJDots">..........</span>
 							</div>
 							<div class="styGenericDiv" style="width:8mm;height:21mm;">
 								<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;margin-top:2mm"/>
@@ -473,7 +476,7 @@
 							<div class="styLNLeftNumBox">14</div>
 							<div class="styLNDesc" style="width:97.8mm;padding-right:2mm;">
 								<span style="float:left;">Enter the amount from line 6</span>
-								<span class="styIRS1040SJDots">............</span>
+								<span class="styIRS1040SJDots">...........</span>
 							</div>
 							<div class="styLNRightNumBox">14</div>
 							<div class="styLNAmountBox" style="padding-right:1px;width:32.2mm">
@@ -539,7 +542,7 @@
 							<div class="styLNLeftNumBox">17</div>
 							<div class="styLNDesc">
 								<span style="float:left;">Add lines 4, 8, 12, and 16</span>
-								<span class="styIRS1040SJDots">.....................</span>
+								<span class="styIRS1040SJDots">....................</span>
 							</div>
 							<div class="styLNRightNumBoxNBB">17</div>
 							<div class="styLNAmountBoxNBB">
@@ -564,7 +567,7 @@
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 2 -->
 					<!-- Page Header -->
-					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styTBB" style="width:187mm;padding-top:.5mm;float:none;clear:both;">
 						<div style="float:left;">Schedule J (Form 1040) 2013</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span></div>
 					</div>
@@ -712,7 +715,7 @@
 								(see instructions). <b>Do not</b> include alternative minimum tax from Form 1040A.
 							</div>
 							<div class="styLNRightNumBoxNBB" style="height:100%;background-color:lightgrey;"/>
-							<div class="styLNAmountboxNBB" style="height:100%;"/>
+							<div class="styLNAmountBoxNBB" style="height:100%;"/>
 						</div>
 						<!-- Spacer Line -->
 						<div class="styGenericDiv" style="width:187mm;">
@@ -726,7 +729,7 @@
 							<div class="styLNLeftNumBox">22</div>
 							<div class="styLNDesc">
 								<span style="float:left;">Add lines 19 through 21</span>
-								<span class="styIRS1040SJDots">......................</span>
+								<span class="styIRS1040SJDots">.....................</span>
 							</div>
 							<div class="styLNRightNumBox">22</div>
 							<div class="styLNAmountBox">

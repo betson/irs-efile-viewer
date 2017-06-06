@@ -20,12 +20,14 @@
       font-size:8pt;
       width:29.5mm;
       height:4.5mm;
-      padding-top:0.5mm;      
+      padding-top:0.5mm;
+      padding-right:0.5mm;      
       text-align:right;
       border-bottom:1 solid black;
       border-left:1 solid black;
-      float:left;    
-      padding-right:0.5mm  
+      border-style: solid; border-color: black;
+      border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+      float:left; clear: none;  
     }  
     
     .styIRS8609ScheduleALNRightNumBox { 
@@ -36,6 +38,8 @@
       border-bottom:1 solid black;
       border-left:1 solid black;
       float:left;
+      border-style: solid; border-color: black;	
+      border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;	
     }    
     
   </xsl:template>

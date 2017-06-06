@@ -11,8 +11,10 @@
   <xsl:template match="/">
   <!-- 6/14/2011 RLW -->
   <!-- 8/29/2011 RLW -->
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -226,7 +228,7 @@
                 <xsl:with-param name="TargetNode" select="$FormData/RoutingTransitNum"/>
                 <xsl:with-param name="BoxNum" select="9"/>
               </xsl:call-template>
-              <div style="height:7mm;width:1px;border:0 solid black;border-left-width:1;clear:none;float:left"/>
+              <div style="height:7mm;width:1px;border:0 solid black;border-left-width:1px;clear:none;float:left"/>
             </div>
           </div>
           <!-- Line 3 & 4 -->
@@ -307,7 +309,7 @@
                 <xsl:with-param name="TargetNode" select="$FormData/BankAccountNum"/>
                 <xsl:with-param name="BoxNum" select="17"/>
               </xsl:call-template>
-              <div style="height:7mm;width:1px;border:0 solid black;border-left-width:1;clear:none;float:left"/>
+              <div style="height:7mm;width:1px;border:0 solid black;border-left-width:1px;clear:none;float:left"/>
             </div>
             <!-- Line 4 -->
             <div class="styIRS8302Num" style="width:4mm;">4</div>
@@ -361,10 +363,11 @@
             </div>
           </div>
           <div class="styBB" style="width:187mm;height:3mm;"/>
-          <div style="width:187mm;height:3mm;"/>
+          <div style="width:187mm;">
           <span style="padding-left:70mm;font-size:8pt;">Cat. No 62280S</span>
-           <span style="padding-left:45mm;font-size:8pt;">Form<span style="font-size:12pt"><b> 8302 </b></span>(Rev. 12-2009)</span>
-          <div class="pageEnd"/>
+           <span style="float:right;;font-size:8pt;">Form<span style="font-size:12pt"><b> 8302 </b></span>(Rev. 12-2009)</span>
+           </div>
+          <!--<div class="pageEnd"/>-->
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

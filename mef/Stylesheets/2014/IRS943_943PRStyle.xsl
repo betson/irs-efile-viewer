@@ -4,8 +4,8 @@
   <xsl:template name="IRS943_943PRStyle">
   
   .styIRS943MonthlyGrp{
-	  width:61mm;
-	  height:13.5mm;
+	  width:62mm;
+	  height:29mm;
 	  float:left;
 	}
 	
@@ -15,8 +15,9 @@
 	  float:left;	  
 	}
 	
+	<!--Added "padding-right:.5mm" - DRB 10/2015-->
 	.styIRS943MonthAmt{
-	  width:30mm;
+	  width:31mm;
 	  height:4.5mm;
 	  border-left:1px solid black;
 	  border-right: 1px solid black;
@@ -24,23 +25,25 @@
 	  float:left;
 	  text-align:right;
 	  padding-top:1mm;
+	  padding-right:.5mm;
 	  font-size:6pt;
 	}
 	
 	.styIRS943MonthlyBGrp{
-	  width:63mm;
-	  height:13.5mm;
+	  width:62mm;
+	  height:29mm;
 	  float:left;
 	}
 	
 	.styIRS943MonthBNm{
-	  width:33mm;
+	  width:31mm;
 	  height:4.5mm;
 	  float:left;
 	}
 	
+	<!--Added "padding-right:.5mm" - DRB 10/2015-->
 	.styIRS943MonthBAmt{
-	  width:30mm;
+	  width:31mm;
 	  height:4.5mm;
 	  border-left:1px solid black;
 	  border-right: 1px solid black;  
@@ -48,11 +51,13 @@
 	  float:left;
 	  text-align:right;
 	  padding-top:1mm;
+	  padding-right:.5mm;
 	  font-size:6pt;
 	}
 	
+	<!--Added "padding-right:.5mm" - DRB 10/2015-->
 	.styIRS943MonthCAmt{
-	  width:29.9mm;
+	  width:31mm;
 	  height:4.5mm;
 	  border-left:1px solid black;
 	  border-right: 0px solid black;  
@@ -60,6 +65,7 @@
 	  float:left;
 	  text-align:right;
 	  padding-top:1mm;
+	  padding-right:.5mm;
 	  font-size:6pt;	 
 	}
 	
@@ -78,11 +84,11 @@
 	}
 	
 	.styIRS943MonthBLetter{
-		width:6mm;
+		width:4mm;
 		height:4.5mm;
 		float:left;
 		font-weight:bold;
-		padding-left:3mm;
+		padding-left:1mm;
 	}
 	
 	.styIRS943Bullet{
@@ -90,9 +96,7 @@
 		padding-right:1mm;
 		font-weight:bold;
 		}
-  
-  
-    
 
 </xsl:template>
 </xsl:stylesheet>
+

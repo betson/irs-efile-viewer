@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
-<!-- 09/07/2012 - Modified per UWR 69492 - Jeremy Nichols-->  
-<!-- 11/15/2012 - Modified per defect 34402 - Jeremy Nichols-->  
-<!-- 11/28/2012 - Modified per defect 34517 - Jeremy Nichols-->  
-<!-- 12/13/2012 - Modified per KISAMS #IM00823352 - Jeremy Nichols-->  
-<!-- 07/16/2013 - Modified per UWR #81810 - Jeremy Nichols -->
-<!-- 08/02/2013 - Modified per UWR #87982 - Jeremy Nichols -->
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
+<!-- 05/26/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -16,8 +11,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS8834"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -74,7 +71,7 @@
               </div>
             </div>
             <div class="styTYBox" style="width:30mm;height:19mm; border-left-width: 1px">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-1374</div>
+              <div class="styOMB" style="height:4.5mm;">OMB No. 1545-1374</div>
               <div class="stySequence"><span style="width:20mm;height:7.5mm;"/>Attachment<br/>Sequence No. <b>111</b>
               </div>
             </div>
@@ -95,9 +92,8 @@
               </div>
             </div>
             <div class="styEINBox" style=" padding-left:2mm; font-size:7pt;">
-              <span class="BoldText">Identifying number</span>
-              <div style="text-align:left;font-weight:normal; ">
-                <br/>
+              <span class="BoldText">Identifying number</span><br/>
+              <div style="text-align:left;font-weight:normal;padding-top:2.5mm; ">
                 <xsl:choose>
 						  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -276,38 +272,34 @@ lines 1a and 1b, or the amount from the applicable line of your return.
       <!--  Line 5  -->    
       <div style="width:187mm;">
         <div class="styLNLeftNumBox" style="height:4mm;">5</div>
-        <div class="styLNDesc" style="width:105mm;height:4mm;">
+        <div class="styLNDesc" style="width:105mm;height:16mm;">
           Tentative minimum tax:            
         <li style="height:4mm; padding-top: .75mm">Individuals. Enter the amount from Form 6251, line 33.</li>
         <li style="height: 4mm; padding-top: .75mm">Corporations. Enter the amount from Form 4626, line 12.</li>
         <li style="height: 4mm; padding-top: .75mm">Estates and trusts. Enter the amount from Schedule I (Form 1041), line 54.</li>                   
         </div>
-        <div class="styLNDesc" style="width:5mm; height:4mm;padding-top:4.5mm;">
+        <div class="styLNDesc" style="width:5mm; height:16mm;padding-top:4.5mm;">
           <img src="{$ImagePath}/8834_Bracket_Md.gif" style="padding-top:2mm" alt="Curly Bracket Image"/>        
         </div>
-        <div class="styLNDesc" style="width:28mm; height:4mm;">                  
+        <div class="styLNDesc" style="width:28mm; height:16mm;">                  
           <span class="styBoldText" style="width:28mm; height:4mm;padding-bottom:0mm;padding-top:7mm;">
             <span style="width:8px;"/>.    
             <span style="width:8px;"/>.  
             <span style="width:8px;"/>.    
             <span style="width:8px;"/>.
-            <span style="width:8px;"/>.    
-            <span style="width:8px;"/>.                                                      
+            <span style="width:8px;"/>.                                                    
           </span>                  
         </div>
 
-        <div class="styLNRightNumBox" style="width:7.75mm;height:8.5mm;padding-top=0mm;border-bottom-width: 1px">
-          <div class="styLNRightNumBoxNBB" style="width:7.75mm;padding-top=0.5mm;border-left-width:0px;">
-        </div>
+        <div class="styLNRightNumBox" style="width:8mm;height:16mm;padding-top:12.5mm;border-bottom-width: 1px">
         5
         </div>
-        <div class="styLNAmountBox" style="height:8.55mm; border-bottom-width: 1px">
+        <div class="styLNAmountBox" style="height:16mm; padding-top:9.5mm;border-bottom-width: 1px">
           <br/>
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$FormData/QlfyElecVehTentativeMinTaxAmt"/>
           </xsl:call-template>
         </div>
-        <div class="styLNRightNumBoxNBB" style="width:8.25mm;height:8mm;border-right-width:1px;"/>
       </div>
       <!--  End Line 5  -->
   
@@ -319,9 +311,9 @@ lines 1a and 1b, or the amount from the applicable line of your return.
 <span style="letter-spacing:4mm; font-weight:bold"> .........
             </span>  
         </div>
-        <div class="styLNRightNumBox" style="padding-top:3mm;">6
+        <div class="styLNRightNumBox" style="height:6.5mm;padding-top:3mm;">6
         </div>
-        <div class="styLNAmountBox" style="padding-top:3mm;">
+        <div class="styLNAmountBox" style="height:6.5mm;padding-top:3mm;">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$FormData/QlfyElecVehAdjRegularTaxAmt"/>
           </xsl:call-template>
@@ -338,8 +330,8 @@ lines 1a and 1b, or the amount from the applicable line of your return.
       
       
       <div style="width:187mm;">
-        <div class="styLNLeftNumBox" style="height:4.5mm;">7</div>
-        <div class="styLNDesc" style="width:138mm;height:4.5mm;">
+        <div class="styLNLeftNumBox" style="height:10mm;">7</div>
+        <div class="styLNDesc" style="width:138mm;height:10mm;">
           <span class="styBoldText">Qualified electric vehicle credit.</span> Enter the <span class="styBoldText">smaller</span> of line 1 or line 6. Report this
 				amount on Form 1040, line 53; Form 1040NR, line 50; Form
 				1120, Schedule J, line 5b; or the appropriate line of your return.<br/>
@@ -352,21 +344,17 @@ lines 1a and 1b, or the amount from the applicable line of your return.
           </span>
             
         </div>
-        <div class="styLNRightNumBoxNBB" style="height:4mm;background-color:lightgrey;border-right-width:1px;width:8.25mm;padding-top:.5mm;"/>
-	<div class="styLNAmountBox" style="border-bottom-width: 0px;border-left-width:0px;"/>
-	<div class="styLNRightNumBoxNBB" style="height:2mm;background-color:lightgrey;border-right-width:1px;width:8.25mm;padding-top:.5mm;"/>
-	<div class="styLNAmountBox" style="border-bottom-width: 0px;border-left-width:0px;"/>
         
-     <div class="styLNRightNumBox" style="height:4.5mm;padding-top:1mm; border-bottom-width: 0px;">7</div>
+     <div class="styLNRightNumBox" style="height:10mm;padding-top:6.5mm; border-bottom-width: 0px;">7</div>
            
-        <div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm; border-bottom-width: 0px">
+        <div class="styLNAmountBox" style="height:10mm; padding-top:6.5mm; border-bottom-width: 0px">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$FormData/QlfyElecMotorVehCrAmt"/>
           </xsl:call-template>
         </div>  
        </div> 
      </div>
-     <div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 0px" class="pageend">
+     <div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px" class="pageend">
             <div class="styGenericDiv" style="width:117mm;font-weight:bold;">For  Paperwork Reduction Act Notice, see instructions.</div>
             <div class="styGenericDiv" style="width:23mm;">Cat. No. 14953G</div>
             <div class="styGenericDiv" style="float:right;">Form <span class="styBoldText">8834</span> (Rev. 12-2013)</div>

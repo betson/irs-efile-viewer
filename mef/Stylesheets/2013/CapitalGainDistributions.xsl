@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/05/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -34,15 +35,13 @@
 <!--          <td class="styDepTblCell" style="text-align:center;" >
             <xsl:value-of select="position()" />
           </td> -->
-          <td class="styDepTblCell" style="text-align:left;">
+          <td class="styDepTblCell" style="width:147mm;text-align:left;">
             <xsl:call-template name="PopulateText">          
                  <xsl:with-param name="TargetNode" select="Desc"/>
             </xsl:call-template>
           </td>      
-          <td class="styDepTblCell" style="text-align:right;">
-            <xsl:call-template name="PopulateAmount">          
-                 <xsl:with-param name="TargetNode" select="Amt"/>
-            </xsl:call-template>
+          <td class="styDepTblCell" style="width:40mm;text-align:right;">
+			<xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="Amt" /></xsl:call-template>		 
           </td>          
         </tr>
       </xsl:for-each>
@@ -52,8 +51,10 @@
 
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -80,9 +81,9 @@
   
         <xsl:call-template name="DocumentHeaderDependency"/>  
     
-        <div class="styDepTitleLine">
-          <span class="styDepTitle">
-            <span style="width:80mm;">
+        <div class="styDepTitleLine" style="width:187mm;">
+          <span class="styDepTitle" style="width:187mm;">
+            <span style="width:187mm;">
               <xsl:value-of select="$depDocTitle"/>
             </span>
           </span>

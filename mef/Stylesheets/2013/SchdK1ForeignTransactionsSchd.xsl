@@ -49,6 +49,7 @@
         <br/>
          <div class="styTopSectionLine" style="width:187mm;">
           <div class="styTopSectionLineLbl" style="float:left;clear:none;">Gross Income From All Sources Amount:</div>
+          <br/>
           <div style="float:left;clear:none;width:60mm;text-align:right;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./GrossIncomeFromAllSourcesAmt"/>
@@ -62,9 +63,9 @@
                <xsl:with-param name="TargetNode" select="./GrossIncomeSrceAtPrtnrLvlAmt"/>
             </xsl:call-template>
           </div>
-          <div style="float:left;clear:none;width:118mm;">
+          <div style="float:left;clear:none;width:60mm;text-align:right;">
            <br/>
-            <xsl:call-template name="PopulateText">
+            <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./GrossIncomeSrceAtPrtnrLvlAmt"/>
             </xsl:call-template>
           </div>
@@ -85,8 +86,8 @@
                <xsl:with-param name="TargetNode" select="./ListedCategoriesAmt"/>
             </xsl:call-template>
           </div>
-          <div style="float:left;clear:none;width:118mm;">
-            <xsl:call-template name="PopulateText">
+          <div style="float:left;clear:none;width:60mm;text-align:right;">
+            <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./ListedCategoriesAmt"/>
             </xsl:call-template>
           </div>
@@ -135,8 +136,8 @@
                <xsl:with-param name="TargetNode" select="./ListedCategories2Amt"/>
             </xsl:call-template>
           </div>
-          <div style="float:left;clear:none;width:118mm;">
-            <xsl:call-template name="PopulateText">
+          <div style="float:left;clear:none;width:60mm;text-align:right;">
+            <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./ListedCategories2Amt"/>
             </xsl:call-template>
           </div>
@@ -155,6 +156,7 @@
         <div class="styTopSectionLine" style="width:187mm;">
           <div class="styTopSectionLineLbl" style="float:left;clear:none;">Total Foreign Taxes Paid Amount:
           </div>
+          <br/>
           <div style="float:left;clear:none;width:60mm;text-align:right;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./TotalForeignTaxesPaidAmt"/>
@@ -168,9 +170,9 @@
                <xsl:with-param name="TargetNode" select="./TotalForeignTaxesAccruedAmt"/>
             </xsl:call-template>
           </div>
-          <div style="float:left;clear:none;width:118mm;">
+          <div style="float:left;clear:none;width:60mm;text-align:right;">
           <br/>
-            <xsl:call-template name="PopulateText">
+            <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./TotalForeignTaxesAccruedAmt"/>
             </xsl:call-template>
           </div>
@@ -182,9 +184,9 @@
                <xsl:with-param name="TargetNode" select="./ReductionInTaxesAvlblForCrAmt"/>
             </xsl:call-template>
           </div>
-          <div style="float:left;clear:none;width:118mm;">
+          <div style="float:left;clear:none;width:60mm;text-align:right;">
           <br/>
-            <xsl:call-template name="PopulateText">
+            <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./ReductionInTaxesAvlblForCrAmt"/>
             </xsl:call-template>
           </div>
@@ -196,9 +198,9 @@
                <xsl:with-param name="TargetNode" select="./OtherForeignTransactionsAmt"/>
             </xsl:call-template>
           </div>
-          <div style="float:left;clear:none;width:118mm;">
+          <div style="float:left;clear:none;width:60mm;text-align:right;">
           <br/>
-            <xsl:call-template name="PopulateText">
+            <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="./OtherForeignTransactionsAmt"/>
             </xsl:call-template>
           </div>
@@ -217,8 +219,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -248,7 +252,7 @@
         <xsl:call-template name="DocumentHeaderDependency"/>
           
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:70mm;">
+          <span class="styDepTitle" style="width:120mm;">
             <xsl:value-of select="$depDocTitle"/>        
           </span>
         </div>

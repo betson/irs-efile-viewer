@@ -15,8 +15,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title>
            <!--Total Carryover of Foreign Taxes Schedule-->
           <xsl:value-of select="$depDocTitle"/>
@@ -47,7 +49,7 @@
         <xsl:call-template name="DocumentHeaderDependency"/>
           
         <div class="styDepTitleLine">
-          <div class="styDepTitle" style="width:98mm">
+          <div class="styDepTitle" style="padding-right:2mm">
             <xsl:value-of select="$depDocTitle"/>
           </div>
         </div>
@@ -58,12 +60,24 @@
         
                <div class="styTopSectionLine">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Statement:</span></div>
-          <div style="float:left;clear:none; width: 118mm">          
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$DependancyData/ExplanationTxt"/>
-            </xsl:call-template>            
-          </div>
-        </div>      
+          <xsl:choose>			
+			<xsl:when test="string-length($DependancyData/ExplanationTxt)&lt; 40">	
+				  <div style="float:left;clear:none;">          
+					<xsl:call-template name="PopulateText">
+					  <xsl:with-param name="TargetNode" select="$DependancyData/ExplanationTxt"/>
+					</xsl:call-template>            
+				  </div>
+            </xsl:when>
+			<xsl:otherwise>
+				<div style="float:left;clear:none;width:187mm"> 
+					<xsl:call-template name="PopulateText">
+					  <xsl:with-param name="TargetNode" select="$DependancyData/ExplanationTxt"/>
+					</xsl:call-template>            
+				  </div>
+			</xsl:otherwise>
+		</xsl:choose>
+        </div>  
+       
        </body>
     </html>
   </xsl:template>

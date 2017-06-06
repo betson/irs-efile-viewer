@@ -19,8 +19,10 @@
 		</tr>
 	</xsl:template>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form56Data)"/>
@@ -52,7 +54,7 @@
 					<!--  Begin Header section 1 -->
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;border-bottom-width:2px;">
-						<div class="styFNBox" style="width:31mm;height:22mm;border-right-width:2px;padding-top:.5mm;">
+						<div class="styFNBox" style="width:31mm;height:22.8mm;border-right-width:2px;padding-top:.5mm;">
 							<div style="padding-top:1mm;">
 								Form<span class="styFormNumber">  56</span>
 							</div>
@@ -92,17 +94,19 @@
 					<div class="styIRS56PartHeader">
 						<div class="styTitleName" style="width:13mm; font-size:10pt">Part I</div>
 						<div class="styTitleDesc" style="font-size:10pt; width:170mm">Identification </div>
+						
 					</div>
 							
 						<!-- Line 1 -->
-						<div class="styBB" style="width:187mm;height:8mm;">
+						<div class="styBB" style="width:187mm;height:auto;"></div>
+						<div class="styBB" style="width:187mm;height:auto;">
 
 							<div class="styIRS56CleanDiv" style="width:100%;height:25%;">
 								<div class="styIRS56CleanDiv" style="width:50%;height:100%;border-right-width:1px;">
 									<div class="styIRS56LNDesc" style="width:100%;auto;font-size:7pt;">
 										Name of person for whom you are acting (as shown on the tax return)
 									</div>
-									<span style="width:100%;height:auto;font-size:7pt;padding-left:4px;">
+									<span style="width:100%;height:auto;font-size:7pt;padding-left:4px;padding-top:1mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PersonFullName/PersonFirstName"/>
 											<xsl:with-param name="BackupName">RtnHdrDataFilerName</xsl:with-param>
@@ -123,7 +127,7 @@
 										</xsl:call-template> 
 									</span>
 								</div>
-								<div class="styIRS56CleanDiv" style="width:23%;height:100%;border-right-width:1px;">
+								<div class="styIRS56CleanDiv" style="width:23%;height:100%;border-right-width:1px;padding-top:1.8mm;">
 									<div class="styIRS56LNDesc" style="width:100%;height:auto;font-size:7pt;">
 										Identifying number
 									</div>
@@ -167,7 +171,7 @@
 						</div>
 						
 							<!-- Line 2 -->
-							<div class="styBB" style="width:187mm;height:8mm;">
+							<div class="styBB" style="width:187mm;height:auto;">
 								<div class="styIRS56LNDesc" style="width:100%;height:auto;font-size:7pt;">
 										Address of person for whom you are acting (number, street, and room or suite no.)
 									</div>
@@ -181,7 +185,7 @@
 												<xsl:if test="$RtnHdrData/Filer/USAddress/AddressLine2 != '' ">
 													<br/>
 													<xsl:call-template name="PopulateText">
-														<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/AddressLine2"/>
+														<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/USAddress/AddressLine2Txt"/>
 													</xsl:call-template>
 												</xsl:if>
 											</xsl:when>
@@ -190,7 +194,7 @@
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/AddressLine1"/>
 												</xsl:call-template>
-												<xsl:if test="$RtnHdrData/Filer/ForeignAddress/AddressLine2 != '' ">
+												<xsl:if test="$RtnHdrData/Filer/ForeignAddress/AddressLine2Txt != '' ">
 													<br/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/ForeignAddress/AddressLine2"/>
@@ -201,7 +205,7 @@
 									</span>
 							</div>
 							<!-- Line 3 -->
-							<div class="styBB" style="width:187mm;height:8mm;border-bottom-width:2px">
+							<div class="styBB" style="width:187mm;height:auto;border-bottom-width:2px">
 								<div class="styIRS56LNDesc" style="width:100%;height:auto;font-size:7pt;">
 									City or town, state, and ZIP code (If a foreign address, see instructions.) 
 								</div>
@@ -220,7 +224,7 @@
 								</span>
 							</div>
 							<!-- Line 4 -->
-							<div class="styBB" style="width:187mm;height:8mm;">
+							<div class="styBB" style="width:187mm;height:auto;">
 								<div class="styIRS56LNDesc" style="width:100%;height:auto;font-size:7pt;">
 										Fiduciary’s name
 									</div>
@@ -231,7 +235,7 @@
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryPersonName/PersonFirstName"/>
 												</xsl:call-template>
-												<xsl:if test="$Form56Data/FiduciaryPersonName/PersonLastName">
+												<xsl:if test="$Form56Data/FiduciaryPersonName/PersonLastNm">
 													<span style="width:2px"/>
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryPersonName/PersonLastName"/>
@@ -256,7 +260,7 @@
 									</span>
 							</div>
 							<!-- Line 5 -->
-							<div class="styBB" style="width:187mm;height:8mm;">
+							<div class="styBB" style="width:187mm;height:auto;">
 								<div class="styIRS56LNDesc" style="width:100%;height:auto;font-size:7pt;">
 										Address of fiduciary (number, street, and room or suite no.) 
 									</div>
@@ -265,7 +269,7 @@
 											<!-- US Address -->
 											<xsl:when test="$Form56Data/FiduciaryUSAddress/AddressLine1">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryUSAddress/AddressLine1"/>
+													<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryUSAddress/AddressLine1Txt"/>
 												</xsl:call-template>
 												<xsl:if test="$Form56Data/FiduciaryUSAddress/AddressLine2 != '' ">
 													<br/>
@@ -298,7 +302,7 @@
 												</xsl:if><br/>
 											<xsl:if test="$Form56Data/FiduciaryBusinessFrgnAddress/AddressLine1">
 												<xsl:call-template name="PopulateText">
-													<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryBusinessFrgnAddress/AddressLine1"/>
+													<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryBusinessFrgnAddress/AddressLine1Txt"/>
 												</xsl:call-template>
 												<xsl:if test="$Form56Data/FiduciaryBusinessFrgnAddress/AddressLine2 != '' ">
 													<br/>
@@ -313,7 +317,7 @@
 							</div>
 							<!-- Line 6 -->
 							<div class="styBB" style="border-bottom-width:0;width:187mm;float:none;clear:none;">
-							<div class="styNameBox" style="width:131mm;height:8mm;font-size:7pt;">
+							<div class="styNameBox" style="width:131mm;height:auto;font-size:7pt;">
 								<div>
 								City or town, state, and ZIP code</div>
 								<span style="width:100%;height:auto;font-size:7pt;padding-left:4px;">
@@ -353,7 +357,7 @@
 									</xsl:choose>
 								</span>
 							</div>
-							<div class="styEINBox" style="width:55mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:normal;">
+							<div class="styEINBox" style="width:55mm;height:auto;padding-left:2mm;font-size:7pt;font-weight:normal;">
 							<div>
 								Telephone number (optional) </div>
 							<span style="width:27mm;text-align:left;">
@@ -372,14 +376,17 @@
 								</span>
 								</div>
 							</div>
+							<div class="styBB" style="width:187mm;height:auto;"></div>
 					<!-- END Part I - Identification  -->
 							
 					<!-- Section A - Authority  -->
+					<div class="styBB" style="width:187mm;height:auto;">
 					<div class="styIRS56PartHeader">
 						<div class="styTitleName" style="width:20mm; font-size:10pt">Section A</div>
 						<div class="styTitleDesc" style="font-size:10pt; width:150mm">Authority </div>
 					</div>
 					<!-- Section A Line 1 -->
+					<div class="styBB" style="width:187mm;height:auto;"></div>
 					<div class="styIRS56LineItem">
 						<div class="styIRS56PartNum" style="padding-top:0.5mm">1</div>
 						<div style="float:left; padding-top:0.5mm">
@@ -500,7 +507,7 @@
 						</div>      
 					</div>
 					<!-- Section A Line f -->
-					<div class="styIRS56LineItem">
+					<div class="styIRS56LineItem" style="height:8mm;">
 					<div class="styIRS56Part1">f</div>
 					<div style="float:left;">
 					<span>
@@ -522,7 +529,7 @@
 						</label>
 						 <span style="width:5px"/><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/><span style="width:5px"/>
 					</div>
-					<div style="float:left;border-bottom:1px dashed black;width:143mm;">					  
+					<div style="float:left;border-bottom:1px dashed black;width:141mm;">					  
 					     <span> 	
 						<xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="$Form56Data/OtherFiduciaryAuthorityGrp/OtherAuthorityExplanationDesc"/>
@@ -538,39 +545,48 @@
 						If box 1a or 1b is checked, enter the date of death
 						<span style="width:5px"/><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/><span style="width:5px"/>
 					</div>
-					<div class="styGenericDiv" style="border-bottom:1px dashed black;width:100mm">					  
+				<!--	<div class="styGenericDiv" style="border-bottom:1px dashed black;width:100mm">	-->	
+			        	<span style="width:99mm;border-bottom:1px dashed black"> 
 					     <span> 	
 						<xsl:call-template name="PopulateMonthDayYear">
 						<xsl:with-param name="TargetNode" select="$Form56Data/DecedentDeathDt"/>
 						<xsl:with-param name="BackupName">Form56DataDecedentDeathDate</xsl:with-param>
 						</xsl:call-template>
 					      </span> 
-					</div>    
-					</div>
+					    </span>
+					</div>   
+			<!--		</div>  -->
 					<!-- Section A line 2b -->
 					<div class="styIRS56LineItem" style="width:187mm">
 					<div class="styIRS56PartNum" style="padding-top:0.5mm;padding-left:1.5mm;float:left;clear:none">2b</div>
-					<div class="styGenericDiv" style="float:left; padding-top:0.5mm;">
+			<!--		<div class="styGenericDiv" style="float:left; padding-top:0.5mm;"> -->
+					<div class="styGenericDiv" style="float:left; padding-top:0.5mm;padding-bottom:0.5mm;"> 
 						If box 1c – 1f is checked, enter the date of appointment, taking office, or assignment
 						or transfer of assets
 						<span style="width:5px"/><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/><span style="width:5px"/>
 					</div>
-					<div class="styGenericDiv" style="border-bottom:1px dashed black;width:22mm">					  
+			<!--		<div class="styGenericDiv" style="border-bottom:1px dashed black;width:22mm">		-->
+					  	<span style="width:22mm;border-bottom:1px dashed black">		  
 					     <span> 	
 						<xsl:call-template name="PopulateMonthDayYear">
 							<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryAuthorityDt"/>
 							<xsl:with-param name="BackupName">Form56DataFiduciaryAuthorityDt</xsl:with-param>
 						</xsl:call-template>
 					      </span> 
-					</div>    
+					     </span>
+				<!--	</div>   --> 
 					</div>
+				</div>	
 					<!-- Section B - Nature of Liability and Tax Notices  -->
-					<div class="styIRS56PartHeader" style="width:186mm">
-						<div class="styTitleName" style="width:20mm; font-size:10pt">Section B</div>
-						<div class="styTitleDesc" style="font-size:10pt; width:145mm">Nature of Liability and Tax Notices </div>
+					<div class="styBB" style="width:187mm;height:auto;">
+						<div class="styIRS56PartHeader" style="width:186mm">
+							<div class="styTitleName" style="width:20mm; font-size:10pt">Section B</div>
+							<div class="styTitleDesc" style="font-size:10pt; width:145mm">Nature of Liability and Tax Notices </div>
+						</div>
 					</div>
 					<!-- Section B Line 3 -->
-					<div class="styIRS56LineItem">
+					<div class="styBB" style="width:187mm;height:auto;">
+					<div class="styIRS56LineItem" style="height:10mm;">
 					<div class="styIRS56PartNum" style="padding-top:0.5mm;float:left;clear:none">3</div>
 					<div class="styGenericDiv" style="width:180mm;float:left; padding-top:0.5mm;">
 						Type of taxes (check all that apply):
@@ -643,8 +659,9 @@
 					</div>
 					
 					<!-- Section B Line 4 -->
-					<div class="styIRS56LineItem">
-					<div class="styIRS56PartNum" style="padding-top:0.5mm;float:left;clear:none">4</div>
+					<div class="styIRS56LineItem" style="height:10mm;">
+						
+					<div class="styIRS56PartNum" style="padding-top:0.5mm;">4</div>
 					<div class="styGenericDiv" style="width:180mm;float:left; padding-top:0.5mm;">
 						Federal tax form number (check all that apply):
 						<span><b>a</b>
@@ -718,7 +735,7 @@
 						<label for="otherFormNumber">Other (list) </label>
 						<span style="width:5px"/>
 						<span><img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/></span><span style="width:5px"/>
-						<span style="width:88mm;border-bottom:1px dashed black"/>
+						<span style="width:65mm;border-bottom:1px dashed black"/>
 						</div>
 						  <span style="width:30mm;text-align:center;border-bottom:0px dashed black;">
 					  
@@ -727,10 +744,12 @@
 						</xsl:call-template>
 						</span>
 					</div>
+					<div style="height:auto;width:187mm;">
+					
 					<!-- Section B Line 5 -->
-					<div class="styIRS56LineItem">
-					<div class="styIRS56PartNum" style="padding-top:0.5mm">5</div>
-					<div class="styIRS56LNDesc" style="width:179mm">
+					<div class="styIRS56LineItem" style="height:auto;">
+					<div class="styIRS56PartNum" style="padding-top:0.5mm;">5</div>
+					<div class="styIRS56LNDesc" style="width:179mm;height:45mm; ">
 					<div style="float:left">
 						<span style="float:left;">
 							<label>
@@ -742,7 +761,7 @@
 							</label>
 						</span>
 						<span style="float:right;">
-							<span class="styDotLn" style="padding-right:2mm;">..............</span>
+							<span class="styDotLn" style="padding-right:2mm;">............</span>
 							<img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/>
 							<span style="width:8px"/>
 							<input type="Checkbox" alt="Authority does not cover all tax periods" class="styCkbox">
@@ -753,16 +772,18 @@
 							</input>
 						</span>
 						<br/>
-						<label for="Form56DataFidcryAuthDoesNotCoverAllYrGrpAuthDoesNotCoverAllTaxYearInd">
-							and list the specific years or periods
-						  </label>
+						<div class="styIRS56LNDesc" style="width:179mm;height:auto;">
+						and list the specific years or periods
+						<!--<label for="Form56DataFidcryAuthDoesNotCoverAllYrGrpAuthDoesNotCoverAllTaxYearInd">
+							
+						  </label>-->
 						<span style="width:5px"/>
 						<img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/> 
 						<xsl:for-each select="$Form56Data/FidcryAuthDoesNotCoverAllYrGrp/TaxYearOrTaxPeriodGrp">
 						<xsl:if test="position()!=1">
-							<span style="width:56.5mm"/>
+							<!--<span style="width:56.5mm"/>-->
 						</xsl:if> 
-						<span style="width:120mm;border-bottom:1px dashed black">
+						<span style="width:123mm;border-bottom:1px dashed black;float:right;clear:none;">
 						<span style="width:3mm"/>
 						
 						<xsl:call-template name="PopulateYear">
@@ -781,24 +802,22 @@
 						<br/>
 						</xsl:for-each>
 						</div>
+						</div>
 					</div>
 					</div>     
-
+</div>
 					<!-- Section B Line 6 -->
-					<div class="styIRS56LineItem" style="width:187mm;">
-						<div class="styIRS56PartNum" style="padding-top:0mm">6</div>
-							<div class="styGenericDiv" style="width:179mm; ">
+					<div class="styIRS56LineItem" style="width:187mm;height:auto;">
+						<div class="styIRS56PartNum" style="padding-top:0mm;">6</div>
+							<div class="styGenericDiv" style="width:180mm;float:left; padding-top:0.5mm; ">
 								<span style="float:left;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/FiduciaryReceivesAllNoticeInd"/>
 											<xsl:with-param name="BackupName">Form56DataFiduciaryRcvCopyOfCommunGrpFiduciaryReceivesAllNoticeInd </xsl:with-param>
 										</xsl:call-template>
-								If the fiduciary listed wants a copy of notices or other written communications (see the instructions) check this box
-									</label>
-								</span>
-								<span style="float:right;">
-									<span class="styDotLn">..</span>
+								If the fiduciary listed wants a copy of notices or other written communications (see the instructions)<span style="float:right;">
+									<span class="styDotLn">.</span>
 									<span style="width:8px"/>
 									<img src="{$ImagePath}/56_Bullet.gif" alt="MediumBullet"/>
 									<span style="width:5px"/>
@@ -808,12 +827,12 @@
 											<xsl:with-param name="BackupName">Form56DataFiduciaryRcvCopyOfCommunGrpFiduciaryReceivesAllNoticeInd </xsl:with-param>
 										</xsl:call-template>
 									</input>
+								</span> check this box and enter the year(s) or period(s) for the corresponding line 4 item checked. 
+								 If more than 1 form entered on line 4h, enter the form number.
+									</label>
 								</span>
-							</div>
-							<div class="styGenericDiv" style="margin-left:5.8mm;width:187mm">
-								 and enter the year(s) or period(s) for the corresponding line 4 item checked. 
-								 If more than 1 form entered on line 4h, enter the form number.	
-							</div>
+								
+							</div>							
 							<div class="styGenericDiv" style="margin-left:0.5mm;margin-top:1mm;width187mm;font-weight:bold;">
 								Complete only if the line 6 box is checked.
 							</div>
@@ -830,7 +849,7 @@
 							<div class="sty56DepdContainer" style="overflow-y: auto;width:187mm;border-bottom-width:0" id="depdContainerId">
 								<!-- print logic -->
 								<xsl:call-template name="SetInitialState"/>
-								<table class="styTable" style="" cellspacing="0">
+								<table class="styTable" style="" cellspacing="0"> 
 								<thead class="styTableThead">
 									<tr>
 										<th style="font-size:8pt;font-weight:normal;border-left:1px solid black;border-right:1px solid black;border-top:1px solid black; width:30mm;" scope="col"  >If this item is checked:</th>
@@ -945,6 +964,7 @@
 						</div>
 					</div>
 					</div>
+					</div>
 					<!-- Set Initial Height of Above Table -->
 		<!--		<xsl:call-template name="SetInitialDynamicTableHeight">
                 <xsl:with-param name="TargetNode" select="$Form56Data/FiduciaryRcvCopyOfCommunGrp/TaxYearOrTaxPeriodGrp"/>
@@ -954,7 +974,7 @@
               </xsl:call-template > -->
 					<!-- END Part III - Nature of Liability and Tax Notices  -->
 					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;margin-top:4px;border-top:2px solid black;">
+					<div style="width:187mm;margin-top:4px;border-top:2px solid black;">
 						<div style="float:left;">
 							<span style="font-weight:bold;">
 								For Paperwork Reduction Act and Privacy Act Notice, see back page.
@@ -969,9 +989,10 @@
 						</div>
 						
 					</div>
+					 <p style="page-break-before: always"/>
 					<!-- END Page Break and Footer-->
 					<!-- BEGIN Page Header -->
-					<div class="styTBB" style="width:187mm;height:5mm;padding-top:3mm;vertical-align:bottom">
+					<div class="styTBB" style="width:187mm;height:5mm;padding-top:1mm;vertical-align:bottom">
 						<span style="float:left;vertical-align:bottom;font-size:8pt;">
 							Form 56 (Rev. 12-2011)
 						</span>
@@ -986,6 +1007,7 @@
 						<div class="styTitleName" style="width:17mm; font-size:10pt">Part II</div>
 						<div class="styTitleDesc" style="font-size:10pt; width:169mm">Court and Administrative Proceedings </div>
 					</div>
+					<div class="styBB" style="width:187mm;height:auto;"></div>
 					<div class="styBB" style="width:187mm;float:none;clear:none;">
 							<div class="styNameBox" style="width:131mm;height:8mm;font-size:7pt;">
 								<div>Name of court (if other than a court proceeding, identify the type of proceeding and name of agency)</div>
@@ -1004,7 +1026,7 @@
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form56Data/CourtAgencyGrp/OtherProceedingTypeDesc"/>
 										</xsl:call-template>
-										<span style="width:8px;"/>-<span style="width:8px;"/>
+										<span style="width:2px;"/><span style="width:2px;"/> 
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$Form56Data/CourtAgencyGrp/AgencyNm"/>
 										</xsl:call-template>
@@ -1097,7 +1119,7 @@
 							</table>
 							
 							</div>
-							
+							<div class="styBB" style="width:187mm;height:auto;"></div>
 					<!-- END Part II - Court and Administrative Proceedings  -->
 					
 					<!-- Part III - Signature   -->
@@ -1106,6 +1128,7 @@
 						<div class="styTitleDesc" style="font-size:10pt; width:170mm">Signature  </div>
 					</div>
 					<div class="styTBB" style="width:187mm;height:20mm;font-size:6.5pt;font-family:arial;border-bottom: 1px solid black;">
+					<div class="styBB" style="width:187mm;height:auto;"></div>
 	<div style="width:20mm;padding-top:1mm;padding-left:1mm;height:100%;float:left;clear:none;border-right: 1px solid black;">
 		<span class="styMainTitle" style="font-size:11pt;">
 			Please 

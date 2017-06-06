@@ -7,33 +7,55 @@
 
   .sty5471ScheduleMColA {
     height: 4mm;
-    width:51mm;
-    font-size: 6pt;
+    width:52mm;
+    font-size: 7pt;
     margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;
     border-style: solid;
     border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px;
     text-align: left;
     float:left;
   }
-  .sty5471ScheduleMCol {
+  .sty5471ScheduleMCol { //Single Height Row
     height: 4mm;
-    width: 25mm;
-    font-size: 6.3pt;
+    width: 27mm;
+    font-size: 7pt;
     margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;
     border-style: solid;
     border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
-    padding-top:4mm;padding-left:0px; padding-right:1mm; padding-bottom: 0px;
+    padding-top:1mm;padding-left:0px; padding-right:0px; padding-bottom: 0px;
     text-align: right;
     float:left;
   }
-  .sty5471ScheduleMColEF {
-    height: 4mm;
-    width: 28mm;
-    font-size: 6.3pt;
+  .sty5471ScheduleMColDH { //Double Height Row
+    height: 7mm;
+    width: 27mm;
+    font-size: 7pt;
     margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;
     border-style: solid;
     border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
-    padding-top:4mm;padding-left:0px; padding-right:1mm; padding-bottom: 0px;
+    padding-top:4mm;padding-left:0px; padding-right:0px; padding-bottom: 0px;
+    text-align: right;
+    float:left;
+  }
+  .sty5471ScheduleMColTH { //Triple Height Row
+    height: 10mm;
+    width: 27mm;
+    font-size: 7pt;
+    margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;
+    border-style: solid;
+    border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
+    padding-top:7mm;padding-left:0px; padding-right:0px; padding-bottom: 0px;
+    text-align: right;
+    float:left;
+  }
+  .sty5471ScheduleMColQH { //Quardruple Height Row
+    height: 13mm;
+    width: 27mm;
+    font-size: 7pt;
+    margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;
+    border-style: solid;
+    border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
+    padding-top:10mm;padding-left:0px; padding-right:0px; padding-bottom: 0px;
     text-align: right;
     float:left;
   }
@@ -51,6 +73,7 @@
     font-size: 7pt;
   }
   .sty5471ScheduleMLine {/* Line Description */
+    width:46mm;
     font-size: 7pt;
     color: black;
     margin-left: 2mm; margin-right: 0px; margin-top: 0px; margin-bottom: 0px;

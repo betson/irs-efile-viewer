@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
+
+<!-- Last modified on 5/28/2015 by Harold Nadel for WR # 123023 changes for IE11 -->
 <!-- Last modified on 11/19/2013 by Robert Jones for ETA PDF Review various including the link  -->
+
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
@@ -16,8 +19,10 @@
 
 
 <xsl:template match="/">
-<html>
-<head>  
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
+<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"/></xsl:call-template></title>
   <!-- No Browser Caching -->
   <meta http-equiv="Pragma" content="no-cache"/>
@@ -44,7 +49,7 @@
     <xsl:call-template name="DocumentHeader"/>  
     
   <!--Title of Form -->    
-  <div class="styBB" style="width:187mm;height: 20mm">
+  <div class="styBB" style="width:187mm;height: auto">
     <div class="styFNBox" style="width:31mm;font-size: 7pt;height: 22mm">
       Form <span class="styFormNumber">8826</span>      
       <br/>
@@ -57,22 +62,23 @@
        <span class="styAgency">(Rev. December 2013)</span>
 
       <br/>
-      <span class="styAgency">Department of the Treasury</span><br/><span class="styAgency">Internal Revenue Service</span>
+      <span class="styAgency">Department of the Treasury</span><br/><span class="styAgency">Internal Revenue Service <br/> </span>
     </div>
-    <div class="styFTBox" style="height: 22mm;width:125mm">
-      <div class="styMainTitle" style="height: 8mm">Disabled Access Credit</div>
-      <div class="styFST" style="font-size:7pt;margin-left:3mm;font-weight:bold"><br/>
+    <div class="styFTBox" style="height: auto;width:125mm">
+      <div class="styMainTitle" style="height: auto; padding-left:3mm;padding-top:2mm;">Disabled Access Credit</div><br/><br/>
+      <div class="styFST" style="font-size:7pt;;font-weight:bold; padding-top:2mm;">
         <img src="{$ImagePath}/8826_Bullet.gif" alt="MediumBullet"/>  
         Attach to your tax return.
       </div>
-	 <div class="styFBT" style="padding-top:0mm;">
+	 <div class="styFBT" style="padding-top:1mm;">
 		<img src="{$ImagePath}/8826_Bullet.gif" alt="bullet image"/> Information about Form 8826 and its instructions is at <a href="http://www.irs.gov/form8826" title="Link to IRS.gov"><i>www.irs.gov/form8826</i></a>. 
 	 </div>	      
     </div>
-    <div class="styTYBox" style="width:30mm;height:22mm; border-left-width: 1px">
-      <div class="styOMB" style="height:2mm;">OMB No. 1545-1205</div>
+    <div class="styTYBox" style="width:30mm;height:22mm; ">
+      <div class="styOMB" style="height:auto;">OMB No. 1545-1205</div>
      <br/><br/><br/><br/>
-      <div class="stySequence">Attachment<br/>Sequence No. <b>86</b></div>
+      <div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;padding-top:1mm;">Attachment<br/>
+      Sequence No. <span class="styBoldText">86</span></div>
     </div>
   </div>
   <!--  End title of Form  -->
@@ -82,7 +88,7 @@
   
     <div class="styNameBox" style="width:141mm;font-weight:normal;font-size:7pt;">
       Name(s) shown on return<br/>
-     <div style="font-family:verdana;font-size:6pt;height:7mm">
+     <div style="font-family:verdana;font-size:8pt;height:7mm">
  		  <xsl:choose>
 		    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 		      <br/>
@@ -102,7 +108,7 @@
                   </xsl:choose>
      </div>      
     </div>    
-    <div class="styEINBox" style=" padding-left:2mm;font-size:7pt;"><span class="BoldText">Identifying number</span>
+    <div class="styEINBox" style=" padding-left:2mm;font-size:8pt;"><span class="BoldText">Identifying number</span>
       <br/><br/>
 	<span style="font-weight:normal;">
 		<xsl:choose>

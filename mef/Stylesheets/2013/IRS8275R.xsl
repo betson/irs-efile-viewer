@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8275RData" select="$RtnDoc/IRS8275R"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8275RData)"/>
@@ -25,6 +27,7 @@
 				<!-- Define Character Set -->
 				<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
 				<meta name="Description" content="Form IRS8275R"/>
+				
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
@@ -45,24 +48,24 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- END WARNING LINE -->
 					<!-- Title of the form -->
-					<div style="width:187mm;height:18mm;" class="styTBB">
-						<div style="width:30mm;height:20.5mm;" class="styFNBox">
+					<div style="width:187mm;height:22mm;" class="styTBB">
+						<div style="width:30mm;height:22mm;" class="styFNBox">
 							<div style="height:13.5mm;">Form<span class="styFormNumber" style="font-size: 18pt;">  8275-R</span>
 								<br/>
 								<div style="font-size:normal">(Rev. August 2013) </div>
 								<br/>
 							</div>
-							<div style="height:5mm;padding-top:2mm;">
+							<div style="height:5mm;padding-top:1.0mm;">
 								<span class="styAgency">Department of the Treasury</span>
 								<br/>
 								<span class="styAgency">Internal Revenue Service</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:127mm;height:20.5mm;" >
-							<div class="styMainTitle" style="height:4mm;padding-top:1mm;" >
+						<div class="styFTBox" style="width:127mm;height:22mm;" >
+							<div class="styMainTitle" style="height:8mm;padding-top:1mm;" >
                 Regulation Disclosure Statement
-              </div>
-							<div class="styFST" style="height:7mm;font-size:7pt;font-weight: bold;">
+							</div>
+							<div class="styFST" style="height:10mm;font-size:7pt;font-weight: bold;">
                 Use this form only to disclose items or positions that are contrary to Treasury <br/>
                 regulations. For other disclosures, use Form 8275, Disclosure Statement. <br/>                
                 <span style="text-align:center;margin-left:0mm;font-size:6.5pt;">
@@ -71,12 +74,12 @@
 									<a href="http://www.irs.gov/form8275" title="Link to IRS.gov"><i>www.irs.gov/form8275.</i></a>
 								</span>
 							</div>							
-							<div class="styFST">
+							<div  class="styFST">
 								<img src="{$ImagePath}/8275-R_Bullet.gif" alt="Bullet Image"/>
                 Attach to your tax return.
-              </div>
+							</div>
 						</div>
-						<div style="width:30mm;height:22.5mm;" class="styTYBox">
+						<div style="width:30mm;height:22mm;" class="styTYBox">
 							<div style="height:8mm;padding-top:2mm;padding-left:.5mm;" class="styOMB">
                 OMB No. 1545-0889
               </div>
@@ -88,8 +91,8 @@
 					</div>
 					<!-- Title of the form -->
 					<!-- Name and EIN/SSN (return header)  -->
-					<div style="width:187mm;" class="styBB">
-						<div style="width:130mm;height:8mm;font-weight:normal;font-size:7pt;" class="styNameBox">
+					<div style="width:187mm;height:10mm;" class="styBB">
+						<div style="width:130mm;height:10mm;font-weight:normal;font-size:7pt;" class="styNameBox">
               Name(s) shown on return<br/>
 							<xsl:choose>
 								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -110,7 +113,8 @@
 							</xsl:choose>
 						</div>
 						<div style="width:56mm;height:4mm;padding-left:2mm;font-size:7pt;" class="styEINBox">
-              Identifying number shown on return<br/>
+              Identifying number shown on return
+							<br/>
 							<br/>
 							<span style="font-weight:normal;">
 								<xsl:choose>
@@ -130,13 +134,15 @@
 					</div>
 					<!-- Name and EIN/SSN (return header)  -->
 					<!-- Foreign Entity - Name, EIN (input) and Reference ID -->
-					<div style="width:187mm;">
-						If Form 8275-R relates to an information return for a foreign entity (for example, Form 5471), enter:
-						<div class="styLNDesc" style="width:35mm;">
+					<div style="width:187mm;height:10mm;border-color:black;border-bottom-width:1px;" >
+						<div class="styLNDesc" style="width:187mm;"  >
+			If Form 8275-R relates to an information return for a foreign entity (for example, Form 5471), enter:
+						</div>
+						<div class="styLNDesc" style="width:35mm;float:left;">
               Name of foreign entity
               <img src="{$ImagePath}/8275-R_Bullet.gif" alt="Bullet Image"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:152mm;text-align:left">
+						<div class="styUnderlineAmount" style="width:152mm;text-align:left;height:7.5mm;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8275RData/ForeignEntityName/BusinessNameLine1"/>
 							</xsl:call-template>
@@ -146,12 +152,12 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<div style="width:187mm;">
-						<div class="styLNDesc" style="width:55mm;">
+					<div style="width:187mm;height:6mm;" >
+						<div class="styLNDesc" style="width:55mm;height:6mm;padding-top:2mm;">
               Employer identification number, if any
               <img src="{$ImagePath}/8275-R_Bullet.gif" alt="Bullet Image"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:132mm;text-align:left">
+						<div class="styUnderlineAmount" style="width:132mm;text-align:left;height:6mm;padding-top:2mm;">
 						<xsl:choose>
 						<xsl:when test="$Form8275RData/ForeignEntityEIN">
 							<xsl:call-template name="PopulateText">
@@ -203,9 +209,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="styTableContainer" id="TPctn" style="height:25mm;">
+					<div class="styTableContainer" id="TPctn" style="height:auto;display:block;">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTable" cellspacing="0" name="TYTable" id="TYTable">
+						<table class="styTable" cellspacing="0" name="TYTable" id="TYTable" >
 							<thead class="styTableThead">
 								<tr style="height:6mm;">
 									<th class="styTableCellHeader" style="width:45mm;border-color:black;" scope="col">
@@ -380,8 +386,9 @@
 						<xsl:with-param name="headerHeight" select="1"/>
 						<xsl:with-param name="containerID" select=" 'TPctn' "/>
 					</xsl:call-template>
+					<br/>
 					<!-- Begin Part II Detailed Explanation-->
-					<div style="width:187mm;height:6mm;" class="styBB">
+					<div style="width:187mm;height:6mm;" class="styBB" >
 						<div class="styPartName" style="width:15mm;margin-top:1.5mm;">Part II</div>
 						<div class="styPartDesc" style="padding-left:3mm;margin-top:1.5mm;width:100mm;">
               Detailed Explanation <span class="styNormalText">(see instructions.)</span>
@@ -398,7 +405,7 @@
 					<!-- Probably as it as PDF can be shown only when there is no data -->
 					<xsl:choose>
 						<xsl:when test="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc">
-							<div class="styTableContainer" id="DEctn" style="height:20mm;">
+							<div class="styTableContainer" id="DEctn" style="height:auto;display:block;">
 								<xsl:call-template name="SetInitialState"/>
 								<table class="styTable" cellspacing="0" name="TYTable" id="TYTable" style="font-size:7pt;">
 									<thead class="styTableThead"/>
@@ -406,7 +413,7 @@
 									<tbody>
 										<xsl:if test="($Print != $Separated) or          (count($Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc) &lt;=3) ">
 											<xsl:for-each select="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc">
-												<tr style="height:15mm;">
+												<tr style="height:10mm;">
 													<td class="styTableCell" style="width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;">
 														<xsl:if test="position()=last() and position() &gt;= 3">
 															<xsl:attribute name="style">width:3mm;font-weight:bold;text-align:left;border-right-width:0px;border-left-width:0px;border-color:black;vertical-align:top;border-bottom-width:0px;</xsl:attribute>
@@ -595,6 +602,12 @@
 									</tbody>
 								</table>
 							</div>
+					<xsl:call-template name="SetInitialDynamicTableHeight">
+						<xsl:with-param name="TargetNode" select="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc"/>
+						<xsl:with-param name="containerHeight" select="15"/>
+						<xsl:with-param name="headerHeight" select="0"/>
+						<xsl:with-param name="containerID" select=" 'DEctn' "/>
+					</xsl:call-template>							
 						</xsl:when>
 						<xsl:otherwise>
 							<div style="width:187mm;height:21mm;" class="styBB">
@@ -652,73 +665,69 @@
 									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
 									<div class="styGenericDiv" style="width:184mm;"/>
 								</div>
-								<div style="width:187mm;height:21mm;" class="styBB">
-									<div style="width:187mm;height:7mm;" class="styBB">
-										<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;">5</div>
-										<div class="styGenericDiv" style="width:184mm;"/>
-									</div>
-									<div style="width:187mm;height:7mm;" class="styBB">
-										<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
-										<div class="styGenericDiv" style="width:184mm;"/>
-									</div>
-									<div style="width:187mm;height:7mm;" class="styGenericDiv">
-										<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
-										<div class="styGenericDiv" style="width:184mm;"/>
-									</div>
-									<div style="width:187mm;height:21mm;" class="styBB">
-										<div style="width:187mm;height:7mm;" class="styBB">
-											<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;">6</div>
-											<div class="styGenericDiv" style="width:184mm;"/>
-										</div>
-										<div style="width:187mm;height:7mm;" class="styBB">
-											<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
-											<div class="styGenericDiv" style="width:184mm;"/>
-										</div>
-										<div style="width:187mm;height:7mm;" class="styGenericDiv">
-											<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
-											<div class="styGenericDiv" style="width:184mm;"/>
-										</div>
-									</div>
+							</div>
+							<div style="width:187mm;height:21mm;" class="styBB">
+								<div style="width:187mm;height:7mm;" class="styBB">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;">5</div>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+								<div style="width:187mm;height:7mm;" class="styBB">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+								<div style="width:187mm;height:7mm;" class="styGenericDiv">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+							</div>
+							<div style="width:187mm;height:21mm;" class="styBB">
+								<div style="width:187mm;height:7mm;" class="styBB">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;">6</div>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+								<div style="width:187mm;height:7mm;" class="styBB">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+								<div style="width:187mm;height:7mm;" class="styGenericDiv">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
+									<div class="styGenericDiv" style="width:184mm;"/>
 								</div>
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>
-					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc"/>
-						<xsl:with-param name="containerHeight" select="6"/>
-						<xsl:with-param name="headerHeight" select="0"/>
-						<xsl:with-param name="containerID" select=" 'DEctn' "/>
-					</xsl:call-template>
+					<br/>
 					<!-- Begin Part III Information about Pass-Through Entity-->
-					<div class="styBB" style="width:187mm;" >
+					<div class="styBB" style="width:187mm;height:8mm;padding-top-width:15mm;" >
 						<div class="styPartName" style="width:15mm;">Part III</div>
 						<div class="styPartDesc" style="padding-left:3mm;">
               Information About Pass-Through Entity. 
-              <span class="styNormalText">To be completed by partners, shareholders, beneficiaries, 
-                <div style="width:60mm;"> or residual interest holders.</div>
-							</span>
+							<span class="styNormalText">To be completed by partners, shareholders, beneficiaries,</span>
+							<span class="styNormalText">or residual interest holders.</span>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;" >
 						<div class="styGenericDiv" style="width:186mm;height:4mm;font-weight:bold;" >
               Complete this part only if you are making adequate disclosure for a pass-through item.
-              <br/>
-							<br/>
 						</div>
-						<div class="styGenericDiv" style="width:187mm;height:7mm;" >
+						<div class="styGenericDiv" style="width:187mm;height:11mm;" >
 							<span class="styBoldText" style="height:8mm;width:8mm;">Note:</span>
-							<span class="styItalicText" style="height:8mm;width:174mm;">
-								<span style="width:1px;"/>A pass-through entity is a partnership, S corporation, estate, 
-                trust, regulated investment company (RIC), real estate investment 
-                <div style="width:120mm;">   trust (REIT), or real estate mortgage investment conduit (REMIC).</div>
+							<span class="styItalicText" style="height:8mm;width:179mm;">
+								<!-- <span style="width:1px;"/> -->
+				A pass-through entity is a partnership, S corporation, estate, 
+                trust, regulated investment company (RIC), real estate investment               
+								<div style="width:179mm;float:right">
+				trust (REIT), or real estate mortgage investment conduit (REMIC).
+								</div> 
 							</span>
 						</div>
 					</div>
 					<!-- Line 1 Name and Address-->
 					<div class="styBB" style="width:187mm;float:none;">
 						<div class="styIRS8275LeftLine" style="width:93mm;height:27mm;">
-							<div class="styLNLeftNumBox" style="width:5mm;padding-top:0mm;">1</div>
-							<div class="styGenericDiv">
+								<div class="styLNLeftNumBox" style="padding-top:0mm;width:3mm;text-align:center;">1</div>
+							<!--<div class="styLNLeftNumBox" style="width:5mm;padding-top:0mm;">1</div>-->
+							<div class="styGenericDiv" style="width:85mm;padding-right:3mm;">
                 Name, address, and ZIP code of pass-through entity <br/>
                 <!--Name (input Indivdual vs Business)-->
 								<xsl:choose>
@@ -813,13 +822,20 @@
 						</div>
 					</div>
 					<!--footer -->
-					<div style="width:187mm;clear:both;padding-top:1mm;">
+					<div style="width:187mm;clear:both;padding-top:3mm;">
 						<div style="width:90mm;font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see separate instructions.</div>
 						<div style="width:55mm;text-align:center;" class="styGenericDiv">Cat. No. 14594X</div>
 						<div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8275-R</span> (Rev. 8-2013)</div>
 					</div>
+					<div style="  clear:both;width:187mm;text-align:center;padding-top:1.5mm;"/>
+  
+					<!-- End Footer Line -->
+					<div class="pageEnd"/>
+					<div style="page-break-after:always"/>
+
+					
 					<!-- AFter talking to Charlie and Andy it has been decided to remove the Page 2 from the stylesheet -->
-					<p class="pageend" style="border:0 solid green;"/>
+<!--					<div  class="pageend" style="border:0 solid green;"/>-->
 					<!--*****ADDITIONAL DATA************************************ -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">Additional Data </div>
@@ -1023,7 +1039,7 @@
 				<td class="styTableCell" style="width:23mm;text-align:left;border-color:black;border-bottom-width:0px;">
 					<span class="styTableCellPad"/>
 				</td>
-				<td class="styTableCell" style="width:58mm;text-align:left;border-color:black;border-right-width:0px;nborder-bottom-width:0px;">
+				<td class="styTableCell" style="width:58mm;text-align:left;border-color:black;border-right-width:0px;border-bottom-width:0px;">
 					<span class="styTableCellPad"/>
 				</td>
 				<td class="styTableCell" style="width:23mm;border-left-width:1px;text-align:left;border-color:black;border-bottom-width:0px;">

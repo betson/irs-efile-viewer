@@ -18,8 +18,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>
@@ -47,7 +49,7 @@
         <xsl:call-template name="DocumentHeaderDependency"/>  
         <div class="styDepTitleLine">
           <span class="styDepTitle">
-            <span style="width:78mm;"><xsl:value-of select="$depDocTitle"/></span>        
+            <span style="width:182.8mm;"><xsl:value-of select="$depDocTitle"/></span>        
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftover">
@@ -58,8 +60,8 @@
           <div class="styDepGenericDiv">
             <span class="styTopSectionLineLbl">US Government Securities - End of Year Book Value:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;text-align:right;">
-            <span style="width:44mm;text-align:right;"><br/>
+          <div class="styDepGenericDiv" style="clear:right;">
+            <span style="width:44mm;text-align:left;"><br/>
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$DependencyData/USGovtObligationsBookVlEOYAmt"/>
               </xsl:call-template>
@@ -71,8 +73,8 @@
           <div class="styDepGenericDiv" style="clear:both;text-align:right;">
             <span class="styTopSectionLineLbl">US Government Securities - End of Year Fair Market Value:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;text-align:right;">
-            <span style="width:44mm;text-align:right;"><br/>
+          <div class="styDepGenericDiv" style="clear:right;">
+            <span style="width:44mm;text-align:left;"><br/>
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$DependencyData/USGovtObligationsEOYFMVAmt"/>
               </xsl:call-template>
@@ -84,8 +86,8 @@
           <div class="styDepGenericDiv" style="clear:both;text-align:right;">
             <span class="styTopSectionLineLbl">State &amp; Local Government Securities - End of Year Book Value:</span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;text-align:right;">
-            <span style="width:44mm;text-align:right;"><br/><br/>
+          <div class="styDepGenericDiv" style="clear:right;">
+            <span style="width:44mm;text-align:left;"><br/><br/>
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$DependencyData/StateLocalSecBookVlEOYAmt"/>
               </xsl:call-template>
@@ -98,8 +100,8 @@
               State &amp; Local Government Securities - End of Year Fair Market Value:
             </span>
           </div>
-          <div class="styDepGenericDiv" style="clear:right;text-align:right;">
-            <span style="width:44mm;text-align:right;"><br/><br/>
+          <div class="styDepGenericDiv" style="clear:right;">
+            <span style="width:44mm;text-align:left;"><br/><br/>
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="$DependencyData/StateLocalSecEOYFMVAmt"/>
               </xsl:call-template>

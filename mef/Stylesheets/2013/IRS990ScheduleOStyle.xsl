@@ -21,14 +21,14 @@
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-  width:30mm;height:22mm;
+  width:29mm;height:22mm;
   float:left;
 }
 .IRS990ScheduleO_OMB {   /* Block containing the OMB number */
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-  width:30mm;height:4mm;
+  width:29mm;height:4mm;
   text-align:center;
   float:left;
 }

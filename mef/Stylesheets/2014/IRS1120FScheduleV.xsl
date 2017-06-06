@@ -10,8 +10,10 @@
 <!-- Defines the stage of the data, e.g. original or latest -->
 <xsl:param name="Form1120FScheduleVData" select="$RtnDoc/IRS1120FScheduleV"/>
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>
 <xsl:call-template name="FormTitle">
 <xsl:with-param name="RootElement" select="local-name($Form1120FScheduleVData)"/>
@@ -37,7 +39,7 @@
 </style>
 <xsl:call-template name="GlobalStylesForm"/>
 </head>
-<body class="styBodyClass">
+<body class="styBodyClass" style="width:187mm;">
 <form name="Form1120FScheduleV">
 <!--xsl:value-of select='$PageWatermark'/-->
 <!-- BEGIN WARNING LINE -->
@@ -48,22 +50,23 @@
 <div class="styFNBox" style="width:30mm;height:19.5mm;">
 <div style="padding-left:0mm; font-weight:bold;">Schedule V</div>
 <div style="padding-left:0mm; font-weight:bold;">(Form 1120-F)</div>
+<br/>
 <xsl:call-template name="SetFormLinkInline">
 <xsl:with-param name="TargetNode" select="$Form1120FScheduleVData"/>
 </xsl:call-template>
 <br/>
-<span class="styAgency" style="padding-top:.5mm;">
+<span class="styAgency">
          <br/>Department of the Treasury<br/>Internal Revenue Service</span>
 </div>
 <div class="styFTBox" style="width:125mm;height:12mm;">
 <div class="styMainTitle" style="height:8mm;padding-top:2mm;">
             List of Vessels or Aircraft, Operators, and Owners
                       </div>
-<div class="styFST" style="height:5mm;font-size:7pt;padding-top:3mm;">
+<div class="styFST" style="height:5mm;font-size:7pt;padding-top:5mm;">
 <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/> 
             Attach to Form 1120-F.
           </div>
-<div class="styFST" style="height:5mm;font-size:5.6pt;">
+<div class="styFST" style="height:5mm;font-size:5.6pt;padding-top:2mm;">
 <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="MediumBullet"/> 
      Information about Schedule V (Form 1120-F) and its separate instructions is at 
      
@@ -78,17 +81,17 @@
 
 <div class="styTYBox" style="width:31mm;height:19.5mm;">
 <div style="height:2mm;"/>
-<div class="styOMB" style="height:1mm;">
+<div class="styOMB">
             OMB No. 1545-0126
                       </div>
-<div class="styTY" style="height:8mm;">20<span class="styTYColor">14</span>
+<div class="styTY" style="height:8mm;padding-top:1mm;">20<span class="styTYColor">14</span>
 </div>
 </div>
 </div>
 <!-- End Form Number and Name section -->
 <!-- Begin Names and Identifying number section -->
 <div class="styBB" style="width:187mm;float:none;clear:none;">
-<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+<div class="styNameBox" style="width:140mm;height:10mm;font-size:7pt;">
           Name of corporation<br/>
 <span>
 <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -145,14 +148,12 @@
 <!-- Line 1 -->
 <tr>
 <td style="border:none;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7.5pt;      padding-left:2mm;height:8mm;padding-top:3mm;">
-<b>1</b>
-</div>
-<div class="styGenericDiv" style="font-size:7.5pt;padding-top:3mm;">
-  <span style="float:left;">Name of vessel or type of aircraft </span>
-	<!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">1</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+						 Name of vessel or type of aircraft
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 </div>
 </div>
 </td>
@@ -189,7 +190,7 @@
 <div class="styGenericDiv" style="width:5mm;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">
 <b>2</b>
 </div>
-<div class="styGenericDiv" style="font-size:7.5pt;padding-top:3mm;"> 
+<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;"> 
   <span style="float:left;">Vessel or aircraft ID number</span>
 	<!--Dotted Line-->
 	<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
@@ -229,7 +230,7 @@
 <div class="styGenericDiv" style="font-size:7pt;width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
 <b>3</b>
 </div>
-<div class="styGenericDiv" style="height:8mm;font-size:7pt;padding-top:4mm;">
+<div class="styGenericDiv" style="width:60mm;height:8mm;font-size:7pt;padding-top:4mm;">
   <span style="float:left;">Was the vessel or aircraft chartered in?</span>
 	<!--Dotted Line-->
 	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
@@ -251,7 +252,7 @@
 </xsl:call-template>
 <span style="font-size:6pt">    Yes</span>
 </label>
-<span style="width:5mm"/>
+<span style="width:2mm"/>
 <input type="checkbox" class="styCkbox">
 <xsl:call-template name="PopulateNoCheckbox">
 <xsl:with-param name="TargetNode" select="VesselOrAircraftCharteredInInd"/>
@@ -264,7 +265,6 @@
 <xsl:with-param name="BackupName">VesselOrAircraftCharteredIn</xsl:with-param>
 </xsl:call-template>
 <span style="font-size:6pt">    No</span>
-<span style="width:2mm"/>
 </label>
 <span class="styTableCellPad"/>
 <xsl:call-template name="SetFormLinkInline">
@@ -286,7 +286,7 @@
 </xsl:call-template>
 <span style="font-size:6pt">    Yes</span>
 </label>
-<span style="width:5mm"/>
+<span style="width:2mm"/>
 <input type="checkbox" class="styCkbox">
 <xsl:call-template name="PopulateNoCheckbox">
 <xsl:with-param name="TargetNode" select="$Form1120FScheduleVData/VesselAircraftInformation[$pos + 1]/VesselOrAircraftCharteredInInd"/>
@@ -299,7 +299,6 @@
 <xsl:with-param name="BackupName">$Form1120FScheduleVData/VesselAircraftInformation[$pos + 1]/VesselOrAircraftCharteredIn</xsl:with-param>
 </xsl:call-template>
 <span style="font-size:6pt">     No</span>
-<span style="width:2mm"/>
 </label>
 <span class="styTableCellPad"/>
 <xsl:call-template name="SetFormLinkInline">
@@ -321,7 +320,7 @@
 </xsl:call-template>
 <span style="font-size:6pt">    Yes</span>
 </label>
-<span style="width:5mm"/>
+<span style="width:2mm"/>
 <input type="checkbox" class="styCkbox">
 <xsl:call-template name="PopulateNoCheckbox">
 <xsl:with-param name="TargetNode" select="$Form1120FScheduleVData/VesselAircraftInformation[$pos + 2]/VesselOrAircraftCharteredInInd"/>
@@ -334,7 +333,6 @@
 <xsl:with-param name="BackupName">$Form1120FScheduleVData/VesselAircraftInformation[$pos + 2]/VesselOrAircraftCharteredIn</xsl:with-param>
 </xsl:call-template>
 <span style="font-size:6pt">    No</span>
-<span style="width:2mm"/>
 </label>
 <xsl:call-template name="SetFormLinkInline">
 <xsl:with-param name="TargetNode" select="VesselOrAircraftCharteredInInd"/>
@@ -355,7 +353,7 @@
 </xsl:call-template>
 <span style="font-size:6pt">    Yes</span>
 </label>
-<span style="width:5mm"/>
+<span style="width:2mm"/>
 <input type="checkbox" class="styCkbox">
 <xsl:call-template name="PopulateNoCheckbox">
 <xsl:with-param name="TargetNode" select="$Form1120FScheduleVData/VesselAircraftInformation[$pos + 3]/VesselOrAircraftCharteredInInd"/>
@@ -368,7 +366,6 @@
 <xsl:with-param name="BackupName">$Form1120FScheduleVData/VesselAircraftInformation[$pos + 3]/VesselOrAircraftCharteredIn</xsl:with-param>
 </xsl:call-template>
 <span style="font-size:6pt">    No</span>
-<span style="width:2mm"/>
 </label>
 <span class="styTableCellPad"/>
 <xsl:call-template name="SetFormLinkInline">
@@ -383,7 +380,7 @@
 <div class="styGenericDiv" style="width:5mm;font-size:7pt;padding-left:2mm;height:8mm;padding-top:4mm;">
 <b>4</b>
 </div>
-<div class="styGenericDiv" style="font-size:7pt;height:8mm;padding-top:4mm;">
+<div class="styGenericDiv" style="width:60mm;font-size:7pt;height:8mm;padding-top:4mm;">
   <span style="float:left;">Was the vessel or aircraft chartered out?</span>
 	<!--Dotted Line-->
 	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
@@ -404,7 +401,7 @@
 </xsl:call-template>
 <span style="font-size:6pt">    Yes</span>
 </label>
-<span style="width:5mm"/>
+<span style="width:2mm"/>
 <input type="checkbox" class="styCkbox">
 <xsl:call-template name="PopulateNoCheckbox">
 <xsl:with-param name="TargetNode" select="VesselOrArcrftCharteredOutInd"/>
@@ -417,7 +414,6 @@
 <xsl:with-param name="BackupName">VesselOrAircraftCharteredOut</xsl:with-param>
 </xsl:call-template>
 <span style="font-size:6pt">    No</span>
-<span style="width:2mm"/>
 </label>
 <span class="styTableCellPad"/>
 <xsl:call-template name="SetFormLinkInline">
@@ -438,7 +434,7 @@
 </xsl:call-template>
 <span style="font-size:6pt">    Yes</span>
 </label>
-<span style="width:5mm"/>
+<span style="width:2mm"/>
 <input type="checkbox" class="styCkbox">
 <xsl:call-template name="PopulateNoCheckbox">
 <xsl:with-param name="TargetNode" select="$Form1120FScheduleVData/VesselAircraftInformation[$pos + 1]/VesselOrArcrftCharteredOutInd"/>
@@ -451,7 +447,6 @@
 <xsl:with-param name="BackupName">$Form1120FScheduleVData/VesselAircraftInformation[$pos + 1]/VesselOrAircraftCharteredOut</xsl:with-param>
 </xsl:call-template>
 <span style="font-size:6pt">    No</span>
-<span style="width:2mm"/>
 </label>
 <span class="styTableCellPad"/>
 <xsl:call-template name="SetFormLinkInline">
@@ -472,7 +467,7 @@
 </xsl:call-template>
 <span style="font-size:6pt">    Yes</span>
 </label>
-<span style="width:5mm"/>
+<span style="width:2mm"/>
 <input type="checkbox" class="styCkbox">
 <xsl:call-template name="PopulateNoCheckbox">
 <xsl:with-param name="TargetNode" select="$Form1120FScheduleVData/VesselAircraftInformation[$pos + 2]/VesselOrArcrftCharteredOutInd"/>
@@ -485,7 +480,6 @@
 <xsl:with-param name="BackupName">$Form1120FScheduleVData/VesselAircraftInformation[$pos + 2]/VesselOrAircraftCharteredOut</xsl:with-param>
 </xsl:call-template>
 <span style="font-size:6pt">    No</span>
-<span style="width:2mm"/>
 </label>
 <span class="styTableCellPad"/>
 <xsl:call-template name="SetFormLinkInline">
@@ -506,7 +500,7 @@
 </xsl:call-template>
 <span style="font-size:6pt">    Yes</span>
 </label>
-<span style="width:5mm"/>
+<span style="width:2mm"/>
 <input type="checkbox" class="styCkbox">
 <xsl:call-template name="PopulateNoCheckbox">
 <xsl:with-param name="TargetNode" select="$Form1120FScheduleVData/VesselAircraftInformation[$pos + 3]/VesselOrArcrftCharteredOutInd"/>
@@ -519,7 +513,6 @@
 <xsl:with-param name="BackupName">$Form1120FScheduleVData/VesselAircraftInformation[$pos + 3]/VesselOrAircraftCharteredOut</xsl:with-param>
 </xsl:call-template>
 <span style="font-size:6pt">    No</span>
-<span style="width:2mm"/>
 </label>
 <span class="styTableCellPad"/>
 <xsl:call-template name="SetFormLinkInline">
@@ -531,10 +524,10 @@
 <tr>
 <td style="border:none;font-size:7pt;" scope="row">
 <div>
-<div class="styGenericDiv" style="width:5mm;    padding-left:2mm;height:8mm;padding-top:4mm;">
+<div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
 <b>5</b>
 </div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
+<div class="styGenericDiv" style="width:60mm;height:8mm;padding-top:4mm;">
   <span style="float:left;">Name of registered owner</span>
   <!--Dotted Line-->
   <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
@@ -590,7 +583,7 @@
 <div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
 <b>6</b>
 </div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
+<div class="styGenericDiv" style="width:60mm;height:8mm;padding-top:4mm;">
   <span style="float:left;">EIN or SSN of registered owner</span>
   <!--Dotted Line-->
   <div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
@@ -712,7 +705,7 @@
 <div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
 <b>7</b>
 </div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
+<div class="styGenericDiv" style="width:60mm;height:8mm;padding-top:4mm;">
   <span style="float:left;">Name of operator </span>
   <!--Dotted Line-->
   <div class="styDotLn" style="float:right;padding-right:1mm;">........</div>
@@ -826,8 +819,6 @@
 <span class="styTableCellPad"/>
 </td>
 </tr>
-
-<!--  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  -->
 <!-- Line 8 -->
 <tr>
 <td class="styIRS1120FScheduleVTableCellSmall" style="font-size:7.5pt;" scope="row">
@@ -835,7 +826,7 @@
 <div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
 <b>8</b>
 </div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
+<div class="styGenericDiv" style="width:60mm;height:8mm;padding-top:4mm;">
   <span style="float:left;">EIN or SSN of operator</span>
   <!--Dotted Line-->
   <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
@@ -958,7 +949,7 @@
 <div class="styGenericDiv" style="width:5mm;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:4mm;">
 <b>9</b>
 </div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
+<div class="styGenericDiv" style="width:60mm;height:8mm;padding-top:4mm;">
   <span style="float:left;">U.S. source gross transportation income</span>
   <!--Dotted Line-->
   <div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
@@ -1004,47 +995,39 @@
 <!-- this should start separated mode -->
 <!-- start II -->
 
-					<!--		<xsl:if test="count($Form1120PCData/IRS1120PCScheduleG/CapitalAssetDetail) &lt; 1 or ((count($Form1120PCData/IRS1120PCScheduleG/CapitalAssetDetail) &gt;6) and ($Print = $Separated))">
--->
-<!--<xsl:if test="((count($Form1120PCData/IRS1120PCScheduleG/CapitalAssetDetail) &gt;6) and ($Print = $Separated))">
-												<xsl:call-template name="PopulateAdditionalDataTableMessage">-->
-
-<xsl:if test="((count($Form1120FScheduleVData/VesselAircraftInformation) &gt;5) and ($Print = $Separated))">
-<table class="styTable" cellspacing="0" style="border-color:black;width:187mm;">
-
-<xsl:variable name="pos" select="position()"/>
-<xsl:if test="position() mod 4 = 1">
-<!-- title row -->
-<tr>
-<td class="styTableCellSmall" style="width:67mm;height:5mm;"/>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;                     font-weight:bold;border-color:black;border-top-width:1px;border-left-width:1px;border-right-width:1px;">
-<xsl:number value="position()" format="A"/>
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;font-weight:bold;border-color:black;border-top-width:1px;border-left-width:0px;border-right-width:1px;">
-<xsl:number value="position()+1" format="A"/>
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;                     font-weight:bold;border-color:black;border-top-width:1px;border-left-width:0px;border-right-width:1px;">
-<xsl:number value="position()+2" format="A"/>
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;font-weight:bold;border-color:black;border-top-width:1px;border-left-width:0px;border-right-width:0px;">
-<xsl:number value="position()+3" format="A"/>
-<span class="styTableCellPad"/>
-</td>
-</tr>
-<!-- Line 1 -->
-<tr>
-<td style="border:none;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7.5pt;      padding-left:2mm;height:8mm;padding-top:3mm;">
-<b>1</b>
-</div>
-<div class="styGenericDiv" style="font-size:7.5pt;padding-top:3mm;">
-  <span style="float:left;">Name of vessel or type of aircraft </span>
-	<!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
+<xsl:if test="((count($Form1120FScheduleVData/VesselAircraftInformation) &gt;4) and ($Print = $Separated))">
+	<table class="styTable" cellspacing="0" style="border-color:black;width:187mm;">
+		<xsl:variable name="pos" select="position()"/>
+		<xsl:if test="position() mod 4 = 1">
+			<!-- title row -->
+			<tr>
+				<td class="styTableCellSmall" style="width:67mm;height:5mm;"/>
+				<td class="styTableCellSmall" style="width:30mm;text-align:center;font-weight:bold;border-color:black;border-top-width:1px;border-left-width:1px;border-right-width:1px;">
+					<xsl:number value="position()" format="A"/>
+					<span class="styTableCellPad"/>
+				</td>
+				<td class="styTableCellSmall" style="width:30mm;text-align:center;font-weight:bold;border-color:black;border-top-width:1px;border-left-width:0px;border-right-width:1px;">
+					<xsl:number value="position()+1" format="A"/>
+					<span class="styTableCellPad"/>
+				</td>
+				<td class="styTableCellSmall" style="width:30mm;text-align:center;font-weight:bold;border-color:black;border-top-width:1px;border-left-width:0px;border-right-width:1px;">
+					<xsl:number value="position()+2" format="A"/>
+					<span class="styTableCellPad"/>
+				</td>
+				<td class="styTableCellSmall" style="width:30mm;text-align:center;font-weight:bold;border-color:black;border-top-width:1px;border-left-width:0px;border-right-width:0px;">
+					<xsl:number value="position()+3" format="A"/>
+					<span class="styTableCellPad"/>
+				</td>
+			</tr>
+			<!-- Line 1 -->
+			<tr>
+				<td style="border:none;" scope="row">
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">1</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Name of vessel or type of aircraft
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 </div>
 </div>
 </td>
@@ -1068,12 +1051,10 @@
 <!-- Line 2 -->
 <tr>
 <td style="border:none;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">
-<b>2</b>
-</div>
-<div class="styGenericDiv" style="font-size:7.5pt;padding-top:3mm;"> 
-  <span style="float:left;">Vessel or aircraft ID number</span>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">2</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Vessel or aircraft ID number
 	<!--Dotted Line-->
 	<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 </div>
@@ -1082,7 +1063,7 @@
 <td class="styTableCellSmall" style="width:30mm;border-color:black;height:8mm;padding-top:4mm;border-left-width:1px;font-size:6pt;text-align:left">
 <span class="styTableCellPad"/>
 </td>
-<td class="styTableCellSmall" style="width:30mm;border-color:black;height:8mm;                                                            padding-top:4mm;font-size:6pt;text-align:left">
+			<td class="styTableCellSmall" style="width:30mm;border-color:black;height:8mm;padding-top:4mm;font-size:6pt;text-align:left">
 
 <span class="styTableCellPad"/>
 </td>
@@ -1090,7 +1071,7 @@
 
 <span class="styTableCellPad"/>
 </td>
-<td class="styTableCellSmall" style="width:30mm;border-color:black;height:8mm;                                                            padding-top:4mm;border-right-width:0px;font-size:6pt;text-align:left">
+			<td class="styTableCellSmall" style="width:30mm;border-color:black;height:8mm;padding-top:4mm;border-right-width:0px;font-size:6pt;text-align:left">
 
 <span class="styTableCellPad"/>
 </td>
@@ -1099,39 +1080,30 @@
 <!-- line 3 -->
 <tr>
 <td style="border:none;" scope="row">
-<div>
-<div class="styGenericDiv" style="font-size:7pt;width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>3</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;font-size:7pt;padding-top:4mm;">
-  <span style="float:left;">Was the vessel or aircraft chartered in?</span>
-	<!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
-</div>
-</div>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color:black;height:8mm;padding-top:4mm;border-left-width:1px;text-align:center;">
-<span style="width:1px;"/>
-<input type="checkbox" class="styCkbox">
-
-</input>
-<label>
-
-<span style="font-size:6pt">    Yes</span>
-</label>
-<span style="width:5mm"/>
-<input type="checkbox" class="styCkbox">
-
-</input>
-<label>
-
-<span style="font-size:6pt">    No</span>
-<span style="width:2mm"/>
-</label>
-<span class="styTableCellPad"/>
-<!--<xsl:call-template name="SetFormLinkInline">
-<xsl:with-param name="TargetNode" select="VesselOrAircraftCharteredIn"/>
-</xsl:call-template>-->
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">3</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Was the vessel or aircraft chartered in?
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
+						</div>
+					</div>
+				</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color:black;height:8mm;padding-top:4mm;border-left-width:1px;text-align:center;">
+			<span style="width:1px;"/>
+			<input type="checkbox" class="styCkbox">
+			</input>
+			<label>
+			<span style="font-size:6pt">    Yes</span>
+			</label>
+			<span style="width:5mm"/>
+			<input type="checkbox" class="styCkbox">
+			</input>
+			<label>
+			<span style="font-size:6pt">    No</span>
+			<span style="width:2mm"/>
+			</label>
+			<span class="styTableCellPad"/>
 </td>
 <td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;            border-color:black;height:8mm;padding-top:4mm;text-align:center">
 <span style="width:1px;"/>
@@ -1183,16 +1155,14 @@
 </tr>
 <!-- line 4 -->
 <tr>
-<td style="border:none;font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7pt;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>4</b>
+				<td style="border:none;" scope="row">
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">4</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Was the vessel or aircraft chartered out?
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
 </div>
-<div class="styGenericDiv" style="font-size:7pt;height:8mm;padding-top:4mm;">
-  <span style="float:left;">Was the vessel or aircraft chartered out?</span>
-	<!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
-	</div>
 </div>
 </td>
 <td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:center;border-style: solid;border-color: black;black;height:8mm;padding-top:4mm;border-left-width:1px;">
@@ -1258,171 +1228,148 @@
 </tr>
 <!-- Line 5 -->
 <tr>
-<td style="border:none;font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;    padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>5</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">Name of registered owner</span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
-</div>
-</div>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;       border-color: black;height:8mm;padding-top:4mm;border-left-width:1px;">
-<span class="styTableCellPad"/>
-<br/>
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;      border-color: black;height:8mm;padding-top:4mm;">
-<br/>
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
-<br/>
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
-<br/>
-<span class="styTableCellPad"/>
-</td>
-</tr>
-<!-- Line 6 -->
-<tr>
-<td style="border:none;font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>6</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">EIN or SSN of registered owner</span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
-</div>
-</div>
-</td>
-<td class="styTableCellSmall" style="width:30mm;border-style: solid;border-color: black;           height:8mm;padding-top:4mm;border-left-width:1px;text-align:center;">
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;;border-style: solid;                                                                       border-color: black;height:8mm;padding-top:4mm;">
+				<td style="border:none;" scope="row">
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">5</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Name of registered owner
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+						</div>
+					</div>
+				</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-left-width:1px;">
+			<span class="styTableCellPad"/>
+			<br/>
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
+			<br/>
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
+			<br/>
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
+			<br/>
+			<span class="styTableCellPad"/>
+			</td>
+			</tr>
+			<!-- Line 6 -->
+			<tr>
+				<td style="border:none;" scope="row">
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">6</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 EIN or SSN of registered owner
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
+						</div>
+					</div>
+				</td>
 
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
-
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
-
-<span class="styTableCellPad"/>
-</td>
-</tr>
- <!-- Line 7 -->
- <tr>
-<td style="border:none;font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>7</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">Name of operator </span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">........</div>
-</div>
-</div>
-</td>
-<td class="styTableCellSmall" style="width:30mm;border-style: solid;border-color: black;           height:8mm;padding-top:4mm;border-left-width:1px;font-size:6pt;text-align:left;">
-<span class="styTableCellPad"/>
-
-
-</td>
-
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;                                                                       border-color: black;height:8mm;padding-top:4mm;">
-<span class="styTableCellPad"/>
-</td>
-
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;                                                                       border-color: black;height:8mm;padding-top:4mm;">
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:left;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
-
-<span class="styTableCellPad"/>
-
-
-<span class="styTableCellPad"/>
-</td>
-</tr>
-
-<!--  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  -->
-<!-- Line 8 -->
-<tr>
-<td class="styIRS1120FScheduleVTableCellSmall" style="font-size:7.5pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>8</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">EIN or SSN of operator</span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
-</div>
-</div>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-left-width:1px">
-
-
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
-<span class="styTableCellPad"/>
-
-</td>
-<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
-<span class="styTableCellPad"/>
-
-<span class="styTableCellPad"/>
-</td>
-</tr>
-<!-- line 9 -->
-<tr>
-<td class="styIRS1120FScheduleVTableCellSmall" style="font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>9</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">U.S. source gross transportation income</span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
-</div>
-</div>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-left-width:1px;text-align:right;">
-
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
-<span class="styTableCellPad"/>
-</td>
-<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
-
-<span class="styTableCellPad"/>
-</td>
-</tr>
-<tr>
-<td colspan="5">
-<span class="styTableCellPad"/>
-</td>
-</tr>
-</xsl:if>
-
+			<td class="styTableCellSmall" style="width:30mm;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-left-width:1px;text-align:center;">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;text-align:center;;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
+			
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
+			
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
+			
+			<span class="styTableCellPad"/>
+			</td>
+			</tr>
+			 <!-- Line 7 -->
+			 <tr>
+				<td style="border:none;" scope="row">
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">7</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Name of operator
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
+						</div>
+					</div>
+				</td>
+			<td class="styTableCellSmall" style="width:30mm;border-style: solid;border-color: black;           height:8mm;padding-top:4mm;border-left-width:1px;font-size:6pt;text-align:left;">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;                                                                       border-color: black;height:8mm;padding-top:4mm;">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;text-align:left;border-style: solid;                                                                       border-color: black;height:8mm;padding-top:4mm;">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;text-align:left;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
+			<span class="styTableCellPad"/>
+			<span class="styTableCellPad"/>
+			</td>
+			</tr>
+			<!-- Line 8 -->
+			<tr>
+				<td style="border:none;" scope="row">
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">8</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 EIN or SSN of operator
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
+						</div>
+					</div>
+				</td>
+			<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-left-width:1px">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;text-align:center;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
+			<span class="styTableCellPad"/>
+			<span class="styTableCellPad"/>
+			</td>
+			</tr>
+			<!-- line 9 -->
+			<tr>
+				<td style="border:none;" scope="row">
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">9</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 U.S. source gross transportation income
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
+						</div>
+					</div>
+				</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-left-width:1px;text-align:right;">
+			
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color: black;height:8mm;padding-top:4mm;">
+			<span class="styTableCellPad"/>
+			</td>
+			<td class="styTableCellSmall" style="width:30mm;font-size:6pt;border-style: solid;border-color: black;height:8mm;padding-top:4mm;border-right-width:0px;">
+			
+			<span class="styTableCellPad"/>
+			</td>
+			</tr>
+			<tr>
+			<td colspan="5">
+			<span class="styTableCellPad"/>
+			</td>
+			</tr>
+		</xsl:if>
 <!-- first for-each vessel aircraft information -->
 </table>
 </xsl:if>
@@ -2026,15 +1973,19 @@
 <span style="width:32px;"/>
 </div>-->
 <!-- Empty table e1001 -->
-<div style="width:187mm;clear:both;padding-top:1mm;" class="pageend">
-<div style="width:112mm;font-weight:bold;font-size:6pt;" class="styGenericDiv"><b>
-For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></div>
-<div style="width:22mm;text-align:center;font-size:6pt;" class="styGenericDiv">
-<span style="width:1mm;"/>Cat. No. 50821R</div>
-<div style="width:53mm;float:right;" class="styGenericDiv">
-<span class="styBoldText" style="font-size:6.5pt;float:right">Schedule V (Form 1120-F) (2014)</span>
-</div>
-</div>
+<p>
+	<div class="pageEnd" style="width:187mm;padding-top:0mm;">
+		<div style="float:left;">
+			<span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructionsfor Form 1120-F.</span>
+			<span style="width:1mm;"/>                        
+			Cat. No. 50821R
+		</div>
+		<div style="float:right;">
+			<span style="width:10px;"/>
+		Schedule V (Form 1120-F) (2014)
+	</div>
+	</div>
+</p>
 <!-- BEGIN Left Over Table -->
 <!-- Additonal Data Title Bar and Button -->
 <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -2056,7 +2007,7 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 <!-- END Left Over Table -->
 <!-- start here iii -->
 	<!-- Blue table was approved by customer on Tue 11/20/2012 4:47 PM -->
-<xsl:if test="((count($Form1120FScheduleVData/VesselAircraftInformation) &gt;5) and ($Print = $Separated))">
+<xsl:if test="((count($Form1120FScheduleVData/VesselAircraftInformation) &gt;4) and ($Print = $Separated))">
 <table class="styTable" cellspacing="0" style="border-color:black;width:187mm;">
 <xsl:for-each select="$Form1120FScheduleVData/VesselAircraftInformation">
 <xsl:variable name="pos" select="position()"/>
@@ -2085,14 +2036,12 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 <!-- Line 1 -->
 <tr class="styDepTblRow1">
 <td style="border:none;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7.5pt;      padding-left:2mm;height:8mm;padding-top:3mm;">
-<b>1</b>
-</div>
-<div class="styGenericDiv" style="font-size:7.5pt;padding-top:3mm;">
-  <span style="float:left;">Name of vessel or type of aircraft</span>
-	<!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">1</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+						 Name of vessel or type of aircraft
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 </div>
 </div>
 </td>
@@ -2125,14 +2074,12 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 <!-- Line 2 -->
 <tr class="styDepTblRow2">
 <td style="border:none;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">
-<b>2</b>
-</div>
-<div class="styGenericDiv" style="font-size:7.5pt;padding-top:3mm;"> 
-  <span style="float:left;">Vessel or aircraft ID number</span>
-	<!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">2</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							Vessel or aircraft ID number
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 </div>
 </div>
 </td>
@@ -2165,14 +2112,12 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 <!-- line 3 -->
 <tr class="styDepTblRow1">
 <td style="border:none;" scope="row">
-<div>
-<div class="styGenericDiv" style="font-size:7pt;width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>3</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;font-size:7pt;padding-top:4mm;">
-  <span style="float:left;">Was the vessel or aircraft chartered in?</span>
-	<!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">3</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+						 Was the vessel or aircraft chartered in?
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
 </div>
 </div>
 </td>
@@ -2319,14 +2264,12 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 <!-- line 4 -->
 <tr class="styDepTblRow2">
 <td style="border:none;font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7pt;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>4</b>
-</div>
-<div class="styGenericDiv" style="font-size:7pt;height:8mm;padding-top:4mm;">
-  <span style="float:left;">Was the vessel or aircraft chartered out?</span>
-	<!--Dotted Line-->
-	<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">4</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Was the vessel or aircraft chartered out?
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
 	</div>
 </div>
 </td>
@@ -2470,14 +2413,12 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 <!-- Line 5 -->
 <tr class="styDepTblRow1">
 <td style="border:none;font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;    padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>5</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">Name of registered owner</span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">5</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Name of registered owner
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
 </div>
 </div>
 </td>
@@ -2526,14 +2467,12 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 <!-- Line 6 -->
 <tr class="styDepTblRow2">
 <td style="border:none;font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>6</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">EIN or SSN of registered owner</span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">6</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 EIN or SSN of registered owner
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 </div>
 </div>
 </td>
@@ -2648,14 +2587,12 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
  <!-- Line 7 -->
  <tr class="styDepTblRow1">
 <td style="border:none;font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>7</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">Name of operator </span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">........</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">7</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 Name of operator 
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 </div>
 </div>
 </td>
@@ -2762,23 +2699,18 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 </xsl:call-template>
 <span class="styTableCellPad"/>
 </xsl:if>
-
-<span class="styTableCellPad"/>
-</td>
-</tr>
-
-<!--  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  -->
-<!-- Line 8 -->
-<tr class="styDepTblRow2">
-<td class="styIRS1120FScheduleVTableCellSmall" style="font-size:7.5pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>8</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">EIN or SSN of operator</span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
+			<span class="styTableCellPad"/>
+			</td>
+			</tr>
+			<!-- Line 8 -->
+			<tr class="styDepTblRow2">
+				<td style="border:none;" scope="row">
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">8</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 EIN or SSN of operator
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
 </div>
 </div>
 </td>
@@ -2894,14 +2826,12 @@ For Paperwork Reduction Act Notice, see the Instructions for Form 1120-F.</b></d
 <!-- line 9 -->
 <tr class="styDepTblRow1">
 <td class="styIRS1120FScheduleVTableCellSmall" style="font-size:7pt;" scope="row">
-<div>
-<div class="styGenericDiv" style="width:5mm;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:4mm;">
-<b>9</b>
-</div>
-<div class="styGenericDiv" style="height:8mm;padding-top:4mm;">
-  <span style="float:left;">U.S. source gross transportation income</span>
-  <!--Dotted Line-->
-  <div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
+					<div style="width:67mm;">
+						<div class="styBoldText" style="width:5mm;float:left;font-size:7.5pt;padding-left:2mm;height:8mm;padding-top:3mm;">9</div>
+						<div class="styGenericDiv" style="width:60mm;font-size:7.5pt;padding-top:3mm;">
+							 U.S. source gross transportation income
+							<!--Dotted Line-->
+							<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
 </div>
 </div>
 </td>

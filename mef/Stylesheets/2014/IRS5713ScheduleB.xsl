@@ -9,8 +9,10 @@
 <xsl:strip-space elements="*"/>
 <xsl:param name="Form5713BData" select="$RtnDoc/IRS5713ScheduleB"/>
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <META http-equiv="Content-Type" content="text/html"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form5713BData)"/></xsl:call-template></title>
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -37,8 +39,8 @@
         <div style="width:187mm;">
         <div class="styFNBox" style="width:32mm;height:24.25mm;">
           <div class="styFormNumber" style="font-size: 11pt;">SCHEDULE B</div>
-            <div class="styFormNumber" style="font-size: 9pt;">(Form 5713)</div><br/>
-        <div style="width:31mm;font-weight:normal;font-size:7pt;">(Rev. December 2010)</div>
+            <div class="styFormNumber" style="font-size: 9pt;height:8mm;">(Form 5713)</div><br/>
+        <div style="width:31mm;font-weight:normal;font-size:7pt;height:5.8mm;">(Rev. December 2010)</div>
         <br/>
         <!--General Dependency Push Pin
               <xsl:call-template name="SetFormLinkInline">
@@ -101,11 +103,16 @@
                 <xsl:with-param name="TargetNode" select="$Form5713BData/MissingEINReasonCd"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="PopulateReturnHeaderFiler">
-                <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-              </xsl:call-template>
-            </xsl:otherwise>
+			  <xsl:when test="$RtnHdrData/Filer/EIN">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+				  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				</xsl:call-template>
+			  </xsl:when>
+			  <xsl:otherwise>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+				  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				</xsl:call-template>
+			  </xsl:otherwise>
           </xsl:choose>
             <!--<xsl:choose>
 			  <xsl:when test="/AppData/Parameters/SubmissionType='CIT'">
@@ -141,8 +148,8 @@
     </div>      
 <!-- Name and Identifying number END-->
 <!-- Item portion above "(a-o) table" start  -->
-  <div style="width:187mm;">
-    <div class="styLNDesc" style="width:187mm;height:4.0mm;">Name of country being boycotted (check one)
+  <div style="width:187mm;height:auto;">
+    <div class="styLNDesc" style="width:187mm;height:auto;">Name of country being boycotted (check one)
     <span style="width:4mm;font-size: 7pt; font-weight: bold; letter-spacing:4mm;"/> 
       <input type="checkbox" class="styCkbox">
         <xsl:call-template name="PopulateCheckbox">
@@ -180,17 +187,17 @@
   </span>
     </div>
   </div>
-  <div class="styBB" style="width:187mm;border-top-width:0px"/>
-  <div class="styBB" style="width:187mm;"><b>Important:</b><i> If you are involved in more than one international boycott, use a separate Schedule B (Form 5713) to compute the specifically attributable taxes and income for each boycott.</i>
+  <div class="styBB" style="width:187mm;border-top-width:0px;float:none;"/>
+  <div class="styBB" style="width:187mm;height:auto;float:none;"><b>Important:</b><i> If you are involved in more than one international boycott, use a separate Schedule B (Form 5713) to compute the specifically attributable taxes and income for each boycott.</i>
   </div>
-  <div style="width:187mm;text-align:left;font-size:9pt;font-weight:bold;" class="styBB">
-    <span style="width:187mm;float:left;text-align:center;padding-top:2mm;height:5mm;">Specifically Attributable Taxes and Income by Operation (Use a separate line for each operation.)</span>
+  <div style="width:187mm;text-align:left;font-size:9pt;font-weight:bold;float:none;" class="styBB">
+    <span style="width:187mm;float:left;text-align:center;padding-top:2mm;height:auto;">Specifically Attributable Taxes and Income by Operation (Use a separate line for each operation.)</span>
   <!--Table expand/collapse toggle button-->
     <div class="styGenericDiv" style="float:right;clear:none;width:7mm;text-align:right;">
        <xsl:call-template name="SetDynamicTableToggleButton">
           <xsl:with-param name="TargetNode" select="$Form5713BData/OperationTaxesAndIncome"/>
           <xsl:with-param name="containerHeight" select="14"/>
-        <xsl:with-param name="headerHeight" select="2"/>          
+        <xsl:with-param name="headerHeight" select="4"/>          
           <xsl:with-param name="containerID" select=" 'TP1ctn' "/>
 <!--          <xsl:with-param name="imageID" select=" 'TPimg' "/>
           <xsl:with-param name="buttonID" select=" 'TPbtn' "/> -->
@@ -198,13 +205,13 @@
     </div>
   <!--Table expand/collapse toggle button end-->
 </div>
-  <div class="styIRS5713BTableContainer" style="width:187mm;" id="TP1ctn">
+  <div class="styIRS5713BTableContainer" style="width:187mm;height:auto;float:none;display:block;" id="TP1ctn">
   <!-- Show table in expanded form -->
   <xsl:call-template name="SetInitialState"/>
   <!-- end -->  
   <table cellspacing="0" summary="Specifically Attributable Taxes and  Income by Operation">
       <tr>
-        <th class="styTableCell" scope="col" rowspan="2" nowrap="nowrap" style="width:25mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;">Name of country</th>
+        <th class="styTableCell" scope="col" style="width:25mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;"></th>
         <th class="styTableCell" scope="col" colspan="2" style="width:38mm;text-align:center;font-size:7pt;border-color:black;">Principal business activity</th>
         <th class="styTableCell" scope="col" style="width:30mm;text-align:center;font-size:7pt;border-color:black;">Foreign tax credit</th>
         <th class="styTableCell" scope="col" style="width:30mm;text-align:center;font-size:7pt;border-color:black;">Subpart F income</th>
@@ -212,6 +219,7 @@
         <th class="styTableCell" scope="col" style="width:30mm;text-align:center;font-size:7pt;border-color:black;border-right:none;">FSC income</th>
       </tr>
       <tr>
+        <th class="styTableCell" scope="col" nowrap="nowrap" style="width:25mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;">Name of country</th>
         <th class="styTableCell" scope="col" style="width:10mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;">Code</th>
         <th class="styTableCell" scope="col" style="width:28mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;">Description</th>
         <th class="styTableCell" scope="col" style="width:30mm;text-align:center;font-size:7pt;border-color:black;border-bottom:none;">Foreign taxes attributable to boycott operations</th>
@@ -235,12 +243,12 @@
       <xsl:for-each select="$Form5713BData/OperationTaxesAndIncome">
       <tr>      
         <xsl:if test="position()&lt;15">
-          <td class="styTableCell" style="width:20mm;text-align:center;font-size:7pt;border-color:black;padding-left:2mm;">
+          <td class="styTableCell" style="width:20mm;text-align:center;font-size:7pt;border-color:black;padding-left:2mm;height:8mm;vertical-align:bottom;">
             <span style="float:left;font-weight:bold;">
               <xsl:number value="position()" format="a"/>
             </span>
             <span style="width:1.5mm;"/>
-            <span style="font-weight:normal;">            
+            <span style="font-weight:normal;vertical-align:bottom;">            
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="CountryCd"/>
               </xsl:call-template>              
@@ -250,14 +258,14 @@
         <!--Rows greater than 14 -->
         <xsl:if test="position()&gt;=15">
           <td class="styTableCell" style="width:20mm;text-align:right;font-weight:normal;font-size:7pt;border-color:black;">
-            <span style="float:left;width:3mm;">
+            <span style="float:left;width:3mm;vertical-align:bottom;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="CountryCd"/>
               </xsl:call-template>
             </span>
           </td>
         </xsl:if>
-        <td class="styTableCell" style="width:10mm;text-align:center;font-size:7pt;border-color:black;" nowrap="nowrap">
+        <td class="styTableCell" style="width:10mm;text-align:center;font-size:7pt;border-color:black;vertical-align:bottom;" nowrap="nowrap">
           <xsl:choose>
 			<xsl:when test="PrincipalBusinessActivityCd">
               <xsl:call-template name="PopulateText">
@@ -271,27 +279,27 @@
             </xsl:otherwise>
           </xsl:choose>
         </td>
-        <td class="styTableCell" style="width:28mm;text-align:left;font-size:7pt;border-color:black;">
+        <td class="styTableCell" style="width:28mm;text-align:left;font-size:7pt;border-color:black;vertical-align:bottom;">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="PrincipalBusinessActivityDesc"/>
           </xsl:call-template>
         </td>
-        <td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;border-color:black;padding-left:3mm;" nowrap="nowrap">
+        <td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;border-color:black;padding-left:3mm;vertical-align:bottom;" nowrap="nowrap">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="BoycottOperationsFrgnTxsAmt"/>
           </xsl:call-template>
         </td>
-        <td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;border-color:black;padding-left:3mm;" nowrap="nowrap">
+        <td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;border-color:black;padding-left:3mm;vertical-align:bottom;" nowrap="nowrap">
           <xsl:call-template name="PopulateAmount">  
             <xsl:with-param name="TargetNode" select="IntntlByctIncmPrortShrAmt"/>
           </xsl:call-template>
         </td>      
-        <td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;border-color:black;" nowrap="nowrap">
+        <td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;border-color:black;vertical-align:bottom;" nowrap="nowrap">
         <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="ICDISCTxblIncmByctOprAmt"/>
          </xsl:call-template>
         </td>
-        <td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;         border-color:black;border-right:none;" nowrap="nowrap">
+        <td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;         border-color:black;border-right:none;vertical-align:bottom;" nowrap="nowrap">
         <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="FSCTaxableIncmByctOprAmt"/>
         </xsl:call-template>
@@ -303,7 +311,7 @@
     <!-- container height, then display a message in the first row directing the user to the additional data table -->
     <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 1 or        (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:24mm;text-align:left;font-size:7pt;border-color:black;">
+        <td class="styTableCell" style="width:24mm;text-align:left;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">
           <span style="float:left;font-weight:bold;">a</span>
           <span style="width:1.5mm;"/>
           <xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -321,7 +329,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 2 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">b<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">b<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -332,7 +340,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 3 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">c<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">c<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -343,7 +351,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 4 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">d<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">d<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -354,7 +362,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 5 or           (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">e<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">e<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -365,7 +373,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 6 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">f<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">f<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -376,7 +384,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 7 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">g<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">g<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -387,7 +395,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 8 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">h<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">h<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -398,7 +406,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 9 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">i<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">i<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -409,7 +417,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 10 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">j<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">j<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -420,7 +428,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 11 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">k<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">k<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -431,7 +439,7 @@
       </xsl:if>                      
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 12 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">l<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">l<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -442,7 +450,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt; 13 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">m<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">m<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -453,7 +461,7 @@
       </xsl:if>
       <xsl:if test="count($Form5713BData/OperationTaxesAndIncome) &lt;14 or          (($Print = $Separated) and (count($Form5713BData/OperationTaxesAndIncome)&gt;14)) ">
       <tr>
-        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">n<span class="styTableCellPad"/></td>
+        <td class="styTableCell" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">n<span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:14mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:16mm;border-color:black;"><span class="styTableCellPad"/></td>
         <td class="styTableCell" style="width:34mm;border-color:black;"><span class="styTableCellPad"/></td>
@@ -463,26 +471,26 @@
       </tr>
       </xsl:if>        
       <tr>
-        <td class="styTableCell" colspan="3" style="width:48mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">o<span style="width:3mm;"/> Total
+        <td class="styTableCell" colspan="3" style="width:48mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">o<span style="width:3mm;"/> Total
         <!--dotted line-->
-          <span style="letter-spacing:4mm;">......<img src="{$ImagePath}/5713SchB_Bullet.gif" alt="Right pointing arrow large image" width="6"/></span>
+          <span style="letter-spacing:4mm;">...........<img src="{$ImagePath}/5713SchB_Bullet.gif" alt="Right pointing arrow large image" width="6"/></span>
         </td>
-        <td class="styTableCell" style="width:34mm;text-align:right;font-size:7pt;border-color:black;" nowrap="yes">
+        <td class="styTableCell" style="width:34mm;text-align:right;font-size:7pt;border-color:black;vertical-align:bottom;" nowrap="yes">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5713BData/TotBoycottOperationsFrgnTxsAmt"/>
           </xsl:call-template>
         </td>
-        <td class="styTableCell" style="width:34mm;text-align:right;font-size:7pt;border-color:black;" nowrap="yes">
+        <td class="styTableCell" style="width:34mm;text-align:right;font-size:7pt;border-color:black;vertical-align:bottom;" nowrap="yes">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5713BData/TotalIntntlByctIncmPrortShrAmt"/>
           </xsl:call-template>
         </td>
-        <td class="styTableCell" style="width:34mm;text-align:right;font-size:7pt;border-color:black;">
+        <td class="styTableCell" style="width:34mm;text-align:right;font-size:7pt;border-color:black;vertical-align:bottom;">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5713BData/TotalICDISCTxblIncmByctOprAmt"/>
           </xsl:call-template>
         </td>
-        <td class="styTableCell" style="width:34mm;text-align:right;font-size:7pt;border-color:black;border-right-width:0px;">
+        <td class="styTableCell" style="width:34mm;text-align:right;font-size:7pt;border-color:black;border-right-width:0px;vertical-align:bottom;">
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form5713BData/TotalFSCTaxableIncmByctOprAmt"/>
           </xsl:call-template>
@@ -493,7 +501,7 @@
    <xsl:call-template name="SetInitialDynamicTableHeight">
       <xsl:with-param name="TargetNode" select="$Form5713BData/OperationTaxesAndIncome"/>
       <xsl:with-param name="containerHeight" select="14"/>
-    <xsl:with-param name="headerHeight" select="2"/>      
+    <xsl:with-param name="headerHeight" select="4"/>      
       <xsl:with-param name="containerID" select=" 'TP1ctn' "/>
    </xsl:call-template>
     <!--Begin Footer-->

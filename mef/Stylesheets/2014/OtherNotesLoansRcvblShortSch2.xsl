@@ -37,11 +37,11 @@
           </xsl:attribute>
           <td class="styDepTblCell" style="text-align:left">
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="Organization501c3Name/BusinessNameLine1"/>
+              <xsl:with-param name="TargetNode" select="Organization501c3Name/BusinessNameLine1Txt"/>
             </xsl:call-template>              
             <br/>
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="Organization501c3Name/BusinessNameLine2"/>
+              <xsl:with-param name="TargetNode" select="Organization501c3Name/BusinessNameLine2Txt"/>
             </xsl:call-template>      
           </td>                    
           <td class="styDepTblCell" style="text-align:right">
@@ -61,8 +61,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->

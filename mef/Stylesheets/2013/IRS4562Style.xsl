@@ -214,7 +214,8 @@
     border-top-width: 0px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 0px;
   }
   .styIRS4562Ckbox {   /* Checkbox */
-    height: 4mm; width: 4mm;
+    height: 3mm; width: 3mm;
+    margin-left: 0px; margin-right: 0px; margin-top: 0px; margin-bottom: 0px; 
   }
 </xsl:template>
 

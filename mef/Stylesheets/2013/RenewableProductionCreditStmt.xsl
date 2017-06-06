@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-  
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
-
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
-
   <xsl:param name="DependencyData" select="$RtnDoc/RenewableProductionCreditStmt"/>
-
+<!-- - 1120S form displays as - Renewable Production Credit Statement  - --> 
   <xsl:param name="depDocTitle">
   <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>  
   </xsl:param>
-
   <xsl:template name="AdditionalCorporationInfoSchTemp">
     <div class="styTopSectionLine" style="width:187mm;">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Total:</span></div>
@@ -24,7 +20,6 @@
             </xsl:call-template>
           </div>
     </div>
-
     <table id="AdditionalCorporationInfoSchTbl" class="styDepTbl" style="margin-top:4mm">
       <thead class="styTableThead">
         <tr class="styDepTblHdr">
@@ -44,46 +39,45 @@
              <xsl:otherwise>styDepTblRow2</xsl:otherwise>
           </xsl:choose>
           </xsl:attribute>
-          <!-- Code --> 
           <td class="styDepTblCell" style="width:17mm;text-align:center;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="Cd"/>
               </xsl:call-template>            
             </td>
           <!-- Description -->
-          <td class="stydepTblCell" style="width:135mm;text-align:left;">
+          <td class="styDepTblCell" style="width:135mm;text-align:left;">
           	<xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="Desc"/>
-                </xsl:call-template>
+            </xsl:call-template>
           </td>
-	  <!-- Amount -->
-          <td class="stydepTblCell" style="width:35mm;text-align:right;">
+		  <!-- Amount -->
+          <td class="styDepTblCell" style="width:35mm;text-align:right;">
             <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="Amt"/>
-                </xsl:call-template>
+                <xsl:with-param name="TargetNode" select="Amt"/>
+            </xsl:call-template>
           </td>
         </tr>
       </xsl:for-each>
       </tbody>
     </table>
-  </xsl:template>  
-  
+  </xsl:template>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+	<html>
       <head>
-         <title><xsl:value-of select="$depDocTitle"/></title>
-         <!-- No Browser Caching -->
-         <meta http-equiv="Pragma" content="no-cache"/>
-         <meta http-equiv="Cache-Control" content="no-cache"/>
-         <meta http-equiv="Expires" content="0"/>
-         <!-- No Proxy Caching -->
-         <meta http-equiv="Cache-Control" content="private"/>
-         <!-- Define Character Set -->
-         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-         <meta name="Author" content="Trin Xue"/>
-         <meta name="Desc" content="{$depDocTitle}"/>
-         
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <title><xsl:value-of select="$depDocTitle"/></title>
+        <!-- No Browser Caching -->
+        <meta http-equiv="Pragma" content="no-cache"/>
+        <meta http-equiv="Cache-Control" content="no-cache"/>
+        <meta http-equiv="Expires" content="0"/>
+        <!-- No Proxy Caching -->
+        <meta http-equiv="Cache-Control" content="private"/>
+        <!-- Define Character Set -->
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+        <meta name="Author" content="Trin Xue"/>
+        <meta name="Desc" content="{$depDocTitle}"/>
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
         <xsl:call-template name="InitJS"/>
         <style type="text/css">
@@ -91,12 +85,10 @@
             <xsl:call-template name="AddOnStyle"/>    
           </xsl:if>
         </style>
-      <xsl:call-template name="GlobalStylesDep"/>
-</head>
-    
-      <body class="styBodyClass">
+		<xsl:call-template name="GlobalStylesDep"/>
+	  </head>
+      <body class="styBodyClass" style="width:187mm;">
       <xsl:call-template name="DocumentHeaderDependency"/>
-    
         <div class="styDepTitleLine">
           <span class="styDepTitle">
             <span style="width:110mm;">
@@ -104,8 +96,8 @@
             </span>
           </span>
         </div>
-        
-        <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>                
+        <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/>
+        </xsl:call-template>                
         <xsl:call-template name="AdditionalCorporationInfoSchTemp"/>    
       </body>
     </html>

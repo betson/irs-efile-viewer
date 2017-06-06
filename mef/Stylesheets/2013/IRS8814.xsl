@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!-- Last Modified by Eugenia McDonald on 06/22/2015 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -72,8 +72,10 @@
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8814Data)"/>
@@ -137,7 +139,7 @@
 							</div>
 						</div>
 						<div class="styTYBox" style="width:30mm;border-left-width:2px;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+							<div class="styOMB" style="height:4.5mm;font-size:7pt;">OMB No. 1545-0074</div>
 							<div class="styTY">20<span class="styTYColor">13</span>
 							</div>
 							<div style="margin-left:3mm;text-align:left;font-size:7pt;">
@@ -171,9 +173,10 @@
 					<!-- Top Section																									 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<div class="styBB" style="width:187mm;">
-						<b>Caution.</b> The federal income tax on your child’s income, including qualified dividends and capital gain distributions, may be less if you<br/>
-						file a separate tax return for the child instead of making this election. This is because you cannot take certain tax benefits that your<br/>
-						child could take on his or her own return. For details, see <b>Tax benefits you cannot take</b> in the instructions.
+						<b>Caution.</b> The federal income tax on your child’s income, including qualified dividends and capital 
+						      gain distributions, may be less if you<br/>file a separate tax return for the child instead of making this 
+						      election. This is because you cannot take certain tax benefits that your<br/>child could take on his or
+						      her own return. For details, see <b>Tax benefits you cannot take</b> in the instructions.
 					</div>
 					<div class="styBB" style="width:187mm;">
 						<div class="styNameBox" style="width:137mm;height:8mm;font-weight:normal;font-size:7pt;">
@@ -263,7 +266,7 @@
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (1a) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
+						<div class="styIRS8814LineItem" style="height:7mm">
 							<div class="styIRS8814LNLeftNumBox" style="padding-left:2mm;">1a</div>
 							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
@@ -291,8 +294,10 @@
 								<div class="styIRS8814LNDesc" style="height:2mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -304,7 +309,7 @@
 							</div>
 						</div>
 						<!-- (1b) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
+						<div class="styIRS8814LineItem" style="height:9mm">
 							<div class="styIRS8814LNLeftNumBox">b</div>
 							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
@@ -337,22 +342,28 @@
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -364,7 +375,7 @@
 							</div>
 						</div>
 						<!-- (2a) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
+						<div class="styIRS8814LineItem" style="height:7mm">
 							<div class="styIRS8814LNLeftNumBox" style="padding-left:2mm;">2a</div>
 							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
@@ -417,8 +428,10 @@
 								<div class="styIRS8814LNDesc" style="height:2mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -430,7 +443,7 @@
 							</div>
 						</div>
 						<!-- (2b) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
+						<div class="styIRS8814LineItem" style="height:7mm">
 							<div class="styIRS8814LNLeftNumBox">b</div>
 							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
@@ -463,22 +476,28 @@
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -490,9 +509,9 @@
 							</div>
 						</div>
 						<!-- (3) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">3</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:7mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:9px">3</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:7px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Enter your child’s capital gain distributions. If your child received any capital gain distributions
 									as a nominee, see the instructions
@@ -534,8 +553,10 @@
 								<div class="styIRS8814LNDesc" style="height:2mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -547,13 +568,13 @@
 							</div>
 						</div>
 						<!-- (4) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">4</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:11mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px">4</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Add lines 1a, 2a, and 3. If the total is $2,00 or less, skip lines 5 through 12 and go to line 13. If<br/>
-									the total is $10,000 or more, <b>do not</b> file this form. Your child <b>must</b> file his or her own return to<br/>
-									report the income
+									the total is $10,000 or more, <b>do not</b> file this form. Your child <b>must</b> file his or her 
+									own return to<br/>report the income
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:37px"/>.
@@ -587,8 +608,10 @@
 								<div class="styIRS8814LNDesc" style="height:6mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -600,13 +623,14 @@
 							</div>
 						</div>
 						<!-- (5) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">5</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:5mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px">5</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Base amount
 								</div>
-								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;
+								  padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -645,13 +669,14 @@
 							</xsl:call-template>
 						</div>
 						<!-- (6) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">6</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:5mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px">6</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Subtract line 5 from line 4
 								</div>
-								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;
+								  padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -684,9 +709,9 @@
 								<xsl:with-param name="Number">6</xsl:with-param>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;"/>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:7mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px"/>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									<span class="styBoldText">
 										If both lines 2b and 3 are zero or blank, skip lines 7 through 10, enter -0- on line 11, and go<br/>
@@ -705,9 +730,9 @@
 							</div>
 						</div>
 						<!-- (7) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">7</div>
-							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:7mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:10px">7</div>
+							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:8px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Divide line 2b by line 4. Enter the result as a decimal (rounded to at<br/>
 									least three places)
@@ -765,9 +790,9 @@
 							</div>
 						</div>
 						<!-- (8) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">8</div>
-							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:7mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:10px">8</div>
+							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:8px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Divide line 3 by line 4. Enter the result as a decimal (rounded to at<br/>
 									least three places)
@@ -796,22 +821,28 @@
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -825,9 +856,9 @@
 							</div>
 						</div>
 						<!-- (9) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">9</div>
-							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:7mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:10px">9</div>
+							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:8px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Multiply line 6 by line 7. Enter the result here. See the instructions<br/>
 									for where to report this amount on your return
@@ -849,22 +880,28 @@
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -876,9 +913,9 @@
 							</div>
 						</div>
 						<!-- (10) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">10</div>
-							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:9mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:10px">10</div>
+							<div class="styIRS8814LNDesc" style="width:105mm;height:100%;padding:8px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Multiply line 6 by line 8. Enter the result here. See the instructions<br/>
 									for where to report this amount on your return
@@ -900,22 +937,28 @@
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:4mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:5mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;background-color:lightgrey;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										  background-color:lightgrey;</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -927,13 +970,14 @@
 							</div>
 						</div>
 						<!-- (11) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">11</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:5mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:10px">11</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:8px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Add lines 9 and 10
 								</div>
-								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;
+								  padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -969,9 +1013,9 @@
 							</xsl:call-template>
 						</div>
 						<!-- (12) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">12</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:11mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px">12</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Subtract line 11 from line 6. Include this amount in the total on Form 1040, line 21, or Form<br/>
 									1040NR, line 21. In the space next to line 21, enter “Form 8814” and show the amount. If you<br/>
@@ -994,8 +1038,10 @@
 								<div class="styIRS8814LNDesc" style="height:6mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -1023,13 +1069,14 @@
 					<!-- Body -->
 					<div class="styBB" style="width:187mm;">
 						<!-- (13) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">13</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:5mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px">13</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Amount not taxed
 								</div>
-								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;
+								padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1067,13 +1114,14 @@
 							</xsl:call-template>
 						</div>
 						<!-- (14) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">14</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:5mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px">14</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									Subtract line 13 from line 4. If the result is zero or less, enter -0-
 								</div>
-								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;
+								  padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
 									<span class="styBoldText">
 										<span style="width:11px"/>.
@@ -1096,9 +1144,9 @@
 							</xsl:call-template>
 						</div>
 						<!-- (15) ////////////////////////////////////////////////////-->
-						<div class="styIRS8814LineItem">
-							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;">15</div>
-							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:0px 0px 0px 0px;">
+						<div class="styIRS8814LineItem" style="height:15mm">
+							<div class="styIRS8814LNLeftNumBox" style="padding-left:0px; padding-right:5px;padding-top:7px">15</div>
+							<div class="styIRS8814LNDesc" style="width:144mm;height:100%;padding:5px 0px 0px 0px;">
 								<div class="styIRS8814LNDesc" style="width:auto;height:100%;">
 									<b>Tax.</b> Is the amount on line 14 less than $1,000?<br/>
 									<div class="styIRS8814LNDesc" style="width:auto;height:auto;padding:0px 0px 0px 0px;">
@@ -1147,14 +1195,16 @@
 														<xsl:with-param name="BackupName">IRS8814ChildTaxBasisUnderSpcfdAmtInd</xsl:with-param>
 												</xsl:call-template>
 											</xsl:if>
-											<span class="styBoldText">Yes.</span> Multiply line 14 by 10% (.10). Enter the result here and see the <b>Note</b> below.
+											<span class="styBoldText">Yes.</span> Multiply line 14 by 10% (.10). Enter the result here and 
+											  see the <b>Note</b> below.
 										</label>
 									</div>
 								</div>
 								<div class="styIRS8814LNDesc" style="width:auto;height:auto;padding:0px 0px 0px 7mm;">
 									<img src="{$ImagePath}/8814_Bracket_Sm.gif" alt="SmallBracket"/> 
 								</div>
-								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 3mm 0px 0px;">
+								<div class="styIRS8814LNDesc" style="width:auto;height:100%;text-align:right;float:right;
+								  padding:0px 3mm 0px 0px;">
 									<!--Dotted Line-->
 									<span class="styBoldText" style="padding-top:3mm;height:100%;">
 										<span style="width:11px"/>.
@@ -1168,8 +1218,10 @@
 								<div class="styIRS8814LNDesc" style="height:2mm;width:37mm;float:right;padding:0px 0px 0px 0px;">
 									<xsl:call-template name="CreateBox">
 										<xsl:with-param name="Height">100%</xsl:with-param>
-										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
-										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;</xsl:with-param>
+										<xsl:with-param name="AmountBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
+										<xsl:with-param name="NumberBoxStyle">border-width:0px 0px 0px 1px;padding:0px 0px 0px 0px;
+										</xsl:with-param>
 									</xsl:call-template>
 								</div>
 								<div class="styIRS8814LNDesc" style="height:auto;width:37mm;float:right;padding:0px 0px 0px 0px;">
@@ -1180,10 +1232,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="styIRS8814LineItem">
+						<div class="styIRS8814LineItem" style="height:7mm">
 							<span style="height:100%;padding-bottom:3px;">
-								<b>Note.</b> If you checked the box on line C above, see the instructions. Otherwise, include the amount from line 15 in the tax you enter
-								on Form 1040, line 44, or Form 1040NR, line 42. Be sure to check box <b>a</b> on Form 1040, line 44, or Form 1040NR, line 42.
+								<b>Note.</b> If you checked the box on line C above, see the instructions. Otherwise, include the amount
+								      from line 15 in the tax you enter on Form 1040, line 44, or Form 1040NR, line 42. Be sure to check 
+								      box <b>a</b> on Form 1040, line 44, or Form 1040NR, line 42.
 							</span>
 						</div>
 					</div>

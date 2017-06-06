@@ -93,7 +93,7 @@
 	padding-bottom:.5mm;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-      float:left; clear: none;
+      float:none; clear: none;
 	}
     
     .sty1120FSchPTableCellDataLF{/*Table Cell data left*/
@@ -103,7 +103,7 @@
 	padding-bottom:.5mm;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-      float:left; clear: none;
+      float:none; clear: none;
 	}
 	
     .sty1120FSchPTableCellDataRG{/*Table Cell data right*/
@@ -113,18 +113,18 @@
 	padding-bottom:.5mm;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-      float:left; clear: none;
+      float:none; clear: none;
 	}
 	
 	/* NEW STYLES BELOW NEW STYLES BELOW */
 	
     .sty1120FSchPTableK1CellMainHeaderSpacer { /*Table K1main header spacer*/
-      width:72mm;
+      width:67mm; 
       height:10mm;
     }
     
    .sty1120FSchPTableK1CellMainHeader { /*Table K1main header*/
-      width:115mm;
+      width:120mm;
       height:10mm;
       font-size:7pt;
       padding-top:1mm;
@@ -134,13 +134,13 @@
     }
     
     .sty1120FSchPTableK1CellHeaderSpacer { /*Table K1 Cell header spacer*/
-      width:72mm;
+      width:67mm;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
     }
 	
     .sty1120FSchPTableK1CellHeader { /*Table K1 Cell header*/
-      width:23mm;
+      width:24mm;
       font-size:7pt;
       text-align:center;
       font-weight:bold;
@@ -149,7 +149,7 @@
     }
     
     .sty1120FSchPTableK1CellLastColHeader { /*Table K1 Cell last column header*/
-      width:23mm;
+      width:24mm;
       font-size:7pt;
       text-align:center;
       font-weight:bold;
@@ -178,7 +178,7 @@
     }
 		
     .sty1120FSchPTableK1Desc { /*Table K1 Cell line description*/
-      width:66mm;
+      width:61mm;
       text-align:justify;
       padding-right:1mm;
       padding-top:1mm;
@@ -188,7 +188,7 @@
     }
 		
     .sty1120FSchPTableK1Cell { /*Table K1 Cell*/
-      width:23mm;
+      width:24mm;
       text-align:right;
       padding-right:1mm;
       padding-top:3mm;
@@ -198,7 +198,7 @@
     }
     
     .sty1120FSchPTableK1CellLastCol { /*Table K1 Cell last column*/
-      width:23mm;
+      width:24mm;
       text-align:right;
       padding-right:1mm;
       padding-top:3mm;
@@ -211,9 +211,9 @@
       float:right;clear:none;
       text-align:right;
     }
-    
+    /* Change the dot space from 3.3mm to 1.0mm   */
     .sty1120FSchPDotLn { /* Dotted line - no float */
-      letter-spacing:3.3mm;
+      letter-spacing:1.0mm;
       font-weight:bold;
       font-size:7pt; 	
       skiplink:display:none;
@@ -223,7 +223,7 @@
       background-color: <xsl:value-of select="$UserPref/View/TableRow1BgColor"/>;   /* set in User Preferences */
       color:black;
       text-align:right;
-      width:23mm;
+      width:24mm;
       text-align:right;
       padding-right:1mm;
       padding-top:3mm;
@@ -235,7 +235,7 @@
       background-color: <xsl:value-of select="$UserPref/View/TableRow2BgColor"/>;   /* set in User Preferences */
       color:black;
       text-align:right;
-      width:23mm;
+      width:24mm;
       text-align:right;
       padding-right:1mm;
       padding-top:3mm;
@@ -247,10 +247,10 @@
       background-color: <xsl:value-of select="$UserPref/View/TableRow1BgColor"/>;   /* set in User Preferences */
       color:black;
       text-align:right;
-      width:23mm;
+      width:24mm;
       text-align:right;
       padding-right:1mm;
-      padding-top:3mm;
+      padding-top:7mm;
       font-size:6pt;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;      
@@ -259,10 +259,10 @@
       background-color: <xsl:value-of select="$UserPref/View/TableRow2BgColor"/>;   /* set in User Preferences */
       color:black;
       text-align:right;
-      width:23mm;
+      width:24mm;
       text-align:right;
       padding-right:1mm;
-      padding-top:3mm;
+      padding-top:7mm;
       font-size:6pt;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;      
@@ -276,7 +276,7 @@
 	padding-bottom:.5mm;
 	border-style: solid;
 	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
-      float:left; clear: none;
+      float:none; clear: none;
 	}
   </xsl:template>
 </xsl:stylesheet>

@@ -20,6 +20,13 @@
 <!--Did changes per IBM Defect #41415 8/20/2014 Robert Jones 508 added scope to several "th" lines -->
 <!--Updated per Kisams IM01817803 and Revision Date back to December/2013- By Robert Jones -->
 <!--Updated per Kisams IM01467430 11/18/2014 Transferor not populating. Schema element mis-spelled (Tranferor)- By Robert Jones -->
+<!--Did changes per IBM Defect #43153 6/30/2015 by Robert Jones IE11 Related-->
+<!--This IBM Defect #43153 came back but no problem found. Ran all the xml data against the form. 9/3/2015 by Robert Jones -->
+<!--This IBM Defect #43153 came back but no problem found. Ran all the xml data against the form. 10/9/2015 by Robert Jones -->
+<!--This IBM Defect #43153 came back changed element at 4b Ran all the xml data against the form. 11/20/2015 by Robert Jones -->
+<!--This IBM Defect #43153 came back changed element at 4b Ran all the xml data against the form. Now matches 2013 which IBM worked 12/24/2015 by Robert Jones -->
+
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -30,8 +37,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form926Data" select="$RtnDoc/IRS926"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form926Data)"/>
@@ -89,16 +98,16 @@
             </div>
           </div>
           <!-- BEGIN Part I Title -->
-          <div class="styBB" style="width:187mm;">
+          <div class="styBB" style="width:187mm;display:table;">
             <div class="styPartName">Part I</div>
-            <div class="styPartDesc">U.S. Transferor Information <span class="styNormalText">(see instructions)</span>
+            <div class="styLNDesc" style="height:auto;font-size:7pt"><b>   <span style="width:2px;"/>U.S. Transferor Information </b>(see instructions)
             </div>
           </div>
           <!-- END Part I Title -->
           <div class="styBB" style="width:187mm">
-            <div class="styFNBox" style="width:127mm; height:9mm">          
-          Name of transferor
-          <div style="line-height:100%; padding-left:10mm;font-family:verdana;font-size:6pt">
+            <div class="styFNBox" style="width:127mm; height:auto;display:table">          
+          Name of transferor<br></br>
+          
             <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form926Data/BusinessTranferorName/BusinessNameLine1Txt"/>
                 </xsl:call-template>
@@ -112,9 +121,9 @@
                   <xsl:with-param name="TargetNode" select="$Form926Data/PersonTranferorNm"/>
                 </xsl:call-template>    -->      
               </div>
-            </div>
-            <div style="float:left; padding-left:1mm">
-              <b>Identifying number</b> (see instructions)
+            
+            <div style="float:right; padding-left:1mm;height:auto;display:table">
+              <b>Identifying number</b> (see instructions)<br></br>
           <div style="text-align:left; padding-top:2mm">
                 <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="$Form926Data/TransferorEIN"/>
@@ -130,29 +139,29 @@
             </div>
           </div>
           <!--L1-->
-          <div style="padding-top:1mm; width:187mm">
+          <div style="padding-top:1mm; width:187mm;height:auto;">
             <div class="styIRS926OL">&nbsp;1</div>
-            <div style="float:left">
+           
           If the transferor was a corporation, complete questions 1a through 1d.    
         </div>
-          </div>
+         
           <!--1a-->
-          <div style="padding-top:1mm; width:187mm">
+          <div style="padding-top:1mm; width:187mm;height:auto;">
             <div class="styIRS926OL" style="text-align:right">a</div>
             <div style="float:left">
           If the transfer was a section 361(a) or (b) transfer, was the transferor controlled (under section 368(c)) by                  
         </div>
           </div>
-          <div style="width:187mm">
+          <div style="width:187mm;height:auto;">
             <div class="styIRS926OL"/>
-            <div style="float:left">
+            <div style="float:left;padding-left:8mm;">
           5 or fewer domestic corporations?                    
         </div>
             <div style="float:right; padding-right:0.5mm">
               <span class="styIRS926DotLn">
-            .........................                         
+            ...........                       
           </span>
-              <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="height:auto;width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form926Data/ControlledBy5OrFewerDomCorpInd"/>
@@ -171,7 +180,7 @@
                 </label>
                 <span style="width:2px;"/>
               </div>
-              <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="height:auto;width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form926Data/ControlledBy5OrFewerDomCorpInd"/>
@@ -192,7 +201,7 @@
             </div>
           </div>
           <!--1b-->
-          <div style="padding-top:1mm; width:187mm">
+          <div style="padding-top:1mm; width:187mm;height:auto;">
             <div class="styIRS926OL" style="text-align:right">b</div>
             <div style="float:left">
           Did the transferor remain in existence after the transfer?                    
@@ -201,7 +210,7 @@
               <span class="styIRS926DotLn">
             ..................                                      
           </span>
-              <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="height:auto;width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form926Data/ExistedAfterTransferInd"/>
@@ -220,7 +229,7 @@
                 </label>
                 <span style="width:2px;"/>
               </div>
-              <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="height:auto;width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form926Data/ExistedAfterTransferInd"/>
@@ -241,12 +250,12 @@
             </div>
           </div>
           <!--b r2 -->
-          <div class="styBB" style="width:187mm;">
+          <div class="styBB" style="width:187mm;height:auto;display:table">
             <div style="float:left; clear:none; ">
-              <div style="width:105mm;padding-left:8mm;">
+              <div style="width:180mm;padding-left:8mm;height:auto;">
             If not, list the controlling shareholder(s) and their identifying number(s):
           </div>
-              <div style="float:right;">
+              <div style="width:0mm;">
                 <!-- button display logic -->
                 <xsl:call-template name="SetDynamicTableToggleButton">
                   <xsl:with-param name="TargetNode" select="$Form926Data/ControllingShareholder"/>
@@ -258,16 +267,16 @@
             </div>
           </div>
           <!-- -->
-          <div class="styIRS926TableContainer" id="part1TPctn">
+          <div class="styIRS926TableContainer" id="part1TPctn" style="display:table;">
             <xsl:attribute name="style">
             <xsl:if test="count($Form926Data/ControllingShareholder) &gt;6">
-            height:55.5mm;              
+              
           </xsl:if>
           </xsl:attribute>
             <!-- print logic -->
             <xsl:call-template name="SetInitialState"/>
             <!-- end -->
-            <table class="styIRS926Table" cellspacing="0" cellpadding="0" border="0">
+            <table class="styIRS926Table" cellspacing="0" cellpadding="0" border="0" style="display:table;">
               <thead class="styTableThead">
                 <tr align="center" style="height:8mm">
                   <th class="styIRS926TblRB" scope="col">Controlling shareholder</th>
@@ -280,9 +289,9 @@
                 <!--Check if separated print is not checked and count of Controlling Shareholder data is less than and equal to 6 -->
                 <xsl:if test="($Print != $Separated) or (count($Form926Data/ControllingShareholder) &lt;=6)">
                  <xsl:for-each select="$Form926Data/ControllingShareholder">
-                    <tr style="height:8mm; font-size: 7pt">
+                    <tr style="height:8mm; font-size: 7pt;">
                       <!-- Controlling Shareholder column -->
-                      <td class="styIRS926TblRB" style="font-family:verdana;font-size:6pt;">
+                      <td class="styIRS926TblRB" style="font-family:verdana;font-size:6pt;border-right:1px solid black;border-top:1px solid black;border-bottom:1px solid black;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="ControllingShareholderName/BusinessNameLine1Txt"/>
                         </xsl:call-template>
@@ -295,7 +304,7 @@
                         <span style="width: 2px"/>
                       </td>
                       <!-- Identifying Column -->
-                      <td class="styIRS926TblCell" align="center">
+                      <td class="styIRS926TblCell" align="center" style="border-bottom:1px solid black;border-top:1px solid black;width:90mm;">
                         <xsl:choose>
                           <xsl:when test="normalize-space(ControllingShareholderEIN)">
                             <xsl:call-template name="PopulateEIN">
@@ -320,24 +329,11 @@
                     </tr>
                   </xsl:for-each>
                 </xsl:if>
-                 <!-- <xsl:if test="count($Form926Data/NatureRightsIntangiblePropTxt) &lt; 1 or ((count($Form926Data/NatureRightsIntangiblePropTxt) &gt;3) and ($Print = $Separated))">
-                  <tr style="font-size: 7pt;">
-                    <td class="styIRS926TblCell">
-                      <xsl:if test="((count($Form926Data/NatureRightsIntangiblePropTxt) &gt;3) and ($Print = $Separated))">
-                        <xsl:call-template name="PopulateAdditionalDataTableMessage">
-                          <xsl:with-param name="TargetNode" select="$Form926Data/NatureRightsIntangiblePropTxt"/>
-                        </xsl:call-template>
-                      </xsl:if>
-                      <span style="width: 2px"/>
-                    </td>
-                  </tr>
-                </xsl:if>
-              -->
-                <!-- Empty Table for line 1b  -->
+                    <!-- Empty Table for line 1b  -->
                 <!-- Table Filler Rows -->
                 <xsl:if test="count($Form926Data/ControllingShareholder) &lt; 1 or ((count($Form926Data/ControllingShareholder) &gt;6) and ($Print = $Separated))">
                   <tr style="font-size: 7pt">
-                    <td class="styIRS926TblCell" style="border-right:1 solid black;font- family:verdana;font-size:6pt">
+                    <td class="styIRS926TblCell" style="border-right:1px solid black;font- family:verdana;font-size:6pt">
                       <xsl:if test="((count($Form926Data/ControllingShareholder) &gt;6) and ($Print = $Separated))">
                         <xsl:call-template name="PopulateAdditionalDataTableMessage">
                           <xsl:with-param name="TargetNode" select="$Form926Data/ControllingShareholder"/>
@@ -353,7 +349,7 @@
                 <!-- Empty table check for line 2 -->
                 <xsl:if test="count($Form926Data/ControllingShareholder) &lt; 2 or ((count($Form926Data/ControllingShareholder) &gt;6) and ($Print = $Separated))">
                   <tr>
-                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1 solid black;">
+                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1px solid black;">
                       <span style="width:4px"/>
                     </td>
                     <td class="styIRS926TblCell">
@@ -366,7 +362,7 @@
                 <!-- Empty Table check for line 3 -->
                 <xsl:if test="count($Form926Data/ControllingShareholder) &lt; 3 or ((count($Form926Data/ControllingShareholder) &gt;6) and ($Print = $Separated))">
                   <tr>
-                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1 solid black;">
+                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1px solid black;">
                       <span style="width:4px"/>
                     </td>
                     <td class="styIRS926TblCell">
@@ -379,7 +375,7 @@
                 <!-- Empty table check for line 4 -->
                 <xsl:if test="count($Form926Data/ControllingShareholder) &lt; 4 or ((count($Form926Data/ControllingShareholder) &gt;6) and ($Print = $Separated))">
                   <tr>
-                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1 solid black;">
+                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1px solid black;">
                       <span style="width:4px"/>
                     </td>
                     <td class="styIRS926TblCell">
@@ -392,7 +388,7 @@
                 <!-- Empty table check for line 5 -->
                 <xsl:if test="count($Form926Data/ControllingShareholder) &lt; 5 or ((count($Form926Data/ControllingShareholder) &gt;6) and ($Print = $Separated))">
                   <tr>
-                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1 solid black;">
+                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1px solid black;">
                       <span style="width:4px"/>
                     </td>
                     <td class="styIRS926TblCell">
@@ -405,7 +401,7 @@
                 <!-- Empty table check for line 6 -->
                 <xsl:if test="count($Form926Data/ControllingShareholder) &lt; 6 or ((count($Form926Data/ControllingShareholder) &gt;6) and ($Print = $Separated))">
                   <tr>
-                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1 solid black;">
+                    <td class="styIRS926TblCell" style="width:50mm;  border-right:1px solid black;">
                       <span style="width:4px"/>
                     </td>
                     <td class="styIRS926TblCell">
@@ -419,7 +415,7 @@
             </table>
           </div>
           <!-- 1c -->
-          <div style="width:187mm; padding-top:1mm">
+          <div style="width:187mm; padding-top:1mm;display:table">
             <div class="styIRS926OL" style="text-align:right">c</div>
             <div style="float:left">
           If the transferor was a member of an affiliated group filing a consolidated return, was it the parent                  
@@ -428,14 +424,14 @@
           <!-- 1c row 2 -->
           <div style="width:187mm">
             <div class="styIRS926OL"/>
-            <div style="float:left">
+            <div style="float:left;padding-left:8mm;">
           corporation?              
         </div>
             <div style="float:right; padding-right:0.5mm">
               <span class="styIRS926DotLn">
             ..............................                      
           </span>
-              <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;height:auto;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form926Data/ParentCorporationInd"/>
@@ -454,7 +450,7 @@
                 </label>
                 <span style="width:2px;"/>
               </div>
-              <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
+              <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;height:auto;">
                 <span>
                   <xsl:call-template name="PopulateSpan">
                     <xsl:with-param name="TargetNode" select="$Form926Data/ParentCorporationInd"/>
@@ -475,19 +471,19 @@
             </div>
           </div>
           <!-- 1c Row3 -->
-          <div style="width:184mm; padding-top:2mm; padding-bottom:2mm">
+          <div style="width:184mm; padding-top:2mm; padding-bottom:2mm;display:table">
             <div style="float:left; padding-left:8mm">
           If not, list the name and employer identification number (EIN) of the parent corporation:        
         </div>
           </div>
           <!-- Begin 1c table -->
-          <table class="styIRS926InerTable" cellpadding="0" cellspacing="0">
+          <table class="styIRS926InerTable" cellpadding="0" cellspacing="0" border="0" style="display:table">
             <tr>
-              <th class="styIRS926TblRB" scope="col">Name of parent corporation</th>
-              <th class="styIRS926TblCell" scope="col">EIN of parent corporation</th>
+              <th class="styIRS926TblRB" scope="col" style="border-bottom:1px solid black;border-top:1px solid black;">Name of parent corporation</th>
+              <th class="styIRS926TblCell" scope="col" style="border-bottom:1px solid black;border-top:1px solid black;">EIN of parent corporation</th>
             </tr>
             <tr style="height:8mm">
-              <td class="styIRS926TblRB" style="font-size: 6pt;font-family:verdana;">
+              <td class="styIRS926TblRB" style="font-size: 6pt;font-family:verdana;border-bottom:1px solid black;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form926Data/ParentCorporationName/BusinessNameLine1Txt"/>
                 </xsl:call-template>
@@ -498,7 +494,7 @@
                   </xsl:call-template>
                 </xsl:if>&nbsp;   
           </td>
-              <td align="center" class="styIRS926TblCell" style="font-size: 7pt">
+              <td align="center" class="styIRS926TblCell" style="font-size: 7pt;border-bottom:1px solid black;">
                 <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="$Form926Data/ParentCorporationEIN"/>
                 </xsl:call-template>&nbsp;
@@ -570,7 +566,7 @@
           <div style="width:187mm">
             <div class="styIRS926OL">&nbsp;2</div>
             <div style="float:left">
-          If the transferor was a partner in a partnership that was the actual transferor (but is not treated as such under section 367), complete questions 2a through 2d.
+          If the transferor was a partner in a partnership that was the actual transferor (but is not treated as such under section 367), complete <br></br>questions 2a through 2d.
         </div>
           </div>
           <!--a-->
@@ -580,13 +576,13 @@
         </div>
           </div>
           <!--L2a table -->
-          <table class="styIRS926InerTable" cellpadding="0" cellspacing="0">
+          <table class="styIRS926InerTable" cellpadding="0" cellspacing="0" border="0" style="display:table;height:auto;">
             <tr>
-              <th class="styIRS926TblRB" scope="col">Name of partnership</th>
-              <th class="styIRS926TblCell" scope="col">EIN of partnership</th>
+              <th class="styIRS926TblRB" scope="col" style="border-bottom:1px solid black;border-top:1px solid black;">Name of partnership</th>
+              <th class="styIRS926TblCell" scope="col" style="border-bottom:1px solid black;border-top:1px solid black;">EIN of partnership</th>
             </tr>
             <tr style="height:8mm;">
-             <!-- <td class="styIRS926TblRB" style="border-right:1 solid black; padding-left:2mm;font-family:verdana;font-size:6pt;">
+             <!-- <td class="styIRS926TblRB" style="border-right:1px solid black; padding-left:2mm;font-family:verdana;font-size:6pt;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form926Data/PartnershipName/BusinessNameLine1Txt"/>
                 </xsl:call-template>
@@ -597,7 +593,7 @@
                   </xsl:call-template>
                 </xsl:if>&nbsp;    
           </td>-->
-           <td class="styIRS926TblRB" style="font-size: 6pt;font-family:verdana;">
+           <td class="styIRS926TblRB" style="font-size: 6pt;font-family:verdana; border-bottom:1px solid black;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form926Data/PartnershipName/BusinessNameLine1Txt"/>
                 </xsl:call-template>
@@ -608,19 +604,26 @@
                   </xsl:call-template>
                <!-- </xsl:if>&nbsp;   -->
           </td>
-              <td class="styIRS926TblCell" align="center">
+ <xsl:choose>
+                  <xsl:when test="$Form926Data/PartnershipEIN">  
+              <td class="styIRS926TblCell" align="center" style="border-bottom:1px solid black;font-size: 7pt;">
                 <xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="$Form926Data/PartnershipEIN"/>
-                </xsl:call-template>&nbsp;
+                </xsl:call-template>
+                </td>
             <!-- Check for EIN of Partnership Missing Reason -->
-                <xsl:if test="$Form926Data/EINofPartnershipMissingReasonCd !=' '">
-                  <span style="font-weight:normal;">
+              </xsl:when>
+               <xsl:otherwise>
+                  <td class="styIRS926TblCell" align="center" style="border-bottom:1px solid black;font-size: 7pt;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$Form926Data/PartnershipMissingEINReasonCd"/>
                     </xsl:call-template>
-                  </span>
-                </xsl:if>
-              </td>
+                  </td>
+                  
+                
+             
+                </xsl:otherwise>  
+                </xsl:choose>
             </tr>
           </table>
           <!--2b-->
@@ -724,19 +727,17 @@
           <!-- 2d R1-->
           <div style="padding-top:1mm; width:187mm">
             <div class="styIRS926OL" style="text-align:right">d</div>
-            <div class="styLNDesc">
-         Is the partner disposing of an interest in a limited partnership that is regularly traded on an established                     
+            <div class="styLNDesc" style="font-weight:6pt">
+         Is the partner disposing of an interest in a limited partnership that is regularly traded on an established securities market?                     
         </div>
           </div>
           <!-- 2d R2 -->
-          <div style="width:187mm">
-            <div class="styIRS926OL" style="text-align:right"/>
-            <div style="float:left">
-         securities market?                    
-        </div>
+         
+                           
+    
             <div style="float:right; padding-right:0.5mm">
               <span class="styIRS926DotLn">
-            ..............................                                    
+            .............................                                    
           </span>
               <div class="styLNDesc" style="width:15mm;text-align:right;padding-top:0mm;padding-bottom:0mm;">
                 <span>
@@ -776,7 +777,7 @@
                 </label>
               </div>
             </div>
-          </div>
+        
           <!-- END Part I Line Items -->
           <!-- BEGIN Part II Title -->
           <div class="styIRS926Part2BB" style="border-top-width:1px;">
@@ -787,11 +788,10 @@
           <!-- END Part II Title -->
           <!-- BEGIN Part II Line Items -->
           <div class="styIRS926Part2BB">
-            <div class="styFNBox" style="width:100mm; height:10mm">
+            <div class="styFNBox" style="width:100mm; min-height:10mm;height:auto;">
               <!-- 3 -->
               <div class="styIRS926OL">&nbsp;3</div>
-              <div style="float:left">
-            Name of transferee (foreign corporation)
+              <div class="styIRS926OL" style="width:70mm;font-weight:normal;">Name of transferee (foreign corporation)</div><br></br>
             <div style="font-family:verdana;font-size:6pt;">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form926Data/TransfereeName/BusinessNameLine1Txt"/>
@@ -804,12 +804,13 @@
                   </xsl:if>
                 </div>
               </div>
-            </div>
+            
             <div style="float:left">
               <!-- 4a Replaces 4 from prior years in 2013 -->
               <div class="styIRS926OL" style="">4a</div>
-             <b>Identifying number</b>, if any
-            <div style="padding-top: 2mm;padding-left: 10mm;">
+              <div class="styIRS926OL" style="width:70mm;font-weight:normal;"><b>Identifying number</b>, if any</div><br></br>
+             
+            <div style="padding-top: 2mm;padding-left: 7mm;">
                   <xsl:call-template name="PopulateEIN">
                     <xsl:with-param name="TargetNode" select="$Form926Data/TransfereeEIN"/>
                   </xsl:call-template>
@@ -825,14 +826,14 @@
               </div>
             </div>
           </div>
-          
+         
           <div class="styIRS926Part2BB">
-            <div class="styFNBox" style="width:100mm; height:10mm">
+            <div class="styFNBox" style="width:100mm; height:auto;">
               <!-- 5 -->
               <div class="styIRS926OL">&nbsp;5</div>
-              <div style="float:left">
-            Address (including country)
-            <div style="margin-left:0mm">
+              <div class="styIRS926OL" style="width:40mm;font-weight:normal;">Address (including country)</div><br></br>
+            
+            
                      <!-- Check for Transferee US Address -->
               <xsl:if test="$Form926Data/TransfereeUSAddress">
                 <xsl:call-template name="PopulateUSAddressTemplate">
@@ -846,20 +847,48 @@
                 </xsl:call-template>
               </xsl:if>
             </div>
-             </div>
-            </div>
+            
+           
             <!--<div style="float:left">-->
    <!-- 4b New for 2013  There must be a problem with the Schema because this field will not populate with the element for this line. I can make the field populate-->
-              <div class="styIRS926OL" style="">&nbsp;4b</div>
-              Reference ID number (see instructions)
-            <div style="padding-top: 6mm;padding-left: 10mm;text-align:bottom;">
-                  <xsl:call-template name="PopulateText">
+               <div class="styIRS926OL" style="">&nbsp;4b</div>
+              <div class="styIRS926OL" style="width:70mm;font-weight:normal;">Reference ID number (see instructions)</div><br></br> 
+            <div style="padding-top: 5mm;padding-left: 7mm;">
+                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="$Form926Data/ForeignEntityIdentificationGrp"/>
                   </xsl:call-template>
-                  
+                 </div>
               </div>
-            </div>
-          <!--</div>-->
+              <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+          
+         <!--
+                <xsl:if test="$Form926Data/ForeignEntityIdentificationGrp = 0 or ((count($Form926Data/ForeignEntityIdentificationGrp) &gt; 1) and ($Print = $Separated))">
+                
+                  <tr>
+                    <td class="styIRS926OL " style="">&nbsp;4b</td>
+                    <td class="styIRS926OL " style="width:70mm;">Reference ID number (see instructions)
+                      <xsl:call-template name="PopulateAdditionalDataTableMessage">
+                        <xsl:with-param name="TargetNode" select="$Form926Data/ForeignEntityIdentificationGrp"/>
+                      </xsl:call-template>
+                      <span class="styTableCellPad"/>
+                    </td>
+                    </tr>
+                </xsl:if>
+                           
+             
+               
+                <xsl:if test="($Print != $Separated) or (count($Form926Data/ForeignEntityIdentificationGrp) &lt;= 1) ">
+                  <xsl:for-each select="$Form926Data/ForeignEntityIdentificationGrp">
+                    <tr>
+                      
+                        <td class="styIRS926OL " style="width:70mm;vertical-align:middle;border-bottom-width: 0px;">
+                          
+                 
+              </td>
+                 
+                      </tr>
+                      </xsl:for-each>
+                       </xsl:if>-->
           <!-- 5***********************Changed in 2013****************************************************************************************************************************
           <div class="styIRS926Part2BB" style="height:14mm;">
             <div class="styIRS926OL">&nbsp;5</div>
@@ -955,7 +984,7 @@
             </div>
           </div>
           <!-- Page 1 END  -->
-          <div class="pageEnd" style="padding-top:1mm; width:187mm; border-top:1 solid black">
+          <div class="pageEnd" style="padding-top:1mm; width:187mm; border-top:1px solid black">
             <div style="float:left;">
               <b>For Paperwork Reduction Act Notice, see separate instructions.</b>
             </div>
@@ -965,21 +994,29 @@
       Form <b style="font-size:8pt">926</b> (Rev. 12-2013)
       </div>
           </div>
+     
           <!-- Begin page 2 Header-->
-          <div class="styBB" style="width:187mm; ">
+          <div style="width:187mm;clear:both;padding-bottom:.5mm;float:none;clear:both;" class="styBB">
+            <div style="width:90mm;" class="styGenericDiv">Form 926 (Rev. 12-2013)</div>
+            <div style="width:55mm;text-align:center;" class="styGenericDiv"/>
+            <div style="float:right;" class="styGenericDiv">Page <span class="styBoldText" style="font-size:8pt;">2</span>
+            </div>
+          </div>
+          
+        <!--  <div class="styBB" style="width:187mm; display:table;">
             <div style="float:left">
         Form 926 (Rev. 12-2013)
       </div>
             <div style="float:right">
         Page <b style="font-size:8pt">2</b>
             </div>
-          </div>
+          </div>-->
           <!-- BEGIN Part III Title -->
-          <div class="styBB" style="width:187mm">
+          <div class="styBB" style="width:187mm;">
             <div class="styPartName">Part III</div>
-            <div class="styPartDesc">Information Regarding Transfer of Property <span class="styNormalText">(see instructions)</span>
+            <div class="styPartDesc" style="padding-top:.5mm;">Information Regarding Transfer of Property <span class="styNormalText">(see instructions)</span>
             </div>
-          </div>
+       
           <!-- END Part III Title -->
           <xsl:variable name="RowCount11" select="count($Form926Data/OtherNontaxableUse)"/>
           <div>
@@ -991,38 +1028,43 @@
     </xsl:call-template>
  </span>
     </div>
+       </div>
           <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
  @@@@@@@@@@@@@-->
           <!-- Part III Table -->
           <div style="width:187mm;float:left;clear:left;" id="IRTP">
-            <table class="styTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0">
+            <table class="styTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" >
               <thead class="styIRS926TableThead">
                 <tr>
-                  <th class="styIRS926TableCellLine " scope="col" style="width:34mm;text-align:center;border-bottom-width: 0px; border-top-width: 0px; ">Type of<br/> property</th>
-                  <th class="styIRS926TableCellA " scope="col" style="width:24mm;text-align:center;">
+                  <th class="styIRS926TableCellLine " scope="col" style="width:34mm;text-align:center;border-bottom-width: 0px; border-top-width: 0px;vertical-align:top; ">Type of<br/> property</th>
+                  <th class="styIRS926TableCellA " scope="col" style="width:24mm;text-align:center;vertical-align:top;">
                     <span class="styBoldText">(a)</span>
                     <br/> Date of <br/>transfer
               </th>
-                  <th class="styIRS926TableCellB" scope="col" style="width:51mm;text-align:center;">
+                  <th class="styIRS926TableCellB" scope="col" style="width:51mm;text-align:center;vertical-align:top;">
                     <span class="styBoldText">(b)</span>
                     <br/> Description of<br/> property
               </th>
-                  <th class="styIRS926TableCellC " scope="col" style="width:26mm;text-align:center;">
+                  <th class="styIRS926TableCellC " scope="col" style="width:26mm;text-align:center;vertical-align:top;">
                     <span class="styBoldText">(c)</span>
                     <br/> Fair market value<br/> on date <br/>of transfer
               </th>
-                  <th class="styIRS926TableCellD " scope="col" style="width:26mm;text-align:center;">
+                  <th class="styIRS926TableCellD " scope="col" style="width:26mm;text-align:center;vertical-align:top;">
                     <span class="styBoldText">(d)</span>
                     <br/> Cost or other<br/> basis
               </th>
-                  <th class="styIRS926TableCellE" scope="col" style="width:26mm;text-align:center;">
+                  <th class="styIRS926TableCellE" scope="col" style="width:26mm;text-align:center;vertical-align:top;">
                     <span class="styBoldText">(e)</span>
                     <br/> Gain recognized on<br/> transfer
               </th>
+              
                 </tr>
+                
               </thead>
+              
               <tfoot/>
               <tbody>
+              
               <!--Begin Part III Table - Cash line -->
                 <!-- Part III table L1 -->
             <xsl:variable name="AGRowCount1" select="count($Form926Data/Cash/TransferDt)"/>
@@ -1848,8 +1890,8 @@
             </span>
             <br/>
           </div>
-          <!-- END Part II Line Items -->
-          <div style="padding-top:1mm; width:187mm; border-top:1 solid black">
+          <!-- END Part III Line Items -->
+          <div style="padding-top:1mm; width:187mm; border-top:1px solid black" class="pageEnd">
             <div style="float:left">
               <b/>
             </div>
@@ -1858,8 +1900,9 @@
       Form <b style="font-size:8pt">926</b> (Rev. 12-2013)
       </div>
           </div>
+          <p style="page-break-before: always"/>
           <!-- Begin Page 3 -->
-          <div style="width:187mm; border-bottom:1 solid black; page-break-before:always">
+          <div style="width:187mm; border-bottom:1px solid black; page-break-before:always">
             <div style="float:left">
         Form 926 (Rev. 12-2013)
       </div>
@@ -2181,7 +2224,7 @@
           <!-- L13-->
           <div style="width:187mm;">
             <div class="styLNLeftNumBox">13</div>
-            <div class="styLNDesc" style="width:179mm;">Indicate whether the transferor was required to recognize income under final and temporary Regulations sections 
+            <div class="styLNDesc" style="width:179mm;height:auto;">Indicate whether the transferor was required to recognize income under final and temporary Regulations sections 
             <br/>1.367(a)-4 through 1.367(a)-6 for any of the following:  
           <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form926Data/TransferRequiredRcgnzIncome"/>
@@ -2629,7 +2672,7 @@
               <!-- end button display logic -->
             </div>
           </div>
-          <div class="styIRS926TableContainer" id="part4TPctn2">
+          <div class="styIRS926TableContainer" id="part4TPctn2" style="display:table;">
             <xsl:attribute name="style"><xsl:if test="count($Form926Data/NatureRightsIntangiblePropTxt)&gt; 3">
              height:23mm;  
           </xsl:if></xsl:attribute>
@@ -2690,21 +2733,24 @@
             <div style="float:right;">
               <span style="width:1px;"/>
             Form<span class="styBoldText"> 926 </span>(Rev. 12-2013)
+            <div class="pageEnd"/>
         </div>
           </div>
           <!-- End Footer -->
-          <br class="pageEnd"/>
+          
+           
           <!--BEGIN ADDITIONAL DATA SECTION -->
+          <p style="page-break-before: always"/> 
           <div class="styLeftOverTitleLine" style="font-family:verdana, arial, sans-serif">
             <div class="styLeftOverTitle">
           Additional Data    
         </div>
-            <div class="styLeftOverButtonContainer">
+            <div class="styLeftOverButtonContainer" style="display:table;">
               <input class="styLeftoverTableBtn" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage()" tabindex="1"/>
             </div>
           </div>
           <!-- Additional Data Table -->
-          <table class="styLeftOverTbl">
+          <table class="styLeftOverTbl" style="display:table;">
             <xsl:call-template name="PopulateCommonLeftover">
               <xsl:with-param name="TargetNode" select="$Form926Data"/>
             </xsl:call-template>
@@ -2714,7 +2760,7 @@
           <xsl:if test="($Print = $Separated) and  (count($Form926Data/ControllingShareholder) &gt; 6)">
             <div class="pageEnd"/>
             <span class="styRepeatingDataTitle">Form 926, Line 1b - If not, list the controlling shareholder(s) and their identifying number(s):</span>
-            <table class="styDepTbl" style="font-size:7pt;">
+            <table class="styDepTbl" style="font-size:7pt;display:table">
               <thead class="styTableThead">
                 <!--  Label the Column Headers -->
                 <tr class="styDepTblHdr">
@@ -2733,7 +2779,7 @@
                     <!-- Define background colors to the rows -->
                     <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
                     <!-- First Column -->
-                    <td class="styTableCellText" style="text-align:left; width:104mm;font-family:verdana;font-size:6pt;border-right:1 solid black;">
+                    <td class="styTableCellText" style="text-align:left; width:104mm;font-family:verdana;font-size:6pt;border-right:1px solid black;">
                       <span style="width:4px"/>
                       <xsl:if test="ControllingShareholderName/BusinessNameLine1Txt">
                         <xsl:call-template name="PopulateText">
@@ -2784,7 +2830,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Cash)</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -2864,7 +2910,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Stock And Securities)</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -2949,7 +2995,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Installment obligations, account receivables or similar property)</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3033,7 +3079,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Foreign currency or other property denominated in foreign currency)</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3117,7 +3163,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Inventory)</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3201,7 +3247,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Assets subject to depreciation recapture (see Temp. Regs. sec. 1.367(a)-4T(b)))</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3285,7 +3331,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Tangible property used in trade or business not listed under another category)</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3369,7 +3415,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Intangible property)</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3453,7 +3499,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Property to be leased (as described in <br/>Temp. Regs. sec.1.367(a)-4T(c)))</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3536,7 +3582,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Property to be sold (as described in <br/>Temp. Regs. sec.1.367(a)-4T(d)))</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3619,7 +3665,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Transfers of oil and gas working interests (as described in 1.367(a)-4T(e)))</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3702,7 +3748,7 @@
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Part III - Information Regarding Transfer of Property (Other Property)</span>
             <div style="width:187mm;float:left;clear:left;" id="IRTP">
-              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;">
+              <table class="styDepTable" id="IRS926PartIII" summary="Information Regarding Transfer of Property" cellspacing="0" style="font-family:verdana;font-size:7pt;display:table">
                 <thead class="styDepTableThead">
                   <tr class="styDepTblHdr">
                     <th class="styDepTblCell " scope="col" style="width:24mm;text-align:center;border-bottom-width: 1px; border-top-width: 1px; ">
@@ -3785,7 +3831,7 @@
             <br/>
             <br/>
             <span class="styRepeatingDataTitle">Form 926, Line 17b - Describe the nature of the rights to the intangible property that was transferred in the transfer:</span>
-            <table class="styDepTbl" style="font-size:7pt;">
+            <table class="styDepTbl" style="font-size:7pt;display:table">
               <thead class="styTableThead">
                 <!-- Label the Column Headers -->
                 <tr class="styDepTblHdr">

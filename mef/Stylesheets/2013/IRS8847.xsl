@@ -15,8 +15,10 @@
 
 
 <xsl:template match="/">
-<html>
-<head>  
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
+<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"></xsl:with-param></xsl:call-template></title>
   <!-- No Browser Caching -->
   <meta http-equiv="Pragma" content="no-cache"/>
@@ -62,7 +64,7 @@
       </div>
     </div>
     <div class="styTYBox" style="width:31mm;height:21mm;">
-    <div class="styOMB" style="height:10.25mm;padding-top:6mm;">OMB No. 1545-1416</div>
+    <div class="styOMB" style="height:auto;padding-top:0mm;">OMB No. 1545-1416</div>
     <!--div class="styTY" style="height:11mm">20<span class="styTYColor">05</span></div>-->
     <div class="stySequence" style="padding-top:3.5mm;">Attachment<br/>Sequence No. <b>100</b></div>
   </div>
@@ -71,7 +73,7 @@
     
   <!--  Name and Employer identification number  -->
   <div class="styBB" style="width:187mm">
-    <div class="styNameBox" style="width:156mm;height:8mm;font-size:7pt;">
+    <div class="styNameBox" style="width:156mm;height:auto;font-size:7pt;">
       Name(s) shown on return<br/>
       <!-- Added per UWR 31342 to allow 1040/ssn filer to use this form -->
               <xsl:choose>
@@ -88,7 +90,7 @@
       </xsl:otherwise>
 	</xsl:choose>
     </div>
-    <div class="styEINBox" style="width:30mm;height:4mm;padding-left:2mm;font-size:7pt;">
+    <div class="styEINBox" style="width:31mm;height:auto;padding-left:2mm;font-size:7pt;">
         Identifying number<br/><br/>
    		<div style="text-align:left; font-weight:normal;">  
    		  

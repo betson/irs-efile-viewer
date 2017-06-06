@@ -221,8 +221,10 @@
 		</xsl:if>
 	</xsl:template>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($IRS990EZData)"/>
@@ -244,6 +246,10 @@
 					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
+				<!--<link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
+    <link rel="stylesheet" type="text/css" name="BodyStyleSheet" href="{$CSSPath}/body.css"/>
+    <link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>-->
+
 			</head>
 			<body class="styBodyClass">
 				<form name="IRS990EZ">
@@ -275,16 +281,17 @@
 						</div>
 						<div class="styFTBox" style="width:125mm;height:31mm;padding-top;3.5mm;">
 							<div class="styMainTitle">Short Form<br/>Return of Organization Exempt From Income Tax</div>
-							<div class="styFBT" style="font-size: 6.5pt; margin-top: 0px">Under section 501(c), 527, or 4947(a)(1) of the Internal Revenue Code <br/>(except private foundation)</div>
+							<div class="styFBT" style="font-size: 6.5pt; margin-top: 0px;text-align:left;"><span style="width:1mm"/>Under section 501(c), 527, or 4947(a)(1) of the Internal Revenue Code (except private </div>
+							<div class="styFBT" style="font-size: 6.5pt; margin-top: 0px;text-align:left;"><span style="width:40mm"/>foundations)</div>
 							<div class="styFBT" style="font-size:6.5pt; font-weight: bold; margin-top: 0px;text-align:left;padding-left:1mm;">
-								<img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
+								<span style="width:7mm"/><img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
 								Do not enter Social Security numbers on this form as it may be made public. By law, the
 								<div class="styFBT" style="font-size:7pt; font-weight: bold; margin-top: 0px;text-align:center;">
 								 IRS generally cannot redact the information on the form.
     </div>
     </div>
 							<div class="styFBT" style="font-size: 7pt; font-weight: bold; margin-top: 0px;padding-top:.5mm;text-align:left;padding-left:1mm;">
-								<img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
+								<span style="width:7mm"/><img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
 								<span style="width:1mm"/>
 								 Information about Form 990-EZ and its instructions is at <!--www.irs.gov/form990-->
 								 <a href="http://www.irs.gov/form990" title="Link to IRS.gov">
@@ -302,8 +309,8 @@
 					</div>
 					<!--   END FORM HEADER   -->
 					<div class="styComType" style="width:187mm;border-bottom-width: 0px; font-size: 7pt">
-						<div class="styBoldText" style="height:3mm;width:4mm;float:left;clear:none;">A</div>
-						<div class="styBoldText" style="height:3mm;width:182mm;float:left;clear:none;">For the 2013
+						<div class="styBoldText" style="height:auto;width:4mm;float:left;clear:none;">A</div>
+						<div class="styBoldText" style="height:auto;width:182mm;float:left;clear:none;">For the 2013
  
     calendar year, or tax year beginning 
     <span style="width:30mm;">
@@ -314,8 +321,8 @@
 							</span>
 						</div>
 					</div>
-					<div style="width:187mm;float:left;clear:left;border-bottom:1 solid black;">
-						<div style="width:31mm;height:26mm;float:left;clear:left;">
+					<div style="width:187mm;float:left;clear:left;border-bottom:1px solid black;">
+						<div style="width:31mm;height:36mm;float:left;clear:left;">
 							<div class="styComType" style="width:31mm;border-bottom-width: 0px">
 								<div class="styBoldText" style="height:3mm;width:4mm;float:left;clear:none;font-size: 7pt">B</div>
 								<div class="styNormalText" style="height:3mm;width:26mm;padding-top: .5mm;float:left;clear:none;">Check if applicable:</div>
@@ -390,19 +397,19 @@
 										</xsl:call-template>Amended return</label>
 								</div>
 							</div>
-							<div class="styComType" style="width:31mm; padding-bottom: 2mm;border-bottom:0px;">
+							<div class="styComType" style="width:31mm; padding-bottom: 2mm;border-bottom:1px;">
 								<!--padding-top:1.5mm-->
-								<div style="width:26mm;">
+								<div style="width:30mm;">
 									<input type="checkbox" class="styIRS990EZCkBox" TabIndex="-1" id="ApplicationPending" onclick="return false;"/>
 									<label for="ApplicationPending">Application pending</label>
 								</div>
 							</div>
 						</div>
-						<div class="styLblNameAddr" style="width:111mm;height:28mm;border-bottom-width: 3px;">
+						<div class="styLblNameAddr" style="width:111mm;height:36mm;border-bottom-width: 3px;">
 						<!--
 							<div class="styUseLbl" style="width:12mm;height:28mm;border-right-width:0px;">Please use IRS label or print or type. See Specific Instruc- tions.</div>
 -->
-							<div class="styNameAddr" style="width:111mm;height:8mm;border-left-width:1px;">
+							<div class="styNameAddr" style="width:111mm;height:12mm;;border-left-width:1px;border-bottom-width:1px;">
 								<b>C</b> Name of organization<br/>
 								<span class="stySmallText" style="padding-left:2mm;">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -418,8 +425,8 @@
 									</xsl:call-template>
 								</span>
 							</div>
-							<div class="styNameAddr" style="width:111mm;height:10mm;border-left-width:1px;">
-								<span style="width: 82.5mm; height: 10mm">
+							<div class="styNameAddr" style="width:111mm;height:12mm;border-left-width:1px;">
+								<span style="width: 82.5mm; height: 12mm">
 									<span style="width: 82.5mm;padding-left: 2mm"> Number and street (or P. O. box, if mail is not delivered to street address)</span>
 									<span class="stySmallText" style="width: 82.5m;padding-left:2mm;">
 										<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -431,11 +438,11 @@
 										</xsl:call-template>
 									</span>
 								</span>
-								<span style="border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; width: 14mm; height: 10mm">Room/suite</span>
+								<span style="border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; width: 14mm; height: 12mm">Room/suite</span>
 							</div>
-							<div class="styNameAddr" style="border-bottom-width:0px;width:98mm;height:9.5mm;border-left-width:1px">
-								<span style="width: 2mm"/> City or town, state or province, country, and ZIP or foreign postal code
-              <span style="padding-left:2mm;" class="stySmallText">
+							<div class="styNameAddr" style="border-bottom-width:0px;width:98mm;height:12mm;border-left-width:1px;text-align:left;">
+								<span style="width: 0mm"/> City or town, state or province, country, and ZIP or foreign postal code
+              <span style="padding-left:0mm;" class="stySmallText">
 									<xsl:call-template name="PopulateReturnHeaderFiler">
 										<xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
 									</xsl:call-template>
@@ -447,7 +454,7 @@
 								</span>
 							</div>
 						</div>
-						<div class="styEINDateAssets" style="width:43mm;height:4.5mm;border-top-width: 1px;padding-top:.5mm;">
+						<div class="styEINDateAssets" style="width:43mm;height:auto;border-top-width: 1px;padding-top:.5mm;">
 							<span class="styBoldText">D Employer identification number</span>
 							<br/>
 							<br/>
@@ -461,7 +468,7 @@
 							</span>
 						</div>
 						<div class="styEINDateAssets" style="width:43mm;height:10.25mm;padding-top:.5mm;">
-							<span class="styBoldText">E  </span>Telephone number<br/>
+							<span class="styBoldText" style="padding-right:1mm;">E  </span>Telephone number<br/>
 							<br/>
 							<span style="width: 3mm"/>
 							<span style="text-align: center; width:33mm">
@@ -470,8 +477,8 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styEINDateAssets" style="width:43mm;height:10.25mm;border-bottom:0px;padding-top:.5mm;">
-							<span class="styBoldText">F </span>Group Exemption <br/>
+						<div class="styEINDateAssets" style="width:43mm;height:7.5mm;border-top:1px;padding-top:.5mm;">
+							<span class="styBoldText" style="padding-right:1mm;">F </span>Group Exemption <br/>
 							<span style="width: 2mm"/> Number.  <span class="styIRS990EZNBSP"/>. <img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
 							<span style="width: 4px"/>
 							<xsl:call-template name="PopulateText">
@@ -483,7 +490,7 @@
 					
 				<!-- New G per BSP-102106 -->
 				
-						<span style="width: 124.9mm;height:7.5mm; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 0px;padding-bottom:0mm;">
+					<span style="width: 124.5mm;height:6mm; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 0px;padding-bottom:0mm;float:left;padding-top:.5mm;">
 							<b>G</b> Accounting Method: <span style="width: 1mm"/>
 							<input type="checkbox" class="styIRS990EZCkBox">
 								<xsl:call-template name="PopulateCheckbox">
@@ -511,8 +518,8 @@
 						
 							<span style="width: 3mm"/>Other (specify)
      <img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
-							<span style="font-size: 6pt"/>
-							<span class="styIRS990EZUnderlinedBox" style="width:35.75mm; font-size: 8pt; font-family: arial">
+							<span style="font-size: 7pt"/>
+							<span class="styIRS990EZUnderlinedBox" style="width:41mm; font-size: 8pt; font-family: arial">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$IRS990EZData/MethodOfAccountingOtherDesc"/>
 								</xsl:call-template>
@@ -521,10 +528,15 @@
 						
 							
 <!-- Section H -->
-					<span style="width: 62.1mm; font-size: 7pt; padding-left:2mm;padding-top:1mm;border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; padding-bottom:0mm;">
-						<span style="width: 62mm;">
+					<span style="width: 62mm; font-size: 7pt; padding-left:2mm;padding-top:.5mm;border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; padding-bottom:0mm;float:left;height:12mm;">
+						
 								<b>H</b>
 								<span style="width: 2mm;"/>
+								<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$IRS990EZData/ScheduleBNotRequiredInd"/>
+									<xsl:with-param name="BackupName">IRS990EZScheduleBNotRequired</xsl:with-param>
+								</xsl:call-template>
       Check <img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
 								<span style="width: 2mm;"/>
 								<input type="checkbox" class="styIRS990EZCkBox">
@@ -534,13 +546,10 @@
 									</xsl:call-template>
 			<span class="styNormalText" style="font-size: 7pt;padding-left:1mm;">if the organization is <b>not</b></span>
 									 </input>
-							</span>
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$IRS990EZData/ScheduleBNotRequiredInd"/>
-									<xsl:with-param name="BackupName">IRS990EZScheduleBNotRequired</xsl:with-param>
-								</xsl:call-template>
+							
+							<br/>
 								<span class="styNormalText" style="font-size: 7pt; padding-left:5mm;">required to attach Schedule B</span><br/>
+								<br/>
 								<span class="styNormalText" style="font-size: 7pt; padding-left:5mm;">(Form 990, 990-EZ, or 990-PF).</span>
 								</label>
 						</span>
@@ -563,9 +572,9 @@
 								</span>
 							
 							<!-- Section J -->
-							
-								<span class="stySmallText"><b>J Tax-exempt status</b>
-								<span style="font-size: 6pt">(check only one)?</span>
+							 <span style="width: 125mm; border-style: solid; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 0mm;padding-bottom:0mm;float:left;">
+								<span class="stySmallText" style="height:auto;"><b>J Tax-exempt status</b>
+								<span style="font-size:5pt;height:auto;">(check only one) - </span>
 								<input type="checkbox" class="styIRS990EZCkBox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/Organization501c3Ind"/>
@@ -621,6 +630,7 @@
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/Organization527Ind"/>
 										<xsl:with-param name="BackupName">IRS990EZOrganization527</xsl:with-param>
 									</xsl:call-template> 527</label>
+							</span>
 							</span>
 						</span>
 						<div style="width: 187mm; font-size: 6.5pt;border-style: solid; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 0px">
@@ -703,19 +713,11 @@
 					<div style="float:none; clear: both; width: 187mm; border-style: solid; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;padding-top:.75mm;padding-bottom:.75mm;">
 					
 						<b>L</b>  
-  Add lines 5b, 6c, and 7b, to line 9 to determine gross receipts. If gross receipts are $200,000 or more, or if total assets (Part II, column (B)  
+  Add lines 5b, 6c, and 7b to line 9 to determine gross receipts. If gross receipts are $200,000 or more, or if total assets (Part II, column (B)  
   
 						 below) are $500,000 or more, file Form 990 instead of Form 990-EZ
-						<span class="styIRS990EZNBSP"/>.
-            <span class="styIRS990EZNBSP"/>.
-            <span class="styIRS990EZNBSP"/>.
-            <span class="styIRS990EZNBSP"/>.
-            <span class="styIRS990EZNBSP"/>.
-           <span class="styIRS990EZNBSP"/>.
-           <span class="styIRS990EZNBSP"/>.
-           <span class="styIRS990EZNBSP"/>.
-           <span class="styIRS990EZNBSP"/>.
-           
+					 <!-- Dotted Line -->
+				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">...........................</span>
 							<img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
 							
 							<span style="font-size:6pt"/> $
@@ -729,20 +731,17 @@
 			
 					<!--   BEGIN PART I   -->
 					<!--   BEGIN PART I HEADER   -->
-					<table class="styTable" style="font-size:7pt;width:187mm;" cellspacing="0">
-						<thead>
-							<tr>
-								<div class="styBB" colspan="7" style="padding-top:0;padding-bottom:0;">
+					<div class="styBB" style="width:187mm;clear:both;border-top-width:1px;">
 									<div class="styPartName">Part I</div>
-									<div class="styPartDesc">
+									<div class="styPartDesc" style="height:auto;">
 									<span style="float:left;">Revenue, Expenses, and Changes in Net Assets or Fund Balances 
             <span class="styNormalText" style="font-size: 7pt; width: 50mm"> (see the instructions for Part I)</span>
-            </span>
-            <span class="styNormalText" style="font-size: 7pt; "> 
-											<span style="float:left;">Check if the organization used Schedule O to respond to any question in this Part I</span>
             
+            <span class="styNormalText" style="font-size: 7pt; "> 
+											<span style="float:left;height:auto;">Check if the organization used Schedule O to respond to any question in this Part I</span>
+            </span>
               <!-- Dotted Line -->
-				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">...................</span>              
+				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">....................</span>              
                 <input type="checkbox" class="styIRS990EZCkBox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS990EZData/InfoInScheduleOPartIInd"/>
@@ -756,32 +755,28 @@
 							</xsl:call-template>
                 </label>
               </span>
-              
-       
-            </div>
-									
-								</div>
-							</tr>
-						</thead>
+                   </div>
+					</div>
+							
+						 <table class="styTable" style="font-size:7pt;width:187mm;" cellspacing="0">
 						<tfoot/>
 						<tbody valign="top">
 							<!--   BEGIN LINE 1   -->
 							<tr>
-								<td class="styIRS990EZImg" style="padding-top: 25mm; border-bottom-width: 1px" rowspan="18">
+							<td class="styIRS990EZImg" style="width: 4mm;border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px" rowspan="18" valign="middle">
 									<img src="{$ImagePath}/990EZ_Revenue.gif" alt="VerticalRevenue"/>
 								</td>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 2mm;">1</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
+								
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:2mm;">1</td>
+						<td class="styLNDesc" style="width:137mm;height:4.5;padding-left:4mm;">
 						
-								<span style="float:left;">Contributions, gifts, grants, and similar amounts received</span>
-                                <span class="styDotLn" style="float:right;padding-right:1mm;">...............</span>
-       
+        Contributions, gifts, grants, and similar amounts received   
+         	 <!-- Dotted Line -->
+				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">....................</span>
 								</td>
-								<td class="styLNRightNumBox">1</td>
-								<!-- Putting a width here allows 16 digits in this section -BUG-->
-								<td class="styLNAmountBox" style="border-left-width: 1px;width:37mm">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">1</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 		<!--<div class="styLNAmountBox" style="border-left-width: 1px;width:31.75mm">-->
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/ContributionsGiftsGrantsEtcAmt"/>
@@ -791,17 +786,17 @@
 							<!--   END LINE 1   -->
 							<!--   BEGIN LINE 2   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 2mm">2</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
+						
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:auto;padding-left:2mm;">2</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
 								
-								 <span style="float:left;">Program service revenue including government fees and contracts </span>
-                                 <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
-                            
+        Program service revenue including government fees and contracts  
+          	 <!-- Dotted Line -->
+				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">...............</span>
 								</td>
-								<td class="styLNRightNumBox">2</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:auto;border-right-width:1px;">2</td>
+						<td class="styLNAmountBox" style="height:auto;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/ProgramServiceRevenueAmt"/>
 									</xsl:call-template>
@@ -809,18 +804,17 @@
 							</tr>
 							<!--   END LINE 2  -->
 							<!--   BEGIN LINE 3   -->
-							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 2mm">3</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
+<tr>
 							
-								  <span style="float:left;">Membership dues and assessments</span>
-								  <span class="styDotLn" style="float:right;padding-right:1mm;">......................</span>
-							
-								</td>
-								<td class="styLNRightNumBox">3</td>
-								<td class="styLNAmountBox">
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:2mm;">3</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
+					<!--	Reserved-->
+        Membership dues and assessments 
+         	 <!-- Dotted Line -->
+				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">...........................</span>
+						</td>
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">3</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/MembershipDuesAmt"/>
 									</xsl:call-template>
@@ -829,257 +823,188 @@
 							<!--   END LINE 3   -->
 							<!--   BEGIN LINE 4   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 2mm">4</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
 							
-									<span style="float:left;">Investment income</span>
-									<span class="styDotLn" style="float:right;padding-right:1mm;">...........................</span>
-                         
-								</td>
-								<td class="styLNRightNumBox">4</td>
-								<td class="styLNAmountBox">
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:2mm;">4</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
+					<!--	Reserved-->
+        Investment income
+         	 <!-- Dotted Line -->
+				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">...........................</span>
+						</td>
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">4</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/InvestmentIncomeAmt"/>
 									</xsl:call-template>
 								</td>
 							</tr>
-							<!--   END LINE 4  -->
+		<!--   END LINE 4  -->
 							<!--   BEGIN LINE 5a   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 2mm">5a</span>
-								</td>
-								<td class="styLNDesc">
-
-									<span style="float:left;">Gross amount from sale of assets other than inventory</span>
-									<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
-
-								</td>
-								<td class="styLNRightNumBox">5a</td>
-								<!-- Putting a width here allows 16 digits in this section -BUG-->
-								<td class="styLNAmountBox" style="border-left-width: 1px;width:37mm">
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:2mm;">5a</td>
+						<td class="styLNDesc" style="width:97mm;height:4.5mm;padding-left:4mm;"><!--Reserved-->
+       Gross amount from sale of assets other than inventory
+       	 <!-- Dotted Line -->
+				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">.....</span>
+        </td>
+						<td class="styLNRightNumBox" style="height:4.5mm;">5a</td>
+						<td class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/SaleOfAssetsGrossAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
+						<td class="styLNRightNumBoxNBB" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey"/>
+						<td class="styLNAmountBoxNBB" style="height:4.5mm;border-right-width:0px;border-left-width:0px;"/>
+						
+					
 							</tr>
 							<!--   END LINE 5a   -->
 							<!--   BEGIN LINE 5b   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm">b</span>
-								</td>
-								<td class="styLNDesc">
-									<span style="float:left;">Less: cost or other basis and sales expenses</span>
-									<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
-								</td>
-								<td class="styLNRightNumBox">5b</td>
-								<td class="styLNAmountBox">
+					<!-- line 5b -->
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:4mm;">b</td>
+						<td class="styLNDesc" style="width:97mm;height:4.5mm;padding-left:4mm;">
+         Less: cost or other basis and sales expenses
+          	 <!-- Dotted Line -->
+				  <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">.......</span>
+						</td>
+						<td class="styLNRightNumBox" style="height:4.5mm;">5b</td>
+						<td class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/CostOrOtherBasisExpenseSaleAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
+						<td class="styLNRightNumBoxNBB" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey"/>
+						<td class="styLNAmountBoxNBB" style="height:4.5mm;border-right-width:0px;border-left-width:0px;"/>
+					
 							</tr>
 							<!--  END LINE 5b   -->
 							<!--   BEGIN LINE 5c   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm">c</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
 							
-									<span style="float:left;">Gain or (loss) from sale of assets other than inventory (Subtract line 5b from line 5a) </span><!--<span style="font-size:6pt">(attach schedule)</span>
-										<xsl:call-template name="SetFormLinkInline">
-											<xsl:with-param name="TargetNode" select="$IRS990EZData/GainOrLossFromSaleOfAssets"/>
-											<xsl:with-param name="TabOrder" select="2"/>
-										</xsl:call-template>-->
-										<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>	
-											
-								</td>
-								<td class="styLNRightNumBox">5c</td>
-								<td class="styLNAmountBox">
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:4mm;">c</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
+					<!--	Reserved-->
+        Gain or (loss) from sale of assets other than inventory (Subtract line 5b from line 5a)  
+          <span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
+						</td>
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">5c</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/GainOrLossFromSaleOfAssetsAmt"/>
 									</xsl:call-template>
 								</td>
 							</tr>
-							<!--  END LINE 5c   -->
+							
 							<!--   BEGIN LINE 6   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 2mm">6</span>
+							
+								<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:2mm;">6</td>
+									<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
+								Gaming and fundraising events 
 								</td>
-								<td class="styLNDesc" colspan="3">
-								<span style="float:left;">Gaming and fundraising events</span> 
-            <!--
-                   <label>
-										<xsl:call-template name="PopulateLabel">
-											<xsl:with-param name="TargetNode" select="$IRS990EZData/IsAnyRevenueFromGaming"/>
-											<xsl:with-param name="BackupName">IRS990EZIsAnyRevenueFromGaming</xsl:with-param>
-										</xsl:call-template>If any amount is from <b>gaming,</b> check here <span style="width: 4px"/>
-									</label>
-									<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="bullet"/>
-									<span style="width: 16px"/>
-									<input type="checkbox" class="styIRS990EZCkBox">
-										<xsl:call-template name="PopulateCheckbox">
-											<xsl:with-param name="TargetNode" select="$IRS990EZData/IsAnyRevenueFromGaming"/>
-											<xsl:with-param name="BackupName">IRS990EZIsAnyRevenueFromGaming</xsl:with-param>
-										</xsl:call-template>
-									</input>
-                   -->
-								</td>
-                
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px;">
-									<span style="width: 1mm"/>
-								</td>
+                          
+								<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey"></td>
+						
 							</tr>
-							<!--  END LINE 6   -->
-							<!--   BEGIN LINE 6a   -->
+							<!--  END LINE 6   -->					
+		<!--   BEGIN LINE 6a   -->
 						
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm">a</span>
-								</td>
-								<td class="styLNDesc">
-								<span style="float:left;white-space:nowrap;">Gross income from gaming (attach Schedule G if greater than $15,000)
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:4mm;">a</td>
+						<td class="styLNDesc" style="width:97mm;height:4.5mm;padding-left:4mm;"><!--Reserved-->
+       Gross income from gaming (attach Schedule G if greater than $15,000)
 								<xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/GamingGrossIncomeAmt"/>
 										</xsl:call-template>
-										</span>
-										<span class="styDotLn" style="float:right;padding-right:1mm;">.</span>
+        	 <!-- Dotted Line -->
+				 
 								</td>
-								<td class="styLNRightNumBox">6a</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="height:4.5mm;">6a</td>
+						<td class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/GamingGrossIncomeAmt"/>
 									</xsl:call-template>									
 								</td>
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px;padding-top:2mm;">
-									<span style="width: 1mm"/>
-								</td>
+						<td class="styLNRightNumBoxNBB" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey"/>
+						<td class="styLNAmountBoxNBB" style="height:4.5mm;border-right-width:0px;border-left-width:0px;"/>
+											
 							</tr>
 						<!--  END LINE6a   -->
 							<!--   BEGIN LINE 6b   -->
 							
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm">b</span>
-								</td>
-								<td class="styLNDesc" colspan="3">Gross income from fundraising events (not including $
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:auto;padding-left:4mm;padding-top:1.5mm;">b</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;padding-top:1.5mm;"><!--Reserved-->
+       Gross income from fundraising events (not including $
           <!--<span class="styUnderlinedText" style="text-align: right">-->
-          <span class="styFixedUnderline" style="width:20mm;float:none;padding-left:2mm;padding-top:0;padding-bottom:0;">
+          <span class="styFixedUnderline" style="height:auto;width:25mm;float:none;padding-left:2mm;padding-top:0mm;padding-bottom:0;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$IRS990EZData/FundraisingGrossIncomeAmt/@fndrsngEventContriPrevRptAmt"/>
 										</xsl:call-template>
-									</span> of contributions <br/>from fundraising events reported on line 1) (attach Schedule G if the 
+							</span> of contributions from fundraising events reported on line 1) (attach Schedule G if the sum of such gross income and contributions exceeds $15,000)
 									
         <xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/FundraisingGrossIncomeAmt"/>
-										<!--<xsl:with-param name="TabOrder" select="3"/> removed for 508 Compliance-->
+						
 									</xsl:call-template>
           </td>
-          <!--<td class="styLNRightNumBox">6b</td>
-								<td class="styLNAmountBox">
-									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$IRS990EZData/GamingGrossIncome"/>
-									</xsl:call-template>
-									
-								</td>-->
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-									
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-							
+						
+						
 							</tr>
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm"/>
-								</td>
-								<td class="styLNDesc">sum of such gross income and contributions exceeds $15,000)
-         
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:auto;padding-left:0mm;"></td>
+						<td class="styLNDesc" style="width:97mm;height:4.5mm;"><!--Reserved-->
+       
 								</td>
 					
-								<td class="styLNRightNumBox">6b</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="height:4.5mm;">6b</td>
+						<td class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/FundraisingGrossIncomeAmt"/>
 									</xsl:call-template>
 								</td>
-								
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px; ">
-									<span style="width: 1mm"/>
-								</td>
-							</tr>
-							
-							
-							<!-- Line 6c -->
+						<td class="styLNRightNumBoxNBB" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey"/>
+						<td class="styLNAmountBoxNBB" style="height:4.5mm;border-right-width:0px;border-left-width:0px;"/>
+					
+					
+							</tr>					
+		<!-- Line 6c -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm">c</span>
-								</td>
-								<td class="styLNDesc">
-									<span style="float:left;">Less: direct expenses from gaming and fundraising events</span>
-									<span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:4mm;">c</td>
+						<td class="styLNDesc" style="width:97mm;height:4.5mm;padding-left:4mm;"><!--Reserved-->
+       Less: direct expenses from gaming and fundraising events
+          <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
 								</td>
 					
-								<td class="styLNRightNumBox">6c</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="height:4.5mm;">6c</td>
+						<td class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/SpecialEventsDirectExpensesAmt"/>
 									</xsl:call-template>
 								</td>
-								
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px; ">
-									<span style="width: 1mm"/>
-								</td>
+						<td class="styLNRightNumBoxNBB" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey"/>
+						<td class="styLNAmountBoxNBB" style="height:4.5mm;border-right-width:0px;border-left-width:0px;"/>
+						
+					
 							</tr>
 							<!--  END LINE 6c   -->
 							<!--   BEGIN LINE 6d   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm">d</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:4mm;">d</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
+					<!--	Reserved-->
+        Net income or (loss) from gaming and fundraising events (add lines 6a and 6b and subtract line 6c) 
+          <span class="styDotLn" style="float:right;padding-right:1mm;"></span>
 								</td>
-								<td class="styLNDesc" colspan="3">Net income or (loss) from gaming and fundraising events (add lines 6a and 6b and subtract line 6c)
-          <b>
-          <!-- Dotted Line -->
-          <!--
-										<span class="styIRS990EZNBSP"/>.
-            <span class="styIRS990EZNBSP"/>.
-            <span class="styIRS990EZNBSP"/>.
-            -->
-          </b>
-								</td>
-								<td class="styLNRightNumBox">6d</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">6d</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/SpecialEventsNetIncomeLossAmt"/>
 									</xsl:call-template>
@@ -1088,63 +1013,56 @@
 							<!--  END LINE 6d   -->
 							<!--   BEGIN LINE 7a   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 2mm">7a</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:2mm;">7a</td>
+						<td class="styLNDesc" style="width:97mm;height:4.5mm;padding-left:4mm;"><!--Reserved-->
+      Gross sales of inventory, less returns and allowances
+           <span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
 								</td>
-								<td class="styLNDesc">
-									<span style="float:left;">Gross sales of inventory, less returns and allowances</span>
-									<span class="styDotLn" style="float:right;padding-right:1mm;">........</span>
-								</td>
-								<td class="styLNRightNumBox">7a</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="height:4.5mm;">7a</td>
+						<td class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/GrossSalesOfInventoryAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
+						<td class="styLNRightNumBoxNBB" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey"/>
+						<td class="styLNAmountBoxNBB" style="height:4.5mm;border-right-width:0px;border-left-width:0px;"/>
+					
+					
 							</tr>
 							<!--  END LINE 7a   -->
 							<!--   BEGIN LINE 7b   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm">b</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:4mm;">b</td>
+						<td class="styLNDesc" style="width:97mm;height:4.5mm;padding-left:4mm;"><!--Reserved-->
+      Less: cost of goods sold
+          <span class="styDotLn" style="float:right;padding-right:1mm;">.............</span>
 								</td>
-								<td class="styLNDesc">
-									<span style="float:left;">Less: cost of goods sold</span>
-									<span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>
-								</td>
-								<td class="styLNRightNumBox">7b</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="height:4.5mm;">7b</td>
+						<td class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/CostOfGoodsSoldAmt"/>
 									</xsl:call-template>
 								</td>
-								<td class="styLNRightNumBox" style="background-color: lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
+						<td class="styLNRightNumBoxNBB" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey"/>
+						<td class="styLNAmountBoxNBB" style="height:4.5mm;border-right-width:0px;border-left-width:0px;"/>
+					
+					
 							</tr>
-							<!--  END LINE 7b   -->
+		<!--  END LINE 7b   -->
 							<!--   BEGIN LINE 7c   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 3.5mm">c</span>
-								</td>
-								<td class="styLNDesc" colspan="3">							
-									<span style="float:left;">Gross profit or (loss) from sales of inventory (Subtract line 7b from line 7a)
-		   </span>   
+						
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:4mm;">c</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
+					<!--	Reserved-->
+       Gross profit or (loss) from sales of inventory (Subtract line 7b from line 7a)
 								   <span class="styDotLn" style="float:right;padding-right:1mm;">.........</span>
 						
 								</td>
-								<td class="styLNRightNumBox">7c</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">7c</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/GrossProfitLossSlsOfInvntryAmt"/>
 									</xsl:call-template>
@@ -1153,23 +1071,21 @@
 							<!--  END LINE 7c   -->
 							<!--   BEGIN LINE 8   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox" style="padding-left: 2mm">8</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
 							
-									 <span style="float:left;">Other revenue (describe in Schedule O) 
-									<xsl:call-template name="SetFormLinkInline">
+
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:2mm;">8</td>
+
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;"><xsl:call-template name="SetFormLinkInline">
 												<xsl:with-param name="TargetNode" select="$IRS990EZData/OtherRevenueTotalAmt"/>
 												<!--<xsl:with-param name="TabOrder" select="6"/>-->
-											</xsl:call-template></span>
+											</xsl:call-template>
 									<!--<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="Bullet"/>-->
 									<!--	<span class="styIRS990EZUnderlinedBox" style="width: 98mm; height: 100%">-->
 									 <span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>								
 					
                                 </td>
-								<td class="styLNRightNumBox">8</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">8</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/OtherRevenueTotalAmt"/>
 									</xsl:call-template>
@@ -1178,43 +1094,44 @@
 							<!--   END LINE 8   -->
 							<!--   BEGIN LINE 9   -->
 							<tr>
-								<td style="border-bottom: 1px solid black;">
-									<span class="styLNLeftNumBox" style="padding-left: 2mm;">9</span>
-								</td>
-								<td class="styLNDesc" style="border-style: solid; border-color: black; border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;" colspan="3">
+						
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:2mm;border-bottom:1px solid black;">9</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;border-bottom:1px solid black;">
 								
-									 <span style="float:left;"><b>Total revenue.</b> Add lines 1, 2, 3, 4, 5c, 6d, 7c, and 8</span>
+      <b>Total revenue.</b> Add lines 1, 2, 3, 4, 5c, 6d, 7c, and 8
+          <span class="styDotLn" style="float:right;padding-right:1mm;"></span>
                                      <span class="styDotLn" style="float:right;padding-right:1mm;">..............
 									<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="Bullet"/></span>
 								</td>
-								<td class="styLNRightNumBox" style="border-bottom-width: 1px;">9</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 1px;">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;border-bottom:1px solid black;">9</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;border-bottom:1px solid black;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/TotalRevenueAmt"/>
 									</xsl:call-template>
 								</td>
 							</tr>
-							<!--   END LINE 9   -->
-							<!--   BEGIN LINE 10   -->
-							<tr>
-								<td class="styIRS990EZImg" style="padding-top: 15mm; border-bottom-width: 1px" rowspan="8">
+					</tbody>
+					</table>
+			 <table class="styTable" style="font-size:7pt;width:187mm;" cellspacing="0">
+           <tfoot/>
+            <tbody valign="top">	
+			<tr>
+						
+				<td class="styIRS990EZImg" style="width: 4mm;border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px" rowspan="11" valign="middle">
 									<img src="{$ImagePath}/990EZ_Expenses.gif" alt="VerticalExpenses"/>
 								</td>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">10</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
-								
-								<span style="float:left;">Grants and similar amounts paid (list in Schedule O)
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">10</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
+					Grants and similar amounts paid (list in Schedule O)
                                     <xsl:call-template name="SetFormLinkInline">          
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/GrantsAndSimilarAmountsPaidAmt"/>
 										<!--<xsl:with-param name="TabOrder" select="4"/> Removed for 508 Compliance JAWS-->
 									</xsl:call-template>
-									</span>
-									 <span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>						
+									 <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 								</td>
-								<td class="styLNRightNumBox">10</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">10</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/GrantsAndSimilarAmountsPaidAmt"/>
 									</xsl:call-template>
@@ -1223,17 +1140,16 @@
 							<!--  END LINE 10 -->
 							<!--   BEGIN LINE 11   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">11</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">11</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;">
+					Benefits paid to or for members
 								
-									 <span style="float:left;">Benefits paid to or for members</span>
-									 <span class="styDotLn" style="float:right;padding-right:1mm;">........................</span>
+									 <span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
 						
 								</td>
-								<td class="styLNRightNumBox">11</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">11</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/BenefitsPaidToOrForMembersAmt"/>
 									</xsl:call-template>
@@ -1242,32 +1158,30 @@
 							<!--  END LINE 11 -->
 							<!--   BEGIN LINE 12   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">12</span>
-								</td>
-								<td class="styLNDesc" colspan="3">								
-									 <span style="float:left;">Salaries, other compensation, and employee benefits</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">12</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm">
+					Salaries, other compensation, and employee benefits
 									 <span class="styDotLn" style="float:right;padding-right:1mm;">................</span>                               
 								</td>
-								<td class="styLNRightNumBox">12</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">12</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/SalariesOtherCompEmplBnftAmt"/>
 									</xsl:call-template>
 								</td>
 							</tr>
-							<!--  END LINE 12 -->
-							<!--   BEGIN LINE 13   -->
+							<!--  END LINE 12 -->		
+		<!--   BEGIN LINE 13   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">13</span>
-								</td>
-								<td class="styLNDesc" colspan="3">							
-							     	 <span style="float:left;">Professional fees and other payments to independent contractors</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">13</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm">
+					Professional fees and other payments to independent contractors
                                      <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
                        			</td>
-								<td class="styLNRightNumBox">13</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">13</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/FeesAndOtherPymtToIndCntrctAmt"/>
 									</xsl:call-template>
@@ -1276,32 +1190,31 @@
 							<!--  END LINE 13 -->
 							<!--   BEGIN LINE 14   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">14</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
-							     	 <span style="float:left;">Occupancy, rent, utilities, and maintenance</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">14</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm">
+					Occupancy, rent, utilities, and maintenance
                                      <span class="styDotLn" style="float:right;padding-right:1mm;">...................</span>
                            		</td>
-								<td class="styLNRightNumBox">14</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">14</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/OccupancyRentUtltsAndMaintAmt"/>
 									</xsl:call-template>
 								</td>
 							</tr>
-							<!--  END LINE 14 -->
-							<!--   BEGIN LINE 15   -->
+							<!--  END LINE 14 -->	
+		<!--   BEGIN LINE 15   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">15</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
-								     <span style="float:left;">Printing, publications, postage, and shipping</span>
-                                     <span class="styDotLn" style="float:right;padding-right:1mm;">...................</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">15</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm">
+					Printing, publications, postage, and shipping
+                                     <span class="styDotLn" style="float:right;padding-right:1mm;">..............
+									</span>
           						</td>
-								<td class="styLNRightNumBox">15</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">15</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/PrintingPublicationsPostageAmt"/>
 									</xsl:call-template>
@@ -1310,61 +1223,58 @@
 							<!--  END LINE 15 -->
 							<!--   BEGIN LINE 16   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">16</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
-								<span style="float:left;">Other expenses (describe in Schedule O) 
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">16</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm">
+					Other expenses (describe in Schedule O) 
 								<xsl:call-template name="SetFormLinkInline">
 											<xsl:with-param name="TargetNode" select="$IRS990EZData/OtherExpensesTotalAmt"/>
-											<!--<xsl:with-param name="TabOrder" select="6"/>-->
 										</xsl:call-template>
+          <span class="styDotLn" style="float:right;padding-right:1mm;">..............
 										</span>
-            <!--<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="Bullet"/>-->
-									<!--<span class="styIRS990EZUnderlinedBox" style="width: 96mm; height:100%">-->
-									<span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>
           </td>
-								<td class="styLNRightNumBox">16</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">16</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/OtherExpensesTotalAmt"/>
 									</xsl:call-template>
 								</td>
 							</tr>
 							<!--   END LINE 16   -->
-							<!--   BEGIN LINE 17   -->
+		<!--   BEGIN LINE 17   -->
 							<tr>
-								<td style="border-bottom: 1px solid black;">
-									<span class="styLNLeftNumBox">17</span>
-								</td>
-								<td class="styLNDesc" style="border-style: solid; border-color: black; border-top-width: 0px; border-right-width: 0px; border-left-width: 0px; border-bottom-width: 1px" colspan="3">
-									 <span style="float:left;"><b>Total expenses. </b>Add lines 10 through 16 </span>   
-                                     <span class="styDotLn" style="float:right;padding-right:1mm;">.................
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;border-bottom:1px solid black;">17</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;border-bottom:1px solid black;">
+					<b>Total expenses. </b>Add lines 10 through 16 
+          <span class="styDotLn" style="float:right;padding-right:1mm;"></span>
+          <span class="styDotLn" style="float:right;padding-right:1mm;">..............
                                      <img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="Bullet"/></span>
 								</td>
-								<td class="styLNRightNumBox" style="border-bottom-width: 1px">17</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 1px">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;border-bottom:1px solid black;">17</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;border-bottom:1px solid black;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/TotalExpensesAmt"/>
 									</xsl:call-template>
 								</td>
 							</tr>
-							<!--   END LINE 17   -->
+					</tbody>
+					</table>
 							<!--   BEGIN LINE 18   -->
+						<table class="styTable" style="font-size:7pt;width:187mm;" cellspacing="0">
+						<tbody>
 							<tr>
-								<td class="styIRS990EZImg" rowspan="8" style="padding-top: 2mm; border-bottom-width: 0px">
+					<td class="styIRS990EZImg" style="width: 4mm;border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px" rowspan="7" valign="middle">
 									<img src="{$ImagePath}/990EZ_NetAssets.gif" alt="VerticalNetAssets"/>
 								</td>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">18</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
-	 						        <span style="float:left;">Excess or (deficit) for the year (Subtract line 17 from line 9)</span>
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">18</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm">
+					Excess or (deficit) for the year (Subtract line 17 from line 9)
                                      <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
       
 								</td>
-								<td class="styLNRightNumBox">18</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">18</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/ExcessOrDeficitForYearAmt"/>
 									</xsl:call-template>
@@ -1373,50 +1283,44 @@
 							<!--  END LINE 18 -->
 							<!--   BEGIN LINE 19   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">19</span>
-								</td>
-								<td class="styLNDesc" colspan="3">Net assets or fund balances at beginning of year (from line 27, column (A)) (must agree with
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;padding-top:1mm;">19</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm;padding-top:1mm;">
+					Net assets or fund balances at beginning of year (from line 27, column (A)) (must agree with
           </td>
-								<td class="styLNRightNumBox" style="background-color:lightgrey; border-bottom-width: 0px">
-									<span style="width: 1mm"/>
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;background-color:lightgrey;border-bottom-width:0px;"></td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;border-bottom-width:0px;">
 								</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px">
-									<span style="width: 1mm"/>
-								</td>
+					
 							</tr>
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox"/>
+						
+						<td class="styLNLeftNumBox" style="width:5mm;height:6mm;padding-left:1mm;"></td>
+						<td class="styLNDesc" style="width:137mm;height:6mm;padding-left:4mm;padding-top:1mm;">
+					end-of-year figure reported on prior year’s return)
+                                     <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 								</td>
-								<td class="styLNDesc" colspan="3">
-								     <span style="float:left;">end-of-year figure reported on prior year’s return)</span>
-                                     <span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
-								</td>
-								<td class="styLNRightNumBox">19</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:6mm;border-right-width:1px;">19</td>
+						<td class="styLNAmountBox" style="height:6mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/NetAssetsOrFundBalancesBOYAmt"/>
 									</xsl:call-template>
 								</td>
 							</tr>
-							<!--  END LINE 19 -->
-							<!--   BEGIN LINE 20  -->
+		<!--   BEGIN LINE 20  -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">20</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
-							 	    <span style="float:left;">Other changes in net assets or fund balances (explain in Schedule O)
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">20</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm">
+					Other changes in net assets or fund balances (explain in Schedule O)
                                      <xsl:call-template name="SetFormLinkInline">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/OtherChangesInNetAssetsAmt"/>
 										<!--<xsl:with-param name="TabOrder" select="5"/>Removed for 508 Compliance-->
 									</xsl:call-template>
-									</span>
 									 <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 								</td>
-								<td class="styLNRightNumBox">20</td>
-								<td class="styLNAmountBox">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">20</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/OtherChangesInNetAssetsAmt"/>
 									</xsl:call-template>
@@ -1425,24 +1329,21 @@
 							<!--  END LINE 20 -->
 							<!--   BEGIN LINE 21   -->
 							<tr>
-								<td>
-									<span class="styIRS990EZLNLeftNumBox">21</span>
-								</td>
-								<td class="styLNDesc" colspan="3">
-								     <span style="float:left;">Net assets or fund balances at end of year. Combine lines 18 through 20</span>
-								     <span style="float:right;">
-                                     <span class="styDotLn" style="padding-right:1mm;">.........</span>
+							
+						<td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-left:1mm;">21</td>
+						<td class="styLNDesc" style="width:137mm;height:auto;padding-left:4mm">
+					Net assets or fund balances at end of year. Combine lines 18 through 20
+                                     <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
 									<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="Bullet"/>
-									</span>
 								</td>
-								<td class="styLNRightNumBox" style="border-bottom-width: 0px">21</td>
-								<td class="styLNAmountBox" style="border-bottom-width: 0px">
+						<td class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">21</td>
+						<td class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$IRS990EZData/NetAssetsOrFundBalancesEOYAmt"/>
 									</xsl:call-template>
 								</td>
-							</tr>
-							<!--  END LINE 21-->
+							</tr>					
+							<!--  END LINE 19 -->																					
 						</tbody>
 					</table>
 					<!--   END PART I   -->
@@ -1471,14 +1372,13 @@
 					<!--   BEGIN PART II HEADER   -->
 					<div class="styBB" style="float: none; clear:both; width: 187mm; border-top-width: 1px">
 						<span class="styPartName">Part II</span>
-						<span class="styPartDesc">Balance Sheets<!--&#151;-->
+						<span class="styPartDesc" style="height:auto;">Balance Sheets<!--&#151;-->
 						<span class="styNormalText" style="font-size: 7pt; width: 50mm"> (see the instructions for Part II)</span>
 						<span class="styNormalText" style="font-size: 7pt; width:169mm"> 
-						<span style="float:left;padding-right:15px;">Check if the organization used Schedule O to respond to any question in this Part II</span>
-            <!-- Dotted Line -->
-                       <!--<span class="styDotLn" style="padding-right:1mm;">............</span>Changed this although no problem to test if affects JAWS-->
-                <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">.................</span> 
-                
+						<span style="float:left;padding-right:15px;padding-top:2mm;">Check if the organization used Schedule O to respond to any question in this Part II</span>
+
+                       <span style="float:right">
+						<span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">.................</span>                 
                 <input type="checkbox" class="styIRS990EZCkBox">
 							<xsl:call-template name="PopulateCheckbox">
 								<xsl:with-param name="TargetNode" select="$IRS990EZData/InfoInScheduleOPartIIInd"/>
@@ -1491,6 +1391,7 @@
 								<xsl:with-param name="BackupName">IRS990EZInfoInScheduleOPartII</xsl:with-param>
 							</xsl:call-template>
                 </label>
+                </span>
               </span>
               
         </span>
@@ -1498,7 +1399,7 @@
 					</div><br/>
 					<!--   END PART II HEADER   -->
 					<div style="width: 187mm;">
-						<span class="styLNDesc" style="text-align: center; width: 113.75mm;border-top-width:1px"/>
+						<span class="styLNDesc" style="text-align: center; width: 109.5mm;border-top-width:1px"/>
 						<span class="styLNAmountBox" style=" text-align: center; width: 34.75mm; border-left-width: 1px;border-top-width:1px">
 							<b>(A)</b> Beginning of year</span>
 						<span class="styLNAmountBox" style="text-align: center; width: 38mm;border-top-width:1px">
@@ -1658,7 +1559,7 @@
 						</xsl:call-template>
 					</span>
 					<!--</div>-->
-					<div class="styTableContainerNBB" style="height:52mm;width:187mm;" id="SPctn">
+					<div class="styTableContainerNBB" style="height:82mm;width:187mm;" id="SPctn">
 						<xsl:call-template name="SetInitialState"/>
 						
 						
@@ -1667,7 +1568,7 @@
 							<tr style="height:6mm;">
 								<td class="styTableCell" style="height: 4mm; border-color: black; border-bottom-width: 1px; border-top-width: 1px; border-left-width: 0px; border-right-width: 1px; text-align: left; width: 149mm; padding-top: 0; padding-bottom: 0;">
 									<span class="styPartName">Part III</span>
-									<span class="styPartDesc" style="width: 124mm">Statement of Program Service Accomplishments 
+									<span class="styPartDesc" style="width: 124mm;height:10mm;">Statement of Program Service Accomplishments 
 									<span class="styNormalText" style="font-size:6pt;"> (see the instructions for Part III)</span>
 									<span class="styNormalText" style="font-size: 7pt; width:124mm"> Check if the organization used Schedule O to respond to any question in this Part III
             <!-- Dotted Line -->
@@ -1845,7 +1746,7 @@
 					<!--   BEGIN PART IV HEADER   -->
 					<div class="styBB" style="float:none; clear:both; width: 187mm;border-color: black; border-bottom-width: 1px; border-right-width: 0px; border-left-width: 0px; border-top-width: 1px;">
 						<div class="styPartName" style="height:3.8mm;">Part IV</div>
-						<div class="styPartDesc" style="font-size: 7pt; width: 163mm">
+						<div class="styPartDesc" style="font-size: 7pt; width: 163mm;height:auto;">
 						List of Officers, Directors, Trustees, and Key Employees <span class="styNormalText" style="font-size: 6pt">(list each one even if not compensated &#151; see the instructions for Part IV)</span>
 						<span class="styNormalText" style="font-size: 7pt; width:163mm"> 
 						<span style="float:left;">Check if the organization used Schedule O to respond to any question in this Part IV</span>
@@ -1908,7 +1809,7 @@ deferred compensation-->
 								<xsl:for-each select="$IRS990EZData/OfficerDirectorTrusteeEmplGrp">
 									<xsl:if test="($Print != $Separated) or (count($IRS990EZData/OfficerDirectorTrusteeEmplGrp) &lt;=3)">
 										<tr style="height: 10mm">
-											<td class="styIRS990EZTableCellA" style="border-color: black; border-bottom-width: 1px; border-right-width: 1px; border-left-width: 0px; border-top-width: 0px;vertical-align:top;">
+											<td class="styIRS990EZTableCellA" style="border-color: black; border-bottom-width: 1px; border-right-width: 1px; border-left-width: 0px; border-top-width: 0px;vertical-align:top;text-align:left;">
 										<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="PersonNm"/>
 													</xsl:call-template>
@@ -2401,7 +2302,7 @@ deferred compensation-->
 								<xsl:with-param name="TargetNode" select="$IRS990EZData/EngagedInExcessBenefitTransInd"/>
 								<!--<xsl:with-param name="TabOrder" select="9"/>-->
 							</xsl:call-template></span>
-							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>   
+							<span class="styDotLn" style="float:right;padding-right:1mm;"></span>   
 						</div>
 <!--					<div class="styIRS990EZYesNoBox" style="width:8mm;height:7.5mm;border-left-width:1px;border-bottom-width:0"/>
 						<div class="styIRS990EZYesNoBox" style="width:10mm;height:7.5mm;border-top-width:0px;border-bottom-width:0"/>
@@ -2421,14 +2322,14 @@ deferred compensation-->
 					<!--   BEGIN LINE 40C   -->
 					<div class="styIRS990EZLineItem">
 						<div class="styLNLeftNumBox" style="padding-left:4mm;">c</div>
-						<div class="styLNDesc" style="width:150mm;">
+						<div class="styLNDesc" style="width:150mm;font-size:7pt">
 						     <span style="float:left;white-space:nowrap;">Section 501(c)(3) and 501(c)(4) organizations. Enter amount of tax imposed on organization managers or
 						     </span> 					
 						     <span style="float:left;white-space:nowrap;">disqualified persons during the year under sections 4912, 4955, and 4958</span>
 						     <span style="float:right;">
                              <span class="styDotLn" style="padding-right:1mm;">...</span>					
 							<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="bullet" style="padding-top: .75mm;"/>
-							<span class="styIRS990EZUnderlinedBox" style="width: 33mm;text-align: right;">
+							<span class="styIRS990EZUnderlinedBox" style="width: 30mm;text-align: right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$IRS990EZData/TaxImposedOnOrganizationMgrAmt"/>
 								</xsl:call-template>
@@ -2446,16 +2347,16 @@ deferred compensation-->
 					<!--   BEGIN LINE 40D   -->
 					<div class="styIRS990EZLineItem" style="height:4.5mm;">
 						<div class="styLNLeftNumBox" style="padding-left:4mm;">d</div>
-						<div class="styLNDesc" style="width:150mm;font-size:7pt">
+						<div class="styLNDesc" style="width:150mm;font-size:6pt">
 						     <span style="float:left;white-space:nowrap;">Section 501(c)(3) and 501(c)(4) organizations. Enter amount of tax on line 40c reimbursed by the organization</span>
-						    <span style="float:right;">
-                             <span class="styDotLn" style="padding-right:1mm;">...........................</span>	
+						    <!--span style="float:right;"-->
+                             <span class="styDotLn" style="padding-right:1mm;"></span>	
 							<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="bullet" style="padding-top: .75mm;"/>
-							<span class="styIRS990EZUnderlinedBox" style="width: 34mm;text-align: right;">
+							<span class="styIRS990EZUnderlinedBox" style="width: 28mm;text-align: right;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$IRS990EZData/TaxReimbursedByOrganizationAmt"/>
 								</xsl:call-template>
-							</span>
+							<!--/span-->
 							</span>
 						</div>
 						<span class="styIRS990EZYesNoBox" style="width:8mm;height:8mm;border-left-width:1px;border-bottom-width:0;background:lightgrey;">
@@ -2654,8 +2555,8 @@ deferred compensation-->
 						</div>
 					</div>
 					<div style="width:187mm;float:none;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;"/>
-						<div class="styLNDesc" style="width:150mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:11.5mm;padding-left:3mm;"/>
+						<div class="styLNDesc" style="width:150mm;height:11.5mm;">
           If “Yes," enter the name of the foreign country:      
         <img src="{$ImagePath}/990_Bullet_Md.gif" alt="bullet"/>
 							<span class="styFixedUnderline" style="width:80mm;float:none;padding-left:2mm;padding-top:0;padding-bottom:0;">
@@ -2676,9 +2577,9 @@ deferred compensation-->
 								</xsl:if>
 							</span>
 						</div>
-						<div class="styShadingCell" style="width:8mm;height:4.5mm;"/>
-						<div class="styShadingCell" style="width:10mm;height:4.5mm;"/>
-						<div class="styShadingCell" style="width:10mm;height:4.5mm;"/>
+						<div class="styShadingCell" style="width:8mm;height:11.5mm;"/>
+						<div class="styShadingCell" style="width:10mm;height:11.5mm;"/>
+						<div class="styShadingCell" style="width:10mm;height:11.5mm;"/>
 					</div>
 				<!--	<xsl:if test="(count($IRS990EZData/ForeignFinancialAccountCountry) &gt; 1) and ($Print != $Separated)">
 						<div style="width:187mm;float:none;">
@@ -2714,6 +2615,9 @@ deferred compensation-->
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:4mm;">c</div>
 						<div class="styLNDesc" style="width:150mm;height:4.5mm;">
          At any time during the calendar year, did the organization maintain an office outside the U.S.?
+         <span class="styIRS990EZNBSP"/>.
+            <span class="styIRS990EZNBSP"/>.
+            <span class="styIRS990EZNBSP"/>.
       </div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">42c</div>
 						<div class="styIRS990EZYesNoBox" style="height:4.5mm;">
@@ -2729,11 +2633,11 @@ deferred compensation-->
 					</div>
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:4mm;"/>
-						<div class="styLNDesc" style="width:150mm;height:4.5mm;">
+						<div class="styLNDesc" style="width:150mm;height:auto;">
          If “Yes," enter the name of the foreign country:
         <img src="{$ImagePath}/990_Bullet_Md.gif" alt="bullet"/>
 							<span class="styFixedUnderline" style="width:80mm;float:none;padding-left:2mm;">
-						<xsl:if test="(count($IRS990EZData/ForeignOfficeCountryCd) &lt;= 25) or ((count($IRS990EZData/ForeignOfficeCountryCd) &gt; 25) and ($Print != $Separated))">
+						<xsl:if test="(count($IRS990EZData/ForeignOfficeCountryCd) &lt;= 25) or ((count($IRS990EZData/ForeignOfficeCountryCd) &gt; 25) and ($Print != $Separated))"> 
 								<xsl:for-each select="$IRS990EZData/ForeignOfficeCountryCd">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="."/>
@@ -2751,19 +2655,6 @@ deferred compensation-->
 							</span>
 						</div>
 					</div>
-				<!--<xsl:if test="(count($IRS990EZData/ForeignOfficeCountry) &gt; 1) and ($Print != $Separated)">
-						<div style="width:187mm;">
-							<xsl:for-each select="$IRS990EZData/ForeignOfficeCountry">
-								<xsl:if test="position() != 1">
-									<div class="styFixedUnderline" style="width:80mm;float:none;padding-left:2mm;margin-left:71mm;padding-top:0;padding-bottom:0;">
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="."/>
-										</xsl:call-template>
-									</div>
-								</xsl:if>
-							</xsl:for-each>
-						</div>
-					</xsl:if>-->
 					<!--   END LINE 42   -->
 					<!--   BEGIN LINE 43   -->
 					<div class="styIRS990EZLineItem">
@@ -2774,8 +2665,8 @@ deferred compensation-->
 									<xsl:with-param name="TargetNode" select="$IRS990EZData/NECTFilingForm990Ind"/>
 									<xsl:with-param name="BackupName">IRS990EZNECTFilingForm990</xsl:with-param>
 								</xsl:call-template>
-    Section 4947(a)(1) nonexempt charitable trusts filing Form 990-EZ in lieu of <b>Form 1041?</b>Check here </label>
-							<span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm; margin-right:1mm">.......</span>
+    Section 4947(a)(1) nonexempt charitable trusts filing Form 990-EZ in lieu of <b>Form 1041 - </b> Check here </label>
+							<span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm; margin-right:1mm">......</span>
 							
 							<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="bullet"/>
 							<span style="padding-left:1mm">
@@ -2788,13 +2679,13 @@ deferred compensation-->
 						</span>
 					</div>
 					<div class="styIRS990EZLineItem" style="border-bottom-width: 0px">
-						<span class="styIRS990EZLNLeftNumBox" style="font-size:6pt;width:4mm;"/>
-						<span class="styIRS990EZLNLongDesc" style="width: 135mm; font-size:7pt">
+						<div class="styIRS990EZLNLeftNumBox" style="font-size:6pt;width:4mm;"/>
+						<div class="styIRS990EZLNLongDesc" style="width: 136mm; font-size:7pt">
 						<span style="float:left;">and enter the amount of tax-exempt interest received or accrued during the tax year</span>
  <span class="styDotLn" style="float:right;padding-right:1mm;">....<img src="{$ImagePath}/990EZ_Bullet_Lg.gif" alt="bullet"/></span>
-						</span>
-						<span class="styLNRightNumBox" style="border-bottom-width: 1px">43</span>
-						<div class="styLNAmountBox" style="border-bottom-width: 1px; width: 34mm">
+						</div>
+						<div class="styLNRightNumBox" style="border-bottom-width: 1px;float:none;">43</div>
+						<div class="styLNAmountBox" style="border-bottom-width: 1px; width: 34mm;float:right;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$IRS990EZData/NECTFilingForm990Ind/@interestAmt"/>
 							</xsl:call-template>
@@ -2955,7 +2846,7 @@ deferred compensation-->
 					<!--  BEGIN LINE 45b -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">45b</div>
-						<div class="styLNDesc" style="width:150mm;height:4.5mm;">
+						<div class="styLNDesc" style="width:150mm;height:10mm;">
          <span style="float:left;">Did the organization receive any payment from or engage in any transaction with a controlled entity within the 
 meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be completed instead of</span>
          <span style="float:left;"> Form 990-EZ (see instructions)</span>
@@ -2994,7 +2885,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 					</div>
 					<div class="pageEnd"/>
 					<!--END FOOTER-->
-					
+							<div style="page-break-before:always;"></div>			
 					
 		<!--BEGIN HEADER-->
 					<div class="styBB" style="width:187mm; padding-bottom:.5mm;">
@@ -3023,7 +2914,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 					<!--  BEGIN LINE 46 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">46</div>
-						<div class="styLNDesc" style="width:150mm;">
+						<div class="styLNDesc" style="width:150mm;height:7mm;">
                              <span style="float:left;">Did the organization engage, directly or indirectly, in political campaign activities on behalf of or in opposition to</span>
                              <span style="float:left;">candidates for public office? If “Yes," complete Schedule C, Part I.
                                  <xsl:call-template name="SetFormLinkInline">
@@ -3056,13 +2947,13 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 						<div class="styPartName" style="float:left;clear:none;height: 4.5mm;width:15mm; padding-top: .5mm">
 							Part VI
 						</div>
-						<div class="styPartDesc" style="float:left;clear:none;height: 4.5mm;width:172mm;padding-top: .5mm">Section 501(c)(3) organizations only
-						<span class="styNormalText" style="height: 4.5mm;padding-top: .5mm;">All section 501(c)(3) organizations must answer questions 47-49b and 52, and complete the tables for lines 50 and 51
+						<div class="styPartDesc" style="float:left;clear:none;height: auto;width:172mm;padding-top: .5mm">Section 501(c)(3) organizations only
+						<span class="styNormalText" style="padding-top: .5mm;">All section 501(c)(3) organizations must answer questions 47-49b and 52, and complete the tables for lines 50 and 51
 						<span class="styNormalText" style="font-size: 7pt; width:165mm;">
 						<span style="float:left;"> Check if the organization used Schedule O to respond to any question in this Part VI   </span>       
                        
 					    <!--<span class="styDotLn" style="padding-right:2mm;">............</span> Removed to test JAWS--> 
-					    <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:1mm;">................</span>  					
+					    <span class="styDotLn">.............</span>  					
 					         <input type="checkbox" class="styIRS990EZCkBox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$IRS990EZData/InfoInScheduleOPartVIInd"/>
@@ -3180,7 +3071,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 						<!-- BEGIN LINE 50 -->
 						<div style="width:187mm;float:none;">
 							<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:2mm;">50</div>
-							<div class="styLNDesc" style="width:177mm;height:4.5mm;padding-top:2mm;">
+							<div class="styLNDesc" style="width:177mm;height:8mm;padding-top:2mm;">
       Complete this table for the organization's five highest compensated employees (other than officers, directors, trustees and key employees) who each received more than $100,000 of compensation from the organization. If there is none, enter "None."
      </div>
 						</div>
@@ -3300,7 +3191,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 						<!--  BEGIN LINE 51 -->
 						<div style="width:187mm;float:none;">
 							<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:2mm;">51</div>
-							<div class="styLNDesc" style="width:177mm;height:4.5mm;padding-top:2mm;">
+							<div class="styLNDesc" style="width:177mm;height:8mm;padding-top:2mm;">
       Complete this table for the organization's five highest compensated independent contractors who each received more than $100,000 of compensation from the organization. If there is none, enter "None."
      </div>
 						</div>
@@ -3437,7 +3328,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 					<!-- END LINE 51 -->					
 <!-- Part III 2 -->
           <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:4.5mm;">52</div>
+            <div class="styLNLeftNumBox" style="height:6mm;">52</div>
             <div class="styLNDesc" style="width:178mm;height:4.5mm;padding-left:3mm">
                  <span style="float:left;">Did the organization complete Schedule A? <b>NOTE:</b> All Section 501(c)(3) organizations and 4947(a)(1) 
                  <span style="float:left;">nonexempt charitable trusts must attach a completed Schedule A </span>
@@ -3487,9 +3378,9 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 					<!-- Implementing the signature section in table -->
 					<table border="0" cellspacing="0" cellpadding="0" style="width:187mm;font-size:6pt;">
 						<tr>
-							<td rowspan="5" style="width:15mm;font-size: 8pt;font-weight:bold;border-right:1 solid black;border-bottom:1 solid black;">Sign Here</td>
+							<td rowspan="5" style="width:15mm;font-size: 8pt;font-weight:bold;border-right:1px solid black;border-bottom:1px solid black;">Sign Here</td>
 							<div style="width:187mm;">
-							<div class="styPartDesc" style="width:187mm;font-size:6pt;padding-left:0mm;padding-top:2mm;vertical-align:center;">Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than officer) is based on all information of which preparer has any knowledge.
+							<div class="styPartDesc" style="width:187mm;font-size:6pt;padding-left:0mm;padding-top:2mm;vertical-align:center;height:100%">Under penalties of perjury, I declare that I have examined this return, including accompanying schedules and statements, and to the best of my knowledge and belief, it is true, correct, and complete. Declaration of preparer (other than officer) is based on all information of which preparer has any knowledge.
 							</div>
 							</div>
 
@@ -3499,13 +3390,13 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 							<td rowspan="2" style="padding-left:1mm;">
 								<img style="width:2mm;height:8mm;" src="{$ImagePath}/990EZ_Bullet_Jumbo.gif" alt="JumboBullet"/>
 							</td>
-						<td style="width:113mm;border-bottom:1 solid black;vertical-align:bottom;border-right:1 solid black;height:6mm">
+						<td style="width:113mm;border-bottom:1px solid black;vertical-align:bottom;border-right:1px solid black;height:6mm">
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">TaxpayerPIN</xsl:with-param>
 								</xsl:call-template>
 								<span style="width:1px;"/>
 							</td>
-							<td style="width:53mm;border-bottom:1 solid black;vertical-align:bottom;padding-left:1mm;height:6mm">
+							<td style="width:53mm;border-bottom:1px solid black;vertical-align:bottom;padding-left:1mm;height:6mm">
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
 								</xsl:call-template>
@@ -3516,10 +3407,10 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 							<td style="vertical-align:top;padding-left:1mm;">Date</td>
 						</tr>
 						<tr>
-							<td rowspan="2" style="border-bottom:1 solid black;padding-left:1mm;padding-top:1mm;">
+							<td rowspan="2" style="border-bottom:1px solid black;padding-left:1mm;padding-top:1mm;">
 								<img style="width:2mm;height:8mm;" src="{$ImagePath}/990EZ_Bullet_Jumbo.gif" alt="JumboBullet"/>
 							</td>
-							<td style="border-bottom:1 solid black;vertical-align:bottom;" colspan="2">
+							<td style="border-bottom:1px solid black;vertical-align:bottom;" colspan="2">
 								<xsl:call-template name="PopulateReturnHeaderOfficer">
 									<xsl:with-param name="TargetNode">Name</xsl:with-param>
 								</xsl:call-template>
@@ -3530,7 +3421,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 							</td>
 						</tr>
 						<tr>
-							<td style="vertical-align:top;border-bottom:1 solid black;" colspan="2">Type or print name and title</td>
+							<td style="vertical-align:top;border-bottom:1px solid black;" colspan="2">Type or print name and title</td>
 						</tr>
 					</table>
 					<!-- End Signature Section -->
@@ -3546,26 +3437,26 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
             </div>
             <div style="width:164mm;float:left;clear:none;">
               <div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-                <div class="styLNDesc" style="height:6mm;width:46.8mm;padding-top:0mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="height:8mm;width:46.8mm;padding-top:0mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
                 
                 Print/Type preparer's name<br/>
                   <xsl:call-template name="PopulateReturnHeaderPreparer">
 														<xsl:with-param name="TargetNode">Name</xsl:with-param>
 													</xsl:call-template>
                 </div>
-                <div class="styLNDesc" style="height:6mm;width:46.5mm;padding-top:0mm;border-right:1 solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="height:8mm;width:46.5mm;padding-top:0mm;border-right:1px solid black;padding-left:1mm;">
                 Preparer's signature<br/>
                 <!--<xsl:call-template name="PopulateReturnHeaderPreparer">
 										<xsl:with-param name="TargetNode">Name</xsl:with-param>
 									</xsl:call-template>-->
               </div>
-                <div class="styLNDesc" style="height:6mm;width:15mm;border-right:1 solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
+                <div class="styLNDesc" style="height:8mm;width:15mm;border-right:1px solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
                   <xsl:call-template name="PopulateReturnHeaderPreparer">
                     <xsl:with-param name="TargetNode">DatePrepared</xsl:with-param>
                    <!-- <xsl:with-param name="BackupName">PopulateReturnHeaderPreparer</xsl:with-param>-->
                   </xsl:call-template>
                 </div>
-                <div class="styLNDesc" style="height:6mm;width:18mm;border-right:1 solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
+                <div class="styLNDesc" style="height:8mm;width:18mm;border-right:1px solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
                   <label>
                     <xsl:call-template name="PopulateReturnHeaderPreparer">
 											<xsl:with-param name="TargetNode">SelfEmployedLabel</xsl:with-param>
@@ -3581,7 +3472,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
                     <span style="width:4px;"/>if<br/>self-employed
                   </label>
                 </div>
-                <div class="styLNDesc" style="height:6mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
+                <div class="styLNDesc" style="height:8mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
                              <br/>
                              <xsl:call-template name="PopulateReturnHeaderPreparer">
 									<xsl:with-param name="TargetNode">SSN</xsl:with-param>
@@ -3611,7 +3502,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
                 </div>
               </div>
               <div style="width:164mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-                <div class="styLNDesc" style="height:6mm;width:108.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="height:6mm;width:108.5mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
                   <span class="styGenericDiv" style="">Firm's name 
                   <span style="width:2.2mm;"/>
                     <img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
@@ -3652,7 +3543,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
                 </div>
               </div>
               <div style="width:164mm;float:left;clear:none;">
-                <div class="styLNDesc" style="width:108.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+                <div class="styLNDesc" style="height:9mm;width:108.5mm;border-right:1px solid black;border-left:1px solid black;padding-left:1mm;">
                   <div class="styGenericDiv" style="padding-right:.5mm;">Firm's address 
                   <img src="{$ImagePath}/990EZ_Bullet_Md.gif" alt="bullet"/>
                   </div>
@@ -3722,7 +3613,7 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
                     </xsl:if>-->
                   </div>
                 </div>
-                <div class="styLNDesc" style="width:32mm;padding-left:1mm;"> Phone no. 
+                <div class="styLNDesc" style="height:9mm;width:32mm;padding-left:1mm;"> Phone no. 
                 <!--<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
                     <xsl:with-param name="TargetNode">Phone</xsl:with-param>
                     <xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPhone</xsl:with-param>
@@ -3778,76 +3669,62 @@ meaning of section 512(b)(13)? If "Yes," Form 990 and Schedule R may need to be 
 					</div>
 					<div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 0px"/>
 					<!--   BEGIN FORM FOOTER  -->
-					<div style="width:187mm;">
+					<div style="width:187mm;float:none; clear:both;">
 						<span style="float: right">Form <span class="styBoldText">990-EZ</span> (2013)</span>
 					</div>
 					<!--   END FORM FOOTER   -->
 					<br/>
-					<div class="pageEnd"/>
 					
-						<!--Special Condition Description -->
-<br/>
- <span class="styRepeatingDataTitle">Form 990-EZ, Special Condition Description: </span>
-
-
-<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
-
-<thead class="styTableThead">
-
-<tr class="styDepTblHdr">
-
-<th class="styDepTblCell" scope="col" rowspan="2" style="width:179mm;font-size:8pt;">
-
-Special Condition Description</th>
-
-</tr>
-
-</thead>
-
-<tfoot/>
-
-<tbody>
-
-<xsl:for-each select="$IRS990EZData/SpecialConditionDesc">
-
-<tr style="border-color:black;height:6mm;">
-
-<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-
-<td class="styTableCellText" style="width:179mm;">
-
-<xsl:call-template name="PopulateText">
-
-<xsl:with-param name="TargetNode" select="."/>
-
-</xsl:call-template>
-
-<span class="styTableCellPad"/>
-
-</td>
-
-</tr>
-
-</xsl:for-each>
-
-</tbody>
-
-</table>
-<br/>
-<div class="styLeftOverTitleLine" id="LeftoverData">
-						<div class="styLeftOverTitle">
-          Additional Data        
-        </div>
-						<div class="styLeftOverButtonContainer">
-							<input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
-						</div>
+					
+					
+				<!--Special Condition Description -->
+				<br/>
+				<span class="styRepeatingDataTitle">Form 990-EZ, Special Condition Description: </span>
+			
+				<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
+					<thead class="styTableThead">
+						<tr class="styDepTblHdr">
+							<th class="styDepTblCell" scope="col" rowspan="2" style="width:179mm;font-size:8pt;">
+							Special Condition Description</th>
+						</tr>
+					</thead>
+					<tfoot/>
+					<tbody>
+						<xsl:for-each select="$IRS990EZData/SpecialConditionDesc">
+							<tr style="border-color:black;height:6mm;">
+								<xsl:attribute name="class">
+									<xsl:choose>
+										<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+										<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+									</xsl:choose>
+								</xsl:attribute>
+								<td class="styTableCellText" style="width:179mm;">
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="."/>
+									</xsl:call-template>
+									<span class="styTableCellPad"/>
+								</td>
+							</tr>
+						</xsl:for-each>
+					</tbody>
+				</table>
+				
+				<div class="pageEnd"/>
+				
+				<div class="styLeftOverTitleLine" id="LeftoverData" style="float:none; clear:both;">
+					<div class="styLeftOverTitle">
+						Additional Data        
 					</div>
-					<table class="styLeftOverTbl">
-						<xsl:call-template name="PopulateCommonLeftover">
-							<xsl:with-param name="TargetNode" select="$IRS990EZData"/>
-							<xsl:with-param name="DescWidth" select="100"/>
-						</xsl:call-template>
-					</table>
+					<div class="styLeftOverButtonContainer">
+						<input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+					</div>
+				</div>
+				<table class="styLeftOverTbl">
+					<xsl:call-template name="PopulateCommonLeftover">
+						<xsl:with-param name="TargetNode" select="$IRS990EZData"/>
+						<xsl:with-param name="DescWidth" select="100"/>
+					</xsl:call-template>
+				</table>
 <!-- End Left Over Table -->
 
 		
@@ -4121,41 +3998,6 @@ Special Condition Description</th>
 															<xsl:with-param name="TargetNode" select="TitleTxt"/>
 														</xsl:call-template>
 													</td>
-											
-											
-											
-											
-											<!--
-    <xsl:if test="BusinessName/BusinessNameLine1 != ''">
-        <xsl:call-template name="PopulateText">
-            <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1" />
-        </xsl:call-template>
-    </xsl:if>
-    <xsl:if test="BusinessName/BusinessNameLine2 != ''"><br/>
-        <xsl:call-template name="PopulateText">
-            <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2" />
-        </xsl:call-template>
-      </xsl:if>
-      <xsl:if test="BusinessName != ''">
-      <xsl:call-template name="SetFormLinkInline">
-      <xsl:with-param name="TargetNode" select="BusinessName"/>
-      <xsl:with-param name="TabOrder" select="6"/>
-    </xsl:call-template>
-    </xsl:if>    
-	-->
-										<!--	<xsl:if test="AddressUS != ''">
-												<br/>
-												<xsl:call-template name="PopulateUSAddressTemplate">
-													<xsl:with-param name="TargetNode" select="AddressUS"/>
-												</xsl:call-template>
-											</xsl:if>
-											<xsl:if test="AddressForeign != ''">
-												<br/>
-												<xsl:call-template name="PopulateForeignAddressTemplate">
-													<xsl:with-param name="TargetNode" select="AddressForeign"/>
-												</xsl:call-template>
-											</xsl:if>
-											<br/>-->
 											<span class="styIRS990EZTableCellPad"/>
 										
 										<td class="styIRS990EZTableCellB" style="border-color: black; border-bottom-width: 1px; border-right-width: 1px; border-left-width: 0px; border-top-width: 0px;width:35mm;vertical-align:top;">											
@@ -4184,18 +4026,6 @@ Special Condition Description</th>
 										</td>
 									</tr>
 								</xsl:for-each>
-								<!--      <xsl:if test="($Print = $Separated) and (count($IRS990EZData/OfficerDirectorTrusteeKeyEmpl) &gt;4)">
-            <xsl:call-template name="AddRowsPartIV">
-              <xsl:with-param name="NumOfRows" select="4"></xsl:with-param>
-              <xsl:with-param name="ODCount" select="0"></xsl:with-param>
-            </xsl:call-template>
-            </xsl:if>
-            <xsl:if test="(count($IRS990EZData/OfficerDirectorTrusteeKeyEmpl) &lt;=4)">
-            <xsl:call-template name="AddRowsPartIV">
-                <xsl:with-param name="NumOfRows" select="4"></xsl:with-param>
-                <xsl:with-param name="ODCount" select="count($IRS990EZData/OfficerDirectorTrusteeKeyEmpl)"></xsl:with-param>
-              </xsl:call-template>
-            </xsl:if>  -->
 							</tbody>
 							
 						</table>
@@ -4235,17 +4065,6 @@ Special Condition Description</th>
 													<!--<xsl:with-param name="TabOrder" select="6"/>-->
 												</xsl:call-template>
 											</xsl:if>
-											<!--
-      <xsl:if test="NameBusiness != ''">
-        <xsl:call-template name="PopulateText">
-            <xsl:with-param name="TargetNode" select="NameBusiness" />
-        </xsl:call-template>
-      <xsl:call-template name="SetFormLinkInline">
-      <xsl:with-param name="TargetNode" select="NameBusiness"/>
-      <xsl:with-param name="TabOrder" select="6"/>
-    </xsl:call-template>
-    </xsl:if> 
-	-->
 											<xsl:if test="BusinessName/BusinessNameLine1 != ''">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1"/>
@@ -4293,18 +4112,6 @@ Special Condition Description</th>
 										</td>
 									</tr>
 								</xsl:for-each>
-								<!--      <xsl:if test="($Print = $Separated) and (count($IRS990EZData/OfficerDirectorTrusteeKeyEmpl) &gt;4)">
-            <xsl:call-template name="AddRowsPartIV">
-              <xsl:with-param name="NumOfRows" select="4"></xsl:with-param>
-              <xsl:with-param name="ODCount" select="0"></xsl:with-param>
-            </xsl:call-template>
-            </xsl:if>
-            <xsl:if test="(count($IRS990EZData/OfficerDirectorTrusteeKeyEmpl) &lt;=4)">
-            <xsl:call-template name="AddRowsPartIV">
-                <xsl:with-param name="NumOfRows" select="4"></xsl:with-param>
-                <xsl:with-param name="ODCount" select="count($IRS990EZData/OfficerDirectorTrusteeKeyEmpl)"></xsl:with-param>
-              </xsl:call-template>
-       </xsl:if>  -->
 							</tbody>
 							
 						</table>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 05/28/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -9,8 +10,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8874Data" select="$RtnDoc/IRS8874"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8874Data)"/>
@@ -66,7 +69,7 @@
       </div>
 						</div>
 						<div class="styTYBox" style="width:32mm;height:21mm;">
-							<div class="styOMB" style="height:2mm;">
+							<div class="styOMB" style="height:4mm;">
         OMB No. 1545-1804
       </div>
 							<div style="text-align: left; padding-top: 10mm; padding-left: 4mm">Attachment<br/> Sequence No.<span class="styBoldText">
@@ -77,7 +80,7 @@
 					<!-- End Form Number and Name section -->
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:147mm;height:8mm;font-weight:normal;font-size:7pt;">
+						<div class="styNameBox" style="width:147mm;height:9mm;font-weight:normal;font-size:7pt;">
       Name(s) shown on return<br/>
 							<span style="font-size:6pt;font-family:verdana;">
  							<xsl:choose>
@@ -106,7 +109,7 @@
 								</xsl:call-template>  -->
 							</span>
 						</div>
-						<div class="styEINBox" style="width:33mm;height:4mm;padding-left:2mm;font-size:7pt;">
+						<div class="styEINBox" style="width:33mm;height:9mm;padding-left:2mm;font-size:7pt;">
      Identifying number<br/>
 							<br/>
 							<span style="font-weight:normal">
@@ -151,7 +154,7 @@
         </span>      
     </div>  -->
 					<!-- END Part I Title -->
-					<div class="styTableContainer" id="TPctn">
+					<div class="styTableContainer" id="TPctn" style="border-bottom-width:0px;">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" cellspacing="0" summary="Table displaying entity name or names and corresponding employer identification numbers">
 							<thead class="styTableThead">
@@ -357,13 +360,13 @@
 					<!-- Line 2 caption -->
 					<div style="width:187mm; float: none; clear: none;">
 						<div class="styLNLeftNumBox" style="width:5mm;height:4mm;padding-left: 2mm"/>
-						<div class="styLNDesc" style="width:140.75mm; height:2mm;padding-left: 2mm;padding-bottom:0mm;"/>
-						<div class="styLNRightNumBoxNBB" style="width:9mm;"/>
-						<div class="styLNAmountBoxNBB" style="width:30mm;"/>
+						<div class="styLNDesc" style="width:140mm; height:4mm;padding-left: 2mm;padding-bottom:0mm;border-right:1px solid black;"/>
+						<div class="styLNRightNumBoxNBB" style="height:4mm;width:12mm;border-left-width:0px;border-right-width:1px;"/>
+						<div class="styLNAmountBoxNBB" style="height:4mm;width:30mm;border-left-width:0px;"/>
 					</div>
 					<div style="width:187mm; float: none; clear: none;">
 						<div class="styLNLeftNumBox" style="width:5mm;height:4mm;padding-left: 2.5mm">2</div>
-						<div class="styLNDesc" style="width:140.75mm; height:2mm;padding-left: 2mm;padding-bottom:0mm;">          
+						<div class="styLNDesc" style="width:140mm; height:4mm;padding-left: 2mm;padding-bottom:0mm;border-right:1px solid black;">          
           New markets credit from partnerships and S corporations
  
 
@@ -375,11 +378,11 @@
 							<!--Dotted Line-->
 							<span style="letter-spacing:3.5mm;font-weight:bold">..............</span>
 						</div>
-						<div class="styLNRightNumBox" style="width:9mm;">
+						<div class="styLNRightNumBox" style="height:4mm;width:12mm;border-left-width:0px;border-right-width:1px;">
          
           2    
         </div>
-						<div class="styLNAmountBox" style="width:32mm;padding-right:2mm">
+						<div class="styLNAmountBox" style="height:4mm;width:30mm;padding-right:0mm;border-left-width:0px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form8874Data/NewMarketsCreditAmt"/>
 							</xsl:call-template>
@@ -387,18 +390,18 @@
 					</div>
 					<!-- Line 3 -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4mm;width:5mm;padding-left: 2.5mm">3</div>
-						<div class="styLNDesc" style="height:3mm;width:140.75mm;padding-left: 2mm">
+						<div class="styLNLeftNumBox" style="height:8mm;width:5mm;padding-left: 2.5mm">3</div>
+						<div class="styLNDesc" style="height:8mm;width:140mm;padding-left: 2mm;border-right:1px solid black;">
         Add lines 1 and 2. Partnerships and S corporations, report this amount on Schedule K;
 all others, report this amount on Form 3800, line 1i 
           <!--Dotted Line-->
-							<span style="letter-spacing:3.5mm;font-weight:bold">.....................</span>
+							<span style="letter-spacing:3.5mm;font-weight:bold">......................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:6mm;width:8.75mm;text-align:center;border-bottom:none;padding-top:0mm;">
-							<div class="styLNRightNumBoxNBB" style="height: 4mm; width:8.75mm;text-align:center;border-left-width:0px;background-color:lightgrey;"/>
+						<div class="styLNRightNumBox" style="height:8mm;width:12mm;text-align:center;border-bottom:none;padding-top:0mm;border-left-width:0px;border-right-width:1px;">
+							<div class="styLNRightNumBoxNBB" style="height: 4mm; width:12mm;text-align:center;padding-top:1mm;border-left-width:0px;background-color:lightgrey;border-right-width:1px;"/>
           3    
         </div>
-						<div class="styLNAmountBox" style="height:7.75mm;width:30mm;border-bottom:none;padding-top:4mm;">
+						<div class="styLNAmountBox" style="height:8mm;width:30mm;border-bottom:none;padding-top:4mm;border-left-width:0px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form8874Data/TotalCreditAmt"/>
 							</xsl:call-template>
@@ -434,7 +437,7 @@ all others, report this amount on Form 3800, line 1i
 						<span class="styRepeatingDataTitle">
           Form 8874, Part I, Line 1 - Current Year Credit
         </span>
-						<table class="styDepTbl" style="font-size:7pt">
+						<table class="styDepTbl" style="font-size:7pt;width:187mm;">
 							<thead class="styTableHead">
 								<tr class="styDepTblHdr">
 									<th scope="col" class="styDepTblCell" style="width:68mm;text-align:center;border-bottom:none;">(a)</th>
@@ -538,30 +541,7 @@ all others, report this amount on Form 3800, line 1i
 											</xsl:call-template>
 										</td>
 									</tr>
-								</xsl:for-each>
-									<tr height="8mm">
-										<td class="styTableCell" style="width:7mm;font-size:7pt;text-align:center;vertical-align:top;border-right:none;font-weight:bold;height:8mm">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styTableCell" rowspan="1" style="width:63mm;text-align:left;font-size:7pt;font-weight:normal;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styTableCell" style="width:25mm;text-align:center;font-size:7pt;font-weight:normal;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styTableCell" style="width:20mm;text-align:left;font-size:7pt;font-weight:normal;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styTableCell" style="width:30mm;text-align:right;font-size:7pt;font-weight:normal;">
-											<span style="width:1px;"/>
-										</td>
-										<td class="styTableCell" style="width:12mm;text-align:right;font-size:7pt;">%</td>
-										<td class="styTableCell" style="text-align:right;width:30mm;border-right:none;font-size:7pt;font-weight:normal;">
-												<xsl:call-template name="PopulateAmount">
-													<xsl:with-param name="TargetNode" select="$Form8874Data/CDETotalCreditAmount"/>
-												</xsl:call-template>
-										</td>
-									</tr>								
+								</xsl:for-each>							
 							</tbody>
 						</table>
 					</xsl:if>

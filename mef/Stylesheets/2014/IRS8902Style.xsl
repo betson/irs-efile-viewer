@@ -157,7 +157,7 @@
     .sty8902TableContainerNBB {   /* Scrollable Table Container with no bottom border*/
     	border-style: solid; border-color: black;
     	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
-    	width: 187mm; height:4.5mm;
+    	width: 187mm;
     	float:none;clear:both;
     	overflow-y: none;
     }  

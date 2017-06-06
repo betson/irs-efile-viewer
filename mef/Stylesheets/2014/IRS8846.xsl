@@ -6,6 +6,9 @@
 <!--Updated per IBM Defect  38275 on 10/08/2013 Changed link verbiage attop of form to match PDF-rlj -->
 <!--Updated per UWR 112011 on 06/17/2014 By Robert Jones -->
 <!--Updated per UWR 105805 on 06/18/2014 By Robert Jones -->
+<!--Updated per Kisam Im02019323 on 02/10/2015 By Robert Jones -->
+<!--Updated per IBM Defect  42875 on 06/02/2015 Additional Data not on page by itself-rlj -->
+<!--Updated per IBM Defect  43489 on 07/01/2015 JAWS line 4 multiple readings by Jaws. Put pushpin at end after checkbox-rlj -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -16,8 +19,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form8846Data" select="$RtnDoc/IRS8846"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8846Data)"/>
@@ -50,7 +55,7 @@
           <xsl:call-template name="DocumentHeader"/>
           <!-- Begin Form Number and Name -->
           <div class="styBB" style="width:187mm;">
-            <div class="styFNBox" style="width:31mm;height:21mm;">
+            <div class="styFNBox" style="width:31mm;height:auto;">
             Form <span class="styFormNumber">8846</span>
               <br/>
               <br/>
@@ -60,11 +65,11 @@
                 <span class="styAgency">Internal Revenue Service</span>
               </div>
             </div>
-            <div class="styFTBox" style="width:125mm;height:13mm;padding-top:2mm;">
+            <div class="styFTBox" style="width:125mm;height:auto;padding-top:2mm;">
               <div class="styMainTitle">
           	Credit for Employer Social Security and Medicare Taxes<br/>
           	Paid on Certain Employee Tips      
-                 <div class="styFST" style="height:5mm;font-size:7pt;">
+                 <div class="styFST" style="height:auto;font-size:7pt;">
                  <img src="{$ImagePath}/8846_Bullet_Md.gif" width="4" height="7" alt="Bullet Image"/>
               Attach to your tax return.<br/>
                 <img src="{$ImagePath}/8846_Bullet_Md.gif" width="4" height="7" alt="Bullet Image"/>
@@ -76,9 +81,9 @@
             </div>
             </div>
             <!-- This can be taken out later -->
-            <div class="styTYBox" style="width:30mm;height:21mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-1414</div>
-              <div class="styTY" style="height:7.5mm;font-size:24pt;">
+            <div class="styTYBox" style="width:30mm;height:auto;">
+              <div class="styOMB" style="height:auto;">OMB No. 1545-1414</div>
+              <div class="styTY" style="height:auto;font-size:24pt;">
            20<span class="styTYColor">14</span>
               </div>
               <div class="stySequence">Attachment<br/>Sequence No. <b>98</b>
@@ -88,10 +93,10 @@
           <!-- End Form Number and Name section -->
           <!-- Begin Names and Identifying number section -->
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:156mm;height:8mm;font-weight:normal;font-size:7pt;">
+            <div class="styNameBox" style="width:156mm;height:auto;font-weight:normal;font-size:8pt;">
             Name(s) shown on return
             <br/>
-              <div style="font-family:verdana;font-size:6pt;height:6.25mm">
+              <div style="font-family:verdana;font-size:7pt;height:auto;">
               <!-- Added per UWR 31342 to allow 1040/ssn filer to use this form -->
               <xsl:choose>
 								    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -112,7 +117,7 @@
 			   </xsl:choose>
               </div>
             </div>
-            <div class="styEINBox" style="width:30mm;height:4mm;padding-left:2mm;font-size:7pt;">
+            <div class="styEINBox" style="width:30mm;height:auto;padding-left:2mm;font-size:7pt;">
               Identifying number<br/>
               <br/>
               <span style="font-weight:normal;">
@@ -205,20 +210,18 @@
                   <xsl:call-template name="PopulateLabel">
                     <xsl:with-param name="TargetNode" select="$Form8846Data/EmplWageExceededMaxAmtInd"/>
                     <xsl:with-param name="BackupName">IRS8846EmplWageExceededMaxAmtInd</xsl:with-param>
-                  </xsl:call-template>
+                  </xsl:call-template></label>
                     Multiply line 3 by 7.65% (.0765). If you had any tipped employees whose wages (including tips) 
-                  <span style="float:left;">exceeded $117,000, see instructions and check here.  
-              <xsl:call-template name="SetFormLinkInline">
-                    <xsl:with-param name="TargetNode" select="$Form8846Data/EmplWageExceededMaxAmtInd"/>
-                  </xsl:call-template>
-                  </span>
-                </label>
-                <span style="float:right;">
-                <!--Dotted Line-->
+                  <span style="float:left;">exceeded $117,000, see instructions and check here  
+              <!--Dotted Line-->
                 <span style="letter-spacing:3.4mm;font-weight:bold;skiplink:display:none;">.............</span>
-                <!--<span style="padding-left:3.5mm;">-->
+                  
+                
+              
+               
+               
                 <img src="{$ImagePath}/8846_Bullet_Md.gif" width="4" height="7" alt="Bullet Image"/>
-                <!--</span>-->
+            
                 <span style="width:1mm;"/>
                 <input type="checkbox" class="styCkbox" style="padding-right:1mm;">
                   <xsl:call-template name="PopulateCheckbox">
@@ -226,7 +229,10 @@
                     <xsl:with-param name="BackupName">IRS8846EmplWageExceededMaxAmtInd</xsl:with-param>
                   </xsl:call-template>
                 </input>
-                </span>
+               <xsl:call-template name="SetFormLinkInline">
+                    <xsl:with-param name="TargetNode" select="$Form8846Data/EmplWageExceededMaxAmtInd"/>
+                  </xsl:call-template>
+                  </span>
               </div>
               <div class="styLNRightNumBox" style="height:8mm;padding-top:0mm;">
                 <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;"/>
@@ -281,156 +287,7 @@
                 </xsl:call-template>
               </div>
             </div>
-            <!--
-            
-            Part I, line 6
-            <div class="styTBB" style="width:187mm;">
-              <div style="float:left;">
-                <div class="styLNLeftNumBoxSD" style="">6</div>
-                <div class="styLNDesc" style="width:139mm;height:9.5mm;">
-                    Cooperatives, estates, and trusts subtract line 5 from line 4. Report this amount on Form 3800, 
-<span style="float:left;">Part III, line3  </span>
-                    <span class="styDotLn" style="padding-right:2mm;">......</span>
-                </div>
-              </div>
-              <div style="float:right;">
-                <div class="styLNRightNumBox" style="height:9.5mm;padding-top:4mm;">6</div>
-                <div class="styLNAmountBox"  style="height:9.5mm;padding-top:4mm;">
-                  <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$Form8844Data/CreditWithoutPssvActyForPY"/>
-                  </xsl:call-template>
-                </div>
-              </div>
-            </div>
-            
-            
-            
-            
-            -->
-            
-            
-            
-            
-            
-            <!-- L7  Removed lines 7 through 12 per UWR 43852 08/2011 - Robert Jones 
-            <div style="width:187mm;">
-              <div class="styLNLeftNumBoxSD" style="height:8mm;">7</div>
-              <div class="styLNDesc" style="width:139mm;height:8mm;">
-    		    Credit for employer social security and Medicare taxes paid on certain employee tips included on line 6 
-    		<span style="float:left;">from passive activities (see instructions) </span>
            
-                <span style="letter-spacing:3.4mm;font-weight:bold;float:right;padding-right:1mm;skiplink:display:none;">....................</span>
-              </div>
-              <div class="styLNRightNumBox" style="height:8mm;padding-top:0mm;">
-                <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;"/>
-                7
-              </div>
-              <div class="styLNAmountBox" style="height:8mm;padding-top:1mm;">
-                <br/>
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form8846Data/EmployerCrForEmployeeTipsIncld"/>
-                </xsl:call-template>
-              </div>
-            </div>
-           
-            <div style="width:187mm;">
-              <div class="styLNLeftNumBoxSD" style="height:4mm;">8</div>
-              <div class="styLNDesc" style="width:139mm;height:4mm;">
-                <span style="float:left;">Subtract line 7 from line 6 </span>
-       
-                <span style="letter-spacing:3.3mm;font-weight:bold;float:right;padding-right:1mm;skiplink:display:none;">..........................</span>
-              </div>
-              <div class="styLNRightNumBox" style="height:4mm;">
-              8
-            </div>
-              <div class="styLNAmountBox" style="height:4mm;">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form8846Data/SubtractLine7From6"/>
-                </xsl:call-template>
-              </div>
-            </div>
-          
-            <div style="width:187mm;">
-              <div class="styLNLeftNumBoxSD" style="height:8mm;">9</div>
-              <div class="styLNDesc" style="width:139mm;height:8mm;">
-                Credit for employer social security and Medicare taxes paid on certain employee tips allowed for 2009 
-                <span style="float:left;">from passive activities (see instructions) </span>
-             
-                <span style="letter-spacing:3.4mm;font-weight:bold;float:right;padding-right:1mm;skiplink:display:none;">....................</span>
-              </div>
-              <div class="styLNRightNumBox" style="height:8mm;padding-top:0mm;">
-                <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;"/>
-              9
-            </div>
-              <div class="styLNAmountBox" style="height:8mm;padding-top:1mm;">
-                <br/>
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form8846Data/EmployerCrForEmployeeTipsAllw"/>
-                </xsl:call-template>
-              </div>
-            </div>
-            
-            <div style="width:187mm;">
-              <div class="styLNLeftNumBox" style="height:8mm;">10</div>
-              <div class="styLNDesc" style="width:139mm;height:8mm;">
-                Carryforward of the credit for employer social security and Medicare taxes paid on certain employee tips 
-              <span style="float:left;">that originated in a tax year that began after 2006 (see instructions) </span>
-              
-                <span style="letter-spacing:3.4mm;font-weight:bold;float:right;padding-right:1mm;skiplink:display:none;">...........</span>
-              </div>
-              <div class="styLNRightNumBox" style="height:8mm;padding-top:0mm;">
-                <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;"/>
-                10
-              </div>
-              <div class="styLNAmountBox" style="height:8mm;padding-top:1mm;">
-                <br/>
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form8846Data/CarryfowardCredit"/>
-                </xsl:call-template>
-              </div>
-            </div>
-            
-            <div style="width:187mm;">
-              <div class="styLNLeftNumBox" style="height:8mm;">11</div>
-              <div class="styLNDesc" style="width:139mm;height:8mm;">
-                  Carryback of the credit for employer social security and Medicare taxes paid on certain employee tips 
-                  <span style="float:left;">from 2010 (see instructions) 
-                <xsl:call-template name="LinkToLeftoverDataTableInline">
-                  <xsl:with-param name="Desc">Form 8846, Line 11 - Credit Indicator</xsl:with-param>
-                  <xsl:with-param name="TargetNode" select="$Form8846Data/CarrybackCredit/@creditIndicator"/>
-                </xsl:call-template>
-                </span>
-               
-                <span style="letter-spacing:3.4mm;font-weight:bold;float:right;padding-right:1mm;skiplink:display:none;">.......................</span>
-              </div>
-              <div class="styLNRightNumBox" style="height:8mm;padding-top:0mm;">
-                <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;"/>
-                  11
-                </div>
-              <div class="styLNAmountBox" style="height:8mm;padding-top:1mm;">
-                <br/>
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form8846Data/CarrybackCredit"/>
-                </xsl:call-template>
-              </div>
-            </div>
-            
-            <div style="width:187mm" class="styBB">
-              <div class="styLNLeftNumBox" style="height:4.5mm;">12</div>
-              <div class="styLNDesc" style="width:139mm;height:4.5mm;">
-                  <span style="float:left;">Add lines 8 through 11. Report this amount on Form 3800, line 29f </span>
-                  
-                <span style="letter-spacing:3.3mm;font-weight:bold;float:right;padding-right:1mm;skiplink:display:none;">.............</span>
-              </div>
-              <div class="styLNRightNumBox" style="height:4.5mm;padding-top:.5mm;border-bottom:0px">
-                12
-              </div>
-              <div class="styLNAmountBox" style="height:4.5mm;padding-top: .5mm;border-bottom:0px">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form8846Data/AddLines8Through11"/>
-                </xsl:call-template>
-              </div>
- -->
             </div>
           
          
@@ -443,9 +300,11 @@
                 Form <span class="styBoldText">8846</span> (2014)
             </div>
           <!--Page End break -->
-          <br class="pageEnd"/>
+         <!-- <div class="pageEnd"/> This was removed because they changed guidelines to have additional data appear on same page when form is half page or less-->
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
+          <br></br>
+           <br></br>
           <div class="styLeftOverTitleLine" id="LeftoverData">
             <div class="styLeftOverTitle">
                 Additional Data        

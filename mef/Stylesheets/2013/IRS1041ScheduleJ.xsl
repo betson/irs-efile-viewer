@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*" />  
 	<xsl:param name="FormData" select="$RtnDoc/IRS1041ScheduleJ" />  
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -44,7 +46,7 @@
 					<!-- header -->
 					<div class="styTBB" style="width:187mm;height:18mm;">
 						<div class="styFNBox" style="width:31mm;height:100%;">
-							<div class="styFN" style="font-size:14;height:10mm;">SCHEDULE J <br/><span style="font-size:12;">(Form 1041)</span>
+							<div class="styFN" style="font-size:10pt;height:10mm;">SCHEDULE J <br/><span style="font-size:9pt;">(Form 1041)</span>
 							<!--General Dependency Push Pin-->
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$FormData"/>
@@ -67,7 +69,7 @@
 						</div>
 					</div>
 					<!-- Primary Taxpayer -->
-					<div class="styBB" style="width:187mm;height:8mm;">
+					<div class="styBB" style="width:187mm;height:10mm;">
 						<div class="styNameBox" style="width:140mm;height:100%;font-size:7pt;">
 							Name of trust <br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -95,14 +97,14 @@
 					<div style="width:187mm;border-bottom:1px solid black;">
 						<!-- Line 1 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBoxSD">1</div>
-							<div class="styLNDesc">
+							<div class="styLNLeftNumBoxSD" style="height:8mm;">1</div>
+							<div class="styLNDesc"  style="height:8mm;">
 								Other amounts paid, credited, or otherwise required to be distributed for 2013 (from Form 1041,<br/>
 								<span style="float:left;">Schedule B, line 10)</span>
-								<span class="styIRS1041SJDots">...........................</span>
+								<span class="styIRS1041SJDots">.........................</span>
 							</div>
-							<div class="styLNRightNumBox"><br/>1</div>
-							<div class="styLNAmountBox"><br/>
+							<div class="styLNRightNumBox"  style="height:8mm;padding-top:4mm;">1</div>
+							<div class="styLNAmountBox"  style="height:8mm;"><br/>
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/SecondTierDistributionAmt"/>
 								</xsl:call-template>
@@ -136,7 +138,7 @@
 							<div class="styLNDesc" style="width:106mm;">
 								Income required to be distributed currently for 2013 (from Form 1041, 
 								<span style="float:left;">Schedule B, line 9)</span>
-								<span class="styIRS1041SJDots">...................</span>
+								<span class="styIRS1041SJDots">..................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:7.6mm;"><br/>3</div>
 							<div class="styLNAmountBox" style="height:7.6mm;"><br/>
@@ -157,7 +159,7 @@
 							<div class="styLNLeftNumBoxSD">4</div>
 							<div class="styLNDesc">
 								<span style="float:left;">Subtract line 3 from line 2. If zero or less, enter -0-</span>
-								<span class="styIRS1041SJDots">.................</span>
+								<span class="styIRS1041SJDots">................</span>
 							</div>
 							<div class="styLNRightNumBox">4</div>
 							<div class="styLNAmountBox">
@@ -206,11 +208,16 @@
 						<span style="float:left;clear:none;margin-left:14mm;">Cat. No. 11382Z</span>
 						<span style="float:right;clear:none;font-weight:bold;">Schedule J (Form 1041) 2013</span>
 					</div>
+			
+					
+					<div style="width:187mm;">
+					
 					<div class="styTBB" style="width:187mm;">
 						<span style="float:left;clear:none;">Schedule J (Form 1041) 2013</span>
 						<span style="float:right;clear:none;">Page <span style="font-weight:bold;font-size:9pt;">2</span></span>
 					</div>
 					<!-- Part 3 -->
+					
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName">Part III</div>
 						<div class="styPartDesc">Taxes Imposed on Undistributed Net Income <span style="font-weight:normal;font-size:6pt;"> (Enter the applicable throwback years below.) (See the instructions.)</span></div>
@@ -236,9 +243,16 @@
 					<xsl:if test="count($FormData/AllocationToBeneficiaryDetail) = 0">
 						<xsl:call-template name="Part4Section"/>
 					</xsl:if>
+					
+					
 					<div class="pageEnd" style="width:187mm;">
 						<span style="float:right;clear:none;font-weight:bold;">Schedule J (Form 1041) 2013</span>
-					</div>
+					</div>		
+					
+					</div>				
+					
+					<div class="pageEnd" style="display:block;"></div>
+					
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
@@ -249,6 +263,7 @@
 							<input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 						</div>
 					</div>
+					
 					<!-- Additional Data Table -->
 					<table class="styLeftOverTbl">
 						<xsl:call-template name="PopulateCommonLeftover">
@@ -256,6 +271,8 @@
 							<xsl:with-param name="DescWidth" select="100"/>
 						</xsl:call-template>
 					</table>
+					
+					
 					<!-- Separated Data for Part IV -->
 					<xsl:for-each select="$FormData/AllocationToBeneficiaryDetail">
 						<xsl:if test="($Print = $Separated) and (count(AllocationToBenefShareDetail) &gt; 5)">
@@ -383,10 +400,10 @@
 			<div class="styLNDesc" style="width:46.5mm;">
 				Distributable net income (see <br/>
 				<span style="float:left;">the instructions)</span>
-				<span class="styIRS1041SJDots">......</span>
+				<span class="styIRS1041SJDots">....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>6</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>6</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/DistributableNetIncomeAmt"/>
@@ -420,10 +437,10 @@
 			<div class="styLNDesc" style="width:46.5mm;">
 				Distributions (see the <br/>
 				<span style="float:left;">instructions)</span>
-				<span class="styIRS1041SJDots">.......</span>
+				<span class="styIRS1041SJDots">.....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>7</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>7</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/DistributionAmt"/>
@@ -451,27 +468,15 @@
 				</div>
 			</div>
 		</div>
-		<div style="width:187mm;">
-			<div class="styLNLeftNumBoxSD" style="height:3.5mm;padding:0px;"/>
-			<div class="styLNDesc" style="width:46.5mm;height:3.5mm;padding:0px;"/>
-			<div style="float:right;">
-				<div class="styLNRightNumBoxNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-			</div>
-		</div>
 		<!-- Line 8 -->
 		<div style="width:187mm;">
-			<div class="styLNLeftNumBoxSD">8</div>
-			<div class="styLNDesc" style="width:46.5mm;">
+			<div class="styLNLeftNumBoxSD" style="padding-top:4mm;">8</div>
+			<div class="styLNDesc" style="width:46.5mm;padding-top:4mm;">
 				<span style="float:left;">Subtract line 7 from line 6</span>
 				<span class="styIRS1041SJDots">..</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox">8</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>8</div>
 				<div class="styIRS1041SJAmtBox">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/IncomeLessDistributionsAmt"/>
@@ -508,7 +513,7 @@
 				<span class="styIRS1041SJDots">.</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>9</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>9</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/TaxUndistributedNetIncomeAmt"/>
@@ -545,7 +550,7 @@
 				<span class="styIRS1041SJDots">..</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>10</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>10</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/UndistributedNetIncomeAmt"/>
@@ -581,58 +586,46 @@
 				accumulation distributions <br/>
 				thrown back to any of these <br/>
 				<span style="float:left;">years</span>
-				<span class="styIRS1041SJDots">.........</span>
+				<span class="styIRS1041SJDots">.......</span>
 			</div>
-			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/><br/><br/>11</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+			<div style="float:right;" >
+				<div class="styLNRightNumBox" style="height:14mm;"><br/><br/><br/>11</div>
+				<div class="styIRS1041SJAmtBox" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/PriorAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 1]/PriorAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 2]/PriorAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 3]/PriorAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 4]/PriorAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
 			</div>
 		</div>
-		<div style="width:187mm;">
-			<div class="styLNLeftNumBoxSD" style="height:3.5mm;padding:0px;"/>
-			<div class="styLNDesc" style="width:46.5mm;height:3.5mm;padding:0px;"/>
-			<div style="float:right;">
-				<div class="styLNRightNumBoxNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-			</div>
-		</div>
 		<!-- Line 12 -->
 		<div style="width:187mm;">
-			<div class="styLNLeftNumBox">12</div>
-			<div class="styLNDesc" style="width:46.5mm;">
+			<div class="styLNLeftNumBox" style="padding-top:4mm;">12</div>
+			<div class="styLNDesc" style="width:46.5mm;padding-top:4mm;">
 				<span style="float:left;">Subtract line 11 from line 10</span>
-				<span class="styIRS1041SJDots">..</span>
+				<span class="styIRS1041SJDots">.</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox">12</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>12</div>
 				<div class="styIRS1041SJAmtBox">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/PriorYearUndistriNetAmt"/>
@@ -660,18 +653,6 @@
 				</div>
 			</div>
 		</div>
-		<div style="width:187mm;">
-			<div class="styLNLeftNumBoxSD" style="height:3.5mm;padding:0px;"/>
-			<div class="styLNDesc" style="width:46.5mm;height:3.5mm;padding:0px;"/>
-			<div style="float:right;">
-				<div class="styLNRightNumBoxNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-			</div>
-		</div>
 		<!-- Line 13 -->
 		<div style="width:187mm;">
 			<div class="styLNLeftNumBox">13</div>
@@ -682,31 +663,31 @@
 				amount greater than line 12 <br/>
 				for the same year (see the <br/>
 				<span style="float:left;">instructions)</span>
-				<span class="styIRS1041SJDots">......</span>
+				<span class="styIRS1041SJDots">....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/><br/><br/><br/><br/>13</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styLNRightNumBox" style="height:22mm;"><br/><br/><br/><br/><br/>13</div>
+				<div class="styIRS1041SJAmtBox" style="height:22mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/AllocatedAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:22mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 1]/AllocatedAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:22mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 2]/AllocatedAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:22mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 3]/AllocatedAccumulationDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:22mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 4]/AllocatedAccumulationDistriAmt"/>
 					</xsl:call-template>
@@ -720,58 +701,46 @@
 				Divide line 13 by line 10 and <br/>
 				multiply result by amount on <br/>
 				<span style="float:left;">line 9</span>
-				<span class="styIRS1041SJDots">.........</span>
+				<span class="styIRS1041SJDots">.......</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/><br/>14</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styLNRightNumBox" style="height:10mm;"><br/><br/>14</div>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/AllocatedResultDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 1]/AllocatedResultDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 2]/AllocatedResultDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 3]/AllocatedResultDistriAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 4]/AllocatedResultDistriAmt"/>
 					</xsl:call-template>
 				</div>
 			</div>
 		</div>
-		<div style="width:187mm;">
-			<div class="styLNLeftNumBoxSD" style="height:3.5mm;padding:0px;"/>
-			<div class="styLNDesc" style="width:46.5mm;height:3.5mm;padding:0px;"/>
-			<div style="float:right;">
-				<div class="styLNRightNumBoxNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-			</div>
-		</div>
 		<!-- Line 15 -->
 		<div style="width:187mm;">
-			<div class="styLNLeftNumBox">15</div>
-			<div class="styLNDesc" style="width:46.5mm;">
+			<div class="styLNLeftNumBox" style="padding-top:4mm;">15</div>
+			<div class="styLNDesc" style="width:46.5mm;padding-top:4mm;">
 				<span style="float:left;">Add lines 13 and 14</span>
-				<span class="styIRS1041SJDots">....</span>
+				<span class="styIRS1041SJDots">...</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox">15</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>15</div>
 				<div class="styIRS1041SJAmtBox">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/TotalAccumDistriAllocatedAmt"/>
@@ -806,47 +775,35 @@
 				Tax-exempt interest included <br/>
 				on line 13 (see the <br/>
 				<span style="float:left;">instructions)</span>
-				<span class="styIRS1041SJDots">......</span>
+				<span class="styIRS1041SJDots">.....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/><br/>16</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styLNRightNumBox" style="height:10mm;"><br/><br/>16</div>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos]/TaxExemptInterestAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 1]/TaxExemptInterestAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 2]/TaxExemptInterestAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 3]/TaxExemptInterestAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/OrdinaryIncmAccumDistriGrp[$pos + 4]/TaxExemptInterestAmt"/>
 					</xsl:call-template>
 				</div>
-			</div>
-		</div>
-		<div style="width:187mm;">
-			<div class="styLNLeftNumBoxSD" style="height:3.5mm;padding:0px;"/>
-			<div class="styLNDesc" style="width:46.5mm;height:3.5mm;padding:0px;"/>
-			<div style="float:right;">
-				<div class="styLNRightNumBoxNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
-				<div class="styIRS1041SJAmtNBB" style="height:3.5mm;padding:0px;"/>
 			</div>
 		</div>
 		<!-- Line 17 -->
@@ -956,31 +913,31 @@
 			<div class="styLNLeftNumBox">18</div>
 			<div class="styLNDesc" style="width:46.5mm;">
 				<span style="float:left;">Regular tax</span>
-				<span class="styIRS1041SJDots">.......</span>
+				<span class="styIRS1041SJDots">......</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox">18</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styLNRightNumBox" style="height:4mm;">18</div>
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/RegularTaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 1]/RegularTaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 2]/RegularTaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 3]/RegularTaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 4]/RegularTaxAmt"/>
 					</xsl:call-template>
@@ -996,7 +953,7 @@
 				<span class="styIRS1041SJDots">.........</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>19</div>
+				<div class="styLNRightNumBox"  style="height:8mm;"><br/>19</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/NetShortTermGainAmt"/>
@@ -1033,7 +990,7 @@
 				<span class="styIRS1041SJDots">.........</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>20</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>20</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/NetLongTermGainAmt"/>
@@ -1069,28 +1026,28 @@
 				<span class="styIRS1041SJDots">....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox">21</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styLNRightNumBox" style="height:4mm;">21</div>
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/TotalNetGainAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 1]/TotalNetGainAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 2]/TotalNetGainAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 3]/TotalNetGainAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 4]/TotalNetGainAmt"/>
 					</xsl:call-template>
@@ -1102,31 +1059,31 @@
 			<div class="styLNLeftNumBox">22</div>
 			<div class="styLNDesc" style="width:46.5mm;">
 				<span style="float:left;">Taxable income</span>
-				<span class="styIRS1041SJDots">......</span>
+				<span class="styIRS1041SJDots">.....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox">22</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styLNRightNumBox" style="height:4mm;">22</div>
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/TaxableIncomeAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 1]/TaxableIncomeAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 2]/TaxableIncomeAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 3]/TaxableIncomeAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox">
+				<div class="styIRS1041SJAmtBox" style="height:4mm;">
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 4]/TaxableIncomeAmt"/>
 					</xsl:call-template>
@@ -1143,8 +1100,8 @@
 				<span class="styIRS1041SJDots">.....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/><br/>23</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styLNRightNumBox" style="height:10mm;"><br/><br/>23</div>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/TaxableIncomePct"/>
 					</xsl:call-template>
@@ -1152,7 +1109,7 @@
 						%
 					</xsl:if>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 1]/TaxableIncomePct"/>
 					</xsl:call-template>
@@ -1160,7 +1117,7 @@
 						%
 					</xsl:if>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox"  style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 2]/TaxableIncomePct"/>
 					</xsl:call-template>
@@ -1168,7 +1125,7 @@
 						%
 					</xsl:if>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 3]/TaxableIncomePct"/>
 					</xsl:call-template>
@@ -1176,7 +1133,7 @@
 						%
 					</xsl:if>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 4]/TaxableIncomePct"/>
 					</xsl:call-template>
@@ -1192,10 +1149,10 @@
 			<div class="styLNDesc" style="width:46.5mm;">
 				Multiply line 18 by the <br/>
 				<span style="float:left;">percentage on line 23</span>
-				<span class="styIRS1041SJDots">....</span>
+				<span class="styIRS1041SJDots">...</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>24</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>24</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/IncomeSubjectToTaxAmt"/>
@@ -1231,31 +1188,31 @@
 				income. Subtract line 24 from <br/>
 				line 18. Enter here and on <br/>
 				<span style="float:left;">page 1, line 9</span>
-				<span class="styIRS1041SJDots">......</span>
+				<span class="styIRS1041SJDots">.....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox" style="border-bottom:none;"><br/><br/><br/>25</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styLNRightNumBox" style="border-bottom:none;height:14mm;"><br/><br/><br/>25</div>
+				<div class="styIRS1041SJAmtNBB"  style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/TaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 1]/TaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 2]/TaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 3]/TaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 4]/TaxAmt"/>
 					</xsl:call-template>
@@ -1263,19 +1220,18 @@
 			</div>
 		</div>
 		<div style="width:187mm;">
-			<div class="styGenericDiv" style="width:54.5mm;height:15mm;padding-top:2px;">
+			<div class="styGenericDiv" style="width:54.5mm;height:12mm;padding-top:2px;">
 				Do not complete lines 26 through 31 <br/>
-				unless the trust elected the <br/>
-				alternative tax on long-term capital <br/>
-				gain.
+				unless the trust elected the alternative<br/>
+				tax on long-term capital gain.				
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBoxNBB" style="height:15mm;background-color:lightgrey"/>
-				<div class="styIRS1041SJAmtNBB" style="height:15mm;background-color:lightgrey"/>
-				<div class="styIRS1041SJAmtNBB" style="height:15mm;background-color:lightgrey"/>
-				<div class="styIRS1041SJAmtNBB" style="height:15mm;background-color:lightgrey"/>
-				<div class="styIRS1041SJAmtNBB" style="height:15mm;background-color:lightgrey"/>
-				<div class="styIRS1041SJAmtNBB" style="height:15mm;background-color:lightgrey"/>
+				<div class="styLNRightNumBoxNBB" style="height:12mm;background-color:lightgrey"/>
+				<div class="styIRS1041SJAmtNBB" style="height:12mm;background-color:lightgrey"/>
+				<div class="styIRS1041SJAmtNBB" style="height:12mm;background-color:lightgrey"/>
+				<div class="styIRS1041SJAmtNBB" style="height:12mm;background-color:lightgrey"/>
+				<div class="styIRS1041SJAmtNBB" style="height:12mm;background-color:lightgrey"/>
+				<div class="styIRS1041SJAmtNBB" style="height:12mm;background-color:lightgrey"/>
 			</div>
 		</div>
 		<!-- Line 26 -->
@@ -1284,10 +1240,10 @@
 			<div class="styLNDesc" style="width:46.5mm;">
 				Tax on income other than <br/>
 				<span style="float:left;">long-term capital gain</span>
-				<span class="styIRS1041SJDots">....</span>
+				<span class="styIRS1041SJDots">...</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>26</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>26</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/AlternativeTaxOnOtherIncomeAmt"/>
@@ -1324,7 +1280,7 @@
 				<span class="styIRS1041SJDots">.........</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>27</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>27</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/AltTaxNetShortTermGainAmt"/>
@@ -1359,31 +1315,31 @@
 				Trust's share of taxable <br/>
 				income less section 1202 <br/>
 				<span style="float:left;">deduction</span>
-				<span class="styIRS1041SJDots">........</span>
+				<span class="styIRS1041SJDots">......</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/><br/>28</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styLNRightNumBox" style="height:10mm;"><br/><br/>28</div>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/TrustTxblIncomeNotExcldSBAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 1]/TrustTxblIncomeNotExcldSBAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 2]/TrustTxblIncomeNotExcldSBAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 3]/TrustTxblIncomeNotExcldSBAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 4]/TrustTxblIncomeNotExcldSBAmt"/>
 					</xsl:call-template>
@@ -1400,8 +1356,8 @@
 				<span class="styIRS1041SJDots">.....</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/><br/>29</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styLNRightNumBox" style="height:10mm;"><br/><br/>29</div>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/AlternativeTaxTaxableIncomePct"/>
 					</xsl:call-template>
@@ -1409,7 +1365,7 @@
 						%
 					</xsl:if>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 1]/AlternativeTaxTaxableIncomePct"/>
 					</xsl:call-template>
@@ -1417,7 +1373,7 @@
 						%
 					</xsl:if>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 2]/AlternativeTaxTaxableIncomePct"/>
 					</xsl:call-template>
@@ -1425,7 +1381,7 @@
 						%
 					</xsl:if>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 3]/AlternativeTaxTaxableIncomePct"/>
 					</xsl:call-template>
@@ -1433,7 +1389,7 @@
 						%
 					</xsl:if>
 				</div>
-				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtBox" style="height:10mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulatePercent">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 4]/AlternativeTaxTaxableIncomePct"/>
 					</xsl:call-template>
@@ -1449,10 +1405,10 @@
 			<div class="styLNDesc" style="width:46.5mm;">
 				Multiply line 26 by the <br/>
 				<span style="float:left;">percentage on line 29</span>
-				<span class="styIRS1041SJDots">....</span>
+				<span class="styIRS1041SJDots">...</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox"><br/>30</div>
+				<div class="styLNRightNumBox" style="height:8mm;"><br/>30</div>
 				<div class="styIRS1041SJAmtBox"><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/AltTaxIncomeSubjectToTaxAmt"/>
@@ -1491,28 +1447,28 @@
 				<span class="styIRS1041SJDots">......</span>
 			</div>
 			<div style="float:right;">
-				<div class="styLNRightNumBox" style="border-bottom:none;"><br/><br/><br/>31</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styLNRightNumBox" style="border-bottom:none;height:14mm;"><br/><br/><br/>31</div>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos]/AlternativeTaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 1]/AlternativeTaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 2]/AlternativeTaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 3]/AlternativeTaxAmt"/>
 					</xsl:call-template>
 				</div>
-				<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
+				<div class="styIRS1041SJAmtNBB" style="height:14mm;"><br style="font-size:7pt;"/><br style="font-size:7pt;"/><br style="font-size:7pt;"/>
 					<xsl:call-template name="PopulateAmount">
 						<xsl:with-param name="TargetNode" select="$FormData/UndistriNetIncomeTaxesGrp[$pos + 4]/AlternativeTaxAmt"/>
 					</xsl:call-template>
@@ -1530,13 +1486,13 @@
 			</div>
 		</div>
 		<div style="width:187mm;border-bottom:1px solid black;">
-			<div style="float:left;width:136.8mm;">
+			<div style="float:left;width:136.8mm;height:9mm;">
 				Beneficiary's name <br/>
 				<xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$TargetNode/BeneficiaryNm"/>
 				</xsl:call-template>
 			</div>
-			<div class="" style="float:left;width:49mm;border-left:1px solid black;padding-left:1mm;">
+			<div class="" style="float:left;width:49mm;border-left:1px solid black;padding-left:1mm;height:9mm;">
 				Identifying number <br/>
 				<span style="width:45mm;text-align:center;">
 				<xsl:choose>
@@ -1556,7 +1512,7 @@
 		</div>
 		<div style="width:187mm;">
 			<div style="width:111.9mm;float:left;">
-				<div style="width:100%;border-bottom:1px solid black;height:10.6mm;">
+				<div style="width:100%;border-bottom:1px solid black;height:9mm;">
 					Beneficiary's address (number and street including apartment number or P.O. box) <br/>
 					<xsl:call-template name="PopulateText">
 						<xsl:with-param name="TargetNode" select="$TargetNode//AddressLine1"/>
@@ -1568,7 +1524,7 @@
 						</xsl:call-template>
 					</xsl:if>
 				</div>
-				<div style="width:100%;height:10.6mm;border-bottom:1px solid black;">
+				<div style="width:100%;height:9mm;border-bottom:1px solid black;">
 					City, state, and ZIP code <br/>
 					<xsl:call-template name="PopulateCityStateInfo">
 						<xsl:with-param name="TargetNode" select="$TargetNode/USAddress"/>
@@ -1582,13 +1538,13 @@
 					</xsl:if>
 				</div>
 			</div>
-			<div class="styIRS1041SJBox" style="font-weight:normal;height:21.2mm;">
+			<div class="styIRS1041SJBox" style="font-weight:normal;height:18mm;">
 				<b>(a)</b><br/>This<br/>beneficiary's<br/>share of<br/>line 13
 			</div>
-			<div class="styIRS1041SJBox" style="font-weight:normal;height:21.2mm;">
+			<div class="styIRS1041SJBox" style="font-weight:normal;height:18mm;">
 				<b>(b)</b><br/>This<br/>beneficiary's<br/>share of<br/>line 14
 			</div>
-			<div class="styIRS1041SJBox" style="font-weight:normal;height:21.2mm;">
+			<div class="styIRS1041SJBox" style="font-weight:normal;height:18mm;">
 				<b>(c)</b><br/>This<br/>beneficiary's<br/>share of<br/><div style="float:left;clear:none;padding-left:8mm;">line 16</div>
 				<div style="float:right;">
 					<xsl:call-template name="SetTableToggleButton">
@@ -1621,24 +1577,24 @@
 									</xsl:call-template>
 								</span>
 							</span>
-							<span class="styIRS1041SJDots">..............</span>
+							<span class="styIRS1041SJDots">...........</span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:4mm;">
 							<xsl:if test="$lineNo &lt; 37">
 								<xsl:value-of select="$lineNo"/>
 							</xsl:if>
 						</div>
-						<div class="styIRS1041SJAmtBox">
+						<div class="styIRS1041SJAmtBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AllocatedAccumulationDistriAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1041SJAmtBox">
+						<div class="styIRS1041SJAmtBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AllocatedResultDistriAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1041SJAmtBox">
+						<div class="styIRS1041SJAmtBox" style="height:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="TaxExemptInterestAmt"/>
 							</xsl:call-template>
@@ -1654,17 +1610,17 @@
 							Throwback Year 
 							<span style="width:14mm;margin-left:2mm;border-bottom:1px dashed black;"></span>
 						</span>
-						<span class="styIRS1041SJDots">..............</span>
+						<span class="styIRS1041SJDots">...........</span>
 					</div>
-					<div class="styLNRightNumBox">32</div>
-					<div class="styIRS1041SJAmtBox">
+					<div class="styLNRightNumBox"  style="height:4mm;">32</div>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;">
 						<xsl:call-template name="PopulateAdditionalDataTableMessage">
 							<xsl:with-param name="TargetNode" select="$TargetNode/AllocationToBenefShareDetail"/>
 							<xsl:with-param name="ShortMessage" select="true()"/>
 						</xsl:call-template>
 					</div>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
 				</div>
 			</xsl:if>
 			<xsl:if test="($Reps &lt; 2) or ($Print = $Separated and $Reps &gt; 5)">
@@ -1675,12 +1631,12 @@
 							Throwback Year 
 							<span style="width:14mm;margin-left:2mm;border-bottom:1px dashed black;"></span>
 						</span>
-						<span class="styIRS1041SJDots">..............</span>
+						<span class="styIRS1041SJDots">...........</span>
 					</div>
-					<div class="styLNRightNumBox">33</div>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
+					<div class="styLNRightNumBox"  style="height:4mm;">33</div>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
 				</div>
 			</xsl:if>
 			<xsl:if test="($Reps &lt; 3) or ($Print = $Separated and $Reps &gt; 5)">
@@ -1691,12 +1647,12 @@
 							Throwback Year 
 							<span style="width:14mm;margin-left:2mm;border-bottom:1px dashed black;"></span>
 						</span>
-						<span class="styIRS1041SJDots">..............</span>
+						<span class="styIRS1041SJDots">...........</span>
 					</div>
-					<div class="styLNRightNumBox">34</div>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
+					<div class="styLNRightNumBox" style="height:4mm;">34</div>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
 				</div>
 			</xsl:if>
 			<xsl:if test="($Reps &lt; 4) or ($Print = $Separated and $Reps &gt; 5)">
@@ -1707,12 +1663,12 @@
 							Throwback Year 
 							<span style="width:14mm;margin-left:2mm;border-bottom:1px dashed black;"></span>
 						</span>
-						<span class="styIRS1041SJDots">..............</span>
+						<span class="styIRS1041SJDots">...........</span>
 					</div>
-					<div class="styLNRightNumBox">35</div>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
+					<div class="styLNRightNumBox" style="height:4mm;">35</div>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
 				</div>
 			</xsl:if>
 			<xsl:if test="($Reps &lt; 5) or ($Print = $Separated and $Reps &gt; 5)">
@@ -1723,12 +1679,12 @@
 							Throwback Year 
 							<span style="width:14mm;margin-left:2mm;border-bottom:1px dashed black;"></span>
 						</span>
-						<span class="styIRS1041SJDots">..............</span>
+						<span class="styIRS1041SJDots">...........</span>
 					</div>
-					<div class="styLNRightNumBox">36</div>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
-					<div class="styIRS1041SJAmtBox"/>
+					<div class="styLNRightNumBox" style="height:4mm;">36</div>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
+					<div class="styIRS1041SJAmtBox" style="height:4mm;"/>
 				</div>
 			</xsl:if>
 		</div>
@@ -1737,20 +1693,20 @@
 			<div class="styLNDesc" style="width:96mm;">
 				Total. Add lines 32 through 36. Enter here and on the appropriate <br/>
 				<span style="float:left;">lines of Form 4970</span>
-				<span class="styIRS1041SJDots">................</span>
+				<span class="styIRS1041SJDots">.............</span>
 			</div>
-			<div class="styLNRightNumBoxNBB"><br/>37</div>
-			<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/>
+			<div class="styLNRightNumBoxNBB" style="height:8mm;"><br/>37</div>
+			<div class="styIRS1041SJAmtNBB" style="height:8mm;"><br style="font-size:7pt;"/>
 				<xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$TargetNode/CurrentDistributionAmt"/>
 				</xsl:call-template>
 			</div>
-			<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/>
+			<div class="styIRS1041SJAmtNBB" style="height:8mm;"><br style="font-size:7pt;"/>
 				<xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$TargetNode/TrustTaxesAmt"/>
 				</xsl:call-template>
 			</div>
-			<div class="styIRS1041SJAmtNBB"><br style="font-size:7pt;"/>
+			<div class="styIRS1041SJAmtNBB" style="height:8mm;"><br style="font-size:7pt;"/>
 				<xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$TargetNode/ExemptInterestAmt"/>
 				</xsl:call-template>

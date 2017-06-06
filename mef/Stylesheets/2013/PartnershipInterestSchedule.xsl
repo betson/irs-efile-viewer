@@ -7,7 +7,7 @@
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
   <xsl:param name="DependencyData" select="$RtnDoc/PartnershipInterestSchedule"/>
-  <!-- 1120Common Partnership Interest Schedule -->
+  <!-- Common form displays as - Partnership Interest Schedule -->
   <xsl:param name="depDocTitle">
   <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template> 
   </xsl:param>
@@ -22,7 +22,7 @@
           <th class="styDepTblCell" scope="col" style="text-align:center;width:33mm;">Income (Loss) per Income Statement Amount</th>
           <th class="styDepTblCell" scope="col" style="text-align:center;width:33mm;">Temporary Difference Amount</th>
           <th class="styDepTblCell" scope="col" style="text-align:center;width:33mm;">Permanent Difference Amount</th>
-          <th class="styDepTblCell" scope="col" style="text-align:center;width:33mm;">Income (Loss) per Tax Return Amount</th>                                                                  
+          <th class="styDepTblCell" scope="col" style="text-align:center;width:33mm;">Income (Loss) per Tax Return Amount</th>                                                           
         </tr>
       </thead>
       <tfoot/>
@@ -49,7 +49,7 @@
               </xsl:if>
             </td>
 						<!-- EIN -->
-						<td class="stydepTblCell" style="width:24m; text-align:center;">
+						<td class="styDepTblCell" style="width:24m; text-align:center;padding-top:5mm;">
 							<xsl:if test="BusinessName">
 								<xsl:call-template name="PopulateEIN">
                   <xsl:with-param name="TargetNode" select="EIN"/>
@@ -62,37 +62,37 @@
 							</xsl:if>
 						</td>
 						<!-- EOYProfitSharingPercentage -->
-						<td class="stydepTblCell" style="width:20mm; text-align:right;">
+						<td class="styDepTblCell" style="width:20mm;padding-top:5mm;">
 							<xsl:call-template name="PopulatePercent">
                 <xsl:with-param name="TargetNode" select="EOYProfitSharingPct"/>
               </xsl:call-template>
 						</td>      
 						<!-- EOYLossSharingPercentage -->
-						<td class="stydepTblCell" style="width:21mm; text-align:right;">
+						<td class="styDepTblCell" style="width:21mm;padding-top:5mm;">
 							<xsl:call-template name="PopulatePercent">
                 <xsl:with-param name="TargetNode" select="EOYLossSharingPct"/>
               </xsl:call-template>
 						</td>       
 						<!-- IncomeLossPerIncomeStmtAmount -->
-						<td class="stydepTblCell" style="width:31mm; text-align:right;">
+						<td class="styDepTblCell" style="width:31mm; text-align:right;padding-top:5mm;">
 							<xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="IncomeLossPerIncomeStmtAmt"/>
               </xsl:call-template>
 						</td>       
 						<!-- TemporaryDifferenceAmount -->
-						<td class="stydepTblCell" style="width:31mm; text-align:right;">
+						<td class="styDepTblCell" style="width:31mm; text-align:right;padding-top:5mm;">
 							<xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="TemporaryDifferenceAmt"/>
               </xsl:call-template>
 						</td>       
 						<!-- PermanentDifferenceAmount -->
-						<td class="stydepTblCell" style="width:31mm; text-align:right;">
+						<td class="styDepTblCell" style="width:31mm; text-align:right;padding-top:5mm;">
 							<xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="PermanentDifferenceAmt"/>
               </xsl:call-template>
 						</td>       
 						<!-- IncomeLossPerTaxReturnAmount -->
-						<td class="stydepTblCell" style="width:31mm; text-align:right;">
+						<td class="styDepTblCell" style="width:31mm; text-align:right;padding-top:5mm;">
 							<xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="IncomeLossPerTaxReturnAmt"/>
               </xsl:call-template>
@@ -104,8 +104,10 @@
   </xsl:template>  
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>
@@ -126,16 +128,15 @@
         </style>
 				<xsl:call-template name="GlobalStylesDep"/>
 			</head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm;">
 				<xsl:call-template name="DocumentHeaderDependencyLandscape"/>
-				<div class="styDepTitleLineLandscape">
-					<span class="styDepTitle">
-						<span style="width:87mm;">
-							<xsl:value-of select="$depDocTitle"/>
-						</span>
-					</span>
-				</div>
-				<xsl:call-template name="PopulateDepCommonLeftoverLandscape"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>                
+				 <div class="styDepTitleLine">
+				<span class="styDepTitle"  style="padding-right:2mm;">
+				<xsl:value-of select="$depDocTitle"/>
+				  </span>        
+				  </div>
+				<xsl:call-template name="PopulateDepCommonLeftoverLandscape"><xsl:with-param name="TargetNode" select="$DependencyData"/>
+				</xsl:call-template>              
 				<xsl:call-template name="PartnershipInterestScheduleTable"/>    
       </body>
     </html>

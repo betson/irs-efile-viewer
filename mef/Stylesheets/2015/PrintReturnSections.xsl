@@ -34,29 +34,29 @@
 
 <!-- Template to populate the consolidated div and link -->
 <xsl:template name="PopulateConsolidated">
-<div id="ConsolidatedDiv">
-<nobr><xsl:if test="$TOCPathParent"><img src="{$ImagePath}/Linv.gif" class="styIconImg" alt="Consolidated Return" /></xsl:if><img src="{$ImagePath}/consolidated.gif" class="styIconImg" alt="Consolidated Return" /><span id="consolidated" class="styDataLabel" onmouseover="LabelOver( this.id );" onmouseout="LabelOut( this.id );" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'consolidated', '' );" title="Select to list documents in consolidated return"><xsl:value-of select="$DispLabel" /></span></nobr>
+<div id="ConsolidatedDiv" style="white-space:nowrap;">
+<xsl:if test="$TOCPathParent"><img src="{$ImagePath}/Linv.gif" class="styIconImg" alt="Consolidated Return" title="Consolidated Return" /></xsl:if><img src="{$ImagePath}/consolidated.gif" class="styIconImg" alt="Consolidated Return" title="Consolidated Return" /><span id="consolidated" class="styDataLabel" onmouseover="LabelOver( this.id );" onmouseout="LabelOut( this.id );" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'consolidated', '' );" title="Select to list documents in consolidated return"><xsl:value-of select="$DispLabel" /></span>
 </div>
 </xsl:template>
 
 <!-- Template to populate the eliminations div and link -->
 <xsl:template name="PopulateEliminations">
-<div id="ElimsDiv">
-<nobr><xsl:choose><xsl:when test="$TOCPathParent or $TOCPathAdjs"><img src="{$ImagePath}/T.gif" class="styIconImg" alt="Eliminations" /></xsl:when><xsl:otherwise><img src="{$ImagePath}/L.gif" class="styIconImg" alt="Parent Return" /></xsl:otherwise></xsl:choose><img src="{$ImagePath}/parent.gif" class="styIconImg" alt="Eliminations" /><span id="eliminations" class="styDataLabel" onmouseover="LabelOver( this.id );" onmouseout="LabelOut( this.id );" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'eliminations', '' );" title="Select to list documents in Eliminations section">Eliminations</span></nobr>
+<div id="ElimsDiv" style="white-space:nowrap;">
+<xsl:choose><xsl:when test="$TOCPathParent or $TOCPathAdjs"><img src="{$ImagePath}/T.gif" class="styIconImg" alt="Eliminations" title="Eliminations" /></xsl:when><xsl:otherwise><img src="{$ImagePath}/L.gif" class="styIconImg" alt="Parent Return" title="Parent Return" /></xsl:otherwise></xsl:choose><img src="{$ImagePath}/parent.gif" class="styIconImg" alt="Eliminations" title="Eliminations" /><span id="eliminations" class="styDataLabel" onmouseover="LabelOver( this.id );" onmouseout="LabelOut( this.id );" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'eliminations', '' );" title="Select to list documents in Eliminations section">Eliminations</span>
 </div>
 </xsl:template>
 
 <!-- Template to populate the adjustments div and link -->
 <xsl:template name="PopulateAdjustments">
-<div id="AdjsDiv">
-<nobr><xsl:choose><xsl:when test="$TOCPathParent"><img src="{$ImagePath}/T.gif" class="styIconImg" alt="Adjustments" /></xsl:when><xsl:otherwise><img src="{$ImagePath}/L.gif" class="styIconImg" alt="Parent Return" /></xsl:otherwise></xsl:choose><img src="{$ImagePath}/parent.gif" class="styIconImg" alt="Adjustments" /><span id="adjustments" class="styDataLabel" onmouseover="LabelOver( this.id );" onmouseout="LabelOut( this.id );" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'adjustments', '' );" title="Select to list documents in Adjustments section">Adjustments</span></nobr>
+<div id="AdjsDiv" style="white-space:nowrap;">
+<xsl:choose><xsl:when test="$TOCPathParent"><img src="{$ImagePath}/T.gif" class="styIconImg" alt="Adjustments" title="Adjustments" /></xsl:when><xsl:otherwise><img src="{$ImagePath}/L.gif" class="styIconImg" alt="Parent Return" title="Parent Return" /></xsl:otherwise></xsl:choose><img src="{$ImagePath}/parent.gif" class="styIconImg" alt="Adjustments" title="Adjustments" /><span id="adjustments" class="styDataLabel" onmouseover="LabelOver( this.id );" onmouseout="LabelOut( this.id );" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'adjustments', '' );" title="Select to list documents in Adjustments section">Adjustments</span>
 </div>
 </xsl:template>
 
 <!-- Template to populate the parent div and link -->
 <xsl:template name="PopulateParent">
-<div id="ParentDiv">
-<nobr><xsl:choose><xsl:when test="$TOCPathSubsidiary"><img src="{$ImagePath}/T.gif" class="styIconImg" alt="Parent Return" /></xsl:when><xsl:otherwise><img src="{$ImagePath}/L.gif" class="styIconImg" alt="Parent Return" /></xsl:otherwise></xsl:choose><img src="{$ImagePath}/parent.gif" class="styIconImg" alt="Parent" /><span id="parent" class="styDataLabel" onmouseover="LabelOver( this.id );" onmouseout="LabelOut( this.id );" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'parent', '' );" title="Select to list documents in parent return">Parent</span></nobr>
+<div id="ParentDiv" style="white-space:nowrap;">
+<xsl:choose><xsl:when test="$TOCPathSubsidiary"><img src="{$ImagePath}/T.gif" class="styIconImg" alt="Parent Return" title="Parent Return" /></xsl:when><xsl:otherwise><img src="{$ImagePath}/L.gif" class="styIconImg" alt="Parent Return" title="Parent Return" /></xsl:otherwise></xsl:choose><img src="{$ImagePath}/parent.gif" class="styIconImg" alt="Parent" title="Parent" /><span id="parent" class="styDataLabel" onmouseover="LabelOver( this.id );" onmouseout="LabelOut( this.id );" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'parent', '' );" title="Select to list documents in parent return">Parent</span>
 </div>
 </xsl:template>
 
@@ -65,8 +65,8 @@
 <xsl:template name="PopulateSubsidiaries">
 
 <!-- Subsidiary Folder BEGINS -->
-<div id="SubsidiaryFolder">
-<nobr><img src="{$ImagePath}/Lplus.gif" id="SubsidiaryTwistieImg" class="styIconImg" alt="Select to expand Subsidiaries folder" onclick="ToggleFolder();" /><img src="{$ImagePath}/folderclosed.gif" id="SubsidiaryFolderImg" class="styIconImg" alt="Select to expand Subsidiaries folder" ondblclick="ToggleFolder();" /><span id="subsidiaries" class="styTogglerLabel" title="Select to expand Subsidiaries folder" onmouseover="LabelOver( this.id )" onmouseout="LabelOut( this.id )" ondblclick="LabelClick( this.id );ToggleFolder();">Subsidiaries</span></nobr>
+<div id="SubsidiaryFolder" style="white-space:nowrap;">
+<img src="{$ImagePath}/Lplus.gif" id="SubsidiaryTwistieImg" class="styIconImg" alt="Select to expand Subsidiaries folder" title="Select to expand Subsidiaries folder" onclick="ToggleFolder();" /><img src="{$ImagePath}/folderclosed.gif" id="SubsidiaryFolderImg" class="styIconImg" alt="Select to expand Subsidiaries folder" title="Select to expand Subsidiaries folder" ondblclick="ToggleFolder();" /><span id="subsidiaries" class="styTogglerLabel" title="Select to expand Subsidiaries folder" onmouseover="LabelOver( this.id )" onmouseout="LabelOut( this.id )" ondblclick="LabelClick( this.id );ToggleFolder();">Subsidiaries</span>
 </div>
 <!-- Subsidiary Folder ENDS -->
 
@@ -76,8 +76,8 @@
 <!-- Each Subsidiary BEGINS -->
 <xsl:for-each select="/AppData/SubmissionReferenceAndSummary/ReturnTableOfContents/Subsidiary">
 <xsl:variable name="SubsidiaryEIN" select="Document[1]/@displayId" />
-<div id="SubsidiaryDiv{$SubsidiaryEIN}">
-<nobr><span style="width:16px;"></span><xsl:choose><xsl:when test="position() != last()"><img src="{$ImagePath}/T.gif" class="styIconImg" alt="Subsidiary {$SubsidiaryEIN}" /></xsl:when><xsl:otherwise><img src="{$ImagePath}/L.gif" class="styIconImg" alt="Subsidiary {$SubsidiaryEIN}" /></xsl:otherwise></xsl:choose><img src="{$ImagePath}/subsidiary.gif" class="styIconImg" alt="Subsidiary {$SubsidiaryEIN}" /><span id="Subsidiary{$SubsidiaryEIN}-{position()}" class="styTogglerLabel" title="Select to list documents in Subsidiary {$SubsidiaryEIN}" onmouseover="LabelOver( this.id )" onmouseout="LabelOut( this.id )" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'subsidiary', '{$SubsidiaryEIN}-{position()}' );">Subsidiary <xsl:value-of select="$SubsidiaryEIN" /></span></nobr>
+<div id="SubsidiaryDiv{$SubsidiaryEIN}" style="white-space:nowrap;">
+<span style="width:16px;"></span><xsl:choose><xsl:when test="position() != last()"><img src="{$ImagePath}/T.gif" class="styIconImg" alt="Subsidiary {$SubsidiaryEIN}" title="Subsidiary {$SubsidiaryEIN}" /></xsl:when><xsl:otherwise><img src="{$ImagePath}/L.gif" class="styIconImg" alt="Subsidiary {$SubsidiaryEIN}" title="Subsidiary {$SubsidiaryEIN}" /></xsl:otherwise></xsl:choose><img src="{$ImagePath}/subsidiary.gif" class="styIconImg" alt="Subsidiary {$SubsidiaryEIN}" title="Subsidiary {$SubsidiaryEIN}" /><span id="Subsidiary{$SubsidiaryEIN}-{position()}" class="styTogglerLabel" title="Select to list documents in Subsidiary {$SubsidiaryEIN}" onmouseover="LabelOver( this.id )" onmouseout="LabelOut( this.id )" onclick="LabelClick( this.id );PostGetPrintDocListForm( 'subsidiary', '{$SubsidiaryEIN}-{position()}' );">Subsidiary <xsl:value-of select="$SubsidiaryEIN" /></span>
 </div>
 </xsl:for-each>
 <!-- Each Subsidiary ENDS -->
@@ -96,8 +96,10 @@
 <!-- Main template -->
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <!-- Set Document Title -->
 <title>Print Window Sidebar</title>
 <!-- No Browser Caching -->
@@ -152,7 +154,7 @@ body {   /* Global Styles */
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
   vertical-align: middle;
-  cursor: hand;
+  cursor: pointer;
 }
 .styDataLabelHL {   /* Highlighted Data Label */
   background-color: <xsl:value-of select="/AppData/UserPreferences/View/SubmissionTreeMouseoverBgColor" />;
@@ -162,7 +164,7 @@ body {   /* Global Styles */
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
   vertical-align: middle;
-  cursor: hand;
+  cursor: pointer;
 }
 .styDataLabelClk {   /* Clicked Data Label */
   background-color: <xsl:value-of select="/AppData/UserPreferences/View/SubmissionTreeSelectedItemBgColor" />;
@@ -172,7 +174,7 @@ body {   /* Global Styles */
   border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
   padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
   vertical-align: middle;
-  cursor: hand;
+  cursor: pointer;
 }
 </style>
 
@@ -201,16 +203,20 @@ function SetFolderProperties() {
   if ( subsidiariesExpanded ) {
     document.getElementById( "SubsidiaryTwistieImg" ).src = expandedTwistieImg.src;
     document.getElementById( "SubsidiaryTwistieImg" ).alt = expandedLbl;
+    document.getElementById( "SubsidiaryTwistieImg" ).title = expandedLbl;
     document.getElementById( "SubsidiaryFolderImg" ).src = openFolderImg.src;
     document.getElementById( "SubsidiaryFolderImg" ).alt = expandedLbl;
+    document.getElementById( "SubsidiaryFolderImg" ).title = expandedLbl;
     document.getElementById( "subsidiaries" ).title = expandedLbl;
     document.getElementById( "SubsidiaryArea" ).style.display = "block";
   }
   else {
     document.getElementById( "SubsidiaryTwistieImg" ).src = collapsedTwistieImg.src;
     document.getElementById( "SubsidiaryTwistieImg" ).alt = collapsedLbl;
+    document.getElementById( "SubsidiaryTwistieImg" ).title = collapsedLbl;
     document.getElementById( "SubsidiaryFolderImg" ).src = closedFolderImg.src;
     document.getElementById( "SubsidiaryFolderImg" ).alt = collapsedLbl;
+    document.getElementById( "SubsidiaryFolderImg" ).title = collapsedLbl;
     document.getElementById( "subsidiaries" ).title = collapsedLbl;
     document.getElementById( "SubsidiaryArea" ).style.display = "none";
   }

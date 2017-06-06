@@ -11,8 +11,10 @@
 	<xsl:param name="FormData" select="$RtnDoc/IRS8864"/>
 	<xsl:template name="RowWriterCore"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -62,30 +64,33 @@
 							  Biodiesel and Renewable Diesel Fuels Credit          
 						  </div>
 							<br/>
+							<br/>
 							<div class="styFST" style="height:5mm;font-size:7pt;padding-top:5mm;">
 								<img src="{$ImagePath}/8864_Bullet_Line.gif" width="4" height="7" alt="Bullet Image"/>
 								  Attach to your tax return.
 								 <br/>
 								<img src="{$ImagePath}/8864_Bullet_Line.gif" width="4" height="7" alt="Bullet Image"/>
-								 Information about Form 8864 and its instructions is at <a href="http://www.irs.gov/form8864" title="Link to IRS.gov">
+								 Information about Form 8864 and its instructions is at
+								  <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8864" title="Link to IRS.gov">
 									<i>www.irs.gov/form8864</i>
 								</a>.
+
 						  </div>
 						</div>
 						<!-- This can be taken out later -->
 						<div class="styTYBox" style="width:30mm;height:21.5mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-1924</div>
+							<div class="styOMB" style="height:4mm;">OMB No. 1545-1924</div>
 							<div class="styTY" style="height:7.5mm;font-size:24pt;">
                                 20<span class="styTYColor">13</span>
 							</div>
-							<div class="stySequence">Attachment<br/>Sequence No. <b style="font-size:7.5pt;">141</b>
+							<div class="stySequence" style="padding-top:3mm;">Attachment<br/>Sequence No. <b style="font-size:7.5pt;">141</b>
 							</div>
 						</div>
 					</div>
 					<!--  End title of Form  -->
 					<!-- Start Name and EIN Line -->
 					<div class="styBB" style="width:187mm">
-						<div class="styNameBox" style="width:132mm; height:8mm; font-size:7pt;">Name(s) shown on return
+						<div class="styNameBox" style="width:132mm; height:10mm; font-size:7pt;">Name(s) shown on return
 						<br/>
 							<xsl:choose>
 								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -127,17 +132,17 @@
 					<!-- end Name and Ein Line -->
 					<!-- Start Caution Line -->
 					<div class="styBB" style="width: 187mm; font-size: 7pt;padding-top:1mm;">
-						<div style="width:187mm;height:6mm;padding-bottom:1mm;">
-							<span class="styBoldText" style="vertical-align: top;">Caution.</span>
-							<span class="styNormalText" style="width: 165mm; padding-left: 2mm;">
-							 You cannot claim any amounts on Form 8864 that you claimed (or will claim) on Form 720 (Schedule C), Form 8849, or Form 4136.
-							</span>
+			
+						<span class="styBoldText" style="vertical-align: top;">Caution.</span>
+						<span class="styNormalText" style="width: 170mm; padding-left: 2mm;">
+							You cannot claim any amounts on Form 8864 that you claimed (or will claim) on Form 720 (Schedule C), Form 8849, or Form 4136.
+						</span>
 							<span class="styNormalText" style="width: 187mm;">
 							Claimant has a certificate from the producer or importer of biodiesel or renewable diesel reported on lines 1 through 6 below and, if
 							applicable, claimant also has a statement from the reseller. Claimant has no reason to believe that the information in the certificate or
 							statement is false. Claimant may need to attach a copy of the certificate and statement. See <i>Certification</i> below.
                           </span>
-						</div>
+					
 					</div>
 					<!-- end Caution Line -->
 					<!--Table header Begin -->
@@ -407,10 +412,10 @@
 							<span style="float:left">Add lines 8 and 9. Cooperatives, estates, and trusts, go to line 11. Partnerships and S corporations, stop here and report this amount on Schedule K.  All others, stop here and report this amount on</span>
 							<span style="float:left;white-space:nowrap;"> Form 3800, line 1l. </span>
 							<!--Dotted Line-->
-							<span class="styDotLn" style="float:right;padding-right: 2mm;">...........................</span>
+											<span class="styDotLn" style="float:right;padding-right: 2mm;">........................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:12mm;padding-top:8mm;">10</div>
-						<div class="styLNAmountBox" style="height:12mm;padding-top:8mm;">
+						<div class="styLNRightNumBox" style="height:10mm;padding-top:7mm;">10</div>
+						<div class="styLNAmountBox" style="height:10mm;padding-top:7mm;">
 							<!-- Line 10-->
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/TotalBiodieselAndRnwblFuelsAmt"/>

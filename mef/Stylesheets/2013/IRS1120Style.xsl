@@ -15,7 +15,7 @@
       padding-bottom:.5mm;
       border-style: solid; border-color: black;
       border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
-      float:left; clear: none;
+      clear: none;
     }
     .styIRS1120LNPercentBox{ /* Box for percentages */
       width:14mm;

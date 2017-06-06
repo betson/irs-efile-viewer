@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!-- 07/01/2013 - Created new version for 2014 per UWR 87746 - Jeremy Nichols -->
-<!-- 07/23/2013 - Modified per IBM defect #35925 - Jeremy Nichols -->
-<!-- 08/13/2013 - Made changes per defect #37222 - Jeremy Nichols -->
+<!-- 04/22/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 01/26/2016 - Changes made for defect 45145 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate_ETEC.xsl"/>
@@ -16,8 +15,10 @@
   
   <xsl:template match="/">
   
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"></xsl:with-param></xsl:call-template></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache" />
@@ -52,9 +53,9 @@
               <span class="styFormText" style="font-size:7pt;width:1mm;"></span>      
               <span class="styFormNumber" style="font-size:20pt;font-weight:bold;">6627</span>      
               <br/>      
-              <span class="styAgency" style="font-weight:normal;padding-top:1.5mm;">(Rev. January 2014)</span><br/> 
-              <span class="styAgency" style="font-weight:normal;padding-top:1.5mm;">Department of the Treasury</span><br />
-              <span class="styAgency" style="font-weight:normal;padding-top:1.5mm;">Internal Revenue Service</span>
+              <span class="styAgency" style="font-weight:normal;">(Rev. January 2014)</span><br/> 
+              <span class="styAgency" style="font-weight:normal;padding-top:0.5mm;">Department of the Treasury</span><br />
+              <span class="styAgency" style="font-weight:normal;">Internal Revenue Service</span>
             </div>
             
             <div class="styFTBox" style="width:125mm;height:21mm;padding-top:3mm">
@@ -74,33 +75,33 @@
             </div>
             
             <div class="styTYBox" style="width:31mm;height:21mm;padding-top:8mm;text-align:center;">
-              OMB No. 1545-0245
+              OMB No. 1545-0123
             </div>
           </div>
           
           <!--Begin Name and EIN-->
           <div style="width:187mm;">
-            <div class="styNameAddr" style="width:118mm;height:10mm;border-left-width:0px;padding-left:1px;font-size:7pt;">
+            <div class="styNameAddr" style="width:118mm;height:9mm;border-left-width:0px;padding-left:1px;font-size:7pt;">
               Name (as shown on Form 720)<br/>
               <div  style="margin-left:1mm;font-size:6.373pt;">
                 <xsl:call-template name="PopulateReturnHeaderFiler">
-                  <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+                  <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
                 </xsl:call-template><br/>
                 <xsl:call-template name="PopulateReturnHeaderFiler">
-                  <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+                  <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
                 </xsl:call-template><br/>
               </div>
             </div>
-            <div class="styNameAddr" style="font-size:6.5pt;width:23mm;height:10mm;border-left-width:1px;padding-right:1mm;">
+            <div class="styNameAddr" style="font-size:6.5pt;width:23mm;height:9mm;border-left-width:1px;padding-right:1mm;">
               Quarter ending
-              <span style="width:3mm;height:6mm;clear:none"></span>
+              <br/><br/>
               <xsl:call-template name="PopulateMonthDayYear">
                 <xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"></xsl:with-param>
               </xsl:call-template>
             </div>
-            <div class="styNameAddr" style="font-size:6.5pt;width:46mm;height:10mm;border-left-width:1px;border-bottom-width:1px black solid;padding-left:2mm;">
-              Employer identification number		
-              <span style="width:4mm;height:6mm;"></span>
+            <div class="styNameAddr" style="font-size:6.5pt;width:46mm;height:9mm;border-left-width:1px;border-bottom-width:1px black solid;padding-left:2mm;">
+              Employer identification number
+              <br/><br/>
               <xsl:if test="($RtnHdrData/Filer/EIN)">
                 <xsl:call-template name="PopulateReturnHeaderFiler">        	
                   <xsl:with-param name="TargetNode">EIN</xsl:with-param>
@@ -255,7 +256,7 @@
                       <xsl:with-param name="TargetNode" select="$FormData/ImportedPetroleumOilSpillTax/ImpPtrlmOilSpillTaxBarrelQty"></xsl:with-param>
                     </xsl:call-template>
                   </td>
-                  <td class="styTableCell" style="width:17mm;text-align:center;padding-top:10mm">
+                  <td class="styTableCell" style="width:17mm;text-align:center;padding-top:10.5mm">
                     <span style="padding-left:.5mm;float:left;clear:none">$</span>
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$FormData/ImportedPetroleumOilSpillTax/ImpPtrlmOilSpillTaxRt"></xsl:with-param>
@@ -281,15 +282,13 @@
           <!--Part II Title-->
           <div class="styBB" style="width:187mm;border-top:1px black;height=8mm;">
             <div class="styLNDesc" style="width:187mm;height:8mm;font-size:8pt;font-weight:bold;padding-top:2mm;">
-              <span style="width=1px;color:black;background-color:black;">.</span>
-              <span style="width=12mm;color:white;background-color:black;text-align:right;float:inherit;margin:0;">Part II</span>
-              <span style="width=1px;color:black;background-color:black;">.</span>
-              <span style="width=160mm ;text-align:center;font-size:8pt;padding-right:50mm;">Tax on Ozone-Depleting Chemicals (ODCs), IRS No. 98</span>
+              <span style="height:4.5mm;width:14mm;padding-top:0.5mm;padding-right:1.5mm;color:white;background-color:black;text-align:right;float:inherit;margin:0;">Part II</span>
+              <span style="width:160mm ;font-size:8pt;;"><span style="width:4mm;"/>Tax on Ozone-Depleting Chemicals (ODCs), IRS No. 98</span>
             </div>      
           </div>
           
           <!--Part II Elections Instructions-->
-          <div class="styLNDesc" style="width:187mm;height:4.5mm;font-size:7pt">
+          <div class="styLNDesc" style="width:187mm;height:9mm;font-size:7pt">
             <span class="styText" style="font-weight:bold;" >
               Elections. 
             </span>
@@ -298,7 +297,6 @@
             <span class="styText">when you make the mixture, check the box (the 1990 election)</span>
             <!--Dotted Line-->
             <span class="styBoldText">
-              <span style="width:16px"></span>.
               <span style="width:16px"></span>.
               <span style="width:16px"></span>.
               <span style="width:16px"></span>.
@@ -331,13 +329,12 @@
             </label>
           </div>
           
-          <div class="styLNDesc" style="width:187mm;height:4.5mm;font-size:7pt">
+          <div class="styLNDesc" style="width:187mm;height:9mm;font-size:7pt">
            
             <span class="styText">If you elect to report the tax on post-1990 ODCs at the time you sell or use a mixture containing such chemicals instead of when</span><br/>
             <span class="styText">you make the mixture, check the box (the 1991 election)</span>
             <!--Dotted Line-->
             <span class="styBoldText">
-              <span style="width:16px"></span>.
               <span style="width:16px"></span>.
               <span style="width:16px"></span>.
               <span style="width:16px"></span>.
@@ -369,7 +366,7 @@
                 <xsl:with-param name="BackupName">IRS6627Election1991Ind</xsl:with-param>
               </xsl:call-template>
             </label>
-            <span style="width:1mm;clear:none"></span>
+            <span style="width:3mm;clear:none"></span>
             <!-- button display logic -->
             <xsl:call-template name="SetDynamicTableToggleButton" >
               <xsl:with-param name="TargetNode" select="$FormData/TxOnOzoneDepletingChemicalsGrp"/>
@@ -380,9 +377,9 @@
           </div>
           
           <!--Part II Table-->
-          <div class="styTableContainer" style="height:25.5mm;" id="PSOctn">
+          <div class="styTableContainer" style="width:187mm;border-bottom-width:0px;display:block;" id="PSOctn">
             <xsl:call-template name="SetInitialState"/>
-            <table style="font-size:7pt;border-collapse:collapse;">
+            <table style="width:187mm;font-size:7pt;border-collapse:collapse;">
               <tbody>
                 <tr>
                   <th colspan= "2" style="width=64mm;height:12mm;font-size:8pt;border-top:1px black solid;">
@@ -407,23 +404,22 @@
                           </xsl:call-template> 
                         </span>
                       </td>
-                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;padding-top:5mm;text-align:right;">
+                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;vertical-align:top;">
                         <span style="clear:none">   
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" select="PoundsQty"></xsl:with-param>
                           </xsl:call-template> 
                         </span>
                       </td>
-                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:5mm;">
+                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;vertical-align:top;">
                         <span style="clear:none;">
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" select="IRSTaxPerPoundAmt"></xsl:with-param>
                           </xsl:call-template> 
                         </span>
                       </td>
-                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
-                        <span style="height:8mm;width:2mm;text-align:left;padding-top:5mm;padding-right:4mm;"></span>
-                        <span style="width:36mm;padding-top:5mm;">
+                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;vertical-align:top;">
+                        <span style="width:36mm;">
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" select="TaxAmt"></xsl:with-param>
                           </xsl:call-template> 
@@ -436,7 +432,7 @@
                 
                 <xsl:if test="(count($FormData/TxOnOzoneDepletingChemicalsGrp) = 0) or ( (count($FormData/TxOnOzoneDepletingChemicalsGrp) &gt; 3) and ($Print = $Separated) )" >
                   <tr>
-                    <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid">
+                    <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:0px black solid;border-top:1px black solid">
                       <xsl:value-of select="1">
                       </xsl:value-of>
                     </td>
@@ -460,7 +456,7 @@
                       <xsl:value-of select="2">
                       </xsl:value-of>
                     </td>
-                    <td  style="height:8mm;width:58mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;padding-top:5mm;"></td>
+                    <td  style="height:8mm;width:58mm;text-align:left;border-bottom:1px black solid;border-top:0px black solid;padding-top:5mm;"></td>
                     <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;padding-top:5mm;text-align:right;"></td>
                     <td style="height:8mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:1px;"></td>
                     <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;"></td>
@@ -468,19 +464,19 @@
                 </xsl:if>
                 <xsl:if test="(count($FormData/TxOnOzoneDepletingChemicalsGrp) &lt; 3) or ( (count($FormData/TxOnOzoneDepletingChemicalsGrp) &gt; 3) and ($Print = $Separated) )" >
                   <tr>
-                    <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid">
+                    <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:0px black solid;border-top:0px black solid">
                       <xsl:value-of select="3">
                       </xsl:value-of>
                     </td>
-                    <td  style="height:8mm;width:58mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;padding-top:5mm;"></td>
-                    <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;padding-top:5mm;text-align:right;"></td>
-                    <td style="height:8mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:1px;"></td>
-                    <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;"></td>
+                    <td  style="height:8mm;width:58mm;text-align:left;border-bottom:0px black solid;border-top:1px black solid;padding-top:5mm;"></td>
+                    <td style="height:8mm;border-left:1px black solid;border-bottom:0px black solid;padding-top:5mm;text-align:right;"></td>
+                    <td style="height:8mm;text-align:center;border-left:1px black solid;border-bottom:0px black solid;text-align:right;padding-top:1px;"></td>
+                    <td style="height:8mm;border-left:1px black solid;border-bottom:0px black solid;text-align:right;"></td>
                   </tr>
                 </xsl:if>
                 <!--sum-->
                 <tr>
-                  <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid;padding-bottom:3.5mm;">
+                  <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:0px black solid;padding-bottom:3.5mm;">
                     <xsl:if test="(count($FormData/TxOnOzoneDepletingChemicalsGrp) &lt; 4) or ($Print = $Separated)" >
                       <xsl:value-of select="4">
                       </xsl:value-of>
@@ -490,7 +486,7 @@
                       </xsl:value-of>
                     </xsl:if>
                   </td>
-                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;">	
+                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:0px black solid;">	
                     <span style="font-weight:bold;">Total ozone-depleting chemicals tax.</span>
                     <span style="width:3px;clear:none;"></span>
                     <span style="clear:none;font-weight:normal;">Add all amounts in column (d), include amounts from any</span><br/>
@@ -505,7 +501,7 @@
                     <span class="styBoldText" style="padding-left:5.5mm;"><img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/> 
                     </span>     
                   </td>
-                  <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                  <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;border-top:0px black solid;text-align:right;">
                     <span style="width:1mm;clear:none;"></span>
                     <span style="height:8mm;width:2mm;text-align:bottom;padding-top:4mm;padding-right:4mm;">$</span>
                     <span style="width:36mm;height:8mm;padding-top:5mm;">
@@ -531,12 +527,14 @@
               <xsl:with-param name="containerID" select=" 'PSOctn' "/>
             </xsl:call-template>
             <!-- End Set Initial Height of Above Table -->
-          </div>      
-  
+          </div>
+          <xsl:if test="($Print = $Separated)">
+			   <br/><span style="height:7mm;" ></span><br/> 
+		  </xsl:if>
           
           <!--Begin Page 1 Footer-->
-          <div  style="width:187mm">
-            <span style="width:105mm;font-weight:bold;text-align:left;font-size:6pt;"> 
+          <div  style="width:187mm;">
+            <span style="width:100mm;font-weight:bold;text-align:left;font-size:6pt;"> 
               For Privacy Act and Paperwork Reduction Act Notice, see Form 720 instructions.
             </span>
             <span style="width:10mm;"></span>  
@@ -546,39 +544,34 @@
             <span style="text-align:right;width:7mm;font-weight:normal;font-size:6pt;">
             Form</span> 
             <span style="width:1mm;"></span>  
-            <span style="text-align:center;width:7mm;font-weight:bold;font-size:7pt;">
+            <span style="text-align:center;width:6mm;font-weight:bold;font-size:7pt;">
             6627</span> 
-            <span style="text-align:right;width:18mm;font-weight:normal;font-size:6pt;padding-right:1mm;">
+            <span style="text-align:right;width:18.5mm;font-weight:normal;font-size:6pt;padding-right:1mm;">
             (Rev. 1-2014)</span> 
           </div>
-          <br class="pageEnd"/>
+          <div class="pageEnd"/>
   
           <!--Begin Page 2-->
   
           <!--Page to Header-->
           <div  style="width:187mm;border-bottom:1px black solid;">
-            <span style="width:104mm;font-weight:normal;text-align:left;font-size:7pt;"> 
-              Form 6627 (Rev. 1-2014)
+            <span style="width:140mm;font-weight:normal;text-align:left;font-size:7pt;display:inline;"> 
+              Form 6627 (Rev. 1-2014)<span style="width:140mm;"/>
             </span>
-            <span style="width:5mm;"></span>  
-            <span style="width:18mm;font-weight:normal;font-size:7pt;">
-            </span> 
-            <span style="width:7mm;"></span>  
-            <span style="text-align:right;width:20mm;font-weight:bold;font-size:7pt;"></span> 
-            <span style="text-align:right;width:30mm;font-weight:normal;font-size:7pt;">
+            <span style="text-align:right;width:40mm;font-weight:normal;font-size:7pt;display:inline;">
               Page
             </span> 
             <span style="width:4px"></span> 
-            <span style="text-align:right;width:1mm;font-weight:bold;font-size:7pt;">
+            <span style="text-align:right;width:1mm;font-weight:bold;font-size:7pt;display:inline;">
               2
             </span> 
           </div>
   
   
           <!--Begin Part III-->
-          <div class="styBB" style="width:187mm;height:8mm">
-            <div class="styPartName" style="margin-top:2mm;margin-bottom:2mm">Part III</div>
-            <div class="styPartDesc" style="padding-top:2mm">
+          <div class="styBB" style="width:187mm;height:8mm;padding-top:1mm;">
+            <div class="styPartName" style="height:4.5mm;width:14mm;padding-top:0.5mm;">Part III</div>
+            <div class="styPartDesc" style="padding-top:1mm"><span style="width:4mm;"/>
               ODC Tax on Imported Products, IRS No. 19
             </div>
           </div>
@@ -611,13 +604,13 @@
           </div>
           
           <!--Part III Table-->
-          <div class="styTableContainer" style="height:25.5mm;" id="ODC19ctn">
+          <div class="styTableContainer" style="height:auto;" id="ODC19ctn">
             <!-- print logic -->
             <xsl:call-template name="SetInitialState"/>
-            <table class="styTable" cellspacing="0" cellpadding="0">
+            <table class="styTable" cellspacing="0" cellpadding="0" style="height:auto;width:187mm;">
               <tbody>
                 <tr style="height:12mm">
-                  <th class="styTableCellHeader" style="width:58mm;font-weight:bold;border-color:black" scope="col">(a)<br />Imported product and the<br />applicable ODC</th>
+                  <th class="styTableCellHeader" style="width:58mm;font-weight:bold;border-color:black" colspan="2" scope="col">(a)<br />Imported product and the<br />applicable ODC</th>
                   <th class="styTableCellHeader" style="width:23mm;font-weight:bold;border-color:black" scope="col">(b)<br />Number of<br />products</th>
                   <th class="styTableCellHeader" style="width:26mm;font-weight:bold;border-color:black" scope="col">(c)<br />ODC weight of<br />product</th>
                   <th class="styTableCellHeader" style="width:26mm;font-weight:bold;border-color:black" scope="col">(d)<br />Tax per pound</th>
@@ -628,37 +621,39 @@
                 <xsl:if test="($Print != $Separated) or (count($FormData/ODCTaxOnImportedProductsGrp) &lt;= 3)">
                   <xsl:for-each select="$FormData/ODCTaxOnImportedProductsGrp">
                     <tr style="height:8mm">
-                      <td class="styTableCellText" style="width:58mm;border-color:black">
-                        <div style="width:4mm;font-weight:bold;padding-top:2mm;padding:left:1mm;float:left;clear:none;font-size:7pt;text-align:center">
+                      <td class="styTableCellText" style="width:4mm;border-color:black;border-right:0px solid black;">
+                        <div style="width:4mm;font-weight:bold;padding-top:2mm;padding:left:1mm;float:left;clear:none;font-size:7pt;text-align:center;">
                           <xsl:value-of select="position()"></xsl:value-of>
                         </div>
+					  </td>
+                      <td class="styTableCellText" style="width:54mm;border-color:black;border-left:0px solid black;">
                         <div style="float:left;clear:none">
                           <xsl:call-template name="PopulateText">
                             <xsl:with-param name="TargetNode" select="IRSOzoneDepletingChemicalDesc"></xsl:with-param>
                           </xsl:call-template>
                         </div>
                       </td>
-                      <td class="styTableCell" style="width:23mm;border-color:black;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:23mm;border-color:black;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="TaxableProductCnt"></xsl:with-param>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="IRSOzoneDepletingChmclWghtQty"></xsl:with-param>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="IRSTaxPerPoundAmt"></xsl:with-param>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="EntryValueAmt"></xsl:with-param>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCell" style="width:28mm;border-color:black;border-right-width:0px;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:28mm;border-color:black;border-right-width:0px;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="TaxAmt"></xsl:with-param>
                         </xsl:call-template>
@@ -669,8 +664,10 @@
                 <!--Print blank row or see additional data message-->
                 <xsl:if test="(count($FormData/ODCTaxOnImportedProductsGrp) = 0) or ( (count($FormData/ODCTaxOnImportedProductsGrp) &gt; 3) and ($Print = $Separated) )">
                   <tr style="height:8mm">
-                    <td class="styTableCellText" style="width:58mm;border-color:black">
+                    <td class="styTableCellText" style="width:4mm;border-color:black;border-right:0px solid black;">
                       <div style="width:4mm;font-weight:bold;padding-top:2mm;padding:left:1mm;float:left;clear:none;font-size:7pt;text-align:center">1</div>
+                    </td>
+                    <td class="styTableCellText" style="width:54mm;border-color:black">
                       <div style="float:left;clear:none;padding-top:2mm">
                         <xsl:if test="((count($FormData/ODCTaxOnImportedProductsGrp) &gt;3) and ($Print = $Separated))">
                           <span style="font-size:7pt">
@@ -691,8 +688,10 @@
                 </xsl:if>
                 <xsl:if test="(count($FormData/ODCTaxOnImportedProductsGrp) &lt; 2) or ( (count($FormData/ODCTaxOnImportedProductsGrp) &gt; 3) and ($Print = $Separated) )">
                   <tr style="height:8mm">
-                    <td class="styTableCellText" style="width:58mm;border-color:black">
+                    <td class="styTableCellText" style="width:4mm;border-color:black;border-right:0px solid black;">
                       <div style="width:4mm;font-weight:bold;padding-top:2mm;padding:left:1mm;float:left;clear:none;font-size:7pt;text-align:center">2</div>
+                    </td>
+                    <td class="styTableCellText" style="width:54mm;border-color:black">
                       <div style="float:left;clear:none">
                         <span style="width:1px" />
                       </div>
@@ -706,41 +705,43 @@
                 </xsl:if>
                 <xsl:if test="(count($FormData/ODCTaxOnImportedProductsGrp) &lt; 3) or ( (count($FormData/ODCTaxOnImportedProductsGrp) &gt; 3) and ($Print = $Separated) )">
                   <tr style="height:8mm">
-                    <td class="styTableCellText" style="width:58mm;border-color:black">
+                    <td class="styTableCellText" style="width:4mm;border-color:black;border-bottom:0px solid black;border-right:0px solid black;">
                       <div style="width:4mm;font-weight:bold;padding-top:2mm;padding:left:1mm;float:left;clear:none;font-size:7pt;text-align:center">3</div>
+                    </td>
+                    <td class="styTableCellText" style="width:54mm;border-color:black;border-bottom:0px solid black;">
                       <div style="float:left;clear:none">
                         <span style="width:1px" />
                       </div>
                     </td>
-                    <td class="styTableCell" style="width:23mm;font-weight:bold;border-color:black;padding-right:1mm"><span style="width:1px" /></td>
-                    <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm"><span style="width:1px" /></td>
-                    <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm"><span style="width:1px" /></td>
-                    <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm"><span style="width:1px" /></td>
-                    <td class="styTableCell" style="width:28mm;border-color:black;border-right-width:0px;padding-right:1mm"><span style="width:1px" /></td>
+                    <td class="styTableCell" style="width:23mm;font-weight:bold;border-color:black;border-bottom:0px solid black;padding-right:1mm"><span style="width:1px" /></td>
+                    <td class="styTableCell" style="width:26mm;border-color:black;border-bottom:0px solid black;padding-right:1mm"><span style="width:1px" /></td>
+                    <td class="styTableCell" style="width:26mm;border-color:black;border-bottom:0px solid black;padding-right:1mm"><span style="width:1px" /></td>
+                    <td class="styTableCell" style="width:26mm;border-color:black;border-bottom:0px solid black;padding-right:1mm"><span style="width:1px" /></td>
+                    <td class="styTableCell" style="width:28mm;border-color:black;border-bottom:0px solid black;border-right-width:0px;padding-right:1mm"><span style="width:1px" /></td>
                   </tr>
                 </xsl:if>
-                <tr style="height:8mm">
-                  <td class="styTableCellText" colspan="5" style="width:159mm;font-size:7pt;border-color:black;border-bottom-width:0">
+                <tr>
+                  <td class="styTableCellText" colspan="6" style="width:159mm;font-size:7pt;border-color:black;border-bottom-width:1px;border-top:0px solid black;">
                     <xsl:choose>
                       <xsl:when test="($Print != $Separated) and (count($FormData/ODCTaxOnImportedProductsGrp) &gt; 3)">
-                        <div style="width:4mm;font-size:7pt;text-align:center;font-weight:bold;padding-bottom:2mm;padding:left:1mm;float:left;clear:none">
+                        <div style="width:4mm;font-size:7pt;text-align:center;font-weight:bold;padding-bottom:2mm;padding:left:1mm;display:inline;">
                           <xsl:value-of select="(count($FormData/ODCTaxOnImportedProductsGrp) + 1)"></xsl:value-of>
                         </div>
                       </xsl:when>
                       <xsl:otherwise>
-                        <div style="width:4mm;font-size:7pt;text-align:center;font-weight:bold;padding-bottom:2mm;padding:left:1mm;float:left;clear:none">4</div>
+                        <div style="width:4mm;font-size:7pt;text-align:center;font-weight:bold;padding-bottom:2mm;padding:left:1mm;display:inline;">4</div>
                       </xsl:otherwise>
                     </xsl:choose>
-                    <div style="float:left;clear:none">
+                    <div style="width:155mm;display:inline;">
                       <b>Total ODC tax on imported products.</b> Add all amounts in column (f), include amounts from any
                       additional sheets. Enter the total here and on Form 720 on the line for <b>IRS No. 19</b>
-                      <span class="styDotLn" style="float:none;padding-left:2mm;padding-right:0.5mm">...............</span>
+                      <span class="styDotLn" style="float:none;padding-left:2mm;padding-right:0.5mm">.................</span>
                       <img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/>
                     </div>
                   </td>
-                  <td class="styTableCell" style="width:28mm;border-color:black;border-right-width:0;border-bottom-width:0;padding-right:1mm">
-                    <div style="width:2mm;float:left;clear:none;font-size:7pt;padding-top:3.5mm">$</div>
-                    <div style="width:26mm;float:left;clear:none;padding-left:1mm;padding-right:0.3mm;padding-top:4mm">
+                  <td class="styTableCell" style="height:8mm;width:28mm;border-color:black;border-right-width:0;border-bottom-width:1px;border-top:0px solid black;padding-right:1mm;padding-top:3.5mm;">
+                    <div style="float:left;">$</div>
+                    <div style="">
                       <xsl:choose>
                         <xsl:when test="(count($FormData/ODCTaxOnImportedProductsGrp) = 0) or (($Print = $Separated) and (count($FormData/ODCTaxOnImportedProductsGrp) &gt; 3))">
                           <span style="width:1px" />
@@ -757,6 +758,9 @@
               </tbody>
             </table>
           </div>
+          <xsl:if test="($Print = $Separated)">
+			   <br/><br/><br/> 
+		  </xsl:if>
           
           <!-- Set Initial Height of Above Table -->
           <xsl:call-template name="SetInitialDynamicTableHeight">
@@ -770,14 +774,11 @@
           <!--BEGIN PART IV-->
           
           <!--Part IV Header-->
-          <div class="styBB" style="width:187mm;border-top:1px black;height:8mm;">
-            <div class="styLNDesc" style="width:187mm;height:8mm;font-size:8pt;font-weight:bold;padding-top:2mm;">
-              <span style="width=1px;color:black;background-color:black;">.</span>
-              <span style="width=12mm;color:white;background-color:black;text-align:right;float:inherit;margin:0;">Part IV</span>
-              <span style="width=1px;color:black;background-color:black;">.</span>
-              <span style="width=155mm ;text-align:center;font-size:8pt;padding-right:68.5mm;">Tax on Floor Stocks of  ODCs, IRS No. 20</span>
-              <span style="width:13.4mm;clear:none;"></span>
-              <span style="padding-top:8mm;">
+          <div class="styBB" style="width:187mm;border-top:0px solid black;border-bottom-width:0px;height:8mm;">
+            <div class="styLNDesc" style="width:187mm;height:8mm;font-size:8pt;font-weight:bold;padding-top:1mm;border-top:0px solid black;">
+              <span style="height:4.5mm;width:14mm;color:white;background-color:black;text-align:right;float:inherit;padding-top:1mm;padding-left:0.5mm;padding-right:1mm;margin:0;display:inline;">Part IV </span>
+              <span style="width:155mm ;font-size:8pt;float:inherit;display:inline;padding-top:1mm;"><span style="width:4mm;"/>Tax on Floor Stocks of  ODCs, IRS No. 20</span>
+              <span style="width:18mm;text-align:right;padding-top:3mm;">
                 <!-- button display logic -->
                 <xsl:call-template name="SetDynamicTableToggleButton" >
                 <xsl:with-param name="TargetNode" select="$FormData/TaxOnFloorStocksOfODCGrp"/>
@@ -790,7 +791,7 @@
           </div>
               
           <!--Part IV Table-->
-          <div class="styTableContainer" id="PSOctn3">
+          <div class="styTableContainer" id="PSOctn3" style="border-bottom-width:1px;">
             <xsl:call-template name="SetInitialState"/>
             <table style="font-size:7pt;border-collapse:collapse;">
               <tbody>
@@ -816,23 +817,22 @@
                           </xsl:call-template> 
                         </span>
                       </td>
-                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;padding-top:5mm;text-align:right;">        
+                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;vertical-align:top;text-align:right;">        
                         <span style="clear:none">           
                           <xsl:call-template name="PopulateAmount">       
                             <xsl:with-param name="TargetNode" select="PoundsQty"></xsl:with-param>
                           </xsl:call-template> 
                         </span>        	
                       </td>       
-                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:5mm;">        
+                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;vertical-align:top;">        
                         <span style="clear:none;">       
                           <xsl:call-template name="PopulateAmount">        
                             <xsl:with-param name="TargetNode" select="IRSTaxPerPoundAmt"></xsl:with-param>
                           </xsl:call-template>        
                         </span>       
                       </td>       		        
-                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">       
-                        <span style="height:8mm;width:2mm;text-align:left;padding-top:5mm;padding-right:4mm;"></span>       
-                        <span style="width:36mm;padding-top:5mm;">              
+                      <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;vertical-align:top;">         
+                        <span style="width:36mm;">              
                           <xsl:call-template name="PopulateAmount">                 
                             <xsl:with-param name="TargetNode" select="TaxAmt"></xsl:with-param>
                           </xsl:call-template>                   
@@ -870,16 +870,16 @@
                 </xsl:if>
                 <xsl:if test="(count($FormData/TaxOnFloorStocksOfODCGrp) &lt; 3) or ( (count($FormData/TaxOnFloorStocksOfODCGrp) &gt; 3) and ($Print = $Separated) )" >
                   <tr>
-                    <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid">3</td>
-                    <td  style="height:8mm;width:58mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;padding-top:5mm;"></td>
-                    <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;padding-top:5mm;text-align:right;"></td>
-                    <td style="height:8mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:1px;"></td>
-                    <td style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;"></td>
+                    <td style="height:8mm;width:6mm;text-align:center;font-weight:bold;border-bottom:0px black solid;border-top:1px black solid">3</td>
+                    <td  style="height:8mm;width:58mm;text-align:left;border-bottom:0px black solid;border-top:1px black solid;padding-top:5mm;"></td>
+                    <td style="height:8mm;border-left:1px black solid;border-bottom:0px black solid;padding-top:5mm;text-align:right;"></td>
+                    <td style="height:8mm;text-align:center;border-left:1px black solid;border-bottom:0px black solid;text-align:right;padding-top:1px;"></td>
+                    <td style="height:8mm;border-left:1px black solid;border-bottom:0px black solid;text-align:right;"></td>
                   </tr>
                 </xsl:if>
                 <!--END empty lines-->
                 <tr>
-                  <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid;padding-bottom:3.5mm;">
+                  <td style="height:8mm;width:6mm;text-align:center;font-weight:bold;border-bottom:1px black solid;border-top:0px black solid;padding-bottom:3.5mm;">
                     <xsl:if test="(count($FormData/TaxOnFloorStocksOfODCGrp) &lt; 4) or ($Print = $Separated)" >
                       <xsl:value-of select="4">
                       </xsl:value-of>
@@ -889,7 +889,7 @@
                       </xsl:value-of>
                     </xsl:if>
                   </td>
-                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;">	
+                  <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:0px black solid;">	
                     <span style="font-weight:bold;">Total floor stocks tax.</span>
                     <span style="width:3px;clear:none;"></span>
                     <span style="clear:none;font-weight:normal;">Add all amounts in column (d), include amounts from any additional</span><br/>
@@ -925,7 +925,10 @@
                 </tr>
               </tbody>
             </table>
-          </div>      
+          </div>
+          <xsl:if test="($Print = $Separated)">
+			   <br/><br/><br/> 
+		  </xsl:if>     
           
           <!-- Set Initial Height of Above Table -->
           <xsl:call-template name="SetInitialDynamicTableHeight">
@@ -937,13 +940,13 @@
           
           <!--END Part IVTable-->
        
-          <div  style="width:187mm">  
+          <div  style="width:187mm;padding-top:0.25mm;">  
             <span style="width:104mm;font-weight:bold;text-align:left;font-size:6pt;">   
             </span>
             <span style="width:5mm;"></span>      
             <span style="width:25mm;font-weight:normal;font-size:6pt;">
             </span>   
-            <span style="width:20mm;"></span>      
+            <span style="width:15mm;"></span>      
             <span style="text-align:right;width:7mm;font-weight:normal;font-size:6pt;">
             Form</span> 
             <span style="text-align:center;width:7mm;font-weight:bold;font-size:7pt;">
@@ -951,7 +954,7 @@
             <span style="text-align:right;width:18mm;font-weight:normal;font-size:6pt;padding-right:1mm;">
             (Rev. 1-2014)</span>       
           </div>
-          <br class="pageEnd"/>
+          <div class="pageEnd"/>
             
     	  <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -971,10 +974,10 @@
             </xsl:call-template>          
           </table>
   
-          <!--Begin Table Part I-->
+          <!--Begin Table Part II-->
           
           <xsl:if test="(count($FormData/TxOnOzoneDepletingChemicalsGrp) &gt; 3 and ($Print = $Separated))" >
-            <div style="width:187mm;">
+            <div style="width:187mm;display:block;">
               <div class="styLNDesc" style="width:187mm;height:4mm;">    
                 <span class="styText" style="font-weight:bold"  >
                   Form 6627, Part II, Tax on Ozone-Depleting Chemicals (ODCs),  IRS No. 98
@@ -999,7 +1002,7 @@
                           <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>
-                      <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid;padding-top:5mm;">
+                      <td style="height:8mm;width:6mm;text-align:center;vertical-align:top;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid;">
                         <xsl:value-of select="position()">
                         </xsl:value-of>
                       </td>
@@ -1010,18 +1013,16 @@
                           </xsl:call-template> 
                         </span>
                       </td>
-                      <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;padding-top:6mm;text-align:right;">
+                      <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
                         <span style="clear:none">   
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" select="PoundsQty"></xsl:with-param>
                           </xsl:call-template> 
                         </span>
                       </td>
-                      <td style="height:8mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:1px;">
-                        <span style="width:0.5mm;clear:none;"></span>
-                        <span style="height:8mm;width:2mm;text-align:left;padding-top:5mm;padding-right:5mm;">$</span>
-                        <span style="width:0.5mm;clear:none;"></span>
-                        <span style="height:8mm;width:35mm;padding-top:5mm;text-align:right;">
+                      <td class="styDepTblCell" style="height:8mm;vertical-align:top;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                        <span style="height:8mm;width:2mm;text-align:left;padding-top:0.5mm;display:inline">$</span>
+                        <span style="width:43mm;padding-top:0.5mm;display:inline;">
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" select="IRSTaxPerPoundAmt"></xsl:with-param>
                           </xsl:call-template> 
@@ -1029,8 +1030,8 @@
                         <span style="width:1px;clear:none;"></span>
                       </td>
                       <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
-                        <span style="height:8mm;width:2mm;text-align:left;padding-top:5mm;padding-right:4mm;">$</span>
-                        <span style="width:36mm;padding-top:5mm;">
+                        <span style="height:8mm;width:2mm;text-align:left;padding-top:0.5mm;display:inline;">$</span>
+                        <span style="width:43mm;padding-top:0.5mm;display:inline;">
                           <xsl:call-template name="PopulateAmount">
                             <xsl:with-param name="TargetNode" select="TaxAmt"></xsl:with-param>
                           </xsl:call-template> 
@@ -1050,9 +1051,9 @@
                       </xsl:value-of>
                     </td>
                     <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;">	
-                      <span style="font-weight:bold;">Total ozone-depleting chemicals tax.</span>
-                      <span style="width:3px;clear:none;"></span>
-                      <span style="clear:none;font-weight:normal;">Add all amounts in column (d), include amounts from any<br/>additional sheets. Enter the total here and on Form 720 on the line for</span>
+                      <span style="font-weight:bold;display:inline;">Total ozone-depleting chemicals tax.</span>
+                      <span style="width:3px;clear:none;display:inline;"></span>
+                      <span style="clear:none;font-weight:normal;display:inline;">Add all amounts in column (d), include amounts from any<br/>additional sheets. Enter the total here and on Form 720 on the line for</span>
                       <span style="width:4px;clear:none;"></span>
                       <span style="font-weight:bold;">IRS No. 98</span>
                       <span class="styBoldText">
@@ -1064,10 +1065,9 @@
                       </span>     
                       <span style="width:4mm;clear:none"></span>
                     </td>							
-                    <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
-                      <span style="width:1mm;clear:none;"></span>
-                      <span style="height:8mm;width:2mm;text-align:bottom;padding-top:5mm;padding-right:4mm;">$</span>
-                      <span style="width:36mm;padding-top:5mm;">
+                    <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:4mm;">
+                      <span style="height:8mm;width:2mm;text-align:bottom;padding-top:5mm;padding-right:4mm;display:inline;">$</span>
+                      <span style="width:36mm;padding-top:5mm;display:inline;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/TotOzoneDepletingChemicalTxAmt"></xsl:with-param>
                         </xsl:call-template> 
@@ -1084,7 +1084,7 @@
    
           <!--Table Part III-->
           <xsl:if test="(count($FormData/ODCTaxOnImportedProductsGrp) &gt; 3 and ($Print = $Separated))" >
-            <div style="width:187mm;">
+            <div style="width:187mm;display:block;">
               <div class="styLNDesc" style="width:187mm;height:4mm;">
                 <span class="styText" style="font-weight:bold"  >
                   Form 6627,  Part III,  ODC Tax on Imported Products,  IRS No. 19
@@ -1093,12 +1093,12 @@
               <table class="styDepTbl" style="font-size:6pt">
                 <thead class="styTableThead">
                   <tr class="styDepTblHdr" style="height:12mm">
-                    <th class="styTableCellHeader" style="width:58mm;font-weight:bold;border-color:black;color:white" scope="col">(a)<br />Imported product and the<br />applicable ODC</th>
+                    <th class="styTableCellHeader" style="width:56mm;font-weight:bold;border-color:black;color:white" scope="col" colspan="2">(a)<br />Imported product and the<br />applicable ODC</th>
                     <th class="styTableCellHeader" style="width:23mm;font-weight:bold;border-color:black;color:white" scope="col">(b)<br />Number of<br />products</th>
                     <th class="styTableCellHeader" style="width:26mm;font-weight:bold;border-color:black;color:white" scope="col">(c)<br />ODC weight of<br />product</th>
                     <th class="styTableCellHeader" style="width:26mm;font-weight:bold;border-color:black;color:white" scope="col">(d)<br />Tax per pound</th>
                     <th class="styTableCellHeader" style="width:26mm;font-weight:bold;border-color:black;color:white" scope="col">(e)<br />Entry value</th>
-                    <th class="styTableCellHeader" style="width:28mm;font-weight:bold;border-color:black;color:white;border-right-width:0px" scope="col">(f)<br />Tax<br />(see Part III instructions)</th>	
+                    <th class="styTableCellHeader" style="width:30mm;font-weight:bold;border-color:black;color:white;border-right-width:0px" scope="col">(f)<br />Tax<br />(see Part III instructions)</th>	
                   </tr>
                 </thead>
                 <tbody>
@@ -1110,37 +1110,39 @@
                           <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                         </xsl:choose>
                       </xsl:attribute>	
-                      <td class="styTableCellText" style="width:58mm;border-color:black">
-                        <div style="width:4mm;font-weight:bold;padding-top:2mm;padding:left:1mm;float:left;clear:none;font-size:7pt;text-align:center">
+                      <td class="styTableCellText" style="width:6mm;border-right-width:0px;border-color:black;vertical-align:top;">
+                        <div style="width:4mm;font-weight:bold;padding:left:1mm;float:left;clear:none;font-size:7pt;text-align:center">
                           <xsl:value-of select="position()"></xsl:value-of>
                         </div>
+                      </td>
+                      <td class="styTableCellText" style="width:50mm;border-color:black">
                         <div style="float:left;clear:none">
                           <xsl:call-template name="PopulateText">
                             <xsl:with-param name="TargetNode" select="IRSOzoneDepletingChemicalDesc"></xsl:with-param>
                           </xsl:call-template>
                         </div>
                       </td>
-                      <td class="styTableCell" style="width:23mm;border-color:black;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:23mm;border-color:black;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="TaxableProductCnt"></xsl:with-param>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="IRSOzoneDepletingChmclWghtQty"></xsl:with-param>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="IRSTaxPerPoundAmt"></xsl:with-param>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:26mm;border-color:black;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="EntryValueAmt"></xsl:with-param>
                         </xsl:call-template>
                       </td>
-                      <td class="styTableCell" style="width:28mm;border-color:black;border-right-width:0px;padding-right:1mm;padding-top:4mm">
+                      <td class="styTableCell" style="width:30mm;border-color:black;border-right-width:0px;padding-right:1mm;vertical-align:top;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="TaxAmt"></xsl:with-param>
                         </xsl:call-template>
@@ -1154,22 +1156,22 @@
                         <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                       </xsl:choose>
                     </xsl:attribute>
-                    <td class="styTableCellText" colspan="5" style="width:159mm;font-size:7pt;border-color:black;border-bottom-width:0">
+                    <td class="styTableCellText" colspan="6" style="width:157mm;font-size:7pt;border-color:black;border-bottom-width:0">
                       <div style="width:4mm;font-size:7pt;text-align:center;font-weight:bold;padding:left:1mm;float:left;clear:none;padding-bottom:2mm">
                         <xsl:value-of select="(count($FormData/ODCTaxOnImportedProductsGrp) + 1)"></xsl:value-of>
                       </div>
                       <div style="float:left;clear:none">
                         <b>Total ODC tax on imported products.</b> Add all amounts in column (f), include amounts from any
-                        additional sheets. Enter the total here and on Form 720 on the line for <b>IRS No. 19</b>
+                        additional sheets. <br/>Enter the total here and on Form 720 on the line for <b>IRS No. 19</b>
                         <span class="styDotLn" style="float:none;padding-left:2mm;padding-right:0.5mm">...............</span>
                         <img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/>
                       </div>
                     </td>
-                    <td class="styTableCell" style="width:28mm;border-color:black;border-right-width:0;border-bottom-width:0;padding-right:1mm;padding-top:5mm">
-                      <div style="width:2mm;float:left;clear:none;font-size:7pt">$</div>
-                      <div style="width:26mm;float:left;clear:none;padding-left:1mm;padding-right:0.3mm;padding-top:0.5mm">
+                    <td class="styTableCell" style="width:30mm;border-color:black;border-right-width:0;border-bottom-width:0;padding-top:5mm">
+                      <div style="width:2mm;float:left;clear:none;font-size:7pt;display:inline;">$</div>
+                      <div style="width:26mm;padding-right:0.3mm;padding-top:0.5mm;display:inline;">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="$FormData/IRS19ODCTotalTax"></xsl:with-param>
+                          <xsl:with-param name="TargetNode" select="$FormData/TotalODCTaxOnImpProductsAmt"></xsl:with-param>
                         </xsl:call-template>
                       </div>
                     </td>
@@ -1184,7 +1186,7 @@
    
          <!--Part IV Table-->
           <xsl:if test="(count($FormData/TaxOnFloorStocksOfODCGrp) &gt; 3 and ($Print = $Separated))" >
-            <div style="width:187mm;">
+            <div style="width:187mm;display:block;">
               <div class="styLNDesc" style="width:187mm;height:4mm;">
                 <span class="styText" style="font-weight:bold"  >
                 Form 6627, Part IV, Tax on Floor Stocks of ODCs,  IRS No. 20</span>
@@ -1208,7 +1210,7 @@
                         <xsl:otherwise>styDepTblRow2</xsl:otherwise>
                       </xsl:choose>
                     </xsl:attribute>
-                    <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid;padding-top:5mm;">
+                    <td style="height:8mm;width:6mm;text-align:center;font-weight=bold;border-bottom:1px black solid;border-top:1px black solid;vertical-align:top;">
                       <xsl:value-of select="position()">
                       </xsl:value-of>
                     </td>
@@ -1219,27 +1221,25 @@
                         </xsl:call-template> 
                       </span>
                     </td>
-                    <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;padding-top:6mm;text-align:right;">
+                    <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;vertical-align:top;text-align:right;">
                       <span style="clear:none">   
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="PoundsQty"></xsl:with-param>
                         </xsl:call-template> 
                       </span>
                     </td>
-                    <td style="height:8mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:1px;">
-                      <span style="width:0.5mm;clear:none;"></span>
-                      <span style="height:8mm;width:2mm;text-align:left;padding-top:5mm;padding-right:5mm;">$</span>
-                      <span style="width:0.5mm;clear:none;"></span>
-                      <span style="height:8mm;width:35mm;padding-top:5mm;text-align:right;">
+                    <td style="height:8mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;text-align:right;vertical-align:top;padding-top:1mm;">
+                      <span style="height:8mm;width:2mm;text-align:left;;float:left;display:inline;">$</span>
+                      <span style="height:8mm;width:35mm;text-align:right;display:inline">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="IRSTaxPerPoundAmt"></xsl:with-param>
                         </xsl:call-template> 
                       </span>
                       <span style="width:1px;clear:none;"></span>
                     </td>
-                    <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
-                      <span style="height:8mm;width:2mm;text-align:left;padding-top:5mm;padding-right:4mm;">$</span>
-                      <span style="width:36mm;padding-top:5mm;">
+                    <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;vertical-align:top;">
+                      <span style="height:8mm;width:2mm;float:left;display:inline;">$</span>
+                      <span style="width:36mm;display:inline;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="TaxAmt"></xsl:with-param>
                         </xsl:call-template> 
@@ -1259,11 +1259,11 @@
                     </xsl:value-of>
                   </td>
                   <td  colspan="3" style="height:8mm;text-align:left;border-bottom:1px black solid;border-top:1px black solid;">	
-                    <span style="font-weight:bold;">Total floor stocks tax.</span>
-                    <span style="width:3px;clear:none;"></span>
-                    <span style="clear:none;font-weight:normal;">Add all amounts in column (d), include amounts from any additional <br/>sheets. Enter the total here and on Form 720 on the line for</span>
-                    <span style="width:4px;clear:none;"></span>
-                    <span style="font-weight:bold;">IRS No. 20</span>
+                    <span style="font-weight:bold;display:inline;">Total floor stocks tax.</span>
+                    <span style="width:3px;clear:none;display:inline;"></span>
+                    <span style="clear:none;font-weight:normal;display:inline;">Add all amounts in column (d), include amounts from any additional <br/>sheets. Enter the total here and on Form 720 on the line for</span>
+                    <span style="width:4px;clear:none;display:inline;"></span>
+                    <span style="font-weight:bold;display:inline;">IRS No. 20</span>
                     <span class="styBoldText">
                       <span style="width:16px"></span>.
                       <span style="width:16px"></span>.
@@ -1274,12 +1274,11 @@
                     <span class="styBoldText" style="padding-left:5.5mm;"><img src="{$ImagePath}/6627_Bullet_Md.gif" alt="MediumBullet"/> 
                     </span>     
                   </td>
-                  <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
-                    <span style="width:1mm;clear:none;"></span>
-                    <span style="height:8mm;width:2mm;text-align:bottom;padding-top:5mm;padding-right:4mm;">$</span>
-                    <span style="width:36mm;padding-top:5mm;">
+                  <td class="styDepTblCell" style="height:8mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;padding-top:4mm;">
+                    <span style="width:2mm;text-align:bottom;float:left;display:inline;">$</span>
+                    <span style="width:36mm;padding-top:5mm;display:inline;">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="$FormData/IRS20FloorStkTotalTax"></xsl:with-param>
+                        <xsl:with-param name="TargetNode" select="$FormData/TotalFloorStocksTaxAmt"></xsl:with-param>
                       </xsl:call-template> 
                     </span>
                   </td>

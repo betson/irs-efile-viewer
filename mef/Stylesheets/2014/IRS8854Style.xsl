@@ -24,7 +24,7 @@
     }
 	.styIRS8854LineItem {  /* Line Item */
 		width: 187mm;
-		height: 3mm;
+		height: auto;
 		padding: 0px 0px 0px 0px;
 		border-style: solid;
 		border: 0px 0px 0px 0px;
@@ -39,7 +39,7 @@
 		float:left; clear:none;
 	}
 	.styIRS8854LNDesc{ /* Line item description */
-		width:138mm;height:4mm;
+		width:138mm;height:auto;
 		padding-top:.5mm;
 		padding-bottom:.5mm;
 		padding-left:3mm;

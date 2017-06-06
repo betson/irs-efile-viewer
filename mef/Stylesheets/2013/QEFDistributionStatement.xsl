@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/15/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 09/11/2015 - Changes made for defect 44503 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -20,8 +22,10 @@
   <!-- Main template -->
   <xsl:template match="/">
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
            <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -49,16 +53,16 @@
       <body class="styBodyClass">
 
         <xsl:call-template name="DocumentHeaderDependency"/>
-        <div class="styDepTitleLine">
+        <div class="styDepTitleLine" style="width:187mm;">
 
-          <span class="styDepTitle">
+          <span class="styDepTitle" style="width:187mm;">
             <span style="width:187mm;"><xsl:value-of select="$depDocTitle"/></span>        
           </span>
         </div>
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>
         <div class="styTopSectionLine" style="width:187mm;">        
           <div class=" styTopSectionLineLbl" style="float:left;clear:none;">Name:</div>
-          <div style="float:left;clear:none;">
+          <div style="width:118mm;float:left;clear:none;">
 			<xsl:if test="$DependencyData/BusinessName !=''">
 				<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/BusinessName/BusinessNameLine1"/></xsl:call-template>
 				<xsl:if test="$DependencyData/BusinessName/BusinessNameLine2 !=''">
@@ -79,7 +83,7 @@
               <br /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/Address/AddressLine2" /></xsl:call-template>                          </xsl:if>
             <xsl:if test="$DependencyData/Address/City != ''"><br /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/Address/City" /></xsl:call-template>, </xsl:if>
             <xsl:if test="$DependencyData/Address/State != ''"> <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/Address/State" /></xsl:call-template></xsl:if>
-            <xsl:if test="$DependencyData/Address/ZIPCode != ''"><span style="width:4px;" /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/Address/ZIPCode" /></xsl:call-template></xsl:if-->
+            <xsl:if test="$DependencyData/Address/ZIPCd != ''"><span style="width:4px;" /><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/Address/ZIPCd" /></xsl:call-template></xsl:if-->
 
 
 	  <xsl:choose>
@@ -151,7 +155,7 @@
           <div class="styTopSectionLineLbl" style="float:left;clear:both;text-align:right;">
             The Law Under Which the Amount was Previously Included in Income:
           </div>
-          <div style="float:left;clear:right;">            
+          <div style="width:118mm;float:left;clear:right;">            
             <br/><br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/LawForIncludedIncomeTxt"/></xsl:call-template>
           </div>
         </div>  
@@ -159,15 +163,15 @@
           <div class="styTopSectionLineLbl" style="float:left;clear:both;">
             Description of Transaction in Which the Shareholder Acquired the Stock of the PFIC from                     the Other US Person:
           </div>
-          <div class="styExplanationLine">            
-            <br/><br/><br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/TransactionDesc"/></xsl:call-template>
+          <div style="float:left;clear:right;">            
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/TransactionDesc"/></xsl:call-template>
           </div>
         </div>            
         <div class="styTopSectionLine" style="width:187mm;">        
           <div class="styTopSectionLineLbl" style="float:left;clear:both;">
             The Law Under Which the Shareholder's Holding Period Includes the Holding Period of the                     Other US Person:
           </div>
-          <div style="float:left;clear:right;">            
+          <div style="width:118mm;float:left;clear:right;">            
             <br/><br/><br/><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$DependencyData/LawForShareholdersHoldPrdTxt"/></xsl:call-template>
           </div>
         </div>        

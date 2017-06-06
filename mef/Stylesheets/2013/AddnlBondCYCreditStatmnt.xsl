@@ -14,8 +14,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -63,7 +65,7 @@
 					</div>
 					<!-- Part I Line 1a-->
 					<div class="styBB" style="width:187mm;">
-						<div class="styGenericDiv" style="width:187mm; float:none;clear:both; ">
+						<div class="styGenericDiv" style="width:187mm; float:none;clear:both;height:10mm;">
 							<div class="styLNLeftNumBox" style="height:4.5mm;">
 								<span style="width:5px;"/>1a</div>
 							<div class="styLNDesc" style="width:69mm;height:4.5mm;">
@@ -71,14 +73,14 @@
                            <!--Dotted Line-->								
 								<br/>
 								<xsl:if test="BondIssuerName/BusinessNameLine2 != ''">
-								<span style="letter-spacing:3.8mm;font-weight:bold;">...............</span>
+								<span style="letter-spacing:3.8mm;font-weight:bold;">..............</span>
 								<br/>
 								</xsl:if>
-								<span style="letter-spacing:3.8mm;font-weight:bold;">...............</span>
+								<span style="letter-spacing:3.8mm;font-weight:bold;">..............</span>
 								<img src="{$ImagePath}/8912_Bullet_Md.gif" alt="MediumBullet" align="bottom"/>
 								
 							</div>
-							<div class="styLNAmountBox" style="text-align: left;border-left-width:0px;height:8mm;padding-bottom:none;width:110mm;font-size:7pt;">
+							<div class="styLNAmountBox" style="text-align: left;border-left-width:0px;height:10mm;padding-bottom:none;width:110mm;font-size:7pt;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="BondIssuerName/BusinessNameLine1"/>
 								</xsl:call-template>
@@ -104,10 +106,10 @@
 <span style="width:11px;"/>b</div>
 	<div class="styLNDesc" style="width:111mm;height:4.5mm;">Bond issuer's employer identification number
     <!--Dotted Line-->
-	<span style="letter-spacing:3.8mm;font-weight:bold;">...........</span>
+	<span style="letter-spacing:3.8mm;font-weight:bold;">..........</span>
 	<img src="{$ImagePath}/8912_Bullet_Md.gif" alt="MediumBullet" align="bottom"/>
 							</div>
-							<div class="styLNAmountBox" style="text-align: center;border-left-width:0px;height:3mm;padding-bottom:none;width:67mm;font-size:7pt;">
+							<div class="styLNAmountBox" style="text-align: center;border-left-width:0px;height:4mm;padding-bottom:none;width:67mm;font-size:7pt;">
 								<xsl:call-template name="PopulateEIN">
 	<xsl:with-param name="TargetNode" select="BondIssuerEIN"/>
 								</xsl:call-template>
@@ -119,10 +121,10 @@
 <span style="width:5px;"/>2a</div>
 	<div class="styLNDesc" style="width:143mm;height:4.5mm;">  Date bond issued   
     <!--Dotted Line-->
-	<span style="letter-spacing:3.8mm;font-weight:bold;">..........................</span>
+	<span style="letter-spacing:3.8mm;font-weight:bold;">.........................</span>
 	<img src="{$ImagePath}/8912_Bullet_Md.gif" alt="MediumBullet" align="bottom"/>
 							</div>
-							<div class="styLNAmountBox" style="text-align: center;border-left-width:0px;height:3mm;padding-bottom:none;width:35mm;font-size:7pt;">
+							<div class="styLNAmountBox" style="text-align: center;border-left-width:0px;height:4mm;padding-bottom:none;width:35mm;font-size:7pt;">
 								<xsl:call-template name="PopulateMonthDayYear">
 	<xsl:with-param name="TargetNode" select="BondIssuedDt"/>
 								</xsl:call-template>
@@ -134,10 +136,10 @@
 <span style="width:11px;"/>b</div>
 	<div class="styLNDesc" style="width:143mm;height:4.5mm;">   Date bond matures   
     <!--Dotted Line-->
-	<span style="letter-spacing:3.8mm;font-weight:bold;">.........................</span>
+	<span style="padding-left:2mm;letter-spacing:3.8mm;font-weight:bold;">........................</span>
 	<img src="{$ImagePath}/8912_Bullet_Md.gif" alt="MediumBullet" align="bottom"/>
 							</div>
-							<div class="styLNAmountBox" style="text-align: center;border-left-width:0px;height:3mm;padding-bottom:none;width:35mm;font-size:7pt;">
+							<div class="styLNAmountBox" style="text-align: center;border-left-width:0px;height:4mm;padding-bottom:none;width:35mm;font-size:7pt;">
 								<xsl:call-template name="PopulateMonthDayYear">
 	<xsl:with-param name="TargetNode" select="BondMaturityDt"/>
 								</xsl:call-template>
@@ -150,7 +152,7 @@
 							<div class="styLNDesc" style="width:143mm;height:4.5mm;">
                          Date bond disposed of (if applicable)     
                             <!--Dotted Line-->
-								<span style="letter-spacing:2.5mm;font-weight:bold;">............................</span>
+								<span style="padding-left:3.3mm;letter-spacing:3mm;font-weight:bold;">.......................</span>
 								<img src="{$ImagePath}/8912_Bullet_Md.gif" alt="MediumBullet" align="bottom"/>
 							</div>
 							<div class="styLNAmountBox" style="text-align: center;border-left-width:0px;height:3mm;padding-bottom:none;width:35mm;font-size:7pt;border-bottom-width: 0px;">
@@ -168,11 +170,11 @@
 							<div class="styLNDesc" style="width:139.60mm;height:6mm;float:left;padding-top:3mm;">
 								<b>Sum of Credits.</b> Add the amounts on line 4, column (f). 
       
-			<span style="letter-spacing:3.5mm;font-weight:bold;">................</span>
+			<span style="letter-spacing:3.5mm;font-weight:bold;">...............</span>
 							</div>
-							<div class="styLNRightNumBox" style="width:7mm;height:6mm;padding-top:3mm;">
+							<div class="styLNRightNumBox" style="width:7mm;height:6mm;padding-top:2mm;">
 							5</div>
-							<div class="styLNAmountBox" style="height:6mm;width:32mm;font-size:7pt;padding-top:3mm;">
+							<div class="styLNAmountBox" style="height:6mm;width:32mm;font-size:7pt;padding-top:2mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="CreditSumAmt"/>
 								</xsl:call-template>
@@ -184,7 +186,7 @@
 								<span style="width:5px;"/>6</div>
 							<div class="styLNDesc" style="width:139.60mm;height:6mm;float:left;padding-top:3mm;">
 								For a <b>new</b> clean renewable energy bond or a qualified energy conservation bond, multiply the amount on line 5 by 70% (.70).  For a clean renewable energy bond, Gulf tax credit bond, Midwestern tax credit bond, qualified forestry conservation bond, or qualified zone academy bond, enter the amount from line 5.      
-			<span style="letter-spacing:3.5mm;font-weight:bold;">..</span>
+			<span style="letter-spacing:3.5mm;font-weight:bold;">.....</span>
 							</div>
 							<div class="styLNRightNumBox" style="width:7mm;height:13mm;padding-top:9mm;border-bottom-width: 0px; ">
 							6</div>
@@ -257,7 +259,7 @@
 							</xsl:call-template>
 						</td>
 						<!-- Credit Rate -->
-						<td class="stydepTblCell" style="width:20mm;text-align:right;font-size:7pt">
+						<td class="styDepTblCell" style="width:20mm;text-align:right;font-size:7pt">
 							<xsl:call-template name="PopulatePercent">
 								<xsl:with-param name="TargetNode" select="CreditRt"/>
 							</xsl:call-template>
@@ -269,13 +271,13 @@
 							</xsl:call-template>
 						</td>
 						<!-- Percent -->
-						<td class="stydepTblCell" style="width:20mm;text-align:right;font-size:7pt">
+						<td class="styDepTblCell" style="width:20mm;text-align:right;font-size:7pt">
 								<xsl:call-template name="PopulatePercent">
 									<xsl:with-param name="TargetNode" select="Pct"/>
 								</xsl:call-template>
 						</td>
 						<!-- Credit Amount -->
-						<td class="stydepTblCell" style="width:33mm;text-align:right;font-size:7pt">
+						<td class="styDepTblCell" style="width:33mm;text-align:right;font-size:7pt">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="CreditAmt"/>
 								</xsl:call-template>

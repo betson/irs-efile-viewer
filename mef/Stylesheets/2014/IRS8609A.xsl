@@ -11,8 +11,10 @@
   <xsl:template match="/">
   <!-- 6/15/2011 RLW -->
   <!-- 8/25/2011 RLW -->
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+	<html>
       <head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8609SAData)"/>
@@ -38,99 +40,118 @@
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
-      <body class="styBodyClass">
-        <form style="font-family:arial; font-size:9pt" name="Form8609A">
+      <body class="styBodyClass" style="width:187mm;">
+        <form name="Form8609A">
           <xsl:call-template name="DocumentHeader"/>
-          <div class="styTBB" style="height:18mm; width:187mm">
-            <div class="styFNBox" style="width:31mm; height:18mm; font-size:7pt">
+          <div class="styTBB" style="width:187mm;height:20mm;">
+            <div class="styFNBox" style="width:32mm; height:20mm;border-right-width: 2px;">
               <div>
-                <span class="styFormNumber" style="font-size:10">Form</span>
-                <span class="styFormNumber" style="font-size:20pt">8609-A</span>
+                Form<span class="styFormNumber">8609-A</span>
                 <!--General Dependency Push Pin -->
                 <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$Form8609SAData"/>
                 </xsl:call-template>
                 <br/>(Rev. December 2008)
-            <div style="font-size:6pt; margin-top:1mm">
-              Department of the Treasury<br/>Internal Revenue Service
-            </div>
+				<div style="padding-top:1.5mm">
+					<span class="styAgency">Department of the Treasury</span>
+					<br/>
+					<span class="styAgency">Internal Revenue Service</span>
+				</div>
               </div>
             </div>
-            <div class="styFTBox" style="width:124mm; height:18mm">
+            <div class="styFTBox" style="width:120mm;height:20mm;">
               <div class="styMainTitle" style="height:8mm; padding-top:2mm">
                 Annual Statement for Low-Income Housing Credit
                </div>
-              <div class="styFBT" style="font-size:8pt; text-align:center">
+              <div class="styFBT" style="text-align:center">
                 <img src="{$ImagePath}/8609A_Bullet_Lg.gif" alt="Arrow Bullet"/>
                 File with owner's federal income tax return.
-                 <br/>
+                 <br/> <br/>
                 <span style="height:2mm;">
                   <img src="{$ImagePath}/8609A_Bullet_Md.gif" alt="MidSizeBullet"/> See separate instructions.</span>
               </div>
             </div>
-            <div class="styTYBox" style="font-size:7pt; height:18mm">
-              <div class="styOMB" style="float:left; width:31mm; padding-top:3mm; height:9mm">OMB No. 1545-0988</div>
-              <div style="float:left; padding-left:5mm; height:5mm; padding-top:1mm; text-align:left">Attachment<br/>
-                            Sequence No. <b style="font-size:9pt">36</b>
+              <div class="styOMB" style="width:35mm;height:10mm;padding-top:1mm;padding-left:5mm;border-left-width:2px;">OMB No. 1545-0988</div>
+              <div class="styTYBox" style=" width:35mm;height:10mm; padding-top:1mm;padding-left:5mm;text-align: left;border-left-width:2px;">Attachment
+              <br/>
+                Sequence No. <b style="font-size:9pt">36</b>
               </div>
-            </div>
           </div>
           <!-- end headers line -->
           <!--======================================BEGIN RETURN HEADER=================================-->
           <!-- Begin Names and Identifying number section -->
           <div style="width:187mm;" class="styBB">
-            <div style="width:110mm;height:8mm;font-weight:normal;font-size:6pt;font-weight:normal;" class="styNameBox">
-             Name(s) shown on return <br/>
+            <div style="width:110mm;height:auto;font-weight:normal;font-size:8pt;font-weight:normal;padding-top:1mm;" class="styNameBox">
+             <b>Name(s) shown on return</b> <br/>
 		    <!--Choice statement for EIN Line when either filing with 1120 or 1040 and data calling from a ReturnHeader-->
-           <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-            <xsl:choose>
-           <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">								  
-            <br/>
-           <xsl:call-template name="PopulateReturnHeaderFiler">
-             <xsl:with-param name="TargetNode">Name</xsl:with-param>
-          </xsl:call-template>
-           </xsl:when>
-        <xsl:otherwise>
-            <xsl:call-template name="PopulateReturnHeaderFiler">
-            <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-            </xsl:call-template>
-            <br/>
-            <xsl:call-template name="PopulateReturnHeaderFiler">
-              <xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-            </xsl:call-template>
-        </xsl:otherwise>
- </xsl:choose>
-</div>
-   <div style="width:49mm;height:4mm;padding-left:2mm;font-size:8pt;" class="styEINBox">
-  Identifying number
+              <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
+			  <xsl:choose>
+			  <!-- Name from 1120/990/1065 Return Header -->
+				<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+				  </xsl:call-template>
+				  <br/>
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
+				  </xsl:call-template>
+				</xsl:when>
+				<!-- Name from 1040 Return Header -->
+				<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
+				  <br/>
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+				  </xsl:call-template>
+				</xsl:when>
+				<!-- Name from 1041 Return Header 
+				<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+				  </xsl:call-template>
+				  <br/>
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
+				  </xsl:call-template>
+				</xsl:when>
+				<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+				  </xsl:call-template>
+				  <br/>
+				</xsl:when> -->
+			  </xsl:choose>
+	</div>
+	<div style="width:49mm;height:auto;padding-left:2mm;font-size:8pt;padding-top:1mm;" class="styEINBox">
+	  Identifying number
       <br/>   
-  <!--Choice statement for EIN Line when either filing with 1120 or 1040 and data calling from a ReturnHeader-->
-  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
-  <span style="font-weight:normal;">
-  <xsl:choose>
-    <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-      <xsl:call-template name="PopulateReturnHeaderFiler">
-        <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-      </xsl:call-template>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:call-template name="PopulateReturnHeaderFiler">
-        <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-      </xsl:call-template>
-    </xsl:otherwise>
-  </xsl:choose> 
-  </span>
-   </div>
+	  <!--Choice statement for EIN Line when either filing with 1120 or 1040 and data calling from a ReturnHeader-->
+	  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
+	  <span style="font-weight:normal;padding-top:3.5mm;">
+		<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
+		<xsl:choose>
+		    <xsl:when test="$RtnHdrData/Filer/EIN">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+				  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				</xsl:call-template>
+		    </xsl:when>
+			  <xsl:otherwise>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+				  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				</xsl:call-template>
+			  </xsl:otherwise>
+			</xsl:choose>
+	  </span>
+	</div>
   </div>
-          <!-- End Names and Identifying number section -->
-          <!-- Start Part I Compliance Informations -->
-          <div style="width:187mm;" class="styBB">
-            <div class="styPartName" style="width:15mm;">Part I</div>
-            <div class="styPartDesc" style="padding-left:3mm;">
-              Compliance Information  
-            </div>
-          </div>
-          <!-- build yes/no headers -->
+    <!-- End Names and Identifying number section -->
+    <!-- Start Part I Compliance Informations -->
+    <div style="width:187mm;" class="styBB">
+        <div class="styPartName" style="width:15mm;">Part I</div>
+        <div class="styPartDesc" style="padding-left:3mm;">
+         Compliance Information  
+        </div>
+    </div>
+         <!-- build yes/no headers -->
           <div style="width:187mm;">
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
@@ -145,32 +166,33 @@
           <!-- Begin line A -->
           <div style="width:187mm;">
             <div style="float:left;">
-              <div class="styLNLeftNumBox" style="height:4mm;">A</div>
+              <div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;">A</div>
               <div class="styLNDesc" style="height:4mm;width:159.75mm;">
-                                   Building identification number (BIN) 
+                    Building identification number (BIN) 
                 <img src="{$ImagePath}/8609A_Bullet_Lg.gif" alt="Arrow Bullet"/>
                 <span style="width:2mm"/>
+                <span class="styFixedUnderline" style="width:102mm;float:none;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form8609SAData/BIN"/>
                 </xsl:call-template>
+                </span>
               </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                         border-bottom-width:0px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
             </div>
           </div>
           <!-- end line A -->
           <!-- Begin line B -->
           <div style="width:187mm;">
             <div style="float:left;">
-              <div class="styLNLeftNumBox" style="height:4mm;">B</div>
+              <div class="styLNLeftNumBox" style="height:4mm;padding-top:2mm;">B</div>
               <div class="styLNDesc" style="height:4mm;width:125mm;">
-                        This Form 8609-A is for (check the box) 
+                    This Form 8609-A is for (check the box) 
                 <img src="{$ImagePath}/8609A_Bullet_Lg.gif" alt="Arrow Bullet"/>
-                        a newly constructed or existing building
-                 
-                 <input type="Checkbox" class="styCkbox">
+                    a newly constructed or existing building
+                 <input type="checkbox" alt="alt" class="styCkbox">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$Form8609SAData/NewlyConstrOrExstngBuildingInd"/>
                     <xsl:with-param name="BackupName">IRS8609ANewlyConstructed</xsl:with-param>
@@ -188,8 +210,8 @@
               </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                          border-bottom-width:0px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
             </div>
           </div>
           <!-- end line B -->
@@ -197,10 +219,9 @@
           <div style="width:187mm;">
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
-              <div class="styLNDesc" style="height:4mm;width:120mm;">
-                        section 42(e) rehabilitation expenditures 
-                
-                 <input type="Checkbox" class="styCkbox">
+              <div class="styLNDesc" style="height:6mm;width:120mm;padding-bottom:3mm;padding-top:0mm;">
+                section 42(e) rehabilitation expenditures 
+                 <input type="checkbox" alt="alt" class="styCkbox">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$Form8609SAData/Section42eRehbltExpendInd"/>
                     <xsl:with-param name="BackupName">IRSIRS8609ASection42e</xsl:with-param>
@@ -218,8 +239,8 @@
               </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                          border-bottom-width:0px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;height:6mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;height:6mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
             </div>
           </div>
           <!-- end line B1 -->
@@ -228,24 +249,21 @@
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;">C</div>
               <div class="styLNDesc" style="height:4mm;width:160mm;">
-                        Do you have in your records the original Form 8609 (or a copy thereof) 
-                        signed and issued by the housing credit
-                </div>
+                Do you have in your records the original Form 8609 (or a copy thereof) signed and issued by the housing credit
+              </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                          border-bottom-width:1px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:1px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:1px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:1px;background-color:lightgrey"/>
             </div>
           </div>
           <div style="width:187mm;">
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
-              <div class="styLNDesc" style="height:4mm;width:155mm;">
-                <span style="float:left;">agency for the building in<span style="font-weight:bold"> A</span> ?</span>
+              <div class="styLNDesc" style="height:4mm;width:163mm;">
+                <span style="float:left;">agency for the building in<b> A</b>?</span>
                 <!--Dotted Line-->
-                <span class="styDotLn" style="float:right;padding-right:1mm;">...........................</span>
-                       
-           
+                <span class="styDotLn" style="float:right;padding-right:1mm;">...............................</span>
               </div>
             </div>
             <div style="float:right;">
@@ -264,13 +282,13 @@
           <div style="width:187mm;">
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
-              <div class="styLNDesc" style="height:4mm;width:155mm;">
-                        If "No," see the instructions and stop here ...... do not go to Part II.  
+              <div class="styLNDesc" style="height:4mm;width:163mm;">
+                If "No," see the instructions and stop here&#8212;do not go to Part II.  
               </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                          border-bottom-width:0px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
             </div>
           </div>
           <!-- end line C -->
@@ -279,22 +297,21 @@
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;">D</div>
               <div class="styLNDesc" style="height:4mm;width:160mm;">
-                        Did the building in <span style="font-weight:bold"> A </span>qualify as a part of a qualified low-income 
-                        housing project and meet the requirements of 
-                 </div>
+                    Did the building in <b> A </b>qualify as a part of a qualified low-income housing project and meet the requirements of 
+              </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                          border-bottom-width:1px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:1px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:1px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:1px;background-color:lightgrey"/>
             </div>
           </div>
           <div style="width:187mm;">
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
-              <div class="styLNDesc" style="height:4mm;width:155mm;">
+              <div class="styLNDesc" style="height:4mm;width:163mm;">
                 <span style="float:left;">section 42 as of the end of the tax year for which this form is being filed? </span>
                 <!--Dotted Line-->
-                <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>
               </div>
             </div>
             <div style="float:right;">
@@ -314,12 +331,12 @@
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
               <div class="styLNDesc" style="height:4mm;width:155mm;">
-                        If "No," see the instructions and stop here ...... do not go to Part II.  
+                    If "No," see the instructions and stop here&#8212;do not go to Part II.  
               </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                         border-bottom-width:0px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
             </div>
           </div>
           <!-- end line D -->
@@ -328,23 +345,21 @@
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;">E</div>
               <div class="styLNDesc" style="height:4mm;width:155mm;">
-                       Was there a decrease in the qualified  basis of the building in 
-                       <span style="font-weight:bold"> A </span>for the tax year 
-                       for which this form is being 
-                 </div>
+                    Was there a decrease in the qualified  basis of the building in <b>A </b>for the tax year for which this form is being 
+              </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                          border-bottom-width:1px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:1px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:1px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:1px;background-color:lightgrey"/>
             </div>
           </div>
           <div style="width:187mm;">
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
-              <div class="styLNDesc" style="height:4mm;width:155mm;">
+              <div class="styLNDesc" style="height:4mm;width:163mm;">
                 <span style="float:left;">filed?</span>
                 <!--Dotted Line-->
-                <span class="styDotLn" style="float:right;padding-right:1mm;">...................................</span>
+                <span class="styDotLn" style="float:right;padding-right:1mm;">......................................</span>
               </div>
             </div>
             <div style="float:right;">
@@ -364,25 +379,24 @@
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
               <div class="styLNDesc" style="height:4mm;width:155mm;">
-                        If "Yes," see the instructions.  If "No," and the entire 
-                        credit has been claimed in prior tax years, stop here--do  
+                    If "Yes," see the instructions.  If "No," and the entire credit has been claimed in prior tax years, stop here&#8212;do  
                 </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                          border-bottom-width:0px;background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                        border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
             </div>
           </div>
           <div style="width:187mm;">
             <div style="float:left;">
               <div class="styLNLeftNumBox" style="height:4mm;"/>
               <div class="styLNDesc" style="height:4mm;width:155mm;">
-                        not go to Part II.
+                    not go to Part II.
               </div>
             </div>
             <div style="float:right;">
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                background-color:lightgrey"/>
-              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;                background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
+              <div class="styLNAmountBox" style="width:8mm;text-align:center;font-weight:bold;border-bottom-width:0px;background-color:lightgrey"/>
             </div>
           </div>
           <!-- end line E -->
@@ -398,17 +412,16 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">1</div>
             <div style="float:left">
-          Eligible basis of building             
-        </div>
+			  Eligible basis of building             
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            .........................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ..........................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">1</div>
-              <div class="styIRS8609ScheduleALNAmountBox">
+              <div class="styIRS8609ScheduleALNAmountBox">              
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8609SAData/BuildingEligibleBasisAmt"/>
-                </xsl:call-template>
+                </xsl:call-template>                
               </div>
             </div>
           </div>
@@ -417,25 +430,23 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">2</div>
             <div style="float:left">
-         Low-income portion  (smaller of unit fraction or floor space fraction) (if first year of the credit   
-        </div>
+			 Low-income portion  (smaller of unit fraction or floor space fraction) (if first year of the credit period, see   
+			</div>
             <div style="float:right">
               <span class="styIRS8609ScheduleADotLn">
-            ...
-          </span>
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox" style="border-bottom:0 solid black"/>
               <div class="styIRS8609ScheduleALNAmountBox" style="border-bottom:0 solid black"/>
             </div>
           </div>
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum"/>
-            <div style="float:left">
-          period, see instructions)   
-        </div>
+            <div style="float:left;padding-left:7mm;">
+			   instructions)   
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            .........................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ..............................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">2</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulatePercent">
@@ -449,12 +460,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">3</div>
             <div style="float:left">
-         Qualified basis of low-income building. Multiply line 1 by line 2 (see instructions for exceptions)    
-        </div>
+			 Qualified basis of low-income building. Multiply line 1 by line 2 (see instructions for exceptions)    
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            .
-          </span>
+              <span class="styIRS8609ScheduleADotLn">.....
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">3</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -468,12 +478,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">4</div>
             <div style="float:left">
-         Part-year adjustment for disposition or acquisition during the tax year   
-        </div>
+			 Part-year adjustment for disposition or acquisition during the tax year   
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ...........
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ............
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">4</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -487,12 +496,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">5</div>
             <div style="float:left">
-         Credit percentage
-         </div>
+			 Credit percentage
+			 </div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ...........................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ............................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">5</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulatePercent">
@@ -506,12 +514,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">6</div>
             <div style="float:left">
-          Multiply  line 3 or line 4 by the percentage on line 5
-        </div>
+			  Multiply  line 3 or line 4 by the percentage on line 5
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            .................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ..................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">6</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -526,11 +533,10 @@
             <div class="styIRS8609ScheduleAItemNum">7</div>
             <div style="float:left">
             Additions to qualified basis, if any
-         </div>
+			 </div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ......................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> .......................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">7</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -544,12 +550,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">8</div>
             <div style="float:left">
-          Part-year adjustment for disposition or acquisition during the tax year
-        </div>
+			  Part-year adjustment for disposition or acquisition during the tax year
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ..........
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ............
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">8</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -563,12 +568,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">9</div>
             <div style="float:left">
-          Credit percentage. Enter one-third of the percentage on line 5 
-        </div>
+			  Credit percentage. Enter one-third of the percentage on line 5 
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            .............
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ...............
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">9</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulatePercent">
@@ -582,12 +586,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">10</div>
             <div style="float:left">
-          Multiply line 7 or line 8 by the percentage on line 9 
-        </div>
+			  Multiply line 7 or line 8 by the percentage on line 9 
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            .................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ..................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">10</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -601,12 +604,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">11</div>
             <div style="float:left">
-          Section 42(f)(3)(B) modification
-        </div>
+			  Section 42(f)(3)(B) modification
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            .......................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> .......................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">11</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -620,12 +622,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">12</div>
             <div style="float:left">
-          Add lines 10 and 11
-        </div>
+			  Add lines 10 and 11
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ...........................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ...........................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">12</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -639,12 +640,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">13</div>
             <div style="float:left">
-          Credit for building before line 14 reduction. Subtract line 12 from line 6
-        </div>
+			  Credit for building before line 14 reduction. Subtract line 12 from line 6
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ..........
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ............
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">13</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -658,12 +658,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">14</div>
             <div style="float:left">
-         Disallowed credit due to federal grants (see instructions)
-        </div>
+			 Disallowed credit due to federal grants (see instructions)
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ..............
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">14</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -677,25 +676,23 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">15</div>
             <div style="float:left">
-         Credit allowed for building for tax year. Subtract line 14 from line 13, but do not enter more than 
-        </div>
+			 Credit allowed for building for tax year. Subtract line 14 from line 13, but do not enter more than the amount 
+			</div>
             <div style="float:right">
               <span class="styIRS8609ScheduleADotLn">
-            ..
-          </span>
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox" style="border-bottom:0 solid black"/>
               <div class="styIRS8609ScheduleALNAmountBox" style="border-bottom:0 solid black"/>
             </div>
           </div>
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum"/>
-            <div style="float:left">
-         the amount shown on Form 8609, Part I, line 1b
-        </div>
+            <div style="float:left;padding-left:7mm;">
+			 shown on Form 8609, Part I, line 1b
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ..................
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ......................
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">15</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -709,12 +706,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">16</div>
             <div style="float:left">
-       Taxpayer's proportionate share of credit for the year (see instructions)
-        </div>
+			   Taxpayer's proportionate share of credit for the year (see instructions)
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ..........
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ............
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">16</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -728,12 +724,11 @@
           <div style="width:187mm">
             <div class="styIRS8609ScheduleAItemNum">17</div>
             <div style="float:left">
-       Adjustments for deferred first-year credit (see instructions)
-        </div>
+			   Adjustments for deferred first-year credit (see instructions)
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ..............
-          </span>
+              <span class="styIRS8609ScheduleADotLn"> ...............
+			  </span>
               <div class="styIRS8609ScheduleALNRightNumBox">17</div>
               <div class="styIRS8609ScheduleALNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -744,17 +739,16 @@
           </div>
           <!-- end part II line 17 -->
           <!-- begin part II line 18  -->
-          <div style="width:187mm">
+          <div class="styBB" style="width:187mm;border-bottom-width:2px;">
             <div class="styIRS8609ScheduleAItemNum">18</div>
             <div style="float:left">
-        Taxpayer's credit. Combine lines 16 and 17. Enter here and on Form 8586 (see instructions).  
-        </div>
+				Taxpayer's credit. Combine lines 16 and 17. Enter here and on Form 8586 (see instructions)  
+			</div>
             <div style="float:right">
-              <span class="styIRS8609ScheduleADotLn">
-            ..
-          </span>
-              <div class="styIRS8609ScheduleALNRightNumBox">18</div>
-              <div class="styIRS8609ScheduleALNAmountBox">
+              <span class="styIRS8609ScheduleADotLn">......
+			  </span>
+              <div class="styIRS8609ScheduleALNRightNumBox" style="border-bottom-width:0px;">18</div>
+              <div class="styIRS8609ScheduleALNAmountBox" style="border-bottom-width:0px;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8609SAData/LowIncomeHousingCrAmt"/>
                 </xsl:call-template>
@@ -762,7 +756,7 @@
             </div>
           </div>
           <!-- end part II line 18 -->
-          <div class="styFooter" style="width:187mm;clear:both;font-size:8pt;border-top:2 solid Black;">
+          <div class="styFooter" style="width:187mm;clear:both;font-size:8pt;border-top:2 solid black;border-top-width:2px;">
             <div style="width:105mm;font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see separate instructions.</div>
             <div style="width:25mm;text-align:left" class="styGenericDiv">Cat No. 38841T</div>
             <div style="width:57mm;padding-left:2mm;text-align:right" class="styGenericDiv">
@@ -772,8 +766,8 @@
           <p style="page-break-before:always"/>
           <div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif">
             <div class="styLeftOverTitle">
-          Additional Data        
-        </div>
+			  Additional Data        
+			</div>
             <div class="styLeftOverButtonContainer">
               <input class="styLeftoverTableBtn" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage()" tabindex="1"/>
             </div>

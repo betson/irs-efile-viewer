@@ -9,11 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form4797Data" select="$RtnDoc/IRS4797"/>
 	<xsl:template match="/">
-		<!-- 6/14/2011 RLW Drop 2-->
-		<!-- 7/28/2011 RLW Drop 3-->
-		<!-- 8/25/2011 RLW Drop 3-->
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form4797Data)"/>
@@ -32,8 +31,7 @@
 				<xsl:call-template name="InitJS"/>
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<style type="text/css">
-				<xsl:if test="not($Print) or $Print=''">
-						<!-- Form 4797 CSS Styles are located in the template called below -->
+					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS4797Style"/>
 						<xsl:call-template name="AddOnStyle"/>
 					</xsl:if>
@@ -43,40 +41,39 @@
 			<body class="styBodyClass">
 				<form name="Form4797">
 					<xsl:call-template name="DocumentHeader"/>
-					<div class="styTBB" style="width:187mm;height:23mm;">
-						<div class="styFNBox" style="width:31mm;height:23mm;">
-							<div style="height:19.1mm;">Form
+					<div class="styTBB" style="width:187mm;height:24mm;">
+						<div class="styFNBox" style="width:28mm;height:24mm;">
+							<div style="height:auto;">Form
 							 <span class="styFormNumber"> 4797</span>
 								<!--General Dependency Push Pin  -->
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form4797Data"/>
 								</xsl:call-template>
 							</div>
-							<div style="padding-top: 2mm;">
+							<div style="padding-top:8mm;">
 								<span class="styAgency">Department of the Treasury</span>
 								<br/>
-								<span class="styAgency">Internal Revenue Service (99)</span>
+								<span class="styAgency">Internal Revenue Service</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:21mm;">
+						<div class="styFTBox" style="width:127mm;height:24mm;">
 							<div class="styMainTitle" style="height:7mm;padding-top:1mm;">Sales of Business Property</div>
-							<div class="styFST" style="height:9mm;font-size:9pt;margin-left:3mm;">
+							<div class="styFST" style="height:auto;font-size:9pt;margin-left:3mm;">
 								(Also Involuntary Conversions and Recapture
 								Amounts <br/>Under Sections 179 and 280F(b)(2))
 						    </div>
-							<div class="styFBT" style="height:5mm;">
+							<div class="styFBT" style="height:auto;">
 								<img src="{$ImagePath}/4797_Bullet.gif" alt="Bullet"/> Attach to your tax return.
-								<span style="width:16px"/>
+								<br/>
 								<img src="{$ImagePath}/4797_Bullet.gif" alt="Bullet"/>	Information about Form 4797 and its separate instructions is at 
 									<a href="http://www.irs.gov/form4797" title="Link to IRS.gov">
-									<i>www.irs.gov/form4797</i>
-								</a>
-								<br/>
+										<i>www.irs.gov/form4797</i>
+									</a>
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:23mm;">
-							<div class="styOMB" style="height:2mm;">OMB No. 1545-0184</div>
-							<div class="styTY" style="height:16.9mm;">20<span class="styTYColor">13</span>
+						<div class="styTYBox" style="width:30mm;height:24mm;">
+							<div class="styOMB" style="height:auto;">OMB No. 1545-0184</div>
+							<div class="styTY" style="height:auto;">20<span class="styTYColor">13</span>
 							</div>
 							<div class="styTYBox" style="border-bottom-width:0px;padding-left: 2mm; border-left-width:0px; text-align: left">Attachment <br/>
 							Sequence No. <span class="styBoldText">27</span>
@@ -84,7 +81,7 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+						<div class="styNameBox" style="width:140mm;height:10mm;font-size:7pt;">
 						  Name(s) shown on return<br/>
 							<xsl:choose>
 								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
@@ -109,8 +106,8 @@
 								</xsl:otherwise>
 							</xsl:choose>
 						</div>
-						<div class="styEINBox" style="width:45mm;height:8mm;padding-left:2mm;font-size:7pt;">
-						  Identifying number<br/>
+						<div class="styEINBox" style="width:45mm;height:10mm;padding-left:2mm;font-size:7pt;">
+						  Identifying number
 							<br/>
 							<span style="text-align:left;font-weight:normal;">
 								<xsl:choose>
@@ -144,16 +141,15 @@
 					</div>
 					<!-- Start Line 1 -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:8mm; margin-left: 1mm;">1</div>
-						<div class="styLNDesc" style="width:133mm;">Enter the gross proceeds from sales or
-						  exchanges reported to you for 2013 on Form(s) 1099-B or 
-						  <span style="float:left;">1099-S (or substitute statement) that you are including on line 2, 10, or 20 (see instructions)
-						  </span>
+						<div class="styLNLeftNumBox" style="height:8mm; margin-left: 1mm; ">1</div>
+						<div class="styLNDesc">Enter the gross proceeds from sales or
+						  exchanges reported to you for 2013 on Form(s) 1099-B or 1099-S 
+						  (or substitute statement) that you are including on line 2, 10, or 20 (see instructions)
 							<!--Dotted Line-->
-							<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
+							<div class="styDotLn" style="float:right;padding-right:1mm;">........</div>
 						</div>
-						<div class="styLNRightNumBoxWide" style="padding-top:4mm;height:8mm;border-bottom-width:0px;">1</div>
-						<div class="styLNAmountBoxNBB" style="padding-top:4mm;height:8mm">
+						<div class="styLNRightNumBoxWide" style="padding-top:4mm;height:8mm;border-bottom-width:0px;width:8mm;">1</div>
+						<div class="styLNAmountBoxNBB" style="padding-top:4mm;height:8mm;width:28mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form4797Data/CurrentYearGrossProceedsAmt"/>
 							</xsl:call-template>
@@ -179,21 +175,21 @@
 					</div>
 					<!-- END PART I TITLE -->
 					<!-- BEGIN PART I TABLE -->
-					<div class="styTableContainer" style="height:25.5mm;" id="PSOctn">
+					<div class="styTableContainer" style="height:auto; border-bottom-width:0px" id="PSOctn">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
 						<table class="styTable" cellspacing="0">
 							<thead class="styTableThead">
 								<tr>
-									<th class="styTableCellHeader" style="width:4mm;font-size:7pt;border-right-width:0px;padding-left:2.5mm;" scope="col">2
+									<th class="styTableCellHeader" style="width:4mm;font-size:7pt;border-right-width:0px;padding-left:2.5mm;padding-top:1mm;" scope="col">2
 									 <span class="styTableCellPad"/>
 									</th>
 									<th class="styTableCellHeader" style="width:29mm;font-weight:normal;" scope="col">
 										<b>(a)</b> Description of property</th>
-									<th class="styTableCellHeader" style="width:16mm;font-weight:normal;" scope="col">
+									<th class="styTableCellHeader" style="width:25mm;font-weight:normal;" scope="col">
 										<b>(b)</b> Date acquired<br/>(mo., day, yr.)</th>
-									<th class="styTableCellHeader" style="width:16mm;font-weight:normal;" scope="col">
+									<th class="styTableCellHeader" style="width:22mm;font-weight:normal;" scope="col">
 										<b>(c)</b> Date sold<br/>(mo., day, yr.)</th>
 									<th class="styTableCellHeader" style="width:30mm;font-weight:normal;" scope="col">
 										<b>(d)</b> Gross sales<br/>price</th>
@@ -201,7 +197,7 @@
 										<b>(e)</b> Depreciation<br/>allowed<br/>or allowable since<br/>acquisition</th>
 									<th class="styTableCellHeader" style="width:30mm;font-weight:normal;" scope="col">
 										<b>(f)</b> Cost or other<br/>basis, plus<br/>improvements and<br/>expense of sale</th>
-									<th class="styTableCellHeader" style="width:30mm;font-weight:normal;" scope="col">
+									<th class="styTableCellHeader" style="width:30mm;font-weight:normal; border-right-width:0px;" scope="col">
 										<b>(g) Gain or (loss)</b>
 										<br/> Subtract (f) from the sum of (d) and (e)</th>
 								</tr>
@@ -283,7 +279,7 @@
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:30mm;">
+											<td class="styTableCell" style="width:30mm; border-right-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="GainOrLossAmt"/>
 												</xsl:call-template>
@@ -318,7 +314,7 @@
 										<td class="styTableCell" style="text-align:right;width:30mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="text-align:right;width:30mm;">
+										<td class="styTableCell" style="text-align:right;width:30mm; border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -346,7 +342,7 @@
 										<td class="styTableCell" style="text-align:right;width:30mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="text-align:right;width:30mm;">
+										<td class="styTableCell" style="text-align:right;width:30mm; border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -374,7 +370,7 @@
 										<td class="styTableCell" style="text-align:right;width:30mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="text-align:right;width:30mm;">
+										<td class="styTableCell" style="text-align:right;width:30mm; border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -402,7 +398,7 @@
 										<td class="styTableCell" style="text-align:right;width:30mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="text-align:right;width:30mm;">
+										<td class="styTableCell" style="text-align:right;width:30mm; border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -578,7 +574,7 @@
 					</div>
 					<!-- End Line 10 -->
 					<!-- BEGIN PART II TABLE -->
-					<div class="styTableContainer" style="height:14mm;" id="OGLctn">
+					<div class="styTableContainer" style="height:auto; border-bottom-width:0px" id="OGLctn">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -644,7 +640,7 @@
 												</xsl:call-template>
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styTableCell" style="width:30mm;text-align:right;">
+											<td class="styTableCell" style="width:30mm;text-align:right;border-right-width:0px;">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="GainOrLossAmt"/>
 												</xsl:call-template>
@@ -676,7 +672,7 @@
 										<td class="styTableCell" style="width:30mm;text-align:right">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:30mm;text-align:right">
+										<td class="styTableCell" style="width:30mm;text-align:right;border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -701,7 +697,7 @@
 										<td class="styTableCell" style="width:30mm;text-align:right">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:30mm;text-align:right">
+										<td class="styTableCell" style="width:30mm;text-align:right;border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -726,7 +722,7 @@
 										<td class="styTableCell" style="width:30mm;text-align:right">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:30mm;text-align:right">
+										<td class="styTableCell" style="width:30mm;text-align:right;border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -751,7 +747,7 @@
 										<td class="styTableCell" style="width:30mm;text-align:right">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:30mm;text-align:right">
+										<td class="styTableCell" style="width:30mm;text-align:right;border-right-width:0px;">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -817,33 +813,15 @@
 					</div>
 					<!-- End Line 13 -->
 					<!-- Start Line 14 -->
-					<!--<div style="width:187mm;">
-						<div class="styLNLeftNumBox">14</div>
-						<div class="styLNDesc" style="width:146mm;">
-							<span style="float:left;">Net gain or (loss) from Form 4684, lines 31 and 38a 
-							</span>
-							--><!--Dotted Line--><!--
-							<div class="styDotLn" style="float:right;padding-right:1mm;">...................</div>
-						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;">14</div>
-						<div class="styIRS4797LNAmountBoxSmall">
-							<xsl:call-template name="PopulateAmount">
-								<xsl:with-param name="TargetNode" select="$Form4797Data/NetGainLossForm4684"/>
-							</xsl:call-template>
-						</div>
-					</div>-->
-					<!-- End Line 14 -->
-					
-					<!-- Start Line 14 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">14</div>
 						<div class="styLNDesc" style="width:146mm;">
 							<span style="float:left;">Net gain or (loss) from Form 4684, lines 31 and 38a 
 							</span>
 							<!--Dotted Line-->
-							<div style="float:right;">
-								<span class="styDotLn" style="padding-right:2mm;">................</span>
-								<span style="width: 10mm;border-bottom:1 solid black;">
+							<div style="float:right;padding-right:3mm;">
+								<span class="styDotLn">.................</span>
+								<span style="width:10mm; border-bottom-width:1px; border-bottom-style: solid;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form4797Data/PassiveActivityLossLiteralCd"/>
 									</xsl:call-template>
@@ -919,19 +897,21 @@
 					<!-- Start Line 18a -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="padding-left:4mm">a</div>
-						<div class="styLNDesc" style="width:144.2mm;height:8mm">
-				If the loss on line 11 includes a loss from Form 4684,
-				 line 35, column (b)(ii), enter that part of the loss here. Enter the part of the loss from income-producing property
-				 on Schedule A (Form 1040), line 28, and the part  of the loss  from property used as an employee on Schedule A (Form 1040), line 23.
-				  Identify as from "Form
-				 <span style="float:left;"> 4797, line 18a."  See instructions </span>
+						<div class="styLNDesc" style="width:146mm;height:13mm">
+							If the loss on line 11 includes a loss from Form 4684,
+							 line 35, column (b)(ii), enter that part of the loss here. Enter the part of the loss from income-producing property
+							 on Schedule A (Form 1040), line 28, and the part  of the loss  from property used as an employee on Schedule A (Form 1040), line 23.
+							  Identify as from "Form
+							 <span style="float:left;"> 4797, line 18a." See instructions </span>
 							<!--Dotted Line-->
 							<div class="styDotLn" style="float:right;padding-right:1mm;">.........................</div>
 						</div>
-						<div style="height:8mm;float:right;">
-							<div class="styShading" style="width:33mm;height:8mm;border-left: 1px solid black;border-bottom: 1px solid black;"/>
-							<div class="styLNRightNumBox" style="width:8mm;height:5.7mm;padding-top:1.5mm;">18a</div>
-							<div class="styIRS4797LNAmountBoxSmall" style="height:5.7mm;padding-top:1.5mm;">
+						<div style="height:auto; display:inline;">
+							<div class="styShading" style="width:33mm;height:7mm;border-left: 1px solid black;border-bottom-width: 0px;"/>
+							<div class="styLNRightNumBox" style="width:8mm;height:7mm;padding-top:3mm;">
+								18a
+							</div>
+							<div class="styIRS4797LNAmountBoxSmall" style="height:7mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form4797Data/Form4684LossAmt"/>
 								</xsl:call-template>
@@ -939,16 +919,16 @@
 						</div>
 					</div>
 					<!-- Start Line 18b -->
-					<div class="styBB" style="width:187mm;">
+					<div class="styBB" style="width:187mm; float:none;clear:both;">
 						<div class="styLNLeftNumBox" style="padding-left:4mm">b</div>
 						<div class="styLNDesc" style="height:8mm;width:146mm;">Redetermine the gain or (loss) on line 17 excluding the loss, if any, 
-            on line 18a. Enter here and on Form 1040,
-				<span style="float:left;">line 14 </span>
+							on line 18a. Enter here and on Form 1040,
+							<span style="float:left;">line 14 </span>
 							<!--Dotted Line-->
-							<div class="styDotLn" style="float:right;padding-right:1mm;">.................................</div>
+							<div class="styDotLn" style="float:right;padding-right:1mm;">..................................</div>
 						</div>
-						<div class="styLNRightNumBox" style="width:8mm;height:8mm;padding-top:4mm;">18b</div>
-						<div class="styIRS4797LNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
+						<div class="styLNRightNumBox" style="width:8mm;height:8mm;padding-top:4mm;border-bottom-width:0px;">18b</div>
+						<div class="styIRS4797LNAmountBoxSmall" style="height:8mm;padding-top:4mm;border-bottom-width:0px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form4797Data/OtherGainLossAmt"/>
 							</xsl:call-template>
@@ -970,7 +950,7 @@
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 2 -->
 					<!-- Page Header -->
-					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
+					<div class="styTBB" style="width:187mm;padding-top:.5mm;float:none;clear:both;">
 						<div style="float:left;">Form 4797 (2013)<span style="width:148mm;"/>
 						</div>
 						<div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
@@ -987,7 +967,7 @@
 							<div class="styPartDesc" style="float:left;width:187mm;font-weight:normal;padding-left:17mm;">(see instructions)
 					    </div>
 						</div>
-						<div class="styGenericDiv" style="padding-left:2mm;width:1mm;">
+						<div class="styGenericDiv" style="float:right;">
 							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain"/>
@@ -999,7 +979,7 @@
 					</div>
 					<!-- END PART III TITLE -->
 					<!-- BEGIN PART III Line 19 TABLE -->
-					<div class="styTableContainer" style="height:25.5mm;" id="GDPctn">
+					<div class="styTableContainer" style="height:auto; border-bottom-width:0px;" id="GDPctn">
 						<!-- print logic -->
 						<xsl:call-template name="SetInitialState"/>
 						<!-- end -->
@@ -1008,12 +988,12 @@
 								<tr>
 									<th class="styTableCellHeader" style="width:6mm;text-align:left;border-right-width:0px;" scope="col">19</th>
 									<th class="styTableCellHeader" style="width:148mm;text-align:left;" scope="col">(a)<span class="styNormalText"> 
-                  Description of section 1245, 1250, 1252, 1254, or 1255 property:</span>
+										  Description of section 1245, 1250, 1252, 1254, or 1255 property:</span>
 									</th>
-									<th class="styTableCellHeader" style="width:16mm;" scope="col">(b)
+									<th class="styTableCellHeader" style="width:29mm;" scope="col">(b)
 									<span class="styNormalText"> Date acquired(mo., day, yr.)</span>
 									</th>
-									<th class="styTableCellHeader" style="width:16mm;" scope="col">(c)
+									<th class="styTableCellHeader" style="width:30mm;border-right-width:0px" scope="col">(c)
 									<span class="styNormalText"> Date sold(mo., day, yr.)</span>
 									</th>
 								</tr>
@@ -1032,7 +1012,7 @@
 													<xsl:with-param name="TargetNode" select="PropertyDesc"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCellText" style="width:16mm;">
+											<td class="styTableCellText" style="width:29mm;">
 												<span style="width:1px;"/>
 												<xsl:if test="AcquiredDt">
 													<xsl:call-template name="PopulateMonth">
@@ -1049,7 +1029,7 @@
 													</xsl:call-template>
 												</xsl:if>
 											</td>
-											<td class="styTableCellText" style="width:16mm;">
+											<td class="styTableCellText" style="width:30mm;border-right-width:0px">
 												<span style="width:1px;"/>
 												<xsl:if test="SoldDt">
 													<xsl:call-template name="PopulateMonth">
@@ -1078,10 +1058,10 @@
 											</xsl:call-template>
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:16mm;">
+										<td class="styTableCell" style="width:29mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:16mm;">
+										<td class="styTableCell" style="width:30mm;border-right-width:0px">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -1092,10 +1072,10 @@
 										<td class="styTableCell" style="width:148mm;text-align:left;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:16mm;">
+										<td class="styTableCell" style="width:29mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:16mm;">
+										<td class="styTableCell" style="width:30mm;border-right-width:0px">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -1106,10 +1086,10 @@
 										<td class="styTableCell" style="width:148mm;text-align:left;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:16mm;">
+										<td class="styTableCell" style="width:29mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:16mm;">
+										<td class="styTableCell" style="width:30mm;border-right-width:0px">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -1120,10 +1100,10 @@
 										<td class="styTableCell" style="width:148mm;text-align:left;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:16mm;">
+										<td class="styTableCell" style="width:29mm;">
 											<span class="styTableCellPad"/>
 										</td>
-										<td class="styTableCell" style="width:16mm;">
+										<td class="styTableCell" style="width:30mm;border-right-width:0px">
 											<span class="styTableCellPad"/>
 										</td>
 									</tr>
@@ -1267,7 +1247,7 @@
 									<!--Dotted Line-->
 									<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 								</div>
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;">24</div>
+								<div class="styLNRightNumBoxNBB" style="height:4.5mm;border-bottom-width:1px;border-bottom-style:solid;">24</div>
 								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
 									<span style="width:4px;"/>
 								</div>
@@ -1298,6 +1278,7 @@
 								<div class="styLNLeftLtrBox" style="margin-left: 1mm;">a</div>
 								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 								  Depreciation allowed or allowable from line 22
+								  <div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
 								</div>
 								<div class="styLNRightNumBox" style="height:4.5mm;">25a</div>
 								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
@@ -1314,14 +1295,14 @@
 								</div>
 							</div>
 							<!-- Start line 25b-->
-							<div class="styBB" style="width:187mm;height:4.5mm;">
+							<div class="styBB" style="width:187mm;">
 								<div class="styLNLeftLtrBox" style="margin-left: 1mm;">b</div>
 								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 									<span style="float:left;">Enter the <span class="styBoldText">smaller</span> of line 24 or 25a </span>
 									<!--Dotted Line-->
-									<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 								</div>
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;">25b</div>
+								<div class="styLNRightNumBoxNBB" style="height:4.5mm; border-bottom: 1px solid black">25b</div>
 								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
 									<span style="width:4px;"/>
 								</div>
@@ -1351,24 +1332,23 @@
 								<div class="styLNAmountBoxSmallNBB" style="height:11mm;"/>
 							</div>
 							<!-- Start Line 26a -->
-							<div style="width:187mm;height:4.5mm;">
+							<div style="width:187mm;height:7mm;">
 								<div class="styLNLeftLtrBox" style="margin-left: 1mm;">a</div>
-								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
-									<span class="stySmallText">Additional depreciation after 1975 (see instructions)</span>
-									<!--Dotted Line-->
-									<!--		<div class="styDotLn" style="float:right;padding-right:1mm;">...</div> -->
+								<div class="styLNDesc" style="width:64.8mm;height:auto;">
+									Additional depreciation after 1975 (see instructions)
+									<div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 								</div>
-								<div class="styLNRightNumBox" style="height:4.5mm;">26a</div>
-								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+								<div class="styLNRightNumBox" style="height:7mm;padding-top:3mm">26a</div>
+								<div class="styLNAmountBoxSmall" style="height:7mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:7mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:7mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:7mm;">
 									<span style="width:4px;"/>
 								</div>
 							</div>
@@ -1423,9 +1403,7 @@
 							<div style="width:187mm;height:4.5mm;">
 								<div class="styLNLeftLtrBox" style="margin-left: 1mm;">d</div>
 								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
-									<span class="stySmallText">Additional depreciation after 1969 and before 1976</span>
-									<!--Dotted Line-->
-									<!--				<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>  -->
+									Additional depreciation after 1969 and before 1976
 								</div>
 								<div class="styLNRightNumBox" style="height:4.5mm;">26d</div>
 								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
@@ -1447,7 +1425,7 @@
 								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 									<span style="float:left;">Enter the <span class="styBoldText">smaller</span> of line 26c or 26d </span>
 									<!--Dotted Line-->
-									<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 								</div>
 								<div class="styLNRightNumBox" style="height:4.5mm;">26e</div>
 								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
@@ -1486,14 +1464,14 @@
 								</div>
 							</div>
 							<!-- Start Line 26g -->
-							<div class="styBB" style="width:187mm;height:4.5mm;">
+							<div class="styBB" style="width:187mm;height:auto;">
 								<div class="styLNLeftLtrBox" style="margin-left: 1mm;">g</div>
 								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 									<span style="float:left;">Add lines 26b, 26e, and 26f </span>
 									<!--Dotted Line-->
 									<div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 								</div>
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;">26g</div>
+								<div class="styLNRightNumBoxNBB" style="height:4.5mm; border-bottom: 1px solid black;">26g</div>
 								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
 									<span style="width:4px;"/>
 								</div>
@@ -1567,14 +1545,14 @@
 								</div>
 							</div>
 							<!-- Start Line 27c -->
-							<div class="styBB" style="width:187mm;height:4.5mm;">
+							<div class="styBB" style="width:187mm;height:auto;">
 								<div class="styLNLeftLtrBox" style="margin-left: 1mm;">c</div>
 								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 									<span style="float:left;">Enter the <span class="styBoldText">smaller</span> of line 24 or 27b </span>
 									<!--Dotted Line-->
-									<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 								</div>
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;">27c</div>
+								<div class="styLNRightNumBoxNBB" style="height:4.5mm; border-bottom: 1px solid black;">27c</div>
 								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
 									<span style="width:4px;"/>
 								</div>
@@ -1627,14 +1605,14 @@
 								</div>
 							</div>
 							<!-- Start Line 28b -->
-							<div class="styBB" style="width:187mm;height:4.5mm;">
+							<div class="styBB" style="width:187mm;height:auto;">
 								<div class="styLNLeftLtrBox" style="margin-left:1mm">b</div>
 								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 									<span style="float:left;">Enter the <span class="styBoldText">smaller</span> of line 24 or 28a </span>
 									<!--Dotted Line-->
-									<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+									<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 								</div>
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;">28b</div>
+								<div class="styLNRightNumBoxNBB" style="height:4.5mm; border-bottom: 1px solid black;">28b</div>
 								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
 									<span style="width:4px;"/>
 								</div>
@@ -1664,47 +1642,42 @@
 							</div>
 							<!-- Start Line 29a -->
 							<div style="width:187mm;">
-								<div class="styLNLeftLtrBox" style="margin-left:1mm;height:10mm;">a</div>
-								<div class="styLNDesc" style="width:64.8mm;height:10mm;">
-				  Applicable percentage of payments excluded
-									<span style="float:left;"> from income under section 126 (see instructions) </span>
-									<!--Dotted Line-->
-									<!--				<div class="styDotLn" style="float:right;padding-right:1mm;">...........</div>  -->
+								<div class="styLNLeftLtrBox" style="margin-left:1mm;height:8mm;">a</div>
+								<div class="styLNDesc" style="width:64.8mm;height:8mm;">
+									Applicable percentage of payments excluded from income under section 126 (see instructions)
 								</div>
-								<div class="styLNRightNumBox" style="height:10.5mm;padding-top:6mm;">29a</div>
-								<div class="styLNAmountBoxSmall" style="height:10.5mm;">
+								<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">29a</div>
+								<div class="styLNAmountBoxSmall" style="height:8mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:10.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:8mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:10.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:8mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:10.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:8mm;">
 									<span style="width:4px;"/>
 								</div>
 							</div>
 							<!-- Start Line 29b -->
-							<div class="styBB" style="width:187mm;height:4.5mm;">
+							<div class="styBB" style="width:187mm;height:auto;">
 								<div class="styLNLeftLtrBox" style="margin-left:1mm;">b</div>
-								<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
-									<span class="stySmallText">Enter the <span class="styBoldText">smaller</span> of line 24 or 29a (see instructions)
-									</span>
-									<!--Dotted Line-->
-									<!--					<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>  -->
+								<div class="styLNDesc" style="width:64.8mm;height:7mm;">
+									Enter the <b>smaller</b> of line 24 or 29a (see instructions)
+									<div class="styDotLn" style="float:right;padding-right:1mm;">............</div> 
 								</div>
-								<div class="styLNRightNumBoxNBB" style="height:4.5mm;">29b</div>
-								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+								<div class="styLNRightNumBoxNBB" style="height:7mm; border-bottom: 1px solid black; padding-top:3mm;">29b</div>
+								<div class="styLNAmountBoxSmall" style="height:7mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:7mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:7mm;">
 									<span style="width:4px;"/>
 								</div>
-								<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+								<div class="styLNAmountBoxSmall" style="height:7mm;">
 									<span style="width:4px;"/>
 								</div>
 							</div>
@@ -1747,22 +1720,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">20</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="GrossSalesPriceAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/GrossSalesPriceAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/GrossSalesPriceAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/GrossSalesPriceAmt"/>
 										</xsl:call-template>
@@ -1777,22 +1750,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">21</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="CostOrOtherBasisExpenseSaleAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/CostOrOtherBasisExpenseSaleAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/CostOrOtherBasisExpenseSaleAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/CostOrOtherBasisExpenseSaleAmt"/>
 										</xsl:call-template>
@@ -1805,22 +1778,22 @@
 									  Depreciation (or depletion) allowed or allowable
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">22</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="DepreciationDepletionAllwAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/DepreciationDepletionAllwAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/DepreciationDepletionAllwAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/DepreciationDepletionAllwAmt"/>
 										</xsl:call-template>
@@ -1835,22 +1808,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">23</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="AdjustedBasisAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/AdjustedBasisAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/AdjustedBasisAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/AdjustedBasisAmt"/>
 										</xsl:call-template>
@@ -1865,22 +1838,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 									</div>
 									<div class="styLNRightNumBoxNBB" style="height:4.5mm;">24</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="TotalGainAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/TotalGainAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/TotalGainAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/TotalGainAmt"/>
 										</xsl:call-template>
@@ -1903,24 +1876,25 @@
 									<div class="styLNLeftLtrBox" style="margin-left: 1mm;">a</div>
 									<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 									  Depreciation allowed or allowable from line 22
+									  <div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">25a</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="Section1245DepreciationAllwAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/Section1245DepreciationAllwAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/Section1245DepreciationAllwAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/Section1245DepreciationAllwAmt"/>
 										</xsl:call-template>
@@ -1932,25 +1906,25 @@
 									<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 										<span style="float:left;">Enter the <span class="styBoldText">smaller</span> of line 24 or 25a </span>
 										<!--Dotted Line-->
-										<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
+										<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 									</div>
 									<div class="styLNRightNumBoxNBB" style="height:4.5mm;">25b</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="Section1245PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/Section1245PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/Section1245PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/Section1245PropertyAmt"/>
 										</xsl:call-template>
@@ -1971,28 +1945,29 @@
 									<div class="styLNAmountBoxSmallNBB" style="height:11mm;"/>
 								</div>
 								<!-- Start Line 26a-->
-								<div style="width:187mm;height:4.5mm;">
+								<div style="width:187mm;">
 									<div class="styLNLeftLtrBox" style="margin-left: 1mm;">a</div>
-									<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
-										<span class="stySmallText">Additional depreciation after 1975 (see instructions)</span>
+									<div class="styLNDesc" style="width:64.8mm;height:8mm;">
+										Additional depreciation after 1975 (see instructions)
+										<div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 									</div>
-									<div class="styLNRightNumBox" style="height:4.5mm;">26a</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNRightNumBox" style="height:8mm; padding-top:4mm;">26a</div>
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="AddnlDepreciationAfter1975Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/AddnlDepreciationAfter1975Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/AddnlDepreciationAfter1975Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/AddnlDepreciationAfter1975Amt"/>
 										</xsl:call-template>
@@ -2008,22 +1983,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">26b</div>
-									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="ApplicablePercentageAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/ApplicablePercentageAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/ApplicablePercentageAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/ApplicablePercentageAmt"/>
 										</xsl:call-template>
@@ -2033,29 +2008,29 @@
 								<div style="width:187mm;">
 									<div class="styLNLeftLtrBox" style="margin-left: 1mm;height:10mm;">c</div>
 									<div class="styLNDesc" style="width:64.86mm;height:11mm;">
-					  Subtract line 26a from line 24. If residential rental property
-					  <span class="styBoldText">or</span> line 24 is not more than line 
-					  <span style="float:left;">26a, skip lines 26d and 26e </span>
+										Subtract line 26a from line 24. If residential rental property
+										<b>or</b> line 24 is not more than line 
+										<span style="float:left;">26a, skip lines 26d and 26e </span>
 										<!--Dotted Line-->
 										<div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:11mm;padding-top:7mm;">26c</div>
-									<div class="styLNAmountBoxSmall" style="height:11mm;padding-top:7mm;">
+									<div class="styLNAmountBoxSmall" style="height:11mm;padding-top:7mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="GainLessDeprecAfter1975Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:11mm;padding-top:7mm;">
+									<div class="styLNAmountBoxSmall" style="height:11mm;padding-top:7mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/GainLessDeprecAfter1975Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:11mm;padding-top:7mm;">
+									<div class="styLNAmountBoxSmall" style="height:11mm;padding-top:7mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/GainLessDeprecAfter1975Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:11mm;padding-top:7mm;">
+									<div class="styLNAmountBoxSmall" style="height:11mm;padding-top:7mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/GainLessDeprecAfter1975Amt"/>
 										</xsl:call-template>
@@ -2065,25 +2040,25 @@
 								<div style="width:187mm;height:4.5mm;">
 									<div class="styLNLeftLtrBox" style="margin-left: 1mm;">d</div>
 									<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
-										<span class="stySmallText">Additional depreciation after 1969 and before 1976</span>
+										Additional depreciation after 1969 and before 1976
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">26d</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="AddnlDepreciation1969To1976Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/AddnlDepreciation1969To1976Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/AddnlDepreciation1969To1976Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/AddnlDepreciation1969To1976Amt"/>
 										</xsl:call-template>
@@ -2095,25 +2070,25 @@
 									<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 										<span style="float:left;">Enter the <span class="styBoldText">smaller</span> of line 26c or 26d </span>
 										<!--Dotted Line-->
-										<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+										<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">26e</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="SmllrReducedGainAddnlDeprecAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/SmllrReducedGainAddnlDeprecAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/SmllrReducedGainAddnlDeprecAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/SmllrReducedGainAddnlDeprecAmt"/>
 										</xsl:call-template>
@@ -2128,22 +2103,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">26f</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="Section291Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/Section291Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/Section291Amt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/Section291Amt"/>
 										</xsl:call-template>
@@ -2158,22 +2133,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 									</div>
 									<div class="styLNRightNumBoxNBB" style="height:4.5mm;">26g</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="Section1250PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/Section1250PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/Section1250PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/Section1250PropertyAmt"/>
 										</xsl:call-template>
@@ -2202,22 +2177,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:4.5mm;">27a</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="SoilWaterLandClearExpenseAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/SoilWaterLandClearExpenseAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/SoilWaterLandClearExpenseAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmall" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/SoilWaterLandClearExpenseAmt"/>
 										</xsl:call-template>
@@ -2233,22 +2208,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">..........</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:8.0mm;padding-top:4.0mm;">27b</div>
-									<div class="styLNAmountBoxSmall" style="height:8.0mm;padding-top:4.0mm;">
+									<div class="styLNAmountBoxSmall" style="height:8.0mm;padding-top:4.0mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="ApplcblPctSoilWtrClearExpnAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:8.0mm;padding-top:4.0mm;">
+									<div class="styLNAmountBoxSmall" style="height:8.0mm;padding-top:4.0mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/ApplcblPctSoilWtrClearExpnAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:8.0mm;padding-top:4.0mm;">
+									<div class="styLNAmountBoxSmall" style="height:8.0mm;padding-top:4.0mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/ApplcblPctSoilWtrClearExpnAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:8.0mm;padding-top:4.0mm;">
+									<div class="styLNAmountBoxSmall" style="height:8.0mm;padding-top:4.0mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/ApplcblPctSoilWtrClearExpnAmt"/>
 										</xsl:call-template>
@@ -2260,25 +2235,25 @@
 									<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 										<span style="float:left;">Enter the <span class="styBoldText">smaller</span> of line 24 or 27b </span>
 										<!--Dotted Line-->
-										<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+										<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 									</div>
-									<div class="styLNRightNumBoxNBB" style="height:4.5mm;">27c</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNRightNumBoxNBB" style="height:4.5mm; padding-top:1mm;">27c</div>
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;padding-top:1mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="Section1252PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;padding-top:1mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/Section1252PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;padding-top:1mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/Section1252PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;padding-top:1mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/Section1252PropertyAmt"/>
 										</xsl:call-template>
@@ -2308,22 +2283,22 @@
 										<div class="styDotLn" style="float:right;padding-right:1mm;">.......</div>
 									</div>
 									<div class="styLNRightNumBox" style="height:14mm;padding-top:10mm;">28a</div>
-									<div class="styLNAmountBoxSmall" style="height:14mm;padding-top:10mm;">
+									<div class="styLNAmountBoxSmall" style="height:14mm;padding-top:10mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="IntangibleDrillingDevCostAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:14mm;padding-top:10mm;">
+									<div class="styLNAmountBoxSmall" style="height:14mm;padding-top:10mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/IntangibleDrillingDevCostAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:14mm;padding-top:10mm;">
+									<div class="styLNAmountBoxSmall" style="height:14mm;padding-top:10mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/IntangibleDrillingDevCostAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:14mm;padding-top:10mm;">
+									<div class="styLNAmountBoxSmall" style="height:14mm;padding-top:10mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/IntangibleDrillingDevCostAmt"/>
 										</xsl:call-template>
@@ -2335,25 +2310,25 @@
 									<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
 										<span style="float:left;">Enter the <span class="styBoldText">smaller</span> of line 24 or 28a </span>
 										<!--Dotted Line-->
-										<div class="styDotLn" style="float:right;padding-right:1mm;">.....</div>
+										<div class="styDotLn" style="float:right;padding-right:1mm;">....</div>
 									</div>
 									<div class="styLNRightNumBoxNBB" style="height:4.5mm;">28b</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="Section1254PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/Section1254PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/Section1254PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/Section1254PropertyAmt"/>
 										</xsl:call-template>
@@ -2374,60 +2349,58 @@
 								</div>
 								<!-- Start Line 29a-->
 								<div style="width:187mm;">
-									<div class="styLNLeftLtrBox" style="margin-left:1mm;height:12mm;">a</div>
-									<div class="styLNDesc" style="width:64.8mm;height:12mm;">
-					Applicable percentage of payments excluded from income under section 126 (see
-									<span style="float:left;">  instructions) </span>
-										<!--Dotted Line-->
-										<!--					<span class="styDotLn" style="float:right;padding-right:1mm;">...........</span>  -->
+									<div class="styLNLeftLtrBox" style="margin-left:1mm;height:8mm;">a</div>
+									<div class="styLNDesc" style="width:64.8mm;height:8mm;">
+										Applicable percentage of payments excluded from income under section 126 (see instructions)
+										<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
 									</div>
-									<div class="styLNRightNumBox" style="height:12mm;padding-top:6.5mm;">29a</div>
-									<div class="styLNAmountBoxSmall" style="height:12mm;padding-top:7mm;">
+									<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">29a</div>
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="ApplcblPctPaymentExcludedAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:12mm;padding-top:7mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/ApplcblPctPaymentExcludedAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:12mm;padding-top:7mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/ApplcblPctPaymentExcludedAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmall" style="height:12mm;padding-top:7mm;">
+									<div class="styLNAmountBoxSmall" style="height:8mm;padding-top:4mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/ApplcblPctPaymentExcludedAmt"/>
 										</xsl:call-template>
 									</div>
 								</div>
 								<!-- Start Line 29b-->
-								<div class="styBB" style="width:187mm;height:4.5mm;">
+								<div class="styBB" style="width:187mm;height:7mm;">
 									<div class="styLNLeftLtrBox" style="margin-left:1mm;">b</div>
-									<div class="styLNDesc" style="width:64.8mm;height:4.5mm;">
-										<span class="stySmallText">Enter the <span class="styBoldText">smaller</span> of line 24 or 29a (see instructions)</span>
+									<div class="styLNDesc" style="width:64.8mm;height:5.5mm;">
+										Enter the <b>smaller</b> of line 24 or 29a (see instructions)
 										<!--Dotted Line-->
-										<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
+										<div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
 									</div>
-									<div class="styLNRightNumBoxNBB" style="height:4.5mm;">29b</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNRightNumBoxNBB" style="height:7mm; padding-top:3mm;">29b</div>
+									<div class="styLNAmountBoxSmallNBB" style="height:7mm; padding-top:3mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="Section1255PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:7mm; padding-top:3mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 1]/Section1255PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:7mm; padding-top:3mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 2]/Section1255PropertyAmt"/>
 										</xsl:call-template>
 									</div>
-									<div class="styLNAmountBoxSmallNBB" style="height:4.5mm;">
+									<div class="styLNAmountBoxSmallNBB" style="height:7mm; padding-top:3mm; padding-right:1mm;">
 										<xsl:call-template name="PopulateAmount">
 											<xsl:with-param name="TargetNode" select="$Form4797Data/PropertyDispositionGain[$curPos + 3]/Section1255PropertyAmt"/>
 										</xsl:call-template>
@@ -2470,7 +2443,7 @@
 								</xsl:call-template>
 							</span>
 							<!--Dotted Line-->
-							<div class="styDotLn" style="float:right;padding-right:1mm;">.</div>
+							<div class="styDotLn" style="float:right;padding-right:1mm;">..</div>
 						</div>
 						<div class="styLNRightNumBox" style="height:4mm;padding-top:0mm;">31</div>
 						<div class="styLNAmountBox" style="height:4mm;padding-top:0mm;">
@@ -2506,15 +2479,15 @@
 					<!-- BEGIN PART IV TITLE -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName">Part IV</div>
-						<div class="styPartDesc">Recapture Amounts Under Sections 179 and 280F(b)(2) When
+						<div class="styPartDesc" style="height: auto;">Recapture Amounts Under Sections 179 and 280F(b)(2) When
 						  Business Use Drops to 50% or Less <span style="font-weight:normal;">(see instructions)</span>
 						</div>
 					</div>
 					<!-- END PART IV TITLE -->
-					<table style="width:187mm; font-size:7pt; border-bottom:1 solid black" cellpadding="0" cellspacing="0" border="0">
+					<table style="width:187mm; font-size:7pt; border-bottom:1px solid black" cellpadding="0" cellspacing="0" border="0">
 						<tr>
-							<th colspan="3"/>
-							<th scope="col" style="border-left:1 solid black" valign="bottom">
+							<th colspan="2"/>
+							<th scope="col" style="border-left:1px solid black" valign="bottom">
 								<div style="float:left; margin-left:4mm">(a) Section<br/>179</div>
 								<div style="float:right; margin-top:3mm">
 									<xsl:call-template name="SetTableToggleButton">
@@ -2524,7 +2497,7 @@
 									</xsl:call-template>
 								</div>
 							</th>
-							<th scope="col" style="border-left:1 solid black" valign="bottom">
+							<th scope="col" style="border-left:1px solid black" valign="bottom">
 								<div style="float:left; margin-left:4mm">(b) Section <br/>280F(b)(2)</div>
 								<div style="float:right; margin-top:3mm">
 									<xsl:call-template name="SetTableToggleButton">
@@ -2535,18 +2508,17 @@
 								</div>
 							</th>
 						</tr>
-						<!-- End Line 32 -->
 						<!-- Start Line 33 -->
 						<tr>
 							<td class="styLNLeftNumBox" style="height:4.5mm;" valign="top">33</td>
-							<td class="styLNDesc" style="width:106mm;height:4.5mm;" valign="top" nowrap="nowrap">
+							<td class="styLNDesc" style="width:122mm;height:4.5mm;" valign="top" nowrap="nowrap">
 								<span style="float:left;">Section 179 expense deduction or depreciation allowable in prior years </span>
-								<!--Dotted Line-->
-								<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
+								<!--Dotted Line--> 
+								<div class="styDotLn" style="float:right">........</div>
 							</td>
-							<th valign="top" style="border-left:1 solid black; border-top:1 solid black; width:8mm" rowspan="2">33</th>
-							<td style="border-left:1 solid black; border-top:1 solid black" align="right" valign="top" nowrap="nowrap">
-								<div class="styIRS4797TableContainer" id="line33aTPctn">
+							<th valign="top" style="border-left:1px solid black; border-top:1px solid black; width:6mm" rowspan="2">33</th>
+							<td style="border-left:1px solid black; border-top:1px solid black;width: 23mm;" align="right" valign="top" nowrap="nowrap">
+								<div class="styIRS4797TableContainer" id="line33aTPctn" style="height:8mm;">
 									<xsl:call-template name="SetInitialState"/>
 									<xsl:choose>
 										<!-- Since the data in columns A and B are independent, yet displayed in the same table at the bottom of the form, if one element repeats, both will be displayed at the bottom -->
@@ -2554,8 +2526,8 @@
 										<xsl:when test="$Print = $Separated and ((count($Form4797Data/Sect179DedDepreciationPYAmt) &gt; 1) or (count($Form4797Data/Sect280DedDepreciationPYAmt) &gt; 1))">
 											<!-- Left aligned the message -->
 											<xsl:attribute name="align">right</xsl:attribute>
-                  See Add'l Data
-                </xsl:when>
+										  See Add'l Data
+										</xsl:when>
 										<xsl:otherwise>
 											<xsl:for-each select="$Form4797Data/Sect179DedDepreciationPYAmt">
 												<xsl:call-template name="PopulateAmount">
@@ -2567,8 +2539,8 @@
 									</xsl:choose>
 								</div>
 							</td>
-							<td style="border-left:1 solid black; border-top:1 solid black" align="right" valign="top" nowrap="nowrap">
-								<div class="styIRS4797TableContainer" id="line33bTPctn">
+							<td style="border-left:1px solid black; border-top:1px solid black;width: 23mm;" align="right" valign="top" nowrap="nowrap">
+								<div class="styIRS4797TableContainer" id="line33bTPctn" style="height:8mm;">
 									<xsl:call-template name="SetInitialState"/>
 									<xsl:choose>
 										<!-- Since the data in columns A and B are independent, yet displayed in the same table at the bottom of the form, if one element repeats, both will be displayed at the bottom -->
@@ -2576,8 +2548,8 @@
 										<xsl:when test="$Print = $Separated and ((count($Form4797Data/Sect179DedDepreciationPYAmt) &gt; 1) or (count($Form4797Data/Sect280DedDepreciationPYAmt) &gt; 1))">
 											<!-- Left aligned the message -->
 											<xsl:attribute name="align">right</xsl:attribute>
-                  See Add'l Data
-                </xsl:when>
+										  See Add'l Data
+										</xsl:when>
 										<xsl:otherwise>
 											<xsl:for-each select="$Form4797Data/Sect280DedDepreciationPYAmt">
 												<xsl:call-template name="PopulateAmount">
@@ -2591,15 +2563,15 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="3"/>
-							<td style="border-left:1 solid black" align="right" valign="top">
+							<td colspan="2"/>
+							<td style="border-left:1px solid black" align="right" valign="top">
 								<xsl:call-template name="SetTableToggleButton">
 									<xsl:with-param name="TargetNode" select="$Form4797Data/Sect179RcmptDepreciationAmt"/>
 									<xsl:with-param name="containerHeight" select="1"/>
 									<xsl:with-param name="containerID" select=" 'line34aTPctn' "/>
 								</xsl:call-template>
 							</td>
-							<td style="border-left:1 solid black" align="right" valign="top">
+							<td style="border-left:1px solid black" align="right" valign="top">
 								<xsl:call-template name="SetTableToggleButton">
 									<xsl:with-param name="TargetNode" select="$Form4797Data/Sect280RcmptDepreciationAmt"/>
 									<xsl:with-param name="containerHeight" select="1"/>
@@ -2611,14 +2583,14 @@
 						<!-- Start Line 34 -->
 						<tr>
 							<td class="styLNLeftNumBox" style="height:4.5mm;" valign="top">34</td>
-							<td class="styLNDesc" style="width:106mm;height:4.5mm;" valign="top" nowrap="nowrap">
+							<td class="styLNDesc" style="width:122mm;height:4.5mm;" valign="top" nowrap="nowrap">
 								<span style="float:left;">Recomputed depreciation (see instructions) </span>
 								<!--Dotted Line-->
-								<div class="styDotLn" style="float:right;padding-right:1mm;">............</div>
+								<div class="styDotLn" style="float:right">.................</div>
 							</td>
-							<th valign="top" style="border-left:1 solid black; border-top:1 solid black" rowspan="2">34</th>
-							<td style="border-left:1 solid black; border-top:1 solid black" align="right" nowrap="nowrap" valign="top">
-								<div class="styIRS4797TableContainer" id="line34aTPctn">
+							<th valign="top" style="border-left:1px solid black; border-top:1px solid black" rowspan="2">34</th>
+							<td style="border-left:1px solid black; border-top:1px solid black;width: 23mm;" align="right" nowrap="nowrap" valign="top">
+								<div class="styIRS4797TableContainer" id="line34aTPctn" style="height:8mm;">
 									<xsl:call-template name="SetInitialState"/>
 									<xsl:choose>
 										<!-- Since the data in columns A and B are independent, yet displayed in the same table at the bottom of the form, if one element repeats, both will be displayed at the bottom -->
@@ -2639,8 +2611,8 @@
 									</xsl:choose>
 								</div>
 							</td>
-							<td style="border-left:1 solid black; border-top:1 solid black" align="right" nowrap="nowrap" valign="top">
-								<div class="styIRS4797TableContainer" id="line34bTPctn">
+							<td style="border-left:1px solid black; border-top:1px solid black;width: 23mm;" align="right" nowrap="nowrap" valign="top">
+								<div class="styIRS4797TableContainer" id="line34bTPctn" style="height:8mm;">
 									<xsl:call-template name="SetInitialState"/>
 									<xsl:choose>
 										<!-- Since the data in columns A and B are independent, yet displayed in the same table at the bottom of the form, if one element repeats, both will be displayed at the bottom -->
@@ -2663,15 +2635,15 @@
 							</td>
 						</tr>
 						<tr>
-							<td colspan="3"/>
-							<td style="border-left:1 solid black" align="right">
+							<td colspan="2"/>
+							<td style="border-left:1px solid black" align="right">
 								<xsl:call-template name="SetTableToggleButton">
 									<xsl:with-param name="TargetNode" select="$Form4797Data/Section179RecaptureAmt"/>
 									<xsl:with-param name="containerHeight" select="1"/>
 									<xsl:with-param name="containerID" select=" 'line35aTPctn' "/>
 								</xsl:call-template>
 							</td>
-							<td style="border-left:1 solid black" align="right">
+							<td style="border-left:1px solid black" align="right">
 								<xsl:call-template name="SetTableToggleButton">
 									<xsl:with-param name="TargetNode" select="$Form4797Data/Sect280RecaptureAmt"/>
 									<xsl:with-param name="containerHeight" select="1"/>
@@ -2683,17 +2655,16 @@
 						<!-- Start Line 35 -->
 						<tr>
 							<td class="styLNLeftNumBox" style="height:4.5mm;" valign="top">35</td>
-							<td class="styLNDesc" style="width:106mm;height:4.5mm;" valign="top">
+							<td class="styLNDesc" style="width:122mm;height:4.5mm;" valign="top">
 								<span style="float:left;">
-									<span class="stySmallText">Recapture amount. Subtract line 34 from line 33. See the
-            instructions for where to report</span>
+									Recapture amount. Subtract line 34 from line 33. See the instructions for where to report
 								</span>
 								<!--Dotted Line-->
-								<div class="styDotLn" style="float:right;padding-right:1mm;">...</div>
+								<div class="styDotLn" style="float:right">..</div>
 							</td>
-							<th valign="top" style="border-left:1 solid black; border-top:1 solid black">35</th>
-							<td style="border-left:1 solid black; border-top:1 solid black" align="right" valign="top" nowrap="nowrap">
-								<div class="styIRS4797TableContainer" id="line35aTPctn">
+							<th valign="top" style="border-left:1px solid black; border-top:1px solid black">35</th>
+							<td style="border-left:1px solid black; border-top:1px solid black;width: 23mm;" align="right" valign="top" nowrap="nowrap">
+								<div class="styIRS4797TableContainer" id="line35aTPctn" style="height:8mm;">
 									<xsl:call-template name="SetInitialState"/>
 									<xsl:choose>
 										<!-- Since the data in columns A and B are independent, yet displayed in the same table at the bottom of the form, if one element repeats, both will be displayed at the bottom -->
@@ -2714,8 +2685,8 @@
 									</xsl:choose>
 								</div>
 							</td>
-							<td style="border-left:1 solid black; border-top:1 solid black" align="right" valign="top" nowrap="nowrap">
-								<div class="styIRS4797TableContainer" id="line35bTPctn">
+							<td style="border-left:1px solid black; border-top:1px solid black;width: 23mm;" align="right" valign="top" nowrap="nowrap">
+								<div class="styIRS4797TableContainer" id="line35bTPctn" style="height:8mm;">
 									<xsl:call-template name="SetInitialState"/>
 									<xsl:choose>
 										<!-- Since the data in columns A and B are independent, yet displayed in the same table at the bottom of the form, if one element repeats, both will be displayed at the bottom -->

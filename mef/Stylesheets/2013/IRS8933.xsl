@@ -10,8 +10,10 @@
 <xsl:strip-space elements="*"/>
 <xsl:param name="FormData" select="$RtnDoc/IRS8933"/>
 <xsl:template match="/">
-<html>
-<head>  
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
+<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
   <title>
   <xsl:call-template name="FormTitle">
   <xsl:with-param name="RootElement" select="local-name($FormData)">
@@ -52,25 +54,27 @@
       </div>
 		</div>
 		<div class="styFTBox" style="width:123mm;border-right:1px solid black;border-left:1px solid black;height:20mm;">
-		<div style="height:13.5mm;" class="styMainTitle">
-		<br/>
+		<div style="height:
+		7mm;" class="styMainTitle">
+		
 		Carbon Dioxide Sequestration Credit
       </div>
-		<div class="styFST" style="height:3mm;font-size:7pt;">
+      <br/>
+		<span class="styFST" style="height:4mm;font-size:7pt;">
 								<img src="{$ImagePath}/8933_Bullet.gif" alt="Bullet Image"/>
 Attach to your tax return.    
-</div>
-							<div class="styFST" style="height:5mm;font-size:7pt;">
+</span>
+							<div class="styFST" style="height:5mm;font-size:7pt;padding-bottom:5mm;">
 								<img src="{$ImagePath}/8933_Bullet.gif" alt="Bullet Image"/>
-To claim this credit, the qualified facility must capture at least 500,000 metric tons of carbon dioxide during the tax year.    
-</div>
-							<div class="styFST" style="height:5mm;font-size:7pt;">
+To claim this credit, the qualified facility must capture at least 500,000 metric <br/> tons of carbon dioxide during the tax year.  
+   </div>
+ 							<div class="styFST" style="height:5mm;font-size:7pt;">
 								<img src="{$ImagePath}/8933_Bullet.gif" alt="Bullet Image"/>
-Information on Form 8933 and its instructions is available at <i>www.irs.gov/form8933.</i>
+Information about Form 8933 and its instructions is at <a href="http://www.irs.gov/form8933" title="Link to IRS.gov"><i>www.irs.gov/form8933.</i></a>
 							</div>
 		</div>
 		<div class="styTYBox" style="width:32mm;border-left:none;">
-		<div class="styOMB" style="height:2mm;">OMB No. 1545-2132</div>
+		<div class="styOMB" style="height:4mm;">OMB No. 1545-2132</div>
 		<div class="styTaxYear">
           20<span class="styTYColor">13</span>
 		</div>
@@ -82,24 +86,53 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
 		<!-- End Form Number and Name section -->
   <!--  Name and Employer identification number  -->
   <div class="styBB" style="width:187mm">
-    <div class="styNameBox" style="width:140mm;font-weight:normal;font-size:7pt;">
+    <div class="styNameBox" style="width:140mm;font-weight:normal;font-size:7pt;height: 10mm;">
       Name(s) shown on return<br/>
       <div style="font-family:verdana;font-size:6pt;padding-top:1mm;">
-        <xsl:call-template name="PopulateReturnHeaderFiler">
-        <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
-        </xsl:call-template><br/>
-        <xsl:call-template name="PopulateReturnHeaderFiler">
-        <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
-        </xsl:call-template> 
+ 					<xsl:choose>
+						<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
+						<br/>
+						  <span>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
+							</xsl:call-template>
+						  </span>
+						</xsl:when>
+						  <xsl:otherwise>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+							</xsl:call-template>
+							<br/>
+							<xsl:call-template name="PopulateReturnHeaderFiler">
+								<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+							</xsl:call-template>
+							<br/>
+							</xsl:otherwise>
+					</xsl:choose>
      </div>
     </div>
     <div class="styEINBox" style="padding-left:2mm;font-size:7pt;clear:none;">
-    <span class="BoldText">Identifying number</span>  
-      <div class="styNormalText" style="text-align:left; padding-top:2mm;">
+    <span class="BoldText">Identifying number</span><br/>  
+      <div class="styNormalText" style="text-align:left; padding-top:0mm;height:7mm;">
       <!-- if EIN exists -->
-      <xsl:call-template name="PopulateReturnHeaderFiler">
-        <xsl:with-param name="TargetNode">EIN</xsl:with-param>
-        </xsl:call-template> 
+      <xsl:choose>
+			 <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
+							<br/>
+				 <span style="font-weight:normal;">
+					 <xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+								</xsl:call-template>
+							</span>
+						</xsl:when>
+						  <xsl:otherwise>
+						  <br/>
+							<span style="font-weight:normal;">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				</xsl:call-template>
+			</span>
+		</xsl:otherwise>
+	</xsl:choose>
       </div>   
     </div>
   </div>  
@@ -107,9 +140,10 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
   <!--Qualified carbon dixiode-->
   <div style="width: 187mm">
    <div class="styLNLeftNumBox" style="width:6mm;height: 14mm; padding-top: 2mm"/>
-   <div class="styIRS8933MedLNDesc" style="height: 14mm; padding-top: 2mm;width:138mm;"> <b>Qualified carbon dioxide captured at a qualified facility, disposed 
-   of in secure geological <br/>storage, not used as a 
-   tertiary injectant in a qualified enhanced oil or natural gas recovery <br/>project.</b>
+   <div class="styIRS8933MedLNDesc" style="height: 14mm; padding-top: 2mm;width:138mm;"> 
+   <b>Qualified carbon dioxide captured at a qualified facility, disposed of in secure geological<br/>
+        storage, and not used as a tertiary injectant in a qualified enhanced oil or natural gas recovery<br/>
+ project.</b>
     </div>
     <div class="styLNRightNumBox" style="height:14mm; padding-top: 2mm; border-bottom-width:0px;background-color:lightgrey;"/>
     <div class="styLNAmountBox" style="height:14mm; padding-top: 2mm; border-bottom-width:0px">
@@ -118,20 +152,22 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
  <!--  Line 1a -->  
      <div style="width: 187mm">
       <div class="styLNLeftNumBox" style="width:6mm;height: 4mm; padding-top: 0mm;float:left;clear:none;">1a</div>
-    <div class="styIRS8933MedLNDesc" style="height: 4mm; padding-top: 0mm;width:85mm;padding-left:.5mm;">Metric tons captured and disposed of (see instructions)
-    <span class="styBoldText">
-        <span class="styNBSP"/>.
-        
-      </span>
-      </div>
-      <div class="styUnderlineAmount" style="height:4mm;width:48.1mm;">
-      <xsl:call-template name="PopulateText">
-        <xsl:with-param name="TargetNode" select="$FormData/MetricTonsCapturedDispQty"/>
-      </xsl:call-template>
-       <span style="width:2mm;"/>
-    </div>
+    <div class="styLNDesc"   style="width:133mm;padding-top:0mm;padding-bottom:0mm;">
+		<div class="styIRS8933MedLNDesc" style="height: 4mm; padding-top: 0mm;width:91.5mm;padding-left:.5mm;">Metric tons captured and disposed of (see instructions)
+		<span class="styBoldText">
+			<span class="styNBSP"/>.
+			<span class="styNBSP"/>.
+							  </span>
+		  </div>
+     		  <div class="styUnderlineAmount" style="height:4mm;width:40.5mm;">
+		  <xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="$FormData/MetricTonsCapturedDispQty"/>
+		  </xsl:call-template>
+		   <!--<span style="width:2mm;"/>-->
+		</div>
+     </div>
     <div class="styIRS8933Multiple" style="height:4mm; width:5mm;"/>
-  <div class="styLNRightNumBox" style="height:4.6mm; width:7.9mm; border-bottom-width:0px;background-color:lightgrey;"/>
+  <div class="styLNRightNumBox" style="height:4.5mm; width:7.9mm; border-bottom-width:0px;background-color:lightgrey;"/>
     <div class="styLNAmountBox" style="height:4.5mm;  border-bottom-width:0px;">      
     </div>
     </div>
@@ -139,10 +175,9 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
   <!--  Line 1b -->  
   <div style="width: 187mm">
     <div class="styLNLeftNumBox" style="width:6mm;padding-left:3mm;">b</div>
-    <div class="styIRS8933MedLNDesc" style="height: 4mm; width:101mm;padding-left:.5mm;">Inflation adjusted credit rate
+     <div class="styLNDesc"   style="width:133mm;padding-top:0mm;padding-bottom:0mm;">
+    <div class="styIRS8933MedLNDesc" style="height: 4mm; width:91.5mm;padding-left:.5mm;">Inflation–adjusted credit rate
     <span class="styBoldText">
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
@@ -153,16 +188,16 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
         <span class="styNBSP"/>.
       </span>
       </div>
-      <div class="styUnderlineAmount" style="height:4mm;padding-top:1mm;">
-     $21.25
-       <span style="width:2mm;"/>
+            <div class="styUnderlineAmount" style="height:4mm;width:41mm;">
+     $21.51
+          </div>
     </div>
     <div class="styIRS8933Multiple" style="height:4mm; width:5mm; "/>
     <div class="styLNRightNumBox" style="height:6mm;background-color:lightgrey;border-bottom-width:0px;"/>
     <div class="styLNAmountBox" style="height:6mm; padding-top:0mm;border-bottom-width:0px;">      
     </div>
   </div>
-  <!--  end Line 1b --> 
+    <!--  end Line 1b --> 
   <!--  Line 1c -->  
   <div style="width: 187mm">
     <div class="styLNLeftNumBox" style="width:6mm;padding-left:3mm;">c</div>
@@ -184,8 +219,7 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-      </span>
+                    </span>
      </div>
     <div class="styLNRightNumBox">1c</div>
     <div class="styLNAmountBox">
@@ -208,29 +242,33 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
     <!--  Line 2a -->  
      <div style="width: 187mm">
       <div class="styLNLeftNumBox" style="width:6mm;height: 4mm; padding-top: 0mm;float:left;clear:none;">2a</div>
-    <div class="styIRS8933MedLNDesc" style="height: 4mm; padding-top: 0mm;width:85mm;padding-left:.5mm;">Metric tons captured and used (see instructions)
-    <span class="styBoldText">
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.       
-      </span>
-      </div>
-      <div class="styUnderlineAmount" style="height:4mm;width:48.1mm;">
-      <xsl:call-template name="PopulateText">
-        <xsl:with-param name="TargetNode" select="$FormData/MetricTonsCapturedUsedQty"/>
-      </xsl:call-template>
-       <span style="width:2mm;"/>
-    </div>
+    <div class="styLNDesc"   style="width:133mm;padding-top:0mm;padding-bottom:0mm;">
+		<div class="styIRS8933MedLNDesc" style="height: 4mm; padding-top: 0mm;width:91.5mm;padding-left:.5mm;">Metric tons captured and used (see instructions)
+		<span class="styBoldText">
+			<span class="styNBSP"/>.
+			<span class="styNBSP"/>.
+			<span class="styNBSP"/>.
+			<span class="styNBSP"/>.
+		  </span>
+		  </div>
+     		  <div class="styUnderlineAmount" style="height:4mm;width:40.5mm;">
+		  <xsl:call-template name="PopulateText">
+			<xsl:with-param name="TargetNode" select="$FormData/MetricTonsCapturedUsedQty"/>
+		  </xsl:call-template>
+		   <!--<span style="width:2mm;"/>-->
+		</div>
+     </div>
     <div class="styIRS8933Multiple" style="height:4mm; width:5mm;"/>
-  <div class="styLNRightNumBox" style="height:4.6mm; width: 7.9mm; border-bottom-width:0px;background-color:lightgrey;"/>
-    <div class="styLNAmountBox" style="height:4.5mm;  border-bottom-width:0px">      
+  <div class="styLNRightNumBox" style="height:4.5mm; width:7.9mm; border-bottom-width:0px;background-color:lightgrey;"/>
+    <div class="styLNAmountBox" style="height:4.5mm;  border-bottom-width:0px;">      
     </div>
     </div>
-  <!-- end Line 2a -->  
-  <!--  Line 2b -->  
+  <!-- end Line 1a -->  
+  <!--  Line 1b -->  
   <div style="width: 187mm">
     <div class="styLNLeftNumBox" style="width:6mm;padding-left:3mm;">b</div>
-    <div class="styIRS8933MedLNDesc" style="height: 4mm; width:101mm;padding-left:.5mm;">Inflation adjusted credit rate
+     <div class="styLNDesc"   style="width:133mm;padding-top:0mm;padding-bottom:0mm;">
+    <div class="styIRS8933MedLNDesc" style="height: 4mm; width:91.5mm;padding-left:.5mm;">Inflation–adjusted credit rate
     <span class="styBoldText">
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
@@ -240,13 +278,12 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.  
       </span>
       </div>
-      <div class="styUnderlineAmount" style="height:4mm;padding-top:1mm;">
-   $10.63
-       <span style="width:2mm;"/>
+            <div class="styUnderlineAmount" style="height:4mm;width:41mm;">
+     $10.63
+      
+    </div>
     </div>
     <div class="styIRS8933Multiple" style="height:4mm; width:5mm; "/>
     <div class="styLNRightNumBox" style="height:6mm;background-color:lightgrey;border-bottom-width:0px;"/>
@@ -275,8 +312,7 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-      </span>
+             </span>
      </div>
     <div class="styLNRightNumBox">2c</div>
     <div class="styLNAmountBox">
@@ -299,10 +335,9 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
         <span class="styNBSP"/>.                
       </span>
      </div>
-     <div class="styLNRightNumBox" style="height:0.5mm; padding-top: 0mm; border-bottom-width:0px;background-color:lightgrey;"/>
-     <div class="styLNAmountBox" style="height:0.5mm; padding-top: 0mm; border-bottom-width:0px;">
-      
-    </div>
+     <div class="styLNRightNumBox" style="height:5mm; padding-top: 0mm; border-bottom-width:0px;background-color:lightgrey;"/>
+     <div class="styLNAmountBox" style="height:5mm; padding-top: 0mm; border-bottom-width:0px;">
+          </div>
     <div class="styLNRightNumBox">3</div>
     <div class="styLNAmountBox">
       <xsl:call-template name="PopulateAmount">
@@ -314,8 +349,9 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
     <!--  Line 4 -->  
   <div class="styBB" style="width: 187mm">
     <div class="styLNLeftNumBox" style="width:6mm;height:6mm;padding-top: 4mm;">4</div>
-    <div class="styIRS8933MedLNDesc" style="width:138mm;height:6mm;padding-top: 4mm;">Add lines 1c, 2c, and 3. Partnerships and S corporations, report this amount on Schedule K. All others, report this amount on Form 3800, line 1x
+    <div class="styIRS8933MedLNDesc" style="width:138mm;height:6mm;padding-top: 4mm;">Add lines 1c, 2c, and 3. Partnerships and S corporations, report this amount on Schedule K. All <br/> others, report this amount on Form 3800, Part III, line 1x
     <span class="styBoldText">
+       <span class="styNBSP"/>.
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
@@ -324,30 +360,25 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
         <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-        <span class="styNBSP"/>.
-      </span>
+                        </span>
        </div>
-    <div class="styLNRightNumBox" style="height:7mm; padding-top: 0mm; border-bottom-width:0px;background-color:lightgrey;"/>
-    <div class="styLNAmountBox" style="height:7mm; padding-top: 0mm; border-bottom-width:0px;">
-    </div>
-    <div class="styLNRightNumBox" style="height:4mm; padding-top: 0mm; border-bottom-width:0px;">4</div>
+       
+  <div class="styLNRightNumBox" style="height:4mm; padding-top: 3mm; border-bottom-width:0px;background-color:lightgrey;"/>
     <div class="styLNAmountBox" style="height:4mm; padding-top: 0mm; border-bottom-width:0px;">
+    </div>
+    <div class="styLNRightNumBox" style="height:7mm; padding-top: 3mm; border-bottom-width:0px;">4</div>
+    <div class="styLNAmountBox" style="height:7mm; padding-top: 3mm; border-bottom-width:0px;">
       <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$FormData/TotalAmt"/>
       </xsl:call-template>
     </div>
-      </div>      
+      </div>  
   <!--  end Line 4 -->
           <div style="width:187mm;">
-          <span class="styBoldText">For Paperwork Reduction Act Notice, see back of form. </span> 
-          <span style="width:120px;"/>                      
+          <span class="styBoldText">For Paperwork Reduction Act Notice, see instructions.</span> 
+          <span style="width:135px;"/>                      
           Cat. No. 37748H 
-          <span style="width:110px;"/>  
+          <span style="width:105px;"/>  
           Form <span class="styBoldText">8933</span> (2013)
         </div>
         <br/>
@@ -361,8 +392,7 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
             <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
           </div>      
         </div>
-        
-        <!-- Additional Data Table -->
+                <!-- Additional Data Table -->
         <table class="styLeftOverTbl">
           <xsl:call-template name="PopulateCommonLeftover">
             <xsl:with-param name="TargetNode" select="$FormData"/>
@@ -374,5 +404,4 @@ Information on Form 8933 and its instructions is available at <i>www.irs.gov/for
 </body>
 </html>
 </xsl:template>    
-
 </xsl:stylesheet>

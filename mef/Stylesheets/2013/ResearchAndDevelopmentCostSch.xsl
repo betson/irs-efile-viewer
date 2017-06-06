@@ -7,7 +7,7 @@
 	<xsl:output method="html" indent="yes"/>
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="DependencyData" select="$RtnDoc/ResearchAndDevelopmentCostSch"/>
-	<!-- 1120 Common Research And Development Cost Schedule -->
+	<!--  Common Form displays as - Research And Development Cost Schedule - -->
 	<xsl:param name="depDocTitle">
 		<xsl:call-template name="PopulateDisplayName">
 			<xsl:with-param name="TargetNode" select="$DependencyData"/>
@@ -17,37 +17,38 @@
 		<table id="ResearchAndDevelopmentCostSch" class="styDepTbl">
 			<thead class="styTableThead">
 				<tr class="styDepTblHdr">
-					<th class="styDepTblCell" scope="col" style="width:51mm;">Description</th>
-					<th class="styDepTblCell" scope="col" style="width:34mm;">Expense per Income Statement Amount</th>
-					<th class="styDepTblCell" scope="col" style="width:34mm;">Temporary Difference Amount</th>
-					<th class="styDepTblCell" scope="col" style="width:34mm;">Permanent Difference Amount</th>
-					<th class="styDepTblCell" scope="col" style="width:34mm;">Deductions per Tax Return Amount</th>
+					<th class="styDepTblCell" scope="col" style="width:43mm;">Description</th>
+					<th class="styDepTblCell" scope="col" style="width:36mm;">Expense per Income Statement Amount</th>
+					<th class="styDepTblCell" scope="col" style="width:36mm;">Temporary Difference Amount</th>
+					<th class="styDepTblCell" scope="col" style="width:36mm;">Permanent Difference Amount</th>
+					<th class="styDepTblCell" scope="col" style="width:36mm;">Deductions per Tax Return Amount</th>
 				</tr>
 			</thead>
 			<xsl:for-each select="$DependencyData/ResearchAndDevelopmentCostGrp">
 				<tr>
-					<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-					<td class="styDepTblCell" style="width:51mm;text-align:left;">
+					<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+					<xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+					<td class="styDepTblCell" style="width:43mm;text-align:left;">
 						<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="Desc"/>
 						</xsl:call-template>
 					</td>
-					<td class="styDepTblCell" style="width:34mm; text-align:right">
+					<td class="styDepTblCell" style="width:36mm; text-align:right">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="ExpensePerIncomeStmtAmt"/>
 						</xsl:call-template>
 					</td>
-					<td class="styDepTblCell" style="width:34mm;text-align:right">
+					<td class="styDepTblCell" style="width:36mm;text-align:right">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="TemporaryDifferenceAmt"/>
 						</xsl:call-template>
 					</td>
-					<td class="styDepTblCell" style="width:34mm;text-align:right;">
+					<td class="styDepTblCell" style="width:36mm;text-align:right;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="PermanentDifferenceAmt"/>
 						</xsl:call-template>
 					</td>
-					<td class="styDepTblCell" style="width:34mm;text-align:right">
+					<td class="styDepTblCell" style="width:36mm;text-align:right">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="DeductionPerTaxReturnAmt"/>
 						</xsl:call-template>
@@ -58,8 +59,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -85,12 +88,10 @@
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
 				<div class="styDepTitleLine">
-					<span class="styDepTitle">
-						<span style="width:120mm;">
-							<xsl:value-of select="$depDocTitle"/>
-						</span>
-					</span>
-				</div>
+					<span class="styDepTitle"  style="padding-right:2mm;">
+						<xsl:value-of select="$depDocTitle"/>
+					</span>        
+			    </div>
 				<xsl:call-template name="PopulateDepCommonLeftover">
 					<xsl:with-param name="TargetNode" select="$DependencyData"/>
 				</xsl:call-template>

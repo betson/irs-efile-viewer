@@ -14,8 +14,10 @@
 
 
 <xsl:template match="/">
-<html>
-<head>  
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
+<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>  
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"/></xsl:call-template></title>
   <!-- No Browser Caching  -->
   <meta http-equiv="Pragma" content="no-cache"/>
@@ -83,13 +85,13 @@
   <div class="styBB" style="width:187mm">
     <div class="styNameBox" style="width:125mm; height: 20mm;font-size: 7pt;">
       Name(s) of consenting taxpayer(s)<br/><br/>
-      <div style="font-size: 6pt;font-family:verdana;font-weight:bold;">
+      <div style="font-size: 6pt;font-family:verdana;">
         <xsl:choose>
           <xsl:when test="normalize-space($FormData/TaxpayerName) != ''">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$FormData/TaxpayerName/BusinessNameLine1"/></xsl:call-template>
             <xsl:if test="normalize-space($FormData/TaxpayerName/BusinessNameLine2)!=''">
               <br/>
-              <b><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$FormData/TaxpayerName/BusinessNameLine2"/></xsl:call-template></b>
+              <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$FormData/TaxpayerName/BusinessNameLine2"/></xsl:call-template>
             </xsl:if>            
           </xsl:when>  
           <xsl:otherwise>
@@ -100,7 +102,7 @@
       </div>
     </div>
     <div class="styEINBox" style="width: 62mm; padding-left:2mm; height: 9mm; font-size: 7pt;font-weight:normal;">Identifying number (see instructions)
-      <div style="text-align:left;font-weight:bold;">  
+      <div style="text-align:left;">  
         <br/>  
                 <xsl:if test="$FormData/EIN != ' ' ">
                     <xsl:call-template name="PopulateEIN">
@@ -117,7 +119,7 @@
     <div class="styEINBox" style="width: 62mm; padding-left:2mm; height: 9mm; border-color: black; border-style: solid; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; font-weight:normal;font-size: 7pt;">Social security number of spouse (only if a joint income tax return was filed)</div>
   </div>  
   <!--  End Name and Employer indentification number  -->
-  <div class="styBB" style="width: 187mm; height: 8mm">Number, street, and room or suite no. (If a P.O. box, see instructions.)<br/>
+  <div class="styBB" style="width: 187mm; height: 9mm">Number, street, and room or suite no. (If a P.O. box, see instructions.)<br/>
     <xsl:call-template name="PopulateText">
       <xsl:with-param name="TargetNode" select="$FormData/USAddress/AddressLine1"/>
     </xsl:call-template>
@@ -154,7 +156,7 @@
     </span>      
   </div>
   <div style="width: 187mm">  
-    <span class="styLNDesc" style="padding-left: 8mm; width: 177mm;font-size:7pt;">
+    <span class="styLNDesc" style="padding-left: 8mm; width: 177mm;font-size:7pt;height:auto;">
       made by or for the above taxpayer(s) for the tax year ended 
       <xsl:choose>
         <xsl:when test="$FormData/TaxPeriodEndDt != ''">
@@ -178,11 +180,11 @@
           __________ , _________ , _________ , may be
         </xsl:otherwise>
       </xsl:choose>
-      <div style="width: 187mm"><span style="width: 83mm"/>month<span style="width: 10mm"/>day<span style="width: 10mm"/>year</div>
+      <div style="width: 187mm"><span style="width: 83mm"/>month<span style="width: 10mm"/>day<span style="width:10mm"/>year</div>
     </span>      
   </div>
   <div style="width: 187mm">  
-    <span class="styLNDesc" style="padding-left: 8mm; width: 177mm">
+    <span class="styLNDesc" style="padding-left: 8mm; width: 177mm;height:auto;">
       assessed at any time on or before  
       <xsl:choose>
         <xsl:when test="$FormData/ExpirationDt != ''">
@@ -214,7 +216,7 @@
   <!--  Line 2 -->    
   <div style="width: 187mm">  
     <div class="styLNLeftNumBox" style="padding-left: 2mm">2</div>
-    <span class="styLNDesc" style="width: 177mm;font-size:7pt;">
+    <span class="styLNDesc" style="width: 177mm;font-size:7pt;height:auto;">
       This consent establishes an extended period for assessing tax. The expiration of the extended period may be suspended
        or otherwise affected by the operation of law in the same manner as the original period. For example, if a notice of deficiency
       in tax covered by this consent is issued, the period for assessing tax will not end prior to the end of the suspension period
@@ -228,7 +230,7 @@
   <!--  Line 3  -->
   <div style="width: 187mm">  
     <div class="styLNLeftNumBox" style="padding-left: 2mm">3</div>
-    <span class="styLNDesc" style="width: 177mm;font-size:7pt;">
+    <span class="styLNDesc" style="width: 177mm;font-size:7pt;height:auto;">
       The consenting taxpayer(s) may file a claim for credit or refund for the tax assessed by reason of this consent within 6
       months after the period ends for assessing tax established by this consent.
     </span>      
@@ -238,7 +240,7 @@
   <!--  Line 4  -->
   <div style="width: 187mm">  
     <div class="styLNLeftNumBox" style="padding-left: 2mm">4</div>
-    <span class="styLNDesc" style="width: 177mm;font-size:7pt;">
+    <span class="styLNDesc" style="width: 177mm;font-size:7pt;height:auto;">
       The amount of any deficiency assessment covered by this consent will be limited to the amount of any federal income tax<br/>
       due relating to the recognition of gain on the transfer described in item 5, including any penalties, additions to tax, and<br/>
       interest attributable thereto and consequential changes to other items based on that adjustment.
@@ -280,18 +282,18 @@
         </div>
       </xsl:when>
       <xsl:otherwise>
-        <div class="styBB" style="float: right; clear: none; border-style: solid; width: 125mm; border-bottom-width: 1px"/>
+        <div class="styBB" style="float: right; clear: none; border-style: solid; width: 125mm; border-bottom-width: 1px;height:12px"/>
         <br/>
-          <div class="styBB" style="float: right; border-style: solid; width: 178mm; border-bottom-width: 1px"/>
+          <div class="styBB" style="float: right; border-style: solid; width: 178mm; border-bottom-width: 1px;height:12px"/>
    
         <div style="width: 187mm">
-          <div class="styBB" style="float: right; border-style: solid; width: 178mm"/>
+          <div class="styBB" style="float: right; border-style: solid; width: 178mm;height:12px"/>
         </div>    
         <div style="width: 187mm">
-          <div class="styBB" style="float: right; border-style: solid; width: 178mm"/>
+          <div class="styBB" style="float: right; border-style: solid; width: 178mm;height:12px"/>
         </div>
         <div style="width: 187mm">
-          <div class="styBB" style="float: right; border-style: solid; width: 178mm; border-bottom-width: 1px"/>
+          <div class="styBB" style="float: right; border-style: solid; width: 178mm; border-bottom-width: 1px;height:12px"/>
         </div>
       </xsl:otherwise>
     </xsl:choose>        
@@ -301,14 +303,14 @@
   <!--  Line 5c  -->
   <div style="width: 187mm">  
     <div class="styLNLeftLtrBox">c</div>
-    <div style="float: left; padding -top: .5mm">
+    <div style="float: left; padding-top: .5mm">
       Name of transferee and identifying number, if any  
     </div>  
     <div class="styBB" style="float: right; clear: none; border-style: solid; width: 112mm; border-bottom-width: 1px;font-size:6pt;font-family:verdana;">
       <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$FormData/TransfereeName/BusinessNameLine1"/></xsl:call-template>
     </div>    
   </div>    
-  <div style="width: 187mm">
+  <div style="width: 187mm;height:6mm;">
     <div class="styBB" style="float: right; border-style: solid; width: 178mm;font-size:6pt">
       <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$FormData/TransfereeName/BusinessNameLine2"/></xsl:call-template>
       <span style="width: 2mm"/>

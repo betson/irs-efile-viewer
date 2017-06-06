@@ -10,8 +10,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form8911" select="$RtnDoc/IRS8911"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8911)"/>
@@ -77,7 +79,7 @@
               </div>
             </div>
             <div class="styTYBox" style="width:32mm;border-left:none;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-1981</div>
+              <div class="styOMB" style="height:4mm;">OMB No. 1545-1981</div>
               <div class="styTaxYear">
                 20<span class="styTYColor">13</span>
               </div>
@@ -91,7 +93,7 @@
           <!-- End Form Number and Name section -->
           <!-- Begin Name and Identifying number section -->
           <div class="styBB" style="width:187mm;">
-          <div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+          <div class="styNameBox" style="width:140mm;height:10mm;font-size:7pt;">
            Name(s) shown on return
            <br/>
            <!-- =============Return Header goes here==========================================-->
@@ -137,7 +139,7 @@
 </div>
 <!-- End Names and Identifying number section -->
 <div class="styBB" style="width:187mm;height:3.75mm;border-top-width:1px;padding-top: 0;padding-bottom: 0;">
-  <div class="styPartName" style="height:.75mm">Part I</div>
+  <div class="styPartName" style="height:auto">Part I</div>
       <div class="styPartDesc" style="float:left;width:167mm;">
 		    Total Cost of Refueling Property
 	       </div>
@@ -154,15 +156,15 @@
               </div>
             </div>
             <div style="float:right;clear:none;">
-              <div class="styLNRightNumBox" style="border-bottom-width:0px;height:9mm;padding-top:3.5mm;">1</div>
-              <div class="styLNAmountBox" style="border-bottom-width:0px;height:9mm;padding-top:3.5mm;">              
+              <div class="styLNRightNumBox" style="border-bottom-width:0px;height:9mm;padding-top:5.5mm;">1</div>
+              <div class="styLNAmountBox" style="border-bottom-width:0px;height:9mm;padding-top:5.5mm;">              
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8911/TotalQlfdPropertyCostCreditAmt"/>
                 </xsl:call-template>
               </div>
             </div>
           </div>         
-          <div class="styBB" style="width:187mm;height:3.75mm;border-top-width:2px;padding-top:0;padding-bottom:0;">
+          <div class="styBB" style="width:187mm;height:auto;border-top-width:2px;padding-top:0;padding-bottom:0;">
             <div class="styPartName" style="height:3.75mm">Part II</div>
             <div class="styPartDesc" style="float:left;width:167mm;">
 		    Credit for Business/Investment Use Part of Refueling Property
@@ -171,16 +173,16 @@
           <!-- Line 2-->
           <div style="width:187mm;">
             <div style="float:left;clear:none;">
-              <div class="styLNLeftNumBoxSD" style="padding-top:2mm;">2</div>
-              <div class="styLNDesc" style="width:137mm;padding-top:2mm;">
+              <div class="styLNLeftNumBoxSD">2</div>
+              <div class="styLNDesc" style="width:137mm;">
                 <span style="float:left;">Business/investment use part (see instructions)</span>
              <!--Dotted Line-->
                 <div class="styDotLn" style="float:right;padding-right:1mm;">..................</div>
               </div>
             </div>
             <div style="float:right;clear:none;">
-              <div class="styLNRightNumBox" style="padding-top:2mm;">2</div>           
-              <div class="styLNAmountBox" style="padding-top:2mm;">
+              <div class="styLNRightNumBox">2</div>           
+              <div class="styLNAmountBox">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8911/BusInvestmtUsePartAmt"/>
                 </xsl:call-template>
@@ -305,7 +307,7 @@
           <div style="width:187mm;">
             <div style="float:left;clear:none">
               <div class="styLNLeftNumBox" style="padding-left:2mm;">9</div>
-               <div class="styLNDesc" style="width:139mm;">
+               <div class="styLNDesc">
                 <span class="styBoldText">Business/investment use part of credit. </span>
 		        Add lines 7 and 8. Partnerships and S corporations, report this
 		      <span style="float:left;">amount on Schedule K. All others, report this amount on Form 3800, line 1s </span>
@@ -313,7 +315,7 @@
                 <div class="styDotLn" style="float:right;padding-right:3mm;">.........</div>
               </div>
             </div>
-            <div style="float:right;clear:none;">
+            <div style="float:right;clear:none;width:40mm;">
               <div class="styLNRightNumBox" style="background:gray;border-bottom-width:0"/>
               <div class="styLNAmountBox" style="border-bottom-width:0"/>
               <div class="styLNRightNumBox" style="border-bottom-width:0">9</div>
@@ -325,7 +327,7 @@
             </div>
           </div>
           <!-- Part III header -->
-          <div class="styBB" style="width:187mm;height:3.75mm;padding-top:0;padding-bottom:0;border-top-width:2px;">
+          <div class="styBB" style="width:187mm;height:auto;padding-top:0;padding-bottom:0;border-top-width:2px;">
             <div class="styPartName" style="height:3.75mm">Part III</div>
             <div class="styPartDesc" style="float:left;width:167mm;">
 		        Credit for Personal Use Part of Refueling Property
@@ -337,7 +339,7 @@
               <div class="styLNLeftNumBox" style="padding-top:2mm;">10</div>
               <div class="styLNDesc" style="width:137mm;padding-top:2mm;">
                 Subtract line 2 from line 1. If zero, stop here; <span class="styBoldText">do not</span> file this form unless you 
-                  are claiming a credit on <span style="float:left;">line 9</span> 
+                  are claiming a credit on <br/><span style="float:none;">line 9</span> 
                 <!--Dotted Line-->
                 <div class="styDotLn" style="float:right;padding-right:1mm;">...............................</div>
               </div>
@@ -441,7 +443,7 @@
                       <div class="styLNDesc" style="width:2mm;">
                         <img src="{$ImagePath}/8826_Bracket_Tiny.gif" alt="Curly Bracket Image"/>
                       </div>
-                      <div class="styLNDesc" style="width:25mm;padding-top:1.5mm;">
+                      <div class="styLNDesc" style="width:25mm;">
                         <span class="styBoldText" style="font-size: 7pt;float:right;padding-right:0mm;letter-spacing:3.3mm;">......</span>
                       </div>
                     </td>
@@ -449,7 +451,7 @@
                 </table>
               </div>
             </div>
-            <div style="float:right;clear:none;">
+            <div style="float:right;clear:none;width:40mm;">
               <div class="styLNRightNumBox" style="">14</div>
               <div class="styLNAmountBox">
                 <xsl:call-template name="PopulateAmount">
@@ -617,10 +619,10 @@
                       <span style="padding-left:2mm;font-weight:bold;letter-spacing:3.3mm;">....................</span>
                     </td>
                     <td style="width:27mm">
-                      <div class="styLNDesc" style="width:2mm;">
+                      <div class="styLNDesc" style="width:2mm;margin-top:-3mm;">
                         <img src="{$ImagePath}/8911_Bracket_Sm.gif" alt="Curly Bracket Image"/>
                       </div>
-                      <div class="styLNDesc" style="width:25mm;padding-top:4mm;">
+                      <div class="styLNDesc" style="width:25mm;">
 						<span class="styBoldText" style="font-size: 7pt;float:right;letter-spacing:3mm;padding-right:0mm">......
                         </span>
                       </div>
@@ -629,7 +631,7 @@
                 </table>
               </div>
             </div>
-            <div style="float:right;clear:none;">
+            <div style="float:right;clear:none;width:40mm;">
               <div class="styLNRightNumBoxNBB" style="height:1mm;background-color:gray;"/>
               <div class="styLNAmountBoxNBB" style="height:1mm;"/>
               <div class="styLNRightNumBox" style="">17</div>
@@ -653,7 +655,7 @@
                 <div class="styDotLn" style="float:right;padding-right:3mm;">............................</div>
               </div>
             </div>
-            <div style="float:right;clear:none;">
+            <div style="float:right;clear:none;width:40mm;">
               <div class="styLNRightNumBox" style="background:gray;border-bottom-width:0"/>
               <div class="styLNAmountBox" style="border-bottom-width:0"/>
               <div class="styLNRightNumBox">18</div>
@@ -673,12 +675,12 @@
 			   Enter the <span class="styBoldText">smaller</span>
 			   of line 13 or line 18 here and on Form 1040, line 53; Form 1040NR, line 50; or the appropriate line of your return. If line 18 is smaller 
 			   than line 13, see 
-			 <span style="float:left;">instructions </span>
+			 <span>instructions </span>
                 <!--Dotted Line-->
-                <div class="styDotLn" style="float:right;padding-right:3mm;">.............................</div>
+                <div class="styDotLn" style="padding-right:3mm;">.............................</div>
               </div>
             </div>
-            <div style="float:right;clear:none;">
+            <div style="float:right;clear:none;width:40mm;">
               <div class="styLNRightNumBox" style="height:6mm;background:gray;border-bottom-width:0"/>
               <div class="styLNAmountBox" style="height:6mm;border-bottom-width:0"/>
               <div class="styLNRightNumBox" style="height:4mm;border-bottom-width:0">19</div>
@@ -699,7 +701,7 @@
               <span style="width:27mm;text-align:right;">Form <span class="styBoldText">8911 </span>(2013)</span>
             </div>
           </div>
-          <br class="pageend"/>
+          <div class="pageEnd"/>
           <!-- BEGIN Left Over Table -->
           <!-- ADDITIONAL DATA TITLE BAR AND BUTTON-->
           <div class="styLeftOverTitleLine" id="LeftoverData">

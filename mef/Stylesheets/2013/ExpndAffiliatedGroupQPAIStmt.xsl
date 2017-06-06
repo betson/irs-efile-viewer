@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/08/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 09/11/2015 - Changes made for defect 44524 - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -12,8 +14,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -41,8 +45,8 @@
 </head>    
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>    
-        <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:98mm">          
+        <div class="styDepTitleLine" style="width:187mm">
+          <span class="styDepTitle" style="width:187mm">          
             <xsl:value-of select="$depDocTitle"/>
           </span>
         </div>
@@ -51,7 +55,7 @@
         
         <div class="styTopSectionLine">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">How the QPAI was calculated:</span></div>
-          <div style="float:left;clear:none;">
+          <div style="width:118mm;float:left;clear:none;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$EAQPAIData/QPAICalcMthdTxt"/>
             </xsl:call-template>            

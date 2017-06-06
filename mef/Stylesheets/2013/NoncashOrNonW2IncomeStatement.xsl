@@ -12,10 +12,11 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle" /></title>
-
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache" />
          <meta http-equiv="Cache-Control" content="no-cache" />
@@ -26,11 +27,8 @@
          <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
          <meta name="Author" content="Trin Xue" />
          <meta name="Description" content= "{$depDocTitle}" /> 
-        
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"></script>
         <xsl:call-template name="InitJS"></xsl:call-template>
-      
-        
         <style type="text/css">
           <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="AddOnStyle"></xsl:call-template>    
@@ -38,10 +36,10 @@
         </style>
       <xsl:call-template name="GlobalStylesDep"/>
 </head>    
-<body class="styBodyClass">
+<body class="styBodyClass" style="width:187mm;">
 		<xsl:call-template name="DocumentHeaderDependency"/>
 		<div class="styDepTitleLine">
-			<div class="styDepTitle" style="width:92mm">
+			<div class="styDepTitle" style="padding-right:2mm;">
 				<xsl:value-of select="$depDocTitle"/>
 			</div>
 		</div>
@@ -49,30 +47,30 @@
 			<xsl:with-param name="TargetNode" select="$FormData"/>
 		</xsl:call-template>
      <div class="styTopSectionLine">
-		<div class="styTopSectionLineLbl" style="float:left">
+		<div class="styTopSectionLineLbl" style="float:left;">
 			<b>Lodging Market Value Explanation: </b>
 		</div>
-          <div class="styExplanationLine" style="float:left">
+          <div class="styExplanationLine" style="float:left;width:187mm;"> 
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$FormData/LodgingMarketValueExpln"/>
             </xsl:call-template>            
           </div>
         </div>    
         <div class="styTopSectionLine">
-		<div class="styTopSectionLineLbl" style="float:left">
+		<div class="styTopSectionLineLbl" style="float:left;"> 
 			<b>Meals Market Value Explanation: </b>
 		</div>
-          <div class="styExplanationLine" style="float:left">
+          <div class="styExplanationLine" style="float:left;width:187mm;"> 
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$FormData/MealsMarketValueExpln"/>
             </xsl:call-template>            
           </div>
         </div>
         <div class="styTopSectionLine">
-		<div class="styTopSectionLineLbl" style="float:left">
+		<div class="styTopSectionLineLbl" style="float:left;"> 
 			<b>Car Market Value Explanation: </b>
 		</div>
-          <div class="styExplanationLine" style="float:left">
+          <div class="styExplanationLine" style="float:left;width:187mm;"> 
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$FormData/CarMarketValueExpln"/>
             </xsl:call-template>            
@@ -101,7 +99,7 @@
 									<xsl:with-param name="TargetNode" select="Description"/>
 								</xsl:call-template>
 							</td>
-							<td class="styDepTblCell" style="text-align:right;">
+							<td class="styDepTblCell" style="text-align:right;vertical-align:bottom;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="Amount"/>
 								</xsl:call-template>

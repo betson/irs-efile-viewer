@@ -9,8 +9,10 @@
 <xsl:strip-space elements="*"/>
 <xsl:param name="Form8912Data" select="$RtnDoc/IRS8912"/>
 <xsl:template match="/">
-<html lang="EN-US">
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <title>
 <xsl:call-template name="FormTitle">
 <xsl:with-param name="RootElement" select="local-name($Form8912Data)"/>
@@ -42,31 +44,31 @@
 <xsl:call-template name="DocumentHeader"/>
 <!-- Begin Form Number and Name -->
 <div class="styBB" style="width:187mm;">
-<div class="styFNBox" style="width:31mm;height:20mm;border-right:none;vertical-align:bottom;">
+<div class="styFNBox" style="width:33mm;height:auto;border-right:none;vertical-align:bottom;">
 Form <span class="styFormNumber">8912</span>
-<div class="styAgency" style="margin-top:1.8mm">
+<div class="styAgency" style="margin-top:0mm">
 <br/>						
-<div class="styAgency" style="padding-top: 7mm">Department of the Treasury<br />Internal Revenue Service</div>
+<div class="styAgency" style="padding-top: 3.2mm">Department of the Treasury<br />Internal Revenue Service</div>
 </div>
 </div>
-<div class="styFTBox" style="width:123mm;border-right:1px solid black;border-left:1px solid black;height:20mm;">
-<div style="height:13.5mm;" class="styMainTitle">
+<div class="styFTBox" style="width:122.5mm;border-right:1px solid black;border-left:1px solid black;height:22.5mm;">
+<div style="height:auto;" class="styMainTitle">
 <br/>
 Credit to Holders of Tax Credit Bonds
 </div>
-<div class="styFST" style="height:5mm;font-size:7pt;">
+<div class="styFST" style="height:auto;font-size:7pt;">
 </div>
-<div class="styFST" style="height:5mm;font-size:7pt;">
+<div class="styFST" style="height:auto;font-size:7pt;">
 <img src="{$ImagePath}/8912_Bullet.gif" alt="Bullet Image"/>
 Attach to your tax return.    
 </div>
-<div class="styFST" style="height:5mm;font-size:7pt;">
+<div class="styFST" style="height:auto;font-size:7pt;">
 <img src="{$ImagePath}/8912_Bullet.gif" alt="Bullet Image"/>
 Information about Form 8912 and its separate instructions is at <i>www.irs.gov/form8912.</i>
 </div>
 </div>
-<div class="styTYBox" style="width:32mm;border-left:none;">
-<div class="styOMB" style="height:2mm;">OMB No. 1545-2025</div>
+<div class="styTYBox" style="width:31.5mm;border-left:none;">
+<div class="styOMB" style="height:4mm;width:31.5mm;">OMB No. 1545-2025</div>
 <div class="styTaxYear">
 20<span class="styTYColor">13</span>
 </div>
@@ -78,7 +80,7 @@ Attachment<br/>Sequence No. <span class="styBoldText">154</span>
 <!-- End Form Number and Name section -->
 <!-- Begin Name and Identifying number section -->
 <div class="styBB" style="width:187mm;">
-<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+<div class="styNameBox" style="width:140mm;height:auto;font-size:7pt;">
 Name(s) shown on return<br/>
 <div style="font-family:verdana;font-size:7pt;height:6.25mm;">
 <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -107,9 +109,9 @@ Identifying number<br/>
 
 <!-- BEGIN Part I Title -->
 <!--Begin BondInformation Table Blank Form-->
-<div class="styBB" style="width:187mm;">
+<div class="styBB" style="width:187mm;border-top:0px solid black;">
 <div class="styPartName">Part I</div>
-<div class="styPartDesc" style="height:4mm;width:120mm;text-align:left">Current Year Credit</div>
+<div class="styPartDesc">Current Year Credit</div>
 </div>
 
 <!--Line 1-->
@@ -117,7 +119,7 @@ Identifying number<br/>
 <div class="styLNLeftNumBoxSD" style="height:4.5mm;">
 1</div>
 <div class="styLNDesc" style="width:138mm;height:4.5mm;">
-Bond credit(s) from Part III. Enter the amount from line 14. (see instructions.) 
+Bond credit(s) from Part III. Enter the amount from line 14. (see instructions) 
 <!--Dotted Line-->
 <span style="letter-spacing:3.8mm;font-weight:bold;">........</span>
 </div>
@@ -135,7 +137,7 @@ Bond credit(s) from Part III. Enter the amount from line 14. (see instructions.)
 <div class="styLNLeftNumBoxSD" style="height:4.5mm;">
 2</div>
 <div class="styLNDesc" style="width:138mm;height:4.5mm;">
-Bond credit(s) from Part IV. Enter the amount from line 20. (see instructions.) 
+Bond credit(s) from Part IV. Enter the amount from line 20. (see instructions) 
 <!--Dotted Line-->
 <span style="letter-spacing:3.8mm;font-weight:bold;">........</span>
 </div>
@@ -149,22 +151,24 @@ Bond credit(s) from Part IV. Enter the amount from line 20. (see instructions.)
 </div>
 
 <!--Line 3-->
-<div class="styBB" style="width:187mm; border-bottom-width: 0px; ">
+<div class="styGenericDiv" style="width:187mm;">
 <div class="styLNLeftNumBoxSD" style="height:4.5mm;">
 3</div>
 <div class="styLNDesc" style="width:138mm;height:4.5mm;">
-Carryforward of credits for qualified tax credit bonds and build America bonds to 2013. (see instructions.)    
+Carryforward of credits for qualified tax credit bonds and build America bonds to 2013. (see instructions)    
 <!--Dotted Line-->
-<span style="letter-spacing:3.8mm;font-weight:bold;">..........................</span>
+<span style="letter-spacing:3.8mm;font-weight:bold;">.</span>
 </div>
-<div class="styLNRightNumBox" style="width:8mm;height:7.5mm;padding-top:3mm;border-bottom-width: 1px;">
+<div class="styLNRightNumBox" style="width:8mm;height:5mm;padding-top:1mm;border-bottom-width: 1px;">
 3</div>
-<div class="styLNAmountBox" style="height:7.5mm;width:32mm;font-size:7pt;padding-top:3mm;">
+<div class="styLNAmountBox" style="height:5mm;width:32mm;font-size:7pt;padding-top:1mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8912Data/CarryforwardPYBondCreditAmt"/>
 </xsl:call-template>
 </div>
 </div>
+
+
 
 <!--Line 4-->
 <div class="styBB" style="width:187mm;border-bottom-width: 0px;  ">
@@ -190,7 +194,7 @@ style="width:1.5mm"></span>-->4</div>
 <div class="styLNLeftNumBoxSD" style="height:4.5mm;">
 5</div>
 <div class="styLNDesc" style="width:138mm;height:4.5mm;">
-Amount allocated to the beneficiaries of the estate or trust. (You must also issue Form(s) 1097-BTC. See Form 1097-BTC and its instructions.) (see instructions.)     
+Amount allocated to the beneficiaries of the estate or trust. (You must also issue Form(s) 1097-BTC. See Form 1097-BTC and its instructions.) (see instructions)     
 <!--Dotted Line-->
 <span style="letter-spacing:3.8mm;font-weight:bold;">.....</span>
 </div>
@@ -230,154 +234,105 @@ Amount allocated to the beneficiaries of the estate or trust. (You must also iss
 
 <!-- Part II, Line 7 -->
 <div style="width:187mm; ">
-<div class="styLNLeftNumBoxSD" style="height:10mm;padding-top:2mm;">7</div>
-<div class="styLNDesc" style="font-size:7pt;width:134.1mm;height:10mm;padding-top:2mm;">
+<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:2mm;">7</div>
+<div class="styLNDesc" style="font-size:7pt;width:134.1mm;height:auto;padding-top:2mm;">
 <span class="styBoldText">Regular tax before credits: </span>
-<li>Individuals. Enter the amount from Form 1040, line 44 or Form 1040NR, line 42 <span style="width:.5mm;"/>
+<br/>
+<img src="{$ImagePath}/8912_Bullet_Round.gif" height="3.9mm" alt="Bullet Round Image"/>
+Individuals. Enter the amount from Form 1040, line 44 or Form 1040NR, line 42<span style="width:.5mm;"/>
 <span class="styBoldText">
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.          
 </span>
 <br/>
-</li>
-<li>Corporations. Enter the amount from Form 1120, Schedule J, line 2, or the applicable line of<br/>your return</li>
-<span class="styBoldText">
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.  
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.  
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.  
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.        
-</span>
-<li>Estates and trusts. Enter the sum of the amounts from Form 1041, Schedule G, lines 1a and<br/>1b, or the amount from the applicable line of your return</li>
-<span class="styBoldText">
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-</span>
+<img src="{$ImagePath}/8912_Bullet_Round.gif" height="3.9mm" alt="Bullet Round Image"/>
+Corporations. Enter the amount from Form 1120, Schedule J, line 2, or the applicable line of <br/>
+your return  <span style="letter-spacing:3.8mm;font-weight:bold;">.........................</span>
+<br/>
+<img src="{$ImagePath}/8912_Bullet_Round.gif" height="3.9mm" alt="Bullet Round Image"/>
+Estates and trusts. Enter the sum of the amounts from Form 1041, Schedule G, lines 1a and <br/>
+1b, or the amount from the applicable line of your return<span style="letter-spacing:3.8mm;font-weight:bold;"> .............</span>
 </div>
-<div class="styLNDesc" style="width:4mm; height:5mm;padding-top:4mm;">
+<div class="styLNDesc" style="width:4mm; height:auto;padding-top:4mm;">
 <img src="{$ImagePath}/8912_Bracket_Lg.gif" height="65mm" alt="Curly Bracket Image"/>
 </div>
-<div class="styLNRightNumBox" style="height:9mm;padding-top:0mm;background-color:lightgrey;">
+<div class="styLNRightNumBox" style="height:7mm;padding-top:12mm;width:8.1mm;background-color:lightgrey;border-bottom-width: 0px;border-right-width: 1px;">
 </div>
-<div class="styLNAmountBox" style="height:9mm;width:31.5mm;padding-top:0mm;border-bottom-width: 0px;">
-</div>
-<div class="styLNRightNumBox" style="height:6mm;padding-top:2mm;">
+<div class="styLNAmountBox" style="height:auto;width:33mm;padding-top:0mm;padding-bottom:0mm;border-bottom-width: 0px;">
+</div> 
+<div class="styLNRightNumBox" style="height:4mm;border-right-width: 1px;width:8.1mm">
 7
 </div>
-<div class="styLNAmountBox" style="height:6mm;width:31.5mm;padding-top:2mm;">
+<div class="styLNAmountBox" style="height:4mm;width:31.5mm;border-left-width: 0px;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8912Data/RegularTaxBeforeCreditAmt"/>
 </xsl:call-template>
 </div>
-<div class="styLNRightNumBox" style="height:9mm;padding-top:0mm;background-color:lightgrey;border-bottom-width: 0px;">
+<div class="styLNRightNumBox" style="height:auto;padding-top:6.2mm;background-color:lightgrey;width:8.1mm;border-bottom-width: 0px;border-right-width: 1px;">
 </div>
-<div class="styLNAmountBox" style="height:9mm;width:31.5mm;padding-top:0mm;border-bottom-width: 0px;"/>
+<div class="styLNAmountBox" style="height:auto;width:31.5mm;padding-top:6mm;border-bottom-width: 0px;border-left-width: 0px;"/>
 </div>
 
 <!-- Part II, Line 8 -->
 <div style="width:187mm;">
-<div class="styLNLeftNumBoxSD" style="height:5mm;">8</div>
-<div class="styLNDesc" style="width:134.1mm;height:5mm;">
+<div class="styLNLeftNumBoxSD" style="height:auto;">8</div>
+<div class="styLNDesc" style="width:134.1mm;height:auto;">
 <span class="styBoldText">Alternative minimum tax: </span>
-<li>Individuals. Enter the amount from Form 6251, line 35 <span style="width:.5mm;"/>
-<span class="styBoldText">
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.  
-<span style="width:16px;"/>.
-</span>
 <br/>
-</li>
-<li>Corporations. Enter the amount from Form 4626, line 14</li>
-<span class="styBoldText">
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.  
-<span style="width:16px;"/>.
-</span>
-<li>Estates and trusts. Enter the amount from Schedule I (Form 1041), line 56</li>
-<span class="styBoldText">
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-<span style="width:16px;"/>.
-</span>
+<img src="{$ImagePath}/8912_Bullet_Round.gif" height="3.9mm" alt="Bullet Round Image"/>
+Individuals. Enter the amount from Form 6251, line 35 <span style="width:.5mm;"/>
+<span style="letter-spacing:3.8mm;font-weight:bold;"> .............</span>
+<br/>
+<img src="{$ImagePath}/8912_Bullet_Round.gif" height="3.9mm" alt="Bullet Round Image"/>
+Corporations. Enter the amount from Form 4626, line 14 <span style="letter-spacing:3.8mm;font-weight:bold;"> ............</span>
+<br/>
+<img src="{$ImagePath}/8912_Bullet_Round.gif" height="3.9mm" alt="Bullet Round Image"/>
+Estates and trusts. Enter the amount from Schedule I (Form 1041), line 56 <span style="letter-spacing:3.8mm;font-weight:bold;"> ........</span>
+
 </div>
-<div class="styLNDesc" style="width:4mm; height:5mm;padding-top:0mm;">
+<div class="styLNDesc" style="width:4mm; height:auto;padding-top:0mm;">
 <img src="{$ImagePath}/8912_Bracket_md.gif" height="53mm" alt="Curly Bracket Image"/>
 </div>
-<div class="styLNRightNumBox" style="height:5mm;padding-top:0mm;background-color:lightgrey;">
+<div class="styLNRightNumBox" style="height:auto;width:8.1mm;padding-top:5mm;background-color:lightgrey;border-bottom-width: 0px;border-right-width: 1px;">
 </div>
-<div class="styLNAmountBox" style="height:5mm;width:31.5mm;padding-top:0mm;border-bottom-width: 0px; ;"/>
-<div class="styLNRightNumBox" style="height:5mm;padding-top:0mm;">
+<div class="styLNAmountBox" style="height:auto;width:33mm;padding-top:0mm;padding-bottom:0mm;border-bottom-width: 0px; "/>
+<div class="styLNRightNumBox" style="height:4mm;padding-top:.5mm;">
 8
 </div>
-<div class="styLNAmountBox" style="height:5mm;width:31.5mm;padding-top:1mm;">
+<div class="styLNAmountBox" style="height:4mm;width:31.5mm;padding-top:.5mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8912Data/AlternativeMinimumTaxAmt"/>
 </xsl:call-template>
 </div>
-<div class="styLNRightNumBox" style="height:5mm;padding-top:0mm;background-color:lightgrey;">
-</div>
-<div class="styLNAmountBox" style="height:5mm;width:31.5mm;padding-top:0mm;border-bottom-width: 0px; ;"/>
-</div>
 
+<div class="styLNRightNumBox" style="height:auto;padding-top:6mm;background-color:lightgrey;border-bottom-width: 0px;">
+</div>
+<div class="styLNAmountBox" style="height:auto;width:31.5mm;padding-top:6mm;border-bottom-width: 0px;"/>
+</div>
 <!-- Part II, Line 9 -->
 <div style="width:187mm;">
 <div class="styLNLeftNumBoxSD">9</div>
-<div class="styLNDesc" style="width:138mm;height:5mm;">
+<div class="styLNDesc" style="width:138mm;height:auto;">
 Add line 7 and line 8   
 <!--Dotted Line-->
-<span style="letter-spacing:3.8mm;font-weight:bold;"> ........................</span>
+<span style="letter-spacing:3.8mm;font-weight:bold;"> .......................</span>
 </div>
-<div class="styLNRightNumBox" style="height:5mm;padding-top:1mm;border-bottom-width: 1px;">
-9</div>
-<div class="styLNAmountBox" style="height:5mm;width:31.5mm;padding-top:1mm;">
+
+
+<div class="styLNRightNumBox" style="height:4mm;padding-top:.5mm;">
+9
+</div>
+<div class="styLNAmountBox" style="height:4mm;width:31.5mm;padding-top:.5mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8912Data/SumRegularTaxAndAltMinTxAmt"/>
 </xsl:call-template>
 </div>
 </div>
 
+
+
 <!-- Part II, Line 10a -->
 <div style="width:187mm;">
-<div class="styLNLeftNumBox" style="height:4.5mm;">10a</div>
-<div class="styLNDesc" style="width:98.1mm;height:4.5mm;">	
+<div class="styLNLeftNumBox" style="height:auto;">10a</div>
+<div class="styLNDesc" style="width:98.1mm;height:auto;">	
 Foreign tax credit   
 <!--Dotted Line-->
 <span style="letter-spacing:3.5mm;font-weight:bold;">................</span>
@@ -388,9 +343,8 @@ Foreign tax credit
 <xsl:with-param name="TargetNode" select="$Form8912Data/ForeignTaxCreditAmt"/>
 </xsl:call-template>
 </div>
-<div class="styLNRightNumBox" style="background-color:lightgrey;height:4.5mm;border-bottom-width:0px;"/>
-<div class="styLNAmountBox" style="height:4.5mm;width:31.5mm;border-bottom-width:0px;">
-</div>
+<div class="styLNRightNumBox" style="background-color:lightgrey;padding-top:4mm;height:auto;border-bottom-width:0px;border-right-width: 1px;width:8.1mm;"/>
+
 </div>
 
 <!-- Part II, Line 10b -->
@@ -398,7 +352,7 @@ Foreign tax credit
 <div class="styLNLeftLtrBox" style="height:4.5mm;">
 <span style="width:1.4mm;"/>b</div>
 <div class="styLNDesc" style="width:98.1mm;height:4.5mm;">
-Certain allowable credits. (see instructions.)  
+Certain allowable credits. (see instructions)  
 <span class="styBoldText">
 <span class="styNBSP"/>.
 <span class="styNBSP"/>.
@@ -426,7 +380,7 @@ Certain allowable credits. (see instructions.)
 <div class="styLNLeftLtrBox" style="height:5mm;">
 <span style="width:1.4mm;"/>c</div>
 <div class="styLNDesc" style="width:98.1mm;height:5mm;">
-General business credit. (see instructions.)
+General business credit. (see instructions)
 <!--Dotted Line-->
 <span style="letter-spacing:3.5mm;font-weight:bold;">..........</span>
 </div>
@@ -436,8 +390,8 @@ General business credit. (see instructions.)
 <xsl:with-param name="TargetNode" select="$Form8912Data/GeneralBusinessCreditAmt"/>
 </xsl:call-template>
 </div>
-<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:5mm;"/>
-<div class="styLNAmountBox" style="height:5mm;width:31.5mm;border-bottom-width:0px;">
+<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:5.1mm;"/>
+<div class="styLNAmountBox" style="height:5.1mm;width:31.5mm;border-bottom-width:0px;">
 </div>
 </div>
 
@@ -459,8 +413,8 @@ Credit for prior year minimum tax (Form 8801 or Form 8827)
 <xsl:with-param name="TargetNode" select="$Form8912Data/CreditPriorYearMinimumTaxAmt"/>
 </xsl:call-template>
 </div>
-<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:8.0mm;padding-top:3.5mm;"/>
-<div class="styLNAmountBox" style="height:8.0mm;width:31.5mm;border-bottom-width:0px;padding-top:3.5mm;">
+<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:8mm;padding-top:3.5mm;"/>
+<div class="styLNAmountBox" style="height:8mm;width:31.5mm;border-bottom-width:0px;padding-top:3.5mm;">
 </div>
 </div>
 
@@ -471,7 +425,7 @@ Credit for prior year minimum tax (Form 8801 or Form 8827)
 <div class="styLNDesc" style="width:138mm;height:5mm;">
 Add lines 10a through 10d
 <!-- Dotted Line -->
-<span style="letter-spacing:3.5mm;font-weight:bold;">........................</span>
+<span style="letter-spacing:3.5mm;font-weight:bold;">.......................</span>
 </div>
 <div class="styLNRightNumBox" style="height:5mm;border-bottom-width: 1px;">10e</div>
 <div class="styLNAmountBox" style="height:5mm;width:31.5mm;">
@@ -488,7 +442,7 @@ Add lines 10a through 10d
 <div class="styLNDesc" style="width:138mm;height:4.5mm;">
 <b>Net income tax.</b> Subtract line 10e from line 9
 <!--Dotted Line-->
-<span style="letter-spacing:3.8mm;font-weight:bold;"> .................</span>
+<span style="letter-spacing:3.8mm;font-weight:bold;"> ................</span>
 </div>
 <div class="styLNRightNumBox" style="height:4.5mm;border-bottom-width: 1px;">
 11</div>
@@ -508,8 +462,8 @@ Add lines 10a through 10d
 <!--Dotted Line-->
 <span style="letter-spacing:3.8mm;font-weight:bold;"> ..............</span>
 </div>
-<div class="styLNRightNumBox" style="width:8mm;height:20mm;padding-top:15mm;border-bottom-width: 0px;">12</div>
-<div class="styLNAmountBox" style="height:20mm;width:31.5mm;font-size:7pt;padding-top:15mm;border-bottom-width: 0px;">
+<div class="styLNRightNumBox" style="width:8mm;height:20mm;padding-top:17mm;border-bottom-width: 0px;">12</div>
+<div class="styLNAmountBox" style="height:20mm;width:31.5mm;font-size:7pt;padding-top:17mm;border-bottom-width: 0px;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8912Data/CurrentYearAllowableCreditAmt"/>
 </xsl:call-template>
@@ -522,10 +476,10 @@ Add lines 10a through 10d
 <span class="styBoldText">For Paperwork Reduction Act Notice, see separate instructions.</span>
 <span style="width:90px;"/>                      
 Cat. No. 37722B
-<span style="width:113px;"/>  
+<span style="width:107px;"/>  
 Form <span class="styBoldText">8912</span>(2013)
 </div>
-<br class="pageend"/>
+<p style="page-break-before: always"/>
 
 <!--Begin Page 2 -->
 <!-- Page Header -->
@@ -535,9 +489,11 @@ Form <span class="styBoldText">8912</span>(2013)
 <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
 </div>
 </div>
+<div class="styBB" style="width:187mm;border-top:0px solid black;"></div>
 <!-- END Page Header -->
-<div class="styBB" style="width:187mm;border-top:1px solid black">
-<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+<!-- Begin Name and Identifying number section -->
+<div class="styBB" style="width:187mm;">
+<div class="styNameBox" style="width:140mm;height:auto;font-size:7pt;">
 Name(s) shown on return<br/>
 <div style="font-family:verdana;font-size:7pt;height:6.25mm;">
 <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -562,17 +518,19 @@ Identifying number<br/>
 </span>
 </div>
 </div>
+<!-- End Names and Identifying number section -->
+
 
 <!-- BEGIN Part III Title -->
-<div class="styBB" style="width:187mm;border-top:1px solid black;">
+<div class="styBB" style="width:187mm;border-top:0px solid black;">
 <div class="styPartName">Part III</div>
 <div class="styPartDesc">Bond credit(s) reported to you on Form(s) 1097-BTC (see instructions).</div>
-<span style="width:17mm;"/>If you are claiming bond credit for which you did not receive a Form 1097-BTC, see the instructions.
+<span style="width:17mm;"/>If you are claiming a bond credit for which you did not receive a Form 1097-BTC, see the instructions.
 </div>
 <!-- END Part III Title -->
 
 <!-- Start table -->
-<div class="styTableContainer" id="CREYCtable1" style="border-bottom-width:0px;height:0mm;width:187mm;">
+<div class="styTableContainer" id="CREYCtable1" style="border-bottom-width:0px;height:auto;width:187mm;">
 <xsl:call-template name="SetInitialState"/>
 <table class="styTable" style="font-size:7pt;border-color:black;height:76.4mm;" cellspacing="0" summary="Table displaying Bond information" name="CREYCtable1" id="CREYCtable1">
 <thead class="styTableThead">
@@ -1056,16 +1014,16 @@ Identifying number<br/>
 
 <!-- Part III, Line 14 -->
 <div class="styBB" style="width:187mm;">
-<div class="styLNLeftNumBox" style="height:7mm;width:6mm;padding-top:3.5mm;">
+<div class="styLNLeftNumBox" style="height:6.5mm;width:6mm;padding-top:3.5mm;">
 14</div>
-<div class="styLNDesc" style="width:140.7mm;height:7mm;padding-top:3.5mm;">
+<div class="styLNDesc" style="width:135.9mm;height:6.5mm;padding-top:3.5mm;">
 <b>Total.</b> Combine the amounts in column (c). Enter here and on line 1
 <!--Dotted Line-->
-<span style="letter-spacing:3.8mm;font-weight:bold;"> ...........</span>
+<span style="letter-spacing:3.8mm;font-weight:bold;"> ..........</span>
 </div>
-<div class="styLNRightNumBox" style="width:6mm;height:7mm;padding-top:3.5mm;border-bottom-width:0px;">
+<div class="styLNRightNumBox" style="width:5.8mm;height:6.5mm;padding-top:3.5mm;border-bottom-width:0px;">
 14	</div>
-<div class="styLNAmountBox" style="height:7mm;width:33mm;font-size:7pt;padding-top:3.5mm;border-bottom-width:0px;">
+<div class="styLNAmountBox" style="height:6.5mm;width:32.2mm;font-size:7pt;padding-top:3.5mm;border-bottom-width:0px;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8912Data/TotalAllForm1097BTCAmt"/>
 </xsl:call-template>
@@ -1073,11 +1031,11 @@ Identifying number<br/>
 </div>
 <div style="width:187mm;">
 <span class="styBoldText"/>
-<span style="width:190px;"/>
+<span style="width:181px;"/>
 <span style="width:426px;"/>  
-Form <span class="styBoldText">8912</span>(2013)
+Form <span class="styBoldText">8912</span> (2013)
 </div>
-<br class="pageend"/>
+<p style="page-break-before: always"/>
 <!-- Page Header -->
 <div style="width:187mm;padding-top:.5mm;">
 <div style="float:left;">Form 8912 (2013)<span style="width:148mm;"/>
@@ -1085,9 +1043,11 @@ Form <span class="styBoldText">8912</span>(2013)
 <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">3</span>
 </div>
 </div>
+<div class="styBB" style="width:187mm;border-top:0px solid black;"></div>
 <!-- END Page Header -->
-<div class="styBB" style="width:187mm;border-top:1px solid black">
-<div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;">
+<!-- Begin Name and Identifying number section -->
+<div class="styBB" style="width:187mm;">
+<div class="styNameBox" style="width:140mm;height:auto;font-size:7pt;">
 Name(s) shown on return<br/>
 <div style="font-family:verdana;font-size:7pt;height:6.25mm;">
 <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -1112,10 +1072,12 @@ Identifying number<br/>
 </span>
 </div>
 </div>
+<!-- End Names and Identifying number section -->
+
 
 <!-- BEGIN Part IV Title -->
 <xsl:if test="($Print = $Separated) and (count($Form8912Data/BondNotOnForm1097BTCGrp) &gt;= 1)">
-<div class="styBB" style="width:187mm;border-top:1px solid black;">
+<div class="styBB" style="width:187mm;height:8mm;border-top:1px solid black;">
 <div class="styPartName">Part IV</div>
 <div class="styPartDesc">Bond credit(s) from bonds held by you and/or your nominee(s) not reported to you on Form(s) 1097-BTC (see instructions)</div>
 </div>
@@ -1219,26 +1181,26 @@ b</div>
 <th scope="col" class="styTableCell" style="height:7mm;width:5mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;border-right-width:0px;">
 <span style="width:1px;"/>
 </th>
-<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;width:38mm;height:7mm;" colspan="1">
-<span style="width:3mm">
+<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;width:55mm;height:7mm;" colspan="1">
+<span style="width:3.5mm">
 <b>(a)</b>
 </span>
 CUSIP number. If CUSIP number not issued, enter principal payment dates. (Clean renewable energy bonds: Include CUSIP number and principal payment dates. Build America bonds: Include CUSIP number and interest payment dates.)
 </th>
 <th scope="col" class="styTableCell" style="height:7mm;width:24mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top">
-<span style="width:3mm">
+<span style="width:4.5mm">
 <b>(b)</b>
 </span>Outstanding bond principal (or for build America bonds, interest payable)</th>
-<th scope="col" class="styTableCell" style="height:7mm;width:16mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
+<th scope="col" class="styTableCell" style="height:7mm;width:27mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
 <b>(c)</b> Credit rate</th>
-<th scope="col" class="styTableCell" style="height:7mm;width:25mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
+<th scope="col" class="styTableCell" style="height:7mm;width:24mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
 <b>(d)</b> Multiply<br/>(b) x (c)</th>
-<th scope="col" class="styTableCell" style="height:7mm;width:25mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top">
-<span style="width:3mm">
+<th scope="col" class="styTableCell" style="height:7mm;width:32mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top">
+<span style="width:4.5mm">
 <b>(e)</b>
 </span>%</th>
-<th scope="col" class="styTableCell" style="height:7mm;width:29mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;border-right-width:0px;">
-<span style="width:3mm">
+<th scope="col" class="styTableCell" style="height:7mm;width:31mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;border-right-width:0px;">
+<span style="width:4mm">
 <b>(f)</b>
 </span>Multiply (d) x (e)</th>
 </tr>
@@ -1256,22 +1218,22 @@ height:5mm;">
 </xsl:otherwise>
 </xsl:choose>
 </td>
-<td class="styTableCell" style="height:4mm;width:38mm;text-align:center;">
+<td class="styTableCell" style="height:4mm;width:55mm;text-align:center;">
 "See Additional Data Table"
 </td>
 <td class="styTableCell" style="height:4mm;width:24mm;text-align:right;">
 <span style="width:1px;"/>
 </td>
-<td class="styTableCell" style="height:4mm;width:16mm;text-align:center;">
+<td class="styTableCell" style="height:4mm;width:27mm;text-align:center;">
 <span style="width:1px;"/>
 </td>
-<td class="styTableCell" style="height:4mm;width:25mm;text-align:right;">
+<td class="styTableCell" style="height:4mm;width:24mm;text-align:right;">
 <span style="width:1px;"/>
 </td>
-<td class="styTableCell" style="height:4mm;width:25mm;text-align:right;">
+<td class="styTableCell" style="height:4mm;width:32mm;text-align:right;">
 <span style="width:1px;"/>
 </td>
-<td class="styTableCell" style="height:4mm;width:29mm;text-align:right;border-right-width:0px;">
+<td class="styTableCell" style="height:4mm;width:31mm;text-align:right;border-right-width:0px;">
 <span style="width:1px;"/>
 </td>													
 </tr>
@@ -1286,7 +1248,7 @@ height:5mm;">
 <tbody>
 <xsl:if test="count($Form8912Data/BondNotOnForm1097BTCGrp)&gt;=1">
 <tr>
-<div class="styBB" style="width:187mm;border-top:1px solid black;">
+<div class="styBB" style="width:187mm;border-top:1px solid black;height:7mm;;">
 <div class="styPartName">Part IV</div>
 <div class="styPartDesc">Bond credit(s) from bonds held by you and/or your nominee(s) not reported to you on Form(s) 1097-BTC (see instructions)</div>
 </div>
@@ -1295,21 +1257,24 @@ height:5mm;">
 <!--Line 15a-->
 <tr>
 <div style="width:187mm;border-bottom-width:1px;  ">
-<div class="styLNLeftNumBoxSD" style="height:17mm;border-bottom-width:1px;">
+<div class="styLNLeftNumBoxSD" style="height:17.5mm;border-bottom-width:1px;">
 15</div>
-<div class="styLNLeftNumBoxSD" style="height:17mm;width:6mm;border-style:solid;border-color:black;border-width:0px 1px 0px 1px;">
+<div class="styLNLeftNumBoxSD" style="height:17.5mm;width:6mm;border-style:solid;border-color:black;border-width:0px 1px 0px 1px;">
 a</div>
-<div class="styLNDesc" style="width:70mm;height:17mm;border-bottom-width:1px;">
+<div class="styLNDesc" style="width:70mm;height:17.5mm;border-bottom-width:1px;">
 <span style="width:60mm;">Bond Issuer's name, city or town, and state</span>  
 <!--Dotted Line-->
 <span style="width:5mm;font-weight:bold;"/>
 <img src="{$ImagePath}/8912_Bullet_Md.gif" alt="MediumBullet" align="bottom"/>
 </div>
-<div class="styIRS8912TextBox" style="text-align: left;height:17mm;padding-bottom:none;width:98mm;font-size:7pt;border-bottom-width:0px;">
+<div class="styIRS8912TextBox" style="text-align: left;height:17.5mm;padding-bottom:none;width:98mm;font-size:7pt;border-bottom-width:0px;">
 <xsl:call-template name="PopulateText">
-<xsl:with-param name="TargetNode" select="BondIssuerName"/>
+<xsl:with-param name="TargetNode" select="BondIssuerName/BusinessNameLine1"/>
 </xsl:call-template>
-<span style="width:1mm;font-weight:bold;"/>
+<br/>
+<xsl:call-template name="PopulateText">
+<xsl:with-param name="TargetNode" select="BondIssuerName/BusinessNameLine2"/>
+</xsl:call-template>
 <br/>
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="CityNm"/>
@@ -1413,28 +1378,19 @@ b</div>
 <th scope="col" class="styTableCell" style="height:7mm;width:5mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;border-right-width:0px;">		
 <span style="width:1px;"/>
 </th>
-<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;width:39mm;height:7mm;" colspan="1">
-<span style="width:3mm">
-<b>(a)</b>
-</span>
-CUSIP number. If CUSIP number not issued, enter principal payment dates. (Clean renewable energy bonds: Include CUSIP number and principal payment dates. Build America bonds: Include CUSIP number and interest payment dates.)
+<th scope="col" class="styTableCell" style="font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;width:55mm;height:7mm;" colspan="1">
+<b>(a)</b> CUSIP number. If CUSIP number not issued, enter principal payment dates. (Clean renewable energy bonds: Include CUSIP number and principal payment dates. Build America bonds: Include CUSIP number and interest payment dates.)
 </th>
-<th scope="col" class="styTableCell" style="height:7mm;width:32mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top">
-<span style="width:3mm">
-<b>(b)</b>
-</span>Outstanding bond principal (or for build America bonds, interest payable)</th>
-<th scope="col" class="styTableCell" style="height:7mm;width:18mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
+<th scope="col" class="styTableCell" style="height:7mm;width:24mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top">
+<b>(b)</b> Outstanding bond principal (or for build America bonds, interest payable)</th>
+<th scope="col" class="styTableCell" style="height:7mm;width:27mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
 <b>(c)</b> Credit rate</th>
-<th scope="col" class="styTableCell" style="height:7mm;width:31mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
+<th scope="col" class="styTableCell" style="height:7mm;width:24mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
 <b>(d)</b> Multiply<br/>(b) x (c)</th>
-<th scope="col" class="styTableCell" style="height:7mm;width:40mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top">
-<span style="width:3mm">
-<b>(e)</b>
-</span>%</th>
+<th scope="col" class="styTableCell" style="height:7mm;width:32mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top">
+<b>(e)</b> %</th>
 <th scope="col" class="styTableCell" style="height:7mm;width:31mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;border-right-width:0px;">
-<span style="width:3mm">
-<b>(f)</b>
-</span>Multiply (d) x (e)</th>
+<b>(f)</b> Multiply (d) x (e)</th>
 </tr>
 </thead>
 <tfoot/>
@@ -1539,17 +1495,17 @@ CUSIP number. If CUSIP number not issued, enter principal payment dates. (Clean 
 
 <!-- Line 19 -->
 <div class="styBB" style="width:187mm;">
-<div class="styLNLeftNumBox" style="height:5mm;width:6mm;">
+<div class="styLNLeftNumBox" style="height:5mm;width:6mm;padding-top:1.5mm">
 19</div>
-<div class="styLNDesc" style="width:144.3mm;height:5mm;">
+<div class="styLNDesc" style="width:146.8mm;height:5mm;padding-top:.8mm">
 Add the amounts on line 18, column (f)
 <!--Dotted Line-->
-<span style="letter-spacing:3.8mm;font-weight:bold;"> ....................</span>
+<span style="letter-spacing:3.8mm;font-weight:bold;padding-top:.8mm"> ....................</span>
 </div>
-<div class="styLNRightNumBox" style="width:6mm;height:5mm;border-bottom-width:0px;">
+<div class="styLNRightNumBox" style="width:6mm;height:5mm;border-bottom-width:0px;padding-top:1.5mm">
 19	
 </div>
-<div class="styLNAmountBox" style="width:29.5mm;border-bottom-width:0px;height:5mm;">
+<div class="styLNAmountBox" style="width:26.7mm;border-bottom-width:0px;height:5mm;padding-top:1.5mm">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8912Data/TotalOtherNotRptF1097BTCAmt"/>
 </xsl:call-template>
@@ -1560,14 +1516,14 @@ Add the amounts on line 18, column (f)
 <div class="styBB" style="width:187mm;">
 <div class="styLNLeftNumBox" style="height:14mm;width:6mm;padding-top:1.5mm">
 20</div>
-<div class="styLNDesc" style="width:144.3mm;height:14mm;padding-top:1.5mm">
+<div class="styLNDesc" style="width:146.8mm;height:14mm;padding-top:1.5mm">
 For a <b>new</b> clean renewable energy bond or a qualified energy conservation bond, multiply the amount on line 19 by 70% (.70) and enter the result here. For a clean renewable energy bond, qualified zone academy bond, qualified school construction bond, or build America bond, enter the amount from line 19 here. Enter the line 20 amount on line 2. See the instructions for how to report as interest income
 <!--Dotted Line-->
 <span style="letter-spacing:3.8mm;font-weight:bold;"> ......</span>
 </div>
-<div class="styLNRightNumBox" style="width:6mm;height:14mm;border-bottom-width:0px;padding-top:12mm">
+<div class="styLNRightNumBox" style="width:6mm;height:14mm;border-bottom-width:0px;padding-top:11mm">
 20	</div>
-<div class="styLNAmountBox" style="height:14mm;width:28.8mm;font-size:7pt;border-bottom-width:0px;padding-top:12mm">
+<div class="styLNAmountBox" style="height:14mm;width:26.7mm;font-size:7pt;border-bottom-width:0px;padding-top:11mm">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="$Form8912Data/NewCleanEnergyBondAmt"/>
 </xsl:call-template>
@@ -1575,11 +1531,11 @@ For a <b>new</b> clean renewable energy bond or a qualified energy conservation 
 </div>
 <div style="width:187mm;">
 <span class="styBoldText"/>
-<span style="width:190px;"/>
+<span style="width:181px;"/>
 <span style="width:426px;"/>  
-Form <span class="styBoldText">8912</span>(2013)
+Form <span class="styBoldText">8912</span> (2013)
 </div>
-<br class="pageend"/>
+<p style="page-break-before: always"/>
 <div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">
 Additional Data        
@@ -1798,20 +1754,20 @@ b</div>
 <table class="styDepTbl" style="font-size:7pt;width:187mm;" cellspacing="0" summary="Table showing Bond Payment information" name="CREYCtable" id="CREYCtable">
 <thead class="styTableThead">
 <tr class="styDepTblHdr">
-<th class="styDepTblCell" style="width:39mm;font-size:7pt;text-align:center;font-weight:bold;" colspan="2">(a) CUSIP number. If CUSIP number not issued, enter principal payment dates. (Clean renewable energy bonds: Include CUSIP number and principal payment dates. Build America bonds: Include CUSIP number and interest payment dates.) </th>
-<th  class="styDepTblCell" style="width:32mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(b) Outstanding bond<br/> principal (or for build<br/> America bonds,<br/> interest payable)</th>
-<th  class="styDepTblCell" style="width:18mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(c) Credit rate</th>
-<th class="styDepTblCell" style="width:31mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(d) Multiply<br/>(b) x (c)</th>
-<th  class="styDepTblCell" style="width:40mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(e) %</th>
+<th class="styDepTblCell" style="width:55mm;font-size:7pt;text-align:center;font-weight:bold;" colspan="2">(a) CUSIP number. If CUSIP number not issued, enter principal payment dates. (Clean renewable energy bonds: Include CUSIP number and principal payment dates. Build America bonds: Include CUSIP number and interest payment dates.) </th>
+<th  class="styDepTblCell" style="width:24mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(b) Outstanding bond<br/> principal (or for build<br/> America bonds,<br/> interest payable)</th>
+<th  class="styDepTblCell" style="width:27mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(c) Credit rate</th>
+<th class="styDepTblCell" style="width:24mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(d) Multiply<br/>(b) x (c)</th>
+<th  class="styDepTblCell" style="width:32mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(e) %</th>
 <th  class="styDepTblCell" style="width:31mm;font-size:7pt;text-align:center;font-weight:bold;vertical-align:top">(f) Multiply<br/>(d) x (e)</th>
 </tr>
 </thead>
 <tfoot/>
 <body>
-<xsl:for-each select="BondNotRptOn1097BTCDetail">
+<xsl:for-each select="BondNotRptOn1097BTCDetail">  
 <tr>
 <xsl:choose>
-<xsl:when   test="BondNotRptOn1097BTCDetail">
+<xsl:when test="BondNotRptOn1097BTCDetail">  
 <xsl:attribute name="class">
 <xsl:choose>
 <xsl:when test="position() mod 2 = 1">styDepTblRow2</xsl:when>
@@ -1828,11 +1784,17 @@ b</div>
 </xsl:attribute>
 </xsl:otherwise>
 </xsl:choose>
-<td class="styDepTblCell" style="width:8mm;text-align:center;border-right-width:0px;font-weight:bold;vertical-align:top;padding-top:3.5mm;">
+<td class="styTableCell" style="height:7mm;width:5mm;text-align:center;border-right:none;font-weight:bold;padding-top:3.5mm;">
+<xsl:choose>
+<xsl:when test="position() = 1">
 <xsl:value-of select="18"/>
+</xsl:when>
+<xsl:otherwise>
 <span style="width:1px;"/>
+</xsl:otherwise>
+</xsl:choose>
 </td>
-<td class="styDepTblCell" style="width:39mm;text-align:center;border-left-width:0px;">
+<td class="styDepTblCell" style="width:55mm;text-align:center;border-left-width:0px;">
 <xsl:call-template name="PopulateText">
 <xsl:with-param name="TargetNode" select="CUSIPNum"/>
 </xsl:call-template>
@@ -1845,7 +1807,7 @@ b</div>
 <xsl:with-param name="TargetNode" select="InterestPaymentDt"/>
 </xsl:call-template>
 </td>
-<td class="styDepTblCell" style="width:32mm;text-align:right;padding-top:4mm;">
+<td class="styDepTblCell" style="width:24mm;text-align:right;padding-top:4mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="OutstndingBondPrinAmt"/>
 </xsl:call-template>
@@ -1854,17 +1816,17 @@ b</div>
 <xsl:with-param name="TargetNode" select="InterestPayableAmt"/>
 </xsl:call-template>
 </td>
-<td class="styDepTblCell" style="width:18mm;text-align:center;padding-top:4mm;">
+<td class="styDepTblCell" style="width:27mm;text-align:center;padding-top:4mm;">
 <xsl:call-template name="PopulatePercent">
 <xsl:with-param name="TargetNode" select="CreditRt"/>
 </xsl:call-template>
 </td>
-<td class="styDepTblCell" style="width:31mm;text-align:right;padding-top:4mm;">
+<td class="styDepTblCell" style="width:24mm;text-align:right;padding-top:4mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="TotalBeforeOthLimitationsCrAmt"/>
 </xsl:call-template>
 </td>
-<td class="styDepTblCell" style="width:44mm;text-align:right;padding-top:4mm;">
+<td class="styDepTblCell" style="width:32mm;text-align:right;padding-top:4mm;">
 <xsl:call-template name="PopulateAmount">
 <xsl:with-param name="TargetNode" select="PercentageAmt"/>
 </xsl:call-template>

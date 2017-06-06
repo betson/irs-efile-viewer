@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form6478Data" select="$RtnDoc/IRS6478"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form6478Data)"/>
@@ -37,54 +39,54 @@
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm">
         <form name="Form6478" id="Form6478">
           <!-- Standard Warning Lines -->
           <xsl:call-template name="DocumentHeader"/>
           <!-- Begin Form Number and Name -->
           <div class="styBB" style="width:187mm;">
-            <div class="styFNBox" style="width:31mm;height:21mm;">
+            <div class="styFNBox" style="width:28mm;height:19mm;">
             Form <span class="styFormNumber">6478</span>
               <br/>
               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form6478Data"/>
               </xsl:call-template>
               <br/>
-              <div style="padding-top:1.5mm;">
+              <div style="padding-top:1mm;">
                 <span class="styAgency">Department of the Treasury</span>
                 <br/>
                 <span class="styAgency">Internal Revenue Service</span>
               </div>
             </div>
-            <div class="styFTBox" style="width:125mm;height:13mm;">
+            <div class="styFTBox" style="width:129mm;height:13mm;">
               <div class="styMainTitle" style="padding-top:1.5mm;">
           	  Biofuel Producer Credit
           	 </div>
               <div class="styFST" style="height:5mm;font-size:7pt;padding-top:3mm;">
-                <img src="{$ImagePath}/6478_Bullet.gif" width="4" height="7" alt="Bullet Image"/>
-              Attach to your tax return.
+					<img src="{$ImagePath}/6478_Bullet.gif" width="4" height="7" alt="Bullet Image"/>
+					  Attach to your tax return.
               <div/>
-              <div class="styFST" style="height:3mm;font-size:7pt;padding-top:0.1mm;">
+              <div class="styFST" style="width:128mm;height:2mm;text-align:center;font-size:7pt;padding-top:1mm;">
                 <img src="{$ImagePath}/6478_Bullet.gif" width="4" height="7" alt="Bullet Image"/> 
-              Information about Form 6478 and its separate instructions is at <a href="http://www.irs.gov/form6748" title="Link to irs.gov">
-              <i>www.irs.gov/form6478</i></a>.
-            </div>
+				  Information about Form 6478 and its separate instructions is at <a href="http://www.irs.gov/form6748" title="Link to irs.gov">
+				  <i>www.irs.gov/form6478</i></a>.
+			  </div>
             </div>
             </div>
             <!-- This can be taken out later -->
-            <div class="styTYBox" style="width:30mm;height:21mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-0231</div>
-              <div class="styTY" style="height:7.5mm;font-size:24pt;">
+            <div class="styTYBox" style="width:30mm;height:19mm;">
+              <div class="styOMB" style="height:4mm;">OMB No. 1545-0231</div>
+              <div class="styTY" style="height:7mm;font-size:24pt;">
                20<span class="styTYColor">14</span>
               </div>
-              <div class="stySequence">Attachment<br/>Sequence No. <b style="font-size:7.5pt;">83</b>
+              <div class="stySequence" style="padding-top:2mm">Attachment<br/>Sequence No. <b style="font-size:7.5pt;">83</b>
               </div>
             </div>
           </div>
           <!-- End Form Number and Name section -->
           <!-- Begin Name and Identifying number section -->
           <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:130mm;height:8mm;font-size:7pt;">
+            <div class="styNameBox" style="width:134mm;height:9mm;font-size:7pt;">
                 Name(s) shown on return
              <br/>
 					<xsl:choose>
@@ -128,16 +130,17 @@
           <!--Table header Begin -->
           <div class="styBB" style="width:187mm;">
             <div class="styNameBox" align="center" style="width:101.85mm;height:11mm;font-size:7pt;text-align:center;padding-top:4mm;">
+            Type of Fuel
             </div>
             <div class="styNameBox" align="center" style="width:32.1mm;height:11mm;font-size:7pt;text-align: center;padding-top:.5mm;">
               <span class="styBoldText">(a)</span>
               <br/>Number of Gallons <br/>Sold or Used
             </div>
-            <div class="styNameBox" align="center" style="width:21mm;height:11mm;font-size:7pt;text-align: center;padding-top:2mm;">
+            <div class="styNameBox" align="center" style="width:21mm;height:11mm;font-size:7pt;text-align: center;padding-top:1mm;">
               <span class="styBoldText">(b)</span>
               <br/>Rate      
             </div>
-            <div class="styNameBox" align="center" style="width:32mm;height:11mm;font-size:7pt;border-right-width:0px;text-align: center;padding-top:2mm;">
+            <div class="styNameBox" align="center" style="width:32mm;height:11mm;font-size:7pt;border-right-width:0px;text-align: center;padding-top:1mm;">
               <span class="styBoldText">(c)</span>
               <br/>Column(a) x Column(b)</div>
           </div>
@@ -163,13 +166,13 @@
                <div class="styDotLn" style="float:right;padding-right:1mm;">........</div>
             </div>
             <div class="styLNAmountBox" style="width:5mm;padding-right:1mm;"><b>1</b></div>
-            <div class="styLNAmountBox" style="width:32mm;padding-right:1mm;">
+            <div class="styLNAmountBox" style="width:32mm;padding-right:1mm;text-align:center;">
               <xsl:call-template name="PopulateText">
                  <xsl:with-param name="TargetNode" select="$Form6478Data/Qlfy2ndBiofuelProdFuelGalsQty"/>
               </xsl:call-template>
             </div>
             <div class="styLNAmountBox" style="width:21mm;text-align:center;">  
-          $ 1.01    
+			  $ 1.01    
             </div>
             <div class="styLNAmountBox">
               <xsl:call-template name="PopulateAmount">
@@ -193,7 +196,7 @@
             <div class="styLNLeftNumBox" style="height:4mm;padding-bottom:.5mm;"/>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;">
               <span style="float:left;padding-right:1mm;">and enter your IRS registration number (see instructions) </span>
-                <span class="styFixedUnderline" style="width:50mm;padding-top:.1mm;padding-bottom:0mm;">
+                <span class="styFixedUnderline" style="width:50mm;padding-top:.1mm;padding-bottom:0mm;text-align:center">
 		 	<xsl:call-template name="PopulateText">
 		 		<xsl:with-param name="TargetNode" select="$Form6478Data/FuelsCreditRegistrationNum"/>
 		 	</xsl:call-template>
@@ -357,7 +360,6 @@
               </b>
             </div>
           </div>
-          <p style="page-break-before:always"/>
           <!-- end Page footer -->
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->

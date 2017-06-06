@@ -11,8 +11,10 @@
   <!-- Defines the stage of the data, e.g. original or latest -->
   <xsl:param name="Form8812Data" select="$RtnDoc/IRS8812"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8812Data)">

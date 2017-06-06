@@ -17,6 +17,14 @@
 <!-- Last modified on 12/17/2014 by Robert Jones per IBM Defects 42236 42239 and 42241(rejected)-->
 <!-- Last modified on 12/18/2014 by Robert Jones per IBM Defects 42236 42239 and 42241(rejected) Put in Pen Image at Part I 11g, col(i) per IBM even though field populates.-->
 <!-- Last modified on 12/31/2014 by Robert Jones per IBM Defects 42232 -->
+<!-- Last modified on 5/6/2015 by Robert Jones per UWR 123023 IE11 upgrade fixes. -->
+<!-- Last modified on 6/3/2015 by Robert Jones per IBM Defect 43127 IE11 upgrade fixes. -->
+<!-- Last modified on 6/3/2015 by Robert Jones per IBM Defect 43128 IE11 upgrade fixes. -->
+<!-- Last modified on 6/3/2015 by Robert Jones per IBM Defect 43422 IE11 upgrade fixes.NPF -->
+<!-- Last modified on 6/3/2015 by Robert Jones per SOI KISAM IM02150548 Line 16b Incorrect element name ThirtyThrPctSuprtTestsPY509Ind.  Changed to correct element name ThirtyThrPctSuprtTestsPY170Ind -->
+<!-- Last modified on 9/2/2015 by Robert Jones per IBM Defect 43127  aligned data at Part I line 4-->
+<!-- Last modified on 9/4/2015 by Robert Jones per IBM Defect 42232  508 put in BackUpName at all checboxes per Mitchell email-->
+<!-- Last Modified on 02/11/16 per Kisam IM02466377  - Robert L Jones-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -38,8 +46,10 @@
   </xsl:param>
 
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
   <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($FormData)"/></xsl:call-template></title>
 
   <!-- No Browser Caching -->
@@ -57,10 +67,10 @@
   <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
   <xsl:call-template name="InitJS"/>
   <style type="text/css">
-   <xsl:if test="not($Print) or $Print=''">
+ <xsl:if test="not($Print) or $Print=''">
       <xsl:call-template name="IRS990ScheduleAStyle"/>
       <xsl:call-template name="AddOnStyle"/>
-  </xsl:if>
+</xsl:if>
   </style>
 </head>
 
@@ -69,7 +79,7 @@
 <!-- BEGIN FORM HEADER -->
 <div class="IRS990ScheduleA_LineContainer">
   <!-- Form Name -->
-  <div class="IRS990ScheduleA_FormNumBlock" style="padding-top:5px;">
+  <div class="IRS990ScheduleA_FormNumBlock" style="padding-top:5px;height:22.5mm;">
      <span style="font-size:11pt;font-weight:bold;font-familiy:'Arial Narrow';">SCHEDULE A</span>
      <br/>
      <span style="font-size:10pt;font-weight:bold;font-family:'Arial Narrow';">(Form 990 or 990EZ)</span>
@@ -98,23 +108,23 @@
     <span style="font-weight:bold;text-align:center;">
      <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/> Attach to Form 990 or Form 990-EZ. </span><br></br>
    <!--  <span style="font-weight:bold;text-align:left;"> <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/> See separate instructions.</span><br/>-->
-      <span style="font-weight:bold;font-size:7pt;text-align:left;">
+      
      <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/> Information about Schedule A (Form 990 or 990-EZ) and its instructions is at <!--www.irs.gov/form990.-->
-     <a href="http://www.irs.gov/form990" title="Link to IRS.gov">
+     <span style="text-align:center;"/><a href="http://www.irs.gov/form990" title="Link to IRS.gov">
                 <i>www.irs.gov/form990</i>
             </a>.
      </span>
    
-    </span>
+   
     </span>
   </div>
   
-    <div class="IRS990ScheduleA_FormYearBlock">
+    <div class="IRS990ScheduleA_FormYearBlock" style="height:22.5mm;">
     <div class="IRS990ScheduleA_OMB">OMB No. 1545-0047</div> 
-    <div class="styTY" style="height:2mm;text-align:center;">
+    <div class="styTY" style="height:11.5mm;text-align:center;width:30mm;">
       20<span class="styTYColor">14</span>
     </div>
-    <div style="height:7.2mm; background-color: black; color: white; font-size: 7.5pt;font-weight: bold;text-align:center;">Open to Public<br/>Inspection</div>
+    <div style="width:30mm; background-color: black; color: white; font-size: 7.5pt;font-weight: bold;text-align:center;">Open to Public<br/>Inspection</div>
   </div>
 
   <!-- Tax Year Box -->
@@ -129,9 +139,9 @@
 </div>
 <!-- Begin Name and Identifying Number Section-->      
 <div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
-  <div class="styFNBox" style="width:134mm;height:8mm;">
+  <div class="styFNBox" style="width:134mm;height:auto;">
     <b> Name of the organization</b><br/>
-    <div style="font-family:verdana;font-size:6pt;height:6.25mm">
+    <div style="font-family:verdana;font-size:6pt;height:auto">
      <xsl:call-template name="PopulateReturnHeaderFiler">
       <xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
     </xsl:call-template>
@@ -142,7 +152,7 @@
    </div> 
   </div>
   
-  <div class="styGenericDiv" style="width:52mm;height:4mm;padding-left:1mm;">
+  <div class="styGenericDiv" style="width:52mm;height:auto;padding-left:1mm;">
     <span class="styBoldText">Employer identification number</span>
     <br/><br/>
     <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -154,8 +164,8 @@
 
 <!-- Part I header -->
 <div class="styBB" style="width: 187mm">
-  <div class="styPartName">Part I</div>
-  <div class="styPartDesc">Reason for Public Charity Status
+   <div class="styPartName" style="height:auto;">Part I</div>
+  <div class="styPartDesc" style="height:auto;">Reason for Public Charity Status
        <span class="styNormalText">(All organizations must complete this part.) See instructions.</span>
    </div>
 <!--  <div class="styBB" style="height: 1mm; width: 187mm"></div> -->
@@ -175,6 +185,7 @@
     <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/ChurchInd"/>
+         <xsl:with-param name="BackupName">IRS990SchAChurchInd</xsl:with-param>
       </xsl:call-template>                                                                     
     </input>  
   </div>
@@ -182,6 +193,7 @@
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/ChurchInd"/>
+         <xsl:with-param name="BackupName">IRS990SchAChurchInd</xsl:with-param>
       </xsl:call-template>
        A church, convention of churches, or association of churches described in
        <span style="font-weight:bold;">
@@ -197,6 +209,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/SchoolInd"/>
+         <xsl:with-param name="BackupName">IRS990SchASchoolInd</xsl:with-param>
       </xsl:call-template>
     </input>  
   </div>
@@ -204,6 +217,7 @@
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/SchoolInd"/>
+         <xsl:with-param name="BackupName">IRS990SchASchoolInd</xsl:with-param>
       </xsl:call-template>
       A school described in 
       <span style="font-weight:bold;">
@@ -220,6 +234,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/HospitalInd"/>
+         <xsl:with-param name="BackupName">IRS990SchAHospitalInd</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
@@ -227,6 +242,7 @@
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/HospitalInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAHospitalInd</xsl:with-param>
       </xsl:call-template>
       A hospital or a cooperative hospital service organization described in 
       <span style="font-weight:bold;">
@@ -243,6 +259,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/MedicalResearchOrganizationInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAMedicalResearchOrganizationInd</xsl:with-param>
       </xsl:call-template>
     </input>  
   </div>
@@ -250,28 +267,30 @@
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/MedicalResearchOrganizationInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAMedicalResearchOrganizationInd</xsl:with-param>
       </xsl:call-template>
      A medical research organization operated in conjunction with a hospital described in
       <span style="font-weight:bold;">
          section 170(b)(1)(A)(iii).</span>
      Enter the hospital's name, city, and state:
-     <span class="styFixedUnderline" style="width:120mm;float:none;padding-left:2mm;padding-top:0;padding-bottom:0;"/>
+     <span class="styFixedUnderline" style="width:130mm;float:none;padding-left:0mm;padding-top:0;padding-bottom:0;"/>
       </label> 
      </div>
 </div>
+<br></br>
 <!-- Display all rows: If the print parameter is not set to be Separated, OR -->
      <!--If the print parameter is separated, but there are at most 2 data elements-->
     <xsl:choose>
       <xsl:when test="($Print != $Separated) or count($FormData/HospitalNameAndAddressGrp) &lt;= 2">
         <xsl:for-each select="$FormData/HospitalNameAndAddressGrp">
         
-         <div style="font-family:verdana;font-size:7pt;text-align:left;">
+         <div style="font-family:verdana;font-size:7pt;padding-left:16mm;">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine1Txt"/>
           </xsl:call-template>,
           </div>
           
-          <div style="font-family:verdana;font-size:7pt;">
+          <div style="font-family:verdana;font-size:7pt;padding-left:16mm;">
            <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="SupportedOrganizationName/BusinessNameLine2Txt"/>
            </xsl:call-template>,          
@@ -288,12 +307,14 @@
           </xsl:for-each>
       </xsl:when>
       <xsl:otherwise>
+      <div style="font-family:verdana;font-size:8pt;padding-left:16mm;">
         <xsl:call-template name="PopulateAdditionalDataTableMessage">
           <xsl:with-param name="TargetNode" select="$FormData/HospitalNameAndAddressGrp"/>
         </xsl:call-template>
+        </div>
       </xsl:otherwise>
     </xsl:choose>
-  
+  <br></br>
 
 
  <!-- line 5 -->
@@ -303,25 +324,22 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/CollegeOrganizationInd"/>
+        <xsl:with-param name="BackupName">IRS990SchACollegeOrganizationInd</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
-  <div class="IRS990ScheduleA_LineDescIV">
+  <div class="IRS990ScheduleA_LineDescV">
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/CollegeOrganizationInd"/>
+        <xsl:with-param name="BackupName">IRS990SchACollegeOrganizationInd</xsl:with-param>
       </xsl:call-template>
-      An organization operated for the benefit of a college or university owned or operated by a governmental unit described in
+      An organization operated for the benefit of a college or university owned or operated by a governmental unit described in<b> section 170(b)(1)(A)(iv).</b> (Complete Part II.)
     </label> 
   </div>
 </div>
-<div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineDescIV">
-  <span style="font-weight:bold;"> section 170(b)(1)(A)(iv).</span> (Complete Part II.)
-  </div>
-</div>
+
+  
 <!-- line 6 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex">6</div>
@@ -329,6 +347,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/GovernmentalUnitInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAGovernmentalUnitInd</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
@@ -336,6 +355,7 @@
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/GovernmentalUnitInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAGovernmentalUnitInd</xsl:with-param>
       </xsl:call-template>
        A federal, state, or local government or governmental unit described in
        <span style="font-weight:bold;"> section 170(b)(1)(A)(v).</span>
@@ -349,6 +369,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/PublicOrganization170Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAPublicOrganization170Ind</xsl:with-param>
       </xsl:call-template>
     </input>  
   </div>
@@ -356,6 +377,7 @@
     <label> 
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PublicOrganization170Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAPublicOrganization170Ind</xsl:with-param>
       </xsl:call-template>
   An organization that normally receives a substantial part of its support from a governmental unit or from the general public described in <b>section 170(b)(1)(A)(vi).</b> (Complete Part II.)
     </label>
@@ -369,6 +391,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/CommunityTrustInd"/>
+        <xsl:with-param name="BackupName">IRS990SchACommunityTrustInd</xsl:with-param>
       </xsl:call-template>
     </input>  
   </div>
@@ -376,6 +399,7 @@
     <label> 
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/CommunityTrustInd"/>
+        <xsl:with-param name="BackupName">IRS990SchACommunityTrustInd</xsl:with-param>
       </xsl:call-template>
      A community trust described in <span style="font-weight:bold;">section 170(b)(1)(A)(vi)</span>. (Complete Part II.)
     </label>
@@ -388,39 +412,21 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/PubliclySupportedOrg509a2Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAPubliclySupportedOrg509a2Ind</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>  
-  <div class="IRS990ScheduleA_LineDescIV">
+  <div class="IRS990ScheduleA_LineDescIX">
     <label> 
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PubliclySupportedOrg509a2Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAPubliclySupportedOrg509a2Ind</xsl:with-param>
       </xsl:call-template>
-      An organization that normally receives: (1) more than 33<span style="font-size:5pt;">1/3</span>% of its support from contributions, membership fees, and gross
+      An organization that normally receives: (1) more than 33 1/3% of its support from contributions, membership fees, and gross  receipts from activities related to its exempt functions—subject to certain exceptions, and (2) no more than 33 1/3% of  its support from gross investment income and unrelated business taxable income (less section 511 tax) from businesses  acquired by the organization after June 30, 1975.  See<span style="font-weight:bold;"> section 509(a)(2).</span> (Complete Part III.)
     </label>
   </div>
 </div>
-<div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineDescIV">
-    receipts from activities related to its exempt functions—subject to certain exceptions, and (2) no more than 33<span style="font-size:5pt;">1/3</span>% of 
-  </div>
-</div>
-<div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineDescIV">
-    its support from gross investment income and unrelated business taxable income (less section 511 tax) from businesses 
-  </div>
-</div>
-<div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineIndex"/>
-  <div class="IRS990ScheduleA_LineDescIV">
-    acquired by the organization after June 30, 1975.  See<span style="font-weight:bold;"> section 509(a)(2).</span> (Complete Part III.)
-  </div>
-</div>
+
 <!-- line 10 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex">10</div>
@@ -428,6 +434,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/TestPublicSafetyInd"/>
+        <xsl:with-param name="BackupName">IRS990SchATestPublicSafetyInd</xsl:with-param>
       </xsl:call-template>
     </input>  
   </div>
@@ -435,6 +442,7 @@
     <label> 
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/TestPublicSafetyInd"/>
+        <xsl:with-param name="BackupName">IRS990SchATestPublicSafetyInd</xsl:with-param>
       </xsl:call-template>
       An organization  organized and operated exclusively to test for public safety. See <span style="font-weight:bold;">section 509(a)(4).</span> 
       </label>
@@ -447,6 +455,7 @@
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrganization509a3Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrganization509a3Ind</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>  
@@ -454,6 +463,7 @@
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrganization509a3Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrganization509a3Ind</xsl:with-param>
       </xsl:call-template>
       An organization organized and operated exclusively for the benefit of, to perform the functions of, or to carry out the purposes of one or more publicly supported organizations described in section 509(a)(1) or section 509(a)(2). See <span style="font-weight:bold;">section 509(a)(3).</span> Check the box in lines 11a through 11d that describes the type of supporting organization and complete lines 11e, 11f, and 11g.
     </label> 
@@ -469,6 +479,7 @@
     <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType1Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrgType1Ind</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
@@ -476,6 +487,7 @@
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType1Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrgType1Ind</xsl:with-param>
       </xsl:call-template>
      <b>Type I.</b> A supporting organization operated, supervised, or
 controlled by its supported organization(s), typically by giving the
@@ -493,6 +505,7 @@ majority of the directors or trustees of the supporting organization.
     <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType2Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrgType2Ind</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
@@ -500,6 +513,7 @@ majority of the directors or trustees of the supporting organization.
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType2Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrgType2Ind</xsl:with-param>
       </xsl:call-template>
     <b> Type II.</b> A supporting organization supervised or controlled in
 connection with its supported organization(s), by having control or
@@ -517,6 +531,7 @@ must complete Part IV, Sections A and C.</b>
     <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType3FuncIntInd"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrgType3FuncIntInd</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
@@ -524,6 +539,7 @@ must complete Part IV, Sections A and C.</b>
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType3FuncIntInd"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrgType3FuncIntInd</xsl:with-param>
       </xsl:call-template>
     <b>Type III functionally integrated.</b> A supporting organization
 operated in connection with, and functionally integrated with, its
@@ -540,6 +556,7 @@ Part IV, Sections A, D, and E.</b>
     <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType3NonFuncInd"/>
+        <xsl:with-param name="BackupName">IRS990SchASupportingOrgType3NonFuncInd</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
@@ -547,6 +564,7 @@ Part IV, Sections A, D, and E.</b>
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/SupportingOrgType3NonFuncInd"/>
+         <xsl:with-param name="BackupName">IRS990SchASupportingOrgType3NonFuncInd</xsl:with-param>
       </xsl:call-template>
     <b>Type III non-functionally integrated.</b> A supporting organization
 operated in connection with its supported organization(s) that is not
@@ -563,6 +581,7 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
     <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/IRSWrittenDeterminationInd"/>
+         <xsl:with-param name="BackupName">IRS990SchAIRSWrittenDeterminationInd</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
@@ -570,6 +589,7 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/IRSWrittenDeterminationInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAIRSWrittenDeterminationInd</xsl:with-param>
       </xsl:call-template>
    Check this box if the organization received a written determination from the IRS that it is a Type I, Type II, Type III functionally integrated, or Type III non-functionally integrated supporting organization.
     </label> 
@@ -579,25 +599,26 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
 <!-- line 11f -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex">f</div>
-  <div class="IRS990ScheduleA_LineIndex">
-      </div>
-  <div class="IRS990ScheduleA_LineDescIV">
+  
+  <div class="IRS990ScheduleA_LineDescIV" style="width:180mm;">
    Enter the number of supported organizations
    <!-- Dotted Line -->
-              <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:2mm;">.............................
+              <span style="letter-spacing:2mm; font-weight:bold; font-size:7pt; margin-left:2mm;">..............
               <span class="styFixedUnderline" style="width:20mm;float:none;padding-left:2mm;padding-top:0;padding-bottom:0;">
                <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$FormData/SupportedOrganizationsCnt"/>
       </xsl:call-template>
               </span>
     </span>
+    
   </div>
 </div>
+<br></br>
 <!-- line 11g -->
   <div class="IRS990ScheduleA_LineIndex">g</div>
   <div class="IRS990ScheduleA_LineIndex">
   </div>
-  <div class="IRS990ScheduleA_LineDescIV">
+  <div class="IRS990ScheduleA_LineDescIV" style="float:left;">
     Provide the following information about the supported organization(s). 
    </div>
 
@@ -624,7 +645,7 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
         </th>
       </tr>
 -->
- <div class="styBB" style="height: .2mm; width: 188mm;"/>
+ <div class="styBB" style="height: .auto; width: 188mm;"/>
  
  
                       <!-- Column i -->
@@ -684,7 +705,7 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
                  <!-- Type of Organization -->           
             <td class="IRS990ScheduleA_GenericCell" style="text-align:center;vertical-align:top;">
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="OrganizationTypeDesc"/>
+                  <xsl:with-param name="TargetNode" select="OrganizationTypeCd"/>
                 </xsl:call-template> 
               </td>      
   
@@ -782,11 +803,11 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
           </tr>
         </xsl:if>
         <tr>
-             	<td style="border:black 0 solid;border-bottom-width:1;border-right-width:1" colspan="1">
+             	<td style="border:black 0 solid;border-bottom-width:1px;border-right-width:1px" colspan="1">
              	<span class="styBoldText">Total </span>	
-             	 <xsl:call-template name="LinkToLeftoverDataTableInline">
+             	<!-- Per defect 42254 removed pen image <xsl:call-template name="LinkToLeftoverDataTableInline">
 												<xsl:with-param name="TargetNode" select="$FormData/SupportedOrganizationsTotalCnt"/>
-											</xsl:call-template>
+											</xsl:call-template>-->
 										 <xsl:call-template name="PopulateAmount">
 												<xsl:with-param name="TargetNode" select="$FormData/SupportedOrganizationsTotalCnt"/>
 											</xsl:call-template>				
@@ -802,7 +823,12 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
      	</xsl:call-template>
      	</td>
      	<!-- Other Support Total, No element so box should remain empty-->
-     	<td class="IRS990ScheduleA_MoneyCell" style="border-right-width:0px;width:25mm;font-size:6pt;Verdana;"><span style="width:1px;" /></td>
+     	<td class="IRS990ScheduleA_MoneyCell" style="border-right-width:0px;width:25mm;font-size:6pt;Verdana;">
+     	<span style="width:1px;" />
+     	<xsl:call-template name="PopulateAmount">
+        <xsl:with-param name="TargetNode" select="$FormData/OtherSupportSumAmt"/>
+     	</xsl:call-template>
+     	</td>
       </tr>
     </table>
     
@@ -843,7 +869,7 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
 						</div>
 					</div>-->
 
-
+<p style="page-break-before: always"/>
 <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2014</div>
@@ -856,8 +882,8 @@ instructions). <b>You must complete Part IV, Sections A and D, and Part V.</b>
 
 <!-- Part II header -->
 <div class="styBB" style="width:187mm;">
-  <div class="styPartName" style="width:16mm;">Part II</div>
-  <div class="styPartDesc" style="width:171mm;">Support Schedule for Organizations Described in Sections 170(b)(1)(A)(iv) and 170(b)(1)(A)(vi)<br/>
+  <div class="styPartName" style="width:16mm;height:auto;">Part II</div>
+  <div class="styPartDesc" style="width:171mm;height:auto;">Support Schedule for Organizations Described in Sections 170(b)(1)(A)(iv) and 170(b)(1)(A)(vi)<br/>
       <span class="styNormalText">(Complete only if you checked the box on line 5, 7, or 8 of Part I or if the
 organization failed to qualify under Part III. If the organization fails to
 qualify under the tests listed below, please complete Part III.)</span>
@@ -875,14 +901,14 @@ qualify under the tests listed below, please complete Part III.)</span>
 </div>
  
   <!-- <div class="styPartDesc" style="width:162mm;font-weight:bold">Public Support</div> -->
-  <span class="styPartDesc" style="width:171mm;font-weight:bold;text-align:left;">Section A.  Public Support</span>
+  <span class="styPartDesc" style="width:171mm;font-weight:bold;text-align:left;height:auto;">Section A.  Public Support</span>
 
 
 <!-- Part II  table  Public Support -->
 <div class="IRS990ScheduleA_TableContainer" style="border-bottom-width:0px;">
    <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
      <tr>
-      <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px" scope="col" colspan="2">
+      <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px;height:auto;" scope="col" colspan="2">
         <span style="float: left; clear:both"> Calendar year <span class="styBoldText">(or fiscal year beginning in) <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/></span>
         </span>
  <!--      <span style="float:right; clear: both"><img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/></span>  -->
@@ -1063,7 +1089,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
   </table>
 </div>
 
-<span class="styPartDesc" style="width:162mm;font-weight:bold;">Section B. Total Support</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:auto;">Section B. Total Support</span>
 
 <!-- Part II  table  Total Support -->
 <div class="IRS990ScheduleA_TableContainer" style="border-bottom-width:0px;">
@@ -1264,7 +1290,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
     </div>
     
        <div class="styLNRightNumBox" style="height:4mm;">12</div>
-    <div class="styLNAmountBox" style="height:4mm;">
+    <div class="styLNAmountBox" style="height:4mm;width:34mm;">
     <xsl:call-template name="PopulateAmount">
     <xsl:with-param name="TargetNode" select="$FormData/GrossReceiptsRltdActivitiesAmt"/>
     </xsl:call-template>
@@ -1287,11 +1313,13 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
         <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/First5Years170Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAFirst5Years170Ind</xsl:with-param>
       </xsl:call-template>
     </input> 
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/First5Years170Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAFirst5Years170Ind</xsl:with-param>
       </xsl:call-template>
       </label> 
       </div>
@@ -1317,7 +1345,11 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
     </div>
     
        <div class="styLNRightNumBox" style="height:4mm;">14</div>
-    <div class="styLNAmountBox" style="height:4mm;"><xsl:call-template name="PopulatePercent"><xsl:with-param name="TargetNode" select="$FormData/PublicSupportCY170Pct"/></xsl:call-template></div>
+    <div class="styLNAmountBox" style="height:4mm;width:34mm;">
+    <xsl:call-template name="PopulatePercent">
+    <xsl:with-param name="TargetNode" select="$FormData/PublicSupportCY170Pct"/>
+    </xsl:call-template>
+    </div>
 <!-- select="$FormData/PublicSupportPertcentage170"/></xsl:call-template>%</div> -->
 
  
@@ -1337,19 +1369,24 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
    </div>
    
        <div class="styLNRightNumBox" style="height:4mm;">15</div>
-    <div class="styLNAmountBox" style="height:4mm;"><xsl:call-template name="PopulatePercent"><xsl:with-param name="TargetNode" select="$FormData/PublicSupportPY170Pct"/></xsl:call-template></div>
+    <div class="styLNAmountBox" style="height:4mm;width:34mm;">
+    <xsl:call-template name="PopulatePercent">
+    <xsl:with-param name="TargetNode" select="$FormData/PublicSupportPY170Pct"/>
+    </xsl:call-template>
+    </div>
 
 </div>
 
 <!-- line 16a -->
 <div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex" style="width:6mm;padding-right:9px;">16a</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineIndex" style="width:6mm;padding-right:9px;padding-bottom:2px;">16a</div>
+  <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsCY170Ind"/>
-      </xsl:call-template>
-      <span style="font-weight:bold;">
+         <xsl:with-param name="BackupName">IRS990SchAThirtyThrPctSuprtTestsCY170Ind</xsl:with-param>
+        </xsl:call-template>
+      <span style="font-weight:bold;padding-top:2px;">
          33 <span style="font-size:5pt;">1/3</span>% support test—2014.
       </span>
       If the organization did not check the box on line 13, and line 14 is 33 <span style="font-size:5pt;">1/3</span>% or more, check this box<br/>
@@ -1360,6 +1397,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsCY170Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAThirtyThrPctSuprtTestsCY170Ind</xsl:with-param>
       </xsl:call-template>
     </input>  
    </div>
@@ -1367,13 +1405,14 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
 
 <!-- line 16b -->
 <div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex" style="width:7.4mm;padding-right:9px;">b</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineIndex" style="width:7.4mm;padding-right:9px;padding-bottom:4px;">b</div>
+ <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
-        <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsPY509Ind"/>
+        <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsPY170Ind"/>
+         <xsl:with-param name="BackupName">IRS990SchAThirtyThrPctSuprtTestsPY170Ind</xsl:with-param>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <span style="font-weight:bold;padding-top:2px;">
          33 <span style="font-size:5pt;">1/3</span>% support test—2013.
       </span>
       If the organization did not check a box on line 13 or 16a, and line 15 is 33 <span style="font-size:5pt;">1/3</span>% or more, check this<br/>
@@ -1383,7 +1422,8 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
-        <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsPY509Ind"/>
+        <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsPY170Ind"/>
+         <xsl:with-param name="BackupName">IRS990SchAThirtyThrPctSuprtTestsPY170Ind</xsl:with-param>
       </xsl:call-template>
     </input>  
    </div>
@@ -1391,13 +1431,14 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
 
 <!-- line 17a -->
 <div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex" style="width:6mm;padding-right:9px;">17a</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineIndex" style="width:6mm;padding-right:9px;padding-bottom:2px;">17a</div>
+  <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/TenPctFactsCrcmstncsTestCYInd"/>
+         <xsl:with-param name="BackupName">IRS990SchATenPctFactsCrcmstncsTestCYInd</xsl:with-param>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <span style="font-weight:bold;padding-top:2px;">
          10%-facts-and-circumstances test—2014.
       </span>
       If the organization did not check a box on line 13, 16a, or 16b, and line 14<br/>
@@ -1410,6 +1451,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/TenPctFactsCrcmstncsTestCYInd"/>
+        <xsl:with-param name="BackupName">IRS990SchATenPctFactsCrcmstncsTestCYInd</xsl:with-param>
       </xsl:call-template>
     </input>  
    </div>
@@ -1417,13 +1459,14 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
 
 <!-- line 17b -->
 <div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex" style="width:7.2mm;padding-right:9px;">b</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineIndex" style="width:7.2mm;padding-right:9px;padding-bottom:2px;">b</div>
+ <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/TenPctFactsCrcmstncsTestPYInd"/>
+        <xsl:with-param name="BackupName">IRS990SchATenPctFactsCrcmstncsTestPYInd</xsl:with-param>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <span style="font-weight:bold;padding-top:1px;">
          10%-facts-and-circumstances test—2013.
       </span>
       If the organization did not check a box on line 13, 16a, 16b, or 17a, and line<br/>
@@ -1435,6 +1478,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/TenPctFactsCrcmstncsTestPYInd"/>
+        <xsl:with-param name="BackupName">IRS990SchATenPctFactsCrcmstncsTestPYInd</xsl:with-param>
       </xsl:call-template>
     </input>  
    </div>
@@ -1442,10 +1486,10 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
 
 <!-- line 18 -->
 <div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex" style="width:6mm;">18</div>
+  <div class="IRS990ScheduleA_LineIndex" style="width:6mm;padding-bottom:2px;">18</div>
   
-     <div class="IRS990ScheduleA_LineDescIVB" style="width:178mm;">
-          <span style="font-weight:bold;">
+     <div class="IRS990ScheduleA_LineDescIVB" style="width:178mm;height:auto;">
+          <span style="font-weight:bold;padding-top:1px;">
          Private foundation.
       </span>
       If the organization did not check a box on line 13, 16a, 16b, 17a, or 17b, check this box and see<br/>
@@ -1456,11 +1500,13 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/PrivateFoundation170Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAPrivateFoundation170Ind</xsl:with-param>
       </xsl:call-template>
     </input>  
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PrivateFoundation170Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAPrivateFoundation170Ind</xsl:with-param>
       </xsl:call-template>
       </label>
    </div>
@@ -1475,7 +1521,7 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
   </div>  
 </div>
 <!-- END Footer -->
-
+<p style="page-break-before: always"/>
 <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2014</div>
@@ -1485,8 +1531,8 @@ on line 1 that exceeds 2% of the amount shown on line 11, column (f)<span class=
 
 <!-- Part III header-->
 <div class="styBB" style="width:187mm;">
-  <div class="styPartName" style="width:20mm;">Part III</div>
-  <div class="styPartDesc" style="width:162mm;">Support Schedule for Organizations Described in Section 509(a)(2)<br/>
+  <div class="styPartName" style="width:20mm;height:auto;">Part III</div>
+  <div class="styPartDesc" style="width:165mm;height:auto;">Support Schedule for Organizations Described in Section 509(a)(2)<br/>
       <span class="styNormalText">(Complete only if you checked the box on line 9 of Part I or if the organization
 failed to qualify under Part II. If the organization fails to qualify under
 the tests listed below, please complete Part II.)</span>
@@ -1498,7 +1544,7 @@ the tests listed below, please complete Part II.)</span>
         <span class="styNormalText">(See page 2 of the instructions.)</span>
   </div>  -->
 
-<span class="styPartDesc" style="width:162mm;font-weight:bold">Section A. Public Support</span>
+<span class="styPartDesc" style="width:165mm;font-weight:bold;height:auto;">Section A. Public Support</span>
 
 <!--Part III  table -->
 <div class="IRS990ScheduleA_TableContainer" style="border-bottom-width:0px;">
@@ -2143,11 +2189,12 @@ the tests listed below, please complete Part II.)</span>
 <!-- Part III Line 14 -->
 <div class="IRS990ScheduleA_LineContainer">
   <div class="IRS990ScheduleA_LineIndex">14</div>
-  <div class="IRS990ScheduleA_LineDescIVAL">
+ <div class="IRS990ScheduleA_LineDescIVAL" style="height:auto;">
   
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/First5Years509Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAFirst5Years509Ind</xsl:with-param>
       </xsl:call-template>
       <span style="font-weight:bold;">
          First five years.
@@ -2160,6 +2207,7 @@ the tests listed below, please complete Part II.)</span>
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/First5Years509Ind"/>
+         <xsl:with-param name="BackupName">IRS990SchAFirst5Years509Ind</xsl:with-param>
       </xsl:call-template>
     </input>  
   </div>
@@ -2168,7 +2216,7 @@ the tests listed below, please complete Part II.)</span>
 <!-- line 14 ends -->
 
 <div class="styBB" style="width:187mm;border-top-width: 1px">
-<span class="styPartDesc" style="width:162mm;font-weight:bold;">Section C.  Computation of Public Support Percentage</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:auto;">Section C.  Computation of Public Support Percentage</span>
 </div>
 
   <!-- line 15 -->
@@ -2207,7 +2255,7 @@ the tests listed below, please complete Part II.)</span>
  
 </div>
 <div class="styBB" style="width:187mm;border-top-width: 1px">
-<span class="styPartDesc" style="width:162mm;font-weight:bold">Section D. Computation of Investment Income Percentage</span>
+<span class="styPartDesc" style="width:162mm;font-weight:bold;height:auto;">Section D. Computation of Investment Income Percentage</span>
 </div>
 
   <!-- line 17 -->
@@ -2247,22 +2295,24 @@ the tests listed below, please complete Part II.)</span>
 
 <!-- line 19a -->
 <div class="IRS990ScheduleA_LineContainer" style="padding-left:0.8mm;">
-  <div class="IRS990ScheduleA_LineIndex" style="width:5mm;padding-right:9px;">19a</div>
-  <div class="IRS990ScheduleA_LineDescIVB">
+  <div class="IRS990ScheduleA_LineIndex" style="width:5mm;padding-right:9px;padding-bottom:2px;">19a</div>
+  <div class="IRS990ScheduleA_LineDescIVB" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsCY509Ind"/>
+         <xsl:with-param name="BackupName">IRS990SchAThirtyThrPctSuprtTestsCY509Ind</xsl:with-param>
       </xsl:call-template>
-      <span style="font-weight:bold;">
-         33 <span style="font-size:5pt;">1/3</span>% support tests—2014.
-      </span>
-      If the organization did not check the box on line 14, and line 15 is more than 33 <span style="font-size:5pt;">1/3</span>%, and line 17 is not more than 33 <span style="font-size:5pt;">1/3</span>%, check this box and <b>stop here.</b>  The organization qualifies as a publicly supported organization
-      <span class="IRS990ScheduleA_DotSpacing">....... </span>
+      <b>
+         <span style="padding-left:1mm;padding-top:2px;">33 1/3% support tests—2014.</span>
+      </b>
+      If the organization did not check the box on line 14, and line 15 is more than 33 <span style="font-size:5pt;">1/3</span>%, and line 17 is not <span style="padding-left:3.1mm;"/> more than 33 <span style="font-size:5pt;">1/3</span>%, check this box and <b>stop here.</b>  The organization qualifies as a publicly supported organization
+      <span class="IRS990ScheduleA_DotSpacing">........ </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsCY509Ind"/>
+         <xsl:with-param name="BackupName">IRS990SchAThirtyThrPctSuprtTestsCY509Ind</xsl:with-param>
       </xsl:call-template>
     </input>  
    </div>
@@ -2270,22 +2320,24 @@ the tests listed below, please complete Part II.)</span>
 
 <!-- line 19b -->
 <div class="IRS990ScheduleA_LineContainer">
-   <div class="IRS990ScheduleA_LineIndex" style="padding-right:8px;">b</div>
-  <div class="IRS990ScheduleA_LineDescIVAL">
+   <div class="IRS990ScheduleA_LineIndex" style="padding-right:8px;padding-bottom:2px;">b</div>
+  <div class="IRS990ScheduleA_LineDescIVAL" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsPY509Ind"/>
+         <xsl:with-param name="BackupName">IRS990SchAThirtyThrPctSuprtTestsPY509Ind</xsl:with-param>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <span style="font-weight:bold;padding-top:1px;">
          33 <span style="font-size:5pt;">1/3</span>% support tests—2013.
       </span>
       If the organization did not check a box on line 14 or line 19a, and line 16 is more than 33 <span style="font-size:5pt;">1/3</span>% and line 18 is not more than 33 <span style="font-size:5pt;">1/3</span>%, check this box and <b>stop here.</b> The organization qualifies as a publicly supported organization
-      <span class="IRS990ScheduleA_DotSpacing">.... </span>
+      <span class="IRS990ScheduleA_DotSpacing">....... </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/ThirtyThrPctSuprtTestsPY509Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAThirtyThrPctSuprtTestsPY509Ind</xsl:with-param>
       </xsl:call-template>
     </input>  
    </div>
@@ -2293,22 +2345,24 @@ the tests listed below, please complete Part II.)</span>
 
 <!-- line 20 -->
 <div class="IRS990ScheduleA_LineContainer">
-  <div class="IRS990ScheduleA_LineIndex">20</div>
-  <div class="IRS990ScheduleA_LineDescIVAL">
+  <div class="IRS990ScheduleA_LineIndex" style="padding-top:5px;">20</div>
+  <div class="IRS990ScheduleA_LineDescIVAL" style="height:auto;">
       <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/PrivateFoundation509Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAPrivateFoundation509Ind</xsl:with-param>
       </xsl:call-template>
-      <span style="font-weight:bold;">
+      <span style="font-weight:bold;height:auto;">
          Private foundation.
       </span>
       If the organization did not check a box on line 14, 19a, or 19b, check this box and see instructions
-      <span class="IRS990ScheduleA_DotSpacing">.... </span>
+      <span class="IRS990ScheduleA_DotSpacing">...... </span>
        <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
     </label> 
      <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/PrivateFoundation509Ind"/>
+        <xsl:with-param name="BackupName">IRS990SchAPrivateFoundation509Ind</xsl:with-param>
       </xsl:call-template>
     </input>  
    </div>
@@ -2323,7 +2377,7 @@ the tests listed below, please complete Part II.)</span>
     <span class="styBoldText"> Schedule A (Form 990 or 990-EZ) 2014</span> 
   </div>  
 </div>
-
+<p style="page-break-before: always"/>
  <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2014</div>
@@ -2333,586 +2387,630 @@ the tests listed below, please complete Part II.)</span>
   
 <!-- END Page Header --> 
  <div class="styBB" style="width:187mm;float:none;">
-            <div class="styPartName" style="float:left;height:4.3mm">Part IV</div>
+            <div class="styPartName" style="float:left;height:auto">Part IV</div>
             <div class="styPartDesc" style="float:left;width:172mm;">Supporting Organizations</div>
-             (Complete only if you checked a box on line 11 of Part I. If you checked 11a of Part I, complete Sections A and B.
-            If you checked   <span style="width:15mm;"/>11b of Part I, complete Sections A and C. 
-            If you checked 11c of Part I, complete Sections A, D, and E. If you checked 11d of Part <span style="width:15mm;"/>I, complete Sections A and D, and complete Part V.)
+             <span style="padding-left:2mm;height:auto"/> (Complete only if you checked a box on line 11 of Part I. If you checked 11a of Part I, complete Sections A and B.
+            If you checked 11b of <span style="width:17mm;padding-left:2mm;"/>Part I, complete Sections A and C. If you checked 11c of Part I, complete Sections A, D, and E. If you checked 11d of Part I, complete <span style="width:17mm;padding-left:2mm;"/>Sections A and D, and complete Part V.)
           </div>
- 
-          
-         <div class="styBB" style="width:187mm;float:none;">
-            <div class="styPartDesc" style="width:152mm;text-align:left;height:1mm;">
-Section A. All Supporting Organizations 
-</div>
- </div>
-  <div style="width: 187mm">
-            <div class="styLNLeftNumBox"/>
-            <div class="styLNDesc" style="width: 150mm"/>
-            <div class="styIRS990AYesNoBox" style="width:8mm;height:4.5mm;border-left-width:0px;">
-              <span style="width:1px;"/>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;">
-              <span class="styBoldText">Yes</span>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;">
-              <span class="styBoldText">No</span>
-            </div>
-          </div>
-      <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:10.5mm;padding-left:3mm;">1</div>
-            <div class="styLNDesc" style="width:150mm;height:10.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
+ <div style="width:187mm;border-top-width: 1px" class="styBB">
+						<div class="styPartDesc" style="width: 100mm;height:auto;">
+    Section A. All Supporting Organizations 
+  </div>
+					</div>
+					<!--  Line 1  -->
+					<div style="width: 187mm">
+					<div class="styLNLeftNumBox"/>
+							<div class="styLNDesc" style="width: 155mm;height:4.5mm;"/>
+                        	<div class="styLNRightNumBox" style="height:4.5mm;border-left:0px;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">Yes</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">No</div>
+						
+					    </div>
+					    <div style="width: 187mm">
+					<div class="styLNLeftNumBox">1</div>
+					<div class="styLNDesc" style="width: 155mm;height:7.5mm;">
        Are all of the organization’s supported organizations listed by name in the organization’s governing documents?<br></br>
-         <span class="styItalicText"> If "No," describe in<b> Part VI</b> how the supported organizations are designated. If designated by class or purpose,<br></br>describe the
-designation. If historic and continuing relationship, explain.</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:10.5mm;padding-top:7mm;">1</div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:7mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+         <i> If "No," describe in<b> Part VI</b> how the supported organizations are designated. If designated by class or purpose,<br></br>describe the designation. If historic and continuing relationship, explain.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">1</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ListedByNameGoverningDocInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:7mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ListedByNameGoverningDocInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:10.5mm;padding-left:3mm;">2</div>
-            <div class="styLNDesc" style="width:150mm;height:10.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-      Did the organization have any supported organization that does not have an IRS determination of status under section
-509(a)(1) or (2)? <span class="styItalicText">If "Yes," explain in <b>Part VI</b> how the organization determined that the supported organization was
-described in section 509(a)(1) or (2).</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:10.5mm;padding-top:7mm;">2</div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:7mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+						</div>
+					</div>
+					
+				<div style="width: 187mm">
+					<div class="styLNLeftNumBox">2</div>
+					<div class="styLNDesc" style="width: 155mm;height:7.5mm;">
+      Did the organization have any supported organization that does not have an IRS determination of status under section 509(a)(1) or (2)? <i>If "Yes," explain in <b>Part VI</b> how the organization determined that the supported organization was
+described in section 509(a)(1) or (2).</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">2</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SuprtOrgNoIRSDeterminationInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:7mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SuprtOrgNoIRSDeterminationInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:3mm;">3a</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-        Did the organization have a supported organization described in section 501(c)(4), (5), or (6)?
-<span class="styItalicText"> If "Yes," answer (b) and (c)
-below.</span>
-                <xsl:call-template name="SetFormLinkInline">
-                  <xsl:with-param name="TargetNode" select="$FormData/PoliticalCampaignActyInd"/>
-                </xsl:call-template>
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">3a</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+						</div>
+					</div>	
+					
+					
+          <div style="width: 187mm">
+					<div class="styLNLeftNumBox">3a</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+       Did the organization have a supported organization described in section 501(c)(4), (5), or (6)?
+<i> If "Yes," answer (b) and (c) below.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">3a</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportedOrgSectionC456Ind"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportedOrgSectionC456Ind"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:10.5mm;padding-left:5mm;">b</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              
-              <span class="styNormalText" style="padding-top:0.0mm;">
+						</div>
+					</div>	
+       
+       <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">b</div>
+					<div class="styLNDesc" style="width: 155mm;height:7.5mm;">
         Did the organization confirm that each supported organization qualified under section 501(c)(4), (5), or (6) and satisfied the
-public support tests under section 509(a)(2)?
-        </span>
-              <span class="styItalicText">If "Yes," describe in <b>Part VI</b> when and how the organization made the
-determination.</span>
-             
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:10.5mm;padding-top:6mm;">3b</div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:6mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+public support tests under section 509(a)(2)? <i>If "Yes," describe in <b>Part VI</b> when and how the organization made the
+determination.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">3b</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportedOrgQualifiedInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:6mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportedOrgQualifiedInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-         <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:5mm;">c</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              
-              <span class="styNormalText" style="padding-top:0.0mm;">
+						</div>
+					</div>	
+       
+       
+        <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">c</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
        Did the organization ensure that all support to such organizations was used exclusively for section 170(c)(2)(B) purposes?
-        </span>
-              <span class="styItalicText">If "Yes," explain in <b>Part VI</b> what controls the organization put in place to ensure such use.</span>
-              
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">3c</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+       
+              <i>If "Yes," explain in <b>Part VI</b> what controls the organization put in place to ensure such use</i>.
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">3c</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SuprtExclusivelySec170c2BInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SuprtExclusivelySec170c2BInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:3mm;">4a</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              
-              <span class="styNormalText" style="padding-top:0.0mm;">
-      Was any supported organization not organized in the United States ("foreign supported organization")?
-        </span>
-              <span class="styItalicText">If “Yes” and if you
-checked 11a or 11b in Part I, answer (b) and (c) below.</span>
-              
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">4a</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+						</div>
+					</div>	
+       
+         <div style="width: 187mm">
+					<div class="styLNLeftNumBox">4a</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+        Was any supported organization not organized in the United States ("foreign supported organization")?
+        
+              <i>If “Yes” and if you checked 11a or 11b in Part I, answer (b) and (c) below.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">4a</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportedOrgNotOrganizedUSInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportedOrgNotOrganizedUSInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:10.5mm;padding-left:5mm;">b</div>
-            <div class="styLNDesc" style="width:150mm;height:10.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-       Did the organization have ultimate control and discretion in deciding whether to make grants to the foreign supported
-organization?
-<span class="styItalicText"> If “Yes,” describe in Part VI how the organization had such control and discretion despite being controlled or
-supervised by or in connection with its supported organizations.</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">...</span>
-            </div>
-            <div class="styLNRightNumBox" style="height:10.5mm;padding-top:5.5mm;">4b</div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+						</div>
+					</div>	
+        
+        <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">b</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+        Did the organization have ultimate control and discretion in deciding whether to make grants to the foreign supported
+organization?<i> If “Yes,” describe in Part VI how the organization had such control and discretion despite being controlled or
+supervised by or in connection with its supported organizations.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">4b</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ControlDecidingGrntFrgnOrgInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ControlDecidingGrntFrgnOrgInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:10.5mm;padding-left:5mm;">c</div>
-            <div class="styLNDesc" style="width:150mm;height:10.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-       Did the organization support any foreign supported organization that does not have an IRS determination under sections
+						</div>
+					</div>	
+        
+        <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">c</div>
+					<div class="styLNDesc" style="width: 155mm;height:7.5mm;">
+        Did the organization support any foreign supported organization that does not have an IRS determination under sections
 501(c)(3) and 509(a)(1) or (2)?
-        <span class="styItalicText">If “Yes,” explain in Part VI what controls the organization used to ensure that all support to
-the foreign supported organization was used exclusively for section 170(c)(2)(B) purposes.</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:10.5mm;padding-top:5.5mm;">4c</div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+        <i>If “Yes,” explain in Part VI what controls the organization used to ensure that all support to
+the foreign supported organization was used exclusively for section 170(c)(2)(B) purposes.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">4c</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportForeignOrgNoDetermInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportForeignOrgNoDetermInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:17.5mm;padding-left:3mm;">5a</div>
-            <div class="styLNDesc" style="width:150mm;height:17.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-      Did the organization add, substitute, or remove any supported organizations during the tax year?
-        <span class="styItalicText">If “Yes,” answer (b) and
-(c) below (if applicable). Also, provide detail in Part VI, including (i) the names and EIN numbers of the supported
+						</div>
+					</div>	
+        
+         <div style="width: 187mm">
+					<div class="styLNLeftNumBox">5a</div>
+					<div class="styLNDesc" style="width: 155mm;height:10.5mm;">
+        Did the organization add, substitute, or remove any supported organizations during the tax year?
+        <i>If “Yes,” answer (b) and
+(c) below (if applicable). Also, provide detail in <b>Part VI,</b> including (i) the names and EIN numbers of the supported
 organizations added, substituted, or removed, (ii) the reasons for each such action, (iii) the authority under the
 organization's organizing document authorizing such action, and (iv) how the action was accomplished (such as by
-amendment to the organizing document).</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:17.5mm;padding-top:12.5mm;">5a</div>
-            <div class="styIRS990AYesNoBox" style="height:17.5mm;padding-top:12.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+amendment to the organizing document).</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:10.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:10.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:10.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">5a</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/OrganizationChangeSuprtOrgInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:17.5mm;padding-top:12.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/OrganizationChangeSuprtOrgInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-           <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:5mm;">b</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              
-              <span class="styNormalText" style="padding-top:0.0mm;">
-     <b>Type I or Type II only.</b>  Was any added or substituted supported organization part of a class already designated in the
+						</div>
+					</div>	
+					
+					
+					
+         <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">b</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+        <b>Type I or Type II only.</b>  Was any added or substituted supported organization part of a class already designated in the
 organization's organizing document?
-        </span>
-              <!--<span class="styItalicText">If "Yes," explain in <b>Part VI</b> what controls the organization put in place to ensure such use.</span>-->
-              
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">5b</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">5b</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportedOrgClassDesignatedInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportedOrgClassDesignatedInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:5.5mm;padding-left:5mm;">c</div>
-            <div class="styLNDesc" style="width:150mm;height:5.5mm;">
-              
-              <span class="styNormalText" style="padding-top:0.0mm;">
-     <b>Substitutions only.</b>  Was the substitution the result of an event beyond the organization's control?
-        </span>
-              <!--<span class="styItalicText">If "Yes," explain in <b>Part VI</b> what controls the organization put in place to ensure such use.</span>-->
-              
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:5.5mm;padding-top:1mm;">5c</div>
-            <div class="styIRS990AYesNoBox" style="height:5.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+						</div>
+					</div>	
+        
+         <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">c</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+        <b>Substitutions only.</b>  Was the substitution the result of an event beyond the organization's control?
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">5c</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SubstitutionBeyondOrgCntlInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:5.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SubstitutionBeyondOrgCntlInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:13.5mm;padding-left:3mm;">6</div>
-            <div class="styLNDesc" style="width:150mm;height:13.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-     Did the organization provide support (whether in the form of grants or the provision of services or facilities) to anyone other
+						</div>
+					</div>	
+        
+        
+        <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:1mm;">6</div>
+					<div class="styLNDesc" style="width: 155mm;height:10.5mm;">
+          Did the organization provide support (whether in the form of grants or the provision of services or facilities) to anyone other
 than (a) its supported organizations; (b) individuals that are part of the charitable class benefited by one or more of its
 supported organizations; or (c) other supporting organizations that also support or benefit one or more of the filing
 organization’s supported organizations?
-        <span class="styItalicText">If “Yes,” provide detail in <b>Part VI.</b></span>
+        <i>If “Yes,” provide detail in <b>Part VI.</b></i>
                 
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:13.5mm;padding-top:9.5mm;">6</div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:9.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+              </div>
+     
+						<div class="styLNRightNumBox" style="height:10.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:10.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:10.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">6</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportNonSupportedOrgInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:9.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/SupportNonSupportedOrgInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:9.5mm;padding-left:3mm;">7</div>
-            <div class="styLNDesc" style="width:150mm;height:9.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-     Did the organization provide a grant, loan, compensation, or other similar payment to a substantial contributor (defined in
+						</div>
+					</div>	
+        
+        <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:1mm;">7</div>
+					<div class="styLNDesc" style="width: 155mm;height:7.5mm;">
+        Did the organization provide a grant, loan, compensation, or other similar payment to a substantial contributor (defined in
 IRC 4958(c)(3)(C)), a family member of a substantial contributor, or a 35-percent controlled entity with regard to a
 substantial contributor?
-        <span class="styItalicText">If “Yes,” complete Part I of Schedule L (Form 990) .</span>
-               
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:9.5mm;padding-top:7.5mm;">7</div>
-            <div class="styIRS990AYesNoBox" style="height:9.5mm;padding-top:7.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+        <i>If “Yes,” complete Part I of Schedule L (Form 990) .</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">7</div>
+						<div class="styLNRightNumBox">
+							   <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/PaymentSubstantialContribtrInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:9.5mm;padding-top:7.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/PaymentSubstantialContribtrInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:5.5mm;padding-left:3mm;">8</div>
-            <div class="styLNDesc" style="width:150mm;height:5.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-    Did the organization make a loan to a disqualified person (as defined in section 4958) not described in line 7?
-        <span class="styItalicText">If “Yes,” complete Part II of Schedule L (Form 990).</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:5.5mm;padding-top:3.5mm;">8</div>
-            <div class="styIRS990AYesNoBox" style="height:5.5mm;padding-top:3.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/LoanDisqualifiedPersonInd"/>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:5.5mm;padding-top:3.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/LoanDisqualifiedPersonInd"/>
-              </xsl:call-template>
-            </div>
-          </div>
-         <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:9.5mm;padding-left:3mm;">9a</div>
-            <div class="styLNDesc" style="width:150mm;height:9.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-   Was the organization controlled directly or indirectly at any time during the tax year by one or more disqualified persons as
-defined in section 4946 (other than foundation managers and organizations described in section 509(a)(1) or (2))?
-        <span class="styItalicText">If “Yes,” provide detail in<b> Part VI.</b></span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:9.5mm;padding-top:7.5mm;">9a</div>
-            <div class="styIRS990AYesNoBox" style="height:9.5mm;padding-top:7.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ControlledDisqualifiedPrsnInd"/>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:9.5mm;padding-top:7.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ControlledDisqualifiedPrsnInd"/>
-              </xsl:call-template>
-            </div>
-          </div>
-         <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:5mm;">b</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-  Did one or more disqualified persons (as defined in line 9(a)) hold a controlling interest in any entity in which the supporting
-organization had an interest?
-        <span class="styItalicText">If “Yes,” provide detail in<b> Part VI.</b></span>
-              
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:5.5mm;">9b</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/DisqualifiedPrsnControllIntInd"/>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/DisqualifiedPrsnControllIntInd"/>
-              </xsl:call-template>
-            </div>
-          </div>
-           <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:5mm;">c</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-Did a disqualified person (as defined in line 9(a)) have an ownership interest in, or derive any personal benefit from, assets
-in which the supporting organization also had an interest?
-        <span class="styItalicText">If “Yes,” provide detail in<b> Part VI.</b></span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:5.5mm;">9c</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/DisqualifiedPrsnOwnrIntInd"/>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/DisqualifiedPrsnOwnrIntInd"/>
-              </xsl:call-template>
-            </div>
-          </div>
-         <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:9.5mm;padding-left:1mm;">10a</div>
-            <div class="styLNDesc" style="width:150mm;height:9.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-Was the organization subject to the excess business holdings rules of IRC 4943 because of IRC 4943(f) (regarding certain
-Type II supporting organizations, and all Type III non-functionally integrated supporting organizations)?
-        <span class="styItalicText">If “Yes,” answer b below.</span>
-                <xsl:call-template name="SetFormLinkInline">
-                  <xsl:with-param name="TargetNode" select="$FormData/CollectionsOfArtInd"/>
-                </xsl:call-template>
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:9.5mm;padding-top:6.5mm;">10a</div>
-            <div class="styIRS990AYesNoBox" style="height:9.5mm;padding-top:6.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ExcessBusinessHoldingsRulesInd"/>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:9.5mm;padding-top:6.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ExcessBusinessHoldingsRulesInd"/>
-              </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:5mm;">b</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-Did the organization have any excess business holdings in the tax year? <i>(Use Schedule C, Form 4720, to determine
-whether the organization had excess business holdings).</i>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:5.5mm;">10b</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ExcessBusinessHoldingsInd"/>
-              </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ExcessBusinessHoldingsInd"/>
-              </xsl:call-template>
-            </div>
-          </div>
-          
-          
-          
-          
-        <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:4.5mm;">11</div>
-            <div class="styLNDesc" style="width:150mm;height:4.5mm;">
-        Has the organization accepted a gift or contribution from any of the following persons?
-        </div>
-        <div class="styLNRightNumBox" style="height:4.5mm;border-top-width:0px;"></div>
+						</div>
+					</div>	
         
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;">
-              
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;">
-              
-            </div>
-          </div>
-      
-             
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:5mm;">a</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-             A person who directly or indirectly controls, either alone or together with persons described in (b) and (c) below, the
-governing body of a supported organization?
-                </div>
-           
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:5.5mm;">11a</div>
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ContributionControllerInd"/>
+        
+        
+         <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:1mm;">8</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+         Did the organization make a loan to a disqualified person (as defined in section 4958) not described in line 7?
+        <i>If “Yes,” complete Part II of Schedule L (Form 990).</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">8</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/LoanDisqualifiedPersonInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:5.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ContributionControllerInd"/>
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/LoanDisqualifiedPersonInd"/>
               </xsl:call-template>
-            </div>
-          </div>
+						</div>
+					</div>	
+        
+        
           
-         <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm;">b</div>
-            <div class="styLNDesc" style="width:150mm;height:4.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-A family member of a person described in (a) above?  </span>
-
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:4.5mm;padding-top:.5mm;">11b</div>
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;padding-top:.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ContributionFamilyInd"/>
+         <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:1mm;">9a</div>
+					<div class="styLNDesc" style="width: 155mm;height:7.5mm;">
+        Was the organization controlled directly or indirectly at any time during the tax year by one or more disqualified persons as
+defined in section 4946 (other than foundation managers and organizations described in section 509(a)(1) or (2))?
+        <i>If “Yes,” provide detail in<b> Part VI.</b></i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">9a</div>
+						<div class="styLNRightNumBox">
+							   <xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ControlledDisqualifiedPrsnInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;padding-top:.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ContributionFamilyInd"/>
-                </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm;">c</div>
-            <div class="styLNDesc" style="width:150mm;height:4.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-A 35% controlled entity of a person described in (a) or (b) above?
- </span>
-<span class="styItalicText">If “Yes” to a, b, or c, provide detail in Part VI.</span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:4.5mm;padding-top:.5mm;">11c</div>
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;padding-top:.5mm;">
-              <xsl:call-template name="PopulateYesBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/Contribution35ControlledInd"/>
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ControlledDisqualifiedPrsnInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;padding-top:.5mm;">
-              <xsl:call-template name="PopulateNoBoxText">
-                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/Contribution35ControlledInd"/>
+						</div>
+					</div>	
+          
+          <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">b</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+         Did one or more disqualified persons (as defined in line 9(a)) hold a controlling interest in any entity in which the supporting
+organization had an interest?
+        <i>If “Yes,” provide detail in<b> Part VI.</b></i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">9b</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/DisqualifiedPrsnControllIntInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div class="styBB" style="width:187mm;"/>
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/DisqualifiedPrsnControllIntInd"/>
+              </xsl:call-template>
+						</div>
+					</div>	
+        
+        
+        <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">c</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+         Did a disqualified person (as defined in line 9(a)) have an ownership interest in, or derive any personal benefit from, assets
+in which the supporting organization also had an interest?
+        <i>If “Yes,” provide detail in<b> Part VI.</b></i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">9c</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/DisqualifiedPrsnOwnrIntInd"/>
+              </xsl:call-template>
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/DisqualifiedPrsnOwnrIntInd"/>
+              </xsl:call-template>
+						</div>
+					</div>	
+        
+        
+        
+        <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:0mm;">10a</div>
+					<div class="styLNDesc" style="width: 155mm;height:7.5mm;">
+        Was the organization subject to the excess business holdings rules of IRC 4943 because of IRC 4943(f) (regarding certain
+Type II supporting organizations, and all Type III non-functionally integrated supporting organizations)?
+        <i>If “Yes,” answer b below.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">10a</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ExcessBusinessHoldingsRulesInd"/>
+              </xsl:call-template>
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ExcessBusinessHoldingsRulesInd"/>
+              </xsl:call-template>
+						</div>
+					</div>	
+        
+        
+         <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:3mm;">b</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+        Did the organization have any excess business holdings in the tax year? <i>(Use Schedule C, Form 4720, to determine
+whether the organization had excess business holdings).</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">10b</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ExcessBusinessHoldingsInd"/>
+              </xsl:call-template>
+						</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ExcessBusinessHoldingsInd"/>
+              </xsl:call-template>
+						</div>
+					</div>	
+        
+         <div class="styBB" style="width:187mm;"/>
           <!--Page Footer Part III-->
 <div class="pageEnd" style="width:187mm">
   <div style="float:right;">
@@ -2920,233 +3018,377 @@ A 35% controlled entity of a person described in (a) or (b) above?
     <span class="styBoldText"> Schedule A (Form 990 or 990-EZ) 2014</span> 
   </div>  
 </div>
-
+<p style="page-break-before: always"/>
  <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2014</div>
     <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">5</span></div>                    
   </div>  
+        
+     <div class="styBB" style="width:187mm;float:none;">
+            <div class="styPartName" style="float:left;height:auto">Part IV</div>
+            <div class="styPartDesc" style="float:left;width:172mm;">Supporting Organizations  <span class="styNormalText">  (continued)</span></div>   
+         
+         </div>   
+       
+        	<div style="width: 187mm">
+					<div class="styLNLeftNumBox"/>
+							<div class="styLNDesc" style="width: 155mm;height:4.5mm;"/>
+                        	<div class="styLNRightNumBox" style="height:4.5mm;border-left:0px;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">Yes</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">No</div>
+						   </div>
+						   
+					    <div style="width: 187mm">
+					<div class="styLNLeftNumBox">11</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+       Has the organization accepted a gift or contribution from any of the following persons?<br></br>
+       <div class="styLNLeftNumBox" style="padding-left:0mm"></div>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftNumBox" style="padding-left:3mm;">a</div>
+						<div class="styLNDesc" style="width: 155mm;height:4.5;">A person who directly or indirectly controls, either alone or together with persons described in (b) and (c) below, the governing body of a supported organization?
+													</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+							 
+						</div>
+				<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm;height:4.5;">
+													</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">11a</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">
+							<xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ContributionControllerInd"/>
+              </xsl:call-template>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">
+							  <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ContributionControllerInd"/>
+              </xsl:call-template>
+						</div>
+						
+					</div>	
+					<div style="width: 187mm">
+						<div class="styLNLeftNumBox" style="padding-left:3mm;">b</div>
+						<div class="styLNDesc" style="width: 155mm;height:4.5;">A family member of a person described in (a) above?
+													</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">11b</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">
+						<xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ContributionFamilyInd"/>
+              </xsl:call-template>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">
+						 <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/ContributionFamilyInd"/>
+                </xsl:call-template>
+						</div>
+							 
+						</div>
+				
+     <div style="width: 187mm">
+						<div class="styLNLeftNumBox" style="padding-left:3mm;">c</div>
+						<div class="styLNDesc" style="width: 155mm;height:4.5;">A 35% controlled entity of a person described in (a) or (b) above?
+ <i>If “Yes” to a, b, or c, provide detail in Part VI.</i>
+													</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">11c</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">
+						 <xsl:call-template name="PopulateYesBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/Contribution35ControlledInd"/>
+              </xsl:call-template>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">
+						  <xsl:call-template name="PopulateNoBoxText">
+                <xsl:with-param name="TargetNode" select="$FormData/Form990SchASupportingOrgGrp/Contribution35ControlledInd"/>
+              </xsl:call-template>
+						</div>
+							 
+						</div>
           
-       <div class="styBB" style="width:187mm;float:none;">
-            <div class="styPartName" style="float:left;height:4.3mm">Part IV</div>
-            <div class="styPartDesc" style="float:left;width:152mm;">Supporting Organizations <span class="styNormalText"> (continued)</span> </div><br></br>
-              </div>
-           
-         <div class="styBB" style="width:187mm;float:none;">
-            <div class="styPartDesc" style="width:152mm;text-align:left;height:1mm;">
+        <div class="styBB" style="width:187mm;float:none;">
+         <div class="styBB" style="width:187mm;float:none;"/>
+            <div class="styPartDesc" style="width:152mm;text-align:left;height:auto;">
 Section B. Type I Supporting Organizations 
 </div>
  </div>
-  <div style="width: 187mm">
-            <div class="styLNLeftNumBox"/>
-            <div class="styLNDesc" style="width: 150mm"/>
-            <div class="styIRS990AYesNoBox" style="width:8mm;height:4.5mm;border-left-width:0px;">
-              <span style="width:1px;"/>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;">
-              <span class="styBoldText">Yes</span>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;">
-              <span class="styBoldText">No</span>
-            </div>
-          </div>
-      <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:20mm;padding-left:3mm;">1</div>
-            <div class="styLNDesc" style="width:150mm;height:20mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
+ <div style="width: 187mm">
+					<div class="styLNLeftNumBox"/>
+							<div class="styLNDesc" style="width: 155mm;height:4.5mm;"/>
+                        	<div class="styLNRightNumBox" style="height:4.5mm;border-left:0px;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">Yes</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">No</div>
+						
+					    </div>
+					    <div style="width: 187mm">
+					<div class="styLNLeftNumBox">1</div>
+					<div class="styLNDesc" style="width: 155mm;height:17mm;">
         Did the directors, trustees, or membership of one or more supported organizations have the power to regularly appoint or
 elect at least a majority of the organization’s directors or trustees at all times during the tax year?
-         <span class="styItalicText">If “No,” describe in <b>Part VI</b> how the supported organization(s) effectively operated, supervised, or controlled the organization’s activities. If the organization had more than one supported organization, describe how the powers to appoint and/or remove directors or
+         <i>If “No,” describe in <b>Part VI</b> how the supported organization(s) effectively operated, supervised, or controlled the organization’s activities. If the organization had more than one supported organization, describe how the powers to appoint and/or remove directors or
 trustees were allocated among the supported organizations and what conditions or restrictions, if any, applied to such
-powers during the tax year.</span>
-                              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:20mm;padding-top:17mm;">1</div>
-            <div class="styIRS990AYesNoBox" style="height:20mm;padding-top:17mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+powers during the tax year.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:17mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:17mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:17mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">1</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType1SuprtOrgGrp/PowerAppointMajorityDirTrstInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:20mm;padding-top:17mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType1SuprtOrgGrp/PowerAppointMajorityDirTrstInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">2</div>
-            <div class="styLNDesc" style="width:150mm;height:13.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-        Did the organization operate for the benefit of any supported organization other than the supported organization(s) that
+						</div>
+					</div>
+					
+				<div style="width: 187mm">
+					<div class="styLNLeftNumBox">2</div>
+					<div class="styLNDesc" style="width: 155mm;height:10mm;">
+       Did the organization operate for the benefit of any supported organization other than the supported organization(s) that
 operated, supervised, or controlled the supporting organization?
-<span class="styItalicText">If “Yes,” explain in <b>Part VI</b> how providing such benefit
+<i>If “Yes,” explain in <b>Part VI</b> how providing such benefit
 carried out the purposes of the supported organization(s) that operated, supervised or controlled the supporting
-organization.</span>
-               </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:13.5mm;padding-top:9mm;">2</div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:9mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+organization.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">2</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType1SuprtOrgGrp/OperateBenefitNonSuprtOrgInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:9mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType1SuprtOrgGrp/OperateBenefitNonSuprtOrgInd"/>
               </xsl:call-template>
-            </div>
-          </div>   
+						</div>
+					</div>	
+ 
+ 
+ 
+ 
+ 
+  
            <div class="styBB" style="width:187mm;float:none;">
            <div class="styBB" style="width:187mm;float:none;"/>
-            <div class="styPartDesc" style="width:152mm;text-align:left;height:1mm;border-top-width:1px;">
+            <div class="styPartDesc" style="width:152mm;text-align:left;height:1mm;border-top-width:1px;height:auto;">
 Section C. Type II Supporting Organizations 
 </div>
 
  </div>
- 
-  <div style="width: 187mm">
-            <div class="styLNLeftNumBox"/>
-            <div class="styLNDesc" style="width: 150mm"/>
-            <div class="styIRS990AYesNoBox" style="width:8mm;height:4.5mm;border-left-width:0px;">
-              <span style="width:1px;"/>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;">
-              <span class="styBoldText">Yes</span>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;">
-              <span class="styBoldText">No</span>
-            </div>
-          </div>
-      <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:13.5mm;padding-left:3mm;">1</div>
-            <div class="styLNDesc" style="width:150mm;height:13.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-        Were a majority of the organization’s directors or trustees during the tax year also a majority of the directors or trustees of
+ <div style="width: 187mm">
+					<div class="styLNLeftNumBox"/>
+							<div class="styLNDesc" style="width: 155mm;height:4.5mm;"/>
+                        	<div class="styLNRightNumBox" style="height:4.5mm;border-left:0px;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">Yes</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">No</div>
+						
+					    </div>
+					    <div style="width: 187mm">
+					<div class="styLNLeftNumBox">1</div>
+					<div class="styLNDesc" style="width: 155mm;height:17mm;">
+         Were a majority of the organization’s directors or trustees during the tax year also a majority of the directors or trustees of
 each of the organization’s supported organization(s)?
-         <span class="styItalicText">If “No,” describe in <b>Part VI</b> how control or management of the
-supporting organization was vested in the same persons that controlled or managed the supported organization(s).</span>
-                    </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:13.5mm;padding-top:10mm;">1</div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:10mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+         <i>If “No,” describe in <b>Part VI</b> how control or management of the
+supporting organization was vested in the same persons that controlled or managed the supported organization(s).
+                    </i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:17mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:17mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:17mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">1</div>
+						<div class="styLNRightNumBox">
+							  <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/MajorityDirTrstSupportedOrgInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:10mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/MajorityDirTrstSupportedOrgInd"/>
               </xsl:call-template>
-            </div>
-          </div>
+						</div>
+					</div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
           
            <div class="styBB" style="width:187mm;float:none;">
            <div class="styBB" style="width:187mm;float:none;"/>
-            <div class="styPartDesc" style="width:152mm;text-align:left;height:1mm;">
+            <div class="styPartDesc" style="width:152mm;text-align:left;height:auto;">
 Section D. All Type III Supporting Organizations 
 </div>
  </div>
-  <div style="width: 187mm">
-            <div class="styLNLeftNumBox"/>
-            <div class="styLNDesc" style="width: 150mm"/>
-            <div class="styIRS990AYesNoBox" style="width:8mm;height:4.5mm;border-left-width:0px;">
-              <span style="width:1px;"/>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;">
-              <span class="styBoldText">Yes</span>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;">
-              <span class="styBoldText">No</span>
-            </div>
-          </div>
-      <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:13.5mm;padding-left:3mm;">1</div>
-            <div class="styLNDesc" style="width:150mm;height:13.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-       Did the organization provide to each of its supported organizations, by the last day of the fifth month of the organization’s
+ <div style="width: 187mm">
+					<div class="styLNLeftNumBox"/>
+							<div class="styLNDesc" style="width: 155mm;height:4.5mm;"/>
+                        	<div class="styLNRightNumBox" style="height:4.5mm;border-left:0px;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">Yes</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">No</div>
+						
+					    </div>
+					    <div style="width: 187mm">
+					<div class="styLNLeftNumBox">1</div>
+					<div class="styLNDesc" style="width: 155mm;height:14mm;">
+         Did the organization provide to each of its supported organizations, by the last day of the fifth month of the organization’s
 tax year, (1) a written notice describing the type and amount of support provided during the prior tax year, (2) a copy of the
 Form 990 that was most recently filed as of the date of notification, and (3) copies of the organization’s governing
-documents in effect on the date of notification, to the extent not previously provided?</span>
-               
-                           <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:13.5mm;padding-top:10mm;">1</div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:10mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+documents in effect on the date of notification, to the extent not previously provided?
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:14mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:14mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:14mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">1</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3SprtOrgAllGrp/TimelyProvidedDocumentsInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:10mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3SprtOrgAllGrp/TimelyProvidedDocumentsInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:10.5mm;padding-left:3mm;">2</div>
-            <div class="styLNDesc" style="width:150mm;height:10.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-      Were any of the organization’s officers, directors, or trustees either (i) appointed or elected by the supported organization(s)
+						</div>
+					</div>
+					
+				<div style="width: 187mm">
+					<div class="styLNLeftNumBox">2</div>
+					<div class="styLNDesc" style="width: 155mm;height:10mm;">
+        Were any of the organization’s officers, directors, or trustees either (i) appointed or elected by the supported organization(s)
 or (ii) serving on the governing body of a supported organization?
-         <span class="styItalicText">If "No," explain in <b>Part VI</b> how the organization
-maintained a close and continuous working relationship with the supported organization(s).</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:10.5mm;padding-top:8mm;">2</div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:8mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+         <i>If "No," explain in <b>Part VI</b> how the organization
+maintained a close and continuous working relationship with the supported organization(s).</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">2</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3SprtOrgAllGrp/OfficersCloseRelationshipInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:10.5mm;padding-top:8mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3SprtOrgAllGrp/OfficersCloseRelationshipInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:13.5mm;padding-left:3mm;">3</div>
-            <div class="styLNDesc" style="width:150mm;height:13.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-       By reason of the relationship described in (2), did the organization’s supported organizations have a significant voice in the
+						</div>
+					</div>	
+ 
+ <div style="width: 187mm">
+					<div class="styLNLeftNumBox">3</div>
+					<div class="styLNDesc" style="width: 155mm;height:7.5mm;">
+         By reason of the relationship described in (2), did the organization’s supported organizations have a significant voice in the
 organization’s investment policies and in directing the use of the organization’s income or assets at all times during the tax
 year?
-         <span class="styItalicText">If "Yes," describe in <b>Part VI</b> the role the organization’s supported organizations played in this regard.</span>
-               
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:13.5mm;padding-top:10mm;">3</div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:10mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+         <i>If "Yes," describe in <b>Part VI</b> the role the organization’s supported organizations played in this regard.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:7.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">3</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3SprtOrgAllGrp/SupportedOrgVoiceInvestmentInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:10mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							<xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3SprtOrgAllGrp/SupportedOrgVoiceInvestmentInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div class="styBB" style="width:187mm;float:none;"/>
+						</div>
+					</div>	
+ 
+           <div class="styBB" style="width:187mm;float:none;"/>
            <div class="styBB" style="width:187mm;float:none;">
-            <div class="styPartDesc" style="width:152mm;text-align:left;height:1mm;">
+            <div class="styPartDesc" style="width:152mm;text-align:left;height:auto;">
 Section E. Type III Functionally-Integrated Supporting Organizations 
 </div>
  </div>
   <div style="width: 187mm">
-            <div class="styLNLeftNumBox" style="padding-left:3mm;">1</div>
+            <div class="styLNLeftNumBox" style="padding-left:1mm;">1</div>
             <div class="styLNDesc" style="width: 175mm">Check the box next to the method that the organization used to satisfy the Integral Part Test during the year<b> (see instructions)</b>:</div> 
             </div>
             <!-- line 1 -->
@@ -3156,6 +3398,7 @@ Section E. Type III Functionally-Integrated Supporting Organizations
     <input class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ActivitiesTestInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAForm990SchAType3FuncIntGrp</xsl:with-param>
       </xsl:call-template>                                                                     
     </input>  
   </div>
@@ -3163,6 +3406,7 @@ Section E. Type III Functionally-Integrated Supporting Organizations
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ActivitiesTestInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAForm990SchAType3FuncIntGrp</xsl:with-param>
       </xsl:call-template>
        The organization satisfied the Activities Test. Complete<b> line 2</b> below.
         </label>
@@ -3175,6 +3419,7 @@ Section E. Type III Functionally-Integrated Supporting Organizations
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ParentSupportedOrgInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAForm990SchAType3FuncIntGrp</xsl:with-param>
       </xsl:call-template>
     </input>  
   </div>
@@ -3182,6 +3427,7 @@ Section E. Type III Functionally-Integrated Supporting Organizations
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ParentSupportedOrgInd"/>
+          <xsl:with-param name="BackupName">IRS990SchAForm990SchAType3FuncIntGrp</xsl:with-param>
       </xsl:call-template>
      The organization is the parent of each of its supported organizations. Complete<b> line 3</b> below.
     </label> 
@@ -3194,6 +3440,7 @@ Section E. Type III Functionally-Integrated Supporting Organizations
     <input alt="alt" class="IRS990ScheduleA_Checkbox" type="checkbox">
        <xsl:call-template name="PopulateCheckbox">
         <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/GovernmentalEntityInd"/>
+          <xsl:with-param name="BackupName">IRS990SchAForm990SchAType3FuncIntGrp</xsl:with-param>
       </xsl:call-template>
     </input>
   </div>
@@ -3201,145 +3448,158 @@ Section E. Type III Functionally-Integrated Supporting Organizations
     <label>
        <xsl:call-template name="PopulateLabel">
         <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/GovernmentalEntityInd"/>
+        <xsl:with-param name="BackupName">IRS990SchAForm990SchAType3FuncIntGrp</xsl:with-param>
       </xsl:call-template>
       The organization supported a governmental entity. Describe in Part VI how you supported a government entity (see instructions)
       </label> 
   </div>
 </div>
   <div style="width: 187mm">
-            <div class="styLNLeftNumBox" style="padding-left:3mm;">2</div>
-            <div class="styLNDesc" style="width: 150mm"><span class="styIRS990AUnderlinedText" style=" width: 23mm;">Activities Test. </span><b>Answer (a) and (b) below.</b></div> 
+            <div class="styLNLeftNumBox" style="padding-left:1mm;padding-top:5mm;">2</div>
+            <div class="styLNDesc" style="width: 155mm;padding-top:5mm;"><span class="styIRS990AUnderlinedText" style=" width: 23mm;">Activities Test. </span><b>Answer (a) and (b) below.</b></div> 
            
-            <div class="styIRS990AYesNoBox" style="width:8mm;height:4.5mm;border-left-width:0px;border-top-width:0px;">
-              <span style="width:1px;"/>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;border-top-width:1px;">
-              <span class="styBoldText">Yes</span>
-            </div>
-            <div class="styIRS990AYesNoBox" style="width:10mm;height:4.5mm;border-top-width:0px;border-top-width:1px;">
-              <span class="styBoldText">No</span>
-             </div>
+          
           </div>
-     <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:16.5mm;padding-left:5mm;">a</div>
-            <div class="styLNDesc" style="width:150mm;height:16.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-    Did substantially all of the organization’s activities during the tax year directly further the exempt purposes of the supported
+           <div style="width: 187mm">
+					<div class="styLNLeftNumBox"/>
+							<div class="styLNDesc" style="width: 155mm;height:4.5mm;"/>
+                        	<div class="styLNRightNumBox" style="height:4.5mm;border-left:0px;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">Yes</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;">No</div>
+						
+					    </div>
+					    <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:5mm;">a</div>
+					<div class="styLNDesc" style="width: 155mm;height:12mm;">
+         Did substantially all of the organization’s activities during the tax year directly further the exempt purposes of the supported
 organization(s) to which the organization was responsive?
-         <span class="styItalicText">If "Yes," then in <b>Part VI identify those supported
+         <i>If "Yes," then in <b>Part VI identify those supported
 organizations and explain</b> how these activities directly furthered their exempt purposes, how the organization was
 responsive to those supported organizations, and how the organization determined that these activities constituted
-substantially all of its activities.</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:16.5mm;padding-top:13mm;">2a</div>
-            <div class="styIRS990AYesNoBox" style="height:16.5mm;padding-top:13mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+substantially all of its activities.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:12mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:12mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:12mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">2a</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ActivitiesFurtherExemptPrpsInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:16.5mm;padding-top:13mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ActivitiesFurtherExemptPrpsInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:13.5mm;padding-left:5mm;">b</div>
-            <div class="styLNDesc" style="width:150mm;height:13.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-      Did the activities described in (a) constitute activities that, but for the organization’s involvement, one or more of the
+						</div>
+					</div>
+					
+				<div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:5mm;">b</div>
+					<div class="styLNDesc" style="width: 155mm;height:10mm;">
+         Did the activities described in (a) constitute activities that, but for the organization’s involvement, one or more of the
 organization’s supported organization(s) would have been engaged in?
-         <span class="styItalicText">If "Yes," explain in <b>Part VI </b>the reasons for the
+         <i>If "Yes," explain in <b>Part VI </b>the reasons for the
 organization’s position that its supported organization(s) would have engaged in these activities but for the organization’s
-involvement.</span>
-               
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:13.5mm;padding-top:10mm;">2b</div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:10mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+involvement.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:10mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">2b</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ActivitiesEngagedOrgInvlmntInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:13.5mm;padding-top:10mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ActivitiesEngagedOrgInvlmntInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-            <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">3</div>
-            <div class="styLNDesc" style="width:150mm;height:4.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
+						</div>
+					</div>	
+ 
+ <div style="width:187mm;float:none;">
+            <div class="styLNLeftNumBox" style="padding-left:1mm;">3</div>
+            <div class="styLNDesc" style="width: 155mm;height:4.5mm;">
         <span class="styIRS990AUnderlinedText" style=" width: 50mm;">Parent of Supported Organizations.</span><b> Answer (a) and (b) below.</b> 
-                       </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:4.5mm;"></div>
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;">
-             
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:4.5mm;">
-              
-            </div>
+                      
+                         </div>
+            <div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
           </div>
           <div style="width:187mm;float:none;">
             <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:5mm;">a</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-        Did the organization have the power to regularly appoint or elect a majority of the officers, directors, or trustees of each of
+            <div class="styLNDesc" style="width:155mm;height:7.5mm;">
+              Did the organization have the power to regularly appoint or elect a majority of the officers, directors, or trustees of each of
 the supported organizations?
-         <span class="styItalicText">Provide details in Part VI.</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">3a</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+         <i>Provide details in Part VI.</i>
+               </div>
+           <div class="styLNRightNumBox" style="height:7.5mm;">3a</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/AppointElectMajorityOfficerInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox" style="height:7.5mm;">
+							<xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/AppointElectMajorityOfficerInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          
-          <div style="width:187mm;float:none;">
-            <div class="styLNLeftNumBox" style="height:7.5mm;padding-left:5mm;">b</div>
-            <div class="styLNDesc" style="width:150mm;height:7.5mm;">
-              <span class="styNormalText" style="padding-top:0.0mm;">
-        Did the organization exercise a substantial degree of direction over the policies, programs and activities of each of its
+						</div>
+					</div>	
+              
+          <div style="width: 187mm">
+					<div class="styLNLeftNumBox" style="padding-left:5mm;">b</div>
+					<div class="styLNDesc" style="width: 155mm;height:4.5mm;">
+          Did the organization exercise a substantial degree of direction over the policies, programs and activities of each of its
 supported organizations?
-         <span class="styItalicText">If "Yes," describe in Part VI the role played by the organization in this regard.</span>
-                
-              </span>
-              <!--Dotted Line-->
-              <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;"></span>
-            </div>
-            <div class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">3b</div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateYesBoxText">
+         <i>If "Yes," describe in Part VI the role played by the organization in this regard.</i>
+  </div>
+     
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey;">
+							<span style="width: 1px"/>
+						</div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+						<div class="styLNRightNumBox" style="height:4.5mm;background-color: lightgrey"></div>
+					</div>
+					<div style="width: 187mm">
+						<div class="styLNLeftLtrBox"/>
+						<div class="styLNDesc" style="width: 155mm">
+													</div>
+						<div class="styLNRightNumBox">3b</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ExerciseDirectionPoliciesInd"/>
               </xsl:call-template>
-            </div>
-            <div class="styIRS990AYesNoBox" style="height:7.5mm;padding-top:3mm;">
-              <xsl:call-template name="PopulateNoBoxText">
+						</div>
+						<div class="styLNRightNumBox">
+							 <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$FormData/Form990SchAType3FuncIntGrp/ExerciseDirectionPoliciesInd"/>
               </xsl:call-template>
-            </div>
-          </div>
-          <div class="styBB" style="width:187mm;"/>
+						</div>
+					</div>	
+                 <div class="styBB" style="width:187mm;"/>
             <!--Page Footer Part III-->
 <div class="pageEnd" style="width:187mm">
   <div style="float:right;">
@@ -3347,27 +3607,73 @@ supported organizations?
     <span class="styBoldText"> Schedule A (Form 990 or 990-EZ) 2014</span> 
   </div>  
 </div>
-
+<p style="page-break-before: always"/>
  <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2014</div>
     <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">6</span></div>                    
   </div>  
           
-        
+        <!--<tr>
+           <div class="IRS990ScheduleA_LineContainer">
+  <div class="IRS990ScheduleA_LineIndex" style="padding-left:3mm;">1</div>
+  <div class="IRS990ScheduleA_LineIndex">
+    <input class="IRS990ScheduleA_Checkbox" type="checkbox">
+       <xsl:call-template name="PopulateCheckbox">
+        <xsl:with-param name="TargetNode" select="$FormData/TrustIntegralPartTestInd"/>
+      </xsl:call-template>                                                                     
+    </input>  
+  </div>
+  <div class="IRS990ScheduleA_LineDescIV">
+    <label>
+       <xsl:call-template name="PopulateLabel">
+        <xsl:with-param name="TargetNode" select="$FormData/TrustIntegralPartTestInd"/>
+      </xsl:call-template>
+      Check here if the organization satisfied the Integral Part Test as a qualifying trust on Nov.
+20, 1970. <b>See instructions.</b> All other <span style="width:155mm;text-align:left">Type III non-functionally integrated supporting organizations must complete Sections A through E.</span>
+       </label>
+  </div>
+</div>    -->
         <div class="styBB" style="width:187mm;float:none;">
-     <div class="styPartDesc" style="width:152mm;text-align:left;">Part V &#8211; Type III Non-Functionally Integrated 509(a)(3) Supporting Organizations </div><br></br>
+     <div class="styPartDesc" style="width:155mm;text-align:left;">Part V &#8211; Type III Non-Functionally Integrated 509(a)(3) Supporting Organizations </div><br></br>
      <div class="styBB" style="width:187mm;float:none;"/>
-      <span style="width:5px;"/>1.<span class="styIRS990AUnderlinedText" style="text-align: center; width: 10mm; font-size: 6pt">
+     
+     <tr>
+           <div class="IRS990ScheduleA_LineContainer">
+  <div class="IRS990ScheduleA_LineIndex" style="padding-left:3mm;">1</div>
+  <div class="IRS990ScheduleA_LineIndex">
+    <input class="IRS990ScheduleA_Checkbox" type="checkbox">
+       <xsl:call-template name="PopulateCheckbox">
+        <xsl:with-param name="TargetNode" select="$FormData/TrustIntegralPartTestInd"/>
+        <xsl:with-param name="BackupName">IRS990SchATrustIntegralPartTestInd</xsl:with-param>
+      </xsl:call-template>                                                                     
+    </input>  
+  </div>
+  <div class="IRS990ScheduleA_LineDescIV">
+    <label>
+       <xsl:call-template name="PopulateLabel">
+        <xsl:with-param name="TargetNode" select="$FormData/TrustIntegralPartTestInd"/>
+        <xsl:with-param name="BackupName">IRS990SchATrustIntegralPartTestInd</xsl:with-param>
+      </xsl:call-template>
+      Check here if the organization satisfied the Integral Part Test as a qualifying trust on Nov.
+20, 1970. <b>See instructions.</b> All other <span style="width:155mm;text-align:left">Type III non-functionally integrated supporting organizations must complete Sections A through E.</span>
+       </label>
+  </div>
+</div>
+
+   </tr>  
+   </div>
+     
+     <!-- <span style="width:5px;"/>1.<span class="styIRS990AUnderlinedText" style="text-align: center; width: 10mm; font-size: 6pt">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/TrustIntegralPartTestInd"/>
 											</xsl:call-template>
 										</span>   
 										<span style="width:5px;"/> Check here if the organization satisfied the Integral Part Test as a qualifying trust on Nov.
-20, 1970. <b>See instructions.</b> All other <span style="width:152mm;text-align:left">Type III non-functionally integrated supporting organizations must complete Sections A through E.</span>
-          </div>
+20, 1970. <b>See instructions.</b> All other <span style="width:155mm;text-align:left">Type III non-functionally integrated supporting organizations must complete Sections A through E.</span>
+          </div>-->
       <div class="styBB" style="width:187mm;float:none;">
-            <div class="styPartDesc" style="width:152mm;text-align:left;height:1mm;">
+            <div class="styPartDesc" style="width:155mm;text-align:left;height:1mm;">
 </div>
  </div>
        <table class="styTable" style="font-size:7pt;width:187mm;" cellspacing="0">
@@ -3375,18 +3681,18 @@ supported organizations?
              <tr>
                 
             <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:0mm;border-top-width: 1px;"></td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">
               <span class="styBoldText" style="font-size:8pt;font-weight:bold;"> Section A - Adjusted Net Income</span>  
          </td>
            
                 
                 <td class="styLNLeftNumBox" style="height:4.5mm;"></td>
-                <td class="styLNAmountBox" style="height:4.5mm;font-family:'Arial';text-align:center;border-top-width: 0px">
+                <td class="styLNAmountBox" style="height:7.5mm;font-family:'Arial';text-align:center;border-top-width: 0px">
                   (A) Prior Year
                   <span style="width:1px;"/>
                 </td>
                 
-                <td class="styLNAmountBox" style="height:4.5mm;font-family:'Arial';text-align:center;border-top-width: 0px">
+                <td class="styLNAmountBox" style="height:7.5mm;font-family:'Arial';text-align:center;border-top-width: 0px">
                 (B) Current Year <br></br>(optional)
                   <span style="width:1px;"/>
                 </td>
@@ -3394,7 +3700,7 @@ supported organizations?
              <tr>
            
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;border-top-width: 1px;">1</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;border-top-width: 1px;border-bottom-width: 1px" colspan="3">
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;border-top-width: 1px;border-bottom-width: 1px" colspan="3">
                 <!-- An underline is required here but it will not align with Amt Box line so need to change entire dection to Table -->
                 <!--<span class="styIRS990AUnderlinedText" style=" width: 125mm;">-->Net short-term capital gain
          
@@ -3417,7 +3723,7 @@ supported organizations?
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">2</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Recoveries of prior-year distributions
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Recoveries of prior-year distributions
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3438,7 +3744,7 @@ supported organizations?
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">3</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Other gross income (see instructions)
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Other gross income (see instructions)
                                          <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3459,7 +3765,7 @@ supported organizations?
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">4</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Add lines 1 through 3
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Add lines 1 through 3
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3480,7 +3786,7 @@ supported organizations?
               </tr>
             <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">5</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Depreciation and depletion
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Depreciation and depletion
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3501,7 +3807,7 @@ supported organizations?
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:10.5mm;padding-left:3mm;">6</td>
-                <td class="styLNDesc" style="width:125mm;height:10.5mm;" colspan="3">Portion of operating expenses paid or incurred for
+                <td class="styLNDesc" style="width:107mm;height:10.5mm;" colspan="3">Portion of operating expenses paid or incurred for
 production or collection of gross income or for
 management, conservation, or maintenance of property
 held for production of income (see instructions)
@@ -3525,7 +3831,7 @@ held for production of income (see instructions)
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">7</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Other expenses (see instructions)
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Other expenses (see instructions)
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3546,7 +3852,7 @@ held for production of income (see instructions)
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">8</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3"><b>Adjusted Net Income</b> (subtract lines 5, 6 and 7 from
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3"><b>Adjusted Net Income</b> (subtract lines 5, 6 and 7 from
 line 4)
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
@@ -3588,7 +3894,7 @@ line 4)
               <tr>
                 
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;border-top-width: 1px"></td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">
            <span class="styBoldText" style="font-size:8pt;font-weight:bold;">Section B - Minimum Asset Amount</span>
                 </td>
                 <td class="styLNLeftNumBox" style="height:4.5mm;"></td>
@@ -3603,13 +3909,13 @@ line 4)
                 </td>
               </tr>
                <tr>
-                <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">1</td>
-                <td class="styLNDesc" style="width:125mm;height:7.5mm;" colspan="3">Aggregate fair market value of all non-exempt-use
+                <td class="styLNLeftNumBox" style="height:7.5mm;padding-left:3mm;">1</td>
+                <td class="styLNDesc" style="width:107mm;height:7.5mm;" colspan="3">Aggregate fair market value of all non-exempt-use
 assets (see instructions for short tax year or assets held for part of year):
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
-                <td class="styLNRightNumBox" style="height:4.5mm;border-top-width: 1px">1</td>
+                <td class="styLNRightNumBox" style="height:7.5mm;border-top-width: 1px;padding-top:3mm;">1</td>
                 <td class="styLNAmountBox" style="height:7.5mm;font-family:'Arial';background-color:lightgrey; ">
                  
                   <span style="width:1px;"/>
@@ -3623,7 +3929,7 @@ assets (see instructions for short tax year or assets held for part of year):
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm;">a</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Average monthly value of securities
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Average monthly value of securities
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3646,7 +3952,7 @@ assets (see instructions for short tax year or assets held for part of year):
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm;">b</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Average monthly cash balances
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Average monthly cash balances
                                          <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3667,7 +3973,7 @@ assets (see instructions for short tax year or assets held for part of year):
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm;">c</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Fair market value of other non-exempt-use assets
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Fair market value of other non-exempt-use assets
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3688,7 +3994,7 @@ assets (see instructions for short tax year or assets held for part of year):
               </tr>
             <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm;">d</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3"><b>Total</b> (add lines 1a, 1b, and 1c)
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3"><b>Total</b> (add lines 1a, 1b, and 1c)
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3709,7 +4015,7 @@ assets (see instructions for short tax year or assets held for part of year):
               </tr>
              <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:5mm;">e</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3"><b>Discount </b>claimed for blockage or other factors
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3"><b>Discount </b>claimed for blockage or other factors
 (explain in detail in Part VI):
             <span style="width: 0mm"/><span class="styIRS990AUnderlinedText" style="text-align: right; width: 32mm; font-size: 6pt">
 											<xsl:call-template name="PopulateAmount">
@@ -3728,7 +4034,7 @@ assets (see instructions for short tax year or assets held for part of year):
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">2</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Acquisition indebtedness applicable to non-exempt use
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Acquisition indebtedness applicable to non-exempt use
 assets
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
@@ -3750,7 +4056,7 @@ assets
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">3</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Subtract line 2 from line 1d
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Subtract line 2 from line 1d
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3770,21 +4076,21 @@ assets
                 </td>
               </tr>  
               <tr>
-                <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">4</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Cash deemed held for exempt use. Enter 1-1/2% of
+                <td class="styLNLeftNumBox" style="height:auto;padding-left:3mm;">4</td>
+                <td class="styLNDesc" style="width:107mm;height:auto;" colspan="3">Cash deemed held for exempt use. Enter 1-1/2% of
 line 3 (for greater amount, see instructions).
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
-                 <td class="styLNRightNumBox" style="height:4.5mm;">4</td>
-                <td class="styLNAmountBox" style="height:4.5mm;font-family:'Arial';padding-top:3mm;">
+                 <td class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">4</td>
+                <td class="styLNAmountBox" style="height:7.5mm;font-family:'Arial';padding-top:0mm;">
                  <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/MinimumAssetAmountGrp/CashDeemedCharitableGrp/PriorYearAmt"/>
                   </xsl:call-template>
                   <span style="width:1px;"/>
                 </td>
                
-                <td class="styLNAmountBox" style="height:4.5mm;font-family:'Arial';padding-top:3mm;">
+                <td class="styLNAmountBox" style="height:7.5mm;font-family:'Arial';padding-top:0mm;">
                  <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/MinimumAssetAmountGrp/CashDeemedCharitableGrp/CurrentYearAmt"/>
                   </xsl:call-template>
@@ -3792,8 +4098,8 @@ line 3 (for greater amount, see instructions).
                 </td>
               </tr>
               <tr>
-                <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">5</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Net value of non-exempt-use assets (subtract line 4
+                <td class="styLNLeftNumBox" style="height:auto;padding-left:3mm;">5</td>
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Net value of non-exempt-use assets (subtract line 4
 from line 3)
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
@@ -3815,7 +4121,7 @@ from line 3)
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">6</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Multiply line 5 by .035
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Multiply line 5 by .035
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3836,7 +4142,7 @@ from line 3)
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">7</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Recoveries of prior-year distributions
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Recoveries of prior-year distributions
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3857,7 +4163,7 @@ from line 3)
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">8</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3"><b>Minimum Asset Amount </b> (add line 7 to line 6)
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3"><b>Minimum Asset Amount </b> (add line 7 to line 6)
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3896,7 +4202,7 @@ from line 3)
               <tr>
                 
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:0mm;border-top-width: 1px"></td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">
                 
            <span class="styBoldText" style="font-size:8pt;font-weight:bold;">Section C - Distributable Amount</span></td>
            
@@ -3912,9 +4218,9 @@ from line 3)
                   <span style="width:1px;"/>
                 </td>
               </tr>
-              <tr>
+           <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">1</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Adjusted net income for prior year (from Section A,
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Adjusted net income for prior year (from Section A,
 line 8, Column A)
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
@@ -3935,7 +4241,7 @@ line 8, Column A)
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">2</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Enter 85% of line 1
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Enter 85% of line 1
                                          <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3954,7 +4260,7 @@ line 8, Column A)
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">3</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Minimum asset amount for prior year (from Section B,
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Minimum asset amount for prior year (from Section B,
 line 8, Column A)
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
@@ -3974,7 +4280,7 @@ line 8, Column A)
               </tr>
             <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">4</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Enter greater of line 2 or line 3
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Enter greater of line 2 or line 3
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -3993,7 +4299,7 @@ line 8, Column A)
               </tr>
           <tr>
                 <td class="styLNLeftNumBox" style="height:4.5mm;padding-left:3mm;">5</td>
-                <td class="styLNDesc" style="width:125mm;height:4.5mm;" colspan="3">Income tax imposed in prior year
+                <td class="styLNDesc" style="width:107mm;height:4.5mm;" colspan="3">Income tax imposed in prior year
             <!--Dotted Line-->
                   <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm"></span>
                 </td>
@@ -4012,7 +4318,7 @@ line 8, Column A)
               </tr>
               <tr>
                 <td class="styLNLeftNumBox" style="height:7.5mm;padding-left:3mm;padding-bottom:3mm;">6</td>
-                <td class="styLNDesc" style="width:125mm;height:7.5mm;" colspan="3"><b>Distributable Amount.</b> Subtract line 5 from line 4,
+                <td class="styLNDesc" style="width:107mm;height:7.5mm;" colspan="3"><b>Distributable Amount.</b> Subtract line 5 from line 4,
 unless subject to emergency temporary reduction (see
 instructions)
             <!--Dotted Line-->
@@ -4032,22 +4338,40 @@ instructions)
                 </td>
               </tr>
               
-              
-              
-              
-            <tr>
-                <td class="styLNLeftNumBox" style="height:7.5mm;padding-left:3mm;">7</td>
-                <td class="styLNDesc" style="width:187mm;height:7.5mm;" >
-                <span class="styIRS990AUnderlinedText" style="text-align: center; width: 10mm; font-size: 6pt">
+               </table>
+          <tr>
+           <div class="IRS990ScheduleA_LineContainer">
+  <div class="IRS990ScheduleA_LineIndex" style="padding-left:3mm;">7</div>
+  <div class="IRS990ScheduleA_LineIndex">
+    <input class="IRS990ScheduleA_Checkbox" type="checkbox">
+       <xsl:call-template name="PopulateCheckbox">
+        <xsl:with-param name="TargetNode" select="$FormData/DistributableAmountGrp/FirstYearType3NonFuncInd"/>
+        <xsl:with-param name="BackupName">IRS990SchADistributableAmountGrp</xsl:with-param>
+      </xsl:call-template>                                                                     
+    </input>  
+  </div>
+  <div class="IRS990ScheduleA_LineDescIV">
+    <label>
+       <xsl:call-template name="PopulateLabel">
+        <xsl:with-param name="TargetNode" select="$FormData/DistributableAmountGrp/FirstYearType3NonFuncInd"/>
+        <xsl:with-param name="BackupName">IRS990SchADistributableAmountGrp</xsl:with-param>
+      </xsl:call-template>
+      Check here if the current year is the organization's first as a non-functionally-integrated Type III supporting organization (see instructions)
+       </label>
+  </div>
+</div> 
+           <!--     <td class="styLNLeftNumBox" style="height:7.5mm;padding-left:3mm;">7</td>
+                <td class="styLNDesc" style="width:187mm;height:7.5mm;text-align:left;" >
+                <span class="styIRS990AUnderlinedText" style="width: 10mm; font-size: 6pt">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$FormData/DistributableAmountGrp/FirstYearType3NonFuncInd"/>
 											</xsl:call-template>
 										</span>  Check here if the current year is the organization's first as a non-functionally-integrated Type III supporting organization (see instructions)
             
-                </td>
+                </td>-->
               </tr>
            
-          </table>
+         
           
         <div class="styBB" style="width:187mm;"/>
         <!--Page Footer Part III-->
@@ -4057,7 +4381,7 @@ instructions)
     <span class="styBoldText"> Schedule A (Form 990 or 990-EZ) 2014</span> 
   </div>  
 </div>
-
+<p style="page-break-before: always"/>
  <!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2014</div>
@@ -4065,11 +4389,11 @@ instructions)
   </div>  
   
   
-  <xsl:call-template name="SetDynamicTableToggleButton">
+  <!--<xsl:call-template name="SetDynamicTableToggleButton">
               <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp"/>              
               <xsl:with-param name="containerHeight" select="20"/>
               <xsl:with-param name="containerID" select="'DISctn'"/>
-          </xsl:call-template> 
+          </xsl:call-template> -->
  
 					<div class="styTableContainer" style="border-top-width: 0px; width: 187mm;height:auto" id="DISctn">
 						<table class="styTable" style="font-size: 7pt; border-color:black" cellspacing="0">
@@ -4078,7 +4402,7 @@ instructions)
 								<th scope="col" class="styTableCellHeader" colspan="2" style="font-size: 8pt; width: 150mm; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 1px;text-align:left;">
 										<span class="styTableCellPad"/>Section D - Distributions 
 									</th>
-									<th scope="col" class="styTableCellHeader" style="width: 37mm;border-top-width: 1px">
+									<th scope="col" class="styTableCellHeader" style="width: 37mm;border-top-width: 1px; border-right-width: 0px;">
         							<span class="styBoldText">Current Year</span>
 									</th>
 								</tr>
@@ -4086,11 +4410,11 @@ instructions)
 							
 							
 								<tr>
-									<td class="styTableCell" style="padding-top:2mm;height:5.5mm;text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-left-width: 0px; border-top-width: 0px; width: 150mm" colspan="2">
+									<td class="styTableCell" style="padding-top:2mm;height:5.5mm;text-align:left; border-bottom-width: 1px; border-left-width: 0px;border-top-width: 0px; width: 150mm" colspan="2">
 										<span class="styBoldText" style="padding-left:1.5mm">1</span>
 										<span style="width: 2mm"/>
          Amounts paid to supported organizations to accomplish exempt purposes</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/CYPaidAccomplishExemptPrpsAmt"/>
@@ -4103,7 +4427,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1.5mm">2</span>
 										<span style="width: 2mm"/>
         Amounts paid to perform activity that directly furthers exempt purposes of supported organizations, in <br></br><span style="width: 6mm"/>excess of income from activity</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/CYPdInExcessIncomeActivityAmt"/>
@@ -4116,7 +4440,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1.5mm">3</span>
 										<span style="width: 2mm"/>
         Administrative expenses paid to accomplish exempt purposes of supported organizations</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/CYAdministrativeExpensePaidAmt"/>
@@ -4129,7 +4453,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1.5mm">4</span>
 										<span style="width: 2mm"/>
          Amounts paid to acquire exempt-use assets</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/ExemptUseAssetsAcquisPaidAmt"/>
@@ -4142,7 +4466,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1.5mm">5</span>
 										<span style="width: 2mm"/>
          Qualified set-aside amounts (prior IRS approval required)</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/QualifiedSetAsideAmt"/>
@@ -4155,7 +4479,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1.5mm">6</span>
 										<span style="width: 2mm"/>
          Other distributions (describe in Part VI). See instructions</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/CYOtherDistributionsAmt"/>
@@ -4168,7 +4492,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1.5mm">7</span>
 										<span style="width: 2mm"/>
         <b>Total annual distributions.</b>  Add lines 1 through 6.</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/CYTotalAnnualDistributionsAmt"/>
@@ -4181,7 +4505,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1.5mm">8</span>
 										<span style="width: 2mm"/>
          Distributions to attentive supported organizations to which the organization is responsive (provide <br></br><span style="width: 6mm"/>details in Part VI). See instructions</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/CYDistriAttentiveSuprtOrgAmt"/>
@@ -4194,7 +4518,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1.5mm">9</span>
 										<span style="width: 2mm"/>
         Distributable amount for 2014 from Section C, line 6</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/CYDistributableAsAdjustedAmt"/>
@@ -4207,7 +4531,7 @@ instructions)
 										<span class="styBoldText" style="padding-left:1mm">10</span>
 										<span style="width: 2mm"/>
          Line 8 amount divided by Line 9 amount</td>
-									<td class="styTableCellSmall" style="width: 37mm;">
+									<td class="styTableCellSmall" style="width: 37mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulatePercent">
                     <xsl:with-param name="TargetNode" select="$FormData/DistributionsGrp/CYDistributionYrRt"/>
@@ -4222,9 +4546,9 @@ instructions)
  </xsl:call-template>
 													<br></br>
 															
-															<table class="styTable" style="font-size: 7pt; border-color:black" cellspacing="0">
+															<table class="styTable" style="font-size: 7pt; border-color:black;width:187mm;" cellspacing="0">
 						<tr>
-				<th scope="col" class="styTableCellHeader" colspan="2" style="font-size: 8pt;width: 75mm; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 1px">
+				<th scope="col" class="styTableCellHeader" colspan="2" style="font-size: 8pt;width: 76mm; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 1px">
 					<span class="styTableCellPad"/>Section E - Distribution Allocations (see instructions)
 									</th>
 									<th scope="col" class="styTableCellHeader" style="width: 37mm;border-top-width: 1px">
@@ -4235,7 +4559,7 @@ instructions)
        <b>(ii)</b> <br/>
 										<span class="styNormalText"><b>Underdistributions</b><br></br><b> Pre-2014</b></span>
 									</th>
-									<th scope="col" class="styTableCellHeader" style="width: 37mm;border-top-width: 1px">
+									<th scope="col" class="styTableCellHeader" style="width: 37mm;border-top-width: 1px;border-right-width: 0px;">
        <b>(iii)</b> <br/>
 										<span class="styNormalText"><b>Distributable</b> <br></br><b>Amount for 2014</b></span>
 									</th>
@@ -4245,7 +4569,7 @@ instructions)
 							
 							
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 1.5mm">1</span>
 										<span style="width: 1mm"/>
         Distributable amount for 2014 from Section C, line<br></br><span style="width: 5mm"/>6
@@ -4256,7 +4580,7 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;padding-top:3mm;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;padding-top:3mm;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									<xsl:call-template name="PopulateAmount">
 									  <xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/CYDistributableAsAdjustedAmt"/>
@@ -4265,7 +4589,7 @@ instructions)
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 1.5mm">2</span>
 										<span style="width: 1mm"/>
          Underdistributions, if any, for years prior to 2014 <br></br><span style="width: 5mm"/>(reasonable cause required--see instructions)</td>
@@ -4278,7 +4602,7 @@ instructions)
 									  <xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/UnderdistributionsAmt"/>
 									  </xsl:call-template>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-right-width:1px">
+									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-right-width:1px;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										
 									</td>
@@ -4286,7 +4610,7 @@ instructions)
 								</tr>
 								
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 1.5mm">3</span>
 										<span style="width: 1mm"/>
         Excess distributions carryover, if any, to 2014:</td>
@@ -4296,14 +4620,14 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px; background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px; background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 										
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">a</span>
 										<span style="width: 1.5mm"/>
         From 2009<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 7pt">X
@@ -4316,13 +4640,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">b</span>
 										<span style="width: 1.5mm"/>
         From 2010<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 7pt">X
@@ -4335,13 +4659,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">c</span>
 										<span style="width: 1.5mm"/>
         From 2011<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 7pt">X
@@ -4354,13 +4678,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">d</span>
 										<span style="width: 1.5mm"/>
        From 2012<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 7pt">X
@@ -4373,13 +4697,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">e</span>
 										<span style="width: 1.5mm"/>
         From 2013<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 6pt"><xsl:call-template name="PopulateAmount">
@@ -4395,13 +4719,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">f</span>
 										<span style="width: 1.5mm"/><b>Total</b> of lines 3a through e
          </td>
@@ -4414,13 +4738,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px; background-color:lightgrey; ">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px; background-color:lightgrey;border-right-width: 0px; ">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">g</span>
 										<span style="width: 1.5mm"/>
        Applied to underdistributions of prior years
@@ -4434,13 +4758,13 @@ instructions)
 									  <xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/CyovAppliedUnderdistriPYAmt"/>
 									  </xsl:call-template>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">h</span>
 										<span style="width: 1.5mm"/>
         Applied to 2014 distributable amount
@@ -4451,7 +4775,7 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 										<xsl:call-template name="PopulateAmount">
 									  <xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/CyovAppliedUnderdistrCPYAmt"/>
@@ -4460,7 +4784,7 @@ instructions)
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">i</span>
 										<span style="width: 1.5mm;"/>
         Carryover from 2009 not applied (see <br></br><span style="width: 6mm;"/>instructions)
@@ -4475,14 +4799,14 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 										
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2mm">j</span>
 										<span style="width: 1mm;"/> Remainder. Subtract lines 3g, 3h, and 3i from 3f.
          </td>
@@ -4495,14 +4819,14 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px; background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px; background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 0px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 0px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 1.0mm">4</span>
 										<span style="width: 1mm"/>Distributions for 2014 from Section D, line 7:</td>
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 0px">
@@ -4511,13 +4835,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 0px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width:0px">
+									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width:0px;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span style="width: 5.5mm"/>
          										<span style="width: 0mm"/>$ <span class="styIRS990AUnderlinedText" style="text-align: right; width: 32mm; font-size: 7pt">
 											<xsl:call-template name="PopulateAmount">
@@ -4531,13 +4855,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width:1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width:1px">
+									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width:1px;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">a</span>
 										<span style="width: 1mm"/>
          Applied to underdistributions of prior years</td>
@@ -4550,12 +4874,12 @@ instructions)
 									  <xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/CYDistribAppUnderdistriPYAmt"/>
 									  </xsl:call-template>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; font-size: 6pt;background-color:lightgrey">
+									<td class="styTableCellSmall" style="width: 37mm; font-size: 6pt;background-color:lightgrey;border-right-width: 0px;">
 										</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">b</span>
 										<span style="width: 1mm"/>
          Applied to 2014 distributable amount
@@ -4568,7 +4892,7 @@ instructions)
 										<span style="padding-right: 4mm">
 											</span>
 										</td>
-									<td class="styTableCellSmall" style="width: 37mm; ">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 									  <xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/CYDistriAppDistributableAmt"/>
@@ -4577,7 +4901,7 @@ instructions)
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">c</span>
 										<span style="width: 1mm"/>
          Remainder. Subtract lines 4a and 4b from 4.
@@ -4592,14 +4916,14 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey">
+									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
 									
 								</tr>
 								
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left:1mm">5</span>
 										<span style="width: 2mm"/>
          Remaining underdistributions for years prior to<br></br><span style="width: 5mm"/> 2014, if any. Subtract lines 3g and 4a from line 2 <br></br><span style="width: 5mm"/>(if amount greater than zero, see instructions)</td>
@@ -4611,13 +4935,13 @@ instructions)
 									  <xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/RemainingUnderdistriPYAmt"/>
 									  </xsl:call-template>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey">
+									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left:1mm">6</span>
 										<span style="width: 2mm"/>
          Remaining underdistributions for 2014. Subtract <br></br><span style="width: 5mm"/>lines 3h and 4b from line 1 (if amount greater than <br></br><span style="width: 5mm"/>zero, see instructions)</td>
@@ -4626,7 +4950,7 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey;">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; padding-top:6mm">
+									<td class="styTableCellSmall" style="width: 37mm; padding-top:6mm;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 										<xsl:call-template name="PopulateAmount">
 									  <xsl:with-param name="TargetNode" select="$FormData/DistributionAllocationsGrp/RemainingUnderdistriCYAmt"/>
@@ -4635,7 +4959,7 @@ instructions)
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left:1mm">7</span>
 										<span style="width: 2mm"/>
         <b> Excess distributions carryover to 2015.</b> Add lines <br></br><span style="width: 5mm"/>3j and 4c.</td>
@@ -4647,13 +4971,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left:1mm">8</span>
 										<span style="width: 2mm"/>
         Breakdown of line 7:</td>
@@ -4663,13 +4987,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad"/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">a</span>
 										<span style="width: 1.5mm"/>
         From 2010<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 7pt">X
@@ -4682,13 +5006,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">b</span>
 										<span style="width: 1.5mm"/>
         From 2011<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 7pt">X
@@ -4701,13 +5025,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">c</span>
 										<span style="width: 1.5mm"/>
         From 2012<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 7pt">X
@@ -4720,13 +5044,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">d</span>
 										<span style="width: 1.5mm"/>
        From 2013<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 6pt">
@@ -4742,13 +5066,13 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
 								</tr>
 								<tr>
-									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 75mm" colspan="2">
+									<td class="styTableCell" style="text-align:left; border-bottom-width: 1px; border-left-width: 0px; border-top-width: 0px; width: 76mm" colspan="2">
 										<span class="styBoldText" style="padding-left: 2.5mm">e</span>
 										<span style="width: 1.5mm"/>
         From 2014<span class="styDotLn" style="float:none; clear:none">.......</span><span class="styIRS990AUnderlinedText" style="text-align: center; width: 20mm; font-size: 6pt">
@@ -4764,7 +5088,7 @@ instructions)
 									<td class="styTableCellSmall" style="width: 37mm; background-color:lightgrey; border-bottom-width: 1px">
 										<span class="styTableCellPad"/>
 									</td>
-									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;">
+									<td class="styTableCellSmall" style="width: 37mm; border-right-width:1px;background-color:lightgrey;border-right-width: 0px;">
 										<span class="styTableCellPad "/>
 									</td>
 									
@@ -4785,7 +5109,7 @@ instructions)
 					<div class="pageEnd"/>
 					<!--END FOOTER-->
 					<!--BEGIN HEADER-->
-					
+				<p style="page-break-before: always"/>	
 				<!-- Page Header -->
   <div class="styBB" style="width:187mm; padding-bottom:.5mm;">  
     <div style="float:left;">Schedule A (Form 990 or 990-EZ) 2014</div>
@@ -4808,8 +5132,8 @@ instructions)
              
 <!-- Part VI header-->
 <div class="styBB" style="width: 187mm">
-  <div class="styPartName" style="width: 15mm">Part VI</div>
-  <div class="styPartDesc" style="width: 169mm">Supplemental Information.
+  <div class="styPartName" style="width: 15mm;height:auto;display:table;">Part VI</div>
+  <div class="styPartDesc" style="width: 169mm;height:auto;">Supplemental Information.
        <span class="styNormalText">Provide the explanations required by Part II, line 10; Part II, line 17a or 17b; Part III, line 12; Part IV, Section A, lines 1, 2, 3b, 3c, 4b, 4c, 5a, 6, 9a, 9b, 9c, 11a, 11b, and 11c; Part IV, Section B, lines 1 and 2; Part IV, Section C, line 1; Part IV, Section D, lines 2 and 3; Part IV, Section E, lines 1c, 2a, 2b, 3a and 3b; Part V, line 1; Part V, Section B, line 1e; Part V Section D, lines 5, 6, and 8; and Part V, Section E, lines 2, 5, and 6. Also complete this part for any additional information. (See instructions).</span>
   </div>
   </div>
@@ -4831,23 +5155,23 @@ instructions)
                 </td>
           </tr>
        </table>
-       <div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1 solid black">
+       <div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;clear:both; border-top:1 solid black;height:auto;">
        <!--***Return ReferenceandExplanationBEGIN****************-->
        <!-- button display logic To turn back on function change height to number of records-->
        <div class="styGenericDiv" style="float:right;"> 
-<xsl:call-template name="SetDynamicTableToggleButton">
+<!--<xsl:call-template name="SetDynamicTableToggleButton">
               <xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleAPartVIGrp"/>              
               <xsl:with-param name="containerHeight" select="5"/>
               <xsl:with-param name="containerID" select="'SUPctn'"/>
-          </xsl:call-template>
+          </xsl:call-template>-->
       <!-- end button display logic -->
 </div>
 </div>
 
-<div class="styTableContainer" style="width: 187mm;" id="SUPctn">
+<div class="styTableContainer" style="width:187mm;clear:all;height:auto;" id="SUPctn">
 <!--<div class="styTableContainer" style="width: 187mm; border-bottom-width: 2px;">-->
-<xsl:call-template name="SetInitialState"/>
-<table class="styTable" style="font-size: 7pt; border-color:black" cellspacing="0">
+<!--<xsl:call-template name="SetInitialState"/>-->
+<table class="styTable" style="font-size: 7pt; border-color:black;height:auto;" cellspacing="0">
   <thead class="styTableThead">
    
     <tr class="styDepTblHdr">
@@ -4871,12 +5195,12 @@ instructions)
             <xsl:with-param name="TargetNode" select="IdentifierTxt"/>
             </xsl:call-template>
       </td>-->
-      <td class="styTableCell" style="text-align:left; border-right-width: 1px; width: 50mm;">
+      <td class="styTableCell" style="text-align:left; border-right-width: 1px; width: 50mm;height:auto;">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="FormAndLineReferenceDesc"/>
               </xsl:call-template>
            </td>      
-      <td class="styTableCell" style="text-align:left; border-right-width: 1px; width: 137mm">
+      <td class="styTableCell" style="text-align:left; border-right-width: 1px; width: 137mm;height:auto;">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="ExplanationTxt"/>
               </xsl:call-template>
@@ -4898,11 +5222,11 @@ instructions)
 </table>
 </div>
 
-<xsl:call-template name="SetInitialDynamicTableHeight">
+<!--<xsl:call-template name="SetInitialDynamicTableHeight">
             <xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleAPartVIGrp"/>
             <xsl:with-param name="containerHeight" select="5"/>
             <xsl:with-param name="containerID" select=" 'SUPctn' "/>
- </xsl:call-template>
+ </xsl:call-template>-->
 
 
  
@@ -4917,7 +5241,7 @@ instructions)
 </div>  
 <!--END Page Footer-->
 
-
+    <p style="page-break-before: always"/> 
 <br/>
 <!-- leftover data table -->
 <div class="styLeftOverTitleLine" id="LeftoverData">

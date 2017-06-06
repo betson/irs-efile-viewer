@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Modified on 07/20/2010 by Jeremy Nichols per BSP101319OTH -->
-<!--07-15-2011 - Modified for TY 2011 as per UWR #40502 - Jeremy Nichols -->
-<!--06-18-2012 - Modified for TY 2012 as per UWR #58215 - Jeremy Nichols -->
-<!-- 07/30/2013 - Modified per UWR #81688 - Jeremy Nichols -->
+<!-- 03/06/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -18,8 +15,10 @@
 <xsl:param name="IRS990NData" select="$RtnDoc/IRS990N"/>
 <xsl:template match="/">
 
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
 <title>
 	<xsl:call-template name="FormTitle">
@@ -52,8 +51,8 @@
 <!--   END WARNING LINE   -->
 
 <!--   BEGIN FORM HEADER   -->
-<div class="styBB" style="width:187mm; height:16mm;">
-  <div class="styFNBox" style="width:33mm;height:16mm; border-right-width: 2px">
+<div class="styBB" style="width:187mm; height:22.75mm;">
+  <div class="styFNBox" style="width:33mm;height:22.75mm; border-right-width: 2px">
     <div style="padding-top:1mm;">
       Form<span class="styFormNumber">990-N</span>
       <xsl:call-template name="SetFormLinkInline">
@@ -62,34 +61,30 @@
       </xsl:call-template>
     </div>
 
-    <div style="padding-top:3.5mm;padding-bottom:3.5mm;">
+    <div style="padding-top:6mm;">
       <span class="styAgency">Department of the Treasury</span><br/>
       <span class="styAgency">Internal Revenue Service</span>
     </div>
    </div>
-   <div class="styFTBox" style="width:122mm;padding-top:2mm;">
+   <div class="styFTBox" style="width:122mm;height:22.75mm;padding-top:2mm;">
     <div class="styMainTitle">Electronic Notice (e-Postcard)</div>
-    <!--<div class="styFBT" style="font-size: 7pt; margin-top: 0px">Under section 501(c), 527, or 4947(a)(1) of the Internal Revenue Code (except black<br/>lung benefit trust or private foundation)</div>-->
     <div class="styFBT" style="font-size: 7pt; font-weight: normal; margin-top: 0px">
       <img src="{$ImagePath}/990N_Bullet_Sm.gif" alt="bullet"/><span style="width:1mm"/>For Tax-Exempt Organizations not Required to File Form 990 or 990-EZ.<span style="width: 5mm"/>
     </div>
-    <!--<div class="styFBT" style="font-size: 7pt; font-weight: normal; margin-top: 0px">
-      <img src="{$ImagePath}/990N_Bullet_Md.gif" alt="bullet"/><span style="width:1mm"></span><i>The organization may have to use a copy of this return to satisfy state reporting requirements.</i>
-    </div>-->
   </div>
-  <div class="styTYBox" style="width:32mm;">
-    <div class="styOMB" style="height:1mm;">OMB No. 1545-NNNN</div>
+  <div class="styTYBox" style="width:32mm;height:22.75mm;">
+    <div class="styOMB" style="height:4mm;width:32mm;">OMB No. 1545-NNNN</div>
     <div class="styTY">
       20<span class="styTYColor">13</span>
     </div>
-    <div style="height:8.25mm; background-color: black; color: white; font-size: 7pt;padding-top: 1mm;font-weight: bold">Open to Public<br/>Inspection</div>
+    <div style="width:32mm;height:8.25mm; background-color: black; color: white; font-size: 7pt;padding-top: 1mm;font-weight: bold">Open to Public<br/>Inspection</div>
   </div>
 </div>
 <!--   END FORM HEADER   -->
 <!--Box A -->
 <div class="styComType" style="width:187mm;border-bottom-width: 0px; font-size: 7pt">
   <div class="styBoldText" style="height:3mm;width:4mm;float:left;clear:none;">A</div>
-  <div class="styBoldText" style="height:3mm;width:182mm;float:left;clear:none;">For the 
+  <div class="styBoldText" style="height:3mm;width:183mm;float:left;clear:none;">For the 
   	<span style="width:8mm;">
    		<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
   	</span>
@@ -105,31 +100,14 @@
 
 <!--Box B -->        
 <div style="width:187mm;float:left;clear:left;">
-	<div style="width:44.25mm;height:37mm;float:left;clear:left;">
-          <div class="styComType" style="width:44mm;border-top-width:1px;border-bottom-width: 0px">
+	<div style="width:47mm;height:37mm;float:left;clear:left;">
+          <div class="styComType" style="width:47mm;border-top-width:1px;border-bottom-width: 0px">
             <div class="styBoldText" style="height:3mm;width:4mm;float:left;clear:none;font-size: 7pt">B</div>
             <div class="styNormalText" style="height:3mm;width:39mm;padding-top: .5mm;float:left;clear:none;">Check if applicable:</div>
 	   </div>
-          <!-- Address change Box             
-          <div class="styComType" style="width:44.25mm;border-bottom:0px">
-       	<div style="width:39mm;">
-              <input type="checkbox" class="styIRS990NCkBox">
-                <xsl:call-template name="PopulateCheckbox">
-                  <xsl:with-param name="TargetNode" select="$IRS990NData/AddressChange" />
-                  <xsl:with-param name="BackupName">IRS990NAddressChange</xsl:with-param>
-                </xsl:call-template>
-              </input>
-              <label>
-                <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$IRS990NData/AddressChange" />
-                  <xsl:with-param name="BackupName">IRS990NAddressChange</xsl:with-param>
-                </xsl:call-template>
-               Address change</label>
-            </div>           
-        </div>-->
        <!-- Final Return - Terminated, Out of Business -->   
-       <div class="styComType" style="width:44.25mm;border-bottom:0px;"> 
-            <div style="width:42mm;">
+       <div class="styComType" style="width:47mm;border-bottom:0px;padding-left:0mm;"> 
+            <div style="width:47mm;">
                <input type="checkbox" class="styIRS990NCkBox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$IRS990NData/FinalReturnInd"/>
@@ -145,9 +123,9 @@
             </div>
        </div>
        <!-- Gross Receipts -->   
-       <div class="styComType" style="width:44.25mm;border-bottom:0px;"> 
-           <div style="width:42mm;">
-              <input type="checkbox" class="styIRS990NCkBox">
+       <div class="styComType" style="width:47mm;border-bottom:0px;"> 
+           <div style="width:47mm;">
+              <input type="checkbox" class="styIRS990NCkBox" style="height:4mm;width:4mm;">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$IRS990NData/GrossReceiptsLimitInd"/>
                   <xsl:with-param name="BackupName">GrossReceiptsTest</xsl:with-param>
@@ -159,20 +137,20 @@
               		<xsl:with-param name="BackupName">GrossReceiptsTest</xsl:with-param>
 					</xsl:call-template>
 					Gross receipts are normally <br/>
-					<span style="width:4.5mm;"/>$50,000 or less
+					<span style="width:6.5mm;"/>$50,000 or less
               </label>
             </div>
             </div>
          
           <!-- Box B BLANK LINE -->   
-          <div class="styComType" style="width:44.25mm;border-bottom:0px;"> <!-- padding-top:1.5mm--> 
+          <div class="styComType" style="width:47mm;border-bottom:0px;"> <!-- padding-top:1.5mm--> 
            <div style="width:42mm;">
            </div>
 	   </div>
 	   <!--Box B End-->    
         
         <!-- Box E -->
-      <div style="word-wrap:break-word; width:44.25mm;border-top:2px solid black;border-bottom:0px solid white; ">
+      <div style="word-wrap:break-word; width:47mm;border-top:2px solid black;border-bottom:0px solid white; ">
       <span class="styBoldText" style="width:4mm;">E </span>Website Address: <br/>
       <span style="width: 3mm"/>
       <span style="text-align: left; width:33mm">
@@ -185,8 +163,8 @@
           
           
           <!--Box C -->
-        	<div class="styLblNameAddr" style="width:98mm;height:28mm;border-bottom-width: 1.5px;">
-                   <div class="styNameAddr" style="width:98mm;height:8mm;border-left-width:1px;">
+        	<div class="styLblNameAddr" style="width:98mm;height:52mm;border-bottom-width: 1px;">
+                   <div class="styNameAddr" style="width:97mm;height:10.5mm;border-left-width:1px;">
             		<b>C</b> Name of organization<br/>
             <span class="stySmallText" style="padding-left:2mm;">
                 <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -201,26 +179,22 @@
            </span>
           </div>
          
-         <xsl:for-each select="$IRS990NData/DoingBusinessAsName">
-          		<div class="styNameAddr" style="width:98mm;height:8mm;border-left-width:1px;">
-            			<span style="width:2mm;"/>Doing Business As Name<br/>
-            			<span class="stySmallText" style="padding-left:2mm;">
+          <xsl:for-each select="$IRS990NData/DoingBusinessAsName">
+          		<div class="styNameAddr" style="width:97mm;height:8mm;border-left-width:1px;">
+					<span style="width:2mm;"/>Doing Business As Name<br/>
+					<span class="stySmallText" style="padding-left:2mm;">
                			<xsl:call-template name="PopulateText">
    	 					<xsl:with-param name="TargetNode" select="BusinessNameLine1"/>
     		 			</xsl:call-template>
-		<br/>
-          	   <xsl:call-template name="PopulateText">
-   	 		<xsl:with-param name="TargetNode" select="BusinessNameLine2"/>
-    		   </xsl:call-template>
-    		<!--<br/>          	   
-                <xsl:call-template name="PopulateReturnHeaderFiler">
-                <xsl:with-param name="TargetNode">InCareOfName</xsl:with-param>
-                </xsl:call-template>-->
-           </span>
-          </div>
-         </xsl:for-each>
+						<br/>
+					    <xsl:call-template name="PopulateText">
+							<xsl:with-param name="TargetNode" select="BusinessNameLine2"/>
+						</xsl:call-template>
+					</span>
+				</div>
+          </xsl:for-each>
 
-          <div class="styNameAddr" style="width:98mm;height:10mm;border-left-width:1px;">
+          <div class="styNameAddr" style="width:97mm;height:10mm;border-left-width:1px;">
             <span style="width: 96mm; height: 10mm">
               <span style="width: 96mm;padding-left: 2mm"> Number and street (or P. O. box, if mail is not delivered to street address)</span>
                 <span class="stySmallText" style="width: 96mm;padding-left:2mm;">
@@ -237,8 +211,8 @@
             <span style="border-style: solid; border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 0px; width: 14mm; height: 10mm">Room/suite</span>
           -->
           </div>
-          <div class="styNameAddr" style="border-bottom-width:0px;width:98mm;height:9.5mm;border-left-width:1px">
-           <span style="width: 2mm"/> City or town, state or country, and ZIP + 4
+          <div class="styNameAddr" style="border-bottom-width:0px;width:97mm;height:9.5mm;border-left-width:1px">
+           <span style="width: 1mm"/> City or town, state or country, and ZIP + 4<br/>
               <span style="padding-left:2mm;" class="stySmallText">
                 <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param></xsl:call-template>
                 <br/>
@@ -248,7 +222,7 @@
         </div>
         
         <!-- Box D -->
-        <div class="styEINDateAssets" style="width:43mm;height:4.5mm;border-top-width: 1px"><span class="styBoldText">D Employer ID number</span><br/><br/><span style="width: 3mm"/><span class="styEINFld" style="">
+        <div class="styEINDateAssets" style="width:42mm;height:9mm;border-top-width: 1px"><span class="styBoldText">D Employer ID number</span><br/><br/><span style="width: 3mm"/><span class="styEINFld" style="">
           <xsl:call-template name="PopulateReturnHeaderFiler">
           	<xsl:with-param name="EINChanged">true</xsl:with-param><xsl:with-param name="TargetNode">EIN</xsl:with-param></xsl:call-template>
 </span></div>
@@ -256,11 +230,11 @@
       
       <!--Bottom Left Blank Box E -->        
       <div style="width:187mm;border-bottom:1px solid black;">
-	<div style="width:44.25mm;height:30.25mm;float:left;clear:left;"/>
+	<div style="width:47mm;height:30.25mm;float:left;clear:left;"/>
 	
 <!--Box F -->
-       <div class="styLblNameAddr" style="width:98mm;height:28.5mm;border-bottom-width:none;">
-       <div class="styNameAddr" style="width:98mm;height:8mm;border-left-width:0px;border-top-width:None;">
+       <div class="styLblNameAddr" style="width:98mm;height:40mm;border-top-width:2px;border-bottom-width:none;">
+       <div class="styNameAddr" style="width:97mm;height:8mm;border-left-width:0px;border-top-width:None;">
             <b>F</b> Name of Principal Officer:<br/>
             <span class="stySmallText" style="padding-left:2mm;">
             <xsl:choose>
@@ -282,8 +256,7 @@
            </span>
           </div>
 
-          <div class="styNameAddr" style="width:98mm;height:10mm;border-left-width:0px;">
-            <span style="width: 96.5mm; height: 10mm">
+          <div class="styNameAddr" style="width:97mm;height:11mm;border-left-width:0px;">
               <span style="width: 96.5mm;padding-left: 2mm;"> Number and street (or P. O. box, if mail is not delivered to street address) of Principal Officer</span>
               <span class="stySmallText" style="width: 96.5m;padding-left:2mm;">
               	<xsl:if test="$IRS990NData/USAddress">
@@ -309,15 +282,14 @@
                   		</xsl:if>
                 	</xsl:if>
     		   </span>
-            </span>
           </div>
 
-          <div class="styNameAddr" style="border-bottom-width:0px;width:98mm;height:9.5mm;border-left-width:0px">
-           <span style="width: 2mm"/> City or town, state or country, and ZIP + 4
-            <span class="stySmallText" style="padding-left:1mm;"/>
+          <div class="styNameAddr" style="border-bottom-width:0px;width:98mm;height:18mm;padding-top:0mm;border-left-width:0px">
+           <span style="width: 1mm"/> City or town, state or country, and ZIP + 4<br/>
               <!-- Choose between Shareholder US or Foreign Address -->
+              <span style="width: 2mm"/> 
               	<xsl:if test="$IRS990NData/USAddress">
-                		<div style=" font-family:'verdana';font-size:7pt;padding-top:1mm">
+                		<div style=" font-family:'verdana';font-size:7pt;">
                 			<xsl:call-template name="PopulateText">
                   				<xsl:with-param name="TargetNode" select="$IRS990NData/USAddress/City"/>
                 			</xsl:call-template>, 

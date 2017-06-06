@@ -14,13 +14,11 @@
 	<xsl:template name="Form8863Page2">
 	<xsl:param name="NodeData" select="/.."/>
 		<!-- Page Header -->
+		 <div style="width:187mm">
 					<div style="width:187mm;padding-top:.5mm;border-bottom:1px solid black">
-						Form 8863 (2013)<span style="width:148mm;"/>
-						
-						Page <span style="font-weight:bold;font-size:8pt;">2</span>
-						
-					</div>
-					
+						Form 8863 (2013)<span style="width:148mm;"/>						
+						Page <span style="font-weight:bold;font-size:8pt;">2</span>						
+					</div>					
 					<!-- Name(s) shown on return -->
 					<div style="width:187mm;border-bottom:1px solid black;">
 						<div class="styFNBox" style="width:140mm; height:9mm;">
@@ -32,7 +30,7 @@
 						</div>
 						<b>Your social security number</b>
 						<br/>
-						<div style="width:100%;text-align:center">
+						<div style="width:25mm;text-align:center">
 						<xsl:call-template name="PopulateSSN">
 							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
 						</xsl:call-template>
@@ -48,12 +46,12 @@
 							<i>Complete Part III for each student for whom you are claiming either the American
 							opportunity credit or lifetime learning credit. Use additional copies of Page 2 as needed for
 							each student.</i>
-		</div>
+		            </div>
 					</div>
 					<div style="width:187mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="width:15mm;font-size:13;">Part III</span>
-						<span style="width:172mm;font-weight:normal;font-size:8pt;" class="styPartDesc">
+						<span class="styPartName" style="width:15mm;font-size:13;height:auto;">Part III</span>
+						<span style="width:172mm;font-weight:normal;font-size:8pt;height:auto;" class="styPartDesc">
 							<span style="font-size:12.5;">
 								<b>Student and Educational Institution Information </b>
 							</span>
@@ -109,32 +107,36 @@
 								<tr style="height:auto" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:93.5mm;border-color:black;text-align:left;word-wrap:break-word;">
 										<div class="styLNLeftNumBox" style="padding-left:5mm;height:13mm">a.</div>
-										Name of first educational institution <br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="InstitutionNm/BusinessNameLine1"/>
-										</xsl:call-template><br/>
-										<xsl:call-template name="PopulateText">
-											<xsl:with-param name="TargetNode" select="InstitutionNm/BusinessNameLine2"/>
-										</xsl:call-template>
+										<div style="width:83mm;padding-top:0.4mm;">										
+											Name of first educational institution <br/>
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="InstitutionNm/BusinessNameLine1"/>
+											</xsl:call-template><br/>
+											<xsl:call-template name="PopulateText">
+												<xsl:with-param name="TargetNode" select="InstitutionNm/BusinessNameLine2"/>
+											</xsl:call-template>
+										</div>
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:93.5mm;border-color:black;text-align:left;border-right-width:0px;word-wrap:break-word;">
 										<div class="styLNLeftNumBox" style="padding-left:5mm;height:13mm">b.</div>
-										Name of second educational institution (if any)<br/>
-										<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionNm">
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionNm/BusinessNameLine1"/>
-											</xsl:call-template><br/>
-											<xsl:call-template name="PopulateText">
-												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionNm/BusinessNameLine2"/>
-											</xsl:call-template>
-										</xsl:if>
+										<div style="width:83mm;padding-top:0.4mm;">		
+											Name of second educational institution (if any)<br/>
+											<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionNm">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionNm/BusinessNameLine1"/>
+												</xsl:call-template><br/>
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionNm/BusinessNameLine2"/>
+												</xsl:call-template>
+											</xsl:if>
+										</div>
 									</td>
 								</tr>
 								<!-- Lines a(1) and b(1) -->
 								<tr style="height:13mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(1)</div>
-										<div style="float:left;">
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm;">(1)</div>
+										<div style="float:left;width:82mm;">
 											Address. Number and street (or P.O. box). City, town or
 											post office, state, and ZIP code. If a foreign address, see
 											instructions.<br/>
@@ -151,29 +153,31 @@
 										</div>
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(1)</div>
-										Address. Number and street (or P.O. box). City, town or
-										post office, state, and ZIP code. If a foreign address, see
-										instructions.<br/>
-										<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionNm">
-											<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/USAddress">
-												<xsl:call-template name="PopulateUSAddressTemplate">
-													<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/USAddress"/>
-												</xsl:call-template>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(1)</div>
+										<div style="float:left;width:82mm;">
+											Address. Number and street (or P.O. box). City, town or
+											post office, state, and ZIP code. If a foreign address, see
+											instructions.<br/>
+											<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/InstitutionNm">
+												<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/USAddress">
+													<xsl:call-template name="PopulateUSAddressTemplate">
+														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/USAddress"/>
+													</xsl:call-template>
+												</xsl:if>
+											
+												<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/ForeignAddress">
+													<xsl:call-template name="PopulateForeignAddressTemplate">
+														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/ForeignAddress"/>
+													</xsl:call-template>
+												</xsl:if>
 											</xsl:if>
-										
-											<xsl:if test="$NodeData/EducationalInstitutionGroup[$pos+1]/ForeignAddress">
-												<xsl:call-template name="PopulateForeignAddressTemplate">
-													<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/ForeignAddress"/>
-												</xsl:call-template>
-											</xsl:if>
-										</xsl:if>
+										</div>
 									</td>
 								</tr>
 								<!-- Lines a(2) and b(2) -->
 								<tr style="height:13mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:92mm;border-color:black;text-align:left;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(2)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(2)</div>
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm;">
 											Did the student receive Form 1098-T
 											from this institution for 2013?
@@ -182,7 +186,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 											</xsl:call-template>
-											<div class="styGenericDiv" style="width:13%; height:13mm;padding-top:3.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm; height:13mm;padding-top:3mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
@@ -197,7 +201,7 @@
 													Yes
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:12%;padding-top:3.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm;padding-top:3mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
@@ -209,13 +213,13 @@
 														<xsl:with-param name="TargetNode" select="CurrentYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position()"/></xsl:with-param>
 													</xsl:call-template>
-													No
+													<span style="width:1mm;" />No
 												</label>
 											</div>
 										</span>
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:94mm;border-color:black;text-align:left;border-right-width:0px">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(2)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:2mm;padding-right:1mm">(2)</div>
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm">
 											Did the student receive Form 1098-T
 											from this institution for 2013?
@@ -224,7 +228,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
 											</xsl:call-template>
-											<div class="styGenericDiv" style="width:13%; height:13mm;padding-top:3.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm; height:13mm;padding-top:3.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
@@ -239,7 +243,7 @@
 													Yes
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:13%;padding-top:3.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm;padding-top:3.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
@@ -251,7 +255,7 @@
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/CurrentYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863CY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position() + 1"/></xsl:with-param>
 													</xsl:call-template>
-													No
+													<span style="width:1mm;" />No
 												</label>
 											</div>
 										</span>
@@ -260,7 +264,7 @@
 								<!-- Lines a(3) and b(3) -->
 								<tr style="height:13mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:92mm;border-color:black;text-align:left;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(3)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(3)</div>
 										<div class="styGenericDiv" style="width:63%;padding-left:0.5mm;">
 											Did the student receive Form 1098-T from this institution for 2012 with Box
 											2 filed in and Box 7 checked?
@@ -269,7 +273,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 											</xsl:call-template>
-											<div class="styGenericDiv" style="width:13%; height:13mm;padding-top:3.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm; height:13mm;padding-top:3.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
@@ -284,7 +288,7 @@
 													Yes
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:12%;padding-top:3.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm;padding-top:3.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
@@ -296,13 +300,13 @@
 														<xsl:with-param name="TargetNode" select="PriorYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position()"/></xsl:with-param>
 													</xsl:call-template>
-													No
+													<span style="width:1mm;" />No
 												</label>
 											</div>
 										</span>
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:94mm;border-color:black;text-align:left;border-right-width:0px">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(3)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(3)</div>
 										<div class="styGenericDiv" style="width:63%; padding-left:0.5mm;">
 											Did the student receive Form 1098-T from this institution for 2012 with Box
 											2 filed in and Box 7 checked?
@@ -311,7 +315,7 @@
 											<xsl:call-template name="PopulateSpan">
 												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
 											</xsl:call-template>
-											<div class="styGenericDiv" style="width:13%; height:13mm;padding-top:3.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm; height:13mm;padding-top:3.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateYesCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
@@ -326,7 +330,7 @@
 													Yes
 												</label>
 											</div>
-											<div class="styGenericDiv" style="width:13%;padding-top:3.5mm; padding-left:0mm">
+											<div class="styGenericDiv" style="width:5mm;padding-top:3.5mm; padding-left:0mm">
 												<input type="checkbox" class="styCkbox" name="Checkbox">
 													<xsl:call-template name="PopulateNoCheckbox">
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
@@ -338,7 +342,7 @@
 														<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/PriorYear1098TReceivedInd"/>
 														<xsl:with-param name="BackupName">IRS8863PY1098TReceivedInd<xsl:value-of select="$studentPos"/>-<xsl:number value="position() + 1"/></xsl:with-param>
 													</xsl:call-template>
-													No
+													<span style="width:1mm;" />No
 												</label>
 											</div>
 										</span>
@@ -355,27 +359,30 @@
 								<!-- Lines a(4) and b(4) -->
 								<tr style="height:13mm" valign="top">
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(4)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(4)</div>
 										If you checked “Yes” in either <b>(2) or (3)</b>, enter the institution's federal identification number (from Form
 										1098-T).<br/>
-																
-										<xsl:call-template name="PopulateEIN">
-											<xsl:with-param name="TargetNode" select="EIN"/>
-										</xsl:call-template>
-										<xsl:if test= "not(EIN)">
-											_ _ - _ _ _ _ _ _ _
-										</xsl:if>
+										<span style="padding-left:7.5mm;">						
+											<xsl:call-template name="PopulateEIN">
+												<xsl:with-param name="TargetNode" select="EIN"/>
+											</xsl:call-template>
+											<xsl:if test= "not(EIN)">
+												_ _ - _ _ _ _ _ _ _
+											</xsl:if>
+										</span>	
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
-										<div class="styLNLeftNumBox" style="height:100%;padding-left:5mm;padding-right:1mm">(4)</div>
+										<div class="styLNLeftNumBox" style="height:100%;padding-left:3mm;padding-right:1mm">(4)</div>
 										If you checked “Yes” in either <b>(2) or (3)</b>, enter the institution's federal identification number (from Form
 										1098-T).<br/>
-										<xsl:call-template name="PopulateEIN">
-											<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/EIN"/>
-										</xsl:call-template>
-										<xsl:if test="not($NodeData/EducationalInstitutionGroup[$pos+1]/EIN)">
-											_ _ - _ _ _ _ _ _ _
-										</xsl:if>
+										<span style="padding-left:7.5mm;">	
+											<xsl:call-template name="PopulateEIN">
+												<xsl:with-param name="TargetNode" select="$NodeData/EducationalInstitutionGroup[$pos+1]/EIN"/>
+											</xsl:call-template>
+											<xsl:if test="not($NodeData/EducationalInstitutionGroup[$pos+1]/EIN)">
+												_ _ - _ _ _ _ _ _ _
+											</xsl:if>
+										</span>
 									</td>
 								</tr>
 								</tbody>
@@ -396,7 +403,7 @@
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
 										</xsl:call-template>
-										<div class="styGenericDiv" style="width:5%;height:100%;padding-top:3.5mm; padding-left:2mm">
+										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:2mm; padding-left:1mm;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
@@ -415,7 +422,7 @@
 											&#8213; <b>Stop!</b>
 											<br/> Go to line 31 for this student.
 										</div>
-										<div class="styGenericDiv" style="width:5%;padding-top:3.5mm; padding-left:2mm;height:100%;">
+										<div class="styGenericDiv" style="width:5mm;padding-top:2mm; padding-left:1mm;height:100%;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="PriorYearCreditClaimedInd"/>
@@ -437,19 +444,21 @@
 								</tr>
 								<!-- Line 24 -->
 								<tr style="height:13mm" valign="top">
-									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
+									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px;">
 										<div class="styLNLeftNumBox" style="height:100%">24</div>
+										<div style="width:80mm;">						
 											Was the student enrolled at least half-time for at least one
 											academic period that began in 2013 at an eligible
 											educational institution in a program leading towards a
 											postsecondary degree, certificate, or other recognized
 											postsecondary educational credential? (see instructions)
+										</div>
 									</td>
 									<td class="styTableCell" style="font-size:7pt;width:50%;border-color:black;text-align:left;border-right-width:0px">
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
 										</xsl:call-template>
-										<div class="styGenericDiv" style="width:5%;height:100%;padding-top:3.5mm; padding-left:2mm">
+										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:3mm; padding-left:1mm">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
@@ -457,7 +466,7 @@
 												</xsl:call-template>
 											</input>
 										</div>
-										<div class="styGenericDiv" style="width:45%;padding-top:0.75mm;padding-left:1mm;height:100%;">
+										<div class="styGenericDiv" style="width:45%;padding-top:4mm;padding-left:1mm;height:100%;">
 											<label>
 												<xsl:call-template name="PopulateLabelYes">
 													<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
@@ -467,7 +476,7 @@
 											</label>
 											&#8213; Go to line 25.
 										</div>
-										<div class="styGenericDiv" style="width:5%;padding-top:3.5mm; padding-left:2mm;height:100%;">
+										<div class="styGenericDiv" style="width:5mm;padding-top:3mm; padding-left:1mm;height:100%;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="AcademicPdEligibleStudentInd"/>
@@ -498,7 +507,7 @@
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
 										</xsl:call-template>
-										<div class="styGenericDiv" style="width:5%;height:100%;padding-top:3.5mm; padding-left:2mm">
+										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:2mm; padding-left:1mm">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
@@ -516,7 +525,7 @@
 											</label>
 											&#8213; <b>Stop!</b><br/> Go to line 31 for this student.
 										</div>
-										<div class="styGenericDiv" style="width:5%;padding-top:3.5mm; padding-left:2mm;height:100%;">
+										<div class="styGenericDiv" style="width:5mm;padding-top:2mm; padding-left:1mm;height:100%;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="PostSecondaryEducationInd"/>
@@ -548,7 +557,7 @@
 										<xsl:call-template name="PopulateSpan">
 											<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
 										</xsl:call-template>
-										<div class="styGenericDiv" style="width:5%;height:100%;padding-top:3.5mm; padding-left:2mm">
+										<div class="styGenericDiv" style="width:5mm;height:100%;padding-top:3.5mm; padding-left:1mm">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateYesCheckbox">
 													<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
@@ -567,7 +576,7 @@
 											&#8213; <b>Stop!</b>
 											<br/> Go to line 31 for this student.
 										</div>
-										<div class="styGenericDiv" style="width:5%;padding-top:3.5mm; padding-left:2mm;height:100%;">
+										<div class="styGenericDiv" style="width:5mm;padding-top:3.5mm; padding-left:1mm;height:100%;">
 											<input type="checkbox" class="styCkbox" name="Checkbox">
 												<xsl:call-template name="PopulateNoCheckbox">
 													<xsl:with-param name="TargetNode" select="DrugFelonyConvictionInd"/>
@@ -592,7 +601,7 @@
 					<div style="width:187mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">
           <!-- Tip -->
-					<div style="width:187mm;border-bottom:1px solid black;">
+					<div style="width:187mm;border-bottom:1px solid black;height:auto;">
 						<div class="styGenericDiv" style="width:18mm;">
 							<img alt="Caution" src="{$ImagePath}/8863_Tip.gif" width="57" height="57"/>
 						</div>
@@ -601,7 +610,7 @@
 							same year.</i> If you complete lines 27 through 30 for this student, do not complete line 31.
 						</div>
 					</div>
-						<span style="width:172mm;font-weight:normal;font-size:8pt;" class="styPartDesc">
+						<span style="width:172mm;font-weight:normal;font-size:8pt;height:auto;" class="styPartDesc">
 							<span style="font-size:12.5;">
 								<b>American Opportunity Credit</b>
 							</span>
@@ -610,19 +619,14 @@
 					<!-- Line 27 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">27
-        </div>
+                        </div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
-        Adjusted qualified education expenses (see instructions). <b> Do not enter more than $4,000</b>
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-            </span>
+							<span style="float:left;">Adjusted qualified education expenses (see instructions). <b> Do not enter more than $4,000</b></span>
+							<!--Dotted Line-->                        				
+							<span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>		
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">27</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1.2mm;">27</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1.2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AmerOppQualifiedExpensesAmt"/>
 							</xsl:call-template>
@@ -631,27 +635,14 @@
 					<!-- Line 28 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">28
-        </div>
+                        </div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
-        Subtract $2,000 from line 27. If zero or less enter -0-
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								
-            </span>
+                          <span style="float:left;">Subtract $2,000 from line 27. If zero or less enter -0-</span>
+                           <!--Dotted Line-->
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">.................</span>	
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">28</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1.2mm;">28</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1.2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AmerOppQlfyExpnssLessAllwblAmt"/>
 							</xsl:call-template>
@@ -660,32 +651,14 @@
 					<!-- Line 29 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">29
-        </div>
+                        </div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
-        Multiply line 28 by 25% (.25)
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-            </span>
+                            <span style="float:left;">Multiply line 28 by 25% (.25)</span>
+                            <!--Dotted Line-->
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">........................</span>	  
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:0mm;">29</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:0mm;">
+						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1.2mm;">29</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1.2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AmerOppAllwblExpnssTimesPctAmt"/>
 							</xsl:call-template>
@@ -694,18 +667,15 @@
 					<!-- Line 30 -->
 					<div style="width:187mm;border-bottom:1px solid black">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:0mm;padding-left: 2.25mm">30
-        </div>
+                        </div>
 						<div class="styLNDesc" style="font-size:7pt;width:142mm;height:4mm;padding-top:0mm;">
-							If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 and
-enter<br/>the result. Skip line 31. Include the total of all amounts from all Parts III, line 30 on Part I, line 1
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                 <span style="width:16px"/>.
-            </span>
+							If line 28 is zero, enter the amount from line 27. Otherwise, add $2,000 to the amount on line 29 and enter
+                            <span style="float:left;">the result. Skip line 31. Include the total of all amounts from all Parts III, line 30 on Part I, line 1</span>
+                            <!--Dotted Line-->
+                           <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>	
 						</div>
-						<div class="styLNRightNumBox" style="height:7mm;width:7.1mm;padding-top:2mm;border-bottom-width:0px;">30</div>
-						<div class="styLNAmountBox" style="width:29.8mm;height:7mm;padding-top:2mm;border-bottom-width:0px;">
+						<div class="styLNRightNumBox" style="height:7mm;width:7.1mm;padding-top:3mm;border-bottom-width:0px;">30</div>
+						<div class="styLNAmountBox" style="width:29.8mm;height:7mm;padding-top:3mm;border-bottom-width:0px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="AmerOppCreditNetCalcExpnssAmt"/>
 							</xsl:call-template>
@@ -713,8 +683,8 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					</div>
 					<div style="width:187mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
           border-right-width:0px;border-left-width:0px;float:left;">
-						<span style="width:172mm;font-weight:normal;font-size:8pt;" class="styPartDesc">
-							<span style="font-size:12.5;">
+						<span style="width:172mm;font-weight:normal;font-size:8pt;height:auto;" class="styPartDesc">
+							<span style="font-size:12.5;height:auto;">
 								<b>Lifetime Learning Credit</b>
 							</span>
 							<span style="width:9px"/>
@@ -723,29 +693,12 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<!-- Line 31 -->
 					<div style="width:187mm;border-bottom:1px solid black">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">31
-        </div>
+                        </div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
-        Adjusted qualified education expenses (see instructions). Include the total of all amounts from all Parts III, line 31, on Part II, line 10
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-            </span>
+                            <span style="float:left;">Adjusted qualified education expenses (see instructions). Include the total of all amounts from all </span>
+                            <span  style="float:left;">Parts III, line 31, on Part II, line 10</span>
+                            <!--Dotted Line-->
+                           <span class="styDotLn" style="float:right;padding-right:1mm;">.......................</span>	
 						</div>
 						<div class="styLNRightNumBox" style="height:8mm;width:7.1mm;padding-top:4mm;border-bottom-width:0px">31</div>
 						<div class="styLNAmountBox" style="width:29.8mm;height:8mm;padding-top:4mm;border-bottom-width:0px">
@@ -754,16 +707,20 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 							</xsl:call-template>
 						</div>
 					</div>
+					
 					<!-- Page Break and Footer-->
 					<div style="width:187mm;padding-top:0mm;border-top-width:1px;">
 						<div style="width:100%;text-align:right">
 							Form <span class="styBoldText" style="font-size:8pt;">8863</span> (2013) 
 						</div>
 					</div>
+					</div>
 	</xsl:template>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8863Data)"/>
@@ -790,7 +747,7 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 			</head>
 			<body class="styBodyClass">
 				<form name="Form8863">
-					
+					<div style="width:187mm;">					
 					<xsl:call-template name="DocumentHeader"/>
 					<div class="styBB" style="width:187mm;height:23.5mm;">
 						<div class="styFNBox" style="width:31mm;height:100%;">
@@ -805,7 +762,7 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 						<div class="styFTBox" style="width:125mm;height:100%;">
 							<div class="styMainTitle" style="height:7mm;padding-top:1mm;">Education Credits<br/>
 								<span style="font-weight:normal">(American Opportunity and Lifetime Learning Credits)</span>
-							</div>
+							</div><br/><br/>
 							<div class="styFBT" stype="font-size:7pt;height:6mm;padding-top:0mm;">
 								<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/>  Information about Form 8863 and its separate instructions is at <i>www.irs.gov/form8863</i>.<br/>
 								<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/> Attach to Form 1040 or Form 1040A.<br/>
@@ -822,15 +779,15 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<!-- Name(s) shown on return -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styFNBox" style="width:140mm; height:9mm;">
-                    Name(s) shown on return<br/>
+                            Name(s) shown on return<br/><br/>
 							<xsl:call-template name="PopulateReturnHeaderFiler">
 								<xsl:with-param name="TargetNode">Name</xsl:with-param>
 							</xsl:call-template>
 							<br/>
 						</div>
 						<b>Your social security number</b>
-						<br/>
-						<div style="width:100%;text-align:center">
+						<br/><br/>
+						<div style="width:25mm;text-align:center">
 						<xsl:call-template name="PopulateSSN">
 							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
 						</xsl:call-template>
@@ -845,12 +802,12 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 						<div class="styGenericDiv" style="width:169mm;padding-top:4mm;font-size:8pt;font-style:italic">
 							Complete a separate Part III on page 2 for each student for whom you are claiming either
 							credit before you complete Parts I and II.
-		</div>
+		                </div>
 					</div>
-					<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:0px;
+					<div class="styBB" style="width:187mm;height:auto;border-style:solid; border-bottom-width:1px;border-top-width:0px;
 			  border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="width:15mm;font-size:13;">Part I</span>
-						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
+						<span class="styPartName" style="width:15mm;font-size:13;height:auto;">Part I</span>
+						<span style="width:170mm;font-weight:normal;height:auto;" class="styPartDesc">
 							<span style="width:3mm;font-size:10pt;vertical-align:bottom;"/>
 							<b>Refundable American Opportunity Credit</b>
 						</span>
@@ -861,12 +818,9 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 						<div class="styLNLeftNumBoxSD" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 2.25mm">1
         </div>
 						<div class="styLNDesc" style="font-size:7pt;width:142mm;height:4mm;padding-top:1mm;">
-         After completing Part III for each student, enter the total of all amounts from all Parts III, line 30
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+                            <span style="float:left;">After completing Part III for each student, enter the total of all amounts from all Parts III, line 30</span>
+						   <!--Dotted Line-->
+						   <span class="styDotLn" style="float:right;padding-right:1mm;">...</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -884,23 +838,12 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 						<span style="float:left">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 2.25mm">2
-        </div>
+                       </div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-         Enter: $180,000 if married filing jointly; $90,000 if single, head of <br/>household,
-         or qualifying widow(er)
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+                            Enter: $180,000 if married filing jointly; $90,000 if single, head of 
+                            <span style="float:left;">household, or qualifying widow(er)</span>
+	                        <!--Dotted Line -->
+						    <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -918,22 +861,13 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 					<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 2.25mm">3
-        </div>
+                       </div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-         Enter the amount from Form 1040, line 38, or Form 1040A, line 22. If you
-		are filing Form 2555, 2555-EZ, or 4563, or you are excluding income from
-		Puerto Rico, see Pub. 970 for the amount to enter
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-            <span style="width:16px"/>.
-         </span>
+							 Enter the amount from Form 1040, line 38, or Form 1040A, line 22. If you
+							are filing Form 2555, 2555-EZ, or 4563, or you are excluding income from
+							<span style="float:left;">Puerto Rico, see Pub. 970 for the amount to enter</span>
+	                        <!--Dotted Line -->
+						     <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -951,26 +885,12 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 2.25mm">4
-			</div>
+			            </div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-			 Subtract line 3 from line 2. If zero or less, <b>stop;</b> you cannot take any
-			education credit
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+							 Subtract line 3 from line 2. If zero or less, <b>stop;</b> you cannot take any
+							<span style="float:left;">education credit</span>
+	                        <!--Dotted Line -->
+						    <span class="styDotLn" style="float:right;padding-right:1mm;">....................</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -988,25 +908,12 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 2.25mm">5
-        </div>
+                        </div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-         Enter: $20,000 if married filing jointly; $10,000 if single, head of household,<br/>
-         or qualifying widow(er)
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+                            Enter: $20,000 if married filing jointly; $10,000 if single, head of household,<br/>
+                            <span style="float:left;"> or qualifying widow(er)</span>
+                            <!--Dotted Line -->
+						    <span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1025,11 +932,11 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div class="styGenericDiv " style="width:187mm;">
 					<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-left: 2.25mm">6
-        </div>
+                        </div>
 						<div class="styLNDesc" style="width:142mm;"> If line 4 is:
-          </div>
-          </span>
-          <span style="float:right;">
+                        </div>
+                    </span>
+                     <span style="float:right;">
 						<div class="styLNRightNumBox" style=" width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:5mm"/>
 						<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:5mm"/>
 						</span>
@@ -1038,53 +945,26 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 						<span style="float:left;">
 							<div class="styLNLeftNumBox" style="width:6mm;"/>
 							<div class="styLNDesc" style="width:453px;height:8mm;padding-left: 2.25mm;">
-								<img src="{$ImagePath}/8863_Bullet_Round.gif" alt="bullet image"/>
-                Equal to or more than line 5, enter 1.000 on line 6
-                 <span class="styBoldText">
-									<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                    <span style="width:8px"/>.
-            </span>
+								<span style="float:left;"><img src="{$ImagePath}/8863_Bullet_Round.gif" alt="bullet image"/>
+                                Equal to or more than line 5, enter 1.000 on line 6</span>
+                                <!--Dotted Line -->
+						       <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>
 								<br/>
 								<img src="{$ImagePath}/8863_Bullet_Round.gif" alt="bullet image"/>
-                  Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to 
-                  <br/>
-								<span style="width:2mm;"/>at least three places)
-                   <span class="styBoldText">
-									<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                    <span style="width:8px"/>.
-                    <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+                               Less than line 5, divide line 4 by line 5. Enter the result as a decimal (rounded to 
+             					<span style="float:left;"><span style="width:2mm;"/>at least three places)</span>
+                               <!--Dotted Line -->
+						       <span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 							</div>
 							<div class="styLNDesc" style="width:10px;height:8mm;">
 								<img src="{$ImagePath}/8863_Bracket.gif" height="37mm" alt="bracket image"/>
 							</div>
-							<div class="styLNDesc" style="width:81px;height:8mm;padding-top:2mm;">
-								<span class="styBoldText">
-									<span style="width:16px;"/>.
-                    <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                   </span>
+							<div class="styLNDesc" style="width:81px;height:8mm;padding-top:3mm;">
+                               <!--Dotted Line -->
+						       <span class="styDotLn">.....</span>
 							</div>
 							</span>
-							<span style="float:right;">
+							<span style="float:right;width:36.9mm;">
 							<div class="styLNRightNumBox" style="width:7.1mm;height:6mm;padding-left:0px;">6</div>
 							<div class="styLNAmountBox" style="width: 29.8mm;height:6mm">
 								<xsl:call-template name="PopulateText">
@@ -1111,15 +991,9 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 								</xsl:call-template>
 								<b>Caution:</b> If you were under age 24 at the end of the year <b>and</b> meet<br/>
 								the conditions described in the instructions, you <b>cannot</b> take the refundable American opportunity<br/>
-								credit; skip line 8, enter the amount from line 7 on line 9, and check this box
-			<!--Dotted Line-->
-								<span class="styBoldText">
-									<span style="width:16px"/>.
-									<span style="width:16px"/>.
-									<span style="width:16px"/>.
-									<span style="width:16px"/>.
-									<span style="width:16px"/>.
-								</span>
+								<span style="float:left;">credit; skip line 8, enter the amount from line 7 on line 9, and check this box</span>
+								<!--Dotted Line -->
+								<span class="styDotLn" style="padding-left:1mm;padding-right:1mm;">........</span>	
 								<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/>
 							</label>
 						</div>
@@ -1132,7 +1006,7 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 							</input>
 						</div>
 						</span>
-						<span style="float:right;">
+						<span style="float:right;width:36.9mm;">
 						<div class="styLNRightNumBox" style=" width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:5mm"/>
 						<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:5mm;"/>
 						<div class="styLNRightNumBox" style="font-size:7pt;height:6mm;padding-top:1mm; width:7.1mm; text-align:center; ">7</div>
@@ -1147,21 +1021,12 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:0mm;padding-left: 2.25mm">8
-        </div>
+                        </div>
 						<div class="styLNDesc" style="font-size:7pt;width:142mm;height:4mm;padding-top:0mm;">
-							<b>Refundable American opportunity credit.</b> Multiply line 7 by 40% (.40). Enter the amount here and on Form 1040, line 66, or Form 1040A, line 40. Then go to line 9 below.
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                 <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+							<b>Refundable American opportunity credit.</b> Multiply line 7 by 40% (.40). Enter the amount here and on Form 1040, line 66, 
+							<span style="float:left;">or Form 1040A, line 40. Then go to line 9 below.</span>
+                            <!--Dotted Line -->
+						    <span class="styDotLn" style="float:right;padding-right:1mm;">............</span>	
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1176,9 +1041,9 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<!-- Part lI -->
 					<!-- Part lI - Header -->
 					<div class="styBB" style="width:187mm;height:0mm;border-style:solid; border-bottom-width:1px;border-top-width:1px;
-          border-right-width:0px;border-left-width:0px;float:left;">
-						<span class="styPartName" style="width:15mm;font-size:13;">Part II</span>
-						<span style="width:170mm;font-weight:normal;" class="styPartDesc">
+          border-right-width:0px;border-left-width:0px;float:left;height:auto;">
+						<span class="styPartName" style="width:15mm;font-size:13;height:auto;">Part II</span>
+						<span style="width:170mm;font-weight:normal;height:auto;" class="styPartDesc">
 							<span style="width:3mm;font-size:10pt;vertical-align:bottom;"/>
 							<b>Nonrefundable Education Credits</b>
 						</span>
@@ -1212,20 +1077,10 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-left: 2.25mm">10
         </div>
 						<div class="styLNDesc" style="font-size:7pt;width:142mm;height:5mm;">
-        After completing Part III for each student, enter the total of all amounts from all Parts III, line 31. If zero, <br/> skip lines 11 through 17, 
-        enter -0- on line 18, and go to line 19
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+                            After completing Part III for each student, enter the total of all amounts from all Parts III, line 31. If zero, <br/> skip lines 11 through 17, 
+                           <span style="float:left;">enter -0- on line 18, and go to line 19</span>
+                           <!--Dotted Line-->
+                           <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1242,27 +1097,11 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">11
-        </div>
+                       </div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
-        Enter the smaller of line 10 or $10,000
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-            </span>
+                            <span style="float:left;">Enter the smaller of line 10 or $10,000</span>
+                            <!--Dotted Line-->
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1279,29 +1118,11 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">12
-        </div>
+                        </div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
-        Multiply line 11 by 20% (.20)
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-            </span>
+                            <span style="float:left;">Multiply line 11 by 20% (.20)</span>
+                            <!--Dotted Line-->
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">.........................</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1312,29 +1133,18 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 							</xsl:call-template>
 						</div>
 						</span>
-					</div>
-					
+					</div>				
 					
 					<!--Line13-->
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:8mm;padding-left: 2.25mm">13
-        </div>
+                        </div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-			Enter: $127,000 if married filing jointly; $63,000 if single, head of <br/>household, or qualifying widow(er)
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+			                Enter: $127,000 if married filing jointly; $63,000 if single, head of 
+			               <span style="float:left;">household, or qualifying widow(er)</span>
+                            <!--Dotted Line-->
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">..............</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1352,22 +1162,13 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:12mm;padding-left: 2.25mm">14
-        </div>
+                        </div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-			Enter the amount from Form 1040, line 38, or Form 1040A, line 22. If you
-			are filing Form 2555, 2555-EZ, or 4563, or you are excluding income from
-			Puerto Rico, see Pub. 970 for the amount to enter
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-								<span style="width:16px"/>.
-							</span>
+							Enter the amount from Form 1040, line 38, or Form 1040A, line 22. If you
+							are filing Form 2555, 2555-EZ, or 4563, or you are excluding income from
+			                <span style="float:left;">	Puerto Rico, see Pub. 970 for the amount to enter</span>
+                            <!--Dotted Line-->
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1378,30 +1179,19 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 							</xsl:call-template>
 						</div>
 						<div class="styLNRightNumBox" style="width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:12mm;"/>
-	<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:12mm;"/>
+	                    <div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:12mm;"/>
 						</span>
 					</div>
 					<!--Line 15-->
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:8mm;padding-left: 2.25mm">15
-        </div>
+                       </div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-			Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter<br/> -0- on line 18, 
-			and go to line 19
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+							Subtract line 14 from line 13. If zero or less, skip lines 16 and 17, enter
+							<span style="float:left;"> -0- on line 18, and go to line 19</span>
+                             <!--Dotted Line-->
+                             <span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1412,31 +1202,19 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 							</xsl:call-template>
 						</div>
 						<div class="styLNRightNumBox" style="width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:8mm;"/>
-	<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:8mm;"/>
+	                    <div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:8mm;"/>
 						</span>
 					</div>
 					<!--Line 16-->
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:8mm;padding-left: 2.25mm">16
-        </div>
+                        </div>
 						<div class="styLNDesc" style="font-size:7pt;width:104.98mm;height:4mm;padding-top:1mm;">
-			Enter: $20,000 if married filing jointly; $10,000 if single, head of household,<br/> or qualifying widow(er)
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+			               Enter: $20,000 if married filing jointly; $10,000 if single, head of household,
+			               <span style="float:left;"> or qualifying widow(er)</span>
+                            <!--Dotted Line-->
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1447,16 +1225,16 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 							</xsl:call-template>
 						</div>
 						<div class="styLNRightNumBox" style="width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:8mm;"/>
-	<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:8mm;"/>
+	                    <div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:0px;height:8mm;"/>
 					</span>
 					</div>
 					<!--LINE 17 -->
 					<div class="styGenericDiv " style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-top:1mm;padding-left: 2.25mm">17
-        </div>
+                       </div>
 						<div class="styLNDesc" style="width:142mm;padding-top:1mm;"> If line 15 is:
-          </div>
+                        </div>
 						</span>
 						<span style="float:right;">
 						<div class="styLNRightNumBox" style=" width:7.1mm;background-color:lightgrey;border-bottom-width:0px;height:5mm"/>
@@ -1468,39 +1246,18 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 							<div class="styLNLeftNumBox" style="width:6mm;"/>
 							<div class="styLNDesc" style="width:144mm;height:8mm;padding-left: 2.25mm">
 								<img src="{$ImagePath}/8863_Bullet_Round.gif" alt="bullet image"/>
-             Equal to or more than line 16, enter 1.000 on  line 17 and go to line 18<br/>
+                                 Equal to or more than line 16, enter 1.000 on  line 17 and go to line 18<br/>
 								<img src="{$ImagePath}/8863_Bullet_Round.gif" alt="bullet image"/>
-                  Less than line 16, divide line 15 by line 16. Enter the result as a decimal (rounded to at least  <br/>
-								<span style="width:2mm;"/> three places)
-                   <span class="styBoldText">
-									<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                 <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                   <span style="width:16px"/>.
-                    <span style="width:16px"/>.
-                 <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                 <span style="width:16px"/>.
-                 <span style="width:16px"/>.
-             
-            </span>
+                                Less than line 16, divide line 15 by line 16. Enter the result as a decimal (rounded to at least <br/>
+								<span style="float:left;"><span style="width:2mm;"/> three places)</span>
+                                <!--Dotted Line-->
+                                <span class="styDotLn" style="float:right;padding-right:1mm;">.............................</span>
 							</div>
 							</span>
-							<span style="float:right;">
+							<span style="float:right;width:36.9mm;">
 							<div class="styLNRightNumBox" style="width:7.1mm;height:6mm;background-color:lightgrey;border-bottom-width:0px;"/>
 							<div class="styLNAmountBox" style="width:29.8mm;height:6mm;border-bottom-width:0px;">
-            </div>
+                            </div>
 							<div class="styLNRightNumBox" style=" width:7.1mm;border-bottom-width:1px;height:5mm">17</div>
 							<div class="styLNAmountBox" style="width:29.8mm;border-bottom-width:1px;height:5mm">
 								<xsl:call-template name="PopulateText">
@@ -1515,17 +1272,16 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">18
-        </div>
+                        </div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
-      Multiply line 12 by line 17. Enter here and on line 1 of the Credit Limit Worksheet (see instructions)
-        <!--Dotted Line-->
-							<span class="styBoldText" style="width:3mm;">
-				
-            </span>
+							Multiply line 12 by line 17. Enter here and on line 1 of the Credit Limit Worksheet (see instructions)
+						   <!--Dotted Line-->
+							<span class="styBoldText" style="width:3mm;">				
+							</span>
 							<img src="{$ImagePath}/8863_Bullet.gif" alt="MediumBullet"/>
 						</div>
 						</span>
-						<span style="float:right;">
+						<span style="float:right;width:36.9mm;">
 						<div class="styLNRightNumBox" style="height:5mm;width:7.1mm;padding-top:1mm;">18</div>
 						<div class="styLNAmountBox" style="width:29.8mm;height:5mm;padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
@@ -1538,21 +1294,12 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					<div style="width:187mm;border-bottom:1px solid black">
 						<span style="float:left;">
 						<div class="styLNLeftNumBox" style="font-size:7pt;height:5mm;padding-top:1mm;padding-left: 2.25mm">19
-        </div>
+                       </div>
 						<div class="styLNDesc" style="width:142mm;height:5mm;padding-top:1mm;">
-							<b>Nonrefundable education credits.</b> Enter the amount from line 7 of the Credit Limit Worksheet (see instructions) here
-							 and on Form 1040, line 49, or Form 1040A, line 31
-        <!--Dotted Line-->
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-                <span style="width:16px"/>.
-            </span>
+							<b>Nonrefundable education credits.</b> Enter the amount from line 7 of the Credit Limit Worksheet (see
+							<span style="float:left;">instructions) here and on Form 1040, line 49, or Form 1040A, line 31</span>
+                            <!--Dotted Line-->
+                            <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
 						</div>
 						</span>
 						<span style="float:right;">
@@ -1564,22 +1311,23 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 						</div>
 						</span>
 					</div>
+					</div>
 					<!-- Page 1 End -->
-<!-- Page Break and Footer-->
-	<div class="pageEnd" style="width:187mm;padding-top:0mm;border-top-width:1px;">
-						<div style="float:left;">
-							<span class="styBoldText">For Paperwork Reduction Act Notice, see your tax return instructions.</span>
-							<span style="width:4mm;"/>							
-							<span style="width:4mm"/>                        
-      Cat. No. 25379M
-                        </div>
-						<div style="float:right;">
-							<span style="width:40px;"/>  
-      Form <span class="styBoldText" style="font-size:8pt;">8863</span> (2013)
-                        </div>
-  </div>
+					<!-- Page Break and Footer-->
+						<div class="pageEnd" style="width:187mm;padding-top:0mm;border-top-width:1px;page-break-after:always;display:block;">
+											<div style="float:left;">
+												<span class="styBoldText">For Paperwork Reduction Act Notice, see your tax return instructions.</span>
+												<span style="width:4mm;"/>							
+												<span style="width:4mm"/>                        
+						  Cat. No. 25379M
+											</div>
+											<div style="float:right;">
+												<span style="width:40px;"/>  
+						  Form <span class="styBoldText" style="font-size:8pt;">8863</span> (2013)
+											</div>
+					 </div>
   
-    <!--Begin Page 2 -->
+                    <!--Begin Page 2 -->
     
 					<xsl:for-each select="$PartIIIData">
 						<xsl:if test="position() &gt; 1">
@@ -1592,9 +1340,7 @@ enter<br/>the result. Skip line 31. Include the total of all amounts from all Pa
 					</xsl:for-each>
 					<xsl:if test="count($PartIIIData) = 0">
 						<xsl:call-template name="Form8863Page2"/>
-					</xsl:if> 
-
-					
+					</xsl:if> 					
 					<!-- BEGIN Left Over Table -->
 					<div class="pageEnd"/>
 					<!-- Additonal Data Title Bar and Button -->

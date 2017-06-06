@@ -9,10 +9,13 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form5713AData" select="$RtnDoc/IRS5713ScheduleA"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <META http-equiv="Content-Type" content="text/html"/>
-        <title>Schedule A (5713)</title>
+     <!--   <title>Schedule A (5713)</title>-->
+        <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form5713AData)"/></xsl:call-template></title>
         <meta http-equiv="Pragma" content="no-cache"/>
         <meta http-equiv="Cache-Control" content="no-cache"/>
         <meta http-equiv="Expires" content="0"/>
@@ -35,7 +38,7 @@
         <form name="Form5713A">
           <!--  start page header -->
           <xsl:call-template name="DocumentHeader"/>
-          <div style="width:187mm;height:18mm;">
+					<div style="width:187mm;height:auto;">
             <div class="styFNBox" style="width:32mm;height:20mm;">              
               <div class="styFormNumber" style="font-size: 9pt;">SCHEDULE A</div>              
               <div class="styFormNumber" style="font-size: 9pt;">(Form 5713)</div>
@@ -94,11 +97,17 @@
 				</xsl:when>
 				<xsl:when test="$Form5713AData/NameLine1Txt">
 				</xsl:when>
-				<xsl:otherwise>
-				  <xsl:call-template name="PopulateReturnHeaderFiler">
-					<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-				  </xsl:call-template>  
-				</xsl:otherwise>
+				<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
+				  </xsl:call-template>
+				</xsl:when>
+				<!-- Name from 1040 Return Header -->
+				<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
+				  <xsl:call-template name="PopulateText">
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+				  </xsl:call-template>
+				</xsl:when>
 			  </xsl:choose>
              </div>
       <div class="styEINBox" style="font-family:Verdana;font-size:7pt;width:50mm;height:9mm;padding-left:2mm;">Identifying number<br/><br/>
@@ -121,18 +130,23 @@
                 <xsl:with-param name="TargetNode" select="$Form5713AData/MissingEINReasonCd"/>
               </xsl:call-template>
             </xsl:when>
-            <xsl:otherwise>
-              <xsl:call-template name="PopulateReturnHeaderFiler">
-                <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-              </xsl:call-template>
-            </xsl:otherwise>
+			  <xsl:when test="$RtnHdrData/Filer/EIN">
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+				  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+				</xsl:call-template>
+			  </xsl:when>
+			  <xsl:otherwise>
+				<xsl:call-template name="PopulateReturnHeaderFiler">
+				  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+				</xsl:call-template>
+			  </xsl:otherwise>
           </xsl:choose>
         </span>  
         </div>
             </div>
           </div>  
 <!-- Name and Identifying number END-->
-          <div class="styLNDesc" style="width:187mm;">Name of country being boycotted (check one):       <span style="width:.5mm;"/>
+					<div class="styLNDesc" style="width:187mm;height:auto;">Name of country being boycotted (check one):       <span style="width:.5mm;"/>
             <input type="checkbox" class="styCkbox">
               <xsl:call-template name="PopulateCheckbox">
                 <xsl:with-param name="TargetNode" select="$Form5713AData/IsraelBoycottedInd"/>
@@ -167,8 +181,10 @@
               </xsl:call-template>
             </span>
           </div>
-          <div style="width:187mm;font-style:italic;">
-            <div style="float:left;width:5mm;font-weight:bold; font-style: normal;">Important:</div>       If you are involved in more than one boycott, use a separate Schedule A for each boycott and attach to Form 5713.     </div>
+					<div style="width:187mm;font-style:italic;height:auto;">
+<div style="font-style: normal;"><span style="font-weight:bold;">Important:</span></div>
+						<div style="font-style: normal;"> If you are involved in more than one boycott, use a separate Schedule A for each boycott and attach to Form 5713.</div> 
+					</div>
           <!-- Item "(a-o) Table" start -->
           <!--Table expand/collapse toggle button-->
           <div style="width:187mm;">
@@ -182,7 +198,7 @@
             </div>
             <!--Table expand/collapse toggle button end-->
           </div>
-          <div class="styIRS5713ScheduleATableContainer" id="TP1ctn">
+					<div class="styIRS5713ScheduleATableContainer" style="height:auto;" id="TP1ctn">
             <xsl:call-template name="SetInitialState"/>
             <table cellspacing="0" summary="Boycott Information for each country">
               <tr>
@@ -206,36 +222,36 @@
                 <xsl:for-each select="$Form5713AData/BoycottInfoForEachCountry">
                   <tr>
                     <xsl:if test="position() &lt;16">
-                      <td class="styTableCell" style="width:5mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;border-right:none;">
+                      <td class="styTableCell" style="width:5mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;border-right:none;height:8mm;vertical-align:bottom;">
                         <xsl:number value="position()" format="a"/>
                       </td>
-                      <td class="styTableCell" style="width:55mm;text-align:left;font-size:7pt;border-color:black;">
+                      <td class="styTableCell" style="width:55mm;text-align:left;font-size:7pt;border-color:black;vertical-align:bottom;">
                         <xsl:call-template name="PopulateText">
                           <xsl:with-param name="TargetNode" select="CountryCd"/>
                         </xsl:call-template>
                       </td>
                     </xsl:if>
                     <xsl:if test="position()&gt;=16">
-                      <td class="styTableCell" style="width:5mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;border-right:none;">
+                      <td class="styTableCell" style="width:5mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;border-right:none;height:8mm;vertical-align:bottom;">
                         <span style="width:1px;"/>
                       </td>
-                      <td class="styTableCell" style="width:55mm;text-align:left;font-size:7pt;border-color:black;">
+                      <td class="styTableCell" style="width:55mm;text-align:left;font-size:7pt;border-color:black;vertical-align:bottom;">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="CountryCd"/>
                         </xsl:call-template>
                       </td>
                     </xsl:if>
-                    <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;">
+                    <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;vertical-align:bottom;">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="BoycottPurchasesAmt"/>
                       </xsl:call-template>
                     </td>
-                    <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;">
+                    <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;vertical-align:bottom;">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="BoycottSalesAmt"/>
                       </xsl:call-template>
                     </td>
-                    <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;border-right:none;">
+                    <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;border-right:none;vertical-align:bottom;">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="BoycottPayrollAmt"/>
                       </xsl:call-template>
@@ -248,7 +264,7 @@
               <!-- then display a message in the first row directing the user to the additional data table -->
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 1 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-size:7pt;border-color:black;">
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">
                     <span style="font-weight:bold;">a</span>
                     <span class="styTableCellPad"/>
                     <span class="styTableCellPad"/>
@@ -256,115 +272,115 @@
                       <xsl:with-param name="TargetNode" select="$Form5713AData/BoycottInfoForEachCountry"/>
                     </xsl:call-template>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;text-align:right;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;text-align:right;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;text-align:right;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;text-align:right;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 2 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">b<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">b<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 3 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">c<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">c<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 4 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">d<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">d<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 5 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">e<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">e<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 6 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">f<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">f<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 7 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">g<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">g<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 8 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">h<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">h<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                   <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
@@ -374,12 +390,12 @@
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 9 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">i<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">i<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                   <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
@@ -389,110 +405,110 @@
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 10 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">j<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">j<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 11 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">k<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">k<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 12 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">l<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">l<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 13 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">m<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">m<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 14 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">n<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">n<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <xsl:if test="count($Form5713AData/BoycottInfoForEachCountry) &lt; 15 or        (($Print = $Separated) and (count($Form5713AData/BoycottInfoForEachCountry) &gt; 15)) ">
                 <tr>
-                  <td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;">o<span class="styTableCellPad"/>
+									<td class="styTableCell" colspan="2" style="width:60mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;height:8mm;vertical-align:bottom;">o<span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
-                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;">
+                  <td class="styTableCell" style="width:42.3mm;border-color:black;border-right:none;vertical-align:bottom;">
                     <span class="styTableCellPad"/>
                   </td>
                 </tr>
               </xsl:if>
               <tr>
-                <td class="styTableCell" colspan="2" style="width:50mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;                  border-bottom-width:0px;border-right-width:1px;">Total    
+								<td class="styTableCell" colspan="2" style="width:50mm;text-align:left;font-weight:bold;font-size:7pt;border-color:black;                  border-bottom-width:0px;border-right-width:1px;height:9mm;vertical-align:bottom;">Total    
                       <!--dotted line-->
-               <span style="letter-spacing:4mm;font-weight:bold">...........</span>
+									<span style="letter-spacing:4mm;font-weight:bold">.........</span>
                 </td>
-                <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;border-bottom-width:0px;">
+                <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;border-bottom-width:0px;vertical-align:bottom;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form5713AData/TotalBoycottPurchasesAmt"/>
                   </xsl:call-template>
                 </td>
-                <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;border-bottom-width:0px;">
+                <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;border-bottom-width:0px;vertical-align:bottom;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form5713AData/TotalBoycottSalesAmt"/>
                   </xsl:call-template>
                 </td>
-                <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;border-right:none;border-bottom-width:0px;">
+                <td class="styTableCell" style="width:42.3mm;text-align:right;font-size:7pt;border-color:black;border-right:none;border-bottom-width:0px;vertical-align:bottom;">
                   <xsl:call-template name="PopulateAmount">
                     <xsl:with-param name="TargetNode" select="$Form5713AData/TotalBoycottPayrollAmt"/>
                   </xsl:call-template>
@@ -510,15 +526,15 @@
           <!--KEVINCHANG  <div style="width:187mm;">     <div class="styLNDesc" style="width:143.5mm;font-weight:normal;"></div>     <div class="styLNAmountBox" style="border-top-width:0px;border-bottom-width:0px;width:43mm;"></div>   </div>   -->
           <div style="width:187mm;">
             <div style="float:left;clear:none">
-              <div class="styLNLeftNumBox" style="height:4mm;font-size:7pt;">1</div>
-              <div class="styLNDesc" style="width:135.3mm;height:4mm;">
+              <div class="styLNLeftNumBox" style="height:9mm;font-size:7pt;padding-top:5mm;">1</div>
+              <div class="styLNDesc" style="width:135.3mm;height:9mm;padding-top:5mm;">
               <span style="float:left;">Numerator of boycott factor (add totals of columns (2), (3), and (4))   </span> 
                <!--Dotted Line-->
               <span class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
               </div>
             </div>
             <div style="float:right;clear:none">
-              <div class="styLNAmountBox" style="border-top-width:0px;font-size:7pt;width:42.3mm;height:4mm;">
+							<div class="styLNAmountBox" style="border-top-width:0px;font-size:7pt;width:42.3mm;height:9mm;padding-top:5mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5713AData/NumeratorBoycottFactorAmt"/>
                 </xsl:call-template>
@@ -559,22 +575,21 @@
           <!-- Item 2b start-->
           <div style="width:187mm;">
             <div style="float:left;clear:none">
-              <div class="styLNLeftNumBoxSD">b</div>
-              <div class="styLNDesc" style="width:93.6mm;height:4mm;">
+              <div class="styLNLeftNumBoxSD" style="padding-top:4mm;">b</div>
+              <div class="styLNDesc" style="width:93.6mm;height:8mm;padding-top:4mm;">
                  <span style="float:left;">Total sales to or from countries other than United States</span>   
                  <!--Dotted Line-->
                  <span class="styDotLn" style="float:right;padding-right:1mm;">....</span>
               </div>
             </div>
             <div style="float:right;clear:none">
-              <div class="styLNAmountBox" style="border-top-width:0px;font-size:7pt;width:42.3mm;height:9mm;">
-                <br/>
+              <div class="styLNAmountBox" style="border-top-width:0px;font-size:7pt;width:42.3mm;height:8mm;padding-top:4mm;">
                 <span style="height: 4.5mm;">&#160;</span>
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5713AData/TotalSalesOtherThanUSAmt"/>
                 </xsl:call-template>
               </div>
-              <div class="styShadingCell" style="height:9mm;width:42.3mm;"/>
+              <div class="styShadingCell" style="height:8mm;width:42.3mm;"/>
             </div>
           </div>
           <!-- Item 2b end-->
@@ -590,14 +605,12 @@
               </div>
             </div>
             <div style="float:right;clear:none">
-              <div class="styLNAmountBox" style="border-top-width:0px;font-size:7pt;width:42.3mm;height:13mm;padding-top:3mm">
-                <br/>
-                <span style="height: 6mm;">&#160;</span>
+							<div class="styLNAmountBox" style="border-top-width:0px;font-size:7pt;width:42.3mm;height:8mm;padding-top:4mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form5713AData/TotalPayrollPaidOtherThanUSAmt"/>
                 </xsl:call-template>
               </div>
-              <div class="styShadingCell" style="height:13mm;width:42.3mm;"/>
+							<div class="styShadingCell" style="height:8mm;width:42.3mm;"/>
             </div>
           </div>
           <!-- Item 2c end-->
@@ -631,7 +644,7 @@
           <!-- Item 3 start-->
           <div class="styBB" style="width:187mm;">
             <div style="float:left;clear:none">
-              <div class="styLNLeftNumBox" style="height:4.5mm;">3</div>
+							<div class="styLNLeftNumBox" style="height:8mm;">3</div>
               <div class="styLNDesc" style="width:135.3mm;font-weight:normal;">
                 <b>International boycott factor</b> (divide line 1 by line 2d). Enter here and on Schedule C (Form 5713) (see instructions)     
                 <!--Dotted Line-->
@@ -640,7 +653,7 @@
               </div>
             </div>
             <div style="float:right;clear:none">
-              <div class="styLNAmountBoxNBB" style="padding-top:6mm;width:42.3mm;height:4.5mm;float:right;">
+							<div class="styLNAmountBoxNBB" style="padding-top:4mm;width:42.3mm;height:8mm;float:right;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form5713AData/InternationalBoycottFactorRt"/>
                 </xsl:call-template></div>
@@ -649,12 +662,12 @@
           <!-- Item 3 end-->
           <div style="width:187mm;font-size:7pt;">
             <b>For Paperwork Reduction Act Notice, see the Instructions for Form 5713.</b>
-            <span style="width:3mm;"/>       Cat. No. 12050W       <span style="width:3mm;"/>
+            <span style="width:2mm;"/>       Cat. No. 12050W       <span style="width:2mm;"/>
             <b>Schedule A (Form 5713) (Rev. 12-2010)</b>
           </div>
           <!-- Left over data -->
           <br/>
-          <br class="pageEnd"/>
+          <div class="pageEnd"/>
           <!-- BEGIN Left Over Table -->
           <div class="styLeftOverTitleLine" id="LeftoverData">
             <div class="styLeftOverTitle">         Additional Data               </div>
@@ -699,20 +712,20 @@
                 <xsl:for-each select="$Form5713AData/BoycottInfoForEachCountry">
                   <tr>
                     <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-                    <td class="styDepTblCell" style="width:5mm;text-align:left;font-weight:bold;border-right:none;">
+                    <td class="styDepTblCell" style="width:5mm;text-align:left;font-weight:bold;border-right:none;vertical-align:bottom;">
                       <xsl:number value="position()" format="a"/>
                     </td>
-                    <td class="styDepTblCell" style="width:55mm;text-align:left;border-left:none;">
+                    <td class="styDepTblCell" style="width:55mm;text-align:left;border-left:none;vertical-align:bottom;">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="CountryCd"/>
                       </xsl:call-template>
                     </td>
-                    <td class="styDepTblCell" style="width:42.3mm;text-align:right;">
+                    <td class="styDepTblCell" style="width:42.3mm;text-align:right;vertical-align:bottom;">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="BoycottPurchasesAmt"/>
                       </xsl:call-template>
                     </td>
-                    <td class="styDepTblCell" style="width:42.3mm;text-align:right;">
+                    <td class="styDepTblCell" style="width:42.3mm;text-align:right;vertical-align:bottom;">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="BoycottSalesAmt"/>
                       </xsl:call-template>
@@ -725,20 +738,20 @@
                   </tr>
                 </xsl:for-each>
                 <tr class="styDepTblHdr">
-                  <td class="styDepTblCell" colspan="2" style="text-align:left; font-weight: bold">Total</td>
+                  <td class="styDepTblCell" colspan="2" style="text-align:left; font-weight: bold;vertical-align:bottom;">Total</td>
                   <td class="styDepTblCell" style="text-align:right;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="WhiteFont">true</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$Form5713AData/TotalBoycottPurchasesAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="styDepTblCell" style="text-align:right;">
+                  <td class="styDepTblCell" style="text-align:right;vertical-align:bottom;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="WhiteFont">true</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$Form5713AData/TotalBoycottSalesAmt"/>
                     </xsl:call-template>
                   </td>
-                  <td class="styDepTblCell" style="text-align:right;">
+                  <td class="styDepTblCell" style="text-align:right;vertical-align:bottom;">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="WhiteFont">true</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$Form5713AData/TotalBoycottPayrollAmt"/>

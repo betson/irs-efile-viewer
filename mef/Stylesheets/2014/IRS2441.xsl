@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form2441Data" select="$RtnDoc/IRS2441"/>
 	<xsl:template match="/">
-	<html lang="EN-US">
+	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form2441Data)"/>
@@ -27,11 +29,11 @@
 				<meta name="Description" content="IRS Form 2441"/>
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
-				<style type="text/css">
-				 <!-- <xsl:if test="not($Print) or $Print=''">  -->
+				 <style type="text/css">
+				    <xsl:if test="not($Print) or $Print=''">    
 						<xsl:call-template name="IRS2441Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-				<!-- </xsl:if>   -->   
+				      </xsl:if>   
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>  
 			</head>
@@ -53,10 +55,10 @@
 						<!-- Begin Form title -->
 						<div class="styFTBox" style="width:120mm;height:20mm;">
 							<div class="styMainTitle" style="font-size: 13pt;width:90mm;float:left;padding-top:1mm;padding-left:4mm;">Child and Dependent Care Expenses </div>
-							<div class="styFTBox" style="width:15mm;float:right;clear:none;vertical-align:top;padding-top:3mm;padding-right:2mm;">
+							<div class="styFTBox" style="width:20mm;float:right;clear:none;vertical-align:bottom;padding-top:3.5mm;padding-right:6mm;">
 							 <img src="{$ImagePath}/2441_Form.gif" alt="Bullet"/> </div>
 							<div class="styFBT" style="height:5mm;margin-top:3mm;width:90mm;">
-								<img src="{$ImagePath}/2441_Bullet.gif" alt="Bullet"/> Attach to Form 1040, Form 1040A or Form 1040NR.
+								<img src="{$ImagePath}/2441_Bullet.gif" alt="Bullet"/> Attach to Form 1040, Form 1040A, or Form 1040NR.
 								<span style="width:90mm;padding-top:1mm;">
 								<img src="{$ImagePath}/2441_Bullet.gif" alt="Bullet"/> Information about Form 2441 and its separate instructions is at
 www.irs.gov/form2441.</span>
@@ -74,27 +76,29 @@ www.irs.gov/form2441.</span>
 					<!--  End title of Form  -->
 					<!--Name Shown on return-->
 					<div class="styBB" style="width:187mm;font-size:7pt;">
-						<div class="styFNBox" style="width:140mm; height:5mm;">
+						<div class="styFNBox" style="width:140mm; height:7mm;">
                         Name(s) shown on return<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
 							</xsl:call-template>
-							<div style="line-height:100%; font-family:verdana;font-size:7pt"/>
+							<div style="font-family:verdana;font-size:7pt"/>
 						</div>
+						<span style="padding-left:2mm;">
                         <b>Your social security number</b><br/>
 						<xsl:call-template name="PopulateSSN">
 							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/PrimarySSN"/>
 						</xsl:call-template>
+						</span>
 					</div>
 					<!-- MAIN SECTION -->
 					<!-- BEGIN PART I TITLE -->
 	<div class="styBB" style="width:187mm;">
-		<div class="styBB" style="width:187mm;">
-				<span class="styPartName" style="width:12mm;font-size:13;">Part l</span>
+		<div class="styBB" style="width:187mm;height:8mm;">
+				<span class="styPartName" style="height:4mm;width:12mm;font-size:13;">Part l</span>
 							<div class="styPartDesc" style="padding-left:1mm;width:168mm;font-size:8pt;">
-          Persons or Organizations Who Provided the Care?
+          Persons or Organizations Who Provided the Care <img src="{$ImagePath}/1040SchA_JobExp_Longdash.gif" alt="LongDash"/>
     <span class="styNormalText" style="padding-left:1mm;font-size:8pt;"> You  
-    <span class="styBoldText">must </span>complete this part. </span>
+    <span class="styBoldText">must </span><span style="width:1mm;"/>complete this part. </span>
 								<br/>
 	<span class="styNormalText" style="padding-left:0mm;font-size:8pt;"> (If you have more than two care providers, see the instructions.)</span>
 							</div>
@@ -116,7 +120,7 @@ www.irs.gov/form2441.</span>
 	<thead class="styTableThead">
 	<tr>
 	<th class="styTableCellHeader" scope="col" colspan="1" rowspan="1" style="width:60mm;font-weight:normal;text-align: left;height:9mm; border-color:black;vertical-align:top;">
-	<b>1</b>
+	<b><span style="width:1mm"/>1</b>
 		<span style="width:7mm;"/>
 		<span style="font-weight:bold;">(a)</span>
        Care provider's <br/>
@@ -124,7 +128,7 @@ www.irs.gov/form2441.</span>
 											<span style="width:17mm;"/> name
       </th>
 	<th class="styTableCellHeader" scope="col" colspan="1" style="width:70mm;font-weight:normal;height:11mm; border-color:black;vertical-align:top;">
-											<span style="font-weight:bold;">(b)</span>Address<br/>(number, street, apt. no., city, state, and ZIP code)
+											<span style="font-weight:bold;">(b)<span style="width:1mm;"/></span>Address<br/>(number, street, apt. no., city, state, and ZIP code)
     </th>
 	<th class="styTableCellHeader" scope="col" colspan="1" style="width:23mm;font-weight:normal;height:9mm;  border-color:black;vertical-align:top;">
 											<span style="font-weight:bold;">(c)</span> Identifying number<br/> (SSN or EIN)
@@ -397,44 +401,41 @@ www.irs.gov/form2441.</span>
 						<div style="width:187mm;">
 							<div class="styIRS2441SpaceBox"/>
 							<br/>
-							<div class="styIRS2441instructionBoxNBB" style="height:10mm;width:50mm;font-size:8pt;padding-top:2mm;">
+							<div class="styIRS2441instructionBoxNBB" style="border-top-width:.5mm;border-bottom-width:.5mm;border-left-width:.5mm;border-right-width:.5mm;height:10mm;width:50mm;font-size:8pt;padding-top:0.5mm;">
 Did you receive<br/>
 								<span class="styBoldText">dependent care benefits?</span>
 							</div>
-							<span style="vertical-align:top;"> ___________</span>
-							<span class="styBoldText" style=" vertical-align:bottom; font-size:8pt;"> No  </span>
-							<span style="vertical-align:top; "> ___________</span>
-							<span style="font-size:8pt; vertical-align:sub;">
-								<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/> Complete only Part II below.</span>
+							<span style="vertical-align:top;"> _________</span>
+							<span class="styBoldText" style=" vertical-align:bottom; font-size:8pt;"> <span style="width:1mm;"/>
+							No <span style="width:.1.5mm;"/> </span>
+							<span style="vertical-align:top; "> __________</span>
+								<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/> Complete only Part II below.
 							<br/>
-							<span style="vertical-align:top;"> __________</span>
-							<span class="styBoldText" style="vertical-align:bottom; font-size:8pt"> Yes  </span>
-							<span style="vertical-align:top; "> ____________</span>
-							<span style="font-size:8pt;vertical-align:sub;">
-								<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/> Complete Part III on the back next.  </span>
+							<span style="vertical-align:top;"> _________</span>
+							<span class="styBoldText" style="vertical-align:bottom; font-size:8pt"> <span style="width:1mm;"/>
+							Yes <span style="width:1mm;"/> </span>
+							<span style="vertical-align:top; "> __________</span>
+							<span style="width:.25mm;"/>
+								<img src="{$ImagePath}/2441_Bullet_Md.gif" alt="MediumBullet" align="middle"/> Complete Part III on the back next.  
 						</div>
-						<br/>
-<div class="styPartDesc" style="font-weight:Bold;width:187mm;padding-left:0mm;font-size:8pt;">         
-      Caution. <span style="width:1mm;"/>
-     <span class="styNormalText" style="font-size:8pt;"> 
-If the care was provided in your home, you may owe employment taxes. If you do, you cannot file Form 1040A. For details,
-see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a. 
-     </span>
-						</div>
+<div class="styPartDesc" style="font-weight:Normal;width:187mm;padding-top:2mm;font-size:8pt;height:12mm;">         
+      <b>Caution.</b> If the care was provided in your home, you may owe employment taxes. If you do, you cannot file Form 1040A. For details,see the instructions for Form 1040, line 59a, or Form 1040NR, line 58a. </div>
+      
+                            <p style="page-break-before: always"/>
 						<!-- BEGIN PART II TITLE -->
-						<div class="styBB" style="width:187mm;border-top-width: 1px">
+						<div class="styBB" style="width:187mm;border-top-width: 1px;height:3.5mm;">
 								<span class="styPartName" style="width:12mm;font-size:13;">Part ll</span>
 							<div class="styPartDesc" style="font-size:8pt;">Credit for Child and Dependent Care Expenses
         </div>
 						</div>
 						<!-- END PART II TITLE -->
 						<!--line 2 Part II-->
-						<div class="styBB" style="width:187mm;height:1mm;">
-							<div class="styLNLeftNumBox" style="height:1mm;width:6mm;">2</div>
+						<div class="styBB" style="width:187mm;height:4mm;">
+							<div class="styLNLeftNumBox" style="height:6mm;width:6mm;padding-top:1mm;"><span style="width:1mm"/>2</div>
 							<div class="styLNDesc" style="width:177mm;font-size:8pt;height:1mm;">
         Information about your <span class="styBoldText">qualifying person(s).</span>
  If you have more than two qualifying persons, see the instructions.
-          </div>
+          </div> 
 							<!-- Table expand/collapse toggle button -->
 							<div style="float:right;padding-top:0mm;height:1mm;">
 								<!--div style="width:5mm;float:right;vertical-align:top;"-->
@@ -452,17 +453,18 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 	<table class="styTable" cellspacing="0" style="font-size:7pt;" summary="Table displaying Qualifying persons information" name="Qualtable" id="Qualtable">
 	<thead class="styTableThead">
 	<tr>
-	<th class="styTableCellHeader" scope="col" colspan="2" style="width:88mm;font-weight:normal;  border-color:black">
-	<span style="font-weight:bold;">(a)</span>
-       Qualifying person's name
-      <br/> First<span style="width:45mm"/>Last
+	<th class="styTableCellHeader" scope="col" colspan="2" style="width:88mm;font-weight:normal;  border-color:black;height:6mm;">
+	
+      <span style=";">
+					<span style="font-weight:bold;">(a)</span> Qualifying person's name
+      <br/> First<span style="width:35mm"/>Last	</span>
       </th>
-										<th class="styTableCellHeader" scope="col" colspan="1" style="width:49mm;font-weight:normal;  border-color:black">
-											<span style="font-weight:bold;">(b)</span> Qualifying person's social<br/> security number
+										<th class="styTableCellHeader" scope="col" colspan="1" style="height:6mm;width:49mm;font-weight:normal;  border-color:black">
+											   <span style=";"><span style="font-weight:bold;">(b)</span>Qualifying person's social<br/> security number</span>
     </th>
-										<th class="styTableCellHeader" scope="col" colspan="1" style="width:49mm;font-weight:normal;  height:14mm;border-color:black">
-											<span style="font-weight:bold;">(c)</span>
-											<span class="styBoldText"> Qualified expenses</span> you<br/> incurred and paid in 2014 for the person listed in column (a)
+										<th class="styTableCellHeader" scope="col" colspan="1" style="width:49mm;font-weight:normal;  height:6mm;border-color:black">
+											 <span style=""><span style="font-weight:bold;">(c)</span>
+											<span class="styBoldText">Qualified expenses</span> you<br/> incurred and paid in 2014 for the person listed in column (a)</span>
      </th>
 									</tr>
 								</thead>
@@ -568,7 +570,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						<!-- END Part II table -->
 						<!--Line 3-->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:5mm;">3
+							<div class="styLNLeftNumBox" style="height:3mm;"><span style="width:1.5mm"/>3
                      </div>
 							<div class="styLNDesc" style="width:123mm;height:5mm;font-size:7pt;">Add the amounts in column (c) of line 2.  
 							<span class="styBoldText">Do not </span> enter more than $3,000 for one qualifying<br/>
@@ -593,13 +595,16 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                      <span style="width:16px"/>.
 					   <span style="width:16px"/>.
 					   <span style="width:16px"/>.
+					    <span style="width:16px"/>.
                                </span>
 							</div>
+							
 							<div class="styLNRightNumBoxNBB" style="height:6mm;border-right-width:0px;border-top-width:0px;background-color:lightgrey;border-top-width:0px;"/>
 							<div class="styIRS2441RightSpaceBox" style="height:6mm;border-left-width:1px;border-top-width:0px;"/>
-							<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;padding-top:1mm;">3                          
+						<div class="styIRS2441RightSpaceBox" style="width:131mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
+							<div class="styLNRightNumBox" style="height:6mm;border-right-width:0px;padding-top:3mm;">3                        
                             </div>
-							<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;padding-top:1mm;">
+							<div class="styLNAmountBox" style="float:right;height:6mm;border-left-width:1px;width:48mm;padding-top:2mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/TotalQlfdExpensesOrLimitAmt"/>
 								</xsl:call-template>
@@ -607,9 +612,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						</div>
 						<!--Line 4-->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:5mm;padding-top:1mm;">4
+							<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm;"><span style="width:1.5mm"/>4
                             </div>
-							<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:1mm;">Enter your  
+							<div class="styLNDesc" style="width:123mm;height:4mm;padding-top:1mm;">Enter your  
 						<span class="styBoldText">earned income.</span> See instructions
        			 <!--Dotted Line-->
 								<span class="styBoldText">
@@ -626,9 +631,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                        <span style="width:16px"/>.                                                     
                                </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;padding-top:1mm;">4                         
+							<div class="styLNRightNumBox" style="height:6mm;border-right-width:0px;padding-top:3mm;">4                         
                             </div>
-							<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;padding-top:mm;">
+							<div class="styLNAmountBox" style="height:6mm;border-left-width:1px;width:48mm;padding-top:2mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/PrimaryEarnedIncomeAmt"/>
 								</xsl:call-template>
@@ -636,19 +641,23 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						</div>
 						<!--Line 5-->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:5mm;">5
+							<div class="styLNLeftNumBox" style="height:5mm;"><span style="width:1.5mm"/>5
                             </div>
 							<div class="styLNDesc" style="width:123mm;height:5mm;">If married filing jointly, enter your spouse's 
 						earned income (if you or your spouse was a student or was disabled, see the instructions); <span class="styBoldText">all others,</span>
 						 enter the amount from line 4
        			 <!--Dotted Line-->
 								<span class="styBoldText">
+								<span style="width:4mm"/>
 									<span style="width:16px"/>.
+									<span style="width:16px"/>.
+									<span style="width:16px"/>.
+								
                                </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;padding-top:3.5mm;">5                       
+							<div class="styLNRightNumBox" style="height:6mm;border-right-width:0px;padding-top:3mm;">5                       
                             </div>
-							<div class="styLNAmountBox" style="height:8mm;border-left-width:1px;width:48mm;padding-top:3.5mm;">
+							<div class="styLNAmountBox" style="height:6mm;border-left-width:1px;width:48mm;padding-top:1.5mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/SpouseEarnedIncomeAmt"/>
 								</xsl:call-template>
@@ -656,9 +665,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						</div>
 						<!--Line 6-->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:5mm;font-size:7pt;">6
+							<div class="styLNLeftNumBox" style="height:5mm;font-size:7pt;padding-top:2mm;"><span style="width:1.5mm"/>6
                             </div>
-							<div class="styLNDesc" style="width:123mm;height:5mm;">Enter the <span class="styBoldText">smallest </span> of line 3, 4, or 5
+							<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:2mm;">Enter the <span class="styBoldText">smallest </span> of line 3, 4, or 5
        			 <!--Dotted Line-->
 								<span class="styBoldText">
 									<span style="width:16px"/>.
@@ -676,9 +685,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                        <span style="width:16px"/>.                                                                                     
                                </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:5.5mm;border-right-width:0px;border-bottom-width:1px;">6                      
+							<div class="styLNRightNumBox" style="height:6mm;border-right-width:0px;padding-top:2mm;">6                      
                             </div>
-							<div class="styLNAmountBox" style="height:5.5mm;border-left-width:1px;width:48mm;">
+							<div class="styLNAmountBox" style="height:6mm;border-left-width:1px;width:48mm;padding-top:2mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/SmallerOfExpensesOrIncomeAmt"/>
 								</xsl:call-template>
@@ -686,14 +695,14 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						</div>
 						<!--Line 7-->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;">7
+							<div class="styLNLeftNumBox" style="height:4mm;"><span style="width:1.5mm"/>7
                         </div>
 							<div class="styLNDesc" style="width:123mm;height:4mm;">Enter the amount from Form 1040, line 38; Form 1040A, line 22; or Form   
        		     </div>
 							<div class="styLNRightNumBoxNBB" style="height:4mm;border-right-width:0px;background-color:lightgrey;"/>
 							<div class="styIRS2441RightSpaceBox" style="height:4mm;border-right-width:0px;width:48mm;"/>
 							<div class="styLNDesc" style="width:91mm;height:4mm;font-size:7pt;">
-								<span style="width:9mm"/>1040NR, line 37    
+								<span style="width:8mm"/>1040NR, line 37    
  			<!--Dotted Line-->
 								<span class="styBoldText">
 									<span style="width:16px"/>.
@@ -706,7 +715,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                        <span style="width:16px"/>.                                                                                                                                                          
                                </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:1px;">7                     
+							<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:1px;padding-top:1mm;"><span style="width:1mm"/>7                     
                             </div>
 							<div class="styLNAmountBox" style="height:4.5mm;border-left-width:0px;width:32mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -718,7 +727,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						</div>
 <!--Line 8-->
 <div style="width:187mm;">
-			<div class="styLNLeftNumBox" style="height:4mm;font-size:7pt;">8
+			<div class="styLNLeftNumBox" style="height:4mm;font-size:7pt;"><span style="width:1.5mm"/>8
             </div>
 		<div class="styLNDesc" style="width:123mm;height:4mm;">Enter on line 8 the decimal amount shown below that applies to the amount on line 7  
            </div>
@@ -742,28 +751,28 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 								<div class="styLNAmountBoxNBB" style="height:5mm;border-left-width:0px;width:57mm;border-top-width: 0px;text-align:left;">
 									<span style="width:29mm"/>
 									<span class="styBoldText">But not</span>
-									<span style="width:3mm"/>
+									<span style="width:1.7mm"/>
 									<span class="styBoldText">Decimal</span>
 									<br/>
 									<span style="width:17mm"/>
 									<span class="styBoldText"> Over</span>
-									<span style="width:5.7mm"/>
+									<span style="width:3.7mm"/>
 									<span class="styBoldText">over</span>
-									<span style="width:7mm"/>
-									<span class="styBoldText">amount is</span>
+									<span style="width:3mm;padding-left:4.9mm;"/>
+									<span class="styBoldText"><span style="width:.55mm"/>amount is</span>
 								</div>
 							</div>
 							<div class="styLNAmountBoxNBB" style="height:6.0mm;border-left-width:0px;width:5mm;"/>
 							<div class="styLNDesc" style="width:56.9mm;">
 								<div class="styLNAmountBoxNBB" style="height:5mm;border-left-width:0px;width:56.9mm;border-top-width: 0px;text-align:left;">
-									<span style="width:23mm"/>
+									<span style="width:21mm"/>
 									<span class="styBoldText">But not</span>
 									<span style="width:4mm"/>
 									<span class="styBoldText">Decimal</span>
 									<br/>
 									<span style="width:10mm"/>
 									<span class="styBoldText"> Over</span>
-									<span style="width:7mm"/>
+									<span style="width:3mm"/>
 									<span class="styBoldText">over</span>
 									<span style="width:8mm"/>
 									<span class="styBoldText">amount is</span>
@@ -785,7 +794,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 									<span style="width:2.5mm"/>21,000 &#8212; 23,000   <span style="width:10mm"/> .31<br/>
 									<span style="width:2.5mm"/>23,000 &#8212; 25,000   <span style="width:10mm"/> .30<br/>
 									<span style="width:2.5mm"/>25,000 &#8212; 27,000   <span style="width:10mm"/> .29<br/>
-									<span style="width:2.3mm"/>27,000 &#8212; 29,000   <span style="width:10mm"/> .28              
+									<span style="width:2.5mm"/>27,000 &#8212; 29,000   <span style="width:10mm"/> .28              
 </div>
 							</div>
 							<div class="styLNAmountBoxNBB" style="height:26.0mm;border-left-width:0px;width:5mm;"/>
@@ -799,7 +808,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 									<span style="width:2.5mm"/>37,000 &#8212; 39,000   <span style="width:10mm"/> .23<br/>
 									<span style="width:2.5mm"/>39,000 &#8212; 41,000   <span style="width:10mm"/> .22 <br/>
 									<span style="width:2.5mm"/>41,000 &#8212; 43,000   <span style="width:10mm"/> .21<br/>
-									<span style="width:2.3mm"/>43,000 &#8212; No limit  <span style="width:9.3mm"/>.20</div>
+									<span style="width:2.5mm"/>43,000 &#8212; No limit  <span style="width:10mm"/>.20</div>
 							</div>
 							<div style="width:72mm;height:24mm;float:right">
 								<div class="styLNAmountBoxNBB" style="height:100%;border-left-width:0px;width:16mm;float:left;"/>
@@ -808,10 +817,10 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 									<div class="styIRS2441RightSpaceBox" style="height:6.3mm;border-left-width:1px;"/>
 								</div>
 								<div style="height:9mm;width:56mm;float:right">
-									<div class="styLNRightNumBoxNBB" style="height:100%;border-right-width:0px;border-bottom-width:1px;padding-top:3.5mm">  8                  
+									<div class="styLNRightNumBoxNBB" style="height:100%;border-right-width:0px;border-bottom-width:1px;padding-top:5.5mm">  8                  
 		  </div>
-									<div class="styLNAmountBox" style="height:100%;border-left-width:1px;width:47.5mm;padding-top:3.5mm;">
-										<span style="font-weight:bold;width:1mm;font-size:8pt;">X</span>
+									<div class="styLNAmountBox" style="height:100%;border-left-width:1px;width:47.5mm;padding-top:5.5mm;">
+										<span style="font-weight:bold;width:1mm;font-size:8pt;"></span>
 										<span style="">
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="$Form2441Data/CareExpensesDecimalAmt"/>
@@ -826,7 +835,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 							</div>
 							<!--Line 9-->
 							<div style="width:187mm;">
-								<div class="styLNLeftNumBox" style="height:5mm;padding-top:0mm;font-size:7pt;">9
+								<div class="styLNLeftNumBox" style="height:5mm;padding-top:0mm;font-size:7pt;"><span style="width:1.5mm"/>9
                           </div>
 								<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:0mm;">Multiply line 6 by the decimal amount on line 8. If you paid 2013 expenses in 2014, see<br/> the instructions
                              <!--CPYEExplainationStatement-->
@@ -850,11 +859,12 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                       <span style="width:16px"/>.    
                                         <span style="width:16px"/>.   
                                       <span style="width:16px"/>.
+                                        <span style="width:16px"/>.
                                     	</span>
 								</div>
-	<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;padding-top:3mm;">9                      
+	<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;padding-top:5mm;"><span style="width:1mm"/>9                      
                             </div>
-								<div class="styLNAmountBox" style="height:8mm;border-left-width:1px;width:48mm;padding-top:3mm;">
+								<div class="styLNAmountBox" style="height:8mm;border-left-width:1px;width:48mm;padding-top:5mm;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form2441Data/CalculatedTentativeExpenseAmt"/>
 									</xsl:call-template>
@@ -866,8 +876,8 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                         </div>
 								<div class="styLNDesc" style="width:123mm;height:4mm;">Tax liability limit. Enter the amount from the Credit Limit 
        		     </div>
-								<div class="styLNRightNumBoxNBB" style="height:3mm;border-right-width:0px;background-color:lightgrey;"/>
-								<div class="styLNAmountBoxNBB" style="height:3mm;border-left-width:1px;width:48mm;"/>
+								<div class="styLNRightNumBoxNBB" style="height:4mm;border-right-width:0px;background-color:lightgrey;"/>
+								<div class="styLNAmountBoxNBB" style="height:4mm;border-left-width:1px;width:48mm;"/>
 							</div>
 							<div class="styLNDesc" style="width:91mm;height:4mm;">
 								<span style="width:8mm"/>Worksheet in the instructions
@@ -882,7 +892,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                         <span style="width:16px"/>.  
                                </span>
 							</div>
-							<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:1px;">10                    
+							<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:1px;padding-top:1mm;">10                    
                             </div>
 							<div class="styLNAmountBox" style="height:4.5mm;border-left-width:0px;width:32mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -903,12 +913,13 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 									<span style="width:16px"/>.
                                     <span style="width:16px"/>.
                                      <span style="width:16px"/>.   
-                                       <span style="width:16px"/>.                                                                    
+                                       <span style="width:16px"/>.      
+                                         <span style="width:16px"/>.                                                                 
                                </span>
 							</div>
-			<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;border-bottom-width:0px;padding-top:3.5mm;">11                     
+			<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;border-bottom-width:0px;padding-top:5.5mm;">11                     
                             </div>
-						<div class="styLNAmountBox" style="height:8mm;border-left-width:1px;border-bottom-width:0px;width:48mm;padding-top:3.5mm;">
+						<div class="styLNAmountBox" style="height:8mm;border-left-width:1px;border-bottom-width:0px;width:48mm;padding-top:5.5mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/CreditForChildAndDepdCareAmt"/>
 								</xsl:call-template>
@@ -918,7 +929,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 					<!--Begin Footer-->
 					<div class="pageEnd" style="width:187mm;border-top:1 solid black;border-top-width1px;clear:all;">
 						<div class="stySmallText" style="width:110mm;"><span class="styBoldText">
-							For Paperwork Reduction Act Notice, see yout tax return instructions.</span>
+							For Paperwork Reduction Act Notice, see your tax return instructions.</span>
 						</div>
 <div class="stySmallText" style="width:40mm;">Cat. No. 11862M
         </div>
@@ -936,8 +947,8 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 					<!-- END Page Header -->
 					<!-- BEGIN PART III TITLE -->
 					<div class="styBB" style="width:187mm;border-top-width:1px;">
-							<span class="styPartName" style="width:17mm;font-size:13;">Part lll</span>
-						<div class="styPartDesc" style="padding-left:1mm;width:163mm;font-size:8pt">Dependent Care Benefits</div>
+							<span class="styPartName" style="width:17mm;font-size:13;height:3.5mm;">Part lll</span>
+						<div class="styPartDesc" style="padding-left:1mm;width:163mm;font-size:8pt;height:3.5mm;">Dependent Care Benefits</div>
 					</div>
 					<!--End Part IIITitle-->
 					<!--line 12-->
@@ -970,9 +981,10 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:10mm;border-right-width:0px;background-color:lightgrey;border-top-width:0px;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:10mm;border-left-width:1px;"/>
-						<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;padding-top:3.5mm;">12                    
+						<div class="styIRS2441RightSpaceBox" style="width:131mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
+						<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;padding-top:4.5mm;">12                    
                             </div>
-						<div class="styLNAmountBox" style="height:8mm;border-left-width:1px;width:48mm;padding-top:3.5mm;">
+						<div class="styLNAmountBox" style="float:right;height:8mm;border-left-width:1px;width:48mm;padding-top:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/DependentCareBenefitsAmt"/>
 							</xsl:call-template>
@@ -1002,9 +1014,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                         <span style="width:16px"/>.                                                                                      
                                </span>
 						</div>
-<div class="styLNRightNumBox" style="height:8.5mm;border-right-width:0px;padding-top:3.5mm;">13                    
+<div class="styLNRightNumBox" style="height:8.5mm;border-right-width:0px;padding-top:5mm;">13                    
                             </div>
-						<div class="styLNAmountBox" style="height:8.5mm;border-left-width:1px;width:48mm;padding-top:3.5mm;">
+						<div class="styLNAmountBox" style="height:8.5mm;border-left-width:1px;width:48mm;padding-top:5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/CarryoverAmt"/>
 							</xsl:call-template>
@@ -1018,12 +1030,13 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
        			 <!--Dotted Line-->
 							<span class="styBoldText">
 								<span style="width:16px"/>.
-                                    <span style="width:16px"/>.                                                                   
+                                    <span style="width:16px"/>.          
+                                       <span style="width:16px"/>.                                                                  
                                </span>
 						</div>
-	<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;padding-top:.5mm;">14                    
+	<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;padding-top:1mm;">14                    
                             </div>
-						<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;padding-top:.5mm;">
+						<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;padding-top:1mm;">
 							(<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/ForfeitedAmt"/>
 							</xsl:call-template>)
@@ -1045,12 +1058,13 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                        <span style="width:16px"/>.    
                                       <span style="width:16px"/>.
                                      <span style="width:16px"/>.   
-                                       <span style="width:16px"/>.                                                                       
+                                       <span style="width:16px"/>.  
+                                          <span style="width:16px"/>.                                                                      
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;">15                     
+						<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;padding-top:2mm;">15                     
                             </div>
-						<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;">
+						<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;padding-top:2mm">
 							<xsl:call-template name="PopulateAmount">
 					<xsl:with-param name="TargetNode" select="$Form2441Data/AdjustedDepdCareBenefitsAmt"/>
 							</xsl:call-template>
@@ -1065,7 +1079,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styLNAmountBoxNBB" style="height:4mm;border-left-width:1px;width:48mm;"/>
 						<div class="styLNDesc" style="width:91mm;height:4mm;">
-							<span style="width:9mm"/>in 2014 for the care of the <span class="styBoldText">qualifying person(s)</span>
+							<span style="width:8mm"/>in 2014 for the care of the <span class="styBoldText">qualifying person(s)</span>
 							<!--Dotted Line-->
 				<span class="styBoldText">
 					<span style="width:16px"/>.
@@ -1073,9 +1087,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                      <span style="width:16px"/>.                                                                                                                                              
                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:0px;">16                   
+						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:0px;padding-top:1mm;">16                   
                             </div>
-						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:1px;width:32mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:1px;width:32mm;padding-top:1mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/QualifiedExpensesAmt"/>
 							</xsl:call-template>
@@ -1087,19 +1101,21 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">17
                         </div>
-						<div class="styLNDesc" style="width:83mm;height:4mm;">Enter the <span class="styBoldText">smaller </span>of line 15 or 16
+						<div class="styLNDesc" style="width:83mm;height:4mm;">Enter the <span class="styBoldText">smaller </span> of line 15 or 16
                       	 			<!--Dotted Line-->
 							<span class="styBoldText">
 								<span style="width:16px"/>.
                                     <span style="width:16px"/>.
                                     <span style="width:16px"/>.     
                                      <span style="width:16px"/>.
-                                    <span style="width:16px"/>.                                                                                                                                                                
+                                    <span style="width:16px"/>.   
+                                     <span style="width:16px"/>.  
+                                                                                                                                                                                                                   
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:0px;">17                  
+						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:0px;padding-top:1mm;">17                  
                             </div>
-						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:1px;width:32mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:1px;width:32mm;padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/SmallerOfAdjOrQualifiedAmt"/>
 							</xsl:call-template>
@@ -1111,7 +1127,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">18
                         </div>
-						<div class="styLNDesc" style="width:83mm;height:4mm;">Enter your <span class="styBoldText">earned income. </span>See instructions
+						<div class="styLNDesc" style="width:83mm;height:4mm;">Enter your <span class="styBoldText">earned income. </span><span style="width:2px"/>See instructions
                       	 			<!--Dotted Line-->
 							<span class="styBoldText">
 								<span style="width:16px"/>.
@@ -1120,9 +1136,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                      <span style="width:16px"/>.
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:0px;">18                  
+						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:0px;padding-top:1mm;">18                  
                             </div>
-						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:1px;width:32mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:1px;width:32mm;padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/EarnedIncomeAmt"/>
 							</xsl:call-template>
@@ -1134,7 +1150,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">19 </div>
 						<div class="styLNDesc" style="width:60mm;height:4mm;">Enter the amount shown below that applies<br/> to you.
-                        <br/>
+                        <br/><br/>
 							<span style="text-align:left;">
 								<img src="{$ImagePath}/2441_Bullet_Round.gif" alt="MediumBullet"/> 
    If married filing jointly, enter your<br/>
@@ -1153,31 +1169,43 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
   </span>
 						</div>
 						<div class="styLNDesc" style="width:5mm;height:12mm;">
-							<div class="styLNRightNumBoxNBB" style="height:6mm;border-left-width: 0px; "/>
-							<span style="text-align:left;">
+							<div class="styLNRightNumBoxNBB" style="height:8mm;border-left-width: 0px; "/>
+							<!-- <span style="text-align:left;">
 								<img align="bottom" src="{$ImagePath}/2441_Bracket.gif" alt=""/>
+							</span>  -->
+							
+							<div style="width:44mm;">
+							<span style="float:left;">
+								<img alt="Curly brace" src="{$ImagePath}/CurlyBrace1.77x18.11mm.png" height="88" width="8"/>
 							</span>
+							<span class="styBoldText" style="padding-top:9mm;"><span style="width:1mm"></span><span style="width:7mm">.</span><span style="width:7mm">.</span><span style="width:7mm">.</span></span>
+							</div>
+							
+							
+                           
 						</div>
+					
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border-left-width: 0px;width:15mm; "/>
+						<div class="styIRS2441RightSpaceBox" style="width:3mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
 						<div class="styLNRightNumBoxNBB" style="height:16mm;border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:16mm;width:32mm;border-right-width:0px;"/>
 						<div class="styLNRightNumBoxNBB" style="height:16mm;border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:16mm;width:48mm;border-right-width:0px;"/>
 						<div class="styLNDesc" style="width:15mm;height:5mm;">
-							<span class="styBoldText">
-								<span style="width:16px"/>.
-                           <span style="width:16px"/>.                                                                                                                                                                                                                       
-                            </span>
+							
 						</div>
-						<div class="styLNRightNumBox" style="height:7.5mm;border-right-width:0px;padding-top:3mm;">19</div>
-						<div class="styLNAmountBox" style="height:7.5mm;border-left-width:1px;width:32mm;padding-top:3mm;">
+					
+						<div class="styIRS2441RightSpaceBox" style="width:76mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
+						<div class="styLNRightNumBox" style="height:7.5mm;border-right-width:0px;padding-top:4mm;">19</div>
+						<div class="styLNAmountBox" style="height:7.5mm;border-left-width:1px;width:32mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/SpouseIncomeAmt"/>
 							</xsl:call-template>
 						</div>
+						
 					<div class="styLNRightNumBoxNBB" style="height:7.5mm;border-left-width: 1px; border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:7.5mm;width:48mm;border-right-width:0px;"/>
-						<div class="styIRS2441SpaceBox" style="height:4mm;border-left-width:0px;border-bottom-width:0px;width:15mm;"/>
+						<div class="styIRS2441SpaceBox" style="height:4mm;border-left-width:0px;border-bottom-width:0px;width:15mm;"/><div class="styIRS2441RightSpaceBox" style="width:76mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
 					<div class="styLNRightNumBoxNBB" style="height:8.5mm;border-left-width: 1px; border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:8.5mm;width:32mm;border-right-width:0px;"/>
 						<div class="styLNRightNumBoxNBB" style="height:8.5mm;border-right-width:0px;background-color:lightgrey;"/>
@@ -1190,16 +1218,16 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						<div class="styLNDesc" style="width:83mm;height:4mm;">Enter the <span class="styBoldText">smallest</span> of line 17, 18, or 19
                       	 			<!--Dotted Line-->
 							<span class="styBoldText">
+							   <span style="width:16px"/>.
 								<span style="width:16px"/>.
                                     <span style="width:16px"/>.
                                     <span style="width:16px"/>.     
-                                     <span style="width:16px"/>.   
-                                      <span style="width:16px"/>.                                                                                                                                                                                              
+                                     <span style="width:16px"/>.                                                                                                                                                                                              
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:0px;">20                  
+						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:0px;padding-top:1mm;">20                  
                             </div>
-						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:1px;width:32mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:1px;width:32mm;padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/TentativeExclusionAmt"/>
 							</xsl:call-template>
@@ -1224,6 +1252,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                     <span style="width:16px"/>.
                                  <span style="width:16px"/>.  
                                   <span style="width:16px"/>.
+                                      <span style="width:16px"/>.
                                </span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.0mm;border-right-width:0px;background-color:lightgrey;border-bottom-width:0px;">                  
@@ -1232,9 +1261,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						</div>
 							<div class="styLNRightNumBoxNBB" style="height:4mm;border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:4mm;width:48mm;border-right-width:0px;"/>
-						<div class="styLNRightNumBox" style="height:5.5mm;border-right-width:0px;">21                  
+						<div class="styLNRightNumBox" style="height:5.5mm;border-right-width:0px;padding-top:2mm;">21                  
                             </div>
-						<div class="styLNAmountBox" style="height:5.5mm;border-left-width:1px;width:32mm;">
+						<div class="styLNAmountBox" style="height:5.5mm;border-left-width:1px;width:32mm;padding-top:2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/SpecifiedAmt"/>
 							</xsl:call-template>
@@ -1267,7 +1296,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 									<xsl:with-param name="BackupName">Form2441DataFiled1040AYesInd</xsl:with-param>
 								</xsl:call-template>
-								<span style="width:4px;"/>
+								<span style="width:1px;"/>
 								<b>No.  </b>
 							</label> Enter -0-.
                         </div>
@@ -1281,7 +1310,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 									<xsl:with-param name="BackupName">Form2441DataFiled1040ANoInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
-							<span style="width:4px;"/>
+							<span style="width:1px;"/>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
@@ -1306,8 +1335,8 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                    <span style="width:16px"/>.
                                </span>
                                </div>
-						<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;padding-top:1mm;">22</div>
-						<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;padding-top:1mm;border-bottom-width:1px;">
+						<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;padding-top:2mm;">22</div>
+						<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;padding-top:2mm;border-bottom-width:1px;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/SolePropshpPrtshpAmt"/>
 							</xsl:call-template>
@@ -1325,12 +1354,13 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                     <span style="width:16px"/>.     
                                      <span style="width:16px"/>.
                                     <span style="width:16px"/>.  
-                                     <span style="width:16px"/>.                                                                                                                                                                             
+                                     <span style="width:16px"/>.  
+                                      <span style="width:16px"/>.                                                                                                                                                                           
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:1px;">23               
+						<div class="styLNRightNumBox" style="height:4.5mm;border-right-width:1px;padding-top:1mm;">23               
                             </div>
-						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:0px;width:32mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;border-left-width:0px;width:32mm;padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/PropshpPrtshpLessAdjBnftAmt"/>
 							</xsl:call-template>
@@ -1356,9 +1386,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                      <span style="width:16px"/>.                                                                                             
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;padding-top:3.5mm;">24                    
+						<div class="styLNRightNumBox" style="height:8mm;border-right-width:0px;padding-top:5mm;">24                    
                             </div>
-						<div class="styLNAmountBox" style="height:8mm;border-left-width:1px;width:48mm;padding-top:3.5mm;">
+						<div class="styLNAmountBox" style="height:8mm;border-left-width:1px;width:48mm;padding-top:5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/DeductibleBenefitsAmt"/>
 							</xsl:call-template>
@@ -1374,11 +1404,12 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 							<span class="styBoldText">
 								<span style="width:16px"/>.
                                     <span style="width:16px"/>.
+                                      <span style="width:16px"/>.
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:11mm;border-right-width:0px;padding-top:5.5mm;">25                     
+						<div class="styLNRightNumBox" style="height:11mm;border-right-width:0px;padding-top:7.5mm;">25                     
                             </div>
-						<div class="styLNAmountBox" style="height:11mm;border-left-width:1px;width:48mm;padding-top:5.5mm;">
+						<div class="styLNAmountBox" style="height:11mm;border-left-width:1px;width:48mm;padding-top:7.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/ExcludedBenefitsAmt"/>
 							</xsl:call-template>
@@ -1403,14 +1434,18 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                         <span style="width:16px"/>.
                                     <span style="width:16px"/>.
                                      <span style="width:16px"/>.   
-                                       <span style="width:16px"/>.                        
+                                       <span style="width:16px"/>.  
+                                         <span style="width:16px"/>.    
+                                          <span style="width:16px"/>.                      
                                </span>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:12mm;border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:12mm;width:48mm;border-right-width:0px;"/>
-						<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;border-bottom-width:0px;">26                     
+						
+						<div class="styIRS2441RightSpaceBox" style="width:131mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
+						<div class="styLNRightNumBox" style="height:7mm;border-right-width:0px;border-bottom-width:0px;padding-top:4mm;">26                     
                             </div>
-						<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;border-bottom-width:0px;">
+						<div class="styLNAmountBox" style="float:right;height:7mm;border-left-width:1px;width:48mm;border-bottom-width:0px;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/TaxableBenefitsAmt"/>
 							</xsl:call-template>
@@ -1418,7 +1453,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 					</div>
 					<!--Instructions on Child and dependent care-->
 					<div class="styBB" style="width:187mm;border-top-width: 1px;height: 15mm;">
-						<div class="styPartDesc" style="text-align:center;padding-top:5mm;font-weight: normal;font-size:7pt;">To claim the child and dependent care <br/> credit, complete lines 27 through 31 below.
+						<div class="styPartDesc" style="text-align:center;padding-top:2.5mm;font-weight: normal;font-size:9pt;">To claim the child and dependent care <br/> credit, complete lines 27 through 31 below.
         </div>
 					</div>
 						<!--line 27-->
@@ -1436,12 +1471,13 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                       <span style="width:16px"/>.
                                        <span style="width:16px"/>.   
                                       <span style="width:16px"/>.    
-                                        <span style="width:16px"/>.                                                                                                   
+                                        <span style="width:16px"/>.  
+                                                                                                                              
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;border-right-width:1px;">27                   
+						<div class="styLNRightNumBox" style="height:5mm;border-right-width:1px;padding-top:2mm;">27                   
                             </div>
-						<div class="styLNAmountBox" style="height:5mm;border-left-width:0px;width:48mm;">
+						<div class="styLNAmountBox" style="height:5mm;border-left-width:0px;width:48mm;padding-top:2mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/AllowedCaredForAmt"/>
 							</xsl:call-template>
@@ -1474,9 +1510,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                           <span style="width:16px"/>.                                                   
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;border-right-width:1px;padding-top:3mm;">28                     
+						<div class="styLNRightNumBox" style="height:8mm;border-right-width:1px;padding-top:5mm;">28                     
                             </div>
-						<div class="styLNAmountBox" style="height:8mm;border-left-width:0px;width:48mm;padding-top:3mm;">
+						<div class="styLNAmountBox" style="height:8mm;border-left-width:0px;width:48mm;padding-top:5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/SumOfDedAndExcludedBenefitsAmt"/>
 							</xsl:call-template>
@@ -1493,12 +1529,12 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 								<span style="width:16px"/>.
                                     <span style="width:16px"/>.
                                      <span style="width:16px"/>.   
-                                       
+                                      <span style="width:16px"/>.        
                                </span>
 						</div>
-		<div class="styLNRightNumBox" style="height:8mm;border-right-width:1px;padding-top:3mm;">29                    
+		<div class="styLNRightNumBox" style="height:8mm;border-right-width:1px;padding-top:5mm;">29                    
                             </div>
-		<div class="styLNAmountBox" style="height:8mm;border-left-width:0px;width:48mm;padding-top:3mm;">
+		<div class="styLNAmountBox" style="height:8mm;border-left-width:0px;width:48mm;padding-top:5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/NetAllowableAmt"/>
 							</xsl:call-template>
@@ -1514,11 +1550,12 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 								<span style="width:16px"/>.
                                     <span style="width:16px"/>.
                                      <span style="width:16px"/>.   
+                                       <span style="width:16px"/>.   
                                </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;border-right-width:1px;padding-top:3.5mm;">30                    
+						<div class="styLNRightNumBox" style="height:8mm;border-right-width:1px;padding-top:4.9mm;">30                    
                             </div>
-						<div class="styLNAmountBox" style="height:8mm;border-left-width:0px;width:48mm;padding-top:3.5mm;">
+						<div class="styLNAmountBox" style="height:8mm;border-left-width:0px;width:48mm;padding-top:4.9mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/TotalQualifiedExpensesAmt"/>
 							</xsl:call-template>
@@ -1526,9 +1563,9 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 					</div>
 					<!--line 31-->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:5mm;padding-top:1mm;">31
+						<div class="styLNLeftNumBox" style="height:5mm;padding-top:1mm;border-bottom-width:0px;">31
                             </div>
-						<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:1mm;font-size:7pt;">Enter the <b>smaller </b>of line 29 or 30. Also, enter this amount on line 3 on the front of this form and complete lines 4 through 11
+						<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:1mm;font-size:7pt;border-bottom-width:0px;">Enter the <b>smaller </b>of line 29 or 30. Also, enter this amount on line 3 on the front of this form and complete lines 4 through 11
        			 <!--Dotted Line-->
 							<span class="styBoldText">
 								<span style="width:16px"/>.
@@ -1543,25 +1580,30 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
                                      <span style="width:16px"/>.
                                     <span style="width:16px"/>.
                                      <span style="width:16px"/>.  
-                                     <span style="width:16px"/>.                                             
+                                     <span style="width:16px"/>.        
+                                      <span style="width:16px"/>.                                           
                                </span>
 						</div>
-				<div class="styLNRightNumBox" style="height:8mm;border-right-width:1px;padding-top:3.5mm;border-bottom-width:0px;">31                    
+				<div class="styLNRightNumBox" style="height:8mm;border-right-width:1px;padding-top:3.5mm;border-bottom-width:0px;padding-top:4.5mm;">31                    
                             </div>
-						<div class="styLNAmountBox" style="height:8mm;border-left-width:0px;width:48mm;padding-top:3.5mm;border-bottom-width:0px;">
+						<div class="styLNAmountBox" style="height:8mm;border-left-width:0px;border-bottom-width:0px;width:48mm;padding-top:3.5mm;padding-top:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form2441Data/SmallerOfTotalQlfyExpensesAmt"/>
 							</xsl:call-template>
 						</div>
 					</div>
+					
+					<div class="styBB" style="width:187mm;border-top-width: 2px;border-bottom-width:0px;height: 2mm;"/>
+					
 					<!--Page Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:1mm; border-top:1 solid black;border-top-width:1px;">
+					<div class="pageEnd" style="width:187mm;padding-top:3mm; border-top:1 solid black;border-top-width:1px;">
 						<div style="float:right;">
 							<span style="width:80px;"/>  
           Form <span class="styBoldText">2441</span> (2014)
         </div>
 					</div>
 					<!--END Page Footer-->
+					 <p style="page-break-before: always"/>
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">
@@ -1590,17 +1632,19 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 								<tr class="styDepTblHdr">
 									<th class="styDepTblCell" scope="col" colspan="1" style="width:50mm;font-weight:normal;text-align: left;">
 										<span style="width:7mm;"/>
-										<span style="font-weight:bold;">(a)</span>
-                                                         Care provider's <br/>
+										<span style="padding-left:7mm;"> <span style="font-weight:bold;">(a)</span>
+                                                        Care provider's</span> <br/>
 										<span style="font-weight:bold;width:1mm;font-size:7pt;">1</span>
-										<span style="width:10mm;"/> name
+										<span style="width:10mm;"/> <span style="padding-left:13mm;">
+										name</span>
 
                                                            </th>
 									<th class="styDepTblCell" scope="col" colspan="1" style="width:80mm;font-weight:normal;">
-										<span style="font-weight:bold;">(b)</span>Address<br/>(number, street, apt. no., city, state, and ZIP code)
+										<span style="font-weight:bold;">(b)</span><span style="width:1mm;"/>
+										Address<br/>(number, street, apt. no., city, state, and ZIP code)
                                                                 </th>
 									<th class="styDepTblCell" scope="col" colspan="1" style="width:27mm;font-weight:normal;">
-										<span style="font-weight:bold;">(c)</span> Identify number<br/> (SSN or EIN)
+										<span style="font-weight:bold;">(c)</span> Identifying number<br/> (SSN or EIN)
                                                                 </th>
 									<th class="styDepTblCell" scope="col" colspan="1" style="width:30mm;font-weight:normal;">
 										<span style="font-weight:bold;">(d)</span> Amount paid<br/>(see instructions)
@@ -1619,7 +1663,7 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 										</xsl:choose>
 										</xsl:attribute>
 										<!--position 1-->
-										<td class="styDepTblCell" style="width:50mm;text-align:left">
+										<td class="styDepTblCell" style="width:80mm;text-align:left;vertical-align:top">
 											<span style="width:0mm;">
 												<xsl:if test="position()=1">
 													<span class="styBoldText"/>
@@ -1644,21 +1688,23 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 											</xsl:when>
 											<xsl:otherwise>
 											<!--CareProviderBusinessName-->										
-												
+												<span style="text-align:left;vertical-align:top;padding-top:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CareProviderBusinessName/BusinessNameLine1Txt"/>
 												</xsl:call-template>
+											</span>
 												<br/>
+												<span style="text-align:left;vertical-align:top;padding-top:0mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CareProviderBusinessName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
-												
+													</span>	
 											<!--CareProviderBusNameCtrl-->
-													<div style="text-align:left">
+													<span style="text-align:left;vertical-align:top:padding-bottom:2mm;">
 												<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="CareProviderBusNameControlTxt"/>
 												</xsl:call-template>
-												</div>
+												</span>
 											</xsl:otherwise>
 											</xsl:choose>
 										</td>
@@ -1772,17 +1818,20 @@ see the instructions for Form 1040, line 60a, or Form 1040NR, line 59a.
 						<br/>
 						<table class="styDepTbl" cellspacing="0" style="font-size:7pt;" summary="Table displaying Qualifying persons information" name="Qualtable" id="Qualtable">
 							<thead class="styTableThead">
-								<tr class="styDepTblHdr">
-									<th class="styDepTblCell" scope="col" colspan="2" style="width:88mm;font-weight:normal;">
-										<span style="font-weight:bold;">(a)</span>
-       Qualifying person's name
-      <br/> First<span style="width:45mm"/>Last
+								<tr class="styDepTblHdr" >
+									<th class="styDepTblCell" scope="col" colspan="2" style="width:88mm;font-weight:normal;;vertical-align:top;">
+									
+										<span style="font-weight:bold;"></span>
+      <span style="height:3mm;padding-top:3mm">
+							(a) Qualifying person's name
+      <br/> First<span style="width:40mm"/>Last
+   	</span>
                                    </th>
-									<th class="styDepTblCell" scope="col" colspan="1" style="width:49mm;font-weight:normal;">
-										<span style="font-weight:bold;">(b)</span> Qualifying person's social security number
+									<th class="styDepTblCell" scope="col" colspan="1" style="width:49mm;font-weight:normal;vertical-align:top;">
+										<span style="font-weight:bold;"></span>   <span style="height:3mm;padding-bottom:5mm">(b) Qualifying person's social security number  	</span>
                                  </th>
-									<th class="styDepTblCell" scope="col" colspan="1" style="width:49mm;font-weight:normal;">
-										<span style="font-weight:bold;">(c)</span>Qualified expenses you<br/> incurred and paid in 2014 for the person listed in column (a)
+									<th class="styDepTblCell" scope="col" colspan="1" style="width:49mm;font-weight:normal;vertical-align:top;">
+										<span style="font-weight:bold;"></span>  <span style="height:3mm;padding-bottom:5mm">(c) Qualified expenses you<br/> incurred and paid in 2014 for the person listed in column (a)  	</span>
                                 </th>
 								</tr>
 							</thead>

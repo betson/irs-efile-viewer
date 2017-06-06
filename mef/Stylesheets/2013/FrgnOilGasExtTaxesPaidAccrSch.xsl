@@ -14,8 +14,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -47,15 +49,15 @@
 						<!--TY 2003 Foreign Oil and Gas Extraction Taxes Paid or Accrued Schedule-->
 					</div>
 				</div>
-				<xsl:call-template name="PopulateDepCommonLeftover">
-					<xsl:with-param name="TargetNode" select="$Form1118IDeps3Data"/>
-				</xsl:call-template>
-				<div class="styTopSectionLine" style="width:187mm;">
-					<div class="styTopSectionLineLbl" style="float:left;clear:none;">Schedule:</div>
-					<div style="float:left;clear:none;width:118mm;">
-						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$Form1118IDeps3Data/ExplanationTxt"/>
-						</xsl:call-template>
+				<xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$Form1118IDeps3Data"/></xsl:call-template>
+				
+				<div class="styTopSectionLine">
+					<div class="styTopSectionLineLbl" style="float:none">
+					Explanation:
+					</div>
+					<div style="width:185mm;float:none;">
+					<br/>
+					<xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form1118IDeps3Data/ExplanationTxt"/></xsl:call-template>
 					</div>
 				</div>
 			</body>

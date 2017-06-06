@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
-<!-- 09/25/2014 - Made changes as per KISAMS IM01845414 - Jeremy Nichols -->
+<!-- 04/28/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -12,8 +12,10 @@
 	<xsl:param name="FormData" select="$RtnDoc/IRS8903"/>
 	<!-- Check this out -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -58,10 +60,9 @@
 							<br/>
 							<span class="styAgency">Internal Revenue Service</span>
 						</div>
-						<div class="styFTBox" style="height: 18mm;width:125mm;padding-top:4mm;border-right:1 solid black;">
-							<div class="styMainTitle" style="height: 5mm">Domestic Production Activities Deduction</div>
+						<div class="styFTBox" style="height: 18mm;width:125mm;padding-top:4mm;border-right:1px solid black;">
+							<div class="styMainTitle" style="height: 7mm">Domestic Production Activities Deduction</div>
 							<div class="styFST" style="font-size:7pt;margin-left:3mm;font-weight:bold">
-								<br/>
 								<br/>
 								<img src="{$ImagePath}/8903_Bullet.gif" alt="MediumBullet"/>  
         							Attach to your tax return. 
@@ -77,7 +78,7 @@
 							<div class="stySequence">Attachment<br/>Sequence No. <b>143</b>
 							</div>
 						</div>  -->
-						<div style="float:left; font-size:7pt; width:31mm; padding-top:3.5mm; text-align:center; border-bottom:1 solid black; height:9mm">
+						<div style="float:left; font-size:7pt; width:31mm; padding-top:3.5mm; text-align:center; border-bottom:1px solid black; height:9mm">
           						OMB No. 1545-1984
        					</div>
 						<div style="float:left; font-size:7pt; padding-top:1mm; padding-left:4.5mm">
@@ -129,17 +130,17 @@
 					<!--  End Name and Employer indentification number  -->
 					<!-- -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:12mm;"/>
+						<div class="styLNLeftNumBox" style="height:10mm;"/>
 						<div class="styLNDesc" style="width:107mm;font-size:7pt;">
 							<b>Note. Do not</b> complete column (a), unless you have oil-related production 
 							activities. Enter amounts for all activities in column (b), including oil-related
 						    production activities.
 						</div>
-						<div class="styLNAmountBox" style="height:12mm;width:40.25mm;text-align:center;font-size:7pt;">
+						<div class="styLNAmountBox" style="height:10mm;width:40.25mm;text-align:center;font-size:7pt;">
 							(a)<br/>
 							<span style="font-size:6pt;">Oil-related production activities</span>
 						</div>
-						<div class="styLNAmountBox" style="height:12mm;text-align:center;width:31.75mm;">
+						<div class="styLNAmountBox" style="height:10mm;text-align:center;width:31.75mm;">
 							(b)<br/>
 							All activities
 						</div>
@@ -181,37 +182,38 @@
 					<!--End  Line 1 -->
 					<!--  Line 2 -->
 					<div style="width: 187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4mm; padding-left:4mm;">2</div>
-						<div class="styLNDesc" style="width:107mm; height:4mm;">
-    		Allocable cost of goods sold. If you are using the small business simplified
-    		overall method, skip lines 2 and 3
-            <span class="styBoldText">
-								<span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                   <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-        </span>
+						<div class="styLNLeftNumBoxSD" style="height:7mm; padding-left:4mm;">2</div>
+						<div class="styLNDesc" style="width:107mm; height:7mm;">
+							Allocable cost of goods sold. If you are using the small business simplified
+							overall method, skip lines 2 and 3
+							<span class="styBoldText">
+												<span style="width:12px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								   <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+							</span>
 						</div>
-						<div class="styLNRightNumBox" style="padding-top:4mm;height:4mm;">2</div>
-						<div class="styLNAmountBox" style="padding-top:4mm;height:4mm;">
+						<div class="styLNRightNumBox" style="padding-top:4mm;height:7mm;">2</div>
+						<div class="styLNAmountBox" style="padding-top:4mm;height:7mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/AllProductionGrp/AllocatedCostOfGoodsSoldAmt"/>
 							</xsl:call-template>
 						</div>
 						<div style="float:right;">
-							<div class="styLNAmountBox" style="padding-top:4mm;">
+							<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AllActivitiesGrp/AllocatedCostOfGoodsSoldAmt"/>
 								</xsl:call-template>
@@ -226,6 +228,7 @@
      	Enter deductions and losses allocable to DPGR (see instructions)
      	             <span class="styBoldText">
 								<span style="width:8px"/>.
+                  <span style="width:8px"/>.
                   <span style="width:8px"/>.
                   <span style="width:8px"/>.
                   <span style="width:8px"/>.
@@ -248,39 +251,42 @@
 					<!--End  Line 3 -->
 					<!--  Line 4 -->
 					<div style="width: 187mm">
-						<div class="styLNLeftNumBoxSD" style="padding-left:4mm;">4</div>
-						<div class="styLNDesc" style="width:107mm;">
-	    If you are using the small business simplified overall method, enter
-         the amount of cost of goods sold and other deductions or losses
-         you ratably apportion to DPGR. All others, skip line 4    
-	    <span class="styBoldText">
-								<span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-        </span>
+						<div class="styLNLeftNumBoxSD" style="height:9.5mm;padding-left:4mm;">4</div>
+						<div class="styLNDesc" style="height:9.5mm;width:107mm;">
+							If you are using the small business simplified overall method, enter
+							 the amount of cost of goods sold and other deductions or losses
+							 you ratably apportion to DPGR. All others, skip line 4    
+							<span class="styBoldText">
+													<span style="width:11px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+									  <span style="width:8px"/>.
+							</span>
 						</div>
-						<div class="styLNRightNumBox" style="padding-top:6.5mm;height:6mm;">4</div>
-						<div class="styLNAmountBox" style="padding-top:6.5mm;height:6mm">
+						<div class="styLNRightNumBox" style="padding-top:6.5mm;height:9.5mm;">4</div>
+						<div class="styLNAmountBox" style="padding-top:6.5mm;height:9.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/AllProductionGrp/IndirectDedExpnssLossesAmt"/>
 							</xsl:call-template>
 						</div>
 						<div style="float:right;">
-							<div class="styLNAmountBox" style="padding-top:6.5mm;">
+							<div class="styLNAmountBox" style="height:9.5mm;padding-top:6.5mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AllActivitiesGrp/IndirectDedExpnssLossesAmt"/>
 								</xsl:call-template>
@@ -295,7 +301,6 @@
               Add lines 2 through 4
               <span class="styBoldText">
 								<span style="width:8px"/>.
-                  <span style="width:8px"/>.
                   <span style="width:8px"/>.
                   <span style="width:8px"/>.
                   <span style="width:8px"/>.
@@ -337,8 +342,7 @@
 						<div class="styLNLeftNumBoxSD" style="padding-top:1mm; padding-left:4mm;">6</div>
 						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
               Subtract line 5 from line 1
-              <span class="styBoldText">
-								<span style="width:8px"/>.
+              <span class="styBoldText">.
                   <span style="width:8px"/>.
                   <span style="width:8px"/>.
                   <span style="width:8px"/>.
@@ -375,24 +379,29 @@
 					<!--End Line 6 -->
 					<!--  Line 7  -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="padding-top:1mm; padding-left:4mm;">7</div>
-						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
-               Qualified production activities income from estates, trusts, and certain partnerships and
-S corporations (see instructions).
-              <span class="styBoldText">
-								<span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.        
-              </span>
+						<div class="styLNLeftNumBoxSD" style="height:7mm;padding-top:1mm; padding-left:4mm;">7</div>
+						<div class="styLNDesc" style="height:7mm;width:107mm;padding-top:1mm;">
+						   Qualified production activities income from estates, trusts, and certain partnerships and
+							S corporations (see instructions).
+										  <span class="styBoldText">
+															<span style="width:4px"/>.
+											 <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.
+											  <span style="width:8px"/>.        
+										  </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:8mm;padding-top:3.5mm;">7</div>
-						<div class="styLNAmountBox" style="height:8mm;padding-top:3.5mm;">
+						<div class="styLNRightNumBox" style="height:7mm;padding-top:4mm;">7</div>
+						<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/AllProductionGrp/QlfyProductionActivitiesAmt"/>
 							</xsl:call-template>
@@ -401,7 +410,7 @@ S corporations (see instructions).
 								<div style="width:7.75mm;background-color:lightgrey;height:4.5mm;"/>7         
    							</div>  -->
 						<div style="float:right">
-							<div class="styLNAmountBox" style="height:4.5mm;padding-top:4mm;">
+							<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AllActivitiesGrp/QlfyProductionActivitiesAmt"/>
 								</xsl:call-template>
@@ -411,35 +420,35 @@ S corporations (see instructions).
 					<!--End  Line 7  -->
 					<!--  Line 8 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="padding-top:1mm; padding-left:4mm;">8</div>
-						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
-               Add lines 6 and 7. Estates and trusts, go to line 9, all others, skip line 9 and go to line 10.
-              <span class="styBoldText">
-								<span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.      
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.
-                  <span style="width:8px"/>.      
-                  <span style="width:8px"/>.
-                 <span style="width:8px"/>.      
-                  <span style="width:8px"/>.                              
-                  <span style="width:8px"/>.                              
-              </span>
+						<div class="styLNLeftNumBoxSD" style="height:7mm;padding-top:1mm; padding-left:4mm;">8</div>
+						<div class="styLNDesc" style="height:7mm;width:107mm;padding-top:1mm;">
+						   Add lines 6 and 7. Estates and trusts, go to line 9, all others, skip line 9 and go to line 10.
+						  <span class="styBoldText">
+											<span style="width:2px"/>.
+							 <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.      
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.
+							  <span style="width:8px"/>.      
+							  <span style="width:8px"/>.
+							 <span style="width:8px"/>.      
+							  <span style="width:8px"/>.                              
+							  <span style="width:8px"/>.                              
+						  </span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7mm;padding-top:4mm;">8</div>
 						<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
@@ -448,7 +457,7 @@ S corporations (see instructions).
 							</xsl:call-template>
 						</div>
 						<div style="float:right">
-							<div class="styLNAmountBox" style="height:4mm;padding-top:4mm;">
+							<div class="styLNAmountBox" style="height:7mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AllActivitiesGrp/ProductionActivitiesIncomeAmt"/>
 								</xsl:call-template>
@@ -464,7 +473,7 @@ S corporations (see instructions).
 						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
                Amount allocated to beneficiaries of the estate or  trust (see instructions)
               <span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:14px"/>.
                  <span style="width:8px"/>.
                                                                                                  
               </span>
@@ -488,84 +497,78 @@ S corporations (see instructions).
 					<!-- End Line 9 -->
 					<!-- Line 10a -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="padding-top:1mm;">10a</div>
-						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
+						<div class="styLNLeftNumBoxSD" style="height:9.5mm;padding-top:1mm;">10a</div>
+						<div class="styLNDesc" style="height:9.5mm;width:107mm;padding-top:1mm;">
 							<b>Oil-related qualified production activities income.</b> Estates and trusts, subtract line 9, column (a), from line 8, column (a),
 							 all others, enter amount from line 8, column (a).  If zero or less, enter -0- here
-              <span class="styBoldText">
-								<span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                                                                                        
-              </span>
+							  <span class="styBoldText">
+								 <span style="width:1px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+							  </span>
 						</div>
 						<div style="float:right">
-							<div class="styLNRightNumBox" style="height:8mm;padding-top:0mm;">
-								<div style="width:7.75mm;background-color:lightgrey;height:8mm;"/>
-          	10a         
-   		</div>
-							<div class="styLNAmountBox" style="height:8mm;padding-top:8mm;">
+							<div class="styLNRightNumBox" style="height:9.5mm;padding-top:6.5mm;">
+									10a         
+								</div>
+							<div class="styLNAmountBox" style="height:9.5mm;width:32mm;padding-top:6.5mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AllProductionGrp/OilRelQlfyProdActivitiesIncAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNAmountBoxNBB" style="height: 12mm;background-color: lightgrey;border-bottom-width:1px;width:31.75mm;"/>
+							<div class="styLNAmountBoxNBB" style="height:9.5mm;background-color: lightgrey;border-bottom-width:1px;width:32mm;"/>
 						</div>
 					</div>
 					<!-- End Line 10a -->
 					<!-- Line 10b -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="padding-top:1mm;padding-left:5.7mm;">b</div>
-						<div class="styLNDesc" style="width:107mm;padding-top:1mm;">
+						<div class="styLNLeftNumBoxSD" style="height:13mm;padding-top:1mm;padding-left:5.7mm;">b</div>
+						<div class="styLNDesc" style="height:13mm;width:107mm;padding-top:1mm;">
 							<b>Qualified production activities income.</b> Estates and trusts, subtract line 9, column (b), from line 8, column (b),
-							 all others, enter amount from line 8, column (b).  If zero or less, enter -0- here, skip lines 11 through 21, and enter -0- on line 22
-              <span class="styBoldText">
-								<span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                 <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                                                                              
-              </span>
+							 all others, enter amount from line 8, column <br/>(b).  If zero or less, enter -0- here, skip lines 11 through 21, and enter -0- on <br/>line 22
+							  <span class="styBoldText">
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								 <span style="width:8px"/>.
+								  <span style="width:8px"/>.
+							  </span>
 						</div>
 						<div style="float:right">
-							<div class="styLNRightNumBox" style="height:10.5mm;padding-top:0mm;">
-								<div style="width:7.75mm;background-color:lightgrey;height:10.5mm;"/>
-          	10b         
-   		</div>
-							<div class="styLNAmountBoxNBB" style="height: 14.5mm;background-color: lightgrey;border-bottom-width:1px;"/>
-							<div class="styLNAmountBox" style="height:10.5mm;padding-top:10.5mm;width:31.75mm;">
+							<div class="styLNRightNumBox" style="height:13mm;padding-top:10mm;">
+								10b         
+							</div>
+							<div class="styLNAmountBoxNBB" style="height: 13mm;width:32mm;background-color: lightgrey;border-bottom-width:1px;"/>
+							<div class="styLNAmountBox" style="height:13mm;padding-top:10mm;width:32mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/AllActivitiesGrp/QlfyProductionActyIncomeAmt"/>
 								</xsl:call-template>
@@ -576,42 +579,42 @@ S corporations (see instructions).
 					<!-- Line 11 -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="padding-left:2mm; padding-left:2mm;">11</div>
-						<div class="styLNDesc" style="width:134mm;">
-       	Income limitation (see instructions):          
-          <li style="padding-top:1mm;">
-          	Individuals, estates, and trusts. Enter your adjusted gross income figured without the domestic 
-			<br/>
-								<span style="width:4mm;"/>production activities deduction
-       
-            <span style="letter-spacing:4mm; font-weight:bold;">  
-              ..................
-            </span>
+						<div class="styLNDesc" style="height:17mm;width:134mm;">
+							Income limitation (see instructions):    
+							<span style="padding-left:4mm;">
+							  <li style="padding-top:1mm;">
+								Individuals, estates, and trusts. Enter your adjusted gross income figured without the domestic 
+								<br/>
+								production activities deduction
+								<span style="width:0.5mm;"/>
+								<span style="letter-spacing:4mm; font-weight:bold;">  
+								  ..................
+								</span>
 							</li>
 							<li style="padding-top:1mm;">
-          	All others. Enter your taxable income figured without the domestic production activities 
-			<br/>
-								<span style="width:4mm;"/>deduction (tax-exempt organizations, see instructions)
+								All others. Enter your taxable income figured without the domestic production activities 
+								<br/>
+								deduction (tax-exempt organizations, see instructions)
        
-            <span style="letter-spacing:4mm; font-weight:bold;">  
-              ...........
-            </span>
+								<span style="letter-spacing:4mm; font-weight:bold;">  
+								  ............
+								</span>
 							</li>
+							</span>
 						</div>
-						<div class="styGenericDiv" style="width:5mm; height:13mm;padding-top:4mm;">
+						<div class="styGenericDiv" style="width:5mm; height:17mm;padding-top:1mm;">
 							<img style="height:17mm" src="{$ImagePath}/8903_Bracket_Lg.gif" alt="Curly Bracket Image"/>
 						</div>
 						<div style="float:right">
-							<div class="styLNRightNumBox" style="width:7.75mm;height:14mm;padding-top=0mm;">
-								<div style="width:7.75mm;border-left-width:0px;background-color:lightgrey;height:11mm;"/>
-          	11
-        	</div>
-							<div class="styLNAmountBox" style="height:14mm;padding-top:11mm;width:31.75mm;">
+							<div class="styLNRightNumBox" style="width:7.75mm;height:17mm;padding-top:0mm;">
+								<div style="width:7.75mm;border-left-width:0px;background-color:lightgrey;height:13.5mm;"/>
+							11
+							</div>
+							<div class="styLNAmountBox" style="height:17mm;padding-top:14mm;width:32mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/IncomeLimitationAmt"/>
 								</xsl:call-template>
 							</div>
-							<div class="styLNRightNumBoxNBB" style="height: 8.25mm;background-color: lightgrey;"/>
-							<div class="styLNAmountBoxNBB" style="height: 8.25mm;"/>
 						</div>
 					</div>
 					<!-- End Line 11 -->
@@ -619,52 +622,52 @@ S corporations (see instructions).
 					<div style="width: 187mm;">
 						<div class="styLNLeftNumBox" style="padding-left:2mm;">12</div>
 						<div class="styLNDesc" style="width:139mm;">
-       Enter the smaller of line 10b or line 11. If zero or less, enter -0- here, skip lines 13 through 21, and 
-    	</div>
+						   Enter the smaller of line 10b or line 11. If zero or less, enter -0- here, skip lines 13 through 21, and 
+						</div>
 						<div style="float:right;">
 							<div class="styShadingCellBox" style="height:4mm;"/>
-							<div class="styLNAmountBoxNBB" style="height:4mm;"/>
+							<div class="styLNAmountBoxNBB" style="height:4mm;width:32mm;"/>
 						</div>
 					</div>
 					<div style="width: 187mm;">
 						<div class="styLNLeftNumBox" style="padding-top:0mm;"/>
 						<div class="styLNDesc" style="padding-top:0mm;">
-       enter -0- on line 22  
-           <span class="styBoldText">
+						   enter -0- on line 22  
+						   <span class="styBoldText">
 								<span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.     
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>. 
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-                <span style="width:8px"/>.
-          </span>
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.     
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>. 
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>. 
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>. 
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+						  </span>
 						</div>
 						<div style="float:right;">
 							<div class="styLNRightNumBox">12</div>
-							<div class="styLNAmountBox">
+							<div class="styLNAmountBox" style="width:32mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/QualifiedIncomeOrIncomeLmtAmt"/>
 								</xsl:call-template>
@@ -674,8 +677,8 @@ S corporations (see instructions).
 					<!-- End Line 12 -->
 					<!--  Line 13 -->
 					<div style="width: 187mm;">
-						<div class="styLNLeftNumBox" style="padding-top:2mm; padding-left:2mm;">13</div>
-						<div class="styLNDesc" style="padding-top:2mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm; padding-left:2mm;">13</div>
+						<div class="styLNDesc" style="height:4mm;padding-top:1mm;">
        Enter 9% of line 12   
            <span class="styBoldText">
 								<span style="width:8px"/>.
@@ -711,8 +714,8 @@ S corporations (see instructions).
           </span>
 						</div>
 						<div style="float:right;">
-							<div class="styLNRightNumBox" style="padding-top:3mm;">13</div>
-							<div class="styLNAmountBox" style="padding-top:3mm;">
+							<div class="styLNRightNumBox" style="height:4mm;padding-top:1mm;">13</div>
+							<div class="styLNAmountBox" style="height:4mm;width:32mm;padding-top:1mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/PercentOfIncomeAmt"/>
 								</xsl:call-template>
@@ -722,8 +725,8 @@ S corporations (see instructions).
 					<!-- End Line 13 -->
 					<!--  Line 14a -->
 					<div style="width: 187mm;">
-						<div class="styLNLeftNumBox" style="padding-top:1mm; padding-left:2mm;">14a</div>
-						<div class="styLNDesc" style="width:99mm;padding-top:1mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;padding-top:1mm; padding-left:2mm;">14a</div>
+						<div class="styLNDesc" style="height:4mm;width:99mm;padding-top:1mm;">
        Enter the smaller of line 10a or line 12   
            <span class="styBoldText">
 								<span style="width:8px"/>.
@@ -741,15 +744,15 @@ S corporations (see instructions).
   
           </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:5mm;padding-top:1mm;">14a</div>
-						<div class="styLNAmountBox" style="height:5mm;padding-top:1mm;">
+						<div class="styLNRightNumBox" style="height:4mm;padding-top:1mm;">14a</div>
+						<div class="styLNAmountBox" style="height:4mm;padding-top:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/QlfyIncOrOilRelOrIncLimitsAmt"/>
 							</xsl:call-template>
 						</div>
 						<div style="float:right;">
-							<div class="styLNRightNumBox" style="padding-top:1mm;background-color:lightgrey;"/>
-							<div class="styLNAmountBox" style="padding-top:1mm;background-color:lightgrey;"/>
+							<div class="styLNRightNumBox" style="height:4mm;padding-top:1mm;background-color:lightgrey;"/>
+							<div class="styLNAmountBox" style="height:4mm;width:32mm;padding-top:1mm;background-color:lightgrey;"/>
 						</div>
 					</div>
 					<!-- End Line 14a -->
@@ -759,7 +762,8 @@ S corporations (see instructions).
 						<div class="styLNDesc" style="padding-top:1mm;">
        Reduction for oil-related qualified production activities income.  Multipy line 14a by 3%   
            <span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:13px"/>.
+                <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
@@ -784,7 +788,7 @@ S corporations (see instructions).
 						<div class="styLNDesc" style="padding-top:1mm;">
        Subtract line 14b from line 13.
              <span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:13px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
@@ -867,14 +871,12 @@ S corporations (see instructions).
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="padding-top:1mm;  padding-left:2mm;">17</div>
 						<div class="styLNDesc" style="width:139mm;padding-top:1mm;">
-               Form W-2 wages from estates, trusts, and certain partnerships and S corporations
-                (see instructions)
-              <span class="styBoldText">
-								<!--                  <span style="width:8px"></span>.
-                 <span style="width:8px"></span>.
-                  <span style="width:8px"></span>.
-                  <span style="width:8px"></span>.
-                  <span style="width:8px"></span>.    -->
+						   Form W-2 wages from estates, trusts, and certain partnerships and S corporations
+							(see instructions)
+						  <span class="styBoldText">
+								<span style="width:4px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
 							</span>
 						</div>
 						<div style="float:right">
@@ -896,8 +898,11 @@ S corporations (see instructions).
 						<div class="styLNDesc" style="padding-top:1mm;">
        	Add lines 16 and 17. Estates and trusts, go to line 19, all others, skip line 19 and go to line 20  
               <span class="styBoldText">
-								<span style="width:8px"/>.           
+								<span style="width:4px"/>.           
                      <span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
+								<span style="width:8px"/>.
              </span>
 						</div>
 						<div style="float:right;">
@@ -919,7 +924,7 @@ S corporations (see instructions).
 						<div class="styLNDesc" style="padding-top:1mm;">
        Amount allocated to beneficiaries of the estate or trust (see instructions).  
            <span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:15px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
@@ -928,6 +933,7 @@ S corporations (see instructions).
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.     
+				<span style="width:8px"/>.
                 <span style="width:8px"/>.
           </span>
 						</div>
@@ -947,12 +953,13 @@ S corporations (see instructions).
 						<div class="styLNDesc" style="padding-top:1mm;">
        Estates and trusts, subtract line 19 from line 18, all others, enter amount from line 18.
            <span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:9px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
-  
+				<span style="width:8px"/>.
+				<span style="width:8px"/>.
           </span>
 						</div>
 						<div style="float:right;">
@@ -971,7 +978,7 @@ S corporations (see instructions).
 						<div class="styLNDesc" style="padding-top:1mm;">
      	 Form W-2 wage limitation. Enter 50% of line 20 
            <span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:4px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
@@ -1010,7 +1017,7 @@ S corporations (see instructions).
 						<div class="styLNDesc" style="padding-top:1mm;">
        Enter the smaller of line 15 or line 21   
            <span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:9px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
@@ -1021,6 +1028,7 @@ S corporations (see instructions).
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
+				<span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
@@ -1060,8 +1068,7 @@ S corporations (see instructions).
 						<div class="styLNLeftNumBox" style="padding-top:0mm;"/>
 						<div class="styLNDesc" style="padding-top:0mm;">
        box 6   
-                  <span class="styBoldText">
-								<span style="width:8px"/>.
+                  <span class="styBoldText">.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
@@ -1117,7 +1124,7 @@ S corporations (see instructions).
 								<xsl:with-param name="TargetNode" select="$FormData/ExpandedGroupAllocationAmt"/>
 							</xsl:call-template>
 							<span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:6px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
@@ -1133,6 +1140,7 @@ S corporations (see instructions).
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
                 <span style="width:8px"/>.
+				<span style="width:8px"/>.
                 
           </span>
 						</div>
@@ -1147,26 +1155,29 @@ S corporations (see instructions).
 					</div>
 					<!--End  Line 24 -->
 					<!--  Line 25 -->
-					<div class="StyTBB" style="width: 187mm;">
+					<div class="StyTBB" style="width: 187mm;border-bottom:1px solid black;">
 						<div class="styLNLeftNumBox" style=" padding-left:2mm;padding-top:0mm;">25</div>
 						<div class="styLNDesc" style="width:138.5mm;padding-top:0mm;">
 							<b>Domestic production activities deduction.</b> Combine lines 22 through 24 and enter the result
               here and on Form 1040, line 35; Form 1120, line 25; or the applicable
               line of your return  
               <span class="styBoldText">
-								<span style="width:8px"/>.
+								<span style="width:2px"/>.
                    <span style="width:8px"/>.
                    <span style="width:8px"/>.
                    <span style="width:8px"/>.
                    <span style="width:8px"/>.
                    <span style="width:8px"/>.
                    <span style="width:8px"/>.
-                   <span style="width:8px"/>.                 
+                   <span style="width:8px"/>.
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.
+					<span style="width:8px"/>.                 
               </span>
 						</div>
 						<!-- 	<div  style="width=8.25mm;background-color:lightgrey;height:4.7mm;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 1px; solid;border-style: solid; border-color: black;"></div>    -->
 						<div style="float:right;">
-							<div class="styLNRightNumBox" style="height:7mm; padding-top:3mm;">25</div>
+							<div class="styLNRightNumBox" style="height:7mm;border-bottom-width:0px; padding-top:3mm;">25</div>
 							<div class="styLNAmountBox" style="border-bottom-width:0px;height:7mm;padding-top:3mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$FormData/DomesticProductionActDedAmt"/>

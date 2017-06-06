@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
-<!-- 05/15/2014 - Modified per UWR #107611 - Jeremy Nichols -->
+<!-- 04/01/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate_ETEC.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
@@ -11,8 +11,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS8849Schedule6"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -38,17 +40,16 @@
 
         </style>
       </head>
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="font-family:Arial;">
         <form name="IRS8849Schedule6">
           <xsl:call-template name="DocumentHeader"/>
           <!--Title of Form -->
-		<div class="styBB" style="width:187mm;height: 21mm">
+		<div class="styBB" style="width:187mm;height: 15.5mm">
 		
-		<div class="styFNBox" style="height: 21mm; width:31mm; border-right:1px solid black">
+		<div class="styFNBox" style="height: 15.5mm; width:30mm; border-right:1px solid black">
+			<span style="font-size:8pt; font-weight:bold">Schedule 6</span>
 			<br/>
-			<span style="font-size:7.5pt; font-weight:bold">Schedule 6</span>
-			<br/>
-          		<span style="font-size:7.5pt; font-weight:bold">(Form 8849)</span>
+          		<span style="height:3mm;font-size:7.5pt; font-weight:bold">(Form 8849)</span>
            	 	<span>
                 		<xsl:call-template name="SetFormLinkInline">
                  			<xsl:with-param name="TargetNode" select="$FormData"/>
@@ -57,32 +58,33 @@
 			<br/>
 			<span class="styAgency" style="font-size: 7.pt; font-weight:bold">(Rev. August 2013)</span><br/>
 			
-			<div class="styAgency" style="font-size: 7pt; font-weight:bold;padding-top:1mm;">
+			<div class="styAgency" style="font-size: 7pt; font-weight:bold;">
 				Department of the Treasury<br/>
 				Internal Revenue Service
 			</div>
  		</div>
  		
-		<div class="styFTBox" style="width:125mm; height: 21mm">
-			<div class="styMainTitle" style="height:9mm; font-weight: bold; padding-top:2mm">Other Claims</div>
-			<div class="styFST" style="height:5mm;font-size:7pt;font-weight:bold;">
+		<div class="styFTBox" style="width:127mm; height: 15.5mm">
+			<div class="styMainTitle" style="height:8.5mm; font-weight: bold; padding-top:2mm">Other Claims</div><br/>
+			<div class="styFST" style="font-size:7pt;font-weight:bold;">
 				<img src="{$ImagePath}/8849Sch6_Bullet.gif" alt="MediumBullet"/> Attach to Form 8849.
 			</div>
-			<div class="styFST" style="width:125mm;height:5mm;font-size:7pt;font-weight:bold;padding-bottom:0.5mm;">
+			<div class="styFST" style="width:127mm;font-size:7pt;font-weight:bold;">
 				<img src="{$ImagePath}/8849Sch6_Bullet.gif" alt="MediumBullet"/> Information about Schedule 6 (Form 8849) and its instructions, is at www.irs.gov/form8849.
 			</div>
 		</div>
-		<div class="styTYBox" style="width:31mm; height: 21mm">
-			<div style="padding-top:9mm; font-size:7pt">OMB No. 1545-1420</div>
+		
+		<div class="styTYBox" style="width:30mm; height: 15.5mm">
+			<div style="padding-top:6mm; font-size:7pt">OMB No. 1545-1420</div>
 		</div>
 		
 		</div>
 		<!--  End title of Form  -->
           
 		<!--  Name / Employer identification number / Total Refund  -->
-		<table cellspacing="0" style="width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 0px">
+		<table cellspacing="0" style="height:auto;width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 0px">
 		<tr>
-		<td class="styNameBox" style="width:107mm;font-size:7pt;font-weight:normal; height:10mm">Name as shown on Form 8849<br/>
+		<td class="styNameBox" style="width:107mm;font-size:7pt;font-weight:normal; height:9mm">Name as shown on Form 8849<br/>
 		<xsl:choose>
 			<xsl:when test="normalize-space($FormData/NameOfEmployer) != ''">
 				<xsl:call-template name="PopulateText">
@@ -106,43 +108,41 @@
 			</xsl:otherwise>
 		</xsl:choose>
 		</td>
-		<td valign="top" class="styNameBox" style="padding-left:2mm;font-size:7pt;font-weight:normal; height:10mm;">
-		<span class="BoldText" style="width:33mm;">EIN or SSN</span>
-             <div style="text-align:left; padding-top:2mm;font-weight:normal;">
-		<xsl:choose>
-			<xsl:when test="normalize-space($FormData/EmployerIdentificationNumber) != ''">
-			<xsl:call-template name="PopulateEIN">
-				<xsl:with-param name="TargetNode" select="$FormData/EmployerIdentificationNumber"/>
-			</xsl:call-template>
-			</xsl:when>
-			<xsl:when test="normalize-space($FormData/MissingEINReason) != ''">
-				<xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$FormData/MissingEINReason"/>
-				</xsl:call-template>
-			</xsl:when>
-			<xsl:otherwise>
-			<xsl:if test="($RtnHdrData/Filer/EIN)">
-				<xsl:call-template name="PopulateEIN">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
-				</xsl:call-template>		
-			</xsl:if>
-			<xsl:if test="($RtnHdrData/Filer/SSN) and not ($RtnHdrData/Filer/EIN)">
-				<xsl:call-template name="PopulateEIN">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
-				</xsl:call-template>		
-			</xsl:if>                 
-			</xsl:otherwise>
-		</xsl:choose>
-		</div>
+		<td valign="top" class="styNameBox" style="width:33mm;padding-left:2mm;font-size:7pt;font-weight:normal; height:9mm;">
+		<span class="BoldText" style="width:33mm;">EIN or SSN</span><br/><br/>
+             <div style="text-align:left;font-weight:normal;">
+				<xsl:choose>
+					<xsl:when test="normalize-space($FormData/EmployerIdentificationNumber) != ''">
+					<xsl:call-template name="PopulateEIN">
+						<xsl:with-param name="TargetNode" select="$FormData/EmployerIdentificationNumber"/>
+					</xsl:call-template>
+					</xsl:when>
+					<xsl:when test="normalize-space($FormData/MissingEINReason) != ''">
+						<xsl:call-template name="PopulateText">
+							<xsl:with-param name="TargetNode" select="$FormData/MissingEINReason"/>
+						</xsl:call-template>
+					</xsl:when>
+					<xsl:otherwise>
+					<xsl:if test="($RtnHdrData/Filer/EIN)">
+						<xsl:call-template name="PopulateEIN">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EIN"/>
+						</xsl:call-template>		
+					</xsl:if>
+					<xsl:if test="($RtnHdrData/Filer/SSN) and not ($RtnHdrData/Filer/EIN)">
+						<xsl:call-template name="PopulateEIN">
+							<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/SSN"/>
+						</xsl:call-template>		
+					</xsl:if>                 
+					</xsl:otherwise>
+				</xsl:choose>
+			</div>
 		</td>
-		<td valign="top" class="styEINBox" style="padding-left:2mm;font-size:7pt;font-weight:normal;">
-		<span class="BoldText">Total refund (total of lines 1-5)</span>
-		<div style="text-align:right; padding-top:2mm;font-weight:normal;">
+		<td valign="top" class="styEINBox" style="height:9mm;width:47mm;padding-left:2mm;font-size:7pt;font-weight:normal;text-align:right;">
+		<span class="BoldText" style="float:left;">Total refund (total of lines 1-5)</span><br/><br/>
 		<span style="float:left;">$</span>
 			<xsl:call-template name="PopulateAmount">
 				<xsl:with-param name="TargetNode" select="$FormData/TotalRefundAmt"/>
 			</xsl:call-template>
-		</div>
 		</td>
 		</tr>
 		</table>		
@@ -210,21 +210,21 @@
 
 		</div>
 		
-		<div class="styTableContainer" style="height:57.5mm;width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px" id="OGLctn">
+		<div class="styTableContainer" style="height:auto;width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width:0px; border-bottom-width: 1px" id="OGLctn">
         <!-- print logic -->
           <xsl:call-template name="SetInitialState"/>
         <!-- end -->      
 
-		<table cellspacing="0" cellpadding="0" style="font-size:7pt;">
+		<table cellspacing="0" cellpadding="0" style="height:auto;width:187mm;font-size:7pt;">
 		<thead class="styTableHead">
 		<tr>
 			<th style="width:5mm;height:8mm;text_align:center;font-weight:normal; border-top:1px solid black;" scope="col">
 				<span style="width:1px"/>
 			</th>
-			<th style="border-right:black solid 1; width:122mm;height:8mm;text_align:center;font-weight:normal; border-top:1px solid black;" scope="col">
+			<th style="border-right:black solid 1; width:122mm;height:8mm;text_align:center;font-weight:normal; border-top:1px solid black;border-right:1px solid black;" scope="col">
 				<span style="font-weight:bold; font-size:8pt">Tax</span>
 			</th>
-			<th style="border-right:black solid 1; width:40mm;height:8mm;text_align:center;font-weight:normal; border-top:1px solid black;" scope="col">
+			<th style="border-right:black solid 1; width:40mm;height:8mm;text_align:center;font-weight:normal; border-top:1px solid black;border-right:1px solid black;" scope="col">
 				<span style="font-weight:bold;; font-size:8pt">Amount of refund</span>
 			</th>
 			<th style="width:20mm;height:8mm;border-right-width:0px;text_align:center;font-weight:normal; border-top:1px solid black;" scope="col">
@@ -259,13 +259,13 @@
 				</xsl:call-template>		          			 	
           		</td>
           		<td style="text-align: right; vertical-align: top; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
-				<span style="float:left;"><xsl:if test="position()=1">$</xsl:if></span>
+					<br/><span style="float:left;"><xsl:if test="position()=1">$</xsl:if></span>
           			<xsl:call-template name="PopulateAmount">
           				<xsl:with-param name="TargetNode" select="Amt"/>
-				</xsl:call-template>
+					</xsl:call-template>
           		</td>
           		<td style="text-align: center; vertical-align: top; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">	
-				<xsl:call-template name="PopulateText">
+					<br/><xsl:call-template name="PopulateText">
           				<xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
           			</xsl:call-template>
           		</td>
@@ -275,8 +275,8 @@
 		
             <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 1 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
 		<tr>
-			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
-			<span style="width:1px">1</span>
+			<td style="text-align: left; vertical-align: top; padding-left: 1.5mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
+				1
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
 				<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -297,8 +297,8 @@
             <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 2 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
 
 		<tr>
-			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
-			<span style="width:1px">2</span>
+			<td style="text-align: left; vertical-align: top; padding-left: 1.5mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
+				2
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
 			<span style="width:1px"/>       	
@@ -316,8 +316,8 @@
             <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 3 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
 
 		<tr>
-			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
-			<span style="width:1px">3</span>
+			<td style="text-align: left; vertical-align: top; padding-left: 1.5mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
+				3
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
 			<span style="width:1px"/>       	
@@ -335,8 +335,8 @@
             <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 4 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
 
 		<tr>
-			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
-			<span style="width:1px">4</span>
+			<td style="text-align: left; vertical-align: top; padding-left: 1.5mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
+				4
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
 			<span style="width:1px"/>       	
@@ -354,8 +354,8 @@
             <xsl:if test="count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &lt; 5 or ((count($FormData/OtherClaimNotRptOnOthFormsGrp/OtherClaimNotRptGrp) &gt; 5) and ($Print = $Separated))">
 
 		<tr>
-			<td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
-			<span style="width:1px">5</span>
+			<td style="text-align: left; vertical-align: top; padding-left: 1.5mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px; font-weight:bold">				
+				5
 			</td>
 			<td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
 			<span style="width:1px"/>       	
@@ -385,8 +385,8 @@
 		</div>
 		<!-- Begin Explanation Text -->
 		<div style="width:187mm; font-size:7pt; padding:2px">
-		Use the space below for an explanation of each tax claimed. <br/><br/>
-		<span style="padding-left:5mm">For claims under section 6416(b)(2) relating to certain uses and resales of certain articles subject to manufacturers or retailers taxes, claimant certifies that it sold the article at a tax-excluded price, repaid the amount of tax to the ultimate vendor, or has obtained the written consent of the ultimate vendor to make the claim; and has the required supporting evidence.</span>
+			Use the space below for an explanation of each tax claimed. <br/><br/>
+			<span style="width:3mm"/>For claims under section 6416(b)(2) relating to certain uses and resales of certain articles subject to manufacturers or retailers taxes, claimant certifies that it sold the article at a tax-excluded price, repaid the amount of tax to the ultimate vendor, or has obtained the written consent of the ultimate vendor to make the claim; and has the required supporting evidence.
 		</div>
 		<br/>     
 		    	
@@ -405,10 +405,10 @@
 		<!-- Begin Footer -->
 		<div style="width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 2px; border-bottom-width: 0px">
 			<div style="float: left; clear: none;">
-      				<span class="styBoldText" style="font-size:6pt">For Privacy Act and Paperwork Reduction Act Notice, see Form 8849 instructions.</span>
-       			<span style="padding-left:4mm;width:27mm; font-size:6pt">Cat. No. 27454M </span>
-          			<span class="styBoldText"><span style="width:2px"/> Schedule 6 (Form 8849) </span>(Rev. 8-2013)
-     			</div>        
+      			<span class="styBoldText" style="font-size:6pt">For Privacy Act and Paperwork Reduction Act Notice, see Form 8849 instructions.</span>
+       			<span style="width:22mm;"/><span style="font-size:6pt">Cat. No. 27454M</span> 
+				<span style="width:22mm;"/> <span class="styBoldText">Schedule 6 (Form 8849) </span><span style="font-size:6pt">(Rev. 8-2013)</span>
+			</div>        
 		</div>     
 		<div class="pageEnd"/>
 	

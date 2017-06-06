@@ -25,11 +25,12 @@
 			vertical-align:bottom;
 			float:left; clear: none;
 		}
-		
+		<!--padding-right added to produce more pleasant display DRB 12/2015-->
 		.styIRS940LNAmountBox{ /* Box for storing line item amounts. */
 			width:37mm;height:5mm;
 			padding-top:.5mm;
 			padding-bottom:.5mm;
+			padding-right:.5mm;
 			text-align:right;
 			background-color:white;
 			border-style: solid; border-color: black;

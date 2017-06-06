@@ -14,8 +14,10 @@
 	</xsl:param>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -51,9 +53,9 @@
 				<xsl:if test="$FormData/CalculationOfGainExplanation">
 					<div class="styTopSectionLine">
 						<div class="styTopSectionLineLbl" style="float:left">
-							<b>Calculation Of Gain Explanation: </b>
+							<b>Calculation Of Gain<br/> Explanation: </b>
 						</div>
-						<div class="styExplanationLine" style="float:left">
+						<div class="styExplanationLine" style="float:left;padding-top:4.5mm">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/CalculationOfGainExplanation"/>
 							</xsl:call-template>
@@ -64,9 +66,9 @@
 				<xsl:if test="$FormData/QSMLPaidGovLenderShareDt">
 					<div class="styTopSectionLine">
 						<div class="styTopSectionLineLbl" style="float:left">
-							<b>QSML Paid Government Lender Share Date: </b>
+							<b>QSML Paid Government<br/>Lender Share Date: </b>
 						</div>
-						<div class="styExplanationLine" style="float:left">
+						<div class="styExplanationLine" style="float:left;padding-top:4.5mm">
 							<xsl:call-template name="PopulateMonthDayYear">
 								<xsl:with-param name="TargetNode" select="$FormData/QSMLPaidGovLenderShareDt"/>
 							</xsl:call-template>
@@ -77,9 +79,9 @@
 				<xsl:if test="$FormData/PaidGovLenderShareAmt">
 					<div class="styTopSectionLine">
 						<div class="styTopSectionLineLbl" style="float:left">
-							<b>Paid Government Lender Share Amount: </b>
+							<b>Paid Government Lender<br/>Share Amount: </b>
 						</div>
-						<div class="styExplanationLine" style="float:left">
+						<div class="styExplanationLine" style="float:left;padding-top:4.5mm">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$FormData/PaidGovLenderShareAmt"/>
 							</xsl:call-template>

@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1120ScheduleB" select="$RtnDoc/IRS1120ScheduleB"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1120ScheduleB)"/>
@@ -36,11 +38,11 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<form name="Form1120ScheduleB">
 					<xsl:call-template name="DocumentHeader"/>
-					<div class="styTBB" style="width:187mm;">
-						<div class="styFNBox" style="width:31mm;height:18.5mm;">
+					<div class="styBB" style="width:187mm;">
+						<div class="styFNBox" style="width:31mm;height:18.5mm;border-right-width:2px;">
 							<span class="styFormNumber" style="font-size:9pt;font-family:arial;">SCHEDULE B<br/>
 								<span style="font-size:9pt;">(Form 1120)</span>
 								<br/>
@@ -57,21 +59,22 @@
 								<span class="styAgency">Internal Revenue Service</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:125mm;height:18.5mm;">
-							<div class="styMainTitle" style="height:12mm;">Additional Information for<br/>Schedule M-3 Filers<br/>
+						<div class="styFTBox" style="width:125mm;height:18.5mm;padding-top:2mm;">
+							<div class="styMainTitle" style="height:8mm;">Additional Information for Schedule M-3 Filers
 							</div>
 							<div class="styFST" style="height:2mm;">
 								<img src="{$ImagePath}/1120SchB_Bullet_Title.gif" alt="Bullet"/> Attach to Form 1120.<br/>
 								<img src="{$ImagePath}/1120SchB_Bullet_Title.gif" alt="Bullet"/> See instructions on page 2.
 							</div>
 						</div>
-						<div class="styTYBox" style="width:30mm;height:18.5mm;">
+						<div class="styTYBox" style="width:30mm;height:18.5mm;border-left-width:2px">
 							<div class="styOMB" style="height:2mm;border-bottom-width: 0px;padding-top:7.5mm;">OMB No. 1545-0123</div>
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:120mm;height:8mm;font-size:7pt;font-weight:normal;">
-          Name<br/>
+						<div class="styNameBox" style="width:120mm;height:9mm;font-size:7pt;font-weight:normal;">
+						  Name
+						  <br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/FilerBusinessName/BusinessNameLine1Txt"/>
 							</xsl:call-template>
@@ -82,8 +85,9 @@
 								</xsl:call-template>
 							</xsl:if>
 						</div>
-						<div class="styEINBox" style="width:65mm;height:8mm;text-align:left;padding-left:2mm">
-          Employer identification number (EIN)<br/>
+						<div class="styEINBox" style="width:65mm;height:9mm;font-size:7pt;text-align:left;padding-left:2mm;font-weight:normal;">
+						  Employer identification number (EIN)
+						    <br/>
 							<br/>
 							<span style="font-weight:normal;">
 								<xsl:choose>
@@ -102,30 +106,33 @@
 						</div>
 					</div>
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;"/>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;width:10mm;text-align:center;font-weight:bold;padding-top:.7mm;">Yes</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;width:10mm;text-align:center;font-weight:bold;padding-top:.7mm;">No</div>
+						<div class="styLNLeftNumBox"/>
+						<div class="styLNDesc" style="width:158mm;"/>
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;width:10mm;text-align:center;font-weight:bold;padding-top:.7mm;">Yes</div>
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;width:10mm;text-align:center;font-weight:bold;padding-top:.7mm;">No</div>
 					</div>
 					<!-- L1 R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">1</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">Do the amounts reported on Schedule M-3 (Form 1120), Part II, lines 9 or 10, column (d), reflect allocations to this</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">1</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							Do the amounts reported on Schedule M-3 (Form 1120), Part II, lines 9 or 10, column (d), reflect allocations to this
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!-- L1 R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">corporation from a partnership of income, gain, loss, deduction, or credit that are disproportionate to this corporation’s 
-</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							corporation from a partnership of income, gain, loss, deduction, or credit that are disproportionate to this corporation’s 
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!-- L1 R3 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								capital contribution to the partnership or its ratio for sharing other items of the partnership?
 							</span>
@@ -134,12 +141,12 @@
 								<span class="styDotLn">.........</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/AllocationReflectCorpPrtshpInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/AllocationReflectCorpPrtshpInd"/>
 							</xsl:call-template>
@@ -154,15 +161,17 @@
 					</div>
 					<!-- L2 R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">2</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">At any time during the tax year, did the corporation sell, exchange, or transfer any interest in an intangible asset to</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">2</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							At any time during the tax year, did the corporation sell, exchange, or transfer any interest in an intangible asset to
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L2 R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								a related person as defined in section 267(b)?
 							</span>
@@ -171,12 +180,12 @@
 								<span class="styDotLn">........................</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpSellIntIntngblAstToPrsnInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpSellIntIntngblAstToPrsnInd"/>
 							</xsl:call-template>
@@ -191,29 +200,31 @@
 					</div>
 					<!-- L3 R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">3</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">At any time during the tax year, did the corporation acquire any interest in an intangible asset from a related person</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">3</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							At any time during the tax year, did the corporation acquire any interest in an intangible asset from a related person
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L3 R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								as defined in section 267(b)?
 							</span>
 							<!--Dotted Line-->
 							<span class="styBoldText" style="float:right;padding-right:2mm;">
-								<span class="styDotLn">............................</span>
+								<span class="styDotLn">.............................</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpAcqIntrestIntngblAssetInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpAcqIntrestIntngblAssetInd"/>
 							</xsl:call-template>
@@ -228,38 +239,41 @@
 					</div>
 					<!-- L4a R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">4a</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">During the tax year, did the corporation enter into a cost-sharing agreement with any related foreign party on whose</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">4a</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							During the tax year, did the corporation enter into a cost-sharing agreement with any related foreign party on whose
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!-- L4a R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
-            behalf the corporation did not file Form 5471, Information Return of U.S.
-             Persons With Respect To Certain Foreign</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							behalf the corporation did not file Form 5471, Information Return of U.S.
+							Persons With Respect To Certain Foreign
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!-- L4a R3 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								Corporations?
 							</span>
 							<!--Dotted Line-->
 							<span class="styBoldText" style="float:right;padding-right:2mm;">
-								<span class="styDotLn">................................</span>
+								<span class="styDotLn">..................................</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpEnterCostSharingAgrmtInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpEnterCostSharingAgrmtInd"/>
 							</xsl:call-template>
@@ -274,15 +288,17 @@
 					</div>
 					<!-- L4b R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;padding-left:4mm;">b</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">At any time during the tax year, was the corporation a participant in a cost-sharing agreement with any related foreign</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;padding-left:4mm;">b</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							At any time during the tax year, was the corporation a participant in a cost-sharing agreement with any related foreign
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L4b R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								party on whose behalf the corporation did not file Form 5471?
 							</span>
@@ -291,12 +307,12 @@
 								<span class="styDotLn">...................</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpPartcpCostSharingAgrmtInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpPartcpCostSharingAgrmtInd"/>
 							</xsl:call-template>
@@ -311,29 +327,31 @@
 					</div>
 					<!-- L5 R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">5</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">At any time during the tax year, did the corporation make any change in an accounting principle for financial accounting</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">5</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							At any time during the tax year, did the corporation make any change in an accounting principle for financial accounting
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L5 R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								purposes? See instructions for the definition of change in accounting principle
 							</span>
 							<!--Dotted Line-->
 							<span class="styBoldText" style="float:right;padding-right:2mm;">
-								<span class="styDotLn">.............</span>
+								<span class="styDotLn">..............</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/ChangeInAccountingPrincipleInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/ChangeInAccountingPrincipleInd"/>
 							</xsl:call-template>
@@ -348,16 +366,17 @@
 					</div>
 					<!-- L6 R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">6</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
-            At any time during the tax year, did the corporation make any change in a method of accounting for U.S. income tax</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">6</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							At any time during the tax year, did the corporation make any change in a method of accounting for U.S. income tax
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L6 R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								purposes?
 						   </span>
@@ -366,12 +385,12 @@
 								<span class="styDotLn">...................................</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/ChangeInMethodOfAccountingInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/ChangeInMethodOfAccountingInd"/>
 							</xsl:call-template>
@@ -386,15 +405,17 @@
 					</div>
 					<!-- L7 R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">7</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">At any time during the tax year, did the corporation own any voluntary employees’ beneficiary association (VEBA)</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">7</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							At any time during the tax year, did the corporation own any voluntary employees’ beneficiary association (VEBA)
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L7 R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								trusts that were used to hold funds designated for employee benefits?
 							</span>
@@ -403,12 +424,12 @@
 								<span class="styDotLn">................</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/VoluntaryEmplBenefAssocTrInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/VoluntaryEmplBenefAssocTrInd"/>
 							</xsl:call-template>
@@ -423,16 +444,17 @@
 					</div>
 					<!-- L8 R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">8</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
-            At any time during the tax year, did the corporation use an allocation method for indirect costs capitalized to self-</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">8</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+							At any time during the tax year, did the corporation use an allocation method for indirect costs capitalized to self-
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L8 R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								constructed assets that varied from its financial method of accounting?
 							</span>
@@ -441,12 +463,12 @@
 								<span class="styDotLn">................</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;border-bottom-width: 1px; ">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;border-bottom-width: 1px; ">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpUseVariedAllocnMthdCostInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;border-bottom-width: 1px;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;border-bottom-width: 1px;">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpUseVariedAllocnMthdCostInd"/>
 							</xsl:call-template>
@@ -461,40 +483,40 @@
 					</div>
 					<!-- L9 R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;">9</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
-           At any time during the tax year, did the corporation treat for tax purposes
-                indirect costs, as defined in Regulations </div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;">9</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+						   At any time during the tax year, did the corporation treat for tax purposes indirect costs, as defined in Regulations 
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L9 R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 						  section 1.263A-1(e)(3)(ii)(F), (G), and (H), as mixed-service costs, as defined in Regulations section 1.263A-
 						</div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!-- L9 R3 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								1(e)(4)(ii)(C)?
 							</span>
 							<!--Dotted Line-->
 							<span class="styBoldText" style="float:right;padding-right:2mm;">
-								<span class="styDotLn">................................</span>
+								<span class="styDotLn">..................................</span>
 							</span>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/TreatIndrCostAsMxdSrvcCostInd"/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/TreatIndrCostAsMxdSrvcCostInd"/>
 							</xsl:call-template>
@@ -503,33 +525,33 @@
 					<!--  Line 10 -->
 					<!-- Blank Line -->
 					<div style="width: 187mm">
-						<div class="styLNLeftNumBoxSD" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBoxSD" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!-- L10R1 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;">10</div>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
-          Did the corporation, under section 118 or 362(c) and the related regulations, 
-          take a return filing position characterizing </div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBox" style="height:4mm;">10</div>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+						  Did the corporation, under section 118 or 362(c) and the related regulations, take a return filing position characterizing 
+						</div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!-- L10R2 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
-          any amount as a contribution to the capital of the corporation during the tax year by
-         any non-shareholders? Amounts  </div>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
-						<div class="styShadingCell" style="height:4.5mm;width:10mm;"/>
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
+						  any amount as a contribution to the capital of the corporation during the tax year by any non-shareholders? Amounts  
+					    </div>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
+						<div class="styShadingCell" style="height:4mm;width:10mm;"/>
 					</div>
 					<!--L10R3 -->
-					<div class="styBB" style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
-						<div class="styLNDesc" style="width:158mm;height:4.5mm;">
+					<div class="styTBB" style="width:187mm;">
+						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNDesc" style="width:158mm;height:4mm;">
 							<span style="float:left;">
 								so characterized may include, without limitation, incentives, inducements, money, and property
 							</span>
@@ -538,12 +560,12 @@
 							</span>
 							<!--Dotted Line-->
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;border-bottom-width: 1px; ">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;border-bottom-width: 0px; ">
 							<xsl:call-template name="PopulateYesBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpSectTakeContriNonShrInd "/>
 							</xsl:call-template>
 						</div>
-						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4.5mm;border-bottom-width: 1px;">
+						<div class="styIRS1120ScheduleBLNYesNoBox" style="height:4mm;border-bottom-width: 0px;">
 							<xsl:call-template name="PopulateNoBoxText">
 								<xsl:with-param name="TargetNode" select="$Form1120ScheduleB/CorpSectTakeContriNonShrInd "/>
 							</xsl:call-template>

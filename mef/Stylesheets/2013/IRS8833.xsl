@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS8833"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -41,7 +43,7 @@
 				<form name="Form8833">
 					<xsl:call-template name="DocumentHeader"/>
 					<!--Title of Form -->
-					<div class="styBB" style="width:187mm;height: 18mm">
+					<div class="styBB" style="width:187mm;height:auto">
 						<div class="styFNBox" style="width:31mm;font-size: 7pt;height: 19mm">
       Form <span class="styFormNumber">8833</span>
 							<br/>
@@ -51,7 +53,7 @@
 							<span class="styAgency">Internal Revenue Service</span>
 						</div>
 						<div class="styFTBox" style="width:125mm; height: 18mm">
-							<div class="styMainTitle" style="height:8mm;">Treaty-Based Return Position Disclosure<br/>Under Section 6114 or 7701(b)</div>
+							<div class="styMainTitle" style="height:10mm;">Treaty-Based Return Position Disclosure<br/>Under Section 6114 or 7701(b)</div>
 							<div class="styFST" style="height:5mm;font-size:7pt;margin-left:3mm;font-weight:bold;padding-top:1mm; ">
 								<img src="{$ImagePath}/8833_Bullet.gif" alt="MediumBullet"/>  
         Attach to your tax return.<br/>
@@ -70,9 +72,9 @@
   </div>
 					<!--  Name and Employer identification number  -->
 					<div class="styBB" style="width:187mm; height: 8mm">
-						<div class="styNameBox" style="width:90mm; height: 3.25mm;font-size:7pt;">
+						<div class="styNameBox" style="width:90mm; height: 8mm;font-size:7pt;">
       Name<br/>
-							<div style="font-family:verdana;font-size:7pt;height:1.25mm">
+							<div style="font-family:verdana;font-size:6pt;height:6.25mm">
 								<xsl:choose>
 									<xsl:when test="$RtnHdrData/ReturnType='1040'">
 										<br/>
@@ -85,7 +87,6 @@
 											<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
 										</xsl:call-template>
 										<br/>
-										<br/>
 										<xsl:call-template name="PopulateReturnHeaderFiler">
 											<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
 										</xsl:call-template>
@@ -93,53 +94,51 @@
 								</xsl:choose>
 							</div>
 						</div>
-						<div class="styNameBox" style="width:49mm;padding-left:2mm;font-size:7pt;font:bold;height:1.25mm;">
+						<div class="styNameBox" style="width:49mm;padding-left:2mm;font-size:7pt;font:bold;">
 							<span class="BoldText">U.S. taxpayer identifying number</span>
 							<br/>
-							<br/>
-							<br/>
-							<span style="font-weight:normal;">
+							<span style="font-weight:normal;padding-top:2mm">
 								<xsl:choose>
 									<xsl:when test="$RtnHdrData/ReturnType='1040'">
-										<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/PrimarySSN"/>
-									</xsl:call-template>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+										</xsl:call-template>
 									</xsl:when>
 									<xsl:otherwise>
-										<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/EIN"/>
-									</xsl:call-template>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+										</xsl:call-template>
 									</xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>
-						<div class="styEINBox" style="width:48mm;padding-left:2mm;font-size:7pt;border-right-width:0px;height:1.25mm">
-							<span class="BoldText">Reference ID number, if any<br>(see instructions)</br></span>
-							<br/>
-							<br/>
-							
-							<span style="font-weight:normal;">
+						<div class="styEINBox" style="width:48mm;padding-left:2mm;font-size:7pt;border-right-width:0px;">
+							<span class="BoldText">Reference ID number, if any</span>
+							<br/>		
+							<span style="font-weight:normal;padding-top:2mm">
 								<xsl:choose>
-					<xsl:when test="count($FormData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber) &gt; 1">
-				See Additional Data Table
-					</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$FormData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber"/>
-							</xsl:call-template>
-						</xsl:otherwise>
-				</xsl:choose>
+									<xsl:when test="$RtnHdrData/ReturnType='1040'">
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+										</xsl:call-template>
+									</xsl:when>
+									<xsl:otherwise>
+										<xsl:call-template name="PopulateReturnHeaderFiler">
+											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
+										</xsl:call-template>
+									</xsl:otherwise>
+								</xsl:choose>
 							</span>
 						</div>						
 					</div>
 					<!--  End Name and Employer indentification number  -->
-					<div style="width: 187mm; height: 11mm">
-						<div class="styNameAddr" style="height: 26mm; padding-left:0px; width: 100mm; font-size:7pt;border-right-width: 1px">Address in country of residence<br/>
+					<div style="width: 187mm; height: auto">
+						<div class="styNameAddr" style=" height:16mm; padding-left:0px; width: 100mm; font-size:7pt;border-right-width: 1px">Address in country of residence<br/>
 							<xsl:call-template name="PopulateForeignAddressTemplate">
 								<xsl:with-param name="TargetNode" select="$FormData/ForeignResidenceAddress"/>
 							</xsl:call-template>
 						</div>
-						<div class="styNameAddr" style="height: 26mm;  width: 87mm;font-size:7pt;">Address in the United States<br/>
+						<div class="styNameAddr" style="height:16mm;  width: 87mm;font-size:7pt;">Address in the United States<br/><!--height: auto-->
 							<xsl:call-template name="PopulateUSAddressTemplate">
 								<xsl:with-param name="TargetNode" select="$FormData/USAddress"/>
 							</xsl:call-template>
@@ -227,8 +226,8 @@
 						<div style="float: left">
 							<label>
 								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$FormData/USCitizenOrOtherInd"/>
-									<xsl:with-param name="BackupName">IRS8833USCitizenOrOtherInd</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$FormData/IsUSCitizenOrOtherInd"/>
+									<xsl:with-param name="BackupName">IRS8833IsUSCitizenOrOtherInd</xsl:with-param>
 								</xsl:call-template>
         Check this box if the taxpayer is a U.S. citizen or resident or is incorporated in the United States
       </label>
@@ -248,61 +247,80 @@
 						</div>
 					</div>
 					<!--  U.S. citizen  -->
-					<div class="styForm8833BB" style="width:187mm;height:31mm;">
-						<div style="width:93.75mm;float:left;height:31mm;">
-							<div class="styForm8833BB" style="height:12mm;">
-								<span style="width:2mm;"/>
-								<span style="font-weight:bold;">1</span>
-								<span style="width:4mm;"/> Enter the specific treaty position relied on:<br/>
+					<div  style="width:187mm;height:auto;"><!--class="styForm8833BB"-->
+						<div class="styForm8833BB" style="width:90mm;float:left;border-right:1px solid black; border-bottom:0px"><!--border-bottom:1px solid black-->
+							<div style="height:18mm; border-bottom:1px solid black">
+								<span style="font-weight:bold; width:3mm">1</span>
+								<span style="padding-left:4mm;"> Enter the specific treaty position relied on:</span><br/>
 								<span style="height:4mm;padding-top:1mm;">
-									<span style="width:4mm;"/>
-									<span style="font-weight:bold;">a</span>
-									<span style="width:3mm;"/>Treaty country
-          <span class="styForm8833BB" style="width:64.95mm;">
+									<span style="font-weight:bold;padding-left:2mm">a</span>
+									<span style="padding-left:2mm;">Treaty country: </span>
+									<span class="styUnderlinedText" style="width:60mm;">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/TreatyCountryCd"/>
 										</xsl:call-template>
 									</span>
+									<br/>
 								</span>
-								<span style="width:4mm;"/>
-								<span style="font-weight:bold;">b</span>
-								<span style="width:3mm;"/>Article(s)<span style="width:3mm;"/>
-								<br/>
-								<span style="padding-left:8.75mm;width:85mm;">
+								<span style="font-weight:bold;padding-left:2mm;vertical-align:top">b</span>
+								<span style="padding-left:2mm;vertical-align:top">Article(s):</span>
+								<span style="padding-left:7mm;width:65mm;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/TreatyArticleTxt"/>
 									</xsl:call-template>
 								</span>
 							</div>
-							<div>
-								<span style="width:2mm;"/>
-								<span style="font-weight:bold;">2</span>
-								<span style="width:4.75mm;"/>List the Internal Revenue Code provision(s) overruled or<br/>
-								<span style="width:8.5mm"/>modified by the treaty-based return position<br/>
-								<span style="padding-left:8.75mm;width:85mm;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/IRCProvisionsTxt"/>
-									</xsl:call-template>
-								</span>
-							</div>
+							<div class="styForm8833BB" style="width:90mm;height:20mm;border-bottom:0px "><!--border-bottom:1px solid black;background-color:purple-->
+								<span style="font-weight:bold; width:3mm; vertical-align:top">2</span>
+								<!--<div class="styLNLeftNumBox" style="width:3mm;height:20mm;">2</div>		
+								<div>								
+								<span style="width:80mm;; font-size:10pt">-->
+								<span style="padding-left:4mm;width:85mm">
+									List the Internal Revenue Code provision(s) overruled or modified by the treaty-based return position
+									<br/>
+									<span class="styUnderlinedText" style="font-size:6pt;">
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$FormData/IRCProvisionsTxt"/>
+										</xsl:call-template>
+									</span>
+								</span></div>	
 						</div>
-						<div class="styForm8833BB" style="width:93.25mm;float:right;height:31mm;border-bottom:0;border-left-width:1px;">
-							<div class="styLNLeftNumBox" style="padding-left: 2mm">3</div>
-							<div style="float:left">
-      Name, identifying number (if available to the taxpayer),<br/>and address in the United States of the payor of the income (if<br/>fixed or determinable annual or periodical). See instructions.<br/>
+						
+						<div class="styForm8833BB" style="width:97mm;float:right;height:38mm;border-bottom:0px">
+						<span style="font-weight:bold; width:3mm; vertical-align:top">3</span>
+							
+							<!--<div style="width:90mm">-->
+							<span style="padding-left:4mm;width:85mm">
+							  Name, identifying number (if available to the taxpayer),
+							  and address in the United States of the payor of the income (if fixed  or determinable annual or periodical). See instructions.<br/>
 								<div style="font-family:verdana;font-size:6pt;">
+									<xsl:choose>
+										<xsl:when test="$Type = '2290' or $Type = '720' or $Type = '8849' and $Type = '941' or $Type = '941PR' or $Type = '941SS'">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$FormData/PayorName/BusinessNameLine1"/>
 									</xsl:call-template>
 									<xsl:if test="$FormData/PayorName/BusinessNameLine2 != ''">
-										<br/>
+										; 
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="$FormData/PayorName/BusinessNameLine2"/>
 										</xsl:call-template>
 									</xsl:if>
-								</div>
+									</xsl:when>
+									<xsl:otherwise>
+									<xsl:call-template name="PopulateText">
+										<xsl:with-param name="TargetNode" select="$FormData/PayorName/BusinessNameLine1Txt"/>
+									</xsl:call-template>
+									<xsl:if test="$FormData/PayorName/BusinessNameLine2Txt != ''">
+										; 
+										<xsl:call-template name="PopulateText">
+											<xsl:with-param name="TargetNode" select="$FormData/PayorName/BusinessNameLine2Txt"/>
+										</xsl:call-template>
+									</xsl:if>
+									</xsl:otherwise>
+									</xsl:choose>
+							<!--	</div>-->
 								<xsl:if test="$FormData/PayorEIN != ''">
-									<br/>
+									; 
 									<xsl:call-template name="PopulateEIN">
 										<xsl:with-param name="TargetNode" select="$FormData/PayorEIN"/>
 									</xsl:call-template>
@@ -315,7 +333,7 @@
 									</span>
 								</xsl:if>
 								<xsl:if test="$FormData/PayorUSAddress !=' '">
-									<br/>
+									; 
 									<xsl:call-template name="PopulateUSAddressTemplate">
 										<xsl:with-param name="TargetNode" select="$FormData/PayorUSAddress"/>
 									</xsl:call-template>
@@ -326,11 +344,13 @@
 										<xsl:with-param name="TargetNode" select="$FormData/PayorForeignAddress"/>
 									</xsl:call-template>
 								</xsl:if>
-							</div>
+							</div>	
+							<!--</div>-->
+							</span>
 						</div>
 					</div>
 					<!--  Line 4 -->
-					<div class="styBB" style="width: 187mm">
+					<div class="styBB" style="width: 187mm; border-top:1px solid black">
 						<div class="styLNLeftNumBox" style="padding-left: 2mm">4</div>
 						<span style="width: 175mm">
       List the provision(s) of the limitation on benefits article (if any) in the treaty that the taxpayer relies on to prevent application<br/>of that article
@@ -349,49 +369,21 @@
       Is the taxpayer disclosing a treaty-based return position for which reporting is specifically required pursuant <br/>to Regulations section 301.6114-1(b)?
       							<span style="letter-spacing:4mm; font-weight:bold; float:none">...............</span>
       							<span style="width:2mm"/>
-      							<div style="float:right;">
-							<div class="styLNDesc" style="width:9mm;height:4.5mm;padding-top:1.5mm;text-align:right;">
-								<span>
-									<xsl:call-template name="PopulateSpan">
-										<xsl:with-param name="TargetNode" select="$FormData/DisclosingTreatySec3016114Ind"/>
-									</xsl:call-template>
-									<input type="checkbox" class="styCkbox" name="Checkbox">
-										<xsl:call-template name="PopulateYesCheckbox">
-											<xsl:with-param name="TargetNode" select="$FormData/DisclosingTreatySec3016114Ind"/>
-											<xsl:with-param name="BackupName">IRS8833DisclosingTreatySec3016114Ind</xsl:with-param>
-										</xsl:call-template>
-									</input>
-								</span>
-								<label>
-									<xsl:call-template name="PopulateLabelYes">
-										<xsl:with-param name="TargetNode" select="$FormData/DisclosingTreatySec3016114Ind"/>
-										<xsl:with-param name="BackupName">IRS8833DisclosingTreatySec3016114Ind</xsl:with-param>
-									</xsl:call-template>
-				  Yes
-			  </label>
-							</div>
-							<div class="styLNDesc" style="width:15mm;height:4.5mm;padding-top:1.5mm;text-align:right;">
-								<span>
-									<xsl:call-template name="PopulateSpan">
-										<xsl:with-param name="TargetNode" select="$FormData/DisclosingTreatySec3016114Ind"/>
-									</xsl:call-template>
-									<input type="checkbox" class="styCkbox" name="Checkbox">
-										<xsl:call-template name="PopulateNoCheckbox">
-											<xsl:with-param name="TargetNode" select="$FormData/DisclosingTreatySec3016114Ind"/>
-											<xsl:with-param name="BackupName">IRS8833DisclosingTreatySec3016114Ind</xsl:with-param>
-										</xsl:call-template>
-									</input>
-								</span>
-								<label>
-									<xsl:call-template name="PopulateLabelNo">
-										<xsl:with-param name="TargetNode" select="$FormData/DisclosingTreatySec3016114Ind"/>
-										<xsl:with-param name="BackupName">IRS8833DisclosingTreatySec3016114Ind</xsl:with-param>
-									</xsl:call-template>
-				  No
-			  </label>
-							</div>
-						</div>
-								
+      							<input type="checkbox" class="styCkbox" name="DisclosingTreatySec3016114Ind">
+      							<span style="width: 1mm"/>Yes
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/DisclosingTreatySec3016114Ind"/>
+									<xsl:with-param name="BackupName">IRS8833DisclosingTreatySec3016114Ind</xsl:with-param>
+								</xsl:call-template>
+								</input>
+								<span style="width: 4mm"/>
+      							<input type="checkbox" class="styCkbox" name="DisclosingTreatySec3016114Ind">
+      							<span style="width: 1mm"/>No
+								<xsl:call-template name="PopulateCheckbox">
+									<xsl:with-param name="TargetNode" select="$FormData/DisclosingTreatySec3016114Ind"/>
+									<xsl:with-param name="BackupName">IRS8833DisclosingTreatySec3016114Ind</xsl:with-param>
+								</xsl:call-template>
+								</input>							
       <br/>If "Yes", enter the specific subsection(s) 301.6114-1(b) requiring reporting
              <img src="{$ImagePath}/8833_Bullet.gif" alt="lBullet"/>
 							<span style="width: 2mm"/>
@@ -406,17 +398,16 @@
 					<!--  Line 5 -->					
 					<!--  Line 6 -->
 					<div class="styBB" style="width: 187mm">
-						<div class="styLNLeftNumBox" style="padding-left: 2mm">6</div>
-						<div>
-      Explain the treaty-based return position taken. Include a brief summary of the facts on which it is based. Also, list the nature<br/>
-      and amount (or a reasonable estimate) of gross receipts, each separate gross payment, each separate gross income item,<br/>
-							<span style="width: 9mm"/>or other item (as applicable) for which the treaty benefit is claimed
-      <div style="margin-left: 9mm">
+						<span class="styLNLeftNumBox" style="padding-left: 2mm">6</span>
+						<span style="width:178mm">
+      Explain the treaty-based return position taken. Include a brief summary of the facts on which it is based. Also, list the nature
+      and amount (or a reasonable estimate) of gross receipts, each separate gross payment, each separate gross income item,
+							or other item (as applicable) for which the treaty benefit is claimed</span><br/><br/>
+							<div style="margin-left: 9mm">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$FormData/ExplainTreatybasedPosOnBnftTxt"/>
 								</xsl:call-template>
-							</div>
-						</div>
+							</div>					
 					</div>
 					<!--  Line 6 -->
 					<div style="width:187mm;">
@@ -427,7 +418,8 @@
     Form <span class="styBoldText">8833</span> (Rev. 12-2013)
   </div>
 					<br/>
-					<br class="pageEnd"/>
+					<div class="pageEnd"/>
+					<div style="page-break-after:always"/>
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData">
@@ -446,37 +438,6 @@
 						</xsl:call-template>
 					</table>
 					<!-- END Left Over Table -->
-					<xsl:if test="count($FormData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber)  &gt; 1">
-				<!--BEGIN Reference ID number -->
-					<table class="styDepTbl" cellspacing="0" style="font-size:7pt;">
-						<thead class="styTableThead">
-							<tr class="styDepTblHdr">
-								<th class="styDepTblCell" scope="col" rowspan="2" style="width:179mm;font-size:8pt;text-align:left;">
-										Reference ID number
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<xsl:for-each select="$FormData/ForeignEntityIdentificationGrp/ForeignEntityReferenceIdNumber">
-								<tr style="border-color:black;height:6mm;">
-									<xsl:attribute name="class">
-										<xsl:choose>
-											<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
-											<xsl:otherwise>styDepTblRow2</xsl:otherwise>
-										</xsl:choose>
-									</xsl:attribute>
-									<td class="styTableCellText" style="width:179mm;">
-										<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="."/>
-										</xsl:call-template>
-										<span class="styTableCellPad"/>
-									</td>
-								</tr>
-							</xsl:for-each>
-						</tbody>
-					</table>
-					<!-- END Reference ID number  -->
-				</xsl:if>
 				</form>
 			</body>
 		</html>

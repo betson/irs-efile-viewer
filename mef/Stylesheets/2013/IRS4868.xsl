@@ -12,8 +12,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="FormData" select="$RtnDoc/IRS4868"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -63,7 +65,7 @@
             </div>
 						</div>
 	<div class="styTYBox" style="width:30mm;height:19mm; border-left-width: 1px;">
-							<div class="styOMB" style="height:2mm;font-size:7pt;">OMB No. 1545-0074</div>
+							<div class="styOMB" style="font-size:7pt;">OMB No. 1545-0074</div>
 							<br/>
 	<div class="styTaxYear" style="height:10mm">20<span class="styTYColor">13</span>
 							</div>
@@ -233,10 +235,10 @@
 											<td style="width: 92mm;font-size:8pt;">
 												<div style="width: 92mm; padding-top: .5mm;">
 													<span class="styLNLeftNumBox" style="width:5mm;padding-left: 1.25mm;height:5mm; font-size:7pt;">4</span>
-													<span class="styLNDesc" style="width:50mm;height:5mm;font-size:7pt;">Estimate of total tax liability for 2013
+														<span class="styLNDesc" style="width:50mm;height:auto;font-size:7pt;">Estimate of total tax liability for 2013
                                     </span>
 													<span style="width:5px;"/> $
-                                    <span style="width:32mm;border-bottom: 1px solid black;text-align:right;">
+                                              <span style="width:31mm;border-bottom:1px solid black;text-align:right;">
 														<xsl:call-template name="PopulateAmount">
 															<xsl:with-param name="TargetNode" select="$FormData/TotalTaxLiabilityAmt"/>
 														</xsl:call-template>
@@ -249,7 +251,7 @@
 											<td style="width: 92mm;font-size:8pt;">
 												<div style="width: 92mm;padding-top:.1mm; padding-bottom:.1mm;">
 													<span class="styLNLeftNumBox" style="width:5mm;padding-left: 1.25mm;height:4mm; font-size:7pt;">5</span>
-													<span class="styLNDesc" style="width:30mm;height:4mm;font-size:7pt;">Total 2013 payments
+													<span class="styLNDesc" style="width:30mm;height:auto;font-size:7pt;">Total 2013 payments
                                     </span>
 									<span style="width:8px;"/>.
                                     <span style="width:8px;"/>.
@@ -270,7 +272,8 @@
 								<td style="width: 92mm;font-size:8pt;">
 												<div style="width: 92mm; padding-top: .5mm;">
 													<span class="styLNLeftNumBox" style="width:5mm;padding-left: 1.25mm;height:4mm; font-size:7pt;">6</span>
-												<span class="styLNDesc" style="width:87mm;height:4mm;font-size:7pt;"><b>Balance due.</b> Subtract line 5 from line 4
+												<span class="styLNDesc" style="width:87mm;height:auto;font-size:7pt;">
+														<b>Balance due.</b> Subtract line 5 from line 4
                                     <br/>(see instructions)  
                                     <span style="width:8px;"/>.
                                     <span style="width:7px;"/>.
@@ -295,11 +298,11 @@
 											<td style="width: 92mm;font-size:8pt;">
 												<div style="width: 92mm; padding-top: .5mm;border-bottom:1px  solid black">
 													<span class="styLNLeftNumBox" style="width:5mm;padding-left: 1.25mm;height:4mm; font-size:7pt;">7</span>
-													<span class="styLNDesc" style="width:87mm;height:4mm;font-size:7pt;">Amount you are paying <span style="font-size:6pt;">(see instructions)</span>
+												<span class="styLNDesc" style="width:87mm;height:auto;font-size:7pt;">Amount you are paying <span style="font-size:6pt;">(see instructions)</span>
 														<span style="width:.5mm;"/>
 														<img src="{$ImagePath}/4868_Bullet.gif" width="4" height="7" alt="Right arrow image" border="0"/>
 														<span style="width:7px;"/>.
-                                        <span style="width:.5mm;"/>
+                                         <span style="width:1.5mm;"/>
 														<span style="width:31mm;text-align:right;font-size:8pt">
 															<xsl:call-template name="PopulateAmount">
 																<xsl:with-param name="TargetNode" select="$FormData/TaxpayerIsPayingAmt"/>
@@ -331,11 +334,15 @@
                                  	<span style="width:7px"/>.
                                   	<span style="width:7px"/>.
                                   	<span style="width:7px"/>.
+                                  	
+                                  	<span style="width:.5mm;padding-top:2mm;"/>
+									<img src="{$ImagePath}/4868_Bullet.gif" alt="Right arrow image" border="0"/>
                                   </span>
                                   	</div>
-                                      <div class="styLNDesc" style="width:7mm;height:4mm;font-size:7pt;padding-top:4mm;">
-                               <img src="{$ImagePath}/4868_Bullet.gif" alt="Right arrow image" border="0"/>
-														<span style="width:2.0mm;"/>
+                                      <div class="styLNDesc" style="width:7mm;height:4mm;font-size:7pt;padding-top:2mm">
+							<!--            <img src="{$ImagePath}/4868_Bullet.gif" width="4" height="7" alt="Right arrow image" border="0"/> 
+                                       
+										<img src="{$ImagePath}/4868_Bullet.gif" width="4" height="7" alt="Right arrow image" border="0"/>	-->
 														<input type="checkbox" class="styckbox" name="checkbox">
 															<!--xsl:if test="$FormData/TaxpayerAbroadInd"-->
 																<xsl:call-template name="PopulateCheckbox">
@@ -353,13 +360,16 @@
 										<!--Line 9-->
 											<td style="width: 92mm;font-size:8pt;">
 												<div style="width: 92mm; padding-top: .1mm;">
-													<div class="styLNLeftNumBox" style="width:5mm;padding-left: 1.25mm;height:4mm; font-size:7pt;">9</div>
-													<div class="styLNDesc" style="width:80mm;height:4mm;font-size:7pt;">
+													<div class="styLNLeftNumBox" style="width:5mm;padding-left:1.25mm;height:4mm; font-size:7pt;">
+														<br/>9</div>
+													<div class="styLNDesc" style="width:80mm;height:auto;font-size:7pt;">
 													<label>
 															<xsl:call-template name="PopulateLabel">
 																<xsl:with-param name="TargetNode" select="$FormData/NonresWithNoWagesSubjToWhInd"/>
 																<xsl:with-param name="BackupName">IRS4868NonresWithNoWagesSubjToWhInd</xsl:with-param>
-															</xsl:call-template>Check here if you file Form 1040NR or 1040NR-EZ and did<br/>not receive wages as an employee subject to U.S. income<br/>tax withholding
+															</xsl:call-template>
+															<br/>Check here if you file Form 1040NR or 1040NR-EZ and did<br/>not receive wages as an employee subject to U.S. income
+															<br/>tax withholding
 														</label>
                                       <span class="styBoldText">
 								<span style="width:7px"/>.
@@ -378,11 +388,14 @@
                                  	<span style="width:7px"/>.
                                  	<span style="width:7px"/>.
                                  	<span style="width:7px"/>.
+                                 	<span style="width:.5mm;padding-top:1mm;"/>
+									<img src="{$ImagePath}/4868_Bullet.gif" alt="Right arrow image" border="0"/>
                                   </span>
                                   </div>
                                   <div class="styLNDesc" style="width:7mm;height:4mm;font-size:7pt;padding-top:8mm;">
+                                  <!--        <span style="width:7mm;height:4mm;font-size:7pt;padding-top:8mm"/>
                                   <img src="{$ImagePath}/4868_Bullet.gif" alt="Right arrow image" border="0"/>
-														<span style="width:2mm;"/>
+														<span style="width:2mm;"/> -->
 														<input type="checkbox" class="styckbox" name="checkbox">
 															<!--xsl:if test="$FormData/NonresWithNoWagesSubjToWhInd"-->
 																<xsl:call-template name="PopulateCheckbox">
@@ -402,10 +415,10 @@
 						</table>
 					</div>
 					<div class="pageEnd" style="width: 187mm;font-size:7pt;">
-						<span style="float:left;"><b>For Privacy Act and Paperwork Reduction Act Notice, see page 4.</b>
-					<span style=" width:21mm;"/>Cat. No. 13141W</span>
-				
-					<span style="font-size:7 pt;float:right;">Form <b>4868 </b>(2013)</span>
+						<span style="float:left;">
+							<b>For Privacy Act and Paperwork Reduction Act Notice, see page 4.</b>
+							<span style=" width:21mm;"/>Cat. No. 13141W</span>
+						<span style="font-size:7 pt;float:right;">Form <b>4868 </b>(2013)</span>
 						</div>
 					<!-- END Part I Part ll Title -->
 				<!-- From 1065 form -->

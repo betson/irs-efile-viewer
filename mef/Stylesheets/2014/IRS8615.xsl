@@ -10,8 +10,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="FormData" select="$RtnDoc/IRS8615"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -49,17 +51,17 @@
 							<div class="styAgency" style="padding-top:5mm;">Department of the Treasury<br/>Internal Revenue Service (99)</div>
 						</div>
 						<div class="styFTBox" style="width:125mm;height:22mm;">
-							<div class="styMainTitle" style="height:8mm;padding-top:2mm;">Tax for Certain Children Who<br/>Have Unearned Income</div>
+							<div class="styMainTitle" style="height:auto;padding-top:2mm;">Tax for Certain Children Who<br/>Have Unearned Income</div>
 							<div class="styFST" style="font-size:6.5pt;padding-top:2mm;">
-								<img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="bullet image"/> Attach only to the child's Form 1040, Form 1040A, or Form 1040NR. <br/>
+								<img src="{$ImagePath}/8615_Bullet.gif" width="9" height="9" alt="bullet image"/> Attach only to the child's Form 1040, Form 1040A, or Form 1040NR. <br/>
 								<div class="styFST" style="font-size:6pt;padding-top:1mm;"></div>
-								<img src="{$ImagePath}/3903_Bullet.gif" width="8" height="8" alt="SmallBullet Image"/>Information about Form 8615 and its separate instructions is at 
+								<img src="{$ImagePath}/8615_Bullet.gif" width="8" height="8" alt="SmallBullet Image"/>Information about Form 8615 and its separate instructions is at 
 						   <a href="http://www.irs.gov/form8615" title="Link to IRS.gov"><i>www.irs.gov/form8615</i></a>.
               </div>
 						</div>
 						<div class="styTYBox" style="width:30mm;height:22mm;">
-							<div class="styOMB" style="height:1mm;">OMB No. 1545-0074</div>
-							<div class="styTY" style="height:7mm;font-size:22pt;">20<span class="styTYColor">14</span></div>
+							<div class="styOMB" style="height:5mm;">OMB No. 1545-0074</div>
+							<div class="styTY" style="height:9mm;font-size:22pt;">20<span class="styTYColor">14</span></div>
 							<div class="stySequence" style="height:9mm;border-bottom-width:0px;padding-left:4mm;border-left-width:0px;">Attachment<br/>
             Sequence No. <span class="styBoldText">33</span>
 							</div>
@@ -70,6 +72,7 @@
 					<div class="styBB" style="width:187mm;float:none;clear:none;">
 						<div class="styNameBox" style="width:136mm;height:8mm;font-size:7pt;">
 							<div>Child's name shown on return</div>
+							<br/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
 							</xsl:call-template>
@@ -98,6 +101,8 @@
                 <b>Caution: </b>
 								<i>See instructions before completing.</i>
 							</div>
+							<br/>
+							<span style="padding-left:3.8mm;font-weight:normal;"/>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$FormData/ParentNm"/>
 							</xsl:call-template>
@@ -113,7 +118,7 @@
 						</div>
 					</div>
 					<div class="styBB" style="width:187mm;float:none;clear:left;padding-bottom:1mm;">
-						<div class="styNameBox" style="width:187mm;height:8mm;font-size:7pt;border-right:none;">
+						<div class="styNameBox" style="width:187mm;height:auto;font-size:7pt;border-right:none;">
 							<div>
 								<span style="font-weight:bold;padding-right:2mm;">C</span>Parent's filing status (check one):
                 <xsl:call-template name="LinkToLeftoverDataTableInline">
@@ -226,10 +231,10 @@
 							<div class="styLNLeftNumBox" style="padding-left:2.75mm;width:5mm;height:4.5mm">1 </div>
 							<div class="styLNDesc" style="width:141mm;height:4.5mm;">
               Enter the child's investment income (see instructions)
-              <span style="letter-spacing:3mm;">...................</span>
+              <span style="letter-spacing:2.8mm;">...................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;position:relative">
-								<span style="position:absolute;bottom:0">1</span>
+								<span style="bottom:0">1</span>
 							</div>
 							<div class="styLNAmountBox" style="height:4.5mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -243,10 +248,10 @@
 							<div class="styLNDesc" style="width:141mm;height:8mm;">
               If the child <b>did not</b> itemize deductions on <b>Schedule A</b> (Form 1040 or Form 1040NR), enter
               $2,000. Otherwise, see instructions
-              <span style="letter-spacing:3mm;">............................</span>
+              <span style="letter-spacing:2.8mm;">...............................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;position:relative">
-								<span style="position:absolute;bottom:0">2</span>
+								<span style="padding-top:3.5mm;bottom:0">2</span>
 							</div>
 							<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -260,10 +265,10 @@
 							<div class="styLNDesc" style="width:141mm;height:8mm;">
               Subtract line 2 from line 1. If zero or less, <b>stop;</b> do not complete the rest of this form but <b>do</b>
               attach it to the child's return
-              <span style="letter-spacing:3mm;">................................</span>
+              <span style="letter-spacing:2.8mm;">.................................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;position:relative">
-								<span style="position:absolute;bottom:0">3</span>
+								<span style="padding-top:3.5mm;bottom:0">3</span>
 							</div>
 							<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -280,7 +285,7 @@
                 <span style="letter-spacing:3mm;">................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;position:relative">
-								<span style="position:absolute;bottom:0">4</span>
+								<span style="padding-top:3.5mm;bottom:0">4</span>
 							</div>
 							<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -294,10 +299,10 @@
 							<div class="styLNDesc" style="width:141mm;height:8mm;">
                 Enter the <b>smaller</b> of line 3 or line 4. If zero, <b>stop</b>; do not complete the rest of this form but 
                 <b>do</b> attach it to the child's return
-                <span style="letter-spacing:3mm;">................................</span>
+                <span style="letter-spacing:2.8mm;">.................................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;position:relative;border-bottom:none;">
-								<span style="position:absolute;bottom:0">5</span>
+								<span style="padding-top:3.5mm;bottom:0">5</span>
 							</div>
 							<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;border-bottom:none;">
 								<xsl:call-template name="PopulateAmount">
@@ -326,7 +331,7 @@
 				</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBox" style="height:11mm;position:relative">
-								<span style="position:absolute;bottom:0">6</span>
+								<span style="padding-top:7.2mm;bottom:0">6</span>
 							</div>
 							<div class="styLNAmountBox" style="height:11mm;padding-top:7mm;">
 								
@@ -348,7 +353,7 @@
 				</xsl:call-template>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;position:relative">
-								<span style="position:absolute;bottom:0">7</span>
+								<span style="padding-top:3.5mm;bottom:0">7</span>
 							</div>
 							<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;padding-left:0mm;">
 								
@@ -361,10 +366,10 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left:2.75mm;width:5mm;height:4.5mm">8 </div>
 							<div class="styLNDesc" style="width:141mm;height:4.5mm;">
-              Add lines 5, 6, and 7 (see instructions)<span style="letter-spacing:3mm;">........................</span>
+              Add lines 5, 6, and 7 (see instructions)<span style="letter-spacing:2.8mm;">.........................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;position:relative">
-								<span style="position:absolute;bottom:0">8</span>
+								<span style="padding-top:1mm;bottom:0">8</span>
 							</div>
 							<div class="styLNAmountBox" style="height:4.5mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -376,8 +381,18 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:11mm;padding-left:2.75mm;width:5mm;">9</div>
 							<div class="styLNDesc" style="height:11mm;width:141mm;position:relative;">
+								<label>
+								  <xsl:call-template name="PopulateLabel">
+								  <xsl:with-param name="TargetNode" select="$FormData/FamilyCapitalGainsTaxInd"/>
+								  <xsl:with-param name="BackupName">FormDataFamilyCapitalGainsTaxInd</xsl:with-param>
+								  </xsl:call-template>
+								 Enter the tax on the amount on line 8 based on the <b>parent's</b> filing status above 
+								 (see instructions). If the Qualified Dividends and Capital Gain Tax Worksheet, Schedule D 
+								 Tax Worksheet, or Schedule J (Form 1040) is used to figure the tax, check here
+								</label>
+								<span style="letter-spacing:3mm;">....................</span>
 								<div style="width:20mm;position:absolute;bottom:0;right:0;">
-									<img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="bullet image" style="margin:0mm 3mm;"/>
+									<img src="{$ImagePath}/8615_Bullet.gif" width="9" height="9" alt="bullet image"/>
 									<input type="checkbox">
 										<xsl:call-template name="PopulateCheckbox">
 										  <xsl:with-param name="TargetNode" select="$FormData/FamilyCapitalGainsTaxInd"/>
@@ -385,19 +400,9 @@
 										</xsl:call-template>
 									</input>
 								</div>
-					<label>
-					  <xsl:call-template name="PopulateLabel">
-					  <xsl:with-param name="TargetNode" select="$FormData/FamilyCapitalGainsTaxInd"/>
-					  <xsl:with-param name="BackupName">FormDataFamilyCapitalGainsTaxInd</xsl:with-param>
-					  </xsl:call-template>
-					 Enter the tax on the amount on line 8 based on the <b>parent's</b> filing status above (see instructions).
-					 If the Qualified Dividends and Capital Gain Tax Worksheet, Schedule D Tax Worksheet, or
-					 Schedule J (Form 1040) is used to figure the tax, check here
-					</label>
-                <span style="letter-spacing:3mm;">..................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:11mm;position:relative">
-								<span style="position:absolute;bottom:0">9</span>
+								<span style="padding-top:5.8mm;bottom:0">9</span>
 							</div>
 							<div class="styLNAmountBox" style="height:11mm;padding-top:7mm;">
 								<xsl:call-template name="PopulateAmount">
@@ -409,8 +414,21 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:18mm;width:5mm;">10</div>
 							<div class="styLNDesc" style="height:18mm;width:141mm;position:relative;">
+								<label>
+									  <xsl:call-template name="PopulateLabel">
+									  <xsl:with-param name="TargetNode" select="$FormData/ParentCapitalGainsTaxInd"/>
+									  <xsl:with-param name="BackupName">FormDataParentCapitalGainsTaxInd</xsl:with-param>
+									  </xsl:call-template>
+									Enter the parent's tax from Form 1040, line 44; Form 1040A, line 28, minus any alternative
+									minimum tax; Form 1040EZ, line 10; Form 1040NR, line 42; or Form 1040NR-EZ, line 15. 
+									<b>Do not</b> include any tax from <b>Form 4972</b> or <b>8814</b> or any tax
+									from recapture of an education credit. If the parent files Form 2555 or 2555-EZ, see 
+									the instructions. If the Qualified Dividends and Capital Gain Tax Worksheet, Schedule D 
+									Tax Worksheet, or Schedule J (Form 1040) was used to figure the tax, check here
+								</label>
+								<span style="letter-spacing:3mm;">..............</span>
 								<div style="width:20mm;position:absolute;bottom:0;right:0;">
-									<img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="bullet image" style="margin:0mm 3mm;"/>
+									<img src="{$ImagePath}/8615_Bullet.gif" width="9" height="9" alt="bullet image"/>
 									<input type="checkbox">
 										<xsl:call-template name="PopulateCheckbox">
 										  <xsl:with-param name="TargetNode" select="$FormData/ParentCapitalGainsTaxInd"/>
@@ -418,19 +436,6 @@
 										</xsl:call-template>
 									</input>
 								</div>
-				<label>
-					  <xsl:call-template name="PopulateLabel">
-					  <xsl:with-param name="TargetNode" select="$FormData/ParentCapitalGainsTaxInd"/>
-					  <xsl:with-param name="BackupName">FormDataParentCapitalGainsTaxInd</xsl:with-param>
-					  </xsl:call-template>
-					Enter the parent's tax from Form 1040, line 44; Form 1040A, line 28, minus any alternative
-					minimum tax; Form 1040EZ, line 10; Form 1040NR, line 42; or Form 1040NR-EZ, line 15. <b>Do not</b>
-					include any tax from <b>Form 4972</b> or <b>8814</b> or any tax from recapture of an education credit. If the
-					parent files Form 2555 or 2555-EZ, see the instructions. If the Qualified Dividends and Capital
-					Gain Tax Worksheet, Schedule D Tax Worksheet, or Schedule J (Form 1040) was used to figure
-					the tax, check here
-					</label>
-                <span style="letter-spacing:3mm;">.....</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:18mm;padding-top:14mm;">
                 10
@@ -447,7 +452,7 @@
 							<div class="styLNDesc" style="width:141mm;height:8mm;">
                 Subtract line 10 from line 9 and enter the result. If line 7 is blank, also enter this amount on line
                 13 and go to <b>Part III</b>
-								<span style="letter-spacing:3mm;">..................................</span>
+								<span style="letter-spacing:2.8mm;">...................................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">
                 11
@@ -461,8 +466,8 @@
 						<!-- Line 12a -->
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="width:6mm;height:4.5mm">12a</div>
-							<div class="styLNDesc" style="width:99.9mm;height:4.5mm;padding-left:.5mm;">
-                Add lines 5 and 7<span style="letter-spacing:3mm;">....................</span>
+							<div class="styLNDesc" style="width:99.9mm;height:4.5mm;padding-left:.8mm;">
+                Add lines 5 and 7<span style="letter-spacing:2.8mm;">....................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;position:relative;text-align:left;">
 								<div style="position:absolute;bottom:0;text-align:center;width:8mm;">12a</div>
@@ -478,12 +483,12 @@
 						<!-- Line 12b -->
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="padding-left:4.5mm;width:5mm;height:4.5mm">b </div>
-							<div class="styLNDesc" style="width:139.85mm;height:4.5mm;padding-left:.5mm;">
+							<div class="styLNDesc" style="width:141mm;height:4.5mm;padding-left:1.6mm;">
                 Divide line 5 by line 12a. Enter the result as a decimal (rounded to at least three places)
-                <span style="letter-spacing:3mm;">......</span>
+                <span style="letter-spacing:2.8mm;">......</span>                
 							</div>
-							<div class="styLNRightNumBox" style="height:4.5mm;position:relative;text-align:left">
-								<div style="position:absolute;bottom:0;text-align:center;width:8mm;">12b</div>
+							<div class="styLNRightNumBox" style="height:4.5mm;text-align:left;">
+								<div style="bottom:0;text-align:center;width:8mm;">12b</div>
 							</div>
 							<div class="styLNAmountBox" style="height:4.5mm;color:darkblue;">
 								<span style="float:left;padding-left:16mm;">x</span>
@@ -496,7 +501,7 @@
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="width:5mm;height:4.5mm">13 </div>
 							<div class="styLNDesc" style="width:141mm;height:4.5mm;">
-              Multiply line 11 by line 12b<span style="letter-spacing:3mm;">............................</span>
+              Multiply line 11 by line 12b<span style="letter-spacing:2.8mm;">.............................</span>
 							</div>
 							<div class="styLNRightNumBox" style="height:4.5mm;border-bottom:none;">
                 13
@@ -552,8 +557,18 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:11mm;width:5mm;">15</div>
 						<div class="styLNDesc" style="height:11mm;width:141mm;position:relative;">
+							<label>
+							  <xsl:call-template name="PopulateLabel">
+							  <xsl:with-param name="TargetNode" select="$FormData/ChildUnearnedIncomeInd"/>
+							  <xsl:with-param name="BackupName">FormDataChildUnearnedIncomeInd</xsl:with-param>
+							  </xsl:call-template>
+							Enter the tax on the amount on line 14 based on the <b>child's</b> filing status (see instructions). If
+							the Qualified Dividends and Capital Gain Tax Worksheet, Schedule D Tax Worksheet, or
+							Schedule J (Form 1040) is used to figure the tax, check here
+							</label>
+							<span style="letter-spacing:3mm;">.......................</span>
 							<div style="width:20mm;position:absolute;bottom:0;right:0;">
-								<img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="bullet image" style="margin:0mm 3mm;"/>
+								<img src="{$ImagePath}/8615_Bullet.gif" width="9" height="9" alt="bullet image"/>
 								<input type="checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 								  <xsl:with-param name="TargetNode" select="$FormData/ChildUnearnedIncomeInd"/>
@@ -561,16 +576,6 @@
 								</xsl:call-template>
 								</input>
 							</div>
-					<label>
-					  <xsl:call-template name="PopulateLabel">
-					  <xsl:with-param name="TargetNode" select="$FormData/ChildUnearnedIncomeInd"/>
-					  <xsl:with-param name="BackupName">FormDataChildUnearnedIncomeInd</xsl:with-param>
-					  </xsl:call-template>
-					Enter the tax on the amount on line 14 based on the <b>child's</b> filing status (see instructions). If
-					the Qualified Dividends and Capital Gain Tax Worksheet, Schedule D Tax Worksheet, or
-					Schedule J (Form 1040) is used to figure the tax, check here
-					</label>
-                <span style="letter-spacing:3mm;">.....................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:11mm;padding-top:7mm;">
                 15
@@ -593,7 +598,7 @@
 						<div class="styLNLeftNumBox" style="width:5mm;height:4.5mm">16</div>
 						<div class="styLNDesc" style="width:141mm;height:4.5mm;">
               Add lines 13 and 15
-              <span style="letter-spacing:3mm;">..............................</span>
+              <span style="letter-spacing:2.8mm;">..............................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:4.5mm;">
                 16
@@ -608,8 +613,18 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="height:11mm;width:5mm;">17</div>
 						<div class="styLNDesc" style="height:11mm;width:141mm;position:relative;">
+							<label>
+							  <xsl:call-template name="PopulateLabel">
+							  <xsl:with-param name="TargetNode" select="$FormData/ChildCapitalGainInd"/>
+							  <xsl:with-param name="BackupName">FormDataChildCapitalGainInd</xsl:with-param>
+							  </xsl:call-template>
+								Enter the tax on the amount on line 4 based on the <b>child's</b> filing status (see instructions). If
+								the Qualified Dividends and Capital Gain Tax Worksheet, Schedule D Tax Worksheet, or
+								Schedule J (Form 1040) is used to figure the tax, check here
+							</label>
+							<span style="letter-spacing:2.8mm;">........................</span>
 							<div style="width:20mm;position:absolute;bottom:0;right:0;">
-								<img src="{$ImagePath}/3903_Bullet.gif" width="9" height="9" alt="bullet image" style="margin:0mm 3mm;"/>
+								<img src="{$ImagePath}/8615_Bullet.gif" width="9" height="9" alt="bullet image"/>
 								<input type="checkbox">
 									<xsl:call-template name="PopulateCheckbox">
 								  <xsl:with-param name="TargetNode" select="$FormData/ChildCapitalGainInd"/>
@@ -617,16 +632,6 @@
 								</xsl:call-template>
 								</input>
 							</div>
-					<label>
-					  <xsl:call-template name="PopulateLabel">
-					  <xsl:with-param name="TargetNode" select="$FormData/ChildCapitalGainInd"/>
-					  <xsl:with-param name="BackupName">FormDataChildCapitalGainInd</xsl:with-param>
-					  </xsl:call-template>
-						Enter the tax on the amount on line 4 based on the <b>child's</b> filing status (see instructions). If
-						the Qualified Dividends and Capital Gain Tax Worksheet, Schedule D Tax Worksheet, or
-						Schedule J (Form 1040) is used to figure the tax, check here
-					</label>
-                <span style="letter-spacing:3mm;">......................</span>
 						</div>
 						<div class="styLNRightNumBox" style="height:11mm;padding-top:7mm;">
                 17

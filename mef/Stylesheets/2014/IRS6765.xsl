@@ -19,6 +19,9 @@
 <!-- Last modified on 8/15/2014 by Robert Jones for Re-issued IBM Defect 40431  1040 ID # not displaying-->
 <!-- Last modified on 11/26/2014 by Robert Jones for Re-issued IBM Defect 40431  1040 ID # not displaying-->
 <!-- Last modified on 2/10/2015 by Robert Jones for UWR 150654  -->
+<!-- Last modified on 2/26/2015 by Robert Jones for IBM Defect 42525  -->
+<!-- Last modified on 5/6/2015 by Robert Jones UWR 123023 IE11 Upgrade Fixes  -->
+<!-- Last modified on 6/3/2015 by Robert Jones IBM Defect 43145 IE11 Upgrade Fixes  -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -29,8 +32,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form6765Data" select="$RtnDoc/IRS6765"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form6765Data)"/>
@@ -95,11 +100,11 @@
           </a>
        </div>
 						</div>
-						<div class="styTYBox" style="width:32mm;height:13.5mm;">
-							<div class="styOMB" style="height:2mm;border-bottom-width:1px;padding-top:3mm;">
+						<div class="styTYBox" style="width:32mm;height:auto;">
+							<div class="styOMB" style="height:auto;border-bottom-width:1px;padding-top:4mm;">
           OMB No. 1545-0619
         </div>
-							<div class="styTY" style="height:11mm;">20<span class="styTYColor">14</span>
+							<div class="styTY" style="height:auto;">20<span class="styTYColor">14</span>
 							</div>
 							<div style="text-align:left;padding-left:6mm;">Attachment<br/> Sequence No.<span class="styBoldText">
 									<span style="width:4px;"/>81</span>
@@ -109,7 +114,7 @@
 					<!-- End Form Number and Name section -->
 					<!-- Begin Names and Identifying number section -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styNameBox" style="width:147mm;height:8mm;font-weight:normal;font-size:7pt;">
+						<div class="styNameBox" style="width:147mm;height:auto;font-weight:normal;font-size:7pt;">
         Name(s) shown on return<br/>
         <xsl:choose>
          <xsl:when test="$RtnHdrData/ReturnTypeCd='1040' ">
@@ -161,15 +166,15 @@
 					<!-- End Names and Identifying number section -->
 					<!--Begin Section A-->
 					<div class="styBB" style="width:187mm;font-size:7pt;">
-						<div class="styPartDesc" style="width:183mm;font-size:7pt;padding-left:0mm;">Section A—Regular Credit. <span class="styNormalText">Skip this section and go to Section B if you are electing or previously elected (and are not revoking) the alternative simplified credit.</span>
+						<div class="styLNDesc" style="height:auto;width:183mm;font-size:7pt;padding-left:0mm;"><b>Section A—Regular Credit.</b> Skip this section and go to Section B if you are electing or previously elected (and are not revoking) the alternative simplified credit.
 						</div>
 					</div>
 					<!-- line 1 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
      1
         </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:auto;">
 					<!--	Reserved-->
         Certain amounts paid or incurred to energy consortia (see instructions)    
           <span class="styBoldText">
@@ -183,8 +188,8 @@
          
           </span>
 						</div>
-						<div class="styLNRightNumBox" style="width:8.25mm;height:4mm;border-right-width:1px;">1</div>
-						<div class="styLNAmountBox" style="height:4mm;border-right-width:0px;border-left-width:0px;">
+						<div class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">1</div>
+						<div class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 						<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/RegularEnergyConsortiaAmt"/>
 							</xsl:call-template>
@@ -192,19 +197,19 @@
 					</div>
 					<!-- line 2 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
          2
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;"><!--Reserved-->
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;"><!--Reserved-->
        Basic research payments to qualified organizations (see instructions)
          <span class="styBoldText">
 								<span style="width:16px;"/>.
                         </span>
         </div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
          2          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/RegularBasicResearchPaymentAmt"/>
 							</xsl:call-template>
@@ -218,10 +223,10 @@
 					</div>
 					<!-- line 3 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
          3
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
          Qualified organization base period amount
           <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -233,10 +238,10 @@
             <span style="width:16px;"/>.               
          </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
          3          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/RegularBasePeriodAmt"/>
 							</xsl:call-template>
@@ -246,10 +251,10 @@
 					</div>
 					<!-- line 4 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
         4
         </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
         
  Subtract line 3 from line 2. If zero or less, enter -0- 
             <span class="styBoldText">
@@ -260,14 +265,14 @@
               <span style="width:16px;"/>.
               <span style="width:16px;"/>.
               <span style="width:16px;"/>.
-              <span style="width:16px;"/>.
+              
               
 							</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
          4          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/RegularPaymentMinusBaseAmt"/>
 							</xsl:call-template>
@@ -275,10 +280,10 @@
 					</div>
 					<!-- line 5 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
           5
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
         Wages for qualified services (do not include wages used in figuring the work opportunity credit)
              <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -307,10 +312,10 @@
 					</div>
 					<!-- line 6 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
          6
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
            Cost of supplies      
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -324,14 +329,13 @@
               <span style="width:16px;"/>.
               <span style="width:16px;"/>.
               <span style="width:16px;"/>.
-              <span style="width:16px;"/>.
-              <span style="width:16px;"/>.
+              
          </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
        6          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 					<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/RegularSupplyCostAmt"/>
 							</xsl:call-template>
@@ -341,10 +345,10 @@
 					</div>
 					<!-- line 7 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
      7
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
          Rental or lease costs of computers (see instructions) 
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -354,10 +358,10 @@
              
                 </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
          7          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 							<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$Form6765Data/RegularComputerCostAmt"/>
 							</xsl:call-template>
@@ -367,10 +371,10 @@
 					</div>
 					<!-- line8  -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
          8
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
         Enter the applicable percentage of contract research expenses (see instructions) 
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -401,23 +405,23 @@
 						<!-- line 9 -->
 					</div>
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;padding-left:2.5mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;padding-left:2.5mm;">
           9
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
         Total qualified research expenses. Add lines 5 through 8 
             <span class="styBoldText">
 								<span style="width:16px;"/>.
               <span style="width:16px;"/>.
               <span style="width:16px;"/>.
-              <span style="width:16px;"/>.
+              
              
              </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
           9         
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 						<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/RegularTotQlfyResearchExpnsAmt"/>
 							</xsl:call-template>
@@ -427,17 +431,17 @@
 					</div>
 					<!-- line 10 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
        10
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
 						Enter fixed-base percentage, but not more than 16% (see instructions)
 						 
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
         10          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:choose>
 								<xsl:when test="$Form6765Data/FixedBasePercentage=''">
 									<td class="styTableCell" style="width:17mm;height:5mm;text-align:right;font-size:7pt;border-color:black;">
@@ -458,10 +462,10 @@
 					</div>
 					<!-- line 11 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
           11
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
        Enter average annual gross receipts (see instructions)
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -472,10 +476,10 @@
                                      
             </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
           11          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 						<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/RegularAverageGrossReceiptsAmt"/>
 							</xsl:call-template>
@@ -485,10 +489,10 @@
 					</div>
 					<!-- line 12 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
           12
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
       Multiply line 11 by the percentage on line 10 
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -499,10 +503,10 @@
               
                 </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
           12          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 							<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$Form6765Data/FixedBasePctTimesGrossRcptsAmt"/>
 							</xsl:call-template>
@@ -512,10 +516,10 @@
 					</div>
 					<!-- line 13 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
           13
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
         Subtract line 12 from line 9. If zero or less, enter -0- 
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -524,10 +528,10 @@
                            
               </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
           13          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 					<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$Form6765Data/AdjTotQualifedRsrchExpnssAmt"/>
 							</xsl:call-template>
@@ -537,10 +541,10 @@
 					</div>
 					<!-- line 14 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
           14
         </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
          Multiply line 9 by 50% (.50)   
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -553,10 +557,10 @@
               
             </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
           14          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$Form6765Data/HalfAdjTotQlfyRsrchExpnssAmt"/>
 							</xsl:call-template>
@@ -566,10 +570,10 @@
 					</div>
 					<!--
     <div style="width:187mm">
-        <div class="styLNLeftNumBox" style="height:4mm;">
+        <div class="styLNLeftNumBox" style="height:4.5mm;">
           15
         </div>
-          <div class="styLNDesc" style="width:98.75mm;height:4mm;">
+          <div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
             Enter the <span class="styBoldText">smaller</span> of line 13 or line 14          
             <span class="styBoldText">
               <span style="width:16px;"></span>.
@@ -582,10 +586,10 @@
               <span style="width:16px;"></span>.
             </span>          
           </div>              
-           <div class="styLNRightNumBox" style="height:4mm;">
+           <div class="styLNRightNumBox" style="height:4.5mm;">
           15          
         </div>
-        <div class="styLNAmountBox" style="height:4mm;padding-right:1mm;" >
+        <div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;" >
           <xsl:call-template name="PopulateAmount">
             <xsl:with-param name="TargetNode" select="$Form6765Data/SmallestQlfyResearchExpenses"/>
           </xsl:call-template>
@@ -596,10 +600,10 @@
      -->
 					<!-- line 15-->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
           15
         </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
          Enter the <span class="styBoldText">smaller</span> of line 13 or line 14       
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -618,10 +622,10 @@
               
             </span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
           15          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;">
 						<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/SmallerQlfyResearchExpnssAmt"/>
 							</xsl:call-template>
@@ -629,10 +633,10 @@
 					</div>
 					<!-- line 16-->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
           16
         </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
            Add lines 1, 4,  and 15     
             <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -651,14 +655,13 @@
               <span style="width:16px;"/>.
               <span style="width:16px;"/>.  
               <span style="width:16px;"/>.
-              <span style="width:16px;"/>.  
-              <span style="width:16px;"/>.
+             
             </span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
           16          
         </div>
-						<div class="styLNAmountBox" style="height:4mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/RsrchExpensesPlusRsrchPymtsAmt"/>
 							</xsl:call-template>
@@ -666,10 +669,10 @@
 					</div>
 					<!-- 17 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:auto;padding-top:1.5mm;">
       17
     </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:auto;">
     Are you electing the reduced credit under Section 280C? 
         <img src="{$ImagePath}/6765_Bullet.gif" alt="Bullet Image"/>
 							<!-- yes checkbox -->
@@ -715,11 +718,12 @@
                   <xsl:with-param name="TargetNode" select="$Form6765Data/RegularRedSect280CCrElectInd"/>
 								</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBoxNBB"/>
-						<div class="styLNAmountBoxNBB" style="height:4mm;"/>
+						<div class="styLNRightNumBoxNBB" style="height:6.5mm;background-color:lightgrey;"/>
+						<div class="styLNAmountBoxNBB" style="height:6.5mm;"/>
 					</div>
+
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;"/>
+						<div class="styLNLeftNumBox" style="height:4.5mm;"/>
 						<div class="styLNDesc" style="width:138.75mm;height:10mm;">If “Yes,” multiply line 16 by 13% (.13). If “No,” multiply line 16 by 20% (.20) and see the instructions
 for the statement that must be attached. Members of controlled groups or businesses under
 common control: see instructions for the statement that must be attached 
@@ -739,8 +743,9 @@ common control: see instructions for the statement that must be attached
             
            </span>
 						</div>
+						
 						<div class="styLNRightNumBox" style="height:10.5mm;padding-top:6.5mm;border-bottom-width:0px;">17</div>
-						<div class="styLNAmountBox" style="height:10.5mm;padding-right:1mm;padding-top:6.5mm;border-bottom-width:0px;">
+							<div class="styLNAmountBox" style="height:10.5mm;padding-right:1mm;padding-top:6.5mm;border-bottom-width:0px;">
 							<xsl:call-template name="PopulateAmount">
           <xsl:with-param name="TargetNode" select="$Form6765Data/RegularCreditAmt"/>
 							</xsl:call-template>
@@ -757,10 +762,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 18 -->
 					<div style="width:187mm;">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       18
     </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
 						Certain amounts paid or incurred to energy consortia (see the line 1 instructions)
      <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -770,8 +775,8 @@ common control: see instructions for the statement that must be attached
            
  </span>
 						</div>
-						<div class="styLNRightNumBox" style="width:8.25mm;height:4mm;border-right-width:1px;">18</div>
-						<div class="styLNAmountBox" style="height:4mm;border-right-width:0px;border-left-width:0px;">
+						<div class="styLNRightNumBox" style="width:8.25mm;height:4.5mm;border-right-width:1px;">18</div>
+						<div class="styLNAmountBox" style="height:4.5mm;border-right-width:0px;border-left-width:0px;">
 						<xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" 
                 select="$Form6765Data/AltEnergyConsortiaAmt"/>
@@ -780,28 +785,13 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 19 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       19
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
   Basic research payments to qualified organizations (see the line 2 instructions)
   
-       <span class="styBoldText">
-								<span style="width:16px;"/>.
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.  
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>. 
-         <span style="width:16px;"/>.
-        <span style="width:16px;"/>.  
-        
-     </span>
+       
 						</div>
 						<div class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">
       19          
@@ -816,18 +806,18 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 20 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       20
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
     Qualified organization base period amount (see the line 3 instructions)
      <span class="styBoldText">
 								           </span>
       </div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       20          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/AltBasePeriodAmt"/>
 							</xsl:call-template>
@@ -837,10 +827,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 21 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       21
     </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
    Subtract line 20 from line 19. If zero or less, enter -0-
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -857,10 +847,10 @@ common control: see instructions for the statement that must be attached
      
       </span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       21          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="$Form6765Data/AltPaymentMinusBaseAmt"/>
 							</xsl:call-template>
@@ -868,10 +858,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 22 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       22
     </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
      Add lines 18 and 21
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -895,10 +885,10 @@ common control: see instructions for the statement that must be attached
          
     </span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       22          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/TotalSumEnergyAndNetBaseAmt"/>
 							</xsl:call-template>
@@ -906,10 +896,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 23 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       23
     </div>
-						<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
   Multiply line 22 by 20% (.20)
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -930,10 +920,10 @@ common control: see instructions for the statement that must be attached
         <span style="width:16px;"/>.   
            </span>
 						</div>
-						<div class="styLNRightNumBox">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       23          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/TotalSumTimesTwentyPctAmt"/>
 							</xsl:call-template>
@@ -941,10 +931,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 24  -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       24
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
    Wages for qualified services (do not include wages used in figuring the work opportunity credit)
       <span class="styBoldText">
 								<span style="width:16px;"/>.  
@@ -957,7 +947,7 @@ common control: see instructions for the statement that must be attached
         <span style="width:16px;"/>.
         <span style="width:16px;"/>.
        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.  
+        
      </span>
 						</div>
 						<div class="styLNRightNumBox" style="height:7.5mm;padding-top:3mm;">
@@ -973,10 +963,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 25 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       25
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
      Cost of supplies
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -990,14 +980,13 @@ common control: see instructions for the statement that must be attached
         <span style="width:16px;"/>.
         <span style="width:16px;"/>.  
         <span style="width:16px;"/>.
-        <span style="width:16px;"/>.
-        <span style="width:16px;"/>.
+        
        </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       25          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 						<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/AltSupplyCostAmt"/>
 							</xsl:call-template>
@@ -1007,10 +996,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 26 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       26
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
  Rental or lease costs of computers (see the line 7 instructions)
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -1018,10 +1007,10 @@ common control: see instructions for the statement that must be attached
        
         </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       26          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 						<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/AltComputerCostAmt"/>
 							</xsl:call-template>
@@ -1031,10 +1020,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 27 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       27
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
      Enter the applicable percentage of contract research expenses (see the line 8 instructions)      
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -1064,10 +1053,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 28-->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       28
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
       Total qualified research expenses. Add lines 24 through 27
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -1076,10 +1065,10 @@ common control: see instructions for the statement that must be attached
         
        </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       28          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/AltTotQlfyResearchExpnsAmt"/>
 							</xsl:call-template>
@@ -1089,10 +1078,10 @@ common control: see instructions for the statement that must be attached
 					</div>
 					<!-- line 29 -->
 						<div style="width:187mm">
-							<div class="styLNLeftNumBox" style="height:4mm;">
+							<div class="styLNLeftNumBox" style="height:4.5mm;">
       29
     </div>
-							<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+							<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
   Enter your total qualified research expenses for the prior 3 tax years. If
 you had no qualified research expenses in any one of those years, skip
 lines 30 and 31
@@ -1126,10 +1115,10 @@ lines 30 and 31
 					
 					<!-- line 30-->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       30
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
       Divide line 29 by 6.0
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -1144,10 +1133,10 @@ lines 30 and 31
         <span style="width:16px;"/>.
       </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       30          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 						<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/TotQlfyResearchExpns3PYPctAmt"/>
 							</xsl:call-template>
@@ -1157,10 +1146,10 @@ lines 30 and 31
 					</div>
 					<!-- line 31 -->
 					<div style="width:187mm">
-						<div class="styLNLeftNumBox" style="height:4mm;">
+						<div class="styLNLeftNumBox" style="height:4.5mm;">
       31
     </div>
-						<div class="styLNDesc" style="width:98.75mm;height:4mm;">
+						<div class="styLNDesc" style="width:98.75mm;height:4.5mm;">
       Subtract line 30 from line 28. If zero or less, enter -0- 
       <span class="styBoldText">
 								<span style="width:16px;"/>.
@@ -1170,10 +1159,10 @@ lines 30 and 31
        
       </span>
 						</div>
-						<div class="styLNRightNumBox" style="height:4mm;">
+						<div class="styLNRightNumBox" style="height:4.5mm;">
       31          
     </div>
-						<div class="styLNAmountBox" style="height:4mm;padding-right:1mm;">
+						<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form6765Data/NetQlfyResearchExpns3PYPctAmt"/>
 							</xsl:call-template>
@@ -1184,7 +1173,7 @@ lines 30 and 31
 					<!--line32 -->
 						<div style="width:187mm;">
 							<div class="styLNLeftNumBox" style="height:3.5mm;">32</div>
-							<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+							<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
               Multiply line 31 by 14% (.14). If you skipped lines 30 and 31, multiply line
                 28 by 6% (.06) 
          <!--     <img src="{$ImagePath}/8912_Bullet_Round.gif" alt="dot"/>
@@ -1214,11 +1203,12 @@ lines 30 and 31
 							</div>
 							</div>
 		
-   <div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 0px" class="pageend">
+   <div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 0px" class="pageEnd">
             <div class="styGenericDiv" style="width:117mm;font-weight:bold;">For  Paperwork Reduction Act Notice, see separate instructions.</div>
             <div class="styGenericDiv" style="width:23mm;">Cat. No. 13700H</div>
             <div class="styGenericDiv" style="float:right;">Form <span class="styBoldText">6765</span> (2014)</div>
           </div>
+           <p style="page-break-before: always"/> 
 		 <!--Begin Page 2 -->
   <!-- Header -->
   <div class="styBB" style="width:187mm;padding-top:.5mm;border-top-width:0px;">  
@@ -1230,14 +1220,14 @@ lines 30 and 31
   						
 						
 					<!-- Begin Section B-->
-					<div class="styBB" style="width:187mm;border-top-width:0px;height:4mm;padding-top:0mm;">
+					<div class="styBB" style="width:187mm;border-top-width:0px;height:4.5mm;padding-top:0mm;">
 						<div class="styPartDesc" style="font-size:7pt;padding-left:0mm;">Section B&#151;Alternative Simplified Credit. <span class="styNormalText">(continued) </span>
 						</div>
 					</div>	
 						<!--line 33 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;">33</div>
-							<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+							<div class="styLNLeftNumBox" style="height:4.5mm;">33</div>
+							<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
    Add lines 23 and 32
           <!--Dotted Line-->
 								<span class="styBoldText">
@@ -1271,13 +1261,14 @@ lines 30 and 31
 						</div>
 						<!-- line 34 -->
 						<div style="width:187mm">
-							<div class="styLNLeftNumBox" style="height:4mm;">
+							<div class="styLNLeftNumBox" style="height:4.5mm;padding-top:2mm;">
       34
     </div>
-							<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+							<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
  Are you electing the reduced credit under Section 280C?
        <img src="{$ImagePath}/6765_Bullet.gif" alt="Bullet Image"/>
 								<!-- yes checkbox -->
+								<span>
 								<label>
                   <xsl:call-template name="PopulateLabelYes">
                <xsl:with-param name="TargetNode" select="$Form6765Data/AltRedSect280CCrElectInd"/>
@@ -1323,13 +1314,14 @@ lines 30 and 31
 							<xsl:call-template name="PopulateSpan">
                <xsl:with-param name="TargetNode" select="$Form6765Data/AltRedSect280CCrElectInd"/>
                   </xsl:call-template>
+                  </span>
 							</div>
-							<div class="styLNRightNumBoxNBB"/>
-							<div class="styLNAmountBoxNBB" style="height:4mm;"/>
+							<div class="styLNRightNumBoxNBB" style="height:4.5mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:4.5mm;"/>
 						</div>
 						<div class="styBB" style="width:187mm">
-							<div class="styLNLeftNumBox" style="height:4mm;"/>
-							<div class="styLNDesc" style="width:138.75mm;height:4mm;">
+							<div class="styLNLeftNumBox" style="height:4.5mm;"/>
+							<div class="styLNDesc" style="width:138.75mm;height:4.5mm;">
 If “Yes,” multiply line 33 by 65% (.65). If “No,” enter the amount from line 33 and see the line 17 instructions for the statement that must be attached. Members of controlled groups or businesses under common control: see instructions for the statement that must be attached 
    
           <!-- Form to Form Link -->
@@ -1341,14 +1333,13 @@ If “Yes,” multiply line 33 by 65% (.65). If “No,” enter the amount from 
             <span style="width:16px;"/>.
             <span style="width:16px;"/>.
             <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
+            
            </span>
            
               
 							</div>
-							<div class="styLNRightNumBoxNBB" style="height:10.5mm;padding-top:8mm;">34</div>
-							<div class="styLNAmountBoxNBB" style="height:10.5mm;padding-top:8mm;">
+							<div class="styLNRightNumBoxNBB" style="height:10.5mm;padding-top:7mm;">34</div>
+							<div class="styLNAmountBoxNBB" style="height:10.5mm;padding-top:7mm;">
 								<xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form6765Data/AltCreditAmt"/>
 								</xsl:call-template>
@@ -1365,8 +1356,8 @@ If “Yes,” multiply line 33 by 65% (.65). If “No,” enter the amount from 
 						</div>
 						<!--line 35 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;">35</div>
-							<div class="styLNDesc" style="width:138mm;height:4mm;">
+							<div class="styLNLeftNumBox" style="height:4.5mm;">35</div>
+							<div class="styLNDesc" style="width:138mm;height:4.5mm;">
                Enter the portion of the credit from Form 8932, line 2, that is attributable to wages that were also used to figure the credit on line 17 or line 34 (whichever applies)
           <!--Dotted Line-->
                 <span class="styBoldText">
@@ -1380,8 +1371,8 @@ If “Yes,” multiply line 33 by 65% (.65). If “No,” enter the amount from 
                   
               </span>
               </div>
-              <div class="styLNRightNumBox" style="height:8mm;padding-top:4mm">35</div>
-              <div class="styLNAmountBox" style="height:8mm;padding-right:1mm;padding-top:4mm;">
+              <div class="styLNRightNumBox" style="height:auto;padding-top:4.5mm">35</div>
+              <div class="styLNAmountBox" style="height:auto;padding-right:1mm;padding-top:4.5mm;">
                <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form6765Data/EmployerDiffWagePymtCrAmt"/>
                 </xsl:call-template>
@@ -1389,8 +1380,8 @@ If “Yes,” multiply line 33 by 65% (.65). If “No,” enter the amount from 
             </div>
 						<!--line 36 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;">36</div>
-							<div class="styLNDesc" style="width:138mm;height:4mm;">
+							<div class="styLNLeftNumBox" style="height:auto;">36</div>
+							<div class="styLNDesc" style="width:138mm;height:auto;">
        Subtract line 35 from line 17 or line 34 (whichever applies). If zero or less, enter -0- 
           <!--Dotted Line-->
                 <span class="styBoldText">
@@ -1401,8 +1392,8 @@ If “Yes,” multiply line 33 by 65% (.65). If “No,” enter the amount from 
                          
          </span>
               </div>
-              <div class="styLNRightNumBox" style="height:4.5mm;">36</div>
-              <div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
+              <div class="styLNRightNumBox" style="height:auto;">36</div>
+              <div class="styLNAmountBox" style="height:auto;padding-right:1mm;">
              <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form6765Data/NetEmployerDiffWagePymtCrAmt"/>
                 </xsl:call-template>
@@ -1410,18 +1401,18 @@ If “Yes,” multiply line 33 by 65% (.65). If “No,” enter the amount from 
             </div>
 						<!--line 37 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:4mm;">37</div>
-							<div class="styLNDesc" style="width:138mm;height:4mm;">
+							<div class="styLNLeftNumBox" style="height:auto;">37</div>
+							<div class="styLNDesc" style="width:138mm;height:auto;">
         Credit for increasing research activities from partnerships, S corporations, estates, and trusts
           <!--Dotted Line-->
                 <span class="styBoldText">
                   <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
+            
             
          </span>
               </div>
-							<div class="styLNRightNumBox" style="height:4.5mm;">37</div>
-							<div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
+							<div class="styLNRightNumBox" style="height:auto;">37</div>
+							<div class="styLNAmountBox" style="height:auto;padding-right:1mm;">
 								<xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form6765Data/ResearchActivitiesIncrCrAmt"/>
                 </xsl:call-template>
@@ -1429,38 +1420,16 @@ If “Yes,” multiply line 33 by 65% (.65). If “No,” enter the amount from 
             </div>
             <!--line 38 -->
             <div style="width:187mm;">
-              <div class="styLNLeftNumBox" style="height:10.5mm;">38</div>
-              <div class="styLNDesc" style="width:138mm;height:10.5mm;">
+              <div class="styLNLeftNumBox" style="height:auto;">38</div>
+              <div class="styLNDesc" style="width:138mm;height:auto;">
              Add lines 36 and 37. Estates and trusts, go to line 39. Partnerships and S corporations, stop here
 and report this amount on Schedule K. All others, stop here and report this amount on Form 3800, Part III,
 line 1c
 <!--Dotted Line-->
-                <span class="styBoldText">
-                  <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-                  <span style="width:16px;"/>.
-                  <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-            <span style="width:16px;"/>.
-                         
-         </span>
+               
                </div>
-              <div class="styLNRightNumBox" style="height:10.5mm;padding-top:7mm;">38</div>
-              <div class="styLNAmountBox" style="height:10.5mm;padding-right:1mm;padding-top:7mm;">
+              <div class="styLNRightNumBox" style="height:auto;padding-top:7mm;">38</div>
+              <div class="styLNAmountBox" style="height:auto;padding-right:1mm;padding-top:7mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form6765Data/CYResearchCreditAmt"/>
                 </xsl:call-template>
@@ -1468,8 +1437,8 @@ line 1c
             </div>
             <!--line39 -->
             <div style="width:187mm;">
-              <div class="styLNLeftNumBox" style="height:4mm;">39</div>
-              <div class="styLNDesc" style="width:138mm;height:4mm;">
+              <div class="styLNLeftNumBox" style="height:auto;">39</div>
+              <div class="styLNDesc" style="width:138mm;height:auto;">
     Amount allocated to beneficiaries of the estate or trust (see instructions)
           <!--Dotted Line-->
                 <span class="styBoldText">
@@ -1481,8 +1450,8 @@ line 1c
             <span style="width:16px;"/>.
            </span>
               </div>
-              <div class="styLNRightNumBox" style="height:4.5mm;">39</div>
-              <div class="styLNAmountBox" style="height:4.5mm;padding-right:1mm;">
+              <div class="styLNRightNumBox" style="height:auto;">39</div>
+              <div class="styLNAmountBox" style="height:auto;padding-right:1mm;">
                 <xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form6765Data/EstateOrTrustAllocatedBenefAmt"/>
 								</xsl:call-template>
@@ -1490,13 +1459,13 @@ line 1c
 						</div>
             <!-- line 40 -->
 						<div style="width:187mm;">
-              <div class="styLNLeftNumBox" style="height:4mm;">40</div>
-              <div class="styLNDesc" style="width:138mm;height:4mm;">Estates and trusts,
+              <div class="styLNLeftNumBox" style="height:auto;">40</div>
+              <div class="styLNDesc" style="width:138mm;height:auto;">Estates and trusts,
                subtract line 39 from line 38. Report the amount on Form 3800, Part III, line 1c               
                
 							</div>
-							<div class="styLNRightNumBoxNBB" style="height:4.5mm;padding-top:.5mm;">40</div>
-							<div class="styLNAmountBoxNBB" style="height:4.5mm;padding-right:1mm;">
+							<div class="styLNRightNumBoxNBB" style="height:auto;padding-top:.5mm;">40</div>
+							<div class="styLNAmountBoxNBB" style="height:auto;padding-right:1mm;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form6765Data/NetEstateOrTrustAllocBenefAmt"/>
 								</xsl:call-template>
@@ -1506,7 +1475,7 @@ line 1c
 					<!-- END Part II  -->
 					
 		<!--Footer-->
-					<div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px;  text-align:right; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 0px" class="pageend">  
+					<div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px;  text-align:right; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 0px" class="pageEnd">  
 					<!--<div style="float:left;">
 					<span class="styBoldText">For Paperwork Reduction Act Notice, see instructions </span>    
 					</div> -->  
@@ -1516,6 +1485,7 @@ line 1c
 					
 					<!-- BEGIN Left Over Table -->
 					<!-- Additonal Data Title Bar and Button -->
+					 <p style="page-break-before: always"/> 
 					<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">
             Additional Data        

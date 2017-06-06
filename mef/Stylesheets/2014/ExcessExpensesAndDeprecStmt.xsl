@@ -10,12 +10,24 @@
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName"><xsl:with-param name="TargetNode" select="$EEDSData"/></xsl:call-template>  
   </xsl:param>
+  <xsl:template name="ShowTable">
+    <table id="DataTbl" class="styDepTbl" style="border:none;">
+        <tr>
+          <td class="styDepTblCell" style="border:none;text-align:left">            
+            <xsl:call-template name="PopulateText">
+				<xsl:with-param name="TargetNode" select="$EEDSData/ExplanationTxt"/>
+			</xsl:call-template>             
+          </td>                      
+        </tr>
+    </table>
+  </xsl:template>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
-
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
          <meta http-equiv="Cache-Control" content="no-cache"/>
@@ -26,11 +38,8 @@
          <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
          <meta name="Author" content="Ravi Venigalla"/>
          <meta name="Description" content="{$depDocTitle}"/> 
-        
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
         <xsl:call-template name="InitJS"/>
-      
-        
         <style type="text/css">
           <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="AddOnStyle"/>    
@@ -46,16 +55,13 @@
           </span>
         </div>
         <!--Adding template for left over data  -->
-        <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$EEDSData"/></xsl:call-template>        
-        
-        <div class="styTopSectionLine">
-          <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
-          <div class="styExplanationLine">
-            <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$EEDSData/ExplanationTxt"/>
-            </xsl:call-template>            
-          </div>
-        </div>
+        <xsl:call-template name="PopulateDepCommonLeftover">
+			<xsl:with-param name="TargetNode" select="$EEDSData"/>
+        </xsl:call-template>        
+        <div class="styTopSectionLine"> 
+        <div class="styTopSectionLineLbl">Statement: </div>
+	   </div>
+        <xsl:call-template name="ShowTable"/>      
         <br/>      
       </body>
     </html>

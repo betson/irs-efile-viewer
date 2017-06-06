@@ -15,8 +15,10 @@
   <!-- Main template -->
   <xsl:template match="/" >
 
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle" /></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache" />
@@ -29,9 +31,6 @@
          <meta name="Description" content="{$depDocTitle}" />
          <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js"></script>
         <xsl:call-template name="InitJS"></xsl:call-template>
-        
-        <style type="text/css">
-                  </style>
         <style type="text/css">
           <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="AddOnStyle"></xsl:call-template>    
@@ -39,11 +38,11 @@
         </style>
       <xsl:call-template name="GlobalStylesDep"/>
     </head>    
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm;">
   
         <xsl:call-template name="DocumentHeaderDependency"  />  
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:187mm;">
+          <span class="styDepTitle" style="width:150mm;">
             <span><xsl:value-of select="$depDocTitle" /></span>
           </span>
         </div>

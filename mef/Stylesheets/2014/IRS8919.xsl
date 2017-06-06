@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8919Data" select="$RtnDoc/IRS8919"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8919Data)"/>
@@ -43,7 +45,7 @@
 					<xsl:call-template name="DocumentHeader"/>
 						<!-- Begin Form Number and Name -->
 						<div class="styBB" style="width:187mm;">
-							<div class="styFNBox" style="width:31mm;height:20mm;border-right:none;vertical-align:bottom;">
+							<div class="styFNBox" style="width:25mm;height:20mm;border-right:none;vertical-align:bottom;">
 								Form <span class="styFormNumber">8919</span>
 								<div style="padding-top:1mm;">
 									<br/>
@@ -52,20 +54,20 @@
 									<span class="styAgency">Internal Revenue Service</span>
 								</div>
 							</div>
-							<div class="styFTBox" style="width:123mm;border-right:1px solid black;border-left:1px solid black;height:20mm;">
+							<div class="styFTBox" style="width:135mm;border-right:1px solid black;border-left:1px solid black;height:20mm;padding-top:2mm;">
 								<div class="styMainTitle">	
 									Uncollected Social Security and<br/>   
 									Medicare Tax on Wages
 								</div>
-								<div class="styFBT" style="height:4mm;margin-top:0mm;">
+								<div class="styFBT" style="height:4mm;margin-top:0mm;padding-top:1mm;">
 									<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" />
-										See instructions on back.    <br/>
+										Information about Form 8919 and its instructions is at <i>www.irs.gov/form8919.</i>    <br/>
 									<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet"/>
 										Attach to your tax return.    
 								</div>
 							</div>
-							<div class="styTYBox" style="width:32mm;border-left:none;">
-								<div class="styOMB" style="height:2mm;">OMB No. 1545-0074</div>
+							<div class="styTYBox" style="width:25.5mm;border-left:none;padding-top:.5mm;">
+								<div class="styOMB" style="height:4mm;">OMB No. 1545-0074</div>
 								<div class="styTaxYear">20<span class="styTYColor">14</span></div>
 								<div style="margin-left:3mm; text-align:left;">
 									Attachment<br/>Sequence No. <span class="styBoldText">61</span>
@@ -97,13 +99,13 @@
 						
 						<!-- Begin Who Must File section -->
 						<div class="styBB" style="width:187mm;">
-							<div class="styWhoMustFileBox" style="width:187mm;height:8mm;font-size:8pt;padding-top:2mm;">
-								<b>Who Must File.</b><span style="width:5mm;"></span>
-									<span style="font-size:7pt;">You must file Form 8919 if <b>all</b> of the following apply.			
-									<li style="margin-left:30mm;">You performed services for a firm.</li>
-									<li style="margin-left:30mm;">You believe your pay from the firm was not for services as an independent contractor.</li>
-									<li style="margin-left:30mm;">The firm did not withhold your share of social security and Medicare taxes from your pay.</li>
-									<li style="margin-left:30mm;">One of the reasons listed below under <i>Reason codes</i> apply to you.</li>
+							<div class="styWhoMustFileBox" style="width:171mm;height:auto;font-size:7pt;">
+								<b>Who Must File.</b> You must file Form 8919 if <b>all</b> of the following apply.			                <span style="width:5mm;"></span>
+									<span style="font-size:7pt;">
+									<li style="margin-left:25mm;">You performed services for a firm.</li>
+									<li style="margin-left:25mm;">You believe your pay from the firm was not for services as an independent contractor.</li>
+									<li style="margin-left:25mm;">The firm did not withhold your share of social security and Medicare taxes from your pay.</li>
+									<li style="margin-left:25mm;">One of the reasons listed below under <i>Reason codes</i> apply to you.</li>
 									</span>
 							</div>
 						</div>
@@ -111,14 +113,14 @@
 				
 						<!-- Begin Reason Code section -->
 						<div class="styBB" style="width:187mm;border-bottom:none;">
-							<div class="styReasonCodeBox" style="width:187mm;height:8mm;font-size:8pt;">
+							<div class="styReasonCodeBox" style="width:187mm;height:auto;font-size:7pt;">
 								<b>Reason codes:  </b><span style="font-size:7pt;">
 										For each firm listed below, enter in column (c) the applicable reason code for filing this form. If none of the</span><br/>
 										<span style="margin-left:26mm;font-size:7pt;">reason codes apply to you, but you believe you should have been treated as an employee, enter reason</span><br/>
 										<span style="margin-left:26mm;font-size:7pt;">code G, and <b>file Form SS-8 on or before the date you file your tax return.</b></span>
 										<br/><br/>
 							</div>
-							<div class="styCodes" style="width:187mm; height:8mm;font-size:7.5pt;padding-left:20mm;">
+							<div class="styCodes" style="width:187mm; height:auto;font-size:7.5pt;padding-left:20mm;">
 								<span style="width:5.2mm;font-weight:bold;float:left;">A</span>
 								<span style="width:161mm;float:left;">
 									I filed Form SS-8 and received a determination letter stating that I am an employee of this firm.
@@ -165,21 +167,21 @@
 					
 						<!-- BEGIN Table -->
 						<div class="styBB" style="width:187mm;"/>
-								<div class="styGenericDiv" style="width:179mm">
-									<span style="text-align:right;width:187mm;">
+								<div class="styGenericDiv" style="width:179mm;">
+									
 										<!-- button display logic -->
 										<xsl:call-template name="SetDynamicTableToggleButton">
 											<xsl:with-param name="TargetNode" select="$Form8919Data/UncollectedSocSecMedTaxPerFirm"/>
 											<xsl:with-param name="containerHeight" select="5"/>
 											<xsl:with-param name="containerID" select=" 'FirmDiv' "/>
 										</xsl:call-template>
-										</span>
+										
 										<!-- end button display logic -->
 								</div>
 								<!--Lines 1-5-->
-								<div class="styTableContainer" id="FirmDiv" style="border-bottom-width: 1px;height:0mm;width:187mm;">
+								<div class="styTableContainer" id="FirmDiv" style="border-bottom-width: 0px;height:auto;width:187mm;">
 									<xsl:call-template name="SetInitialState"/>
-									<table class="styTable" style="font-size:7pt;border-color:black;height:40mm;" cellspacing="0">
+									<table class="styTable" style="font-size:7pt;border-color:black;height:auto;" cellspacing="0">
 										<thead class="styTableThead">
 											<xsl:call-template name="CreateTableHeaders"/>
 										</thead>
@@ -231,15 +233,15 @@
 						
 						<!--  Line 6-->
 						<div  style="width:187mm; ">
-							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-top:1mm;"> 6</div>
-							<div class="styLNDesc" style="width:139.60mm;height:4mm;float:left;padding-top:1mm;">
+							<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:1mm;"> 6</div>
+							<div class="styLNDesc" style="width:139.60mm;height:auto;float:left;padding-top:1mm;">
 								 <b>Total Wages.</b> Combine lines 1 through 5 in column (f). Enter here and include on Form 1040,<br/>
 								 <span style="float:left;">line 7; Form 1040NR, line 8; or Form 1040NR-EZ, line 3</span>
 								<!--Dotted Line-->
 								<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">..............</span>
 							</div>
-							<div class="styLNRightNumBoxNBB" style="width:7mm;height:8mm;padding-top:4mm;border-bottom-width: 1px;">6</div>
-							<div class="styLNAmountBox" style="height:8mm;width:32mm;font-size:7pt;padding-top:4mm;border-bottom-width: 1px;">
+							<div class="styLNRightNumBoxNBB" style="width:7mm;height:auto;padding-top:4mm;border-bottom-width: 1px;">6</div>
+							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;padding-top:4mm;border-bottom-width: 1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8919Data/TotalWagesWithNoWithholdingAmt"/>
 								</xsl:call-template>
@@ -248,23 +250,23 @@
 						
 						<!--  Line 7 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBoxSD" style="height:5mm;padding-top:1mm;"> 7</div>
-							<div class="styLNDesc" style="width:100.75mm;float:left;height:5mm;padding-top:1mm;">
+							<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:1mm;"> 7</div>
+							<div class="styLNDesc" style="width:100.75mm;float:left;height:auto;padding-top:1mm;">
 								<span style="float:left;">Maximum amount of wages subject to social security tax</span>
 								<!--Dotted Line-->
 								<span style="float:right;padding-right:2.2mm;letter-spacing:3.5mm;font-weight:bold;">.....</span>
 							</div>
-							<div class="styLNRightNumBoxNBB" style="width:7mm;height:5mm;padding-top:1mm;border-bottom-width: 1px;">7</div>
-							<div class="styLNAmountBox" style="height:5mm;width:32mm;font-size:7pt;padding-top:1mm;border-bottom-width: 1px;">
+							<div class="styLNRightNumBoxNBB" style="width:7mm;height:auto;padding-top:1mm;border-bottom-width: 1px;">7</div>
+							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;padding-top:1mm;border-bottom-width: 1px;">
 								<i>117,000</i>
 							</div>
-							<div style="float:left;width:7.05mm;height:5mm;background-color:lightgrey;border-left:1px solid black;border-right:1px solid black;padding-top:1mm;"/>
+							<div style="float:left;width:7.05mm;height:auto;background-color:lightgrey;border-left:1px solid black;border-right:1px solid black;padding-top:4.7mm;"/>
 						</div>
 						
 						<!--Line 8 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-top:1mm;"> 8</div>
-							<div class="styLNDesc" style="width:100.75mm;float:left;height:14mm;padding-top:1mm;">
+							<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:1mm;"> 8</div>
+							<div class="styLNDesc" style="width:100.75mm;float:left;height:auto;padding-top:1mm;">
 								Total social security wages and social security tips (total of boxes 3<br/>
 								and 7 on Form(s) W-2), railroad retirement (RRTA) compensation<br/>
 								(subject to the 6.2% rate), and unreported tips subject to social<br/>
@@ -273,25 +275,25 @@
 								<!--Dotted Line-->
 								<span style="float:right;padding-right:2.2mm;letter-spacing:3.5mm;font-weight:bold;">......</span>
 							</div>
-							<div class="styLNRightNumBoxNBB" style="width:7mm;height:14mm;padding-top:10mm;border-bottom:1px solid black;">8</div>
-							<div class="styLNAmountBox" style="height:14mm;width:32mm;font-size:7pt;padding-top:10mm;border-bottom-width: 1px;">
+							<div class="styLNRightNumBoxNBB" style="width:7mm;height:auto;padding-top:10mm;border-bottom:1px solid black;">8</div>
+							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;padding-top:10mm;border-bottom-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
 										<xsl:with-param name="TargetNode" select="$Form8919Data/TotalWagesAndUnreportedTipsAmt"/>
 									</xsl:call-template>
 							</div>
-							<div style="float:left;width:7.05mm;height:14.2mm;padding-top:10mm;background-color:lightgrey;border-left:1px solid black;border-right:1px solid black;"/>
+							<div style="float:left;width:7.05mm;height:auto;padding-top:14mm;background-color:lightgrey;border-left:1px solid black;border-right:1px solid black;"/>
 						</div>
 						
 						<!-- Line 9 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBoxSD" style="height:4mm;padding-top:1mm">9</div>
-							<div class="styLNDesc" style="width:139.60mm;height:4mm;float:left;padding-top:1mm;">
+							<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:1mm">9</div>
+							<div class="styLNDesc" style="width:139.60mm;height:auto;float:left;padding-top:1mm;">
 								<span style="float:left;">Subtract line 8 from 7. If line 8 is more than line 7, enter -0- here and on line 10</span>
 								<!--Dotted Line-->
 								<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">.......</span>
 							</div>									
-							<div class="styLNRightNumBox" style="width:7mm;height:5mm;border-bottom-width: 1px;padding-top:1mm">9</div>
-							<div class="styLNAmountBox" style="height:5mm;width:32mm;font-size:7pt;border-bottom-width:1px;padding-top:1mm;padding-right:1px;">
+							<div class="styLNRightNumBox" style="width:7mm;height:auto;border-bottom-width: 1px;padding-top:1mm">9</div>
+							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;border-bottom-width:1px;padding-top:1mm;padding-right:1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8919Data/NetWagesSubjectToSocSecTaxAmt"/>
 								</xsl:call-template>
@@ -300,14 +302,14 @@
 						
 						<!-- Line 10 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftLtrBox" style="height:4mm;padding-top:1mm;padding-left:1mm;">10</div>
-							<div class="styLNDesc" style="width:139.60mm;height:4mm;float:left;padding-top:1mm;">
+							<div class="styLNLeftLtrBox" style="height:auto;padding-top:1mm;padding-left:1mm;">10</div>
+							<div class="styLNDesc" style="width:139.60mm;height:auto;float:left;padding-top:1mm;">
 								<span style="float:left;">Wages subject to social security tax. Enter the smaller of line 6 or line 9</span>
 								<!--Dotted Line-->
 								<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">.........</span>
 							</div>									
-							<div class="styLNRightNumBoxNBB" style="width:7mm;height:5mm;padding-top:1mm;border-bottom-width: 1px;">10</div>
-							<div class="styLNAmountBox" style="height:5mm;width:32mm;font-size:7pt;padding-top:1mm;border-bottom-width: 1px;">
+							<div class="styLNRightNumBoxNBB" style="width:7mm;height:auto;padding-top:1mm;border-bottom-width: 1px;">10</div>
+							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;padding-top:1mm;border-bottom-width: 1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8919Data/WagesSubjectToSSTAmt"/>
 								</xsl:call-template>
@@ -316,16 +318,16 @@
 						
 						<!-- Line 11 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftLtrBox" style="height:4mm;padding-top:1mm;padding-left:1mm;">11</div>
-							<div class="styLNDesc" style="width:139.60mm;height:4mm;float:left;padding-top:1mm;">
+							<div class="styLNLeftLtrBox" style="height:auto;padding-top:1mm;padding-left:1mm;">11</div>
+							<div class="styLNDesc" style="width:139.60mm;height:auto;float:left;padding-top:1mm;">
 								<span style="float:left;">
 									Multiply line 10 by .062 (social security tax rate for 2014)
 								</span>
 									<!--Dotted Line-->
 								<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">..............</span>
 							</div>									
-							<div class="styLNRightNumBoxNBB" style="width:7mm;height:5mm;padding-top:1mm;border-bottom-width: 1px;">11</div>
-							<div class="styLNAmountBox" style="height:5mm;width:32mm;font-size:7pt;padding-top:1mm;border-bottom-width: 1px;">
+							<div class="styLNRightNumBoxNBB" style="width:7mm;height:auto;padding-top:1mm;border-bottom-width: 1px;">11</div>
+							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;padding-top:1mm;border-bottom-width: 1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8919Data/UncollectedSocSecTaxAmt"/>
 								</xsl:call-template>
@@ -334,14 +336,14 @@
 						
 						<!-- Line 12 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftLtrBox" style="height:4mm;padding-top:1mm;padding-left:1mm;">12</div>
-							<div class="styLNDesc" style="width:139.60mm;height:4mm;float:left;padding-top:1mm;">
+							<div class="styLNLeftLtrBox" style="height:auto;padding-top:1mm;padding-left:1mm;">12</div>
+							<div class="styLNDesc" style="width:139.60mm;height:auto;float:left;padding-top:1mm;">
 								<span style="float:left;">Multiply line 6 by .0145 (Medicare tax rate)</span>
 								<!--Dotted Line-->
 								<span style="float:right;padding-right:3mm;letter-spacing:3.5mm;font-weight:bold;">..................</span>
 							</div>									
-							<div class="styLNRightNumBoxNBB" style="width:7mm;height:5mm;padding-top:1mm;border-bottom-width: 1px;">12</div>
-							<div class="styLNAmountBox" style="height:5mm;width:32mm;font-size:7pt;padding-top:1mm;border-bottom-width: 1px;">
+							<div class="styLNRightNumBoxNBB" style="width:7mm;height:auto;padding-top:1mm;border-bottom-width: 1px;">12</div>
+							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;padding-top:1mm;border-bottom-width: 1px;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8919Data/UncollectedMedicareTaxAmt"/>
 								</xsl:call-template>
@@ -350,8 +352,8 @@
 						
 						<!-- Line 13 -->
 						<div style="width:187mm;">
-							<div class="styLNLeftLtrBox" style="height:4mm;padding-top:1mm;padding-left:1mm;">13</div>
-							<div class="styLNDesc" style="width:139.60mm;height:4mm;float:left;padding-top:1mm;">
+							<div class="styLNLeftLtrBox" style="height:auto;padding-top:1mm;padding-left:1mm;">13</div>
+							<div class="styLNDesc" style="width:139.60mm;height:auto;float:left;padding-top:1mm;">
 								<div style="float:left;">Add lines 11 and 12. Enter here and on Form 1040, line 58; Form 1040NR, line 56; or
 								Form 1040NR-EZ, line 16. (Form 1040-SS and Form 1040-PR filers, see instructions)
 									<!--Dotted Line-->
@@ -361,8 +363,8 @@
 									<img src="{$ImagePath}/2106EZ_Bullet.gif" width="9" height="9" alt="Bullet" />
 								</div>
 							</div>									
-							<div class="styLNRightNumBoxNBB" style="width:7mm;height:8mm;padding-top:4mm;">13</div>
-							<div class="styLNAmountBox" style="height:8mm;width:32mm;font-size:7pt;padding-top:5mm;border-bottom:none;">
+							<div class="styLNRightNumBoxNBB" style="width:7mm;height:auto;padding-top:5mm;">13</div>
+							<div class="styLNAmountBox" style="height:auto;width:32mm;font-size:7pt;padding-top:5mm;border-bottom:none;">
 								<xsl:call-template name="PopulateAmount">
 									<xsl:with-param name="TargetNode" select="$Form8919Data/UncollectedSocSecMedTaxAmt"/>
 								</xsl:call-template>
@@ -431,13 +433,13 @@
 
 	<xsl:template name="CreateTableHeaders">
 		<tr>
-			<th scope="col" class="styTableCell" style="width:70mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;" colspan="2">
+			<th scope="col" class="styTableCell" style="width:70mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;padding-top:8mm;" colspan="2">
 				<b>(a)</b>Name of firm
 			</th>
 			<th scope="col" class="styTableCell" style="width:31mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
 				<b>(b)</b>Firm's<br/>federal<br/>identification<br/>number<br/>(see instructions)
 			</th>
-			<th scope="col" class="styTableCell" style="width:20mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">
+			<th scope="col" class="styTableCell" style="width:20mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;padding-top:4mm;">
 				<b>(c)</b>Enter<br/>reason<br/>code from<br/>above
 			</th>
 			<th scope="col" class="styTableCell" style="width:32mm;font-size:7pt;text-align:center;font-weight:normal;vertical-align:top;">

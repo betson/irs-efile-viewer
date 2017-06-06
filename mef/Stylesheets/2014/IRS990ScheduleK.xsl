@@ -19,7 +19,17 @@
 <!-- Updated 6/18/2014 per Kisams 1528180 by Robert L Jones  -->
 <!-- Updated 7/30/2014 per IBM Defect 41144 by Robert L Jones  -->
 <!-- Updated 7/30/2014 per IBM Defect 41148 by Robert L Jones  -->
-
+<!-- Updated 4/14/2015 per Kisam 02084501 Part III 8b not displaying correctly when printing.by Robert L Jones  -->
+<!-- Updated 4/14/2015 per Kisam 02091368 when 4 names in Part I Bond Issue wrap the output in Part II lines 1& 2  not displaying correctly when printing.by Robert L Jones  -->
+<!-- Updated 4/14/2015 per Kisam 02094419 Part IV 4b not displaying correctly when printing.by Robert L Jones  -->
+<!-- Updated 5/6/2015 per UWR 123023 IE11 Upgrade fixes by Robert L Jones  -->
+<!-- Updated 6/3/2015 per IBM DEFECT 43183 UWR 123023 IE11 Upgrade fixes by Robert L Jones  -->
+<!-- Updated 6/4/2015 per IBM DEFECT 43181 UWR 123023 IE11 Upgrade fixes by Robert L Jones  -->
+<!-- Updated 6/23/2015 per Kisam 02091368 Part I wrapping caused Part II line 1 and 2 to misalign(print) UWR 123023 IE11 Upgrade fixes by Robert L Jones  -->
+<!-- Updated 6/23/2015 per Kisam 02094419 Part IV 4b not displaying Print or rrd, UWR 123023 IE11 Upgrade fixes by Robert L Jones  -->
+<!-- Modified by Robert L Jones for Kisams KISAM IM02084501 ReferenceCD data not staying in proper column throughout form-->
+<!-- Updated 8/28/2015 per IBM Defect 44630 by Robert L Jones  -->
+<!-- Updated 9/3/2015 per IBM Defect 43183 NPF by Robert L Jones  -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -31,8 +41,10 @@
 	<!-- Defines the stage of the data, e.g. original or latest -->
 	<xsl:param name="FormData" select="$RtnDoc/IRS990ScheduleK"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -63,17 +75,18 @@
 					<!--   END WARNING LINE   -->
 					<!--   BEGIN FORM HEADER   -->
 					<!--   BEGIN FORM HEADER   -->
-					<div class="sty990ScheduleKBB" style="width:256mm;height:19mm">
+					<div class="sty990ScheduleKBB" style="width:256mm;height:auto;">
 						<div class="sty990ScheduleKFN">
-							<div class="sty990ScheduleKFNum" style="width:29mm;"> Schedule K
+							<div class="sty990ScheduleKFNum" style="width:30mm;"> Schedule K
       <br/>
 								<span class="sty990ScheduleKFNum2">(Form 990)</span>
-							</div>
-							<div class="sty990ScheduleKAgency" style="padding-top: 8mm">Department of the Treasury
+							
+							<div class="sty990ScheduleKAgency" style="padding-top: 6mm">Department of the Treasury
       <br/>Internal Revenue Service
     </div>
 						</div>
-						<div class="sty990ScheduleKFTBox" style="width:180mm;border-right-width:1px;height:19mm">
+						</div>
+						<div class="sty990ScheduleKFTBox" style="width:180mm;border-right-width:1px;height:auto;">
 							<div class="styMainTitle" style="padding-top:2mm">Supplemental Information on Tax Exempt Bonds
 </div>
 							<span class="sty990ScheduleKFST">
@@ -92,21 +105,21 @@
             </a>.
 							</b>
 						</div>
-						<div class="IRS990ScheduleK_FormYearBlock" style="height:19mm;float:right">
+						<div class="IRS990ScheduleK_FormYearBlock" style="height:auto;float:right">
 							<!-- OMB No. -->
-							<div class="IRS990ScheduleK_OMB">OMB No. 1545-0047</div>
+							<div class="IRS990ScheduleK_OMB" style="height:auto;">OMB No. 1545-0047</div>
 							<!-- Tax Year -->
-							<div class="IRS990ScheduleK_TaxYear" style="padding-top:0mm;padding-bottom:0;">
+							<div class="IRS990ScheduleK_TaxYear" style="padding-top:0mm;padding-bottom:0;height:auto;">
 								<span>20<span class="styTYColor">14</span>
 								</span>
-								<div class="sty990ScheduleKPartName" style="font-size:7pt;font-family:verdana;width:45mm;padding-top:0mm;padding-bottom:0mm;height:7mm">Open to Public <br/>Inspection</div>
+								<div class="sty990ScheduleKPartName" style="font-size:7pt;font-family:verdana;width:45mm;padding-top:0mm;padding-bottom:0mm;height:5.5mm">Open to Public <br/>Inspection</div>
 							</div>
 						</div>
 					</div>
 					<!--   END FORM HEADER   -->
 					<!--   BEGIN TAXPAYER INFO   -->
 					<div style="width:256mm;float:left;clear:left;">
-						<div class="sty990ScheduleKBusinessName" style="width:200mm;height:30px;">Name of the organization
+						<div class="sty990ScheduleKBusinessName" style="width:200mm;height:auto;">Name of the organization
   <br/>
 							<span style="font-family: verdana, arial, sans-serif;font-size: 7pt;">
 								<xsl:call-template name="PopulateReturnHeaderFiler">
@@ -118,7 +131,7 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="sty990ScheduleKIN" style="width:56mm;height:30px;">
+						<div class="sty990ScheduleKIN" style="width:56mm;height:auto;">
 							<span style="font-weight:bold;float:left; clear: none; margin-left: 1mm">Employer identification number</span>
 							<br/>
 							<span class="sty990ScheduleKINBox" style="font-weight:normal;font-size: 7pt; height:4mm;float:left; margin-left: 1mm; padding-top:2mm;">
@@ -132,7 +145,7 @@
 					<!--   BEGIN HEADER   -->
 					<!--   BEGIN HEADER   -->
 					<!-- BEGIN PART I TITLE -->
-					<div class="styBB" style="width:256mm;border-top-width:1px">
+					<div class="styBB" style="width:256mm;border-top-width:1px;float:none ">
 						<div class="styPartName">Part I</div>
 						<div class="styPartDesc" style="width:228.8mm;">Bond Issues
          
@@ -144,7 +157,7 @@
 					<!-- print logic -->
 					<!--<xsl:call-template name="SetInitialState"/>-->
 					<!-- end -->
-					<table class="styTable" cellspacing="0" style="font-size:7pt;width:256mm;">
+					<table class="styTableContainerLandscape" cellspacing="0" style="font-size:7pt;width:256mm;display:table;">
 						<thead>
 							<tr>
 								<!-- Column -->
@@ -169,10 +182,10 @@
 								<th class="styTableCellHeader" style="border-style: solid; border-color: black;width:20mm;border-right-width:1px;text-align:center;vertical-align:top;" colspan="2" scope="col">(g)<span class="styNormalText">  Defeased </span>
 								</th>
 								<!-- Column h -->
-								<th class="styTableCellHeader" style="border-style: solid; border-color: black;width:20mm;border-right-width:1px;text-align:center;vertical-align:top;" colspan="2" scope="col">(h)<span class="styNormalText">  On<br/>behalf of <br/>issuer</span>
+								<th class="styTableCellHeader" style="border-style: solid; border-color: black;width:20mm;border-right-width:1px;text-align:center;vertical-align:top;" colspan="2" scope="col"><span class="styNormalText"><b>(h)</b>  On<br/>behalf of <br/>issuer</span>
 								</th>
 								<!-- Column i -->
-								<th class="styTableCellHeader" style="border-style: solid; border-color: black;width:20mm;border-right-width:0px;text-align:center;vertical-align:top;" colspan="2" scope="col">(i)<span class="styNormalText"> Pool<br/>financing <br/></span>
+								<th class="styTableCellHeader" style="border-style: solid; border-color: black;width:20mm;border-right-width:0px;text-align:center;vertical-align:top;" colspan="2" scope="col"><span class="styNormalText"><b>(i)</b> Pool<br/>financing <br/></span>
 								</th>
 							</tr>
 							<tr>
@@ -203,12 +216,6 @@
 										<xsl:when test="position() = 4">
 											<td class="sty990ScheduleKLNLeftNumBoxBB" style="border-bottom:1px solid; font-weight:bold;vertical-align:top;">D</td>
 										</xsl:when>
-										<!--
-										<xsl:when test="position() = 5">
-											<td class="sty990ScheduleKLNLeftNumBoxBB" style="border-bottom:1px solid;
-font-weight:bold">E</td>
-										</xsl:when>
-                    -->
 										<xsl:otherwise>
 											<td class="sty990ScheduleKLNLeftNumBoxBB" style="border-bottom:1px solid; font-weight:bold;vertical-align:top;"/>
 										</xsl:otherwise>
@@ -304,112 +311,94 @@ font-weight:bold">E</td>
 					</table>
 					<!--   END Part 1   -->
 					<!--   Begin Part II   -->
-					<div class="styBB" style="width: 256mm;border-bottom-width:1px; border-top-width:1px">
+					<div class="styBB" style="width: 256mm;border-bottom-width:0px; border-top-width:0px;float:none;">
 						<div class="styPartName">Part II</div>
 						<div class="styPartDesc">Proceeds 
 						</div>
 					</div>
-					<xsl:variable name="pos">1</xsl:variable>
+				
+			<xsl:variable name="pos">1</xsl:variable>
 					
 						<!-- end -->
-						<table class="styTable" cellspacing="0" style="font-size:7pt;width:256mm;float:none;clear:both">
+						<table class="styTableContainerLandscape" cellspacing="0" style="font-size:7pt;width:256mm;float:none;clear:both;display:table;">
 							<thead>
 								<tr>
 									<th class="styTableCellHeader" rowspan="2" scope="col" style="width: 128mm;border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px;">
 										<span style="width:2px"/>
 									</th>
-									<th class="styTableCellHeader " scope="col" colspan="2" style=" border-style: solid; border-color: black; border-left-width: 1px;">A </th>
-									<th class="styTableCellHeader " scope="col" colspan="2" style=" border-style: solid; border-color: black;">B</th>
-									<th class="styTableCellHeader " scope="col" colspan="2" style=" border-style: solid; border-color: black;">C</th>
-									<th class="styTableCellHeader" scope="col" colspan="2" style=" border-style: solid; border-color: black;">D</th>
+									<th class="styTableCellHeader " scope="col" colspan="2" style=" border-style: solid; border-color: black; border-top-width: 1px;">A </th>
+									<th class="styTableCellHeader " scope="col" colspan="2" style=" border-style: solid; border-color: black;border-top-width: 1px;">B</th>
+									<th class="styTableCellHeader " scope="col" colspan="2" style=" border-style: solid; border-color: black;border-top-width: 1px;">C</th>
+									<th class="styTableCellHeader" scope="col" colspan="2" style=" border-style: solid; border-color: black;border-top-width: 1px;">D</th>
 								<!--	<th class="styTableCellHeader" scope="col" colspan="2" style="border-right:0px;">E</th>-->
 								</tr>
 							</thead>
+						
 							<tr>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">1</span>
            Amount of bonds retired
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+          <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">..................  </span>
+							
 								</td>
+							
+						
 								<td class="styTableCell" colspan="2" style=" text-align:right;border-style: solid; border-color: black;border-left-width: 1px; border-right-width: 1px; ">
 									<xsl:call-template name="PopulateAmount">
-									<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/RetiredAmt"/>
+									<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/RetiredAmt"/>
 									</xsl:call-template>
+									
 								</td>
+							
 								<td class="styTableCell" colspan="2" style="text-align:right;border-style: solid; border-color: black;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/RetiredAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/RetiredAmt"/>
 									</xsl:call-template>
 								</td>
+							
 								<td class="styTableCell" colspan="2" style="text-align:right;border-style: solid; border-color: black;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/RetiredAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/RetiredAmt"/>
 									</xsl:call-template>
 								</td>
+							
 								<td class="styTableCell" colspan="2" style="text-align:right;border-style: solid; border-color: black;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/RetiredAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/RetiredAmt"/>
 									</xsl:call-template>
 								</td>
-								<!--
-								<td class="styTableCell" colspan="2" style="border-right:0px;text-align:right;padding-right:4mm">
-									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartII[$pos + 4]/AmountRetired"/>
-									</xsl:call-template>
-								</td>
--->
+							
+							
+										
 							</tr>
 							<tr>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">2</span>
             Amount of bonds legally defeased
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">..............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/BondDefeasedAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/BondDefeasedAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/BondDefeasedAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/BondDefeasedAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/BondDefeasedAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/BondDefeasedAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/BondDefeasedAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/BondDefeasedAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -424,42 +413,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">3</span>
             Total proceeds of issue
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-
-</span>
+             <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">..................  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/TotalProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/TotalProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/TotalProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/TotalProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/TotalProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/TotalProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/TotalProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/TotalProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -475,39 +450,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">4</span>
            Gross proceeds in reserve funds
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+             <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/InReserveFundAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/InReserveFundAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/InReserveFundAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/InReserveFundAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/InReserveFundAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/InReserveFundAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/InReserveFundAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/InReserveFundAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -523,39 +487,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">5</span>
            Capitalized interest from proceeds
-           <span class="styNoAudioRead">
-           <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-
-</span>
+             <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/CapitalizedInterestAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/CapitalizedInterestAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/CapitalizedInterestAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/CapitalizedInterestAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/CapitalizedInterestAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/CapitalizedInterestAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/CapitalizedInterestAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/CapitalizedInterestAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -571,39 +524,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">6</span>
           Proceeds in refunding escrows
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+             <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">...............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/RefundingEscrowAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/RefundingEscrowAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/RefundingEscrowAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/RefundingEscrowAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/RefundingEscrowAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/RefundingEscrowAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/RefundingEscrowAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/RefundingEscrowAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -619,40 +561,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">7</span>
             Issuance costs from proceeds
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">............... </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/IssuanceCostsFromProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/IssuanceCostsFromProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/IssuanceCostsFromProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/IssuanceCostsFromProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/IssuanceCostsFromProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/IssuanceCostsFromProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/IssuanceCostsFromProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/IssuanceCostsFromProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -668,38 +598,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">8</span>
           Credit enhancement from proceeds 
-           <span class="styNoAudioRead">
-           <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/CreditEnhancementAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/CreditEnhancementAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/CreditEnhancementAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/CreditEnhancementAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/CreditEnhancementAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/CreditEnhancementAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/CreditEnhancementAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/CreditEnhancementAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -715,36 +635,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">9</span>
           Working capital expenditures from proceeds
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/WorkingCapitalExpendituresAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/WorkingCapitalExpendituresAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/WorkingCapitalExpendituresAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/WorkingCapitalExpendituresAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/WorkingCapitalExpendituresAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/WorkingCapitalExpendituresAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/WorkingCapitalExpendituresAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/WorkingCapitalExpendituresAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -760,39 +672,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">10</span>
           Capital expenditures from proceeds
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/CapitalExpendituresAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/CapitalExpendituresAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/CapitalExpendituresAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/CapitalExpendituresAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/CapitalExpendituresAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/CapitalExpendituresAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/CapitalExpendituresAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/CapitalExpendituresAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -808,41 +709,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">11</span>
          Other spent proceeds
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/OtherSpentProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/OtherSpentProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/OtherSpentProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/OtherSpentProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/OtherSpentProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/OtherSpentProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/OtherSpentProceedsAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/OtherSpentProceedsAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -858,41 +746,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">12</span>
           Other unspent proceeds
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/UnspentAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/UnspentAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/UnspentAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/UnspentAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/UnspentAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/UnspentAmt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCell" colspan="2" style="border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/UnspentAmt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/UnspentAmt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -907,40 +782,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black;width:128mm; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">13</span>
            Year of substantial completion
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-
-</span>
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCellText" colspan="2" style="text-align:center; border-style: solid; border-color: black;border-left-width: 1px;">
 									<xsl:call-template name="PopulateYear">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/SubstantialCompletionYr"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/SubstantialCompletionYr"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellText" colspan="2" style="text-align:center; border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateYear">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/SubstantialCompletionYr"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/SubstantialCompletionYr"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellText" colspan="2" style="text-align:center; border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateYear">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/SubstantialCompletionYr"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/SubstantialCompletionYr"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellText" colspan="2" style="text-align:center; border-style: solid; border-color: black;border-left-width: 0px;">
 									<xsl:call-template name="PopulateYear">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/SubstantialCompletionYr"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/SubstantialCompletionYr"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -951,10 +814,10 @@ font-weight:bold">E</td>
 								</td>
                  -->
 								<tr>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:128mm;border-right-width:1px;border-bottom:0px;">
+									<th class="styTableCellText" scope="col" style="border-style: solid; border-color: black;width:128mm;border-right-width:1px;border-bottom:0px;">
 										
 									</th>
-									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:16mm;border-left-width: 1px;">Yes</th>
+									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:16mm;border-left-width: 0px;">Yes</th>
 									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:16mm">No</th>
 									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:16mm">Yes</th>
 									<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;width:16mm">No</th>
@@ -973,55 +836,51 @@ font-weight:bold">E</td>
 									<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width:1px; width:128mm;padding-top:.5mm">
 										<span class="styLNLeftLtrBox" style="padding-left:0mm;">14</span>
          Were the bonds issued as part of a current refunding issue?
-           <span class="styNoAudioRead">
-           <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">....</span>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 1px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/CurrentRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/CurrentRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/CurrentRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/CurrentRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/CurrentRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/CurrentRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/CurrentRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/CurrentRefundingInd"/>
 										</xsl:call-template>
 									</td>
 								
 									<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/CurrentRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/CurrentRefundingInd"/>
 										</xsl:call-template>
 									</td>
                
 									<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/CurrentRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/CurrentRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									
 									<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/CurrentRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/CurrentRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/CurrentRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/CurrentRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									
@@ -1032,54 +891,50 @@ font-weight:bold">E</td>
 									<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:.5mm">
 										<span class="styLNLeftLtrBox" style="padding-left:0mm;">15</span>
          Were the bonds issued as part of an advance refunding issue?
-           <span class="styNoAudioRead">
-           <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-           </span>
+          <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.....</span>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 1px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/AdvanceRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/AdvanceRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/AdvanceRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/AdvanceRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/AdvanceRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/AdvanceRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/AdvanceRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/AdvanceRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/AdvanceRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/AdvanceRefundingInd"/>
 										</xsl:call-template>
 									</td>
                 
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/AdvanceRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/AdvanceRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/AdvanceRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/AdvanceRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/AdvanceRefundingInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/AdvanceRefundingInd"/>
 										</xsl:call-template>
 									</td>
 									
@@ -1089,55 +944,48 @@ font-weight:bold">E</td>
 									<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:.5mm">
 										<span class="styLNLeftLtrBox" style="padding-left:0mm;">16</span>
          Has the final allocation of proceeds been made?
-           <span class="styNoAudioRead">
-											<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-</span>
+          <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">..........</span>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 1px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/FinalAllocationMadeInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/FinalAllocationMadeInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/FinalAllocationMadeInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/FinalAllocationMadeInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/FinalAllocationMadeInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/FinalAllocationMadeInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/FinalAllocationMadeInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/FinalAllocationMadeInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/FinalAllocationMadeInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/FinalAllocationMadeInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/FinalAllocationMadeInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/FinalAllocationMadeInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/FinalAllocationMadeInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/FinalAllocationMadeInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/FinalAllocationMadeInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/FinalAllocationMadeInd"/>
 										</xsl:call-template>
 									</td>
 									</tr>
@@ -1147,61 +995,48 @@ font-weight:bold">E</td>
 										<span class="styLNLeftLtrBox" style="padding-left:0mm;">17</span>
         Does the organization maintain adequate books and records to support the final
          allocation of proceeds?
-           <span class="styNoAudioRead">
-											<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-		</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">..................  </span>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 1px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/AdequateBooksAndRecMaintInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/AdequateBooksAndRecMaintInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp/AdequateBooksAndRecMaintInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[1]/AdequateBooksAndRecMaintInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/AdequateBooksAndRecMaintInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/AdequateBooksAndRecMaintInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 1]/AdequateBooksAndRecMaintInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[2]/AdequateBooksAndRecMaintInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/AdequateBooksAndRecMaintInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/AdequateBooksAndRecMaintInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 2]/AdequateBooksAndRecMaintInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[3]/AdequateBooksAndRecMaintInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateYesBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/AdequateBooksAndRecMaintInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/AdequateBooksAndRecMaintInd"/>
 										</xsl:call-template>
 									</td>
 									<td class="styTableCellSmall " style="border-left-width: 0px;border-style: solid; border-color: black;width:16mm;text-align:center">
 										<xsl:call-template name="PopulateNoBox">
-											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[$pos + 3]/AdequateBooksAndRecMaintInd"/>
+											<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsProceedsGrp[4]/AdequateBooksAndRecMaintInd"/>
 										</xsl:call-template>
 									</td>
 									
@@ -1210,7 +1045,7 @@ font-weight:bold">E</td>
 						</table>
 					
 					<!--   Begin Part III   -->
-					<div class="styBB" style="width: 256mm;border-bottom-width:1px; border-top-width:1px">
+					<div class="styBB" style="width: 256mm;border-bottom-width:0px; border-top-width:0px;float:none ">
 						<div class="styPartName">Part III</div>
 						<div class="styPartDesc">Private Business Use  
 						</div>
@@ -1219,19 +1054,19 @@ font-weight:bold">E</td>
 					<!-- print logic -->
 					<!-- <xsl:call-template name="SetInitialState"/>-->
 					<!-- end -->
-					<table class="styTable" cellspacing="0" style="font-size:7pt;width:256mm      ">
+					<table class="styTableContainerLandscape" cellspacing="0" style="font-size:7pt;width:256mm;display:table;">
 						<thead>
 							<tr>
 								<th class="styTableCellHeader" rowspan="2" scope="col" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 128mm"/>
-						<th class="styTableCellHeader " scope="col" colspan="2" style="border-left-width: 0px;border-style: solid; border-color: black;border-left-width:1px;">A</th>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-left-width: 0px;border-style: solid; border-color: black;border-left-width:0px;">B</th>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-left-width: 0px;border-style: solid; border-color: black;border-left-width:0px;">C</th>
-								<th class="styTableCellHeader" scope="col" colspan="2" style="border-left-width: 0px;border-style: solid; border-color: black;border-left-width:0px;">D</th>
+						        <th class="styTableCellHeader " scope="col" colspan="2" style="border-left-width: 0px;border-style: solid; border-color: black;border-top-width:1px;">A</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-left-width: 0px;border-style: solid; border-color: black;border-top-width:1px;">B</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-left-width: 0px;border-style: solid; border-color: black;border-top-width:1px;">C</th>
+								<th class="styTableCellHeader" scope="col" colspan="2" style="border-left-width: 0px;border-style: solid; border-color: black;border-top-width:1px;">D</th>
 								
 								<!--<th class="styTableCellHeader" scope="col" colspan="2" style="border-right:0px">E</th>-->
 							</tr>
 							<tr>
-						<th class="styTableCellHeader " scope="col" style="border-left-width:1px;width:16mm;border-style: solid; border-color: black;">Yes</th>
+						<th class="styTableCellHeader " scope="col" style="border-left-width:0px;width:16mm;border-style: solid; border-color: black;">Yes</th>
 						<th class="styTableCellHeader " scope="col" style="border-left-width:0px;width:16mm;border-style: solid; border-color: black;">No</th>
 						<th class="styTableCellHeader " scope="col" style="border-left-width:0px;width:16mm;border-style: solid; border-color: black;">Yes</th>
 						<th class="styTableCellHeader " scope="col" style="border-left-width:0px;width:16mm;border-style: solid; border-color: black;">No</th>
@@ -1244,122 +1079,115 @@ font-weight:bold">E</td>
 						</thead>
 						<tfoot/>
 						<tbody>
+						
+							
 							<tr>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">1</span>
         Was the organization a partner in a partnership, or a member of an LLC, which owned property financed by tax-exempt bonds?
-          <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-   <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- </span>
+          <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
+								
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/OwningBondFinancedPropertyInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/OwningBondFinancedPropertyInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/OwningBondFinancedPropertyInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/OwningBondFinancedPropertyInd"/>
 									</xsl:call-template>
 								</td>
+							
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/OwningBondFinancedPropertyInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/OwningBondFinancedPropertyInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/OwningBondFinancedPropertyInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/OwningBondFinancedPropertyInd"/>
 									</xsl:call-template>
 								</td>
+								
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/OwningBondFinancedPropertyInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/OwningBondFinancedPropertyInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/OwningBondFinancedPropertyInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/OwningBondFinancedPropertyInd"/>
 									</xsl:call-template>
 								</td>
+								
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/OwningBondFinancedPropertyInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/OwningBondFinancedPropertyInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/OwningBondFinancedPropertyInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/OwningBondFinancedPropertyInd"/>
 									</xsl:call-template>
 								</td>
+							
 								</tr>
 							<tr>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:.5mm">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">2</span>
          Are there any lease arrangements that may result in private business use of bond-financed property?
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-   <span class="styNBSP"/>.
- <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
-</span>
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">...............</span>
 								</td>
-								<td class="styTableCellSmall" style="border-style: solid; border-color: black;width:16mm;text-align:center">
+								<td class="styTableCellSmall" style="border-style: solid; border-color: black;border-top:1px;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/AnyLeaseArrangementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/AnyLeaseArrangementsInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall" style="border-style: solid; border-color: black;width:16mm;text-align:center">
+								<td class="styTableCellSmall" style="border-style: solid; border-color: black;border-top:1px;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/AnyLeaseArrangementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/AnyLeaseArrangementsInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall" style="border-style: solid; border-color: black;width:16mm;text-align:center">
+								<td class="styTableCellSmall" style="border-style: solid; border-color: black;border-top:1px;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/AnyLeaseArrangementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/AnyLeaseArrangementsInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall" style="border-style: solid; border-color: black;width:16mm;text-align:center">
+								<td class="styTableCellSmall" style="border-style: solid; border-color: black;border-top:1px;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/AnyLeaseArrangementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/AnyLeaseArrangementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall" style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/AnyLeaseArrangementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/AnyLeaseArrangementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall" style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/AnyLeaseArrangementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/AnyLeaseArrangementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall" style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/AnyLeaseArrangementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/AnyLeaseArrangementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall" style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/AnyLeaseArrangementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/AnyLeaseArrangementsInd"/>
 									</xsl:call-template>
 								</td>
 								</tr>
 						</tbody>
 					</table>
 					<!--   BEGIN FORM FOOTER  -->
-               <div style="width:256mm;float:none;clear:both;border-top:solid 1px" class="pageend">
+               <div style="width:256mm;float:none;clear:both;border-top:solid 1px" class="pageEnd">
 						<div class="styGenericDiv" style="width:140mm;font-weight:bold">For Paperwork Reduction Act Notice, see the Instructions for Form 990. </div>
 						<div class="styGenericDiv" style="width:25mm;">Cat. No. 50193E</div>
 						<div class="styGenericDiv" style="float:right;">
@@ -1367,31 +1195,31 @@ font-weight:bold">E</td>
 						</div>
 					</div>
 					<!--     END FORM FOOTER   -->
-				
+				 <p style="page-break-before: always"/>
 					<div class="styBB" style="width:256mm; float: none; clear:none;border-bottom-width:1px">
 						<div style="float:left"> Schedule K (Form 990) 2014</div>
 						<div style="float:right">Page <span style="font-weight:bold;font-size:8pt;padding-right:4mm">2</span>
 						</div>
 					</div>
 					<!--   Begin Part III   Continued-->
-					<div class="styBB" style="width: 256mm;border-bottom-width:1px">
+					<div class="styBB" style="width: 256mm;border-bottom-width:0px;float:none;">
 						<div class="styPartName">Part III</div>
 						<div class="styPartDesc">Private Business Use  <span style="font:italic;font-weight:normal">(Continued)</span>
 						</div>
 					</div>
 					<!-- end -->
-					<table class="styTable" cellspacing="0" style="font-size:7pt;width:256mm">
+					<table class="styTableContainerLandscape" cellspacing="0" style="font-size:7pt;width:256mm">
 						<thead>
 							<tr>
 								<th class="styTableCellHeader" rowspan="2" scope="col" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width: 128mm"/>
-								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:1px" colspan="2">A</th>
-								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px" colspan="2">B</th>
-								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px" colspan="2">C</th>
-								<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;border-left-width:0px" colspan="2">D</th>
+								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px;border-top-width:1px;" colspan="2">A</th>
+								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px;border-top-width:1px;" colspan="2">B</th>
+								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px;border-top-width:1px;" colspan="2">C</th>
+								<th class="styTableCellHeader" scope="col" style="border-style: solid; border-color: black;border-left-width:0px;border-top-width:1px;" colspan="2">D</th>
 								<!--<th class="styTableCellHeader" scope="col" colspan="2" style="border-right:0px">E</th>-->
 							</tr>
 							<tr>
-								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:1px; width:16mm">Yes</th>
+								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px; width:16mm">Yes</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px; width:16mm">No</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px; width:16mm">Yes</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px; width:16mm">No</th>
@@ -1411,59 +1239,48 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style=" border-style: solid; border-color: black;border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">3a</span>
         Are there any management or service contracts that may result in private business use of bond-financed property?
-           <!--<span class="styNoAudioRead">-->
-           <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
-<span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <!--</span>-->
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/MgmtContractBondFincdPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/MgmtContractBondFincdPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/MgmtContractBondFincdPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/MgmtContractBondFincdPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/MgmtContractBondFincdPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/MgmtContractBondFincdPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/MgmtContractBondFincdPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/MgmtContractBondFincdPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/MgmtContractBondFincdPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/MgmtContractBondFincdPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/MgmtContractBondFincdPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/MgmtContractBondFincdPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/MgmtContractBondFincdPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/MgmtContractBondFincdPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/MgmtContractBondFincdPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/MgmtContractBondFincdPropInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -1483,7 +1300,7 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style=" border-style: solid; border-color: black;border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">b</span>
               If "Yes" to line 3a, does the organization routinely engage bond counsel or other outside counsel to review any management or service contracts relating to the  
-              <span class="styLNLeftLtrBox" style="padding-left:1mm;"/>financed property?
+              financed property?
 
         <!--   <span class="styNoAudioRead">-->
 										
@@ -1491,42 +1308,42 @@ font-weight:bold">E</td>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/EngageBondCounselContractsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/EngageBondCounselContractsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/EngageBondCounselContractsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/EngageBondCounselContractsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/EngageBondCounselContractsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/EngageBondCounselContractsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/EngageBondCounselContractsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/EngageBondCounselContractsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/EngageBondCounselContractsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/EngageBondCounselContractsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/EngageBondCounselContractsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/EngageBondCounselContractsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/EngageBondCounselContractsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/EngageBondCounselContractsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/EngageBondCounselContractsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/EngageBondCounselContractsInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -1546,62 +1363,48 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm;height:7.5mm">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;height:7.5mm">c</span>
           Are there any research agreements that may result in private business use of bond-financed property?
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/AnyResearchAgreementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/AnyResearchAgreementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/AnyResearchAgreementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/AnyResearchAgreementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/AnyResearchAgreementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/AnyResearchAgreementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/AnyResearchAgreementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/AnyResearchAgreementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/AnyResearchAgreementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/AnyResearchAgreementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/AnyResearchAgreementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/AnyResearchAgreementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/AnyResearchAgreementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/AnyResearchAgreementsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/AnyResearchAgreementsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/AnyResearchAgreementsInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -1626,42 +1429,42 @@ font-weight:bold">E</td>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/EngageBondCounselResearchInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/EngageBondCounselResearchInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/EngageBondCounselResearchInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/EngageBondCounselResearchInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/EngageBondCounselResearchInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/EngageBondCounselResearchInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/EngageBondCounselResearchInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/EngageBondCounselResearchInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/EngageBondCounselResearchInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/EngageBondCounselResearchInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/EngageBondCounselResearchInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/EngageBondCounselResearchInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/EngageBondCounselResearchInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/EngageBondCounselResearchInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/EngageBondCounselResearchInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/EngageBondCounselResearchInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -1682,35 +1485,34 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm;height:7.5mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;height:7.5mm">4</span>
  Enter the percentage of financed property used in a private business use by entities other than a section 501(c)(3) organization or a state or local government       
-<span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-									<span class="styNBSP"/>.
-									
+ <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">....</span>
 
 
-</span>
+
 <img src="{$ImagePath}/990SchK_Bullet_Md.gif" alt="SchKMediumBullet"/>
 
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 <!--Leave this here, every other year they take out the hard code % sign	<xsl:call-template name="PopulatePercent">-->
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/PrivateBusUseByOthersPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/PrivateBusUseByOthersPct"/>
 									</xsl:call-template><!--% Percent sign hardcoded while PopulateAmount used. IBM starts testing with 0000.0000 numbers and now must change to PopulatePercent and lose % sign-->
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/PrivateBusUseByOthersPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/PrivateBusUseByOthersPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/PrivateBusUseByOthersPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/PrivateBusUseByOthersPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/PrivateBusUseByOthersPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/PrivateBusUseByOthersPct"/>
 									</xsl:call-template>
 								</td>
 								
@@ -1726,37 +1528,30 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;height:10mm">5</span>
  Enter the percentage of financed property used in a private business use as a result of unrelated trade or business activity carried on by your organization, another section 501(c)(3) organization, or a state or local government
-<span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- 
-</span>
+ <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.........  </span>
 <img src="{$ImagePath}/990SchK_Bullet_Md.gif" alt="SchKMediumBullet"/>
          
 </td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/PrivateBusConcerningUBIPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/PrivateBusConcerningUBIPct"/>
 									</xsl:call-template><!--% Percent sign hardcoded while PopulateAmount used. IBM starts testing with 0000.0000 numbers and now must change to PopulatePercent and lose % sign-->
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/PrivateBusConcerningUBIPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/PrivateBusConcerningUBIPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/PrivateBusConcerningUBIPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/PrivateBusConcerningUBIPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/PrivateBusConcerningUBIPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/PrivateBusConcerningUBIPct"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -1771,41 +1566,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">6</span>
         Total of lines 4 and 5
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- 
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/TotalPrivateBusinessUsePct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/TotalPrivateBusinessUsePct"/>
 									</xsl:call-template><!--% Percent sign hardcoded while PopulateAmount used. IBM starts testing with 0000.0000 numbers and now must change to PopulatePercent and lose % sign-->
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/TotalPrivateBusinessUsePct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/TotalPrivateBusinessUsePct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/TotalPrivateBusinessUsePct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/TotalPrivateBusinessUsePct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/TotalPrivateBusinessUsePct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/TotalPrivateBusinessUsePct"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -1824,52 +1606,49 @@ font-weight:bold">E</td>
 
      
                           
- <!--<span class="styNoAudioRead"/>-->
- <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
+  <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">...</span>
  
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;border-left-width: 0px;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/BondIssMeetPrvtSecPymtTestInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/BondIssMeetPrvtSecPymtTestInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/BondIssMeetPrvtSecPymtTestInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/BondIssMeetPrvtSecPymtTestInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/BondIssMeetPrvtSecPymtTestInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/BondIssMeetPrvtSecPymtTestInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/BondIssMeetPrvtSecPymtTestInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/BondIssMeetPrvtSecPymtTestInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/BondIssMeetPrvtSecPymtTestInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/BondIssMeetPrvtSecPymtTestInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/BondIssMeetPrvtSecPymtTestInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/BondIssMeetPrvtSecPymtTestInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/BondIssMeetPrvtSecPymtTestInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/BondIssMeetPrvtSecPymtTestInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/BondIssMeetPrvtSecPymtTestInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/BondIssMeetPrvtSecPymtTestInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -1890,65 +1669,48 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">8a</span>
     Has there been a sale or disposition of any of the bond-financed property to a nongovernmental person other than a 501(c)(3) organization since the bonds were <span class="styNormalText" style="padding-left:9mm;">issued?</span>                     
- <span class="styNoAudioRead">
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-
- </span>
+ <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/ChangeInUseBondFinancedPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/ChangeInUseBondFinancedPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/ChangeInUseBondFinancedPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/ChangeInUseBondFinancedPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/ChangeInUseBondFinancedPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/ChangeInUseBondFinancedPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/ChangeInUseBondFinancedPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/ChangeInUseBondFinancedPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/ChangeInUseBondFinancedPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/ChangeInUseBondFinancedPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/ChangeInUseBondFinancedPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/ChangeInUseBondFinancedPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/ChangeInUseBondFinancedPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/ChangeInUseBondFinancedPropInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/ChangeInUseBondFinancedPropInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/ChangeInUseBondFinancedPropInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -1969,38 +1731,28 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">b</span>
          If "Yes" to line 8a, enter the percentage of bond-financed property sold or disposed of.
-           <span class="styNoAudioRead">
-										<!--<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.-->
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">..</span>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/ChangeInUseBondFinancedPropPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/ChangeInUseBondFinancedPropPct"/>
 									</xsl:call-template><!--% Percent sign hardcoded while PopulateAmount used. IBM starts testing with 0000.0000 numbers and now must change to PopulatePercent and lose % sign-->
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/ChangeInUseBondFinancedPropPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/ChangeInUseBondFinancedPropPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/ChangeInUseBondFinancedPropPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/ChangeInUseBondFinancedPropPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right">
 									<xsl:call-template name="PopulatePercent">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/ChangeInUseBondFinancedPropPct"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/ChangeInUseBondFinancedPropPct"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2015,60 +1767,48 @@ font-weight:bold">E</td>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:128mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">c</span>
     If "Yes" to line 8a, was any remedial action taken pursuant to Regulations sections 1.141-12 and 1.145-2?                    
- <span class="styNoAudioRead">
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- </span>
+  <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.............  </span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/RemedialActionTakenInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/RemedialActionTakenInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/RemedialActionTakenInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/RemedialActionTakenInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/RemedialActionTakenInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/RemedialActionTakenInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/RemedialActionTakenInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/RemedialActionTakenInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/RemedialActionTakenInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/RemedialActionTakenInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/RemedialActionTakenInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/RemedialActionTakenInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/RemedialActionTakenInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/RemedialActionTakenInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/RemedialActionTakenInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/RemedialActionTakenInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2092,58 +1832,51 @@ font-weight:bold">E</td>
    Has the organization established written procedures to ensure that all nonqualified bonds of the issue are remediated in accordance with the requirements under <br></br>
      <span style="padding-left:9mm">Regulations sections 1.141-12 and 1.145-2? </span>
                                  
- <span class="styNoAudioRead">
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
- 
- </span>
+ <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">........  </span>
  
 
 
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/ProcsNonqualifiedBondRemdtdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/ProcsNonqualifiedBondRemdtdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp/ProcsNonqualifiedBondRemdtdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[1]/ProcsNonqualifiedBondRemdtdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/ProcsNonqualifiedBondRemdtdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/ProcsNonqualifiedBondRemdtdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 1]/ProcsNonqualifiedBondRemdtdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[2]/ProcsNonqualifiedBondRemdtdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/ProcsNonqualifiedBondRemdtdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/ProcsNonqualifiedBondRemdtdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 2]/ProcsNonqualifiedBondRemdtdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[3]/ProcsNonqualifiedBondRemdtdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/ProcsNonqualifiedBondRemdtdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/ProcsNonqualifiedBondRemdtdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[$pos + 3]/ProcsNonqualifiedBondRemdtdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsPrivateBusUseGrp[4]/ProcsNonqualifiedBondRemdtdInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2163,25 +1896,25 @@ font-weight:bold">E</td>
 						</tbody>
 					</table>
 					<!--   Begin Part IV  -->
-					<div class="styBB" style="width: 256mm;border-bottom-width:1px;border-top-width:1px">
+					<div class="styBB" style="width: 256mm;border-bottom-width:0px;border-top-width:1px;float:none ">
 						<div class="styPartName">Part IV</div>
 						<div class="styPartDesc">Arbitrage 
 						</div>
 					</div>
 					
 					<!-- end -->
-					<table class="styTable" cellspacing="0" style="font-size:7pt;width:256mm;float:none;clear:both">
+					<table class="styTableContainerLandscape" cellspacing="0" style="font-size:7pt;width:256mm;float:none;clear:both;display:table;">
 						<thead>
 							<tr>
 								<th class="styTableCellHeader" rowspan="2" scope="col" style="border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:96mm"/>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-left-width:1px">A</th>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">B</th>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">C</th>
-								<th class="styTableCellHeader" scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">D</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px;">A</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px;">B</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px;">C</th>
+								<th class="styTableCellHeader" scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px;">D</th>
 								<!--<th class="styTableCellHeader" scope="col" colspan="2" style="width:32mm;border-right:0px">E</th>-->
 							</tr>
 							<tr>
-								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:1px;width:16mm">Yes</th>
+								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px;width:16mm">Yes</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">No</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">Yes</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">No</th>
@@ -2197,57 +1930,56 @@ font-weight:bold">E</td>
 						</thead>
 						<tfoot/>
 						<tbody>
+							
+						
 							<tr>
 								
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm; ">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;height:4.5mm">1</span>
         Has the issuer filed Form 8038-T, Arbitrage Rebate, Yield Reduction and
 Penalty in Lieu of Arbitrage Rebate?   
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-
-
-</span>
+         <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">...  </span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/Form8038TFiledInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/Form8038TFiledInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/Form8038TFiledInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/Form8038TFiledInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/Form8038TFiledInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/Form8038TFiledInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/Form8038TFiledInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/Form8038TFiledInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/Form8038TFiledInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/Form8038TFiledInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/Form8038TFiledInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/Form8038TFiledInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/Form8038TFiledInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/Form8038TFiledInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/Form8038TFiledInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/Form8038TFiledInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2267,13 +1999,9 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">2</span>
        If "No" to line 1, did the following apply?
-       <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-
-
-          
+        <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.... </span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;">
 								
@@ -2296,6 +2024,9 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									
 								</td>
+									<td class="styTableCellSmall " style="border-style: solid; border-color: black; border-bottom:0px;width:16mm;text-align:center">
+									
+								</td>
 								
 								
 								<!--
@@ -2315,55 +2046,50 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">a</span>
        Rebate not due yet?  
-       <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
+        <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.......</span>
 
           
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/RebateNotDueYetInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/RebateNotDueYetInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/RebateNotDueYetInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/RebateNotDueYetInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/RebateNotDueYetInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/RebateNotDueYetInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/RebateNotDueYetInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/RebateNotDueYetInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/RebateNotDueYetInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/RebateNotDueYetInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/RebateNotDueYetInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/RebateNotDueYetInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/RebateNotDueYetInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/RebateNotDueYetInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width:1px;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/RebateNotDueYetInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/RebateNotDueYetInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2383,55 +2109,50 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">b</span>
        Exception to rebate?   
-       <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>. 
-          <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
+       <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">........</span>
 
 
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/ExceptionToRebateInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/ExceptionToRebateInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/ExceptionToRebateInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/ExceptionToRebateInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/ExceptionToRebateInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/ExceptionToRebateInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/ExceptionToRebateInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/ExceptionToRebateInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/ExceptionToRebateInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/ExceptionToRebateInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/ExceptionToRebateInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/ExceptionToRebateInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/ExceptionToRebateInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/ExceptionToRebateInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/ExceptionToRebateInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/ExceptionToRebateInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2451,55 +2172,50 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:1mm;">c</span>
       No rebate due? 
-      <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
+     <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.........</span>
 
 
                                   </td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/NoRebateDueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/NoRebateDueInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/NoRebateDueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/NoRebateDueInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/NoRebateDueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/NoRebateDueInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/NoRebateDueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/NoRebateDueInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/NoRebateDueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/NoRebateDueInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/NoRebateDueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/NoRebateDueInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/NoRebateDueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/NoRebateDueInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/NoRebateDueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/NoRebateDueInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2519,12 +2235,9 @@ Penalty in Lieu of Arbitrage Rebate?
 							<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 							 <span class="styNormalText" style="padding-left:9mm;"/>If "Yes" to line 2c, provide in Part VI the date the rebate<br></br>
                              <span class="styNormalText" style="padding-left:9mm;"/>computation was performed   
-   <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
+  <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">......</span>
 
           
 								</td>
@@ -2570,50 +2283,49 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">3</span>
        Is the bond issue a variable rate issue?
-          <span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.
+         <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.....</span>
 
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/VariableRateIssueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/VariableRateIssueInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/VariableRateIssueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/VariableRateIssueInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/VariableRateIssueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/VariableRateIssueInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/VariableRateIssueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/VariableRateIssueInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/VariableRateIssueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/VariableRateIssueInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/VariableRateIssueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/VariableRateIssueInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/VariableRateIssueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/VariableRateIssueInd"/>
 									</xsl:call-template>
 								</td>
-								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 1px;">
+								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center;border-top-width: 0px;">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/VariableRateIssueInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/VariableRateIssueInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2637,42 +2349,42 @@ Penalty in Lieu of Arbitrage Rebate?
           								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/HedgeIdentifiedInBksAndRecInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/HedgeIdentifiedInBksAndRecInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/HedgeIdentifiedInBksAndRecInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/HedgeIdentifiedInBksAndRecInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/HedgeIdentifiedInBksAndRecInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/HedgeIdentifiedInBksAndRecInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/HedgeIdentifiedInBksAndRecInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/HedgeIdentifiedInBksAndRecInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/HedgeIdentifiedInBksAndRecInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/HedgeIdentifiedInBksAndRecInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/HedgeIdentifiedInBksAndRecInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/HedgeIdentifiedInBksAndRecInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/HedgeIdentifiedInBksAndRecInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/HedgeIdentifiedInBksAndRecInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/HedgeIdentifiedInBksAndRecInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/HedgeIdentifiedInBksAndRecInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2693,53 +2405,44 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm;">
 									<span class="styLNLeftLtrBox" style="padding-left:2mm;">b</span>
         Name of provider
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										
-										</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">..........</span>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:left">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/HedgeProviderName/BusinessNameLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/HedgeProviderName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/HedgeProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/HedgeProviderName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:left">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/HedgeProviderName/BusinessNameLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/HedgeProviderName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/HedgeProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/HedgeProviderName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:left">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/HedgeProviderName/BusinessNameLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/HedgeProviderName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/HedgeProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/HedgeProviderName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:left">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/HedgeProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/HedgeProviderName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/HedgeProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/HedgeProviderName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2759,37 +2462,28 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:2mm;">c</span>
         Term of hedge
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-</span>
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.........</span>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/TermOfHedgePct"/>
+									<xsl:call-template name="PopulatePercent">
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/TermOfHedgePct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:32mm;text-align:right;" colspan="2">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/TermOfHedgePct"/>
+									<xsl:call-template name="PopulatePercent">
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/TermOfHedgePct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/TermOfHedgePct"/>
+									<xsl:call-template name="PopulatePercent">
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/TermOfHedgePct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/TermOfHedgePct"/>
+									<xsl:call-template name="PopulatePercent">
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/TermOfHedgePct"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2806,53 +2500,48 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:2mm;height:4.5mm">d</span>
         Was the hedge superintegrated?
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										
-
-</span>
+          <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">......</span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/SuperintegratedHedgeInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/SuperintegratedHedgeInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/SuperintegratedHedgeInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/SuperintegratedHedgeInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/SuperintegratedHedgeInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/SuperintegratedHedgeInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/SuperintegratedHedgeInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/SuperintegratedHedgeInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/SuperintegratedHedgeInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/SuperintegratedHedgeInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/SuperintegratedHedgeInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/SuperintegratedHedgeInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/SuperintegratedHedgeInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/SuperintegratedHedgeInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/SuperintegratedHedgeInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/SuperintegratedHedgeInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2873,56 +2562,48 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:2mm;height:4.5mm">e</span>
         Was the hedge terminated?
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										
-										
-
-</span>
+         <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">........</span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/HedgeTerminatedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/HedgeTerminatedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/HedgeTerminatedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/HedgeTerminatedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/HedgeTerminatedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/HedgeTerminatedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/HedgeTerminatedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/HedgeTerminatedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/HedgeTerminatedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/HedgeTerminatedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/HedgeTerminatedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/HedgeTerminatedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/HedgeTerminatedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/HedgeTerminatedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/HedgeTerminatedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/HedgeTerminatedInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -2943,7 +2624,7 @@ Penalty in Lieu of Arbitrage Rebate?
 					</table>
 					
 					<!-- Footer -->
-					<div style="width:256mm;float:none;clear:both;padding-top:.5mm;border-top:solid 1px" class="pageend">
+					<div style="width:256mm;float:none;clear:both;padding-top:.5mm;border-top:solid 0px" class="pageEnd">
 						<div class="styGenericDiv" style="width:95mm;"/>
 						<div class="styGenericDiv" style="width:25mm;"/>
 						<div class="styGenericDiv" style="float:right;padding-right:4mm">
@@ -2952,6 +2633,7 @@ Penalty in Lieu of Arbitrage Rebate?
 					</div>
 					<!--     END FORM FOOTER   -->
 		<!-- =========================================================================-->
+		 <p style="page-break-before: always"/>
 					<!--  Page header -->
 					<div style="width:256mm;clear:both;padding-bottom:.5mm;float:none;clear:both;" class="styBB">
 						<div style="width:90mm;" class="styGenericDiv">Schedule K (Form 990) 2014</div>
@@ -2961,24 +2643,24 @@ Penalty in Lieu of Arbitrage Rebate?
 					</div>
 							
 							<!--   Begin Part IV  continued-->
-					<div class="styBB" style="width: 256mm;border-bottom-width:1px;border-top-width:1px">
+					<div class="styBB" style="width: 256mm;border-bottom-width:0px;border-top-width:1px;float:none ">
 						<div class="styPartName">Part IV</div>
 						<div class="styPartDesc">Arbitrage <span style="font:italic;font-weight:normal">(Continued)</span>
 						</div>
 					</div>
 					<!-- end -->
-					<table class="styTable" cellspacing="0" style="font-size:7pt;width:256mm;float:none;clear:both">
+					<table class="styTableContainerLandscape" cellspacing="0" style="font-size:7pt;width:256mm;float:none;clear:both">
 						<thead>
 							<tr>
 								<th class="styTableCellHeader" rowspan="2" scope="col" style="border-style: solid; border-color: black;border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:96mm"/>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-left-width:1px">A</th>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">B</th>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">C</th>
-								<th class="styTableCellHeader" scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">D</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px">A</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px">B</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px">C</th>
+								<th class="styTableCellHeader" scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px">D</th>
 								<!--<th class="styTableCellHeader" scope="col" colspan="2" style="width:32mm;border-right:0px">E</th>-->
 							</tr>
 							<tr>
-								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:1px;width:16mm">Yes</th>
+								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px;width:16mm">Yes</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">No</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">Yes</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">No</th>
@@ -2995,57 +2677,48 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;">5a</span>
         Were gross proceeds invested in a guaranteed investment contract (GIC)?
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										
-										</span>
+          <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; "></span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/GrossProceedsInvestedInGICInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/GrossProceedsInvestedInGICInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/GrossProceedsInvestedInGICInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/GrossProceedsInvestedInGICInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/GrossProceedsInvestedInGICInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/GrossProceedsInvestedInGICInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/GrossProceedsInvestedInGICInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/GrossProceedsInvestedInGICInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/GrossProceedsInvestedInGICInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/GrossProceedsInvestedInGICInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/GrossProceedsInvestedInGICInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/GrossProceedsInvestedInGICInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/GrossProceedsInvestedInGICInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/GrossProceedsInvestedInGICInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/GrossProceedsInvestedInGICInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/GrossProceedsInvestedInGICInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -3066,52 +2739,44 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:2mm;">b</span>
          Name of provider
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-  </span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">..........</span>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:left">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/GICProviderName/BusinessNameLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/GICProviderName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/GICProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/GICProviderName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:left">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/GICProviderName/BusinessNameLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/GICProviderName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/GICProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/GICProviderName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:left">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/GICProviderName/BusinessNameLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/GICProviderName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/GICProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/GICProviderName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:left">
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/GICProviderName/BusinessNameLine1Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/GICProviderName/BusinessNameLine1Txt"/>
 									</xsl:call-template>
 									<br/>
 									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/GICProviderName/BusinessNameLine2Txt"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/GICProviderName/BusinessNameLine2Txt"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -3130,39 +2795,28 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:2mm;">c</span>
                Term of GIC
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
- <span class="styNBSP"/>.
- <span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-
-
-</span>
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">.........</span>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/TermOfGICPct"/>
+									<xsl:call-template name="PopulatePercent">
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/TermOfGICPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/TermOfGICPct"/>
+									<xsl:call-template name="PopulatePercent">
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/TermOfGICPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/TermOfGICPct"/>
+									<xsl:call-template name="PopulatePercent">
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/TermOfGICPct"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " colspan="2" style="border-style: solid; border-color: black;width:32mm;text-align:right;">
-									<xsl:call-template name="PopulateText">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/TermOfGICPct"/>
+									<xsl:call-template name="PopulatePercent">
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/TermOfGICPct"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -3177,54 +2831,48 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:2mm;height:4.5mm">d</span>
         Was the regulatory safe harbor for establishing the fair market value of the GIC satisfied?
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										
-
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">........</span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/RegulatorySafeHarborStsfdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/RegulatorySafeHarborStsfdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/RegulatorySafeHarborStsfdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/RegulatorySafeHarborStsfdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/RegulatorySafeHarborStsfdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/RegulatorySafeHarborStsfdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/RegulatorySafeHarborStsfdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/RegulatorySafeHarborStsfdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/RegulatorySafeHarborStsfdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/RegulatorySafeHarborStsfdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/RegulatorySafeHarborStsfdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/RegulatorySafeHarborStsfdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/RegulatorySafeHarborStsfdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/RegulatorySafeHarborStsfdInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/RegulatorySafeHarborStsfdInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/RegulatorySafeHarborStsfdInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -3240,128 +2888,53 @@ Penalty in Lieu of Arbitrage Rebate?
 								</td>
                  -->
 							</tr>
-					<!--		<tr>
-								<td class="styTableCellText" style=" border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
-									<span class="styLNLeftLtrBox" style="padding-left:0mm;height:10mm">6</span>
-        Were any gross proceeds invested beyond an available temporary period?
-           <span class="styNoAudioRead"/>
-								<span class="styNBSP"/>.
-								<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-</td>
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV[$pos + 1]/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV[$pos + 1]/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV[$pos + 2]/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV[$pos + 2]/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV[$pos + 3]/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV[$pos + 3]/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								
-								<td class="styTableCellSmall " style="width:16mm;text-align:center">
-									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV[$pos + 4]/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-								<td class="styTableCellSmall " style="width:16mm;border-right:0px;text-align:center;padding-right:4mm">
-									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/Form990ScheduleKPartIV[$pos + 4]/GrossProceedsInvested"/>
-									</xsl:call-template>
-								</td>
-              
-							</tr>-->
+					
 							<tr>
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;height:4.5mm">6</span>
         Were any gross proceeds invested beyond an available temporary period?
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										<span class="styNBSP"/>.
-										
-										
-										
-
-</span>
+           <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; "></span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/GrossProceedsInvestedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/GrossProceedsInvestedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/GrossProceedsInvestedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/GrossProceedsInvestedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/GrossProceedsInvestedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/GrossProceedsInvestedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/GrossProceedsInvestedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/GrossProceedsInvestedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/GrossProceedsInvestedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/GrossProceedsInvestedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/GrossProceedsInvestedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/GrossProceedsInvestedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/GrossProceedsInvestedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/GrossProceedsInvestedInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/GrossProceedsInvestedInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/GrossProceedsInvestedInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -3381,49 +2954,47 @@ Penalty in Lieu of Arbitrage Rebate?
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;height:4.5mm">7</span>
         Has the organization established written procedures to monitor the requirements of section 148?
-           <span class="styNoAudioRead">
-										<span class="styNBSP"/>.
-<span class="styNBSP"/>.
-<span class="styNBSP"/>.</span>
-								</td>
+ <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; ">...</span>								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/WrittenProcToMonitorReqsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/WrittenProcToMonitorReqsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp/WrittenProcToMonitorReqsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[1]/WrittenProcToMonitorReqsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/WrittenProcToMonitorReqsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/WrittenProcToMonitorReqsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 1]/WrittenProcToMonitorReqsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[2]/WrittenProcToMonitorReqsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/WrittenProcToMonitorReqsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/WrittenProcToMonitorReqsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 2]/WrittenProcToMonitorReqsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[3]/WrittenProcToMonitorReqsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/WrittenProcToMonitorReqsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/WrittenProcToMonitorReqsInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[$pos + 3]/WrittenProcToMonitorReqsInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/TaxExemptBondsArbitrageGrp[4]/WrittenProcToMonitorReqsInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -3451,24 +3022,24 @@ Penalty in Lieu of Arbitrage Rebate?
 					
 					
 					<!-- Part V Procedures To Undertake Corrective Action -->
-					<div class="styBB" style="width: 256mm;border-color: black;border-bottom-width:1px;border-top-width: 1px">
+					<div class="styBB" style="width: 256mm;border-color: black;border-bottom-width:0px;border-top-width: 0px;float:none;">
 						<div class="styPartName">Part V</div>
 						<div class="styPartDesc">Procedures To Undertake Corrective Action
 						</div>
 					</div>
 					
-<table class="styTable" cellspacing="0" style="font-size:7pt;width:256mm;float:none;clear:both">
+<table class="styTableContainerLandscape" cellspacing="0" style="font-size:7pt;width:256mm;float:none;clear:both;display:table;">
 						<thead>
 							<tr>
 								<th class="styTableCellHeader" rowspan="2" scope="col" style="border-style: solid; border-color: black;border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:0px; width:96mm"/>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-left-width:1px">A</th>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">B</th>
-								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">C</th>
-								<th class="styTableCellHeader" scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm">D</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px">A</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px">B</th>
+								<th class="styTableCellHeader " scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px">C</th>
+								<th class="styTableCellHeader" scope="col" colspan="2" style="border-style: solid; border-color: black;width:32mm;border-top-width:1px">D</th>
 								<!--<th class="styTableCellHeader" scope="col" colspan="2" style="width:32mm;border-right:0px">E</th>-->
 							</tr>
 							<tr>
-								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:1px;width:16mm">Yes</th>
+								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;border-left-width:0px;width:16mm">Yes</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">No</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">Yes</th>
 								<th class="styTableCellHeader " scope="col" style="border-style: solid; border-color: black;width:16mm">No</th>
@@ -3484,53 +3055,54 @@ Penalty in Lieu of Arbitrage Rebate?
 						</thead>
 						<tfoot/>
 						<tbody>
+						
 							<tr>
 								
 								<td class="styTableCellText" style="border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 1px; border-bottom-width:1px; width:96mm;padding-top:0mm">
 									<span class="styLNLeftLtrBox" style="padding-left:0mm;height:10mm"></span>
          Has the organization established written procedures to ensure that violations of federal tax requirements are timely identified and corrected through the voluntary closing agreement program if self-remediation is not available under applicable regulations?   
-           <span class="styNoAudioRead">
-										
-</span>
+            <!--Dotted Line-->
+							
+								<span style="letter-spacing:4mm; font-weight:bold; "></span>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp/ProceduresCorrectiveActionInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[1]/ProceduresCorrectiveActionInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp/ProceduresCorrectiveActionInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[1]/ProceduresCorrectiveActionInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[$pos + 1]/ProceduresCorrectiveActionInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[2]/ProceduresCorrectiveActionInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[$pos + 1]/ProceduresCorrectiveActionInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[2]/ProceduresCorrectiveActionInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[$pos + 2]/ProceduresCorrectiveActionInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[3]/ProceduresCorrectiveActionInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[$pos + 2]/ProceduresCorrectiveActionInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[3]/ProceduresCorrectiveActionInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateYesBox">
-										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[$pos + 3]/ProceduresCorrectiveActionInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[4]/ProceduresCorrectiveActionInd"/>
 									</xsl:call-template>
 								</td>
 								<td class="styTableCellSmall " style="border-style: solid; border-color: black;width:16mm;text-align:center">
 									<xsl:call-template name="PopulateNoBox">
-										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[$pos + 3]/ProceduresCorrectiveActionInd"/>
+										<xsl:with-param name="TargetNode" select="$FormData/ProceduresCorrectiveActionGrp[4]/ProceduresCorrectiveActionInd"/>
 									</xsl:call-template>
 								</td>
 								<!--
@@ -3552,26 +3124,28 @@ Penalty in Lieu of Arbitrage Rebate?
 					
 					<!--   END LINE 1   -->
 					
-<div class="styBB" style="width:256mm;float:none;"/>
+
 
 				<!-- Part VI Supplemental Information -->
 					<div class="styGenericDiv" style="width: 256mm;">
 						<div class="styPartName" style="width:18mm;">Part VI</div>
 						<div class="styPartDesc" style="width:236mm;">
-Supplemental Information. <span class="styNormalText"> Provide additional information for responses to questions on Schedule K (see instructions).</span></div>
+Supplemental Information. <span class="styNormalText"> Provide additional information for responses to questions on Schedule K (see instructions).</span>
 </div>
-<span style="float:right;clear:none">
+
+
+<span style="float:right;">
 								<xsl:call-template name="SetDynamicTableToggleButton">
 									<xsl:with-param name="TargetNode" select="$FormData/SupplementalInformationDetail"/>
 									<xsl:with-param name="containerHeight" select="20"/>
 									<xsl:with-param name="containerID" select="'SUPctn'"/>
 								</xsl:call-template>
 							</span>
-						
+						</div>
 					
-					<div class="styTableContainerLandscape " style="width: 256mm;  border-bottom-width: 1px" id="SUPctn">
+					<div class="styTableContainer " style="width: 256mm;  border-bottom-width: 1px;display:table;" id="SUPctn">
 						<xsl:call-template name="SetInitialState"/>
-						<table class="styTable" style="font-size: 7pt; border-color:black;" cellspacing="0">
+						<table class="styTable" style="font-size: 7pt; border-color:black;width:256mm" cellspacing="0">
 							<thead>
 								<tr class="styDepTblHdr">
 				<!--<th class="styDepTblCell" style="border-right-width: 0px;width:50mm" scope="col">Identifier</th>-->
@@ -3591,12 +3165,12 @@ Supplemental Information. <span class="styNormalText"> Provide additional inform
 													<xsl:with-param name="TargetNode" select="IdentifierTxt"/>
 												</xsl:call-template>
 											</td>-->
-											<td class="styTableCell" style="text-align:left; border-right-width: 1px; width: 50mm;">
+											<td class="styTableCell" style="text-align:left; vertical-align:top; border-right-width: 1px; width: 50mm;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="FormAndLineReferenceDesc"/>
 												</xsl:call-template>
 											</td>
-											<td class="styTableCell" style="text-align:left; border-right-width: 0px; width: 206mm">
+											<td class="styTableCell" style="text-align:left; border-right-width: 0px; width: 206mm;vertical-align:top;">
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="ExplanationTxt"/>
 												</xsl:call-template>
@@ -3673,7 +3247,8 @@ Supplemental Information. <span class="styNormalText"> Provide additional inform
 					<!--     END FORM FOOTER   -->
 					<!--     END FORM FOOTER   -->
 					<div class="pageEnd"/>
-					<br/>
+					 <p style="page-break-before: always"/> 
+					
 					<div class="styLeftOverTitleLineLandscape" id="LeftoverData">
 						<div class="styLeftOverTitle">
       Additional Data        

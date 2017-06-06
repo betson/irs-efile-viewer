@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form970" select="$RtnDoc/IRS970"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form970)"/>
@@ -70,7 +72,7 @@
               </div>
             </div>
             <div class="styTYBox" style="width:30mm;height:19.5mm;">
-              <div class="styOMB" style="height:2mm;">OMB No. 1545-0042</div>
+              <div class="styOMB" style="height:4mm;">OMB No. 1545-0042</div>
               <br/>
               <div>
                 <span style="padding-right:30px;">Attachment </span>
@@ -81,7 +83,7 @@
           </div>
           <!-- Begin Name and Identifying Number Section-->
           <div class="styBB" style="width:187mm;clear:both;">
-            <div class="styFNBox" style="width:117mm;height:8mm;">
+            <div class="styFNBox" style="width:117mm;height:10mm;">
           Name of filer (name of parent corporation if a consolidated group) (see instructions)<br/>
          
 <!--<xsl:when test="/AppData/Parameters/SubmissionType='CIT'">-->
@@ -127,7 +129,7 @@
             </div>
           </div>
           <!-- Begin Other Name and Identifying Number Section -->
-         <div class="styBB" style="width:187mm;height:8mm;clear:both;">
+         <div class="styBB" style="width:187mm;height:auto;clear:both;">
           Name of applicant(s) (if different from filer) and identification number(s)<br/>
           
             <xsl:for-each select="$Form970/ApplicantInformation">
@@ -192,9 +194,9 @@
           </div>
           <!-- END Part I  Title -->
           <!--Begin Part I -->
-          <div style="width:187mm;height:4.5mm;">
-            <div class="styLNLeftNumBoxSD" style="height:4.5mm;padding-top:1.8mm;">1</div>
-            <div class="styLNDesc" style="width:158mm;height:4.5mm;">
+          <div style="width:187mm;height:auto;">
+            <div class="styLNLeftNumBoxSD" style="height:9mm;padding-top:1.8mm;">1</div>
+            <div class="styLNDesc" style="width:158mm;height:100%;">
           The applicant elects to use the LIFO inventory method for the tax year ending 
           (enter month, day, year)
           <span style="width:2px"/>
@@ -210,14 +212,14 @@
             for the following goods (enter here):
           </span>
               <span style="width:2px;"/>
-              <span class="styUnderlineAmount" style="width:108mm;float:none;text-align:left;">
+              <span class="styUnderlineAmount" style="width:108mm;text-align:left;float:none;clear:none;">
                 <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form970/LIFOMthdGoodsForFirstTYTxt"/>
                 </xsl:call-template>
               </span>
             </div>
-            <div class="styShadingCell" style="height:100%;width:10mm;"/>
-            <div class="styShadingCell" style="height:100%;width:10mm;"/>
+            <div class="styShadingCell" style="height:45.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:45.5mm;width:10mm;"/>
           </div>
           <div style="width:187mm;height:6mm;">
             <div class="styLNLeftNumBoxSD"/>
@@ -302,9 +304,9 @@
           
 <!--  Line 5  -->          
           
-          <div class="styBB" style="width:187mm;height:4.5mm;">
-            <div class="styLNLeftNumBoxSD" style="height:4.5mm;padding-top:1.8mm;">5</div>
-            <div class="styLNDesc" style="width:158mm;height:4.5mm;">
+          <div class="styBB" style="width:187mm;height:auto;">
+            <div class="styLNLeftNumBoxSD" style="height:9mm;padding-top:1.8mm;">5</div>
+            <div class="styLNDesc" style="width:158mm;height:auto;">
           The applicant will not use the LIFO inventory method to account for the following goods 
           (enter here):
           <span style="width:2px"/>
@@ -330,7 +332,7 @@
                   <br/>
                 </xsl:for-each>
               
-              <br/>
+     
           Attach a statement if necessary.
         </div>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
@@ -365,7 +367,7 @@
               </xsl:call-template>
             </div>
           </div>
-          <div style="width:187mm;height:4mm;">
+          <div style="width:187mm;height:7.5mm;">
             <div class="styLNLeftNumBoxSD" style="padding-left:4mm;height:7.5mm;">b</div>
             <div class="styLNDesc" style="width:158mm;height:7.5mm;">
           If "No" to line 6a, did the applicant value the beginning inventories of goods covered 
@@ -375,12 +377,12 @@
             </div>
             <div class="styShadingCell" style="height:3.3mm;width:10mm;"/>
             <div class="styShadingCell" style="height:3.3mm;width:10mm;"/>
-            <div class="styIRS970LNYesNoBox" style="height:3.2mm;">
+            <div class="styIRS970LNYesNoBox" style="height:4mm;">
               <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$Form970/BegngInvntryValuedForFrstTYInd"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS970LNYesNoBox" style="height:3.2mm;">
+            <div class="styIRS970LNYesNoBox" style="height:4mm;">
               <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$Form970/BegngInvntryValuedForFrstTYInd"/>
               </xsl:call-template>
@@ -397,7 +399,7 @@
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
           </div>
-          <div style="width:187mm;">
+          <div style="width:187mm;height:5mm;">
             <div class="styLNLeftNumBoxSD" style="padding-left:4mm;height:4.5mm;">c</div>
             <div class="styLNDesc" style="width:158mm;height:4.5mm;">
           If "Yes" to line 6b, will the applicant account for the adjustment required by 
@@ -426,7 +428,12 @@
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
           </div>
           <div style="width:187mm;height:3mm;">
-            <div class="styGenericDiv" style="width:166mm;"/>
+            <!--div class="styGenericDiv" style="width:165mm;border:0px solid red;"/>
+            <div class="styShadingCell" style="width:10.5mm;float:left;clear:none;height:100%;"/>
+            <div class="styShadingCell" style="width:10.5mm;float:left;clear:none;height:100%;"/-->
+             <div class="styLNLeftNumBoxSD" style="padding-top:0mm;padding-left:4mm;"/>
+            <div class="styLNDesc" style="width:158mm;padding-top:0mm;">
+            </div>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
           </div>
@@ -437,14 +444,14 @@
           applicant treat those goods as being acquired for a unit cost that is equal to the 
           total cost of those goods divided by the total number of units on hand?
         </div>
-            <div class="styShadingCell" style="height:3.3mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:3.3mm;width:10mm;"/>
-            <div class="styIRS970LNYesNoBox" style="height:3.2mm;">
+            <div class="styShadingCell" style="height:3.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:3.5mm;width:10mm;"/>
+            <div class="styIRS970LNYesNoBox" style="height:3.6mm;">
               <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$Form970/ItemAGoodsTreatedAsAcquiredInd"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS970LNYesNoBox" style="height:3.2mm;">
+            <div class="styIRS970LNYesNoBox" style="height:3.6mm;">
               <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$Form970/ItemAGoodsTreatedAsAcquiredInd"/>
               </xsl:call-template>
@@ -462,7 +469,9 @@
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
           </div>
           <div style="width:187mm;height:3mm;">
-            <div class="styGenericDiv" style="width:166mm;"/>
+            <div class="styLNLeftNumBoxSD" style="padding-top:0mm;padding-left:4mm;"></div>
+            <div class="styLNDesc" style="width:158mm;padding-top:0mm;"></div>
+
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
           </div>
@@ -475,22 +484,22 @@
           <!--Dotted Line-->
              <span style="letter-spacing:4mm;font-weight:bold;">............................</span> 
             </div>
-            <div class="styShadingCell" style="height:6mm;width:10mm;"/>
-            <div class="styShadingCell" style="height:6mm;width:10mm;"/>
-            <div class="styIRS970LNYesNoBox" style="height:3.2mm;">
+            <div class="styShadingCell" style="height:6.5mm;width:10mm;"/>
+            <div class="styShadingCell" style="height:6.5mm;width:10mm;"/>
+            <div class="styIRS970LNYesNoBox" style="height:3.7mm;">
               <xsl:call-template name="PopulateYesBoxText">
                 <xsl:with-param name="TargetNode" select="$Form970/CreditStatementsOrRptsIssdInd"/>
               </xsl:call-template>
             </div>
-            <div class="styIRS970LNYesNoBox" style="height:3.2mm;">
+            <div class="styIRS970LNYesNoBox" style="height:3.7mm;">
               <xsl:call-template name="PopulateNoBoxText">
                 <xsl:with-param name="TargetNode" select="$Form970/CreditStatementsOrRptsIssdInd"/>
               </xsl:call-template>
             </div>
           </div>
-          <div style="width:187mm;height:4mm;">
-            <div class="styLNLeftNumBoxSD" style="padding-top:0mm;padding-left:4mm;">b</div>
-            <div class="styLNDesc" style="width:158mm;padding-top:0mm;">
+          <div style="width:187mm;height:5mm;">
+            <div class="styLNLeftNumBoxSD" style="padding-top:0mm;padding-left:4mm;height:5mm;">b</div>
+            <div class="styLNDesc" style="width:158mm;padding-top:0mm;height:5mm;">
           If "Yes" to line 8a, attach a statement describing the recipient(s), the date(s) of 
           issuance, and the inventory method(s) used to determine income, profit, or loss in 
           those statements.
@@ -498,11 +507,12 @@
                 <xsl:with-param name="TargetNode" select="$Form970/CreditStatementsOrRptsIssdInd"/>
               </xsl:call-template>
             </div>
-            <div class="styShadingCell" style="height:100%;width:10mm;"/>
-            <div class="styShadingCell" style="height:100%;width:10mm;"/>
+            <div class="styShadingCell" style="height:6mm;;width:10mm;"/>
+            <div class="styShadingCell" style="height:6mm;width:10mm;"/>
           </div>
           <div style="width:187mm;height:3mm;">
-            <div class="styGenericDiv" style="width:166mm;"/>
+            <div class="styLNLeftNumBoxSD" style="padding-top:0mm;padding-left:4mm;"></div>
+            <div class="styLNDesc" style="width:158mm;padding-top:0mm;"></div>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
           </div>
@@ -536,7 +546,8 @@
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
           </div>
           <div style="width:187mm;height:3mm;">
-            <div class="styGenericDiv" style="width:166mm;"/>
+            <div class="styLNLeftNumBoxSD" style="padding-top:0mm;padding-left:4mm;"></div>
+            <div class="styLNDesc" style="width:158mm;padding-top:0mm;"/>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
             <div class="styShadingCell" style="height:100%;width:10mm;"/>
           </div>
@@ -590,7 +601,7 @@
         </div>
           </div>
           <!-- Begin Footer -->
-          <div style="width:187mm;padding-top:1mm;">
+          <div  class="pageEnd"  style="width:187mm;padding-top:1mm;float:none;">
             <div style="float:left;">
               <span class="styBoldText">For Paperwork Reduction Act Notice, see the instructions.</span>
               <span style="width:90px;"/>
@@ -602,8 +613,8 @@
         </div>
           </div>
           <!-- End Footer -->
-          <br class="pageEnd"/>
-          <div class="styBB" style="width:187mm;padding-top:.5mm;">
+          <br style="float:none;"/>
+          <div class="styBB" style="width:187mm;padding-top:.5mm;float:none;">
             <div style="float:left;">Form 970 (Rev. 11-2012)<span style="width:100mm;"/>
             </div>
             <div style="float:right;">Page <span style="font-weight:bold;font-size:8pt;">2</span>
@@ -711,10 +722,10 @@
           <div style="width:187mm;height:3mm;"/>
           <div style="width:187mm;">
             <div class="styLNLeftNumBoxSD" style="padding-top:0mm;">14a</div>
-            <div class="styGenericDiv" style="width:157mm;">
+            <div class="styGenericDiv" style="width:152mm;">
           Did the applicant acquire any of the goods covered by this election at below-market prices?
           <!--Dotted Line-->
-               <span style="letter-spacing:4mm;font-weight:bold;">........</span> 
+               <span style="letter-spacing:4mm;font-weight:bold;">......</span> 
             </div>
             <div class="styGenericDiv" style="font-weight:bold;width:14mm;">
               <span>
@@ -736,7 +747,7 @@
             Yes
           </label>
             </div>
-            <div class="styGenericDiv" style="font-weight:bold;width:8mm;">
+            <div class="styGenericDiv" style="font-weight:bold;width:12mm;">
               <span>
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$Form970/GoodsAcqAtBelowMrktPrcsInd"/>
@@ -1008,10 +1019,10 @@
           <div style="width:187mm;height:3mm;"/>
           <div style="width:187mm;">
             <div class="styLNLeftNumBoxSD" style="padding-top:0mm;">20</div>
-            <div class="styGenericDiv" style="width:157mm;">
+            <div class="styGenericDiv" style="width:153mm;">
           Will the applicant use the 10 percent method (see instructions)?
           <!--Dotted Line-->
-             <span style="letter-spacing:4mm;font-weight:bold;">...............</span> 
+             <span style="letter-spacing:4mm;font-weight:bold;">..............</span> 
             </div>
             <div class="styGenericDiv" style="font-weight:bold;width:14mm;">
               <span>
@@ -1033,7 +1044,7 @@
             Yes
           </label>
             </div>
-            <div class="styGenericDiv" style="font-weight:bold;width:8mm;">
+            <div class="styGenericDiv" style="font-weight:bold;width:12mm;">
               <span>
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$Form970/TenPercentMethodInd"/>
@@ -1093,11 +1104,11 @@
           <div style="width:187mm;height:3mm;"/>
           <div class="styBB" style="width:187mm;">
             <div class="styLNLeftNumBoxSD" style="padding-top:0mm;">23</div>
-            <div class="styGenericDiv" style="width:157mm;">
+            <div class="styGenericDiv" style="width:153mm;">
           Did the applicant receive IRS consent to change the method of valuing inventories for 
           the tax year specified on line 1 (see instructions)?
           <!--Dotted Line-->
-              <span style="letter-spacing:4mm;font-weight:bold;">............................</span> 
+              <span style="letter-spacing:4mm;font-weight:bold;">..........................</span> 
             </div>
             <div class="styGenericDiv" style="font-weight:bold;width:14mm;padding-top:3mm;">
               <span>
@@ -1119,7 +1130,7 @@
             Yes
           </label>
             </div>
-            <div class="styGenericDiv" style="font-weight:bold;width:8mm;padding-top:3mm;">
+            <div class="styGenericDiv" style="font-weight:bold;width:12mm;padding-top:3mm;">
               <span>
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$Form970/CnsntChgValuingInvntryMthdInd"/>
@@ -1142,14 +1153,14 @@
           </div>
           <!--End Part VI -->
           <!-- Begin Footer -->
-          <div style="width:187mm;padding-top:1mm;">
+          <div class="pageEnd" style="width:187mm;padding-top:1mm;">
             <div style="float:right;">
               <span style="width:1px;"/>
               Form<span class="styBoldText"> 970 </span>(Rev. 11-2012)
         </div>
           </div>
           <!-- End Footer -->
-          <br class="pageEnd"/>
+          <br />
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">

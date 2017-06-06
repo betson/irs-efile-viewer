@@ -28,8 +28,10 @@
 	<xsl:variable name="standardLine" select="'StdLn'"/>
 	<xsl:variable name="debuggingColors" select="false()"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8917Data)"/>
@@ -82,14 +84,14 @@
 							<div style="padding-top:0mm;border-bottom:1 solid black;font:7pt;height:4.5mm">
 								<span style="vertical-align:-30%">OMB No. 1545-0074</span>
 							</div>
-							<div style="margin-top:-1.5mm">
+							<div style="padding-top:-1.5mm">
 								<span class="styTaxYear" style="line-height:75%;font-family:'Arial';font-size:20pt">20</span>
 								<span class="styTYColor" style="line-height:75%;font-family:'Arial Black';font-size:20pt">
 									<b>13</b>
 								</span>
 							</div>
 							<br/>
-							<div class="stySequence" style="font-size:6.5pt;position:relative">
+							<div class="stySequence" style="font-size:6.5pt;position:relative">						
 								<span style="float:left">Attachment<br/>Sequence No. </span>
 								<span style="width:0.5mm"/>
 								<span>
@@ -117,7 +119,7 @@
 						</span>
 					</div>
 					<!-- Caution header -->
-					<div style="width:{$pageWidth}mm;height:12.45mm;border-bottom:{$borderWidth}mm solid;line-height:normal;position:relative">
+				<div style="width:{$pageWidth}mm;height:12.45mm;border-bottom:{$borderWidth}mm solid;line-height:normal;position:relative;clear:all;">
 						<img alt="CAUTION" src="{$ImagePath}/Caution12.73x12.45mm.png" style="width:12.73mm;height:12.45mm;position:absolute"/>
 						<span style="height:12mm;padding-top:2mm;padding-left:15.73mm;font-size:7.5pt">
 							<em>You <b>cannot</b> take both an education credit from Form 8863 and the tuition and fees deduction from this form for the<br/>
@@ -125,16 +127,16 @@
 						</span>
 					</div>
 					<!-- Before you begin header -->
-					<div style="width:{$pageWidth}mm;height:{$lineHeight}mm;border-bottom:1px solid black;padding:0.8mm;padding-bottom:0mm;padding-right:0mm;">
-						<span style="font-size:8.5pt;font-style:italic;font-weight:bold;width:38mm;height:{$lineHeight * 2}mm;float:left">Before you begin:</span>
-						<span style="font-size:7pt;height:{$lineHeight * 2}mm">
+					<div style="width:{$pageWidth}mm;height:auto;border-bottom:1px solid black;padding:0.8mm;padding-bottom:0mm;padding-right:0mm;">
+						<span style="font-size:8.5pt;font-style:italic;font-weight:bold;width:38mm;height:auto;float:left">Before you begin:</span>
+						<span style="font-size:7pt;height:auto">
 							<span style="width:5mm">
 								<img alt="Checkmark" src="{$ImagePath}/Checkmark2.76x2.54mm.png" style="width:2.76mm;height:2.54mm"/>
 							</span>To see if you qualify for this deduction, see <i>Who Can Take the Deduction</i> in the instructions below.<br/>
 							<span style="width:5mm">
 								<img alt="Checkmark" src="{$ImagePath}/Checkmark2.76x2.54mm.png" style="width:2.76mm;height:2.54mm"/>
 							</span>If you file Form 1040, figure any write-in adjustments to be entered on the dotted line next to Form<br/>
-							<span style="width:5mm"/>1040, line 36. See the 2012 Form 1040 instructions for line 36.
+							<span style="width:5mm"/>1040, line 36. See the 2013 Form 1040 instructions for line 36.
 						</span>
 						<!-- button display logic -->
 						<div class="styGenericDiv" style="float:right;height:1mm;padding-top:3mm;">
@@ -152,24 +154,27 @@
           border-right-width:0;border-left-width:0;float:left;line-height:normal;">-->
 					<!-- Line 1 -->
 					<div class="" style="width:187.5mm;">
-						<div class="styLNLeftNumBoxSD" style="float:left !important;clear:none !important;">1</div>
-					<div class="styTableContainer" id="Studentctn" style="width:179mm;clear:none !important;">
-					  <!-- print logic -->
-					  <xsl:call-template name="SetInitialState"/>
-					  <!-- end -->
-					<table class="styTable" style="font-size:7pt;border-color:black;border-collapse:collapse;">
-						<thead class="styTableThead" style="vertical-align:top;">
-							<tr>
-								<th scope="col" class="styTableCellHeader" style="font-weight:normal;width:100mm;">
-									<b>(a)</b> Student's name (as shown on page 1 of your tax return)<br/><br/>
-									<span style="float:left">First name</span>
-									<span style="width:25mm"/>Last name
+						<div class="styLNLeftNumBoxSD" style="float:left;clear:none;width:1mm;">1</div>
+						<div class="styTableContainer" id="Studentctn" style="width:179mm;clear:none;float:right;height:auto;">
+							<!--					  -->
+							<!-- print logic -->
+							<!--
+					  <xsl:call-template name="SetInitialState"/>-->
+							<!-- end -->
+							<table class="styTable" style="font-size:7pt;width:179mm;height:auto;border-color:black;border-collapse:collapse;">
+								<thead class="styTableThead" style="vertical-align:top;">
+									<tr>
+										<th scope="col" class="styTableCellHeader" style="font-weight:normal;width:100mm;padding-top:1mm;">
+											<b>(a)</b> Student's name (as shown on page 1 of your tax return)<br/>
+											<br/>
+											<span style="float:left">First name</span>
+											<span style="width:25mm"/>Last name
 								</th>
-								<th scope="col" class="styTableCellHeader" style="font-weight:normal;width:53mm;padding:2px 4px;">
-									<b>(b)</b> Student's social security number (as shown on page 1 of your tax return)
+										<th scope="col" class="styTableCellHeader" style="font-weight:normal;width:53mm;padding:1mm 4px;">
+											<b>(b)</b> Student's social security number (as shown on page 1 of your tax return)
 								</th>
-								<th scope="col" class="styTableCellHeader" style="font-weight:normal;width:40mm;padding:2px 4px;border-right:none;">
-									<b>(c)</b> Adjusted qualified expenses (see instructions)
+										<th scope="col" class="styTableCellHeader" style="font-weight:normal;width:40mm;padding:1mm 4px;border-right:none;">
+											<b>(c)</b> Adjusted qualified expenses (see instructions)<br/>
 								</th>
 							</tr>
 						</thead>
@@ -177,7 +182,7 @@
 							<xsl:if test="($Print != $Separated) or (count($Form8917Data/Student) &lt;= 3)">
 								<xsl:for-each select="$Form8917Data/Student">
 									<tr>
-										<td class="styTableCellText" style="width:auto;">&nbsp;
+										<td class="styTableCellText" style="width:auto;">&#160;
 											<xsl:call-template name="PopulateText">
 												<xsl:with-param name="TargetNode" select="StudentName/PersonFirstName"/>
 											</xsl:call-template>
@@ -215,29 +220,37 @@
 							</xsl:if>
 							<xsl:if test="count($Form8917Data/Student) &lt; 1 or (($Print = $Separated) and (count($Form8917Data/Student) &gt; 3))">
 								<tr>
-									<td class="styTableCellCtr" style="width:auto;">&nbsp;
+									<td class="styTableCellCtr" style="width:auto;">&#160;
 										<xsl:call-template name="PopulateAdditionalDataTableMessage">
 											<xsl:with-param name="TargetNode" select="$Form8917Data/Student"/>
 										</xsl:call-template>
 									</td>
-									<td class="styTableCell" style="width:auto;">
-										&nbsp;
+									<td class="styTableCell" style="width:auto;">&#160;
 									</td>
-									<td class="styTableCell" style="width:auto;border-right:none;">
-										&nbsp;
+									<td class="styTableCell" style="width:auto;border-right:none;">&#160;
 									</td>
 								</tr>								
 							</xsl:if>
 							<xsl:if test="count($Form8917Data/Student) &lt; 2 or (($Print = $Separated) and (count($Form8917Data/Student) &gt; 3))">
 								<tr>
 									<td class="styTableCellText">
-										&nbsp;
+										&#160;
 									</td>
-									<td class="styTableCell">
-										&nbsp;
+											<td class="styTableCell">
+										&#160;
 									</td>
-									<td class="styTableCell" style="border-right:none;">
-										&nbsp;
+											<td class="styTableCell" style="border-right:none;">
+										&#160;
+									</td>
+										</tr>
+									</xsl:if>
+									<xsl:if test="count($Form8917Data/Student) &lt; 3 or (($Print = $Separated) and (count($Form8917Data/Student) &gt; 3))">
+										<tr>
+											<td class="styTableCellText" style="border-bottom:none">&#160;
+									</td>
+											<td class="styTableCell" style="border-bottom:none">&#160;
+									</td>
+											<td class="styTableCell" style="border-right:none; border-bottom:none">&#160;
 									</td>
 								</tr>								
 							</xsl:if>
@@ -268,13 +281,13 @@
 					</div>
 					<!-- Line 2 -->
 					<div class="" style="width:187mm;">
-						<div class="styLNLeftNumBoxSD">2</div>
-						<div class="styLNDesc" style="width:138.3mm;">
+						<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:4mm;">2</div>
+						<div class="styLNDesc" style="width:138.3mm;height:auto;padding-top:4mm;">
 							<span style="float:left;">Add the amounts on line 1, column (c), and enter the total</span>
 							<span class="styIRS8917DotLn">..............</span>
 						</div>
-						<div class="styLNRightNumBox">2</div>
-						<div class="styLNAmountBox">
+					<div class="styLNRightNumBox" style="height:auto;padding-top:4mm;">2</div>
+						<div class="styLNAmountBox" style="height:auto;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form8917Data/TotalQualifiedExpensesAmt"/>
 							</xsl:call-template>
@@ -282,52 +295,56 @@
 					</div>
 					<!-- Line 3 -->
 					<div class="" style="width:187mm;">
-						<div class="styLNLeftNumBoxSD">3</div>
-						<div class="styLNDesc" style="width:98.3mm;">
+						<div class="styLNLeftNumBoxSD" style="height:8mm;padding-top:4mm;">3</div>
+						<div class="styLNDesc" style="width:98.3mm;height:8mm;padding-top:4mm;">
 							Enter the amount from Form 1040, line 22, or Form 1040A, line 15
 						</div>
-						<div class="styLNRightNumBox" style="height:4.4mm;">3</div>
-						<div class="styLNAmountBox" style="padding-right:2px;height:4.4mm;">
+						<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">3</div>
+						<div class="styLNAmountBox" style="padding-right:2px;height:8mm;padding-top:4mm;">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form8917Data/TotalIncomeAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.4mm;"/>
-						<div class="styLNAmountBoxNBB" style="height:4.4mm;"/>
+						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:8mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:8mm;"/>
 					</div>
 					<!-- Line 4 -->
 					<div class="" style="width:187mm;">
-						<div class="styLNLeftNumBoxSD">4</div>
-						<div class="styLNDesc" style="width:98.3mm;">
+						<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:4mm;">4</div>
+						<div class="styLNDesc" style="width:98.3mm;height:auto;padding-top:4mm;">
 							Enter the total from either:<br/>
-							&bull; Form 1040, lines 23 through 33, plus any write-in adjustments <br/>
-							entered on the dotted line next to Form 1040, line 36, <b>or</b> <br/>
-							<span style="float:left;">&bull; Form 1040A, lines 16 through 18.</span>
+							<br/>
+							&#8226; Form 1040, lines 23 through 33, plus any write-in adjustments <br/>
+							entered on the dotted line next to Form 1040, line 36, <b>or</b>
+							<br/>
+							<br/>
+							<span style="float:left;">&#8226; Form 1040A, lines 16 through 18.</span>
 							<span class="styIRS8917DotLn">............</span>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:9.2mm;"/>
-						<div class="styLNAmountBoxNBB" style="height:9.2mm;"/>
-						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:9.2mm;"/>
-						<div class="styLNAmountBoxNBB" style="height:9.2mm;"/>
+						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:19.5mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:19.5mm;"/>
+						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:19.5mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:19.5mm;"/>
 						<div class="styLNRightNumBox">4</div>
-						<div class="styLNAmountBox" style="padding-right:2px;">
+						<div class="styLNAmountBox">
 							<xsl:call-template name="PopulateAmount">
 								<xsl:with-param name="TargetNode" select="$Form8917Data/TuitionAndFeesDedOthCreditAmt"/>
 							</xsl:call-template>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.4mm;"/>
-						<div class="styLNAmountBoxNBB" style="height:4.4mm;"/>
+						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:9.4mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:9.4mm;"/>
 					</div>
 					<!-- Line 5 -->
 					<div class="" style="width:187mm;">
-						<div class="styLNLeftNumBoxSD">5</div>
-						<div class="styLNDesc" style="width:138.3mm;">
+						<div class="styLNLeftNumBoxSD" style="height:auto;padding-top:4mm;">5</div>
+						<div class="styLNDesc" style="width:138.3mm;height:auto;padding-top:4mm;">
 							Subtract line 4 from line 3.* If the result is more than $80,000 ($160,000 if married filing jointly), <br/>
-							<span style="float:left;"><b>stop</b>; you cannot take the deduction for tuition and fees</span>
-							<span class="styIRS8917DotLn">................</span>
+							<span style="float:left;">
+								<b>stop</b>; you cannot take the deduction for tuition and fees</span>
+							<span class="styIRS8917DotLn">..............</span>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"/>
-						<div class="styLNAmountBoxNBB" style=""/>
+						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:7mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:7mm;"/>
 						<div class="styLNRightNumBox">5</div>
 						<div class="styLNAmountBox">
 							<xsl:call-template name="PopulateAmount">
@@ -347,8 +364,8 @@
 					</div>
 					<!-- Line 6 -->
 					<div class="" style="width:187mm;">
-						<div class="styLNLeftNumBoxSD">6</div>
-						<div class="styLNDesc" style="width:138.3mm;">
+						<div class="styLNLeftNumBoxSD" style="height:12mm;padding-top:4mm;">6</div>
+						<div class="styLNDesc" style="width:138.3mm;height:16mm;padding-top:4mm;">
 							<b>Tuition and fees deduction.</b> Is the amount on line 5 more than $65,000 ($130,000 if married <br/>
 							filing jointly)?<br/>
 							<span style="width:75mm;float:left;">
@@ -387,10 +404,11 @@
 							<span style="float:left;">
 								<img alt="Curly brace" src="{$ImagePath}/CurlyBrace1.77x18.11mm.png" height="33" width="8"/>
 							</span>
-							<span class="styIRS8917DotLn"><br/>..............</span>
+							<span class="styIRS8917DotLn">
+								<br/>..............</span>
 						</div>
-						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:10mm;"/>
-						<div class="styLNAmountBoxNBB" style="height:10mm;"/>
+						<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:13.5mm;"/>
+						<div class="styLNAmountBoxNBB" style="height:13.5mm;"/>
 						<div class="styLNRightNumBox">6</div>
 						<div class="styLNAmountBox">
 							<xsl:call-template name="PopulateAmount">
@@ -398,7 +416,7 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<div class="" style="width:187mm;">
+					<div class="" style="padding-top:5mm;width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
 						<div class="styLNDesc">
 							<b>Also enter</b> this amount on Form 1040, line 34, or Form 1040A, line 19.
@@ -483,7 +501,7 @@
 								<xsl:for-each select="$Form8917Data/Student">
 									<tr style="border-color:black;height:6mm;">
 										<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-										<td class="styTableCellText" style="width:100mm;">
+										<td class="styTableCellText" style="width:120mm;">
 											<div style="float:left;clear:none;width:6mm;">
 												<span style="text-align:right;float:left;width:4.25mm;font-weight:bold;" class="styGenericDiv">
 													<xsl:number value="position()" format="1"/>

@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form8827Data" select="$RtnDoc/IRS8827"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form8827Data)"/>
@@ -72,7 +74,7 @@
             </div>
             </div>
             <div class="styTYBox" style="width:32mm;height:20mm;">
-              <div class="styOMB" style="height:2mm;">
+              <div class="styOMB" style="height:4mm;">
                 OMB No. 1545-1257
               </div>
               <div class="styTY" style="height:11mm;padding-top:2mm;">
@@ -202,7 +204,7 @@
             <!--L6-->
             <div style="width:187mm">
               <div class="styLNLeftNumBox">6</div>
-              <div class="styLNDesc" style="width:138.75mm;">
+              <div class="styLNDesc" style="width:138.75mm;height:auto">
                 Is the corporation a "small corporation" exempt from the AMT for 2013 (see instructions)?
                 <br/>
                <img src="{$ImagePath}/8827_Bullet_Round.gif" width="6" height="6" alt="Bullet Image"/>
@@ -215,8 +217,8 @@
                 <!--Dotted Line-->
                 <div class="styDotLn" style="float:right;padding-right:1mm;">......</div>
               </div>
-              <div class="styLNRightNumBox" style="padding-top:6.5mm;">6</div>
-              <div class="styLNAmountBox" style="padding-top:6.5mm;">
+              <div class="styLNRightNumBox" style="padding-top:6.5mm;height:auto;">6</div>
+              <div class="styLNAmountBox" style="padding-top:6.5mm;height:auto;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8827Data/SmallCorporationExemptAmt"/>
                 </xsl:call-template>
@@ -231,8 +233,8 @@
                 <!--Dotted Line-->
                 <div class="styDotLn" style="float:right;padding-right:1mm;">..................</div>
               </div>
-              <div class="styLNRightNumBox" style="height:3.5mm;">7a</div>
-              <div class="styLNAmountBox" style="height:3.5mm;">
+              <div class="styLNRightNumBox" style="height:4mm;">7a</div>
+              <div class="styLNAmountBox" style="height:4mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8827Data/NetSmallCorporationExemptAmt"/>
                 </xsl:call-template>
@@ -263,8 +265,8 @@
                 <!--Dotted Line-->
                 <div class="styDotLn" style="float:right;padding-right:1mm;">...........................</div>
               </div>
-              <div class="styLNRightNumBox" style="height:3.5mm;">7c</div>
-              <div class="styLNAmountBox" style="height:3.5mm;">
+              <div class="styLNRightNumBox" style="height:4mm;">7c</div>
+              <div class="styLNAmountBox" style="height:4mm;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="$Form8827Data/TotalNetBonusDepreciationAmt"/>
                 </xsl:call-template>

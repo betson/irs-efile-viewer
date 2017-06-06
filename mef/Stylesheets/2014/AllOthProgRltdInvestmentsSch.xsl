@@ -16,15 +16,15 @@
   </xsl:param>
   
   <xsl:template name="AllOthProgRltdInvestmentsSchTemp">
-    <table id="AllOthProgRltdInvestmentsSchTbl" class="styDepTbl">
+    <table id="AllOthProgRltdInvestmentsSchTbl" class="styDepTbl" style="page-break-inside:auto">
       <thead class="styTableThead">
-        <tr class="styDepTblHdr">
+        <tr class="styDepTblHdr" >
           <th class="styDepTblCell" scope="col">Category</th>
           <th class="styDepTblCell" scope="col">Amount</th>
         </tr>
       </thead>
       <xsl:for-each select="$DependencyData/AllOtherProgramRelatedInvstGrp">
-        <tr>
+        <tr style="page-break-inside:avoid; page-break-after:auto">
           <xsl:attribute name="class">
           <xsl:choose>
             <xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
@@ -40,9 +40,7 @@
           </td>          
           <td class="styDepTblCell" style="text-align:right;width: 34mm">
             <span style="text-align:right;">
-              <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="Amt"/>
-              </xsl:call-template>
+				<xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="Amt" /></xsl:call-template>
             </span>
           </td>
         </tr>
@@ -52,8 +50,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>

@@ -54,8 +54,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -81,7 +83,7 @@
       <body class="styBodyClass">      
         <xsl:call-template name="DocumentHeaderDependency"/>          
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:90mm">
+          <span class="styDepTitle" style="width:100mm">
             <xsl:value-of select="$depDocTitle"/>
           </span>
         </div>

@@ -11,8 +11,10 @@
 <!-- Defines the stage of the data, e.g. original or latest -->
 <xsl:param name="FormData" select="$RtnDoc/IRS8829" />
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+   <html>
   <head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title><xsl:call-template name="FormTitle">
     <xsl:with-param name="RootElement" select="local-name($FormData)"></xsl:with-param></xsl:call-template></title>
     <!-- No Browser Caching -->
@@ -36,11 +38,14 @@
 </head>
   <body class="styBodyClass">
   <form name="Form8829">
-      <!-- BEGIN WARNING LINE -->
-        <xsl:call-template name="DocumentHeader"  />  
-      <!-- END WARNING LINE -->
+  <!-- BEGIN WARNING LINE --> 
+   <div style="width:187mm;">
+
+			
+  <xsl:call-template name="DocumentHeader"  />  
+  <!-- END WARNING LINE -->
 <div class="styTBB" style="width:187mm;">
-  <div class="styFNBox" style="width:30mm;font-size:7pt:height:20.3mm;">
+  <div class="styFNBox" style="width:30mm;font-size:7pt:height:20.3mm;border-right:0px;">
     <div style="height:9.5mm;">
     Form <span style="width:1mm;"></span><span class="styFormNumber">8829</span>
     </div>
@@ -49,7 +54,7 @@
       <span class="styAgency" style="width:30mm;">Internal Revenue Service <span style="padding-left:1mm;"> (99)</span></span>
     </div>
   </div>
-  <div class="styFTBox" style="width:120mm;height:18mm;">
+  <div class="styFTBox" style="width:120mm;height:21mm;border-left:1px solid black;">
     <div class="styMainTitle" style="height:7mm;font-size:13pt;padding-top:1mm;">
       Expenses for Business Use of Your Home
     </div>
@@ -99,38 +104,29 @@ home you used for business during the year.
   <div class="styPartDesc" style="padding-left:3mm;">Part of Your Home Used for Business</div>
 </div>
 <!--Line 1-->
-  <div style="width:187mm">        
-    <div class="styLNLeftNumBoxSD" style="padding-top:1.0mm;">1</div>
-    <div style="float:left;padding-top:1.0mm;width:137mm;">
-      Area used regularly and exclusively for business, regularly for daycare, or for storage of inventory       
-      <br/>or product samples (see instructions)  
-      <span class="styBoldText">
-					<span style="width:16px"/>.
-                    <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                    <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                    <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                     <span style="width:16px"/>.
-                   </span>
-    </div>
-   <div style="float:right;">
-    <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:1mm;"></div>
-      <div class="styLNAmountBoxNBB" style="width:34mm;height:1mm;"></div>
-      <div class="styLNRightNumBox" style="height:2mm;">1</div>
-      <div class="styLNAmountBox" style="height:2mm;width:34mm;">
-        <xsl:call-template name="PopulateAmount">
-          <xsl:with-param name="TargetNode" select="$FormData/BusinessUseSquareFeetCnt"/>
-        </xsl:call-template>
-      </div>
-    </div>        
+  <div style="width:187mm">   
+     <div style="width:187mm;">   
+		<div class="styLNLeftNumBoxSD" style="padding-top:1.0mm;height:auto;">1</div>  
+		<div  style="float:left;padding-top:1.0mm;width:137mm;height:auto;">Area used regularly and exclusively for business, regularly for daycare, or for storage of inventory 
+		</div>    
+		<div style="float:right;">
+			<div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4mm;"/>
+			<div class="styLNAmountBoxNBB" style="width:34mm;height:4mm;"/>
+		</div>  
+		<div style="float:left;padding-top:1.0mm;width:137mm;height:auto;">
+			<span style="float:left;">or product samples (see instructions) </span> 
+			<!--Dotted Line-->
+			<span class="styDotLn" style="float:right;padding-right:1mm;">.....................</span>
+		</div>	
+	    <div style="float:right;">
+		  <div class="styLNRightNumBox" style="height:auto;">1</div>
+		  <div class="styLNAmountBox" style="height:auto;width:34mm;">
+			<xsl:call-template name="PopulateAmount">
+			  <xsl:with-param name="TargetNode" select="$FormData/BusinessUseSquareFeetCnt"/>
+			</xsl:call-template>  
+		</div>   
+    </div>  
+    </div>   
   <!--Line 2-->
   <div style="width:187mm">        
     <div class="styLNLeftNumBoxSD">2</div>
@@ -283,10 +279,11 @@ home you used for business during the year.
     </div>    
   </div>   
 </div>
+
 <!-- Begin Part II -->
 <div style="width:187mm;" class="styBB">
-  <div class="styPartName" style="width:15mm;">Part II</div>
-  <div class="styPartDesc" style="padding-left:3mm;">
+  <div class="styPartName" style="width:15mm;height:auto;">Part II</div>
+  <div class="styPartDesc" style="padding-left:3mm;height:auto;">
     Figure Your Allowable Deduction
   </div>
 </div>
@@ -294,8 +291,9 @@ home you used for business during the year.
   <div style="width:187mm">        
     <div class="styLNLeftNumBoxSD">8</div>
     <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;width:137mm">
-   Enter the amount from Schedule C, line 29, <b>plus</b> any gain derived from the business use of your home and shown on Schedule D or Form 4797, minus any loss from the trade or business not derived from the business use of your home and shown on Schedule D or Form 4797. See instructions.
-   <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">.....</span>
+  <span style="float:left;"> Enter the amount from Schedule C, line 29, <b>plus</b> any gain derived from the business use of your home and shown on Schedule D or Form 4797, minus any loss from the trade or business not derived from the business  </span>
+   <span style="float:left;">use of your home and shown on Schedule D or Form 4797. See instructions.</span>
+   <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">.........</span>
     </div>
 		<div style="width:7.8mm;float:left;border-left:1px solid black">
 			<div class="styGenericDiv" style="height:6mm;width:7.8mm;background-color:lightgrey;"></div>
@@ -328,8 +326,8 @@ home you used for business during the year.
     <div class="styGenericDiv" style="width: 187mm">
          <span class="styLNLeftNumBoxSD">9</span>
          <div  class="styLNDesc" style="width:56mm;">
-               Casualty losses (see instructions)
-                       <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">..</span>
+               <span style="float:left;">Casualty losses (see instructions)</span>
+               <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
          </div>
          <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:1px;border-left-width:1px;border-right-width:0px;height:4.8mm;">9</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:1px;border-right-width:0px;height:4.8mm;">
@@ -349,8 +347,9 @@ home you used for business during the year.
   <div class="styGenericDiv" style="width:187mm;">
          <div class="styLNLeftNumBox" style="height:7.5mm;">10</div>
      <div  class="styLNDesc" style="width:56mm;height:7.5mm;">
-               Deductible mortgage interest (see instructions)
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">.........</span>
+            <span style="float:left;">Deductible mortgage interest</span>
+            <span style="float:left;">(see instructions)</span>
+              <span class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
          </div>
       <div class="styLNRightNumBox" style="border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:7.5mm;padding-top:3mm;">10</div>
  <div class="styLNAmountBox" style="width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px; height:7.5mm;padding-top:3.5mm;">
@@ -372,8 +371,8 @@ home you used for business during the year.
    <div class="styGenericDiv" style="width:187mm;">
          <div class="styLNLeftNumBox" style="height:4mm;">11</div>
          <div  class="styLNDesc" style="width:56mm;padding-top:0;margin-top:0">
-               Real estate taxes (see instructions)
-                       <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">..</span>
+               <span style="float:left;">Real estate taxes (see instructions)</span>
+               <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
          </div>
          <div class="styLNRightNumBox" style=" border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:5mm;padding-top:1mm;margin-top:0">11</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:5mm;padding-top:1mm;margin-top:0">
@@ -394,8 +393,8 @@ home you used for business during the year.
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">12</span>
      <div  class="styLNDesc" style="width:56mm; ;">
-               Add lines 9, 10, and 11
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">.....</span>
+             <span style="float:left;">Add lines 9, 10, and 11</span>
+             <span  class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
          </div>
       <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:4.8mm;">12</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.8mm;">
@@ -434,9 +433,9 @@ home you used for business during the year.
   <!-- Line 14 -->
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox" >14</span>
-     <div  class="styLNDesc" style="width:56mm; ;">
-               Add line 12, column (a) and line 13
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">..</span>
+         <div  class="styLNDesc" style="width:56mm;">
+               <span style="float:left;">Add line 12, column (a) and line 13</span>
+              <span  class="styDotLn" style="float:right;padding-right:1mm;">..</span>
          </div>
       <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px; background-color:lightgrey;"></div>
  <div class="styLNRightNumBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;background-color:lightgrey;">
@@ -471,31 +470,30 @@ home you used for business during the year.
      <!-- Line 16 -->
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">16</span>
-     <div  class="styLNDesc" style="width:56mm;height:8mm;">
-               Excess mortgage interest (see <br/>instructions)
-               <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">........</span>
+        <div  class="styLNDesc" style="width:56mm;">
+               Excess mortgage interest (see instructions)
          </div>
-      <div class="styLNRightNumBox" style="border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:8mm;padding-top:4mm;">16</div>
- <div class="styLNAmountBox" style="padding-top:4mm;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:8mm;">
- <xsl:call-template name="PopulateAmount">
-          <xsl:with-param name="TargetNode" select="$FormData/ExcessMortgageIntDirectAmt"/>
-        </xsl:call-template>
-            </div>
- <div class="styLNAmountBox" style="width:36mm;border-left-width;1px; border-top-width:0px;border-right-width:0px;height:8mm;padding-top:4mm;">
+        <div class="styLNRightNumBox" style="border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;">16</div>
+       <div class="styLNAmountBox" style="width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;">
+		   <xsl:call-template name="PopulateAmount">
+			  <xsl:with-param name="TargetNode" select="$FormData/ExcessMortgageIntDirectAmt"/>
+			</xsl:call-template>
+        </div>
+ <div class="styLNAmountBox" style="width:36mm;border-left-width;1px; border-top-width:0px;border-right-width:0px;">
  <xsl:call-template name="PopulateAmount">
           <xsl:with-param name="TargetNode" select="$FormData/ExcessMortgageIntIndirectAmt"/>
         </xsl:call-template>
             </div>
-             <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:8mm;"></div>
-             <div class="styLNAmountBoxNBB" style="width:34mm;height:8mm;"></div>
+             <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;"></div>
+             <div class="styLNAmountBoxNBB" style="width:34mm;"></div>
   </div>         
 <!-- End Line 16 -->
      <!-- Line 17 -->
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">17</span>
-     <div  class="styLNDesc" style="width:56mm; ;">
-               Insurance
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">..........</span>
+     <div  class="styLNDesc" style="width:56mm; ">
+            <span style="float:left;">Insurance</span>
+            <span  class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
          </div>
       <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:4.8mm;">17</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.8mm;">
@@ -515,9 +513,9 @@ home you used for business during the year.
      <!-- Line 18 -->
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">18</span>
-     <div  class="styLNDesc" style="width:56mm; ;">
-               Rent
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">...........</span>
+     <div  class="styLNDesc" style="width:56mm;">
+             <span style="float:left;">Rent</span>
+             <span  class="styDotLn" style="float:right;padding-right:1mm;">...........</span>
          </div>
       <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:4.8mm;">18</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.8mm;">
@@ -537,9 +535,9 @@ home you used for business during the year.
      <!-- Line 19 -->
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">19</span>
-     <div  class="styLNDesc" style="width:56mm; ;">
-               Repairs and maintenance
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">.....</span>
+     <div  class="styLNDesc" style="width:56mm;">
+             <span style="float:left;">Repairs and maintenance</span>
+             <span  class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
          </div>
       <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:4.9mm;">19</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.9mm;">
@@ -559,9 +557,9 @@ home you used for business during the year.
      <!-- Line 20 -->
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">20</span>
-     <div  class="styLNDesc" style="width:56mm; ;">
-               Utilities
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">..........</span>
+     <div  class="styLNDesc" style="width:56mm;">
+             <span style="float:left;">Utilities</span>
+             <span  class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
          </div>
       <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:4.9mm;">20</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.9mm;">
@@ -582,8 +580,8 @@ home you used for business during the year.
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">21</span>
      <div  class="styLNDesc" style="width:56mm; ;">
-               Other expenses (see instructions)
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">..</span>
+             <span style="float:left;">Other expenses (see instructions)</span>
+             <span  class="styDotLn" style="float:right;padding-right:1mm;">..</span>
          </div>
       <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:4.8mm;">21</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.8mm;">
@@ -603,9 +601,9 @@ home you used for business during the year.
      <!-- Line 22 -->
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">22</span>
-     <div  class="styLNDesc" style="width:56mm; ;">
-               Add lines 16 through 21
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">.....</span>
+     <div  class="styLNDesc" style="width:56mm;">
+              <span style="float:left;">Add lines 16 through 21</span>
+              <span  class="styDotLn" style="float:right;padding-right:1mm;">.....</span>
          </div>
       <div class="styLNRightNumBox" style="padding-left:mm; border-bottom-width:1px;border-top-width:0px;border-left-width:1px;border-right-width:0px;height:4.8mm;">22</div>
  <div class="styLNAmountBox" style="font-weight:normal;width:37mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.8mm;">
@@ -626,8 +624,8 @@ home you used for business during the year.
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">23</span>
      <div  class="styLNDesc" style="width:93.1mm;">
-               Multiply line 22, column (b) by line 7
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">..........</span>
+            <span style="float:left;">Multiply line 22, column (b) by line 7</span>
+            <span  class="styDotLn" style="float:right;padding-right:1mm;">..........</span>
          </div>
             <span class="styLNRightNumBox" style="border-bottom-width:1px;border-top-width:0px;border-right-width:0px;border-left-width:1px;height:4.8mm;">23</span>
  <div class="styLNAmountBox" style="font-weight:normal;width:36mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.8mm;">
@@ -635,16 +633,16 @@ home you used for business during the year.
           <xsl:with-param name="TargetNode" select="$FormData/AllwblIndrNondeductedExpnssAmt"/>
         </xsl:call-template>
             </div>
-             <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.8mm;"></div>
-             <div class="styLNAmountBoxNBB" style="width:33mm; height:4.8mm;"></div>
+             <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.8mm;border-right:1px solid black;"></div>
+             <div class="styLNAmountBoxNBB" style="width:33mm; height:4.8mm;border-left:0px;"></div>
   </div>         
 <!-- End Line 23 -->
       <!-- Line 24 -->
   <div class="styGenericDiv" style="width: 187mm;">
          <span class="styLNLeftNumBox">24</span>
      <div  class="styLNDesc" style="width:93.1mm;">
-               Carryover of operating expenses from 2012 Form 8829, line 42
-             <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm;">..</span>
+            <span style="float:left;">Carryover of operating expenses from 2012 Form 8829, line 42</span>
+            <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
          </div>
             <span class="styLNRightNumBox" style="border-bottom-width:1px;border-top-width:0px;border-right-width:0px;border-left-width:1px;height:4.8mm;">24</span>
  <div class="styLNAmountBox" style="font-weight:normal;width:36mm;border-left-width1px; border-top-width:0px;border-right-width:0px;height:4.8mm;">
@@ -652,15 +650,15 @@ home you used for business during the year.
           <xsl:with-param name="TargetNode" select="$FormData/OperatingExpensesCarryoverAmt"/>
         </xsl:call-template>
             </div>
-             <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.8mm;"></div>
-             <div class="styLNAmountBoxNBB" style="width:33mm; height:4.8mm;"></div>
+             <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4.8mm;border-right:1px solid black;"></div>
+             <div class="styLNAmountBoxNBB" style="width:33mm; height:4.8mm;border-left:0px;"></div>
   </div>         
 <!-- End Line 24 -->
 <!-- Line 25 -->
  <div style="width:187mm">        
     <div class="styLNLeftNumBox">25</div>
     <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-      Add line 22 column (a), line 23, and line 24  
+      Add line 22, column (a), line 23, and line 24  
        <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm; ">..................</span>
     </div>
     <div style="float:right;">
@@ -844,10 +842,10 @@ on Schedule C, line 30. If your home was used for more than one business, see in
 <span style=" letter-spacing:2.2mm; font-weight:bold; padding-left:2mm;padding-right:1mm;">...</span> 
  <img src="{$ImagePath}/8829_Bullet.gif" align="bottom" alt="Bullet Image" />
     </div>
-    <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:1mm;"></div>
-      <div class="styLNAmountBoxNBB" style="width:34mm;height:1mm;"></div>
-      <div class="styLNRightNumBox" style="height:3mm;border-bottom-width:0px;">35</div>
-      <div class="styLNAmountBox" style="height:3mm;width:34mm; border-bottom-width:0px;">
+    <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:4mm;"></div>
+      <div class="styLNAmountBoxNBB" style="width:34mm;height:4mm;"></div>
+      <div class="styLNRightNumBox" style="height:atuo;border-bottom-width:0px;">35</div>
+      <div class="styLNAmountBox" style="height:auto;width:34mm; border-bottom-width:0px;">
       <xsl:call-template name="PopulateAmount">
           <xsl:with-param name="TargetNode" select="$FormData/AllowableHomeBusExpnssSchCAmt"/>
         </xsl:call-template>
@@ -886,8 +884,8 @@ on Schedule C, line 30. If your home was used for more than one business, see in
  <div style="width:187mm">        
     <div class="styLNLeftNumBox" style="height:4mm;">37</div>
     <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;height:4mm;" >
-     Value of land included on line 36  
-       <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm; ">.......................</span>
+       <span style="float:left;">Value of land included on line 36</span>  
+       <span class="styDotLn" style="float:right;padding-right:1mm;">......................</span>
     </div>
     <div style="float:right;">
       <div class="styLNRightNumBox" style="height:4mm;">37</div>
@@ -903,8 +901,8 @@ on Schedule C, line 30. If your home was used for more than one business, see in
  <div style="width:187mm">        
     <div class="styLNLeftNumBox">38</div>
     <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-     Basis of building. Subtract line 37 from line 36  
-       <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm; ">..................</span>
+        <span style="float:left;">Basis of building. Subtract line 37 from line 36 </span> 
+        <span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
     </div>
     <div style="float:right;">
       <div class="styLNRightNumBox" >38</div>
@@ -920,8 +918,8 @@ on Schedule C, line 30. If your home was used for more than one business, see in
  <div  style="width:187mm;border-bottom-width:0px; ">        
     <div class="styLNLeftNumBox">39</div>
     <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-     Business basis of building. Multiply line 38 by line 7  
-       <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm; ">................</span>
+        <span style="float:left;">Business basis of building. Multiply line 38 by line 7 </span> 
+       <span class="styDotLn" style="float:right;padding-right:1mm;">................</span>
     </div>
     <div style="float:right;">
       <div class="styLNRightNumBox" >39</div>
@@ -937,8 +935,8 @@ on Schedule C, line 30. If your home was used for more than one business, see in
  <div style="width:187mm;border-bottom-width:0px;">        
     <div class="styLNLeftNumBox">40</div>
     <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-     Depreciation percentage (see instructions)  
-       <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm; ">..................</span>
+       <span style="float:left;">Depreciation percentage (see instructions)</span>  
+       <span class="styDotLn" style="float:right;padding-right:1mm;">..................</span>
     </div>
     <div style="float:right;">
       <div class="styLNRightNumBox" >40</div>
@@ -956,11 +954,13 @@ on Schedule C, line 30. If your home was used for more than one business, see in
  <div style="width:187mm;border-bottom-width:0px;">        
     <div class="styLNLeftNumBox">41</div>
     <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-    Depreciation allowable (see instructions). Multiply line 39 by line 40. Enter here and on line 29 <br/>above
-       <xsl:call-template name="SetFormLinkInline">
-		<xsl:with-param name="TargetNode" select="$FormData/AllowableHomeDepreciationAmt"/>
-		</xsl:call-template>
-		   <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm; ">..............................</span>
+      <span style="float:left;" >Depreciation allowable (see instructions). Multiply line 39 by line 40. Enter here and on line 29</span> <br></br>
+       <span style="float:left;">above
+		   <xsl:call-template name="SetFormLinkInline">
+			<xsl:with-param name="TargetNode" select="$FormData/AllowableHomeDepreciationAmt"/>
+			</xsl:call-template>
+		</span>
+		<span class="styDotLn" style="float:right;padding-right:1mm;">............................</span>
     </div>
     <div style="float:right;">
       <div class="styLNRightNumBox" style="border-bottom-width:0px;height:8mm;padding-top:4mm;">41</div>
@@ -976,8 +976,8 @@ on Schedule C, line 30. If your home was used for more than one business, see in
 
 <!-- Begin Part IV -->
 <div class="styBB" style="width:187mm;border-top-width: 1px;" >
-  <div class="styPartName" style="width:15mm;">Part IV</div>
-  <div class="styPartDesc" style="padding-left:3mm;">
+  <div class="styPartName" style="width:15mm;height:auto;">Part IV</div>
+  <div class="styPartDesc" style="padding-left:3mm;height:auto;">
    Carryover of Unallowed Expenses to 2014 	 
   </div>
 </div>
@@ -986,8 +986,8 @@ on Schedule C, line 30. If your home was used for more than one business, see in
  <div style="width:187mm">        
     <div class="styLNLeftNumBox">42</div>
     <div style="float:left;padding-top:0.5mm;padding-bottom:.5mm;">
-     Operating expenses. Subtract line 26 from line 25. If less than zero, enter -0-  
-       <span style=" letter-spacing:3.2mm; font-weight:bold; padding-left:3mm; ">.......</span>
+       <span style="float:left;">Operating expenses. Subtract line 26 from line 25. If less than zero, enter -0-  </span>
+       <span class="styDotLn" style="float:right;padding-right:1mm;">.......</span>
     </div>
     <div style="float:right;">
       <div class="styLNRightNumBox" >42</div>
@@ -1023,7 +1023,8 @@ on Schedule C, line 30. If your home was used for more than one business, see in
   <div style="width:35mm;text-align:center;" class="styGenericDiv">Cat. No. 13232M</div>
   <div style = "float:right;" class="styGenericDiv">Form <span class="styBoldText">8829</span> (2013)</div>
 </div>
-  <p class="pageend"></p>
+</div>
+ <p class="pageend" style="display:block;page-break-after:always;"/>
   <!-- Begininning of write-in data -->
     <div class="styLeftOverTitleLine" id="LeftoverData">
       <div class="styLeftOverTitle">

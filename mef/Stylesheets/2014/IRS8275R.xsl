@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form8275RData" select="$RtnDoc/IRS8275R"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form8275RData)"/>
@@ -45,24 +47,24 @@
 					<xsl:call-template name="DocumentHeader"/>
 					<!-- END WARNING LINE -->
 					<!-- Title of the form -->
-					<div style="width:187mm;height:18mm;" class="styTBB">
-						<div style="width:30mm;height:20.5mm;" class="styFNBox">
+					<div style="width:187mm;height:22mm;" class="styTBB">
+						<div style="width:30mm;height:22mm;" class="styFNBox">
 							<div style="height:13.5mm;">Form<span class="styFormNumber" style="font-size: 18pt;">  8275-R</span>
 								<br/>
 								<div style="font-size:normal">(Rev. August 2013) </div>
 								<br/>
 							</div>
-							<div style="height:5mm;padding-top:2mm;">
+							<div style="height:5mm;padding-top:1.0mm;">
 								<span class="styAgency">Department of the Treasury</span>
 								<br/>
 								<span class="styAgency">Internal Revenue Service</span>
 							</div>
 						</div>
-						<div class="styFTBox" style="width:127mm;height:20.5mm;" >
-							<div class="styMainTitle" style="height:4mm;padding-top:1mm;" >
+						<div class="styFTBox" style="width:127mm;height:22mm;" >
+							<div class="styMainTitle" style="height:8mm;padding-top:1mm;" >
                 Regulation Disclosure Statement
-              </div>
-							<div class="styFST" style="height:7mm;font-size:7pt;font-weight: bold;">
+							</div>
+							<div class="styFST" style="height:10mm;font-size:7pt;font-weight: bold;">
                 Use this form only to disclose items or positions that are contrary to Treasury <br/>
                 regulations. For other disclosures, use Form 8275, Disclosure Statement. <br/>                
                 <span style="text-align:center;margin-left:0mm;font-size:6.5pt;">
@@ -71,12 +73,12 @@
 									<a href="http://www.irs.gov/form8275" title="Link to IRS.gov"><i>www.irs.gov/form8275.</i></a>
 								</span>
 							</div>							
-							<div class="styFST">
+							<div  class="styFST">
 								<img src="{$ImagePath}/8275-R_Bullet.gif" alt="Bullet Image"/>
                 Attach to your tax return.
-              </div>
+							</div>
 						</div>
-						<div style="width:30mm;height:22.5mm;" class="styTYBox">
+						<div style="width:30mm;height:22mm;" class="styTYBox">
 							<div style="height:8mm;padding-top:2mm;padding-left:.5mm;" class="styOMB">
                 OMB No. 1545-0889
               </div>
@@ -88,42 +90,63 @@
 					</div>
 					<!-- Title of the form -->
 					<!-- Name and EIN/SSN (return header)  -->
-					<div style="width:187mm;" class="styBB">
-						<div style="width:130mm;height:8mm;font-weight:normal;font-size:7pt;" class="styNameBox">
-              Name(s) shown on return<br/>
-							<xsl:choose>
-								<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">Name</xsl:with-param>
-									</xsl:call-template>
+					<div style="width:187mm;height:10mm;" class="styBB">
+						<div style="width:130mm;height:10mm;font-weight:normal;font-size:7pt;" class="styNameBox">
+							  Name(s) shown on return<br/>
+							  <!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
+							  <xsl:choose>
+							  <!-- Name from 1120/990/1065 Return Header -->
+								<xsl:when test="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt">
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt"/>
+								  </xsl:call-template>
+								  <br/>
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt"/>
+								  </xsl:call-template>
 								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param>
-									</xsl:call-template>
-									<br/>
-									<xsl:call-template name="PopulateReturnHeaderFiler">
-										<xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
+								<!-- Name from 1040 Return Header -->
+								<xsl:when test="$RtnHdrData/Filer/PrimaryNameControlTxt">
+								  <br/>
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt"/>
+								  </xsl:call-template>
+								</xsl:when>
+								<!-- Name from 1041 Return Header 
+								<xsl:when test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt">
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt"/>
+								  </xsl:call-template>
+								  <br/>
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt"/>
+								  </xsl:call-template>
+								</xsl:when>
+								<xsl:when test="$RtnHdrData/Filer/NationalMortgageAssocCd">
+								  <xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NationalMortgageAssocCd"/>
+								  </xsl:call-template>
+								  <br/>
+								</xsl:when> -->
+							  </xsl:choose>
 						</div>
 						<div style="width:56mm;height:4mm;padding-left:2mm;font-size:7pt;" class="styEINBox">
-              Identifying number shown on return<br/>
+              Identifying number shown on return
+							<br/>
 							<br/>
 							<span style="font-weight:normal;">
+								<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
 								<xsl:choose>
-									<xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="PopulateReturnHeaderFiler">
-											<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
+								  <xsl:when test="$RtnHdrData/Filer/EIN">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:when>
+								  <xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+									  <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+								  </xsl:otherwise>
 								</xsl:choose>
 							</span>
 						</div>
@@ -131,12 +154,14 @@
 					<!-- Name and EIN/SSN (return header)  -->
 					<!-- Foreign Entity - Name, EIN (input) and Reference ID -->
 					<div style="width:187mm;">
-						If Form 8275-R relates to an information return for a foreign entity (for example, Form 5471), enter:
-						<div class="styLNDesc" style="width:35mm;">
+						<div class="styLNDesc" style="width:187mm;">
+			If Form 8275-R relates to an information return for a foreign entity (for example, Form 5471), enter:
+						</div>
+						<div class="styLNDesc" style="width:35mm;float:left;">
               Name of foreign entity
               <img src="{$ImagePath}/8275-R_Bullet.gif" alt="Bullet Image"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:152mm;text-align:left">
+						<div class="styUnderlineAmount" style="width:152mm;text-align:left;height:auto;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form8275RData/ForeignEntityName/BusinessNameLine1Txt"/>
 							</xsl:call-template>
@@ -203,7 +228,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="styTableContainer" id="TPctn" style="height:25mm;">
+					<div class="styTableContainer" id="TPctn" style="height:auto">
 						<xsl:call-template name="SetInitialState"/>
 						<table class="styTable" cellspacing="0" name="TYTable" id="TYTable">
 							<thead class="styTableThead">
@@ -388,7 +413,7 @@
 						</div>
 						<div style="float:right;margin-top:2.8mm;">
 							<xsl:call-template name="SetDynamicTableToggleButton">
-								<xsl:with-param name="TargetNode" select="$Form8275RData/DisclosureGeneralInformation"/>
+								<xsl:with-param name="TargetNode" select="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc"/>
 								<xsl:with-param name="containerHeight" select="6"/>
 								<xsl:with-param name="headerHeight" select="0"/>
 								<xsl:with-param name="containerID" select=" 'DEctn' "/>
@@ -398,7 +423,7 @@
 					<!-- Probably as it as PDF can be shown only when there is no data -->
 					<xsl:choose>
 						<xsl:when test="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc">
-							<div class="styTableContainer" id="DEctn" style="height:20mm;">
+							<div class="styTableContainer" id="DEctn" style="height:;">
 								<xsl:call-template name="SetInitialState"/>
 								<table class="styTable" cellspacing="0" name="TYTable" id="TYTable" style="font-size:7pt;">
 									<thead class="styTableThead"/>
@@ -652,74 +677,78 @@
 									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
 									<div class="styGenericDiv" style="width:184mm;"/>
 								</div>
-								<div style="width:187mm;height:21mm;" class="styBB">
-									<div style="width:187mm;height:7mm;" class="styBB">
-										<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;">5</div>
-										<div class="styGenericDiv" style="width:184mm;"/>
-									</div>
-									<div style="width:187mm;height:7mm;" class="styBB">
-										<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
-										<div class="styGenericDiv" style="width:184mm;"/>
-									</div>
-									<div style="width:187mm;height:7mm;" class="styGenericDiv">
-										<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
-										<div class="styGenericDiv" style="width:184mm;"/>
-									</div>
-									<div style="width:187mm;height:21mm;" class="styBB">
-										<div style="width:187mm;height:7mm;" class="styBB">
-											<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;">6</div>
-											<div class="styGenericDiv" style="width:184mm;"/>
-										</div>
-										<div style="width:187mm;height:7mm;" class="styBB">
-											<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
-											<div class="styGenericDiv" style="width:184mm;"/>
-										</div>
-										<div style="width:187mm;height:7mm;" class="styGenericDiv">
-											<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
-											<div class="styGenericDiv" style="width:184mm;"/>
-										</div>
-									</div>
+							</div>
+							<div style="width:187mm;height:21mm;" class="styBB">
+								<div style="width:187mm;height:7mm;" class="styBB">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;">5</div>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+								<div style="width:187mm;height:7mm;" class="styBB">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+								<div style="width:187mm;height:7mm;" class="styGenericDiv">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+							</div>
+							<div style="width:187mm;height:21mm;" class="styBB">
+								<div style="width:187mm;height:7mm;" class="styBB">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;">6</div>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+								<div style="width:187mm;height:7mm;" class="styBB">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
+									<div class="styGenericDiv" style="width:184mm;"/>
+								</div>
+								<div style="width:187mm;height:7mm;" class="styGenericDiv">
+									<div class="styLNLeftNumBox" style="padding-top:1mm;width:3mm;"/>
+									<div class="styGenericDiv" style="width:184mm;"/>
 								</div>
 							</div>
 						</xsl:otherwise>
 					</xsl:choose>
-					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc"/>
-						<xsl:with-param name="containerHeight" select="6"/>
-						<xsl:with-param name="headerHeight" select="0"/>
-						<xsl:with-param name="containerID" select=" 'DEctn' "/>
-					</xsl:call-template>
+					<xsl:if test="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc and not((count($Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc) &gt; 3) and ($Print = $Separated))">
+						<xsl:call-template name="SetInitialDynamicTableHeight">
+							<xsl:with-param name="TargetNode" select="$Form8275RData/DisclosureGeneralInformation/DetailedExplanationDesc"/>
+							<xsl:with-param name="containerHeight" select="6"/>
+							<xsl:with-param name="headerHeight" select="0"/>
+							<xsl:with-param name="containerID" select=" 'DEctn' "/>
+						</xsl:call-template>
+					</xsl:if>
 					<!-- Begin Part III Information about Pass-Through Entity-->
-					<div class="styBB" style="width:187mm;" >
+					<div class="styBB" style="width:187mm;height:8mm;float:none;" >
 						<div class="styPartName" style="width:15mm;">Part III</div>
 						<div class="styPartDesc" style="padding-left:3mm;">
               Information About Pass-Through Entity. 
-              <span class="styNormalText">To be completed by partners, shareholders, beneficiaries, 
-                <div style="width:60mm;"> or residual interest holders.</div>
-							</span>
+							<span class="styNormalText">To be completed by partners, shareholders, beneficiaries,</span>
+							<span class="styNormalText">or residual interest holders.</span>
 						</div>
 					</div>
-					<div class="styBB" style="width:187mm;" >
-						<div class="styGenericDiv" style="width:186mm;height:4mm;font-weight:bold;" >
+					<div class="styBB" style="width:187mm;float:none;" >
+						<div class="styGenericDiv" style="width:186mm;height:4mm;font-weight:bold;float:none;" >
               Complete this part only if you are making adequate disclosure for a pass-through item.
-              <br/>
-							<br/>
 						</div>
-						<div class="styGenericDiv" style="width:187mm;height:7mm;" >
-							<span class="styBoldText" style="height:8mm;width:8mm;">Note:</span>
-							<span class="styItalicText" style="height:8mm;width:174mm;">
-								<span style="width:1px;"/>A pass-through entity is a partnership, S corporation, estate, 
-                trust, regulated investment company (RIC), real estate investment 
-                <div style="width:120mm;">   trust (REIT), or real estate mortgage investment conduit (REMIC).</div>
-							</span>
+						<div class="styGenericDiv" style="width:187mm;height:8mm;float:none;" >
+							<span class="styBoldText" style="height:8mm;width:180mm">Note:
+						<!--	<span class="styItalicText" style="height:20mm;width:179mm;background-color:red">-->
+								<!-- <span style="width:1px;"/> -->
+				A pass-through entity is a partnership, S corporation, estate, 
+                trust, regulated investment company (RIC), real estate  <span style="width:9mm"/>investment             
+							
+				trust (REIT), or real estate mortgage investment conduit (REMIC).
+								
+							</span><!--</span>-->
 						</div>
 					</div>
 					<!-- Line 1 Name and Address-->
 					<div class="styBB" style="width:187mm;float:none;">
 						<div class="styIRS8275LeftLine" style="width:93mm;height:27mm;">
 							<div class="styLNLeftNumBox" style="width:5mm;padding-top:0mm;">1</div>
+							<div style="padding-top:0mm;padding-bottom:.5mm;">
+      Name, address, and ZIP code of pass-through entity<br/>
+							</div>
 							<div class="styGenericDiv">
-                Name, address, and ZIP code of pass-through entity <br/>
                 <!--Name (input Indivdual vs Business)-->
 								<xsl:choose>
 									<xsl:when test="$Form8275RData/PassThroughEntityBusName/BusinessNameLine1Txt !=''">
@@ -812,21 +841,52 @@
 							</div>
 						</div>
 					</div>
+					 <!-- Begin Footer -->
+      <div class="pageEnd" style="width:187mm;padding-top:1mm;">
+        <div style="float:left;">
+             <span class="styBoldText" >For Paperwork Reduction Act Notice, see separate instructions</span>
+             <span style="width:10px;"></span>
+              Cat. No. Cat. No. 14594X
+            </div>
+            <div style="float:right;">
+             <div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8275-R</span> (Rev. 8-2013)</div>
+        </div>
+      </div>
+      <!-- End Footer -->
+<br/>
+  <!-- BEGIN Left Over Table -->  
+    <div class="styLeftOverTitleLine" id="LeftoverData">
+      <div class="styLeftOverTitle">
+        Additional Data        
+      </div>
+      <div class="styLeftOverButtonContainer">
+        <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+      </div>      
+    </div> 
 					<!--footer -->
-					<div style="width:187mm;clear:both;padding-top:1mm;">
+				<!--	<div style="width:187mm;clear:both;padding-top:1mm;">
 						<div style="width:90mm;font-weight:bold;" class="styGenericDiv">For Paperwork Reduction Act Notice, see separate instructions.</div>
 						<div style="width:55mm;text-align:center;" class="styGenericDiv">Cat. No. 14594X</div>
 						<div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">8275-R</span> (Rev. 8-2013)</div>
-					</div>
+					</div><br/>-->
 					<!-- AFter talking to Charlie and Andy it has been decided to remove the Page 2 from the stylesheet -->
-					<p class="pageend" style="border:0 solid green;"/>
+				<!--	<p class="pageend" style="border:0 solid green;"/>-->
 					<!--*****ADDITIONAL DATA************************************ -->
-					<div class="styLeftOverTitleLine" id="LeftoverData">
+	<!--				--><!-- BEGIN Left Over Table --><!-- <br/> 
+    <div class="styLeftOverTitleLine" id="LeftoverData">
+      <div class="styLeftOverTitle">
+        Additional Data        
+      </div>
+      <div class="styLeftOverButtonContainer">
+        <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+      </div>      
+    </div>
+					--><!--<div class="styLeftOverTitleLine" id="LeftoverData">
 						<div class="styLeftOverTitle">Additional Data </div>
 						<div class="styLeftOverButtonContainer">
 							<input class="styLeftoverTableBtn" tabindex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
 						</div>
-					</div>
+					</div>-->
 					<!-- Additional Data Table-->
 					<table class="styLeftOverTbl">
 						<xsl:call-template name="PopulateCommonLeftover">

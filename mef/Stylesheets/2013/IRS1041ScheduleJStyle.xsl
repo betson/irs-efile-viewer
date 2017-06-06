@@ -21,7 +21,7 @@
 	   border-width: 0px 0px 1px 1px;
    }
    .styIRS1041SJAmtBox {
-	   width:24.8mm;height:4.4mm;
+	   width:24.8mm;height:8mm;
 	   padding-top:1mm;
 		padding-bottom:.5mm;
 		padding-right:2px;
@@ -45,8 +45,9 @@
 	   border-width: 0px 0px 0px 1px;
    }
    .styIRS1041SJCon {
-	   width:187mm;height:22.4mm;
-	   overflow-y:auto;
+	   width:187mm;
+	   height:auto;
+	   
    }
 </xsl:template>
 </xsl:stylesheet>

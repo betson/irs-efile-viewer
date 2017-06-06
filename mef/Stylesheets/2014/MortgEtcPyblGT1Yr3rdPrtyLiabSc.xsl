@@ -10,44 +10,48 @@
   <xsl:param name="depDocTitle">
     <xsl:call-template name="PopulateDisplayName">
       <xsl:with-param name="TargetNode" select="$DependencyData"/>
+      <!-- - Form 1120F Displays as - Mortgages etc. Payable Greater Than 1 Year Third-Party Liabilities Schedule - -->
     </xsl:call-template>
   </xsl:param>
   <xsl:template name="MortgEtcPyblGT1Yr3rdPrtyLiabSc">
     <table id="GeneralDependencyTbl" class="styDepTblLandscape">
       <tr class="styDepTblHdr">
-        <th class="styDepTblCell" style="text-align:center;" scope="col">Corporation Name</th>
-        <th class="styDepTblCell" style="text-align:center;" scope="col">Corporation EIN</th>
-        <th class="styDepTblCell" style="text-align:center;" scope="col">Explanation</th>
-        <th class="styDepTblCell" style="text-align:center;" scope="col">Begining Amount</th>
-        <th class="styDepTblCell" style="text-align:center;" scope="col">Ending Amount</th>
+        <th class="styDepTblCell" style="width:90mm;text-align:center;" scope="col">Corporation Name</th>
+        <th class="styDepTblCell" style="width:40mm;text-align:center;" scope="col">Corporation EIN</th>
+        <th class="styDepTblCell" style="width:85mm;text-align:center;" scope="col">Description</th>
+        <th class="styDepTblCell" style="width:35mm;text-align:center;" scope="col">Begining Amount</th>
+        <th class="styDepTblCell" style="width:35mm;text-align:center;" scope="col">Ending Amount</th>
       </tr>
       <xsl:for-each select="$DependencyData/MortgEtcPyblGT1Yr3rdPrtyInfo">
         <!-- set row background  -->
         <tr>
-          <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1
-						    	</xsl:when><xsl:otherwise>styDepTblRow2
-							</xsl:otherwise></xsl:choose></xsl:attribute>
+          <xsl:attribute name="class">
+			<xsl:choose>
+			  <xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+			  <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+			</xsl:choose>
+		  </xsl:attribute>
           <!-- Corporation Name -->
-          <td class="styDepTblCell" style="text-align:left">
+          <td class="styDepTblCell" style="width:90mm;text-align:left">
           <xsl:attribute name="rowspan">
 						<xsl:value-of select="count(MortgEtcPyblGT1Yr3rdPrtyLnItem)"/>
          </xsl:attribute>
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="CorporationName/BusinessNameLine1"/>
+              <xsl:with-param name="TargetNode" select="CorporationName/BusinessNameLine1Txt"/>
             </xsl:call-template>
-            <xsl:if test="CorporationName/BusinessNameLine2 != ''">
+            <xsl:if test="CorporationName/BusinessNameLine2Txt != ''">
               <br/>
               <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="CorporationName/BusinessNameLine2"/>
+                <xsl:with-param name="TargetNode" select="CorporationName/BusinessNameLine2Txt"/>
               </xsl:call-template>
             </xsl:if>
           </td>
           <!-- Corporation EIN -->
-          <td class="styDepTblCell" style="text-align:left;font-size:7pt; text-align:center;">
+          <td class="styDepTblCell" style="width:40mm;font-size:7pt; text-align:center;">
 						<xsl:if test="MissingEINReasonCd">
 						 <xsl:attribute name="rowspan">
 						<xsl:value-of select="count(MortgEtcPyblGT1Yr3rdPrtyLnItem)"/>
-         </xsl:attribute>
+						 </xsl:attribute>
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="MissingEINReasonCd"/>
 							</xsl:call-template>
@@ -55,7 +59,7 @@
 						<xsl:if test="CorporationEIN">
 						 <xsl:attribute name="rowspan">
 						<xsl:value-of select="count(MortgEtcPyblGT1Yr3rdPrtyLnItem)"/>
-         </xsl:attribute>
+						 </xsl:attribute>
 							<xsl:call-template name="PopulateEIN">
 								<xsl:with-param name="TargetNode" select="CorporationEIN"/>
 							</xsl:call-template>
@@ -64,19 +68,19 @@
           <!-- Description -->
           <xsl:for-each select="MortgEtcPyblGT1Yr3rdPrtyLnItem">
 					<xsl:if test="position() = 1">
-          <td class="stydepTblCell" style="text-align:left;font-size:7pt">
+          <td class="styDepTblCell" style="width:85mm;text-align:left;font-size:7pt;border-bottom:0;border-top:1;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="Desc"/>
             </xsl:call-template>
           </td>
           <!-- Beginning Amount -->
-          <td class="styDepTblCell" style="text-align:left; text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:35mm;text-align:right;font-size:7pt;border-bottom:0;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="BeginningAmt"/>
             </xsl:call-template>
           </td>
           <!-- Ending Amount -->
-          <td class="styDepTblCell" style="text-align:left; text-align:right;font-size:7pt">
+          <td class="styDepTblCell" style="width:35mm;text-align:left; text-align:right;font-size:7pt;border-bottom:0;">
             <xsl:call-template name="PopulateAmount">
               <xsl:with-param name="TargetNode" select="EndingAmt"/>
             </xsl:call-template>
@@ -93,17 +97,17 @@
 							<xsl:otherwise>styDepTblRow2</xsl:otherwise>
             </xsl:choose>
           </xsl:attribute>
-					<td class="styDepTblCell" style="width:75mm;text-align:left;font-size:7pt">
+					<td class="styDepTblCell" style="width:85mm;text-align:left;font-size:7pt;border-top:1;">
 						<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="Desc"/>
 						</xsl:call-template>
 					</td>
-					<td class="styDepTblCell" style="width:40mm;text-align:right;font-size:7pt">
+					<td class="styDepTblCell" style="width:35mm;text-align:right;font-size:7pt;border-top:1;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="BeginningAmt"/>
 						</xsl:call-template>
 					</td>
-					<td class="styDepTblCell" style="width:40mm;text-align:right;font-size:7pt">
+					<td class="styDepTblCell" style="width:35mm;text-align:right;font-size:7pt;border-top:1;">
 						<xsl:call-template name="PopulateAmount">
 							<xsl:with-param name="TargetNode" select="EndingAmt"/>
 						</xsl:call-template>
@@ -117,8 +121,10 @@
   </xsl:template>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -143,13 +149,11 @@
       </head>
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependencyLandscape"/>
-        <div class="styDepTitleLineLandscape">
-          <span class="styDepTitle">
-            <span style="width:182mm;">
-              <xsl:value-of select="$depDocTitle"/>
-            </span>
-          </span>
-        </div>
+        <div class="styDepTitleLine">
+        <span class="styDepTitle"  style="padding-right:2mm;">
+            <xsl:value-of select="$depDocTitle"/>
+          </span>        
+      </div>
         <div class="styTopSectionLine">
           <xsl:call-template name="SetFormLinkInline">
             <xsl:with-param name="TargetNode" select="$DependencyData"/>

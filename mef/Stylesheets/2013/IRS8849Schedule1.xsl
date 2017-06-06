@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <!-- Corrections made to lines 6a and 7a per ITAMS 5988578  SKM  7/27/09 -->
-<!-- 12/17/2013 - Made changes as per KISAMS IM01357718 - Jeremy Nichols -->
+<!-- 11/04/2013 - Made changes per defect #39024 - Jeremy Nichols -->
+<!-- 11/04/2013 - Made changes per KISAMS IM01362232 - Jeremy Nichols -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -15,9 +17,10 @@
   <xsl:param name="FormData" select="$RtnDoc/IRS8849Schedule1"/>
   
   <xsl:template match="/">
-  
+	<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
     <html>
       <head>
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -70,10 +73,10 @@
               <span class="styAgency" style="font-size: 7.5pt;font-weight:bold">Internal Revenue Service</span>
             </div>
             <div class="styFTBox" style="width:125mm; height: 23mm">
-              <div class="styMainTitle" style="height:10mm; font-weight: bold;font-size:6mm; padding-top: 1mm">Nontaxable Use of Fuels</div>
+              <div class="styMainTitle" style="height:10mm; font-weight: bold;font-size:6mm; padding-top: 1mm">Nontaxable Use of Fuels</div><br/>
               <div class="styFST" style="height:5mm;font-size:8pt;margin-left:3mm;font-weight:normal; padding-top: 1mm">
                 <img src="{$ImagePath}/8849Sch1_Bullet.gif" alt="MediumBullet"/> Attach to Form 8849.
-              </div>
+              </div><br/>
               <div class="styFST" style="height:5mm;font-size:8pt;margin-left:3mm;font-weight:normal; padding-top: 1mm">
                 <img src="{$ImagePath}/8849Sch1_Bullet.gif" alt="MediumBullet"/> See instructions.
               </div>
@@ -88,7 +91,7 @@
           <table cellspacing="0" style="width:187mm; border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 0px">
           
             <tr>
-              <td class="styNameBox" style="width:107mm;font-size:7pt;font-weight:normal; height:10mm">
+              <td class="styNameBox" style="width:110mm;font-size:7pt;font-weight:normal; height:15mm">
                 Name as shown on Form 8849<br/>
                 <xsl:choose>
                 
@@ -114,7 +117,7 @@
                   </xsl:otherwise>
                 </xsl:choose>
               </td>
-              <td valign="top" class="styNameBox" style="padding-left:2mm;font-size:7pt;font-weight:normal; height:10mm;">
+              <td valign="top" class="styNameBox" style="width:27mm;padding-left:2mm;font-size:7pt;font-weight:normal; height:15mm;">
                 <span class="BoldText" style="width:33mm;">EIN or SSN</span>
                 <div style="text-align:left; padding-top:2mm;font-weight:normal;">
                   <xsl:choose>
@@ -145,12 +148,12 @@
                   </xsl:choose>
                 </div>
               </td>
-              <td valign="top" class="styEINBox" style="padding-left:2mm;font-size:7pt;font-weight:normal;">
+              <td valign="top" class="styEINBox" style="width:50mm;padding-left:2mm;font-size:7pt;font-weight:normal;">
                 <span class="BoldText">Total refund (see instructions)</span>
                 <div style="text-align:right; padding-top:2mm;font-weight:normal;">
                   <span style="float:left;">$</span>
                   <xsl:call-template name="PopulateAmount">
-                    <xsl:with-param name="TargetNode" select="$FormData/TotalRefundAmt"/>
+                    <xsl:with-param name="TargetNode" select="$FormData/TotalRefund"/>
                   </xsl:call-template>
                 </div>
               </td>
@@ -182,14 +185,14 @@
                         <img src="{$ImagePath}/8849Sch1_Bullet.gif" alt="MediumBullet"/>
                       </span>
                       <xsl:call-template name="PopulateMonthDayYear">
-                        <xsl:with-param name="TargetNode" select="$FormData/ClaimPeriodBeginDt"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/PeriodOfClaimFromDate"/>
                       </xsl:call-template>
                       <span style="padding-left:30mm;font-size:8pt;margin-left:3mm;font-weight:bold; padding-top: 1mm">
                         <b>To  </b>
                         <img src="{$ImagePath}/8849Sch1_Bullet.gif" alt="MediumBullet"/>
                       </span>
                       <xsl:call-template name="PopulateMonthDayYear">
-                        <xsl:with-param name="TargetNode" select="$FormData/ClaimPeriodEndDt"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/PeriodOfClaimToDate"/>
                       </xsl:call-template>
                     </td>
                   </tr>
@@ -201,7 +204,7 @@
           <!--  End Sentence -->
           
           <!-- Begin Table 1  -->
-          <div style="width:187mm;">
+          <div style="width:187mm;padding-bottom:4mm;display:block;">
             <table cellspacing="0">
               <thead style="font-size:7pt;font-family:verdana;">
               
@@ -265,29 +268,29 @@
                         <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Gasoline (see <b>Caution</b> above line 1)</td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
+                            <xsl:with-param name="TargetNode" select="TypeOfUse"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;">$</span>
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="Rt"/>
+                            <xsl:with-param name="TargetNode" select="Rate"/>
                           </xsl:call-template>
                         </td>
                         <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;">$</span>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -319,29 +322,29 @@
                       <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Gasoline (see <b>Caution</b> above line 1)</td>
                       <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
+                          <xsl:with-param name="TargetNode" select="TypeOfUse"/>
                         </xsl:call-template>
                       </td>
                       <td style="text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <span style="float:left;">$</span>
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="Rt"/>
+                          <xsl:with-param name="TargetNode" select="Rate"/>
                         </xsl:call-template>
                       </td>
                       <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                          <xsl:with-param name="TargetNode" select="Gallons"/>
                         </xsl:call-template>
                       </td>
                       <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <span style="float:left;">$</span>
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="Amt"/>
+                          <xsl:with-param name="TargetNode" select="Amount"/>
                         </xsl:call-template>
                       </td>
                       <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                          <xsl:with-param name="TargetNode" select="CRN"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -369,23 +372,23 @@
                         <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="Rt"/>
+                            <xsl:with-param name="TargetNode" select="Rate"/>
                           </xsl:call-template>
                         </td>
                         <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -408,23 +411,23 @@
                       <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <span style="float:left;"/>
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="Rt"/>
+                          <xsl:with-param name="TargetNode" select="Rate"/>
                         </xsl:call-template>
                       </td>
                       <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                          <xsl:with-param name="TargetNode" select="Gallons"/>
                         </xsl:call-template>
                       </td>
                       <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <span style="float:left;"/>
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="Amt"/>
+                          <xsl:with-param name="TargetNode" select="Amount"/>
                         </xsl:call-template>
                       </td>
                       <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                          <xsl:with-param name="TargetNode" select="CRN"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -458,24 +461,24 @@
                   <td style="padding-top:4mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;">$</span>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/CommercialAviation/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/ComAir/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="color:black;">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/CommercialAviation/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/ComAir/Gallons"/>
                     </xsl:call-template></span>
                   </td>
                   <td style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;">$</span>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/CommercialAviation/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/ComAir/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/CommercialAviation/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/ComAir/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -484,8 +487,8 @@
                 <!-- Begin Table 2, section b  -->
                 <xsl:choose>
                 
-                  <xsl:when test="$FormData/NontaxableUseOfAviationGas/OtherNontaxableUseAviation">
-                    <xsl:for-each select="$FormData/NontaxableUseOfAviationGas/OtherNontaxableUseAviation">
+                  <xsl:when test="$FormData/NontaxableUseOfAviationGas/OtherNontaxableUse">
+                    <xsl:for-each select="$FormData/NontaxableUseOfAviationGas/OtherNontaxableUse">
                     
                       <tr>
                         <td>
@@ -498,29 +501,29 @@
                         </td>
                         <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
+                            <xsl:with-param name="TargetNode" select="TypeOfUse"/>
                           </xsl:call-template>
                         </td>
                         <td style="padding-top:1mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="Rt"/>
+                            <xsl:with-param name="TargetNode" select="Rate"/>
                           </xsl:call-template>
                         </td>
                         <td colspan="2" style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -541,29 +544,29 @@
                         </td>
                       <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
+                          <xsl:with-param name="TargetNode" select="TypeOfUse"/>
                         </xsl:call-template>
                       </td>
                       <td style="padding-top:1mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <span style="float:left;"/>
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="Rt"/>
+                          <xsl:with-param name="TargetNode" select="Rate"/>
                         </xsl:call-template>
                       </td>
                       <td colspan="2" style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                          <xsl:with-param name="TargetNode" select="Gallons"/>
                         </xsl:call-template>
                       </td>
                       <td style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <span style="float:left;"/>
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="Amt"/>
+                          <xsl:with-param name="TargetNode" select="Amount"/>
                         </xsl:call-template>
                       </td>
                       <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                          <xsl:with-param name="TargetNode" select="CRN"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -586,23 +589,23 @@
                   <td style="padding-top:1mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/NontaxableAviationGasExported/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/NontaxableAviationGasExported/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/NontaxableAviationGasExported/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/NontaxableAviationGasExported/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/NontaxableAviationGasExported/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/NontaxableAviationGasExported/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/NontaxableAviationGasExported/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/NontaxableAviationGasExported/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -615,36 +618,43 @@
                       <b>d</b>
                     </span>
                   </td>
-                  <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">LUST tax on aviation fuels used in foreign trade</td>
-                  <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px; background=lightgrey">
+                  <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">LUST tax on aviation fuels used in foreign trade</td>
+                  <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px; background=lightgrey">
                     <span style="width:1px"/>
                   </td>
-                  <td style="padding-top:1mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                  <td style="padding-top:1mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/LUSTTaxAviationUseForeignTrade/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/LUSTTaxAviationUseForeignTrade/Rate"/>
                     </xsl:call-template>
                   </td>
-                  <td colspan="2" style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                  <td colspan="2" style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/LUSTTaxAviationUseForeignTrade/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/LUSTTaxAviationUseForeignTrade/Gallons"/>
                     </xsl:call-template>
                   </td>
-                  <td style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                  <td style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/LUSTTaxAviationUseForeignTrade/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/LUSTTaxAviationUseForeignTrade/Amount"/>
                     </xsl:call-template>
                   </td>
-                  <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
+                  <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/LUSTTaxAviationUseForeignTrade/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAviationGas/LUSTTaxAviationUseForeignTrade/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
+              </tbody>
+            </table>
+          </div>
                 <!-- End Table 2, section d -->
                 
                 <!-- Begin Table 3  -->
+          <div style="width:187mm;">
+            <table class="styTable" cellspacing="0">
+              <thead class="styTableThead" style="font-size:7pt;font-family:verdana;">
+                <tbody style="font-size:7pt;font-family:verdana;">
                 <tr>
                   <th class="styTableCellHeader" style="width:4mm;border-right-width:0px;border-top:1px black solid; border-bottom:0px; " scope="col">
                     <span class="styTableCellPad">3</span>
@@ -662,7 +672,7 @@
                     Claimant certifies that the diesel fuel did not contain visible evidence of dye.  
                     <br/><b>Exception.</b> If any of the diesel fuel included in this claim <b>did</b> contain visible evidence of dye, attach a detailed explanation and check here
                     <xsl:call-template name="SetFormLinkInline">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/UndyedDieselUseExceptionInd"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Exception"/>
                     </xsl:call-template>
                     
                     <!--Dotted Line-->
@@ -704,21 +714,27 @@
                   
                     <input type="checkbox" class="styCkbox">
                       <xsl:call-template name="PopulateCheckbox">
-                        <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/UndyedDieselUseExceptionInd"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Exception"/>
                         <xsl:with-param name="BackupName">IRS4498Schedule1Exception</xsl:with-param>
                       </xsl:call-template>
                     </input>
                     
                     <label>
                       <xsl:call-template name="PopulateLabel">
-                        <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/UndyedDieselUseExceptionInd"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Exception"/>
                         <xsl:with-param name="BackupName">IRS4498Schedule1Exception</xsl:with-param>
                       </xsl:call-template>
                     </label>
                   </td>
                 </tr>
+                </tbody>
+              </thead>
+            </table>
+          </div>
                 <!-- End Exception Text -->
-                
+         <div style="width:187mm;padding-bottom:4mm;display:block;">
+            <table cellspacing="0">
+              <thead style="font-size:7pt;font-family:verdana;">
                 <tr>
                   <th class="styTableCellHeader" style="width:4mm;border-right-width:0px; border-bottom:0px; border-right:0px solid black; border-top: 0px solid black" scope="col">
                     <span class="styTableCellPad" style="width:1px"/>
@@ -744,12 +760,14 @@
                     <b>(e) CRN</b>
                   </th>
                 </tr>
-                
+              </thead>
+              <tfoot/>
+              <tbody style="font-size:7pt;font-family:verdana;">
                 <!-- Begin Table 3, section a  -->
                 <xsl:choose>
                 
-                  <xsl:when test="$FormData/NontaxableUseUndyedDieselFuel/AllwblNontxUseUndyedDslFuel">
-                    <xsl:for-each select="$FormData/NontaxableUseUndyedDieselFuel/AllwblNontxUseUndyedDslFuel">
+                  <xsl:when test="$FormData/NontaxableUseUndyedDieselFuel/NontaxableUse">
+                    <xsl:for-each select="$FormData/NontaxableUseUndyedDieselFuel/NontaxableUse">
                     
                       <tr>
                         <xsl:choose>
@@ -774,24 +792,24 @@
                         <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Nontaxable use</td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
+                            <xsl:with-param name="TargetNode" select="TypeOfUse"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;">$</span>
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="Rt"/>
+                            <xsl:with-param name="TargetNode" select="Rate"/>
                           </xsl:call-template>
                         </td>
                         <td style="width: 35mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <xsl:choose>
                         
-                          <xsl:when test="position()=count($FormData/NontaxableUseUndyedDieselFuel/AllwblNontxUseUndyedDslFuel) and position() &gt; 1">
-                            <td rowspan="2" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                          <xsl:when test="position()=count($FormData/NontaxableUseUndyedDieselFuel/NontaxableUse) and position() &gt; 1">
+                            <td rowspan="1" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <img src="{$ImagePath}/8849Sch1_Bracket.gif" alt="Bracket"/>
                             </td>
                           </xsl:when>
@@ -802,8 +820,8 @@
                               <xsl:when test="position()= 1">
                                 <xsl:choose>
                                 
-                                  <xsl:when test="count($FormData/NontaxableUseUndyedDieselFuel/AllwblNontxUseUndyedDslFuel) = 1">
-                                    <td rowspan="2" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                                  <xsl:when test="count($FormData/NontaxableUseUndyedDieselFuel/NontaxableUse) = 1">
+                                    <td rowspan="1" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                       <img src="{$ImagePath}/8849Sch1_Bracket.gif" alt="Bracket"/>
                                     </td>
                                   </xsl:when>
@@ -843,7 +861,7 @@
                         
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -876,21 +894,21 @@
                     <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Nontaxable use</td>
                     <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
+                        <xsl:with-param name="TargetNode" select="TypeOfUse"/>
                       </xsl:call-template>
                     </td>
                     <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <span style="float:left;">$</span>
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="Rt"/>
+                        <xsl:with-param name="TargetNode" select="Rate"/>
                       </xsl:call-template>
                     </td>
                     <td style="width: 35mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                        <xsl:with-param name="TargetNode" select="Gallons"/>
                       </xsl:call-template>
                     </td>
-                    <td rowspan="2" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                    <td rowspan="1" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <img src="{$ImagePath}/8849Sch1_Bracket.gif" alt="Bracket"/>
                     </td>
                     <xsl:choose>
@@ -907,7 +925,7 @@
                     </xsl:choose>
                     <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                        <xsl:with-param name="TargetNode" select="CRN"/>
                       </xsl:call-template>
                     </td>
                   </tr>
@@ -929,23 +947,26 @@
                   <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontxFuelUseFarmingPurposes/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/FarmingPurposes/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontxFuelUseFarmingPurposes/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/FarmingPurposes/Gallons"/>
                     </xsl:call-template>
+                  </td>
+                  <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                      <span style="padding-left:4mm; padding-right:2mm"/>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;">$</span>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontxFuelUseFarmingPurposes/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/FarmingPurposes/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -965,23 +986,23 @@
                   <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontaxUndyedDslFuelUseInTrains/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/UseInTrains/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontaxUndyedDslFuelUseInTrains/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/UseInTrains/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontaxUndyedDslFuelUseInTrains/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/UseInTrains/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontaxUndyedDslFuelUseInTrains/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/UseInTrains/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1001,23 +1022,23 @@
                   <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontxFuelUseIntrctyAndLclBuses/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/IntercityAndLocalBuses/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontxFuelUseIntrctyAndLclBuses/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/IntercityAndLocalBuses/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontxFuelUseIntrctyAndLclBuses/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/IntercityAndLocalBuses/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/NontxFuelUseIntrctyAndLclBuses/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/IntercityAndLocalBuses/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1037,23 +1058,23 @@
                   <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/ExportedFuel/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Exported/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/ExportedFuel/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Exported/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/ExportedFuel/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Exported/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/ExportedFuel/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseUndyedDieselFuel/Exported/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1077,7 +1098,7 @@
                     Claimant certifies that the kerosene did not contain visible evidence of dye.  <br/>
                     <b>Exception.</b> If any of the kerosene included in this claim <b>did</b> contain visible evidence of dye, attach a detailed explanation and check here 
                     <xsl:call-template name="SetFormLinkInline">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/UndyedKeroseneUseExceptionInd"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/Exception"/>
                     </xsl:call-template>
                     
                     <!--Dotted Line-->
@@ -1121,13 +1142,13 @@
                   <td style="text-align: center; padding-top: 1mm; border-top:1px black solid; border-bottom:0px black solid; border-left-width: 0px; border-right-width: 0px">
                     <input type="checkbox" class="styCkbox">
                       <xsl:call-template name="PopulateCheckbox">
-                        <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/UndyedKeroseneUseExceptionInd"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/Exception"/>
                         <xsl:with-param name="BackupName">IRS4498Schedule1KeroseneException</xsl:with-param>
                       </xsl:call-template>
                     </input>
                     <label>
                       <xsl:call-template name="PopulateLabel">
-                        <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/UndyedKeroseneUseExceptionInd"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/Exception"/>
                         <xsl:with-param name="BackupName">IRS4498Schedule1KeroseneException</xsl:with-param>
                       </xsl:call-template>
                     </label>
@@ -1165,8 +1186,8 @@
                 <!-- Begin Table 4, section a  -->
                 <xsl:choose>
                 
-                  <xsl:when test="$FormData/NontxUseUndyedKeroseneNotAvn/NontaxUndyedKrsnNotAvnTxd244">
-                    <xsl:for-each select="$FormData/NontxUseUndyedKeroseneNotAvn/NontaxUndyedKrsnNotAvnTxd244">
+                  <xsl:when test="$FormData/UndyedKerosene/NontaxableUseTaxedAt244">
+                    <xsl:for-each select="$FormData/UndyedKerosene/NontaxableUseTaxedAt244">
                     
                       <tr>
                         <xsl:choose>
@@ -1190,23 +1211,23 @@
                         <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Nontaxable use taxed at $.244</td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
+                            <xsl:with-param name="TargetNode" select="TypeOfUse"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid;padding-right:2mm; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;">$</span>
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="Rt"/>
+                            <xsl:with-param name="TargetNode" select="Rate"/>
                           </xsl:call-template>
                         </td>
                         <td style="width: 35mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <xsl:choose>
-                          <xsl:when test="position()=count($FormData/NontxUseUndyedKeroseneNotAvn/NontaxUndyedKrsnNotAvnTxd244) and position() &gt; 1">
-                            <td rowspan="2" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                          <xsl:when test="position()=count($FormData/UndyedKerosene/NontaxableUseTaxedAt244) and position() &gt; 1">
+                            <td rowspan="1" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <img src="{$ImagePath}/8849Sch1_Bracket.gif" alt="Bracket"/>
                             </td>
                           </xsl:when>
@@ -1215,8 +1236,8 @@
                             <xsl:choose>
                               <xsl:when test="position()= 1">
                                 <xsl:choose>
-                                  <xsl:when test="count($FormData/NontxUseUndyedKeroseneNotAvn/NontaxUndyedKrsnNotAvnTxd244) = 1">
-                                    <td rowspan="2" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                                  <xsl:when test="count($FormData/UndyedKerosene/NontaxableUseTaxedAt244) = 1">
+                                    <td rowspan="1" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                       <img src="{$ImagePath}/8849Sch1_Bracket.gif" alt="Bracket"/>
                                     </td>
                                   </xsl:when>
@@ -1253,7 +1274,7 @@
                         </xsl:choose>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -1282,21 +1303,21 @@
                       <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Nontaxable use taxed at $.244</td>
                       <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="NontaxableUseOfFuelTypeCd"/>
+                          <xsl:with-param name="TargetNode" select="TypeOfUse"/>
                         </xsl:call-template>
                       </td>
                       <td style="text-align: right; border-style: solid;padding-right:2mm; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <span style="float:left;">$</span>
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="Rt"/>
+                          <xsl:with-param name="TargetNode" select="Rate"/>
                         </xsl:call-template>
                       </td>
                       <td style="width: 35mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                         <xsl:call-template name="PopulateAmount">
-                          <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                          <xsl:with-param name="TargetNode" select="Gallons"/>
                         </xsl:call-template>
                       </td>
-                      <td rowspan="2" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                      <td rowspan="1" style="width: 1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                         <img src="{$ImagePath}/8849Sch1_Bracket.gif" alt="Bracket"/>
                       </td>
                       <xsl:choose>
@@ -1313,7 +1334,7 @@
                       </xsl:choose>
                       <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                          <xsl:with-param name="TargetNode" select="CRN"/>
                         </xsl:call-template>
                       </td>
                     </tr>
@@ -1335,23 +1356,26 @@
                   <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxFuelUseFarmingPurposes/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/FarmingPurposes/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxFuelUseFarmingPurposes/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/FarmingPurposes/Gallons"/>
                     </xsl:call-template>
+                  </td>
+                  <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
+                      <span style="padding-left:4mm; padding-right:2mm"/>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;">$</span>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxFuelUseFarmingPurposes/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/FarmingPurposes/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1371,23 +1395,23 @@
                   <td style="padding-top:4mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxFuelUseIntrctyAndLclBuses/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/IntercityAndLocalBuses/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxFuelUseIntrctyAndLclBuses/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/IntercityAndLocalBuses/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxFuelUseIntrctyAndLclBuses/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/IntercityAndLocalBuses/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxFuelUseIntrctyAndLclBuses/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/IntercityAndLocalBuses/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1407,23 +1431,23 @@
                   <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/ExportedFuel/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/Exported/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/ExportedFuel/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/Exported/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/ExportedFuel/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/Exported/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/ExportedFuel/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/Exported/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1440,29 +1464,29 @@
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                     <span style="width:1px"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd044/NontaxableUseOfFuelTypeCd"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUseAt044/TypeOfUse"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd044/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUseAt044/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd044/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUseAt044/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd044/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUseAt044/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd044/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUseAt044/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1479,29 +1503,29 @@
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                     <span style="width:1px"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd219/NontaxableUseOfFuelTypeCd"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUsedAt219/TypeOfUse"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid;padding-right:2mm; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd219/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUsedAt219/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd219/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUsedAt219/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd219/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUsedAt219/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/NontxUseUndyedKeroseneNotAvn/NontxUndyedKrsnNotAvnTxd219/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/UndyedKerosene/NontaxableUsedAt219/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1568,23 +1592,23 @@
                   <td style="padding-top:4mm; text-align: right;padding-right:2mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/CommercialAviationTaxedAt244/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/KeroseneTaxedAt244/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/CommercialAviationTaxedAt244/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/KeroseneTaxedAt244/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;">$</span>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/CommercialAviationTaxedAt244/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/KeroseneTaxedAt244/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/CommercialAviationTaxedAt244/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/KeroseneTaxedAt244/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1604,23 +1628,23 @@
                   <td style="padding-top:4mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/CommercialAviationTaxedAt219/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/KeroseneTaxedAt219/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/CommercialAviationTaxedAt219/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/KeroseneTaxedAt219/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/CommercialAviationTaxedAt219/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/KeroseneTaxedAt219/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/CommercialAviationTaxedAt219/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/KeroseneTaxedAt219/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1636,29 +1660,29 @@
                   <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;font-size:7pt">Nontaxable use (other than use by state or <br/> local government) taxed at $.244</td>
                   <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/NontaxableUseOfFuelTypeCd"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/TypeOfUse"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: right;padding-right:2mm; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt244/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1674,29 +1698,29 @@
                   <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;font-size:7pt">Nontaxable use (other than by state or local <br/> government) taxed at $.219</td>
                   <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/NontaxableUseOfFuelTypeCd"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/TypeOfUse"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: right; padding-right:2mm;border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/OtherNontaxableUsesTaxedAt219/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1716,23 +1740,23 @@
                   <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/LUSTTaxAviationUseForeignTrade/Rt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/LUSTTaxAviationUseForeignTrade/Rate"/>
                     </xsl:call-template>
                   </td>
                   <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/LUSTTaxAviationUseForeignTrade/GallonsQty"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/LUSTTaxAviationUseForeignTrade/Gallons"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                     <span style="float:left;"/>
                     <xsl:call-template name="PopulateAmount">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/LUSTTaxAviationUseForeignTrade/Amt"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/LUSTTaxAviationUseForeignTrade/Amount"/>
                     </xsl:call-template>
                   </td>
                   <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/LUSTTaxAviationUseForeignTrade/CreditReferenceNum"/>
+                      <xsl:with-param name="TargetNode" select="$FormData/KeroseneUsedInAviation/LUSTTaxAviationUseForeignTrade/CRN"/>
                     </xsl:call-template>
                   </td>
                 </tr>
@@ -1757,8 +1781,7 @@
           <!-- End Footer -->
           
           <!-- Begin page 2 Header -->
-          <div style="width:187mm;">
-            <div style="border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 2px">
+            <div style="width:187mm;border-color: black; border-style: solid; border-right-width: 0px; border-left-width: 0px; border-top-width: 0px; border-bottom-width: 2px">
               <div style="float: left; clear: none">Schedule 1 (Form 8849) (Rev. 1-2009)</div>
               <div style="float:right">Page <span class="styBoldText" style="font-size: 8pt">2</span>
               </div>
@@ -1766,12 +1789,12 @@
             <!-- End page 2 Header -->
             
             <!--  Begin Table 6   -->
-            <div style="width:187mm;">
+            <div style="width:187mm;display:block;">
               <table class="styTable" cellspacing="0">
                 <thead style="font-size:7pt;font-family:verdana;">
                   <tr>
                     <th class="styTableCellHeader" style="width:4mm;border-right-width:0px;border-top:0px black solid; border-bottom:0px; " scope="col">
-                      <span class="styTableCellPad">6</span>
+                      <span class="styTableCellPad" >6</span>
                     </th>
                     <th colspan="7" style="width:183mm; font-weight:normal; text-align:left; border-top:0px black solid;" scope="col">
                       <b>Nontaxable Use of Alternative Fuel </b>
@@ -1790,19 +1813,21 @@
                     <th class="styTableCellHeader" style="width:4mm;border-right-width:0px; border-bottom:0px; border-right:0px solid black; border-top: 0px solid black" scope="col">
                       <span class="styTableCellPad" style="width:1px"/>
                     </th>
-                    <th class="styTableCellHeader" style="width:80mm; font-weight:normal; text-align:left; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
+                    <th class="styTableCellHeader" style="width:70mm; font-weight:normal; text-align:left; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
                       <span class="styTableCellPad" style="width:1px"/>
                     </th>
-                    <th class="styTableCellHeader" style="width:11mm; font-weight:normal; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
+                    <th class="styTableCellHeader" style="width:14mm; font-weight:normal; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
                       <b>(a) Type of use</b>
                     </th>
-                    <th class="styTableCellHeader" style="width:12mm; font-weight:normal; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
+                    <th class="styTableCellHeader" style="width:14mm; font-weight:normal; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
                       <b>(b) Rate</b>
                     </th>
-                    <th colspan="2" class="styTableCellHeader" style="width:35mm; font-weight:normal; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
+                    <th colspan="1" class="styTableCellHeader" style="width:35mm; font-weight:normal; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
                       <b>(c) Gallons or gasoline gallon eqivalents (GGE)</b>
                     </th>
-                    <th class="styTableCellHeader" style="padding-left:1mm;width:35mm; font-weight:normal; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
+					<th colspan="1" class="styTableCellHeader" style="width:0mm;border-bottom:0px; border-right:0px; border-top: 0px" scope="col">
+					</th>
+                    <th class="styTableCellHeader" style="padding-left:1mm;width:40mm; font-weight:normal; border-bottom:0px; border-right:1px solid black; border-top: 1px solid black" scope="col">
                       <b>(d) Amount of refund</b>
                       <br/>
                       <i>Multiply col. <b>(b)</b> by col. <b>(c)</b>
@@ -1815,8 +1840,8 @@
                   
                   <!-- Begin Table 6, section a -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas">  
-                      <xsl:for-each select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas">
+                    <xsl:when test="$FormData/AlternativeFuels/LPG">  
+                      <xsl:for-each select="$FormData/AlternativeFuels/LPG">
                       
                         <tr>
                           <xsl:choose>
@@ -1836,20 +1861,20 @@
                               </td>
                             </xsl:otherwise>
                           </xsl:choose>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             Liquefied petroleum gas (LPG)
                           </td>
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/LPG/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -1857,36 +1882,36 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
                           </xsl:choose>
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;">$</span>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -1914,18 +1939,18 @@
                             </td>
                           </xsl:otherwise>
                         </xsl:choose>
-                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">Liquefied petroleum gas (LPG)</td>
+                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Liquefied petroleum gas (LPG)</td>
                         <xsl:choose>
-                          <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/OtherFuelUseDetail) != ''">
+                          <xsl:when test="normalize-space($FormData/AlternativeFuels/LPG/TypeOfUseOther) != ''">
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUseOther/TypeOfUse"/>
                               </xsl:call-template>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/OtherFuelUseDetail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUseOther/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:when>
@@ -1933,36 +1958,36 @@
                           <xsl:otherwise>
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUse5/BUSWriteIn"/>
                               </xsl:call-template>
                               <span style="padding-left:2mm;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUse5/TypeOfUse"/>
                                 </xsl:call-template>
                               </span>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedPetroleumGas/FuelUseTypeCd5Detail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LPG/TypeOfUse5/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:otherwise>
                         </xsl:choose>
                         <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;">$</span>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -1973,8 +1998,8 @@
 
                   <!-- Begin Table 6, section b -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit">  
-                      <xsl:for-each select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit">
+                    <xsl:when test="$FormData/AlternativeFuels/PSeriesFuels">  
+                      <xsl:for-each select="$FormData/AlternativeFuels/PSeriesFuels">
                       
                         <tr>
                           <td>
@@ -1982,18 +2007,18 @@
                               <b>b</b>
                             </span>
                           </td>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">"P Series" fuels</td>
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">"P Series" fuels</td>
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/PSeriesFuels/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2001,36 +2026,36 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
                           </xsl:choose>
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2046,18 +2071,18 @@
                               <b>b</b>
                             </span>
                           </td>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">"P Series" fuels</td>
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">"P Series" fuels</td>
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/PSeriesFuels/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2065,36 +2090,36 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxPSeriesFuelCredit/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/PSeriesFuels/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
                           </xsl:choose>
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2105,8 +2130,8 @@
                   
                   <!-- Begin Table 6, section c -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG"> 
-                      <xsl:for-each select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG">
+                    <xsl:when test="$FormData/AlternativeFuels/CNG"> 
+                      <xsl:for-each select="$FormData/AlternativeFuels/CNG">
                       
                         <tr>
                           <td valign="top">
@@ -2114,18 +2139,18 @@
                               <b>c</b>
                             </span>
                           </td>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">Compressed natural gas (CNG) (GGE=126.67 cu. ft.)</td>
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Compressed natural gas (CNG) (GGE=126.67 cu. ft.)</td>
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxCNG/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/CNG/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2133,18 +2158,18 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
@@ -2152,18 +2177,18 @@
                           
                           <td colspan="2" style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2177,18 +2202,18 @@
                             <b>c</b>
                           </span>
                         </td>
-                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">Compressed natural gas (CNG) (GGE=126.67 cu. ft.)</td>
+                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Compressed natural gas (CNG) (GGE=126.67 cu. ft.)</td>
                         <xsl:choose>
-                          <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxCNG/OtherFuelUseDetail) != ''">
+                          <xsl:when test="normalize-space($FormData/AlternativeFuels/CNG/TypeOfUseOther) != ''">
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUseOther/TypeOfUse"/>
                               </xsl:call-template>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/OtherFuelUseDetail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUseOther/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:when>
@@ -2196,18 +2221,18 @@
                           <xsl:otherwise>
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUse5/BUSWriteIn"/>
                               </xsl:call-template>
                               <span style="padding-left:2mm;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUse5/TypeOfUse"/>
                                 </xsl:call-template>
                               </span>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxCNG/FuelUseTypeCd5Detail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/CNG/TypeOfUse5/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:otherwise>
@@ -2215,18 +2240,18 @@
                         
                         <td colspan="2" style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="padding-top:1mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="padding-top:1mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -2237,8 +2262,8 @@
                   
                   <!-- Begin Table 6, section d -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen"> 
-                      <xsl:for-each select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen">
+                    <xsl:when test="$FormData/AlternativeFuels/LiquefiedHydrogen"> 
+                      <xsl:for-each select="$FormData/AlternativeFuels/LiquefiedHydrogen">
                       
                         <tr>
                           <td>
@@ -2246,19 +2271,19 @@
                               <b>d</b>
                             </span>
                           </td>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">Liquefied hydrogen</td>
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Liquefied hydrogen</td>
                           
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2266,18 +2291,18 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
@@ -2285,18 +2310,18 @@
                           
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2311,19 +2336,19 @@
                             <b>d</b>
                           </span>
                         </td>
-                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">Liquefied hydrogen</td>
+                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Liquefied hydrogen</td>
                         
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2331,18 +2356,18 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedHydrogen/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedHydrogen/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
@@ -2350,18 +2375,18 @@
                           
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2372,8 +2397,8 @@
                   
                   <!-- Begin Table 6, section e -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal">
-                      <xsl:for-each select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal">
+                    <xsl:when test="$FormData/AlternativeFuels/LiquidFuelFromCoal">
+                      <xsl:for-each select="$FormData/AlternativeFuels/LiquidFuelFromCoal">
                       
                         <tr>
                           <td valign="top">
@@ -2381,21 +2406,21 @@
                               <b>e</b>
                             </span>
                           </td>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             Any liquid fuel derived from coal (including peat) 
                             <br/>through the Fischer-Tropsch process
                           </td>
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2403,18 +2428,18 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
@@ -2422,18 +2447,18 @@
                           
                           <td colspan="2" style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2448,22 +2473,22 @@
                             <b>e</b>
                           </span>
                         </td>
-                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
+                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           Any liquid fuel derived from coal (including peat) 
                           <br/>through the Fischer-Tropsch process
                         </td>
                         
                         <xsl:choose>
-                          <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/OtherFuelUseDetail) != ''">
+                          <xsl:when test="normalize-space($FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUseOther) != ''">
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUseOther/TypeOfUse"/>
                               </xsl:call-template>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/OtherFuelUseDetail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUseOther/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:when>
@@ -2471,18 +2496,18 @@
                           <xsl:otherwise>
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUse5/BUSWriteIn"/>
                               </xsl:call-template>
                               <span style="padding-left:2mm;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUse5/TypeOfUse"/>
                                 </xsl:call-template>
                               </span>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromCoal/FuelUseTypeCd5Detail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromCoal/TypeOfUse5/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:otherwise>
@@ -2490,18 +2515,18 @@
                         
                         <td colspan="2" style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="padding-top:4mm; text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="padding-top:4mm; text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -2512,8 +2537,8 @@
                   
                   <!-- Begin Table 6, section f -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass">
-                      <xsl:for-each select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass">
+                    <xsl:when test="$FormData/AlternativeFuels/LiquidFuelFromBiomass">
+                      <xsl:for-each select="$FormData/AlternativeFuels/LiquidFuelFromBiomass">
                       
                         <tr>
                           <td>
@@ -2521,19 +2546,19 @@
                               <b>f</b>
                             </span>
                           </td>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">Liquid fuel derived from biomass</td>
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Liquid fuel derived from biomass</td>
                           
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2541,18 +2566,18 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
@@ -2560,18 +2585,18 @@
                           
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2585,21 +2610,21 @@
                             <b>f</b>
                           </span>
                         </td>
-                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
+                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           Liquid fuel derived from biomass
                         </td>
                         
                         <xsl:choose>
-                          <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/OtherFuelUseDetail) != ''">
+                          <xsl:when test="normalize-space($FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUseOther) != ''">
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUseOther/TypeOfUse"/>
                               </xsl:call-template>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/OtherFuelUseDetail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUseOther/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:when>
@@ -2607,18 +2632,18 @@
                           <xsl:otherwise>
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUse5/BUSWriteIn"/>
                               </xsl:call-template>
                               <span style="padding-left:2mm;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUse5/TypeOfUse"/>
                                 </xsl:call-template>
                               </span>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquidFuelFromBiomass/FuelUseTypeCd5Detail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquidFuelFromBiomass/TypeOfUse5/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:otherwise>
@@ -2626,18 +2651,18 @@
                         
                         <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -2648,8 +2673,8 @@
                   
                   <!-- Begin Table 6, section g -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG">
-                      <xsl:for-each select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG">
+                    <xsl:when test="$FormData/AlternativeFuels/LNG">
+                      <xsl:for-each select="$FormData/AlternativeFuels/LNG">
                       
                         <tr>
                           <td>
@@ -2657,21 +2682,21 @@
                               <b>g</b>
                             </span>
                           </td>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             Liquefied natural gas (LNG)
                           </td>
                           
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLNG/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/LNG/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2679,18 +2704,18 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
@@ -2698,18 +2723,18 @@
                           
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2725,21 +2750,21 @@
                             <b>g</b>
                           </span>
                         </td>
-                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
+                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           Liquefied natural gas (LNG)
                         </td>
                         
                         <xsl:choose>
-                          <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLNG/OtherFuelUseDetail) != ''">
+                          <xsl:when test="normalize-space($FormData/AlternativeFuels/LNG/TypeOfUseOther) != ''">
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUseOther/TypeOfUse"/>
                               </xsl:call-template>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/OtherFuelUseDetail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUseOther/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:when>
@@ -2747,18 +2772,18 @@
                           <xsl:otherwise>
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUse5/BUSWriteIn"/>
                               </xsl:call-template>
                               <span style="padding-left:2mm;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUse5/TypeOfUse"/>
                                 </xsl:call-template>
                               </span>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLNG/FuelUseTypeCd5Detail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LNG/TypeOfUse5/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:otherwise>
@@ -2766,18 +2791,18 @@
                         
                         <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -2788,8 +2813,8 @@
                   
                   <!-- Begin Table 6, section h -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass">
-                      <xsl:for-each select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass">
+                    <xsl:when test="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass">
+                      <xsl:for-each select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass">
                       
                         <tr>
                           <td>
@@ -2797,21 +2822,21 @@
                               <b>h</b>
                             </span>
                           </td>
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             Liquefied gas derived from biomass
                           </td>
                           
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -2819,18 +2844,18 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
@@ -2838,18 +2863,18 @@
                           
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;"/>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -2865,21 +2890,21 @@
                             <b>h</b>
                           </span>
                         </td>
-                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">
+                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           Liquefied gas derived from biomass
                         </td>
                         
                         <xsl:choose>
-                          <xsl:when test="normalize-space($FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/OtherFuelUseDetail) != ''">
+                          <xsl:when test="normalize-space($FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUseOther) != ''">
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUseOther/TypeOfUse"/>
                               </xsl:call-template>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/OtherFuelUseDetail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUseOther/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:when>
@@ -2887,18 +2912,18 @@
                           <xsl:otherwise>
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUse5/BUSWriteIn"/>
                               </xsl:call-template>
                               <span style="padding-left:2mm;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUse5/TypeOfUse"/>
                                 </xsl:call-template>
                               </span>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontaxableUseOfAlternativeFuel/NontxLiquefiedGasFromBiomass/FuelUseTypeCd5Detail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/AlternativeFuels/LiquefiedGasDerivedFromBiomass/TypeOfUse5/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:otherwise>
@@ -2906,18 +2931,18 @@
                         
                         <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;"/>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -2929,7 +2954,7 @@
                   <!--  Begin Table 7   -->
                   <tr>
                     <th class="styTableCellHeader" style="width:4mm;border-right-width:0px;border-top:1px black solid; border-bottom:0px; " scope="col">
-                      <span class="styTableCellPad">7</span>
+                      <span class="styTableCellPad" >7</span>
                     </th>
                     <th colspan="7" style="width:183mm; font-weight:normal; text-align:left; border-top:1px black solid;" scope="col">
                       <b>Nontaxable Use of a Diesel-Water Fuel Emulsion</b>
@@ -2975,8 +3000,8 @@
                   
                   <!-- Begin Table 7, section a -->
                   <xsl:choose>
-                    <xsl:when test="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel">
-                      <xsl:for-each select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel">
+                    <xsl:when test="$FormData/DieselWaterFuelEmulsion/NontaxableUse">
+                      <xsl:for-each select="$FormData/DieselWaterFuelEmulsion/NontaxableUse">
                       
                         <tr>
                         
@@ -2998,19 +3023,19 @@
                             </xsl:otherwise>
                           </xsl:choose>
                           
-                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">Nontaxable use</td>
+                          <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Nontaxable use</td>
                           
                           <xsl:choose>
-                            <xsl:when test="normalize-space($FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/OtherFuelUseDetail) != ''">
+                            <xsl:when test="normalize-space($FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUseOther) != ''">
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUseOther/TypeOfUse"/>
                                 </xsl:call-template>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/OtherFuelUseDetail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUseOther/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:when>
@@ -3018,18 +3043,18 @@
                             <xsl:otherwise>
                               <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUse5/BUSWriteIn"/>
                                 </xsl:call-template>
                                 <span style="padding-left:2mm;">
                                   <xsl:call-template name="PopulateText">
-                                    <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                    <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUse5/TypeOfUse"/>
                                   </xsl:call-template>
                                 </span>
                               </td>
                               <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                                 <span style="float:left;">$</span>
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/FuelUseTypeCd5Detail/Rt"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUse5/Rate"/>
                                 </xsl:call-template>
                               </td>
                             </xsl:otherwise>
@@ -3037,18 +3062,18 @@
                           
                           <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                              <xsl:with-param name="TargetNode" select="Gallons"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                             <span style="float:left;">$</span>
                             <xsl:call-template name="PopulateAmount">
-                              <xsl:with-param name="TargetNode" select="Amt"/>
+                              <xsl:with-param name="TargetNode" select="Amount"/>
                             </xsl:call-template>
                           </td>
                           <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                             <xsl:call-template name="PopulateText">
-                              <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                              <xsl:with-param name="TargetNode" select="CRN"/>
                             </xsl:call-template>
                           </td>
                         </tr>
@@ -3078,19 +3103,19 @@
                           </xsl:otherwise>
                         </xsl:choose>
                         
-                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px">Nontaxable use</td>
+                        <td style="text-align: left; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">Nontaxable use</td>
                         
                         <xsl:choose>
-                          <xsl:when test="normalize-space($FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/OtherFuelUseDetail) != ''">
+                          <xsl:when test="normalize-space($FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUseOther) != ''">
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/OtherFuelUseDetail/NontaxableUseOfFuelTypeCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUseOther/TypeOfUse"/>
                               </xsl:call-template>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/OtherFuelUseDetail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUseOther/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:when>
@@ -3098,18 +3123,18 @@
                           <xsl:otherwise>
                             <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;">
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/FuelUseTypeCd5Detail/FuelTaxLocalBusCd"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUse5/BUSWriteIn"/>
                               </xsl:call-template>
                               <span style="padding-left:2mm;">
                                 <xsl:call-template name="PopulateText">
-                                  <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/FuelUseTypeCd5Detail/NontaxableUseOfFuelTypeCd"/>
+                                  <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUse5/TypeOfUse"/>
                                 </xsl:call-template>
                               </span>
                             </td>
                             <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                               <span style="float:left;">$</span>
                               <xsl:call-template name="PopulateText">
-                                <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/NontxUseDslWaterFuel/FuelUseTypeCd5Detail/Rt"/>
+                                <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/NontaxableUse/TypeOfUse5/Rate"/>
                               </xsl:call-template>
                             </td>
                           </xsl:otherwise>
@@ -3117,18 +3142,18 @@
                         
                         <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="GallonsQty"/>
+                            <xsl:with-param name="TargetNode" select="Gallons"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                           <span style="float:left;">$</span>
                           <xsl:call-template name="PopulateAmount">
-                            <xsl:with-param name="TargetNode" select="Amt"/>
+                            <xsl:with-param name="TargetNode" select="Amount"/>
                           </xsl:call-template>
                         </td>
                         <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                           <xsl:call-template name="PopulateText">
-                            <xsl:with-param name="TargetNode" select="CreditReferenceNum"/>
+                            <xsl:with-param name="TargetNode" select="CRN"/>
                           </xsl:call-template>
                         </td>
                       </tr>
@@ -3151,23 +3176,23 @@
                     <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <span style="float:left;"/>
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/ExportedFuel/Rt"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/Exported/Rate"/>
                       </xsl:call-template>
                     </td>
                     <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/ExportedFuel/GallonsQty"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/Exported/Gallons"/>
                       </xsl:call-template>
                     </td>
                     <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <span style="float:left;"/>
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/ExportedFuel/Amt"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/Exported/Amount"/>
                       </xsl:call-template>
                     </td>
                     <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$FormData/NontxDieselWaterFuelEmulsion/ExportedFuel/CreditReferenceNum"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/DieselWaterFuelEmulsion/Exported/CRN"/>
                       </xsl:call-template>
                     </td>
                   </tr>
@@ -3177,7 +3202,7 @@
                   <!--  Begin Table 8  -->
                   <tr>
                     <th class="styTableCellHeader" style="width:4mm;border-right-width:0px;border-top:1px black solid; border-bottom:0px; " scope="col">
-                      <span class="styTableCellPad">8</span>
+                      <span class="styTableCellPad" >8</span>
                     </th>
                     <th colspan="7" style="width:183mm; font-weight:normal; text-align:left; border-top:1px black solid;" scope="col">
                       <b>Exported Dyed Fuels and Gasoline Blendstocks</b>
@@ -3239,23 +3264,23 @@
                     <td style="text-align: right; border-style: solid;padding-right:2mm; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <span style="float:left;">$</span>
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$FormData/ExpDyedFuelsGasBlendstocks/ExportedDyedDieselFuel/Rt"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/ExportedDyedFuelsGasBlndstocks/ExportedDyedDieselFuel/Rate"/>
                       </xsl:call-template>
                     </td>
                     <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="$FormData/ExpDyedFuelsGasBlendstocks/ExportedDyedDieselFuel/GallonsQty"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/ExportedDyedFuelsGasBlndstocks/ExportedDyedDieselFuel/Gallons"/>
                       </xsl:call-template>
                     </td>
                     <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <span style="float:left;">$</span>
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="$FormData/ExpDyedFuelsGasBlendstocks/ExportedDyedDieselFuel/Amt"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/ExportedDyedFuelsGasBlndstocks/ExportedDyedDieselFuel/Amount"/>
                       </xsl:call-template>
                     </td>
                     <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$FormData/ExpDyedFuelsGasBlendstocks/ExportedDyedDieselFuel/CreditReferenceNum"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/ExportedDyedFuelsGasBlndstocks/ExportedDyedDieselFuel/CRN"/>
                       </xsl:call-template>
                     </td>
                   </tr>
@@ -3275,23 +3300,23 @@
                     <td style="text-align: right; border-style: solid; padding-right:2mm;border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <span style="float:left;"/>
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$FormData/ExpDyedFuelsGasBlendstocks/ExportedDyedKerosene/Rt"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/ExportedDyedFuelsGasBlndstocks/ExportedDyedKerosene/Rate"/>
                       </xsl:call-template>
                     </td>
                     <td colspan="2" style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="$FormData/ExpDyedFuelsGasBlendstocks/ExportedDyedKerosene/GallonsQty"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/ExportedDyedFuelsGasBlndstocks/ExportedDyedKerosene/Gallons"/>
                       </xsl:call-template>
                     </td>
                     <td style="text-align: right; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px">
                       <span style="float:left;"/>
                       <xsl:call-template name="PopulateAmount">
-                        <xsl:with-param name="TargetNode" select="$FormData/ExpDyedFuelsGasBlendstocks/ExportedDyedKerosene/Amt"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/ExportedDyedFuelsGasBlndstocks/ExportedDyedKerosene/Amount"/>
                       </xsl:call-template>
                     </td>
                     <td style="text-align: center; border-style: solid; border-color: black; border-top-width: 1px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px">
                       <xsl:call-template name="PopulateText">
-                        <xsl:with-param name="TargetNode" select="$FormData/ExpDyedFuelsGasBlendstocks/ExportedDyedKerosene/CreditReferenceNum"/>
+                        <xsl:with-param name="TargetNode" select="$FormData/ExportedDyedFuelsGasBlndstocks/ExportedDyedKerosene/CRN"/>
                       </xsl:call-template>
                     </td>
                   </tr>
@@ -3309,10 +3334,9 @@
                   </tr>
                 </thead>
               </table>
-            </div>
-            
-            <div class="pageEnd"/>
-            
+            </div>            
+
+			<div class="pageEnd" style="display:block;"/>
             <!-- Begin Left Over Data Table -->
             <!-- Begin Additonal Data Title Bar and Button -->
             <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -3320,7 +3344,7 @@
                 Additional Data        
               </div>
               <div class="styLeftOverButtonContainer">
-                <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage ();"/>
+                <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage	();"/>
               </div>
             </div>
             <!-- End Additional Data Title Bar and Button -->
@@ -3332,8 +3356,6 @@
               </xsl:call-template>
             </table>
             <!-- End Left Over Table -->
-            
-          </div>
         </form>
       </body>
     </html>

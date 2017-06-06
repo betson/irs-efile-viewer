@@ -27,7 +27,7 @@
                  <xsl:otherwise>styDepTblRow2</xsl:otherwise>
               </xsl:choose>
             </xsl:attribute>
-            <td class="styDepTblCell" style="text-align:left;float:left;clear:none;" >
+            <td class="styDepTblCell" style="text-align:left;" >
               <xsl:choose>
                 <xsl:when test="OtherIncomeLitCd">
                   <xsl:call-template name="PopulateText">
@@ -45,7 +45,7 @@
                 <xsl:with-param name="TargetNode" select="."/>
               </xsl:call-template>
             </td>
-            <td class="styDepTblCell" style="text-align:right;float:right;clear:none;" >
+            <td class="styDepTblCell" style="text-align:right;" >
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="OtherIncomeAmt" />
               </xsl:call-template>
@@ -60,8 +60,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle" /></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache" />
@@ -85,7 +87,7 @@
       <body class="styBodyClass" >
         <xsl:call-template name="DocumentHeaderDependency"></xsl:call-template>    
         <div class="styDepTitleLine ">
-          <span class="styDepTitle" style="width:90mm;">
+          <span class="styDepTitle">
             <xsl:value-of select="$depDocTitle" />        
           </span>
         </div>

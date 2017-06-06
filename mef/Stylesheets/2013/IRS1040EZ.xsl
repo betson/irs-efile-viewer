@@ -9,8 +9,10 @@
 	<xsl:strip-space elements="*"/>
 	<xsl:param name="Form1040EZData" select="$RtnDoc/IRS1040EZ"/>
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html lang="EN-US">
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1040EZData)"/>
@@ -195,8 +197,8 @@
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 					<!-- Income -->
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-					<div class="styTBB" style="width:187mm;">
-						<div class="styIRS1040EZLineItem" style="height:46mm;">
+					<div class="styTBB" style="width:187mm;height:auto;">
+						<div class="styIRS1040EZLineItem" style="height:52mm;">
 							<!-- Header -->
 							<div class="styIRS1040EZCleanDiv" style="width:18%;height:100%;">
 								<span class="styBoldText" style="font-size:10pt;">Income</span>
@@ -211,13 +213,13 @@
 							<!-- Body -->
 							<div class="styIRS1040EZCleanDiv" style="width:81.8%;height:100%;">
 								<!-- (1) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB" style="height:7mm;">
 									<div class="styIRS1040EZLNLeftNumBox">1</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										Wages, salaries, and tips. This should be shown in box 1 of your Form(s) W-2.<br/>
 										Attach your Form(s) W-2.
 									</div>
-									<div class="styIRS1040EZCleanDiv" style="width:34mm;float:right;">
+									<div class="styIRS1040EZCleanDiv" style="width:34mm;float:right;height:6mm;">
 										<xsl:call-template name="CreateBox">
 											<xsl:with-param name="Height">2mm</xsl:with-param>
 											<xsl:with-param name="AmountBoxStyle">padding:0px 0px 0px 0px;</xsl:with-param>
@@ -231,7 +233,7 @@
 								</div>
 								<!-- (2) ////////////////////////////////////////////////////-->
 								<div class="styIRS1040EZLineItem" style="width:100%;height:2mm;font-size:2pt;"/>
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB" style="height:4mm;">
 									<div class="styIRS1040EZLNLeftNumBox">2</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										Taxable interest. If the total is over $1,500, you cannot use Form 1040EZ.
@@ -259,7 +261,7 @@
 								</div>
 								<!-- (3) ////////////////////////////////////////////////////-->
 								<div class="styIRS1040EZLineItem" style="width:100%;height:2mm;font-size:2pt;"/>
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB"  style="height:4mm;">
 									<div class="styIRS1040EZLNLeftNumBox">3</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										Unemployment compensation and Alaska Permanent Fund dividends (see instructions).
@@ -287,7 +289,7 @@
 								</div>
 								<!-- (4) ////////////////////////////////////////////////////-->
 								<div class="styIRS1040EZLineItem" style="width:100%;height:2mm;font-size:2pt;"/>
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB"  style="height:4mm;">
 									<div class="styIRS1040EZLNLeftNumBox">4</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										Add lines 1, 2, and 3. This is your <b>adjusted gross income.</b>
@@ -300,7 +302,7 @@
 									</div>
 								</div>
 								<!-- (5) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB"  style="height:auto;">
 									<div class="styIRS1040EZLNLeftNumBox" style="height:auto;">5</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										If someone can claim you (or your spouse if a joint return) as a dependent, check<br/>
@@ -352,7 +354,7 @@
 									</div>
 								</div>
 								<!-- (6) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItem" style="width:100%;">
+								<div class="styIRS1040EZLineItem" style="width:100%;height:auto;">
 									<div class="styIRS1040EZLNLeftNumBox">6</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										Subtract line 5 from line 4. If line 5 is larger than line 4, enter -0-.<br/>
@@ -379,7 +381,7 @@
 					<!-- Payments,Credits,and Tax -->
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 					<div class="styTBB" style="width:187mm;">
-						<div class="styIRS1040EZLineItem" style="height:25mm;">
+						<div class="styIRS1040EZLineItem" style="height:23mm;">
 							<!-- Header -->
 							<div class="styIRS1040EZCleanDiv" style="width:18%;height:100%;">
 								<span class="styBoldText" style="font-size:10pt;">Payments,<br/>Credits,<br/>and Tax</span>
@@ -387,7 +389,7 @@
 							<!-- Body -->
 							<div class="styIRS1040EZCleanDiv" style="width:81.8%;height:100%;">
 								<!-- (7) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB" style="height:4mm;">
 									<div class="styIRS1040EZLNLeftNumBox">7</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										Federal income tax withheld from Form(s) W-2 and 1099.
@@ -401,7 +403,7 @@
 								</div>
 								<!-- (8) ////////////////////////////////////////////////////-->
 								<!-- (8a) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB" style="height:4mm;">
 									<div class="styIRS1040EZLNLeftNumBox" style="padding-right:0px;">8a</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										<b>Earned income credit (EIC)</b> (see instructions).
@@ -421,7 +423,7 @@
 									</div>
 								</div>
 								<!-- (8b) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB" style="height:4mm;">
 									<div class="styIRS1040EZLNLeftNumBox" style="padding-right:0px;">b</div>
 									<div class="styIRS1040EZLNDesc" style="width:74mm;">
 										Nontaxable combat pay election.
@@ -434,7 +436,7 @@
 									</div>
 								</div>
 								<!-- (9) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB" style="height:4mm;">
 									<div class="styIRS1040EZLNLeftNumBox">9</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
 										Add lines 7 and 8a. These are your <b>total payments and credits.</b>
@@ -501,11 +503,16 @@
 							<!-- Body -->
 							<div class="styIRS1040EZCleanDiv" style="width:81.8%;height:100%;">
 								<!-- (11a) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItemBB">
+								<div class="styIRS1040EZLineItemBB" style="height:9mm;">
 									<div class="styIRS1040EZLNLeftNumBox" style="padding-right:0px;">11a</div>
 									<div class="styIRS1040EZLNDesc" style="width:112mm;">
+										<label>
+											<xsl:call-template name="PopulateLabel">
+												<xsl:with-param name="TargetNode" select="$Form1040EZData/Form8888Ind"/>
+												<xsl:with-param name="BackupName">Form1040EZDataForm8888Ind</xsl:with-param>
+											</xsl:call-template>
 										If line 9 is larger than line 10, subtract line 10 from line 9. This is your <b>refund.</b>
-										If Form 8888 is attached, check here
+										If Form 8888 is attached, check here</label>
 										<xsl:if test="$Form1040EZData/Form8888Ind">
 											<xsl:if test="$Form1040EZData/Form8888Ind/@referenceDocumentId">
 												<span style="width:4px;"/>
@@ -523,14 +530,8 @@
 												<xsl:with-param name="BackupName">Form1040EZDataForm8888Ind</xsl:with-param>
 											</xsl:call-template>
 										</input>
-										<label>
-											<xsl:call-template name="PopulateLabel">
-												<xsl:with-param name="TargetNode" select="$Form1040EZData/Form8888Ind"/>
-												<xsl:with-param name="BackupName">Form1040EZDataForm8888Ind</xsl:with-param>
-											</xsl:call-template>
-										</label>
 									</div>
-									<div class="styIRS1040EZCleanDiv" style="width:34mm;float:right;">
+									<div class="styIRS1040EZCleanDiv" style="width:34mm;float:right;padding-top:3mm;">
 										<xsl:call-template name="CreateBox">
 											<xsl:with-param name="Height">2mm</xsl:with-param>
 											<xsl:with-param name="AmountBoxStyle">padding:0px 0px 0px 0px;</xsl:with-param>
@@ -543,13 +544,13 @@
 									</div>
 								</div>
 								<!-- (11b-11c) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItem" style="width:100%;">
+								<div class="styIRS1040EZLineItem" style="width:100%;height:9mm;">
 									<span style="width:100%;height:3mm;"/>
-									<div class="styIRS1040EZLNLeftNumBox" style="padding-right:0px;">
+									<div class="styIRS1040EZLNLeftNumBox" style="padding-right:0px;padding-top:2mm;">
 										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Small Bullet"/>
 										<span style="width:7px"/>b
 									</div>
-									<div class="styIRS1040EZLNDesc" style="width:25mm;">
+									<div class="styIRS1040EZLNDesc" style="width:25mm;padding-top:2mm;">
 										Routing number
 									</div>
 									<div class="styIRS1040EZCleanDiv" style="width:50mm;height:4mm;border-width:1px 1px 1px 1px;text-align:center;">
@@ -557,7 +558,7 @@
 											<xsl:with-param name="TargetNode" select="$Form1040EZData/RoutingTransitNumber"/>
 										</xsl:call-template>
 									</div>
-									<div class="styIRS1040EZLNDesc" style="width:55mm;float:left;">
+									<div class="styIRS1040EZLNDesc" style="width:55mm;float:left;padding-top:0mm;">
 										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Small Bullet"/>
 										<span class="styBoldText">c Type:</span>
 										<span style="width:4px;"/>
@@ -595,7 +596,7 @@
 									</div>
 								</div>
 								<!-- (11d) ////////////////////////////////////////////////////-->
-								<div class="styIRS1040EZLineItem" style="width:100%;">
+								<div class="styIRS1040EZLineItem" style="width:100%;height:auto;">
 									<div class="styIRS1040EZLNLeftNumBox" style="padding-right:0px;">
 										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Small Bullet"/>
 										<span style="width:7px"/>d
@@ -651,7 +652,7 @@
 					<!-- Third Party Designee -->
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 					<div class="styBB" style="width:187mm;">
-						<div class="styIRS1040EZLineItem" style="height:8mm;">
+						<div class="styIRS1040EZLineItem" style="height:12mm;">
 							<!-- Header -->
 							<div class="styIRS1040EZCleanDiv" style="width:18%;height:100%;">
 								<span class="styBoldText" style="font-size:10pt;">Third Party<br/>Designee</span>
@@ -716,7 +717,7 @@
 								</div>
 								<div class="styIRS1040EZLineItem" style="width:100%;">
 									<!-- Designee’s name-->
-									<div class="styIRS1040EZLNDesc" style="width:13mm;padding:0px 0px 0px 0px;height:100%;">Designee’s<br/>name</div>
+									<div class="styIRS1040EZLNDesc" style="width:13mm;padding:0px 0px 0px 0px;height:100%;padding-top:2mm;">Designee’s<br/>name</div>
 									<div class="styIRS1040EZLNDesc" style="width:3mm;padding:12px 0px 0px 0px;height:100%;">
 										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Small Bullet"/>
 									</div>
@@ -733,7 +734,7 @@
 										</xsl:if>
 									</div>
 									<!-- Phone no.-->
-									<div class="styIRS1040EZLNDesc" style="width:7.5mm;padding:0px 0px 0px 0px;height:100%;">Phone<br/>no.</div>
+									<div class="styIRS1040EZLNDesc" style="width:7.5mm;padding:0px 0px 0px 0px;height:100%;padding-top:2mm;">Phone<br/>no.</div>
 									<div class="styIRS1040EZLNDesc" style="width:3mm;padding:12px 0px 0px 0px;height:100%;"><img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Small Bullet"/></div>
 									<div class="styIRS1040EZLNDesc" style="width:25mm;padding:5px 0px 0px 0px;height:100%;text-align:center;">
 										<xsl:call-template name="PopulatePhoneNumber">
@@ -741,9 +742,9 @@
 										</xsl:call-template>
 									</div>
 									<!-- Personal identification number (PIN) -->
-									<div class="styIRS1040EZLNDesc" style="width:25mm;padding:0px 0px 0px 0px;height:100%;">Personal identification<br/>number (PIN)</div>
+									<div class="styIRS1040EZLNDesc" style="width:25mm;padding:0px 0px 0px 0px;height:100%;padding-top:2mm;">Personal identification<br/>number (PIN)</div>
 									<div class="styIRS1040EZLNDesc" style="width:3mm;padding:12px 0px 0px 0px;height:100%;"><img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Small Bullet"/></div>
-										<div class="styIRS1040EZCleanDiv" style="border-width:1px 1px 1px 1px;border-color:black;text-align:center;width:15mm;height:auto;margin-top:2mm">
+										<div class="styIRS1040EZCleanDiv" style="border-width:1px 1px 1px 1px;border-color:black;text-align:center;width:15mm;height:auto;margin-top:3mm;">
 											<xsl:call-template name="PopulatePin">
 												<xsl:with-param name="TargetNode" select="$Form1040EZData/ThirdPartyDesigneePIN"/>
 											</xsl:call-template>
@@ -773,15 +774,15 @@
 						</div>
 					</div>
 							<!-- Body -->
-						<div class="styGenericDiv" style="width:187mm;height:20mm;border-bottom: 1px solid black;margin-top:2mm;">
-							 <div class="styGenericDiv" style="width:24mm;height:20mm;">
+						<div class="styGenericDiv" style="width:187mm;height:22.5mm;border-bottom: 1px solid black;margin-top:2mm;">
+							 <div class="styGenericDiv" style="width:24mm;height:22.5mm;">
 										Joint return? See<br/>
 										 instructions.
 										<br/><br/>
 										Keep a copy for<br/>
 										your records.
 							 </div>
-							 <div class="styGenericDiv" style="width:10mm;height:20mm;padding-top:4mm">
+							 <div class="styGenericDiv" style="width:10mm;height:22.5mm;padding-top:4mm">
 								 <img src="{$ImagePath}/1040EZ_Bullet_Lg.gif" alt="Large Bullet"/>
 							 </div>
 							 
@@ -870,7 +871,7 @@
 										<div class="styIRS1040EZLNDesc" style="width:42mm;height:12.5mm;padding-left:0px;">
 											<span style="width:100%;padding-left:4px;font-family:Arial Narrow;">If the IRS sent you an Identity Protection</span>
 											<span style="width:40%;padding-left:4px;font-family:Arial Narrow;">PIN, enter it <br/>here (see inst.)</span>
-											<span style="width:59%;padding-top:2px;text-align:center;font-family:Verdana;font-size:7pt;border:1px solid black;">
+											<span style="width:59%;padding-top:0px;text-align:center;font-family:Verdana;font-size:7pt;border:1px solid black;">
 												<xsl:call-template name="PopulatePin">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/IdentityProtectionPIN"/>
 												</xsl:call-template>
@@ -891,23 +892,23 @@
 						</div>
 						<div class="styGenericDiv" style="height:100%;width:161mm;border-width:0px 0px 0px 0px; border-color:black;border-style:solid;">
 							<div class="styGenericDiv" style="width:161mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-								<div class="styLNDesc" style="height:7.4mm;width:46.8mm;padding-top:0mm;border-right:1 solid black;padding-left:3px;">
+								<div class="styLNDesc" style="height:9mm;width:46.8mm;padding-top:.5mm;border-right:1px solid black;padding-left:3px;">
 								Print/Type preparer's name<br/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerPersonNm"/>
 										<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationPreparerPersonName</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:7.4mm;width:46.5mm;padding-top:0mm;border-right:1 solid black;padding-left:1mm;">
+								<div class="styLNDesc" style="height:9mm;width:46.5mm;padding-top:.5mm;border-right:1px solid black;padding-left:1mm;">
 									Preparer's signature
 								</div>
-								<div class="styLNDesc" style="height:7.4mm;width:15.2mm;border-right:1 solid black;padding-top:0mm;padding-left:1mm;">Date <br/>
+								<div class="styLNDesc" style="height:9mm;width:15.2mm;border-right:1px solid black;padding-top:.5mm;padding-left:1mm;">Date <br/>
 									<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
 										<xsl:with-param name="TargetNode">DateSigned</xsl:with-param>
 										<xsl:with-param name="BackupName">$RtnHdrDataPaidPreparerInformationDateSigned</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:7.4mm;width:18mm;border-right:1 solid black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
+								<div class="styLNDesc" style="height:9mm;width:18mm;border-right:1px solid black;padding-top:0mm;padding-bottom:0mm;padding-left:1mm;margin-top:0mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SelfEmployedInd"/>
@@ -923,7 +924,7 @@
 										<span style="width:4px;"/>if<br/>self-employed
 									</label>
 								</div>
-								<div class="styLNDesc" style="height:7.4mm;width:16mm;padding-top:0mm;padding-left:1mm;">PTIN
+								<div class="styLNDesc" style="height:9mm;width:16mm;padding-top:.5mm;padding-left:1mm;">PTIN
 								 <br/>
 									<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerSSN">
 										<xsl:call-template name="PopulateReturnHeaderPaidPreparerInformation">
@@ -946,7 +947,7 @@
 								</div>
 							</div>
 							<div class="styGenericDiv" style="width:161mm;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-								<div class="styLNDesc" style="height:6mm;width:108.5mm;border-right:1 solid black;">
+								<div class="styLNDesc" style="height:8mm;width:108.5mm;border-right:1px solid black;">
 									<span class="styGenericDiv" style="padding-left:3px;">Firm's name 
 									<span style="width:2.2mm;"/>
 										<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
@@ -964,7 +965,7 @@
 										</xsl:call-template>
 									</div>
 								</div>
-								<div class="styLNDesc" style="height:6mm;width:32mm;padding-left:1mm;">Firm's EIN
+								<div class="styLNDesc" style="height:8mm;width:32mm;padding-left:1mm;">Firm's EIN
 								<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
 									<span style="width:4px;"/>
 									<xsl:if test="$RtnHdrData/PaidPreparerInformationGrp/PreparerFirmEIN">
@@ -982,7 +983,7 @@
 								</div>
 							</div>
 							<div class="styGenericDiv" style="width:161mm;">
-								<div class="styLNDesc" style="width:108.5mm;border-right:1 solid black;">
+								<div class="styLNDesc" style="width:108.5mm;border-right:1px solid black;height:12mm;">
 									<div class="styGenericDiv" style="padding-right:.5mm;padding-left:3px;">Firm's address 
 									<img src="{$ImagePath}/1040EZ_Bullet_Sm.gif" alt="Right pointing arrowhead image"/>
 									</div>
@@ -1222,7 +1223,7 @@
 		<div class="styTBB" style="width:187mm;border-bottom-width:4px;">
 			<!-- Container -->
 			<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
-			<div class="styIRS1040EZLineItem" style="height:11mm;">
+			<div class="styIRS1040EZLineItem" style="height:auto;">
 				<!-- Left Panel -->
 				<div class="styIRS1040EZCleanDiv" style="width:32mm;height:100%;">
 					<span style="width:100%; height:4mm;padding-top:2px;">
@@ -1329,11 +1330,23 @@
 		<xsl:param name="Number"/>
 		<xsl:param name="Width">26mm</xsl:param>
 		<xsl:param name="Height">5mm</xsl:param>
+		<div style="float:right;">
+		<div class="styLNRightNumBox">
+			<xsl:attribute name="style">
+				float:left;
+				padding:3px 0px 0px 0px;
+				border-width:0px 0px 0px 0px;
+				height:<xsl:value-of select="$Height"/>;
+				<xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
+			<xsl:if test="$Number">
+				<xsl:value-of select="$Number"/>
+			</xsl:if>
+		</div>
 		<div class="styLNAmountBox">
 			<xsl:attribute name="style">
 				width:<xsl:value-of select="$Width"/>;
 				height:<xsl:value-of select="$Height"/>;
-				border-width:0px 0px 0px 0px;float:right;text-align:right;padding-right:2px;font-size:6pt;padding-top:3px;font-size:6pt;
+				border-width:0px 0px 0px 0px;float:left;text-align:right;padding-right:2px;font-size:6pt;padding-top:3px;font-size:6pt;
 				<xsl:if test="$AmountBoxStyle"><xsl:value-of select="$AmountBoxStyle"/></xsl:if></xsl:attribute>
 			<xsl:if test="$TargetNode">
 				<xsl:call-template name="PopulateAmount">
@@ -1346,16 +1359,6 @@
 				</xsl:if>
 			</xsl:if>
 		</div>
-		<div class="styLNRightNumBox">
-			<xsl:attribute name="style">
-				float:right;
-				padding:3px 0px 0px 0px;
-				border-width:0px 0px 0px 0px;
-				height:<xsl:value-of select="$Height"/>;
-				<xsl:if test="$NumberBoxStyle"><xsl:value-of select="$NumberBoxStyle"/></xsl:if></xsl:attribute>
-			<xsl:if test="$Number">
-				<xsl:value-of select="$Number"/>
-			</xsl:if>
 		</div>
 	</xsl:template>
 	<!-- Populate Left Over Checkbox 1040EZ-->

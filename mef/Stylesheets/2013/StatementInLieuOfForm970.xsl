@@ -12,8 +12,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -38,19 +40,19 @@
         </style>
       <xsl:call-template name="GlobalStylesDep"/>
 </head>    
-      <body class="styBodyClass">
-        <xsl:call-template name="DocumentHeaderDependency"/>    
-        <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:93mm">
-            <xsl:value-of select="$depDocTitle"/>
-          </span>
-        </div>
+			<body class="styBodyClass" style="width:187mm;">
+				<xsl:call-template name="DocumentHeaderDependency"/>
+				<div class="styDepTitleLine">
+					<div class="styDepTitle" style="padding-right:2mm;">
+						<xsl:value-of select="$depDocTitle"/>
+					</div>
+				</div>
         <!--Adding template for left over data  -->
         <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$ANIEData"/></xsl:call-template>        
         
         <div class="styTopSectionLine">
           <div style="float:left;clear:none;"><span class="styTopSectionLineLbl">Explanation:</span></div>
-          <div class="styExplanationLine">
+          <div class="styExplanationLine" style="width:187mm;">
             <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="$ANIEData/ExplanationTxt"/>
             </xsl:call-template>            

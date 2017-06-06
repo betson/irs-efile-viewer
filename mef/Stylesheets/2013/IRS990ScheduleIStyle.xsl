@@ -137,7 +137,7 @@
     border-style: solid;
     border-left-width: 0px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     text-align: left;
-    float:left; clear:none;
+    clear:none;
   }
   .sty990ScheduleIColA {
     height: 8mm;
@@ -148,7 +148,7 @@
     border-left-width:1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:0mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    clear: none;
   }
   .sty990ScheduleICol {
     height: 8mm;
@@ -159,7 +159,7 @@
     border-left-width:1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:6mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    clear: none;
   }
   .sty990ScheduleIColiii {
     height: 8mm;
@@ -170,7 +170,7 @@
     border-left-width:1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:6mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    clear: none;
   }
   .sty990ScheduleIColB {
     height: 8mm;
@@ -181,7 +181,7 @@
     border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:6mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    clear: none;
   }
   .sty990ScheduleIColC {
     height: 8mm;
@@ -192,7 +192,7 @@
     border-left-width: 1px; border-right-width: 0px; border-top-width: 0px; border-bottom-width: 1px;
     padding-top:6mm; padding-left:0px; padding-right:.5mm; padding-bottom: 0px;
     text-align: right;
-    float:left; clear: none;
+    clear: none;
   }
   .sty990ScheduleIDescLine {   /* Desc Line */
     font-size: 7pt;

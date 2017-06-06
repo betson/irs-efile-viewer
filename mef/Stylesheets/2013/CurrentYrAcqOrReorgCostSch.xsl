@@ -6,11 +6,9 @@
    <xsl:include href="AddHeader.xsl"/>
    <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
-  
   <xsl:param name="CCSData" select="$RtnDoc/CurrentYrAcqOrReorgCostSch"/>
-  
-  <!-- Template to display Current Year Acquisition or Reorganization Costs Schedule-->  
-  
+  <!-- - Form 1120LScheduleM3 displays as - Current Year Acquisition or Reorganization Costs Schedule - -->
+  <!-- Template to display Current Year Acquisition or Reorganization Costs Schedule-->   
   <xsl:template name="ShowCYAORC">
     <table id="CYAORCTbl" class="styDepTblLandscape">
       <thead class="styTableThead">
@@ -22,8 +20,7 @@
            <th class="styDepTblCell" scope="col" style="width:34mm;">Income (Loss) Per Tax Return Amount </th>  
         </tr>
       </thead>
-        <tfoot/>
-        
+        <tfoot/>  
        <tbody>    
         <xsl:for-each select="$CCSData/CurrentYrAcqOrReorgCostInfo">  
           <tr>
@@ -33,32 +30,26 @@
                  <xsl:otherwise>styDepTblRow2</xsl:otherwise>
               </xsl:choose>
             </xsl:attribute>            
-                  
             <td class="styDepTblCell" style="text-align:left;">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="Desc"/>
               </xsl:call-template>
             </td>
-            
             <td class="styDepTblCell" style="text-align:right;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="IncomeLossPerIncomeStmtAmt"/>
                 </xsl:call-template>
             </td>
-            
-            <td class="styDepTblCell" style="text-align:right;">
+                      <td class="styDepTblCell" style="text-align:right;">
                 <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="IncomeLossPerIncomeStmtAmt"/>
+                  <xsl:with-param name="TargetNode" select="TemporaryDifferenceAmt"/>
                 </xsl:call-template>
-              
             </td>
-            
             <td class="styDepTblCell" style="text-align:right;">
               <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="PermanentDifferenceAmt"/>
               </xsl:call-template>
             </td>
- 
             <td class="styDepTblCell" style="text-align:right;">
                 <xsl:call-template name="PopulateAmount">
                   <xsl:with-param name="TargetNode" select="IncomeLossPerTaxReturnAmt"/>
@@ -75,8 +66,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -100,7 +93,7 @@
         </style>
       <xsl:call-template name="GlobalStylesDep"/>
 </head>    
-      <body class="styBodyClass">
+      <body class="styBodyClass" style="width:187mm;">
         <xsl:call-template name="DocumentHeaderDependencyLandscape"/>    
         <div class="styDepTitleLineLandscape ">
           <span class="styDepTitle" style="width:152mm">
@@ -108,7 +101,7 @@
           </span>
         </div>
         <!--Adding template for left over data  -->
-        <xsl:call-template name="PopulateDepCommonLeftoverLandscape"><xsl:with-param name="TargetNode" select="$CCSData"/></xsl:call-template>        
+        <xsl:call-template name="PopulateDepCommonLeftoverLandscape"><xsl:with-param name="TargetNode" select="$CCSData"/></xsl:call-template>     
         <xsl:call-template name="ShowCYAORC"/>          
         <br/>                      
       </body>

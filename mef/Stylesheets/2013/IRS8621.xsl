@@ -1,10 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
-<!-- 07/11/2011 - Added new element as per UWR ETA-10-0929-OTH - Jeremy Nichols -->
-<!-- 09/27/2012 - Modified per UWR #64065 - Jeremy Nichols -->
-<!-- 03/28/2013 - Modified per KISAMS #IM01036216 - Jeremy Nichols -->
-<!-- 07/15/2013 - Modified per UWR #81810 - Jeremy Nichols -->
-<!-- 08/13/2013 - Modified per defect #37217 - Jeremy Nichols -->
+<!-- 05/26/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
+<!-- 08/21/2015 - Changes made for defect 43910 - Jeremy Nichols -->
+<!-- 08/24/2015 - Changes made for defect 43911 - Jeremy Nichols -->
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:include href="PopulateTemplate.xsl"/>
@@ -19,8 +18,10 @@
 <xsl:param name="Form8621Data" select="$RtnDoc/IRS8621"/>
 
 <xsl:template match="/">
-<html>
+<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
   <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title><xsl:call-template name="FormTitle"><xsl:with-param name="RootElement" select="local-name($Form8621Data)"/></xsl:call-template></title>    
     <!-- No Browser Caching -->
     <meta http-equiv="Pragma" content="no-cache"/>
@@ -76,8 +77,8 @@
         </div>
       </div>
       
-      <div class="styIRS8621BB" style="font-size:7pt">
-        <div class="styIRS8621FNBox">
+      <div class="styIRS8621BB" style="height:9mm;font-size:7pt">
+        <div class="styIRS8621FNBox" style="height:9mm;">
           Name of shareholder<br/>
           <div style=" font-family:'verdana';font-size:6pt;">
             <xsl:choose>
@@ -100,8 +101,8 @@
             </xsl:choose> 
           </div>
         </div>
-        <div style="float:left; padding-left:1mm">
-          <b>Identifying number</b> (see instructions)        
+        <div style="height:9mm;float:left; padding-left:1mm">
+          <b>Identifying number</b> (see instructions) <br/>       
           <div style="text-align:left; padding-top:2mm; font-family:'verdana';font-size:7pt;vertical-align:bottom;">
             <xsl:choose>
                 <xsl:when test="normalize-space($Form8621Data/EIN)!=''">
@@ -118,8 +119,8 @@
         </div>
       </div>  
       
-      <div class="styIRS8621BB" style="font-size:7pt">
-        <div class="styIRS8621FNBox">
+      <div class="styIRS8621BB" style="height:9.5mm;font-size:7pt">
+        <div class="styIRS8621FNBox" style="height:9.5mm;">
           Number, street, and room or suite no. (If a P.O. box, see instructions.)<br/>
           <div style=" font-family:'verdana';font-size:7pt;">
  <!-- Choose between Shareholder US or Foreign Address -->
@@ -147,7 +148,7 @@
                 </xsl:if>
           </div>
         </div>
-        <div style="float:left; padding-left:1mm; line-height:130%">
+        <div style="height:9.5mm;float:left; padding-left:1mm; padding-top:1mm;line-height:130%">
           Shareholder tax year: calendar year
           <xsl:choose>
             <xsl:when test="$Form8621Data/ShareholderTaxYr">              
@@ -222,9 +223,9 @@
               </xsl:if>
     </div>
       
-      <div class="styIRS8621BB" style="font-size:8pt; height:4mm;border-bottom:2px solid black;">
+      <div class="styIRS8621BB" style="font-size:8pt; height:6mm;border-bottom:1px solid black;">
         Check type of shareholder filing the return:
-        <span style="width:3mm"/>
+        <span style="width:1mm"/>
         <input type="Checkbox" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form8621Data/IndividualShareholderInd"/>
@@ -238,7 +239,7 @@
         	</xsl:call-template>
           Individual
         </label>  
-        <span style="width:3mm"/>
+        <span style="width:1mm"/>
         <input type="Checkbox" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form8621Data/CorporationShareholderInd"/>
@@ -252,7 +253,7 @@
         	</xsl:call-template>
           Corporation
         </label>    
-        <span style="width:3mm"/>
+        <span style="width:1mm"/>
         <input type="Checkbox" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form8621Data/PartnershipShareholderInd"/>
@@ -266,7 +267,7 @@
         	</xsl:call-template>
           Partnership
         </label>    
-        <span style="width:3mm"/>
+        <span style="width:1mm"/>
         <input type="Checkbox" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form8621Data/SCorporationShareholderInd"/>
@@ -280,7 +281,7 @@
         	</xsl:call-template>
           S Corporation
         </label>    
-        <span style="width:3mm"/>
+        <span style="width:1mm"/>
         <input type="Checkbox" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form8621Data/NongrantorTrustShareholderInd"/>
@@ -294,7 +295,7 @@
         	</xsl:call-template>
           Nongrantor Trust
         </label>    
-        <span style="width:3mm"/>
+        <span style="width:1mm"/>
         <input type="Checkbox" class="styCkbox">
 			<xsl:call-template name="PopulateCheckbox">
 				<xsl:with-param name="TargetNode" select="$Form8621Data/EstateShareholderInd"/>
@@ -310,8 +311,8 @@
         </label>    
       </div>
       
-      <div class="styIRS8621BB" style="font-size:6.5pt">
-        <div class="styIRS8621FNBox">
+      <div class="styIRS8621BB" style="height:9mm;font-size:6.5pt;padding-top:1px;">
+        <div class="styIRS8621FNBox" style="height:9mm;">
           Name of passive foreign investment company (PFIC) or qualified electing fund (QEF)<br/>
           <div style="font-family:'verdana';font-size:6pt;">
             <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/PFICOrQEFName/BusinessNameLine1"/></xsl:call-template><span style="width:1mm;"/>
@@ -320,8 +321,8 @@
             </xsl:if>
           </div>
         </div>
-        <div style="float:left; padding-left:1mm">
-          <b>Employer identification number</b> (if any)
+        <div style="height:9mm;float:left; padding-left:1mm;padding-top:1px;">
+          <b>Employer identification number</b> (if any)<br/>
           <div style="text-align:left; padding-top:2mm; font-family:'verdana';font-size:7pt;vertical-align:bottom;">  
             <xsl:call-template name="PopulateEIN"><xsl:with-param name="TargetNode" select="$Form8621Data/PFICOrQEFEIN"/></xsl:call-template>
             <xsl:if test="$Form8621Data/EINMissingReasonCd!=' '">            
@@ -335,7 +336,7 @@
         </div>  
       </div>  
       
-      <div class="styIRS8621BB" style="font-size:6.5pt">
+      <div class="styIRS8621BB" style="height:15mm;font-size:6.5pt">
         <div class="styIRS8621FNBox" style="height:15mm">
           Address (Enter number, street, city or town, and country.)<br/>
           <div style="font-family:'verdana';font-size:7pt;">
@@ -368,7 +369,7 @@
             </xsl:otherwise>
           </xsl:choose>
         </div>
-        <div style="width:87mm;float:left; padding-bottom:0.5mm; padding-left:1mm; line-height:130%">
+        <div style="width:87mm;float:left; padding-top:0.5mm; padding-left:1mm; line-height:130%">
           Tax year of company or fund: calendar year
           <xsl:choose>
             <xsl:when test="$Form8621Data/TaxYr">              
@@ -440,6 +441,7 @@
 							</xsl:call-template>
 					  </input>
 				  </span>
+				  <span style="padding-top:1mm;">
 				  <label>
 					<xsl:call-template name="PopulateLabel">
 						<xsl:with-param name="TargetNode" select="$Form8621Data/JointlyOwnedWithSpouseInd"/>
@@ -447,6 +449,7 @@
 					</xsl:call-template>
 				  Check if shares jointly owned with spouse.
 				  </label> 
+				  </span>
 				</td>
 			</tr>
 			<tr>
@@ -493,13 +496,15 @@
 											</xsl:call-template>
 									  </input>
 								  </span>
+								  <span style="padding-top:1mm;">
 								  <label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$Form8621Data/SharesValueRangeAInd"/>
 										<xsl:with-param name="BackupName">ValueOfSharesRangeA </xsl:with-param>
 									</xsl:call-template>
 								  $0-50,000
-								  </label> 
+								  </label>
+								  </span> 
 								</td>
 								<td style="width:35mm;">
 									(b)
@@ -511,6 +516,7 @@
 											</xsl:call-template>
 									  </input>
 								  </span>
+								  <span style="padding-top:1mm;">
 								  <label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$Form8621Data/SharesValueRangeBInd"/>
@@ -518,6 +524,7 @@
 									</xsl:call-template>
 								  $50,001-100,000
 								  </label> 
+								  </span>
 								</td>
 								<td style="width:35mm;">
 									(c)
@@ -529,6 +536,7 @@
 											</xsl:call-template>
 									  </input>
 								  </span>
+								  <span style="padding-top:1mm;">
 								  <label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$Form8621Data/SharesValueRangeCInd"/>
@@ -536,6 +544,7 @@
 									</xsl:call-template>
 								  $100,001-150,000
 								  </label> 
+								  </span>
 								</td>
 								<td style="width:35mm;">
 									(d)
@@ -547,6 +556,7 @@
 											</xsl:call-template>
 									  </input>
 								  </span>
+								  <span style="padding-top:1mm;">
 								  <label>
 									<xsl:call-template name="PopulateLabel">
 										<xsl:with-param name="TargetNode" select="$Form8621Data/SharesValueRangeDInd"/>
@@ -554,6 +564,7 @@
 									</xsl:call-template>
 								  $150,001-200,000
 								  </label> 
+								  </span>
 								</td>
 							</tr>
 							<tr>
@@ -665,16 +676,16 @@
 	<br/>  
   
     <!-- BEGIN Part II Title -->
-      <div class="styIRS8621BB" style="height:4mm; border-top:1 solid black">
-        <div class="styTitleName" style="width:12mm; font-size:10pt">Part II</div>
+      <div class="styIRS8621BB" style="height:4.5mm; border-top:1px solid black">
+        <div class="styTitleName" style="height:4.5mm;width:12mm; font-size:10pt">Part II</div>
         <div class="styTitleDesc" style="font-size:10pt">Elections <span class="styNormalText">(See instructions.)</span></div>        
       </div>
     <!-- END Part II Title -->
     
     <!-- BEGIN Part II Line Items -->    
       <div class="styIRS8621Item" style="padding-bottom:1mm; padding-top:1mm">
-        <div class="styIRS8621Part1">
-          <b>A</b><span style="width:1mm;"/>
+        <div class="styIRS8621Part1" style="display:inline;">
+          <b>A</b><span style="width:0.5mm;display:inline;"/>
           <input type="Checkbox" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				  <xsl:with-param name="TargetNode" select="$Form8621Data/ElectionToTreatThePFICAsQEFInd"/>
@@ -682,21 +693,22 @@
 			  </xsl:call-template>
 		  </input>
         </div>
-        <div class="styIRS8621LNDesc" style="">
+        <div class="styIRS8621LNDesc" style="display:inline;">
           <label>
           <xsl:call-template name="PopulateLabel">
           	<xsl:with-param name="TargetNode" select="$Form8621Data/ElectionToTreatThePFICAsQEFInd"/>
           	<xsl:with-param name="BackupName">Form8621ElectionToTreatThePFICAsQEF </xsl:with-param>
      
           </xsl:call-template>
-            <b>Election To Treat the PFIC as a QEF.</b> I, a shareholder of a PFIC, elect to treat the PFIC as a QEF. <i>Complete lines 6a through 7c of Part III.</i>
+            <b>Election To Treat the PFIC as a QEF.</b> I, a shareholder of a PFIC, elect to treat the PFIC as a QEF. <i>Complete lines 6a 
+            <br/><span style="width:9mm;"/>through 7c of Part III.</i>
           </label>
         </div>
       </div>
       
       <div class="styIRS8621Item" style="padding-bottom:1mm">
-        <div class="styIRS8621Part1">
-          <b>B</b><span style="width:1mm;"/>
+        <div class="styIRS8621Part1" style="display:inline;">
+          <b>B</b><span style="width:0.5mm;display:inline;"/>
           <input type="Checkbox" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				  <xsl:with-param name="TargetNode" select="$Form8621Data/ElectToExtndTmForPymtOfTxInd"/>
@@ -704,20 +716,25 @@
 			  </xsl:call-template>
 		  </input>
         </div>
-        <div class="styIRS8621LNDesc">
+        <div class="styIRS8621LNDesc" style="display:inline;">
           <label>
           <xsl:call-template name="PopulateLabel">
           	<xsl:with-param name="TargetNode" select="$Form8621Data/ElectToExtndTmForPymtOfTxInd"/>
           	<xsl:with-param name="BackupName">Form8621ElectToExtendTimeForPymtOfTax </xsl:with-param>
           </xsl:call-template>
-            <b>Election To Extend Time For Payment of Tax.</b> I, a shareholder of a QEF, elect to extend the time for payment of tax on<br/>the undistributed earnings and profits of the QEF until this election is terminated. <i>Complete lines 8a through 9c of Part III to<br/>calculate the tax that may be deferred.</i><br/><b>Note:</b> <span style="width:1mm;"/> <i>If any portion of line 1a or line 2a of Part II is includible under section  951, you may <b>not</b> make this election.<br/>Also, see sections 1294(c) and 1294(f) and the related regulations for events that terminate this election.</i>
+            <b>Election To Extend Time For Payment of Tax.</b> I, a shareholder of a QEF, elect to extend the time for payment of tax on
+            <br/><span style="width:9mm;"/>the undistributed earnings and profits of the QEF until this election is terminated. <i>Complete lines 8a through 9c of Part III to
+            <br/><span style="width:9mm;"/>calculate the tax that may be deferred.</i>
+            
+            <br/><br/><span style="width:9mm;"/><b>Note:</b> <span style="width:1mm;"/> <i>If any portion of line 1a or line 2a of Part II is includible under section  951, you may <b>not</b> make this election.
+            <br/><span style="width:9mm;"/>Also, see sections 1294(c) and 1294(f) and the related regulations for events that terminate this election.</i>
           </label>
         </div>
       </div>
       
       <div class="styIRS8621Item" style="padding-bottom:1mm">
-        <div class="styIRS8621Part1">
-          <b>C</b><span style="width:1mm;"/>
+        <div class="styIRS8621Part1" style="display:inline;">
+          <b>C</b><span style="width:0.5mm;display:inline;"/>
           <input type="Checkbox" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				  <xsl:with-param name="TargetNode" select="$Form8621Data/ElectionToMarkToMrktPFICStkInd"/>
@@ -725,20 +742,21 @@
 			  </xsl:call-template>
 		  </input>
         </div>
-        <div class="styIRS8621LNDesc">
+        <div class="styIRS8621LNDesc" style="display:inline;">
           <label>
           	<xsl:call-template name="PopulateLabel">
           		<xsl:with-param name="TargetNode" select="$Form8621Data/ElectionToMarkToMrktPFICStkInd"/>
           		<xsl:with-param name="BackupName">Form8621ElectToMarkToMarketPFICStock </xsl:with-param>
           	</xsl:call-template>
-            <b>Election To Mark-to-Market PFIC Stock.</b> I, a shareholder of a PFIC, elect to mark-to-market the PFIC stock that is<br/>marketable within the meaning of section 1296(e). <i>Complete Part IV.</i>
+            <b>Election To Mark-to-Market PFIC Stock.</b> I, a shareholder of a PFIC, elect to mark-to-market the PFIC stock that is
+            <br/><span style="width:9mm;"/>marketable within the meaning of section 1296(e). <i>Complete Part IV.</i>
           </label>
         </div>
       </div>
       
       <div class="styIRS8621Item" style="padding-bottom:1mm">
-        <div class="styIRS8621Part1">
-          <b>D</b><span style="width:1mm;"/>
+        <div class="styIRS8621Part1" style="display:inline;">
+          <b>D</b><span style="width:0.5mm;display:inline;"/>
           <input type="Checkbox" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				  <xsl:with-param name="TargetNode" select="$Form8621Data/DeemedSaleElectionInd"/>
@@ -746,20 +764,21 @@
 			  </xsl:call-template>
 		  </input>
         </div>
-        <div class="styIRS8621LNDesc">
+        <div class="styIRS8621LNDesc" style="display:inline;">
           <label>
           <xsl:call-template name="PopulateLabel">
           	<xsl:with-param name="TargetNode" select="$Form8621Data/DeemedSaleElectionInd"/>
           	<xsl:with-param name="BackupName">Form8621DeemedSaleElection </xsl:with-param>
           </xsl:call-template>
-            <b>Deemed Sale Election.</b> I, a shareholder on the first day of a PFIC's first tax year as a QEF, elect to recognize gain on the<br/>deemed sale of my interest in the PFIC. <i>Enter gain or loss on line 15f of Part V.</i>
+            <b>Deemed Sale Election.</b> I, a shareholder on the first day of a PFIC's first tax year as a QEF, elect to recognize gain on the
+            <br/><span style="width:9mm;"/>deemed sale of my interest in the PFIC. <i>Enter gain or loss on line 15f of Part V.</i>
           </label>
         </div>
       </div>
       
       <div class="styIRS8621Item" style="padding-bottom:1mm">
-        <div class="styIRS8621Part1">
-          <b>E</b><span style="width:1mm;"/>
+        <div class="styIRS8621Part1" style="display:inline;">
+          <b>E</b><span style="width:0.5mm;display:inline;"/>
           <input type="Checkbox" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				  <xsl:with-param name="TargetNode" select="$Form8621Data/DeemedDividendElectionInd"/>
@@ -767,13 +786,16 @@
 			  </xsl:call-template>
 		  </input>
         </div>
-        <div class="styIRS8621LNDesc">
+        <div class="styIRS8621LNDesc" style="display:inline;">
           <label>
           <xsl:call-template name="PopulateLabel">
           	<xsl:with-param name="TargetNode" select="$Form8621Data/DeemedDividendElectionInd"/>
           	<xsl:with-param name="BackupName">Form8621DeemedDividendElection </xsl:with-param>          
           </xsl:call-template>
-            <b>Deemed Dividend Election.</b> I, a shareholder on the first day of a PFIC's first tax year as a QEF that is a controlled foreign<br/>corporation (CFC), elect to treat an amount equal to my share of the post-1986 earnings and profits of the CFC as an excess<br/>distribution. <i>Enter this amount on line 15e of Part V.  If the excess distribution is greater than zero, also complete line 16 of Part V.</i>
+            <b>Deemed Dividend Election.</b> I, a shareholder on the first day of a PFIC's first tax year as a QEF that is a controlled foreign
+            <br/><span style="width:9mm;"/>corporation (CFC), elect to treat an amount equal to my share of the post-1986 earnings and profits of the CFC as an excess
+            <br/><span style="width:9mm;"/>distribution. <i>Enter this amount on line 15e of Part V.  If the excess distribution is greater than zero, also complete line 16 of 
+            <br/><span style="width:9mm;"/>Part V.</i>
           </label>
           <span style="width:1mm;"/>
           <xsl:call-template name="SetFormLinkInline">
@@ -783,8 +805,8 @@
       </div>
       
       <div class="styIRS8621Item" style="padding-bottom:1mm">
-        <div class="styIRS8621Part1">
-          <b>F</b><span style="width:1mm;"/>
+        <div class="styIRS8621Part1" style="display:inline;">
+          <b>F</b><span style="width:0.5mm;display:inline;"/>
           <input type="Checkbox" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				  <xsl:with-param name="TargetNode" select="$Form8621Data/ElectToRcgnzGainOnPFICSaleInd"/>
@@ -792,20 +814,22 @@
 			  </xsl:call-template>
 		  </input>
         </div>
-        <div class="styIRS8621LNDesc" style="font-size: 8pt;">
+        <div class="styIRS8621LNDesc" style="font-size: 8pt;display:inline;">
           <label>
           	<xsl:call-template name="PopulateLabel">
           		<xsl:with-param name="TargetNode" select="$Form8621Data/ElectToRcgnzGainOnPFICSaleInd"/>
           		<xsl:with-param name="BackupName">Form8621ElectToRecognizeGainOnPFICSale </xsl:with-param>
           	</xsl:call-template>
-            <b>Election To Recognize Gain on Deemed Sale of PFIC.</b> I, a shareholder of a former PFIC or a PFIC to which section 1297(d) applies, elect to treat as an excess distribution the gain recognized on the deemed sale of my interest in the PFIC on the last day of its last tax year as a PFIC under section 1297(a). <i>Enter gain on line 15f of Part V.</i>
+            <b>Election To Recognize Gain on Deemed Sale of PFIC.</b> I, a shareholder of a former PFIC or a PFIC to which section 1297(d) applies, elect 
+            <br/><span style="width:9mm;"/>to treat as an excess distribution the gain recognized on the deemed sale of my interest in the PFIC on the last day of its last tax year as a 
+            <br/><span style="width:9mm;"/>PFIC under section 1297(a). <i>Enter gain on line 15f of Part V.</i>
           </label>
         </div>
       </div>
       
 	  <div class="styIRS8621Item" style="padding-bottom:1mm">
-        <div class="styIRS8621Part1">
-          <b>G</b><span style="width:1mm;"/>
+        <div class="styIRS8621Part1" style="display:inline;">
+          <b>G</b><span style="width:0.5mm;display:inline;"/>
           <input type="Checkbox" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				  <xsl:with-param name="TargetNode" select="$Form8621Data/DeemedDivElectSec1297ePFICInd"/>
@@ -813,13 +837,16 @@
 			  </xsl:call-template>
 		  </input>
         </div>
-        <div class="styIRS8621LNDesc" style="font-size: 8pt;">
+        <div class="styIRS8621LNDesc" style="font-size: 8pt;display:inline;">
           <label>
           	<xsl:call-template name="PopulateLabel">
           		<xsl:with-param name="TargetNode" select="$Form8621Data/DeemedDivElectSec1297ePFICInd"/>
           		<xsl:with-param name="BackupName">Form8621DeemedDivElectSec1297ePFICInd </xsl:with-param>
           	</xsl:call-template>
-            <b>Deemed Dividend Election With Respect to a Section 1297(e) PFIC.</b> I, a shareholder of a section 1297(e) PFIC, within the meaning of Regulations section 1.1297-3(a), elect to make a deemed dividend election with respect to the section 1297(e) PFIC. My holding period in the stock of the Section 1297(e) PFIC includes the CFC qualification date, as defined in Regulations section 1.1297-3(d).  <i>Enter the excess distribution on line 15e, Part V. If the excess distribution is greater than zero, also complete line 16, Part V.</i>
+            <b>Deemed Dividend Election With Respect to a Section 1297(e) PFIC.</b> I, a shareholder of a section 1297(e) PFIC, within the meaning of 
+            <br/><span style="width:9mm;"/>Regulations section 1.1297-3(a), elect to make a deemed dividend election with respect to the section 1297(e) PFIC. My holding period in the 
+            <br/><span style="width:9mm;"/>stock of the Section 1297(e) PFIC includes the CFC qualification date, as defined in Regulations section 1.1297-3(d).  <i>Enter the excess 
+            <br/><span style="width:9mm;"/>distribution on line 15e, Part V. If the excess distribution is greater than zero, also complete line 16, Part V.</i>
           </label>
           <span style="width:1mm;"/>
 		  <xsl:for-each select="$Form8621Data/DeemedDivElectSec1297ePFICInd">
@@ -831,8 +858,8 @@
       </div>      
       
       <div class="styIRS8621Item" style="padding-bottom:1mm;border-bottom:2 solid black">
-        <div class="styIRS8621Part1">
-          <b>H</b><span style="width:1mm;"/>
+        <div class="styIRS8621Part1" style="display:inline;">
+          <b>H</b><span style="width:0.5mm;display:inline;"/>
           <input type="Checkbox" class="styCkbox">
 			  <xsl:call-template name="PopulateCheckbox">
 				  <xsl:with-param name="TargetNode" select="$Form8621Data/DeemedDivElectFrmrPFICInd"/>
@@ -840,13 +867,16 @@
 			  </xsl:call-template>
 		  </input>
         </div>
-        <div class="styIRS8621LNDesc" style="font-size: 8pt;">
+        <div class="styIRS8621LNDesc" style="font-size: 8pt;display:inline;">
           <label>
           	<xsl:call-template name="PopulateLabel">
           		<xsl:with-param name="TargetNode" select="$Form8621Data/DeemedDivElectFrmrPFICInd"/>
           		<xsl:with-param name="BackupName">Form8621DeemedDivElectFrmrPFICInd </xsl:with-param>
           	</xsl:call-template>
-            <b>Deemed Dividend Election With Respect to a Former PFIC.</b> I, a shareholder of a former PFIC, within the meaning of Regulations section 1.1298-3(a), elect to make a deemed dividend election with respect to the former PFIC. My holding period in the stock of the former PFIC includes the termination date, as defined in Regulations section 1.1298-3(d).  <i>Enter the excess distribution on line 15e, Part V. If the excess distribution is greater than zero, also complete line 16, Part V.</i>
+            <b>Deemed Dividend Election With Respect to a Former PFIC.</b> I, a shareholder of a former PFIC, within the meaning of Regulations section 
+            <br/><span style="width:9mm;"/>1.1298-3(a), elect to make a deemed dividend election with respect to the former PFIC. My holding period in the stock of the former PFIC 
+            <br/><span style="width:9mm;"/>includes the termination date, as defined in Regulations section 1.1298-3(d).  <i>Enter the excess distribution on line 15e, Part V. If the excess 
+            <br/><span style="width:9mm;"/>distribution is greater than zero, also complete line 16, Part V.</i>
           </label>
           <span style="width:1mm;"/>
           <xsl:call-template name="SetFormLinkInline">
@@ -857,7 +887,7 @@
       
     <!-- END Part II Line Items -->
       
-    <div style="width:187mm; font-size:7pt; page-break-after:always">    
+    <div style="width:187mm; font-size:7pt; border-top:1px solid black;">    
       <div style="float:left; font-size:8pt">
         <b>For Disclosure, Privacy Act, and Paperwork Reduction Act Notice, see separate instructions.</b>
       </div>    
@@ -867,6 +897,7 @@
         Form <b style="font-size:10pt">8621</b> (Rev. 12-2013)
       </div>      
     </div>    
+    <div class="pageEnd" />
     
     <div style="width:187mm; font-size:7pt">    
       <div style="float:left; font-size:8pt">
@@ -878,7 +909,7 @@
     </div>    
       
     <!-- BEGIN Part III Title -->  
-      <div class="styIRS8621BB" style="height:8mm; border-top:2 solid black">
+      <div class="styIRS8621BB" style="height:9mm; border-top:1px solid black">
         <div class="styTitleName" style="width:13mm; font-size:10pt">Part III</div>
         <div class="styTitleDesc" style="font-size:10pt; width:170mm">Income From a Qualified Electing Fund (QEF). <span class="styNormalText" style="font-size:8pt">All QEF shareholders complete lines 6a through 7c. If you are making</span><br/><span class="styNormalText" style="font-size:8pt">Election B, also complete lines 8a through 9c. (See instructions.)</span></div>        
       </div>
@@ -887,12 +918,12 @@
     <!-- BEGIN Part III Line Items -->
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2" style="padding-top:0.5mm">6a</div>
-        <div style="float:left; padding-top:0.5mm">
+        <div style="padding-top:0.5mm">
           Enter your pro rata share of the ordinary earnings of the QEF            
         </div>    
         <div style="float:right">    
           <span class="styIRS8621DotLn">      
-            .                          
+            ..                          
           </span>
           <div class="styIRS8621LNRightNumBox" style="margin-top:0.5mm">6a</div>  
           <div class="styIRS8621LNAmountBox" style="margin-top:0.5mm">
@@ -904,11 +935,14 @@
       </div>
       
       <div class="styIRS8621Item">
-        <div class="styIRS8621Part2">b</div>
-        <div style="float:left">
+        <div class="styIRS8621Part2" style="vertical-align:top;">b</div>
+        <div style="">
           Enter the portion of line 6a that is included in income under<br/>section  951 or that may be excluded under section 1293(g)          
         </div>      
-        <div style="float:right">    
+        <div style="float:right">       
+          <span class="styIRS8621DotLn">      
+            ..                          
+          </span>
           <div class="styIRS8621LNRightNumBox" style="height:8.5mm; padding-top:4mm">6b</div>  
           <div class="styIRS8621LNAmountBox" style="height:8.5mm; padding-top:4mm">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/IncomePortionOfOrdinaryEarnAmt"/></xsl:call-template>
@@ -920,7 +954,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">c</div>
-        <div style="float:left">
+        <div style="">
           Subtract line 6b from line 6a. Enter this amount on your tax return as ordinary income
         </div>      
         <div style="float:right">      
@@ -936,10 +970,13 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">7a</div>
-        <div style="float:left">
+        <div style="">
           Enter your pro rata share of the total net capital gain of the QEF
         </div>        
-        <div style="float:right">    
+        <div style="float:right">       
+          <span class="styIRS8621DotLn">      
+            .                          
+          </span>
           <div class="styIRS8621LNRightNumBox">7a</div>  
           <div class="styIRS8621LNAmountBox">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ProRataShareOfTotNetCapGainAmt"/></xsl:call-template>
@@ -950,12 +987,16 @@
       </div>
       
       <div class="styIRS8621Item">
-        <div class="styIRS8621Part2">b</div>
-        <div style="float:left">
-          Enter the portion of line 7a that is included in income under<br/>section 951 or that may be excluded under section 1293(g)      
+        <div class="styIRS8621Part2" style="vertical-align:top;">b</div>
+        <div style="">
+          Enter the portion of line 7a that is included in income under<br/>section 951 or that may be excluded under section 1293(g)   
+          <span style="width:6mm;" />      
+          <span class="styIRS8621DotLn" style="float:right;">      
+            ..                        
+          </span>                       
         </div>        
         <div style="float:right">    
-          <div class="styIRS8621LNRightNumBox" style="height:8mm; padding-top:4mm">7b</div>  
+          <div class="styIRS8621LNRightNumBox" style="height:8.1mm; padding-top:4mm">7b</div>  
           <div class="styIRS8621LNAmountBox" style="height:8.1mm; padding-top:4mm">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/IncomePortionOfNetCapGainAmt"/></xsl:call-template>
           </div>  
@@ -966,7 +1007,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">c</div>
-        <div style="float:left">
+        <div>
           Subtract line 7b from line 7a. This amount is a net long-term capital gain. Enter this amount    
         </div>        
         <div style="float:right">                            
@@ -977,7 +1018,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2"/>
-        <div style="float:left">
+        <div style="">
           in Part II of the Schedule D used for your income tax return. (See instructions.)          
         </div>        
         <div style="float:right">    
@@ -993,7 +1034,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">8a</div>
-        <div style="float:left">
+        <div style="">
           Add lines 6c and 7c
         </div>        
         <div style="float:right">      
@@ -1009,7 +1050,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">b</div>
-        <div style="float:left">
+        <div style="">
           Enter the total amount of cash and the fair market value of other<br/>property distributed or deemed distributed to you during the tax  
         </div>        
         <div style="float:right">                        
@@ -1022,8 +1063,8 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2"/>
-        <div style="float:left">
-          year of the QEF. (See instructions.)    
+        <div style="">
+           year of the QEF. (See instructions.)    
           <xsl:call-template name="SetFormLinkInline">
             <xsl:with-param name="TargetNode" select="$Form8621Data/TotalCashAndDistributionsAmt"/>
           </xsl:call-template>    
@@ -1042,8 +1083,8 @@
       </div>
       
       <div class="styIRS8621Item">
-        <div class="styIRS8621Part2">c</div>
-        <div style="float:left">
+        <div class="styIRS8621Part2" style="vertical-align:top;">c</div>
+        <div style="">
           Enter the portion of line 8a not already included in line 8b that is<br/>attributable to shares in the QEF that you disposed of, pledged,
         </div>        
         <div style="float:right">              
@@ -1056,7 +1097,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2"/>
-        <div style="float:left">
+        <div style="">
           or otherwise transferred during the tax year
         </div>        
         <div style="float:right">      
@@ -1074,7 +1115,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">d</div>
-        <div style="float:left">
+        <div style="">
           Add lines 8b and 8c
         </div>        
         <div style="float:right">      
@@ -1090,7 +1131,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">e</div>
-        <div style="float:left">
+        <div style="">
           Subtract line 8d from line 8a, and enter the difference (if zero or less, enter amount in brackets)
         </div>        
         <div style="float:right">                  
@@ -1103,8 +1144,9 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2"/>
-        <div style="float:left">
-          <b>Important:</b> <span style="width:1mm;"/> <i>If line 8e is greater than zero, and no portion of line 6a or 7a is includible in income<br/>under section 951, you may make Election B with respect to the amount on line 8e.</i>
+        <div style="">
+          <b>Important:</b> <span style="width:1mm;"/> <i>If line 8e is greater than zero, and no portion of line 6a or 7a is includible in income
+          <br/>under section 951, you may make Election B with respect to the amount on line 8e.</i>
         </div>      
         <div style="float:right">            
           <div class="styIRS8621LNRightNumBoxNBB" style="background-color:lightgrey; height:8mm"/>  
@@ -1114,7 +1156,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">9a</div>
-        <div style="float:left">
+        <div style="">
           Enter the total tax for the tax year (See instructions.)
         </div>      
         <div style="float:right">    
@@ -1132,7 +1174,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">b</div>
-        <div style="float:left">
+        <div style="">
           Enter the total tax for the tax year determined without regard to  
         </div>      
         <div style="float:right">                
@@ -1145,7 +1187,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2"/>
-        <div style="float:left">
+        <div style="">
           the amount entered on line 8e      
         </div>      
         <div style="float:right">    
@@ -1163,7 +1205,7 @@
               
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2">c</div>
-        <div style="float:left">
+        <div style="">
           Subtract line 9b from line 9a. <b>This is the deferred tax, the time for payment of which is</b>
         </div>      
         <div style="float:right">                          
@@ -1174,7 +1216,7 @@
       
       <div class="styIRS8621Item">
         <div class="styIRS8621Part2"/>
-        <div style="float:left">
+        <div style="">
           <b>extended by making Election B. See instructions</b>
         </div>      
         <div style="float:right">    
@@ -1190,24 +1232,24 @@
     <!-- END Part III Line Items -->    
 
     <!-- BEGIN Part IV Title -->  
-      <div class="styIRS8621BB" style="height:4mm; border-top:2 solid black">
-        <div class="styTitleName" style="width:13mm; font-size:10pt">Part IV</div>
-        <div class="styTitleDesc" style="font-size:10pt">Gain or (Loss) From Mark-to-Market Election <span class="styNormalText">(See page 5 of instructions.)</span></div>        
+      <div class="styIRS8621BB" style="height:4.5mm; border-top:1px solid black;border-bottom:0px solid black">
+        <div class="styTitleName" style="height:4.5mm;width:13mm; font-size:10pt">Part IV</div>
+        <div class="styTitleDesc" style="height:4.5mm;font-size:10pt">Gain or (Loss) From Mark-to-Market Election <span class="styNormalText">(See page 5 of instructions.)</span></div>        
       </div>
     <!-- END Part IV Title -->
       
     <!-- BEGIN Part IV Line Items -->  
-      <div class="styIRS8621Item">
+      <div class="styIRS8621Item" style="border-top:1px solid black;">
         <div class="styIRS8621Part3" style="padding-top:0.5mm">10a</div>
         <div style="float:left; padding-top:0.5mm">
           Enter the fair market value of your PFIC stock at the end of the tax year
         </div>  
-        <div style="float:right">
+        <div style="padding-top:0.5mm;float:right">
           <span class="styIRS8621DotLn">      
-            .......                                  
+            ........                                  
           </span>                    
-          <div class="styIRS8621LNRightNumBox" style="height:4.5mm">10a</div>  
-          <div class="styIRS8621LNAmountBox" style="height:4.5mm">
+          <div class="styIRS8621LNRightNumBox" style="height:4.5mm;padding-top:0.5mm">10a</div>  
+          <div class="styIRS8621LNAmountBox" style="height:4.5mm;padding-top:0.5mm">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/FairMarketValueOfPFICStkAmt"/></xsl:call-template>
           </div>  
         </div>      
@@ -1243,7 +1285,7 @@
       <div class="styIRS8621Item">
         <div class="styIRS8621Part3"/>
         <div style="float:left">
-          as ordinary income on your tax return. If a loss, go to line 11
+          <span style="width:7mm;"/>as ordinary income on your tax return. If a loss, go to line 11
         </div>  
         <div style="float:right">
           <span class="styIRS8621DotLn">      
@@ -1287,7 +1329,7 @@
      <div class="styIRS8621Item">
         <div class="styIRS8621Part3"/>
         <div style="float:left">
-          Include this amount as an ordinary loss on your tax return 
+          <span style="width:7mm;"/>Include this amount as an ordinary loss on your tax return 
         </div>  
         <div style="float:right">
           <span class="styIRS8621DotLn">      
@@ -1314,7 +1356,7 @@
      <div class="styIRS8621Item">
         <div class="styIRS8621Part3"/>
         <div style="float:left">
-        <b>  the tax year:</b>
+        <span style="width:7mm;"/><b>the tax year:</b>
         </div>  
         <div style="float:right">            
           <div class="styIRS8621LNRightNumBox" style="border-bottom:0"/>  
@@ -1368,7 +1410,7 @@
       <div class="styIRS8621Item">
         <div class="styIRS8621Part3"/>
         <div style="float:left">
-          ordinary income on your tax return. If a loss, go to line 14
+          <span style="width:7mm;"/>ordinary income on your tax return. If a loss, go to line 14
         </div>  
         <div style="float:right">
           <span class="styIRS8621DotLn">      
@@ -1411,7 +1453,7 @@
 <div class="styIRS8621Item">
 <div class="styIRS8621Part3"/>
         <div style="float:left">
-          this amount as an ordinary loss on your tax return. If the loss on line 13c exceeds unreversed 
+          <span style="width:7mm;"/>this amount as an ordinary loss on your tax return. If the loss on line 13c exceeds unreversed 
         </div>  
         <div style="float:right">            
           <div class="styIRS8621LNRightNumBox" style="border-bottom:0"/>  
@@ -1422,7 +1464,7 @@
       <div class="styIRS8621Item">
         <div class="styIRS8621Part3"/>
         <div style="float:left">
-          inclusions on line 14a, complete line 14c
+          <span style="width:7mm;"/>inclusions on line 14a, complete line 14c
         </div>  
         <div style="float:right">
           <span class="styIRS8621DotLn">      
@@ -1448,7 +1490,7 @@
 <div class="styIRS8621Item">
 <div class="styIRS8621Part3"/>
         <div style="float:left">
-          Include this amount on your tax return according to the rules generally applicable for losses 
+          <span style="width:7mm;"/>Include this amount on your tax return according to the rules generally applicable for losses 
         </div>  
         <div style="float:right">            
           <div class="styIRS8621LNRightNumBox" style="border-bottom:0"/>  
@@ -1459,7 +1501,7 @@
       <div class="styIRS8621Item">
         <div class="styIRS8621Part3"/>
         <div style="float:left">
-          provided elsewhere in the Code and regulations
+          <span style="width:7mm;"/>provided elsewhere in the Code and regulations
         </div>  
         <div style="float:right">
           <span class="styIRS8621DotLn">      
@@ -1472,9 +1514,9 @@
         </div>      
       </div>         
      
-      <div class="styIRS8621Item" style="border-bottom:2 solid black">
-        <div class="styIRS8621Part3"><b>Note:</b></div>
-        <div style="float:left">
+      <div class="styIRS8621Item" style="border-bottom:1px solid black">
+        <span style="width:6mm;"/><b>Note:</b>
+        <div style="">
           See instructions in case of multiple dispositions.
         </div>      
         <div style="float:right">            
@@ -1484,7 +1526,7 @@
 
     <!-- END Part IV Line Items -->  
 
-    <div style="width:187mm; font-size:7pt; page-break-after:always">    
+    <div style="width:187mm; font-size:7pt;">    
       <div style="float:left; font-size:8pt">
         <span style="width:1mm;"/>
       </div>    
@@ -1492,7 +1534,8 @@
         <span style="width:15mm"/>
         Form <b style="font-size:10pt">8621</b> (Rev. 12-2013)
       </div>      
-    </div>    
+    </div>   
+    <div class="pageEnd" /> 
     
     <div style="width:187mm; font-size:7pt">    
       <div style="float:left; font-size:8pt">
@@ -1507,15 +1550,15 @@
       
       <xsl:variable name="part4Count" select="count($Form8621Data/DistriAndDisposOfStockTyp)"/>
       <xsl:variable name="containerHeight" select="1"/>  
-      
-      <div class="styIRS8621BB" style="height:8mm; border-top:2 solid black">
+     <div style="display:block;">
+      <div class="styIRS8621BB" style="height:8mm; border-top:1px solid black;display:block;">
         <div class="styTitleName" style="width:13mm; font-size:10pt">Part V</div>
         <div class="styTitleDesc" style="font-size:10pt">
           Distributions From and Dispositions of Stock of a Section 1291 Fund <span class="styNormalText">(See instructions.)</span><br/><span class="styNormalText"><i>Complete a  <b>separate</b> </i><span style="width:1mm;"/> <i>Part V for each excess distribution (see instructions).</i></span>          
         </div>          
         <div style="float:right; vertical-align:bottom; padding-top:5mm">                      
           <!-- button display logic -->          
-          <xsl:call-template name="SetTableToggleButton">
+          <xsl:call-template name="SetDynamicTableToggleButton">
               <xsl:with-param name="TargetNode" select="$Form8621Data/DistriAndDisposOfStockTyp"/>
               <xsl:with-param name="containerHeight" select="$containerHeight"/>
               <xsl:with-param name="containerID" select="'part4TPctn'"/>
@@ -1526,10 +1569,10 @@
     <!-- END Part V Title -->
     
     <!-- BEGIN Part V Line Items -->        
-      <div class="styIRS8621TableContainer" id="part4TPctn">    
+      <div class="styIRS8621TableContainer" id="part4TPctn" style="display:block;">    
         <xsl:attribute name="style">  
           <xsl:if test="$part4Count &gt; $containerHeight">
-            height:121mm;  
+            height:122mm;  
           </xsl:if>
         </xsl:attribute>                           
         <!-- print logic -->
@@ -1567,7 +1610,7 @@
 
     <!-- BEGIN Part VI Title -->  
     <!--  <div class="styIRS8621BB" style="height:4mm; border-top:2 solid black">-->
-      <div class="styIRS8621BB" style="height:8mm; border-top:1 solid black; width:187mm">
+      <div class="styIRS8621BB" style="height:12.5mm; border-top:1px solid black; width:187mm">
         <div class="styTitleName" style="width:12mm; font-size:10pt">Part VI</div>
         <div class="styTitleDesc" style="font-size:10pt">Status of Prior Year Section 1294 Elections and Termination of Section 1294 Elections<br/><span class="styNormalText" style="font-style: italic;">Complete a separate column for each outstanding election. Complete lines 25 and 26 only if there is a</span><br/><span class="styNormalText" style="font-style: italic;">partial termination of the section 1294 election.</span></div>        
       </div>
@@ -1609,6 +1652,7 @@
         <xsl:with-param name="max" select="0"/>
       </xsl:call-template>
     </xsl:if>
+    </div>
     <!-- END Part VI Line Items -->  
     
     <div style="width:187mm; font-size:7pt">            
@@ -1616,8 +1660,7 @@
           Form <b style="font-size:10pt">8621</b> (Rev. 12-2013)
         </div>      
       </div>            
-    
-      <p style="page-break-before:always"/>    
+	  <div class="pageEnd" />
       
       <div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif">
         <div class="styLeftOverTitle">
@@ -2311,7 +2354,7 @@
   <xsl:param name="max"/>  
   <xsl:if test="$index &lt;= $max">    
     <tr>
-      <td class="styIRS8621Part2" valign="top" style="padding-top:1mm">
+      <td class="styIRS8621Part2" style="vertical-align:top;padding-top:1mm">
         15a
       </td>
       <td style="width:138mm; padding-top:1mm" valign="top">
@@ -2320,7 +2363,7 @@
               <div style="float:left">instructions</div>
               <div style="float:right"><span class="styIRS8621DotLn">............................</span></div>       
       </td>                
-      <td class="styIRS8621LNRightNumBox" valign="bottom">
+      <td class="styIRS8621LNRightNumBox" style="height:12mm;padding-top:8.25mm;">
         15a
       </td>  
       <td class="styIRS8621TblLB" valign="bottom" style="width:31mm;">
@@ -2348,7 +2391,7 @@
               <div style="float:left">shorter, the portion of the shareholder's holding period before the current tax year)</div>
               <div style="float:right"><span class="styIRS8621DotLn">.....</span></div>         
       </td>                
-      <td class="styIRS8621LNRightNumBox" valign="bottom">
+      <td class="styIRS8621LNRightNumBox" style="height:15mm;padding-top:11mm;">
         15b
       </td>  
       <td class="styIRS8621TblLB" valign="bottom">
@@ -2368,7 +2411,7 @@
           </span>
         </div>        
       </td>                
-      <td class="styIRS8621LNRightNumBox">
+      <td class="styIRS8621LNRightNumBox" style="padding-top:0.5mm;">
         15c
       </td>  
       <td class="styIRS8621TblLB" valign="bottom">
@@ -2380,12 +2423,12 @@
       <td class="styIRS8621Part2" valign="top">d</td>
       <td valign="top">
        	<div style="float:left;font-family:'Arial Narrow'; font-size:10pt">Multiply line 15c by 125% (1.25)</div>
-             <div style="float:right;"><span class="styIRS8621DotLn">........................</span></div>
+             <div style="float:right;"><span class="styIRS8621DotLn">......................</span></div>
       </td>                      
-      <td class="styIRS8621LNRightNumBox">
+      <td class="styIRS8621LNRightNumBox" style="padding-top:0.5mm;">
         15d
       </td>  
-      <td class="styIRS8621TblLB">
+      <td class="styIRS8621TblLB" style="padding-top:0.5mm;">
         <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/DistriAndDisposOfStockTyp[$index]/AverageDistri3PrevTY125PctAmt"/></xsl:call-template>
       </td>                
     </tr>
@@ -2398,7 +2441,7 @@
         <br/><div style="float:left">nonexcess distribution on your income tax return</div>
          <div style="float:right;"><span class="styIRS8621DotLn">................</span></div>
       </td>                
-      <td class="styIRS8621LNRightNumBox">
+      <td class="styIRS8621LNRightNumBox" style="height:18.5mm;padding-top:14.5mm;">
         15e
       </td>  
       <td class="styIRS8621TblLB" valign="bottom">
@@ -2419,7 +2462,7 @@
           </span>
         </div>
       </td>                
-      <td class="styIRS8621LNRightNumBox">
+      <td class="styIRS8621LNRightNumBox" style="height:8mm;padding-top:4.5mm;">
         15f
       </td>  
       <td class="styIRS8621TblLB" valign="bottom">
@@ -2442,7 +2485,7 @@
       <td class="styIRS8621Part2" valign="top">b</td>
       <td valign="top">
         Enter the total of the amounts determined in line 16a that are allocable to the current tax year<br/>and tax years before the foreign corporation became a PFIC (pre-PFIC tax years). Enter these</td>
-      <td class="styIRS8621LNRightNumBoxNBB" style="background-color:lightgrey"><span style="width:1mm;"/></td>  
+      <td class="styIRS8621LNRightNumBoxNBB" style="height:8mm;background-color:lightgrey"><span style="width:1mm;"/></td>  
       <td class="styIRS8621TblLB" style="border-bottom:0; background-color:lightgrey"><span style="width:1mm;"/></td>                                
     </tr>    
     
@@ -2458,10 +2501,10 @@
           </span>
         </div>    
       </td>                            
-      <td class="styIRS8621LNRightNumBox" valign="bottom">
+      <td class="styIRS8621LNRightNumBox" style="padding-top:0.5mm;">
         16b
       </td>  
-      <td class="styIRS8621TblLB">
+      <td class="styIRS8621TblLB" style="padding-top:0.5mm">
         <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/DistriAndDisposOfStockTyp[$index]/TotalAllcblCurrAndPrePFICTYAmt"/></xsl:call-template>
       </td>  
     </tr>
@@ -2479,7 +2522,7 @@
           </span>
         </div>
       </td>                
-      <td class="styIRS8621LNRightNumBox">
+      <td class="styIRS8621LNRightNumBox" style="height:8mm;padding-top:4.5mm;">
         16c
       </td>  
       <td class="styIRS8621TblLB" valign="bottom">
@@ -2499,10 +2542,10 @@
           </span>
         </div>
       </td>                
-      <td class="styIRS8621LNRightNumBox">
+      <td class="styIRS8621LNRightNumBox" style="padding-top:0.5mm;">
         16d
       </td>  
-      <td class="styIRS8621TblLB">
+      <td class="styIRS8621TblLB" style="padding-top:0.5mm;">
         <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/DistriAndDisposOfStockTyp[$index]/ForeignTaxCreditAmt"/></xsl:call-template>
       </td>  
     </tr>      
@@ -2520,10 +2563,10 @@
           </span>
         </div>
       </td>                
-      <td class="styIRS8621LNRightNumBox">
+      <td class="styIRS8621LNRightNumBox" style="height:8mm;padding-top:4.5mm;">
         16e
       </td>  
-      <td class="styIRS8621TblLB" valign="bottom">
+      <td class="styIRS8621TblLB" style="height:8mm;padding-top:4.5mm;">
         <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/DistriAndDisposOfStockTyp[$index]/AggregateIncrLessFrgnTxCrAmt"/></xsl:call-template>
       </td>  
     </tr>      
@@ -2539,10 +2582,10 @@
           <span class="styIRS8621DotLn">.  </span>
         </div>
       </td>                
-      <td class="styIRS8621LNRightNumBox">        
+      <td class="styIRS8621LNRightNumBox" style="height:8.5mm;padding-top:5mm;">        
         16f
       </td>  
-      <td class="styIRS8621TblLB" valign="bottom">        
+      <td class="styIRS8621TblLB" style="height:8.5mm;padding-top:5mm;">        
         <xsl:call-template name="PopulateAmount">
           <xsl:with-param name="TargetNode" select="$Form8621Data/DistriAndDisposOfStockTyp[$index]/InterestOnEachNetIncrInTaxAmt"/>
         </xsl:call-template>
@@ -2769,22 +2812,22 @@
             <br/>Event terminating election
           </th>
           <td class="styIRS8621P5Td" style="padding-left:0.5mm; text-align:left">
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/EventTerminatingElectionTxt"/></xsl:call-template><span style="width:1mm;"/>
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
           <td class="styIRS8621P5Td" style="padding-left:0.5mm; text-align:left">
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/EventTerminatingElectionTxt"/></xsl:call-template><span style="width:1mm;"/>
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
           <td class="styIRS8621P5Td" style="padding-left:0.5mm; text-align:left">
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/EventTerminatingElectionTxt"/></xsl:call-template><span style="width:1mm;"/>
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
           <td class="styIRS8621P5Td" style="padding-left:0.5mm; text-align:left">
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/EventTerminatingElectionTxt"/></xsl:call-template><span style="width:1mm;"/>
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
           <td class="styIRS8621P5Td" style="padding-left:0.5mm; text-align:left">
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/EventTerminatingElectionTxt"/></xsl:call-template><span style="width:1mm;"/>
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
           <td class="styIRS8621P5Td" style="padding-left:0.5mm; text-align:left">
-            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/EventTerminatingElectionTxt"/></xsl:call-template><span style="width:1mm;"/>
+            <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/EventTerminatingElectionTxt"/></xsl:call-template>
           </td>
         </tr>
         <tr>
@@ -2900,8 +2943,8 @@
           </td>
         </tr> 
         <tr style="font-size:7pt">
-          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt">26</th>
-          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt" scope="row" nowrap="nowrap">
+          <th class="styIRS8621P5ItemNo" scope="row" style="font-size:9pt;border-bottom:1px solid black;">26</th>
+          <th style="text-align:left; vertical-align:top; font-weight:normal; font-size:9pt;border-bottom:1px solid black;" scope="row" nowrap="nowrap">
             <div style="font-family:'Arial Narrow'; font-size:9.5pt">Interest accrued after partial</div>
             <div style="float:left; font-family:'Arial Narrow'; font-size:10pt">
               termination of election
@@ -2912,22 +2955,22 @@
               </span>    
             </div>  
           </th>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="border-bottom:1px solid black;" nowrap="nowrap">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-5]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="border-bottom:1px solid black;" nowrap="nowrap">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-4]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="border-bottom:1px solid black;" nowrap="nowrap">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-3]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="border-bottom:1px solid black;" nowrap="nowrap">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-2]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="border-bottom:1px solid black;" nowrap="nowrap">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6-1]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
-          <td class="styIRS8621P5Td" style="border-bottom:0" nowrap="nowrap">
+          <td class="styIRS8621P5Td" style="border-bottom:1px solid black;" nowrap="nowrap">
             <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="$Form8621Data/ElectionStatus[$index*6]/InterestAccrAftrPartlTermAmt"/></xsl:call-template><span style="width:1mm;"/>
           </td>
         </tr>

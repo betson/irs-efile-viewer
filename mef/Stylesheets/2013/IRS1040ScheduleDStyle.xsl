@@ -28,7 +28,7 @@
 	border-style:solid;
 	border-color:black;
 	border-width: 0px 1px 1px 0px;
-	float:left; clear:none;
+	float:none; clear:none;
 }
 .IRS1040ScheduleD_styTableCellAmt {
 	width:32mm;
@@ -39,7 +39,7 @@
 	padding-right:2px;
 	border-style:solid; border-color:black;
 	border-width: 0px 1px 1px 0px;
-	float:left; clear:none;
+	float:none; clear:none;
 }
 .IRS1040ScheduleD_styTableCellA {   /* Table Cell (a) */
   width: 158px;   /* 220px;then 60 */

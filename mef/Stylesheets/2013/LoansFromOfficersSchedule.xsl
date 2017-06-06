@@ -37,17 +37,17 @@
         </tr>  
         <tr class="styDepTblRow2">  
           <th class="styDepTblCell" scope="col" nowrap="nowrap" style="text-align: right; width: 45%">Original Amount of Loan</th>                                
-          <td class="styDepTblCell" style="text-align:left">
+          <td class="styDepTblCell" style="text-align:right">
             <span style="width:44mm;text-align:right;">
-              <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="LoanOriginalAmt"/></xsl:call-template>               
+              <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="LoanOriginalAmt"/></xsl:call-template>               
             </span>
           </td>  
         </tr>
         <tr class="styDepTblRow1">        
           <th class="styDepTblCell" scope="col" nowrap="nowrap" style="text-align: right; width: 45%">Balance Due</th>                          
-          <td class="styDepTblCell" style="text-align:left">
+          <td class="styDepTblCell" style="text-align:right">
             <span style="width:44mm;text-align:right;">
-              <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="BalanceDueAmt"/></xsl:call-template>                   
+              <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="BalanceDueAmt"/></xsl:call-template>                   
             </span>      
           </td>                                    
         </tr>
@@ -72,7 +72,7 @@
         <tr class="styDepTblRow1">                  
           <th class="styDepTblCell" scope="col" nowrap="nowrap" style="text-align: right; width: 45%">Interest Rate</th>                  
           <td class="styDepTblCell" style="text-align:left">
-            <span style="width:44mm;text-align:right;">
+            <span style="width:44mm;text-align:left;">
               <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="InterestRt"/></xsl:call-template> 
             </span>            
           </td>
@@ -97,9 +97,9 @@
         </tr>
         <tr class="styDepTblRow1">        
           <th class="styDepTblCell" scope="col" nowrap="nowrap" style="text-align: right; width: 45%">Consideration FMV</th>                              
-          <td class="styDepTblCell" style="text-align:left">
+          <td class="styDepTblCell" style="text-align:right">
             <span style="width:44mm;text-align:right;">
-              <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="ConsiderationFMVAmt"/></xsl:call-template>
+              <xsl:call-template name="PopulateAmount"><xsl:with-param name="TargetNode" select="ConsiderationFMVAmt"/></xsl:call-template>
             </span>             
           </td>
         </tr>                                    
@@ -111,8 +111,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -139,7 +141,7 @@
       <body class="styBodyClass">
         <xsl:call-template name="DocumentHeaderDependency"/>  
         <div class="styDepTitleLine">
-          <div class="styDepTitle" style="width: 90mm">
+          <div class="styDepTitle" style="width: 187mm">
             <xsl:value-of select="$depDocTitle"/>            
           </div>
         </div>        

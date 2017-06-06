@@ -15,12 +15,12 @@
   
   <xsl:template name="ShowDependencyData">
     <!-- Additional Information For Each Equity Schedule Data -->
-    <table class="styDepTbl" style="font-size:6pt">
+    <table class="styDepTblLandscape" style="font-size:8pt">
       <thead class="styTableThead">
         <tr class="styDepTblHdr">
-           <th class="styDepTblCell" scope="col" style="width:42mm">Name</th>        
-           <th class="styDepTblCell" scope="col" style="width:42mm">Type of entity</th>
-           <th class="styDepTblCell" scope="col" style="width:15mm">EIN</th>        
+           <th class="styDepTblCell" scope="col" style="width:45mm">Name</th>        
+           <th class="styDepTblCell" scope="col" style="width:45mm">Type of entity</th>
+           <th class="styDepTblCell" scope="col" style="width:18mm">EIN</th>        
            <th class="styDepTblCell" scope="col" style="width:22mm">Income (Loss) per Income Statement Amount</th>    
            <th class="styDepTblCell" scope="col" style="width:22mm">Temporary Difference Amount</th>
            <th class="styDepTblCell" scope="col" style="width:22mm">Permanent Difference Amount</th>        
@@ -37,17 +37,17 @@
                <xsl:otherwise>styDepTblRow2</xsl:otherwise>
             </xsl:choose>
             </xsl:attribute>
-            <td class="styDepTblCell" style="width:44mm;text-align:left">
+            <td class="styDepTblCell" style="width:45mm;text-align:left">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="Nm"/>
               </xsl:call-template>                  
             </td>
-            <td class="styDepTblCell" style="width:44mm;text-align:left">
+            <td class="styDepTblCell" style="width:45mm;text-align:left">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="EntityTypeTxt"/>
               </xsl:call-template>
             </td>
-            <td class="styDepTblCell" style="width:15mm;text-align:center">
+            <td class="styDepTblCell" style="width:18mm;text-align:center">
               <xsl:call-template name="PopulateEIN">
                 <xsl:with-param name="TargetNode" select="EIN"/>
               </xsl:call-template>
@@ -84,8 +84,10 @@
   </xsl:param>
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
           <title><xsl:value-of select="$depDocTitle"/></title>
 
          <!-- No Browser Caching -->
@@ -109,14 +111,14 @@
       <xsl:call-template name="GlobalStylesDep"/>
 </head>    
       <body class="styBodyClass">      
-        <xsl:call-template name="DocumentHeaderDependency"/>          
-        <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width:110mm">
+				<xsl:call-template name="DocumentHeaderDependencyLandscape"/>
+				<div class="styDepTitleLineLandscape">
+          <span class="styDepTitle" style="width:120mm">
             <xsl:value-of select="$depDocTitle"/>
           </span>
         </div>
         <!--Adding template for left over data  -->
-        <xsl:call-template name="PopulateDepCommonLeftover"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>                
+        <xsl:call-template name="PopulateDepCommonLeftoverLandscape"><xsl:with-param name="TargetNode" select="$DependencyData"/></xsl:call-template>                
         <xsl:call-template name="ShowDependencyData"/>          
         <br/>                      
       </body>

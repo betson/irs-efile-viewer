@@ -32,11 +32,10 @@
           </xsl:choose>
           </xsl:attribute>
           <td class="styDepTblCell" style="text-align:left;">
-            <span style="text-align:left;">
-              <xsl:call-template name="PopulateText">
+             <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="Desc"/>
-              </xsl:call-template>
-            </span>
+             </xsl:call-template>
+           
           </td>          
           <td class="styDepTblCell" style="text-align:right;width: 34mm">
             <span style="text-align:right;">
@@ -52,8 +51,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title><xsl:value-of select="$depDocTitle"/></title>
         <!-- No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>

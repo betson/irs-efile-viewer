@@ -16,8 +16,10 @@
 
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:value-of select="$depDocTitle"/>
         </title>
@@ -75,7 +77,7 @@
       </thead>
       <tfoot/>
       <tbody>    
-        <xsl:for-each select="$AOVSSData/Item">  
+        <xsl:for-each select="$AOVSSData/ItemInformationGrp">  
           <tr>
             <!-- Define background colors to the rows -->
             <xsl:attribute name="class">
@@ -88,13 +90,13 @@
             <td class="styDepTblCell" style="text-align:left;">
               <xsl:call-template name="PopulateText">
  
-                <xsl:with-param name="TargetNode" select="Type"/>
+                <xsl:with-param name="TargetNode" select="Desc"/>
               </xsl:call-template>
             </td>  
             <!-- Second Column -->
             <td class="styDepTblCell" style="text-align:right;width:33%">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="Amount"/>
+                <xsl:with-param name="TargetNode" select="Amt"/>
               </xsl:call-template>
             </td>
             

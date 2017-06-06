@@ -11,9 +11,11 @@
   <xsl:param name="Form8906Data" select="$RtnDoc/IRS8906"/>
   <xsl:param name="Form8906ScheduleAData" select="$RtnDoc/IRS8906/IRS8906ScheduleA"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
 	<!-- Updated 8/31/2010 <<RLW>> -->
 	  <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	<title>
 		  <xsl:call-template name="FormTitle">
 			<xsl:with-param name="RootElement" select="local-name($Form8906Data)"/>
@@ -65,6 +67,7 @@
 					<div class="styMainTitle" style="height:11mm;">
                       Distilled Spirits Credit
                     </div>
+                    <br/>
 					<div class="styFST" style="height:4mm;font-size:7pt;padding-top:.5mm;">
 					  <img src="{$ImagePath}/8906_Bullet.gif" alt="bullet image"/>
             Attach to your tax return.
@@ -78,7 +81,7 @@
           </div>
 				  </div>
 				  <div class="styTYBox" style="width:30mm;height:21mm;">
-					<div class="styOMB" style="height:2mm;">
+					<div class="styOMB" style="height:auto;">
                       OMB No. 1545-1982
                     </div>
 					<div class="styTaxYear" style="height:9mm;padding-top:0;">20<span class="styTYColor">13</span></div>
@@ -90,7 +93,7 @@
 				<!-- End Form Number and Name section -->
 				<!-- Begin Names and Identifying number section -->
 				<div class="styBB" style="width:187mm;">
-				  <div class="styNameBox" style="width:155mm;height:8mm;font-size:7pt;font-weight:normal;">
+				  <div class="styNameBox" style="width:155mm;height:auto;font-size:7pt;font-weight:normal;">
 					Name(s) shown on return<br/>
 					<!-- WARNING: Return Type will need to be update with various future form 1040 return type-->
 				    <xsl:choose>
@@ -193,15 +196,15 @@
 					<!--End of line 4 -->
 					<!--Line 5 -->
 					<div style="width:187mm;">
-					  <div class="styLNLeftNumBoxSD" style="height:4mm;">5</div>
-					  <div class="styLNDesc" style="width:139mm;height:4mm;">
+					  <div class="styLNLeftNumBoxSD" style="height:8mm;">5</div>
+					  <div class="styLNDesc" style="width:139mm;height:8mm;">
 						Add lines 3 and 4. Partnerships and S corporations, report this amount on Schedule K; all others,
 						<span style="float:left;">report this amount on Form 3800, line 1n.</span>
 						<!--Dotted Line-->
 						<span class="styDotLn" style="float:right;font-weight:bold;padding-right:1mm;">.....................</span>
 					  </div>
-					  <div class="styLNRightNumBoxNBB" style="height:4mm;padding-top:4mm;">5</div>
-					  <div class="styLNAmountBoxNBB" style="padding-top:4mm;">
+					  <div class="styLNRightNumBoxNBB" style="height:8mm;padding-top:4mm;">5</div>
+					  <div class="styLNAmountBoxNBB" style="padding-top:4mm;height:8mm;">
 						<xsl:call-template name="PopulateAmount">
 						  <xsl:with-param name="TargetNode" select="$Form8906Data/SumOfTotTxFnCstNdDistSprtCrAmt"/>
 						</xsl:call-template>
@@ -223,7 +226,7 @@
           </div>
 					<!--br class="pageEnd"/-->
 					<!-- Adding page break -->
-					<p class="pageend"/>
+					<!--<div class="pageEnd"/>-->
 				    <div class="styLeftOverTitleLine" id="LeftoverData">
 					  <div class="styLeftOverTitle">
 						Additional Data        

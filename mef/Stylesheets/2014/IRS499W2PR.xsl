@@ -9,8 +9,10 @@
   <xsl:strip-space elements="*"/>
   <xsl:param name="FormData" select="$RtnDoc/IRS499W2PR"/>
   <xsl:template match="/">
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -42,7 +44,7 @@
           <div style="width:256mm;">
             <br/>
           </div>
-          
+          <!-- Remove this later -->
           <!-- Big box covers entire form -->
           <div style="width:255mm;border-bottom:1px solid black">
             <div class="styGenericDiv" style="width:155mm;">
@@ -287,7 +289,7 @@
                     <span style="width:100%">Year:</span>
                   </span>
                   <span style="width:24mm;font-family:Arial Narrow;font-size:16pt;float:left;">
-                    2013
+                    2014
                     <span style="width:2mm;"/>
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Bottom Center - Standard Or Non Standard Code</xsl:with-param>

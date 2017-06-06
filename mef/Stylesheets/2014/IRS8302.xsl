@@ -11,8 +11,10 @@
   <xsl:template match="/">
   <!-- 6/14/2011 RLW -->
   <!-- 8/29/2011 RLW -->
-    <html lang="EN-US">
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html lang="EN-US">
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -131,7 +133,7 @@
           <!-- Begin data form -->
           <!-- Line 1 -->
           <div style="width:187mm">
-            <div class="styIRS8302Num" style="width:4mm;">1</div>
+            <div class="styIRS8302Num" style="width:4mm;padding-top:7px;">1</div>
             <div class="styIRS8302LB" style="width:180mm">
               <span style="font-weight:bold;">Method of deposit (one box must be checked)</span>
               <span style="width:4mm;"/>
@@ -140,7 +142,7 @@
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$FormData/DepositMethodCd"/>
                 </xsl:call-template>
-                <input type="checkbox" class="styCkbox" style="width:4mm;">
+                <input type="checkbox" class="styCkbox" style="width:4mm;margin-top:0px;margin-bottom:0px;">
                   <xsl:call-template name="PopulateNoCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/DepositMethodCd"/>
                     <xsl:with-param name="BackupName">IRS8302DirectDeposit</xsl:with-param>
@@ -161,7 +163,7 @@
                 <xsl:call-template name="PopulateSpan">
                   <xsl:with-param name="TargetNode" select="$FormData/DepositMethodCd"/>
                 </xsl:call-template>
-                <input type="checkbox" class="styCkbox" style="width:4mm;">
+                <input type="checkbox" class="styCkbox" style="width:4mm;margin-top:0px;margin-bottom:0px;">
                   <xsl:call-template name="PopulateYesCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/DepositMethodCd"/>
                     <xsl:with-param name="BackupName">IRS8302DirectDeposit</xsl:with-param>
@@ -227,7 +229,7 @@
                 <xsl:with-param name="TargetNode" select="$FormData/RoutingTransitNum"/>
                 <xsl:with-param name="BoxNum" select="9"/>
               </xsl:call-template>
-              <div style="height:7mm;width:1px;border:0 solid black;border-left-width:1;clear:none;float:left"/>
+              <div style="height:7mm;width:1px;border:0 solid black;border-left-width:1px;clear:none;float:left"/>
             </div>
           </div>
           <!-- Line 3 & 4 -->
@@ -308,7 +310,7 @@
                 <xsl:with-param name="TargetNode" select="$FormData/BankAccountNum"/>
                 <xsl:with-param name="BoxNum" select="17"/>
               </xsl:call-template>
-              <div style="height:7mm;width:1px;border:0 solid black;border-left-width:1;clear:none;float:left"/>
+              <div style="height:7mm;width:1px;border:0 solid black;border-left-width:1px;clear:none;float:left"/>
             </div>
             <!-- Line 4 -->
             <div class="styIRS8302Num" style="width:4mm;">4</div>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Last modified on 1/15/2014 by Robert Jones for IBM Defect 36171 Left justify data, Wanted vertical lines in which I rejected -->
+<!-- Last modified on 5/21/2015 by Robert Jones for UWR 123023 IE11 Upgrade Fixes-->
+<!-- Last modified on 1/15/2014 by Robert Jones for IBM Defect 44889 508 JAWS reading out of order -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
   <xsl:include href="CommonPathRef.xsl"/>
@@ -18,8 +20,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>
@@ -44,7 +48,7 @@
       <body class="styBodyClass">  
         <xsl:call-template name="DocumentHeaderDependency"/>
         <div class="styDepTitleLine">
-          <span class="styDepTitle" style="width: 80mm">
+          <span class="styDepTitle">
             <xsl:value-of select="$depDocTitle"/>
           </span>
         </div>
@@ -105,42 +109,30 @@
 
         <!--Displaying Dependencies-->        
         <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+        
        <div style="float:left;clear:none;">
-       <span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Affiliated Group Business Name:</span></div>  
-            <div class="styExplanationLine">
-            <div style="float: left; clear: none">
+       <span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:9pt;">Affiliated Group Business Name:</span></div>  
+            <div class="styExplanationLine" style=" text-align:left;">
+          <xsl:if test="BusinessName/BusinessNameLine1 != ''">
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1"/>
-              </xsl:call-template>
-              </div>
-            </div>
-          </div>
-        </div> 
-        
-        
-        
-         <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
-            <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;"/></div>  
-            <div class="styExplanationLine">
-            <div style="float: left; clear: none">
+              </xsl:call-template><br/>
+              </xsl:if>
+              <xsl:if test="BusinessName/BusinessNameLine2 != ''">
                <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2"/>
-              </xsl:call-template>
-              </div> 
+              </xsl:call-template><br/>
+              </xsl:if>
+              </div>
             </div>
-          </div>
-        </div> 
-        
-        
-        
+               
+               
         <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+      
             <div style="float:left;clear:none;">
             <span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Address. Either US or Foreign Type:</span>
             </div>  
-        <div class="styExplanationLine">
+        <div class="styExplanationLine" style="text-align:left;">
         <xsl:if test="USAddress/AddressLine1 != ''">
         <div style="float: left; clear: none">
               <xsl:call-template name="PopulateText">
@@ -228,26 +220,27 @@
             </div>
         </div>
         </div> 
-        </div>
+       
          
         <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
-            <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">EIN:</span></div>  
-            <div class="styExplanationLine">
-            <div style="float: left; clear: none">
-              <xsl:call-template name="PopulateEIN">
+          
+            <div style="float:left;clear:none;">
+            <span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">EIN:</span>
+            </div>  
+          <div class="styExplanationLine" style="text-align:left;">
+                 <xsl:call-template name="PopulateEIN">
                 <xsl:with-param name="TargetNode" select="EIN"/>
               </xsl:call-template>
               </div>
             </div>
-          </div>
-        </div>  
-        
-        <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
-     <div style="float:left;clear:none;">
-     <span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Electing Organization Checkbox:</span></div>  
-            <div class="styExplanationLine">
+            
+            
+            
+         <div class="styTopSectionLine">
+         <div style="float:left;clear:none;">
+     <span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Electing Organization Checkbox:</span>
+     </div>  
+          <div class="styExplanationLine" style="text-align:left;">
             <div style="float:left;clear:none;">
             <input type="checkbox" class="styCkbox">
               <xsl:call-template name="PopulateCheckbox">
@@ -258,23 +251,20 @@
 </div>
              </div>
           </div>
-        </div>            
-
-
-<div class="styTopSectionLine">
-          <div style="float: left; clear: none">
-            <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Total Grassroots Lobbying:</span></div>  
+             <br></br>
+             
+        <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Total Grassroots Lobbying:</span>
+            </div>  
 <div style="float:left;clear:none;width:44mm;text-align:left">
-
              <xsl:call-template name="PopulateAmount">
                 <xsl:with-param name="TargetNode" select="TotalGrassrootsLobbyAmt"/>
               </xsl:call-template>
             </div>
-          </div>
-        </div>            
-
+       
+                
+<br></br>
 <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+       
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Total Direct Lobbying:</span></div>  
 <div style="float:left;clear:none;width:44mm;text-align:left">
           
@@ -283,10 +273,10 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>            
+                
 
 <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+        
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Total Lobbying Expenditures:</span></div>  
 <div style="float:left;clear:none;width:44mm;text-align:left">
 
@@ -295,10 +285,10 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>            
+                 
 
 <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+          
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Other Exempt Purpose Expenditures:</span></div>  
 <div style="float:left;clear:none;width:44mm;text-align:left">
 
@@ -307,10 +297,10 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>            
+              
 
         <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+        
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Total Exempt Purpose Expenditures:</span></div>  
 <div style="float:left;clear:none;width:44mm;text-align:left">
 
@@ -319,10 +309,10 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>            
+           
 
     <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+          
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Lobbying Nontaxable Amount:</span></div> 
 <div style="float:left;clear:none;width:44mm;text-align:left">
  
@@ -331,11 +321,11 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>            
+              
               
                 
          <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+         
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Grassroots Nontaxable Amount:</span></div> 
 <div style="float:left;clear:none;width:44mm;text-align:left">
  
@@ -344,11 +334,11 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>            
+              
          
                   
            <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+       
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Tot Lobbying Grassroot Minus Non Tx:</span></div>  
 <div style="float:left;clear:none;width:44mm;text-align:left">
 
@@ -357,11 +347,11 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>         
+              
                 
      
      <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+        
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Tot Lobby Expend Mns Lobbying Non Tx:</span></div> 
 <div style="float:left;clear:none;width:44mm;text-align:left">
  
@@ -370,10 +360,10 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>               
+                  
           
            <div class="styTopSectionLine">
-          <div style="float: left; clear: none">
+         
             <div style="float:left;clear:none;"><span class="styTopSectionLineLbl" style="font-weight:bold;text-align:left;font-size:10pt;">Share Of Excess Lobbying:</span></div>  
 <div style="float:left;clear:none;width:44mm;text-align:left">
 
@@ -382,7 +372,7 @@
               </xsl:call-template>
             </div>
           </div>
-        </div>               
+                    
 
     <!-->      
           <div class="styTopSectionLine">

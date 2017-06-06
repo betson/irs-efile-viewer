@@ -37,18 +37,18 @@
                  <xsl:otherwise>styDepTblRow2</xsl:otherwise>
               </xsl:choose>
             </xsl:attribute>
-            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 6pt;font-family:verdana;width:120mm">
+            <td class="styDepTblCell" scope="col" style="text-align:left;font-size: 10pt;font-family:verdana;width:120mm">
               <xsl:call-template name="PopulateText">
-                <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1"/>
+                <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine1Txt"/>
               </xsl:call-template>
-              <xsl:if test="BusinessName/BusinessNameLine2">
+              <xsl:if test="BusinessName/BusinessNameLine2Txt">
                 <br/>
                 <xsl:call-template name="PopulateText">          
-                  <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2"/>
+                  <xsl:with-param name="TargetNode" select="BusinessName/BusinessNameLine2Txt"/>
                 </xsl:call-template>
               </xsl:if>
             </td>
-            <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 7pt;">
+            <td class="styDepTblCell" scope="col" style="text-align:center;font-size: 10pt;">
               
                <xsl:choose>
                <xsl:when test="normalize-space(EIN)">                    
@@ -75,8 +75,10 @@
   
   <!-- Main template -->
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
          <title><xsl:value-of select="$depDocTitle"/></title>
          <!-- No Browser Caching -->
          <meta http-equiv="Pragma" content="no-cache"/>

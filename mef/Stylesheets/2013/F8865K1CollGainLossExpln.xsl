@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- 06/08/2015 - Changes made for IE11 compatibility - Jeremy Nichols -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -13,7 +14,7 @@
 		</xsl:call-template>
 	</xsl:param>
 	<xsl:template name="AccountingFeesScheduleTemp">
-		<table id="AccountingFeesScheduleTbl" class="styDepTbl">
+		<table id="AccountingFeesScheduleTbl" class="styDepTbl" style="table-layout: fixed;">
 			<thead class="styTableThead">
 				<tr class="styDepTblHdr">
 					<th class="styDepTblCell" scope="col">Form 8865 K1 Collectibles Gain or Loss Explanation</th>
@@ -22,7 +23,7 @@
 			<xsl:for-each select="$DependencyData/F8865K1CollectiblesGainLossGrp">
 				<tr>
 					<xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-					<td class="styDepTblCell" style="text-align:left;font-size:7pt;">
+					<td class="styDepTblCell" style="text-align:left;font-size:7pt;overflow:hidden;">
 						<span style="text-align:left;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="ShortExplanationTxt"/>
@@ -35,8 +36,10 @@
 	</xsl:template>
 	<!-- Main template -->
 	<xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:value-of select="$depDocTitle"/>
 				</title>
@@ -61,9 +64,9 @@
 			</head>
 			<body class="styBodyClass">
 				<xsl:call-template name="DocumentHeaderDependency"/>
-				<div class="styDepTitleLine">
-					<span class="styDepTitle">
-						<span style="width:187mm;">
+				<div class="styDepTitleLine" style="width:187mm;">
+					<span class="styDepTitle" style="width:187mm;">
+						<span style="width:182.8mm;">
 							<xsl:value-of select="$depDocTitle"/>
 						</span>
 					</span>

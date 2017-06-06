@@ -16,8 +16,10 @@
     </xsl:param>
     <!-- Main template end-->
     <xsl:template match="/">
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title><xsl:value-of select="$depDocTitle"/></title>
 				<!-- No Browser Caching -->
 				<meta http-equiv="Pragma" content="no-cache"/>
@@ -43,7 +45,7 @@
 			<xsl:call-template name="DocumentHeaderDependency"/>  
 			<div class="styDepTitleLine">
 			    <span class="styDepTitle">
-					<span class="styDepTitle" style="width:125mm;">
+					<span class="styDepTitle" style="width:130mm;">
 						<span style="padding-right:1.5mm;">TY</span>
 						<xsl:call-template name="PopulateReturnHeaderTaxYear"/>
 						<span style="padding-left:1.5mm;">Mining Exploration Cost Recapture Statement</span>
@@ -54,7 +56,7 @@
 				<!-- Mining Exploration Cost Recapture Statement - Column 1-->
 				<div class="styTopSectionLine" style="width:187mm;">
 				    <div style="float:left;clear:none;" class="styTopSectionLineLbl">Statement:</div>
-				    <div class="styExplanationLine">
+				    <div style="width:187mm;padding-top:2mm;float:left;clear:none;">
 						<xsl:call-template name="PopulateText">
 						  <xsl:with-param name="TargetNode" select="$DependencyData/MediumExplanationTxt"/>
 						</xsl:call-template>

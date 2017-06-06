@@ -10,8 +10,10 @@
   <!--  Defines the stage of the data, e.g. original or latest  -->
   <xsl:param name="FormData" select="$RtnDoc/IRS1120FScheduleI"/>
   <xsl:template match="/">
-    <html>
+    <xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
+		<html>
       <head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($FormData)"/>
@@ -74,14 +76,13 @@ separate instructions is available at www.irs.gov/form1120f.
                   </div>
                   </th>
                   <!--OMB/Tax Year-->
-                  <th class="sty1120FSchIOMB" style="width:32mm" scope="col">
-                    OMB No. 1545-0126
+                  <th  rowspan="2" style="width:32mm;" scope="col">
+										<div class="styTYBox" style="width:31mm;height:19.5mm;border-left-width: 2px;">
+											<div style="height:2mm;"/>
+											<div class="styOMB">OMB No. 1545-0126</div>
+											<div class="styTY" style="height:8mm;padding-top:1mm;">20<span class="styTYColor">13</span></div>
+										</div>
                 </th>
-                </tr>
-                <tr>
-                  <td class="sty1120FSchITY">
-                  20<span class="styTYColor">13</span>
-                  </td>
                 </tr>
               </tbody>
             </table>
@@ -115,11 +116,12 @@ separate instructions is available at www.irs.gov/form1120f.
             <!--Line A-->
             <div class="sty1120FSchILineABNum">A</div>
             <div class="sty1120FSchILineABDesc">
+              Check here if the corporation is a foreign bank as defined in Regulations section 1.8825(c)(4)
               <div class="sty1120FSchIRightFloat">
                 <span class="sty1120FSchIDotLn" style="padding-right:0.2mm">...........</span>
                 <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
                 <span style="width:2.7mm"/>
-                <input type="checkbox" class="styCkbox">
+                <input type="checkbox" alt="alt" class="styCkbox">
                   <xsl:call-template name="PopulateCheckbox">
                     <xsl:with-param name="TargetNode" select="$FormData/ForeignBankDefSect18825c4Ind"/>
                     <xsl:with-param name="BackupName">IRS1120FSchIForeignBankYes</xsl:with-param>
@@ -131,7 +133,6 @@ separate instructions is available at www.irs.gov/form1120f.
                   <xsl:with-param name="TargetNode" select="$FormData/ForeignBankDefSect18825c4Ind"/>
                   <xsl:with-param name="BackupName">IRS1120FSchIForeignBankYes</xsl:with-param>
                 </xsl:call-template>
-              Check here if the corporation is a foreign bank as defined in Regulations section 1.8825(c)(4)
             </label>
             </div>
             <!--Line B-->
@@ -140,8 +141,8 @@ separate instructions is available at www.irs.gov/form1120f.
             This Schedule I is being completed with respect to <i>(check one):</i>
             </div>
             <div class="sty1120FSchILineABNum" style="float:left;clear:none"/>
-            <div class="sty1120FSchILineABDesc" style="width:181mm;float:left;clear:none;border-right-width:0">
-              <input type="checkbox" class="styCkbox">
+            <div class="sty1120FSchILineABDesc" style="width:181mm;float:left;clear:none;border-right-width:0;height:auto;">
+              <input type="checkbox" alt="alt" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/AdjustedUSBookedLiabMthdInd"/>
                   <xsl:with-param name="BackupName">IRS1120FSchIAdjustedUSBooked</xsl:with-param>
@@ -157,8 +158,8 @@ separate instructions is available at www.irs.gov/form1120f.
               </label>
             </div>
             <div class="sty1120FSchILineABNum" style="float:left;clear:none"/>
-            <div class="sty1120FSchILineABDesc" style="width:181mm;float:left;clear:none;border-right-width:0">
-              <input type="checkbox" class="styCkbox">
+            <div class="sty1120FSchILineABDesc" style="width:181mm;float:left;clear:none;border-right-width:0;height:5mm;">
+              <input type="checkbox" alt="alt" class="styCkbox">
                 <xsl:call-template name="PopulateCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/SeparateCurrencyPoolsMethodInd"/>
                   <xsl:with-param name="BackupName">IRS1120FSchISeparateCurrencyPools</xsl:with-param>
@@ -195,7 +196,7 @@ separate instructions is available at www.irs.gov/form1120f.
                   <br/>
                     <i>(check one):</i>
                     <br/>
-                    <input type="checkbox" class="styCkbox">
+                    <input type="checkbox" alt="alt" class="styCkbox">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="$FormData/AdjustedBasisMethodInd"/>
                         <xsl:with-param name="BackupName">IRS1120FSchIAdjustedBasis</xsl:with-param>
@@ -209,7 +210,7 @@ separate instructions is available at www.irs.gov/form1120f.
                       <span style="width:0.5mm"/>
                   Adjusted basis method: Regs. sec. 1.8825(b)(2)(i)<br/>
                     </label>
-                    <input type="checkbox" class="styCkbox">
+                    <input type="checkbox" alt="alt" class="styCkbox">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="$FormData/FairMarketValueMethodInd"/>
                         <xsl:with-param name="BackupName">IRS1120FSchIFairMarketValue</xsl:with-param>
@@ -488,10 +489,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericNum">6</td>
                   <td class="sty1120FSchIStep2Desc" scope="row">
+                     Specify the method used to determine the amounts in Step 2 (check one):
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.....</span>
                     </div>
-                     Specify the method used to determine the amounts in Step 2 (check one):
                 </td>
                   <td class="sty1120FSchIStep2AmountLastCol" style="border-bottom:0;border-right-width:1px">
                     <xsl:call-template name="PopulateAmount">
@@ -508,9 +509,8 @@ separate instructions is available at www.irs.gov/form1120f.
                   <td class="sty1120FSchIGenericNum"/>
                   <td class="sty1120FSchIStep2Desc" scope="row" style="font-size:6pt;">
                     <div class="sty1120FSchIRightFloat">
-                      <!--<span class="sty1120FSchIDotLn">....</span>--> 
                     </div>
-                    <input type="checkbox" class="styCkbox">
+                    <input type="checkbox" alt="alt" class="styCkbox">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="$FormData/ActualRatioMethodInd"/>
                         <xsl:with-param name="BackupName">IRS1120FSchIActualRatio</xsl:with-param>
@@ -521,7 +521,6 @@ separate instructions is available at www.irs.gov/form1120f.
                         <xsl:with-param name="TargetNode" select="$FormData/ActualRatioMethodInd"/>
                         <xsl:with-param name="BackupName">IRS1120FSchIActualRatio</xsl:with-param>
                       </xsl:call-template>
-                      <span style="width:2mm"/>
 						Actual ratio under Regs. sec. 1.8825(c)(2). <b>Complete lines 6a through 6c below.</b>
                     </label>
                   </td>
@@ -540,9 +539,8 @@ separate instructions is available at www.irs.gov/form1120f.
                   <td class="sty1120FSchIGenericNum"/>
                   <td class="sty1120FSchIStep2Desc" scope="row">
                     <div class="sty1120FSchIRightFloat">
-                      <!--<span class="sty1120FSchIDotLn">.....</span>-->
                     </div>
-                    <input type="checkbox" class="styCkbox">
+                    <input type="checkbox" alt="alt" class="styCkbox">
                       <xsl:call-template name="PopulateCheckbox">
                         <xsl:with-param name="TargetNode" select="$FormData/FixedRatioMethodInd"/>
                         <xsl:with-param name="BackupName">IRS1120FSchIFixedRatio</xsl:with-param>
@@ -553,7 +551,6 @@ separate instructions is available at www.irs.gov/form1120f.
                         <xsl:with-param name="TargetNode" select="$FormData/FixedRatioMethodInd"/>
                         <xsl:with-param name="BackupName">IRS1120FSchIFixedRatio</xsl:with-param>
                       </xsl:call-template>
-                      <span style="width:2mm"/>
                   Fixed ratio under Regs. sec. 1.8825(c)(4). <b>Complete line 6d below.</b>
                     </label>
                   </td>
@@ -572,10 +569,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetter">a</td>
                   <td class="sty1120FSchIStep2Desc" scope="row">
+					  Average worldwide liabilities
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">....................</span>
                     </div>
-                  Average worldwide liabilities
                 </td>
                   <td class="sty1120FSchIStep2Amount">
                     <xsl:call-template name="PopulateAmount">
@@ -590,10 +587,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetter">b</td>
                   <td class="sty1120FSchIStep2Desc" scope="row">
+					  Average worldwide assets
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.....................</span>
                     </div>
-                  Average worldwide assets
                 </td>
                   <td class="sty1120FSchIStep2Amount">
                     <xsl:call-template name="PopulateAmount">
@@ -608,10 +605,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetter">c</td>
                   <td class="sty1120FSchIStep2Desc" scope="row">
+					  Divide line 6a by line 6b
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.....................</span>
                     </div>
-                  Divide line 6a by line 6b
                 </td>
                   <td class="sty1120FSchIStep2Amount">
                     <xsl:call-template name="PopulatePercent">
@@ -627,10 +624,10 @@ separate instructions is available at www.irs.gov/form1120f.
                   <td class="sty1120FSchIGenericLetter" style="height:11.5mm;padding-bottom:6.4mm">d</td>
                   <td class="sty1120FSchIStep2Desc" style="text-align:justify" scope="row">
                     Fixed ratio under Regs. sec. 1.8825(c)(4). If the corporation is a foreign bank as defined in Regs. sec. 1.8825(c)(4), enter 95% on line 6d. If the 
+                    corporation is not a foreign bank or an insurance company, enter 50% on line 6d
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">...............</span>
                     </div>
-                   corporation is not a foreign bank or an insurance company, enter 50% on line 6d
                 </td>
                   <td class="sty1120FSchIStep2Amount" style="padding-top:7mm">
                     <xsl:call-template name="PopulateText">
@@ -676,10 +673,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetter">b</td>
                   <td class="sty1120FSchIStep2DescLong" colspan="2" scope="row">
+					  U.S. liability reduction under Regs. sec. 1.884-1(e)(3) election.
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.........</span>
                     </div>
-                  U.S. liability reduction under Regs. sec. 1.884-1(e)(3) election.
                 </td>
                   <td class="sty1120FSchIStep2AmountLastCol">
                     <xsl:call-template name="PopulateAmount">
@@ -691,12 +688,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetter">c</td>
                   <td class="sty1120FSchIStep2DescLong" colspan="2" scope="row">
-                    <div class="sty1120FSchIRightFloat">
+                     <b>U.S.-Connected Liabilities. </b>Subtract line 7b from line 7a
+                   <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.................</span>
                       <span style="width:1.8mm"/>
                       <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
                     </div>
-                    <b>U.S.-Connected Liabilities. </b>Subtract line 7b from line 7a
                 </td>
                   <td class="sty1120FSchIStep2AmountLastCol" style="border-bottom:0">
                     <xsl:call-template name="PopulateAmount">
@@ -876,11 +873,11 @@ separate instructions is available at www.irs.gov/form1120f.
           <!--END PAGE 1-->
           <!--BEGIN PAGE 2-->
           <!--Page 2 Header-->
-          <div class="styTBB" style="width:187mm">
+          <div class="styTBB" style="width:187mm;float:none;">
+            <div>Schedule I (Form 1120-F) 2013</div>
             <div style="float:right;clear:none">
             Page <span style="font-size:8pt;font-weight:bold">2</span>
             </div>
-            <div>Schedule I (Form 1120-F) 2013</div>
           </div>
           <!--Begin Step 3 (cont) Adjusted U.S. Booked Liabilities Method-->
           <!--Step 3 (cont) Adjusted U.S. Booked Liabilities Method header-->
@@ -903,7 +900,7 @@ separate instructions is available at www.irs.gov/form1120f.
               <tbody>
                 <!--Line 10-->
                 <tr>
-                  <td class="sty1120FSchIGenericNum" style="padding-bottom:5mm">10</td>
+                  <td class="sty1120FSchIGenericNum" style="padding-bottom:7mm">10</td>
                   <td class="sty1120FSchIStep3ContAdjUSDesc" colspan="3" style="padding-top:1mm;padding-bottom:1mm">
                     <div style="width:136mm;float:left;clear:none;text-align:justify;">
                       <label>
@@ -912,27 +909,24 @@ separate instructions is available at www.irs.gov/form1120f.
                           <xsl:with-param name="BackupName">IRS1120FSchIStep3ForeignBankYes</xsl:with-param>
                         </xsl:call-template>
 						If the corporation is a foreign bank which is making a current-year election to use the published
-						average 30-day LIBOR (see instructions), check the box on this line, skip lines 10a through 10c, 
-					  </label>
-                    </div>
-                    <div style="width:136mm;float:left;clear:none;text-align:justify;">
-					  <span style="float:left;">
+						average 30-day LIBOR (see instructions), check the box on this line, skip lines 10a through 10c,                   
 					  and enter the rate on line 10d
-                        <span class="sty1120FSchIDotLn" style="padding-left:1.8mm">.....................</span>
+                        <span class="sty1120FSchIDotLn" style="padding-left:1.8mm">...........................</span>
                         <span style="width:3.0mm"/>
                         <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
-                      </span>
-                      <div style="width:3mm;float:right;clear:none;">
-                        <input type="checkbox" class="styCkbox">
+                        </label>
+					<!--/div>
+                      <div style="width:3mm;float:right;clear:none;"-->
+                        <input type="checkbox" alt="alt" class="styCkbox">
                           <xsl:call-template name="PopulateCheckbox">
                             <xsl:with-param name="TargetNode" select="$FormData/ElectionUse30DayLIBORInd"/>
                             <xsl:with-param name="BackupName">IRS1120FSchIStep3ForeignBankYes</xsl:with-param>
                           </xsl:call-template>
                         </input>
                       </div>
-                      </div>
+                     
                   </td>
-                  <td class="sty1120FSchIStep3ContAdjUSShadedCell" colspan="2">
+                  <td class="sty1120FSchIStep3ContAdjUSShadedCell" colspan="2" style="height:13mm;">
                     <span style="width:1px"/>
                   </td>
                 </tr>
@@ -941,10 +935,10 @@ separate instructions is available at www.irs.gov/form1120f.
                   <td class="sty1120FSchIGenericLetterDD" style="height:7mm;padding-bottom:3mm">a</td>
                   <td class="sty1120FSchIStep3ContAdjUSDescShort" scope="row">
                   Total interest paid or accrued during the tax year on U.S. dollar liabilities<br/>
+                  that are <b>not</b> U.S. booked liabilities included on line 8
                     <div class="sty1120FSchIRightFloat" style="padding-right:2.3mm">
                       <span class="sty1120FSchIDotLn">.......</span>
                     </div>
-                  that are <b>not</b> U.S. booked liabilities included on line 8
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">10a</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmount" style="padding-top:3mm">
@@ -961,10 +955,10 @@ separate instructions is available at www.irs.gov/form1120f.
                   <td class="sty1120FSchIGenericLetterDD" style="height:7mm;padding-bottom:3mm">b</td>
                   <td class="sty1120FSchIStep3ContAdjUSDescShort" scope="row">
                   Average U.S. dollar denominated liabilities that are <b>not</b> U.S. booked<br/>
+                  liabilities included on line 8
                     <div class="sty1120FSchIRightFloat" style="padding-right:2.3mm">
                       <span class="sty1120FSchIDotLn">...............</span>
                     </div>
-                  liabilities included on line 8
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">10b</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmount" style="padding-top:3mm">
@@ -980,10 +974,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetterDD">c</td>
                   <td class="sty1120FSchIStep3ContAdjUSDescShort" scope="row">
+                  Divide line 10a by line 10b
                     <div class="sty1120FSchIRightFloat" style="padding-right:2.3mm">
                       <span class="sty1120FSchIDotLn">...............</span>
                     </div>
-                  Divide line 10a by line 10b
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">10c</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmount">
@@ -1015,10 +1009,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetterDD">e</td>
                   <td class="sty1120FSchIStep3ContAdjUSDesc" colspan="3" scope="row">
+					  Enter the rate from line 10c or, if elected, the 30-day LIBOR on line 10d
                     <div class="sty1120FSchIRightFloat" style="padding-right:2.3mm">
                       <span class="sty1120FSchIDotLn">.........</span>
                     </div>
-					  Enter the rate from line 10c or, if elected, the 30-day LIBOR on line 10d
                       <!--Push Pin-->
                       <xsl:call-template name="SetFormLinkInline">
                         <xsl:with-param name="TargetNode" select="$FormData/UseRt"/>
@@ -1035,12 +1029,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericNum">11</td>
                   <td class="sty1120FSchIStep3ContAdjUSDesc" colspan="3" scope="row">
+                   <b>Excess U.S.-connected liabilities.</b> Subtract line 8, column (c) from line 7c
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">..........</span>
                       <span style="width:1.8mm"/>
                       <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
                     </div>
-                   <b>Excess U.S.-connected liabilities.</b> Subtract line 8, column (c) from line 7c
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">11</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmountLastCol">
@@ -1053,12 +1047,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericNum">12</td>
                   <td class="sty1120FSchIStep3ContAdjUSDesc" colspan="3" scope="row">
+                    <b>Excess interest.</b> Multiply line 10e by line 11
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">...................</span>
                       <span style="width:1.8mm"/>
                       <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
                     </div>
-                    <b>Excess interest.</b> Multiply line 10e by line 11
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">12</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmountLastCol">
@@ -1071,10 +1065,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericNum">13</td>
                   <td class="sty1120FSchIStep3ContAdjUSDesc" colspan="3" scope="row">
+					  Add lines 9, column (c) and 12
                     <div class="sty1120FSchIRightFloat" style="padding-right:2.3mm">
                       <span class="sty1120FSchIDotLn">........................</span>
                     </div>
-                  Add lines 9, column (c) and 12
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">13</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmountLastCol">
@@ -1087,10 +1081,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericNum">14a</td>
                   <td class="sty1120FSchIStep3ContAdjUSDesc" colspan="3" scope="row">
+                    <b>Scaling ratio.</b> Divide line 7c by line 8, column (c)
                     <div class="sty1120FSchIRightFloat" style="padding-right:2.3mm">
                       <span class="sty1120FSchIDotLn">..................</span>
                     </div>
-                    <b>Scaling ratio.</b> Divide line 7c by line 8, column (c)
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">14a</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmountLastCol" style="font-size:5.5pt;">
@@ -1103,10 +1097,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetterDD">b</td>
                   <td class="sty1120FSchIStep3ContAdjUSDesc" colspan="3" scope="row">
+					  Multiply line 9, column (c) by line 14a. See instructions for hedging amounts
                     <div class="sty1120FSchIRightFloat" style="padding-right:2.3mm">
                       <span class="sty1120FSchIDotLn">.........</span>
                     </div>
-                  Multiply line 9, column (c) by line 14a. See instructions for hedging amounts
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">14b</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmountLastCol">
@@ -1120,12 +1114,12 @@ separate instructions is available at www.irs.gov/form1120f.
                   <td class="sty1120FSchIGenericNum" style="padding-bottom:3mm">15</td>
                   <td class="sty1120FSchIStep3ContAdjUSDesc" colspan="3" scope="row">
                     <b>Interest expense allocable to ECI under the adjusted U.S. booked liabilities method.</b> Enter the<br/>
+					  result from line 13 or line 14b here and on line 21
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.................</span>
                       <span style="width:1.8mm"/>
                       <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
                     </div>
-                  result from line 13 or line 14b here and on line 21
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox" style="border-bottom-width:0">15</td>
                   <td class="sty1120FSchIStep3ContAdjUSAmountLastCol" style="padding-top:3mm;border-bottom-width:0">
@@ -1202,13 +1196,13 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 16a-->
                 <tr>
-                  <td class="sty1120FSchIGenericNum" style="padding-bottom:10mm">16a</td>
+                  <td class="sty1120FSchIGenericNum" style="padding-bottom:6mm">16a</td>
                   <td class="sty1120FSchIStep3ContSepCurDesc" scope="row">
                       <b>U.S. assets.</b> Enter the corporation’s U.S. assets, using the methodology in Regs. sec. 1.8825(e)(1)(i). If more columns are needed, attach statement  (see  instructions)
                         <xsl:call-template name="SetFormLinkInline">
                           <xsl:with-param name="TargetNode" select="$FormData/USAssetsAmt"/>
                         </xsl:call-template>
-                        <span class="sty1120FSchIDotLn">..............</span>
+                        <span class="sty1120FSchIDotLn"></span>
                         </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount" style="padding-top:9mm">
                     <xsl:call-template name="PopulateAmount">
@@ -1233,22 +1227,22 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 16b-->
                 <tr>
-                  <td class="sty1120FSchIGenericLetterDD" style="padding-bottom:4mm">b</td>
+                  <td class="styLNLeftNumBox" style="padding-left:4.5mm;padding-bottom:8mm;">b</td>
                   <td class="sty1120FSchIStep3ContSepCurDesc" scope="row">
+					Check here if a less than 3% currency election was made
                     <div>
                       <label>
                         <xsl:call-template name="PopulateLabel">
                           <xsl:with-param name="TargetNode" select="$FormData/LessThan3PctCurrencyElectInd"/>
                           <xsl:with-param name="BackupName">IRS1120FSchIStep3LessThan3PercentYes</xsl:with-param>
-                        </xsl:call-template>Check here if a less than 3% currency election was     made
+                        </xsl:call-template>
                   </label>
-                    </div>
-                    <div class="sty1120FSchIRightFloat">
-                      <span class="sty1120FSchIDotLn">................</span>
-                      <span style="width:4.7mm"/>
+                    <!--div class="sty1120FSchIRightFloat"-->
+                      <span class="sty1120FSchIDotLn"></span>
+                      <span style="width:1mm"/>
                       <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
-                      <span style="width:2mm"/>
-                      <input type="checkbox" class="styCkbox">
+                      <span style="width:1mm"/>
+                      <input type="checkbox" alt="alt" class="styCkbox">
                         <xsl:call-template name="PopulateCheckbox">
                           <xsl:with-param name="TargetNode" select="$FormData/LessThan3PctCurrencyElectInd"/>
                           <xsl:with-param name="BackupName">IRS1120FSchIStep3LessThan3PercentYes</xsl:with-param>
@@ -1271,12 +1265,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 17a-->
                 <tr>
-                  <td class="sty1120FSchIGenericNum ">17a</td>
-                  <td class="sty1120FSchIStep3ContSepCurDesc" scope="row">
-                    <div class="sty1120FSchIRightFloat">
-                      <span class="sty1120FSchIDotLn">........</span>
-                    </div>
+                  <td class="styLNLeftNumBox ">17a</td>
+                  <td class="sty1120FSchIStep3ContSepCurDesc" scope="row" style="text-align:left;">
                     Enter the percentage from line 6e
+                     <!--div class="sty1120FSchIRightFloat"-->
+                      <span class="sty1120FSchIDotLn" style="float:right">....</span>
+                    <!--/div-->
                   </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount" style="font-size:5pt;">
                     <xsl:call-template name="PopulatePercent">
@@ -1301,10 +1295,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 17b-->
                 <tr>
-                  <td class="sty1120FSchIGenericLetterDD" style="padding-top:0px;padding-bottom:6.5mm;">b</td>
+                  <td class="styLNLeftNumBox" style="padding-left:4.5mm;padding-top:1mm;">b</td>
                   <td class="sty1120FSchIStep3ContSepCurDesc" scope="row">
                     <b>U.S.-connected liabilities. </b>Multiply line 16a by line 17a, or, if a liability reduction election is made, see instructions 
-                        <span class="sty1120FSchIDotLn">...............</span>   
+                        <span class="sty1120FSchIDotLn"></span>   
                   </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount">
                     <span style="float:left;">
@@ -1357,12 +1351,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 18a-->
                 <tr>
-                  <td class="sty1120FSchIGenericNum" style="padding-top:0px;padding-bottom:10mm">18a</td>
+                  <td class="styLNLeftNumBox" >18a</td>
                   <td class="sty1120FSchIStep3ContSepCurDesc" scope="row">
                     Enter the total interest expense paid or accrued for the tax year with respect to the foreign corporation’s worldwide liabilities denominated in that foreign 
                     <span style="float:left;">currency (enter in functional currency) </span>
                     <div class="sty1120FSchIRightFloat">
-                      <span class="sty1120FSchIDotLn">.......</span>
+                      <span class="sty1120FSchIDotLn">.....</span>
                     </div>
                 </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount" style="padding-top:8mm">
@@ -1388,12 +1382,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 18b-->
                 <tr style="padding-top:1mm">
-                  <td class="sty1120FSchIGenericLetterDD" style="padding-top:0px;padding-bottom:5.5mm;">b</td>
+                  <td class="styLNLeftNumBox" style="padding-left:4.5mm;">b</td>
                   <td class="sty1120FSchIStep3ContSepCurDesc">
                     Enter the corporation’s average worldwide liabilities (whether interest bearing or not) denominated in that 
                     <span style="float:left;">foreign currency (enter in functional currency) </span> 
                     <div class="sty1120FSchIRightFloat">
-                      <span class="sty1120FSchIDotLn">....</span>
+                      <span class="sty1120FSchIDotLn">...</span>
                     </div>
                   </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount" style="padding-top:6.5mm">
@@ -1419,11 +1413,11 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 18c-->
                 <tr>
-                  <td class="sty1120FSchIGenericLetterDD" style="padding-top;0px;">c</td>
+                  <td class="styLNLeftNumBox" style="padding-left:4.5mm;">c</td>
                   <td class="sty1120FSchIStep3ContSepCurDesc" scope="row">
                     <span style="float:left;"><b>Borrowing rate:</b> Divide line 18a by line 18b </span>
                     <div class="sty1120FSchIRightFloat">
-                      <span class="sty1120FSchIDotLn">.....</span>
+                      <span class="sty1120FSchIDotLn">...</span>
                     </div>
                 </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount" style="font-size:5pt;">
@@ -1449,15 +1443,16 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 19-->
                 <tr>
-                  <td class="sty1120FSchIGenericNum" style="padding-bottom:3mm">19</td>
+                  <td class="styLNLeftNumBox" >19</td>
                   <td class="sty1120FSchIStep3ContSepCurDesc" scope="row">
-                    <div style="text-align-last:justify;font-weight:bold">
-                    Interest expense allocation by separate currency
-                  </div>
+                    <div>
+                    <b> Interest expense allocation by separate currency
+                pool.</b> Multiply line 17b by line 18c
                     <div class="sty1120FSchIRightFloat">
-                      <span class="sty1120FSchIDotLn">........</span>
+                      <span class="sty1120FSchIDotLn">.......</span>
                     </div>
-                    <b>pool.</b> Multiply line 17b by line 18c
+                   
+                    </div>
                 </td>
                   <td class="sty1120FSchIStep3ContSepCurAmount" style="padding-top:3mm;border-bottom-width:2px">
                     <xsl:call-template name="PopulateAmount">
@@ -1482,15 +1477,14 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 20-->
                 <tr style="padding-top:1mm">
-                  <td class="sty1120FSchIGenericNum" style="padding-bottom:5.5mm">20</td>
+                  <td class="styLNLeftNumBox" >20</td>
                   <td class="sty1120FSchIStep3ContSepCurDesc" style="width:155mm" colspan="4">
                     <div style="text-align-last:justify">
-                      <b>Interest expense allocable to ECI under the separate currency pools method.</b> Total the amounts on line 19, columns (a) through (d), and amounts from attached statement, if any, and enter the result here and
+                      <b>Interest expense allocable to ECI under the separate currency pools method.</b> Total the amounts on line 19, columns (a) through (d), and amounts from attached statement, if any, and enter the result here and on line 21
                   </div>
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.................................</span>
                     </div>
-                  on line 21
                 </td>
                   <td class="sty1120FSchIStep3ContSepCurAmountLastCol" style="border-bottom-width:0;padding-top:6.5mm">
                     <xsl:call-template name="PopulateAmount">
@@ -1517,10 +1511,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericNum" style="padding-bottom:0mm;">21</td>
                   <td class="sty1120FSchISummaryDescShort " scope="row">
+					  Amount from line 15 or line 20, as applicable
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.........</span>
                     </div>
-                  Amount from line 15 or line 20, as applicable
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">21</td>
                   <td class="sty1120FSchISummaryAmount">
@@ -1541,11 +1535,11 @@ separate instructions is available at www.irs.gov/form1120f.
                   <td class="sty1120FSchISummaryDescShort " scope="row">
                     <!--<div style="text-align-last:justify">-->
                     Enter the corporation’s interest expense directly  
+                    allocable under Regs. sec. 1.8825(a)(1)(ii).(Include total from Schedule P, line 15b.)
                   <!--</div>-->
                      <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">...</span>
                      </div>
-                    allocable under Regs. sec. 1.8825(a)(1)(ii).(Include total from Schedule P, line 15b.)
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox">22</td>
                   <td class="sty1120FSchISummaryAmount" style="vertical-align:bottom;">
@@ -1564,12 +1558,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericNum">23</td>
                   <td class="sty1120FSchISummaryDesc" colspan="3" scope="row">
-                    <div class="sty1120FSchIRightFloat">
-                      <span class="sty1120FSchIDotLn">.......</span>
+                     <b>Interest expense allocable to ECI under Regs. sec. 1.8825.</b> Add lines 21 and 22
+                   <div class="sty1120FSchIRightFloat">
+                      <span class="sty1120FSchIDotLn">.....</span>
                       <span style="width:1.5mm"/>
                       <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
                     </div>
-                    <b>Interest expense allocable to ECI under Regs. sec. 1.8825.</b> Add lines 21 and 22
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox ">23</td>
                   <td class="sty1120FSchISummaryAmountLastCol">
@@ -1580,12 +1574,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 </tr>
                 <!--Line 24a-->
                 <tr>
-                  <td class="sty1120FSchIGenericNum" style="padding-bottom:6mm;">24a</td>
+                  <td class="sty1120FSchIGenericNum" style="padding-bottom:3mm;">24a</td>
                   <td class="sty1120FSchISummaryDescShort" style="padding-left:0mm;" scope="row">Amount of line 23 that is disallowed as a deduction under section 265, 163(f)(2), etc. or under an income tax treaty (attach 
-                   <div class="sty1120FSchIRightFloat">
-                   <span class="sty1120FSchIDotLn">...................</span>
-                   </div>
                    statement see instructions)
+                   <div class="sty1120FSchIRightFloat">
+                   <span class="sty1120FSchIDotLn"></span>
+                   </div>
                                  <xsl:call-template name="SetFormLinkInline">
                       <xsl:with-param name="TargetNode" select="$FormData/DisallowedSection265Amt"/>
                     </xsl:call-template>
@@ -1610,10 +1604,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                  <td class="sty1120FSchIGenericLetterDD" style="padding-bottom:3mm">b</td>
                   <td class="sty1120FSchISummaryDescShort" scope="row">Deferred interest expense under section 163(e)(3), 163(j), or 267(a)(3),         
+                     etc. (attach statement see instructions)
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.........</span>
                     </div>
-                     etc. (attach statement see instructions)
                   <xsl:call-template name="SetFormLinkInline">
                       <xsl:with-param name="TargetNode" select="$FormData/DefrdIntExpnsSect163Or267Amt"/>
                     </xsl:call-template>
@@ -1638,10 +1632,10 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericLetterDD" style="padding-bottom:3mm">c</td>
                   <td class="sty1120FSchISummaryDescShort" scope="row">Amount of line 23 that is capitalized 	under section 263A (attach
+                  statement see instructions)
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">.............</span>
                     </div>
-                  statement see instructions)
                   <xsl:call-template name="SetFormLinkInline">
                   <xsl:with-param name="TargetNode" select="$FormData/CapitalizedSection263AAmount"/>
                     </xsl:call-template>
@@ -1666,11 +1660,11 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                  <td class="sty1120FSchIGenericLetterDD">d</td>
                   <td class="sty1120FSchISummaryDesc" colspan="3" scope="row">
+                  Combine lines 24a through 24c
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">........................</span>
                       <span style="width:1.5mm"/>
                        </div>
-                  Combine lines 24a through 24c
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox ">24d</td>
                   <td class="sty1120FSchISummaryAmountLastCol">
@@ -1695,12 +1689,12 @@ separate instructions is available at www.irs.gov/form1120f.
                 <tr>
                   <td class="sty1120FSchIGenericNum"/>
                   <td class="sty1120FSchISummaryDesc" colspan="3" scope="row">
+                  total interest expense paid or accrued by the foreign corporation
                     <div class="sty1120FSchIRightFloat">
                       <span class="sty1120FSchIDotLn">............</span>
                       <span style="width:1.5mm"/>
                       <img src="{$ImagePath}/1120_Bullet_Md.gif" alt="Bullet Image"/>
                     </div>
-                  total interest expense paid or accrued by the foreign corporation
                 </td>
                   <td class="sty1120FSchIGenericRightNumBox" style="border-bottom-width:0">25</td>
                   <td class="sty1120FSchISummaryAmountLastCol" style="border-bottom-width:0">

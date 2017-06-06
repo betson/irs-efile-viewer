@@ -11,8 +11,10 @@
 	<xsl:param name="Form1120FScheduleSData" select="$RtnDoc/IRS1120FScheduleS"/>
 	<xsl:template match="/">
 		<!-- Updated 05/07/2012 (CJ) R8_D2 -->
+		<xsl:text disable-output-escaping="yes">&lt;!DOCTYPE html&gt;</xsl:text>
 		<html>
 			<head>
+				<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 				<title>
 					<xsl:call-template name="FormTitle">
 						<xsl:with-param name="RootElement" select="local-name($Form1120FScheduleSData)"/>
@@ -37,14 +39,14 @@
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
-			<body class="styBodyClass">
+			<body class="styBodyClass" style="width:187mm;">
 				<form name="IRS1120F ScheduleS">
 					<!--   BEGIN WARNING LINE  -->
 					<xsl:call-template name="DocumentHeader"/>
 					<!--   END WARNING LINE   -->
 					<!--   BEGIN FORM HEADER  -->
-					<div class="sty1120ScheduleHBB" style="width:187mm;height:18mm">
-						<div class="sty1120ScheduleHFN" style="height:23mm;">
+					<div class="sty1120ScheduleHBB" style="width:187mm;height:24mm;border-bottom-width:2px;">
+						<div class="sty1120ScheduleHFN" style="width:29mm;height:24mm;border-right-width:2px;">
 							<div class="styFormNumber" style="width:29mm;font-size:9pt;">SCHEDULE S
                 <br/>
 								<span style="font-size:9pt;">(Form 1120-F)</span>
@@ -53,8 +55,8 @@
 								<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData"/>
 								</xsl:call-template>
-								<br/>
-								<span style="font-size:6pt;">Department of the Treasury</span>
+								<br/><br/>
+								<span style="font-size:6pt;font-weight: normal;">Department of the Treasury</span>
 								<br/>
 							</div>
 							<div style="font-size:6pt;">Internal Revenue Service </div>
@@ -73,19 +75,19 @@
 							</div>
 						</div>
 						<!-- Tax Year Box -->
-						<div class="styTYBox" style="height: 23mm;width:37mm;">
+						<div class="styTYBox" style="width:37mm;height:24mm;border-left-width:2px;">
 							<!-- OMB No. -->
 							<div class="styOMB" style="text-align:center;">OMB No. 1545-0126</div>
 							<!-- Tax Year -->
-							<div class="styTY" style="text-align: center; padding-top: 2.5mm">
+							<div class="styTY" style="text-align: center; padding-top: 4.5mm">
 								20<span class="styTYColor">13</span>
 							</div>
 						</div>
 					</div>
 					<!--   END FORM HEADER   -->
 					<!--   BEGIN TAXPAYER INFO   -->
-					<div class="styBB" style="width:187mm;float:left;clear:left;">
-						<div class="styNameBox" style="width:135mm;height:8mm;font-size:7pt;font-weight:normal;">
+					<div class="styBB" style="width:187mm;height:10mm;float:left;clear:left;">
+						<div class="styNameBox" style="width:135mm;height:10mm;font-size:7pt;font-weight:normal;">
 							Name of corporation
 							<br/>
 							<span>
@@ -98,7 +100,7 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styEINBox" style="width:51mm;height:4mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
+						<div class="styEINBox" style="width:51mm;height:10mm;padding-left:2mm;font-size:7pt;font-weight:bold;">
               Employer identification number
               <br/>
 							<br/>
@@ -112,7 +114,7 @@
 					</div>
 					<!--   END TAXPAYER INFO   -->
 					<!-- BEGIN PART I -->
-					<div class="styBB" style="width:187mm;border-top-width:1px;">
+					<div class="styBB" style="width:187mm;border-top-width:0px;">
 						<div class="styPartName" style="width:23mm;">Part I </div>
 						<div class="styPartDesc" style="width:164mm;">Qualified Foreign Corporation </div>
 					</div>
@@ -120,12 +122,12 @@
 					<!-- Line 1a-->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">1a</div>
-						<div class="styLNDesc" style="width:127.5mm;">
+						<div class="styLNDesc" style="width:121mm;">
               Enter the name of the qualified foreign country in which the foreign corporation was organized
               <img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 							<span style="width:3mm;"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:51mm;text-align:left">
+						<div class="styUnderlineAmount" style="width:58mm;text-align:left">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ForeignCountryCd"/>
 							</xsl:call-template>
@@ -134,7 +136,7 @@
 					<!--Line 1b  -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="padding-left:4mm;">b</div>
-						<div class="styLNDesc" style="width:178mm;">
+						<div class="styLNDesc" style="width:178mm;height:6mm;">
 							<span class="styText">
 							Check one (and only one) of the following boxes to indicate the type of equivalent exemption granted by the foreign country listed
 							on line 1a above:
@@ -145,7 +147,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
 						<div class="styLNDesc" style="width:178mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/DomesticLawInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSDomesticLaw</xsl:with-param>
@@ -164,7 +166,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
 						<div class="styLNDesc" style="width:178mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox"> 
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ExchangeOfNotesInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSExchangeOfNotes</xsl:with-param>
@@ -183,7 +185,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
 						<div class="styLNDesc" style="width:178mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/IncomeTaxConventionInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSIncomeTaxConvention</xsl:with-param>
@@ -201,7 +203,7 @@
 					<!--  Line 1c  -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="padding-left:4mm;">c</div>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;height:8mm;">
 							<span class="styText">
 							 Enter the applicable authority (i.e., the specific provision) of the equivalent exemption type indicated on line 1b (see instructions)
 							</span>
@@ -227,13 +229,15 @@
 					</div>
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;height:8mm;">
 							<span class="styText">
-								<b>Note:</b> If an amount is not readily determinable, enter a reasonable estimate. If an estimate is used on any of the lines      below, check here
-                            </span>
+								<b>Note:</b> If an amount is not readily determinable, enter a reasonable estimate. If an estimate is used on any of the lines below,
+                            </span>                            
+                            <br/>
+                            <div style="float:left;padding-right:1mm;padding-top:1mm;"> check here</div>
 							<img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 							<span style="width:1mm"/>
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/EstimateUsedInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSEstimateUsed</xsl:with-param>
@@ -343,8 +347,8 @@
 									<span style="width: 2px"/>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/IncdtlCharterOrDryLsIncmAmt"/>
+									<xsl:call-template name="PopulateAmount">                                             
+										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/IncdtlCharterOrDryLsIncmFAmt"/>
 									</xsl:call-template>
 									<span style="width: 2px"/>
 								</xsl:otherwise>
@@ -396,8 +400,8 @@
 									<span style="width: 2px"/>
 								</xsl:when>
 								<xsl:otherwise>
-									<xsl:call-template name="PopulateAmount">
-										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/IncmIncdtlIntntlShipsArcrftAmt"/>
+									<xsl:call-template name="PopulateAmount">                                             
+										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/IncmIncdtlIntntlShipArcrftFAmt"/>
 									</xsl:call-template>
 									<span style="width: 2px"/>
 								</xsl:otherwise>
@@ -445,8 +449,8 @@
 							<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;padding-right:1mm;">..........................</span>
 						</div>
-						<div class="styLNRightNumBox" style="height:11mm;padding-top:7mm">2h</div>
-						<div class="styLNAmountBox" style="width:35mm;height:11mm;padding-top:7mm;">
+						<div class="styLNRightNumBox" style="height:11mm;padding-top:6mm">2h</div>
+						<div class="styLNAmountBox" style="width:35mm;height:11mm;padding-top:6mm;">
 							<xsl:choose>
 								<xsl:when test="normalize-space($Form1120FScheduleSData/IncomeFromJointVentureAmt)">
 									<xsl:call-template name="PopulateAmount">
@@ -466,14 +470,14 @@
 					<!-- STOCK OWNERSHIP TEST -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
-						<div class="styLNDesc" style="width:179mm;font-size:8pt;">
+						<div class="styLNDesc" style="width:179mm;font-size:8pt;padding-top:0mm;">
 							<b>Stock ownership test of Regulations section 1.883-1(c)(2): </b>
 						</div>
 					</div>
 					<!--    Line 3  -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">3</div>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;height:6mm;">
 							<span class="styText">Check one (and only one) of the following boxes to indicate the test under
               which the stock ownership test of Regulations section 1.883-1(c)(2) was satisfied:
             </span>
@@ -483,7 +487,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
 						<div class="styLNDesc" style="width:179mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/PubliclyTradedTestInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSPubliclyTradedTest</xsl:with-param>
@@ -503,7 +507,7 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
 						<div class="styLNDesc" style="width:179mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCStockOwnershipTestInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSCFCStockOwnershipTest</xsl:with-param>
@@ -522,8 +526,8 @@
 					<!-- Qualified Shareholder Stock Ownership Test -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD"/>
-						<div class="styLNDesc" style="width:179mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+						<div class="styLNDesc" style="width:179mm;height:5mm;">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/QualifiedShrStkOwnrTestInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSCFCQualifiedShrStockOwnershipTest</xsl:with-param>
@@ -545,13 +549,13 @@
 						<div class="styLNDesc" style="width:170mm;">
 							<span class="styText">Check the box if any of the shares of the foreign corporation's
 							stock or the stock of any direct, indirect, or constructive 
-							<span style="float:left;">shareholder are issued in bearer form </span>
 							</span>
+							<span style="float:left;">shareholder are issued in bearer form </span>
 							<!--Dotted Line-->
 							<span class="styDotLn" style="float:right;padding-right:1mm;">.............................</span>
 						</div>
-						<div style="width:8mm;float:right;padding-top:3.5mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+						<div style="width:8mm;float:right;padding-top:2.5mm;">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox"> 
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/AnyShrFrgnStkIssdBearerFormInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSAnyShrFrgnStkIssdInBearerForm</xsl:with-param>
@@ -576,17 +580,17 @@
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD" style="padding-left:4mm">a</div>
 						<div class="styLNDesc" style="width:170mm;">
-              <span class="styText">
+						  <span class="styLNDesc" style="width:170mm;">
                   Check the box on this line 5a if none of the bearer 
                   shares (other than bearer shares maintained in a dematerialized or immobilized 
                   book-entry system) were relied on to satisfy any of the stock ownership tests 
-                  described in Regulations section <span style="float:left;">1.883-1(c)(2) </span>
+							  described in Regulations section 1.883-1(c)(2) 
               </span>
                 <!--Dotted Line-->
-              <span class="styDotLn" style="float:right;padding-right:1mm;">.....................................</span>
+						  <span class="styDotLn" style="float:right;padding-right:1mm;">..</span>
 						</div>
-						<div style="width:8mm;float:right;padding-top:7mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+						<div style="width:8mm;float:right;padding-top:3mm;">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/NoBearerSharesReliedInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSNoBearerSharesReliedOn</xsl:with-param>
@@ -604,7 +608,7 @@
 						<div class="styLNLeftNumBoxSD" style="padding-left:4mm">b</div>
 						<div class="styLNDesc" style="width:170mm;">
 							<!-- Line 5b -->
-							<span class="styText">
+							<span class="styLNDesc" style="width:170mm;">
 							   Check the box on this line 5b if any of the bearer 
 							   shares were maintained in a dematerialized or immobilized 
 							   book-entry system <span style="float:left;"> and were relied on to satisfy any of the stock ownership tests 
@@ -614,7 +618,7 @@
 							<span class="styDotLn" style="float:right;padding-right:1mm;">......</span>
 						</div>
 						<div style="width:8mm;float:right;padding-top:4mm;">
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/BearerSharesMaintReliedInd"/>                                
 									<xsl:with-param name="BackupName">IRS1120FSchSBearerSharesMaintainedReliedOn</xsl:with-param>
@@ -629,7 +633,7 @@
 						</div>
 					</div>
 					<!-- BEGIN PART II -->
-					<div class="styBB" style="width:187mm;border-top-width:1px;margin-top:2mm;">
+					<div class="styBB" style="width:187mm;border-top-width:1px;">
 						<div class="styPartName" style="width:23mm;">Part II</div>
 						<div class="styPartDesc" style="width:164mm;">
 						  Stock Ownership Test for Publicly-Traded Corporations
@@ -639,11 +643,11 @@
 					<!-- Line 6-->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">6</div>
-						<div class="styLNDesc" style="width:93mm;">
+						<div class="styLNDesc" style="width:88mm;">
 						  Enter the name of the country in which the stock is primarily traded
 						  <img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:86mm;text-align:left">
+						<div class="styUnderlineAmount" style="width:91mm;text-align:left;">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/StockTradedCountryCd"/>
 							</xsl:call-template>
@@ -652,11 +656,11 @@
 					<!-- Line 7-->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">7</div>
-						<div class="styLNDesc" style="width:98mm;">
+						<div class="styLNDesc" style="width:92mm;">
 						  Enter the name of the securities market(s) on which the stock is listed
 						  <img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:81mm;text-align:left">
+						<div class="styUnderlineAmount" style="width:87mm;text-align:left">
 							<xsl:call-template name="PopulateText">
 								<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/StockListedSecurityMarketNm"/>
 							</xsl:call-template>
@@ -666,19 +670,19 @@
 					<!-- HINTs: Part II Line 8 data will display at the end of the form whether it is in-line print or seprated print -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBoxSD">8</div>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;height:auto;">
 							<span class="styText">
 								Enter a description of each class of stock relied on to meet the "regularly traded test" of Regulations section 1.883-2(d) (see  
 							</span>
-							<span style="width:58mm;float:left;">instructions for description requirements) 
+							<span style="width:55mm;float:left;">instructions for description requirements) 
 							<img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 							</span>
 							<xsl:if test="($Print = $Separated) or (count($Form1120FScheduleSData/ClassStockInformationDsc) &gt;1) ">
-                <span class="styUnderlineAmount" style="width:121mm;float:right;text-align:left;">See Additional Data Table
+								<span class="styUnderlineAmount" style="width:124mm;float:right;text-align:left;">See Additional Data Table
                 </span>
               </xsl:if>
 							<xsl:if test="($Print != $Separated) and (count($Form1120FScheduleSData/ClassStockInformationDsc) &lt;2) ">
-                <span class="styUnderlineAmount" style="width:121mm;float:right;text-align:left;">
+							<span class="styUnderlineAmount" style="width:124mm;float:right;text-align:left;">
                 <xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ClassStockInformationDsc"/>
 								</xsl:call-template>
@@ -688,14 +692,14 @@
 					<!--   Line 9   -->
 					<div style="width:187mm;">
 					   <div class="styLNLeftNumBoxSD">9</div>
-						  <div class="styLNDesc" style="width:179mm;">
+						  <div class="styLNDesc" style="width:179mm;height:8mm;">
 							  Do one or more 5% shareholders (see instructions for definition) own in the aggregate 50% or more of the vote and value of the 
 							  <span style="width:131mm;float:left;">
 							  outstanding shares of any class of stock for more than half the number of days during the tax year?
 							   </span>
 							<!--Dotted Line-->
 							<span class="styBoldText" style="width:47mm;float:right;padding-right:1mm;">
-								<span class="styDotLn">....</span>
+								<span class="styDotLn">..</span>
 								<label>
 									<xsl:call-template name="PopulateLabelYes">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
@@ -704,7 +708,7 @@
 										Yes           
 									</label>
 								<span style="width:8px;"/>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
 										<xsl:with-param name="BackupName">IRS1120FSchSShareholdersVote</xsl:with-param>
@@ -719,7 +723,7 @@
 										No            
 									</label>
 								<span style="width:8px;"/>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 									<xsl:call-template name="PopulateNoCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShareholdersVoteInd"/>
 										<xsl:with-param name="BackupName">IRS1120FSchSShareholdersVote</xsl:with-param>
@@ -730,7 +734,7 @@
 					</div>
 					<div style="width:187mm;">
 					   <div class="styLNLeftNumBoxSD"/>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;padding-top:0mm;">
 						   If "Yes," complete line 10.
 						</div>
 					</div>
@@ -740,7 +744,7 @@
 						    If "No," skip line 10. 
 						</div>
 					  </div>
-					<div class="styTBB" style="width:187mm;height:2mm;"/>
+					<div class="styTBB" style="width:187mm;"/>
 					<!-- Page Break and Footer-->
 					<div class="pageEnd" style="width:187mm;padding-top:1mm;">
 						<div style="float:left;">
@@ -754,10 +758,11 @@
 							</span>
 						</div>
 					</div>
+					<p style="page-break-before: always"/>
 					<!-- END Page Break and Footer-->
 					<!--Begin Page 2 -->
 					<!-- Page Header -->
-					<div class="styTBB" style="width:187mm;border-bottom-width:1px;">
+					<div class="styTBB" style="width:187mm;">
 						<div style="float:left;clear:none;">
 							<div class="styLNDesc" style="width:94mm;">Schedule S (Form 1120-F) 2013</div>
 						</div>
@@ -794,7 +799,7 @@
 					  <div style="float:left;clear:none;">
 						<div class="styLNLeftNumBox"/>
 						  <div class="styLNLeftNumBox" style="width:7mm;"/>
-							<div class="styLNDesc" style="width:57mm;">Regulations section 1.883-2(d)(3)(ii) 
+							<div class="styLNDesc" style="width:54mm;">Regulations section 1.883-2(d)(3)(ii) 
 									<xsl:call-template name="SetFormLinkInline">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/DaysFrgnCorpStkCloselyHeldCnt"/>
 								</xsl:call-template>
@@ -803,7 +808,7 @@
 								<span style="width:2mm"/>
 							</div>
 							<div style="float:right;clear:none;">
-								<span class="styUnderlineAmount" style="width:115mm;text-align:left;">
+								<span class="styUnderlineAmount" style="width:118mm;text-align:left;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/DaysFrgnCorpStkCloselyHeldCnt"/>
 									</xsl:call-template>
@@ -816,7 +821,7 @@
 						<div class="styLNLeftNumBox" style="padding-left:4mm;"/>
 						<div class="styLNDesc" style="width:179mm;">
 							<b>(ii)</b>
-							<span style="width:2mm;"/>
+							<span style="width:1mm;"/>
 							<span class="styText">
 							  The total percentage of the vote and value of the class of stock that is owned by 5% shareholders during such days
 							</span>
@@ -833,7 +838,7 @@
 								<span style="width:2mm"/>
 							</div>
 							<div style="float:right;clear:none;">
-								<span class="styUnderlineAmount" style="width:162mm;text-align:left;">
+								<span class="styUnderlineAmount" style="width:25mm;text-align:left;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/TotalPctOfValueStockOwnedRt"/>
 									</xsl:call-template>
@@ -844,7 +849,7 @@
 					<!--    Line 10b  -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="padding-left:4mm;">b</div>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;height:10mm;">
 							<span class="styText">For all qualified shareholders on which the corporation intends to rely to satisfy the closely-held
                  exception test of Regulations section 1.883-2(d)(3)(ii), and who own stock in the closely-held block (directly, indirectly, or by 
                  applying the attribution rules of Regulations section 1.883-4(c), enter:</span>
@@ -856,14 +861,14 @@
 						<div style="float:left;clear:none;">
 							<div class="styLNLeftNumBox"/>
 							<div class="styLNLeftNumBox" style="width:7mm;;padding-left:0px;font-weight:bold;">(i)</div>
-							<div class="styLNDesc" style="width:126.5mm;">
+							<div class="styLNDesc" style="width:118mm;">
 								The total number of qualified shareholders, as defined in Regulations section 1.883-4(b)(1)
 							<span style="width:1mm"/>
 								<img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 								<span style="width:2mm"/>
 							</div>
 							<div style="float:right;clear:none;">
-								<span class="styUnderlineAmount" style="width:45mm;text-align:left;">
+								<span class="styUnderlineAmount" style="width:54mm;text-align:left;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/TotalQualifiedShareholdersCnt"/>
 									</xsl:call-template>
@@ -876,14 +881,14 @@
 						<div class="styLNLeftNumBox" style="padding-left:4mm;"/>
 						<div class="styLNDesc" style="width:179mm;">
 							<b>(ii)</b>
-							<span style="width:2mm;"/>
+							<span style="width:1mm;"/>
 							<span class="styText">
 								The total percentage of the value of the shares of the class of stock owned, directly or indirectly, by such qualified shareholders 
 							</span>
 						</div>
 					</div>
 					<div style="width:187mm;">
-						<div class="styGenericDiv" style="padding-left:15mm;">by country of residence (see instructions): </div>
+						<div class="styGenericDiv" style="height:6mm;padding-left:15mm;">by country of residence (see instructions): </div>
 						<!--Toggle Button for Line 10b(ii) Table -->
 						<div style="width:7mm;text-align:right;float:right;clear:none;">
 							<xsl:call-template name="SetDynamicTableToggleButton">
@@ -894,8 +899,7 @@
 							</xsl:call-template>
 						</div>
 					</div>
-					<div style="width:187mm;">
-						<div id="TPctn" style="width:187mm;border-bottom:0px;">
+					<div class="styTableContainer" id="TPctn" style="width:187mm;border-bottom:0px;">
 							<xsl:call-template name="SetInitialState"/>
 							<table class="styTable" cellspacing="0">
 								<thead class="styTableCellHeader" style="border-color: black; font-size: 8pt;border-bottom:0px;">
@@ -1056,7 +1060,6 @@
 									<!--  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
 								</tbody>
 							</table>
-						</div>
 					</div>
 					<!-- Toggle button bottom -->
 					<xsl:call-template name="SetInitialDynamicTableHeight">
@@ -1070,13 +1073,11 @@
 					<!--   Line 10b(iii) Row 1  -->
 					<div style="width:187mm;border-top-width:0px;">
 						<div class="styLNLeftNumBox" style="padding-left:4mm;"/>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;height:5mm;padding-top:2mm;">
 							<b>(iii)</b>
 							<span style="width:2mm;"/>
-							<span class="styText">
                  The days during the tax year of the corporation that such qualified 
                  shareholders owned, directly or indirectly, their shares in the 
-              </span>
 						</div>
 					</div>
 					<!--Line 10b(iii) Row 2 -->
@@ -1084,13 +1085,13 @@
 						<div style="float:left;clear:none;">
 							<div class="styLNLeftNumBox"/>
 							<div class="styLNLeftNumBox" style="width:7mm;"/>
-							<div class="styLNDesc" style="width:42mm;">closely-held block of stock
+							<div class="styLNDesc" style="width:37mm;">closely-held block of stock
                 <span style="width:1mm"/>
 								<img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 								<span style="width:2mm"/>
 							</div>
 							<div style="float:right;clear:none;">
-								<span class="styUnderlineAmount" style="width:130mm;text-align:left;">
+								<span class="styUnderlineAmount" style="width:135mm;text-align:left;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/DaysShareholdersOwnedStockCnt"/>
 									</xsl:call-template>
@@ -1098,7 +1099,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="styTBB" style="width:187mm;height:2mm;"/>
+					<div class="styBB" style="width:187mm;height:2mm;"/>
 					<!-- BEGIN PART III -->
 					<div class="styBB" style="width:187mm;">
 						<div class="styPartName" style="width:23mm;">Part III</div>
@@ -1108,16 +1109,16 @@
 					<!--    Line 11a   -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">11a</div>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;height:8mm;">
 							<span class="styText">Enter the percentage of the value of all outstanding shares of the CFC that is
 							  owned by all "qualified U.S. persons" identified in the qualified ownership statements required 
 							  under Regulations section 1.883-3(c)(2), applying the attribution of ownership rules of
               </span>
 						</div>
-						<div class="styLNDesc" style="width:58mm;padding-left:8mm;margin-top:-0.5mm;">Regulations section 1.883-3(b)(4) 
+						<div class="styLNDesc" style="width:54mm;padding-left:8mm;margin-top:-0.5mm;">Regulations section 1.883-3(b)(4) 
                           <img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:42mm;text-align:left;margin-top:-0.5mm;">
+						<div class="styUnderlineAmount" style="width:35mm;text-align:left;margin-top:-0.5mm;">
 							<xsl:call-template name="PopulatePercent">
 								<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ValueSharesOwnedUSPersonsPct"/>
 							</xsl:call-template>
@@ -1130,11 +1131,11 @@
 							<span class="styText">Enter the percentage of the value of all outstanding shares of the CFC that is
 								owned by the "qualified U.S. persons" referred to on line</span>
 						</div>
-						<div class="styLNDesc" style="width:135mm;padding-left:8mm;margin-top:-0.5mm;">
+						<div class="styLNDesc" style="width:129mm;padding-left:8mm;margin-top:-0.5mm;">
 							11a above as bearer shares maintained in a dematerialized or immobilized book-entry system 
 						  <img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:45mm;text-align:left;margin-top:-0.5mm;">
+						<div class="styUnderlineAmount" style="width:35mm;text-align:left;margin-top:-0.5mm;">
 							<xsl:call-template name="PopulatePercent">
 								<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ValueSharesOwnedQlfyUSPrsnPct"/>
 							</xsl:call-template>
@@ -1149,9 +1150,9 @@
 						</div>
 					</div>
 					<!-- Line 12 Row 2-->
-					<div style="width:187mm;">
+					<div style="width:187mm;display:block;">
 						<div class="styLNLeftNumBox"/>
-						<div class="styLNDesc">
+						<div class="styLNDesc" style="height:auto;">
 							<span class="styUnderlineAmount" style="width:179mm;text-align:left;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/USPersonsHeldStockPeriodTxt"/>
@@ -1160,7 +1161,7 @@
 						</div>
 					</div>
 					<!-- Line 13 Row 1-->
-					<div style="width:187mm;">
+					<div style="width:187mm;height:6mm;padding-top:1.5mm;">
 						<div class="styLNLeftNumBox">13</div>
 						<div class="styLNDesc" style="width:179mm;">
 						  Enter the period during which the foreign corporation was a CFC (see instructions)
@@ -1168,9 +1169,9 @@
 						</div>
 					</div>
 					<!-- Line 13 Row 2-->
-					<div style="width:187mm;">
+					<div style="width:187mm;display:block;">
 						<div class="styLNLeftNumBox"/>
-						<div class="styLNDesc">
+						<div class="styLNDesc" style="height:auto;">
 							<span class="styUnderlineAmount" style="width:179mm;text-align:left;">
 								<xsl:call-template name="PopulateText">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/FrgnCorporationWasCFCPrdTxt"/>
@@ -1179,7 +1180,7 @@
 						</div>
 					</div>
 					<!--  Line 14  -->
-					<div style="width:187mm;">
+					<div style="width:187mm;height:6mm;padding-top:1.5mm;">
 						<div class="styLNLeftNumBox">14</div>
 						<div class="styLNDesc" style="width:148mm;">
 							<span style="float:left;">Is the CFC directly held by qualified U.S. persons? </span>
@@ -1196,7 +1197,7 @@
 									Yes           
 								</label>
 								<span style="width:8px"/>
-								<input type="checkbox" class="styCkbox" name="Checkbox">
+								<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 									<xsl:call-template name="PopulateYesCheckbox">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
 										<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersons</xsl:with-param>
@@ -1213,7 +1214,7 @@
 								  No            
 							  </label>
 							<span style="width:8px"/>
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" name="Checkbox">
 								<xsl:call-template name="PopulateNoCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/CFCDirectlyHeldUSPersonsInd"/>
 									<xsl:with-param name="BackupName">IRS1120FSchSCFCDirectlyHeldUSPersons</xsl:with-param>
@@ -1221,7 +1222,7 @@
 							</input>
 						</div>
 					</div>
-					<div class="styTBB" style="width:187mm;height:2mm;"/>
+					<div class="styBB" style="width:187mm;height:2mm;"/>
 					<!-- BEGIN PART IV -->
 					<div class="styBB" style="width:187mm;">
 					  <div class="styPartName" style="width:23mm;">Part IV</div>
@@ -1231,29 +1232,24 @@
 					<!--   BEGIN LINE 15   -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox">15</div>
-						<div class="styLNDesc" style="width:179mm;">
-							<span class="styText">Check the box if more than 50% of the
-								value of the outstanding shares of the corporation is owned (or treated as owned
-								by reason of Regulations section 1.883-4(c)) by qualified shareholders for each category 
-								of income for which the exemption is claimed
+						<div class="styLNDesc" style="width:179mm;height:8mm;">
+							<span class="styLNDesc" style="width:168mm;height:8mm;">
+								<label>
+								<xsl:call-template name="PopulateLabel">
+									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShrOwnMorevalueOfOutstdShrInd"/>
+									<xsl:with-param name="BackupName">IRS1120SchSMoreThan50PctValueOutstdShares</xsl:with-param>
+								</xsl:call-template>           
+							 Check the box if more than 50% of the value of the outstanding shares of the corporation is owned (or treated as owned
+								by reason of Regulations section 1.883-4(c)) by qualified shareholders for each category	of income for which the exemption is claimed</label>
+								<span class="styDotLn" style="float:none;padding-left:2mm;padding-right:1mm;">...</span>
 							</span>
 							<!--Dotted Line-->
-							<span class="styBoldText" style="padding-right:1mm;">
-								<span style="width:16px;"/>.
-									 <span style="width:16px;"/>.
-							</span>
-							<input type="checkbox" class="styCkbox" name="Checkbox">
+							<input type="checkbox" alt="alt" class="styCkbox" style="height:8mm;padding-top:8mm;" name="Checkbox">
 								<xsl:call-template name="PopulateCheckbox">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShrOwnMorevalueOfOutstdShrInd"/>
 									<xsl:with-param name="BackupName">IRS1120SchSMoreThan50PctValueOutstdShares</xsl:with-param>
 								</xsl:call-template>
 							</input>
-							<label>
-								<xsl:call-template name="PopulateLabel">
-									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/ShrOwnMorevalueOfOutstdShrInd"/>
-									<xsl:with-param name="BackupName">IRS1120SchSMoreThan50PctValueOutstdShares</xsl:with-param>
-								</xsl:call-template>           
-							 </label>
 						</div>
 					</div>
 					<!--   BEGIN LINE 16   -->
@@ -1271,12 +1267,11 @@
 						<div class="styLNLeftNumBox" style="padding-left:4mm">a</div>
 						<div class="styLNDesc" style="width:179mm;">
 							<div style="float:left;">
-								<span class="styText" style="width:135mm;">Enter the total number of such qualified
-                  shareholders as defined in Regulations section 1.883-4(b)(1)</span>
-								<span style="width:1mm;"/>
+								<span class="styText" style="width:127mm;">Enter the total number of such qualified shareholders as defined in Regulations section 1.883-4(b)(1)
+								</span>								
 								<img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 							</div>
-							<div style="float:right;">
+							<div style="width:42mm;padding-right:1mm;">
 								<span class="styUnderlineAmount" style="width:40mm;float:right;text-align:left;margin-top:-1mm;">
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/TotQualifiedShrRegs18834b1Cnt"/>
@@ -1288,14 +1283,11 @@
 					<!--    Line 16b   -->
 					<div style="width:187mm;">
 						<div class="styLNLeftNumBox" style="padding-left:4mm;">b</div>
-						<div class="styLNDesc" style="width:179mm;">
+						<div class="styLNDesc" style="width:179mm;height:10mm;">
 							<span class="styText" style="width:172mm;float:left;clear:none;">
-								Enter the total percentage of the value of the 
-                outstanding shares owned, applying the attribution rules of Regulations
-                section 1.883-4(c), by such qualified shareholders by country of residence or
-                organization, whichever is applicable:
+								Enter the total percentage of the value of the outstanding shares owned, applying the attribution rules of Regulations section 1.883-4(c), by such qualified shareholders by country of residence or organization, whichever is applicable:
               </span>
-							<span style="width:7mm;padding-top:4mm;text-align:right;float:right;clear:none;">
+							<span style="width:7mm;padding-top:0mm;text-align:right;float:right;clear:none;">
 								<xsl:call-template name="SetDynamicTableToggleButton">
 									<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/OutstandingSharesOwnedPct"/>
 									<xsl:with-param name="containerHeight" select="5"/>
@@ -1304,7 +1296,7 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div id="TPctn2" style="width:187mm;border-bottom-width:0px;">
+						<div class="styTableContainer" id="TPctn2" style="width:187mm;border-bottom:0px;">
 							<xsl:call-template name="SetInitialState"/>
 							<table class="styTable" cellspacing="0">
 								<thead class="styTableThead">
@@ -1478,7 +1470,7 @@
 					<div style="width:187mm"/>
 					<br/>
 					<!-- Line 16c -->
-					<div style="width:187mm;">
+					<div style="width:187mm;height:12mm;padding-top:6mm;">
 						<div class="styLNLeftNumBox" style="padding-left:4mm;">c</div>
 						<div class="styLNDesc" style="width:179mm;">
 							<span class="styText">
@@ -1486,11 +1478,11 @@
 					       bearer shares mantained 
               </span>
 						</div>
-						<div class="styLNDesc" style="width:83mm;padding-left:8mm;margin-top:-0.5mm;">
+						<div class="styLNDesc" style="width:79mm;padding-left:8mm;margin-top:-0.5mm;">
               in a dematerialized or immobilized book-entry system
               <img src="{$ImagePath}/1120SchH_Bullet.gif" width="6" height="9" alt="Bullet"/>
 						</div>
-						<div class="styUnderlineAmount" style="width:45mm;text-align:left;margin-top:-0.5mm;">
+						<div class="styUnderlineAmount" style="width:25mm;text-align:left;margin-top:-0.5mm;">
 							<xsl:call-template name="PopulatePercent">
 								<xsl:with-param name="TargetNode" select="$Form1120FScheduleSData/OutstandingSharesMaintainedPct"/>
 							</xsl:call-template>
@@ -1535,7 +1527,7 @@
 						</div>
 						<!-- END Page Break and Footer-->
 					</div>
-					<!--?what this closing div for?-->
+					<p style="page-break-before: always"/>
 					<!--Page End-->
 					<!--<br class="pageEnd"/>-->
 					<!-- BEGIN Left Over Table -->
