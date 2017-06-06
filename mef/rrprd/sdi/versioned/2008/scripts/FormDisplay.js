@@ -12,8 +12,8 @@
 //
 //=========================================================
 
-var IMAGEPATH = "/mef/rrdprd/common/images/";
-var HTMLPATH = "/mef/rrdprd/common/htmls/";
+var IMAGEPATH = "/mef/rrprd/common/images/";
+var HTMLPATH = "/mef/rrprd/common/htmls/";
 
 
 //=========================================================

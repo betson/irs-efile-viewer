@@ -155,13 +155,13 @@
     font-family:arial;
   }
   .sty1040PREnglishBtn{
-    background: url("/mef/rrdprd/common/images/refreshENGButton.gif");
+    background: url("/mef/rrprd/common/images/refreshENGButton.gif");
     width:50px;
     height:13px;
     border: 0;
   }
   .sty1040PRSpanishBtn{
-    background: url("/mef/rrdprd/common/images/refreshSPButton.gif");
+    background: url("/mef/rrprd/common/images/refreshSPButton.gif");
     width:50px;
     height:13px;
     border: 0;

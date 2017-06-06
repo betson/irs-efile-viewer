@@ -5,7 +5,7 @@
 <xsl:strip-space elements="*" />
 
 <!-- Set image path -->
-<xsl:param name="ImagePath">/mef/rrdprd/common/images</xsl:param>
+<xsl:param name="ImagePath">/mef/rrprd/common/images</xsl:param>
 <xsl:variable name="TOCPathElims" select="/AppData/SubmissionReferenceAndSummary/ReturnTableOfContents/Eliminations" />
 <xsl:variable name="TOCPathAdjs" select="/AppData/SubmissionReferenceAndSummary/ReturnTableOfContents/Adjustments" />
 <xsl:variable name="TOCPathParent" select="/AppData/SubmissionReferenceAndSummary/ReturnTableOfContents/Parent" />
@@ -302,7 +302,7 @@ function init() {
 <body onload="init();">
 
 <!-- Post this form to populate the print doc list frame on the right side of the print window -->
-<form id="getPrintDocListForm" name="getPrintDocListForm" action="/mef/rrdprd/sdi/proxy/getPrintSubDocList" method="post" target="PrintReturnDoclist">
+<form id="getPrintDocListForm" name="getPrintDocListForm" action="/mef/rrprd/sdi/proxy/getPrintSubDocList" method="post" target="PrintReturnDoclist">
   <input type="hidden" name="stage" value="{/AppData/Parameters/Stage}" />
   <input type="hidden" name="dln" value="{/AppData/Parameters/DLN}" />
   <input type="hidden" name="dlnChanged" value="{/AppData/Parameters/DLNChanged}" />
