@@ -1,0 +1,70 @@
+.styDataLabelHL {   /* Highlighted Data Label */
+	background-color: khaki;
+	height: 16px;
+	font-weight: normal;
+	border-style: none; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
+	vertical-align: middle;
+	cursor: hand;
+}
+.styDataLabelClk {   /* Clicked Data Label */
+	background-color: gold;
+	height: 16px;
+	font-weight: bold;
+	border-style: none; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
+	vertical-align: middle;
+	cursor: hand;
+}
+.stySuppLabelClk {   /* Clicked Data Label */
+	background-color: #ccffcc;
+	height: 16px;
+	font-weight: bold;
+	border-style: none; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
+	vertical-align: middle;
+	cursor: hand;
+}
+.styPanel {   /* Panel Styles */
+	color: black; background-color: silver;
+	font-family: verdana, arial, sans-serif; font-size: 7pt; font-style: normal; font-weight: normal;
+	line-height: 1;
+	text-align: left; text-indent: 0px; text-decoration: none;
+	vertical-align: middle;
+	margin-top: 0px; margin-right: 0px; margin-bottom: 1px; margin-left: 2px;
+	padding-top: 1px; padding-right: 2px; padding-bottom: 2px; padding-left: 3px;
+	border-style: solid;
+	border-top-color: white; border-bottom-color: black; border-left-color: white; border-right-color: black;
+	border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;
+	width: 166;
+	height:20px;
+	float: none; clear: none;
+	cursor: auto; white-space: normal;
+}
+
+.styBtnUp {   /* Form Button Up */
+	background-color: silver;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	cursor: hand;
+	border-style: solid;
+	border-top-color: white; border-bottom-color: black; border-left-color: white; border-right-color: black;
+	border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;
+}
+.styBtnDown {   /* Form Button Down */
+	background-color: rgb( 231, 231, 231 );   /* very light gray */
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: bold;
+	text-align: center;
+	vertical-align: top;
+	cursor: default;
+	border-style: solid;
+	border-top-color: black; border-bottom-color: white; border-left-color: black; border-right-color: white;
+	/* border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; */
+	border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;
+}

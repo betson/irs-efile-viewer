@@ -1,0 +1,408 @@
+<?xml version="1.0"?>
+<!-- 09/07/2012 - Modified per UWR 69492 - Jeremy Nichols-->  
+<!-- 11/15/2012 - Modified per defect 34402 - Jeremy Nichols-->  
+<!-- 11/28/2012 - Modified per defect 34517 - Jeremy Nichols-->  
+<!-- 12/13/2012 - Modified per KISAMS #IM00823352 - Jeremy Nichols-->  
+<!-- 07/16/2013 - Modified per UWR #81810 - Jeremy Nichols -->
+<!-- 08/02/2013 - Modified per UWR #87982 - Jeremy Nichols -->
+<!DOCTYPE xsl:stylesheet [<!ENTITY nbsp "&#160;">]>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+  <xsl:include href="PopulateTemplate.xsl"/>
+  <xsl:include href="CommonPathRef.xsl"/>
+  <xsl:include href="AddHeader.xsl"/>
+  <xsl:include href="IRS8834Style.xsl"/>
+  <xsl:include href="AddOnTable.xsl"/>
+  <xsl:output method="html" indent="yes" encoding="iso-8859-1"/>
+  <xsl:strip-space elements="*"/>
+  <xsl:param name="FormData" select="$RtnDoc/IRS8834"/>
+  <xsl:template match="/">
+    <html>
+      <head>
+        <title>
+          <xsl:call-template name="FormTitle">
+            <xsl:with-param name="RootElement" select="local-name($FormData)"/>
+          </xsl:call-template>
+        </title>
+        <!-- No Browser Caching -->
+        <meta http-equiv="Pragma" content="no-cache"/>
+        <meta http-equiv="Cache-Control" content="no-cache"/>
+        <meta http-equiv="Expires" content="0"/>
+        <!-- No Proxy Caching -->
+        <meta http-equiv="Cache-Control" content="private"/>
+        <meta name="Description" content="Form IRS 8834"/>
+        <meta name="GENERATOR" content="IBM WebSphere Studio"/>
+        <xsl:call-template name="GlobalStylesForm"/>
+        <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
+        <xsl:call-template name="InitJS"/>
+        <style type="text/css">
+          <xsl:if test="not($Print) or $Print=''">
+            <xsl:call-template name="IRS8834Style"/>
+            <xsl:call-template name="AddOnStyle"/>
+          </xsl:if>
+        </style>
+      </head>
+      <body class="styBodyClass">
+        <form name="Form8834">
+          <xsl:call-template name="DocumentHeader"/>
+          <!--Title of Form -->
+          <div class="styBB" style="width:187mm;height: 19mm">
+            <div class="styFNBox" style="width:33mm;font-size: 7pt;height: 19mm">
+			    Form <span class="styFormNumber">8834</span>
+                <span style="width:2px;"/>
+                <xsl:call-template name="SetFormLinkInline">
+                  <xsl:with-param name="TargetNode" select="$FormData"/>
+                </xsl:call-template>
+                <br/>            
+				(Rev. December 2013)
+              <br/>
+              <span class="styAgency">Department of the Treasury</span>
+              <br/>
+              <span class="styAgency">Internal Revenue Service</span>
+            </div>
+            <div class="styFTBox" style="height: 19mm;width:122mm">
+              <div class="styMainTitle" style="height: 7mm;padding-top:1mm;">Qualified Electric Vehicle Credit</div>
+              <div class="styFST" style="font-size:7pt;margin-left:3mm;font-weight:bold">
+                <br/>
+                <div style="margin-left: 1.5mm;">
+                  <img src="{$ImagePath}/8834_Bullet.gif" alt="MediumBullet"/>  
+				  Attach to your tax return.
+				</div>
+               <div style="padding-top:1.5mm">
+                  <img src="{$ImagePath}/8834_Bullet.gif" alt="MediumBullet"/>  
+				  Information about Form 8834 and its instructions is at www.irs.gov/form8834.
+				</div>
+              </div>
+            </div>
+            <div class="styTYBox" style="width:30mm;height:19mm; border-left-width: 1px">
+              <div class="styOMB" style="height:2mm;">OMB No. 1545-1374</div>
+              <div class="stySequence"><span style="width:20mm;height:7.5mm;"/>Attachment<br/>Sequence No. <b>111</b>
+              </div>
+            </div>
+         </div>
+          <!--  End title of Form  -->
+          <!--  Name and Employer identification number  -->
+          <div class="styBB" style="width:187mm">
+            <div class="styNameBox" style="width:141mm;font-size:7pt;">
+      Name(s) shown on return<br/>
+              <div style="font-family:verdana;font-size:6pt;height:6mm">
+                <xsl:call-template name="PopulateReturnHeaderFiler">
+                  <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+                </xsl:call-template>
+                <br/>
+                <xsl:call-template name="PopulateReturnHeaderFiler">
+                  <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+                </xsl:call-template>
+              </div>
+            </div>
+            <div class="styEINBox" style=" padding-left:2mm; font-size:7pt;">
+              <span class="BoldText">Identifying number</span>
+              <div style="text-align:left;font-weight:normal; ">
+                <br/>
+                <xsl:choose>
+						  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+								    <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
+									</xsl:call-template>
+						  </xsl:when>
+						  <xsl:otherwise>
+									<xsl:call-template name="PopulateReturnHeaderFiler">
+								    <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+									</xsl:call-template>
+						  </xsl:otherwise>
+				</xsl:choose>                                              
+<!--                <xsl:choose>
+                  <xsl:when test="normalize-space($FormData/IdentifyingNumber) != ''">
+                    <xsl:call-template name="PopulateEIN">
+                      <xsl:with-param name="TargetNode" select="$FormData/IdentifyingNumber"/>
+                    </xsl:call-template>
+                  </xsl:when>
+                  <xsl:otherwise>
+                    <xsl:call-template name="PopulateReturnHeaderFiler">
+                      <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+                    </xsl:call-template>
+                  </xsl:otherwise>
+                </xsl:choose>-->
+              </div>
+            </div>
+          </div>
+         
+          <div class="styBB" style="width:187mm;font-size:8pt;">
+            <b>Caution.</b> This form only applies to qualified electric vehicle passive activity credits from prior
+             years (allowed on <br/>Form 8582-CR or Form 8810 for the current year).</div>
+             
+             <!-- Line 1  -->
+             <div style="width:187mm">
+				<div class="styLNLeftNumBox" style="height:8mm;padding-top:4mm;vertical-align:bottom;">1</div>
+				<div class="styLNDesc" style="width:138mm;height:8mm;padding-top:4mm;vertical-align:bottom;">
+				  Qualified electric vehicle passive activity credits allowed for your current tax year (see instructions)
+				</div>
+				<div class="styLNRightNumBox" style="height:8mm;padding-top:4mm;">1  </div>
+				<div class="styLNAmountBox" style="height:8mm;padding-top:4mm;">
+				  <xsl:call-template name="PopulateAmount">
+					<xsl:with-param name="TargetNode" select="$FormData/QlfyElecVehPssvActyCrAllwAmt"/>
+				  </xsl:call-template>
+				</div>
+			  </div>
+          
+          <!--  Line 2 -->
+          <div style="width:187mm;">
+        <div class="styLNLeftNumBox" style="padding-top:4mm;">2</div>
+        <div class="styLNDesc" style="width:100mm;padding-top:4mm;">
+          Regular tax before credits:     <br/>    
+       <img src="{$ImagePath}/8844_Bullet_Round.gif" alt="dot"/>    Individuals. Enter the amount from Form 1040, line 44, or Form 1040NR, line 42.<br/>
+        <img src="{$ImagePath}/8844_Bullet_Round.gif" alt="dot"/>    Corporations. Enter the amount from Form 1120, Schedule J, line 2; or the
+applicable line of your return<br/>
+        <img src="{$ImagePath}/8844_Bullet_Round.gif" alt="dot"/>    Estates and trusts. Enter the sum of the amounts from Form 1041, Schedule G,
+lines 1a and 1b, or the amount from the applicable line of your return.                   
+        </div>
+        <div class="styLNDesc" style="width:5mm; height:4mm;padding-top:4.5mm;">
+          <img src="{$ImagePath}/8844_Bracket_Lger.gif" alt="bracket" border="0"/>        
+        </div>
+        <div class="styLNDesc" style="width:33mm; height:4mm;">                  
+          <span class="styBoldText" style="width:33mm; height:4mm;padding-bottom:0mm;padding-top:10mm;">
+            <span style="width:8px;"/>.    
+            <span style="width:8px;"/>.  
+            <span style="width:8px;"/>.    
+            <span style="width:8px;"/>.
+            <span style="width:8px;"/>.
+            <span style="width:8px;"/>.  
+            <span style="width:8px;"/>.                                            
+          </span>                  
+        </div>
+        <div class="styLNRightNumBox" style="height:14mm;padding-top:10mm;">
+         <!-- <div class="styLNRightNumBoxNBB" style="width:7.75mm;padding-top=0.5mm;border-left-width:0px;background-color:lightgrey;"></div>-->
+         2
+        </div>
+        <div class="styLNAmountBox" style="width:32.2mm;height:14mm;padding-top: 10mm;">
+          <xsl:call-template name="PopulateAmount">
+          <xsl:with-param name="TargetNode" select="$FormData/QlfyElecVehRegularTxBfrCrAmt"/>
+        </xsl:call-template>
+        </div>
+        <div style="float:right;padding-right:32.75mm;">
+			<div class="styLNRightNumBoxNBB" style="width:8.25mm;background-color:lightgrey;height:15.75mm;border-right-width:1px;"/>
+		
+        </div>
+        </div>
+          <!-- End Line 2 -->
+          
+       <div class="styBB" style="width:187mm;">
+       <!-- Line 3a-->
+      <div style="width:187mm;">
+        <div class="styLNLeftNumBox" style="height:4.5mm;">3</div>
+        <div class="styLNDesc" style="width:138mm;height:4.5mm">
+          Credits that reduce regular tax before the qualified electric vehicle credit:
+        </div>
+        <div class="styLNRightNumBox" style="height:4.5mm;background-color:lightgrey; border-bottom-width: 0px"/>
+        <div class="styLNAmountBox" style="height:4.5mm;border-bottom-width: 0px">
+        </div>
+      </div>
+      <div style="width:187mm;">
+        <div class="styLNLeftLtrBox" style="height:4mm;">a</div>
+        <div class="styLNDesc" style="width:98.1mm;height:4mm">
+          Foreign tax credit
+          <span style="letter-spacing:4mm; font-weight:bold">  
+            ...............
+          </span>  
+        </div>
+        <div class="styLNRightNumBox" style="height:4.5mm;">3a</div>
+        <div class="styLNAmountBox" style="height:4.5mm;width:32mm;">
+          <xsl:call-template name="PopulateAmount">
+            <xsl:with-param name="TargetNode" select="$FormData/ForeignTaxCreditAmt"/>
+          </xsl:call-template>
+        </div>
+        <div class="styLNRightNumBoxNBB" style="width:8.25mm;background-color:lightgrey;height:4.5mm;border-right-width:1px;"/>
+      </div>
+            
+
+            
+      <!-- Line 3b-->
+    
+      <div style="width:187mm;">
+        <div class="styLNLeftLtrBox" style="height:4mm;">b</div>
+        <div class="styLNDesc" style="width:98.1mm;height:4mm">
+        Certain allowable credits (see instructions)
+         <span style="letter-spacing:4mm; font-weight:bold">........
+          </span> 
+        </div>
+        <div class="styLNRightNumBox" style="height:4.5mm;">3b</div>
+        <div class="styLNAmountBox" style="height:4.5mm;">
+        <!--
+          NO SCHEMA ELEMENT FOR THIS FIELD-->        
+          <xsl:call-template name="PopulateAmount">
+            <xsl:with-param name="TargetNode" select="$FormData/CertainAllowableCreditsAmt"/>
+          </xsl:call-template>
+        </div>
+        <div class="styLNRightNumBoxNBB" style="width:8.25mm;background-color:lightgrey;height:4.5mm;border-right-width:1px;"/>
+      </div>
+      <!-- End Line 3b-->
+      
+      <!-- Line 3c -->
+      <div style="width:187mm;">
+        <div class="styLNLeftLtrBox" style="height:4mm;">c</div>
+        <div class="styLNDesc" style="width:138mm;height:4mm;">
+          Add lines 3a and 3b
+            <!--Dotted Line-->
+            <span style="letter-spacing:4mm; font-weight:bold">  
+              .....................
+            </span>  
+        </div>
+        <div class="styLNRightNumBox" style="height:4.5mm;">3c</div>
+        <div class="styLNAmountBox" style="height:4.5mm;">
+          <xsl:call-template name="PopulateAmount">
+            <xsl:with-param name="TargetNode" select="$FormData/TotTaxCrBfrQlfyElecVehCrAmt"/>
+          </xsl:call-template>
+        </div>
+      </div>
+      <!-- End Line 3c -->
+      
+      <!-- Line 4  -->      
+      <div style="width:187mm">
+        <div class="styLNLeftNumBox" style="height:4.5mm;padding-top:3mm;vertical-align:bottom;">4</div>
+        <div class="styLNDesc" style="width:138mm;height:4.5mm;padding-top:3mm;vertical-align:bottom;">
+          Net regular tax. Subtract line 3c from line 2. If zero or less, enter -0- here and on line 7
+          <!--Dotted Line-->
+            <span style="letter-spacing:4mm; font-weight:bold">  
+              ....
+            </span>  
+        </div>
+        <div class="styLNRightNumBox" style="height:10mm;vertical-align:bottom;padding-top:6mm;">4 </div>
+        <div class="styLNAmountBox" style="height:10mm;vertical-align:bottom;padding-top:6mm;">
+          <xsl:call-template name="PopulateAmount">
+            <xsl:with-param name="TargetNode" select="$FormData/QlfyElecVehNetRegularTaxAmt"/>
+          </xsl:call-template>
+        </div>
+      </div>
+      
+      <!--  Line 5  -->    
+      <div style="width:187mm;">
+        <div class="styLNLeftNumBox" style="height:4mm;">5</div>
+        <div class="styLNDesc" style="width:105mm;height:4mm;">
+          Tentative minimum tax:            
+        <li style="height:4mm; padding-top: .75mm">Individuals. Enter the amount from Form 6251, line 33.</li>
+        <li style="height: 4mm; padding-top: .75mm">Corporations. Enter the amount from Form 4626, line 12.</li>
+        <li style="height: 4mm; padding-top: .75mm">Estates and trusts. Enter the amount from Schedule I (Form 1041), line 54.</li>                   
+        </div>
+        <div class="styLNDesc" style="width:5mm; height:4mm;padding-top:4.5mm;">
+          <img src="{$ImagePath}/8834_Bracket_Md.gif" style="padding-top:2mm" alt="Curly Bracket Image"/>        
+        </div>
+        <div class="styLNDesc" style="width:28mm; height:4mm;">                  
+          <span class="styBoldText" style="width:28mm; height:4mm;padding-bottom:0mm;padding-top:7mm;">
+            <span style="width:8px;"/>.    
+            <span style="width:8px;"/>.  
+            <span style="width:8px;"/>.    
+            <span style="width:8px;"/>.
+            <span style="width:8px;"/>.    
+            <span style="width:8px;"/>.                                                      
+          </span>                  
+        </div>
+
+        <div class="styLNRightNumBox" style="width:7.75mm;height:8.5mm;padding-top=0mm;border-bottom-width: 1px">
+          <div class="styLNRightNumBoxNBB" style="width:7.75mm;padding-top=0.5mm;border-left-width:0px;">
+        </div>
+        5
+        </div>
+        <div class="styLNAmountBox" style="height:8.55mm; border-bottom-width: 1px">
+          <br/>
+          <xsl:call-template name="PopulateAmount">
+            <xsl:with-param name="TargetNode" select="$FormData/QlfyElecVehTentativeMinTaxAmt"/>
+          </xsl:call-template>
+        </div>
+        <div class="styLNRightNumBoxNBB" style="width:8.25mm;height:8mm;border-right-width:1px;"/>
+      </div>
+      <!--  End Line 5  -->
+  
+      <!--  Line 6  -->
+      <div style="width:187mm;">
+        <div class="styLNLeftNumBox" style="padding-top:3mm;">6</div>
+        <div class="styLNDesc" style="width:138mm;padding-top:3mm;">
+          Subtract line 5 from line 4. If zero or less, enter -0- here and on line 7
+<span style="letter-spacing:4mm; font-weight:bold"> .........
+            </span>  
+        </div>
+        <div class="styLNRightNumBox" style="padding-top:3mm;">6
+        </div>
+        <div class="styLNAmountBox" style="padding-top:3mm;">
+          <xsl:call-template name="PopulateAmount">
+            <xsl:with-param name="TargetNode" select="$FormData/QlfyElecVehAdjRegularTaxAmt"/>
+          </xsl:call-template>
+          
+        </div>
+      </div>
+      
+      <!--  Line 7 -->
+      <div class="styLNLeftNumBox" style="height:4.5mm;"/>
+  <div class="styLNDesc" style="width:138mm;height:4mm;float:right:"/>
+  <div class="styLNRightNumBoxNBB" style="width:8.25mm;height:4.5mm;border-right-width:1px;padding-top:0mm;background-color:lightgrey;"/>
+
+  
+      
+      
+      <div style="width:187mm;">
+        <div class="styLNLeftNumBox" style="height:4.5mm;">7</div>
+        <div class="styLNDesc" style="width:138mm;height:4.5mm;">
+          <span class="styBoldText">Qualified electric vehicle credit.</span> Enter the <span class="styBoldText">smaller</span> of line 1 or line 6. Report this
+				amount on Form 1040, line 53; Form 1040NR, line 50; Form
+				1120, Schedule J, line 5b; or the appropriate line of your return.<br/>
+				If line 6 is smaller than line 1, see instructions    
+          <!--Dotted Line-->
+
+          <span style="letter-spacing:4mm; font-weight:bold">  
+            .............
+            <img src="{$ImagePath}/8834_Bullet.gif" alt="Curly Bracket Image"/>
+          </span>
+            
+        </div>
+        <div class="styLNRightNumBoxNBB" style="height:4mm;background-color:lightgrey;border-right-width:1px;width:8.25mm;padding-top:.5mm;"/>
+	<div class="styLNAmountBox" style="border-bottom-width: 0px;border-left-width:0px;"/>
+	<div class="styLNRightNumBoxNBB" style="height:2mm;background-color:lightgrey;border-right-width:1px;width:8.25mm;padding-top:.5mm;"/>
+	<div class="styLNAmountBox" style="border-bottom-width: 0px;border-left-width:0px;"/>
+        
+     <div class="styLNRightNumBox" style="height:4.5mm;padding-top:1mm; border-bottom-width: 0px;">7</div>
+           
+        <div class="styLNAmountBox" style="height:4.5mm; padding-top:1mm; border-bottom-width: 0px">
+          <xsl:call-template name="PopulateAmount">
+            <xsl:with-param name="TargetNode" select="$FormData/QlfyElecMotorVehCrAmt"/>
+          </xsl:call-template>
+        </div>  
+       </div> 
+     </div>
+     <div style="width:187mm; border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 0px; border-top-width: 1px; border-bottom-width: 0px" class="pageend">
+            <div class="styGenericDiv" style="width:117mm;font-weight:bold;">For  Paperwork Reduction Act Notice, see instructions.</div>
+            <div class="styGenericDiv" style="width:23mm;">Cat. No. 14953G</div>
+            <div class="styGenericDiv" style="float:right;">Form <span class="styBoldText">8834</span> (Rev. 12-2013)</div>
+          </div>
+          <!-- end of page 
+          <div style="width:187mm;">
+            <span class="styBoldText">For Paperwork Reduction Act Notice, see back of form. </span>
+            <span style="width:120px;"/>                      
+          Cat. No. 14953G 
+          <span style="width:125px;"/>  
+          Form <span class="styBoldText">8834</span> (2009)
+        </div>
+          <br/>
+          <br class="pageEnd"/>
+-->
+          <!-- BEGIN Left Over Table -->
+          <!-- Additonal Data Title Bar and Button -->
+          <div class="styLeftOverTitleLine" id="LeftoverData">
+            <div class="styLeftOverTitle">
+            Additional Data        
+          </div>
+            <div class="styLeftOverButtonContainer">
+              <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+            </div>
+          </div>
+          <!-- Additional Data Table -->
+          <table class="styLeftOverTbl">
+            <xsl:call-template name="PopulateCommonLeftover">
+              <xsl:with-param name="TargetNode" select="$FormData"/>
+              <xsl:with-param name="DescWidth" select="100"/>
+            </xsl:call-template>
+          </table>
+          <!-- END Left Over Table -->
+          
+         </form>
+      </body>
+    </html>
+  </xsl:template>
+</xsl:stylesheet>
