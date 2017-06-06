@@ -46,18 +46,16 @@
   <xsl:call-template name="InitJS"></xsl:call-template>
  <style type="text/css">
  
-  <!-- <xsl:if test="not($Print) or $Print=''">  -->
- 
-       <xsl:call-template name="IRS990ScheduleFStyle" />  
+    <xsl:if test="not($Print) or $Print=''">  
+      <xsl:call-template name="IRS990ScheduleFStyle" />  
       <xsl:call-template name="AddOnStyle" />
-<!--  </xsl:if>-->
+    </xsl:if>
+    
  </style>
 </head>
   <body class="styBodyClass">
  <form style="font-family:verdana; font-size:7pt" name="Form990ScheduleF">
       <xsl:call-template name="DocumentHeader" />
-  <!--     <xsl:call-template name="DocumentHeaderLandscape" />-->
-
 
 <!-- BEGIN FORM HEADER -->
 
@@ -267,9 +265,9 @@
             <xsl:with-param name="TargetNode" select="$FormData/TotalNumberOfEmployees"/>
           </xsl:call-template>
         </td>
-        <td class="styTableCell " style="width:34mm;background-color:lightgrey;border-color:black;border-right-width:1px;">&nbsp;</td>
+        <td class="styTableCell " style="width:34mm;background-color:lightgrey;border-color:black;border-right-width:1px;"><span class="styNBSP"/></td>
 
-        <td class="styTableCell " style="width:35mm;background-color:lightgrey;border-color:black;border-right-width:1px;">&nbsp;</td>
+        <td class="styTableCell " style="width:35mm;background-color:lightgrey;border-color:black;border-right-width:1px;"><span class="styNBSP"/></td>
     
         <td class="styTableCell" style="width:33mm;vertical-align:top;text-align:right;font-size:7pt;border-color:black;border-right-width:0px;">
           <xsl:call-template name="PopulateAmount">
@@ -313,7 +311,7 @@
       <!--  BEGIN   PART II  GRANTS TO ORGANIZATIONS OR ENTITIES OUTSIDE THE US -->
       <!-- ##########################################################################################-->
       
-   <div class="styNBB" style="width: 256mm;float:none;clear:none;">
+   <div class="styBB" style="width: 256mm;">
   <div class="styPartName" style="width:13mm;font-size:8.5pt;">Part II</div>
   <div class="styPartDesc" style="width:240mm;font-size:8.5pt;border-bottom-width:1px;border-color:black;padding-top:0mm;padding-bottom:0mm;"> Grants and Other Assistance to Organizations or Entities Outside the United States.
         <span class="styNormalText">Complete if the organization answered "Yes" to Form 990, </span>
@@ -731,11 +729,11 @@
                   </xsl:choose>
                 </xsl:attribute>
                    
-                <td class="styTableCell" style="background-color:pink;font-size:7pt;font-weight:normal;border-color:black;border-style:solid;border-bottom-width:1px;border-right-width:1px;text-align:left;height:7mm;width:30mm;vertical-align:top;">&nbsp;
+                <td class="styTableCell" style="background-color:pink;font-size:7pt;font-weight:normal;border-color:black;border-style:solid;border-bottom-width:1px;border-right-width:1px;text-align:left;height:7mm;width:30mm;vertical-align:top;"><span class="styNBSP"/>
              <!--  <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template><br/>
           <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param></xsl:call-template>-->
                 </td>
-                <td class="styTableCell" style="font-size:7pt;border-color:black;border-style:solid;width:20mm;text-align:left;padding-top:1mm;vertical-align:top;border-bottom-width:1px;border-right-width:1px;">&nbsp;
+                <td class="styTableCell" style="font-size:7pt;border-color:black;border-style:solid;width:20mm;text-align:left;padding-top:1mm;vertical-align:top;border-bottom-width:1px;border-right-width:1px;"><span class="styNBSP"/>
                 <!--    <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="IRCSubsection" />
                     </xsl:call-template>  <br />
@@ -978,7 +976,7 @@
   <xsl:param name="IsSeparated">no</xsl:param>
    
     <tr>
-      <td class="styTableCell" style="font-size:7pt;background-color:lightgrey;font-weight:normal;border-color:black;text-align:left;height:7mm;width:30mm;">&nbsp;
+      <td class="styTableCell" style="font-size:7pt;background-color:lightgrey;font-weight:normal;border-color:black;text-align:left;height:7mm;width:30mm;"><span class="styNBSP"/>
       <!--  <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="NameOfOrganization" />
         </xsl:call-template>
@@ -989,7 +987,7 @@
           </xsl:call-template>
         </xsl:if>-->
       </td>
-      <td class="styTableCell" style="background-color:lightgrey;font-size:7pt;border-color:black;width:20mm;text-align:left;">&nbsp;
+      <td class="styTableCell" style="background-color:lightgrey;font-size:7pt;border-color:black;width:20mm;text-align:left;"><span class="styNBSP"/>
         <!--  <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="IRCSubsection" />
           </xsl:call-template>  <br />

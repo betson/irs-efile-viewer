@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-<xsl:template name="IRS990ScheduleAStyle">
+  <xsl:template name="IRS990ScheduleAStyle">
 
 .IRS990ScheduleA_FormNumBlock {   /* Form number block in header */
   padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
@@ -220,7 +220,7 @@
   border-style: solid; border-color: black;
   border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 1px;
   padding-left:1px;padding-right:1px;
-  font-size:6pt;text-align:right;
+  font-size:6pt;text-align:right;width:25mm;
 }
 
 </xsl:template>

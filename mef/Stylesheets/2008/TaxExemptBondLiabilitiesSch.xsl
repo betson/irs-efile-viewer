@@ -64,7 +64,7 @@
           <th class="styDepTblCell" scope="col"  style="text-align: right">Space Percentage</th>                            
           <td class="styDepTblCell" style="text-align:left">
             <span style="width: 52mm; text-align: right">
-              <xsl:call-template name="PopulatePercent"><xsl:with-param name="TargetNode" select="SpacePercentage" /></xsl:call-template>   
+              <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="SpacePercentage" /></xsl:call-template>   
             </span>
           </td>
         </tr>
@@ -84,7 +84,7 @@
           <th class="styDepTblCell" scope="col"  style="text-align: right">Interest Rate</th>                              
           <td class="styDepTblCell" style="text-align:left">
             <span style="width: 52mm; text-align: right">
-              <xsl:call-template name="PopulatePercent"><xsl:with-param name="TargetNode" select="InterestRate" /></xsl:call-template>
+              <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="InterestRate" /></xsl:call-template>
             </span>
           </td>
         </tr>

@@ -3,6 +3,8 @@
     <!ENTITY nbsp "&#160;">
 ]>
 <!-- This stylesheet was last modified 10/06/2009 by Sandy Cram per WSP-091278OTH -->
+<!-- This stylesheet was last modified 11/19/2009 by Sandy Cram per defect #24320 -->
+<!-- This stylesheet was last modified 11/19/2009 by Sandy Cram per defect #24321 -->
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
@@ -73,7 +75,7 @@
  </div>
   <!-- Form Title Box -->
   <div class="styFTBox" style="width:129.5mm;height:33.25mm;">
-    		<span class="styMainTitle" style="height:8mm;">Adjustments to Separate Limitation Income (Loss) Categories for Determining Numerators of Limitation Fractions, Year-End Recharacterization Balances, and Overall Foreign Loss Account Balances
+    		<span class="styMainTitle" style="height:8mm;">Adjustments to Separate Limitation Income (Loss) Categories for Determining Numerators of Limitation Fractions, Year-End Recharacterization Balances, and Overall Foreign and Domestic Loss Account Balances
              </span>
                 <br/>
     For calendar year 
@@ -259,7 +261,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal&#151;</span> combine lines 1 through 2c</td>
+                    <span style="font-weight:bold;">Subtotal&#151;</span> Combine lines 1 through 2c</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
@@ -320,7 +322,7 @@
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
                     <span style="font-size:10px;font-weight:bold;">Subtotal&#151;</span>
-                    <span style="font-size:10px;"> lines 3 through 5.</span>
+                    <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;">
                     <span class="styTableCellPad"/>
@@ -548,11 +550,11 @@
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey; ">
+                  <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1 solid black;border-bottom-width:0px;background-color:lightgrey; ">
                     <span class="styTableCellPad"/>
-                    <span style="width:16px;"/>
+                   
                   </td>
-                  <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;">
+                  <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;k">
                     <span class="styTableCellPad"/>
                     <span style="width:16px;"/>
                   </td>
@@ -1003,7 +1005,7 @@
                 <tr>
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal&#151;</span> combine lines 1 through 2c</td>
+                    <span style="font-weight:bold;">Subtotal&#151;</span> Combine lines 1 through 2c</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/GeneralLimitationIncomeColm/IncomeOrLossAndAllocationForCY"/>
@@ -1080,7 +1082,7 @@
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
                     <span style="font-size:10px;font-weight:bold;">Subtotal&#151;</span>
-                    <span style="font-size:10px;"> lines 3 through 5.</span>
+                    <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
@@ -1265,33 +1267,37 @@
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Recapture of overall domestic losses</td>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;">
                     <!--Pen and ink image -->
-                    <xsl:call-template name="LinkToLeftoverDataTableInline">
+                   <span style="padding-right:2mm"> 
+                   <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 General Limitation Income Column (i) - Allocation of domestic losses Indicator</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$FormData/GeneralLimitationIncomeColm/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                     </xsl:call-template>
-                    <br/>
+                    </span>
+                   
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/GeneralLimitationIncomeColm/RecaptureOverallDomesticLosses"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;">
                     <!--Pen and ink image -->
+                     <span style="padding-right:2mm"> 
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Passive Income Colun (ii) - Allocation of domestic losses Indicator</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$FormData/PassiveIncomeColm/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                     </xsl:call-template>
-                    <br/>
+                   </span>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PassiveIncomeColm/RecaptureOverallDomesticLosses"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <!--Pen and ink image -->
+                    <span style="padding-right:2mm"> 
                     <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[1]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                     </xsl:call-template>
-                    <br/>
+                    </span>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[1]/RecaptureOverallDomesticLosses"/>
                     </xsl:call-template>
@@ -1419,9 +1425,9 @@
                         <xsl:with-param name="TargetNode" select="$FormData/PassiveIncomeColm/EOYBalancesOfFutureSepLmtIncm/OtherIncome[$pos]"/>
                       </xsl:call-template>
                     </td>
-                    <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:0px;border-bottom-width:0px;background-color:lightgrey; ">
+                    <td class="IRS1118ScheduleJ_GenericCell" style="border-right-width:1 solid black;border-bottom-width:0px;background-color:lightgrey; ">
                       <span class="styTableCellPad"/>
-                      <span style="width:16px;"/>
+                      
                     </td>
                     <td class="IRS1118ScheduleJ_GenericCell" style="border-bottom-width:0px;border-right-width:0px;background-color:lightgrey;">
                       <span class="styTableCellPad"/>
@@ -1863,7 +1869,7 @@
                     <tr>
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal&#151;</span> combine lines 1 through 2c</td>
+                        <span style="font-weight:bold;">Subtotal&#151;</span> Combine lines 1 through 2c</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos]/IncomeOrLossAndAllocationForCY"/>
@@ -2106,44 +2112,48 @@
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall domestic losses</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <!--Pen and ink image -->
+                        <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                         </xsl:call-template>
-                        <br/>
+                        </span>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos]/RecaptureOverallDomesticLosses"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <!--Pen and ink image -->
-                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+                         <span style="padding-right:2mm">
+                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos + 1]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                         </xsl:call-template>
-                        <br/>
+                       </span>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos + 1]/RecaptureOverallDomesticLosses"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <!--Pen and ink image -->
-                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+                         <span style="padding-right:2mm">
+                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos+ 2]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                         </xsl:call-template>
-                        <br/>
+                       </span>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos+ 2]/RecaptureOverallDomesticLosses"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <!--Pen and ink image -->
-                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+                         <span style="padding-right:2mm">
+                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos+ 3]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                         </xsl:call-template>
-                        <br/>
+                        </span>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos+ 3]/RecaptureOverallDomesticLosses"/>
                         </xsl:call-template>
@@ -2809,7 +2819,7 @@
                 <tr class="styDepTblRow1">
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">
-                    <span style="font-weight:bold;">Subtotal&#151;</span> combine lines 1 through 2c</td>
+                    <span style="font-weight:bold;">Subtotal&#151;</span> Combine lines 1 through 2c</td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/GeneralLimitationIncomeColm/IncomeOrLossAndAllocationForCY"/>
@@ -2886,7 +2896,7 @@
                   <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;">6</td>
                   <td class="IRS1118ScheduleJ_DescCell" scope="row">
                     <span style="font-size:10px;font-weight:bold;">Subtotal&#151;</span>
-                    <span style="font-size:10px;"> lines 3 through 5.</span>
+                    <span style="font-size:10px;">Combine lines 3 through 5.</span>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <xsl:call-template name="PopulateAmount">
@@ -3079,33 +3089,36 @@
                   <td class="IRS1118ScheduleJ_DescCell" style="font-size:10px;" scope="row">Recapture of overall domestic losses</td>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;">
                     <!--Pen and ink image -->
-                    <xsl:call-template name="LinkToLeftoverDataTableInline">
+                     <span style="padding-right:2mm">
+                     <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 General Limitation Income Column (i) - Allocation of domestic losses Indicator</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$FormData/GeneralLimitationIncomeColm/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                     </xsl:call-template>
-                    <br/>
+                    </span>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/GeneralLimitationIncomeColm/RecaptureOverallDomesticLosses"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" valign="bottom" style="font-size:10px;">
                     <!--Pen and ink image -->
-                    <xsl:call-template name="LinkToLeftoverDataTableInline">
+                     <span style="padding-right:2mm">
+                     <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Passive Income Colun (ii) - Allocation of domestic losses Indicator</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$FormData/PassiveIncomeColm/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                     </xsl:call-template>
-                    <br/>
+                    </span>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/PassiveIncomeColm/RecaptureOverallDomesticLosses"/>
                     </xsl:call-template>
                   </td>
                   <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                     <!--Pen and ink image -->
-                    <xsl:call-template name="LinkToLeftoverDataTableInline">
+                    <span style="padding-right:2mm">
+                     <xsl:call-template name="LinkToLeftoverDataTableInline">
                       <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                       <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[1]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                     </xsl:call-template>
-                    <br/>
+                    </span>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[1]/RecaptureOverallDomesticLosses"/>
                     </xsl:call-template>
@@ -3691,7 +3704,7 @@
                     <tr class="styDepTblRow1">
                       <td class="IRS1118ScheduleJ_IndexCell" scope="row" style="padding-left:2mm;" valign="top">3</td>
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">
-                        <span style="font-weight:bold;">Subtotal&#151;</span> combine lines 1 through 2c</td>
+                        <span style="font-weight:bold;">Subtotal&#151;</span> Combine lines 1 through 2c</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos]/IncomeOrLossAndAllocationForCY"/>
@@ -3942,44 +3955,48 @@
                       <td class="IRS1118ScheduleJ_DescCell" scope="row" style="font-size:10px;">Recapture of overall domestic losses</td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <!--Pen and ink image -->
+                        <span style="padding-right:2mm">
                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                         </xsl:call-template>
-                        <br/>
+                        </span>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos]/RecaptureOverallDomesticLosses"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <!--Pen and ink image -->
-                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+                         <span style="padding-right:2mm">
+                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos + 1]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                         </xsl:call-template>
-                        <br/>
+                        </span>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos + 1]/RecaptureOverallDomesticLosses"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;" valign="bottom">
                         <!--Pen and ink image -->
-                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+                         <span style="padding-right:2mm">
+                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos+ 2]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                         </xsl:call-template>
-                        <br/>
+                        </span>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos+ 2]/RecaptureOverallDomesticLosses"/>
                         </xsl:call-template>
                       </td>
                       <td class="IRS1118ScheduleJ_GenericCell" style="font-size:10px;border-right-width:0px;" valign="bottom">
                         <!--Pen and ink image -->
-                        <xsl:call-template name="LinkToLeftoverDataTableInline">
+                        <span style="padding-right:2mm">
+                         <xsl:call-template name="LinkToLeftoverDataTableInline">
                           <xsl:with-param name="Desc">Form 1118 Schedule J, Schedule J Line 10 Other Income Column (iii) - Allocation of domestic losses Indicator</xsl:with-param>
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos+ 3]/RecaptureOverallDomesticLosses/@allocationDomesticLosses"/>
                         </xsl:call-template>
-                        <br/>
+                        </span>
                         <xsl:call-template name="PopulateAmount">
                           <xsl:with-param name="TargetNode" select="$FormData/OtherIncomeColm[$pos+ 3]/RecaptureOverallDomesticLosses"/>
                         </xsl:call-template>

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- This stylesheet was created by Sandy Cram and last modified on 11/25/2008 -->
 <!-- This stylesheet was last modified by Sandy Cram on 1/8/2009  added shading for SRD -->
+<!-- This stylesheet was last modified by Sandy Cram on 2/23/2010 for defect#25981 -->
+<!-- This stylesheet was last modified by Sandy Cram on 2/23/2010 for defect#25979 -->
+<!-- This stylesheet was last modified by Sandy Cram on 2/23/2010 for defect#25971 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
@@ -29,11 +32,11 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					<!--<xsl:if test="not($Print) or $Print=''">-->
+					<xsl:if test="not($Print) or $Print=''">
 					<!-- Form 990ScheduleN CSS Styles are located in the template called below -->
 					<xsl:call-template name="IRS990ScheduleNStyle"/>
 					<xsl:call-template name="AddOnStyle"/>
-					<!--</xsl:if>-->
+					</xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -120,7 +123,7 @@
 							<span style="width:4mm;text-align:right;float:right; clear: none;">
 								<xsl:call-template name="SetDynamicTableToggleRowCount">
 									<xsl:with-param name="DataRowCount" select="$table1RowCount"/>
-									<xsl:with-param name="containerHeight" select="9"/>
+									<xsl:with-param name="containerHeight" select="11"/>
 									<xsl:with-param name="containerID" select=" 'p1TbCtnr' "/>
 								</xsl:call-template>
 							</span>
@@ -158,7 +161,7 @@
 								</tr>
 								<!--   END HEADER   -->
 								<!--   BEGIN LINE 1   -->
-								<xsl:if test="($Print != $Separated) or count($FormData/LiquidationTable/LiquidationDetail) &lt; 10">
+								<xsl:if test="($Print != $Separated) or count($FormData/LiquidationTable/LiquidationDetail) &lt; 12">
 									<xsl:for-each select="$FormData/LiquidationTable/LiquidationDetail">
 										<tr>
 											<!-- Description of Asset col(a)-->
@@ -233,7 +236,7 @@
 									</xsl:for-each>
 								</xsl:if>
 								<xsl:if test="count($FormData/LiquidationTable) &lt; 1 or
-            (($Print = $Separated) and (count($FormData/LiquidationTable/LiquidationDetail) &gt; 9)) ">
+            (($Print = $Separated) and (count($FormData/LiquidationTable/LiquidationDetail) &gt; 11)) ">
 									<tr>
 										<td class="sty990ScheduleNLNCol" style="border-right-width:1px;text-align:center">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -291,14 +294,14 @@
 								</xsl:if>
 								<xsl:if test="count($FormData/LiquidationTable/LiquidationDetail) &lt; 11 or ((count($FormData/LiquidationTable/LiquidationDetail) &gt; 11) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990PartITableFillerRow"/>
-								</xsl:if>
+									</xsl:if>
+								
 							</table>
 						</div>
 					</div>
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$FormData/LiquidationTable/LiquidationDetail"/>
-						<xsl:with-param name="headerHeight" select="2"/>
-						<xsl:with-param name="containerHeight" select="9"/>
+						<xsl:with-param name="containerHeight" select="11"/>
 						<xsl:with-param name="containerID" select="'p1TbCtnr'"/>
 					</xsl:call-template>
 					<!--   END LINE 1   -->
@@ -829,7 +832,7 @@
 								</xsl:call-template>
 							</span>
 						</div>
-						<div class="styTableContainerLandscape " id="p2TbCtnr">
+						<div class="styTableContainerLandscape " id="p2TbCtnr" >
 							<!-- print logic -->
 							<xsl:call-template name="SetInitialState"/>
 							<!-- end -->
@@ -886,7 +889,7 @@
 													</xsl:call-template>
 												</td>
 												<!--Method of Determing FMV col(d) -->
-												<td class="sty990ScheduleNColC" style="padding-top: 1mm;width: 31.75mm;font-size:7pt;vertical-align:top;">
+												<td class="sty990ScheduleNColC" style="padding-top: 1mm;width: 31.75mm;font-size:7pt;vertical-align:top;text-align:left">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="MethodOfFMVDetermination"/>
 													</xsl:call-template>
@@ -999,7 +1002,6 @@
 					</div>
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$FormData/DispositionTable"/>
-						<xsl:with-param name="headerHeight" select="2"/>
 						<xsl:with-param name="containerHeight" select="9"/>
 						<xsl:with-param name="containerID" select="'p2TbCtnr'"/>
 					</xsl:call-template>
@@ -1461,7 +1463,7 @@
 										</xsl:call-template>
 									</td>
 									<!--Method of Determing FMV col(d) -->
-									<td class="sty990ScheduleNColC" style="padding-top: 1mm;width: 31.75mm;font-size:7pt;vertical-align:top;">
+									<td class="sty990ScheduleNColC" style="padding-top: 1mm;width: 31.75mm;font-size:7pt;vertical-align:top;text-align:left">
 										<xsl:call-template name="PopulateText">
 											<xsl:with-param name="TargetNode" select="MethodOfFMVDetermination"/>
 										</xsl:call-template>

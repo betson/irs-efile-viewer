@@ -922,12 +922,83 @@
       </tr>
       
       <!-- line 3d -->
-      <xsl:for-each select="$FormData/KeroseneUseInAviation/OtherNontaxableUseTaxed244">
-        <tr>
-          <td style=" height:3mm;width:6mm;text-align:center;font-weight=bold;">d</td>
-          <td style=" height:3mm;text-align:left;border-bottom:1px black solid;">Other nontaxable uses taxed at $.244</td>
-          <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;text-align:center">
-            <xsl:call-template name="PopulateText">
+      
+        <!-- Added this <xsl:if test so that when no amounts were entered for lines 3d or 3e, the lines would still show as they
+                       were not showing in RRD when lines were empty   SKM  11/17/09 -->
+                
+                <xsl:if test="not($FormData/KeroseneUseInAviation/OtherNontaxableUseTaxed244)">
+                 <!--In case there is nothing for the for-each loop to grab-->
+                  <tr>
+                   <td style=" height:3mm;width:6mm;text-align:center;font-weight=bold;">d</td>
+                    <td style=" height:3mm;text-align:left;border-bottom:1px black solid;">Other nontaxable uses taxed at $.244</td>
+                    <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;text-align:center">
+                     <span class="styTableCellPad"/>
+                    </td>
+                    <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;">
+                      <span style=" height:3mm;width:6mm;clear:none;padding-left:5.2mm;padding-top:0.5mm;text-align:center">
+                        <span class="styTableCellPad"/>
+                      </span>
+                    </td>
+                    <td style=" height:3mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                      <span class="styTableCellPad"/>
+                    </td>
+                    <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                      <span style="width:2mm;text-align:left;"/>
+                      <span style="width:26mm;padding-top:0mm;">
+                        <span class="styTableCellPad"/>
+                      </span>
+                    </td>
+                    <td style=" height:3mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;">
+                      <span class="styTableCellPad"/>
+                    </td>
+                  </tr>
+                  </xsl:if>
+                                
+                <xsl:for-each select="$FormData/KeroseneUseInAviation/OtherNontaxableUseTaxed244">
+                  <tr>
+                   <td style=" height:3mm;width:6mm;text-align:center;font-weight:bold;border-bottom:0px black solid;">d</td>
+                      <td style=" height:3mm;text-align:left;border-bottom:1px black solid;">Other nontaxable uses taxed at $.244</td>
+                      <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;text-align:center">
+                      <xsl:call-template name="PopulateText">
+                        <xsl:with-param name="TargetNode" select="TypeOfUse"/>
+                      </xsl:call-template>
+                    </td>
+                    <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;">
+                      <span style=" height:3mm;width:6mm;clear:none;padding-left:5.2mm;padding-top:0.5mm;text-align:center">
+                        <xsl:call-template name="PopulateText">
+                          <xsl:with-param name="TargetNode" select="Rate"/>
+                        </xsl:call-template>
+                      </span>
+                    </td>
+                    <td style=" height:3mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                      <xsl:call-template name="PopulateAmount">
+                        <xsl:with-param name="TargetNode" select="Gallons"/>
+                      </xsl:call-template>
+                    </td>
+                    <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;text-align:right;">
+                      <span style="width:2mm;text-align:left;"/>
+                      <span style="width:26mm;padding-top:0mm;">
+                        <xsl:call-template name="PopulateAmount">
+                          <xsl:with-param name="TargetNode" select="Amount"/>
+                        </xsl:call-template>
+                      </span>
+                    </td>
+                    <td style=" height:3mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;">
+                      <xsl:call-template name="PopulateText">
+                        <xsl:with-param name="TargetNode" select="CRN"/>
+                      </xsl:call-template>
+                    </td>
+                  </tr>
+                </xsl:for-each>
+      
+    <!-- line 3e -->  
+    <xsl:if test="not($FormData/KeroseneUseInAviation/OtherNontaxableUseTaxed219)">
+           <!--In case there is nothing for the for-each loop to grab-->
+<tr>
+           <td style=" height:3mm;width:6mm;text-align:center;font-weight:bold;border-bottom:0px black solid;">e</td>
+           <td style=" height:3mm;text-align:left;border-bottom:1px black solid;">Other nontaxable uses taxed at $.219</td>
+            <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;text-align:center">
+            <xsl:call-template name="PopulateText">    	
               <xsl:with-param name="TargetNode" select="TypeOfUse">
               </xsl:with-param>
             </xsl:call-template>
@@ -950,32 +1021,25 @@
             <span style="width:2mm;text-align:left;"></span>
             <span style="width:26mm;padding-top:0mm;">
               <xsl:call-template name="PopulateAmount">
-                <xsl:with-param name="TargetNode" select="Amount"></xsl:with-param>
+                <xsl:with-param name="TargetNode" select="Amount">
+                </xsl:with-param>
               </xsl:call-template> 
             </span>
           </td>
           <td style=" height:3mm;text-align:center;border-left:1px black solid;border-bottom:1px black solid;">
-            <xsl:call-template name="PopulateText">          	
+            <xsl:call-template name="PopulateText">
               <xsl:with-param name="TargetNode" select="CRN">
               </xsl:with-param>
             </xsl:call-template> 
           </td>
         </tr>
-      </xsl:for-each>	
-      
-    <!-- line 3e -->  
+        </xsl:if>           
+           
       <xsl:for-each select="$FormData/KeroseneUseInAviation/OtherNontaxableUseTaxed219">
         <tr>
-          <xsl:choose>
-            <xsl:when test="position() = count($FormData/KeroseneUseInAviation/OtherNontaxableUseTaxed219)">
-              <td style=" height:3mm;width:6mm;text-align:center;font-weight:bold;">e</td>
-            </xsl:when>
-            <xsl:otherwise>
-              <td style=" height:3mm;width:6mm;text-align:center;font-weight:bold;border-bottom:0px black solid;">e</td>
-            </xsl:otherwise>
-          </xsl:choose>
-          <td style=" height:3mm;text-align:left;border-bottom:1px black solid;">Other nontaxable uses taxed at $.219</td>
-          <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;text-align:center">
+           <td style=" height:3mm;width:6mm;text-align:center;font-weight:bold;border-bottom:0px black solid;">e</td>
+           <td style=" height:3mm;text-align:left;border-bottom:1px black solid;">Other nontaxable uses taxed at $.219</td>
+            <td style=" height:3mm;border-left:1px black solid;border-bottom:1px black solid;text-align:center">
             <xsl:call-template name="PopulateText">    	
               <xsl:with-param name="TargetNode" select="TypeOfUse">
               </xsl:with-param>

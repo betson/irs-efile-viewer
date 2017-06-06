@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+
+<xsl:include href="PopulateTemplate.xsl"/>
+<xsl:include href="CommonPathRef.xsl"/>
+<xsl:include href="AddHeader.xsl"/>
+<xsl:include href="AddOnTable.xsl"/>
+<xsl:include href="IRS8882Style.xsl"/>
+
+<xsl:output method="html" indent="yes" />
+<xsl:strip-space elements="*" />
+<xsl:param name="FormData" select="$RtnDoc/IRS8882" />
+
+<xsl:template match="/">
+<html lang="EN-US">
+  <head>    
+    <title>
+      <xsl:call-template name="FormTitle">
+        <xsl:with-param name="RootElement" select="local-name($FormData)"/>
+      </xsl:call-template>
+    </title>
+    <!-- No Browser Caching -->
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <!-- No Proxy Caching -->
+    <meta http-equiv="Cache-Control" content="private"/>
+     <!-- Define Character Set -->
+    <meta http-equip="Content-Type" content="text/html; charset=ISO-8859-1" />
+    <meta name="Description" content="IRS Form 8882"/>
+    <meta name="Generator" content="IBM WebSphere Studio"/>
+    
+    <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"></script>
+    <xsl:call-template name="InitJS"></xsl:call-template>
+    
+    <style type="text/css">    
+      <xsl:if test="not($Print) or $Print=''">
+        <xsl:call-template name="IRS8882Style"></xsl:call-template>    
+        <xsl:call-template name="AddOnStyle"></xsl:call-template>  
+      </xsl:if>
+    </style>        
+    <xsl:call-template name="GlobalStylesForm"/>
+  </head>
+  
+  <body class="styBodyClass">      
+    <form name="Form 8882">      
+      <xsl:call-template name="DocumentHeader"></xsl:call-template>  
+    
+        <!-- Begin Form number and name -->
+        <div class="styBB" style="width:187mm;">
+          <div class="styFNBox" style="width:31mm;height:24.5mm;">
+            Form <span class="styFormNumber">8882</span>
+            <br/>
+            <!--Push Pin-->
+              <xsl:call-template name="SetFormLinkInline">
+              	<xsl:with-param name="TargetNode" select="$FormData" />
+             	<xsl:with-param name="TabOrder" select="2"/>
+            </xsl:call-template>              
+            <br/>
+            <span class="styAgency">(Rev. December 2006)</span>
+            <div style="padding-top:2mm;">
+              <span class="styAgency" >Department of the Treasury</span><br/>
+              <span class="styAgency" >Internal Revenue Service</span>
+            </div>
+          </div>
+          <div class="styFTBox" style="width:125mm;height:13mm;">
+            <div class="styMainTitle" >
+              Credit for Employer-Provided Childcare<br/>Facilities and Services
+            </div>
+             <div class="styFST" style="font-size:7pt;padding-top:8mm;">
+              <img src="{$ImagePath}/8882_Bullet.gif" alt="bullet image"/>
+              Attach to your tax return.
+            </div>    
+          </div>
+          <div class="styTYBox" style="width:30mm;height:24.5mm;">
+            <div class="styOMB" style="height:8mm;padding-top:3.5mm;">OMB No. 1545-1809</div>
+            <!-- remove
+            <div class="styTY" style="height:7.5mm;font-size:24pt;">
+              20<span class="styTYcolor">06</span>
+            </div>-->
+           <div class="stySequence" style="padding-top:10mm;">Attachment <br/>Sequence No.<b>131</b></div>
+          </div>
+        </div>
+        <!-- End form title and Form number Section -->
+      
+  <!-- Begin Name and Identifying Number Section-->      
+  <div class="styBB" style="width:187mm;clear:both;font-family:verdana;font-size:7pt;">
+    <div class="styFNBox" style="width:144mm;height:8mm;">
+            Name(s) shown on return<br/>
+            <xsl:call-template name="PopulateReturnHeaderFiler">
+        <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
+      </xsl:call-template>
+      <br />
+      <xsl:call-template name="PopulateReturnHeaderFiler">
+        <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
+      </xsl:call-template>
+    </div>
+    <div class="styGenericDiv" style="width:42mm;height:4mm;padding-left:1mm;">
+      <span class="styBoldText">Identifying number</span>
+      <br/><br/>
+      <xsl:call-template name="PopulateReturnHeaderFiler">
+        <xsl:with-param name="TargetNode">EIN</xsl:with-param>
+      </xsl:call-template>
+    </div>
+  </div>
+  <!-- End Name and Identifying Number Section-->      
+   
+      <!-- line 1 --> 
+      <div style="width:187mm"> 
+        <div style="float:left;">       
+        	<div class="styLNLeftNumBoxSD" style="height:8mm;padding-top:4mm;">1</div>
+        	<div class="styLNDesc" style="width:99mm;height:8mm;padding-top:4mm;">
+          	Qualified childcare facility expenditures paid or incurred     
+          	   <!--Dotted Line-->
+          <span class="styDotLn" style="float:none;">......</span> 
+     
+          </div>
+        </div>
+        <div style="float:right;"> 
+        <div class="styLNRightNumBox" style="height:8mm;padding-top: 4mm;">1</div>
+        <div class="styLNAmountBox" style="height:8mm;padding-top: 4mm;">
+           <xsl:call-template name="PopulateAmount">
+              <xsl:with-param name="TargetNode" select="$FormData/QlfyChildCareFacilityExpend"/>
+           </xsl:call-template>
+        </div>
+        <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:8mm;padding-top: 4mm;"></div>
+        <div class="styLNAmountBoxNBB" style="height:8mm;padding-top: 4mm;"></div>
+      </div>
+      </div>
+    
+      <!-- line 2 -->
+      <div style="width:187mm">
+       <div style="float:left;">      
+        <div class="styLNLeftNumBoxSD" style="height:8mm;padding-top: 4mm;">2</div>
+        <div class="styLNDesc" style="width:139mm;height:8mm;padding-right:1mm;padding-top: 4mm;">
+          Enter 25% (.25) of line 1  
+          <xsl:call-template name="SetFormLinkInline">
+            <xsl:with-param name="TargetNode" select="$FormData/OnehalfOfQualifiedStartupCost" />
+            <xsl:with-param name="TabOrder" select="2"/>
+          </xsl:call-template>
+          <!--Dotted Line-->
+          <span class="styDotLn" style="float:none;">..........................</span> 
+        </div>
+        </div>
+	 <div style="float:right;">
+	   <div class="styLNRightNumBox" style="height:8mm;padding-top: 0mm;">
+        	<div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;">
+        	</div>
+        		2
+        	</div>
+        <div class="styLNAmountBox" style="height:8mm;padding-top: 4mm;">
+          <xsl:call-template name="PopulateAmount">
+              <xsl:with-param name="TargetNode" select="$FormData/TwentyFivePctOfFacilityExpend"/>
+          </xsl:call-template>
+          </div>  
+        </div>
+        </div>
+   
+      <!--begin  line 3 -->
+      <div style="width:187mm"> 
+        <div style="float:left;">       
+        	<div class="styLNLeftNumBoxSD" style="height:8mm;padding-top:4mm;">3</div>
+        	<div class="styLNDesc" style="width:99mm;height:8mm;padding-top:4mm;">
+          	Qualified childcare resource and referral expenditures paid or incurred         
+          </div>
+        </div>
+        <div style="float:right;"> 
+        <div class="styLNRightNumBox" style="height:8mm;padding-top: 4mm;">3</div>
+        <div class="styLNAmountBox" style="height:8mm;padding-top: 4mm;">
+           <xsl:call-template name="PopulateAmount">
+              <xsl:with-param name="TargetNode" select="$FormData/QlfyChildCareResourceExpend"/>
+           </xsl:call-template>
+        </div>
+        <div class="styLNRightNumBoxNBB" style="background-color:lightgrey;height:8mm;padding-top: 4mm;"></div>
+        <div class="styLNAmountBoxNBB" style="height:8mm;padding-top: 4mm;"></div>
+      </div>
+      </div>
+    
+    <!--begin  line 4 -->
+     <div style="width:187mm">
+       <div style="float:left;">      
+        <div class="styLNLeftNumBoxSD" style="height:8mm;padding-top: 4mm;">4</div>
+        <div class="styLNDesc" style="width:139mm;height:8mm;padding-right:1mm;padding-top: 4mm;">
+          Enter 10% (.10) of line 3  
+          <xsl:call-template name="SetFormLinkInline">
+            <xsl:with-param name="TargetNode" select="$FormData/OnehalfOfQualifiedStartupCost" />
+            <xsl:with-param name="TabOrder" select="2"/>
+          </xsl:call-template>
+          <!--Dotted Line-->
+          <span class="styDotLn" style="float:none;">..........................</span> 
+        </div>
+        </div>
+	 <div style="float:right;">
+	   <div class="styLNRightNumBox" style="height:8mm;padding-top: 0mm;">
+        	<div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;">
+        	</div>
+        		4
+        	</div>
+        <div class="styLNAmountBox" style="height:8mm;padding-top: 4mm;">
+          <xsl:call-template name="PopulateAmount">
+              <xsl:with-param name="TargetNode" select="$FormData/TenPctOfResourceExpend"/>
+          </xsl:call-template>
+          </div>  
+        </div>
+        </div>
+        
+    <!-- begin line 5 -->
+    <div style="width:187mm">
+       <div style="float:left;">      
+        <div class="styLNLeftNumBoxSD" style="height:8mm;padding-top: 1mm;;">5</div>
+        <div class="styLNDesc" style="width:139mm;height:8mm;padding-right:1mm;padding-top: 1mm;">
+          Credit for employer-provided childcare facilities and services from partnerships, S corporations,
+		estates, and trusts 
+		 <!--Dotted Line-->
+          <span class="styDotLn" style="float:none;">............................</span> 
+          <xsl:call-template name="SetFormLinkInline">
+            <xsl:with-param name="TargetNode" select="$FormData/CrdForEmplyrChldcrFcltisandSrv" />
+            <xsl:with-param name="TabOrder" select="2"/>
+          </xsl:call-template>
+        </div>
+        </div>
+	 <div style="float:right;">
+	   <div class="styLNRightNumBox" style="height:8mm;padding-top: 0mm;">
+        <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;">
+        </div>
+        	5
+        </div>
+        <div class="styLNAmountBox" style="height:8mm;padding-top: 4mm;">
+          <xsl:call-template name="PopulateAmount">
+              <xsl:with-param name="TargetNode" select="$FormData/CrdForEmplyrChldcrFcltisandSrv"/>
+          </xsl:call-template>
+          </div>
+        </div>
+        </div>
+
+    <!-- line 6 -->
+     <div style="width:187mm">
+   	  <div style="float:left;">  
+        <div class="styLNLeftNumBoxSD" style="height:8mm;padding-top: 4mm;">6</div>
+        <div class="styLNDesc" style="height:8mm;padding-right:1mm;padding-top: 4mm;">
+         Add lines 2, 4, and 5     
+          <!--Dotted Line-->
+          <span class="styDotLn" style="float:none;">...........................</span> 
+        </div>
+        </div>
+        <div style="float:right;">
+        <div class="styLNRightNumBox" style="height:8mm;padding-top: 0mm;">
+        <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;">
+        </div>
+        	6
+        </div>
+        <div class="styLNAmountBox" style="height:8mm;padding-top: 4mm;">
+          <xsl:call-template name="PopulateAmount">
+              <xsl:with-param name="TargetNode" select="$FormData/SumOfCostsAndCrFromPassThruEnt"/>
+          </xsl:call-template>
+          </div>  
+        </div>
+        </div> 
+    
+    <!-- line 7 -->
+    <div style="width:187mm">
+       <div style="float:left;">      
+        <div class="styLNLeftNumBoxSD" style="height:8mm;padding-top: 1mm;">7</div>
+        <div class="styLNDesc" style="width:139mm;height:8.5mm;padding-right:1mm;padding-top: 1mm;">
+          Enter the <b>smaller</b> of line 6 or<b> $150,000.</b> Estates and trusts, go to line 8. All others report this
+		amount as follows: partnerships and S corporations, report this amount on Schedule K; all
+		others, report the credit on the applicable line of Form 3800, (e.g., line 1n of the 2006 Form
+		3800)
+        <xsl:call-template name="SetFormLinkInline">
+        <xsl:with-param name="TargetNode" select="$FormData/EnterSmallerOfLine6Or150000"/>
+        </xsl:call-template>    
+		<!--Dotted Line-->
+          <span class="styDotLn" style="float:none;padding-left:2mm;">.........</span> 
+        </div>
+        </div>
+	 <div style="float:right;">
+	   <div class="styLNRightNumBox" style="height:11mm;padding-top: 0mm;">
+     	  <div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;height:7mm;">
+     	  </div>
+     	  7
+         </div>
+        <div class="styLNAmountBox" style="height:11mm;padding-top: 7mm;">
+          <xsl:call-template name="PopulateAmount">
+              <xsl:with-param name="TargetNode" select="$FormData/EnterSmallerOfLine6Or150000"/>
+          </xsl:call-template>
+          </div>  
+        </div>
+        </div>
+<!--                  Push Pin
+                    <xsl:call-template name="SetFormLinkInline">
+              <xsl:with-param name="TargetNode" select="$Form1120SData"/>
+            </xsl:call-template>
+
+               Pen & ink
+              <xsl:call-template name="LinkToLeftoverDataTableInline">          
+              <xsl:with-param name="Desc">Form 1120S, Top Left Margin - Section 501d Indicator</xsl:with-param>    
+              <xsl:with-param name="TargetNode" select="$Form1120SData/@section501dIndicator"/>    
+            </xsl:call-template>           -->
+
+   <!-- line 8 -->
+     <div style="width:187mm">
+   	  <div style="float:left;">  
+        <div class="styLNLeftNumBoxSD" style="height:8mm;padding-top: 4mm;">8</div>
+        <div class="styLNDesc" style="height:8mm;padding-right:1mm;padding-top: 4mm;">
+         Amount allocated to beneficiaries of the estate or trust (see instructions)     
+          <!--Dotted Line-->
+          <span class="styDotLn" style="float:none;">..........</span> 
+        </div>
+        </div>
+        <div style="float:right;">
+        <div class="styLNRightNumBox" style="height:7mm;padding-top: 0mm;">
+        	<div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;">
+        </div>
+        	8
+        </div>
+        <div class="styLNAmountBox" style="height:8mm;padding-top: 4mm;">
+          <xsl:call-template name="PopulateAmount">
+            <xsl:with-param name="TargetNode" select="$FormData/AmtAllocatedToBeneficiaries"/>   
+          </xsl:call-template>
+          </div>  
+        </div>
+        </div> 
+        
+  <!-- begin line 9 -->
+    <div style="width:187mm">
+       <div style="float:left;">      
+        <div class="styLNLeftNumBoxSD" style="height:8mm;padding-top: 1mm;;">9</div>
+        <div class="styLNDesc" style="width:139mm;height:8mm;padding-right:1mm;padding-top: 1mm;">
+          Estates and trusts. Subtract line 8 from line 7. Report the credit on the applicable line of Form
+		3800 (e.g., line 1n of the 2006 Form 3800)
+	   <!--Dotted Line-->
+          <span class="styDotLn" style="float:none;">......................</span> 
+          <xsl:call-template name="SetFormLinkInline">
+            <xsl:with-param name="TargetNode" select="$FormData/EstatesAndTrustsCredit" />
+            <xsl:with-param name="TabOrder" select="2"/>
+          </xsl:call-template>
+        </div>
+        </div>
+	 <div style="float:right;">
+	  <div class="styLNRightNumBoxNBB" style="height:8mm;padding-top: 0mm;">
+        	<div class="styLNRightNumBoxNBB" style="width:7.75mm;border-left-width:0px;background-color:lightgrey;">
+        </div>
+        9
+        </div>
+        <div class="styLNAmountBoxNBB" style="height:8mm;padding-top: 4mm;">
+          <xsl:call-template name="PopulateAmount">
+              <xsl:with-param name="TargetNode" select="$FormData/EstatesAndTrustsCredit"/>
+          </xsl:call-template>
+          </div>  
+        </div>
+        </div>
+   
+     <!--Page End-->
+         <div style="width:187mm; border-top:1 solid Black; font-size:8pt">    
+        <div style="font-weight:bold; float:left; padding-top:0.5mm">
+          For Paperwork Reduction Act Notice,  see instructions.
+        </div>    
+        <div style="float:right">
+          <span style="margin-right:14mm; font-size:7pt">Cat. No. 33436Y</span>          
+          Form <b>8882</b> (Rev. 12-2006)
+        </div>      
+      </div>  
+        <p style="page-break-before:always" />      
+      <div class="styLeftOverTitleLine" id="LeftoverData" style="font-family:verdana, arial, sans-serif">
+        <div class="styLeftOverTitle">
+          Additional Data        
+        </div>
+        <div class="styLeftOverButtonContainer">
+          <input class="styLeftoverTableBtn" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage()" tabindex="1"/>
+        </div>      
+      </div>
+       <table class="styLeftOverTbl">
+        <xsl:call-template name="PopulateCommonLeftover">
+          <xsl:with-param name="TargetNode" select="$FormData" />        
+        </xsl:call-template>
+      </table>      
+    </form>
+  </body>
+</html>
+</xsl:template>
+</xsl:stylesheet>

@@ -237,11 +237,17 @@
 </div>
 <!-- Line 1 -->
 <div style="width:187mm;">
-  <div class="styLNLeftNumBox" style="height:5mm;">1</div>
-  <div class="styLNDesc" style="width:135mm;height:5mm;">Was the vehicle(s) reported on this return used on public highways during <span class="styBoldText">July 2008</span>? If YES,</div>
+  <div class="styLNLeftNumBox" style="height:7mm;">1</div>
+  <div class="styLNDesc" style="width:135mm;height:7mm;padding-top:2mm;">Was the vehicle(s) reported on this return used on public highways during <span class="styBoldText">July 2008</span>? If YES,</div>
   <div style="float:right">
-    <div class="styLNRightNumBox" style="height:5mm;border-bottom-width:0;"/>
-    <div class="styLNAmountBox" style="height:5mm;width:34mm;border-bottom-width:0">
+    <div class="styLNRightNumBox" style="height:7mm;padding-left:.25mm;width:8.25mm;border-bottom-width:0;border-right-width:1px;"/>
+     <div class="styLNAmountBox" style="padding-left:.25mm;height:5mm;width:33mm;border-bottom-width:1;border-left-width:0px;">
+            <span style="float:left;clear:none;width:5mm;padding-left:.5mm;padding-right:0mm;padding-top:.5mm;text-align:center;font-size:6.5pt;">Y</span>
+                <span style="width:5.5mm;float:left;clear:none;text-align:center;padding-right:0mm;padding-left:.5mm;padding-top:.5mm;font-size:6.5pt;">Y</span>
+                <span style="float:left;clear:none;padding-left:.5mm;width:5.5mm;text-align:center;padding-top:.5mm;font-size:6.5pt;">Y</span>
+                <span style="width:5.75mm;float:left;clear:none;text-align:center;padding-left:.5mm;padding-top:.5mm;font-size:6.5pt;">Y</span>
+                <span style="width:5.75mm;float:left;clear:none;text-align:center;padding-left:.25mm;padding-top:.5mm;font-size:6.5pt;">M</span>
+                <span style="width:5.75mm;float:right;clear:all;text-align:center;padding-top:.5mm;font-size:6.5pt;">M</span>
     </div>
   </div>
 </div>

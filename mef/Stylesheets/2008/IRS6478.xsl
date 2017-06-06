@@ -1,71 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-  <xsl:include href="PopulateTemplate.xsl"/>
-  <xsl:include href="AddHeader.xsl"/>
-  <xsl:include href="CommonPathRef.xsl"/>
-  <xsl:include href="AddOnTable.xsl"/>
-  <xsl:include href="IRS6478Style.xsl"/>
+<xsl:include href="PopulateTemplate.xsl"/>
+<xsl:include href="AddHeader.xsl"/>
+<xsl:include href="CommonPathRef.xsl"/>
+<xsl:include href="AddOnTable.xsl"/>
+<xsl:include href="IRS6478Style.xsl"/>
   <xsl:output method="html" indent="yes"/>
   <xsl:strip-space elements="*"/>
   <xsl:param name="Form6478Data" select="$RtnDoc/IRS6478"/>
-  <xsl:template match="/">
-    <html lang="EN-US">
-      <head>
+<xsl:template match="/">
+<html lang="EN-US">
+  <head>
         <title>
           <xsl:call-template name="FormTitle">
             <xsl:with-param name="RootElement" select="local-name($Form6478Data)"/>
           </xsl:call-template>
         </title>
-        <!-- No Browser Caching   -->
+    <!-- No Browser Caching   -->
         <meta http-equiv="Pragma" content="no-cache"/>
         <meta http-equiv="Cache-Control" content="no-cache"/>
         <meta http-equiv="Expires" content="0"/>
-        <!-- No Proxy Caching -->
+    <!-- No Proxy Caching -->
         <meta http-equiv="Cache-Control" content="private"/>
-        <!-- Define Character Set -->
+    <!-- Define Character Set -->
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
         <meta name="Author" content="Ravi Venigalla"/>
         <meta name="Description" content="TY 2007 IRS Form 6478"/>
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
         <xsl:call-template name="InitJS"/>
-        <style type="text/css">
-          <xsl:if test="not($Print) or $Print=''">
-            <!-- Form 6478 CSS Styles are located in the template called below -->
+    <style type="text/css">
+      <xsl:if test="not($Print) or $Print=''">
+        <!-- Form 6478 CSS Styles are located in the template called below -->
             <xsl:call-template name="IRS6478Style"/>
             <xsl:call-template name="AddOnStyle"/>
-          </xsl:if>
-        </style>
-        <xsl:call-template name="GlobalStylesForm"/>
-      </head>
-      <body class="styBodyClass">
+      </xsl:if>
+    </style>    
+  <xsl:call-template name="GlobalStylesForm"/>
+</head>
+  <body class="styBodyClass">
         <form name="Form6478" id="Form6478">
           <!-- Standard Warning Lines -->
           <xsl:call-template name="DocumentHeader"/>
           <!-- Begin Form Number and Name -->
           <div class="styBB" style="width:187mm;">
             <div class="styFNBox" style="width:31mm;height:21mm;">
-            Form <span class="styFormNumber">6478</span>
-              <br/>
-              <xsl:call-template name="SetFormLinkInline">
-                <xsl:with-param name="TargetNode" select="$Form6478Data"/>
-              </xsl:call-template>
-              <br/>
+        Form <span class="styFormNumber">6478</span>
+          <br/>
+         <xsl:call-template name="SetFormLinkInline">
+              <xsl:with-param name="TargetNode" select="$Form6478Data"/>
+            </xsl:call-template>
+          <br/>
               <div style="padding-top:1.5mm;">
                 <span class="styAgency">Department of the Treasury</span>
-                <br/>
-                <span class="styAgency">Internal Revenue Service</span>
-              </div>
+        <br/>
+        <span class="styAgency">Internal Revenue Service</span>
+      </div>
             </div>
             <div class="styFTBox" style="width:125mm;height:13mm;">
               <div class="styMainTitle" style="padding-top:1.5mm;">
           	  Alcohol and Cellulosic Biofuel Fuels Credit          
-          	 </div>
-              <br/>
+        </div>
+        <br/>
               <div class="styFST" style="height:5mm;font-size:7pt;padding-top:5mm;">
-                <img src="{$ImagePath}/6478_Bullet.gif" width="4" height="7" alt="Bullet Image"/>
-              Attach to your tax return.
-          </div>
-            </div>
+          <img src="{$ImagePath}/6478_Bullet.gif" width="4" height="7" alt="Bullet Image"/>
+          Attach to your tax return.
+        </div>
+      </div>
             <!-- This can be taken out later -->
             <div class="styTYBox" style="width:30mm;height:21mm;">
               <div class="styOMB" style="height:2mm;">OMB No. 1545-1924</div>
@@ -76,12 +76,12 @@
               </div>
             </div>
           </div>
-          <!-- End Form Number and Name section -->
-          <!-- Begin Name and Identifying number section -->
-          <div class="styBB" style="width:187mm;">
-            <div class="styNameBox" style="width:130mm;height:8mm;font-size:7pt;">
-                Name(s) shown on return
-              <br/>
+<!-- End Form Number and Name section -->
+<!-- Begin Name and Identifying number section -->
+    <div class="styBB" style="width:187mm;">
+      <div class="styNameBox" style="width:130mm;height:8mm;font-size:7pt;">
+        Name(s) shown on return
+        <br/>
               <xsl:call-template name="PopulateReturnHeaderFiler">
                 <xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
               </xsl:call-template>
@@ -89,11 +89,11 @@
               <xsl:call-template name="PopulateReturnHeaderFiler">
                 <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
               </xsl:call-template>
-            </div>
-            <div class="styEINBox" style="width:50mm;height:4mm;font-size:7pt;padding-left:2mm;">
+      </div>
+      <div class="styEINBox" style="width:50mm;height:4mm;font-size:7pt;padding-left:2mm;">
               Identifying number<br/>
               <br/>
-              <span style="font-weight:normal;">
+        <span style="font-weight:normal;">
                 <xsl:call-template name="PopulateReturnHeaderFiler">
                   <xsl:with-param name="TargetNode">EIN</xsl:with-param>
                 </xsl:call-template>
@@ -101,16 +101,16 @@
             </div>
           </div>
           <!-- End Names and Identifying number section -->
-          <!-- Start Caution -->
+<!-- Start Caution -->
           <div class="styBB" style="width: 187mm; font-size: 7.5pt;padding-top:1mm;">
             <div style="width:187mm;height:6mm;padding-bottom:1mm;">
-              <span class="styBoldText" style="vertical-align: top;">Caution:</span>
-              <span class="styItalicText" style="width: 165mm; padding-left: 2mm;"> You cannot claim any amounts on Form 6478 that you claimed (or will claim)
+            <span class="styBoldText" style="vertical-align: top;">Caution:</span>
+          <span class="styItalicText" style="width: 165mm; padding-left: 2mm;"> You cannot claim any amounts on Form 6478 that you claimed (or will claim)
           	 on Schedule C (Form 720), Form 8849, or </span>
               <span class="styItalicText" style="width: 187mm;">Form 4136.</span>
             </div>
           </div>
-          <!-- End Caution -->
+<!-- End Caution -->     
           <!--Table header Begin -->
           <div class="styBB" style="width:187mm;">
             <div class="styNameBox" align="center" style="width:101.75mm;height:11mm;font-size:7pt;text-align:center;padding-top:4mm;">
@@ -141,7 +141,7 @@
             <div class="styLNAmountBox" style="border-bottom-width:0px;"/>
           </div>
           End line 1 -->
-          <!-- start line 1 extention -->
+<!-- start line 1 extention -->     
           <div style="width:187mm">
             <div class="styLNLeftNumBoxSD">1</div>
             <div class="styLNDesc" style="width:88.7mm;">
@@ -158,14 +158,14 @@
                 <xsl:with-param name="TargetNode" select="$Form6478Data/QualifiedEthanolFuelProduction"/>
               </xsl:call-template>
             </div>
-            <div class="styLNAmountBox" style="width:21mm;text-align:center;">
+        <div class="styLNAmountBox" style="width:21mm;text-align:center;">
           $
           <xsl:if test="$Form6478Data/QualifiedEthanolFuelProdRate">
-                <xsl:call-template name="PopulateText">
+            <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form6478Data/QualifiedEthanolFuelProdRate"/>
-                </xsl:call-template>
-              </xsl:if>
-              <!--xsl:if test="not($Form6478Data/QualifiedEthanolFuelProdRate) or ($Form6478Data/QualifiedEthanolFuelProdRate='')" -->
+            </xsl:call-template>
+          </xsl:if>
+          <!--xsl:if test="not($Form6478Data/QualifiedEthanolFuelProdRate) or ($Form6478Data/QualifiedEthanolFuelProdRate='')" -->
               <xsl:if test="not($Form6478Data/QualifiedEthanolFuelProdRate)">.10</xsl:if>
             </div>
             <div class="styLNAmountBox">
@@ -174,9 +174,9 @@
               </xsl:call-template>
             </div>
           </div>
-          <!-- End line 1 extention -->
-          <!--  Start line 2 -->
-          <div style="width:187mm">
+<!-- End line 1 extention -->
+ <!--  Start line 2 -->        
+    <div style="width:187mm">
             <div class="styLNLeftNumBoxSD" style="height:4mm;">2</div>
             <div class="styLNDesc" style="width:88.7mm;height:4mm;">
               Alcohol 190 proof or greater <b>and</b> alcohol 190 proof or greater in  
@@ -187,7 +187,7 @@
             <div class="styLNAmountBox" style="border-bottom-width:0px;"/>
           </div>
           <!--End line 2-->
-          <!-- start line 2 extention -->
+<!-- start line 2 extention -->     
           <div style="width:187mm">
             <div class="styLNLeftNumBoxSD"/>
             <div class="styLNDesc" style="width:88.7mm;">
@@ -209,10 +209,10 @@
                 <xsl:with-param name="TargetNode" select="$Form6478Data/Alcohol190ProofOrHigherPrf"/>
               </xsl:call-template>
             </div>
-            <div class="styLNAmountBox" style="width:21mm;text-align:center;">  
+  <div class="styLNAmountBox" style="width:21mm;text-align:center;">  
           $   
           <xsl:if test="$Form6478Data/RateFor190OrHigherPrfAlcohol">
-                <xsl:call-template name="PopulateText">
+          <xsl:call-template name="PopulateText">
                   <xsl:with-param name="TargetNode" select="$Form6478Data/RateFor190OrHigherPrfAlcohol"/>
                 </xsl:call-template>
               </xsl:if>
@@ -224,9 +224,9 @@
               </xsl:call-template>
             </div>
           </div>
-          <!-- End line 2 extention -->
-          <!--  Start line 3 -->
-          <div style="width:187mm">
+<!-- End line 2 extention -->
+ <!--  Start line 3 -->        
+    <div style="width:187mm">
             <div class="styLNLeftNumBoxSD" style="height:4mm;">3</div>
             <div class="styLNDesc" style="width:88.7mm;height:4mm;">
               Alcohol 190 proof or greater <b>and</b> alcohol 190 proof or greater in  
@@ -235,9 +235,9 @@
             <div class="styLNAmountBox" style="width:32mm;border-bottom-width:0px;"/>
             <div class="styLNAmountBox" style="width:21mm;text-align:center;border-bottom-width:0px;"/>
             <div class="styLNAmountBox" style="border-bottom-width:0px;"/>
-          </div>
-          <!--  End line 3 -->
-          <!-- start line 3 extention -->
+    </div>
+<!-- End line 3 -->
+<!-- start line 3 extention -->     
           <div style="width:187mm">
             <div class="styLNLeftNumBoxSD"/>
             <div class="styLNDesc" style="width:88.7mm;">
@@ -275,8 +275,8 @@
               </xsl:call-template>
             </div>
           </div>
-          <!-- End line 3 extention -->
-          <!--  Start line 4 -->
+<!-- End line 3 extention -->
+   <!-- Start line 4 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBoxSD">4</div>
             <div class="styLNDesc" style="width:88.7mm;">
@@ -289,7 +289,7 @@
             <div class="styLNAmountBox" style="border-bottom-width:0px;height:8.5mm;"/>
           </div>
           <!--End line 4 -->
-          <!-- start line 4 extention -->
+<!-- start line 4 extention -->     
           <div style="width:187mm">
             <div class="styLNLeftNumBoxSD"/>
             <div class="styLNDesc" style="width:88.7mm;">
@@ -333,7 +333,7 @@
             </div>
           </div>
           <!-- End line 4 extention -->
-          <!--  Start line 5 -->
+  <!-- Start line 5 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBoxSD" style="height:4mm;">5</div>
             <div class="styLNDesc" style="width:88.7mm;height:4mm;">
@@ -403,9 +403,9 @@
             <!-- Text is aligned center as it is in center aligned in the PDF -->
             <div class="styLNAmountBox" style="width:21mm;text-align:center;border-bottom-width:0px;"/>
             <div class="styLNAmountBox" style="border-bottom-width:0px;"/>
-          </div>
-          <!-- End line 6 -->
-          <!-- start line 6 extention -->
+        </div>
+<!-- End line 6 -->
+<!-- start line 6 extention -->     
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;"/>
             <div class="styLNDesc" style="width:88.7mm;height:4mm;">
@@ -557,12 +557,12 @@
             </div>
           </div>
           <!-- end line 8 extension -->
-          <!-- start line 9 -->
+<!-- start line 9 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBoxSD" style="height:4mm;">9</div>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;font-size:2.5mm;">
               <span style="float:left">Alcohol and cellulosic biofuel fuels credit from a partnership, S corporation, cooperative, estate, or trust </span>
-            </div>
+        </div>
             <div class="styLNAmountBox" style="border-bottom-width:0px;width:8mm;padding-right:2mm;"/>
             <div class="styLNAmountBox" style="width:30mm;border-bottom-width:0px;"/>
             <!-- Text is aligned center as it is in center aligned in the PDF -->
@@ -604,12 +604,12 @@
             </div>
           </div>
           <!-- end line 9 extension -->
-          <!-- start line 10 -->
+<!-- start line 10 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;">10</div>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;font-size:2.5mm;">
               <span style="float:left">Add lines 8 and 9. Partnerships and S corporations, report this amount on Schedule K. All others, go to</span>
-            </div>
+        </div>
             <div class="styLNAmountBox" style="border-bottom-width:0px;width:8mm;padding-right:2mm;"/>
             <div class="styLNAmountBox" style="width:30mm;border-bottom-width:0px;"/>
             <!-- Text is aligned center as it is in center aligned in the PDF -->
@@ -654,12 +654,12 @@
             </div>
           </div>
           <!-- end line 10 extension-->
-          <!-- start line 11 -->
+<!-- start line 11 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;">11</div>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;font-size:2.5mm;">
               <span style="float:left">Alcohol and cellulosic biofuel fuels credit included on line 10 from passive activities (see instructions)</span>
-            </div>
+        </div>
             <div class="styLNRightNumBox">11</div>
             <div class="styLNAmountBox">
               <xsl:call-template name="PopulateAmount">
@@ -668,8 +668,8 @@
             </div>
           </div>
           <!-- Text is aligned center as it is in center aligned in the PDF -->
-          <!-- End line 11 -->
-          <!-- start line 12 -->
+<!-- End line 11 -->
+<!-- start line 12 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;">12</div>
             <div class="styLNDesc" style="width:138.75mm;height:4mm;font-size:2.5mm;">
@@ -702,7 +702,7 @@
             </div>
           </div>
           <!-- Text is aligned center as it is in center aligned in the PDF -->
-          <!-- End line 12 -->
+<!-- End line 12 -->
           <!-- start line 13 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;">13</div>
@@ -717,7 +717,7 @@
             </div>
           </div>
           <!-- Text is aligned center as it is in center aligned in the PDF -->
-          <!-- End line 13 -->
+<!-- End line 13 -->
           <!-- start line 14 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;">14</div>
@@ -728,7 +728,7 @@
             <div class="styLNAmountBox" style="width:30mm;border-bottom-width:0px;"/>
             <!-- Text is aligned center as it is in center aligned in the PDF -->
           </div>
-          <!-- End line 14 -->
+<!-- End line 14 --> 
           <!-- start line 14 extention -->
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;padding-bottom:.5mm;"/>
@@ -771,7 +771,7 @@
             <div class="styLNAmountBox" style="width:30mm;border-bottom-width:0px;"/>
             <!-- Text is aligned center as it is in center aligned in the PDF -->
           </div>
-          <!-- End line 15 -->
+<!-- End line 15 --> 
           <!-- start line 15 extention -->
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;padding-bottom:.5mm;"/>
@@ -820,7 +820,7 @@
               </xsl:call-template>
             </div>
           </div>
-          <!-- End line 16 -->
+<!-- End line 16 --> 
           <!-- start line 17 -->
           <div style="width:187mm">
             <div class="styLNLeftNumBox" style="height:4mm;">17</div>
@@ -873,11 +873,11 @@
           <!-- end line 17extension-->
           <!-- Start Page footer -->
           <div class="styFooter" style="width:187mm; font-size:7pt; border-top:1 solid black; padding-top:1mm;">
-            <div style="float:left; font-size:8.5pt">
+        <div style="float:left; font-size:8.5pt">
               <b>For Paperwork Reduction Act Notice, see instructions.</b>
-            </div>
-            <div style="float:right;font-size:6pt">
-              Cat. No. 13605J
+        </div>    
+        <div style="float:right;font-size:6pt">
+          Cat. No. 13605J
                 <span style="width:30mm"/>
                 Form <b style="font-size:9pt">6478<span style="font-size:6pt"> (2008)</span>
               </b>
@@ -885,26 +885,26 @@
           </div>
           <p style="page-break-before:always"/>
           <!-- end Page footer -->
-          <!-- BEGIN Left Over Table -->
-          <!-- Additonal Data Title Bar and Button -->
-          <div class="styLeftOverTitleLine" id="LeftoverData">
-            <div class="styLeftOverTitle">
+<!-- BEGIN Left Over Table -->  
+<!-- Additonal Data Title Bar and Button -->
+        <div class="styLeftOverTitleLine" id="LeftoverData">
+          <div class="styLeftOverTitle">
             Additional Data        
           </div>
-            <div class="styLeftOverButtonContainer">
-              <input class="styLeftoverTableBtn" TabIndex="1" type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
-            </div>
-          </div>
-          <!-- Additional Data Table -->
-          <table class="styLeftOverTbl">
-            <xsl:call-template name="PopulateCommonLeftover">
+          <div class="styLeftOverButtonContainer">
+            <input class="styLeftoverTableBtn" TabIndex="1"  type="button" value="Return to Form" onclick="javascript:returnToWriteInImage();"/>
+          </div>      
+        </div>
+        <!-- Additional Data Table -->
+        <table class="styLeftOverTbl">
+          <xsl:call-template name="PopulateCommonLeftover">
               <xsl:with-param name="TargetNode" select="$Form6478Data"/>
-              <xsl:with-param name="DescWidth" select="100"/>
-            </xsl:call-template>
-          </table>
-          <!-- END Left Over Table -->
-        </form>
-      </body>
-    </html>
-  </xsl:template>
+            <xsl:with-param name="DescWidth" select="100"/>
+          </xsl:call-template> 
+        </table>
+        <!-- END Left Over Table -->  
+      </form>
+    </body>
+  </html>
+</xsl:template>
 </xsl:stylesheet>

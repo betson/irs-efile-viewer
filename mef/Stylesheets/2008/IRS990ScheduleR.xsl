@@ -2,6 +2,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<!-- Modified by Sandy Cram  11-25-2008  -->
 	<!-- This stylesheet was last modified by Sandy Cram on 1/8/2009  added shading for SRD -->
+	<!-- This stylesheet was last modified by Sandy Cram on 2/8/2010 for defect#25700 -->
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -671,6 +672,7 @@
 							<!-- button display logic -->
 							<xsl:call-template name="SetDynamicTableToggleButton">
 								<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/Form990ScheduleRPartIII"/>
+								<xsl:with-param name="headerHeight" select="2"/>
 								<xsl:with-param name="containerHeight" select="7"/>
 								<xsl:with-param name="containerID" select=" 'IRT3ctn' "/>
 							</xsl:call-template>
@@ -987,6 +989,7 @@
 					<!-- Set Initial Height of Above Table -->
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/Form990ScheduleRPartIII"/>
+						<xsl:with-param name="headerHeight" select="2"/>
 						<xsl:with-param name="containerHeight" select="7"/>
 						<xsl:with-param name="containerID" select=" 'IRT3ctn' "/>
 					</xsl:call-template>
@@ -2511,7 +2514,8 @@ or gross revenue) that was not a related organization. See instructions regardin
 						<!-- button display logic -->
 						<xsl:call-template name="SetDynamicTableToggleButton">
 							<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/Form990ScheduleRPartVI"/>
-							<xsl:with-param name="containerHeight" select="9"/>
+							<xsl:with-param name="headerHeight" select="2"/>
+							<xsl:with-param name="containerHeight" select="16"/>
 							<xsl:with-param name="containerID" select=" 'IRT6ctn' "/>
 						</xsl:call-template>
 						<!-- end button display logic -->
@@ -2569,7 +2573,7 @@ or gross revenue) that was not a related organization. See instructions regardin
 							</thead>
 							<tfoot/>
 							<tbody>
-								<xsl:if test="($Print != $Separated) or (count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt;=9) ">
+								<xsl:if test="($Print != $Separated) or (count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt;=16) ">
 									<xsl:for-each select="$Form990ScheduleRData/Form990ScheduleRPartVI">
 										<tr>
 											<td class="styTableCellText" style="width:60mm;padding-left:1mm;">
@@ -2697,7 +2701,7 @@ or gross revenue) that was not a related organization. See instructions regardin
 										</tr>
 									</xsl:for-each>
 								</xsl:if>
-								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 1 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 9) and ($Print = $Separated)) ">
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 1 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated)) ">
 									<tr>
 										<td class="styTableCellText" style="width:60mm;">
 											<xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -2737,25 +2741,49 @@ or gross revenue) that was not a related organization. See instructions regardin
 										</td>
 									</tr>
 								</xsl:if>
-								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 2 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 9) and ($Print = $Separated))">
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 2 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990PartVITableFillerRow"/>
 								</xsl:if>
-								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 3 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 9) and ($Print = $Separated))">
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 3 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990PartVITableFillerRow"/>
 								</xsl:if>
-								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 4 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 9) and ($Print = $Separated))">
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 4 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990PartVITableFillerRow"/>
 								</xsl:if>
-								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 5 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 9) and ($Print = $Separated))">
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 5 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990PartVITableFillerRow"/>
 								</xsl:if>
-								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 6 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 9) and ($Print = $Separated))">
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 6 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990PartVITableFillerRow"/>
 								</xsl:if>
-								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 7 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 9) and ($Print = $Separated))">
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 7 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990PartVITableFillerRow"/>
 								</xsl:if>
-								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 8 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 9) and ($Print = $Separated))">
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 8 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990PartVITableFillerRow"/>
+								</xsl:if>
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 9 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990PartVITableFillerRow"/>
+								</xsl:if>
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 10 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990PartVITableFillerRow"/>
+								</xsl:if>
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 11 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990PartVITableFillerRow"/>
+								</xsl:if>
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 12 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990PartVITableFillerRow"/>
+								</xsl:if>
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 13 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990PartVITableFillerRow"/>
+								</xsl:if>
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 14 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990PartVITableFillerRow"/>
+								</xsl:if>
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 15 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
+									<xsl:call-template name="IRS990PartVITableFillerRow"/>
+								</xsl:if>
+								<xsl:if test="count($Form990ScheduleRData/Form990ScheduleRPartVI) &lt; 16 or ((count($Form990ScheduleRData/Form990ScheduleRPartVI) &gt; 16) and ($Print = $Separated))">
 									<xsl:call-template name="IRS990PartVITableFillerRow"/>
 								</xsl:if>
 							</tbody>
@@ -2764,7 +2792,7 @@ or gross revenue) that was not a related organization. See instructions regardin
 					<xsl:call-template name="SetInitialDynamicTableHeight">
 						<xsl:with-param name="TargetNode" select="$Form990ScheduleRData/Form990ScheduleRPartVI"/>
 						<xsl:with-param name="headerHeight" select="2"/>
-						<xsl:with-param name="containerHeight" select="9"/>
+						<xsl:with-param name="containerHeight" select="16"/>
 						<xsl:with-param name="containerID" select=" 'IRT6ctn' "/>
 					</xsl:call-template>
 					<!-- End Part VI Table -->

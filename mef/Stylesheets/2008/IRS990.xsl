@@ -90,8 +90,8 @@
             </span>
           </div>
           <div style="width:187mm;">
-            <div style="width:25mm;float:left;font-size:6pt;padding-top:2mm">
-              <span class="styBoldText" style="float:left;width:2.75mm;">B</span>Check if applicable:
+            <div style="width:25mm;float:left;font-size:6pt;padding-top:2mm;">
+            <span class="styBoldText" style="float:left;width:2.75mm;">B</span>Check if applicable:
           <span style="width:3.5mm;padding-top:1mm">
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateCheckbox">
@@ -679,7 +679,7 @@
               <!-- Begin Part I Summary Section -->
               <!-- Activities Governance Section -->
               <!--
- Found out the hexadecimal value for & and put in below for"and" and "&" because the & caused error message.
+ Found out the hexadecimal value for & and put in below for"and" and "&" because the & caused error message.RLJ
 -->
               <tr>
                 <td class="styIRS990VTImageBox" style="width: 5mm;border-style: solid; border-color: black; border-left-width: 0px; border-right-width: 1px; border-top-width: 0px; border-bottom-width: 1px" rowspan="11" valign="middle">
@@ -693,41 +693,57 @@
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="$Form990Data/ActivityOrMissionDescription"/>
                     </xsl:call-template>
+                    <!--
                     <xsl:call-template name="PopulateAdditionalDataTableMessage">
                       <xsl:with-param name="TargetNode" select="$Form990Data/ActivityOrMissionDescription"/>
                     </xsl:call-template>
+                     -->
                   </span>
+                  
                   <xsl:if test="((count($Form990Data/ActivityOrMissionDescription) &gt; 3) and ($Print = $Separated))"/>
                   <span style="width: 173mm; border-style:solid; border-color:black; border-left-width:0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px">
+                  <!--
                     <xsl:call-template name="PopulateAdditionalDataTableMessage">
                       <xsl:with-param name="TargetNode" select="$Form990Data/ActivityOrMissionDescription"/>
                     </xsl:call-template>
+                   -->
                   </span>
                   <xsl:if test="((count($Form990Data/ActivityOrMissionDescription) &gt; 3) and ($Print = $Separated))">
+                  <!--
                     <xsl:call-template name="PopulateAdditionalDataTableMessage">
                       <xsl:with-param name="TargetNode" select="$Form990Data/ActivityOrMissionDescription"/>
                     </xsl:call-template>
+                    -->
                   </xsl:if>
                   <span style="width: 173mm; border-style:solid; border-color:black; border-left-width:0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px">
+                  <!--
                     <xsl:call-template name="PopulateAdditionalDataTableMessage">
                       <xsl:with-param name="TargetNode" select="$Form990Data/ActivityOrMissionDescription"/>
                     </xsl:call-template>
+                  -->
                   </span>
                   <xsl:if test="((count($Form990Data/ActivityOrMissionDescription) &gt; 3) and ($Print = $Separated))">
+                  <!--
                     <xsl:call-template name="PopulateAdditionalDataTableMessage">
                       <xsl:with-param name="TargetNode" select="$Form990Data/ActivityOrMissionDescription"/>
                     </xsl:call-template>
+                   -->
                   </xsl:if>
                   <span style="width: 173mm; border-style:solid; border-color:black; border-left-width:0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 1px">
+                  <!--
                     <xsl:call-template name="PopulateAdditionalDataTableMessage">
                       <xsl:with-param name="TargetNode" select="$Form990Data/ActivityOrMissionDescription"/>
                     </xsl:call-template>
+                    -->
                   </span>
                   <xsl:if test="((count($Form990Data/ActivityOrMissionDescription) &gt; 3) and ($Print = $Separated))">
+                  <!--
                     <xsl:call-template name="PopulateAdditionalDataTableMessage">
                       <xsl:with-param name="TargetNode" select="$Form990Data/ActivityOrMissionDescription"/>
                     </xsl:call-template>
+                  -->
                   </xsl:if>
+                 
                 </td>
               </tr>
               <tr>
@@ -3639,7 +3655,7 @@ For contributions of cars, boats, airplanes, and other vehicles, did the organiz
             <div class="styLNLeftNumBox" style="height:4.5mm;">8</div>
             <div class="styLNDesc" style="width:150mm;height:4.5mm;">
               <span class="styNormalText" style="padding-top:0.0mm;">
-                <span class="styBoldText"> Section 501(c)(3) and other sponsoring organizations maintaining donor advised funds and 509(a)(3) supporting organizations.</span> Did the supporting organization, or a fund maintained by a sponsoring organization, have excess business holdings at any time during the year?</span>
+                <span class="styBoldText"> Section 501(c)(3) and other sponsoring organizations maintaining donor advised funds and section 509(a)(3) supporting organizations.</span> Did the supporting organization, or a fund maintained by a sponsoring organization, have excess business holdings at any time during the year?</span>
               <!--Dotted Line-->
               <span style="letter-spacing:4mm; font-weight:bold; font-size:7pt; margin-left:2mm;">................</span>
             </div>
@@ -4472,9 +4488,11 @@ available for public inspection. Indicate how you make these available. Check al
             <div class="styLNDesc" style="width:150mm;height:4.5mm;">
        Describe in Schedule O whether (and if so, how), the organization makes its governing documents, conflict of interest
 policy, and financial statements available to the public.  
+<!--
 <xsl:call-template name="PopulateAdditionalDataTableMessage">
                 <xsl:with-param name="TargetNode" select="$Form990Data/TheBooksAreInCareOf"/>
               </xsl:call-template>
+-->
             </div>
           </div>
           <!--Part VI Ln20-->
@@ -5539,10 +5557,12 @@ the organization and related organizations greater than $150,000?<span class="st
                 <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;padding-top:.3mm;padding-left:3mm;">g</td>
                 <td class="styGenericDiv" colspan="2" style="width:50mm;height:4.5mm;">
                   <span style="float:left;">Noncash contributions included in lines 1a-1f:$ 
-  <span class="styFixedUnderline" style="float:none;width:10mm;font-size:6pt;text-align:right">
+  
+  <span style="width:25mm;height:4.5mm;font-size:6pt;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
                       <xsl:call-template name="PopulateAmount">
                         <xsl:with-param name="TargetNode" select="$Form990Data/NoncashContributions"/>
                       </xsl:call-template>
+                   
                     </span>
                   </span>
                 </td>
@@ -5577,7 +5597,7 @@ the organization and related organizations greater than $150,000?<span class="st
                   </span>
                 </td>
                 <td class="styTableCell" style="width:25mm;height:4.5mm;">
-                  <span style="width:22mm;height:4.5mm;font-size:6pt;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
+                  <span style="width:25mm;height:4.5mm;font-size:6pt;border-style: solid; border-color: black;border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;">
                     <span class="styTableCellPad"/>
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form990Data/TotalContributions"/>
@@ -5598,8 +5618,15 @@ the organization and related organizations greater than $150,000?<span class="st
               <!-- Space between top of table and 2a -->
               <tr>
                 <td class="styIRS990VTImageBox" style="width:10mm;" valign="middle">
-                  <xsl:attribute name="rowspan"><xsl:choose><xsl:when test="count($Form990Data/ProgramServiceRevenue) &lt; 5">8
-          </xsl:when><xsl:otherwise><xsl:value-of select="count($Form990Data/ProgramServiceRevenue) + 3"/></xsl:otherwise></xsl:choose></xsl:attribute>
+                  <xsl:attribute name="rowspan">
+                  <xsl:choose>
+                  <xsl:when test="count($Form990Data/ProgramServiceRevenue) &lt; 5">8
+          </xsl:when>
+          <xsl:otherwise>
+          <xsl:value-of select="count($Form990Data/ProgramServiceRevenue) + 3"/>
+          </xsl:otherwise>
+          </xsl:choose>
+          </xsl:attribute>
                   <img src="{$ImagePath}/990R_ProgSerRev.gif" alt=" Program Service Revenue"/>
                 </td>
                 <td class="styLNLeftNumBox" style="width:5mm;height:4.5mm;"/>
@@ -6893,12 +6920,12 @@ the organization and related organizations greater than $150,000?<span class="st
           <!--  End Part VIII Table  -->
           <!-- End Part VIII-->
           <!-- Footer -->
-          <div class="styBB" style="width:187mm;clear:both;border-top-width:1px;">
+         <div class="styBB" style="width:187mm;clear:both;border-top-width:1px;"/>
             <div style="width:187mm;float:none;clear:both;padding-top:.5mm;" class="pageend">
               <div class="styGenericDiv" style="width:105mm;"/>
               <div class="styGenericDiv" style="width:25mm;"/>
               <div class="styGenericDiv" style="float:right;">Form <span class="styBoldText">990</span> (2008)</div>
-            </div>
+            
           </div>
           <!-- header -->
           <div style="width:187mm;clear:both;padding-bottom:.5mm;float:none;clear:both;" class="styBB">
@@ -9276,7 +9303,7 @@ the Single Audit Act and OMB Circular A-133?</span>
             <div class="styGenericDiv" style="width:25mm;"/>
             <div class="styGenericDiv" style="float:right;">Form <span class="styBoldText">990</span> (2008)</div>
           </div>
-          <br class="pageEnd"/>
+          
           <!-- BEGIN Left Over Table -->
           <!-- Additonal Data Title Bar and Button -->
           <div class="styLeftOverTitleLine" id="LeftoverData">
@@ -9435,7 +9462,12 @@ the Single Audit Act and OMB Circular A-133?</span>
               <tbody valign="top">
                 <xsl:for-each select="$Form990Data/ContractorCompensation">
                   <tr>
-                    <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+                    <xsl:attribute name="class">
+                    <xsl:choose>
+                    <xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+                    <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+                    </xsl:choose>
+                    </xsl:attribute>
                     <td class="styDepTblCell" style="width:100mm;height:4.5mm;text-align:left;valign:top;border-left-width:0px;">
                       <xsl:call-template name="PopulateText">
                         <xsl:with-param name="TargetNode" select="NameOfContractor/NamePerson"/>
@@ -9497,7 +9529,11 @@ the Single Audit Act and OMB Circular A-133?</span>
               <tbody valign="top">
                 <xsl:for-each select="$Form990Data/ProgramServiceRevenue">
                   <tr>
-                    <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
+                    <xsl:attribute name="class">
+                    <xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+                    <xsl:otherwise>styDepTblRow2</xsl:otherwise>
+                    </xsl:choose>
+                    </xsl:attribute>
                     <td class="styDepTblCell" style="width:3mm;height:4.5mm;valign:top;border-right-width:0px;">
                       <span class="styBoldText"/>
                     </td>

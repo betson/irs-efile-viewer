@@ -829,7 +829,7 @@
                     </xsl:call-template>
                   </td>
                   <!-- Amount of Support -->
-                  <td class="IRS990ScheduleA_GenericCell" style="text-align:right;border-right-width:0px">
+                  <td class="IRS990ScheduleA_GenericCell" style="text-align:right;border-right-width:0px; width:32mm;">
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="Amount"/>
                     </xsl:call-template>
@@ -840,8 +840,10 @@
             <!-- Display the first blank row if the data set is empty. If the number of data elements is more than 2 -->
             <!-- and the print option is separated, display a message in the first row directing the user to the -->
             <!-- additional data table -->
+            
             <xsl:if test="count($FormData/SupportedOrgInformation) &lt; 1 or
             (($Print = $Separated) and (count($FormData/SupportedOrgInformation) &gt; 2)) ">
+
               <tr>
                 <td class="IRS990ScheduleA_GenericCell">
                   <xsl:call-template name="PopulateAdditionalDataTableMessage">
@@ -915,6 +917,7 @@
                 </td>
               </tr>
             </xsl:if>
+            
             <tr>
               <td style="border:black 0 solid;border-bottom-width:1;border-right-width:1" colspan="1">
                 <span class="styBoldText">Total </span>
@@ -946,7 +949,7 @@
         <div class="pageEnd" style="width:187mm;float:none;clear:both;">
           <div class="IRS990ScheduleA_LineContainer">
             <div style="font-weight:bold;width:100mm;float:left;font-family:'arial narrow';">
-      For Paperwork Reduction Act Notice, see the Instructions for Form 990.</div>
+      For Privacy Act and Paperwork Reduction Act Notice, see the Instructions for Form 990.</div>
             <div style="width:40mm;float:left;">
       Cat. No. 11285F
     </div>
@@ -984,25 +987,26 @@
           <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
             <tr>
               <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px" scope="col" colspan="2">
-                <span style="float: left; clear:both"> Calendar year</span>
-                <span class="styNormalText">(or fiscal year beginning in)
+                <span style="float: left; clear:both;"> Calendar year</span>
+                <span class="styNormalText"><b>(or fiscal year beginning in)</b>
         <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
                 </span>
                 <!--      <span style="float:right; clear: both"><img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/></span>  -->
               </th>
-              <!-- For defect 22269 changed width from 21 to 22 for Part II and III. Also changed IRS990ScheduleA_MoneyCell from no defined width to width:22mm in schedAstyle file -->
+              <!-- For defect 22269 changed width from 21 to 22 for Part II and III. Also changed IRS990ScheduleA_MoneyCell from no defined width to width:22mm in schedAstyle file  RLJ -2008, Changed to 25mm 1/8/10 -->
+              <!-- For defect 25031 changed width from 22 to 23 for Part II and III. Also changed IRS990ScheduleA_MoneyCell from no defined width to width:23mm in schedAstyle file  RLJ - 2009 , Changed to 25mm 1/8/10-->
 
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(a)<span class="styNormalText"> 2004</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(a)<span class="styNormalText"> 2004</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(b)<span class="styNormalText"> 2005</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(b)<span class="styNormalText"> 2005</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(c)<span class="styNormalText"> 2006</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(c)<span class="styNormalText"> 2006</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(d)<span class="styNormalText"> 2007</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(d)<span class="styNormalText"> 2007</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(e)<span class="styNormalText"> 2008</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(e)<span class="styNormalText"> 2008</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;border-right-width:0px;text_align:center" scope="col">(f)<span class="styNormalText"> Total</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;border-right-width:0px;text_align:center" scope="col">(f)<span class="styNormalText"> Total</span>
               </th>
             </tr>
             <tr>
@@ -1113,8 +1117,8 @@
             <tr>
               <td class="IRS990ScheduleA_IndexCell" style="width:4mm;border-bottom-width:0px;" valign="top">4</td>
               <td class="IRS990ScheduleA_GenericCell" style="width:56mm;border-bottom-width:0px;">
-                <b>Total</b>
-                <span class="IRS990ScheduleA_DotSpacing">................</span>
+                <b>Total.</b> Add lines 1-3
+                <span class="IRS990ScheduleA_DotSpacing">...</span>
               </td>
               <td class="IRS990ScheduleA_MoneyCell" style="font-size:6pt;Verdana;">
                 <xsl:call-template name="PopulateAmount">
@@ -1187,25 +1191,25 @@ person (other than a governmental unit or publicly supported organization) inclu
           <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
             <tr>
               <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px;" scope="col" colspan="2">
-                <span style="float: left; clear: both"> Calendar year</span>
-                <span class="styNormalText">(or fiscal year beginning in)
+                    <span style="float: left; clear: both"> Calendar year</span>
+                    <span class="styNormalText"><b>(or fiscal year beginning in)</b>
         <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
                 </span>
                 <!--       <span style="float:right; clear: both"><img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/></span>  -->
               </th>
               <!-- For defect 22269 changed width from 21 to 22 for Part II and III. Also changed IRS990ScheduleA_MoneyCell from no defined width to width:22mm in schedAstyle file -->
 
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(a)<span class="styNormalText"> 2004</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(a)<span class="styNormalText"> 2004</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(b)<span class="styNormalText"> 2005</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(b)<span class="styNormalText"> 2005</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(c)<span class="styNormalText"> 2006</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(c)<span class="styNormalText"> 2006</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(d)<span class="styNormalText"> 2007</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(d)<span class="styNormalText"> 2007</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(e)<span class="styNormalText"> 2008</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(e)<span class="styNormalText"> 2008</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;border-right-width:0px;text_align:center" scope="col">(f)<span class="styNormalText"> Total</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;border-right-width:0px;text_align:center" scope="col">(f)<span class="styNormalText"> Total</span>
               </th>
             </tr>
             <tr>
@@ -1622,22 +1626,22 @@ person (other than a governmental unit or publicly supported organization) inclu
             <tr>
               <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px;" scope="col" colspan="2">
                 <span style="float: left; clear: both"> Calendar year</span>
-                <span class="styNormalText">(or fiscal year beginning in)
+                <span class="styNormallText"><b>(or fiscal year beginning in)</b>
         <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
                 </span>
               </th>
               <!-- For defect 22269 changed width from 21 to 22 for Part II and III. Also changed IRS990ScheduleA_MoneyCell from no defined width to width:22mm in schedAstyle file -->
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(a)<span class="styNormalText"> 2004</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(a)<span class="styNormalText"> 2004</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(b)<span class="styNormalText"> 2005</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(b)<span class="styNormalText"> 2005</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(c)<span class="styNormalText"> 2006</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(c)<span class="styNormalText"> 2006</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(d)<span class="styNormalText"> 2007</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(d)<span class="styNormalText"> 2007</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(e)<span class="styNormalText"> 2008</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(e)<span class="styNormalText"> 2008</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;border-right-width:0px;text_align:center" scope="col">(f)<span class="styNormalText"> Total</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;border-right-width:0px;text_align:center" scope="col">(f)<span class="styNormalText"> Total</span>
               </th>
             </tr>
             <tr>
@@ -2002,24 +2006,23 @@ year or $5,000
           <table cellspacing="0" cellpadding="0" style="font-size:7pt;">
             <tr>
               <th class="IRS990ScheduleA_GenericCell" style="width:60mm;font-weight:bold;border-bottom-width:0px;" scope="col" colspan="2">
-                <span style="float: left; clear: both"> Calendar year</span>
-                <span class="styNormalText"> (or fiscal year beginning in)
+                <span style="float: left; clear: both"> Calendar year</span><span class="styNormalText"><b>(or fiscal year beginning in)</b>
         <img src="{$ImagePath}/990SchA_Bullet_Line.gif" alt="right arrow"/>
                 </span>
               </th>
               <!-- For defect 22269 changed width from 21 to 22 for Part II and III. Also changed IRS990ScheduleA_MoneyCell from no defined width to width:22mm in schedAstyle file -->
 
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(a)<span class="styNormalText"> 2004</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(a)<span class="styNormalText"> 2004</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(b)<span class="styNormalText"> 2005</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(b)<span class="styNormalText"> 2005</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(c)<span class="styNormalText"> 2006</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(c)<span class="styNormalText"> 2006</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(d)<span class="styNormalText"> 2007</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(d)<span class="styNormalText"> 2007</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;text_align:center" scope="col">(e)<span class="styNormalText"> 2008</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;text_align:center" scope="col">(e)<span class="styNormalText"> 2008</span>
               </th>
-              <th class="IRS990ScheduleA_GenericCell" style="width:22mm;border-right-width:0px;text_align:center" scope="col">(f)<span class="styNormalText"> Total</span>
+              <th class="IRS990ScheduleA_GenericCell" style="width:25mm;border-right-width:0px;text_align:center" scope="col">(f)<span class="styNormalText"> Total</span>
               </th>
             </tr>
             <tr>
@@ -2259,7 +2262,7 @@ year or $5,000
               <td class="IRS990ScheduleA_MoneyCell" style="border-right-width:1px;background-color:lightgrey;font-size:6pt;Verdana;">&nbsp;</td>
               <td class="IRS990ScheduleA_MoneyCell" style="border-right-width:0px;font-size:6pt;Verdana;">
                 <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$FormData/TotalSupportTotal"/>
+                  <xsl:with-param name="TargetNode" select="$FormData/TotalSupportTotal/Total"/>
                 </xsl:call-template>
               </td>
             </tr>
@@ -2523,46 +2526,22 @@ year or $5,000
 Part II, line 17a or 17b; or Part III, line 12. Provide any other additional information. (see instructions)</span>
           </div>
         </div>
-        <!-- comment line -->
-        <!--             	<td style="border:black 0 solid;border-bottom-width:1;border-right-width:1" colspan="5"><span 					class="styBoldText" >Explanation</span>					
-				<span class="IRS990ScheduleA_Dotspacing">.....................................................</span>
-		</td> -->
         <table id="GEPATbl" class="styDepTbl" style="margin-top:4mm; font-size:8pt; font-family:Arial">
           <thead class="styTableThead">
             <tr class="styDepTblHdr">
-              <!--th class="styDepTblCell" scope="col">Item No.</th-->
-              <th class="styDepTblCell" scope="col">Identifier</th>
-              <th class="styDepTblCell" scope="col">Return Reference</th>
-              <th class="styDepTblCell" scope="col">Explanation</th>
+             <th class="styDepTblCell" scope="col">Facts And Circumstances Test</th>
             </tr>
           </thead>
           <tfoot/>
-          <tbody>
-            <xsl:for-each select="$DependencyData/GeneralExplanation">
-              <tr>
-                <xsl:attribute name="class"><xsl:choose><xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when><xsl:otherwise>styDepTblRow2</xsl:otherwise></xsl:choose></xsl:attribute>
-                <!--td class="styDepTblCell" valign="top">
-            <xsl:value-of select="position()" />
-          </td-->
-                <td class="styDepTblCell" align="left" valign="top">
+          
+       <tr>
+           <td class="styDepTblCell" align="left" valign="top">
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="Identifier"/>
+                    <xsl:with-param name="TargetNode" select="$FormData/FactsAndCircumstancesTest"/>
                   </xsl:call-template>
                 </td>
-                <td class="styDepTblCell" align="left" valign="top">
-                  <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="ReturnReference"/>
-                  </xsl:call-template>
-                </td>
-                <td class="styDepTblCell" align="left" valign="top">
-                  <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="Explanation"/>
-                  </xsl:call-template>
-                </td>
-              </tr>
-            </xsl:for-each>
-          </tbody>
-        </table>
+          </tr>
+       </table>
         <!--Page Footer-->
         <div class="pageEnd" style="width:187mm">
           <div style="float:right;">
