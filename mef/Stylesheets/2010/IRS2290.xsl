@@ -14,6 +14,8 @@
   <!-- 9/23/09  Added the new Special Condition Description to end of form per ETA091682OTH  -->
    <!-- 9/23/09  Added pushpin for the General Dependency Medium per ETA091653OTH -->
    <!-- 12/14/09  Removed the box lines from Part I, Line 1 as unable to get date to conform and enter correctly per business and IBM -->
+   <!-- 08/04/10 - Added link to Special Condition Description and pen image as pre defect #26406 - Jeremy Nichols -->
+   
     <html>
       <head>
         <title>
@@ -46,13 +48,17 @@
           <!-- Begin Form Title -->
           <div class="styBB" style="width:187mm;">
             <div class="styFNBox" style="width:31mm;height:20mm;">
-        Form <span class="styFormNumber">2290</span>
-              <br/>
-              <span class="styAgency">(Rev. July 2010)  
+        Form <span class="styFormNumber">2290</span>  
               <!-- General Dependency pushpin added -->
-                <xsl:call-template name="SetFormLinkInline">
+              <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form2290"/>
               </xsl:call-template>
+              
+              <xsl:call-template name="LinkToLeftoverDataTableInline">
+                <xsl:with-param name="TargetNode" select="$Form2290/SpecialConditionDescription"/>
+              </xsl:call-template>
+              <br/>
+              <span class="styAgency">(Rev. July 2010)
           <br/> Department of the Treasury
         </span>
               <br/>
@@ -384,7 +390,7 @@ Check if applicable:</div>
           <div style="width:187mm;">
             <div class="styLNLeftNumBox" style="height:5mm;">3</div>
             <div class="styLNDesc" style="width:117mm;height:5mm;">Additional tax from increase in taxable gross weight. See page 5 of the instructions   
-    <xsl:call-template name="SetFormLinkInline">
+              <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form2290/AdditionalTax"/>
               </xsl:call-template>
             </div>

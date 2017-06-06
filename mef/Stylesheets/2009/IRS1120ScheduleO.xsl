@@ -16,7 +16,7 @@
             <xsl:with-param name="RootElement" select="local-name($Form1120ScheduleO)"/>
           </xsl:call-template>
         </title>
-        <!-- No Browser Caching -->
+        <!--  No Browser Caching -->
         <meta http-equiv="Pragma" content="no-cache"/>
         <meta http-equiv="Cache-Control" content="no-cache"/>
         <meta http-equiv="Expires" content="0"/>
@@ -40,17 +40,15 @@
           <xsl:call-template name="DocumentHeader"/>
           <!-- Header - Form1120SchO Number, Title, and Year -->
           <div class="styTBB" style="width:187mm;">
-            <div class="styFNBox" style="width:31mm;height:22mm;border-right-width:2px;">
+            <div class="styFNBox" style="width:31mm;hight:14mm;border-right-width:2px;">
               <span class="styFormNumber" style="font-size:10pt;">SCHEDULE O<br/>(Form 1120)
-          	<span style="font-size:7pt;">
-                  <br/>(Rev. December 2009)</span>
-                <br/>
+          	
               </span>
               <!-- Form to Form Link (Push Pin plus pen and ink) -->
               <xsl:call-template name="SetFormLinkInline">
                 <xsl:with-param name="TargetNode" select="$Form1120ScheduleO"/>
               </xsl:call-template>
-              <div style="padding-top:.5mm;">
+              <div style="padding-top:.5mm;height:9mm">
                 <span class="styAgency">Department of the Treasury</span>
                 <br/>
                 <span class="styAgency">Internal Revenue Service</span>
@@ -59,41 +57,18 @@
             <div class="styFTBox" style="width:125mm;">
               <div class="styMainTitle">Consent Plan and Apportionment Schedule<br/>
                              for a Controlled Group</div>
-              <div class="styFST" style="height:5mm;padding-top:7mm;">
-                <img src="{$ImagePath}/1120SchN_Bullet_Title.gif" width="4" height="7" alt="Bullet"/>Attach to Form 1120, 1120-C, 1120-F, 1120-FSC, 1120L, 1120-PC, 1120-REIT, or 1120-RIC.<br/>
-                <img src="{$ImagePath}/1120SchN_Bullet_Title.gif" width="4" height="7" alt="Bullet"/>See separate instructions.<br/>
+              <div class="styFST" >
+                <img src="{$ImagePath}/1120SchN_Bullet_Title.gif" width="4"  alt="Bullet"/>Attach to Form 1120, 1120-C, 1120-F, 1120-FSC, 1120L, 1120-PC, 1120-REIT, or 1120-RIC.<br/>
+                <img src="{$ImagePath}/1120SchN_Bullet_Title.gif" width="4"  alt="Bullet"/>See separate instructions.
               </div>
             </div>
-            <div class="styTYBox" style="width:30mm;height:23.5mm;border-left-width:2px;">
-              <div class="styOMBNBB" style="height:11mm;padding-top:11mm;">OMB No. 1545-0123</div>
-              <!--
-          <div class="styTY" style="height:11mm;padding-top:1.5mm;">20<span
-                 class="styTYColor">06</span></div>-->
-            </div>
+            <div class="styTYBox" style="width:30mm;height:17.5mm;border-left-width:2px;">
+              <div class="styOMBNBB" style="padding-top:6mm;">
+
+              OMB No. 1545-0123</div>
+         </div>
           </div>
           <!-- End Header - Form Number, Title, and Year -->
-          <!--  Consolidated Group Name and Employer identification number 
-  <div class="styBB" style="width:187mm">
-    <div class="styNameBox" style="width:141mm;">
-      Name of corporation (consolidated group)<br/>
-      <xsl:call-template name="PopulateReturnHeaderFiler">
-      	<xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param>
-      </xsl:call-template><br/>  
-      <xsl:call-template name="PopulateReturnHeaderFiler">
-      	<xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
-      </xsl:call-template>
-    </div>
-    <div class="styEINBox" style=" padding-left:2mm;">
-    		<span class="BoldText">Employer identification number</span>
-      <br/><br/>
-      <span style="font-weight:normal;">  
-        <xsl:call-template name="PopulateReturnHeaderFiler">
-        	<xsl:with-param name="TargetNode">EIN</xsl:with-param>
-        </xsl:call-template>
-      </span>    
-    </div>
-  </div>
-   End Consolidated Group Name and Employer indentification number  -->
           <!--  Component member Name and Employer identification number -->
           <div class="styBB" style="width:187mm">
             <div class="styNameBox" style="width:141mm;">
@@ -145,18 +120,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsParentSubsidiaryGroup"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/IsParentSubsidiaryGroup"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsParentSubsidiaryGroup"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/IsParentSubsidiaryGroup"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsParentSubsidiaryGroup"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/IsParentSubsidiaryGroup"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/IsParentSubsidiaryGroup"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/IsParentSubsidiaryGroup"/>
                 </xsl:call-template>
               </label>          
           Parent-subsidiary group
@@ -169,18 +148,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsBrotherSisterGroup"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/IsBrotherSisterGroup"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsBrotherSisterGroup"/>
+                    <xsl:with-param name="TargetNode"
+                     select="$Form1120ScheduleO/IsBrotherSisterGroup"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsBrotherSisterGroup"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/IsBrotherSisterGroup"/>
+                  <xsl:with-param name="TargetNode"
+                   select="$Form1120ScheduleO/IsBrotherSisterGroup"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/IsBrotherSisterGroup"/>
                 </xsl:call-template>
               </label>
           Brother-sister group
@@ -193,18 +176,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsCombinedGroup"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/IsCombinedGroup"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsCombinedGroup"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/IsCombinedGroup"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsCombinedGroup"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/IsCombinedGroup"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/IsCombinedGroup"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/IsCombinedGroup"/>
                 </xsl:call-template>
               </label>          
           Combined group
@@ -217,18 +204,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsLifeInsuranceCompaniesOnly"/>
+                  <xsl:with-param name="TargetNode"
+                   select="$Form1120ScheduleO/IsLifeInsuranceCompaniesOnly"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsLifeInsuranceCompaniesOnly"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/IsLifeInsuranceCompaniesOnly"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IsLifeInsuranceCompaniesOnly"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/IsLifeInsuranceCompaniesOnly"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/IsLifeInsuranceCompaniesOnly"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/IsLifeInsuranceCompaniesOnly"/>
                 </xsl:call-template>
               </label>
           Life insurance companies only
@@ -250,18 +241,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorpMemberForEntireYear"/>
+                  <xsl:with-param name="TargetNode"
+                   select="$Form1120ScheduleO/CorpMemberForEntireYear"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorpMemberForEntireYear"/>
+                    <xsl:with-param name="TargetNode"
+                     select="$Form1120ScheduleO/CorpMemberForEntireYear"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorpMemberForEntireYear"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/CorpMemberForEntireYear"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/CorpMemberForEntireYear"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/CorpMemberForEntireYear"/>
                 </xsl:call-template>
               </label>
           For the entire year.
@@ -274,29 +269,37 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorpGroupMemberIndicator"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/CorpGroupMemberIndicator"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorpGroupMemberIndicator"/>
+                    <xsl:with-param name="TargetNode"
+                     select="$Form1120ScheduleO/CorpGroupMemberIndicator"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorpGroupMemberIndicator"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/CorpGroupMemberIndicator"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/CorpGroupMemberIndicator"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/CorpGroupMemberIndicator"/>
                 </xsl:call-template>
-              </label>          
+              </label>     
+              <!-- Part I line 2b -->     
             From <span style="width:25mm;border-bottom:solid 1px;text-align:center;">
                 <xsl:call-template name="PopulateMonthDayYear">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorporationMemberFromDate"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/CorporationMemberFromDate"/>
                 </xsl:call-template>
               </span>
+                  <!-- Part I line 2b -->     
               <span style="width:1mm;"/>, until <span style="width:1mm;"/>
               <span style="width:25mm;border-bottom:solid 1px;text-align:center;">
                 <xsl:call-template name="PopulateMonthDayYear">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorporationMemberToDate"/>
+                  <xsl:with-param name="TargetNode"
+                   select="$Form1120ScheduleO/CorporationMemberToDate"/>
                 </xsl:call-template>
               </span>
               <span style="width:1mm;"/>.
@@ -316,18 +319,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/AdoptApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/AdoptApportionmentPlan"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/AdoptApportionmentPlan"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/AdoptApportionmentPlan"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/AdoptApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/AdoptApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/AdoptApportionmentPlan"/>
+                  <xsl:with-param name="BackupName"
+                   select="Form1120ScheduleO/AdoptApportionmentPlan"/>
                 </xsl:call-template>
               </label>          
               Adopt an apportionment plan. All the members of this group are adopting an 
@@ -337,7 +344,8 @@
                 <span style="width:1mm;"/>
               <span style="width:25mm;border-bottom:solid 1px;text-align:center;">
                 <xsl:call-template name="PopulateMonthDayYear">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorporationMemberToDate"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/AdoptingApportionmentPlanTYEnd"/>
                 </xsl:call-template>
               </span>
               <span style="width:1mm;"/>,  and for all succeeding tax years.
@@ -350,18 +358,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/AmendCurrApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/AmendCurrApportionmentPlan"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/AmendCurrApportionmentPlan"/>
+                    <xsl:with-param name="TargetNode"
+                     select="$Form1120ScheduleO/AmendCurrApportionmentPlan"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/AmendCurrApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/AmendCurrApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/AmendCurrApportionmentPlan"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/AmendCurrApportionmentPlan"/>
                 </xsl:call-template>
               </label>
          Amend the current apportionment plan. All the members of this group are currently 
@@ -371,7 +383,8 @@
          <span style="width:1mm;"/>
               <span style="width:25mm;border-bottom:solid 1px;text-align:center;">
                 <xsl:call-template name="PopulateMonthDayYear">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/CorporationMemberToDate"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/AmendingPrevAdoptedPlanTYEnd"/>
                 </xsl:call-template>
               </span>
               <span style="width:1mm;"/>,  and for all succeeding tax years.
@@ -384,18 +397,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode"
+                   select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
                 </xsl:call-template>
               </label>          
           Terminate the current apportionment plan and not adopt a new plan. 
@@ -410,18 +427,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/TermCurrPlanAdoptNewPlan"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/TermCurrPlanAdoptNewPlan"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/TerminateCurrApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/TermCurrPlanAdoptNewPlan"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/TermCurrPlanAdoptNewPlan"/>
                 </xsl:call-template>
               </label>          
           Terminate the current apportionment plan and adopt a new plan.  All the other members of the group are 
@@ -454,21 +475,25 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
-                </xsl:call-template>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/TermCurrApportionPlanVol"/>
+                   </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
-                  <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:call-template name="PopulateYesCheckbox">
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/TermCurrApportionPlanVol"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/TermCurrApportionPlanVol"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/TermCurrApportionPlanVol"/>
                 </xsl:call-template>
               </label>
-           Voluntary
+          Elected by the component members of the group.
       </div>
           </div>
           <!-- Line 4b line1 -->
@@ -478,21 +503,25 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/TermCurrApportionPlanInvol"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/TermCurrApportionPlanInvol"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/ApportionmentPlanInEffect"/>
+                  <xsl:with-param name="TargetNode"
+                   select="$Form1120ScheduleO/TermCurrApportionPlanInvol"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/TermCurrApportionPlanInvol"/>
                 </xsl:call-template>
               </label>          
-         Involuntary
+        Required for the component members of the group.
          </div>
           </div>
           <!-- *****************************************************************************************   -->
@@ -513,18 +542,22 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode"
+                   select="$Form1120ScheduleO/NoApportionmentPlan"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/NoApportionmentPlan"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="BackupName"
+                   select="Form1120ScheduleO/NoApportionmentPlan"/>
                 </xsl:call-template>
               </label>
             No apportionment plan is in effect and none is being adopted.
@@ -537,24 +570,29 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
+                    <xsl:with-param name="TargetNode" 
+                    select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/ApportionmentPlanInEffect"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/ApportionmentPlanInEffect"/>
+                  <xsl:with-param name="BackupName" 
+                  select="Form1120ScheduleO/ApportionmentPlanInEffect"/>
                 </xsl:call-template>
               </label>          
           An apportionment plan is already in effect. It was adopted for the tax year ending
          <span style="width:25mm;border-bottom:solid 1px;text-align:center;">
                 <xsl:call-template name="PopulateMonthDayYear">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ApportionmentPlanAdoptedTYEnd"/>
+                  <xsl:with-param name="TargetNode" 
+                  select="$Form1120ScheduleO/ApportionmentPlanAdoptedTYEnd"/>
                 </xsl:call-template>
               </span>
               <span style="width:1mm;"/>, and for all succeeding tax 
@@ -586,7 +624,8 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/Is1YearRemainingOnStatuteOfLmt"/>
+                  <xsl:with-param name="TargetNode"
+                   select="$Form1120ScheduleO/Is1YearRemainingOnStatuteOfLmt"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateYesCheckbox">
@@ -710,23 +749,23 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/MaximumTaxRate"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/MaximumTaxRate"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/MaximumTaxRate"/>
+                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/MaximumTaxRate"/>
                 </xsl:call-template>
               </label>
-           The corporation will determine its tax liability by applying the maximum tax rate under 
-           section 11 to the entire amount of its taxable<br/>
-              <span style="padding-left:5mm"/> income.
+           The corporation will determine its tax liability by applying the maximum tax rate imposed by 
+          
+              section 11 to the entire amount of its   <span style="padding-left:5mm"/>taxable income.
       </div>
           </div>
           <!-- Line 7b   -->
@@ -736,24 +775,23 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/FIFOMethod"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/FIFOMethod"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/FIFOMethod"/>
+                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/FIFOMethod"/>
                 </xsl:call-template>
               </label>
          The corporation and the other members of the group elect the FIFO method
           (rather than defaulting to the proportionate method) for<br/>
-              <span style="padding-left:4.5mm"/> allocating the group’s section
-           11(b)(1) additional tax.
+              <span style="padding-left:4.5mm"/> allocating the additional taxes for the group imposed by section 11(b)(1).
           </div>
           </div>
           <!-- Line 7c   -->
@@ -763,18 +801,18 @@
               <span style="width:.5mm;"/>
               <span>
                 <xsl:call-template name="PopulateSpan">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ShortTaxYearExcludeDec31"/>
                 </xsl:call-template>
                 <input type="checkbox" class="styCkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
-                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
+                    <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ShortTaxYearExcludeDec31"/>
                   </xsl:call-template>
                 </input>
               </span>
               <label>
                 <xsl:call-template name="PopulateLabel">
-                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/NoApportionmentPlan"/>
-                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/NoApportionmentPlan"/>
+                  <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/ShortTaxYearExcludeDec31"/>
+                  <xsl:with-param name="BackupName" select="Form1120ScheduleO/ShortTaxYearExcludeDec31"/>
                 </xsl:call-template>
               </label>
          The corporation has a short tax year that does not include December 31.
@@ -837,8 +875,7 @@
                     <b>(a)</b>
                     <br/>
                     <span style="font-weight:normal;">Group member's name and employer identification number
-                    <!--<br/>Group member's name and<br/>employer's identification number -->
-                    </span>
+                           </span>
                   </th>
                   <th class="styTableCellHeader" style="width:15mm;" rowspan="2" colspan="1">
                     <b>(b)</b>
@@ -871,7 +908,6 @@
                 <tr style="height:4mm;">
                   <td class="styTableCell" valign="top" style="border-color: black; width: 4mm;text-align:center;border-right-width:0px;">
                     <span class="styBoldText">1
-								<!--<xsl:number value="position()"/>-->
                     </span>
                     <span class="styTableCellPad"/>
                   </td>
@@ -887,18 +923,6 @@
                     <span class="styTableCellPad"/>
                   </td>
                   <td class="styTableCell" style="border-color: black;width: 15mm; text-align: left;">
-                    <!--<xsl:choose>
-          				<xsl:when test="GroupMemberEIN">
-               				<xsl:call-template name="PopulateReturnHeaderFiler">
-                    				<xsl:with-param name="TargetNode" select="EIN"/>
-               				</xsl:call-template>
-          			</xsl:when>
-          			<xsl:otherwise>
-               			<xsl:call-template name="PopulateReturnHeaderFiler">
-                    			<xsl:with-param name="TargetNode" select="EINMissingReason"/>
-               			</xsl:call-template>
-          			</xsl:otherwise>
-     				</xsl:choose>-->
                     <xsl:call-template name="PopulateReturnHeaderFiler">
                       <xsl:with-param name="TargetNode">EIN</xsl:with-param>
                     </xsl:call-template>
@@ -975,20 +999,6 @@
                             </xsl:call-template>
                           </xsl:otherwise>
                         </xsl:choose>
-                        <!--<xsl:if test="GroupMemberEIN!=' '">            
-                  				<span style="font-weight:normal;">  
-                      				<xsl:call-template name="PopulateText">
-                       					<xsl:with-param name="TargetNode" select="GroupMemberEIN"/>
-                       				</xsl:call-template>
-                  				</span> 
-              				</xsl:if>
-                   		   	<xsl:if test="EINMissingReason!=' '">            
-                  				<span style="font-weight:normal;">  
-                      				<xsl:call-template name="PopulateText">
-                       					<xsl:with-param name="TargetNode" select="EINMissingReason"/>
-                       				</xsl:call-template>
-                  				</span> 
-              				</xsl:if> -->
                         <span class="styTableCellPad"/>
                       </td>
                       <td class="styTableCell" style="border-color: black; width: 15mm;text-align:center; ">
@@ -1030,45 +1040,7 @@
                     </tr>
                   </xsl:if>
                 </xsl:for-each>
-                <!-- Table repeating blank row begin -->
-                <!-- <xsl:if test="count($Form1120ScheduleO/IRS1120ScheduleOPartII/TxblIncmApportionment)+1 &lt; 1 or ((count($Form1120ScheduleO/IRS1120ScheduleOPartII/TxblIncmApportionment)+1 &gt;10) and ($Print = $Separated))">
-                <tr style="height:4mm;">
-	                     <td class="styTableCell" valign="top" style="border-color: black; width: 4mm;text-align:center; border-right-width:0px;">
-	                    	<span class="styBoldText">1</span>
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black;width: 23mm; text-align: left;">
-	                    	<xsl:if test="((count($Form1120ScheduleO/IRS1120ScheduleOPartII/TxblIncmApportionment) &gt;10) and ($Print = $Separated))">
-                        			<xsl:call-template name="PopulateAdditionalDataTableMessage">
-                          			<xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IRS1120ScheduleOPartII/TxblIncmApportionment"/>
-                       			</xsl:call-template>
-                      		</xsl:if>
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black;width: 15mm; text-align: left;">
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 15mm; text-align: left; ">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 26mm;  text-align: center;">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black;  width: 26mm; text-align: center;">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black;  width: 26mm; text-align: center;">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                     <td class="styTableCell" style="border-color: black;  width: 26mm; text-align: center;">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 26mm; text-align: center;border-right-width: 0px; ">
-	                      <span class="styTableCellPad"/> 
-	                    </td>
-	                  </tr>
-                </xsl:if>-->
-                <!-- Table Line 1 contain Filers Taxable Income Apportionment-->
+               <!-- Table Line 1 contain Filers Taxable Income Apportionment-->
                 <xsl:if test="($Print != $Separated) or (count($Form1120ScheduleO/IRS1120ScheduleOPartII/TxblIncmApportionment) &lt;=10)"/>
                 <xsl:if test="count($Form1120ScheduleO/IRS1120ScheduleOPartII/TxblIncmApportionment)+1&lt; 2 or ((count($Form1120ScheduleO/IRS1120ScheduleOPartII/TxblIncmApportionment)+1 &gt;10) and ($Print = $Separated))">
                   <tr style="height:4mm;">
@@ -1514,7 +1486,7 @@
                   <th class="styTableCellHeader" style="width: 22mm;">(g)<br/>
                     <span style="font-weight:normal;">3%</span>
                   </th>
-                  <th class="styTableCellHeader" style="width: 22mm;border-right-width: 0px;">(h)<br/>Total income tax<span style="font-weight:normal;">(combine lines (b) through (g))</span>
+                  <th class="styTableCellHeader" style="width: 22mm;border-right-width: 0px;">(h)<br/>Total income tax<span style="font-weight:normal;"> (combine lines (b) through (g))</span>
                   </th>
                 </tr>
               </thead>
@@ -1524,7 +1496,6 @@
                 <tr>
                   <td class="styTableCell" valign="top" style="border-color: black; width: 4mm; text-align: center; border-right-width:0px;">
                     <span class="styBoldText">1
-						<!--<xsl:number value="position()"/>-->
                     </span>
                     <span style="padding-left:1mm;"/>
                   </td>
@@ -1536,13 +1507,7 @@
                     <xsl:call-template name="PopulateReturnHeaderFiler">
                       <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
                     </xsl:call-template>
-                    <!--<xsl:call-template name="PopulateText">
-                      			<xsl:with-param name="TargetNode" select="GroupMemberNamePartIII/BusinessNameLine1"/>
-                   		   	</xsl:call-template><br/>
-                   		   	<xsl:call-template name="PopulateText">
-                      			<xsl:with-param name="TargetNode" select="GroupMemberNamePartIII/BusinessNameLine2"/>
-                   		   	</xsl:call-template>-->
-                  </td>
+                     </td>
                   <td class="styTableCell" style="border-color: black; width: 22mm; text-align:  right; ">
                     <xsl:call-template name="PopulateAmount">
                       <xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IRS1120ScheduleOPartIII/FilersIncmTaxApportionment/FilersIncomeTaxApportionment15"/>
@@ -1649,45 +1614,8 @@
                     </tr>
                   </xsl:if>
                 </xsl:for-each>
-                <!-- Part III Table Repeating Blank Begin -->
-                <!--<xsl:if test="count($Form1120ScheduleO/IRS1120ScheduleOPartIII/IncmTaxApportionment)+1 &lt; 1 or ((count($Form1120ScheduleO/IRS1120ScheduleOPartIII/IncmTaxApportionment)+1 &gt;10) and ($Print = $Separated))">
-			 	<tr>
-	                  <td class="styTableCell" valign="top" style="border-color: black; width: 4mm; text-align: center; border-right-width:0px;">
-	                    <span class="styBoldText">1</span>
-					<span class="styTableCellPad"/>
-				   </td>
-	                    <td class="styTableCell" style="border-color: black; width: 29mm; text-align: left; ">
-	                    <xsl:if test="((count($Form1120ScheduleO/IRS1120ScheduleOPartIII/IncmTaxApportionment) &gt;6) and ($Print = $Separated))">
-                        			<xsl:call-template name="PopulateAdditionalDataTableMessage">
-                          			<xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IRS1120ScheduleOPartIII/IncmTaxApportionment"/>
-                       			</xsl:call-template>
-                      		</xsl:if>
-	                    	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm; text-align:  right; ">
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm;  text-align:  right; ">
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm; text-align: right;">
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm; text-align: right;  ">
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm; text-align: right;">
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-					<td class="styTableCell" style="border-color: black; width: 22mm; text-align: right;">
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm; text-align:  right; border-right-width: 0px; ">
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                  </tr>
-			 </xsl:if>-->
-                <!--Part III line 1blank contains Filer info -->
+             <!-- Part III Table Repeating Blank Begin -->
+             <!--Part III line 1blank contains Filer info -->
                 <xsl:if test="($Print != $Separated) or (count($Form1120ScheduleO/IRS1120ScheduleOPartIII/IncmTaxApportionment) &lt;=10)"/>
                 <xsl:if test="count($Form1120ScheduleO/IRS1120ScheduleOPartIII/IncmTaxApportionment)+1 &lt; 2 or ((count($Form1120ScheduleO/IRS1120ScheduleOPartIII/IncmTaxApportionment)+1 &gt;10) and ($Print = $Separated))">
                   <tr>
@@ -2147,7 +2075,6 @@
                 <tr>
                   <td class="styTableCell" valign="top" style="border-color: black; width: 4mm; text-align: center;border-right-width: 0px;">
                     <span class="styBoldText">1
-								<!--<xsl:number value="position()"/>-->
                     </span>
                     <span class="styTableCellPad"/>
                   </td>
@@ -2159,12 +2086,6 @@
                     <xsl:call-template name="PopulateReturnHeaderFiler">
                       <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
                     </xsl:call-template>
-                    <!--<xsl:call-template name="PopulateText">
-                      			<xsl:with-param name="TargetNode" select="GroupMemberNamePartIV/BusinessNameLine1"/>
-                   		   	</xsl:call-template><br/>
-                   		   	<xsl:call-template name="PopulateText">
-                      			<xsl:with-param name="TargetNode" select="GroupMemberNamePartIV/BusinessNameLine2"/>
-	                      	</xsl:call-template>-->
                     <span class="styTableCellPad"/>
                   </td>
                   <td class="styTableCell" style="border-color: black; width: 22mm; text-align: right;">
@@ -2267,44 +2188,12 @@
                   </xsl:if>
                 </xsl:for-each>
                 <!-- Part IV Table Repeating Blank Begin -->
-                <!--  <xsl:if test="count($Form1120ScheduleO/IRS1120ScheduleOPartIV/OtherApportionments)+1 &lt; 1 or ((count($Form1120ScheduleO/IRS1120ScheduleOPartIV/OtherApportionments)+1 &gt;10) and ($Print = $Separated))">
-			  <tr>
-	                  	<td class="styTableCell" valign="top" style="border-color: black; width: 4mm; text-align: center;border-right-width: 0px;">
-	                        <span class="styBoldText">1</span>
-						<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width:34mm;text-align: left;">
-	                    	<xsl:if test="((count($Form1120ScheduleO/IRS1120ScheduleOPartIV/OtherApportionments) &gt;10) and ($Print = $Separated))">
-                        			<xsl:call-template name="PopulateAdditionalDataTableMessage">
-                          			<xsl:with-param name="TargetNode" select="$Form1120ScheduleO/IRS1120ScheduleOPartIV/OtherApportionments"/>
-                       			</xsl:call-template>
-                      		</xsl:if>
-	                      	<span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm; text-align: right;">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm;  text-align: right;">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black;  width: 22mm; text-align: right;">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 22mm; text-align: right;  ">
-	                      <span class="styTableCellPad"/>
-	                    </td>
-	                    <td class="styTableCell" style="border-color: black; width: 61mm; border-right-width: 0px; ">
-					<span class="styTableCellPad"/>
-	                    </td>
-	                  </tr>
-			 </xsl:if>-->
-                <!--Part IV Line 1 contains Filer info -->
+                 <!--Part IV Line 1 contains Filer info -->
                 <xsl:if test="((count($Form1120ScheduleO/IRS1120ScheduleOPartIV/OtherApportionments) &gt;10) and ($Print = $Separated))">
                   <tr>
                     <td class="styTableCell" valign="top" style="border-color: black; width: 4mm; text-align: center;border-right-width: 0px;">
                       <span class="styBoldText">1
-								<!--<xsl:number value="position()"/>-->
-                      </span>
+				      </span>
                       <span class="styTableCellPad"/>
                     </td>
                     <td class="styTableCell" style="border-color: black; width:34mm;text-align: left;">
@@ -2722,7 +2611,6 @@
                 <tr style="height:4mm;">
                   <td class="styTableCell" valign="top" style="border-color: black; width: 4mm;text-align:center;border-right-width:0px;">
                     <span class="styBoldText">1
-								<!--<xsl:number value="position()"/>-->
                     </span>
                     <span class="styTableCellPad"/>
                   </td>
@@ -2738,18 +2626,6 @@
                     <span class="styTableCellPad"/>
                   </td>
                   <td class="styTableCell" style="border-color: black;width: 15mm; text-align: left;">
-                    <!--<xsl:choose>
-          				<xsl:when test="GroupMemberEIN">
-               				<xsl:call-template name="PopulateReturnHeaderFiler">
-                    				<xsl:with-param name="TargetNode" select="EIN"/>
-               				</xsl:call-template>
-          			</xsl:when>
-          			<xsl:otherwise>
-               			<xsl:call-template name="PopulateReturnHeaderFiler">
-                    			<xsl:with-param name="TargetNode" select="EINMissingReason"/>
-               			</xsl:call-template>
-          			</xsl:otherwise>
-     				</xsl:choose>-->
                     <xsl:call-template name="PopulateReturnHeaderFiler">
                       <xsl:with-param name="TargetNode">EIN</xsl:with-param>
                     </xsl:call-template>
@@ -2984,12 +2860,6 @@
                     <xsl:call-template name="PopulateReturnHeaderFiler">
                       <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
                     </xsl:call-template>
-                    <!--<xsl:call-template name="PopulateText">
-                      			<xsl:with-param name="TargetNode" select="GroupMemberNamePartIII/BusinessNameLine1"/>
-                   		   	</xsl:call-template><br/>
-                   		   	<xsl:call-template name="PopulateText">
-                      			<xsl:with-param name="TargetNode" select="GroupMemberNamePartIII/BusinessNameLine2"/>
-                   		   	</xsl:call-template>-->
                   </td>
                   <td class="styTableCell" style="border-color: black; width: 22mm; text-align:  right; ">
                     <xsl:call-template name="PopulateAmount">
@@ -3204,7 +3074,6 @@
                 <tr>
                   <td class="styTableCell" valign="top" style="border-color: black; width: 4mm; text-align: center;border-right-width: 0px;">
                     <span class="styBoldText">1
-								<!--<xsl:number value="position()"/>-->
                     </span>
                     <span class="styTableCellPad"/>
                   </td>
@@ -3216,12 +3085,6 @@
                     <xsl:call-template name="PopulateReturnHeaderFiler">
                       <xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param>
                     </xsl:call-template>
-                    <!--<xsl:call-template name="PopulateText">
-                      			<xsl:with-param name="TargetNode" select="GroupMemberNamePartIV/BusinessNameLine1"/>
-                   		   	</xsl:call-template><br/>
-                   		   	<xsl:call-template name="PopulateText">
-                      			<xsl:with-param name="TargetNode" select="GroupMemberNamePartIV/BusinessNameLine2"/>
-	                      	</xsl:call-template>-->
                     <span class="styTableCellPad"/>
                   </td>
                   <td class="styTableCell" style="border-color: black; width: 22mm; text-align: right;">
