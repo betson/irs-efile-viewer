@@ -1,3 +1,5 @@
+---
+---
 /*-----------------------------------------------------------------------------------------------------
 Header CSS file 
 -----------------------------------------------------------------------------------------------------
@@ -8,9 +10,8 @@ Description: Styles that are used in the top portion of the XSL document. The He
 	information.
 
 -----------------------------------------------------------------------------------------------------
-updated 1/22/2003 by CAM to include label definitions
-edited 4/14/2003 by CAM to change styWarningLine to styDocHeader and change color of this style from
-	red to blue. Changed color of styDoNotProcess, styDataStage and styDLN from red to blue
+edited 2/16/2004 by Ravi Venigalla. Added styMainTitle
+edited 7/22/2004 by Chris Sinderson. Added styFormNumber
 -----------------------------------------------------------------------------------------------------*/
 
 .styBB {   /* Bottom Border */
@@ -23,29 +24,28 @@ edited 4/14/2003 by CAM to change styWarningLine to styDocHeader and change colo
 }
 .styDocHeader {   /* Warning Line */
 	padding-top: 0px; padding-bottom: 0px; padding-left: 2px; padding-right: 2px;
-	border-style: ridge; border-color: darkblue; overflow: auto; overflow-style:marquee;
+	border-style: ridge; border-color: darkblue;
 	border-top-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-right-width: 3px;
+	height:auto; overflow:auto; width:187mm;
 }
 .styDoNotProcess {   /* Do Not Process */
 	color: darkblue;
-	font-size: 8pt; font-weight: bold; display: inline-block;
+	font-size: 8pt; font-weight: bold;
 	float: left; clear: left;
 }
 .styDataStage {   /* Latest Data vs. Original Data */
-	color: black; background-color:#d9f2ff;
+	color: black; background-color: #d9f2ff;
 	font-size: 8pt; font-weight: bold;
 	padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px;
 	border-style: ridge; border-color: darkblue;
 	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 3px; border-right-width: 3px;
 }
 .styRejected {   /* Rejected */
-	color:black;
-	background-color:pink;
-	font-size:8pt;
-	font-weight:bold;
-	padding-left:5px;
-	padding-right:5px;	
-	border-right:3px ridge black;
+	color: black; background-color: pink;
+	font-size: 8pt; font-weight: bold;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px;
+	border-style: ridge; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 3px;
 }
 .styDLN {   /* DLN */
 	color: darkblue;
@@ -86,13 +86,19 @@ edited 4/14/2003 by CAM to change styWarningLine to styDocHeader and change colo
 	float: left; clear: none;
 }
 .styOMB {   /* OMB No. */
+	height:4mm; width:100%;
 	line-height: 15px;
 	border-style: solid; border-color: black;
 	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
 }
-.styTY {   /* Tax Year */
+.styTY {   /* Tax Year - this style class is obselete and should no longer be used */
 	font-family: "Arial Narrow";
 	font-size: 26pt; font-weight: bolder;
+}
+.styTaxYear {   /* Tax Year - used for the tax year that's displayed in the upper-right hand corner */
+	font-family: "Arial Narrow";
+	font-size:23pt;
+	font-weight:bold;
 }
 .styTYColor {   /* Tax Year Color */
 	color:green;
@@ -160,4 +166,30 @@ edited 4/14/2003 by CAM to change styWarningLine to styDocHeader and change colo
 	border-style: solid; border-color: black;
 	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
 	float: left; clear: none;
+}
+.styMainTitle {   /* Form Main Title */
+	font-size: 13pt;font-family: "Arial"; font-weight: bold;
+}
+.styFormNumber{  /* Form Number */
+	font-size: 21pt;font-family: "Arial"; font-weight: bold;
+}
+
+.styMsg {
+			font-family: verdana, arial, sans-serif;
+			font-size: 13pt; font-weight: bold;
+			text-align: left;
+}
+
+.styEnglishBtn {
+	background: url("{{ site.github.url }}/mef/rrprd/common/images/refreshENGButton.gif");
+	width: 50px;
+	height: 13px;
+	border: 0;
+}
+
+.stySpanishBtn {
+	background: url("{{ site.github.url }}/mef/rrprd/common/images/refreshSPButton.gif");
+	width: 50px;
+	height: 13px;
+	border: 0;
 }
