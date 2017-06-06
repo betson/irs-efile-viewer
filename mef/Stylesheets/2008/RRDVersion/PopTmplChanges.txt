@@ -1,0 +1,51 @@
+change the following templates in PopulateTemplate.xsl
+
+1) GlobalStylesForm
+	- comment out condition -> all three links are needed everytime
+
+2) GlobalStylesDep
+	- comment out condition
+
+3) PopulateDepCommonLeftover
+	- move param declaration for "TargetNode" to line before 1st non-param delcaration statement
+		(before "<xsl:call-template ...")
+4) PopulateDepCommonLeftoverLandscape
+	- move param declaration for "TargetNode" to line before 1st non-param delcaration statement
+		(before "<xsl:call-template ...")
+
+5) SetFormLinkInline
+	- (This step is not needed for SOI-LIN)
+	- rename "SetFormLinkInlineRRD" -> to keep original code
+	- add the following replacement
+ <!--
+***************************************************************************************************************************************************************
+Name:           SetFormLinkInline
+Description:    Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
+Req Param:  
+Opt Param:   
+Called By:     Stylesheets
+Calls:            SendRef() java script function (requires addition of this script to script file)
+Log:                                 - Mike Farrell - This is a Modification of the original by Charles Moore
+***************************************************************************************************************************************************************
+-->
+  <xsl:template name="SetFormLinkInline">
+    <xsl:param name="TargetNode"/>
+
+    <!-- do nothing if for printing -->
+    <!--xsl:if test="not($Print) or $Print=''"-->
+    <xsl:if test="($TargetNode/@referenceDocumentId) and not($TargetNode/@referenceDocumentId='')">
+      <img src="{$NonVersionedImagePath}/attach.gif" style="cursor:auto;">
+        <xsl:attribute name="alt">Click to see attachment</xsl:attribute>
+        <xsl:if test="contains(normalize-space($TargetNode/@referenceDocumentId), ' ')">
+        <!-- assume more then one attachments exist when the string contains space -->
+          <xsl:attribute name="alt">Click to see list of attachments</xsl:attribute>
+        </xsl:if>
+        <xsl:if test="not($Print) or $Print=''">  
+          <xsl:attribute name="style">cursor:hand;</xsl:attribute>
+          <xsl:attribute name="onclick">SendRef('<xsl:value-of select="$TargetNode/@referenceDocumentId"/>')</xsl:attribute>
+        </xsl:if> 
+      </img>
+    </xsl:if>
+    <!--/xsl:if-->
+  </xsl:template>  
+  

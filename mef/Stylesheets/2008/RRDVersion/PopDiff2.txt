@@ -1,0 +1,422 @@
+Comparing files RRDVERSION\PopulateTemplateMJF.xsl and POPULATETEMPLATE.XSL
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2058:        var myDocId = '<xsl:value-of select="$DocId" />';
+ 2059:        var myDisplayName = '<xsl:value-of select="$DisplayName" />';
+ 2060:        var myRegulation = '<xsl:value-of select="$Regulation" />';
+ 2061:        <xsl:variable name="myDocName" select="/AppData/SubmissionHeaderAndDocument/SubmissionDocument/child::*[1]/@documentName"
+***** POPULATETEMPLATE.XSL
+ 2058:        var myDocId = '<xsl:value-of select="$DocId" />';
+ 2059:        var myDisplayName = "<xsl:value-of select="$DisplayName" />";
+ 2060:        var myRegulation = "<xsl:value-of select='$Regulation' />";
+ 2061:        <xsl:variable name="myDocName" select="/AppData/SubmissionHeaderAndDocument/SubmissionDocument/child::*[1]/@documentName"
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2142:    <!-- If the Print parameter is empty -->
+ 2144:  <!-- xsl:if test="not(string($Print))" -->
+ 2146:      <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
+***** POPULATETEMPLATE.XSL
+ 2142:    <!-- If the Print parameter is empty -->
+ 2144:  <xsl:if test="not(string($Print))">
+ 2146:      <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2148:      <link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>
+ 2150:  <!-- /xsl:if -->
+ 2152:  </xsl:template>
+***** POPULATETEMPLATE.XSL
+ 2148:      <link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>
+ 2150:  </xsl:if>
+ 2152:  </xsl:template>
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2172:    <!-- If the Print parameter is empty -->
+ 2173:    <!-- xsl:if test="not(string($Print))" -->
+ 2174:      <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
+ 2175:    <!-- /xsl:if -->  
+ 2176:  </xsl:template>
+***** POPULATETEMPLATE.XSL
+ 2172:    <!-- If the Print parameter is empty -->
+ 2173:    <xsl:if test="not(string($Print))">
+ 2174:      <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
+ 2175:    </xsl:if>  
+ 2176:  </xsl:template>
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2403:  Called By:     Stylesheets
+ 2404:  Calls:            SendRef() java script function (requires addition of this script to script file)
+ 2405:  Log:                                 - Mike Farrell - This is a Modification of the original by Charles Moore
+ 2406:  *******************************************************************************************************************************
+***** POPULATETEMPLATE.XSL
+ 2403:  Called By:     Stylesheets
+ 2404:  Calls:            none
+ 2405:  Log:                                 - Charles Moore - Initial creation
+ 2406:                      2004-09-14 - Chris Sinderson - Added comments and reformatted spacing
+ 2407:  *******************************************************************************************************************************
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2410:      <xsl:param name="TargetNode"/>
+ 2412:      <!-- do nothing if for printing -->
+***** POPULATETEMPLATE.XSL
+ 2411:      <xsl:param name="TargetNode"/>
+ 2412:      <xsl:param name="TabOrder">1</xsl:param>
+ 2413:      <xsl:param name="IDstring">
+ 2414:      <!--xsl:value-of select="name($TargetNode)"/-->
+ 2415:      <xsl:text/><xsl:call-template name="PopulateID">
+ 2416:        <xsl:with-param name="TargetNode" select="$TargetNode"/>
+ 2417:      </xsl:call-template>/@referenceDocumentId<xsl:text/>  
+ 2418:      </xsl:param>
+ 2419:      <xsl:param name="HeaderColor"><xsl:value-of select="$UserPref/View/TableHeaderBgColor" /></xsl:param>
+ 2420:      <xsl:param name="OddRowColor"><xsl:value-of select="$UserPref/View/TableRow1BgColor" /></xsl:param>
+ 2421:      <xsl:param name="EvenRowColor"><xsl:value-of select="$UserPref/View/TableRow2BgColor" /></xsl:param>
+ 2422:      <xsl:param name="ColorSchema">
+ 2423:         <xsl:value-of select="$UserPref/View/TableHeaderBgColor" />,<xsl:value-of select="$UserPref/View/TableRow1BgColor" />,<x
+ 2424:  l:value-of select="$UserPref/View/TableRow2BgColor" />
+ 2425:       </xsl:param>
+ 2427:      <!-- do nothing if for printing -->
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2420:          </xsl:if>
+ 2421:          <xsl:if test="not($Print) or $Print=''">  
+***** POPULATETEMPLATE.XSL
+ 2435:          </xsl:if>
+ 2436:          <xsl:attribute name="TabIndex">
+ 2437:            <xsl:value-of select="$TabOrder"/>
+ 2438:          </xsl:attribute>
+ 2439:          <xsl:attribute name="id">          
+ 2440:        <xsl:value-of select="$IDstring"/>    
+ 2441:          </xsl:attribute>
+ 2442:    <xsl:if test="not($Print) or $Print=''">  
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2422:            <xsl:attribute name="style">cursor:hand;</xsl:attribute>
+ 2423:            <xsl:attribute name="onclick">SendRef('<xsl:value-of select="$TargetNode/@referenceDocumentId"/>')</xsl:attribute>
+ 2424:          </xsl:if> 
+***** POPULATETEMPLATE.XSL
+ 2443:      <xsl:attribute name="style">cursor:hand;</xsl:attribute>
+ 2444:       <xsl:attribute name="onclick">rtnTree.attachPushPin = '<xsl:value-of select="$IDstring"/>'; showAttachedDocs("<xsl:value-o
+ 2445:   select="$IDstring"/>", "<xsl:value-of select="$ColorSchema"/>", "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>");<
+ 2446:  xsl:attribute>
+ 2447:      <xsl:attribute name="onkeypress">rtnTree.attachPushPin = '<xsl:value-of select="$IDstring"/>'; showAttachedDocs("<xsl:value
+ 2448:  of select="$IDstring"/>", "<xsl:value-of select="$ColorSchema"/>", "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>")
+ 2449:  </xsl:attribute>
+ 2450:    </xsl:if> 
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2432:  *******************************
+ 2433:  Name:           SetFormLinkInlineRRD
+ 2434:  Description:    Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img
+ 2435:  tags
+ 2436:  Req Param:  
+***** POPULATETEMPLATE.XSL
+ 2459:  *******************************
+ 2460:  Name:           LinkToLeftoverBooleanDataTableInline
+ 2461:  Description:    Template to handle left-over data with boolean values with image that is displayed inline using absolute positi
+ 2462:  n
+ 2463:  Req Param:  
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2437:  Opt Param:   
+ 2438:  Called By:     Stylesheets
+ 2439:  Calls:            none
+ 2440:  Log:                                 - Charles Moore - Initial creation
+ 2441:                      2004-09-14 - Chris Sinderson - Added comments and reformatted spacing
+***** POPULATETEMPLATE.XSL
+ 2464:  Opt Param:   
+ 2465:  Called By:     
+ 2466:  Calls:            
+ 2467:  Log:             2004-09-14 - Ravi Venigalla - Initial creation
+ 2468:                      2004-09-14 - Chris Sinderson - Added comments and reformatted spacing
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2444:  -->
+ 2445:    <xsl:template name="SetFormLinkInlineRRD">
+ 2446:      <xsl:param name="TargetNode"/>
+ 2447:      <xsl:param name="TabOrder">1</xsl:param>
+ 2448:      <xsl:param name="IDstring">
+ 2449:      <!--xsl:value-of select="name($TargetNode)"/-->
+ 2450:      <xsl:text/><xsl:call-template name="PopulateID">
+ 2451:        <xsl:with-param name="TargetNode" select="$TargetNode"/>
+ 2452:      </xsl:call-template>/@referenceDocumentId<xsl:text/>  
+ 2453:      </xsl:param>
+ 2454:      <xsl:param name="HeaderColor"><xsl:value-of select="$UserPref/View/TableHeaderBgColor" /></xsl:param>
+ 2455:      <xsl:param name="OddRowColor"><xsl:value-of select="$UserPref/View/TableRow1BgColor" /></xsl:param>
+ 2456:      <xsl:param name="EvenRowColor"><xsl:value-of select="$UserPref/View/TableRow2BgColor" /></xsl:param>
+ 2457:      <xsl:param name="ColorSchema">
+ 2458:         <xsl:value-of select="$UserPref/View/TableHeaderBgColor" />,<xsl:value-of select="$UserPref/View/TableRow1BgColor" />,<x
+ 2459:  l:value-of select="$UserPref/View/TableRow2BgColor" />
+ 2460:       </xsl:param>
+ 2462:      <!-- do nothing if for printing -->
+ 2463:      <!--xsl:if test="not($Print) or $Print=''"-->
+ 2464:      <xsl:if test="($TargetNode/@referenceDocumentId) and not($TargetNode/@referenceDocumentId='')">
+ 2465:        <img src="{$NonVersionedImagePath}/attach.gif" style="cursor:auto;">
+ 2466:          <xsl:attribute name="alt">Click to see attachment</xsl:attribute>
+ 2467:          <xsl:if test="contains(normalize-space($TargetNode/@referenceDocumentId), ' ')">
+ 2468:          <!-- assume more then one attachments exist when the string contains space -->
+ 2469:            <xsl:attribute name="alt">Click to see list of attachments</xsl:attribute>
+ 2470:          </xsl:if>
+ 2471:          <xsl:attribute name="TabIndex">
+ 2472:            <xsl:value-of select="$TabOrder"/>
+ 2473:          </xsl:attribute>
+ 2474:          <xsl:attribute name="id">          
+ 2475:        <xsl:value-of select="$IDstring"/>    
+ 2476:          </xsl:attribute>
+ 2477:    <xsl:if test="not($Print) or $Print=''">  
+ 2478:      <xsl:attribute name="style">cursor:hand;</xsl:attribute>
+ 2479:       <xsl:attribute name="onclick">rtnTree.attachPushPin = '<xsl:value-of select="$IDstring"/>'; showAttachedDocs("<xsl:value-o
+ 2480:   select="$IDstring"/>", "<xsl:value-of select="$ColorSchema"/>", "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>");<
+ 2481:  xsl:attribute>
+ 2482:      <xsl:attribute name="onkeypress">rtnTree.attachPushPin = '<xsl:value-of select="$IDstring"/>'; showAttachedDocs("<xsl:value
+ 2483:  of select="$IDstring"/>", "<xsl:value-of select="$ColorSchema"/>", "<xsl:value-of select="$TargetNode/@referenceDocumentId"/>")
+ 2484:  </xsl:attribute>
+ 2485:    </xsl:if> 
+ 2486:        </img>
+ 2487:      </xsl:if>
+***** POPULATETEMPLATE.XSL
+ 2471:  -->
+ 2472:    <xsl:template name="LinkToLeftoverBooleanDataTableInline">
+ 2473:      <xsl:param name="Desc"></xsl:param>
+ 2474:      <xsl:param name="TargetNode"></xsl:param>    
+ 2475:      <xsl:param name="TabOrder">1</xsl:param>
+ 2477:      <!-- do nothing if for printing -->
+ 2478:      <!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Ravi Venigalla 09/14/04-->
+ 2479:        <xsl:if test="($TargetNode or $TargetNode!='')">                  
+ 2480:            <xsl:choose>
+ 2481:              <xsl:when test="count($TargetNode) &gt; 1">
+ 2482:                <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:
+ 2483:  and;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =wi
+ 2484:  dow.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2485:              </xsl:when>
+ 2486:              <xsl:otherwise>
+ 2487:                <xsl:if test="($TargetNode = 1) or ($TargetNode='true')">
+ 2488:                  <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: yes" TabIndex="{$TabOrder}" style="cursor:hand;" oncl
+ 2489:  ck="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.
+ 2490:   + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2491:                </xsl:if>
+ 2492:                <xsl:if test="($TargetNode = 0) or ($TargetNode='false')">
+ 2493:                  <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: no" TabIndex="{$TabOrder}" style="cursor:hand;" oncli
+ 2494:  k="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x
+ 2495:  + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2496:               </xsl:if>
+ 2497:              </xsl:otherwise>
+ 2498:            </xsl:choose>        
+ 2499:        </xsl:if>
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2494:  *******************************
+ 2495:  Name:           LinkToLeftoverBooleanDataTableInline
+ 2496:  Description:    Template to handle left-over data with boolean values with image that is displayed inline using absolute positi
+ 2497:  n
+ 2498:  Req Param:  
+***** POPULATETEMPLATE.XSL
+ 2506:  *******************************
+ 2507:  Name:           LinkToLeftoverDataTableInline
+ 2508:  Description:    Template to handle left-over data with image that is displayed inline (normally)
+ 2509:  Req Param:  
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2501:  Calls:            
+ 2502:  Log:             2004-09-14 - Ravi Venigalla - Initial creation
+ 2503:                      2004-09-14 - Chris Sinderson - Added comments and reformatted spacing
+***** POPULATETEMPLATE.XSL
+ 2512:  Calls:            
+ 2513:  Log:                                 - 
+ 2514:                      2004-09-14 - Chris Sinderson - Added comments and reformatted spacing
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2506:  -->
+ 2507:    <xsl:template name="LinkToLeftoverBooleanDataTableInline">
+ 2508:      <xsl:param name="Desc"></xsl:param>
+***** POPULATETEMPLATE.XSL
+ 2517:  -->
+ 2518:    <xsl:template name="LinkToLeftoverDataTableInline">
+ 2519:      <xsl:param name="Desc"></xsl:param>
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2512:      <!-- do nothing if for printing -->
+ 2513:      <!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Ravi Venigalla 09/14/04-->
+ 2514:        <xsl:if test="($TargetNode or $TargetNode!='')">                  
+***** POPULATETEMPLATE.XSL
+ 2523:      <!-- do nothing if for printing -->
+ 2524:      <!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Ravi Venigalla 08/19/04-->
+ 2525:      <xsl:if test="($TargetNode or $TargetNode!='')">
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2516:              <xsl:when test="count($TargetNode) &gt; 1">
+ 2517:                <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:
+ 2518:  and;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =wi
+ 2519:  dow.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2520:              </xsl:when>
+***** POPULATETEMPLATE.XSL
+ 2527:            <xsl:when test="count($TargetNode) &gt; 1">
+ 2528:            <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:hand
+ 2529:  " onclick="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.eve
+ 2530:  t.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2531:            </xsl:when>
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2521:              <xsl:otherwise>
+ 2522:                <xsl:if test="($TargetNode = 1) or ($TargetNode='true')">
+ 2523:                  <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: yes" TabIndex="{$TabOrder}" style="cursor:hand;" oncl
+ 2524:  ck="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.
+ 2525:   + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2526:                </xsl:if>
+ 2527:                <xsl:if test="($TargetNode = 0) or ($TargetNode='false')">
+ 2528:                  <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: no" TabIndex="{$TabOrder}" style="cursor:hand;" oncli
+ 2529:  k="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x
+ 2530:  + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2531:               </xsl:if>
+ 2532:              </xsl:otherwise>
+***** POPULATETEMPLATE.XSL
+ 2532:            <xsl:otherwise>
+ 2533:            <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: {$TargetNode}" TabIndex="{$TabOrder}" style="cursor:hand;" 
+ 2534:  nclick="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.
+ 2535:   + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2536:            </xsl:otherwise>
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2541:  *******************************
+ 2542:  Name:           LinkToLeftoverDataTableInline
+ 2543:  Description:    Template to handle left-over data with image that is displayed inline (normally)
+ 2544:  Req Param:  
+ 2545:  Opt Param:   
+ 2546:  Called By:     
+ 2547:  Calls:            
+ 2548:  Log:                                 - 
+***** POPULATETEMPLATE.XSL
+ 2545:  *******************************
+ 2546:  Name:           PopulateCommonLeftover
+ 2547:  Description:  Displays the common leftover table elements.  If the form has separated repeating data, it displays the EIN and N
+ 2548:  me from
+ 2549:                        the top of the form.  Normall this data comes from the ReturnHeader, but when it does not the "Alternate"
+ 2550:  tags are used
+ 2551:                        to specifically set the elements.
+ 2552:  Req Param:  TargetNode - Location of data
+ 2553:  Opt Param:   DescWidth - Width of the description
+ 2554:                      AmountWidth - Width of the amount - difference between 187 and the description width
+ 2555:                      AlternateName - Boolean value - true if the name comes from somewhere other than the header
+ 2556:                      AlternateNameTargetNode - the schema path where the alternate name exists
+ 2557:                      AlternateEIN - Boolean value - true if the EIN comes from somewhere other than the header
+ 2558:                      AlternateEINTargetNode - the schema path where the alternate EIN exists
+ 2559:  Called By:    none  
+ 2560:  Calls:            PopulateText, PopulateReturnHeaderFiler
+ 2561:  Log:                                 - 
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2549:                      2004-09-14 - Chris Sinderson - Added comments and reformatted spacing
+ 2550:  *******************************************************************************************************************************
+***** POPULATETEMPLATE.XSL
+ 2562:                      2004-09-14 - Chris Sinderson - Added comments and reformatted spacing
+ 2563:                      2004-12-16 - Chris Sinderson - Added Name and EIN for separated repeating data calls
+ 2564:  *******************************************************************************************************************************
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2552:  -->
+ 2553:    <xsl:template name="LinkToLeftoverDataTableInline">
+ 2554:      <xsl:param name="Desc"></xsl:param>
+ 2555:      <xsl:param name="TargetNode"></xsl:param>
+ 2556:      <xsl:param name="TabOrder">1</xsl:param>
+ 2558:      <!-- do nothing if for printing -->
+ 2559:      <!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Ravi Venigalla 08/19/04-->
+ 2560:      <xsl:if test="($TargetNode or $TargetNode!='')">
+ 2561:          <xsl:choose>
+ 2562:            <xsl:when test="count($TargetNode) &gt; 1">
+ 2563:            <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:hand
+ 2564:  " onclick="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.eve
+ 2565:  t.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2566:            </xsl:when>
+ 2567:            <xsl:otherwise>
+ 2568:            <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: {$TargetNode}" TabIndex="{$TabOrder}" style="cursor:hand;" 
+ 2569:  nclick="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.
+ 2570:   + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+ 2571:            </xsl:otherwise>
+ 2572:          </xsl:choose>
+ 2573:      </xsl:if>
+ 2574:      <!--/xsl:if-->
+ 2575:    </xsl:template>  
+ 2578:  <!--
+ 2579:  *******************************************************************************************************************************
+ 2580:  *******************************
+ 2581:  Name:           PopulateCommonLeftover
+ 2582:  Description:  Displays the common leftover table elements.  If the form has separated repeating data, it displays the EIN and N
+ 2583:  me from
+ 2584:                        the top of the form.  Normall this data comes from the ReturnHeader, but when it does not the "Alternate"
+ 2585:  tags are used
+ 2586:                        to specifically set the elements.
+ 2587:  Req Param:  TargetNode - Location of data
+ 2588:  Opt Param:   DescWidth - Width of the description
+ 2589:                      AmountWidth - Width of the amount - difference between 187 and the description width
+ 2590:                      AlternateName - Boolean value - true if the name comes from somewhere other than the header
+ 2591:                      AlternateNameTargetNode - the schema path where the alternate name exists
+ 2592:                      AlternateEIN - Boolean value - true if the EIN comes from somewhere other than the header
+ 2593:                      AlternateEINTargetNode - the schema path where the alternate EIN exists
+ 2594:  Called By:    none  
+ 2595:  Calls:            PopulateText, PopulateReturnHeaderFiler
+ 2596:  Log:                                 - 
+ 2597:                      2004-09-14 - Chris Sinderson - Added comments and reformatted spacing
+ 2598:                      2004-12-16 - Chris Sinderson - Added Name and EIN for separated repeating data calls
+ 2599:  *******************************************************************************************************************************
+ 2600:  *******************************
+ 2601:  -->
+ 2602:  <xsl:template name="PopulateCommonLeftover">
+***** POPULATETEMPLATE.XSL
+ 2566:  -->
+ 2567:  <xsl:template name="PopulateCommonLeftover">
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2703:    <br/>
+ 2704:    <tr>
+***** POPULATETEMPLATE.XSL
+ 2668:    <br/>
+ 2669:    <tr>
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2881:      <xsl:param name="NoGap">false</xsl:param>
+ 2882:      <xsl:param name="TargetNode"/>
+ 2883:      <xsl:call-template name="PopulateDepCommonLeftoverNameEIN">
+***** POPULATETEMPLATE.XSL
+ 2846:      <xsl:param name="NoGap">false</xsl:param>
+ 2847:      <xsl:call-template name="PopulateDepCommonLeftoverNameEIN">
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 2885:      </xsl:call-template>
+ 2886:       <xsl:if test="(($TargetNode/@softwareId) or ($TargetNode/@softwareId != ''))">
+***** POPULATETEMPLATE.XSL
+ 2849:      </xsl:call-template>
+ 2850:       <xsl:param name="TargetNode"/>
+ 2851:       <xsl:if test="(($TargetNode/@softwareId) or ($TargetNode/@softwareId != ''))">
+*****
+
+***** RRDVERSION\PopulateTemplateMJF.xsl
+ 3007:    <xsl:template name="PopulateDepCommonLeftoverLandscape">
+ 3008:      <xsl:param name="TargetNode"/>
+ 3010:      <xsl:call-template name="PopulateDepCommonLeftoverNameEINLandscape"></xsl:call-template>
+ 3012:      <xsl:if test="(($TargetNode/@softwareId) or ($TargetNode/@softwareId != ''))">
+***** POPULATETEMPLATE.XSL
+ 2972:    <xsl:template name="PopulateDepCommonLeftoverLandscape">
+ 2973:      <xsl:call-template name="PopulateDepCommonLeftoverNameEINLandscape"></xsl:call-template>
+ 2975:      <xsl:param name="TargetNode"/>
+ 2977:      <xsl:if test="(($TargetNode/@softwareId) or ($TargetNode/@softwareId != ''))">
+*****
+
