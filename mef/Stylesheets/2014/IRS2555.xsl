@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE stylesheet [
   <!ENTITY nbsp "&#160;">
-]><!-- Last Modified by Eugenia McDonald on 11/27/2015 -->
+]><!-- Last Modified by Eugenia McDonald on 10/06/2016 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="PopulateTemplate.xsl"/>
@@ -310,12 +310,18 @@
               Have you ever revoked either of the exclusions?<span style="letter-spacing:3mm;">........................</span>
             </div>
             <div style="float:left;width:22mm;margin-top:0mm;">
+              <xsl:call-template name="PopulateSpan">
+			    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateYesCheckbox">
 					  <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 					  <xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
 					</xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+			    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
 					  <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
@@ -323,12 +329,18 @@
 					</xsl:call-template>
                 <b>Yes</b>
               </label>
+              <xsl:call-template name="PopulateSpan">
+			    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateNoCheckbox">
 					  <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
 					  <xsl:with-param name="BackupName">IRS2555ForeignEarnIncExclRevokedInd</xsl:with-param>
 					</xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+			    <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
 					  <xsl:with-param name="TargetNode" select="$FormData/ForeignEarnIncExclRevokedInd"/>
@@ -383,12 +395,18 @@
               <span style="letter-spacing:3mm;">...................</span>
             </div>
             <div style="float:left;width:22mm;margin-top:3mm">
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
                   <xsl:with-param name="BackupName">IRS2555SeparateForeignResidenceInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
@@ -396,12 +414,18 @@
                 </xsl:call-template>
                 <b>Yes</b>
               </label>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
                   <xsl:with-param name="BackupName">IRS2555SeparateForeignResidenceInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/SeparateForeignResidenceInd"/>
@@ -639,12 +663,18 @@
               <span style="letter-spacing:3mm;">..............</span>
             </div>
             <div style="float:left;width:22mm;margin-top:0mm;">
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateYesCheckbox">
 					  <xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 					  <xsl:with-param name="BackupName">IRS2555FamilyLivedAbroadInd</xsl:with-param>
 					</xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
 					  <xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
@@ -652,12 +682,18 @@
 					</xsl:call-template>
 					<b>Yes</b>
               </label>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateNoCheckbox">
 					  <xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
 					  <xsl:with-param name="BackupName">IRS2555FamilyLivedAbroadInd</xsl:with-param>
 					</xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
 					  <xsl:with-param name="TargetNode" select="$FormData/FamilyLivedAbroadInd"/>
@@ -702,12 +738,18 @@
               <span style="letter-spacing:3mm;">................</span>
             </div>
             <div style="float:left;width:22mm;margin-top:3mm">
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
                   <xsl:with-param name="BackupName">IRS2555SubmittedNonResidentStmtInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
@@ -715,12 +757,18 @@
                 </xsl:call-template>
                 <b>Yes</b>
               </label>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
                   <xsl:with-param name="BackupName">IRS2555SubmittedNonResidentStmtInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/SubmittedNonResidentStmtInd"/>
@@ -739,12 +787,18 @@
               <span style="letter-spacing:3mm;">....</span>
             </div>
             <div style="float:left;width:22mm;margin-top:0mm;">
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
                   <xsl:with-param name="BackupName">IRS2555RequiredToPayIncomeTaxInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
@@ -752,12 +806,18 @@
                 </xsl:call-template>
                 <b>Yes</b>
               </label>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
                   <xsl:with-param name="BackupName">IRS2555RequiredToPayIncomeTaxInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/RequiredToPayIncomeTaxInd"/>
@@ -1089,12 +1149,18 @@
               <span style="letter-spacing:3mm;">...</span>
             </div>
             <div style="float:left;width:22mm;margin-top:0.5mm">
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
                   <xsl:with-param name="BackupName">IRS2555VisaLimitStayOrEmploymentInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
@@ -1102,12 +1168,18 @@
                 </xsl:call-template>
                 <b>Yes</b>
               </label>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
                   <xsl:with-param name="BackupName">IRS2555VisaLimitStayOrEmploymentInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+				<xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/VisaLimitStayOrEmploymentInd"/>
@@ -1126,12 +1198,18 @@
 				<span style="letter-spacing:3mm;">.................</span>
             </div>
             <div style="float:left;width:22mm;margin-top:.5mm">
+              <xsl:call-template name="PopulateSpan">
+			    <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
+			  </xsl:call-template> 
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
                   <xsl:with-param name="BackupName">IRS2555MaintainedHouseInUSInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+			    <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelYes">
                   <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
@@ -1139,12 +1217,18 @@
                 </xsl:call-template>
                 <b>Yes</b>
               </label>
+              <xsl:call-template name="PopulateSpan">
+			    <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
+			  </xsl:call-template>
               <input type="checkbox" style="height:3.5mm;">
                 <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
                   <xsl:with-param name="BackupName">IRS2555MaintainedHouseInUSInd</xsl:with-param>
                 </xsl:call-template>
               </input>
+              <xsl:call-template name="PopulateSpan">
+			    <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
+			  </xsl:call-template>
               <label>
                 <xsl:call-template name="PopulateLabelNo">
                   <xsl:with-param name="TargetNode" select="$FormData/MaintainedHouseInUSInd"/>
@@ -1162,14 +1246,15 @@
               If "Yes," enter address of your home, whether it was rented, the names of the occupants, and their 
               relationship<br/> to you. 
 				<img src="{$ImagePath}/2555_Bullet.gif" width="9" height="9" alt="Bullet" style="margin:0mm 1mm;"/>
-				<xsl:if test="((count($FormData/USHomeWhileLivingAbroad) &gt;5) and ($Print=$Separated))">
+				<xsl:if test="((count($FormData/USHomeWhileLivingAbroad) &gt;1) and ($Print=$Separated))">
 					<xsl:call-template name="PopulateAdditionalDataTableMessage">
 						<xsl:with-param name="TargetNode" select="$FormData/USHomeWhileLivingAbroad"/>
 						<xsl:with-param name="ShortMessage" select="true()"/>
 					</xsl:call-template> 
 				</xsl:if>	
              </div>
-             <xsl:if test="(count($FormData/USHomeWhileLivingAbroad) &gt;=1) and ($Print != $Separated)">
+             <xsl:if test="(count($FormData/USHomeWhileLivingAbroad) &gt;=1) and ($Print != $Separated)   or  
+                                (count($FormData/USHomeWhileLivingAbroad) =1) and ($Print = $Separated) ">     
                 <xsl:for-each select="$FormData/USHomeWhileLivingAbroad">
                     <div style="padding-left:14mm;width:187mm;">
 						<b><xsl:value-of select="position()"/>) </b><br/>
@@ -2199,12 +2284,18 @@
               <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
             </xsl:call-template>
             <br/>
+            <xsl:call-template name="PopulateSpan">
+			  <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
+			</xsl:call-template> 
             <input type="checkbox" style="height:3.5mm;">
               <xsl:call-template name="PopulateYesCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
                 <xsl:with-param name="BackupName">IRS2555ClaimingHousingExclOrDedInd</xsl:with-param>
               </xsl:call-template>
             </input>
+            <xsl:call-template name="PopulateSpan">
+			  <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
+			</xsl:call-template> 
             <label>
               <xsl:call-template name="PopulateLabelYes">
                 <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
@@ -2212,12 +2303,18 @@
               </xsl:call-template>
               <b>Yes</b>
             </label> Complete Part VI.<br/>
-            <input type="checkbox" style="height:3mm;margin-bottom:0.4mm;margin-top:1mm;">
+            <xsl:call-template name="PopulateSpan">
+			  <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
+			</xsl:call-template> 
+            <input type="checkbox" style="height:3.5mm;">
               <xsl:call-template name="PopulateNoCheckbox">
                 <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
                 <xsl:with-param name="BackupName">IRS2555ClaimingHousingExclOrDedInd</xsl:with-param>
               </xsl:call-template>
             </input>
+            <xsl:call-template name="PopulateSpan">
+			  <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
+			</xsl:call-template> 
             <label style="margin-bottom:0.4mm;margin-top:1mm;">
               <xsl:call-template name="PopulateLabelNo">
                 <xsl:with-param name="TargetNode" select="$FormData/ClaimingHousingExclOrDedInd"/>
@@ -2262,9 +2359,9 @@
 				  Enter location where housing expenses incurred (see instructions)<img src="{$ImagePath}/2555_Bullet.gif"
                   width="9" height="9" alt="Bullet" style="margin:0mm 2px;"/>
                 </span>
-                <div style="width:88mm;height:100%;">
-				   <span style="background-color:lightgrey;width:46.52mm;border-right:1px solid black;padding-top:0px;height:auto;">						
-						<div style="width:38.48mm;background-color:white;padding-left:0mm;border-top:2px solid white;border-bottom:dotted 1px;
+                <div style="width:90mm;height:100%;">
+				   <span style="background-color:lightgrey;width:49mm;border-right:1px solid black;padding-top:0px;height:auto;">						
+						<div style="width:41.2mm;background-color:white;padding-left:0mm;border-top:2px solid white;border-bottom:dotted 1px;
 						  border-right:1px solid black;text-align:left;">
 							<xsl:call-template name="SetFormLinkInline">
 								<xsl:with-param name="TargetNode" select="$FormData/HousingExpenseLocationDesc"/>
@@ -2948,10 +3045,10 @@
          </xsl:if> 
          <!-- end of separated data for part II line 14 -->
         <!-- Separated data for Part II Line 15 -->
-         <xsl:if test="$Print=$Separated and count($FormData/USHomeWhileLivingAbroad) &gt; 5">
+         <xsl:if test="$Print=$Separated and count($FormData/USHomeWhileLivingAbroad) &gt; 1">
 			<br/>
 			<span class="styRepeatingDataTitle">
-				Form 2555, Part II - Line 15 - US Home While Living Abroad
+				Form 2555, Part II - Line 15e - US Home While Living Abroad
 			</span>
 			<xsl:variable name="CellStyle">border-color:black;border-style:solid;border-width:0px 1px;
 			  font-size:6.5pt;text-align:center;font-family:arial;padding-left:0px;padding-right:0px;</xsl:variable>

@@ -30,10 +30,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				 <style type="text/css"> 
-				   <xsl:if test="not($Print) or $Print=''"> 
+			     <xsl:if test="not($Print) or $Print=''"> 
 						<xsl:call-template name="IRS2441Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-				   </xsl:if>   
+ 			     </xsl:if>
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>  
 			</head>
@@ -50,10 +50,10 @@
 			</xsl:call-template>
 			     <br/>
 				<span class="styAgency">Department of the Treasury</span><br/>
-				<span class="styAgency">Internal Revenue Service (99)</span>
+				<span class="styAgency">Internal Revenue Servic (99)</span>
 						</div>
 						<!-- Begin Form title -->
-						<div class="styFTBox" style="width:120mm;height:20mm;">
+						<div class="styFTBox" style="width:125mm;height:20mm;">
 							<div class="styMainTitle" style="font-size: 13pt;width:90mm;float:left;padding-top:1mm;padding-left:4mm;">Child and Dependent Care Expenses </div>
 							<div class="styFTBox" style="width:20mm;float:right;clear:none;vertical-align:bottom;padding-top:2mm;padding-right:6mm;">
 							 <img src="{$ImagePath}/2441_Form.gif" alt="Bullet"/> </div>
@@ -65,8 +65,8 @@ www.irs.gov/form2441.</span>
 								</div>
 						</div>
 						<!-- Begin Form Tax Year -->
-						<div class="styTYBox" style="width:31mm; height:20mm;border-left-width:2px;">
-							<div style="padding-top:1mm;border-bottom:1 solid black">OMB No. 1545-0074</div>
+						<div class="styTYBox" style="width:31mm;height:20mm;border-left-width:2px;">
+							<div class="styOMB" style="width:31mm;border-bottom:1 solid black">OMB No. 1545-0074</div>
 							<div class="styTaxYear" style="font-size:21pt;">20<span class="styTYColor" style="font-size:21pt:">15</span>
 							</div>
 							<div class="stySequence">Attachment<br/>Sequence No. <b style="font-size:8pt">21</b>
@@ -190,7 +190,6 @@ www.irs.gov/form2441.</span>
 																	<br/>
 																	<!--CareProviderBusNameCtrl-->
 																	<xsl:if test="$Form2441Data/CareProviderGrp/CareProviderBusNameControlTxt  !=''">
-																		<span style="width:1mm;"/>
 																		<xsl:call-template name="PopulateText">
 																			<xsl:with-param name="TargetNode" select="CareProviderBusNameControlTxt"/>
 																		</xsl:call-template>
@@ -220,12 +219,12 @@ www.irs.gov/form2441.</span>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="USAddress/CityNm"/>
 														</xsl:call-template>
-														<br/>
+														<span style="width:.25mm;"/>
 														<!-- <span style="float:left;clear:none;">  -->
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="USAddress/StateAbbreviationCd"/>
 														</xsl:call-template>
-														<br/>
+														<span style="width:.25mm;"/>
 														<!-- <span style="float:left;clear:none;">  -->
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="USAddress/ZIPCd"/>
@@ -233,43 +232,30 @@ www.irs.gov/form2441.</span>
 													</xsl:if>
 													<!--ForiegnAddress-->
 													<div style="text-align:left;vertical-align:top;">
-														<xsl:call-template name="PopulateForeignAddressTemplate">
-															<xsl:with-param name="TargetNode" select="ForeignAddress"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="ForeignAddress/AddressLine1Txt"/>
 														</xsl:call-template>
 													</div>
-													<!--
+												     <br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/AddressLine2Txt"/>
 														</xsl:call-template>
-														
-														
-	
-	                                                    
-											                <br/>
+										                <br/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/CityNm"/>
 														</xsl:call-template>	
-																																					
-														
-														  
-											                <br/>
+											             <span style="width:.25mm;"/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/ProvinceOrStateNm"/>
 														</xsl:call-template>	
-																					
-														
-														   
-														<br/>
+														<span style="width:.25mm;"/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 														</xsl:call-template>	
-														
-														
-														 
-														<br/>
+														<span style="width:.25mm;"/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
-														</xsl:call-template>  -->
+														</xsl:call-template>  
 												</td>
 												<!--SeeW2Cd-->
 												<xsl:if test="$Form2441Data/CareProviderGrp/SeeW2Cd !=''">
@@ -306,7 +292,7 @@ www.irs.gov/form2441.</span>
 													</xsl:if>
 													<!--Living Abroad Foreign Care Providers-->
 													<xsl:if test="$Form2441Data/CareProviderGrp/LivingAbroadFrgnCareProviderCd">
-														<div style="text-align:center">
+														<div style="text-align:center;">
 															<xsl:call-template name="PopulateText">
 																<xsl:with-param name="TargetNode" select="LivingAbroadFrgnCareProviderCd"/>
 															</xsl:call-template>
@@ -553,11 +539,11 @@ Did you receive<br/>
 						</xsl:call-template>
 						<!-- END Part II table -->
 						<!--Line 3-->
-						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:3mm;"><span style="width:1.5mm"/>3
+						<div style="width:187mm;padding-top:.1mm;">
+							<div class="styLNLeftNumBox" style="height:6mm;"><span style="width:1.5mm"/>3
                      </div>
-							<div class="styLNDesc" style="width:123mm;height:5mm;font-size:7pt;">Add the amounts in column (c) of line 2.  
-							<span class="styBoldText">Do not </span> enter more than $3,000 for one qualifying<br/>
+							<div class="styLNDesc" style="width:123mm;height:6mm;font-size:7pt;">Add the amounts in column (c) of line 2.  
+							<b>Do not</b> enter more than $3,000 for one qualifying<br/>
 						 person or $6,000 for two or more persons. If you completed Part III, enter the amount from<br/> line 31 
        			 <!--Dotted Line-->
 								<span class="styBoldText">
@@ -582,7 +568,6 @@ Did you receive<br/>
 					    <span style="width:16px"/>.
                                </span>
 							</div>
-							
 							<div class="styLNRightNumBoxNBB" style="height:6mm;border-right-width:0px;border-top-width:0px;background-color:lightgrey;border-top-width:0px;"/>
 							<div class="styIRS2441RightSpaceBox" style="height:6mm;border-left-width:1px;border-top-width:0px;"/>
 						<div class="styIRS2441RightSpaceBox" style="width:131mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
@@ -649,9 +634,9 @@ Did you receive<br/>
 						</div>
 						<!--Line 6-->
 						<div style="width:187mm;">
-							<div class="styLNLeftNumBox" style="height:5mm;font-size:7pt;padding-top:2mm;"><span style="width:1.5mm"/>6
+							<div class="styLNLeftNumBox" style="height:6mm;font-size:7pt;padding-top:2mm;"><span style="width:1.5mm"/>6
                             </div>
-							<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:2mm;">Enter the <span class="styBoldText">smallest </span> of line 3, 4, or 5
+							<div class="styLNDesc" style="width:123mm;height:6mm;padding-top:2mm;">Enter the <span class="styBoldText">smallest </span> of line 3, 4, or 5
        			 <!--Dotted Line-->
 								<span class="styBoldText">
 									<span style="width:16px"/>.
@@ -678,7 +663,7 @@ Did you receive<br/>
 							</div>
 						</div>
 						<!--Line 7-->
-						<div style="width:187mm;">
+						<div style="width:187mm;padding-top:.1mm;">
 							<div class="styLNLeftNumBox" style="height:4mm;"><span style="width:1.5mm"/>7
                         </div>
 							<div class="styLNDesc" style="width:123mm;height:4mm;">Enter the amount from Form 1040, line 38; Form 1040A, line 22; or Form   
@@ -855,7 +840,7 @@ Did you receive<br/>
 								</div>
 							</div>
 							<!--Line 10-->
-							<div style="width:187mm;">
+							<div style="width:187mm;padding-top:.1mm;">
 								<div class="styLNLeftNumBox" style="height:4mm;font-size:7pt;">10
                         </div>
 								<div class="styLNDesc" style="width:123mm;height:4mm;">Tax liability limit. Enter the amount from the Credit Limit 
@@ -936,7 +921,7 @@ Did you receive<br/>
 					</div>
 					<!--End Part IIITitle-->
 					<!--line 12-->
-					<div style="width:187mm;clear:all;">
+					<div style="width:187mm;padding-top:.1mm;clear:all;">
 						<div class="styLNLeftNumBox" style="height:5mm;padding-top:1mm;">12
                    </div>
 						<div class="styLNDesc" style="width:123mm;height:5mm;padding-top:1mm;font-size:7pt;">
@@ -1130,7 +1115,7 @@ Did you receive<br/>
 						<div class="styIRS2441RightSpaceBox" style="height:4.5mm;"/>
 					</div>
 					<!--line 19-->
-					<div style="width:187mm;">
+					<div style="width:187mm;padding-top:.05mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">19 </div>
 						<div class="styLNDesc" style="width:60mm;height:4mm;">Enter the amount shown below that applies<br/> to you.
                         <br/><br/>
@@ -1156,18 +1141,13 @@ Did you receive<br/>
 							<!-- <span style="text-align:left;">
 								<img align="bottom" src="{$ImagePath}/2441_Bracket.gif" alt=""/>
 							</span>  -->
-							
 							<div style="width:44mm;">
 							<span style="float:left;">
 								<img alt="Curly brace" src="{$ImagePath}/CurlyBrace1.77x18.11mm.png" height="88" width="8"/>
 							</span>
 							<span class="styBoldText" style="padding-top:9mm;"><span style="width:1mm"></span><span style="width:7mm">.</span><span style="width:7mm">.</span><span style="width:7mm">.</span></span>
 							</div>
-							
-							
-                           
 						</div>
-					
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border-left-width: 0px;width:15mm; "/>
 						<div class="styIRS2441RightSpaceBox" style="width:3mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
 						<div class="styLNRightNumBoxNBB" style="height:16mm;border-right-width:0px;background-color:lightgrey;"/>
@@ -1175,9 +1155,7 @@ Did you receive<br/>
 						<div class="styLNRightNumBoxNBB" style="height:16mm;border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:16mm;width:48mm;border-right-width:0px;"/>
 						<div class="styLNDesc" style="width:15mm;height:5mm;">
-							
 						</div>
-					
 						<div class="styIRS2441RightSpaceBox" style="width:76mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
 						<div class="styLNRightNumBox" style="height:7.5mm;border-right-width:0px;padding-top:4mm;">19</div>
 						<div class="styLNAmountBox" style="height:7.5mm;border-left-width:1px;width:32mm;padding-top:4mm;">
@@ -1185,7 +1163,6 @@ Did you receive<br/>
 								<xsl:with-param name="TargetNode" select="$Form2441Data/SpouseIncomeAmt"/>
 							</xsl:call-template>
 						</div>
-						
 					<div class="styLNRightNumBoxNBB" style="height:7.5mm;border-left-width: 1px; border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:7.5mm;width:48mm;border-right-width:0px;"/>
 						<div class="styIRS2441SpaceBox" style="height:4mm;border-left-width:0px;border-bottom-width:0px;width:15mm;"/><div class="styIRS2441RightSpaceBox" style="width:76mm;height:6mm;border-left-width:0px;border-top-width:0px;"/>
@@ -1217,7 +1194,6 @@ Did you receive<br/>
 						</div>
 						<div class="styLNRightNumBoxNBB" style="height:4.5mm;border-right-width:0px;background-color:lightgrey;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:4.5mm;width:48mm;border-right-width:0px;"/>
-						
 					</div>
 					<!--line 21-->
 					<div style="width:187mm;padding-top:0mm;">
@@ -1266,8 +1242,7 @@ Did you receive<br/>
 						<div class="styIRS2441RightSpaceBox" style="height:4mm;border-left-width:1px;"/>
 						<div class="styLNRightNumBoxNBB" style="height:4mm;border-right-width:0px;background-color:lightgrey;border-top-width:1px;border-top-width:0px;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:4mm;border-left-width:1px;"/>
-						<div class="styLNDesc" style="width:131mm;">
-							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm"/>
+						<div class="styLNDesc" style="width:131mm;padding-left:8mm;">
 							<xsl:call-template name="PopulateSpan">
 							    <xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 				             </xsl:call-template>
@@ -1277,9 +1252,6 @@ Did you receive<br/>
 									<xsl:with-param name="BackupName">Form2441DataFiled1040AYesInd</xsl:with-param>
 								</xsl:call-template>
 							</input>
-							<xsl:call-template name="PopulateSpan">
-							    <xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
-				             </xsl:call-template>
 							<label>
 								<xsl:call-template name="PopulateLabelNo">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
@@ -1289,10 +1261,9 @@ Did you receive<br/>
 								<b>No.  </b>
 							</label> Enter -0-.
                         </div>
-      <div class="styLNRightNumBoxNBB" style="height:6mm;border-right-width:0px;background-color:lightgrey;border-top-width:1px;border-top-width:0px;"/>
+					  <div class="styLNRightNumBoxNBB" style="height:6mm;border-right-width:0px;background-color:lightgrey;border-top-width:1px;border-top-width:0px;"/>
 						<div class="styIRS2441RightSpaceBox" style="height:6mm;border-left-width:1px;"/>
-						<div class="styLNDesc" style="width:131mm;">
-							<div class="styLNLeftNumBox" style="font-size:7pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm"/>
+						<div class="styLNDesc" style="width:131mm;padding-left:8mm;">
 							 <xsl:call-template name="PopulateSpan">
 							    <xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 				             </xsl:call-template>
@@ -1303,33 +1274,30 @@ Did you receive<br/>
 								</xsl:call-template>
 							</input>
 							<span style="width:1px;"/>
-							 <xsl:call-template name="PopulateSpan">
-							    <xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
-				             </xsl:call-template>
 							<label>
 								<xsl:call-template name="PopulateLabelYes">
 									<xsl:with-param name="TargetNode" select="$Form2441Data/Form1040AFiledInd"/>
 									<xsl:with-param name="BackupName">Form2441DataFiled1040ANoInd</xsl:with-param>
 								</xsl:call-template>
 								<b>Yes.  </b>
-					</label>   Enter the amount here
-						 <!--Dotted Line-->
-						  <span class="styBoldText">
-							<span style="width:16px"/>.
-                                 <span style="width:16px"/>.
-                                 <span style="width:16px"/>.  
-                                  <span style="width:16px"/>.
-                                  <span style="width:16px"/>.
-                                 <span style="width:16px"/>.
-                                 <span style="width:16px"/>.  
-                                  <span style="width:16px"/>.
-                                  <span style="width:16px"/>.
-                                 <span style="width:16px"/>.
-                                 <span style="width:16px"/>.  
-                                  <span style="width:16px"/>.
-                                   <span style="width:16px"/>.
-                               </span>
-                               </div>
+							</label>   Enter the amount here
+								 <!--Dotted Line-->
+								  <span class="styBoldText">
+									<span style="width:16px"/>.
+										 <span style="width:16px"/>.
+										 <span style="width:16px"/>.  
+										  <span style="width:16px"/>.
+										  <span style="width:16px"/>.
+										 <span style="width:16px"/>.
+										 <span style="width:16px"/>.  
+										  <span style="width:16px"/>.
+										  <span style="width:16px"/>.
+										 <span style="width:16px"/>.
+										 <span style="width:16px"/>.  
+										  <span style="width:16px"/>.
+										   <span style="width:16px"/>.
+									   </span>
+                        </div>
 						<div class="styLNRightNumBox" style="height:5mm;border-right-width:0px;padding-top:2mm;">22</div>
 						<div class="styLNAmountBox" style="height:5mm;border-left-width:1px;width:48mm;padding-top:2mm;border-bottom-width:1px;">
 							<xsl:call-template name="PopulateAmount">
@@ -1338,7 +1306,7 @@ Did you receive<br/>
 						</div>
 						</div>
 					<!--line 23-->
-					<div style="width:187mm;">
+					<div style="width:187mm;padding-top:.05mm;">
 						<div class="styLNLeftNumBox" style="height:4mm;">23
              </div>
 						<div class="styLNDesc" style="width:83mm;height:4mm;font-size:7pt;">Subtract line 22 from line 15
@@ -1659,11 +1627,7 @@ Did you receive<br/>
 										</xsl:attribute>
 										<!--position 1-->
 										<td class="styDepTblCell" style="width:80mm;text-align:left;vertical-align:top">
-											<span style="width:0mm;">
-												<xsl:if test="position()=1">
-													<span class="styBoldText"/>
-												</xsl:if>
-											</span>
+											 
 											<xsl:choose>
 											<xsl:when test="CareProviderPersonName">
 											<!--CareProviderPersonName-->											
@@ -1673,7 +1637,7 @@ Did you receive<br/>
 												<span class="styTableCellPad"/>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CareProviderPersonName/PersonLastNm"/>
-												</xsl:call-template>											
+												</xsl:call-template><br/>											
 											<!--CareProviderNameControl-->
 													<div style="text-align:left">
 												<xsl:call-template name="PopulateText">
@@ -1693,7 +1657,7 @@ Did you receive<br/>
 												<xsl:call-template name="PopulateText">
 													<xsl:with-param name="TargetNode" select="CareProviderBusinessName/BusinessNameLine2Txt"/>
 												</xsl:call-template>
-													</span>	
+													</span><br/>	
 											<!--CareProviderBusNameCtrl-->
 													<span style="text-align:left;vertical-align:top:padding-bottom:2mm;">
 												<xsl:call-template name="PopulateText">
@@ -1705,50 +1669,56 @@ Did you receive<br/>
 										</td>
 										<td class="styDepTblCell" style="width:80mm;text-align:left;vertical-align:top">
 												<!--USAAddress-->
-																								
-												<xsl:if test="USAddress">													
-														 <xsl:call-template name="PopulateUSAddressTemplate">
-															<xsl:with-param name="TargetNode" select="USAddress"/>
-														</xsl:call-template>  
+													<xsl:if test="USAddress/AddressLine1Txt != ''">
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="USAddress/AddressLine1Txt"/>
+														</xsl:call-template>
+														<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="USAddress/AddressLine2Txt"/>
+														</xsl:call-template>
+														<br/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="USAddress/CityNm"/>
+														</xsl:call-template>
+														<span style="width:.25mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="USAddress/StateAbbreviationCd"/>
+														</xsl:call-template>
+														<span style="width:.25mm;"/>
+														<xsl:call-template name="PopulateText">
+															<xsl:with-param name="TargetNode" select="USAddress/ZIPCd"/>
+														</xsl:call-template>
 													</xsl:if>
-													
 												<!--ForiegnAddress-->
 												<xsl:if test="ForeignAddress">	
-																							
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/AddressLine1Txt"/>
 														</xsl:call-template>
 											                <br/>
-													
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/AddressLine2Txt"/>
 														</xsl:call-template>
 														<br/>
-	
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/CityNm"/>
 														</xsl:call-template>																								
-														
-															<span style="width:1mm;"/>
+															<span style="width:.25mm;"/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/ProvinceOrStateNm"/>
 														</xsl:call-template>									
-														
-														<span style="width:1mm;"/>	
+														<span style="width:.25mm;"/>	
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 														</xsl:call-template>	
-														
-														<span style="width:1mm;"/>
+														<span style="width:.25mm;"/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/CountryCd"/>
 														</xsl:call-template>
-														
-														<span style="width:1mm;"/>
+														<span style="width:.25mm;"/>
 														<xsl:call-template name="PopulateText">
 															<xsl:with-param name="TargetNode" select="ForeignAddress/ForeignPostalCd"/>
 														</xsl:call-template>
-														
 														</xsl:if>
 											<!--SeeW2Cd-->
 										<xsl:if test="$Form2441Data/CareProviderGrp/SeeW2Cd !=''">
@@ -1786,12 +1756,20 @@ Did you receive<br/>
 											</xsl:if>
 											<!--Living Abroad Foreign Care Providers-->
 											<xsl:if test="$Form2441Data/CareProviderGrp/LivingAbroadFrgnCareProviderCd">
-												<div style="text-align:center">
+												<div style="text-align:center;">
 													<xsl:call-template name="PopulateText">
 														<xsl:with-param name="TargetNode" select="LivingAbroadFrgnCareProviderCd"/>
 													</xsl:call-template>
 											</div>
 											</xsl:if>
+											<!--Due Diligence Code-->
+													<xsl:if test="$Form2441Data/CareProviderGrp/DueDiligenceCd">
+														<div style="text-align:center">
+															<xsl:call-template name="PopulateText">
+																<xsl:with-param name="TargetNode" select="DueDiligenceCd"/>
+															</xsl:call-template>
+														</div>
+													</xsl:if>
 										</td>
 										<td class="styDepTblCell" style="width:30mm;text-align:right;">
 											<xsl:call-template name="PopulateAmount">
@@ -1805,7 +1783,7 @@ Did you receive<br/>
 						</table>
 					</xsl:if>
 					<!-- END Separated Data for Part I -->
-					<!-- Separated Data for Part II Qualifying Peron Table -->
+					<!-- Separated Data for Part II Qualifying Person Table -->
 					<xsl:if test="($Print = $Separated) and (count($Form2441Data/QualifyingPersonGrp) &gt; 2)">
 						<br/>
 						<br/>

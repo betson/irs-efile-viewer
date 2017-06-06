@@ -33,10 +33,10 @@
         <script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
         <xsl:call-template name="InitJS"/>
         <style type="text/css">
-           <xsl:if test="not($Print) or $Print=''"> 
+          <xsl:if test="not($Print) or $Print=''">
             <xsl:call-template name="IRS1040Schedule8812Style"/>
             <xsl:call-template name="AddOnStyle"/>
-           </xsl:if> 
+            </xsl:if>
         </style>
         <xsl:call-template name="GlobalStylesForm"/>
       </head>
@@ -90,8 +90,8 @@
           </div>
           <!-- End Form Number and Name section -->
           <!-- Begin Names and Identifying number section -->
-          <div class="styBB" style="width: 187mm; height: 8mm; clear:left; float: left;">
-            <div class="styNameBox" style="width:140mm;height:8mm;font-size:7pt;font-weight:normal;">
+          <div class="styBB" style="width: 187mm; height: 6mm; clear:left; float: left;">
+            <div class="styNameBox" style="width:140mm;height:6mm;font-size:7pt;font-weight:normal;">
           Name(s) shown on return<br/>
            <xsl:call-template name="PopulateReturnHeaderFiler">
                   <xsl:with-param name="TargetNode">NameLine1Txt</xsl:with-param>
@@ -113,17 +113,16 @@
             </div>
             <!-- END Part I  Title -->
             <!-- Caution line -->
-            <div class="styBB" style="width: 187mm; height: 14.5mm; clear:left; float: left;">
+            <div class="styBB" style="width:187mm; height: 15mm; padding-top:1mm;clear:left; float: left;">
 				<img alt="Caution" src="{$ImagePath}/1040Sch8812_Caution.gif" width="50" height="50"/>
-				<div style="width:155mm; height: 15mm; padding-top:4mm; padding-left:4mm;">
+				<div style="width: 170mm; height: 14mm; padding-top: 4mm; float: right;">
 					Complete this part only for each dependent who has an ITIN and for whom you are claiming the child tax credit. <br/>
-					If your dependent does not qualify for the credit, you cannot include that dependent in the calculation of this credit.
+					If your dependent does not qualify for the credit, you cannot include that dependent in the calculation of this credit. 
 				</div>
             </div>
-            <div style="width: 187mm; clear:left; float: left;">
-				<div style="width:187mm;padding-top:2mm;font-family:Arial;font-size:8pt;">
+				<div style="width:187mm;padding-top:2mm;font-family:Arial;font-size:8pt; clear:left; float: left;">
 					Answer the following questions for each dependent listed on Form 1040, line 6c; Form 1040A, line 6c; or Form 1040NR, line 7c, who has an ITIN <br/>
-					(Individual Taxpayer Identification Number) and that you indicated qualified for the child tax credit by checking column (4) for that dependent.
+					(Individual Taxpayer Identification Number) and that you indicated qualified for the child tax credit by checking column (4) for that dependent. 
 					<div style="float:right;clear:none;margin-right:1px;">
 						<xsl:call-template name="SetDynamicTableToggleButton">
 							<xsl:with-param name="TargetNode" select="$Form8812Data/QualifiedChildDepdWithITINGrp"/>
@@ -133,296 +132,4003 @@
 						</xsl:call-template>
 					</div>
 				</div>
-				<!-- repeating table -->
-				<div id="pt1ContainerId">
-					<xsl:attribute name="style">
-						height:58mm;width:187mm;float:none;clear:both;
-						<xsl:choose>
-							<xsl:when test="($Print='inline' or $Print='separated')">overflow:visible;</xsl:when>
-							<xsl:otherwise>overflow-y:auto;</xsl:otherwise>
-						</xsl:choose>
+					<!--BEGIN-->
+					<!--IF SEPARATED and ELEMENT NODE is GREATER than 4 -->
+					<!--Generates - SEE ADDITIONAL TABLE - MESSAGE -->
+						<xsl:if test="($Print = $Separated) and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &gt; 4)">
+								<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+									 overflow:visible; height:auto; display:block; clear:left; float: left; border-width:0px;
+								</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;" summary="Table displaying Qualified Child with ITIN information " name="SepQualChildtable" id="SepQualChildtable">
+									<thead/>
+									<tfoot/>
+									<tbody>
+											<tr style="height:14mm;">
+												<td>
+												<xsl:call-template name="PopulateAdditionalDataTableMessage">
+													<xsl:with-param name="TargetNode" select="$Form8812Data/QualifiedChildDepdWithITINGrp"/>
+												</xsl:call-template>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</div>
+							</xsl:if>
+							<!--LESS THAN 4 DATA NODES-->
+							<xsl:if test="($Print='inline' or 'separated' or '') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt;= 4)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:auto; height:auto; clear:left; float: left; border-width:0px;
 					</xsl:attribute>
-					<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
-						<thead/>
-						<tfoot/>
-						<tbody>
-							<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
-								<tr style="height:14mm;">
-									<td>
-										<div style="width:180mm;float:none;clear:both;">
-											<div class="styGenericDiv" style="width:8mm;font-weight:bold;"><xsl:number value="position()" format="A"/></div>
-											<div class="styGenericDiv" style="width:170mm;">
-												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the <br/>
-												substantial presence test? See separate instructions.
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;" summary="Table displaying Qualified Child with ITIN information " name="InlineSepQualChildtable" id="InlineQualChildtable">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
 											</div>
-										</div>
-										<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
-											<span>
-												<xsl:call-template name="PopulateSpan">
-													<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-												</xsl:call-template>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateYesCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/></xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelYes">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/></xsl:with-param>
-													</xsl:call-template>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
 													Yes
 												</label>
-												<span style="width:6mm;"/>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateNoCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/></xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelNo">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/></xsl:with-param>
-													</xsl:call-template>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
 													No
 												</label>
-											</span>
-										</div>
-									</td>
-								</tr>
-							</xsl:for-each>
-							<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
-								<tr style="height:14mm;">
-									<td>
-										<div style="width:180mm;float:none;clear:both;">
-											<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
-											<div class="styGenericDiv" style="width:170mm;">
-												For the <xsl:call-template name="OrdinalNumber"><xsl:with-param name="number" select="1"/></xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the <br/>
-												substantial presence test? See separate instructions.
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
 											</div>
-										</div>
-										<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
-											<span>
-												<xsl:call-template name="PopulateSpan">
-													<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-												</xsl:call-template>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateYesCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelYes">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
-													</xsl:call-template>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
 													Yes
 												</label>
-												<span style="width:6mm;"/>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateNoCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelNo">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
-													</xsl:call-template>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
 													No
 												</label>
-											</span>
-										</div>
-									</td>
-								</tr>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										
+									</tbody>
+								</table>
+							</div>
 							</xsl:if>
-							<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
-								<tr style="height:14mm;">
-									<td>
-										<div style="width:180mm;float:none;clear:both;">
-											<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
-											<div class="styGenericDiv" style="width:170mm;">
-												For the <xsl:call-template name="OrdinalNumber"><xsl:with-param name="number" select="2"/></xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the <br/>
-												substantial presence test? See separate instructions.
+							<!--PRINT IS BLANK-->
+							<!--PRINT IS BLANK-->
+							<!--PRINT IS BLANK-->
+							<xsl:if test="($Print='') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &gt; 4) and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt;= 6)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:auto; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:11.75mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
 											</div>
-										</div>
-										<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
-											<span>
-												<xsl:call-template name="PopulateSpan">
-													<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-												</xsl:call-template>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateYesCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelYes">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
-													</xsl:call-template>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
 													Yes
 												</label>
-												<span style="width:6mm;"/>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateNoCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelNo">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
-													</xsl:call-template>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
 													No
 												</label>
-											</span>
-										</div>
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
-								<tr style="height:14mm;">
-									<td>
-										<div style="width:180mm;float:none;clear:both;">
-											<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
-											<div class="styGenericDiv" style="width:170mm;">
-												For the <xsl:call-template name="OrdinalNumber"><xsl:with-param name="number" select="3"/></xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the <br/>
-												substantial presence test? See separate instructions.
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
 											</div>
-										</div>
-										<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
-											<span>
-												<xsl:call-template name="PopulateSpan">
-													<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-												</xsl:call-template>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateYesCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelYes">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
-													</xsl:call-template>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
 													Yes
 												</label>
-												<span style="width:6mm;"/>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateNoCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelNo">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
-													</xsl:call-template>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
 													No
 												</label>
-											</span>
-										</div>
-									</td>
-								</tr>
-							</xsl:if>
-							<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
-								<tr style="height:14mm;">
-									<td>
-										<div style="width:180mm;float:none;clear:both;">
-											<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
-											<div class="styGenericDiv" style="width:170mm;">
-												For the <xsl:call-template name="OrdinalNumber"><xsl:with-param name="number" select="4"/></xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the <br/>
-												substantial presence test? See separate instructions.
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
 											</div>
-										</div>
-										<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
-											<span>
-												<xsl:call-template name="PopulateSpan">
-													<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-												</xsl:call-template>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateYesCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelYes">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
-													</xsl:call-template>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
 													Yes
 												</label>
-												<span style="width:6mm;"/>
-												<input type="checkbox">
-													<xsl:call-template name="PopulateNoCheckbox">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
-													</xsl:call-template>
-												</input>
-												<label style="padding-left:1px;">
-													<xsl:call-template name="PopulateLabelNo">
-														<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
-														<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
-													</xsl:call-template>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
 													No
 												</label>
-											</span>
-										</div>
-									</td>
-								</tr>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+						</xsl:if>
+							<xsl:if test="($Print='') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &gt; 6) and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt;= 9)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:auto; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
 							</xsl:if>
-						</tbody>
-					</table>
-					<xsl:call-template name="SetInitialDynamicTableHeight">
-						<xsl:with-param name="TargetNode" select="$Form8812Data/QualifiedChildDepdWithITINGrp"/>
-						<xsl:with-param name="headerHeight" select="0"/>
-						<xsl:with-param name="containerHeight" select="4"/>
-						<xsl:with-param name="containerID" select=" 'pt1ContainerId' "/>
-					</xsl:call-template>
-				</div>
-				<div style="width: 187mm; height: 8mm; clear: left; font-size: 7.5pt; float: left;">
-					<div class="styGenericDiv" style="width:9mm;font-weight:bold;">Note:</div>
-					<div class="styGenericDiv" style="width:177mm;">
-						<label>
-							<xsl:call-template name="PopulateLabel">
-								<xsl:with-param name="TargetNode" select="$Form8812Data/OverLmtQlfyChldDepdWithITINInd"/>
-								<xsl:with-param name="BackupName">IRSSch8812OverLmtQlfyChld</xsl:with-param>
-							</xsl:call-template>
-							If you have more than four dependents identified with an ITIN and listed as a qualifying child for the child tax credit, see the <br/>
-							instructions and check here. 
+							
+							<xsl:if test="($Print='') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) = 10)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:auto; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:18mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+						</xsl:if>
+						<xsl:if test="($Print='') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) = 11)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:auto; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:17mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+						</xsl:if>
+						<xsl:if test="($Print='') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) = 12)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:auto; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:15.5mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+						</xsl:if>
+						<xsl:if test="($Print='') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) = 13)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:auto; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+						</xsl:if>
+						<xsl:if test="($Print='') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &gt; 13)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:auto; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+								<div style="width: 187mm; height:5mm;"/>
+							</div>
+						</xsl:if>
+							<!--INLINE-->
+							<!--INLINE-->
+							<!--INLINE-->
+														<xsl:if test="($Print='inline') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &gt; 4) and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt;= 6)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:visible; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:12.5mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+						</xsl:if>
+							<xsl:if test="($Print='inline') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &gt; 6) and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt;= 9)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:visible; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+							</xsl:if>
+							
+							<xsl:if test="($Print='inline') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) = 10)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:visible; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:18mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+								
+							</div>
+						</xsl:if>
+						<xsl:if test="($Print='inline') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) = 11)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:visible; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:17mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+								
+							</div>
+						</xsl:if>
+						<xsl:if test="($Print='inline') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) = 12)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:visible; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:15.5mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+						</xsl:if>
+						<xsl:if test="($Print='inline') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) = 13)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:visible; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+								<div style="width: 187mm; height:5mm;"/>
+							</div>
+						</xsl:if>
+						<xsl:if test="($Print='inline') and (count($Form8812Data/QualifiedChildDepdWithITINGrp) &gt; 13)">
+							<div class="styTableContainer" id="pt1ContainerId">
+								<xsl:attribute name="style">
+						width:187mm; overflow-y:visible; height:auto; clear:left; float: left; border-width:0px;
+					</xsl:attribute>
+								<table border="0" class="styTable" style="font-size:7pt;width:182mm;">
+									<thead/>
+									<tfoot/>
+									<tbody>
+										<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm;">
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+								</table>
+							</div>
+						</xsl:if>
+								<xsl:call-template name="SetInitialDynamicTableHeight">
+									<xsl:with-param name="TargetNode" select="$Form8812Data/QualifiedChildDepdWithITINGrp"/>
+									<xsl:with-param name="headerHeight" select="0"/>
+									<xsl:with-param name="containerHeight" select="4"/>
+									<xsl:with-param name="containerID" select=" 'pt1ContainerId' "/>
+								</xsl:call-template> 	
+					<!--CHOOSE, WHEN SEPARATED and ELEMENT NODE is GREATER than 4 -->
+								<!--Generates - SEE ADDITIONAL TABLE - MESSAGE -->
+								<!--END-->					
+							    <!-- BEGIN -->
+							    <!-- PART 1 NOTE -->
+								<div style="width:187mm;padding-top:4mm;padding-bottom:4mm;">
+									<div class="styGenericDiv" style="width:9mm;font-weight:bold;">Note:</div>
+									<div class="styGenericDiv" style="width:178mm;">
+										<label>
+											<xsl:call-template name="PopulateLabel">
+												<xsl:with-param name="TargetNode" select="$Form8812Data/OverLmtQlfyChldDepdWithITINInd"/>
+												<xsl:with-param name="BackupName">IRSSch8812OverLmtQlfyChld</xsl:with-param>
+											</xsl:call-template>
+							If you have more than four dependents identified with an ITIN and listed as a qualifying child for the child tax credit,
+							see the instructions and check here. 
 						</label>
-						<img src="{$ImagePath}/8812_Bullet_Md.gif" alt="MediumBullet" height="8" width="8"/>
-						<span class="styDotLn" style="padding-right: 2mm; padding-left: 2mm; float: none;">...........................</span>
-						<input type="checkbox" class="styCkbox">
-							<xsl:call-template name="PopulateCheckbox">
-								<xsl:with-param name="TargetNode" select="$Form8812Data/OverLmtQlfyChldDepdWithITINInd"/>
-								<xsl:with-param name="BackupName">IRSSch8812OverLmtQlfyChld</xsl:with-param>
-							</xsl:call-template>
-						</input>
-					</div>
-				</div>
-            </div>
-             <p style="page-break-before: always"/>
-            <!-- BEGIN Part II Title -->
+										<span class="styDotLn" style="padding-right: 2mm; padding-left: 2mm; float: none;">....................................</span>
+										<img src="{$ImagePath}/8812_Bullet_Md.gif" alt="MediumBullet" height="8" width="8"/>
+										<input type="checkbox" class="styCkbox">
+											<xsl:call-template name="PopulateCheckbox">
+												<xsl:with-param name="TargetNode" select="$Form8812Data/OverLmtQlfyChldDepdWithITINInd"/>
+												<xsl:with-param name="BackupName">IRSSch8812OverLmtQlfyChld</xsl:with-param>
+											</xsl:call-template>
+										</input>
+									</div>
+								</div>
+								<!-- END - PART 1 NOTE -->
+								<!-- ####### START of PART II ####### -->
+								<!-- BEGIN -->
+								<!-- Part II Title -->
             <div class="styBB" style="width: 187mm; height: 4.5mm; clear:left; float: left; border-top-width: 1px;">
               <div class="styPartName" style="font-family:Arial;font-size:10pt;">Part II</div>
               <div class="styPartDesc" style="font-family:Arial;font-size:10pt;">Additional Child Tax Credit Filers</div>
             </div>
             <!-- END Part II Title -->
             <!-- Line 1 -->
-            <div style="width: 187mm; height: 35mm; clear: left; font-size: 7.5pt; float: left;">
+            <div style="width: 187mm; height: 34mm; clear: left; font-size: 7.5pt; float: left;">
               <div class="styLNLeftNumBox" style="width: 8mm; height: 9mm; padding-top: 1mm; padding-left: 3mm;">1</div>
-			  <div style="width: 141mm; height: 25mm; clear: none; float: left;">
+			  <div style="width: 141mm; clear: none; float: left;">
               <div class="styLNDesc" style="width:138mm;height:9mm;">
                 <div class="styLNDesc" style="width: 24mm; height: 8mm;">
                   <b>1040 filers:</b>
@@ -450,8 +4156,8 @@
 					If you used Pub. 972, enter the amount from line 8 of the Child Tax Credit Worksheet in the publication.
 				</div>
             </div>
-              <div class="styLNDesc" style="width: 2.8mm; height: 25mm;">
-                <img style="height: 27mm;" src="{$ImagePath}/8812_Bracket_X_Lg.gif" alt="Curly Bracket Image"/>
+              <div class="styLNDesc" style="width: 2.8mm; height: 34mm;">
+                <img style="height: 34mm;" src="{$ImagePath}/8812_Bracket_X_Lg.gif" alt="Curly Bracket Image"/>
               </div>
 			  </div>
               <div class="styLNRightNumBox" style="width: 6mm; height: 16mm; padding-top: 12mm;">1</div>
@@ -691,10 +4397,10 @@
             </div>
             <!--End of line 6A  no1 -->
              <!--Line 6A  yes1 -->
-            <div style="width: 187mm; height: 8mm; clear: left; font-size: 7.5pt; float: left;">
-              <div class="styLNLeftNumBoxSD" style="height: 8mm;"/>
-              <div class="styLNDesc" style="width: 141mm; height: 8mm; padding-right: 2mm;">
-                <div class="styLNDesc" style="width: 16mm; height: 8mm;">
+            <div style="width: 187mm; height: 7mm; clear: left; font-size: 7.5pt; float: left;">
+              <div class="styLNLeftNumBoxSD" style="height: 7mm;"/>
+              <div class="styLNDesc" style="width: 141mm; height: 7mm; padding-right: 2mm;">
+                <div class="styLNDesc" style="width: 16mm; height: 7mm;">
 				  <xsl:call-template name="PopulateSpan">
 						<xsl:with-param name="TargetNode" select="$Form8812Data/ThreeOrMoreQlfyChildrenInd"/>
 				  </xsl:call-template>
@@ -716,17 +4422,18 @@
 						 If line 6 is equal to or more than line 3, skip Part III and enter the amount 
 						 from line 3 on line 13. Otherwise, go to line 7.
           </div>
-              <div class="styLNRightNumBox" style="width: 38mm; height: 8mm; border-bottom-width: 0px; background-color: lightgrey;"/>
+              <div class="styLNRightNumBox" style="width: 38mm; height: 7mm; border-bottom-width: 0px; background-color: lightgrey;"/>
             </div>
             <!--End of line 6A  yes1 -->
             <!-- Page Break -->
-            <div class="pageEnd" style="width: 187mm; height: 15mm; clear: both; font-family: Arial; font-size: 7pt; border-top-color: black; border-top-width: 2px; border-top-style: solid; float: none;">
+            <div class="pageEnd" style="width: 187mm; height: 4mm; clear: both; font-family: Arial; font-size: 7pt; border-top-color: black; border-top-width: 2px; border-top-style: solid; float: none;">
 				<span style="float:left;clear:none;"><b>For Paperwork Reduction Act Notice, see your tax return instructions.</b>
 				<span style="width:15mm;"/>Cat. No. 59761M</span>
 				<span style="float:right;clear:none;font-weight:bold;">Schedule 8812 (Form 1040A or 1040) 2014</span>
 			</div>
-			<div class="styTBB" style="width:187mm; clear: left; float: left;">
-				<span style="float:left;clear:none;">Schedule 8812 (Form 1040A or Form 1040) 2014</span>
+			<p style="clear: none; float: none; page-break-after: always;"></p>
+			<div class="styTBB" style="width:187mm; clear: left; float: left; border-bottom-width: 1px;">
+				<span style="float:left;clear:none;">Schedule 8812 (Form 1040A or Form 1040) 2015</span>
 				<span style="float:right;clear:none;">Page <span style="font-weight:bold;font-size:9pt;">2</span></span>
 			</div>
             <!-- BEGIN Part III Title -->
@@ -763,7 +4470,7 @@
                 <div class="styLNDesc" style="width: 75mm; height: 11mm;">
 					Enter the total of the amounts from Form 1040, lines<br/>
 					27 and 58, plus any taxes that you identified using code<br/>
-					"UT" and entered on the dotted line next to line 62.
+					"UT" and entered on line 62.
 				</div>
                 <div class="styLNDesc" style="width: 22mm; height: 6mm;">
                   <b>1040A filers:</b>
@@ -777,11 +4484,11 @@
                 <div class="styLNDesc" style="width: 75mm; height: 11mm;">
 					Enter the total of the amounts from Form 1040NR, lines<br/>
 					27 and 56, plus any taxes that you identified using code<br/>
-					 "UT" and entered on the dotted line next to line 60.
+					 "UT" and entered on line 60.
 			  </div>
               </div>
               <div class="styLNDesc" style="width: 2.8mm; height: 27mm;">
-                <img src="{$ImagePath}/8812_Bracket_Lger.gif" alt="Curly Bracket Image"/>
+                <img src="{$ImagePath}/8812_Bracket_Lger.gif"  alt="Curly Bracket Image"/>
                </div>
 			   </div>
                <div class="styLNRightNumBox" style="width: 6mm; height: 27mm; border-bottom-width: 0px;">
@@ -815,43 +4522,42 @@
              </div>
             <!-- Line 10 -->
             <div style="width: 187mm; height: 28mm; clear: left; float: left;">
-              <div class="styLNLeftNumBox" style="height: 27mm;">10</div>
-			  <div style="width: 103mm; height: 35mm; clear: none; float: left;">
-              <div class="styLNDesc" style="width:100mm;">
-                <div class="styLNDesc" style="width: 22mm; height: 8mm;">
-                  <b>1040 filers:</b>
-                </div>
-                <div class="styLNDesc" style="width: 77mm; height: 8mm;">Enter the total of the amounts from Form 1040, lines<br/>
+									<div class="styLNLeftNumBox" style="height: 27mm;">10</div>
+									<div style="width: 103mm; height: 35mm; clear: none; float: left;">
+										<div class="styLNDesc" style="width:100mm;">
+											<div class="styLNDesc" style="width: 22mm; height: 8mm;">
+												<b>1040 filers:</b>
+											</div>
+											<div class="styLNDesc" style="width: 77mm; height: 8mm;">Enter the total of the amounts from Form 1040, lines<br/>
 					66a and 71.
 				 </div>
-                <br/>
-                <div class="styLNDesc" style="width: 22mm; height: 14mm;">
-                  <b>1040A filers:</b>
-                </div>
-                <div class="styLNDesc" style="width: 77mm; height: 14mm;">Enter the total of the amount from Form 1040A, line<br/>
+											<br/>
+											<div class="styLNDesc" style="width: 22mm; height: 14mm;">
+												<b>1040A filers:</b>
+											</div>
+											<div class="styLNDesc" style="width: 77mm; height: 14mm;">Enter the total of the amount from Form 1040A, line<br/>
 						42a, plus any excess social security and tier 1 RRTA<br/>
 						taxes withheld that you entered to the left of line 46<br/>
 						(see separate instructions).
       </div>
-                <div class="styLNDesc" style="width: 22mm; height: 9mm;">
-                  <b>1040NR filers:</b>
-                </div>
-                <div class="styLNDesc" style="width: 77mm; height: 9mm; font-size: 7.5pt;">Enter the amount from Form 1040NR, line 67.</div>
-              </div>
-              <div class="styLNDesc" style="width: 2.8mm; height: 27mm;">
-                <img src="{$ImagePath}/8812_Bracket_Lger_1.gif" alt="Curly Bracket Image" width="6" height="90"/>
-               </div>
-			  </div>
-              <div class="styLNRightNumBox" style="width: 6mm; height: 16mm; padding-top: 12mm;">10</div>
-              <div class="styLNAmountBox" style="height: 16mm; padding-top: 12mm; border-bottom-width: 1px; padding-right:0.5mm;">
-                <xsl:call-template name="PopulateAmount">
-                  <xsl:with-param name="TargetNode" select="$Form8812Data/CalcAmtFromRetPlusTaxWhldAmt"/>
-                </xsl:call-template>
-              </div>
-          <div class="styLNRightNumBox" style="width: 6.3mm; height: 28mm; padding-top: 0mm; border-right-width: 1px; border-bottom-width: 0px;">
-        <span style="width: 5.8mm; height: 16mm; background-color: lightgrey;"></span>
-          </div>
-            </div>
+											<div class="styLNDesc" style="width: 22mm; height: 9mm;">
+												<b>1040NR filers:</b>
+											</div>
+											<div class="styLNDesc" style="width: 77mm; height: 9mm; font-size: 7.5pt;">Enter the amount from Form 1040NR, line 67.</div>
+										</div>
+										<div class="styLNDesc" style="width: 2.8mm; height: 27mm;">
+											<img src="{$ImagePath}/8812_Bracket_Lger_1.gif" alt="Curly Bracket Image" width="6" height="90"/>
+										</div>
+									</div>
+									<div class="styLNRightNumBox" style="width: 6mm; height: 16mm; padding-top: 12mm;">10</div>
+									<div class="styLNAmountBox" style="height: 16mm; padding-top: 12mm; border-bottom-width: 1px; padding-right:0.5mm;">
+										<xsl:call-template name="PopulateAmount">
+											<xsl:with-param name="TargetNode" select="$Form8812Data/CalcAmtFromRetPlusTaxWhldAmt"/>
+										</xsl:call-template>
+									</div>
+									<div class="styLNRightNumBox" style="width: 6.3mm; height: 28mm; padding-top: 0mm; border-right-width: 1px; border-bottom-width: 0px;">
+									</div>
+								</div>
             <!--Line 11 -->
             <div style="width: 187mm; height: 5mm; clear: left; float: left;">
               <div class="styLNLeftNumBox" style="height: 5mm; padding-top: 1mm;">11</div>
@@ -921,10 +4627,9 @@
                 </xsl:call-template>
               </div>
             </div>
-  
                <div class="styLNDesc" style="width: 187mm; height: 16mm; text-align: right; padding-top: 0mm; clear: left; float: left;">
 				   <img src="{$ImagePath}/8812_1040_Bottom_Forms.gif" alt="1040 Forms"/>
-				   <div class="styLNDesc" style="border-width: 2px; border-style: none dotted dotted none; border-color: black; width: 35mm; height: 12mm; padding-top: 0.5mm; clear: left; font-size: 6pt; float: right;">
+				   <div class="styLNDesc" style="border-width: 2px; border-style: none dotted dotted none; border-color: black; width: 35mm; height: 12mm; text-align: left; padding-top: 0.5mm; padding-left: 3.5mm; clear: left; font-size: 6pt; float: right;">
 				   		<span style="width: 28.3mm;">Enter this amount on</span>				
 				   		<br/><span style="width: 28.3mm;">Form 1040, line 67,</span>				
 				   		<br/><span style="width: 28.3mm;">Form 1040A, line 43, or</span>				
@@ -933,13 +4638,14 @@
                </div>	
 			    <div style="width: 187mm; height: 1mm; clear: left; float: left;"/>
             <!--End of line 13 -->
- 
           <!-- capturing the page bottom info -->
           <!--  FOOTER-->
-          <div class="pageEnd" style="width: 187mm; height: 25mm; clear: left; border-top-color: black; border-top-width: 2px; border-top-style: solid; float: left;">
+          <div class="pageEnd" style="width: 187mm; height: 8mm; clear: left; border-top-color: black; border-top-width: 2px; border-top-style: solid; float: left;">
             <div style="width:100mm;float:right;font-weight:bold;text-align:right;">Schedule 8812 (Form 1040A or Form 1040) 2014</div>
         </div>
+  
           <!-- Adding page break -->
+          <p style="page-break-before: always;"></p>
           <div class="styLeftOverTitleLine" id="LeftoverData" style="clear:left; float: left;">
             <div class="styLeftOverTitle">
         Additional Data        
@@ -954,22 +4660,354 @@
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
           </table>
-        </form>
-      </body>
-    </html>
-  </xsl:template>
-  
-  <xsl:template name="OrdinalNumber">
-	<xsl:param name="number" select="position()"/>
-	<xsl:choose>
-		<xsl:when test="$number = 1">first</xsl:when>
-		<xsl:when test="$number = 2">second</xsl:when>
-		<xsl:when test="$number = 3">third</xsl:when>
-		<xsl:when test="$number = 4">fourth</xsl:when>
-		<xsl:when test="$number mod 10 = 1 and $number != 11"><xsl:value-of select="$number"/>st</xsl:when>
-		<xsl:when test="$number mod 10 = 2 and $number != 12"><xsl:value-of select="$number"/>nd</xsl:when>
-		<xsl:when test="$number mod 10 = 3 and $number != 13"><xsl:value-of select="$number"/>rd</xsl:when>
-		<xsl:otherwise><xsl:value-of select="$number"/>th</xsl:otherwise>
-	</xsl:choose>
-  </xsl:template>
+					<!-- END Additional Data Left Over Table -->
+					<!--Separated Data  Part I - Filers with Certain Child Dependent(s) with an ITIN Table -->
+					<!--Separated Data  Part I - Filers with Certain Child Dependent(s) with an ITIN Table -->
+					<!--Separated Data  Part I - Filers with Certain Child Dependent(s) with an ITIN Table -->	
+					<xsl:if test="($Print = $Separated and count($Form8812Data/QualifiedChildDepdWithITINGrp) &gt; 4)">
+					<div class="styTableContainer" id="pt1ContainerId">
+					<xsl:attribute name="style">
+						width:187mm; height:auto; display:block;
+						</xsl:attribute>
+						<br/>
+						<span class="styRepeatingDataTitle">Form Schedule 8812 - Part I - Filers with Certain Child Dependent(s) with an ITIN Table, Line 1:</span>
+						<br/>
+						<table class="styDepTbl" style="font-size:7pt;" cellspacing="0" summary="Table displaying Qualified Child with ITIN information " name="SepQualChildtable" id="SepQualChildtable">
+							<thead class="styTableThead">
+								<tr class="styDepTblHdr">
+									<th class="styDepTblCell" scope="col" colspan="1" style="width:187mm;font-weight:normal;text-align: left;">
+										<span style="padding:2mm;"> Answer the following questions for each dependent listed on Form 1040, line 6c; Form 1040A, line 6c; or Form 1040NR, line 7c, who has an ITIN
+																							  (Individual Taxpayer Identification Number) and that you indicated is a qualifying child for the child tax credit by checking column (4) for that dependent. 
+										</span> <br/>
+                                    </th>
+								</tr>
+							</thead>
+							<tfoot/>
+							<tbody>
+							<xsl:for-each select="$Form8812Data/QualifiedChildDepdWithITINGrp">
+											<tr style="height:14mm; border-color:black;">
+											<!-- Define background colors to the rows -->
+										<xsl:attribute name="class">
+										<xsl:choose>
+										<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+										<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+										</xsl:choose>
+										</xsl:attribute>
+										<!--position 1-->
+												<td class="styDepTblCell" style="padding-left:2mm; text-align: left;">
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">
+															<xsl:number value="position()" format="A"/>
+														</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber"/> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">QlfyChildDepdWithITINYesInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">QualifiedChildDepdWithITINNoInd<xsl:number value="position()"/>
+																	</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:for-each>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 1">
+											<tr style="height:14mm; border-color:black;">
+											<!-- Define background colors to the rows -->
+										<xsl:attribute name="class">
+										<xsl:choose>
+										<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+										<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+										</xsl:choose>
+										</xsl:attribute>
+										<!--position 1-->
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">A</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="1"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN1</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 2">
+											<tr style="height:14mm; border-color:black;">
+											<!-- Define background colors to the rows -->
+										<xsl:attribute name="class">
+										<xsl:choose>
+										<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+										<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+										</xsl:choose>
+										</xsl:attribute>
+										<!--position 1-->
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">B</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="2"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN2</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 3">
+											<tr style="height:14mm; border-color:black;">
+											<!-- Define background colors to the rows -->
+										<xsl:attribute name="class">
+										<xsl:choose>
+										<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+										<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+										</xsl:choose>
+										</xsl:attribute>
+										<!--position 1-->
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">C</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="3"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN3</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+										<xsl:if test="count($Form8812Data/QualifiedChildDepdWithITINGrp) &lt; 4">
+											<tr style="height:14mm; border-color:black;">
+											<!-- Define background colors to the rows -->
+										<xsl:attribute name="class">
+										<xsl:choose>
+										<xsl:when test="position() mod 2 = 1">styDepTblRow1</xsl:when>
+										<xsl:otherwise>styDepTblRow2</xsl:otherwise>
+										</xsl:choose>
+										</xsl:attribute>
+										<!--position 1-->
+												<td>
+													<div style="width:180mm;float:none;clear:both;">
+														<div class="styGenericDiv" style="width:8mm;font-weight:bold;">D</div>
+														<div class="styGenericDiv" style="width:172mm;">
+												For the <xsl:call-template name="OrdinalNumber">
+																<xsl:with-param name="number" select="4"/>
+															</xsl:call-template> dependent identified with an ITIN and listed as a qualifying child for the child tax credit, did this child meet the substantial<br/>
+												 presence test? See separate instructions.
+											</div>
+													</div>
+													<div style="width:90mm;padding-left:20mm;float:none;clear:both;">
+														<span>
+															<xsl:call-template name="PopulateSpan">
+																<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+															</xsl:call-template>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateYesCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelYes">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINYesInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													Yes
+												</label>
+															<span style="width:6mm;"/>
+															<input type="checkbox">
+																<xsl:call-template name="PopulateNoCheckbox">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+															</input>
+															<label style="padding-left:1px;">
+																<xsl:call-template name="PopulateLabelNo">
+																	<xsl:with-param name="TargetNode" select="QlfyChildDepdWithITINNoInd"/>
+																	<xsl:with-param name="BackupName">IRSSch8812QualWithITIN4</xsl:with-param>
+																</xsl:call-template>
+													No
+												</label>
+														</span>
+													</div>
+												</td>
+											</tr>
+										</xsl:if>
+									</tbody>
+						</table>
+							</div>
+							</xsl:if>
+				</form>
+			</body>
+		</html>
+	</xsl:template>
+	<xsl:template name="OrdinalNumber">
+		<xsl:param name="number" select="position()"/>
+		<xsl:choose>
+			<xsl:when test="$number = 1">first</xsl:when>
+			<xsl:when test="$number = 2">second</xsl:when>
+			<xsl:when test="$number = 3">third</xsl:when>
+			<xsl:when test="$number = 4">fourth</xsl:when>
+			<xsl:when test="$number mod 10 = 1 and $number != 11">
+				<xsl:value-of select="$number"/>st</xsl:when>
+			<xsl:when test="$number mod 10 = 2 and $number != 12">
+				<xsl:value-of select="$number"/>nd</xsl:when>
+			<xsl:when test="$number mod 10 = 3 and $number != 13">
+				<xsl:value-of select="$number"/>rd</xsl:when>
+			<xsl:otherwise>
+				<xsl:value-of select="$number"/>th</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+	
+	<xsl:template name="PopulateInlineAdditionalDataTableMessage">
+    <xsl:param name="TargetNode"/>
+    <xsl:param name="ShortMessage">false</xsl:param>
+
+    <!-- If the Print parameter is set to 'inline' and the element > 4 nodes, the message will be displayed-->
+    <xsl:if test="($Print = 'inline') and (count($TargetNode) &gt; 4)">
+      <xsl:choose>
+        <xsl:when test="$ShortMessage= 'true' ">See Add'l Data</xsl:when>
+        <xsl:otherwise>See Additional Data Table Below</xsl:otherwise>
+      </xsl:choose>
+    </xsl:if>
+</xsl:template>
 </xsl:stylesheet>

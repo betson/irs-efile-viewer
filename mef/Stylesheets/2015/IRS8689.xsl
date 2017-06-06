@@ -1944,7 +1944,8 @@
 					</div>
 					<!-- END Page Break and Footer-->
 					<!-- Additonal Data Title Bar and Button -->
-					<div class="styLeftOverTitleLine" id="LeftoverData" style="width:187mm; height: 5.5mm; clear: left; float: left;">
+					<div class="styLeftOverTitleLine" id="LeftoverData" style="width:187mm; height: auto; clear: left; float: left;">
+					<p style="page-break-before: always;"></p>
 						<div class="styLeftOverTitle">
 							Additional Data        
 						</div>

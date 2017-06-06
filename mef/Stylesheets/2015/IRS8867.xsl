@@ -36,10 +36,10 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
-					 <xsl:if test="not($Print) or $Print=''">  
+					<!-- <xsl:if test="not($Print) or $Print=''">  -->
 						<xsl:call-template name="IRS8867Style"/>
 						<xsl:call-template name="AddOnStyle"/>
-					 </xsl:if>  
+				<!--	 </xsl:if>  -->
 				</style>
 				<xsl:call-template name="GlobalStylesForm"/>
 			</head>
@@ -186,9 +186,8 @@
 							<div class="styLNLeftNumBoxSD">3</div>
 							<div class="styIRS8867LNDesc">
 								Does the taxpayer (and the taxpayer's spouse if filing jointly) have a social security number 
-								(SSN)<br/> that allows him or her to work and is valid for EIC purposes? See the instructions before <br/>
-								<span style="float:left;clear:none;">answering</span>
-								<span class="styIRS8867Dots">........................</span>
+								(SSN)<br/> that allows him or her to work and is valid for EIC purposes? See the instructions before answering
+								<span class="styIRS8867Dots">...</span>
 							</div>
 							<div class="styIRS8867LNAmountBox"  style="height:11mm;">
 								<br/><br/>
@@ -1401,9 +1400,9 @@
 						<div class="styGenericDiv" style="width:187mm;">
 							<div class="styLNLeftNumBox"  style="height:1mm;padding-top:5mm;">14</div>
 							<div class="styIRS8867ChildDesc" style="height:1mm;padding-top:2mm;width:105mm;padding-top:5mm;" >
-								Does the qualifying child have an SSN that allows him or her to work and is <br/>
-								<span style="float:left;clear:none;">valid for EIC purposes? See the instructions before answering</span>
-								<span class="styIRS8867Dots">...</span>
+								<span style="float:left;clear:none;">Does the qualifying child have an SSN that allows him or her to work and</span>
+								<span style="float:left;clear:none;">is valid for EIC purposes? See the instructions before answering?</span>
+								<span class="styIRS8867Dots" style="float:right;">...</span>
 							</div>
 							<div class="styIRS8867ChildBox" style="height:11mm;padding-top:3mm;">
 								<br/>
@@ -1604,7 +1603,7 @@
 						<div class="styGenericdiv" style="width:187mm;">
 							<div class="styLNLeftNumBoxSD"/>
 							<div class="styIRS8867ChildDesc" style="height:12mm;padding-top:6mm;width:105mm;">
-								<b>Note.</b> If there is more than one child, complete lines 8 through 14 for the <br/>other child(ren) (but for no more
+								<b>Note:</b> If there is more than one child, complete lines 8 through 14 for the <br/>other child(ren) (but for no more
 								than three qualifying children). 
 							</div>
 							<div class="styIRS8867ChildBox" style="height:12mm;border-width:0px;background-color:lightgrey;border-left-width:1px;"><br/><span style="width:0px"/></div>
@@ -2000,14 +1999,14 @@
 										No
 									</label>
 								</span>
-								<span style="width:100%;text-align:left;padding-left:.5mm;">
+								<span style="width:100%;text-align:left;padding-left:.4mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApplyInd"/>
 											<xsl:with-param name="BackupName">IRS8867DoesNotApplyInd</xsl:with-param>
 										</xsl:call-template>
 									</input>
-								
+								    <span style="width:0.8mm;"/>												
 									<label>
 										<xsl:call-template name="PopulateLabel">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApplyInd"/>
@@ -2063,7 +2062,7 @@
 										No
 									</label>
 								</span>
-								<span style="width:100%;text-align:left;padding-left:.5mm;">
+								<span style="width:100%;text-align:left;padding-left:.4mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApply2Ind"/>
@@ -2129,7 +2128,7 @@
 										No
 									</label>
 								</span>
-									<span style="width:100%;text-align:left;padding-left:.5mm;">
+									<span style="width:100%;text-align:left;padding-left:.4mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApply3Ind"/>
@@ -2194,7 +2193,7 @@
 										No
 									</label>
 								</span>
-									<span style="width:100%;text-align:left;padding-left:.5mm;">
+									<span style="width:100%;text-align:left;padding-left:.4mm;">
 									<input type="checkbox" class="styCkbox">
 										<xsl:call-template name="PopulateCheckbox">
 											<xsl:with-param name="TargetNode" select="$FormData/DoesNotApply4Ind"/>
@@ -2224,17 +2223,17 @@
 										You have complied with all the due diligence requirements if you:<br/>
 										<span style="padding-left:5mm"> 1. Completed the actions described on lines 20 and 21 and checked <b>"Yes"</b> on those lines,</span><br/>
 										<span style="padding-left:5mm"> 2. Completed the actions described on lines 22, 23, 24, and 25 (if they apply) and checked <b>"Yes"</b> (or <br/>
-											<span style="padding-left:8.5mm"><b>"Does not apply"</b>) on those lines,</span>
+											<span style="padding-left:3mm"><b>"Does not apply"</b>) on those lines,</span>
 										</span><br/>
 										<span style="padding-left:5mm"> 3. Submit Form 8867 in the manner required, <b>and</b></span><br/>   
 										<span style="padding-left:5mm"> 4. Keep all five of the following records for 3 years from the latest of the dates specified in the <br/>
-											<span style="padding-left:8.5mm;">instructions under <i>Document Rentention:</i></span>
+											<span style="padding-left:3mm;">instructions under <i>Document Rentention:</i></span>
 										</span><br/>
 										<span style="padding-left:9mm;height:4mm;padding-top:2mm;"> a. Form 8867,</span><br/>
 										<span style="padding-left:9mm;height:4mm;"> b. The EIC worksheet(s) or your own worksheet(s),</span><br/> 
 										<span style="padding-left:9mm;height:4mm;"> c. Copies of any taxpayer documents you relied on to determine eligibility for or amount of EIC,</span><br/>  
 										<span style="padding-left:9mm;height:4mm;"> d. A record of how, when, and from whom the information used to prepare the form and <br/>
-											<span style="padding-left:12.5mm;height:4mm;">worksheet(s) was obtained, and</span>
+											<span style="padding-left:3mm;height:4mm;">worksheet(s) was obtained, and</span>
 										</span><br/>  
 										<span style="padding-left:9mm;height:4mm;"> e. A record of any additional questions you asked and your client's answers.</span><br/>     
 									</div>

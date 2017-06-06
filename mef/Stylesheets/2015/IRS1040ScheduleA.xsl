@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Last Modified by Eugenia McDonald on 02/11/2016 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<!-- Last Modified by Eugenia McDonald on 09/01/2016 --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
   <xsl:include href="PopulateTemplate.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
@@ -135,14 +135,14 @@
             <div class="styIRS1040ScheduleAleftBox" style="width: 96mm; height:19.7mm;font-size:7.5pt;border-right-width:0px;
               border-left-width:0px;">
               <div class="styIRS1040ScheduleAleftBox" style="width: 95.4mm; height:3.9mm;font-size:7.1pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:7.5mm;padding-top:.5mm;">
+                border-right-width:0px;border-bottom-width:0px;padding-left:6.6mm;padding-top:.5mm;">
                 <span class="styBoldText" style="font-size:7.1pt">Caution.</span>
                Do not include expenses reimbursed or paid by others.</div>
               <!--Line 1 Verbage only-->
               <div class="styIRS1040ScheduleAleftBox" style="width: 95.4mm; height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:2mm;padding-top:.5mm">
                 <span class="styBoldText">1</span>
-                <span style="width:2.1mm"/>
+                <span style="width:1.9mm"/>
 					Medical and dental expenses (see instructions)
               <span style="width:1.8mm"/>
                 <span style=" letter-spacing:3.2mm; font-weight:bold;float:right; ">......</span>
@@ -151,7 +151,7 @@
               <div class="styIRS1040ScheduleAleftBox" style="width:61mm;height:3.9mm;border-left-width:0px;border-right-width:1px;
                 border-bottom-width:0px;padding-left:2mm;padding-top:.5mm;">
                 <span class="styBoldText">2</span>
-                <span style="width:2.1mm"/>
+                <span style="width:2.9mm"/>
                 <span style="font-family:arial;font-size:7pt">Enter amount from Form 1040, line 38</span>
                 <span style="width:.5mm"/>
               </div>
@@ -167,7 +167,7 @@
                 <span class="styBoldText">3</span>
                 <span style="width:2.1mm"/>
                    Multiply line 2 by 10% (.10). But if either you or your spouse was<br/>
-                <span style="width:5.5mm;"/>
+                <span style="width:4.8mm;"/>
                 <span style="font-size:7pt">born before January 2, 1951, multiply line 2 by 7.5% (.075) instead</span>
                 <span style="width:.1mm"/> 
 			    <!--Form to Form Link -->
@@ -248,7 +248,7 @@
               </div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 49mm; height:9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:2mm;padding-top:0mm;">
-                <span style="width:5.5mm;"/>
+                <span style="width:5mm;"/>
                 <span class="styBoldText">a</span>
                 <span style="width:2mm;"/>
                 <input type="checkbox" class="styCkbox">
@@ -265,7 +265,7 @@
                   Income taxes, <span style="font-weight:bold">or</span>
                   <br/>
                 </label>
-                <span style="width:5.5mm;"/>
+                <span style="width:5mm;"/>
                 <span class="styBoldText">b</span>
                 <span style="width:2mm;"/>
                 <!-- Checkbox -->
@@ -453,17 +453,17 @@
                      Home mortgage interest and points reported to you on Form 1098</div>
               <!--Line 11 Verbiage only-->
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:.2mm;padding-top:.5mm">
+                border-right-width:0px;border-bottom-width:0px;padding-left:.4mm;padding-top:.5mm">
                 <span class="styBoldText" style="font-size:7pt">11</span>
                 <span style="width:2mm"/>
                      Home mortgage interest not reported to you on Form 1098. If paid</div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.5mm">
-                <span style="width:7mm"/>
+                <span style="width:5.4mm"/>
                     to the person from whom you bought the home, see instructions</div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.5mm">
-                <span style="width:7mm"/>
+                <span style="width:6.2mm"/>
                 <span style="font-size:7.1pt">and show that person's name, identifying no., and address
                   <span style="width:1mm"/>
                   <img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
@@ -475,12 +475,12 @@
               </div>
               <div class="styIRS1040ScheduleAleftBox" style="width:95mm;height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:2.5mm;padding-top:.3mm;">
-                <span style="width:5mm"/>
+                <span style="width:4.5mm"/>
                 <span style="width:85mm;border-bottom:dotted 1px;text-align:right;"/>
               </div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:2.5mm;padding-top:.3mm;">
-                <span style="width:5mm"/>
+                <span style="width:4.5mm"/>
                 <span style="width:85mm;border-bottom:dotted 1px;text-align:right;"/>
               </div>
               <!--Line 12 Verbiage only-->
@@ -489,7 +489,7 @@
                 <span class="styBoldText">12</span>
                 <span style="width:2mm"/>
                      Points not reported to you on Form 1098. See instructions for<br/>
-                 <span style="width:6.5mm;"/>
+                 <span style="width:5.6mm;"/>
                  special rules
                 <span style=" letter-spacing:3.2mm; font-weight:bold; float:right;">.................</span>
               </div>
@@ -505,7 +505,7 @@
               <div class="styIRS1040ScheduleAleftBox" style="width:95mm;height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.7mm">
                 <span class="styBoldText">14</span>
-                <span style="width:2.5mm"/>
+                <span style="width:2.9mm"/>
                 <span style="font-size:8.5pt; font-family:arial narrow;">Investment interest. </span>
 				<span style="font-size:7.0pt">Attach Form 4952 if required.(See instructions.)</span>
               </div>
@@ -592,7 +592,7 @@
             <!--Line 15 Verbiage and amount boxes-->
             <div class="styIRS1040ScheduleAleftBox" style="width:151.5mm;height:3.9mm;font-size:7pt;border-left-width:0px;
               border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3mm;">
-             <span style="width:19.2mm"/>
+             <span style="width:20mm"/>
               <span class="styBoldText">15</span>
               <span style="width:2mm"/>
             Add lines 10 through 14
@@ -625,18 +625,18 @@
                 <span class="styBoldText">16</span>
                 <span style="width:2mm"/>
                    Gifts by cash or check. If you made any gift of $250 or more, see<br/>
-                <span style="width:6.5mm"/>
+                <span style="width:6mm"/>
                  instructions
                   <span style="width:2.5mm"/>
                 <span style=" letter-spacing:3.2mm; font-weight:bold; float:right;">.................</span>
               </div>
               <!--Line 17 Verbiage only-->
               <div class="styIRS1040ScheduleAleftBox" style="width: 95.4mm; height:7.8mm;font-size:7pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.8mm;">
+                border-right-width:0px;border-bottom-width:0px;padding-left:.7mm;padding-top:.8mm;">
                 <span class="styBoldText">17</span>
-                <span style="width:2.2mm;"/>
+                <span style="width:2mm;"/>
                     Other than by cash or check. If any gift of $250 or more, see<br/>
-                <span style="width:7.5mm"/><span style="font-size:7.5pt;">instructions. You </span>
+                <span style="width:6.6mm"/><span style="font-size:7.5pt;">instructions. You </span>
                 <span style="width:1mm"/>
                 <span style="font-weight:bold;font-size:7.5pt"> must </span>
                 <span style="width:1mm"/>
@@ -651,7 +651,7 @@
               <div class="styIRS1040ScheduleAleftBox" style="width:95mm;height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.9mm">
                 <span class="styBoldText">18</span>
-                <span style="width:2mm"/>
+                <span style="width:2.2mm"/>
                     Carryover from prior year<span style="width:3.8mm"/>
                 <span style=" letter-spacing:3.2mm; font-weight:bold; float:right;">............</span>
               </div>
@@ -701,7 +701,7 @@
             <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm;height:3.9mm;font-size:7pt;border-left-width:0px;
               border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3mm">
               <span class="styBoldText">19</span>
-              <span style="width:2mm"/>
+              <span style="width:2.2mm"/>
                Add lines 16 through 18<span style="width:2.7mm"/>
               <span style=" letter-spacing:3.2mm; font-weight:bold; float:right;">......................</span>
             </div>
@@ -771,11 +771,11 @@
                   union  dues,
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3mm">
-                <span style="width:6.5mm"/>
+                <span style="width:5.4mm"/>
                      job education, etc. Attach Form 2106 or 2106-EZ  if required.</div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3mm">
-                <span style="width:6mm"/>
+                <span style="width:5mm"/>
                  (See instructions.)<span style="width:1mm"/>
                 <img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
                 <span style="width:1mm"/>
@@ -788,7 +788,7 @@
               </div>
               <!--Line 22 Verbiage-->
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3mm">
+                border-right-width:0px;border-bottom-width:0px;padding-left:.7mm;padding-top:.3mm">
                 <span class="styBoldText">22</span>
                 <span style="width:2mm"/>
                      Tax preparation fees<span style="width:3mm"/>
@@ -796,14 +796,14 @@
               </div>
               <!--Line 23 Verbiage-->
               <div class="styIRS1040ScheduleAleftBox" style="width:95mm;height:3.9mm;font-size:7pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3mm">
+                border-right-width:0px;border-bottom-width:0px;padding-left:.7mm;padding-top:.3mm">
                 <span class="styBoldText">23</span>
                 <span style="width:2mm"/>
                      Other expenses<img src="{$ImagePath}/1040SchA_JobExp_Longdash.gif" alt="JobExpLongdash Image"/>investment, 
                      safe deposit box, etc. List</div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3m">
-                <span style="width:7mm"/>type and amount<span style="width:1mm"/>
+                <span style="width:6.6mm"/>type and amount<span style="width:1mm"/>
                 <img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
                 <span style="width:1mm"/>
                 <xsl:call-template name="SetFormLinkInline">
@@ -814,12 +814,12 @@
               </div>
               <div class="styIRS1040ScheduleAleftBox" style="width: 95mm; height:3.9mm;font-size:7pt;border-left-width:0px;
                 border-right-width:0px;border-bottom-width:0px;padding-left:2.5mm;padding-top:.3mm">
-                <span style="width:6mm"/>
+                <span style="width:5mm"/>
                 <span style="width:85mm;border-bottom:dotted 1px;text-align:right;"/>
               </div>
               <!--Line 24 Verbiage -->
               <div class="styIRS1040ScheduleAleftBox" style="width:95mm;height:3.9mm;font-size:7pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:.5mm; padding-top:.5mm">
+                border-right-width:0px;border-bottom-width:0px;padding-left:.9mm; padding-top:.5mm">
                 <span class="styBoldText">24</span>
                 <span style="width:2mm"/>
                      Add lines 21 through 23<span style="width:2.7mm"/>
@@ -827,9 +827,9 @@
               </div>
               <!--Line 25 Verbiage and amount boxes-->
               <div class="styIRS1040ScheduleAleftBox" style="width:60mm;height:4.9mm;border-left-width:0px;border-right-width:0px;
-                border-bottom-width:0px;padding-left:.2mm;padding-top:.38mm;">
+                border-bottom-width:0px;padding-left:.9mm;padding-top:.38mm;">
                 <span class="styBoldText" style="font-size:7pt">25</span>
-                <span style="width:2mm"/>
+                <span style="width:3mm"/>
                 <span style="font-family:arial;font-size:7pt">Enter amount from Form 1040, line 38</span>
                 <span style="width:1mm"/>
               </div>
@@ -842,7 +842,7 @@
               </div>
               <!--Line 26 Verbiage -->
               <div class="styIRS1040ScheduleAleftBox" style="width:95mm;height:3.9mm;font-size:7pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.0mm;">
+                border-right-width:0px;border-bottom-width:0px;padding-left:.9mm;padding-top:.0mm;">
                 <span class="styBoldText">26</span>
                 <span style="width:2mm"/>
                       Multiply line 25 by 2% (.02)<span style="width:1.5mm"/>
@@ -922,9 +922,9 @@
             </div>
             <div class="styIRS1040ScheduleAlnRightNumBox" style="height:5.1mm;background-color:lightgrey; border-bottom-width:0px;"/>
             <div class="styIRS1040ScheduleAlnAmountBox" style="height:5.1mm;border-bottom-width:0px;"/>
-            <!--Line 27 amount boxes-->
+            <!--Line 27 Verbiage and Amount boxes-->
             <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm;height:3.9mm;font-size:7pt;border-left-width:0px;
-              border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3mm;">
+              border-right-width:0px;border-bottom-width:0px;padding-left:.9mm;padding-top:.3mm;">
               <span class="styBoldText">27</span>
               <span style="width:2mm"/>
                Subtract line 26 from line 24. If line 26 is more than line 24, enter -0- 
@@ -947,9 +947,9 @@
               border-right-width:0px;">
               <!--Line 28 Verbiage-->
               <div class="styIRS1040ScheduleAleftBox" style="width: 131.5mm; height:1.9mm;font-size:7pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.3mm;">
-                <span class="styBoldText" style="font-size:8pt">28</span>
-                <span style="width:2.5mm"/>
+                border-right-width:0px;border-bottom-width:0px;padding-left:.9mm;padding-top:.3mm;">
+                <span class="styBoldText">28</span>
+                <span style="width:1.8mm"/>
                     Other <img src="{$ImagePath}/1040SchA_OthMisc_Longdash.gif" alt="OthMiscLongdash Image"/> from list in instructions. 
                     List type and amount
                   <span style="width:1mm"/>
@@ -992,8 +992,8 @@
             <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm; height:28mm;font-size:7pt;border-left-width:0px;border-right-width:0px;">
               <!--Line 29 Verbiage-->             
               <div class="styIRS1040ScheduleAleftBox" style="width:131.5mm; height:4mm;font-size:7pt;border-left-width:0px;
-                border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:.5mm;">
-                <span class="styBoldText" style="font-size:8pt">29</span>
+                border-right-width:0px;border-bottom-width:0px;padding-left:.9mm;padding-top:.5mm;">
+                <span class="styBoldText">29</span>
                 <span style="width:2mm"/>
             <!--        Is Form 1040, line 38, over $300,000 if married filing jointly or qualifying widow(er);<br/>  
                 <span style="width:7mm"/>$275,000 if head of household; $250,000 if single; 
@@ -1001,7 +1001,7 @@
                  Is Form 1040, line 38, over $154,950?   
               </div>                
              <div class="styLNDesc" style="height:16mm;width:123mm;">
-			 <div class="styLNLeftNumBox" style="font-size:3pt;height:4mm;padding-bottom:0mm;padding-left: 2.25mm;"/>
+			 <div class="styLNLeftNumBox" style="font-size:3pt;height:4mm;padding-bottom:0mm;padding-left: 1.2mm;"/>
 			 <input type="checkbox" class="styCkbox" name="Checkbox">
                   <xsl:call-template name="PopulateNoCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/ItemizedLimitationsByFSInd"/>
@@ -1013,13 +1013,13 @@
                    <xsl:with-param name="TargetNode" select="$FormData/ItemizedLimitationsByFSInd"/>
                    <xsl:with-param name="BackupName">IRS1040SchAItemizedLimitationsByFSInd</xsl:with-param>
                  </xsl:call-template>
-								<span style="width:4px;"/>
+								<span style="width:2px;"/>
 								<b>No.  </b>
 							</label> 
 							Your deduction is not limited. Add the amounts in the far right column for lines 4		                     
-							  <span style="width:18.5mm;"/>through 28. Also, enter this amount on Form 1040, line 40.
+							  <span style="width:13.5mm;"/>through 28. Also, enter this amount on Form 1040, line 40.
 				<br/>					          								
-		     <div class="styLNLeftNumBox" style="font-size:3pt;padding-bottom:0mm;padding-left: 2.25mm"/>
+		     <div class="styLNLeftNumBox" style="font-size:3pt;padding-bottom:0mm;padding-left: 1.2mm"/>
 			 <input type="checkbox" class="styCkbox" name="Checkbox">
 							   <xsl:call-template name="PopulateYesCheckbox">
                   <xsl:with-param name="TargetNode" select="$FormData/ItemizedLimitationsByFSInd"/>
@@ -1035,7 +1035,7 @@
 								<b>Yes.  </b>
 							</label>
 							Your deduction may be limited. See the Itemized Deductions Worksheet <br/> 
-							<span style="width:10.5mm;"/>in the instructions to figure the amount to enter.	      
+							<span style="width:13.5mm;"/>in the instructions to figure the amount to enter.	      
                </div>
                	<div class="styLNDesc" style="width:4px;">
 					<img src="{$ImagePath}/1040SchA_Bracket_Sm2.gif" height="55mm;" alt="Curly Bracket Image"/>
@@ -1046,16 +1046,15 @@
                 </div>				
            		<!--Line 30 Verbiage-->             		              
                 <div class="styIRS1040ScheduleAleftBox" style="width:130mm;height:5mm;font-size:7pt;border-left-width:0px;
-                  border-right-width:0px;border-bottom-width:0px;padding-left:.5mm;padding-top:0mm">                
-               <span class="styBoldText" style="font-size:8pt;">30</span>
+                  border-right-width:0px;border-bottom-width:0px;padding-left:.9mm;padding-top:0mm">                
+               <span class="styBoldText">30</span>
                 <span style="width:1.7mm;"/>
                      If you elect to itemize deductions even though they are less than your standard <br/>
-                <span style="width:7mm"/>deduction, check here
+                <span style="width:6.2mm"/>deduction, check here
                      <span style="width:1.5mm"/>
                 <span style=" letter-spacing:3.2mm; font-weight:bold; ">..................</span>
                 <span style="width:3mm"/>
                 <img src="{$ImagePath}/1040SchA_Bullet.gif" alt="SmallBullet Image"/>
-                <!--<img src="{$ImagePath}/1040SchA_Bullet_Sm2.gif" alt="SmallerBullet Image"/>-->
                 <span style="width:5mm"/>
                 <input type="checkbox" alt="alt" class="styCkbox">
                   <xsl:call-template name="PopulateCheckbox">

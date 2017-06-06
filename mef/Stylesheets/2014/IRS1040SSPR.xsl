@@ -1405,11 +1405,7 @@
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 					<!-- Begin Part III                                                -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-					<!-- Body -->
 					<xsl:for-each select="$Form1040SSPRData/FarmingProfitLoss">
-						<xsl:if test="position() &gt; 1">
-							<div class="pageEnd"/>
-						</xsl:if>
 						<xsl:call-template name="PopulateProfitOrLossFromFarmingSection_1040SS">
 							<xsl:with-param name="TargetNode" select="."/>
 						</xsl:call-template>
@@ -1420,11 +1416,7 @@
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 					<!-- Begin Part IV                                                 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-					<!-- Body -->
 					<xsl:for-each select="$Form1040SSPRData/ProfitLossFromBusiness">
-						<xsl:if test="count($Form1040PRData/ProfitLossFromBusiness) &gt; 1">
-							<div class="pageEnd"/>
-						</xsl:if>
 						<xsl:call-template name="PopulateProfitLossFromBusinessSection_1040SS">
 							<xsl:with-param name="TargetNode" select="."/>
 						</xsl:call-template>
@@ -1432,48 +1424,10 @@
 					<xsl:if test="count($Form1040SSPRData/ProfitLossFromBusiness) = 0">
 						<xsl:call-template name="PopulateProfitLossFromBusinessSection_1040SS"/>
 					</xsl:if>
-					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:.25mm;">
-						<div style="float:right;">
-							<span style="width:50px;"/>  
-                Form 
-              <span class="styBoldText" style="font-size:8pt;">
-								<xsl:if test="/AppData/Parameters/SubmissionType='1040SS'">
-                  1040-SS
-                </xsl:if>
-								<xsl:if test="/AppData/Parameters/SubmissionType='1040PR'">
-                  1040-PR
-                </xsl:if>
-							</span> (2014)
-            </div>
-					</div>
-					<p style="page-break-before: always"/>
-					<!-- END Page Break and Footer-->
-					<!-- BEGIN Page Header -->
-					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
-						<div style="float:left;">
-              Form 
-                <xsl:if test="/AppData/Parameters/SubmissionType='1040SS'">
-                  1040-SS
-                </xsl:if>
-							<xsl:if test="/AppData/Parameters/SubmissionType='1040PR'">
-                  1040-PR
-                </xsl:if>              
-              (2014)<span style="width:148mm;"/>
-						</div>
-						<div style="float:right;">
-              Page <span style="font-weight:bold;font-size:8pt;">4</span>
-						</div>
-					</div>
-					<!-- END Page Header -->
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 					<!-- Begin Part V                                                -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<xsl:for-each select="$Form1040SSPRData/SelfEmploymentTaxGrp">
-						<xsl:if test="position() &gt; 1">
-							<div class="pageEnd"/>
-						</xsl:if>
 						<xsl:call-template name="PopulateSelfEmploymentTaxSection_1040SS">
 							<xsl:with-param name="TargetNode" select="."/>
 						</xsl:call-template>
@@ -1481,23 +1435,6 @@
 					<xsl:if test="count($Form1040SSPRData/SelfEmploymentTaxGrp) = 0">
 						<xsl:call-template name="PopulateSelfEmploymentTaxSection_1040SS"/>
 					</xsl:if>
-					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:.25mm;">
-						<div style="float:right;">
-							<span style="width:50px;"/>  
-                Form 
-              <span class="styBoldText" style="font-size:8pt;">
-								<xsl:if test="/AppData/Parameters/SubmissionType='1040SS'">
-                  1040-SS
-                </xsl:if>
-								<xsl:if test="/AppData/Parameters/SubmissionType='1040PR'">
-                  1040-PR
-                </xsl:if>
-							</span> (2014)
-            </div>
-					</div>
-					<p style="page-break-before: always"/>
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData" style="padding-top:5mm;">
 						<div class="styLeftOverTitle">
@@ -1724,6 +1661,37 @@
 						</xsl:for-each>
 					</table>
 					<!--	  -->
+									<!-- Separated Data for Part I - Qualifying Children -->
+					<xsl:if test="($Print = $Separated) and  (count($Form1040SSPRData/QualifyingChildInfoSSPRGrp) &gt; 6)">
+						<br/>
+						<br/>
+						<span class="styRepeatingDataTitle">
+              Form 
+                <xsl:if test="/AppData/Parameters/SubmissionType='1040SS'">
+                  1040-SS
+                </xsl:if>
+							<xsl:if test="/AppData/Parameters/SubmissionType='1040PR'">
+                  1040-PR
+                </xsl:if>              
+              , Part I - Qualifying Children
+            </span>
+						<table class="styDepTbl" cellspacing="0">
+							<thead class="styTableThead">
+								<xsl:call-template name="QualifyingChildrenTableHeaders_1040SS">
+									<xsl:with-param name="AddColoredHeaders">true</xsl:with-param>
+								</xsl:call-template>
+							</thead>
+							<tfoot/>
+							<tbody>
+								<xsl:for-each select="$Form1040SSPRData/QualifyingChildInfoSSPRGrp">
+									<xsl:call-template name="QualifyingChildrenTableRows_1040SS">
+										<xsl:with-param name="TargetNode" select="."/>
+										<xsl:with-param name="AddColoredRows">true</xsl:with-param>
+									</xsl:call-template>
+								</xsl:for-each>
+							</tbody>
+						</table>
+					</xsl:if>
 					<!-- (34a-e) //////////////////////////////////////////////////// -->
 					<!--          
            <xsl:if test="($Print = $Separated) and (count($Form1040SSPRData/FarmingProfitLoss/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5)">
@@ -1854,40 +1822,9 @@
 							</table>
 						</xsl:if>
 					</xsl:for-each>
-					<!-- Separated Data for Part I - Qualifying Children -->
-					<xsl:if test="($Print = $Separated) and  (count($Form1040SSPRData/QualifyingChildInfoSSPRGrp) &gt; 6)">
-						<br/>
-						<br/>
-						<span class="styRepeatingDataTitle">
-              Form 
-                <xsl:if test="/AppData/Parameters/SubmissionType='1040SS'">
-                  1040-SS
-                </xsl:if>
-							<xsl:if test="/AppData/Parameters/SubmissionType='1040PR'">
-                  1040-PR
-                </xsl:if>              
-              , Part I - Qualifying Children
-            </span>
-						<table class="styDepTbl" cellspacing="0">
-							<thead class="styTableThead">
-								<xsl:call-template name="QualifyingChildrenTableHeaders_1040SS">
-									<xsl:with-param name="AddColoredHeaders">true</xsl:with-param>
-								</xsl:call-template>
-							</thead>
-							<tfoot/>
-							<tbody>
-								<xsl:for-each select="$Form1040SSPRData/QualifyingChildInfoSSPRGrp">
-									<xsl:call-template name="QualifyingChildrenTableRows_1040SS">
-										<xsl:with-param name="TargetNode" select="."/>
-										<xsl:with-param name="AddColoredRows">true</xsl:with-param>
-									</xsl:call-template>
-								</xsl:for-each>
-							</tbody>
-						</table>
-					</xsl:if>
-				</form>
-			</body>
-		</html>
+			</form>
+    	  </body>
+		</html>						
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:  CreateBox_1040SS) -->
 	<xsl:template name="CreateBox_1040SS">
@@ -1946,67 +1883,67 @@
 		</div>
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:  GenerateEmptyItems_1040SS) -->
-	<xsl:template name="GenerateEmptyItems_1040SS">
+	  <xsl:template name="GenerateEmptyItems_1040SS">
 		<xsl:param name="Number"/>
 		<xsl:param name="MaxCount"/>
 		<xsl:param name="LineEData"/>
 		<xsl:if test="$Number and ($Number &lt;= $MaxCount)">
-			<xsl:choose>
-				<xsl:when test="$Number = 5 and $LineEData and $LineEData/TotalPreproductivePrdExpnsAmt">
-					<div class="styIRS1040SSPRLineItem" style="height:3.8mm;">
-						<div class="styIRS1040SSPRLNLeftNumBox" style="height:3.8mm;padding:.75mm 0mm 0mm 0mm;">
-							<xsl:number value="$Number" format="a"/>
-						</div>
-						<div class="styIRS1040SSPRLNDesc" style="width:47mm;height:3.8mm;padding-top:0mm;">
-							<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$LineEData/TotalPreproductivePrdExpnsAmt/@section263AIndicatorCd"/>
-								</xsl:call-template>
-							</span>
-						</div>
-						<div class="styIRS1040SSPRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
-							<div class="styIRS1040SSPRCleanDiv" style="width:100%;height:3.8mm;float:right;">
-								<xsl:call-template name="CreateBox_1040SS">
-									<xsl:with-param name="Number">
-										<xsl:value-of select="concat('34', 'e')"/>
-									</xsl:with-param>
-									<xsl:with-param name="TargetNode" select="$LineEData/TotalPreproductivePrdExpnsAmt"/>
-									<xsl:with-param name="AmountBoxStyle">
+		  <xsl:choose>
+			<xsl:when test="$Number = 5 and $LineEData and $LineEData/TotalPreproductivePrdExpnsAmt">
+				<div class="styIRS1040SSPRLineItem" style="height:3.8mm;">
+					<div class="styIRS1040SSPRLNLeftNumBox" style="height:3.8mm;padding:.75mm 0mm 0mm 0mm;">
+						<xsl:number value="$Number" format="a"/>
+					</div>
+					<div class="styIRS1040SSPRLNDesc" style="width:47mm;height:3.8mm;padding-top:0mm;">
+						<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$LineEData/TotalPreproductivePrdExpnsAmt/@section263AIndicatorCd"/>
+							</xsl:call-template>
+						</span>
+					</div>
+					<div class="styIRS1040SSPRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
+						<div class="styIRS1040SSPRCleanDiv" style="width:100%;height:3.8mm;float:right;">
+							<xsl:call-template name="CreateBox_1040SS">
+								<xsl:with-param name="Number">
+									<xsl:value-of select="concat('34', 'e')"/>
+								</xsl:with-param>
+								<xsl:with-param name="TargetNode" select="$LineEData/TotalPreproductivePrdExpnsAmt"/>
+								<xsl:with-param name="AmountBoxStyle">
 									border-bottom-width:1px;
 								</xsl:with-param>
-									<xsl:with-param name="NumberBoxStyle">
+								<xsl:with-param name="NumberBoxStyle">
 									border-bottom-width:1px;
 								</xsl:with-param>
-								</xsl:call-template>
-							</div>
+							</xsl:call-template>
 						</div>
 					</div>
-				</xsl:when>
-				<xsl:when test="$Number = $MaxCount">
-					<xsl:call-template name="CreateOtherExpensesItem_1040SS">
-						<xsl:with-param name="Letter">
-							<xsl:number value="$Number" format="a"/>
-						</xsl:with-param>
-						<xsl:with-param name="LineEData" select="$LineEData"/>
-						<xsl:with-param name="Style">border-bottom-width:1px;</xsl:with-param>
-					</xsl:call-template>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:call-template name="CreateOtherExpensesItem_1040SS">
-						<xsl:with-param name="Letter">
-							<xsl:number value="$Number" format="a"/>
-						</xsl:with-param>
-						<xsl:with-param name="LineEData" select="$LineEData"/>
-					</xsl:call-template>
-				</xsl:otherwise>
-			</xsl:choose>
-			<xsl:call-template name="GenerateEmptyItems_1040SS">
-				<xsl:with-param name="Number" select="$Number + 1"/>
-				<xsl:with-param name="MaxCount" select="$MaxCount"/>
+				</div>
+			</xsl:when>
+			<xsl:when test="$Number = $MaxCount">
+			  <xsl:call-template name="CreateOtherExpensesItem_1040SS">
+				<xsl:with-param name="Letter">
+				  <xsl:number value="$Number" format="a"/>
+				</xsl:with-param>
 				<xsl:with-param name="LineEData" select="$LineEData"/>
-			</xsl:call-template>
+				<xsl:with-param name="Style">border-bottom-width:1px;</xsl:with-param>
+			  </xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+			  <xsl:call-template name="CreateOtherExpensesItem_1040SS">
+				<xsl:with-param name="Letter">
+				  <xsl:number value="$Number" format="a"/>
+				</xsl:with-param>
+				<xsl:with-param name="LineEData" select="$LineEData"/>
+			  </xsl:call-template>
+			</xsl:otherwise>
+		  </xsl:choose>
+		  <xsl:call-template name="GenerateEmptyItems_1040SS">
+			<xsl:with-param name="Number" select="$Number + 1"/>
+			<xsl:with-param name="MaxCount" select="$MaxCount"/>
+			<xsl:with-param name="LineEData" select="$LineEData"/>
+		  </xsl:call-template>
 		</xsl:if>
-	</xsl:template>
+	  </xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:  GenerateEmptyOtherBusinessExpensesItems_1040SS) -->
 	<xsl:template name="GenerateEmptyOtherBusinessExpensesItems_1040SS">
 		<xsl:param name="Number"/>
@@ -2028,59 +1965,59 @@
 		</xsl:if>
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:  CreateOtherExpensesItem_1040SS) -->
-	<xsl:template name="CreateOtherExpensesItem_1040SS">
-		<xsl:param name="TargetNode"/>
-		<xsl:param name="Style"/>
-		<xsl:param name="LineEData"/>
-		<xsl:param name="Letter"/>
-		<div class="styIRS1040SSPRLineItem" style="height:3.8mm;">
-			<div class="styIRS1040SSPRLNLeftNumBox" style="height:3.8mm;padding:.75mm 0mm 0mm 0mm;">
-				<xsl:value-of select="$Letter"/>
-			</div>
-			<div class="styIRS1040SSPRLNDesc" style="width:47mm;height:3.8mm;padding-top:0mm;">
-				<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
-					<xsl:if test="$TargetNode">
-						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$TargetNode/Desc"/>
-						</xsl:call-template>
-					</xsl:if>
-				</span>
-			</div>
-			<div class="styIRS1040SSPRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
-				<div class="styIRS1040SSPRCleanDiv" style="width:100%;height:3.8mm;float:right;">
-					<xsl:choose>
-						<xsl:when test="$TargetNode">
-							<xsl:call-template name="CreateBox_1040SS">
-								<xsl:with-param name="Number">
-									<xsl:value-of select="concat('34', $Letter)"/>
-								</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$TargetNode/Amt"/>
-								<xsl:with-param name="AmountBoxStyle">
-									<xsl:value-of select="$Style"/>
-								</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">
-									<xsl:value-of select="$Style"/>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="CreateBox_1040SS">
-								<xsl:with-param name="Number">
-									<xsl:value-of select="concat('34', $Letter)"/>
-								</xsl:with-param>
-								<xsl:with-param name="AmountBoxStyle">
-									<xsl:value-of select="$Style"/>
-								</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">
-									<xsl:value-of select="$Style"/>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
-				</div>
-			</div>
-		</div>
-	</xsl:template>
+  <xsl:template name="CreateOtherExpensesItem_1040SS">
+    <xsl:param name="TargetNode"/>
+    <xsl:param name="Style"/>
+    <xsl:param name="LineEData"/>
+    <xsl:param name="Letter"/>
+    <div class="styIRS1040SSPRLineItem" style="height:3.8mm;">
+      <div class="styIRS1040SSPRLNLeftNumBox" style="height:3.8mm;padding:.75mm 0mm 0mm 0mm;">
+        <xsl:value-of select="$Letter"/>
+      </div>
+      <div class="styIRS1040SSPRLNDesc" style="width:47mm;height:3.8mm;padding-top:0mm;">
+        <span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
+          <xsl:if test="$TargetNode">
+            <xsl:call-template name="PopulateText">
+              <xsl:with-param name="TargetNode" select="$TargetNode/Desc"/>
+            </xsl:call-template>
+          </xsl:if>
+        </span>
+      </div>
+      <div class="styIRS1040SSPRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
+        <div class="styIRS1040SSPRCleanDiv" style="width:100%;height:3.8mm;float:right;">
+          <xsl:choose>
+            <xsl:when test="$TargetNode">
+              <xsl:call-template name="CreateBox_1040SS">
+                <xsl:with-param name="Number">
+                  <xsl:value-of select="concat('34', $Letter)"/>
+                </xsl:with-param>
+                <xsl:with-param name="TargetNode" select="$TargetNode/Amt"/>
+                <xsl:with-param name="AmountBoxStyle">
+                  <xsl:value-of select="$Style"/>
+                </xsl:with-param>
+                <xsl:with-param name="NumberBoxStyle">
+                  <xsl:value-of select="$Style"/>
+                </xsl:with-param>
+              </xsl:call-template>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:call-template name="CreateBox_1040SS">
+                <xsl:with-param name="Number">
+                  <xsl:value-of select="concat('34', $Letter)"/>
+                </xsl:with-param>
+                <xsl:with-param name="AmountBoxStyle">
+                  <xsl:value-of select="$Style"/>
+                </xsl:with-param>
+                <xsl:with-param name="NumberBoxStyle">
+                  <xsl:value-of select="$Style"/>
+                </xsl:with-param>
+              </xsl:call-template>
+            </xsl:otherwise>
+          </xsl:choose>
+        </div>
+      </div>
+    </div>
+  </xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:  CreateOtherBusinessExpensesItem_1040SS) -->
 	<xsl:template name="CreateOtherBusinessExpensesItem_1040SS">
 		<xsl:param name="TargetNode"/>
@@ -3419,98 +3356,94 @@
 					</div>
 				</div>
 				<!-- (34a-e) ////////////////////////////////////////////////////-->
-				<xsl:variable name="NumberOfOtherExpenseGrp" select="count($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense)"/>
-				<xsl:choose>
-					<xsl:when test="($Print != $Separated) or ($NumberOfOtherExpenseGrp &lt;= 5)">
-						<xsl:for-each select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense">
-							<xsl:variable name="Letter">
-								<xsl:number format="a"/>
-							</xsl:variable>
-							<xsl:choose>
-								<xsl:when test="(position() = last()) and ($NumberOfOtherExpenseGrp &lt;= 5)">
-									<xsl:call-template name="CreateOtherExpensesItem_1040SS">
-										<xsl:with-param name="TargetNode" select="."/>
-										<xsl:with-param name="Letter">
-											<xsl:number value="position() + 1" format="a"/>
-										</xsl:with-param>
-										<xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:when test="(position() = last()) and ($NumberOfOtherExpenseGrp &gt;=5)">
-									<xsl:call-template name="CreateOtherExpensesItem_1040SS">
-										<xsl:with-param name="TargetNode" select="."/>
-										<xsl:with-param name="Letter">
-											<xsl:choose>
-												<xsl:when test="(position() &gt; 5) and ($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt)">
-													<xsl:number value="position() + 1" format="a"/>
-												</xsl:when>
-												<xsl:otherwise>
-													<xsl:number value="position()" format="a"/>
-												</xsl:otherwise>
-											</xsl:choose>
-										</xsl:with-param>
-										<xsl:with-param name="Style">border-bottom-width:1px;</xsl:with-param>
-										<xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
-									</xsl:call-template>
-								</xsl:when>
-								<xsl:otherwise>
-									<xsl:call-template name="CreateOtherExpensesItem_1040SS">
-										<xsl:with-param name="TargetNode" select="."/>
-										<xsl:with-param name="Letter">
-											<xsl:choose>
-												<xsl:when test="(position() &gt; 5) and ($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt)">
-													<xsl:number value="position() + 1" format="a"/>
-												</xsl:when>
-												<xsl:otherwise>
-													<xsl:number value="position()" format="a"/>
-												</xsl:otherwise>
-											</xsl:choose>
-										</xsl:with-param>
-										<xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
-									</xsl:call-template>
-								</xsl:otherwise>
-							</xsl:choose>
-						</xsl:for-each>
-						<xsl:if test="$NumberOfOtherExpenseGrp &lt;5">
-							<xsl:call-template name="GenerateEmptyItems_1040SS">
-								<xsl:with-param name="Number" select="$NumberOfOtherExpenseGrp + 1"/>
-								<xsl:with-param name="MaxCount" select="5"/>
-								<xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
-							</xsl:call-template>
-						</xsl:if>
-					</xsl:when>
-					<xsl:otherwise>
-						<div class="styIRS1040SSPRLineItem" style="height:3.8mm;">
-							<div class="styIRS1040SSPRLNLeftNumBox" style="padding:.5mm 0mm 0mm 0mm;">
-								<xsl:number value="position()" format="a"/>
-							</div>
-							<div class="styIRS1040SSPRLNDesc" style="width:47mm;height:3.8mm;">
-								<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
-									<xsl:call-template name="PopulateAdditionalDataTableMessage">
-										<xsl:with-param name="TargetNode" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense"/>
-									</xsl:call-template>
-								</span>
-							</div>
-							<div class="styIRS1040SSPRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
-								<div class="styIRS1040SSPRCleanDiv" style="width:100%;height:3.8mm;float:right;">
-									<xsl:call-template name="CreateBox_1040SS">
-										<xsl:with-param name="Number">
-											<xsl:value-of select="concat('34', 'e')"/>
-										</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
-									</xsl:call-template>
-								</div>
+     <xsl:choose>
+          <xsl:when test="$TargetNode">
+            <xsl:variable name="NumberOfOtherExpenseGrp" select="count($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense)"/>
+            <xsl:for-each select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense">
+              <xsl:variable name="Letter">
+                <xsl:number format="a"/>
+              </xsl:variable>
+              <xsl:choose>
+                <xsl:when test="(position() = 5) and ($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt)">
+					<div class="styIRS1040SSPRLineItem">
+						<div class="styIRS1040SSPRLNLeftNumBox" style="padding-right:0px;">
+							<xsl:number value="position()" format="a"/>
+						</div>
+						<div class="styIRS1040SSPRLNDesc" style="width:47mm;height:3mm;">
+							<span style="width:43mm;height:3mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt/@section263AIndicatorCd"/>
+								</xsl:call-template>
+							</span>
+						</div>
+						<div class="styIRS1040SSPRCleanDiv" style="width:37mm;height:3mm;padding:0px 0px 0px 0px;float:right;">
+							<div class="styIRS1040SSPRCleanDiv" style="width:100%;height:3mm;float:right;">
+								<xsl:call-template name="CreateBox_1040SS">
+									<xsl:with-param name="Number">
+										<xsl:value-of select="concat('34', 'e')"/>
+									</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
+								</xsl:call-template>
 							</div>
 						</div>
-						<xsl:call-template name="GenerateEmptyItems_1040SS">
-							<xsl:with-param name="Number" select="1"/>
-							<xsl:with-param name="MaxCount" select="5"/>
-						</xsl:call-template>
-					</xsl:otherwise>
-				</xsl:choose>
-			</div>
-		</div>
-		<!-- (35) ////////////////////////////////////////////////////-->
+					</div>
+					<xsl:call-template name="CreateOtherExpensesItem_1040SS">
+						<xsl:with-param name="TargetNode" select="."/>
+						<xsl:with-param name="Letter">
+							<xsl:number value="position() + 1" format="a"/>
+						</xsl:with-param>
+						<xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
+					</xsl:call-template>
+				</xsl:when>
+                <xsl:when test="(position() = last()) and ($NumberOfOtherExpenseGrp &gt;=5)">
+                  <xsl:call-template name="CreateOtherExpensesItem_1040SS">
+                    <xsl:with-param name="TargetNode" select="."/>
+                    <xsl:with-param name="Letter">
+                      <xsl:choose>
+						<xsl:when test="(position() &gt; 5) and ($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt)">
+							<xsl:number value="position() + 1" format="a"/>
+						</xsl:when>
+						<xsl:otherwise><xsl:number value="position()" format="a"/></xsl:otherwise>
+					  </xsl:choose>
+                    </xsl:with-param>
+                    <xsl:with-param name="Style">border-bottom-width:0px;</xsl:with-param>
+                    <xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
+                  </xsl:call-template>
+                </xsl:when>
+                <xsl:otherwise>
+                  <xsl:call-template name="CreateOtherExpensesItem_1040SS">
+                    <xsl:with-param name="TargetNode" select="."/>
+                    <xsl:with-param name="Letter">
+                      <xsl:choose>
+						<xsl:when test="(position() &gt; 5) and ($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt)">
+							<xsl:number value="position() + 1" format="a"/>
+						</xsl:when>
+						<xsl:otherwise><xsl:number value="position()" format="a"/></xsl:otherwise>
+					  </xsl:choose>
+                    </xsl:with-param>
+                    <xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
+                  </xsl:call-template>
+                </xsl:otherwise>
+              </xsl:choose>
+            </xsl:for-each>
+            <xsl:if test="$NumberOfOtherExpenseGrp &lt;5">
+              <xsl:call-template name="GenerateEmptyItems_1040SS">
+                <xsl:with-param name="Number" select="$NumberOfOtherExpenseGrp + 1"/>
+                <xsl:with-param name="MaxCount" select="5"/>
+                <xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="GenerateEmptyItems_1040SS">
+              <xsl:with-param name="Number" select="1"/>
+              <xsl:with-param name="MaxCount" select="5"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
+      </div>
+    </div>
+    	<!-- (35) ////////////////////////////////////////////////////-->
 		<div class="styIRS1040SSPRLineItem" style="width:187mm;height:4mm;">
 			<div class="styIRS1040SSPRLNLeftNumBox" style="padding-top:.5mm;">35</div>
 			<div class="styIRS1040SSPRLNDesc" style="width:auto;">
@@ -5260,10 +5193,7 @@
 				</xsl:choose>
 			</div>
 			<!-- (25b) ////////////////////////////////////////////////////-->
-			<table cellpadding="0" cellspacing="0" style="page-break-before: avoid;">
-				<tr style="page-break-before: avoid;">
-					<td style="page-break-before: avoid;">
-						<div class="styIRS1040SSPRLineItem" style="width:187mm;">
+			<div class="styIRS1040SSPRLineItem" style="width:187mm;">
 							<div class="styIRS1040SSPRCleanDiv" style="width:41mm;height:100%;padding:0px 0px 0px 0px;float:right;">
 								<div class="styIRS1040SSPRCleanDiv" style="padding-left:4mm;width:100%;height:100%;float:right;">
 									<xsl:choose>
@@ -5298,9 +5228,6 @@
 							</div>
 							<div class="styIRS1040SSPRLNLeftNumBox" style="padding:.5mm 0mm 0mm 0mm;float:right;">25b</div>
 						</div>
-					</td>
-				</tr>
-			</table>
 			<!-- (26) ////////////////////////////////////////////////////-->
 			<div class="styIRS1040SSPRLineItem" style="width:187mm;height:4mm;border-top:1px solid black;">
 				<div class="styIRS1040SSPRLNLeftNumBox" style="padding-top:.75mm;">26</div>
@@ -5359,10 +5286,30 @@
 				</div>
 			</div>
 		</div>
+		<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+	  <!-- Page Break and Footer-->
+		<div class="pageEnd" style="width:187mm;padding-top:.25mm;">
+			<div style="float:right;">
+				<span style="width:50px;"/>  
+					Form 
+				<span class="styBoldText" style="font-size:8pt;">1040-SS</span> (2014)
+			</div>
+		</div>
+		<p style="page-break-before: always"/>          
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template: PopulateSelfEmploymentTaxSection_1040SS) -->
 	<xsl:template name="PopulateSelfEmploymentTaxSection_1040SS">
 		<xsl:param name="TargetNode" select="/.."/>
+		<!-- BEGIN Page Header -->
+    	 <div class="styTBB" style="width:187mm;padding-top:.5mm;">
+	    	<div style="float:left;">
+		       Form  1040-SS  (2014)<span style="width:148mm;"/>
+	        </div>
+		       <div style="float:right;">
+		          Page <span style="font-weight:bold;font-size:8pt;">4</span>
+		       </div>
+	    </div>
+	    <!-- END Page Header -->     
 		<!-- Header -->
 		<div style="width:187mm;padding:0px 0px 0px 0px;" class="styBB">
 			<!-- Content -->
@@ -6388,6 +6335,15 @@
 				</div>
 			</div>
 		</div>
+		<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+	    <div class="pageEnd" style="width:187mm;padding-top:.25mm;">
+	 	  <div style="float:right;">
+	          <span style="width:50px;"/>  
+				  Form 
+			  <span class="styBoldText" style="font-size:8pt;">1040-SS</span> (2014)
+		  </div>
+	</div>
+	<p style="page-break-before: always"/>
 	</xsl:template>
 	<!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 	<xsl:template name="IRS1040PR">
@@ -7786,9 +7742,6 @@
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Body -->
 					<xsl:for-each select="$Form1040PRData/FarmingProfitLoss">
-						<xsl:if test="position() &gt; 1">
-							<div class="pageEnd"/>
-						</xsl:if>
 						<xsl:call-template name="PopulateProfitOrLossFromFarmingSection_1040PR">
 							<xsl:with-param name="TargetNode" select="."/>
 						</xsl:call-template>
@@ -7801,9 +7754,6 @@
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Body -->
 					<xsl:for-each select="$Form1040PRData/ProfitLossFromBusiness">
-						<xsl:if test="count($Form1040PRData/ProfitLossFromBusiness) &gt; 1">
-							<div class="pageEnd"/>
-						</xsl:if>
 						<xsl:call-template name="PopulateProfitLossFromBusinessSection_1040PR">
 							<xsl:with-param name="TargetNode" select="."/>
 						</xsl:call-template>
@@ -7811,34 +7761,10 @@
 					<xsl:if test="count($Form1040PRData/ProfitLossFromBusiness) = 0">
 						<xsl:call-template name="PopulateProfitLossFromBusinessSection_1040PR"/>
 					</xsl:if>
-					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:.25mm;">
-						<div style="float:right;">
-							<span style="width:50px;"/>  
-								Formulario 
-							<span class="styBoldText" style="font-size:8pt;">1040-PR</span> (2014)
-						</div>
-					</div>
-					<p style="page-break-before: always"/>
-					<!-- END Page Break and Footer-->
-					<!-- BEGIN Page Header -->
-					<div class="styTBB" style="width:187mm;padding-top:.5mm;">
-						<div style="float:left;">
-							Formulario 1040-PR (2014)
-						</div>
-						<div style="float:right;">
-							Página <span style="font-weight:bold;font-size:8pt;">4</span>
-						</div>
-					</div>
-					<!-- END Page Header -->
 					<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> -->
 					<!-- Begin Part V																								 -->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<xsl:for-each select="$Form1040PRData/SelfEmploymentTaxGrp">
-						<xsl:if test="position() &gt; 1">
-							<div class="pageEnd"/>
-						</xsl:if>
 						<xsl:call-template name="PopulateSelfEmploymentTaxSection_1040PR">
 							<xsl:with-param name="TargetNode" select="."/>
 						</xsl:call-template>
@@ -7846,16 +7772,6 @@
 					<xsl:if test="count($Form1040PRData/SelfEmploymentTaxGrp) = 0">
 						<xsl:call-template name="PopulateSelfEmploymentTaxSection_1040PR"/>
 					</xsl:if>
-					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
-					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm;padding-top:.25mm;">
-						<div style="float:right;">
-							<span style="width:50px;"/>  
-								Formulario 
-							<span class="styBoldText" style="font-size:8pt;">1040-PR</span> (2014)
-						</div>
-					</div>
-					<p style="page-break-before: always"/>
 					<!-- Additonal Data Title Bar and Button -->
 					<div class="styLeftOverTitleLine" id="LeftoverData" style="padding-top:5mm;">
 						<div class="styLeftOverTitle">
@@ -8079,8 +7995,32 @@
 							</xsl:if>
 						</xsl:for-each>
 					</table>
+					<!-- Separated Data for Part I - Qualifying Children -->
+					<xsl:if test="($Print = $Separated) and  (count($Form1040PRData/QualifyingChildInfoSSPRGrp) &gt; 6)">
+						<br/>
+						<br/>
+						<span class="styRepeatingDataTitle">
+							Formulario 1040-PR, Parte I - Hijos Calificados
+						</span>
+						<table class="styDepTbl" cellspacing="0">
+							<thead class="styTableThead">
+								<xsl:call-template name="QualifyingChildrenTableHeaders_1040PR">
+									<xsl:with-param name="AddColoredHeaders">true</xsl:with-param>
+								</xsl:call-template>
+							</thead>
+							<tfoot/>
+							<tbody>
+								<xsl:for-each select="$Form1040PRData/QualifyingChildInfoSSPRGrp">
+									<xsl:call-template name="QualifyingChildrenTableRows_1040PR">
+										<xsl:with-param name="TargetNode" select="."/>
+										<xsl:with-param name="AddColoredRows">true</xsl:with-param>
+									</xsl:call-template>
+								</xsl:for-each>
+							</tbody>
+						</table>
+					</xsl:if>
 					<!-- (34a-e) //////////////////////////////////////////////////// -->
-					<xsl:if test="($Print = $Separated) and (count($Form1040SSPRData/FarmingProfitLoss/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5)">
+<!--					<xsl:if test="($Print = $Separated) and (count($Form1040SSPRData/FarmingProfitLoss/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense) &gt; 5)">
 						<span class="styRepeatingDataTitle">Formulario
 						 <xsl:if test="/AppData/Parameters/SubmissionType='1040SS'">
 							  1040-SS
@@ -8132,7 +8072,7 @@
 							</tbody>
 						</table>
 					</xsl:if>
-					<!--(43) ////////////////////////////////////////////////////-->
+-->					<!--(43) ////////////////////////////////////////////////////-->
 					<xsl:for-each select="$Form1040PRData/FarmingProfitLoss">
 						<xsl:if test="FarmIncomeAccrualMethodGrp and (count(FarmIncomeAccrualMethodGrp/OtherIncomeGrp) &gt; 0)">
 							<br/>
@@ -8196,30 +8136,6 @@
 							</table>
 						</xsl:if>
 					</xsl:for-each>
-					<!-- Separated Data for Part I - Qualifying Children -->
-					<xsl:if test="($Print = $Separated) and  (count($Form1040PRData/QualifyingChildInfoSSPRGrp) &gt; 6)">
-						<br/>
-						<br/>
-						<span class="styRepeatingDataTitle">
-							Formulario 1040-PR, Part I - Qualifying Children
-						</span>
-						<table class="styDepTbl" cellspacing="0">
-							<thead class="styTableThead">
-								<xsl:call-template name="QualifyingChildrenTableHeaders_1040PR">
-									<xsl:with-param name="AddColoredHeaders">true</xsl:with-param>
-								</xsl:call-template>
-							</thead>
-							<tfoot/>
-							<tbody>
-								<xsl:for-each select="$Form1040PRData/QualifyingChildInfoSSPRGrp">
-									<xsl:call-template name="QualifyingChildrenTableRows_1040PR">
-										<xsl:with-param name="TargetNode" select="."/>
-										<xsl:with-param name="AddColoredRows">true</xsl:with-param>
-									</xsl:call-template>
-								</xsl:for-each>
-							</tbody>
-						</table>
-					</xsl:if>
 				</form>
 			</body>
 		</html>
@@ -8281,67 +8197,67 @@
 		</div>
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:	GenerateEmptyItems_1040PR) -->
-	<xsl:template name="GenerateEmptyItems_1040PR">
+	  <xsl:template name="GenerateEmptyItems_1040PR">
 		<xsl:param name="Number"/>
 		<xsl:param name="MaxCount"/>
 		<xsl:param name="LineEData"/>
 		<xsl:if test="$Number and ($Number &lt;= $MaxCount)">
-			<xsl:choose>
-				<xsl:when test="$Number = 5 and $LineEData and $LineEData/TotalPreproductivePrdExpnsAmt">
-					<div class="styIRS1040PRLineItem" style="height:3.8mm;">
-						<div class="styIRS1040PRLNLeftNumBox" style="height:3.8mm;padding:.75mm 0mm 0mm 0mm;">
-							<xsl:number value="$Number" format="a"/>
-						</div>
-						<div class="styIRS1040PRLNDesc" style="width:47mm;height:3.8mm;padding-top:0mm;">
-							<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
-								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$LineEData/TotalPreproductivePrdExpnsAmt/@section263AIndicatorCd"/>
-								</xsl:call-template>
-							</span>
-						</div>
-						<div class="styIRS1040PRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
-							<div class="styIRS1040PRCleanDiv" style="width:100%;height:3.8mm;float:right;">
-								<xsl:call-template name="CreateBox_1040PR">
-									<xsl:with-param name="Number">
-										<xsl:value-of select="concat('34', 'e')"/>
-									</xsl:with-param>
-									<xsl:with-param name="TargetNode" select="$LineEData/TotalPreproductivePrdExpnsAmt"/>
-									<xsl:with-param name="AmountBoxStyle">
+		  <xsl:choose>
+			<xsl:when test="$Number = 5 and $LineEData and $LineEData/TotalPreproductivePrdExpnsAmt">
+				<div class="styIRS1040PRLineItem" style="height:3.8mm;">
+					<div class="styIRS1040PRLNLeftNumBox" style="height:3.8mm;padding:.75mm 0mm 0mm 0mm;">
+						<xsl:number value="$Number" format="a"/>
+					</div>
+					<div class="styIRS1040PRLNDesc" style="width:47mm;height:3.8mm;padding-top:0mm;">
+						<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
+							<xsl:call-template name="PopulateText">
+								<xsl:with-param name="TargetNode" select="$LineEData/TotalPreproductivePrdExpnsAmt/@section263AIndicatorCd"/>
+							</xsl:call-template>
+						</span>
+					</div>
+					<div class="styIRS1040PRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
+						<div class="styIRS1040PRCleanDiv" style="width:100%;height:3.8mm;float:right;">
+							<xsl:call-template name="CreateBox_1040PR">
+								<xsl:with-param name="Number">
+									<xsl:value-of select="concat('34', 'e')"/>
+								</xsl:with-param>
+								<xsl:with-param name="TargetNode" select="$LineEData/TotalPreproductivePrdExpnsAmt"/>
+								<xsl:with-param name="AmountBoxStyle">
 									border-bottom-width:1px;
 								</xsl:with-param>
-									<xsl:with-param name="NumberBoxStyle">
+								<xsl:with-param name="NumberBoxStyle">
 									border-bottom-width:1px;
 								</xsl:with-param>
-								</xsl:call-template>
-							</div>
+							</xsl:call-template>
 						</div>
 					</div>
-				</xsl:when>
-				<xsl:when test="$Number = $MaxCount">
-					<xsl:call-template name="CreateOtherExpensesItem_1040PR">
-						<xsl:with-param name="Letter">
-							<xsl:number value="$Number" format="a"/>
-						</xsl:with-param>
-						<xsl:with-param name="LineEData" select="$LineEData"/>
-						<xsl:with-param name="Style">border-bottom-width:1px;</xsl:with-param>
-					</xsl:call-template>
-				</xsl:when>
-				<xsl:otherwise>
-					<xsl:call-template name="CreateOtherExpensesItem_1040PR">
-						<xsl:with-param name="Letter">
-							<xsl:number value="$Number" format="a"/>
-						</xsl:with-param>
-						<xsl:with-param name="LineEData" select="$LineEData"/>
-					</xsl:call-template>
-				</xsl:otherwise>
-			</xsl:choose>
-			<xsl:call-template name="GenerateEmptyItems_1040PR">
-				<xsl:with-param name="Number" select="$Number + 1"/>
-				<xsl:with-param name="MaxCount" select="$MaxCount"/>
+				</div>
+			</xsl:when>
+			<xsl:when test="$Number = $MaxCount">
+			  <xsl:call-template name="CreateOtherExpensesItem_1040PR">
+				<xsl:with-param name="Letter">
+				  <xsl:number value="$Number" format="a"/>
+				</xsl:with-param>
 				<xsl:with-param name="LineEData" select="$LineEData"/>
-			</xsl:call-template>
+				<xsl:with-param name="Style">border-bottom-width:1px;</xsl:with-param>
+			  </xsl:call-template>
+			</xsl:when>
+			<xsl:otherwise>
+			  <xsl:call-template name="CreateOtherExpensesItem_1040PR">
+				<xsl:with-param name="Letter">
+				  <xsl:number value="$Number" format="a"/>
+				</xsl:with-param>
+				<xsl:with-param name="LineEData" select="$LineEData"/>
+			  </xsl:call-template>
+			</xsl:otherwise>
+		  </xsl:choose>
+		  <xsl:call-template name="GenerateEmptyItems_1040PR">
+			<xsl:with-param name="Number" select="$Number + 1"/>
+			<xsl:with-param name="MaxCount" select="$MaxCount"/>
+			<xsl:with-param name="LineEData" select="$LineEData"/>
+		  </xsl:call-template>
 		</xsl:if>
-	</xsl:template>
+	  </xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:	GenerateEmptyOtherBusinessExpensesItems_1040PR) -->
 	<xsl:template name="GenerateEmptyOtherBusinessExpensesItems_1040PR">
 		<xsl:param name="Number"/>
@@ -8363,59 +8279,59 @@
 		</xsl:if>
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:	CreateOtherExpensesItem_1040PR) -->
-	<xsl:template name="CreateOtherExpensesItem_1040PR">
+	  <xsl:template name="CreateOtherExpensesItem_1040PR">
 		<xsl:param name="TargetNode"/>
 		<xsl:param name="Style"/>
 		<xsl:param name="LineEData"/>
 		<xsl:param name="Letter"/>
 		<div class="styIRS1040PRLineItem" style="height:3.8mm;">
-			<div class="styIRS1040PRLNLeftNumBox" style="height:3.8mm;padding:.75mm 0mm 0mm 0mm;">
-				<xsl:value-of select="$Letter"/>
+		  <div class="styIRS1040PRLNLeftNumBox" style="height:3.8mm;padding:.75mm 0mm 0mm 0mm;">
+			<xsl:value-of select="$Letter"/>
+		  </div>
+		  <div class="styIRS1040PRLNDesc" style="width:47mm;height:3.8mm;padding-top:0mm;">
+			<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
+			  <xsl:if test="$TargetNode">
+				<xsl:call-template name="PopulateText">
+				  <xsl:with-param name="TargetNode" select="$TargetNode/Desc"/>
+				</xsl:call-template>
+			  </xsl:if>
+			</span>
+		  </div>
+		  <div class="styIRS1040PRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
+			<div class="styIRS1040PRCleanDiv" style="width:100%;height:3.8mm;float:right;">
+			  <xsl:choose>
+				<xsl:when test="$TargetNode">
+				  <xsl:call-template name="CreateBox_1040PR">
+					<xsl:with-param name="Number">
+					  <xsl:value-of select="concat('34', $Letter)"/>
+					</xsl:with-param>
+					<xsl:with-param name="TargetNode" select="$TargetNode/Amt"/>
+					<xsl:with-param name="AmountBoxStyle">border-bottom-width:1px;
+					  <xsl:value-of select="$Style"/>
+					</xsl:with-param>
+					<xsl:with-param name="NumberBoxStyle">border-bottom-width:1px;
+					  <xsl:value-of select="$Style"/>
+					</xsl:with-param>
+				  </xsl:call-template>
+				</xsl:when>
+				<xsl:otherwise>
+				  <xsl:call-template name="CreateBox_1040PR">
+					<xsl:with-param name="Number">
+					  <xsl:value-of select="concat('34', $Letter)"/>
+					</xsl:with-param>
+					<xsl:with-param name="AmountBoxStyle">border-bottom-width:1px;
+					  <xsl:value-of select="$Style"/>
+					</xsl:with-param>
+					<xsl:with-param name="NumberBoxStyle">border-bottom-width:1px;
+					  <xsl:value-of select="$Style"/>
+					</xsl:with-param>
+				  </xsl:call-template>
+				</xsl:otherwise>
+			  </xsl:choose>
 			</div>
-			<div class="styIRS1040PRLNDesc" style="width:47mm;height:3.8mm;padding-top:0mm;">
-				<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
-					<xsl:if test="$TargetNode">
-						<xsl:call-template name="PopulateText">
-							<xsl:with-param name="TargetNode" select="$TargetNode/Desc"/>
-						</xsl:call-template>
-					</xsl:if>
-				</span>
-			</div>
-			<div class="styIRS1040PRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
-				<div class="styIRS1040PRCleanDiv" style="width:100%;height:3.8mm;float:right;">
-					<xsl:choose>
-						<xsl:when test="$TargetNode">
-							<xsl:call-template name="CreateBox_1040PR">
-								<xsl:with-param name="Number">
-									<xsl:value-of select="concat('34', $Letter)"/>
-								</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$TargetNode/Amt"/>
-								<xsl:with-param name="AmountBoxStyle">border-bottom-width:1px;
-					  <xsl:value-of select="$Style"/>
-								</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">border-bottom-width:1px;
-					  <xsl:value-of select="$Style"/>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="CreateBox_1040PR">
-								<xsl:with-param name="Number">
-									<xsl:value-of select="concat('34', $Letter)"/>
-								</xsl:with-param>
-								<xsl:with-param name="AmountBoxStyle">border-bottom-width:1px;
-					  <xsl:value-of select="$Style"/>
-								</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">border-bottom-width:1px;
-					  <xsl:value-of select="$Style"/>
-								</xsl:with-param>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
-				</div>
-			</div>
+		  </div>
 		</div>
-	</xsl:template>
+	  </xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template:	CreateOtherBusinessExpensesItem_1040PR) -->
 	<xsl:template name="CreateOtherBusinessExpensesItem_1040PR">
 		<xsl:param name="TargetNode"/>
@@ -9759,15 +9675,37 @@
 					</div>
 				</div>
 				<!-- (34a-e) ////////////////////////////////////////////////////-->
-				<xsl:variable name="NumberOfOtherExpenseGrp" select="count($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense)"/>
 				<xsl:choose>
-					<xsl:when test="($Print != $Separated) or ($NumberOfOtherExpenseGrp &lt;= 5)">
+					<xsl:when test="$TargetNode">
+						<xsl:variable name="NumberOfOtherExpenseGrp" select="count($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense)"/>
 						<xsl:for-each select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense">
 							<xsl:variable name="Letter">
 								<xsl:number format="a"/>
 							</xsl:variable>
 							<xsl:choose>
-								<xsl:when test="(position() = last()) and ($NumberOfOtherExpenseGrp &lt;= 5)">
+								<xsl:when test="(position() = 5) and ($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt)">
+									<div class="styIRS1040PRLineItem">
+										<div class="styIRS1040PRLNLeftNumBox" style="padding-right:0px;">
+											<xsl:number value="position()" format="a"/>
+										</div>
+										<div class="styIRS1040PRLNDesc" style="width:47mm;height:5mm;">
+											<span style="width:43mm;height:100%;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
+												<xsl:call-template name="PopulateText">
+													<xsl:with-param name="TargetNode" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt/@section263AIndicatorCd"/>
+												</xsl:call-template>
+											</span>
+										</div>
+										<div class="styIRS1040PRCleanDiv" style="width:37mm;height:100%;padding:0px 0px 0px 0px;float:right;">
+											<div class="styIRS1040PRCleanDiv" style="width:100%;height:100%;float:right;">
+												<xsl:call-template name="CreateBox_1040PR">
+													<xsl:with-param name="Number">
+														<xsl:value-of select="concat('34', 'e')"/>
+													</xsl:with-param>
+													<xsl:with-param name="TargetNode" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
+												</xsl:call-template>
+											</div>
+										</div>
+									</div>
 									<xsl:call-template name="CreateOtherExpensesItem_1040PR">
 										<xsl:with-param name="TargetNode" select="."/>
 										<xsl:with-param name="Letter">
@@ -9784,12 +9722,10 @@
 												<xsl:when test="(position() &gt; 5) and ($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt)">
 													<xsl:number value="position() + 1" format="a"/>
 												</xsl:when>
-												<xsl:otherwise>
-													<xsl:number value="position()" format="a"/>
-												</xsl:otherwise>
+												<xsl:otherwise><xsl:number value="position()" format="a"/></xsl:otherwise>
 											</xsl:choose>
 										</xsl:with-param>
-										<xsl:with-param name="Style">border-bottom-width:1px;</xsl:with-param>
+										<xsl:with-param name="Style">border-bottom-width:0px;</xsl:with-param>
 										<xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
 									</xsl:call-template>
 								</xsl:when>
@@ -9801,9 +9737,7 @@
 												<xsl:when test="(position() &gt; 5) and ($TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt)">
 													<xsl:number value="position() + 1" format="a"/>
 												</xsl:when>
-												<xsl:otherwise>
-													<xsl:number value="position()" format="a"/>
-												</xsl:otherwise>
+												<xsl:otherwise><xsl:number value="position()" format="a"/></xsl:otherwise>
 											</xsl:choose>
 										</xsl:with-param>
 										<xsl:with-param name="LineEData" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp"/>
@@ -9820,28 +9754,6 @@
 						</xsl:if>
 					</xsl:when>
 					<xsl:otherwise>
-						<div class="styIRS1040PRLineItem" style="height:3.8mm;">
-							<div class="styIRS1040PRLNLeftNumBox" style="padding:.5mm 0mm 0mm 0mm;">
-								<xsl:number value="position()" format="a"/>
-							</div>
-							<div class="styIRS1040PRLNDesc" style="width:47mm;height:3.8mm;">
-								<span style="width:43mm;height:3.8mm;border-style:dashed;border-color:black;border-width:0px 0px 1px 0px;">
-									<xsl:call-template name="PopulateAdditionalDataTableMessage">
-										<xsl:with-param name="TargetNode" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/OtherFarmExpense"/>
-									</xsl:call-template>
-								</span>
-							</div>
-							<div class="styIRS1040PRCleanDiv" style="width:37mm;height:3.8mm;padding:0px 0px 0px 0px;float:right;">
-								<div class="styIRS1040PRCleanDiv" style="width:100%;height:3.8mm;float:right;">
-									<xsl:call-template name="CreateBox_1040PR">
-										<xsl:with-param name="Number">
-											<xsl:value-of select="concat('34', 'e')"/>
-										</xsl:with-param>
-										<xsl:with-param name="TargetNode" select="$TargetNode/FarmExpensesGrp/OtherFarmExpensesGrp/TotalPreproductivePrdExpnsAmt"/>
-									</xsl:call-template>
-								</div>
-							</div>
-						</div>
 						<xsl:call-template name="GenerateEmptyItems_1040PR">
 							<xsl:with-param name="Number" select="1"/>
 							<xsl:with-param name="MaxCount" select="5"/>
@@ -11519,109 +11431,123 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</div>
-		
-		<!-- (25b) ////////////////////////////////////////////////////-->
-		<table cellpadding="0" cellspacing="0" style="page-break-before: avoid;">
-			<tr style="page-break-before: avoid;">
-				<td style="page-break-before: avoid;">
-					<div class="styIRS1040PRLineItem" style="width:187mm;">
-						<div class="styIRS1040PRCleanDiv" style="width:37mm;height:100%;padding:0px 0px 0px 0px;float:right;">
-							<div class="styIRS1040PRCleanDiv" style="width:100%;height:100%;float:right;">
-								<xsl:choose>
-									<xsl:when test="$TargetNode">
-										<xsl:call-template name="CreateBox_1040PR">
-											<xsl:with-param name="Number">25b</xsl:with-param>
-											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-											<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-											<xsl:with-param name="TargetNode" select="$TargetNode/TotalOtherExpensesAmt"/>
-										</xsl:call-template>
-									</xsl:when>
-									<xsl:otherwise>
-										<xsl:call-template name="CreateBox_1040PR">
-											<xsl:with-param name="Number">25b</xsl:with-param>
-											<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-											<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-										</xsl:call-template>
-									</xsl:otherwise>
-								</xsl:choose>
-							</div>
-						</div>
-						<div class="styIRS1040PRCleanDiv" style="width:47mm;height:auto;padding:0px 0px 0px 0px;float:right;">
-							<div class="styIRS1040PRLNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
-								<div class="styIRS1040PRLNDesc" style="width:auto;padding-bottom:0mm;">
-								Total de los demás gastos
-							</div>
-								<div class="styIRS1040PRLNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 8px 0px 0px;">
-									<!--Dotted Line-->
-									<span class="styDotLn" style="float:none;clear:none;padding-left:0mm;">..</span>
+			<!-- (25b) ////////////////////////////////////////////////////-->
+				<div class="styIRS1040PRLineItem" style="width:187mm;">
+							<div class="styIRS1040PRCleanDiv" style="width:37mm;height:100%;padding:0px 0px 0px 0px;float:right;">
+								<div class="styIRS1040PRCleanDiv" style="width:100%;height:100%;float:right;">
+									<xsl:choose>
+										<xsl:when test="$TargetNode">
+											<xsl:call-template name="CreateBox_1040PR">
+												<xsl:with-param name="Number">25b</xsl:with-param>
+												<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+												<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
+												<xsl:with-param name="TargetNode" select="$TargetNode/TotalOtherExpensesAmt"/>
+											</xsl:call-template>
+										</xsl:when>
+										<xsl:otherwise>
+											<xsl:call-template name="CreateBox_1040PR">
+												<xsl:with-param name="Number">25b</xsl:with-param>
+												<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+												<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
+											</xsl:call-template>
+										</xsl:otherwise>
+									</xsl:choose>
 								</div>
 							</div>
+							<div class="styIRS1040PRCleanDiv" style="width:47mm;height:auto;padding:0px 0px 0px 0px;float:right;">
+								<div class="styIRS1040PRLNDesc" style="width:auto;height:100%;padding:0px 0px 0px 0px;">
+									<div class="styIRS1040PRLNDesc" style="width:auto;padding-bottom:0mm;">
+								Total de los demás gastos
+							</div>
+									<div class="styIRS1040PRLNDesc" style="width:auto;height:100%;text-align:right;float:right;padding:0px 8px 0px 0px;">
+										<!--Dotted Line-->
+										<span class="styDotLn" style="float:none;clear:none;padding-left:0mm;">..</span>
+									</div>
+								</div>
+							</div>
+							<div class="styIRS1040PRLNLeftNumBox" style="padding:.5mm 0mm 0mm 0mm; float:right;">b</div>
 						</div>
-						<div class="styIRS1040PRLNLeftNumBox" style="padding:.5mm 0mm 0mm 0mm; float:right;">b</div>
+			<!-- (26) ////////////////////////////////////////////////////-->
+			<div class="styIRS1040PRLineItem" style="width:187mm;height:4mm;border-top:1px solid black;">
+				<div class="styIRS1040PRLNLeftNumBox" style="padding-top:.5mm;">26</div>
+				<div class="styIRS1040PRLNDesc" style="width:auto;">
+					<b>Total de gastos.</b> Sume las líneas desde la <b>6</b> a la <b>25b</b>
+					<!--Dotted Line-->
+					<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">..................</span>
+					<img src="{$ImagePath}/1040PR_Bullet_Sm.gif" alt="Small Bullet"/>
+				</div>
+				<div class="styIRS1040PRCleanDiv" style="width:37mm;height:4mm;padding:0px 0px 0px 0px;float:right;">
+					<div class="styIRS1040PRCleanDiv" style="width:100%;height:4mm;float:right;">
+						<xsl:choose>
+							<xsl:when test="$TargetNode">
+								<xsl:call-template name="CreateBox_1040PR">
+									<xsl:with-param name="Number">26</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$TargetNode/TotalExpensesAmt"/>
+								</xsl:call-template>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:call-template name="CreateBox_1040PR">
+									<xsl:with-param name="Number">26</xsl:with-param>
+								</xsl:call-template>
+							</xsl:otherwise>
+						</xsl:choose>
 					</div>
-				</td>
-			</tr>
-		</table>
-		<!-- (26) ////////////////////////////////////////////////////-->
-		<div class="styIRS1040PRLineItem" style="width:187mm;height:4mm;border-top:1px solid black;">
-			<div class="styIRS1040PRLNLeftNumBox" style="padding-top:.5mm;">26</div>
-			<div class="styIRS1040PRLNDesc" style="width:auto;">
-				<b>Total de gastos.</b> Sume las líneas desde la <b>6</b> a la <b>25b</b>
-				<!--Dotted Line-->
-				<span class="styDotLn" style="float:none;clear:none;padding-left:1mm;">..................</span>
-				<img src="{$ImagePath}/1040PR_Bullet_Sm.gif" alt="Small Bullet"/>
+				</div>
 			</div>
-			<div class="styIRS1040PRCleanDiv" style="width:37mm;height:4mm;padding:0px 0px 0px 0px;float:right;">
-				<div class="styIRS1040PRCleanDiv" style="width:100%;height:4mm;float:right;">
-					<xsl:choose>
-						<xsl:when test="$TargetNode">
-							<xsl:call-template name="CreateBox_1040PR">
-								<xsl:with-param name="Number">26</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$TargetNode/TotalExpensesAmt"/>
-							</xsl:call-template>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="CreateBox_1040PR">
-								<xsl:with-param name="Number">26</xsl:with-param>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
+			<!-- (27) ////////////////////////////////////////////////////-->
+			<div class="styIRS1040PRLineItem" style="width:187mm;height:4.5mm;border-bottom:2px solid black;">
+				<div class="styIRS1040PRLNLeftNumBox" style="padding-top:.5mm;">27</div>
+				<div class="styIRS1040PRLNDesc" style="width:auto;">
+					<b>Ganancia (o pérdida) neta.</b> Reste la línea <b>26</b> de la línea <b>5</b>. Anote el resultado aquí y en la línea <b>2</b> de la <span style="font-size:7pt;">Parte V</span>
+				</div>
+				<div class="styIRS1040PRCleanDiv" style="width:37mm;padding:0px 0px 0px 0px;float:right;">
+					<div class="styIRS1040PRCleanDiv" style="width:100%;float:right;">
+						<xsl:choose>
+							<xsl:when test="$TargetNode">
+								<xsl:call-template name="CreateBox_1040PR">
+									<xsl:with-param name="Number">27</xsl:with-param>
+									<xsl:with-param name="AmountBoxStyle">height:4.5mm;border-bottom-width:0px;</xsl:with-param>
+									<xsl:with-param name="NumberBoxStyle">height:4.5mm;border-bottom-width:0px;</xsl:with-param>
+									<xsl:with-param name="TargetNode" select="$TargetNode/NetProfitOrLossAmt"/>
+								</xsl:call-template>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:call-template name="CreateBox_1040PR">
+									<xsl:with-param name="Number">27</xsl:with-param>
+									<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
+									<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
+								</xsl:call-template>
+							</xsl:otherwise>
+						</xsl:choose>
+					</div>
 				</div>
 			</div>
 		</div>
-		<!-- (27) ////////////////////////////////////////////////////-->
-		<div class="styIRS1040PRLineItem" style="width:187mm;height:4.5mm;border-bottom:2px solid black;">
-			<div class="styIRS1040PRLNLeftNumBox" style="padding-top:.5mm;">27</div>
-			<div class="styIRS1040PRLNDesc" style="width:auto;">
-				<b>Ganancia (o pérdida) neta.</b> Reste la línea <b>26</b> de la línea <b>5</b>. Anote el resultado aquí y en la línea <b>2</b> de la <span style="font-size:7pt;">Parte V</span>
-			</div>
-			<div class="styIRS1040PRCleanDiv" style="width:37mm;padding:0px 0px 0px 0px;float:right;">
-				<div class="styIRS1040PRCleanDiv" style="width:100%;float:right;">
-					<xsl:choose>
-						<xsl:when test="$TargetNode">
-							<xsl:call-template name="CreateBox_1040PR">
-								<xsl:with-param name="Number">27</xsl:with-param>
-								<xsl:with-param name="AmountBoxStyle">height:4.5mm;border-bottom-width:0px;</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">height:4.5mm;border-bottom-width:0px;</xsl:with-param>
-								<xsl:with-param name="TargetNode" select="$TargetNode/NetProfitOrLossAmt"/>
-							</xsl:call-template>
-						</xsl:when>
-						<xsl:otherwise>
-							<xsl:call-template name="CreateBox_1040PR">
-								<xsl:with-param name="Number">27</xsl:with-param>
-								<xsl:with-param name="AmountBoxStyle">border-bottom-width:0px;</xsl:with-param>
-								<xsl:with-param name="NumberBoxStyle">border-bottom-width:0px;</xsl:with-param>
-							</xsl:call-template>
-						</xsl:otherwise>
-					</xsl:choose>
+			<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+			<!-- Page Break and Footer-->
+			<div class="pageEnd" style="width:187mm;padding-top:.25mm;">
+				<div style="float:right;">
+					<span style="width:50px;"/>  
+						Formulario 
+					<span class="styBoldText" style="font-size:8pt;">1040-PR</span> (2014)
 				</div>
 			</div>
-			</div>
-		</div>
+			<p style="page-break-before: always"/>		
+			<!-- END Page Break and Footer-->
 	</xsl:template>
 	<!-- ////////////////////////////////////////////////////////////// (Template: PopulateSelfEmploymentTaxSection_1040PR) -->
 	<xsl:template name="PopulateSelfEmploymentTaxSection_1040PR">
 		<xsl:param name="TargetNode" select="/.."/>
+		<!-- BEGIN Page Header -->
+		<div class="styTBB" style="width:187mm;padding-top:.5mm;">
+			<div style="float:left;">
+				Formulario 1040-PR (2014)
+			</div>
+			<div style="float:right;">
+				Página <span style="font-weight:bold;font-size:8pt;">4</span>
+			</div>
+		</div>
+		<!-- END Page Header -->				
 		<!-- Header -->
 		<div style="width:187mm;padding:0px 0px 0px 0px;" class="styBB">
 			<!-- Content -->
@@ -12649,5 +12575,15 @@
 				</div>
 			</div>
 		</div>
+		<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+			<!-- Page Break and Footer-->
+			<div class="pageEnd" style="width:187mm;padding-top:.25mm;">
+				<div style="float:right;">
+					<span style="width:50px;"/>  
+						Formulario 
+					<span class="styBoldText" style="font-size:8pt;">1040-PR</span> (2014)
+				</div>
+			</div>
+			<p style="page-break-before: always"/>			
 	</xsl:template>
 </xsl:stylesheet>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Last Modified by Steven Fook on 9/23/2014 -->
 <!-- Last Modified by James Ganzy on 11/20/2014 -->
-<!-- Last Modified by Eugenia McDonald on 02/17/2016 -->
+<!-- Last Modified by Eugenia McDonald on 03/03/2016 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 	<xsl:include href="PopulateTemplate.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
@@ -220,9 +220,16 @@
 							<span style="font-family:Arial;">City, town or post office, state, and ZIP code. If you have a foreign address, also 
 							  complete spaces below (see instructions).</span>
 							<br/>
-							<xsl:call-template name="PopulateReturnHeaderFiler">
-								<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
-							</xsl:call-template>
+							<xsl:if test="$RtnHdrData/Filer/USAddress">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param>
+								</xsl:call-template>
+							</xsl:if>
+							<xsl:if test="$RtnHdrData/Filer/ForeignAddress">
+								<xsl:call-template name="PopulateReturnHeaderFiler">
+									<xsl:with-param name="TargetNode">CityNm</xsl:with-param>
+								</xsl:call-template>
+							</xsl:if>
 						</div>
 						<div class="styIRS1040HeaderCell" style="width:45mm;height:16.4mm;float:right;font-family:Arial Narrow;
 						  border-right-width:0px;border-bottom:0px">

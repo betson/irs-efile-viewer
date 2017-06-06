@@ -2280,10 +2280,10 @@
 						</div>
 						<div class="styGenericDiv" style="width:187mm;padding-top:2mm;"/>
 						<!-- Line 26 table -->
-						<div class="styIRS8867Page4Box">
-							<div class="styIRS8867Page4BoxHeader">Residency of Qualifying Child(ren)</div>
+						<div class="styIRS8867Page4BoxHeader" style="width:187mm">Residency of Qualifying Child(ren)</div>
+						    <div class="styIRS8867Page4Box" style="width:92.20mm;height:43mm;">
 							<!-- 26a -->
-							<div class="styIRS8867CheckboxBox"  tabindex="1">
+							<div class="styIRS8867CheckboxBox" tabindex="1">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/NoQualifyingChildInd"/>
@@ -2299,25 +2299,8 @@
 									<span class="styIRS8867CheckboxLetter">a</span>No qualifying child
 								</label>
 							</div>
-							<!-- 26i -->
-							<div class="styIRS8867CheckboxBox"   tabindex="2">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlaceOfWorshipStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResPlaceOfWorshipStatementInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlaceOfWorshipStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResPlaceOfWorshipStatementInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">i</span>Place of worship statement
-								</label>
-							</div>
 							<!-- 26b -->
-							<div class="styIRS8867CheckboxBox"   tabindex="3">
+							<div class="styIRS8867CheckboxBox" tabindex="3">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/SchoolRecordsOrStatementInd"/>
@@ -2333,25 +2316,8 @@
 									<span class="styIRS8867CheckboxLetter">b</span>School records or statement
 								</label>
 							</div>
-							<!-- 26j -->
-							<div class="styIRS8867CheckboxBox"   tabindex="4">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/IndianTribalOfficialStmtInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResIndianTribalOfficialStmtInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/IndianTribalOfficialStmtInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResIndianTribalOfficialStmtInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">j</span>Indian tribal official statement
-								</label>
-							</div>
 							<!-- 26c -->
-							<div class="styIRS8867CheckboxBox"  tabindex="5">
+							<div class="styIRS8867CheckboxBox" tabindex="5">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/LandlordOrPropertyMgmtStmtInd"/>
@@ -2367,25 +2333,8 @@
 									<span class="styIRS8867CheckboxLetter">c</span>Landlord or property management statement
 								</label>
 							</div>
-							<!-- 26k -->
-							<div class="styIRS8867CheckboxBox"  tabindex="6" >
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/EmployerStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResEmployerStatementInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/EmployerStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResEmployerStatementInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">k</span>Employer statement
-								</label>
-							</div>
 							<!-- 26d -->
-							<div class="styIRS8867CheckboxBox"  tabindex="7" >
+							<div class="styIRS8867CheckboxBox" tabindex="7">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/HealthCareProviderStatementInd"/>
@@ -2401,8 +2350,129 @@
 									<span class="styIRS8867CheckboxLetter">d</span>Health care provider statement
 								</label>
 							</div>
+							<!-- 26e -->
+							<div class="styIRS8867CheckboxBox" tabindex="9">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/MedicalRecordsInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResMedicalRecordsInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/MedicalRecordsInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResMedicalRecordsInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">e</span>Medical records
+								</label>
+							</div>
+							<!-- 26f -->
+							<div class="styIRS8867CheckboxBox" tabindex="11">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/ChildCareProviderRecordsInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResChildCareProviderRecordsInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/ChildCareProviderRecordsInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResChildCareProviderRecordsInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">f</span>Child care provider records
+								</label>
+							</div>
+							<!-- 26g -->
+							<div class="styIRS8867CheckboxBox" tabindex="13">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlacementAgencyStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResPlacementAgencyStatementInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlacementAgencyStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResPlacementAgencyStatementInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">g</span>Placement agency statement
+								</label>
+							</div>
+							<!-- 26h -->
+							<div class="styIRS8867CheckboxBox" tabindex="15">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/SocialServiceRecordsOrStmtInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResSocialServiceRecordsOrStmtInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/SocialServiceRecordsOrStmtInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResSocialServiceRecordsOrStmtInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">h</span>Social service records or statement
+								</label>
+							</div>
+						</div>
+						<div class="styIRS8867Page4Box" style="width:92.20mm;height:43mm;">
+							<!-- 26i -->
+							<div class="styIRS8867CheckboxBox" tabindex="2">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlaceOfWorshipStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResPlaceOfWorshipStatementInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlaceOfWorshipStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResPlaceOfWorshipStatementInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">i</span>Place of worship statement
+								</label>
+							</div>
+							<!-- 26j -->
+							<div class="styIRS8867CheckboxBox" tabindex="4">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/IndianTribalOfficialStmtInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResIndianTribalOfficialStmtInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/IndianTribalOfficialStmtInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResIndianTribalOfficialStmtInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">j</span>Indian tribal official statement
+								</label>
+							</div>
+							<!-- 26k -->
+							<div class="styIRS8867CheckboxBox" tabindex="6">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/EmployerStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResEmployerStatementInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/EmployerStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867ResEmployerStatementInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">k</span>Employer statement
+								</label>
+							</div>
 							<!-- 26l -->
-							<div class="styIRS8867CheckboxBox"   tabindex="8">
+							<div class="styIRS8867CheckboxBox" tabindex="8">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/OtherInformationGrp/OtherInd"/>
@@ -2424,82 +2494,14 @@
 									</xsl:call-template>
 								</label>
 							</div>
-							<!-- 26e -->
-							<div class="styIRS8867CheckboxBox" tabindex="9" >
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/MedicalRecordsInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResMedicalRecordsInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/MedicalRecordsInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResMedicalRecordsInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">e</span>Medical records
-								</label>
-							</div>
 							<!-- 26 other blank 1 -->
-							<div class="styIRS8867CheckboxBlank"><span style="width:0px;"/></div>
-							<!-- 26f -->
-							<div class="styIRS8867CheckboxBox"  tabindex="10" >
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/ChildCareProviderRecordsInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResChildCareProviderRecordsInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/ChildCareProviderRecordsInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResChildCareProviderRecordsInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">f</span>Child care provider records
-								</label>
-							</div>
+							<div class="styIRS8867CheckboxBlank" style="width:77.5mm"><span style="width:0px;"/></div>
 							<!-- 26 other blank 2 -->
-							<div class="styIRS8867CheckboxBox" tabindex="11"  ><span style="width:0px;"/></div>
-							<!-- 26g -->
-							<div class="styIRS8867CheckboxBox"  tabindex="12">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlacementAgencyStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResPlacementAgencyStatementInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/PlacementAgencyStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResPlacementAgencyStatementInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">g</span>Placement agency statement
-								</label>
-							</div>
+							<div class="styIRS8867CheckboxBox" style="width:77.5mm"><span style="width:0px;"/></div>
 							<!-- 26 other blank 3 -->
-							<div class="styIRS8867CheckboxBlank" tabindex="13"><span style="width:0px;"/></div>
-							<!-- 26h -->
-							<div class="styIRS8867CheckboxBox" tabindex="14">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/SocialServiceRecordsOrStmtInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResSocialServiceRecordsOrStmtInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/SocialServiceRecordsOrStmtInd"/>
-										<xsl:with-param name="BackupName">IRS8867ResSocialServiceRecordsOrStmtInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">h</span>Social service records or statement
-								</label>
-							</div>
+							<div class="styIRS8867CheckboxBlank" style="width:77.5mm"><span style="width:0px;"/></div>
 							<!-- 26m -->
-							<div class="styIRS8867CheckboxBox" tabindex="15">
+							<div class="styIRS8867CheckboxBox">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/ResidencyOfQlfyChildDocGrp/DidNotRelyOnDocFileNotatedInd"/>
@@ -2515,8 +2517,6 @@
 									<span class="styIRS8867CheckboxLetter">m</span>Did not rely on any documents, but made notes in file
 								</label>
 							</div>
-							<!-- 26 blank 4 -->
-							<div class="styIRS8867CheckboxBox"   tabindex="16"><span style="width:0px;"/></div>
 							<!-- 26n -->
 							<div class="styIRS8867CheckboxBox">
 								<input type="checkbox" class="styCkbox">
@@ -2534,9 +2534,11 @@
 									<span class="styIRS8867CheckboxLetter">n</span>Did not rely on any documents
 								</label>
 							</div>
-							<div class="styIRS8867Page4BoxHeader">Disability of Qualifying Child(ren)</div>
+						</div>
+						<div class="styIRS8867Page4BoxHeader" style="width:187mm">Disability of Qualifying Child(ren)</div>
+						    <div class="styIRS8867Page4Box" style="width:92.20mm;height:24mm;">
 							<!-- 26o -->
-							<div class="styIRS8867CheckboxBox"  tabindex="17">
+							<div class="styIRS8867CheckboxBox">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/NoDisabledChildInd"/>
@@ -2552,7 +2554,60 @@
 									<span class="styIRS8867CheckboxLetter">o</span>No disabled child
 								</label>
 							</div>
-							<!-- 26s -->
+						    <!-- 26p -->
+							<div class="styIRS8867CheckboxBox" tabindex="19">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DoctorStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867DisDoctorStatementInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DoctorStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867DisDoctorStatementInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">p</span>Doctor statement
+								</label>
+							</div>
+							<!-- 26q -->
+							<div class="styIRS8867CheckboxBox" tabindex="21">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/OtherHealthCareProviderStmtInd"/>
+										<xsl:with-param name="BackupName">IRS8867DisOtherHealthCareProviderStmtInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/OtherHealthCareProviderStmtInd"/>
+										<xsl:with-param name="BackupName">IRS8867DisOtherHealthCareProviderStmtInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">q</span>Other health care provider statement
+								</label>
+							</div>
+							<!-- 26r -->
+							<div class="styIRS8867CheckboxBox"  tabindex="23">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/SocialServicesAgOrProgStmtInd"/>
+										<xsl:with-param name="BackupName">IRS8867DisSocialServicesAgOrProgStmtInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/SocialServicesAgOrProgStmtInd"/>
+										<xsl:with-param name="BackupName">IRS8867DisSocialServicesAgOrProgStmtInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">r</span>Social services agency or program statement
+								</label>
+							</div>
+						</div>
+						<div class="styIRS8867Page4Box" style="width:92.20mm;height:24mm;">
+						<!-- 26s -->
 							<div class="styIRS8867CheckboxBox" tabindex="18">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
@@ -2575,63 +2630,12 @@
 									</xsl:call-template>
 								</label>
 							</div>
-							<!-- 26p -->
-							<div class="styIRS8867CheckboxBox" tabindex="19">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DoctorStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867DisDoctorStatementInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DoctorStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867DisDoctorStatementInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">p</span>Doctor statement
-								</label>
-							</div>
 							<!-- 26 other blank 1 -->
-							<div class="styIRS8867CheckboxBlankTop"  tabindex="20"><span style="width:0px;"/></div>
-							<!-- 26q -->
-							<div class="styIRS8867CheckboxBox" tabindex="21">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/OtherHealthCareProviderStmtInd"/>
-										<xsl:with-param name="BackupName">IRS8867DisOtherHealthCareProviderStmtInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/OtherHealthCareProviderStmtInd"/>
-										<xsl:with-param name="BackupName">IRS8867DisOtherHealthCareProviderStmtInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">q</span>Other health care provider statement
-								</label>
-							</div>
+							<div class="styIRS8867CheckboxBlankTop" style="width:77.5mm"><span style="width:0px;background-color:blue"/></div>
 							<!-- 26 other blank 2 -->
-							<div class="styIRS8867CheckboxBlank" tabindex="22"><span style="width:0px;"/></div>
-							<!-- 26r -->
-							<div class="styIRS8867CheckboxBox"  tabindex="23">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/SocialServicesAgOrProgStmtInd"/>
-										<xsl:with-param name="BackupName">IRS8867DisSocialServicesAgOrProgStmtInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/SocialServicesAgOrProgStmtInd"/>
-										<xsl:with-param name="BackupName">IRS8867DisSocialServicesAgOrProgStmtInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">r</span>Social services agency or program statement
-								</label>
-							</div>
+							<div class="styIRS8867CheckboxBlank" style="width:77.5mm"><span style="width:0px;"/></div>
 							<!-- 26t -->
-							<div class="styIRS8867CheckboxBox" tabindex="24">
+							<div class="styIRS8867CheckboxBox">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DidNotRelyOnDocFileNotatedInd"/>
@@ -2647,10 +2651,8 @@
 									<span class="styIRS8867CheckboxLetter">t</span>Did not rely on any documents, but made notes in file
 								</label>
 							</div>
-							<!-- 26 blank 4 -->
-							<div class="styIRS8867CheckboxBox"  tabindex="25"><span style="width:0px;"/></div>
 							<!-- 26u -->
-							<div class="styIRS8867CheckboxBox" tabindex="26">
+							<div class="styIRS8867CheckboxBox">
 								<input type="checkbox" class="styCkbox">
 									<xsl:call-template name="PopulateCheckbox">
 										<xsl:with-param name="TargetNode" select="$FormData/DisabilityOfQlfyChildDocGrp/DidNotRelyOnDocumentsInd"/>
@@ -2667,8 +2669,9 @@
 								</label>
 							</div>
 						</div>
+						<div class="styBB" style="width:187mm"/>
 						<div class="styGenericDiv" style="width:187mm;">
-						<span class="styGenericDiv" style="width=180mm;border-style:solid;border-color:black;border-width:1px 0px 0px 0px;"/>
+						  <span class="styGenericDiv" style="width=180mm;border-style:solid;border-color:black;border-width:1px 0px 0px 0px;"/>
 						</div>
 						<!-- Line 27 -->
 						<div class="styGenericDiv" style="width:187mm;height:12mm;padding-top:2mm;">
@@ -2681,8 +2684,8 @@
 						</div>
 						<div class="styGenericDiv" style="width:187mm;"/>
 						<!-- Line 27 table -->
-						<div class="styIRS8867Page4Box">
-							<div class="styIRS8867Page4BoxHeader">Documents or Other Information</div>
+						<div class="styIRS8867Page4BoxHeader" style="width:187mm">Documents or Other Information</div>
+						<div class="styIRS8867Page4Box" style="width:92.20mm;height:34mm;">
 							<!-- 27a -->
 							<div class="styIRS8867CheckboxBox" tabindex="27">
 								<input type="checkbox" class="styCkbox">
@@ -2698,23 +2701,6 @@
 										<xsl:with-param name="BackupName">IRS8867BusNoScheduleCInd</xsl:with-param>
 									</xsl:call-template>
 									<span class="styIRS8867CheckboxLetter">a</span>No Schedule C
-								</label>
-							</div>
-							<!-- 27h -->
-							<div class="styIRS8867CheckboxBox"  tabindex="28">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/BankStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusBankStatementInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/BankStatementInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusBankStatementInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">h</span>Bank statements
 								</label>
 							</div>
 							<!-- 27b -->
@@ -2734,23 +2720,6 @@
 									<span class="styIRS8867CheckboxLetter">b</span>Business license
 								</label>
 							</div>
-							<!-- 27i -->
-							<div class="styIRS8867CheckboxBox" tabindex="30">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/ReconstrOfIncomeAndExpnssInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusReconstrOfIncomeAndExpnssInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/ReconstrOfIncomeAndExpnssInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusReconstrOfIncomeAndExpnssInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">i</span>Reconstruction of income and expenses
-								</label>
-							</div>
 							<!-- 27c -->
 							<div class="styIRS8867CheckboxBox" tabindex="31">
 								<input type="checkbox" class="styCkbox">
@@ -2766,6 +2735,110 @@
 										<xsl:with-param name="BackupName">IRS8867BusForm1099Ind</xsl:with-param>
 									</xsl:call-template>
 									<span class="styIRS8867CheckboxLetter">c</span>Forms 1099
+								</label>
+							</div>
+							<!-- 27d -->
+							<div class="styIRS8867CheckboxBox"  tabindex="33">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfGrossReceiptsProvInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusRecordOfGrossReceiptsProvInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfGrossReceiptsProvInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusRecordOfGrossReceiptsProvInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">d</span>Records of gross receipts provided by taxpayer
+								</label>
+							</div>
+							<!-- 27e -->
+							<div class="styIRS8867CheckboxBox">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfIncomeInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusTaxpayerSummaryOfIncomeInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfIncomeInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusTaxpayerSummaryOfIncomeInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">e</span>Taxpayer summary of income
+								</label>
+							</div>
+							<!-- 27f -->
+							<div class="styIRS8867CheckboxBox">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfExpensesProvidedInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusRecordOfExpensesProvidedInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfExpensesProvidedInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusRecordOfExpensesProvidedInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">f</span>Records of expenses provided by taxpayer
+								</label>
+							</div>
+							<!-- 27g -->
+							<div class="styIRS8867CheckboxBox" tabindex="37">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfExpensesInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusTaxpayerSummaryOfExpensesInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfExpensesInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusTaxpayerSummaryOfExpensesInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">g</span>Taxpayer summary of expenses
+								</label>
+							</div>
+						</div>
+						<div class="styIRS8867Page4Box" style="width:92.20mm;height:34mm;">
+							<!-- 27h -->
+							<div class="styIRS8867CheckboxBox"  tabindex="28">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/BankStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusBankStatementInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/BankStatementInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusBankStatementInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">h</span>Bank statements
+								</label>
+							</div>
+							<!-- 27i -->
+							<div class="styIRS8867CheckboxBox" tabindex="30">
+								<input type="checkbox" class="styCkbox">
+									<xsl:call-template name="PopulateCheckbox">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/ReconstrOfIncomeAndExpnssInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusReconstrOfIncomeAndExpnssInd</xsl:with-param>
+									</xsl:call-template>
+								</input>
+								<span style="width:2px;"/>
+								<label>
+									<xsl:call-template name="PopulateLabel">
+										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/ReconstrOfIncomeAndExpnssInd"/>
+										<xsl:with-param name="BackupName">IRS8867BusReconstrOfIncomeAndExpnssInd</xsl:with-param>
+									</xsl:call-template>
+									<span class="styIRS8867CheckboxLetter">i</span>Reconstruction of income and expenses
 								</label>
 							</div>
 							<!-- 27j -->
@@ -2791,61 +2864,10 @@
 									</xsl:call-template>
 								</label>
 							</div>
-							<!-- 27d -->
-							<div class="styIRS8867CheckboxBox"  tabindex="33">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfGrossReceiptsProvInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusRecordOfGrossReceiptsProvInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfGrossReceiptsProvInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusRecordOfGrossReceiptsProvInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">d</span>Records of gross receipts provided by taxpayer
-								</label>
-							</div>
 							<!-- 27 other blank 1 -->
-							<div class="styIRS8867CheckboxBlankTop" tabindex="34"><span style="width:0px;"/></div>
-							<!-- 27e -->
-							<div class="styIRS8867CheckboxBox">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfIncomeInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusTaxpayerSummaryOfIncomeInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfIncomeInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusTaxpayerSummaryOfIncomeInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">e</span>Taxpayer summary of income
-								</label>
-							</div>
+							<div class="styIRS8867CheckboxBlankTop" tabindex="34" style="width:77.5mm"><span style="width:0px;"/></div>
 							<!-- 27 other blank 2 -->
-							<div class="styIRS8867CheckboxBlank" tabindex="35"><span style="width:0px;"/></div>
-							<!-- 27f -->
-							<div class="styIRS8867CheckboxBox">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfExpensesProvidedInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusRecordOfExpensesProvidedInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/RecordOfExpensesProvidedInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusRecordOfExpensesProvidedInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">f</span>Records of expenses provided by taxpayer
-								</label>
-							</div>
+							<div class="styIRS8867CheckboxBlank" tabindex="35" style="width:77.5mm"><span style="width:0px;"/></div>
 							<!-- 27k -->
 							<div class="styIRS8867CheckboxBox" tabindex="36">
 								<input type="checkbox" class="styCkbox">
@@ -2861,23 +2883,6 @@
 										<xsl:with-param name="BackupName">IRS8867BusDidNotRelyOnDocFileNotatedInd</xsl:with-param>
 									</xsl:call-template>
 									<span class="styIRS8867CheckboxLetter">k</span>Did not rely on any documents, but made notes in file
-								</label>
-							</div>
-							<!-- 27g -->
-							<div class="styIRS8867CheckboxBox" tabindex="37">
-								<input type="checkbox" class="styCkbox">
-									<xsl:call-template name="PopulateCheckbox">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfExpensesInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusTaxpayerSummaryOfExpensesInd</xsl:with-param>
-									</xsl:call-template>
-								</input>
-								<span style="width:2px;"/>
-								<label>
-									<xsl:call-template name="PopulateLabel">
-										<xsl:with-param name="TargetNode" select="$FormData/BusinessExstConfirmationDocGrp/TaxpayerSummaryOfExpensesInd"/>
-										<xsl:with-param name="BackupName">IRS8867BusTaxpayerSummaryOfExpensesInd</xsl:with-param>
-									</xsl:call-template>
-									<span class="styIRS8867CheckboxLetter">g</span>Taxpayer summary of expenses
 								</label>
 							</div>
 							<!-- 27l -->

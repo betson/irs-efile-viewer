@@ -139,6 +139,18 @@
                     <xsl:with-param name="TargetNode" select="$FormData/PersonalRepresentativeInd"/>
                   </xsl:call-template>
                 </xsl:if>
+                 <xsl:if test="$FormData/ParentGuardianMinChldSgndByInd">
+                  <xsl:call-template name="LinkToLeftoverDataTableInline">
+                    <xsl:with-param name="Desc">Top Right Margin - Signed by Parent/Guardian of Minor Child Checkbox</xsl:with-param>
+                    <xsl:with-param name="TargetNode" select="$FormData/ParentGuardianMinChldSgndByInd"/>
+                  </xsl:call-template>
+                </xsl:if>
+                <xsl:if test="$FormData/ParentGuardianNm">
+                  <xsl:call-template name="LinkToLeftoverDataTableInline">
+                    <xsl:with-param name="Desc">Top Right Margin - Name of Parent/Guardian of Minor Child Checkbox</xsl:with-param>
+                    <xsl:with-param name="TargetNode" select="$FormData/ParentGuardianNm"/>
+                  </xsl:call-template>
+                </xsl:if>
               </div>
             </div>
            <div style="font-size:7pt;font-family:arial;position:absolute;bottom:0;right:0;padding-bottom:1mm;">
@@ -2796,6 +2808,16 @@
             <xsl:call-template name="PopulateLeftoverRow">
               <xsl:with-param name="Desc">Top Right Margin - Personal Representative</xsl:with-param>
               <xsl:with-param name="TargetNode" select="$FormData/PersonalRepresentativeInd"/>
+              <xsl:with-param name="DescWidth" select="100"/>
+            </xsl:call-template>
+              <xsl:call-template name="PopulateLeftoverRow">
+              <xsl:with-param name="Desc">Top Right Margin - Signed by Parent/Guardian of Minor Child Checkbox</xsl:with-param>
+              <xsl:with-param name="TargetNode" select="$FormData/ParentGuardianMinChldSgndByInd"/>
+              <xsl:with-param name="DescWidth" select="100"/>
+            </xsl:call-template>
+              <xsl:call-template name="PopulateLeftoverRow">
+              <xsl:with-param name="Desc">Top Right Margin - Name of Parent/Guardian of Minor Child Checkbox</xsl:with-param>
+              <xsl:with-param name="TargetNode" select="$FormData/ParentGuardianNm"/>
               <xsl:with-param name="DescWidth" select="100"/>
             </xsl:call-template>
             <xsl:call-template name="PopulateLeftoverRow">

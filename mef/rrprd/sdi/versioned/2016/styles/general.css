@@ -52,6 +52,18 @@ edited 4/21/2004 by Ravi Venigalla. Added styFixedUnderline
 .styGenericDiv { /* definition of a generic placeholder div */
 	float:left; clear:none;
 }
+.styStdDiv { /* generic line-width div. Scrollbars appear if an element is overflowing. */
+	width:187mm;
+	display:block;
+	float:none;clear:both;
+	overflow:auto;
+}
+.styStdDivLS { /* generic landscape line-width div */
+	width:256mm;
+	display:block;
+	float:none;clear:both;
+	overflow:auto;
+}
 .pageEnd { /*Page break for printer*/
 	page-break-after:always;
 	display:block;

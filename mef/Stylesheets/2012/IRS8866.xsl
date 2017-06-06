@@ -33,7 +33,7 @@
 </xsl:if>
   </style>
 </head>
-<body class="styBodyClass">
+<body class="styBodyClass" style="width:187mm">
   <form name="Form8866">
     <xsl:call-template name="DocumentHeader"></xsl:call-template>
     <!-- Set !Header box width -->
@@ -69,15 +69,15 @@
 								 Information about Form 8866 and its separate instructions is available at 
     </div>
     <span style="width:45mm"/>
-   <a href="http://www.irs.gov/form8866" title="Link to IRS.gov">
-                <i>www.irs.gov/form8866.</i>
-            </a>
+   <a style="text-decoration:none;color:black;" href="http://www.irs.gov/form8866" title="Link to IRS.gov">
+										<i>www.irs.gov/form8866.</i>
+									</a>	
         </div>
       </div>
       <!-- OMB etc; set OMB width to 6 pt since 7pt will increase width to over 187mm-->  
       <div class="styTYBox" style="width:30mm;height:22.5mm;">
-        <div class="styOMB" style="height:2mm;"><br/>OMB No. 1545-1622</div>
-        <div class="stySequence" style="height:10.5mm;padding-top:3mm; padding-left: 2mm;">
+        <div class="styOMB" style="height:auto;"><br/>OMB No. 1545-1622</div>
+        <div class="stySequence" style="height:auto;padding-top:3mm; padding-left: 2mm;">
           Attachment
           <div>
           Sequence No. <span class="styBoldText" style="font-size:8pt;">108</span>
@@ -110,9 +110,9 @@
   <!-- End Tax Year Beginning and Ending -->     
     <!-- Name and identifying number -->
     <div  style="width:187mm;">
-     <div class="styNameBox" style="border-right-width:0px;width:27mm;text-align:center;font-size:7pt;font-weight:bold;padding-top:.5mm;">
+     <div class="styNameBox" style="border-right-width:0px;width:27.1mm;text-align:center;font-size:7pt;font-weight:bold;padding-top:.5mm;">
       </div>
-      <div class="styNameBox" style="font-size:7pt;width:104.5mm;border-left-width:1px;border-bottom-width:1px;padding-left:1mm">Name<br/>
+      <div class="styNameBox" style="font-size:7pt;width:104.5mm;height:11mm;border-left-width:1px;border-bottom-width:1px;padding-left:1mm">Name<br/>
        <span style="font-size: 7pt; font-weight: normal">
 			 <xsl:choose>
 			 <xsl:when test="$RtnHdrData/ReturnType='1040'">
@@ -131,10 +131,10 @@
 			 </xsl:choose>
 			</span>
       </div>
-      <div class="styBB" style="float:right;padding-left:2mm;font-size:7pt;width:55mm;height:4mm;border-bottom-width:1px;border-color:black;">
+    <div class="styBB" style="float:right;clear:none;padding-left:2mm;font-size:7pt;width:55mm;height:auto;border-bottom-width:1px;border-color:black;">
           <b>A  Identifying number</b><br/>
       <xsl:choose>
-		  <xsl:when test="$RtnHdrData/ReturnType='1040'">
+		  <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 		  <xsl:call-template name="PopulateReturnHeaderFiler">
 			 <xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
 			 </xsl:call-template>
@@ -147,14 +147,15 @@
 			</xsl:choose>
       </div>  
     </div>
+
     <!-- Number, Street, City, State and Zip Code -->
     <div class="styBB" style="width:187mm;">
-      <div class="styNameBox" style="border-right-width:0px;width:27mm;text-align:center;font-size:7pt;font-weight:bold;padding-top:.5mm;">
- Print or Type
+      <div class="styNameBox" style="border-right-width:0px;width:27mm;text-align:center;font-size:9pt;font-weight:bold;padding-top:.5mm;">
+ Print or <br/>Type
       </div>
       <div style="width:104mm;float:left;">
-        <div class="styNameBox" style="border-left-width:1px;font-size:7pt;width:104mm;height:10mm;border-bottom-width:1px;">
-          <span style="width:3px;"/>
+        <div class="styNameBox" style="border-left-width:1px;font-size:7pt;width:104.5mm;height:11mm;border-bottom-width:1px;">
+          <span style="width:1mm;"/>
           Number, street, and apt., room, or suite no. If a P.O. box, see instructions.
           <div style="float:left;font-size:7pt;width:104mm;">
             <span style="width:1mm;"/>
@@ -164,16 +165,40 @@
       <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">AddressLine2</xsl:with-param></xsl:call-template>           
           </div>  
         </div>
-        <div class="styNameBox" style="border-left-width:1px;float:left;font-size:7pt;width:104mm;height:10mm;">
-          <span style="width:3px;"/>
+        <div class="styNameBox" style="border-left-width:1px;float:left;font-size:7pt;width:104.5mm;height:11mm">
+          <span style="width:1mm;"/>
           City or town, state, and ZIP code. If a foreign address, see instructions.
+          
           <div style="float:left;font-size:7pt;width:104mm;">
+          <xsl:if test="$RtnHdrData/Filer/USAddress">
+            <span style="width:1mm;"/>
+            <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">City</xsl:with-param></xsl:call-template>
+           <span style="width:1mm;"/>
+            <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">State</xsl:with-param></xsl:call-template>  
+         <span style="width:1mm;"/>
+            <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">ZIPCode</xsl:with-param></xsl:call-template>
+            </xsl:if>   
+            <xsl:if test="$RtnHdrData/Filer/ForeignAddress">
+             <span style="width:1mm;"/>
+            <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">City</xsl:with-param></xsl:call-template>
+               
+            <span style="width:1mm"/>
+    <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">ProvinceOrState</xsl:with-param></xsl:call-template>
+     <br/><span style="width:1mm"/>
+    <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">PostalCode</xsl:with-param></xsl:call-template> 
+      <span style="width:1mm"/>
+    <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">Country</xsl:with-param></xsl:call-template>
+    
+    </xsl:if>   
+          </div>
+          
+          <!--<div style="float:left;font-size:7pt;width:104mm;">
             <span style="width:3px;"/>
             <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">CityStateInfo</xsl:with-param></xsl:call-template>
             <span style="width:3px;"/>
     <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">Country</xsl:with-param></xsl:call-template>
           </div>
-        </div>
+-->        </div>
       </div>
      <!-- Taxpayer type is choice element -->
       <div class="styEINBox" style="float:right;text-align:center;font-face:Arial;font-size:7pt;font-weight:normal;width:55mm;
@@ -181,10 +206,10 @@
       <span style="padding-left:.1mm;font-weight:bold;">B</span>
         <span style="width:.5mm;"></span> 
         <span style="font-size:6pt;">Check applicable box to show type of taxpayer:</span>
-        <span style="width:55mm;height:5mm;font-weight:normal;text-align:left;padding-top:3mm;">
+        <span style="width:55mm;height:6mm;font-weight:normal;text-align:left;padding-top:3mm;">
           <span style="width:3mm;"></span>
           <!--Corporation Check Box -->
-          <input type="checkbox" class="styCkbox" style="width:5mm;">
+          <input type="checkbox" class="styCkbox" alt="Corporation" style="width:5mm;">
             <xsl:call-template name="PopulateCheckbox">
               <xsl:with-param name="TargetNode" select="$Form8866Data/TypeOfTaxpayerCorporation" />
              <xsl:with-param name="BackupName">Type Of Taxpayer Corporation</xsl:with-param>  
@@ -199,7 +224,7 @@
           </label>
           <span style="width:3mm;"></span>
           <!--S Corporation Check Box -->
-          <input type="checkbox" class="styCkbox" style="width:5mm;">
+          <input type="checkbox" class="styCkbox" alt="S Corporation" style="width:5mm;">
             <xsl:call-template name="PopulateCheckbox">
               <xsl:with-param name="TargetNode" select="$Form8866Data/TypeOfTaxpayerSCorporation" />
               <xsl:with-param name="BackupName">Type Of Taxpayer S Corporation</xsl:with-param>    
@@ -209,13 +234,13 @@
             <xsl:call-template name="PopulateLabel">
               <xsl:with-param name="TargetNode" select="$Form8866Data/TypeOfTaxpayerSCorporation" />
             <xsl:with-param name="BackupName">Type Of Taxpayer S Corporation</xsl:with-param>      
-            </xsl:call-template><span style="vertical-align:bottom;">S Corporation</span>
+            </xsl:call-template><span style="vertical-align:bottom;">S corporation</span>
           </label>
         </span>
         <div style="width:55mm;font-weight:normal;text-align:left;padding-top:0.5mm;">
           <span style="width:3mm;"></span>
           <!--Individual Check Box -->
-          <input type="checkbox" class="styCkbox" style="width:5mm;">
+          <input type="checkbox" class="styCkbox" alt="Individual" style="width:5mm;">
             <xsl:call-template name="PopulateCheckbox">
               <xsl:with-param name="TargetNode" select="$Form8866Data/TypeOfTaxpayerIndividual" />
    <xsl:with-param name="BackupName">Type Of Taxpayer Individual</xsl:with-param>  
@@ -230,7 +255,7 @@
           </label>
           <span style="width:5.25mm;"></span>
           <!--Partnership Check Box -->
-          <input type="checkbox" class="styCkbox" style="width:5mm;">
+          <input type="checkbox" class="styCkbox" alt="Partnership" style="width:5mm;">
             <xsl:call-template name="PopulateCheckbox">
               <xsl:with-param name="TargetNode" select="$Form8866Data/TypeOfTaxpayerPartnership" />
          <xsl:with-param name="BackupName">Type Of Taxpayer Partnership</xsl:with-param>       
@@ -247,7 +272,7 @@
         <div style="width:55mm;font-weight:normal;text-align:left;padding-top:0.5mm;">
           <span style="width:3mm;"></span>
            <!--Estate Or Trust Check Box -->
-          <input type="checkbox" class="styCkbox" style="width:5mm;margin-left:none;">
+          <input type="checkbox" class="styCkbox"  alt="Estate or trust" style="width:5mm;margin-left:none;">
             <xsl:call-template name="PopulateCheckbox">
               <xsl:with-param name="TargetNode" select="$Form8866Data/TypeOfTaxpayerEstateOrTrust" />
             <xsl:with-param name="BackupName">Type Of Taxpayer Estate Or Trust</xsl:with-param>        
@@ -291,7 +316,7 @@
     <table cellspacing="0" summary="Table displaying entity name or names and corresponding employer identification numbers" style="font-size:7pt;" name="TYTable" id="TYTable"  class="styTable">
     <thead class="styTableThead" >
       <tr>
-        <th class="styTableCell" rowspan="1"  scope="col"  style="width:139mm;text-align:left;border-color:black;border-right-width:1px;border-bottom:none;font-weight:normal;padding-left:4mm;">Name of entity<br/><br/></th>
+        <th class="styTableCell" rowspan="1"  scope="col"  style="width:139mm;text-align:left;border-color:black;border-right-width:1px;border-bottom:none;font-weight:normal;padding-left:4mm;"><br/>Name of entity:<br/><br/></th>
         <th class="styTableCell" rowspan="1"  scope="col" style="width:48mm;text-align:center;border-color:black;border-bottom:none;border-right:none;"><span style="font-weight:bold;">Employer identification number<br/><br/></span></th>
       </tr>
     </thead>
@@ -302,7 +327,7 @@
       <xsl:for-each select="$Form8866Data/PassThroughEntityInfo">
         <tr>
             <xsl:choose>
-              <xsl:when test="$part4Count &gt; 1and position() &lt; $part4Count">
+              <xsl:when test="$part4Count &gt; 1 and position() &lt; $part4Count">
                 <td class="styTableCell" style="margin-left:2mm;width:139mm;border-color:black;border-left:none;border-right-width:1px;text-align:left;padding-left:4mm;">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="NameOfPassThroughEntity/BusinessNameLine1" />
@@ -402,7 +427,7 @@
 </xsl:call-template>  
   
   <!--  ********************************************************************* -->
-  <!-- SCH B line 9-1 -->
+  <!-- line 9-1 -->
 <div style="width:187mm;">
 <div class="styLNLeftNumBox" style="width:5mm" >9</div>
 <div class="styLNDesc">
@@ -414,7 +439,7 @@ Net amount of
 <div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px;border-left-width:0px;">
 </div>
 </div>
-<!-- SCH B line 9-2 -->
+<!--  line 9-2 -->
 <div style="width:187mm;">
 <div class="styLNLeftNumBox" style="height:4mm;width:5mm"></div>
 <div class="styLNDesc" style="height:4mm;">
@@ -428,7 +453,7 @@ Net amount of
 </div>
 </div>
 <!--   ********************************************************************* -->
- <!-- SCH B line 10-1 -->
+ <!-- line 10-1 -->
 <div style="width:187mm;">
 <div class="styLNLeftNumBox" style="width:5mm" >10</div>
 <div class="styLNDesc">
@@ -440,20 +465,21 @@ Net amount of
 <div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px;border-left-width:0px;">
 </div>
 </div>
-
- <!-- SCH B line 10-2 -->
-    <div class="styBB" style="width:187mm;">
-<div style="width:187mm;">
-<div class="styLNDesc" style="height:4mm;">
-<span style="padding-left:5mm;width:143.1mm">Attach Form 8866 to your tax return. See instructions for where to include this amount on your return</span>
+<!-- line 10-2 -->
+<div class="styBB" style="width:187mm;">
+<div class="styLNLeftNumBox" style="width:5mm" ></div>
+<div class="styLNDesc">
+ <span style="float: left; clear: none;">
+Attach Form 8866 to your tax return. See instructions for where to include this amount on your return </span>
 </div>
-<div class="styLNRightNumBox" style="height:4mm;border-bottom-width:0px;width:11mm"></div>
-<div class="styLNAmountBox" style="height:4mm;border-left-width:0px;border-bottom-width:0px;padding-left:3mm;">
-      <xsl:call-template name="PopulateAmount">
+<div class="styLNRightNumBox" style="height:5mm;border-bottom-width:0px;border-right-width:0px;padding-left:11mm;"></div>
+<div class="styLNAmountBox" style="height:5mm;border-bottom-width:0px;border-left-width:0px;">
+ <xsl:call-template name="PopulateAmount">
         <xsl:with-param name="TargetNode" select="$Form8866Data/NetAmountOfInterestYouOwe"/>
       </xsl:call-template>
 </div>
-</div></div>
+</div>
+
 <!--   ********************************************************************* -->
   
   
@@ -512,7 +538,7 @@ has any knowledge. </td>
     <!-- End Signature Section -->
     <!-- BEGIN PREPARER SIGNATURE SECTION   -->
 	 <!-- paid preparer -->
-					<div class="styBB" style="width:187mm;font-size:6pt;float:none;clear:both;"> 
+					<div class="styBB" style="width:187mm;font-size:6pt;float:none;clear:both;height:25mm"> 
 						<div style="width:18mm;padding-top:4mm;float:left;clear:none;">
 							<span class="styMainTitle" style="font-size:11pt;">
 									Paid
@@ -522,23 +548,23 @@ has any knowledge. </td>
 						</div>
 						<div style="width:164mm;float:left;clear:none;">
 							<div style="width:169mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;border-left:1px;">
-								<div class="styLNDesc" style="height:9mm;width:49mm;padding-top:0mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm">
+								<div class="styLNDesc" style="height:8mm;width:49mm;padding-top:0mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm">
 								  Print/Type preparer's name<br/>
 									<xsl:call-template name="PopulateText">
 										<xsl:with-param name="TargetNode" select="$RtnHdrData/Preparer/Name"/>
 										<xsl:with-param name="BackupName">$RtnHdrDataPreparerName</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:9mm;width:50mm;padding-top:0mm;border-right:1 solid black;padding-left:1mm;">
+								<div class="styLNDesc" style="height:8mm;width:50mm;padding-top:0mm;border-right:1 solid black;padding-left:1mm;">
 								Preparer's signature
 							</div>
-								<div class="styLNDesc" style="height:9mm;width:15mm;border-right:1 solid black;padding-top:0mm;padding-left:1mm">Date <br/>
+								<div class="styLNDesc" style="height:8mm;width:15mm;border-right:1 solid black;padding-top:0mm;padding-left:1mm">Date <br/>
 									<xsl:call-template name="PopulateReturnHeaderPreparer">
 										<xsl:with-param name="TargetNode">DatePrepared</xsl:with-param>
 										<xsl:with-param name="BackupName">$RtnHdrDataPreparerDatePrepared</xsl:with-param>
 									</xsl:call-template>
 								</div>
-								<div class="styLNDesc" style="height:9mm;width:18mm;
+								<div class="styLNDesc" style="height:8mm;width:18mm;
 								border-right:1 solid  black;padding-top:.5mm;padding-bottom:0mm;padding-left:1mm;">
 									<label>
 										<xsl:call-template name="PopulateLabel">
@@ -546,7 +572,7 @@ has any knowledge. </td>
 											<xsl:with-param name="BackupName">$RtnHdrDataPreparerSelfEmployed</xsl:with-param>
 										</xsl:call-template>
 										Check 
-										<input class="styCkbox" type="checkbox" style="width:4mm;">
+										<input class="styCkbox" type="checkbox" alt="self-employed" style="width:4mm;">
 											<xsl:call-template name="PopulateCheckbox">
 												<xsl:with-param name="TargetNode" select="$RtnHdrData/Preparer/SelfEmployed"/>
 												<xsl:with-param name="BackupName">$RtnHdrDataPreparerSelfEmployed</xsl:with-param>
@@ -579,8 +605,8 @@ has any knowledge. </td>
 								</div>
 							</div>
 							<div style="width:169mm;float:left;clear:none;border-style:solid;border-color:black;border-width:0px 0px 1px 0px;">
-								<div class="styLNDesc" style="height:6mm;width:126.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
-									<span class="styGenericDiv" style="">Firm's name 
+								<div class="styLNDesc" style="height:auto;width:126.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
+									<span class="styGenericDiv" >Firm's name 
 									<span style="width:2.2mm;"/>
  <img src="{$ImagePath}/8866_Bullet_Md.gif" alt="bullet image pointing to right"/>
 										<span style="width:4px;"/>
@@ -614,9 +640,9 @@ has any knowledge. </td>
 									</xsl:if>
 								</div>
 							</div>
-							<div style="width:164mm;float:left;clear:none;">
+							<div style="width:164mm;float:left;clear:none;height:7mm">
 								<div class="styLNDesc" style="width:126.5mm;border-right:1 solid black;border-left:1 solid black;padding-left:1mm;">
-									<div class="styGenericDiv" style="padding-right:.5mm;">Firm's address 
+									<div class="styGenericDiv" style="padding-right:.5mm;height:9mm">Firm's address 
   <img src="{$ImagePath}/8866_Bullet_Md.gif" alt="bullet image pointing to right"/>
 									</div>
 									<div class="styGenericDiv" style="padding-right:.5mm;">
@@ -669,7 +695,7 @@ has any knowledge. </td>
 										</xsl:if>
 									</div>
 								</div>
-								<div class="styLNDesc" style="width:32mm;padding-left:1mm;"> Phone no. <br/>
+	<div class="styLNDesc" style="width:32mm;padding-left:1mm;"> Phone no. <br/>
 						
 							<xsl:call-template name="PopulateReturnHeaderPreparer">
 										<xsl:with-param name="TargetNode">Phone</xsl:with-param>
@@ -741,7 +767,7 @@ has any knowledge. </td>
           </xsl:attribute>
         
             <xsl:choose>
-              <xsl:when test="$part4Count &gt; 1and position() &lt; $part4Count">
+              <xsl:when test="$part4Count &gt; 1 and position() &lt; $part4Count">
                 <td class="styTableCell" style="margin-left:2mm;width:139mm;border-color:black;border-left:none;border-right-width:1px;text-align:left;padding-left:4mm;">
                   <xsl:call-template name="PopulateText">
                     <xsl:with-param name="TargetNode" select="NameOfPassThroughEntity/BusinessNameLine1" />
@@ -870,7 +896,7 @@ has any knowledge. </td>
           file Form 8866 for an earlier year, enter adjusted taxable 
           income for the prior years from Form 8866, line 3, for the 
           most recent recomputation year that affects the prior years
-          <span class="styDotLn" style="float:none;">..............</span>
+      <!--<span class="styDotLn" style="float:none;">.....</span>-->
         </td>
           <td class="styTableCell" rowspan="1" style="width:29mm;text-align:center;font-weight:bold;border-color:black;">
            
@@ -1021,7 +1047,7 @@ has any knowledge. </td>
           See instructions and attach a schedule listing each
           separate property, unless you were an owner of an interest
           in a pass-through entity.<span style="width:3px;"/>
-               
+            <span class="styDotLn" style="float:none;">...</span>     
         </td>
                 
        <!-- <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;">
@@ -1104,8 +1130,8 @@ has any knowledge. </td>
       <tr>
         <td class="styTableCell" rowspan="1" style="width:6mm;text-align:center;vertical-align:top;font-weight:bold;border-color:black;border-right:none;border-bottom:none;padding-left:1mm;">3</td>    
         <td class="styTableCell" rowspan="1" style="width:81mm;text-align:justify;border-color:black;border-bottom:none;padding-right:1mm;padding-left:2mm;">
-          Adjusted taxable income for look-back purposes. Combine lines 1 and 2, If line 3 is a negative amount, see instructions.<span style="width:1px;"/>
-          <span class="styDotLn" style="float:none;">....</span>
+          Adjusted taxable income for look-back purposes. Combine lines 1 and 2. If line 3 is a negative amount, see instructions.<span style="width:1px;"/>
+          <span class="styDotLn" style="float:none;">......</span>
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black">
           <!-- If the seperated repeating data flag is not set -->
@@ -1141,7 +1167,7 @@ has any knowledge. </td>
         <td class="styTableCell" rowspan="1" style="width:81mm;text-align:justify;border-color:black;border-bottom:none;padding-right:1mm;padding-left:2mm;">
           Income tax liability on line 3 amount using tax rates in effect
           for the prior years (see instructions)
-          <span class="styDotLn" style="float:none;">...........</span>
+        <!--  <span class="styDotLn" style="float:none;">...........</span>-->
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;">
           <!-- If the seperated repeating data flag is not set -->
@@ -1181,7 +1207,7 @@ has any knowledge. </td>
           required to be reported on Form 8866, line 4, for the most
           recent recomputation year that affects the prior years
           <span style="width:1px;"/>
-          <span class="styDotLn" style="float:none;letter-spacing:3mm;">.........</span>
+          <span class="styDotLn" style="float:none;letter-spacing:3mm;">.......</span>
         </td>
         <td class="styTableCell" rowspan="1" 
         style="width:29mm;background-color:lightgrey;border-bottom-width:0mm">
@@ -1219,7 +1245,7 @@ has any knowledge. </td>
           Increase (or decrease) in tax for the prior years on which
           interest is due (or is to be refunded). Subtract line 5 from line 4.
           (<span style="font-weight:bold;">Pass-through</span><span style="font-weight:bold;"> entities:</span><span style="width:1mm;"/><span style="font-style:italic;">See instructions.</span>)
-          <span class="styDotLn" style="float:none;">....</span>
+          <span class="styDotLn" style="float:none;">.</span>
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;
         background-color:lightgrey;border-bottom-width:0mm">
@@ -1255,7 +1281,7 @@ has any knowledge. </td>
         <td class="styTableCell" rowspan="1" style="width:81mm;text-align:justify;border-color:black;border-bottom:none;padding-right:1mm;padding-left:2mm;padding-bottom:4mm;; padding-top: 1.75mm">
           Interest due on increase, if any, shown on line 6 (see
           instructions)
-          <span class="styDotLn" style="float:none;">.........</span>
+     <!--     <span class="styDotLn" style="float:none;">.........</span>-->
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;
         background-color:lightgrey;border-bottom-width:0mm">
@@ -1602,6 +1628,7 @@ has any knowledge. </td>
           See instructions and attach a schedule listing each
           separate property, unless you were an owner of an interest
           in a pass-through entity.
+         <span class="styDotLn" style="float:none;">........</span>
                
         </td>
                 
@@ -1662,7 +1689,8 @@ has any knowledge. </td>
       <tr class="styDepTblRow1">
         <td class="styTableCell" rowspan="1" style="width:6mm;text-align:center;vertical-align:top;font-weight:bold;border-color:black;padding-left:1mm;">3</td>    
         <td class="styTableCell" rowspan="1" style="width:81mm;text-align:justify;border-color:black;padding-right:1mm;padding-left:2mm;">
-          Adjusted taxable income for look-back purposes. Combine lines 1 and 2, if line 3 is a negative amount, see instructions.<span style="width:1px;"/>
+          Adjusted taxable income for look-back purposes. Combine lines 1 and 2, if line 3 is a  negative amount, see instructions.<span style="width:1px;"/>
+         <span class="styDotLn" style="float:none;">....</span> 
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;">
           <xsl:call-template name="PopulateAmount">
@@ -1692,6 +1720,7 @@ has any knowledge. </td>
         <td class="styTableCell" rowspan="1" style="width:81mm;text-align:justify;border-color:black;padding-right:1mm;padding-left:2mm;font-size:6pt;">
           Income tax liability on line 3 amount using tax rates in effect
           for the prior years (see instructions)
+          <span class="styDotLn" style="float:none;">.......</span>
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;">
           <xsl:call-template name="PopulateAmount">
@@ -1724,6 +1753,7 @@ has any knowledge. </td>
           required to file Form 8866 for an earlier year, enter the amount
           required to be reported on Form 8866, line 4, for the most
           recent recomputation year that affects the prior years
+          <span class="styDotLn" style="float:none;">........</span>
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;">
           <xsl:call-template name="PopulateAmount">
@@ -1755,7 +1785,7 @@ has any knowledge. </td>
           Increase (or decrease) in tax for the prior years on which
           interest is due (or is to be refunded). Subtract line 5 from line 4.
           (<span style="font-weight:bold;">Pass-through</span><span style="font-weight:bold;"> entities:</span><span style="width:1mm;"/><span style="font-style:italic;">See instructions.</span>)
-          
+       <span class="styDotLn" style="float:none;">...</span>   
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;">
           <xsl:call-template name="PopulateAmount">
@@ -1847,6 +1877,7 @@ has any knowledge. </td>
         <td class="styTableCell" rowspan="1" style="width:81mm;text-align:justify;border-color:black;padding-right:1mm;padding-left:2mm;">
           Interest to be refunded on decrease, if any, shown on
           line 6 (see instructions)
+          <span class="styDotLn" style="float:none;">......</span>
         </td>
         <td class="styTableCell" rowspan="1" style="width:29mm;text-align:right;vertical-align:bottom;border-color:black;">
           <div class="styGenericDiv" style="text-align:left;">

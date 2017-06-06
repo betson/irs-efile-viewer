@@ -1090,7 +1090,7 @@
 					</div>
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Page Break and Footer-->
-					<div class="pageEnd" style="width:187mm; height: 235mm; padding-top:1mm; clear: left; float: left;">
+					<div class="pageEnd" style="width:187mm; height: 8mm; padding-top:1mm; clear: left; float: left;">
 						<div style="float:left;">
 							<span class="styBoldText">
 								For Disclosure, Privacy Act, and Paperwork Reduction Act Notice, see instructions.
@@ -1105,6 +1105,7 @@
 							Cat. No. 11329W
 						</div>
 					</div>
+					<p style="page-break-before: always"/>
 					<!-- END Page Break and Footer-->
 					<!-- <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
 					<!-- Additonal Data Title Bar and Button -->
@@ -1211,6 +1212,22 @@
 							<xsl:with-param name="TargetNode" select="$Form1040EZData/RequestForExtensionAmt"/>
 							<xsl:with-param name="DescWidth" select="$TableWidth"/>
 						</xsl:call-template>
+						<xsl:if test="$Form1040EZData/ParentGuardianMinChldSgndByInd">
+							<xsl:call-template name="PopulateLeftOverCheckbox1040EZ">
+								<xsl:with-param name="Desc">Top Left Margin - Signed by Parent/Guardian of Minor Child Checkbox</xsl:with-param>
+								<xsl:with-param name="TargetNode" select="$Form1040EZData/ParentGuardianMinChldSgndByInd"/>
+								<xsl:with-param name="BackupName">Form1040EZDataParentGuardianMinChldSgndByInd</xsl:with-param>
+								<xsl:with-param name="DescWidth" select="$TableWidth"/>
+							</xsl:call-template>
+						</xsl:if>
+						<xsl:if test="$Form1040EZData/ParentGuardianNm">
+							<xsl:call-template name="PopulateLeftOverCheckbox1040EZ">
+								<xsl:with-param name="Desc">Top Left Margin - Name of Parent/Guardian of Minor Child Checkbox</xsl:with-param>
+								<xsl:with-param name="TargetNode" select="$Form1040EZData/ParentGuardianNm"/>
+								<xsl:with-param name="BackupName">Form1040EZDataParentGuardianNm</xsl:with-param>
+								<xsl:with-param name="DescWidth" select="$TableWidth"/>
+							</xsl:call-template>
+						</xsl:if>
 						<xsl:if test="$Form1040EZData/PowerOfAttorneySignedByInd">
 							<xsl:call-template name="PopulateLeftOverCheckbox1040EZ">
 								<xsl:with-param name="Desc">Top Left Margin - Signed by Power Of Attorney Checkbox</xsl:with-param>
@@ -1329,6 +1346,14 @@
 		<xsl:call-template name="LinkToLeftoverDataTableInline">
 			<xsl:with-param name="Desc">Top Left Margin - Protective Security ELC Record Indicator</xsl:with-param>
 			<xsl:with-param name="TargetNode" select="$Form1040EZData/ProtectiveSec108iELCRecordInd"/>
+		</xsl:call-template>
+		<xsl:call-template name="LinkToLeftoverDataTableInline">
+			<xsl:with-param name="Desc">Top Left Margin - Signed by Parent/Guardian of Minor Child</xsl:with-param>
+			<xsl:with-param name="TargetNode" select="$Form1040EZData/ParentGuardianMinChldSgndByInd"/>
+		</xsl:call-template>
+		<xsl:call-template name="LinkToLeftoverDataTableInline">
+			<xsl:with-param name="Desc">Top Left Margin - Name of Parent/Guardian of Minor Child</xsl:with-param>
+			<xsl:with-param name="TargetNode" select="$Form1040EZData/ParentGuardianNm"/>
 		</xsl:call-template>
 		<xsl:call-template name="LinkToLeftoverDataTableInline">
 			<xsl:with-param name="Desc">Top Left Margin - Power Of Attorney Signed By</xsl:with-param>

@@ -1034,7 +1034,7 @@ Log:
     <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2Txt" /></xsl:call-template>
   </xsl:if>
-  <!-- Only create line space for the City, State, and PostalCode if they exist-->
+  <!-- Only create line space for the City, State, and ForeignPostalCd if they exist-->
   <xsl:if test="$TargetNode/CityNm != '' or $TargetNode/StateAbbreviationCd != '' or $TargetNode/ZIPCd != ''">
     <br/>
     <span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
@@ -1072,7 +1072,7 @@ Log:
   <xsl:if test="$addressLine2 != ''">
     <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2Txt" /></xsl:call-template>
   </xsl:if>
-  <!-- Only create line space for the City, State, PostalCode if they exist-->
+  <!-- Only create line space for the City, State, ForeignPostalCd if they exist-->
   <xsl:if test="$TargetNode/CityNm != '' or $TargetNode/ProvinceOrStateNm != '' or $TargetNode/ForeignPostalCd != ''">
     <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
     <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/CityNm" /></xsl:call-template>
@@ -1479,13 +1479,13 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
         </xsl:when>
             <xsl:when test="$TargetNode = 'SSN' or $TargetNode = 'PrimarySSN' ">
 				<xsl:if test="$RtnHdrData/Filer//PrimarySSN or $RtnHdrData/Filer//SSN">
-				<xsl:call-template name="PopulateSSN">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//*[name(.)=$TargetNode]"/>
-				</xsl:call-template>
-				<!-- If the EIN (TIN) has changed and the form wants to show a delta image (set using the EINChanged parameter, show the delta image.-->
-				<xsl:if test="$TaxpayerPrint = 'false' or $TaxpayerPrint = '0'">
-					<xsl:if test="($EINChanged = 'true') and ((/AppData/Parameters/TINChanged='true') or (/AppData/Parameters/TINChanged='1'))">
-						<span style="width:2px;"/>
+					<xsl:call-template name="PopulateSSN">
+						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//*[name(.)=$TargetNode]"/>
+					</xsl:call-template>
+					<!-- If the EIN (TIN) has changed and the form wants to show a delta image (set using the EINChanged parameter, show the delta image.-->
+					<xsl:if test="$TaxpayerPrint = 'false' or $TaxpayerPrint = '0'">
+						<xsl:if test="($EINChanged = 'true') and ((/AppData/Parameters/TINChanged='true') or (/AppData/Parameters/TINChanged='1'))">
+							<span style="width:2px;"/>
 						<img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="Primary SSN has changed" title="Primary SSN has changed"/>
 						</xsl:if>
 					</xsl:if>
@@ -1772,7 +1772,7 @@ Log:
 -->
 <xsl:template name="PopulateReturnHeaderOfficer">
   <xsl:param name="TargetNode" select="."/>  
-  <xsl:param name="BackupName" />    
+  <xsl:param name="BackupName" />     
   <xsl:if test="$Location='RET'"> <!-- Indicating the element needs to be pulled from consolidated return header-->
     <xsl:choose>
       <xsl:when test="$TargetNode = 'TaxpayerPIN' ">
@@ -2049,7 +2049,7 @@ Log:
   <xsl:param name="TargetNode" select="."/> 
   <xsl:param name="BackupName" />    
   <xsl:if test="$Location = 'RET' ">
-    <xsl:choose>
+      <xsl:choose>
       <xsl:when test="$TargetNode ='SSN'">
         <xsl:if test="$RtnHdrData/PreparerPersonGrp/SSN">
           <xsl:call-template name="PopulateSSN">
@@ -2118,7 +2118,7 @@ Log:
           <xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerPersonGrp//*[name(.)=$TargetNode]" />
         </xsl:call-template>
       </xsl:otherwise>      
-    </xsl:choose>    
+    </xsl:choose>
   </xsl:if>
 </xsl:template>
   
@@ -2273,7 +2273,7 @@ Log:
           ((submissionType == '943PR') &amp;&amp; (myPrintName == 'IRS943_943PR'))) {
               var language = '<xsl:value-of select="/AppData/Parameters/Language" />';
               myPrintName = myPrintName + language;
-      }
+      } 
 
       function locateError(thisID) {
         var elementFound = false;          
@@ -2345,7 +2345,7 @@ Log:
     <link rel="stylesheet" type="text/css" name="BodyStyleSheet" href="{$CSSPath}/body.css"/>
     <link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>
 
-  <!--</xsl:if>-->
+ <!-- </xsl:if>-->
 
 </xsl:template>
 
@@ -2364,9 +2364,9 @@ Log:
 -->
 <xsl:template name="GlobalStylesDep">  
   <!-- If the Print parameter is empty -->
- <!-- <xsl:if test="not(string($Print))">-->
+  <!--<xsl:if test="not(string($Print))">-->
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
- <!-- </xsl:if> --> 
+  <!--</xsl:if>  -->
 </xsl:template>
 
 
@@ -2637,8 +2637,6 @@ Log: - Mike Farrell - This is a Modification of the original by Charles Moore
 </xsl:if>
 <!--/xsl:if-->
 </xsl:template>
-
-
   
 <!--
 ***************************************************************************************************************************************************************
@@ -2676,6 +2674,38 @@ Log:
     <!--/xsl:if-->
   </xsl:template>
 
+<!--
+***************************************************************************************************************************************************************
+Name:           LinkToLeftoverCheckboxDataTableInline
+Description:    Template to handle left-over data with checkbox values with image that is displayed inline using absolute position
+Req Param:  
+Opt Param:   
+Called By:     
+Calls:            
+Log:
+***************************************************************************************************************************************************************
+-->
+  <xsl:template name="LinkToLeftoverCheckboxDataTableInline">
+    <xsl:param name="Desc"></xsl:param>
+    <xsl:param name="TargetNode"></xsl:param>    
+    <xsl:param name="TabOrder">1</xsl:param>
+
+    <!-- do nothing if for printing -->
+    <!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Chris Jung 11/24/04-->
+      <xsl:if test="($TargetNode or $TargetNode!='')">                  
+          <xsl:choose>
+            <xsl:when test="count($TargetNode) &gt; 1">
+              <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" title="See additional data table" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:if test="($TargetNode='X')">
+                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: Yes" title="{$Desc}: Yes" TabIndex="{$TabOrder}" style="cursor:pointer;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+              </xsl:if>
+           </xsl:otherwise>
+          </xsl:choose>        
+      </xsl:if>
+    <!--/xsl:if-->
+  </xsl:template>
 
 <!--
 ***************************************************************************************************************************************************************
@@ -3661,7 +3691,7 @@ Log:
           </xsl:when>
           <xsl:otherwise>  
             <xsl:choose>
-             <xsl:when test="contains($targetNode,'.')">
+              <xsl:when test="contains($targetNode,'.')">
                     <xsl:value-of select="concat(format-number(number(substring-before($targetNode,'.')), '#,###'),'.',substring-after($targetNode,'.'))"/> 
              </xsl:when>
               <xsl:otherwise>
@@ -3781,7 +3811,7 @@ Log:            2004-09-21 - Changed "$Print != 'taxpayer'" to "$TaxpayerPrint =
               <xsl:if test="($TaxpayerPrint = 'false' or $TaxpayerPrint = '0')"> <!-- If parameter TaxpayerPrint is false or '0', then set these attributes-->     
                 <xsl:if test="($chxBoxType != 'Enumerated') or ($chxBoxType = 'Enumerated' and ($displayedCheckboxValue = $argVal or $displayedCheckboxValue = $latestNode))">
                   <xsl:attribute name="style">
-                    border:1px solid <xsl:value-of select="$UserPref/View/ChangedFieldBgColor"/>                          
+                    outline:2px solid <xsl:value-of select="$UserPref/View/ChangedFieldBgColor"/>                          
                   </xsl:attribute>                
                   <xsl:attribute name="title">  
                     <xsl:choose>
