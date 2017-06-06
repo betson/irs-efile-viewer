@@ -6185,7 +6185,7 @@ contains a response or note to any line in this Part VIII
                <td class="styIRS990VTImageBox" style="width:10mm;" valign="middle">
                   <xsl:attribute name="rowspan">
                   <xsl:choose>
-                  <xsl:when test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 5">
+                  <xsl:when test="count($Form990Data/ProgramServiceRevenueGrp) &lt; 5">8
           </xsl:when>
           <xsl:otherwise>
           <xsl:value-of select="count($Form990Data/ProgramServiceRevenueGrp) + 3"/>
@@ -6196,7 +6196,7 @@ contains a response or note to any line in this Part VIII
                 </td>
                 <td class="styLNLeftNumBox" style="width:5mm;height:auto;"/>
                 <td class="styGenericDiv" style="width:47mm;height:auto;display:inline;padding-left:0mm;border-style: solid; border-color:black;border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;"/>
-               <td class="styTableCell" style="width:25mm;height:4.5mm;border-left-width:1px;text-align:center;float:right;border-top-width:1px;">Business Code</td>
+               <td class="styTableCell" style="width:25mm;height:4.5mm;border-left-width:1px;text-align:center;border-top-width:1px;">Business Code</td>
                 <td class="styTableCell" style="width:25mm;height:4.5mm;border-top-width:1px;background-color:lightgrey;">
                   <span class="styTableCellPad"/>
                 </td>
@@ -6231,7 +6231,7 @@ contains a response or note to any line in this Part VIII
                      </span>
                   </td>
                   
-                   <td class="styTableCell" style="width:25mm;height:9.5mm;border-style: solid; border-color: black;border-top-width: 0px;border-left-width:1px;text-align:center;float:right;">
+                   <td class="styTableCell" style="width:25mm;height:4.5mm;border-style: solid; border-color: black;border-top-width: 0px;border-left-width:1px;text-align:center;">
                     <span class="styTableCellPad"/>
                     <xsl:call-template name="PopulateText">
                       <xsl:with-param name="TargetNode" select="BusinessCd"/>
@@ -6399,10 +6399,10 @@ contains a response or note to any line in this Part VIII
               <!-- 2f -->
               <tr>
                 <td class="styLNLeftNumBox" style="width:4mm;height:4.5mm;padding-top:.3mm;padding-left:2.5mm;">f</td>
-                <td class="styGenericDiv" colspan="2" style="width:47mm;height:auto;float:leftt;">All other program service revenue.
+                <td class="styGenericDiv" colspan="2" style="width:47mm;height:auto;float:left;">All other program service revenue.
    
                 </td>
-               <td class="styTableCell" style="width:25mm;height:4.5mm;border-left-width:1px;text-align:center;float:right;">
+               <td class="styTableCell" style="width:25mm;height:4.5mm;border-left-width:1px;text-align:center;">
                   <span class="styTableCellPad"/>
                 </td>
                 <td class="styTableCell" style="width:25mm;height:4.5mm;;font-size:6pt;padding-top:1mm;">
