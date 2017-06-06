@@ -1,0 +1,612 @@
+body {   /* Global Styles */
+	width: auto; height: auto;
+	color: black; background-color: white;
+	font-family: verdana, arial, sans-serif;
+	font-size: 10pt; font-weight: normal; font-style: normal;
+	line-height: normal;
+	text-align: left; text-indent: 0px; text-decoration: none;
+	vertical-align: middle;
+	margin-top: 6px; margin-bottom: 6px; margin-left: 6px; margin-right: 6px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+	border-style: none; border-color: silver;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
+	float: none; clear: none;
+	display: block; cursor: auto; white-space: normal;
+}
+.UserTypeLbl {   /* User Type Label */
+	color: darkorange;
+	vertical-align: middle;
+	font-size: 14pt; font-weight: bold; font-style: normal;
+}
+.HSpacer {   /* Medium Width Horizontal Spacer */
+	width: 10px;
+}
+.VBar {   /* Vertical bar before and after user type title */
+	background-color: darkorange;
+}
+.FormFieldLbl {   /* Form Field Label */
+	height: 18px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: bold;
+	text-align: right;
+	padding-right: 2px;
+}
+.FormFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+}
+.FormFieldCBLbl {   /* Form Field Label - Checkbox */
+	height: 10px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 9pt; font-weight: normal;
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+	cursor: hand;
+}
+.FormFieldCB {   /* Form Field - Checkbox */
+	vertical-align: top;
+	cursor: hand;
+}
+.FormFieldBtn {   /* Form Field - Button */
+	height: 25px;
+	width: 88px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 9pt; font-weight: bold;
+	text-align: center;
+	cursor: hand;
+}
+.FormFieldBtnSmall {   /* Form Field - Small Button */
+	height: 18px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 7pt; font-weight: bold;
+	text-align: center;
+	vertical-align: top;
+	cursor: hand;
+}
+.FormFieldRadioLbl {   /* Form Field Label - Radio */
+	font-family: verdana, arial, sans-serif;
+	font-size: 10pt; font-weight: normal;
+	text-align: left;
+	vertical-align: top;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+	cursor: hand;
+}
+.FormFieldRadio {   /* Form Field - Radio */
+	vertical-align: top;
+	cursor: hand;
+}
+.FormFieldPrintBtn {   /* Form Field - Print Button */
+	height: 6mm;
+	width: 25px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 9pt; font-weight: bold;
+	text-align: center;
+	cursor: hand;
+	background-image:url(/mef/rrdprd/common/images/printer.gif);
+	background-position:center;
+	background-repeat:no-repeat;
+}
+
+.SearchForLbl {   /* Search For Label */
+	font-family: verdana, arial, sans-serif;
+	font-size: 10pt; font-weight: bold;
+	text-align: left;
+	vertical-align: top;
+}
+
+/* 
+Search Groups Title 
+*/
+.SearchGrpsTitle {   /* Search Groups Title */
+	height: 15px;
+	font-family: verdana, arial, sans-serif; font-size: 10pt;
+	vertical-align: bottom;
+	font-weight: bold;
+	border-style: solid; border-color: khaki;
+	border-top-color: khaki; border-bottom-color: DarkKhaki; border-left-color: khaki; border-right-color: DarkKhaki;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+}
+.SearchByLblBox {
+	height: 22px;
+    width: 85px;
+	font-family: verdana, arial, sans-serif; font-size: 10pt; font-weight: bold;
+	vertical-align: center;
+	border-style: solid;
+	border-top-color: khaki; border-bottom-color: DarkKhaki; border-left-color: khaki; border-right-color: DarkKhaki;
+	border-top-width: 0px; border-bottom-width: 2px; border-left-width: 0px; border-right-width: 0px;
+}
+.SearchGrpBlankTabBox {
+	height: 32px;
+	border-style: solid;
+	border-top-color: beige; border-bottom-color: DarkKhaki; border-left-color: beige; border-right-color: DarkKhaki;
+	border-top-width: 0px; border-bottom-width: 2px; border-left-width: 0px; border-right-width: 0px;
+}
+.SearchGrpFolderTabUp {   /* Search Group Tab - selected */
+	height: 32px;
+    width: 80px;
+	color: black; background-color: khaki;
+	font-family: verdana, arial, sans-serif; font-size: 10pt;
+	font-weight: bold;
+	text-align: center;
+	border-style: solid;
+	border-top-color: beige; border-bottom-color: DarkKhaki; border-left-color: beige; border-right-color: DarkKhaki;
+	border-top-width: 2px; border-bottom-width: 0px; border-left-width: 2px; border-right-width: 2px;
+	padding-top: 5px;
+	cursor: hand;
+}
+.SearchGrpFolderTabDn {   /* Search Group Tab - not selected */
+	height: 22px;
+    width: 80px;
+	color: black; background-color: PaleGoldenrod;
+	font-family: verdana, arial, sans-serif; font-size: 10pt;
+	font-weight: normal;
+	text-align: center;
+	border-style: solid;
+	border-top-color: beige; border-bottom-color: DarkKhaki; border-left-color: beige; border-right-color: DarkKhaki;
+	border-top-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-right-width: 2px;
+	cursor: hand;
+}
+.SearchGrpFolderTabSpacer {   /* Search Group Tab Spacer */
+	height: 22px;
+	border-style: solid; border-color: khaki;
+	border-top-color: beige; border-bottom-color: DarkKhaki; border-left-color: beige; border-right-color: DarkKhaki;
+	border-top-width: 0px; border-bottom-width: 2px; border-left-width: 0px; border-right-width: 0px;
+}
+.SearchGrpFolderBorder {   /* Search Group Folder Border */
+	height: 35px;
+	border-style: solid;
+	border-top-color: beige; border-bottom-color: DarkKhaki; border-left-color: DarkKhaki; border-right-color: DarkKhaki;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 2px; border-right-width: 2px;
+}
+.SearchGrpFolderBorderBG {   /* Search Group Folder Border Background */
+	height: 13px;
+	background-color: khaki;
+}
+.SearchGrpFolder {   /* Search Group Folder Border */
+	background-color: khaki;
+	border-style: solid;
+	border-top-color: beige; border-bottom-color: DarkKhaki; border-left-color: DarkKhaki; border-right-color: DarkKhaki;
+	border-top-width: 0px; border-bottom-width: 2px; border-left-width: 2px; border-right-width: 2px;
+}
+.styGetReturnBtnUp {   /* Get Return button up */
+	width: 130px; height: 23px;
+	color: black; background-color: orange;
+	font-family: verdana, arial, sans-serif;
+	font-size: 10pt; font-weight: bold;
+	text-align: center; vertical-align: middle;
+	border-style: outset; border-color: orange;
+	border-top-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-right-width: 3px;
+	cursor: default;
+}
+.styGetReturnBtnDn {   /* Get Return button down */
+	width: 130px;
+	color: black; background-color: NavajoWhite;
+	font-family: verdana, arial, sans-serif;
+	font-size: 10pt; font-weight: bold;
+	text-align: center;
+	border-style: inset; border-color: NavajoWhite;
+	border-top-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-right-width: 3px;
+	cursor: default;
+}
+.SearchResultsHeadline {   /* Message line displaying numbe of matching results */
+	font-size: 13pt; font-weight: bold;
+	text-align: left;
+}
+.styFindResultsTbl {   /* Restults Table */
+	width: 99%;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	text-align: center;
+	background: black;
+	border-style: ridge; border-color: #95c0ff;
+	border-top-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-right-width: 4px;
+}
+.frameBorder { /* Global Styles */
+	border-style: solid;
+	border-color: silver;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+}
+/*
+</style>
+
+<style type="text/css" id="TableColors">
+*/
+body{}
+
+.styFindResultsHdr {   /* Results Table Header */
+	color: black;
+	background-color: #95c0ff;
+}
+.styTblRow1 {   /* Table Row 1 */
+	background-color: #d6ecee;
+	cursor: hand;
+}
+.styTblRow2 {   /* Table Row 2 */
+	background-color: #f3fafb;
+	cursor: hand;
+}
+.styNoClickTblRow1 {   /* Table Row 1 with no hand */
+	background-color: #d6ecee;
+}
+.styNoClickTblRow2 {   /* Table Row 2 with no hand */
+	background-color: #f3fafb;
+}
+.styTblLeftColCell {  /* Table Left Col Cell */
+      text-align:right;
+      padding-right:4px;
+}
+.styTblRightColCell {  /* Table Right Col Cell */
+      text-align:left;
+      padding-left:4px;
+}
+.styTblRowHighlight {   /* Table Row Highlight */
+	background-color: gold;
+	cursor: hand;
+}
+.styMsgTblRowClickedHighlight {   /* Message Table Row Highlight After Clicked */
+/*	background-color: rgb(255, 227, 107); */
+       background-color: gold;
+	cursor: hand;
+}
+.styMsgTblClickableRowHighlight { /* Highlighted Row in a Message Table that can be Clicked */
+	background-color: #FFE36B;
+	cursor: hand;
+}
+
+.styMsgTblRowHighlight { /* Highlighted Row in a Message Table that cannot be Clicked */
+	background-color: #FFE36B;
+	cursor: arrow;
+}
+.styErrorTbl {   /* Error Table */
+      	width: 100%;
+      	background-color: black;
+      	font-family: verdana, arial, sans-serif;
+      	font-size	: 9pt;
+      	font-weight: normal;
+      	text-align: center;
+      	border-style: ridge; border-color: Crimson;
+      	border-top-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-right-width: 4px;
+      	border-collapse:collapse;
+}
+.styErrorTblHdr {   /* Error Table Header */
+      	display:table-header-group;
+      	color: white;
+      	background-color: Crimson;
+      	cursor: default;
+      	vertical-align: top;
+}
+.styErrorTblRowError {   /* Error Table Row for Error */
+      	background-color: MistyRose;
+      	cursor: default;
+      	vertical-align: top;
+}
+.styErrorTblRowAlert {   /* Error Table Row for Alert */
+      	background-color: LightYellow;
+      	cursor: default;
+      	vertical-align: top;
+}
+.styErrorTblCell {   /* Error Table Cell */
+      	padding-top: 4px; padding-bottom: 4px; padding-left: 4px; padding-right: 4px;
+      	border:1 solid black;	
+}
+
+/*
+<style type="text/css" id="TransErrorStyles">
+*/
+.styFieldSet {   /* Field Set */
+	border-style: ridge; border-color: crimson;
+	border-top-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-right-width: 4px;
+}
+.styFieldSetLegend {   /* Field Set Legend */
+	color: white; background-color: crimson;
+	font-size: 10pt; font-weight: bold;
+	text-align: center;
+	border-style: none;
+	border-top-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;
+}
+.styDataTblPlain {   /* Data Table w/ no borders */
+	width: 100%;
+	font-family: verdana, arial, sans-serif;
+	font-size: 10pt; font-weight: normal;
+	text-align: left;
+	border-style: none; border-color: rgb(140, 218, 255);
+	border-top-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-right-width: 4px;
+}
+.styRowLblErr {   /* Data Field Label for Error */
+	width: 25%;
+	font-weight: bold;
+	text-align: right; vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 5px; padding-right: 5px;
+}
+.styRowValErr {   /* Data Field Value for Error*/
+	vertical-align: top;
+	padding-top: 2px; padding-bottom: 2px; padding-left: 5px; padding-right: 5px;
+}
+
+a { color:black; text-decoration:none;}
+
+/* Styles for the Search Results Table */
+.styResultsColumnHeadingClk {
+    font-family: verdana, arial, sans-serif;
+    font-size: 8pt; font-weight: normal;
+    text-align: center;
+    border-style: none; border-color: black;
+    border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+    padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+    color: black;
+    background-color: #95c0ff;
+    vertical-align: middle;
+    cursor: hand;
+}
+.styResultsBtnClkClass {
+    font-family: verdana, arial, sans-serif;
+    font-size: 8pt; font-weight: normal;
+    text-align: left;
+    width:150px;
+    color: black;
+    background-color:cyan;
+    border-style: none; border-color: black;
+    border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+    padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+    vertical-align: middle;
+    cursor: hand;
+}
+
+.RqInfoFieldSetLbl 	{ /* Field Set Label */
+	height:65px;
+	width:684px;
+	border-width:2px;
+	border-color:white;
+	border-style:"groove";
+}
+
+.FieldSetOneRowLbl 	{ /* Field Set Label */
+	height:65px;
+	width:684px;
+	border-width:2px;
+	border-color:white;
+	border-style:"groove";
+}
+
+.FieldSetTwoRowsLbl 	{ /* Field Set Label */
+	height:100px;
+	width:684px;
+	border-width:2px;
+	border-color:white;
+	border-style:"groove";
+}
+
+.FieldSetThreeRowsLbl 	{ /* Field Set Label */
+	height:135px;
+	width:684px;
+	border-width:2px;
+	border-color:white;
+	border-style:"groove";
+}
+				   	
+.EINOnlyLegendLbl 	{ /* Field Set Legend Label */
+	height: 5px;
+	border-width:1px;
+	border-style:"NONE";
+	font-size: 8pt; font-weight: bold;
+}
+
+.SSNOnlyLegendLbl 	{ /* Field Set Legend Label */
+	height: 5px;
+	border-width:1px;
+	border-style:"NONE";
+	font-size: 8pt; font-weight: bold;
+}
+
+.ReqInfoLegendLbl 	{ /* Field Set Legend Label */
+	height: 5px;
+	border-width:1px;
+	border-style:"NONE";
+	font-size: 8pt; font-weight: bold;
+}
+.InfoGroupsDivLabel	{
+	display:block;
+	margin-top:10px;
+	margin-left:15px;
+}
+
+.GroupBoxRowDivLabel {
+	display:block;
+	margin-top:15px;
+	margin-left:15px
+}
+
+.styRcvDateRangeSpan {
+	border-color:white;
+	border-width:2px;
+	border-style:groove;
+	padding-top:4px;
+	padding-bottom:4px;
+	padding-left:2px;
+	padding-right:2px;
+}
+
+.stySelList {   /* Form Selection List */
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	vertical-align: middle;
+	cursor: default;
+
+.styFldLabel {   /* Field Label */
+	font-family: verdana, arial, sans-serif; font-size: 8pt;
+	font-weight: bold; color: black;
+	vertical-align: middle;
+	border-style: none; border-color: black;
+	border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;
+}
+
+.styRowFieldsSeparatorSpace { /* Used by the Span Elements to add separation space between two consecutive fields */
+	width:15px;
+}
+.styFldLabelDropDown {   /* Field Label */
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt;
+	height:19px;
+	vertical-align: top;
+	border-style: none; border-color: black;
+	border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px;
+}
+
+.searchPagesFormElement { /* Used by the form element in the search pages */
+	margin-bottom:12px;
+}
+
+.searchPagesTopLevelDivElement {
+	margin-top:12px;
+}
+
+.styInfoGroupRowDiv { /* Used by the Div Element that encompasses each row in an information group */
+	display:block;
+	margin-top:10px;
+}
+
+.styInfoGroupFieldsSeparator { /* Used to set the width of the some <span> elements used to separate fields in a row */
+	width:17px;
+}
+
+.EINFormFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:76px;
+}
+
+.ETINFormFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:48px;
+}
+
+.EFINFormFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:55px;
+}
+
+.DLNFormFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:110px;
+}
+
+.SSNFormFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:76px;
+}
+
+.GTXFormFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:153px;
+}
+
+.TaxPeriodYearFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:42px;
+}
+
+.TaxPeriodMonthFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:27px;
+}
+
+.styDateFieldText {   /* Form Field - Text Input */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	width:79px;
+}
+
+.styCalendar { /* Style for Calendar for Rcvd Date, Rcvd Date From, To etc. */
+	width:27px;
+	height:22px;
+	vertical-align:top;
+	cursor:hand;
+}
+
+.styDivFormButtons { /* Style for the <DIV> Element that surrounds the 'Find' and 'Reset' Buttons */
+	text-align:center;
+	margin-top:12px;
+}
+
+.styFooter {   /* Footer */
+	font-family: verdana, arial, sans-serif;
+	font-size: 12pt;
+}
+
+.accessDeniedText{	/* style for access denied text  */
+	height: 19px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 12pt; font-weight: bold;
+}
+
+.accessDeniedBtn {   /* style for access denied Button */	
+	height: 25px;
+	width: 88px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 9pt; font-weight: bold;
+	text-align: center;
+	cursor: hand;
+}
+
+.sty508LabelButton {  /* style for field label on a modal window that is implemented as a button to meet Section 508 need */
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: normal;
+	text-align: right;
+	border-style: none; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 0px; padding-right: 0px;
+	color: black;
+	background-color: #d6ecee;
+	vertical-align: middle;
+}
+
+/* Below are used for displaying the copy menu when right-clicking in a modal window  */
+#modalWinContextMenu { /* div named "menu" which contains the context menu when right clicking */
+	position: absolute;
+	padding: 3px 5px;
+	font-family: verdana, "MS Sans Serif", sans-serif;
+	font-size: 8pt;
+	color: MenuText;
+	background-color: Menu;
+	border: outset 2px ThreeDHighlight;
+	border-bottom-color: ThreeDDarkShadow;
+	border-right-color: ThreeDLightShadow;
+}
+
+.menuItem {
+	margin: 2px 0;
+	padding: 2px 3px;
+}
+
+.menuDisabled {
+	color: GrayText;
+}
+
+.menuItemSelected {
+	margin: 2px 0;
+	padding: 2px 3px;
+	background-color: Highlight;
+}
+
+
+
