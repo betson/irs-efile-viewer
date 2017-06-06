@@ -28,6 +28,7 @@
 				<script language="JavaScript" src="{$ScriptPath}/FormDisplay.js" type="text/javascript"/>
 				<xsl:call-template name="InitJS"/>
 				<style type="text/css">
+			    <!--  Updated 10/02/2014 WT: Per NCFB-1 Final Style Sheet Review - PACKAGE 1 for R9.5_D4   -->
 					<!--  Print Statement -->
 					<xsl:if test="not($Print) or $Print=''">
 						<xsl:call-template name="IRS1125EStyle"/>
@@ -61,7 +62,7 @@
 								  Attach to Form 1120, 1120-C, 1120-F, 1120-REIT, 1120-RIC , or 1120S.
 							</div>
 							<div style="height:5.5mm;font-size:7pt;padding-top:.5mm;border:0px;" class="styFST">
-								<img src="{$ImagePath}/1125E_Bullet.gif" alt="Bullet Image"/>Information about Form 1125E and its separate instructions is at
+								<img src="{$ImagePath}/1125E_Bullet.gif" alt="Bullet Image"/>Information about Form 1125-E and its separate instructions is at
 								<a href="http://www.irs.gov/form1125e" title="Link to IRS.gov">
 									<i>www.irs.gov/form1125e.</i>
 								</a>
@@ -104,7 +105,7 @@
 					<div style="width:187mm;" class="styTBB">
 						<div style="height:4mm;padding-top:2mm;">
 							<b>Note. </b>
-							Complete Form 1125-E only if total receipts are $500,000 or more.   See instructions for definition of total receipts.
+							Complete Form 1125-E only if total receipts are $500,000 or more. See instructions for definition of total receipts.
 						</div>
 						<div class="styGenericDiv" style="float:right;">
 							<xsl:call-template name="SetDynamicTableToggleButton">

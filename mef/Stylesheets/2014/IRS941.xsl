@@ -3,7 +3,7 @@
 	<!ENTITY nbsp "&#160;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-	<xsl:include href="PopulateTemplate.xsl"/>
+	<xsl:include href="PopulateTemplate_ETEC.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
 	<xsl:include href="AddOnTable.xsl"/>
@@ -1238,9 +1238,14 @@
 									<xsl:with-param name="TargetNode" select="$RtnHdrData/SignatureDocumentGrp/IndividualAuthorizationCd"/>
 								</xsl:call-template>
 							</xsl:if>
-							<xsl:if test="$RtnHdrData/PractitionerPINGrp/TaxpayerTitle">
+							<xsl:if test="$RtnHdrData/PractitionerPINGrp/Title">
 								<xsl:call-template name="PopulateText">
-									<xsl:with-param name="TargetNode" select="$RtnHdrData/PractitionerPINGrp/TaxpayerTitle"/>
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/PractitionerPINGrp/Title"/>
+								</xsl:call-template>
+							</xsl:if>
+							<xsl:if test="$RtnHdrData/ReportingAgentPINGrp/RAPINEnteredByCd">
+								<xsl:call-template name="PopulateText">
+									<xsl:with-param name="TargetNode" select="$RtnHdrData/ReportingAgentPINGrp/RAPINEnteredByCd"/>
 								</xsl:call-template>
 							</xsl:if>
 						</div>

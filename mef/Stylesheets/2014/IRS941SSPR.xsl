@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
-  <xsl:include href="PopulateTemplate.xsl"/>
+  <xsl:include href="PopulateTemplate_ETEC.xsl"/>
   <xsl:include href="CommonPathRef.xsl"/>
   <xsl:include href="AddHeader.xsl"/>
   <xsl:include href="AddOnTable.xsl"/>
@@ -1564,7 +1564,8 @@
 								<span class="styOMB" style="font-size:7pt;text-align:right;border:0px;float:right;padding-bottom:0mm;">OMB No. 1545-0029</span>
 							</div>
 						</div>
-						
+					</div>
+					<div style="width:187mm;float:none;clear:both;">	
 						<div class="styBB" style="float:left;border:black solid 1px; padding-top:1mm; padding-left:2mm; padding-right:2mm;width:122mm;">
 							<div style="width:118mm;padding-top:0mm;">
 								<span style="float:left;padding-right:5mm;font-size:6pt;font-family:Arial Narrow;padding-top:2mm;"><b>Número de identificación patronal </b>
@@ -1670,17 +1671,17 @@
 								<div style="width:55mm;float:none;clear:both;font-size:8pt;">
 									<div style="width:55mm;float:none;clear:both;">					
 										<div style="width:55mm;padding-top:0.8mm;float:none;clear:both;">
-											<input type="checkbox" class="styCkbox">
+											<input type="checkbox" alt="FirstQuarter" class="styCkbox">
 												<xsl:call-template name="PopulateEnumeratedCheckbox">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
-													<xsl:with-param name="DisplayedCheckboxValue" select="contains($Date, '-03')"/>
+													<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '03')"/>
 													<xsl:with-param name="BackupName">IRS941PRQuarterEndingDt[1]</xsl:with-param>
 												</xsl:call-template>
 											</input>
 											<label>
 												<xsl:call-template name="PopulateLabel">
 													<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
-													<xsl:with-param name="DisplayedCheckboxValue" select="contains($Date, '-03')"/>
+													<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '03')"/>
 													<xsl:with-param name="BackupName">IRS941PRQuarterEndingDt[1]</xsl:with-param>
 												</xsl:call-template>
 												<span style="width:1mm;"/><b>1:</b> enero, febrero, marzo
@@ -1688,17 +1689,17 @@
 										</div>
 										<div style="width:55mm;">
 											<div style="float:left;clear:none;padding-top:2.5mm;">
-												<input type="checkbox" class="styCkbox">
+												<input type="checkbox" alt="SecondQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
-														<xsl:with-param name="DisplayedCheckboxValue" select="contains($Date, '-06')"/>
+														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '06')"/>
 														<xsl:with-param name="BackupName">IRS941PRQuarterEndingDt[2]</xsl:with-param>
 													</xsl:call-template>
 												</input>
 												<label>
 													<xsl:call-template name="PopulateLabel">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
-														<xsl:with-param name="DisplayedCheckboxValue" select="contains($Date, '-06')"/>
+														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '06')"/>
 														<xsl:with-param name="BackupName">IRS941PRQuarterEndingDt[2]</xsl:with-param>
 													</xsl:call-template>
 													<span style="width:1mm;"/><b>2:</b> abril, mayo, junio
@@ -1707,17 +1708,17 @@
 										</div>
 										<div style="width:55mm;">
 											<div style="float:left;clear:none;padding-top:2.5mm;">
-												<input type="checkbox" class="styCkbox">
+												<input type="checkbox" alt="ThirdQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
-														<xsl:with-param name="DisplayedCheckboxValue" select="contains($Date, '-09')"/>
+														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '09')"/>
 														<xsl:with-param name="BackupName">IRS941PRQuarterEndingDt[3]</xsl:with-param>
 													</xsl:call-template>
 												</input>
 												<label>
 													<xsl:call-template name="PopulateLabel">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
-														<xsl:with-param name="DisplayedCheckboxValue" select="contains($Date, '-09')"/>
+														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '09')"/>
 														<xsl:with-param name="BackupName">IRS941PRQuarterEndingDt[3]</xsl:with-param>
 													</xsl:call-template>
 													<span style="width:1mm;"/><b>3:</b> julio, agosto, septiembre
@@ -1726,17 +1727,17 @@
 										</div>
 										<div style="width:55mm;">
 											<div style="float:left;clear:none;padding-top:2.5mm;padding-bottom:1.9mm;">
-												<input type="checkbox" class="styCkbox">
+												<input type="checkbox" alt="FourthQuarter" class="styCkbox">
 													<xsl:call-template name="PopulateEnumeratedCheckbox">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
-														<xsl:with-param name="DisplayedCheckboxValue" select="contains($Date, '-12')"/>
+														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '12')"/>
 														<xsl:with-param name="BackupName">IRS941PRQuarterEndingDt[4]</xsl:with-param>
 													</xsl:call-template>
 												</input>
 												<label>
 													<xsl:call-template name="PopulateLabel">
 														<xsl:with-param name="TargetNode" select="$RtnHdrData/QuarterEndingDt"/>
-														<xsl:with-param name="DisplayedCheckboxValue" select="contains($Date, '-12')"/>
+														<xsl:with-param name="DisplayedCheckboxValue" select="concat(substring($Date, 1, 5), '12')"/>
 														<xsl:with-param name="BackupName">IRS941PRQuarterEndingDt[4]</xsl:with-param>
 													</xsl:call-template>
 													<span style="width:1mm;"/><b>4:</b> octubre, noviembre, diciembre
@@ -1750,8 +1751,9 @@
 								</div>
 							</div>
 						</div>
+					</div>
 					
-						
+				<div style="width:187mm;float:none;clear:both;">		
 				<div class="styLNDesc" style="width:187mm;font-size:8pt;padding-bottom:0mm;padding-top:0mm;float:none;clear:both;">
 					Lea las instrucciones por separado antes de completar el Formulario 941-PR. Escriba a maquinilla o en letra de molde dentro de los encasillados.
 				</div>
@@ -3020,7 +3022,7 @@ letra de molde aquí</div>
 		</div>
 									
 		<!--Page Footer-->
-		<div class="pageEnd" style="width:187mm;float:none;clear:both;">
+		<div class="pageEnd" style="width:187mm;">
 			<span style="float:left;clear:none;">Página <span class="styBoldText" style="font-size:9pt;">2</span></span>
 			<span style="float:right;clear:none;">Formulario <span class="styBoldText" style="font-size:9pt;">
 				<xsl:if test="/AppData/Parameters/SubmissionType='941SS'">941-SS</xsl:if>
@@ -3030,7 +3032,7 @@ letra de molde aquí</div>
 
     <!-- BEGIN Left Over Table -->
 		<!-- Additonal Data Title Bar and Button -->
-		<div class="styLeftOverTitleLine" id="LeftoverData" style="float:none;clear:both;">
+		<div class="styLeftOverTitleLine" id="LeftoverData">
 			<div class="styLeftOverTitle" style="float:left;">
 				Additional Data        
 			</div>

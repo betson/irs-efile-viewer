@@ -1180,9 +1180,11 @@
             <div style="width:90mm;font-weight:bold;" class="styGenericDiv"/>
             <div style="width:55mm;text-align:center;" class="styGenericDiv"/>
             <div style="float:right;" class="styGenericDiv">Form <span class="styBoldText">3800</span> (2013)</div>
+          	<br/>
+			<br/>
           </div>
               <!-- Page 3 Header -->
-          <div style="width:187mm;clear:both;padding-bottom:0mm;" class="styBB">
+<!--          <div style="width:187mm;clear:both;padding-bottom:0mm;" class="styBB">
             <div style="width:90mm;padding-top:2mm;" class="styGenericDiv">Form 3800 (2013)</div>
             <div style="width:55mm;text-align:center;" class="styGenericDiv"/>
             <div style="float:right;padding-top:2mm;" class="styGenericDiv">Page <span class="styBoldText" style="font-size:8pt;">3</span>
@@ -1191,8 +1193,8 @@
           </div>
 
                              
-                                                                     <!--    Start Blank Page 3-->
-                            <br/> <!--<br/>-->                                           
+                                                                     --><!--    Start Blank Page 3--><!--
+                            <br/> --><!--<br/>--><!--        -->                                   
            <xsl:choose>
 				<xsl:when test="$Form3800Data/GenBusCrOrEligSmllBusCrGrp">
 										
@@ -1221,16 +1223,16 @@
                 <xsl:call-template name="PartIIITemplate">
                   <xsl:with-param name="counter" select="position()+$CBusCrGrp"/>
                 </xsl:call-template>
-                 <div class="pageend"/>
-             </xsl:for-each>
+<!--                 <div class="pageend"/>
+-->             </xsl:for-each>
                
                                                               <!-- ********    CheckBox B WORK ON ******** -->
             <xsl:for-each select="$Form3800Data/GenBusCrOrEligSmllBusCrGrp/GeneralBusCrFromPassiveActyGrp">
               <xsl:call-template name="PartIIITemplate">
                 <xsl:with-param name="counter" select="position()+$CBusCrGrp+$GBusCrNnPassActyGrp"/>
               </xsl:call-template>
-              <div class="pageend"/>
-             </xsl:for-each>
+<!--              <div class="pageend"/>
+-->             </xsl:for-each>
              
               
                 
@@ -1239,16 +1241,16 @@
                 <xsl:call-template name="PartIIITemplate">
                   <xsl:with-param name="counter" select="position()+$CBusCrGrp+$GBusCrNnPassActyGrp+$GBusCrPassActyGrp"/>
                 </xsl:call-template>
-                 <div class="pageend"/>
-             </xsl:for-each>    
+<!--                 <div class="pageend"/>
+-->             </xsl:for-each>    
              
                                                                <!-- ********    CheckBox D  ******** -->
             <xsl:for-each select="$Form3800Data/GenBusCrOrEligSmllBusCrGrp/GeneralBusCrCarrybacksGrp">
                 <xsl:call-template name="PartIIITemplate">
                   <xsl:with-param name="counter" select="position()+$CBusCrGrp+$GBusCrNnPassActyGrp+$GBusCrPassActyGrp+$GBusCrCarFwdGrp"/>
                 </xsl:call-template>
-                <div class="pageend"/>
-             </xsl:for-each>    
+<!--                <div class="pageend"/>
+-->             </xsl:for-each>    
              
                                                                  <!-- ********    CheckBox E  *WORK on******* -->
          <!--   <xsl:for-each select="$Form3800Data/GenBusCrOrEligSmllBusCrGrp/EligSmllBusCrFromNnpssvActyGrp">
@@ -1271,8 +1273,8 @@
                 <xsl:call-template name="PartIIITemplate">
                   <xsl:with-param name="counter" select="position()+$CBusCrGrp+$GBusCrNnPassActyGrp+$GBusCrPassActyGrp+$GBusCrCarFwdGrp+$GBusCrCarBakGrp+$ESmllBusCrNnPassActyGrp+$ESmllBusCrPassActyGrp"/>
                 </xsl:call-template>    
-                        <div class="pageend"/>     
-             </xsl:for-each>    
+<!--                        <div class="pageend"/>     
+-->             </xsl:for-each>    
              
                                                                    <!-- ********    CheckBox H  ******** -->
      <!--       <xsl:for-each select="$Form3800Data/GenBusCrOrEligSmllBusCrGrp/EligibleSmallBusCrCybkTypGrp">
@@ -1336,8 +1338,7 @@
           
 			  <div class="styBB" style="font-size:6pt;width:187mm;border-top-width:0px;">
 			  <div class="styNameBox" style="width:100mm;font-size:6pt;font-weight: normal">Name(s) shown on return
-                 <div style="height:.5mm;"/>
-                 
+						<br/>
      <xsl:choose>
             <xsl:when test="$RtnHdrData/ReturnTypeCd='1040'">
 	            <xsl:call-template name="PopulateReturnHeaderFiler">
@@ -1384,7 +1385,7 @@
                </div> 
                         <!--Part II Continue, Note Line -->
                
-               <div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;">
+               <div class="styBB" style="width:187mm;padding-top:1mm;padding-bottom:1mm;border-bottom:0;">
                    <div style="width:140mm;">Complete a separate Part III for each box checked below. (see instructions)</div>
                                   
                           
@@ -1648,7 +1649,7 @@ Enter the appropriate amount
 							</div>
 						</div>
 						<div style="float:right;clear:none;">
-							<div class="styLNRightNumBox" style="border-top:1px solid black;height:4.5mm;">1a</div>
+							<div class="styLNRightNumBox" style="border-top:0;height:4.5mm;">1a</div>
 							<div class="styLNAmountBox" style="border-bottom-width:0px;border-top:1px solid black;text-align:center;height:4.5mm;">
 							<xsl:if test="BusinessCreditsGrp/CurrentYearInvestmentCreditGrp/PassThroughEntityEIN !=''">
 						         <xsl:call-template name="PopulateEIN">
@@ -2576,7 +2577,8 @@ Enter the appropriate amount
                   <!-- Push Pin image -->
 						
                                 <xsl:call-template name="SetFormLinkInline">
-                                    <xsl:with-param name="TargetNode" select="BusinessCreditsGrp/AllowableQlfyElectricVehGrp/AllowableQualifiedElecVehAmt"/>
+                                    <xsl:with-param name="TargetNode" 
+                                    select="BusinessCreditsGrp/AllowableQlfyElectricVehGrp/AllowableQualifiedElecVehAmt"/>
                                     </xsl:call-template></span>   
                       <!--Dotted Line -->
                       <div class="styDotLn" style="float:right;padding-right:1mm;">........</div>
@@ -2587,7 +2589,7 @@ Enter the appropriate amount
 							<div class="styLNRightNumBox" style="border-top:1px solid black;border-bottom-width:0px;height:4.5mm;">1z</div>
 							<div class="styLNAmountBox" style="border-bottom-width:0px;border-top:1px solid black;text-align:center;height:4.5mm;">
 											
-							<xsl:if test="BusinessCreditsGrp/QlfyPlugInElecDriveMtrVehCrGrp/PassThroughEntityEIN !=''">
+							<xsl:if test="BusinessCreditsGrp/AllowableQlfyElectricVehGrp/PassThroughEntityEIN !=''">
 						         <xsl:call-template name="PopulateEIN">
 									<xsl:with-param name="TargetNode" select="BusinessCreditsGrp/AllowableQlfyElectricVehGrp/PassThroughEntityEIN"/>
 								  </xsl:call-template>

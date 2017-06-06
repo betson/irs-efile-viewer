@@ -114,6 +114,13 @@
 <xsl:otherwise ><xsl:value-of select="$falseString" /></xsl:otherwise>
     </xsl:choose>
   </xsl:variable>  
+    
+    <xsl:variable name="avsDataPresent" >
+    <xsl:choose >
+      <xsl:when test="(/AppData/SubmissionReferenceAndSummary/AVSDataPTCInfo = $trueString) or (/AppData/SubmissionReferenceAndSummary/AVSDataPTCInfo = 1)"><xsl:value-of select="$trueString" /></xsl:when>
+<xsl:otherwise ><xsl:value-of select="$falseString" /></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>      
   
   <xsl:variable name="indexPresent" >
     <xsl:choose >
@@ -247,19 +254,22 @@
 
       var categoryType;
       
-      //Begin Additional Information Form List Creation --  
-      
-      temp =   "<xsl:if test="($ackPresent = $trueString)">Acknowledgement<xsl:if test="($codeEditPresent = $trueString) or  ($procStatusPresent = $trueString) or ($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
+      //Begin Additional Information Form List Creation --        
+      temp =   "<xsl:if test="($ackPresent = $trueString)">Acknowledgement<xsl:if test="($codeEditPresent = $trueString) or  ($procStatusPresent = $trueString) or ($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($avsDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
         </xsl:if>
         <xsl:if test="($codeEditPresent = $trueString)">CodeAndEdit<xsl:if test="($procStatusPresent = $trueString) or
-($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
+($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($avsDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
         </xsl:if>
-        <xsl:if test="($procStatusPresent = $trueString)">ProcessingStatus<xsl:if test="($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
+        <xsl:if test="($procStatusPresent = $trueString)">ProcessingStatus<xsl:if test="($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($avsDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
         </xsl:if>
-        <xsl:if test="($changeHistoryPresent = $trueString)">ChangeHistory<xsl:if test="($napDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
+        <xsl:if test="($changeHistoryPresent = $trueString)">ChangeHistory<xsl:if test="($napDataPresent = $trueString) or ($avsDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
         </xsl:if>
-        <xsl:if test="($napDataPresent = $trueString)">NAPData<xsl:if test="($indexPresent = $trueString)">,</xsl:if>
+        <xsl:if test="($napDataPresent = $trueString)">NAPData<xsl:if test="($avsDataPresent = $trueString) or ($indexPresent = $trueString)">,</xsl:if>
         </xsl:if>
+        
+        <xsl:if test="($avsDataPresent = $trueString)">AVSDataPTCInfo<xsl:if test="($indexPresent = $trueString)">,</xsl:if>
+        </xsl:if>        
+        
         <xsl:if test="($indexPresent = $trueString)">Index</xsl:if>"        
       additionalInfoFormList = temp.split(",");
       
@@ -1042,7 +1052,7 @@ function printDocsHelper()
   
   <xsl:template name="displayAdditionalInfo" >
   
-    <xsl:if test="(($ackPresent = $trueString) or($codeEditPresent = $trueString) or ($procStatusPresent= $trueString) or ($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($indexPresent = $trueString))" >
+    <xsl:if test="(($ackPresent = $trueString) or($codeEditPresent = $trueString) or ($procStatusPresent= $trueString) or ($changeHistoryPresent = $trueString) or ($napDataPresent = $trueString) or ($avsDataPresent = $trueString) or ($indexPresent = $trueString))" >
     <!-- BEGIN Additional Information Forms Table -->
       
       <!-- Additional Information Forms Title Bar and Button -->
@@ -1083,6 +1093,15 @@ function printDocsHelper()
               <td class="styFormDescription"><label for="NAPData">NAP Request &amp; Response</label></td>
             </tr>
           </xsl:if>
+          
+          <xsl:if test="$avsDataPresent = $trueString" >
+            <tr>          
+              <td class="styFormCheckboxContainer"><input name="otherDocument" type="checkbox" class="styCkbox" id="AVSDataPTCInfo" value="AVSDataPTCInfo"></input></td>
+              <td class="styFormDescription"><label for="AVSDataPTCInfo">AVS Data - Get PTC Info Response</label></td>
+            </tr>
+          </xsl:if>          
+          
+          
             <xsl:if test="$indexPresent = $trueString" >
             <tr>          
               <td class="styFormCheckboxContainer"><input name="otherDocument" type="checkbox" class="styCkbox" id="Index" value="Index"></input></td>

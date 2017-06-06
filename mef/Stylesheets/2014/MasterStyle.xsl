@@ -280,6 +280,7 @@ Log:
   <xsl:include href="IRS8958Style.xsl"/>
   <xsl:include href="IRS8959Style.xsl"/>
   <xsl:include href="IRS8960Style.xsl"/>
+  <xsl:include href="IRS8962Style.xsl"/>
   <xsl:include href="IRS926Style.xsl"/>
   <xsl:include href="IRS940ScheduleAStyle.xsl"/>
   <xsl:include href="IRS940ScheduleRStyle.xsl"/>
@@ -1076,6 +1077,9 @@ all PDF stylesheets that are selected for print. -->
               </xsl:when>
               <xsl:when test="@documentName='IRS8960'">
                 <xsl:call-template name="IRS8960Style"/>
+              </xsl:when>
+              <xsl:when test="@documentName='IRS8962'">
+                <xsl:call-template name="IRS8962Style"/>
               </xsl:when>
               <xsl:when test="@documentName='IRS926'">
                 <xsl:call-template name="IRS926Style"/>

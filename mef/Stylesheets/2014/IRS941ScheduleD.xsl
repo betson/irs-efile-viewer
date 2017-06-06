@@ -3,7 +3,7 @@
   <!ENTITY nbsp "&#160;">
 ]>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-	<xsl:include href="PopulateTemplate.xsl"/>
+	<xsl:include href="PopulateTemplate_ETEC.xsl"/>
 	<xsl:include href="AddHeader.xsl"/>
 	<xsl:include href="CommonPathRef.xsl"/>
 	<xsl:include href="AddOnTable.xsl"/>

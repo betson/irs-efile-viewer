@@ -1025,25 +1025,25 @@ Log:
   <xsl:param name="TargetNode"/>
   <xsl:param name="SpanWidth">width:0px;</xsl:param>
 
-  <xsl:variable name="addressLine2" select="$TargetNode/AddressLine2"></xsl:variable>
+  <xsl:variable name="addressLine2" select="$TargetNode/AddressLine2Txt"></xsl:variable>
 
   <span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
-  <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine1" /></xsl:call-template>
+  <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine1Txt" /></xsl:call-template>
   <!-- Only create line space for AddressLine 2 if it exists -->
   <xsl:if test="$addressLine2 != ''">
     <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
-    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2" /></xsl:call-template>
+    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2Txt" /></xsl:call-template>
   </xsl:if>
-  <!-- Only create line space for the City, State, and PostalCode if they exist-->
-  <xsl:if test="$TargetNode/City != '' or $TargetNode/State != '' or $TargetNode/ZIPCode != ''">
+  <!-- Only create line space for the City, State, and ForeignPostalCd if they exist-->
+  <xsl:if test="$TargetNode/CityNm != '' or $TargetNode/StateAbbreviationCd != '' or $TargetNode/ZIPCd != ''">
     <br/>
     <span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
-    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/City" /></xsl:call-template>
+    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/CityNm" /></xsl:call-template>
     <!-- Only display a comma between city and state if both city and state exist-->
-    <xsl:if test="$TargetNode/City != '' and $TargetNode/State != ''">,<span style="width:2px;"></span></xsl:if>
-    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/State" /></xsl:call-template>
+    <xsl:if test="$TargetNode/CityNm != '' and $TargetNode/StateAbbreviationCd != ''">,<span style="width:2px;"></span></xsl:if>
+    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/StateAbbreviationCd" /></xsl:call-template>
     <span style="width:7px;"></span>
-    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/ZIPCode" /></xsl:call-template>
+    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/ZIPCd" /></xsl:call-template>
   </xsl:if>
 </xsl:template>
 
@@ -1064,23 +1064,23 @@ Log:
   <xsl:param name="SpanWidth">width:0px;</xsl:param>
   <xsl:param name="MainForm">false</xsl:param>
 
-  <xsl:variable name="addressLine2" select="$TargetNode/AddressLine2"></xsl:variable>
+  <xsl:variable name="addressLine2" select="$TargetNode/AddressLine2Txt"></xsl:variable>
 
   <span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
-  <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine1" /></xsl:call-template>
+  <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine1Txt" /></xsl:call-template>
   <!-- Only create line space for AddressLine 2 if it exists -->
   <xsl:if test="$addressLine2 != ''">
-    <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2" /></xsl:call-template>
+    <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span><xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/AddressLine2Txt" /></xsl:call-template>
   </xsl:if>
-  <!-- Only create line space for the City, State, PostalCode if they exist-->
-  <xsl:if test="$TargetNode/City != '' or $TargetNode/ProvinceOrState != '' or $TargetNode/PostalCode != ''">
+  <!-- Only create line space for the City, State, ForeignPostalCd if they exist-->
+  <xsl:if test="$TargetNode/CityNm != '' or $TargetNode/ProvinceOrStateNm != '' or $TargetNode/ForeignPostalCd != ''">
     <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
-    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/City" /></xsl:call-template>
+    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/CityNm" /></xsl:call-template>
     <!-- Only display a comma between city and state if both city and state exist-->
-    <xsl:if test="$TargetNode/City != '' and $TargetNode/ProvinceOrState != ''">,<span style="width:2px;"></span></xsl:if>
-    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/ProvinceOrState" /></xsl:call-template>
+    <xsl:if test="$TargetNode/CityNm != '' and $TargetNode/ProvinceOrStateNm != ''">,<span style="width:2px;"></span></xsl:if>
+    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/ProvinceOrStateNm" /></xsl:call-template>
     <span style="width:7px;"></span>
-    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/PostalCode" /></xsl:call-template>
+    <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/ForeignPostalCd" /></xsl:call-template>
   </xsl:if>
   <br/><span><xsl:attribute name="style"><xsl:value-of select="$SpanWidth"/></xsl:attribute></span>
   
@@ -1089,12 +1089,12 @@ Log:
 		   <xsl:when test="$MainForm = 'true' ">
 			   <xsl:variable name="countryname" select="document('CountriesList.xml')/countries" />
                 <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $TargetNode/Country]" />
+                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $TargetNode/CountryCd]" />
                 </xsl:call-template>
             </xsl:when>
             <xsl:otherwise>
                <xsl:call-template name="PopulateText">
-                 <xsl:with-param name="TargetNode" select="$TargetNode/Country" />
+                 <xsl:with-param name="TargetNode" select="$TargetNode/CountryCd" />
                 </xsl:call-template>
             </xsl:otherwise>
        </xsl:choose>
@@ -1124,32 +1124,32 @@ Log:
   <xsl:choose>
     <xsl:when test="$TargetNode">
       <xsl:call-template name="PopulateText">
-        <xsl:with-param name="TargetNode" select="$TargetNode/City" />
-      </xsl:call-template><xsl:if test="($TargetNode/City != '') and ($TargetNode/State != '')">, </xsl:if>
+        <xsl:with-param name="TargetNode" select="$TargetNode/CityNm" />
+      </xsl:call-template><xsl:if test="($TargetNode/CityNm != '') and ($TargetNode/StateAbbreviationCd != '')">, </xsl:if>
       <xsl:call-template name="PopulateText">
-        <xsl:with-param name="TargetNode" select="$TargetNode/State" />
+        <xsl:with-param name="TargetNode" select="$TargetNode/StateAbbreviationCd" />
       </xsl:call-template>
       <span style="width:7px;"></span>
       <xsl:call-template name="PopulateText">
-        <xsl:with-param name="TargetNode" select="$TargetNode/ZIPCode" />
+        <xsl:with-param name="TargetNode" select="$TargetNode/ZIPCd" />
       </xsl:call-template>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:if test="$ForeignAddressTargetNode/City">        
+      <xsl:if test="$ForeignAddressTargetNode/CityNm">        
         <xsl:call-template name="PopulateText">
-          <xsl:with-param name="TargetNode" select="$ForeignAddressTargetNode/City" />
-        </xsl:call-template><xsl:if test="($ForeignAddressTargetNode/City != '') and ($ForeignAddressTargetNode/ProvinceOrState != '')">, </xsl:if>
-        <xsl:if test="($ForeignAddressTargetNode/City != '') and not($ForeignAddressTargetNode/ProvinceOrState)"><span style="width:7px;"/></xsl:if>
+          <xsl:with-param name="TargetNode" select="$ForeignAddressTargetNode/CityNm" />
+        </xsl:call-template><xsl:if test="($ForeignAddressTargetNode/CityNm != '') and ($ForeignAddressTargetNode/ProvinceOrStateNm != '')">, </xsl:if>
+        <xsl:if test="($ForeignAddressTargetNode/CityNm != '') and not($ForeignAddressTargetNode/ProvinceOrStateNm)"><span style="width:7px;"/></xsl:if>
       </xsl:if>
-      <xsl:if test="$ForeignAddressTargetNode/ProvinceOrState">        
+      <xsl:if test="$ForeignAddressTargetNode/ProvinceOrStateNm">        
         <xsl:call-template name="PopulateText">
-          <xsl:with-param name="TargetNode" select="$ForeignAddressTargetNode/ProvinceOrState" />
+          <xsl:with-param name="TargetNode" select="$ForeignAddressTargetNode/ProvinceOrStateNm" />
         </xsl:call-template>
         <span style="width:7px;"></span>
       </xsl:if>
-      <xsl:if test="$ForeignAddressTargetNode/PostalCode">          
+      <xsl:if test="$ForeignAddressTargetNode/ForeignPostalCd">          
         <xsl:call-template name="PopulateText">
-          <xsl:with-param name="TargetNode" select="$ForeignAddressTargetNode/PostalCode" />
+          <xsl:with-param name="TargetNode" select="$ForeignAddressTargetNode/ForeignPostalCd" />
         </xsl:call-template>
       </xsl:if>
     </xsl:otherwise>
@@ -1180,7 +1180,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
   <xsl:choose>
   <xsl:when test="$Location='PAR'"> <!-- Indicating that the data needs to be pulled from Parent return header-->
      <xsl:choose>
-        <xsl:when test="$TargetNode='BusinessNameLine1' and not($ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine1)">
+        <xsl:when test="$TargetNode='BusinessNameLine1Txt' and not($ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine1Txt)">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/Name" />
           </xsl:call-template>
@@ -1206,18 +1206,18 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
             <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/SSN" />
           </xsl:call-template>
         </xsl:when>
-        <xsl:when test="$TargetNode = 'Country' ">
+        <xsl:when test="$TargetNode = 'CountryCd' ">
             <xsl:if test="$ParRtnHdrData/ParentCorpGrp/ForeignAddress">
               <xsl:choose>
                 <xsl:when test="$MainForm = 'true' ">
                     <xsl:variable name="countryname" select="document('CountriesList.xml')/countries" />
                       <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $ParRtnHdrData/ParentCorpGrp/ForeignAddress/Country]" />
+                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $ParRtnHdrData/ParentCorpGrp/ForeignAddress/CountryCd]" />
                       </xsl:call-template>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/ForeignAddress/Country" />
+                    <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/ForeignAddress/CountryCd" />
                   </xsl:call-template>
                 </xsl:otherwise>
               </xsl:choose>
@@ -1232,7 +1232,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
   </xsl:when>
   <xsl:when test="$Location='LSB'">
       <xsl:choose>
-        <xsl:when test="$TargetNode='BusinessNameLine1' and not($SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1)">
+        <xsl:when test="$TargetNode='BusinessNameLine1Txt' and not($SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1Txt)">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/Name" />
           </xsl:call-template>
@@ -1258,18 +1258,18 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
             <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/SSN" />
           </xsl:call-template>
         </xsl:when>
-        <xsl:when test="$TargetNode = 'Country' ">
+        <xsl:when test="$TargetNode = 'CountryCd' ">
             <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress">
               <xsl:choose>
                 <xsl:when test="$MainForm = 'true' ">
                     <xsl:variable name="countryname" select="document('CountriesList.xml')/countries" />
                       <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/Country]" />
+                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/CountryCd]" />
                       </xsl:call-template>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/Country" />
+                    <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/CountryCd" />
                   </xsl:call-template>
                 </xsl:otherwise>
               </xsl:choose>
@@ -1284,7 +1284,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
   </xsl:when>
   <xsl:when test="$Location='PSB'">
       <xsl:choose>
-        <xsl:when test="$TargetNode='BusinessNameLine1' and not($SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1)">
+        <xsl:when test="$TargetNode='BusinessNameLine1Txt' and not($SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1Txt)">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/Name" />
           </xsl:call-template>
@@ -1310,18 +1310,18 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
             <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/SSN" />
           </xsl:call-template>
         </xsl:when>
-        <xsl:when test="$TargetNode = 'Country' ">
+        <xsl:when test="$TargetNode = 'CountryCd' ">
             <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress">
               <xsl:choose>
                 <xsl:when test="$MainForm = 'true' ">
                     <xsl:variable name="countryname" select="document('CountriesList.xml')/countries" />
                       <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/Country]" />
+                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/CountryCd]" />
                       </xsl:call-template>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/Country" />
+                    <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/CountryCd" />
                   </xsl:call-template>
                 </xsl:otherwise>
               </xsl:choose>
@@ -1337,7 +1337,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 
   <xsl:when test="$Location='SUB'"> <!-- Indicating that data needs to be pulled from Subsidiary return header-->
     <xsl:if test="$SubRtnHdrData/EliminationsOrAdjustments">
-      <xsl:if test="$TargetNode='BusinessNameLine1'">
+      <xsl:if test="$TargetNode='BusinessNameLine1Txt'">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="$SubRtnHdrData/EliminationsOrAdjustments" />
         </xsl:call-template>      
@@ -1345,7 +1345,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
     </xsl:if>
     <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp">
       <xsl:choose>
-        <xsl:when test="$TargetNode='BusinessNameLine1' and not($SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1)">
+        <xsl:when test="$TargetNode='BusinessNameLine1Txt' and not($SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine1Txt)">
           <xsl:call-template name="PopulateText">
             <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/Name" />
           </xsl:call-template>
@@ -1378,18 +1378,18 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
             <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/Phone"/>
           </xsl:call-template>
         </xsl:when>
-        <xsl:when test="$TargetNode = 'Country' ">
+        <xsl:when test="$TargetNode = 'CountryCd' ">
             <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress">
               <xsl:choose>
                 <xsl:when test="$MainForm = 'true' ">
                     <xsl:variable name="countryname" select="document('CountriesList.xml')/countries" />
                       <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/Country]" />
+                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=   $SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/CountryCd]" />
                       </xsl:call-template>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:call-template name="PopulateText">
-                    <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/Country" />
+                    <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/ForeignAddress/CountryCd" />
                   </xsl:call-template>
                 </xsl:otherwise>
               </xsl:choose>
@@ -1407,7 +1407,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
     <xsl:choose>
 		<xsl:when test="$Type = '720' or $Type='2290' or $Type='8849'"> <!--Type is 720 -->
 		<xsl:choose>
-			<xsl:when test="$TargetNode='BusinessNameLine1' and not($RtnHdrData/Filer/Name/BusinessNameLine1)">
+			<xsl:when test="$TargetNode='BusinessNameLine1Txt' and not($RtnHdrData/Filer/Name/BusinessNameLine1Txt)">
 				<xsl:call-template name="PopulateText">
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/Name" />
 				</xsl:call-template>
@@ -1430,24 +1430,23 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
                     <xsl:with-param name="ForeignAddressTargetNode" select="$RtnHdrData/Filer/ForeignAddress" />
                 </xsl:call-template>
             </xsl:when>
-            <xsl:when test="$TargetNode = 'Country' ">
+            <xsl:when test="$TargetNode = 'CountryCd' ">
                 <xsl:if test="$RtnHdrData/Filer/ForeignAddress">
                   <xsl:choose>
                     <xsl:when test="$MainForm = 'true' ">
                       <xsl:variable name="countryname" select="document('CountriesList.xml')/countries" />
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=$RtnHdrData/Filer/ForeignAddress/Country]" />
-                        </xsl:call-template>
+                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=$RtnHdrData/Filer/ForeignAddress/CountryCd]" />
+                          </xsl:call-template>
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//Country" />
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//CountryCd" />
                       </xsl:call-template>
                     </xsl:otherwise>
                   </xsl:choose>
                 </xsl:if>
             </xsl:when>
-            <xsl:when test="$TargetNode = 'PrimarySSN' or $TargetNode = 'SpouseSSN'"></xsl:when>
 			<xsl:otherwise> <!-- Handles all other data. Populate data whose element name matches TargetNode element name-->
               <xsl:call-template name="PopulateText">
                 <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//*[name(.)=$TargetNode]" />
@@ -1462,7 +1461,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/NameLine1Txt" />
 				</xsl:call-template>
 			</xsl:when>
-            <xsl:when test="$TargetNode='BusinessNameLine1' and not($RtnHdrData/Filer/BusinessName/BusinessNameLine1)">
+            <xsl:when test="$TargetNode='BusinessNameLine1Txt' and not($RtnHdrData/Filer/BusinessName/BusinessNameLine1Txt)">
               <xsl:choose>
 				<xsl:when test="$Type = '1041'">
 					<xsl:choose>
@@ -1473,7 +1472,7 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:call-template name="PopulateText">
-								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1" />
+								<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine1Txt" />
 							</xsl:call-template>
 						</xsl:otherwise>
 					</xsl:choose>
@@ -1500,10 +1499,10 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 				</xsl:otherwise>
               </xsl:choose>
             </xsl:when>
-            <xsl:when test="$TargetNode='BusinessNameLine2' and $RtnHdrData/Filer/TradeName/BusinessNameLine2">
+            <xsl:when test="$TargetNode='BusinessNameLine2Txt' and $RtnHdrData/Filer/TradeName/BusinessNameLine2Txt">
 				<!-- Catch for 94X forms, which can have two different elements of type BusinessName -->
 				<xsl:call-template name="PopulateText">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2" />
+					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt" />
 				</xsl:call-template>
             </xsl:when>
             <xsl:when test="$TargetNode='CityStateInfo' ">
@@ -1530,14 +1529,16 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
           </xsl:call-template>
         </xsl:when>
             <xsl:when test="$TargetNode = 'SSN' or $TargetNode = 'PrimarySSN' ">
-				<xsl:call-template name="PopulateSSN">
-					<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//*[name(.)=$TargetNode]"/>
-				</xsl:call-template>
-				<!-- If the EIN (TIN) has changed and the form wants to show a delta image (set using the EINChanged parameter, show the delta image.-->
-				<xsl:if test="$TaxpayerPrint = 'false' or $TaxpayerPrint = '0'">
-					<xsl:if test="($EINChanged = 'true') and ((/AppData/Parameters/TINChanged='true') or (/AppData/Parameters/TINChanged='1'))">
-						<span style="width:2px;"/>
-						<img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="Primary SSN has changed"/>
+				<xsl:if test="$RtnHdrData/Filer//PrimarySSN or $RtnHdrData/Filer//SSN">
+					<xsl:call-template name="PopulateSSN">
+						<xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//*[name(.)=$TargetNode]"/>
+					</xsl:call-template>
+					<!-- If the EIN (TIN) has changed and the form wants to show a delta image (set using the EINChanged parameter, show the delta image.-->
+					<xsl:if test="$TaxpayerPrint = 'false' or $TaxpayerPrint = '0'">
+						<xsl:if test="($EINChanged = 'true') and ((/AppData/Parameters/TINChanged='true') or (/AppData/Parameters/TINChanged='1'))">
+							<span style="width:2px;"/>
+							<img src="{$NonVersionedImagePath}/changeSmall.gif" style="padding-top:1px;" alt="Primary SSN has changed"/>
+						</xsl:if>
 					</xsl:if>
 				</xsl:if>
 			</xsl:when>
@@ -1553,18 +1554,18 @@ Log:           2004-12-22 - Added a condition to check if TaxpayerPrint is true 
 					</xsl:if>
 				</xsl:if>
 			</xsl:when>
-            <xsl:when test="$TargetNode = 'Country' ">
+            <xsl:when test="$TargetNode = 'CountryCd' ">
                 <xsl:if test="$RtnHdrData/Filer/ForeignAddress">
                   <xsl:choose>
                     <xsl:when test="$MainForm = 'true' ">
                       <xsl:variable name="countryname" select="document('CountriesList.xml')/countries" />
                         <xsl:call-template name="PopulateText">
-                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=$RtnHdrData/Filer/ForeignAddress/Country]" />
+                          <xsl:with-param name="TargetNode" select="$countryname/country[@id=$RtnHdrData/Filer/ForeignAddress/CountryCd]" />
                           </xsl:call-template>
                     </xsl:when>
                     <xsl:otherwise>
                       <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//Country" />
+                      <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer//CountryCd" />
                       </xsl:call-template>
                     </xsl:otherwise>
                   </xsl:choose>
@@ -1603,7 +1604,7 @@ Log:
 -->
 <xsl:template name="PopulateReturnHeaderFilerTIN">
 	<xsl:param name="EINChanged" select="false()"/>
-	<xsl:variable name="Blank"><span id="/.."></span></xsl:variable>
+	<xsl:variable name="Blank"></xsl:variable>
 	<xsl:variable name="SSNExists">
 		<xsl:call-template name="PopulateReturnHeaderFiler">
 			<xsl:with-param name="TargetNode">PrimarySSN</xsl:with-param>
@@ -2097,8 +2098,8 @@ Log:         04-24-2009: Initial Creation
           <xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/SignatureDt" />
         </xsl:call-template>
       </xsl:when>
-      <xsl:when test="$TargetNode='BusinessNameLine1' and not(($RtnHdrData/PaidPreparerInformationGrp/PreparerBusinessName/BusinessNameLine1) 
-			  or ($RtnHdrData/PaidPreparerInformationGrp/PreparerFirmName/BusinessNameLine1))">
+      <xsl:when test="$TargetNode='BusinessNameLine1Txt' and not(($RtnHdrData/PaidPreparerInformationGrp/PreparerBusinessName/BusinessNameLine1Txt) 
+			  or ($RtnHdrData/PaidPreparerInformationGrp/PreparerFirmName/BusinessNameLine1Txt))">
         <xsl:call-template name="PopulateText">
           <xsl:with-param name="TargetNode" select="$RtnHdrData/PaidPreparerInformationGrp/PreparerPersonNm" />
         </xsl:call-template>
@@ -2367,10 +2368,10 @@ Log:
           <xsl:with-param name="ForeignAddressTargetNode" select="$RtnHdrData/PreparerFirm/PreparerFirmForeignAddress" />          
         </xsl:call-template>
       </xsl:when>              
-      <xsl:when test="$TargetNode = 'Country' ">
+      <xsl:when test="$TargetNode = 'CountryCd' ">
           <xsl:if test="$RtnHdrData/PreparerFirm/PreparerFirmForeignAddress">
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerFirm/PreparerFirmForeignAddress/Country" />
+              <xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerFirm/PreparerFirmForeignAddress/CountryCd" />
             </xsl:call-template>
           </xsl:if>
         </xsl:when>
@@ -2405,10 +2406,10 @@ Log:
           <xsl:with-param name="ForeignAddressTargetNode" select="$RtnHdrData/PreparerFirmGrp/PreparerForeignAddress" />          
         </xsl:call-template>
       </xsl:when>              
-      <xsl:when test="$TargetNode = 'Country' ">
+      <xsl:when test="$TargetNode = 'CountryCd' ">
           <xsl:if test="$RtnHdrData/PreparerFirmGrp/PreparerForeignAddress">
             <xsl:call-template name="PopulateText">
-              <xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerFirmGrp/PreparerForeignAddress/Country" />
+              <xsl:with-param name="TargetNode" select="$RtnHdrData/PreparerFirmGrp/PreparerForeignAddress/CountryCd" />
             </xsl:call-template>
           </xsl:if>
         </xsl:when>
@@ -2591,13 +2592,13 @@ Log:
 <xsl:template name="GlobalStylesForm">  
   <!-- If the Print parameter is empty -->
 
- <!-- <xsl:if test="not(string($Print))">-->
+<!--  <xsl:if test="not(string($Print))">-->
 
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
     <link rel="stylesheet" type="text/css" name="BodyStyleSheet" href="{$CSSPath}/body.css"/>
     <link rel="stylesheet" type="text/css" name="General" href="{$CSSPath}/general.css"/>
 
- <!-- </xsl:if>-->
+  <!--</xsl:if>-->
 
 </xsl:template>
 
@@ -2616,9 +2617,9 @@ Log:
 -->
 <xsl:template name="GlobalStylesDep">  
   <!-- If the Print parameter is empty -->
-  <!--<xsl:if test="not(string($Print))">-->
+ <!-- <xsl:if test="not(string($Print))">-->
     <link rel="stylesheet" type="text/css" name="HeaderStyleSheet" href="{$CSSPath}/header.css"/>
- <!-- </xsl:if>  -->
+ <!-- </xsl:if>-->  
 </xsl:template>
 
 
@@ -2856,8 +2857,7 @@ Log:
     <!--/xsl:if-->
   </xsl:template>  
   
-  
- <!--
+  <!--
 ***************************************************************************************************************************************************************
 Name: SetFormLinkInline
 Description: Template to display the form link image (usually pushpin image); image is displayed inline (normally) using img tags
@@ -2887,7 +2887,9 @@ Log: - Mike Farrell - This is a Modification of the original by Charles Moore
 </xsl:if>
 <!--/xsl:if-->
 </xsl:template>
-
+  
+  
+  
 
 
   
@@ -2927,6 +2929,38 @@ Log:
     <!--/xsl:if-->
   </xsl:template>
 
+<!--
+***************************************************************************************************************************************************************
+Name:           LinkToLeftoverCheckboxDataTableInline
+Description:    Template to handle left-over data with checkbox values with image that is displayed inline using absolute position
+Req Param:  
+Opt Param:   
+Called By:     
+Calls:            
+Log:
+***************************************************************************************************************************************************************
+-->
+  <xsl:template name="LinkToLeftoverCheckboxDataTableInline">
+    <xsl:param name="Desc"></xsl:param>
+    <xsl:param name="TargetNode"></xsl:param>    
+    <xsl:param name="TabOrder">1</xsl:param>
+
+    <!-- do nothing if for printing -->
+    <!--xsl:if test="not($Print) or $Print=''" Commented to print pen images Chris Jung 11/24/04-->
+      <xsl:if test="($TargetNode or $TargetNode!='')">                  
+          <xsl:choose>
+            <xsl:when test="count($TargetNode) &gt; 1">
+              <img src="{$NonVersionedImagePath}/pen.gif" alt="See additional data table" TabIndex="{$TabOrder}" style="cursor:hand;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+            </xsl:when>
+            <xsl:otherwise>
+               <xsl:if test="($TargetNode='X')">
+                <img src="{$NonVersionedImagePath}/pen.gif" alt="{$Desc}: Yes" TabIndex="{$TabOrder}" style="cursor:hand;" onclick="this.id =window.event.x + 'and' +     window.event.y;goToLeftoverDataTable( this.id );"  onkeypress="this.id =window.event.x + 'and' + window.event.y;goToLeftoverDataTable( this.id );"/>
+              </xsl:if>
+           </xsl:otherwise>
+          </xsl:choose>        
+      </xsl:if>
+    <!--/xsl:if-->
+  </xsl:template>
 
 <!--
 ***************************************************************************************************************************************************************
@@ -2988,7 +3022,7 @@ Log:          2004-12-16 - Added Name and EIN for separated repeating data calls
   <tr>
     <td class="styLeftOverTableRowDesc" style="width:{$DescWidth}mm;" scope="row">Software Version:</td>  
     <td class="styLeftOverTableRowAmount" style="width:{$AmountWidth}mm;">
-      <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersion"/></xsl:call-template>
+      <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersionNum"/></xsl:call-template>
     </td>                          
   </tr>
   <xsl:if test="$Print = $Separated">
@@ -3031,8 +3065,8 @@ Log:          2004-12-16 - Added Name and EIN for separated repeating data calls
     <tr>
       <td class="styLeftOverTableRowDesc" style="width:{$DescWidth}mm;vertical-align:top;" scope="row">Name:</td>  
       <td class="styLeftOverTableRowAmount" style="width:{$AmountWidth}mm;">
-        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template><br />
-        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param></xsl:call-template>
+        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template><br />
+        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param></xsl:call-template>
       </td>                          
     </tr>
     
@@ -3067,7 +3101,7 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
   <tr>
     <td class="styLeftOverTableRowDesc" style="width:{$DescWidth}mm;" scope="row">Software Version:</td>  
     <td class="styLeftOverTableRowAmount" style="width:{$AmountWidth}mm;">
-      <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersion"/></xsl:call-template>
+      <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersionNum"/></xsl:call-template>
     </td>                          
   </tr>
   <xsl:if test="$Print = $Separated">
@@ -3109,8 +3143,8 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
     <tr>
       <td class="styLeftOverTableRowDesc" style="width:{$DescWidth}mm;vertical-align:top;" scope="row">Name:</td>  
       <td class="styLeftOverTableRowAmount" style="width:{$AmountWidth}mm;">
-        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template><br />
-        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2</xsl:with-param></xsl:call-template>
+        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template><br />
+        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine2Txt</xsl:with-param></xsl:call-template>
       </td>                          
     </tr>
   </xsl:if>
@@ -3225,11 +3259,11 @@ Log:            2005-12-01 - Added formating for eliminating line spaces with pu
         </span>  
       </div>      
     </xsl:if>
-    <xsl:if test="(($TargetNode/@softwareVersion) or ($TargetNode/@softwareVersion != ''))">
+    <xsl:if test="(($TargetNode/@softwareVersionNum) or ($TargetNode/@softwareVersionNum != ''))">
       <div class="styTopSectionLine">
         <span class="styTopSectionLineLbl"> Software Version:</span>      
         <span style="font-size:10pt;">
-          <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersion"/></xsl:call-template>        
+          <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersionNum"/></xsl:call-template>        
         </span>    
       </div>            
     </xsl:if>
@@ -3264,54 +3298,54 @@ Log:            2009-05-11 - Added support to pull EIN or Primary SSN depending 
     <div class="styTopSectionLine">
       <div class="styTopSectionLineLbl" style="float:left;clear:none;"> Name:</div>      
       <div style="font-size:10pt;float:left;clear:none;">        
-        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template>                  
+        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template>                  
       </div>    
     </div>
   
     <xsl:choose>
       <xsl:when test="$Location='PAR'"> <!-- Indicating that data should be pulled from parent return header -->
-          <xsl:if test="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2 and $ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2 != '' ">
+          <xsl:if test="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt and $ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt != '' ">
             <div class="styTopSectionLine">
               <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
               <div style="font-size:10pt;float:left;clear:none;">          
                 <xsl:call-template name="PopulateText">
-                  <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2" />
+                  <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt" />
                 </xsl:call-template>
               </div>    
             </div>  
           </xsl:if>
       </xsl:when>
       <xsl:when test="$Location='SUB'"> <!-- Indicating that data should be pulled from subsidiary return header-->
-          <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2 and $SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2 != '' ">
+          <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt and $SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt != '' ">
             <div class="styTopSectionLine">
               <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
               <div style="font-size:10pt;float:left;clear:none;">          
                 <xsl:call-template name="PopulateText">
-                   <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2" />
+                   <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt" />
                 </xsl:call-template>
               </div>    
             </div>  
           </xsl:if>
       </xsl:when>
       <xsl:when test="$Type = '1041'">
-          <xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2 and $RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2 != '' ">
+          <xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt and $RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt != '' ">
             <div class="styTopSectionLine">
               <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
               <div style="font-size:10pt;float:left;clear:none;">          
                 <xsl:call-template name="PopulateText">
-                   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2" />
+                   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt" />
                 </xsl:call-template>
               </div>    
             </div>  
           </xsl:if>
       </xsl:when>
       <xsl:otherwise> <!-- Indicating that data should be pulled from filer return header -->
-          <xsl:if test="$RtnHdrData/Filer/BusinessName/BusinessNameLine2 and $RtnHdrData/Filer/BusinessName/BusinessNameLine2 != '' ">
+          <xsl:if test="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt and $RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt != '' ">
             <div class="styTopSectionLine">
               <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
               <div style="font-size:10pt;float:left;clear:none;">          
                 <xsl:call-template name="PopulateText">
-                   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2" />
+                   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt" />
                 </xsl:call-template>
               </div>    
             </div>  
@@ -3378,11 +3412,11 @@ Log:            2005-10-14 - Initial creation
         </span>  
       </div>      
     </xsl:if>
-    <xsl:if test="(($TargetNode/@softwareVersion) or ($TargetNode/@softwareVersion != ''))">
+    <xsl:if test="(($TargetNode/@softwareVersionNum) or ($TargetNode/@softwareVersionNum != ''))">
       <div class="styTopSectionLineLandscape">
         <span class="styTopSectionLineLbl"> Software Version:</span>      
         <span style="font-size:10pt;">
-          <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersion"/></xsl:call-template>        
+          <xsl:call-template name="PopulateText"><xsl:with-param name="TargetNode" select="$TargetNode/@softwareVersionNum"/></xsl:call-template>        
         </span>    
       </div>            
     </xsl:if>
@@ -3415,54 +3449,54 @@ Log:            2005-10-14 - Initial creation
     <div class="styTopSectionLineLandscape">
       <div class="styTopSectionLineLbl" style="float:left;clear:none;"> Name:</div>      
       <div style="font-size:10pt;float:left;clear:none;">        
-        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1</xsl:with-param></xsl:call-template>                  
+        <xsl:call-template name="PopulateReturnHeaderFiler"><xsl:with-param name="TargetNode">BusinessNameLine1Txt</xsl:with-param></xsl:call-template>                  
       </div>    
     </div>
   
     <xsl:choose>
           <xsl:when test="$Location='PAR'"> <!-- Indicating that data should be pull from parent return header -->
-              <xsl:if test="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2 and $ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2 != '' ">
+              <xsl:if test="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt and $ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt != '' ">
                 <div class="styTopSectionLineLandscape">
                   <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
                   <div style="font-size:10pt;float:left;clear:none;">          
                     <xsl:call-template name="PopulateText">
-                      <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2" />
+                      <xsl:with-param name="TargetNode" select="$ParRtnHdrData/ParentCorpGrp/BusinessName/BusinessNameLine2Txt" />
                     </xsl:call-template>
                   </div>    
                 </div>  
               </xsl:if>
           </xsl:when>
           <xsl:when test="$Location='SUB'"> <!-- Indicating that data should be pull from subsidiary return header-->
-              <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2 and $SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2 != '' ">
+              <xsl:if test="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt and $SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt != '' ">
                 <div class="styTopSectionLineLandscape">
                   <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
                   <div style="font-size:10pt;float:left;clear:none;">          
                     <xsl:call-template name="PopulateText">
-                       <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2" />
+                       <xsl:with-param name="TargetNode" select="$SubRtnHdrData/SubsidiaryCorpGrp/BusinessName/BusinessNameLine2Txt" />
                     </xsl:call-template>
                   </div>    
                 </div>  
               </xsl:if>
           </xsl:when>
           <xsl:when test="$Type = '1041'">
-            <xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2 and $RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2 != '' ">
+            <xsl:if test="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt and $RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt != '' ">
               <div class="styTopSectionLineLandscape">
                 <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
                 <div style="font-size:10pt;float:left;clear:none;">          
                   <xsl:call-template name="PopulateText">
-                   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2" />
+                   <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/EstateOrTrustName/BusinessNameLine2Txt" />
                   </xsl:call-template>
                 </div>    
               </div>  
             </xsl:if>
           </xsl:when>
           <xsl:otherwise> <!-- Indicating that data should be pull from filer return header -->
-              <xsl:if test="$RtnHdrData/Filer/BusinessName/BusinessNameLine2 and $RtnHdrData/Filer/BusinessName/BusinessNameLine2 != '' ">
+              <xsl:if test="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt and $RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt != '' ">
                 <div class="styTopSectionLineLandscape">
                   <div class="styTopSectionLineLbl" style="float:left;clear:none;"></div>      
                   <div style="font-size:10pt;float:left;clear:none;">          
                     <xsl:call-template name="PopulateText">
-                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2" />
+                       <xsl:with-param name="TargetNode" select="$RtnHdrData/Filer/BusinessName/BusinessNameLine2Txt" />
                     </xsl:call-template>
                   </div>    
                 </div>  
@@ -3906,11 +3940,8 @@ Log:
           </xsl:when>
           <xsl:otherwise>  
             <xsl:choose>
-              <xsl:when test="substring($targetNode,string-length($targetNode) -2,1)='.' "> <!-- if there is a decimal point preserve it-->
-                    <xsl:value-of select="format-number(number($targetNode), '#,###.00')"/> 
-             </xsl:when>
-              <xsl:when test="substring($targetNode,string-length($targetNode) -1,1)='.' "> <!-- if there is a decimal point preserve it-->
-                    <xsl:value-of select="format-number(number($targetNode), '#,###.0')"/> 
+              <xsl:when test="contains($targetNode,'.')">
+                    <xsl:value-of select="concat(format-number(number(substring-before($targetNode,'.')), '#,###'),'.',substring-after($targetNode,'.'))"/> 
              </xsl:when>
               <xsl:otherwise>
                     <xsl:value-of select="format-number(number($targetNode), '#,###')"/>  
