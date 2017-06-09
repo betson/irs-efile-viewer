@@ -1,0 +1,7 @@
+exclude: [
+  'README.md',
+  'Gemfile.lock',
+  'GEMFILE',
+  '.gitignore',
+  'LICENSE'
+]
