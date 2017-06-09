@@ -41,7 +41,7 @@
     <ReturnVersion>2014v5.0</ReturnVersion>
     <ZoomLevel>100%</ZoomLevel>
     <!--XPath>/efile:Return[1]/efile:ReturnData[1]/efile:IRS851[1]/efile:CommonParentCorporationInfo[1]/efile:AdditionalStockInformation[1]/efile:MemReaffltWithin60Mnth[1]</XPath-->
-    <DisplayName>990</DisplayName>
+    <DisplayName>IRS 990 e-File Render</DisplayName>
     <Regulation />
     <!-- The Location element locates the subreturn (consolidated, parent or subsidiary) -->
     <!-- in which the return document is located. Possible values are RET, PAR, and SUB -->

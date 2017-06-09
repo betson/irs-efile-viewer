@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppData>
+  <ApplicationProperties>
+    <!-- FormHeaderGeneric, FHOriginalData, and SystemMode are used to display a generic header -->
+    <FormHeaderGeneric> efile Visual Render </FormHeaderGeneric>
+    <FormHeaderOriginalData>General Public</FormHeaderOriginalData>
+    <SystemMode>Copy</SystemMode>
+    <PrintoutWindowResizable>false</PrintoutWindowResizable>
+  </ApplicationProperties>
+  <UserPreferences>
+    <View>
+      <ShowReturnSummaryOnStartup>true</ShowReturnSummaryOnStartup>
+      <DefaultZoomLevel>100%</DefaultZoomLevel>
+      <ReturnTreeMouseoverBgColor>khaki</ReturnTreeMouseoverBgColor>
+      <ReturnTreeSelectedItemBgColor>gold</ReturnTreeSelectedItemBgColor>
+      <ErrorFieldBgColor>Tomato</ErrorFieldBgColor>
+      <ChangedFieldBgColor>Khaki</ChangedFieldBgColor>
+      <TableHeaderBgColor>white</TableHeaderBgColor>
+      <TableRow1BgColor>#8cdaff</TableRow1BgColor>
+      <TableRow2BgColor>#d9f2ff</TableRow2BgColor>
+      <SingleReturnAutoDisplay>true</SingleReturnAutoDisplay>
+      <StartUpDataStage>Latest</StartUpDataStage>
+    </View>
+  </UserPreferences>
+  <Parameters>
+    <!-- Stage=original allows FormHeaderOriginalData to be used above -->
+    <Stage>original</Stage>
+    <!-- DLN and TIN should receive values from the form being rendered -->
+    <DLN></DLN>
+    <DLNLatest></DLNLatest>
+    <DLNChanged></DLNChanged>
+    <TINLatest></TINLatest>
+    <TINChanged></TINChanged>
+    <TaxpayerPrint>false</TaxpayerPrint>
+    <!-- Print should either be left blank or have the value 'separated' -->
+    <Print></Print>
+    <DocumentId></DocumentId>
+    <!-- ReturnVersion is the schema version of the form being rendered -->
+    <ReturnVersion></ReturnVersion>
+    <ZoomLevel>100%</ZoomLevel>
+    <DisplayName>IRS 990 e-File Render</DisplayName>
+    <Regulation />
+    <!-- The Location element locates the subreturn (consolidated, parent or subsidiary) -->
+    <!-- in which the return document is located. Possible values are RET, PAR, and SUB -->
+    <Location>RET</Location>
+    <!-- The LocationSeq element is the nth occurrence of the subreturn in which the return document is -->
+    <!-- located. If the document exists in the consolidated return, the parent return, or a return that has -->
+    <!-- no subsidiaries, LocationSeq is always 1. LocationSeq can be greater than 1 only for subsidiaries. -->
+    <!-- For example, if the return document is in the 2nd subsidiary, LocationSeq will be 2. -->
+    <LocationSeq>1</LocationSeq>
+    <!-- SubmissionVersion should match ReturnVersion. The first four characters are used for determining the Tax Year -->
+    <SubmissionVersion></SubmissionVersion>
+    <!-- SubmissionType is the type of form being rendered. (e.g., 990) -->
+    <SubmissionType></SubmissionType>
+  </Parameters>
+  <SubmissionHeaderAndDocument>
+    <ReturnHeader binaryAttachmentCnt="0">
+      
+    </ReturnHeader>
+    <SubmissionDocument>
+      
+    </SubmissionDocument>
+  </SubmissionHeaderAndDocument>
+</AppData>
