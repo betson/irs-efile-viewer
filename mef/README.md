@@ -23,9 +23,9 @@ Lastly, updates to support a new tax year should be contained within a single co
 
 The [`rrprd/`](rrprd/) directory contains assets (images, JavaScript, and CSS) that can be included in the HTML transformations. Originally, this directory was listed as `rrdprd/` (Return Request and Display - Production); however, the IRS updated the name around 2014.
 
-Within the directory, [`common/`](common/) contains assets that could be used by any form for any Tax Year. These are predominantly icons. Alternatively, [`sdi/versioned/`](sdi/versioned/) contains a directory for each tax year. Within each year are form-specific images or styles that relate to that tax year's version of the forms. Sometimes these year-specific styles are updated in future years to address bugs or compatibility fixes.
+Within the directory, [`common/`](rrprd/common/) contains assets that could be used by any form for any Tax Year. These are predominantly icons. Alternatively, [`sdi/versioned/`](rrprd/sdi/versioned/) contains a directory for each tax year. Within each year are form-specific images or styles that relate to that tax year's version of the forms. Sometimes these year-specific styles are updated in future years to address bugs or compatibility fixes.
 
-Notably, while most years contain `style.css` and `MainStyles.css`, these files do not appear to be used from any of the provided XSLT transformations.
+Notably while most years contain `style.css` and `MainStyles.css`, these files do not appear to be used from any of the provided XSLT transformations.
 
 ## `Stylesheets/` Subdirectory
 
