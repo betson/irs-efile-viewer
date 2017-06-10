@@ -1,5 +1,6 @@
 exclude: [
   'README.md',
+  '**/README.md',
   'Gemfile.lock',
   'GEMFILE',
   '.gitignore',
