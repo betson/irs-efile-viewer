@@ -1,30 +1,52 @@
 ---
 ---
 var inputFile = '{{ site.github.url}}/201541349349307794_public.xml';
-var templateFile = '{{ site.github.url}}/form_template.xml';
-var inputDom;
-var templateDom;
 
 $(function() {
     gatherInputXML();
 });
 
+// Attempt to load the user-provided XML e-file. Due to the
+// asynchronous request, this function will trigger all processing
+// on the loaded files.
 function gatherInputXML() {
+    var templateFile = '{{ site.github.url}}/form_template.xml';
     Promise.all([
         loadXML(inputFile),
         loadXML(templateFile)
     ]).then(function(responses) {
-        inputDom = responses[0];
-        templateDom = responses[1];
+        addXMLToPage(responses[0], responses[1]);
 
-        $('#input-filename').text('Loaded: ' + inputFile.substring(inputFile.lastIndexOf('/')+1));
         return responses;
     }).catch(function(error) {
         console.log(error);
     });
 }
 
-// A Promise that requests and returns a parsed XML Dom
+function addXMLToPage(inputDom, templateDom) {
+    var inputFilename = inputDom.documentURI ? inputDom.documentURI.substring(inputDom.documentURI.lastIndexOf('/')+1) : 'IRS e-File';
+    $('#input-filename').text('Loaded: ' + inputFilename);
+
+    var forms = getListOfForms(inputDom);
+    forms.forEach(function(formName) {
+        $('#forms-list').append(
+            $('<li>').append(
+                $('<a>').attr('href', '#').append(formName)
+        ));
+    });
+}
+
+// Given an XML file representing an IRS e-file, return an array
+// containing the names of each contained form and schedule.
+function getListOfForms(inputDom) {
+    var returnData = inputDom.getElementsByTagName('ReturnData')[0];
+    var children = returnData ? Array.prototype.slice.call(returnData.children) : [];
+    return children.map(function(child) {
+        return child.nodeName;
+    });
+}
+
+// A Promise that requests and returns a parsed XML DOM
 function loadXML(url) {
     return new Promise (function(resolve, reject) {
         var request = new XMLHttpRequest();
