@@ -10,17 +10,18 @@ $(function() {
 });
 
 function gatherInputXML() {
-    loadXML(inputFile).then(function(response) {
-        inputDom = response;
-        $('#input-filename').text('Loaded: ' + inputFile.substring(inputFile.lastIndexOf('/')+1));
+    Promise.all([
+        loadXML(inputFile),
+        loadXML(templateFile)
+    ]).then(function(responses) {
+        inputDom = responses[0];
+        templateDom = responses[1];
 
-        // Chain and request the next file
-        return loadXML(templateFile);
-    }).then(function(response) {
-        templateDom = response;
+        $('#input-filename').text('Loaded: ' + inputFile.substring(inputFile.lastIndexOf('/')+1));
+        return responses;
     }).catch(function(error) {
         console.log(error);
-    })
+    });
 }
 
 // A Promise that requests and returns a parsed XML Dom
