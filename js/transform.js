@@ -1,20 +1,20 @@
 ---
 ---
-var inputFile = '{{ site.github.url}}/201541349349307794_public.xml';
-
 $(function() {
-    gatherInputXML();
+    var inputFile = getUrlParameter('f');
+    if(inputFile) {
+        gatherInputXML(inputFile);
+    }
 });
 
-// Attempt to load the user-provided XML e-file. Due to the
-// asynchronous request, this function will trigger all processing
-// on the loaded files.
-function gatherInputXML() {
+// Attempt to load the user-provided XML e-file
+function gatherInputXML(inputFile) {
     var templateFile = '{{ site.github.url}}/form_template.xml';
     Promise.all([
         loadXML(inputFile),
         loadXML(templateFile)
     ]).then(function(responses) {
+        cacheForms(responses[0], responses[1]);
         addXMLToPage(responses[0], responses[1]);
 
         return responses;
@@ -23,15 +23,26 @@ function gatherInputXML() {
     });
 }
 
+// Store the requested XML documents in SessionStorage. This
+// allows us to reuse resources on page reloads (such as the user
+// going back and forth between forms/schedules).
+function cacheForms(inputDom, templateDom) {
+    var ser = new XMLSerializer();
+    sessionStorage.setItem(inputFileId(), ser.serializeToString(inputDom));
+    sessionStorage.setItem('template', ser.serializeToString(templateDom));
+}
+
+// Confirm to the user their document has been loaded and present
+// the user with forms they can select to view
 function addXMLToPage(inputDom, templateDom) {
-    var inputFilename = inputDom.documentURI ? inputDom.documentURI.substring(inputDom.documentURI.lastIndexOf('/')+1) : 'IRS e-File';
+    var inputFilename = inputDom.documentURI ? inputFileId() : 'IRS e-File';
     $('#input-filename').text('Loaded: ' + inputFilename);
 
     var forms = getListOfForms(inputDom);
     forms.forEach(function(formName) {
         $('#forms-list').append(
             $('<li>').append(
-                $('<a>').attr('href', '#').append(formName)
+                $('<a>').attr({href: '#'+formName, id: formName}).append(formName)
         ));
     });
 }
@@ -64,4 +75,19 @@ function loadXML(url) {
         };
         request.send();
     });
+}
+
+// Utility function for accessing URL query parameters by key
+function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+}
+
+// Utility function for accessing the filename or identifier for
+// the input XML document
+function inputFileId() {
+    var file = getUrlParameter('f');
+    return file.substring(file.lastIndexOf('/')+1);
 }
