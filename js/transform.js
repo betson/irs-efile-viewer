@@ -98,13 +98,24 @@ function generateAndDisplayForm(formId, dest) {
     }
     
     var parser = new DOMParser();
-    var inputDom = parser.parseFromString(sessionStorage.getItem(inputFileId()), 'text/xml');
+    var inputStr = removeNamespaces(sessionStorage.getItem(inputFileId()));
+    var inputDom = parser.parseFromString(inputStr, 'text/xml');
     var templateDom = parser.parseFromString(sessionStorage.getItem('template'), 'text/xml');
 
     moveHeaderAndMainForm(inputDom, templateDom, formId);
     setFormProperties(inputDom, templateDom, formId);
+}
 
     // var formHtml = render(templateDom, formId);
+// The input e-file from the IRS likely has a default namespace
+// applied. This needs to be removed in order for the XPath within
+// the stylesheets to work appropriately. However, after the XML
+// has been parsed, JavaScript doesn't allow you to change/remove
+// the namespace URI. Instead, we have to specifically remove it
+// from the text serialization.
+// https://stackoverflow.com/a/4527802
+function removeNamespaces(XMLString) {
+    return XMLString.replace(/<([a-zA-Z0-9 ]+)xmlns=\"[^\"]*\"(.*)>/g, '<$1$2>');
 }
 
 // Move the main form data into the template
@@ -120,30 +131,16 @@ function moveHeaderAndMainForm(inputDom, templateDom, formId) {
 
 // Set individual values for the template parameters
 function setFormProperties(inputDom, templateDom, formId) {
-    // This namespace resolver is necessary for XPath in order to
-    // handle the default namespace applied on IRS e-file documents.
-    // It is also necessary to prefix all XPath elements with a
-    // namespace prefix (though the prefix itself doesn't matter).
-    // https://stackoverflow.com/a/9622169
-    var nsResolver = (function (element) {
-        var nsResolver = element.ownerDocument.createNSResolver(element);
-        var defaultNamespace = element.getAttribute('xmlns');
-
-        return function (prefix) {
-            return nsResolver.lookupNamespaceURI(prefix) || defaultNamespace;
-        };
-    }(inputDom.documentElement));
-
     // Iterate through and set all properties
     var propsToTransfer = [
-        { xpath: '//d:Return/@returnVersion', dest: 'ReturnVersion' },
-        { xpath: '//d:Return/@returnVersion', dest: 'SubmissionVersion' },
-        { xpath: '//d:ReturnHeader/d:ReturnTypeCd', dest: 'SubmissionType' },
-        { xpath: '//d:ReturnHeader/d:Filer/d:EIN', dest: 'TINLatest' },
-        { xpath: '//d:'+formId+'/@documentId', dest: 'DocumentId' }
+        { xpath: '//Return/@returnVersion', dest: 'ReturnVersion' },
+        { xpath: '//Return/@returnVersion', dest: 'SubmissionVersion' },
+        { xpath: '//ReturnHeader/ReturnTypeCd', dest: 'SubmissionType' },
+        { xpath: '//ReturnHeader/Filer/EIN', dest: 'TINLatest' },
+        { xpath: '//'+formId+'/@documentId', dest: 'DocumentId' }
     ];
     propsToTransfer.forEach(function(prop) {
-        var val = getXPathValue(inputDom, prop.xpath, nsResolver);
+        var val = getXPathValue(inputDom, prop.xpath);
         setNodeValue(templateDom, prop.dest, val);
     });
 
@@ -172,8 +169,8 @@ function render(templateDom, formId) {
 
 // Utility function to help query XPath values from an input
 // file. Assumes that a single value is trying to be accessed.
-function getXPathValue(dom, xpath, nsResolver) {
-    var xpathResult = dom.evaluate(xpath, dom, nsResolver, XPathResult.ANY_TYPE, null);
+function getXPathValue(dom, xpath) {
+    var xpathResult = dom.evaluate(xpath, dom, null, XPathResult.ANY_TYPE, null);
     if(xpath.indexOf('@') !== -1) {
         return xpathResult.iterateNext().value;
     } else {
