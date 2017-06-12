@@ -45,6 +45,7 @@ function addXMLToPage(inputDom, templateDom) {
                 $('<a>').attr({href: '#'+formName, id: formName}).append(formName)
         ));
     });
+    $('#forms-list a').click(displayForm);
 }
 
 // Given an XML file representing an IRS e-file, return an array
@@ -75,6 +76,123 @@ function loadXML(url) {
         };
         request.send();
     });
+}
+
+//======================================
+//
+// PROCESS XML TRANSFORMATION
+//
+//======================================
+
+// Click handler to start building the form that was
+// clicked by the user
+function displayForm(e) {
+    e.preventDefault();
+    generateAndDisplayForm($(this).attr('id'));
+}
+
+function generateAndDisplayForm(formId, dest) {
+    if(!sessionStorage[inputFileId()] || !sessionStorage['template']) {
+        // TODO Error UI
+        throw Error('Could not load input XML file to process');
+    }
+    
+    var parser = new DOMParser();
+    var inputDom = parser.parseFromString(sessionStorage.getItem(inputFileId()), 'text/xml');
+    var templateDom = parser.parseFromString(sessionStorage.getItem('template'), 'text/xml');
+
+    moveHeaderAndMainForm(inputDom, templateDom, formId);
+    setFormProperties(inputDom, templateDom, formId);
+
+    // var formHtml = render(templateDom, formId);
+}
+
+// Move the main form data into the template
+function moveHeaderAndMainForm(inputDom, templateDom, formId) {
+    var formData = inputDom.getElementsByTagName(formId)[0];
+    var formHeader = inputDom.getElementsByTagName('ReturnHeader')[0];
+
+    var tHeader = templateDom.getElementsByTagName('ReturnHeader')[0];
+    var tData = templateDom.getElementsByTagName('SubmissionDocument')[0];
+    tHeader.parentNode.replaceChild(formHeader.cloneNode(true), tHeader);
+    tData.appendChild(formData.cloneNode(true));
+}
+
+// Set individual values for the template parameters
+function setFormProperties(inputDom, templateDom, formId) {
+    // This namespace resolver is necessary for XPath in order to
+    // handle the default namespace applied on IRS e-file documents.
+    // It is also necessary to prefix all XPath elements with a
+    // namespace prefix (though the prefix itself doesn't matter).
+    // https://stackoverflow.com/a/9622169
+    var nsResolver = (function (element) {
+        var nsResolver = element.ownerDocument.createNSResolver(element);
+        var defaultNamespace = element.getAttribute('xmlns');
+
+        return function (prefix) {
+            return nsResolver.lookupNamespaceURI(prefix) || defaultNamespace;
+        };
+    }(inputDom.documentElement));
+
+    // Iterate through and set all properties
+    var propsToTransfer = [
+        { xpath: '//d:Return/@returnVersion', dest: 'ReturnVersion' },
+        { xpath: '//d:Return/@returnVersion', dest: 'SubmissionVersion' },
+        { xpath: '//d:ReturnHeader/d:ReturnTypeCd', dest: 'SubmissionType' },
+        { xpath: '//d:ReturnHeader/d:Filer/d:EIN', dest: 'TINLatest' },
+        { xpath: '//d:'+formId+'/@documentId', dest: 'DocumentId' }
+    ];
+    propsToTransfer.forEach(function(prop) {
+        var val = getXPathValue(inputDom, prop.xpath, nsResolver);
+        setNodeValue(templateDom, prop.dest, val);
+    });
+
+    // Set DLN properties if they are available
+    if(getUrlParameter('f') && inputFileId().indexOf('_public') !== -1) {
+        var dln = inputFileId().match(/\d+/)[0];
+        setNodeValue(templateDom, 'DLN', dln);
+        setNodeValue(templateDom, 'DLNLatest', dln);
+    }
+}
+
+// Transform the XML using the appropriate stylesheet based
+// on the form type
+function render(templateDom, formId) {
+    var stylesheet = getStylesheet(templateDom, formId);
+
+    if(!window['XSLTProcessor']) {
+        return parsedXML.transformNode(stylesheet);
+    } else {
+        var ser = new XMLSerializer();
+        var proc = new XSLTProcessor();
+        proc.importStylesheet(stylesheet);
+        return ser.serializeToString(proc.transformToDocument(templateDom));
+    }
+}
+
+// Utility function to help query XPath values from an input
+// file. Assumes that a single value is trying to be accessed.
+function getXPathValue(dom, xpath, nsResolver) {
+    var xpathResult = dom.evaluate(xpath, dom, nsResolver, XPathResult.ANY_TYPE, null);
+    if(xpath.indexOf('@') !== -1) {
+        return xpathResult.iterateNext().value;
+    } else {
+        return xpathResult.iterateNext().textContent;
+    }
+}
+
+// Utility function to set values for the template
+function setNodeValue(dom, nodeName, value) {
+    dom.getElementsByTagName(nodeName)[0].appendChild(document.createTextNode(value));
+}
+
+// Return a parsed XSLT stylesheet that is appropriate given
+// the provided e-file form
+function getStylesheet(templateDom, formId) {
+    var year = templateDom.getElementsByTagName('ReturnVersion')[0].textContent.match(/\d+/)[0];
+    var stylesheetPath = '{{ site.github.url}}//mef/Stylesheets/'+year+'/'+formId+'.xsl';
+
+    // loadXML(stylesheetPath)
 }
 
 // Utility function for accessing URL query parameters by key
