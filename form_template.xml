@@ -54,11 +54,7 @@
     <SubmissionType></SubmissionType>
   </Parameters>
   <SubmissionHeaderAndDocument>
-    <ReturnHeader binaryAttachmentCnt="0">
-      
-    </ReturnHeader>
-    <SubmissionDocument>
-      
-    </SubmissionDocument>
+    <ReturnHeader binaryAttachmentCnt="0"></ReturnHeader>
+    <SubmissionDocument></SubmissionDocument>
   </SubmissionHeaderAndDocument>
 </AppData>
