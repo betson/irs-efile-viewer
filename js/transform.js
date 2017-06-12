@@ -96,17 +96,42 @@ function generateAndDisplayForm(formId, dest) {
         // TODO Error UI
         throw Error('Could not load input XML file to process');
     }
-    
+
+    // Gather XML from browser storage
     var parser = new DOMParser();
     var inputStr = removeNamespaces(sessionStorage.getItem(inputFileId()));
     var inputDom = parser.parseFromString(inputStr, 'text/xml');
     var templateDom = parser.parseFromString(sessionStorage.getItem('template'), 'text/xml');
 
+    // Configure template file
     moveHeaderAndMainForm(inputDom, templateDom, formId);
     setFormProperties(inputDom, templateDom, formId);
+    var stylesheetPath = getStylesheetPath(templateDom, formId);
+
+    var ser = new XMLSerializer();
+    console.log(ser.serializeToString(templateDom));
+
+    // Display rendered form to the user
+    // In order to display the form in a separate window, the action
+    // must happen synchronously with a user action (click). Because
+    // loading the stylesheet is an async action, we need to open
+    // the window first ahead of time.
+    var destWindow;
+    if(!dest) {
+        destWindow = window.open('about:blank');
+    }
+    loadXML(stylesheetPath).then(function(stylesheet) {
+        var formHtml = render(templateDom, stylesheet);
+        if(dest) {
+            $('#'+dest).attr('src', 'data:text/html;charset=utf-8,' + encodeURIComponent(formHtml));
+        } else {
+            destWindow.document.write(formHtml);
+        }
+    }).catch(function(error) {
+        console.log(error);
+    });
 }
 
-    // var formHtml = render(templateDom, formId);
 // The input e-file from the IRS likely has a default namespace
 // applied. This needs to be removed in order for the XPath within
 // the stylesheets to work appropriately. However, after the XML
@@ -154,9 +179,7 @@ function setFormProperties(inputDom, templateDom, formId) {
 
 // Transform the XML using the appropriate stylesheet based
 // on the form type
-function render(templateDom, formId) {
-    var stylesheet = getStylesheet(templateDom, formId);
-
+function render(templateDom, stylesheet) {
     if(!window['XSLTProcessor']) {
         return parsedXML.transformNode(stylesheet);
     } else {
@@ -183,13 +206,11 @@ function setNodeValue(dom, nodeName, value) {
     dom.getElementsByTagName(nodeName)[0].appendChild(document.createTextNode(value));
 }
 
-// Return a parsed XSLT stylesheet that is appropriate given
-// the provided e-file form
-function getStylesheet(templateDom, formId) {
+// Return the path to the XSLT stylesheet that is appropriate
+// given the provided e-file form
+function getStylesheetPath(templateDom, formId) {
     var year = templateDom.getElementsByTagName('ReturnVersion')[0].textContent.match(/\d+/)[0];
-    var stylesheetPath = '{{ site.github.url}}//mef/Stylesheets/'+year+'/'+formId+'.xsl';
-
-    // loadXML(stylesheetPath)
+    return '{{ site.github.url}}//mef/Stylesheets/'+year+'/'+formId+'.xsl';
 }
 
 // Utility function for accessing URL query parameters by key
