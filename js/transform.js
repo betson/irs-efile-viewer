@@ -167,6 +167,7 @@ function generateAndDisplayForm(formId, dest) {
         } else {
             destWindow.document.write(formHtml);
             destWindow.document.close();
+            destWindow.history.replaceState(null, null, location.href.replace(location.hash, '')+'#'+formId);
         }
     }).catch(function(error) {
         console.log(error);
