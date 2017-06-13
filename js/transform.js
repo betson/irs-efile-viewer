@@ -199,11 +199,13 @@ function setFormProperties(inputDom, templateDom, formId) {
         { xpath: '//Return/@returnVersion', dest: 'ReturnVersion' },
         { xpath: '//Return/@returnVersion', dest: 'SubmissionVersion' },
         { xpath: '//ReturnHeader/ReturnTypeCd', dest: 'SubmissionType' },
-        { xpath: '//ReturnHeader/Filer/EIN', dest: 'TINLatest' },
+        { xpath: '//ReturnHeader/Filer/EIN', dest: 'TINLatest', transform: formatTIN },
+        { xpath: '//ReturnHeader/Filer/EIN', dest: 'TIN', transform: formatTIN },
         { xpath: '//'+formId+'/@documentId', dest: 'DocumentId' }
     ];
     propsToTransfer.forEach(function(prop) {
         var val = getXPathValue(inputDom, prop.xpath);
+        val = prop.transform ? prop.transform(val) : val;
         setNodeValue(templateDom, prop.dest, val);
     });
 
@@ -242,6 +244,11 @@ function getXPathValue(dom, xpath) {
 // Utility function to set values for the template
 function setNodeValue(dom, nodeName, value) {
     dom.getElementsByTagName(nodeName)[0].appendChild(document.createTextNode(value));
+}
+
+// Utility function to format TIN in XX-XXXXXXX format
+function formatTIN(tin) {
+    return tin.slice(0,2) + '-' + tin.slice(2);
 }
 
 // Return the path to the XSLT stylesheet that is appropriate
