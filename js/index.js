@@ -2,6 +2,7 @@
 ---
 $(function() {
     $('#file-input').change(loadFile);
+    $('#url-form').submit(loadURL);
 });
 
 // Respond to a user choosing a file to upload. If successful,
@@ -40,6 +41,46 @@ function readXML(file) {
             }
             reader.readAsText(file);
         }
+    });
+}
+
+// Respond to a user choosing a URL to access. If successful,
+// send the user to the transformation page.
+function loadURL(e) {
+    e.preventDefault();
+    var url = $('#url-input').val();
+    getContentType(url).then(function(contentType) {
+        if(contentType.match(/.*xml/)) {
+            location.href = '{{ site.github.url }}/transform.html?f=' + encodeURIComponent(url);
+        } else {
+            console.log('The URL provided doesn\'t appear to be an IRS XML e-file document.');
+        }
+    }).catch(function(error) {
+        console.log(error);
+    });
+}
+
+// A Promise that checks the Content-Type of a request
+function getContentType(url) {
+    return new Promise (function(resolve, reject) {
+        if(!url) {
+            reject(Error('No file was requested.'));
+            return;
+        }
+
+        var request = new XMLHttpRequest();
+        request.open('HEAD', url);
+        request.onload = function() {
+            if(request.status === 200) {
+                resolve(request.getResponseHeader('Content-Type'));
+            } else {
+                reject(Error('Error Code: ' + request.status + ' (' + request.statusText + ')'));
+            }
+        };
+        request.onerror = function() {
+            reject(Error('There was a network error.'));
+        };
+        request.send();
     });
 }
 
