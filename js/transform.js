@@ -243,7 +243,8 @@ function getXPathValue(dom, xpath) {
 
 // Utility function to set values for the template
 function setNodeValue(dom, nodeName, value) {
-    dom.getElementsByTagName(nodeName)[0].appendChild(document.createTextNode(value));
+    var node = dom.getElementsByTagName(nodeName)[0];
+    node.parentNode.replaceChild(node.cloneNode(false).appendChild(document.createTextNode(value)).parentNode, node);
 }
 
 // Utility function to format TIN in XX-XXXXXXX format
