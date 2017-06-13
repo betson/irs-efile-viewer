@@ -16,12 +16,18 @@ $(function() {
     }
 });
 
+//======================================
+//
+// PAGE SETUP
+//
+//======================================
+
 // Attempt to load the user-provided XML e-file
 function gatherInputXML(inputFile) {
     var templateFile = '{{ site.github.url}}/form_template.xml';
     var templateStr = sessionStorage.getItem('template');
     var inputStr = sessionStorage.getItem(inputStorageId());
-    
+
     var formsToLoad = [];
     var formKeys = [];
     if(!templateStr) {
@@ -48,7 +54,7 @@ function gatherInputXML(inputFile) {
             });
 
             inputDom = inputDom || new DOMParser().parseFromString(inputStr, 'text/xml');
-            addXMLToPage(inputDom);
+            return Promise.resolve(inputDom).then(addXMLToPage);
         }).catch(function(error) {
             console.log(error);
             displayError('There was a problem accessing ' + inputFilename());
@@ -251,16 +257,22 @@ function setNodeValue(dom, nodeName, value) {
     node.parentNode.replaceChild(node.cloneNode(false).appendChild(document.createTextNode(value)).parentNode, node);
 }
 
-// Utility function to format TIN in XX-XXXXXXX format
-function formatTIN(tin) {
-    return tin.slice(0,2) + '-' + tin.slice(2);
-}
-
 // Return the path to the XSLT stylesheet that is appropriate
 // given the provided e-file form
 function getStylesheetPath(templateDom, formId) {
     var year = templateDom.getElementsByTagName('ReturnVersion')[0].textContent.match(/\d+/)[0];
     return '{{ site.github.url}}//mef/Stylesheets/'+year+'/'+formId+'.xsl';
+}
+
+//======================================
+//
+// SUPPORT FUNCTIONS
+//
+//======================================
+
+// Utility function to format TIN in XX-XXXXXXX format
+function formatTIN(tin) {
+    return tin.slice(0,2) + '-' + tin.slice(2);
 }
 
 // Utility function for accessing URL query parameters by key
