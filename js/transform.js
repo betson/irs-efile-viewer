@@ -108,9 +108,6 @@ function generateAndDisplayForm(formId, dest) {
     setFormProperties(inputDom, templateDom, formId);
     var stylesheetPath = getStylesheetPath(templateDom, formId);
 
-    var ser = new XMLSerializer();
-    console.log(ser.serializeToString(templateDom));
-
     // Display rendered form to the user
     // In order to display the form in a separate window, the action
     // must happen synchronously with a user action (click). Because
