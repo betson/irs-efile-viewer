@@ -4,23 +4,35 @@ $(function() {
     var inputFile = getUrlParameter('f');
     if(inputFile) {
         gatherInputXML(inputFile);
+    } else {
+        displayError('No file was requested');
     }
 });
 
 // Attempt to load the user-provided XML e-file
 function gatherInputXML(inputFile) {
     var templateFile = '{{ site.github.url}}/form_template.xml';
-    Promise.all([
-        loadXML(inputFile),
-        loadXML(templateFile)
-    ]).then(function(responses) {
-        cacheForms(responses[0], responses[1]);
-        addXMLToPage(responses[0], responses[1]);
+    var templateDom = sessionStorage.getItem('template');
+    var inputDom = sessionStorage.getItem(inputFileId());
+    
+    // If our files are already cached, skip accessing them again
+    if(templateDom && inputDom) {
+        var parser = new DOMParser();
+        addXMLToPage(parser.parseFromString(inputDom, 'text/xml'), parser.parseFromString(templateDom, 'text/xml'));
+    } else {
+        Promise.all([
+            loadXML(inputFile),
+            loadXML(templateFile)
+        ]).then(function(responses) {
+            cacheForms(responses[0], responses[1]);
+            addXMLToPage(responses[0], responses[1]);
 
-        return responses;
-    }).catch(function(error) {
-        console.log(error);
-    });
+            return responses;
+        }).catch(function(error) {
+            console.log(error);
+            displayError('There was a problem accessing ' + inputFile);
+        });
+    }
 }
 
 // Store the requested XML documents in SessionStorage. This
@@ -32,10 +44,15 @@ function cacheForms(inputDom, templateDom) {
     sessionStorage.setItem('template', ser.serializeToString(templateDom));
 }
 
+// Generic function to display to the user there was an error
+function displayError(message) {
+    $('#input-filename').text(message);
+}
+
 // Confirm to the user their document has been loaded and present
 // the user with forms they can select to view
 function addXMLToPage(inputDom, templateDom) {
-    var inputFilename = inputDom.documentURI ? inputFileId() : 'IRS e-File';
+    var inputFilename = getUrlParameter('f') ? inputFileId() : 'IRS e-File';
     $('#input-filename').text('Loaded: ' + inputFilename);
 
     var forms = getListOfForms(inputDom);
