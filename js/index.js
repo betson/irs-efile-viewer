@@ -1,7 +1,11 @@
+---
+---
 $(function() {
     $('#file-input').change(loadFile);
 });
 
+// Respond to a user choosing a file to upload. If successful,
+// send the user to the transformation page.
 function loadFile() {
     var myFile = this.files[0];
     readXML(myFile).then(function(fileText) {
@@ -13,11 +17,15 @@ function loadFile() {
         var newId = uniqueId();
         sessionStorage.setItem(newId, fileText);
         sessionStorage.setItem(newId+'_name', myFile.name);
+
+        location.href = '{{ site.github.url }}/transform.html?h=' + newId;
     }).catch(function(err) {
         console.log(err);
     });
 }
 
+// A Promise that reads a file from the user and provides the string
+// text on success.
 function readXML(file) {
     return new Promise (function(resolve, reject) {
         if(!file.type.match(/.*xml/)) {

@@ -1,36 +1,57 @@
 ---
 ---
 $(function() {
-    var inputFile = getUrlParameter('f');
-    if(inputFile) {
-        gatherInputXML(inputFile);
+    var urlFile = getUrlParameter('f');
+    var userFile = getUrlParameter('h');
+    if(urlFile) {
+        gatherInputXML(urlFile);
+    } else if(userFile) {
+        if(sessionStorage.getItem(userFile+'_name')) {
+            gatherInputXML();
+        } else {
+            displayError('The file you requested is no longer available. Please select or upload a new file.');
+        }
     } else {
-        displayError('No file was requested');
+        displayError('No file was requested.');
     }
 });
 
 // Attempt to load the user-provided XML e-file
 function gatherInputXML(inputFile) {
     var templateFile = '{{ site.github.url}}/form_template.xml';
-    var templateDom = sessionStorage.getItem('template');
-    var inputDom = sessionStorage.getItem(inputFileId());
+    var templateStr = sessionStorage.getItem('template');
+    var inputStr = sessionStorage.getItem(inputStorageId());
     
-    // If our files are already cached, skip accessing them again
-    if(templateDom && inputDom) {
-        var parser = new DOMParser();
-        addXMLToPage(parser.parseFromString(inputDom, 'text/xml'), parser.parseFromString(templateDom, 'text/xml'));
-    } else {
-        Promise.all([
-            loadXML(inputFile),
-            loadXML(templateFile)
-        ]).then(function(responses) {
-            cacheForms(responses[0], responses[1]);
-            addXMLToPage(responses[0], responses[1]);
+    var formsToLoad = [];
+    var formKeys = [];
+    if(!templateStr) {
+        formsToLoad.push(loadXML(templateFile));
+        formKeys.push('template');
+    }
+    if(!inputStr) {
+        formsToLoad.push(loadXML(inputFile));
+        formKeys.push(inputStorageId());
+    }
 
-            return responses;
+    // If our files are already cached, skip accessing them again
+    if(formsToLoad.length === 0) {
+        addXMLToPage(new DOMParser().parseFromString(inputStr, 'text/xml'));
+    } else {
+        Promise.all(formsToLoad
+        ).then(function(responses) {
+            var inputDom;
+            responses.forEach(function(response, i) {
+                cacheForms(response, formKeys[i]);
+                if(formKeys[i] !== 'template') {
+                    inputDom = response;
+                }
+            });
+
+            inputDom = inputDom || new DOMParser().parseFromString(inputStr, 'text/xml');
+            addXMLToPage(inputDom);
         }).catch(function(error) {
             console.log(error);
-            displayError('There was a problem accessing ' + inputFile);
+            displayError('There was a problem accessing ' + inputFilename());
         });
     }
 }
@@ -38,10 +59,9 @@ function gatherInputXML(inputFile) {
 // Store the requested XML documents in SessionStorage. This
 // allows us to reuse resources on page reloads (such as the user
 // going back and forth between forms/schedules).
-function cacheForms(inputDom, templateDom) {
+function cacheForms(xmlDom, key) {
     var ser = new XMLSerializer();
-    sessionStorage.setItem(inputFileId(), ser.serializeToString(inputDom));
-    sessionStorage.setItem('template', ser.serializeToString(templateDom));
+    sessionStorage.setItem(key, ser.serializeToString(xmlDom));
 }
 
 // Generic function to display to the user there was an error
@@ -51,9 +71,8 @@ function displayError(message) {
 
 // Confirm to the user their document has been loaded and present
 // the user with forms they can select to view
-function addXMLToPage(inputDom, templateDom) {
-    var inputFilename = getUrlParameter('f') ? inputFileId() : 'IRS e-File';
-    $('#input-filename').text('Loaded: ' + inputFilename);
+function addXMLToPage(inputDom) {
+    $('#input-filename').text('Loaded: ' + inputFilename());
 
     var forms = getListOfForms(inputDom);
     forms.forEach(function(formName) {
@@ -109,14 +128,14 @@ function displayForm(e) {
 }
 
 function generateAndDisplayForm(formId, dest) {
-    if(!sessionStorage[inputFileId()] || !sessionStorage['template']) {
+    if(!sessionStorage[inputStorageId()] || !sessionStorage['template']) {
         // TODO Error UI
         throw Error('Could not load input XML file to process');
     }
 
     // Gather XML from browser storage
     var parser = new DOMParser();
-    var inputStr = removeNamespaces(sessionStorage.getItem(inputFileId()));
+    var inputStr = removeNamespaces(sessionStorage.getItem(inputStorageId()));
     var inputDom = parser.parseFromString(inputStr, 'text/xml');
     var templateDom = parser.parseFromString(sessionStorage.getItem('template'), 'text/xml');
 
@@ -184,8 +203,8 @@ function setFormProperties(inputDom, templateDom, formId) {
     });
 
     // Set DLN properties if they are available
-    if(getUrlParameter('f') && inputFileId().indexOf('_public') !== -1) {
-        var dln = inputFileId().match(/\d+/)[0];
+    if(inputFilename().indexOf('_public') !== -1) {
+        var dln = inputFilename().match(/\d+/)[0];
         setNodeValue(templateDom, 'DLN', dln);
         setNodeValue(templateDom, 'DLNLatest', dln);
     }
@@ -237,7 +256,19 @@ function getUrlParameter(name) {
 
 // Utility function for accessing the filename or identifier for
 // the input XML document
-function inputFileId() {
+function inputStorageId() {
     var file = getUrlParameter('f');
-    return file.substring(file.lastIndexOf('/')+1);
+    var hash = getUrlParameter('h');
+    return hash || file.substring(file.lastIndexOf('/')+1);
+}
+
+// Utility function for accessing the name of the file being
+// processed.
+function inputFilename() {
+    var hash = getUrlParameter('h');
+    if(hash) {
+        return sessionStorage.getItem(hash+'_name');
+    } else {
+        return inputStorageId();
+    }
 }
