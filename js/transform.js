@@ -97,6 +97,11 @@ function getListOfForms(inputDom) {
 // A Promise that requests and returns a parsed XML DOM
 function loadXML(url) {
     return new Promise (function(resolve, reject) {
+        if(!url) {
+            reject(Error('No file was requested.'));
+            return;
+        }
+
         var request = new XMLHttpRequest();
         request.open('GET', url);
         request.responseType = 'document';
