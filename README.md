@@ -4,6 +4,8 @@ In June 2016, the [IRS released](https://aws.amazon.com/blogs/publicsector/irs-9
 
 This utility allows users to visualize individual 990 XML filings in a format representing a standard IRS form.
 
+![Form Transformation](img/xml_to_form.png)
+
 ## Project Structure
 The IRS publishes stylesheets that can be used to transform an XML document into HTML. Specifically, these XSLT (eXtensible Stylesheet Language Transformation) files are distributed each year by the IRS so that tax preparers can generate tools that submit tax filings in the proper format. The [/mef](/mef) directory contains the full set of stylesheets provided by the IRS. However, since only the form 990s and related schedules are available, these are the only ones used by this utility.
 
