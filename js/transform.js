@@ -157,6 +157,8 @@ function generateAndDisplayForm(formId, dest) {
     var destWindow;
     if(!dest) {
         destWindow = window.open('about:blank');
+        destWindow.document.write('<link href="{{site.github.url}}/css/loading.css" rel="stylesheet"><div class="loader"><span>{</span><span>}</span></div>');
+        destWindow.document.close();
     }
     loadXML(stylesheetPath).then(function(stylesheet) {
         var formHtml = render(templateDom, stylesheet);
@@ -164,6 +166,7 @@ function generateAndDisplayForm(formId, dest) {
             $('#'+dest).attr('src', 'data:text/html;charset=utf-8,' + encodeURIComponent(formHtml));
         } else {
             destWindow.document.write(formHtml);
+            destWindow.document.close();
         }
     }).catch(function(error) {
         console.log(error);
