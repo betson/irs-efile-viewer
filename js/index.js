@@ -3,6 +3,7 @@
 $(function() {
     $('#file-input').change(loadFile);
     $('#url-form').submit(loadURL);
+    $('#url-form a').click(fillUrlInput);
 });
 
 // Respond to a user choosing a file to upload. If successful,
@@ -82,6 +83,12 @@ function getContentType(url) {
         };
         request.send();
     });
+}
+
+// Pre-load the search box with a URL that will work
+function fillUrlInput(e) {
+    e.preventDefault();
+    $('#url-input').val(e.target.href);
 }
 
 // Generate unique IDs for use as pseudo-private/protected names.
