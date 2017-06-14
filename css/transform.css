@@ -1,0 +1,59 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  background: #f8f8f8;
+}
+
+.url-form {
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  width: 70%;
+}
+.url-form > button, .url-form > input {
+  vertical-align: baseline;
+  color: #1F0C7B;
+}
+button {
+  margin: 0.125em 0.125em 0 0;
+  float: right;
+  background: none;
+  border: none;
+  padding: 0 4px;
+  font-size: 100%;
+  cursor: pointer;
+  transition: opacity 0.3s ease-out;
+}
+  button:focus {
+    outline: 1px dotted;
+  }
+  button:hover {
+    opacity: 0.7;
+  }
+input[type="text"] {
+  display: block;
+  margin: 0;
+  width: 90%;
+  font: 18px "Open Sans", sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 10px;
+  border: solid 5px #c9c9c9;
+  transition: border 0.3s;
+  float: left;
+}
+  input[type="text"]:focus {
+    outline: none;
+    border: solid 5px #969696;
+  }
+
+.screen-reader {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+}
