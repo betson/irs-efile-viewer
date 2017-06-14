@@ -10,9 +10,9 @@ body {
 
 .url-form {
   display: block;
-  margin: 0;
+  margin: 0 auto;
   overflow: hidden;
-  width: 70%;
+  width: 65%;
 }
 .url-form > button, .url-form > input {
   vertical-align: baseline;
@@ -37,7 +37,7 @@ button {
 input[type="text"] {
   display: block;
   margin: 0;
-  width: 90%;
+  width: 92%;
   font: 18px "Open Sans", sans-serif;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -51,6 +51,44 @@ input[type="text"] {
   input[type="text"]:focus {
     outline: none;
     border: solid 5px #969696;
+  }
+input[type="file"] {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+  input[type="file"] + label {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #f8f8f8;
+    background-color: #1F0C7B;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0.7em;
+  }
+  input[type="file"]:focus + label,
+  input[type="file"] + label:hover {
+    opacity: 0.7;
+    outline: 1px dotted;
+    outline: -webkit-focus-ring-color auto 3px;
+  }
+.file-upload {
+  text-align: center;
+  display: block;
+}
+  .file-upload > label,
+  .file-upload > h2,
+  .file-upload > input {
+    display: inline-block;
+  }
+  .file-upload > h2 {
+    margin: 0 7px;
+  }
+  .file-upload i {
+    padding-right: 0.4em;
   }
 
 .screen-reader {
