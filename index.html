@@ -17,20 +17,28 @@
 </head>
 
 <body>
-    <h1>IRS 990 E-File Viewer</h1>
-    <h2>Enter a URL</h2>
+    <h1>View IRS 990 E-Files</h1>
     <form id="url-form" class="url-form">
+        <h2>Select an XML form to visualize:</h2>
         <label for="url-input" id="url-label" class="screen-reader">Search</label>
         <input type="text" id="url-input" placeholder="http://example.com/IRS990.xml">
         <button type="submit">
             <i class="fa fa-arrow-circle-right fa-3x"></i>
         </button>
     </form>
-    <h2>Upload a form</h2>
     <div class="file-upload">
         <h2>OR</h2>
         <input type="file" name="file-input" id="file-input">
         <label for="file-input"><i class="fa fa-upload"></i>Upload a File</label>
+    </div>
+
+    <div class="content-section">
+        <h2>Translate Raw Data Back Into a Form</h2>
+        <div class="demo-imgs">
+            <img src="{{ site.github.url }}/img/xml_snap.png">
+            <img src="{{ site.github.url }}/img/form_render.png">
+        </div>
+        <p>The IRS has released over a million electronic 990 filings (nonprofit annual tax filings) as XML documents. Accessible on <a href="https://aws.amazon.com/public-datasets/irs-990/">Amazon Web Services</a>, these filings are perfect for researchers, developers, and data scientists. But sometimes it helps to turn the data back into what it came from: a paper form.</p>
     </div>
 </body>
 

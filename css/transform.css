@@ -6,6 +6,22 @@ html {
 }
 body {
   background: #f8f8f8;
+  color: #303438;
+}
+
+a {
+  color: #1F0C7B;
+  text-decoration: none;
+}
+  a:hover {
+    text-decoration: underline;
+  }
+
+h1 {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+  font-size: 2.5em;
 }
 
 .url-form {
@@ -13,11 +29,15 @@ body {
   margin: 0 auto;
   overflow: hidden;
   width: 65%;
+  max-width: 1300px;
 }
-.url-form > button, .url-form > input {
-  vertical-align: baseline;
-  color: #1F0C7B;
-}
+  .url-form > h2 {
+    margin-bottom: 0.3em;
+  }
+  .url-form > button, .url-form > input {
+    vertical-align: baseline;
+    color: #1F0C7B;
+  }
 button {
   margin: 0.125em 0.125em 0 0;
   float: right;
@@ -68,6 +88,7 @@ input[type="file"] {
     display: inline-block;
     cursor: pointer;
     padding: 0.7em;
+    transition: opacity 0.3s ease-out, outline 0.3s ease-out;
   }
   input[type="file"]:focus + label,
   input[type="file"] + label:hover {
@@ -78,6 +99,7 @@ input[type="file"] {
 .file-upload {
   text-align: center;
   display: block;
+  margin-top: 1.5em;
 }
   .file-upload > label,
   .file-upload > h2,
@@ -89,6 +111,37 @@ input[type="file"] {
   }
   .file-upload i {
     padding-right: 0.4em;
+  }
+
+.content-section {
+  text-align: center;
+  width: 100%;
+  background-color: #DCE4E7;
+  padding: 4em;
+  margin: 3em 0;
+}
+  .content-section > h2 {
+    margin-bottom: 3em;
+    font-size: 1.8em;
+  }
+  .content-section > p {
+    width: 60%;
+    margin: 2em auto;
+    font-size: 1.5em;
+    text-align: justify;
+  }
+.demo-imgs {
+  margin: 0 auto;
+}
+  .demo-imgs > img {
+    height: 17em;
+    max-width: 45%;
+    border-radius: 0.7em;
+    display: inline-block;
+    border: 1px solid #F2F2F2;
+  }
+  .demo-imgs > img + img {
+    margin-left: 2em;
   }
 
 .screen-reader {
