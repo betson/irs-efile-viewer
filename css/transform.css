@@ -193,12 +193,47 @@ input[type="file"] {
 
 .form-results {
   margin: 1em;
+  margin-bottom: 4em;
 }
   .form-results h2 {
     margin-bottom: 0.2em;
   }
   .form-results h3 {
     margin-top: 0;
+  }
+  .form-results:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+#forms-list > li {
+  list-style-type: none;
+  background-color: #DCE4E7;
+  margin: 5px;
+  float: left;
+  width: 31%;
+}
+#forms-list > li span:first-child {
+  display: block;
+  background-color: #efefef;
+  width: 100%;
+  height: 8em;
+  line-height: 8em;
+  text-align: center;
+  font-size: 2em;
+  font-family: "Merriweather",serif;
+  color: #303438;
+}
+#forms-list > li span + span {
+  padding: 0.7em;
+  display: block;
+}
+  #forms-list > li > a:hover {
+    text-decoration: none;
+  }
+  #forms-list > li > a:hover > span + span {
+    text-decoration: underline;
   }
 
 .screen-reader {

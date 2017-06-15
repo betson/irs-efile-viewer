@@ -89,8 +89,12 @@ function addXMLToPage(inputDom) {
     forms.forEach(function(formName) {
         $('#forms-list').append(
             $('<li>').append(
-                $('<a>').attr({href: '#'+formName, id: formName}).append(formName)
-        ));
+                $('<a>').attr({href: '#'+formName, id: formName}).append(
+                    $('<span>').append(getDisplayName(formName, true)),
+                    $('<span>').append(getDisplayName(formName))
+                )
+            )
+        );
     });
     $('#forms-list a').click(displayForm);
 }
@@ -119,6 +123,25 @@ function getListOfForms(inputDom) {
     return children.map(function(child) {
         return child.nodeName;
     });
+}
+
+// Return a version of the formName that should be displayed to the
+// user.
+function getDisplayName(formName, short) {
+    if(short) {
+        if(formName.indexOf('Schedule') === -1) {
+            if(formName.indexOf('990') === -1) {
+                return '?';
+            } else {
+                return '990';
+            }
+        } else {
+            return formName.charAt(formName.length-1);
+        }
+    } else {
+        var name = formName.replace('IRS', '');
+        return name.split("Schedule").join(' Schedule ');
+    }
 }
 
 // A Promise that requests and returns a parsed XML DOM
