@@ -194,6 +194,12 @@ input[type="file"] {
 .form-results {
   margin: 1em;
 }
+  .form-results h2 {
+    margin-bottom: 0.2em;
+  }
+  .form-results h3 {
+    margin-top: 0;
+  }
 
 .screen-reader {
     position: absolute !important;

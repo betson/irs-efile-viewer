@@ -80,6 +80,11 @@ function displayError(message) {
 function addXMLToPage(inputDom) {
     $('#input-filename').text('Loaded: ' + inputFilename());
 
+    var formProps = getNameAndTaxYear(inputDom);
+    if(formProps) {
+        $('#filer-name').append(formProps.name + ' &mdash; ' + formProps.year);
+    }
+
     var forms = getListOfForms(inputDom);
     forms.forEach(function(formName) {
         $('#forms-list').append(
@@ -88,6 +93,22 @@ function addXMLToPage(inputDom) {
         ));
     });
     $('#forms-list a').click(displayForm);
+}
+
+// Given an XML file representing an IRS e-file, return the name of
+// the file and the tax year.
+function getNameAndTaxYear(inputDom) {
+    // Because this is happening during initial page load, inputDom
+    // may be the original value of the input file -- which means
+    // namespaces may not be removed. We cannot rely on XPath to get
+    // our values.
+    // We also shouldn't break page load if these values are not
+    // found. The transformation can still occur.
+    var filer = inputDom.getElementsByTagName('Filer')[0];
+    var name = filer ? filer.getElementsByTagName('BusinessNameLine1Txt')[0] : null;
+    var root = inputDom.getElementsByTagName('Return')[0]
+    var year = root ? root.getAttribute('returnVersion') : null;
+    return name && year ? { 'name': name.textContent, 'year': year.substring(0,4) } : null;
 }
 
 // Given an XML file representing an IRS e-file, return an array
