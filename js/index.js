@@ -89,6 +89,7 @@ function getContentType(url) {
 function fillUrlInput(e) {
     e.preventDefault();
     $('#url-input').val(e.target.href);
+    $('#url-input').focus();
 }
 
 // Generate unique IDs for use as pseudo-private/protected names.
