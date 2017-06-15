@@ -1,5 +1,7 @@
 html {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -8,6 +10,8 @@ body {
   background: #f8f8f8;
   color: #303438;
   font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -16,6 +20,7 @@ a {
 }
   a:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 
 h1 {
@@ -25,6 +30,25 @@ h1 {
   font-size: 2.5em;
   font-family: "Merriweather",serif;
 }
+
+.header {
+  width: 100%;
+  display: block;
+  background-color: #303438;
+  color: #f8f8f8;
+}
+  .header > a {
+    padding: 1.3em;
+    color: white;
+    display: inline-block;
+    font-size: 1.1em;
+  }
+  .header > a:hover {
+    text-decoration: none;
+  }
+  .header i {
+    padding-right: 0.6em;
+  }
 
 .url-form {
   display: block;
@@ -38,6 +62,8 @@ h1 {
   }
   .url-form > button, .url-form > input {
     vertical-align: baseline;
+  }
+  .url-form > button {
     color: #1F0C7B;
   }
   .url-form > p {
@@ -73,6 +99,7 @@ input[type="text"] {
   border: solid 5px #c9c9c9;
   transition: border 0.3s;
   float: left;
+  color: #303438;
 }
   input[type="text"]:focus {
     outline: none;
@@ -149,6 +176,10 @@ input[type="file"] {
   .demo-imgs > img + img {
     margin-left: 2em;
   }
+
+.form-results {
+  margin: 1em;
+}
 
 .screen-reader {
     position: absolute !important;
