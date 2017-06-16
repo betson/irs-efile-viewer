@@ -128,19 +128,32 @@ function getListOfForms(inputDom) {
 // Return a version of the formName that should be displayed to the
 // user.
 function getDisplayName(formName, short) {
+    // This regular expression checks if we are looking at a 990 form
+    // (990, 990EZ, 990PF). We specifically do not want to match
+    // anything where '990' is surrounded by other digits, such as
+    // 8990 or 9902. Additionally, we don't want to match a 990
+    // Schedule.
+    // Format is influenced by https://stackoverflow.com/a/7376612
+    var isPrimary990Form = /^(?:(?!\d990).)*990(?!\d)(?!Schedule)/;
+
     if(short) {
-        if(formName.indexOf('Schedule') === -1) {
-            if(formName.indexOf('990') === -1) {
-                return $('<i>').attr({'class': 'fa fa-file-text-o', 'aria-hidden': true, 'title': 'Form without Schedule letter'});
-            } else {
-                return '990';
-            }
+        if(formName.match(isPrimary990Form)) {
+            return '990';
         } else {
-            return formName.charAt(formName.length-1);
+            if(formName.match(/Schedule[A-Z]$/)) {
+                return formName.charAt(formName.length-1);
+            } else {
+                return $('<i>').attr({'class': 'fa fa-file-text-o', 'aria-hidden': true, 'title': 'Form without Schedule letter'});
+            }
         }
     } else {
-        var name = formName.replace('IRS', '');
-        return name.split("Schedule").join(' Schedule ');
+        // If it's a primary form, just put a space after 990. Else,
+        // put a space between each PascalCase word.
+        var name = formName.replace(/^IRS/, '');
+        if(name.match(isPrimary990Form)) {
+            return name.replace(/(990)/, '$1 ');
+        }
+        return name.replace(/([A-Z])/g, ' $1');
     }
 }
 
