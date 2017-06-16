@@ -25,15 +25,17 @@
         <h2>Select an XML form to visualize:</h2>
         <label for="url-input" id="url-label" class="screen-reader">Search</label>
         <input type="text" id="url-input" placeholder="http://example.com/IRS990.xml">
-        <button type="submit">
-            <i class="fa fa-arrow-circle-right fa-3x"></i>
+        <button type="submit" aria-label="Submit URL to process">
+            <i class="fa fa-arrow-circle-right fa-3x" aria-hidden="true" title="Submit"></i>
         </button>
         <p>Demo URL: <a href="https://s3.amazonaws.com/irs-form-990/201541349349307794_public.xml">https://s3.amazonaws.com/irs-form-990/201541349349307794_public.xml</a></p>
     </form>
     <div class="file-upload">
         <h2>OR</h2>
         <input type="file" name="file-input" id="file-input">
-        <label for="file-input"><i class="fa fa-upload"></i>Upload a File</label>
+        <label for="file-input">
+            <i class="fa fa-upload" aria-hidden="true"></i>Upload a File
+        </label>
     </div>
 
     <div class="content-section">
