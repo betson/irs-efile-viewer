@@ -127,7 +127,7 @@
 		<xsl:param name="RowCount"/>
 		<xsl:if test="$RowCount &lt;5">
 			<tr>
-				<td class="styLNAmountBox" style="width: 59mm; border-left-width: 0px; text-align: left">
+				<td class="styLNAmountBox" style="float: none; text-align: left; width: 59mm; border-left-width: 0px;">
 					<xsl:if test="$RowCount = 0">
 						<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="$FormData/OfficerDirTrstKeyEmplInfoGrp/CompOfHghstPdEmplOrNONETxt"/>
@@ -135,21 +135,21 @@
 					</xsl:if>
 					<span style="width: 1px"/>
 				</td>
-				<td class="styLNAmountBox" rowspan="2">
+				<td class="styLNAmountBox" rowspan="2" style="float: none;">
 					<span class="styTableCellPad"/>
 				</td>
-				<td class="styLNAmountBox" rowspan="2">
+				<td class="styLNAmountBox" rowspan="2" style="float: none;">
 					<span class="styTableCellPad"/>
 				</td>
-				<td class="styLNAmountBox" rowspan="2">
+				<td class="styLNAmountBox" rowspan="2" style="float: none;">
 					<span class="styTableCellPad"/>
 				</td>
-				<td class="styLNAmountBox" rowspan="2" style="border-right-width:0px">
+				<td class="styLNAmountBox" rowspan="2" style="float: none; border-right-width: 0px;">
 					<span class="styTableCellPad"/>
 				</td>
 			</tr>
 			<tr>
-				<td class="styLNAmountBox" style="width: 59mm; border-left-width: 0px">
+				<td class="styLNAmountBox" style="width: 59mm; border-left-width: 0px; height: auto;">
 					<span class="styTableCellPad"/>
 				</td>
 			</tr>
@@ -162,7 +162,7 @@
 		<xsl:param name="RowCount"/>
 		<xsl:if test="$RowCount &lt;5">
 			<tr>
-				<td class="styLNAmountBox" style="text-align: left; width: 91mm; border-left-width: 0px">
+				<td class="styLNAmountBox" style="text-align: left; width: 91mm; border-left-width: 0px; height: auto;">
 					<xsl:if test="$RowCount = 0">
 						<xsl:call-template name="PopulateText">
 							<xsl:with-param name="TargetNode" select="$FormData/OfficerDirTrstKeyEmplInfoGrp/CompOfHghstPdCntrctOrNONETxt"/>
@@ -170,15 +170,15 @@
 					</xsl:if>
 					<span style="width: 1px"/>
 				</td>
-				<td class="styLNAmountBox" rowspan="2" style="width: 64mm">
+				<td class="styLNAmountBox" rowspan="2" style="float: none; width: 64mm;">
 					<span class="styTableCellPad"/>
 				</td>
-				<td class="styLNAmountBox" rowspan="2" style="border-right-width:0px">
+				<td class="styLNAmountBox" rowspan="2" style="float: none; border-right-width: 0px;">
 					<span class="styTableCellPad"/>
 				</td>
 			</tr>
 			<tr>
-				<td class="styLNAmountBox" style="width: 91mm; border-left-width: 0px">
+				<td class="styLNAmountBox" style="width: 91mm; border-left-width: 0px; height: auto;">
 					<span class="styTableCellPad"/>
 				</td>
 			</tr>
@@ -6888,7 +6888,7 @@
 											<td class="styLNAmountBox" style="width: 5mm; border-left-width: 0px;border-bottom-width: 0px; ">
 												<span class="styBoldText">1</span>
 											</td>
-											<td class="styLNAmountBox" style=" width: 150mm; border-left-width: 0px; height:auto; font-size:6pt;"><!-- float:none;-->
+											<td class="styLNAmountBox" style=" width: 148mm; border-left-width: 0px; height:auto; font-size:6pt;"><!-- float:none;-->
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styLNAmountBox" rowspan="3" style="float: none;border-right-width:0px; ">
@@ -6899,7 +6899,7 @@
 											<td class="styLNAmountBox" style="width: 5mm; border-left-width: 0px;border-bottom-width: 0px">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styLNAmountBox"  style=";text-align: left; width: 150mm; border-left-width: 0px"><!--float: none-->
+											<td class="styLNAmountBox"  style="text-align: left; width: 148mm; border-left-width: 0px"><!--float: none-->
 												<span class="styTableCellPad"/>
 											</td>
 										</tr>
@@ -6907,7 +6907,7 @@
 											<td class="styLNAmountBox" style="width: 5mm; border-left-width: 0px;border-bottom-width: 0px">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styLNAmountBox"  style="float: right;text-align: left; border-left-width: 0px">
+											<td class="styLNAmountBox"  style="text-align: left; width: 148mm; border-left-width: 0px">
 												<xsl:call-template name="PopulateAmount">
 													<xsl:with-param name="TargetNode" select="$FormData/SummaryOfDirectChrtblActyGrp/Expenses1Amt"/>
 												</xsl:call-template>
@@ -6938,7 +6938,7 @@
 											<td class="styLNAmountBox" style="width: 5mm; border-left-width: 0px;border-bottom-width: 0px;">
 												<span class="styBoldText">2</span>
 											</td>
-											<td class="styLNAmountBox" style="float:none; text-align: left; width: 148mm; border-left-width: 0px">
+											<td class="styLNAmountBox" style="text-align: left; width: 148mm; border-left-width: 0px">
 												<span class="styTableCellPad"/>
 											</td>
 											<td class="styLNAmountBox" rowspan="3" style="float: none;border-right-width:0px; padding-top:0mm; height:auto">
@@ -6959,7 +6959,7 @@
 											<td class="styLNAmountBox" style="width: 5mm; border-left-width: 0px;border-bottom-width: 0px">
 												<span class="styTableCellPad"/>
 											</td>
-											<td class="styLNAmountBox" style="text-align: left; width: 150mm; border-left-width: 0px">
+											<td class="styLNAmountBox" style="text-align: left; width: 148mm; border-left-width: 0px">
 												<span class="styTableCellPad"/>
 											</td>
 										</tr>
