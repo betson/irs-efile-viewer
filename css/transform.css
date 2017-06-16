@@ -236,6 +236,9 @@ input[type="file"] {
   #forms-list > li > a:hover > span + span {
     text-decoration: underline;
   }
+#forms-list > li i.fa {
+  font-size: 1.7em;
+}
 
 .screen-reader {
     position: absolute !important;

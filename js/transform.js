@@ -131,7 +131,7 @@ function getDisplayName(formName, short) {
     if(short) {
         if(formName.indexOf('Schedule') === -1) {
             if(formName.indexOf('990') === -1) {
-                return '?';
+                return $('<i>').attr({'class': 'fa fa-file-text-o', 'aria-hidden': true, 'title': 'Form without Schedule letter'});
             } else {
                 return '990';
             }
