@@ -110,6 +110,7 @@ function getNameAndTaxYear(inputDom) {
     // found. The transformation can still occur.
     var filer = inputDom.getElementsByTagName('Filer')[0];
     var name = filer ? filer.getElementsByTagName('BusinessNameLine1Txt')[0] : null;
+    name = name ? name : filer.getElementsByTagName('BusinessNameLine1')[0];
     var root = inputDom.getElementsByTagName('Return')[0]
     var year = root ? root.getAttribute('returnVersion') : null;
     return name && year ? { 'name': name.textContent, 'year': year.substring(0,4) } : null;
