@@ -2,9 +2,9 @@
 <AppData>
   <ApplicationProperties>
     <!-- FormHeaderGeneric, FHOriginalData, and SystemMode are used to display a generic header -->
-    <FormHeaderGeneric> efile Visual Render </FormHeaderGeneric>
-    <FormHeaderOriginalData>General Public</FormHeaderOriginalData>
-    <SystemMode>Copy</SystemMode>
+    <FormHeaderGeneric> efile Public Visual Render </FormHeaderGeneric>
+    <FormHeaderOriginalData>Submission Date</FormHeaderOriginalData>
+    <SystemMode></SystemMode>
     <PrintoutWindowResizable>false</PrintoutWindowResizable>
   </ApplicationProperties>
   <UserPreferences>

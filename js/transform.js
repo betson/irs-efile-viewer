@@ -253,6 +253,7 @@ function setFormProperties(inputDom, templateDom, formId) {
     var propsToTransfer = [
         { xpath: '//Return/@returnVersion', dest: 'ReturnVersion' },
         { xpath: '//Return/@returnVersion', dest: 'SubmissionVersion' },
+        { xpath: '//ReturnHeader/ReturnTs', dest: 'SystemMode', transform: formatDate },
         { xpath: '//ReturnHeader/ReturnTypeCd', dest: 'SubmissionType' },
         { xpath: '//ReturnHeader/Filer/EIN', dest: 'TINLatest', transform: formatTIN },
         { xpath: '//ReturnHeader/Filer/EIN', dest: 'TIN', transform: formatTIN },
@@ -264,11 +265,12 @@ function setFormProperties(inputDom, templateDom, formId) {
         setNodeValue(templateDom, prop.dest, val);
     });
 
-    // Set DLN properties if they are available
+    // Set ObjectID (unique identifier) properties if they are available
     if(inputFilename().indexOf('_public') !== -1) {
-        var dln = inputFilename().match(/\d+/)[0];
-        setNodeValue(templateDom, 'DLN', dln);
-        setNodeValue(templateDom, 'DLNLatest', dln);
+        var objId = inputFilename().match(/\d+/)[0];
+        var subDate = getXPathValue(templateDom, '//SystemMode');
+        setNodeValue(templateDom, 'FormHeaderOriginalData', 'ObjectId: ' + objId);
+        setNodeValue(templateDom, 'SystemMode', 'Submission: ' + subDate);
     }
 }
 
@@ -318,6 +320,12 @@ function getStylesheetPath(templateDom, formId) {
 // Utility function to format TIN in XX-XXXXXXX format
 function formatTIN(tin) {
     return tin.slice(0,2) + '-' + tin.slice(2);
+}
+
+// Utility function to format Date
+// Input example: 2015-05-14T18:01:56-05:00
+function formatDate(date) {
+    return date.substring(0, date.indexOf('T')).replace(/\s/g, '');
 }
 
 // Utility function for accessing URL query parameters by key
