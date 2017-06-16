@@ -231,6 +231,7 @@ input[type="file"] {
 }
   #forms-list > li > a:hover {
     text-decoration: none;
+    outline: -webkit-focus-ring-color auto 3px;
   }
   #forms-list > li > a:hover > span + span {
     text-decoration: underline;

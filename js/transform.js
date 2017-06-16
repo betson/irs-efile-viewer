@@ -179,6 +179,7 @@ function loadXML(url) {
 // clicked by the user
 function displayForm(e) {
     e.preventDefault();
+    $(this).blur();
     generateAndDisplayForm($(this).attr('id'));
 }
 
