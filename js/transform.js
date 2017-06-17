@@ -263,10 +263,9 @@ function moveHeaderAndMainForm(inputDom, templateDom, formId) {
 
 // Set individual values for the template parameters
 function setFormProperties(inputDom, templateDom, formId) {
-    // Iterate through and set all properties
     var propsToTransfer = [
-        { xpath: '//Return/@returnVersion', dest: 'ReturnVersion' },
-        { xpath: '//Return/@returnVersion', dest: 'SubmissionVersion' },
+        { xpath: '/Return/@returnVersion', dest: 'ReturnVersion' },
+        { xpath: '/Return/@returnVersion', dest: 'SubmissionVersion' },
         { xpath: '//ReturnHeader/ReturnTs', dest: 'SystemMode', transform: formatDate },
         { xpath: '//ReturnHeader/ReturnTypeCd', dest: 'SubmissionType' },
         { xpath: '//ReturnHeader/Filer/EIN', dest: 'TINLatest', transform: formatTIN },
@@ -304,9 +303,27 @@ function render(templateDom, stylesheet) {
 // Utility function to help query XPath values from an input
 // file. Assumes that a single value is trying to be accessed.
 function getXPathValue(dom, xpath) {
+    // Attributes are broken on Wicked Good XPath. However, if we
+    // receive the node, we can pull the attribute off using standard
+    // DOM functions.
+    // https://github.com/google/wicked-good-xpath/issues/40
+    var matchResults = xpath.match(/\/@(.+$)/);
+    var attr;
+    if(matchResults) {
+        attr = matchResults[1];
+        xpath = xpath.replace(/\/@.+$/, '');
+    }
+
+    // Wicked Good XPath is having a problem with the Descendents (//)
+    // operator. But any descendent operation seems to work when
+    // prefixed with 'self::'.
+    // https://github.com/google/wicked-good-xpath/issues/43
+    xpath = xpath.replace(/\/\/(\w)/g, '//self::$1');
+
+    // Execute XPath
     var xpathResult = dom.evaluate(xpath, dom, null, XPathResult.ANY_TYPE, null);
-    if(xpath.indexOf('@') !== -1) {
-        return xpathResult.iterateNext().value;
+    if(attr) {
+        return xpathResult.iterateNext().getAttribute(attr);
     } else {
         return xpathResult.iterateNext().textContent;
     }
