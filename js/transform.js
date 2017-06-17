@@ -236,6 +236,9 @@ function generateAndDisplayForm(formId, dest) {
         }
     }).catch(function(error) {
         console.log(error);
+        if(destWindow) {
+            destWindow.close();
+        }
     });
 }
 
