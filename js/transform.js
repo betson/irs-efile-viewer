@@ -289,14 +289,14 @@ function setFormProperties(inputDom, templateDom, formId) {
 
 // Transform the XML using the appropriate stylesheet based
 // on the form type
-function render(templateDom, stylesheet) {
+function render(dom, stylesheet) {
     if(!window['XSLTProcessor']) {
-        return parsedXML.transformNode(stylesheet);
+        return dom.transformNode(stylesheet);
     } else {
         var ser = new XMLSerializer();
         var proc = new XSLTProcessor();
         proc.importStylesheet(stylesheet);
-        return ser.serializeToString(proc.transformToDocument(templateDom));
+        return ser.serializeToString(proc.transformToDocument(dom));
     }
 }
 
