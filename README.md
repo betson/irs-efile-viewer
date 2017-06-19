@@ -14,10 +14,16 @@ Standard libraries exist to execute XML transformations; however, modern browser
 This repository is configured as a Jekyll project in order to support the relative links that exist throughout the IRS stylesheets. These links need to be processed through Jekyll in order to route properly, so a number of the stylesheets have been modified to include Jekyll front matter and variables.
 
 ## Setup
+**Dependencies**: git, Ruby, Bundler Rubygem
+
 ```
+gem install bundler
 cd /path/to/repository
 bundle install
 ```
 
 ## Develop
 `bundle exec jekyll serve --config _config.yml,_config.dev.yml --incremental`
+
+## Compatibility
+This application is designed to work on the most recent versions of major browsers (Chrome, Firefox, Safari, Edge), as well as IE11.
