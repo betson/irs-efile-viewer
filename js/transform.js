@@ -166,20 +166,45 @@ function loadXML(url) {
             return;
         }
 
-        var request = new XMLHttpRequest();
-        request.open('GET', url);
-        request.responseType = 'document';
-        request.onload = function() {
-            if(request.status === 200) {
-                resolve(request.responseXML);
+        if(!window['XSLTProcessor'] && url.match(/\.xsl$/)) {
+            // In IE11, the only way to run an XSL transformation is
+            // via a non-standard MSXML object. However, we don't want
+            // to use this generally because we wouldn't be able to do
+            // standard document manipulations. Instead, we'll only
+            // load this way for the XSL because we don't need to
+            // manipulate it.
+            // We can't serialize and re-load an XML DOM normally
+            // loaded because of the relative <include> references
+            // within the stylesheets. Those will only resolve
+            // correctly if loaded via the source directory.
+            var xslDoc = new ActiveXObject('Msxml2.FreeThreadedDOMDocument.6.0');
+            xslDoc.resolveExternals = true;
+            xslDoc.validateOnParse = false;
+            xslDoc.setProperty('NewParser', true);
+            xslDoc.setProperty('ProhibitDTD', false);
+            xslDoc.setProperty('AllowDocumentFunction', true);
+            xslDoc.load(url);
+            if (xslDoc.parseError.errorCode != 0) {
+                reject('XML didn\'t load successfully.');
             } else {
-                reject(Error('XML didn\'t load successfully; error code: ' + request.status + ' (' + request.statusText + ')'));
+                resolve(xslDoc);
             }
-        };
-        request.onerror = function() {
-            reject(Error('There was a network error.'));
-        };
-        request.send();
+        } else {
+            var request = new XMLHttpRequest();
+            request.open('GET', url);
+            request.responseType = 'document';
+            request.onload = function() {
+                if(request.status === 200) {
+                    resolve(request.responseXML);
+                } else {
+                    reject(Error('XML didn\'t load successfully; error code: ' + request.status + ' (' + request.statusText + ')'));
+                }
+            };
+            request.onerror = function() {
+                reject(Error('There was a network error.'));
+            };
+            request.send();
+        }
     });
 }
 
@@ -294,7 +319,13 @@ function setFormProperties(inputDom, templateDom, formId) {
 // on the form type
 function render(dom, stylesheet) {
     if(!window['XSLTProcessor']) {
-        return dom.transformNode(stylesheet);
+        var ser = new XMLSerializer();
+        var xmlDoc = new ActiveXObject('Msxml2.DOMDocument.6.0');
+        xmlDoc.validateOnParse = false;
+        xmlDoc.setProperty('NewParser', true);
+        xmlDoc.loadXML(ser.serializeToString(dom));
+
+        return xmlDoc.transformNode(stylesheet);
     } else {
         var ser = new XMLSerializer();
         var proc = new XSLTProcessor();
@@ -342,7 +373,7 @@ function setNodeValue(dom, nodeName, value) {
 // given the provided e-file form
 function getStylesheetPath(templateDom, formId) {
     var year = templateDom.getElementsByTagName('ReturnVersion')[0].textContent.match(/\d+/)[0];
-    return '{{ site.github.url}}//mef/Stylesheets/'+year+'/'+formId+'.xsl';
+    return '{{ site.github.url}}/mef/Stylesheets/'+year+'/'+formId+'.xsl';
 }
 
 //======================================
