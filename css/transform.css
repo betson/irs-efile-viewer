@@ -36,6 +36,11 @@ h1 {
 div + h1 {
   margin-top: 1em;
 }
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 2.1em;
+  }
+}
 
 .header {
   width: 100%;
@@ -88,7 +93,6 @@ div + h1 {
     font-size: 0.8em;
   }
 button {
-  margin: 0.125em 0.125em 0 0;
   float: right;
   background: none;
   border: none;
@@ -122,6 +126,23 @@ input[type="text"] {
     outline: none;
     border: solid 5px #969696;
   }
+@media screen and (max-width: 1200px) {
+  .url-form {
+    width: 80%;
+  }
+  .url-form > input[type="text"] {
+    width: 87%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .url-form {
+    width: 92%;
+  }
+  .url-form > input[type="text"] {
+    width: 83%;
+  }
+}
+
 input[type="file"] {
 	width: 0.1px;
 	height: 0.1px;
@@ -180,6 +201,21 @@ input[type="file"] {
     font-size: 1.5em;
     text-align: justify;
   }
+  @media screen and (max-width: 600px) {
+    .content-section {
+      margin: 1em auto;
+      padding: 2em;
+    }
+    .content-section > p {
+      width: 100%;
+      font-size: 1.2em;
+      text-align: left;
+    }
+    .content-section > h2 {
+      margin-bottom: 1em;
+    }
+  }
+
 .demo-imgs {
   margin: 0 auto;
 }
@@ -192,6 +228,21 @@ input[type="file"] {
   }
   .demo-imgs > img + img {
     margin-left: 2em;
+  }
+  @media screen and (max-width: 1200px) {
+    .demo-imgs > img {
+      max-width: 100%;
+      display: block;
+      margin: 2em auto;
+    }
+    .demo-imgs > img + img {
+      margin-left: auto;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .demo-imgs > img {
+      height: auto;
+    }
   }
 
 .form-results {
@@ -241,6 +292,17 @@ input[type="file"] {
   }
 #forms-list > li i.fa {
   font-size: 1.7em;
+}
+@media screen and (max-width: 600px) {
+	#forms-list > li {
+		float: none;
+		display: block;
+    margin-bottom: 10px;
+		width: 100%;
+	}
+	#forms-list {
+		margin-right: 2em;
+	}
 }
 
 .screen-reader {
