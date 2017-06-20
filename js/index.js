@@ -4,11 +4,14 @@ $(function() {
     $('#file-input').change(loadFile);
     $('#url-form').submit(loadURL);
     $('#url-form a').click(fillUrlInput);
+    $('#url-input').keyup(checkIfRemoveErrors);
 });
 
 // Respond to a user choosing a file to upload. If successful,
 // send the user to the transformation page.
 function loadFile() {
+    resetErrors();
+    $(this).blur();
     var myFile = this.files[0];
     readXML(myFile).then(function(fileText) {
         // We could use the filename as the identifier. However
@@ -22,6 +25,8 @@ function loadFile() {
 
         location.href = '{{ site.github.url }}/transform.html?h=' + newId;
     }).catch(function(err) {
+        $('#file-error').text(err);
+        $('#file-input + label').addClass('error');
         console.log(err);
     });
 }
@@ -49,14 +54,17 @@ function readXML(file) {
 // send the user to the transformation page.
 function loadURL(e) {
     e.preventDefault();
+    resetErrors();
     var url = $('#url-input').val();
     getContentType(url).then(function(contentType) {
         if(contentType.match(/.*xml/)) {
             location.href = '{{ site.github.url }}/transform.html?f=' + encodeURIComponent(url);
         } else {
-            console.log('The URL provided doesn\'t appear to be an IRS XML e-file document.');
+            throw Error('The URL provided doesn\'t appear to be an IRS XML e-file document.');
         }
     }).catch(function(error) {
+        $('#url-error').text(error);
+        $('#url-input').addClass('error');
         console.log(error);
     });
 }
@@ -90,6 +98,20 @@ function fillUrlInput(e) {
     e.preventDefault();
     $('#url-input').val(e.target.href);
     $('#url-input').focus();
+}
+
+// Remove user errors alerts
+function resetErrors() {
+    $('#url-error, #file-error').empty();
+    $('#url-input').removeClass('error');
+    $('#file-input + label').removeClass('error');
+}
+
+// Event handler for resetting errors
+function checkIfRemoveErrors() {
+    if(!this.value) {
+        resetErrors();
+    }
 }
 
 // Generate unique IDs for use as pseudo-private/protected names.

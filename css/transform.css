@@ -305,6 +305,22 @@ input[type="file"] {
 	}
 }
 
+#url-error, #file-error {
+  color: #C62828;
+}
+#file-error {
+  margin-top: 0.4em;
+  font-size: 0.8em;
+}
+input[type="text"].error {
+  border-color: #C62828;
+}
+input[type="file"] + label.error {
+  border: 3px solid #c62828;
+  background-color: #EF9A9A;
+  color: #303438;
+}
+
 .screen-reader {
     position: absolute !important;
     clip: rect(1px, 1px, 1px, 1px);
