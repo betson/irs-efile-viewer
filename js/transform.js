@@ -294,8 +294,8 @@ function setFormProperties(inputDom, templateDom, formId) {
     var propsToTransfer = [
         { xpath: '/Return/@returnVersion', dest: 'ReturnVersion' },
         { xpath: '/Return/@returnVersion', dest: 'SubmissionVersion' },
-        { xpath: '//ReturnHeader/ReturnTs', dest: 'SystemMode', transform: formatDate },
-        { xpath: '//ReturnHeader/ReturnTypeCd', dest: 'SubmissionType' },
+        { xpath: '//ReturnHeader/ReturnTs|//ReturnHeader/Timestamp', dest: 'SystemMode', transform: formatDate },
+        { xpath: '//ReturnHeader/ReturnTypeCd|//ReturnHeader/ReturnType', dest: 'SubmissionType' },
         { xpath: '//ReturnHeader/Filer/EIN', dest: 'TINLatest', transform: formatTIN },
         { xpath: '//ReturnHeader/Filer/EIN', dest: 'TIN', transform: formatTIN },
         { xpath: '//'+formId+'/@documentId', dest: 'DocumentId' }
