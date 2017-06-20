@@ -49,10 +49,16 @@ div + h1 {
   color: #f8f8f8;
 }
   .header > a {
-    padding: 1.3em;
+    margin: 1em;
+    padding: 0.7em;
     color: white;
     display: inline-block;
     font-size: 1.1em;
+  }
+  .header > a:last-child {
+    float: right;
+    border: 2px solid;
+    margin-right: 2em;
   }
   .header > a:hover {
     text-decoration: none;
@@ -69,8 +75,13 @@ div + h1 {
     display: inline-block;
     font-weight: 700;
     padding: 1em;
-    padding-left: 1.3em;
+    padding-left: 1.7em;
   }
+@media screen and (max-width: 600px) {
+  .header > a:last-child {
+    display: none;
+  }
+}
 
 .url-form {
   display: block;
@@ -323,6 +334,12 @@ input[type="file"] + label.error {
 #forms-list > li.error {
   border: 3px solid #c62828;
   margin: 2px;
+}
+
+footer {
+  text-align: center;
+  margin-bottom: 2em;
+  font-size: 0.8em;
 }
 
 .screen-reader {
