@@ -305,7 +305,7 @@ input[type="file"] {
 	}
 }
 
-#url-error, #file-error {
+#url-error, #file-error, #form-error {
   color: #C62828;
 }
 #file-error {
@@ -319,6 +319,10 @@ input[type="file"] + label.error {
   border: 3px solid #c62828;
   background-color: #EF9A9A;
   color: #303438;
+}
+#forms-list > li.error {
+  border: 3px solid #c62828;
+  margin: 2px;
 }
 
 .screen-reader {

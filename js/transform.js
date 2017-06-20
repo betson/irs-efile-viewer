@@ -219,13 +219,14 @@ function loadXML(url) {
 function displayForm(e) {
     e.preventDefault();
     $(this).blur();
+    resetFormErrors();
     generateAndDisplayForm($(this).attr('id'));
 }
 
 function generateAndDisplayForm(formId, dest) {
     if(!sessionStorage[inputStorageId()] || !sessionStorage['template']) {
-        // TODO Error UI
-        throw Error('Could not load input XML file to process');
+        displayFormError('There was a problem generating ' + getDisplayName(formId) + '.', formId);
+        throw Error('Could not load input XML file from sessionStorage');
     }
 
     // Gather XML from browser storage
@@ -264,6 +265,7 @@ function generateAndDisplayForm(formId, dest) {
         if(destWindow) {
             destWindow.close();
         }
+        displayFormError('There was a problem generating ' + getDisplayName(formId) + '.', formId);
     });
 }
 
@@ -418,4 +420,17 @@ function inputFilename() {
     } else {
         return inputStorageId();
     }
+}
+
+// Communicate an error to the user in generating the
+// provided form.
+function displayFormError(message, formId) {
+    $('#form-error').text(message);
+    $('#' + formId).parent().addClass('error');
+}
+
+// Reset any form errors displayed to the user.
+function resetFormErrors() {
+    $('#form-error').empty();
+    $('#forms-list > li').removeClass('error');
 }
