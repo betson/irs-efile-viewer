@@ -15,7 +15,7 @@
       <ReturnTreeSelectedItemBgColor>gold</ReturnTreeSelectedItemBgColor>
       <ErrorFieldBgColor>Tomato</ErrorFieldBgColor>
       <ChangedFieldBgColor>Khaki</ChangedFieldBgColor>
-      <TableHeaderBgColor>white</TableHeaderBgColor>
+      <TableHeaderBgColor>slategray</TableHeaderBgColor>
       <TableRow1BgColor>#8cdaff</TableRow1BgColor>
       <TableRow2BgColor>#d9f2ff</TableRow2BgColor>
       <SingleReturnAutoDisplay>true</SingleReturnAutoDisplay>
