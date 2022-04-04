@@ -1,0 +1,193 @@
+/*-----------------------------------------------------------------------------------------------------
+Header CSS file 
+-----------------------------------------------------------------------------------------------------
+
+Description: Styles that are used in the top portion of the XSL document. The Header CSS file contains
+	styles that define the documentHeader, which is the line at the top of the form stating that 
+	the form should not be processed, and the header with the IRS form number and descriptive
+	information.
+
+-----------------------------------------------------------------------------------------------------
+edited 2/16/2004 by Ravi Venigalla. Added styMainTitle
+edited 7/22/2004 by Chris Sinderson. Added styFormNumber
+-----------------------------------------------------------------------------------------------------*/
+
+.styBB {   /* Bottom Border */
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+}
+.styTBB {   /* Thick Bottom Border */
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 2px; border-left-width: 0px; border-right-width: 0px;
+}
+.styDocHeader {   /* Warning Line */
+	padding-top: 0px; padding-bottom: 0px; padding-left: 2px; padding-right: 2px;
+	border-style: ridge; border-color: darkblue;
+	border-top-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-right-width: 3px;
+	height:auto; overflow:auto; width:187mm;
+}
+.styDoNotProcess {   /* Do Not Process */
+	color: darkblue;
+	font-size: 8pt; font-weight: bold;
+	float: left; clear: left;
+}
+.styDataStage {   /* Latest Data vs. Original Data */
+	color: black; background-color: #d9f2ff;
+	font-size: 8pt; font-weight: bold;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px;
+	border-style: ridge; border-color: darkblue;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 3px; border-right-width: 3px;
+}
+.styRejected {   /* Rejected */
+	color: black; background-color: pink;
+	font-size: 8pt; font-weight: bold;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 5px; padding-right: 5px;
+	border-style: ridge; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 3px;
+}
+.styDLN {   /* DLN */
+	color: darkblue;
+	font-size: 8pt; font-weight: bold;
+	float: right; clear: right;
+}
+.styFNBox {   /* Form Name Box */
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
+	float: left; clear: none;
+}
+.styFN {
+	font-size: 18pt; font-weight:bold;
+}
+.styAgency {   /* Agency */
+	font-family: "Arial Narrow"; font-size: 7pt;
+}
+
+.styFTBox {   /* Form Title Box*/
+	text-align: center;
+	float: left; clear: none;
+}
+.styFMT {   /* Form Main Title */
+	font-size: 14pt; font-weight: bold;
+}
+.styFST {   /* Form Subtitle */
+	font-weight: bold;
+}
+.styFBT {   /* Form Bullet Text */
+	font:size:8pt;
+	font-weight: bold;
+	margin-top:2mm;
+}
+.styTYBox {   /* Tax Year Box*/
+	text-align: center;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 1px; border-right-width: 0px;
+	float: left; clear: none;
+}
+.styOMB {   /* OMB No. */
+	height:4mm; width:100%;
+	line-height: 15px;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+}
+.styTY {   /* Tax Year - this style class is obselete and should no longer be used */
+	font-family: "Arial Narrow";
+	font-size: 26pt; font-weight: bolder;
+}
+.styTaxYear {   /* Tax Year - used for the tax year that's displayed in the upper-right hand corner */
+	font-family: "Arial Narrow";
+	font-size:23pt;
+	font-weight:bold;
+}
+.styTYColor {   /* Tax Year Color */
+	color:green;
+}
+.stySequence {
+	height: 6mm;
+	font-size: 7pt;
+	text-align:left;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 5mm; padding-right: 0px;
+}
+.styNameBox{ /*Name Box*/
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
+	float: left;clear: none;
+	font-size:6pt;
+}
+.styEINBox{ /*Employer ID number box*/
+	font-size:6pt;
+	font-weight: bold;
+	float:left;
+}
+
+.styComType {   /* Company Type */
+	font-size: 6pt;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+	float: left; clear: none;
+}
+.styLblNameAddr {   /* IRS Label, Name and Address */
+	border-style: solid; border-color: black;
+	border-top-width: 3px; border-bottom-width: 3px; border-left-width: 3px; border-right-width: 3px;
+	float: left; clear: none;
+}
+.styUseLbl {   /* IRS Label */
+	font-size: 6pt; font-weight: bold;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; border-right-width: 1px;
+	padding-top: 8px; padding-bottom: 8px; padding-left: 4px; padding-right: 4px;
+	float: left; clear: none;
+}
+.styNameAddr {   /* Name and Address */
+	font-size: 6pt;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 3px; padding-right: 0px;
+	float: left; clear: none;
+}
+.styEINDateAssets {   /* EIN, Date and Assets */
+	font-size: 6pt;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+	padding-top: 0px; padding-bottom: 0px; padding-left: 8px; padding-right: 0px;
+	float: left; clear: none;
+}
+.styAddrFld {   /* Input Line of Address Field */
+	width: 91mm; height: 3.5mm;
+	color: black;
+	font-family: verdana, arial, sans-serif;
+	font-size: 8pt; font-weight: bold;
+	border-color: black; border-style: none;
+	border-top-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-right-width: 1px;
+}
+.styComType {   /* Company Type */
+	font-size: 6pt;
+	border-style: solid; border-color: black;
+	border-top-width: 0px; border-bottom-width: 1px; border-left-width: 0px; border-right-width: 0px;
+	float: left; clear: none;
+}
+.styMainTitle {   /* Form Main Title */
+	font-size: 13pt;font-family: "Arial"; font-weight: bold;
+}
+.styFormNumber{  /* Form Number */
+	font-size: 21pt;font-family: "Arial"; font-weight: bold;
+}
+
+.styMsg {
+			font-family: verdana, arial, sans-serif;
+			font-size: 13pt; font-weight: bold;
+			text-align: left;
+}
+
+.styEnglishBtn {
+	background: url("/mef/rrdprd/common/images/refreshENGButton.gif");
+	width: 50px;
+	height: 13px;
+	border: 0;
+}
+
+.stySpanishBtn {
+	background: url("/mef/rrdprd/common/images/refreshSPButton.gif");
+	width: 50px;
+	height: 13px;
+	border: 0;
+}
