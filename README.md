@@ -23,7 +23,7 @@ bundle install
 ```
 
 ## Develop
-`bundle exec jekyll serve --config _config.yml,_config.dev.yml --incremental`
+`script/server`
 
 ## Compatibility
 This application is designed to work on the most recent versions of major browsers (Chrome, Firefox, Safari, Edge), as well as IE11.
