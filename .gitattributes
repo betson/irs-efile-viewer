@@ -1,0 +1,7 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Always set CRLF as line endings for stylesheet files
+mef/**/*.xsl text eol=crlf
+mef/**/*.js text eol=crlf
+mef/**/*.css text eol=crlf
