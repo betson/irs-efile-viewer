@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'shellwords'
 
 source_directory = ARGV.first
 root_directory = File.expand_path("..", __dir__)
@@ -20,6 +21,11 @@ Dir.chdir(source_directory) do
         exit(false)
     end
 
+    # Prep the source archive so all files have `644` permissions. All files in our destination have
+    # already been updated to match. This helps ensure the automated copy doesn't run into issues on
+    # read-only files.
+    `find #{source_directory} -type f -exec chmod 644 '{}' #{Shellwords.escape(";")}`
+
     # Move all files from Source -> Target
     # The source directory (IRS archive) lists any additions or alterations for a tax year. It needs to be
     # merged into our target directories. If we just replaced the target with the source, then we'd end up
@@ -32,7 +38,7 @@ Dir.chdir(source_directory) do
     source_dir_prefix = "./mef/rrprd/common/images"
     Dir.each_child(source_dir_prefix) do |x|
         next if x.start_with?(".")
-        FileUtils.cp("#{source_dir_prefix}/#{x}", File.expand_path("rrprd/common/images", target_directory))
+        FileUtils.cp("#{source_dir_prefix}/#{x}", File.expand_path("rrprd/common/images", target_directory), :preserve => true)
     end
 
     source_dir_prefix = "./mef/rrprd/sdi/versioned"
@@ -52,10 +58,10 @@ Dir.chdir(source_directory) do
             types.each do |type|
                 Dir.each_child("#{source_dir_prefix}/#{year_directory}/#{type}") do |x|
                     next if x.start_with?(".")
-                    FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{type}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}/#{type}", target_directory))
+                    FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{type}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}/#{type}", target_directory), :preserve => true)
                 end
             end
-            # TODO: This skips any additional files outside the standard three. Those haven't appeared since 2009
+            # TODO: This skips any additional files outside the standard three. Those haven't appeared since 2009.
         end
     end
 
@@ -71,7 +77,7 @@ Dir.chdir(source_directory) do
 
         Dir.each_child("#{source_dir_prefix}/#{year_directory}") do |x|
             next if x.start_with?(".")
-            FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory))
+            FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory), :preserve => true)
         end
     end
 end
