@@ -1,9 +1,60 @@
 require 'fileutils'
+require 'set'
 require 'shellwords'
+require_relative 'stylesheet_fixes.rb'
+
+FILE_EXTENSIONS = {"stylesheets" => ".xsl", "scripts" => ".js", "styles" => ".css"}
+
+# Generate a log output line for a file based on the git commits of prior stylesheet fixes
+def generate_history_line(file_name, commit_hashes, indent="")
+    output = []
+    return "No stylesheet fix listed for #{file_name}." unless commit_hashes
+
+    commit_hashes.each do |hash|
+        unless "commit" == `git cat-file -t #{hash}`.chomp
+            output << indent + "#{file_name} (#{hash}): Error - No known git commit for hash '#{hash}'." 
+            next
+        end
+        output << indent + "#{file_name} " + `git show --no-patch --format='(%h): %s' #{hash}`.chomp
+    end
+
+    output.join("\n")
+end
+
+# Print log output for the history of stylesheet fixes for a given year. Optionally
+# narrow result to an individual file within a year.
+def render_stylesheet_history(year, file=nil, file_type=nil)
+    year_info = STYLESHEET_FIXES[year.to_sym]
+    output = []
+    unless year_info
+        puts "No stylesheet fixes for #{year}" 
+        return
+    end
+
+    if file
+        unless ["stylesheets", "scripts", "styles"].include?(file_type)
+            puts "Need to provide either \"stylesheets\", \"scripts\", or \"styles\" as a file type for #{file}."
+            return
+        end
+
+        output << generate_history_line(file + "#{FILE_EXTENSIONS[file_type]}", year_info[file_type.to_sym][file.to_sym])
+    else
+        output << year
+        year_info.each_key do |year_file_type|
+            output << "  " + year_file_type.to_s.capitalize()
+            year_info[year_file_type].each do |file_name, commit_hashes|
+                output << generate_history_line(file_name.to_s + "#{FILE_EXTENSIONS[year_file_type.to_s]}", commit_hashes, "    ")
+            end
+        end
+    end
+
+    puts output.join("\n")
+end
 
 source_directory = ARGV.first
 root_directory = File.expand_path("..", __dir__)
 target_directory = File.expand_path("mef", root_directory)
+new_taxyears = Set.new
 
 unless source_directory
     puts "Error: No source directory provided for IRS stylesheet archive"
@@ -51,6 +102,7 @@ Dir.chdir(source_directory) do
             
             # We might not have encountered a year yet. If it doesn't exist, create a destination at our target.
             unless File.directory?(File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory))
+                new_taxyears << year_directory
                 new_directories = types.map { |t| File.expand_path("#{target_dir_prefix}/#{year_directory}/#{t}", target_directory)}
                 FileUtils.mkdir_p(new_directories)
             end
@@ -72,6 +124,7 @@ Dir.chdir(source_directory) do
         
         # We might not have encountered a year yet. If it doesn't exist, create a destination at our target.
         unless File.directory?(File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory))
+            new_taxyears << year_directory
             FileUtils.mkdir(File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory))
         end
 
@@ -82,5 +135,12 @@ Dir.chdir(source_directory) do
     end
 end
 
+
+# Alert the user if a new year's information was added
+new_taxyears.each do |new_taxyear|
+    prior_taxyear = new_taxyear.to_i - 1
+    puts "New tax year #{new_taxyear} was added. These files were previously updated for tax year #{prior_taxyear}. Matching files may need to be similarly updated as a new Stylesheet Fix for tax year #{new_taxyear}."
+    render_stylesheet_history(prior_taxyear.to_s)
+end
 
 # TODO: Call prep_stylesheets
