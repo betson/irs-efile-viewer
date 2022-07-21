@@ -4,18 +4,23 @@ require 'shellwords'
 require_relative 'stylesheet_fixes.rb'
 
 FILE_EXTENSIONS = {"stylesheets" => ".xsl", "scripts" => ".js", "styles" => ".css"}
+SOURCE_DIRECTORY = ARGV.first
+ROOT_DIRECTORY = File.expand_path("..", __dir__)
+TARGET_DIRECTORY = File.expand_path("mef", ROOT_DIRECTORY)
 
 # Generate a log output line for a file based on the git commits of prior stylesheet fixes
 def generate_history_line(file_name, commit_hashes, indent="")
     output = []
     return "No stylesheet fix listed for #{file_name}." unless commit_hashes
 
-    commit_hashes.each do |hash|
-        unless "commit" == `git cat-file -t #{hash}`.chomp
-            output << indent + "#{file_name} (#{hash}): Error - No known git commit for hash '#{hash}'." 
-            next
+    Dir.chdir(ROOT_DIRECTORY) do
+        commit_hashes.each do |hash|
+            unless "commit" == `git cat-file -t #{hash}`.chomp
+                output << indent + "#{file_name} (#{hash}): Error - No known git commit for hash '#{hash}'." 
+                next
+            end
+            output << indent + "#{file_name} " + `git show --no-patch --format='(%h): %s' #{hash}`.chomp
         end
-        output << indent + "#{file_name} " + `git show --no-patch --format='(%h): %s' #{hash}`.chomp
     end
 
     output.join("\n")
@@ -37,7 +42,9 @@ def render_stylesheet_history(year, file=nil, file_type=nil)
             return
         end
 
-        output << generate_history_line(file + "#{FILE_EXTENSIONS[file_type]}", year_info[file_type.to_sym][file.to_sym])
+        filename_without_extension = file.delete_suffix(".xsl").delete_suffix(".js").delete_suffix(".css")
+        filename_with_extension = filename_without_extension + FILE_EXTENSIONS[file_type]
+        output << generate_history_line(filename_with_extension, year_info[file_type.to_sym][filename_without_extension.to_sym])
     else
         output << year
         year_info.each_key do |year_file_type|
@@ -51,12 +58,10 @@ def render_stylesheet_history(year, file=nil, file_type=nil)
     puts output.join("\n")
 end
 
-source_directory = ARGV.first
-root_directory = File.expand_path("..", __dir__)
-target_directory = File.expand_path("mef", root_directory)
+#BEGIN main
 new_taxyears = Set.new
 
-unless source_directory
+unless SOURCE_DIRECTORY
     puts "Error: No source directory provided for IRS stylesheet archive"
     exit(false)
 end
@@ -64,18 +69,18 @@ end
 # TODO: confirm if it's safe to overwrite files (i.e., this is only for a tax year after what's been uploaded already)
 
 
-Dir.chdir(source_directory) do
+Dir.chdir(SOURCE_DIRECTORY) do
     # check the directory matches what's expected
     source_children = Dir.glob('*').select {|f| File.directory? f}
     if source_children.length != 1 && source_children.first != "mef"
-        puts "Error: Directory #{source_directory} doesn't look like the root of an IRS stylesheet archive. Expecting \"mef/\" directory."
+        puts "Error: Directory #{SOURCE_DIRECTORY} doesn't look like the root of an IRS stylesheet archive. Expecting \"mef/\" directory."
         exit(false)
     end
 
     # Prep the source archive so all files have `644` permissions. All files in our destination have
     # already been updated to match. This helps ensure the automated copy doesn't run into issues on
     # read-only files.
-    `find #{source_directory} -type f -exec chmod 644 '{}' #{Shellwords.escape(";")}`
+    `find #{SOURCE_DIRECTORY} -type f -exec chmod 644 '{}' #{Shellwords.escape(";")}`
 
     # Move all files from Source -> Target
     # The source directory (IRS archive) lists any additions or alterations for a tax year. It needs to be
@@ -89,29 +94,26 @@ Dir.chdir(source_directory) do
     source_dir_prefix = "./mef/rrprd/common/images"
     Dir.each_child(source_dir_prefix) do |x|
         next if x.start_with?(".")
-        FileUtils.cp("#{source_dir_prefix}/#{x}", File.expand_path("rrprd/common/images", target_directory), :preserve => true)
+        FileUtils.cp("#{source_dir_prefix}/#{x}", File.expand_path("rrprd/common/images", TARGET_DIRECTORY), :preserve => true)
     end
 
     source_dir_prefix = "./mef/rrprd/sdi/versioned"
     target_dir_prefix = "rrprd/sdi/versioned"
+    types = ["images", "styles", "scripts"]
     Dir.each_child(source_dir_prefix) do |year_directory|
         next if year_directory.start_with?(".")
-        Dir.each_child("#{source_dir_prefix}/#{year_directory}") do |x|
-            next if x.start_with?(".")
-            types = ["images", "styles", "scripts"]
             
-            # We might not have encountered a year yet. If it doesn't exist, create a destination at our target.
-            unless File.directory?(File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory))
-                new_taxyears << year_directory
-                new_directories = types.map { |t| File.expand_path("#{target_dir_prefix}/#{year_directory}/#{t}", target_directory)}
-                FileUtils.mkdir_p(new_directories)
-            end
+        # We might not have encountered a year yet. If it doesn't exist, create a destination at our target.
+        unless File.directory?(File.expand_path("#{target_dir_prefix}/#{year_directory}", TARGET_DIRECTORY))
+            new_taxyears << year_directory
+            new_directories = types.map { |t| File.expand_path("#{target_dir_prefix}/#{year_directory}/#{t}", TARGET_DIRECTORY)}
+            FileUtils.mkdir_p(new_directories)
+        end
 
-            types.each do |type|
-                Dir.each_child("#{source_dir_prefix}/#{year_directory}/#{type}") do |x|
-                    next if x.start_with?(".")
-                    FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{type}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}/#{type}", target_directory), :preserve => true)
-                end
+        types.each do |type|
+            Dir.each_child("#{source_dir_prefix}/#{year_directory}/#{type}") do |x|
+                next if x.start_with?(".")
+                FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{type}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}/#{type}", TARGET_DIRECTORY), :preserve => true)
             end
             # TODO: This skips any additional files outside the standard three. Those haven't appeared since 2009.
         end
@@ -123,14 +125,14 @@ Dir.chdir(source_directory) do
         next if year_directory.start_with?(".")
         
         # We might not have encountered a year yet. If it doesn't exist, create a destination at our target.
-        unless File.directory?(File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory))
+        unless File.directory?(File.expand_path("#{target_dir_prefix}/#{year_directory}", TARGET_DIRECTORY))
             new_taxyears << year_directory
-            FileUtils.mkdir(File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory))
+            FileUtils.mkdir(File.expand_path("#{target_dir_prefix}/#{year_directory}", TARGET_DIRECTORY))
         end
 
         Dir.each_child("#{source_dir_prefix}/#{year_directory}") do |x|
             next if x.start_with?(".")
-            FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}", target_directory), :preserve => true)
+            FileUtils.cp("#{source_dir_prefix}/#{year_directory}/#{x}", File.expand_path("#{target_dir_prefix}/#{year_directory}", TARGET_DIRECTORY), :preserve => true)
         end
     end
 end
