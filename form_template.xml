@@ -51,6 +51,7 @@
     <LocationSeq>1</LocationSeq>
     <!-- SubmissionVersion should match ReturnVersion. The first four characters are used for determining the Tax Year -->
     <SubmissionVersion></SubmissionVersion>
+    <TaxYear></TaxYear>
     <!-- SubmissionType is the type of form being rendered. (e.g., 990) -->
     <SubmissionType></SubmissionType>
   </Parameters>
